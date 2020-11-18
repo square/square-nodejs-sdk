@@ -1,0 +1,26 @@
+import { array, lazy, object, optional, Schema, string } from '../schema';
+import { Error, errorSchema } from './error';
+import { Payment, paymentSchema } from './payment';
+
+/**
+ * Defines the fields that are included in the response body of
+ * a request to the [ListPayments](#endpoint-payments-listpayments) endpoint.
+ */
+export interface ListPaymentsResponse {
+  /** Information about errors encountered during the request. */
+  errors?: Error[];
+  /** The requested list of payments. */
+  payments?: Payment[];
+  /**
+   * The pagination cursor to be used in a subsequent request. If empty,
+   * this is the final response.
+   * For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
+   */
+  cursor?: string;
+}
+
+export const listPaymentsResponseSchema: Schema<ListPaymentsResponse> = object({
+  errors: ['errors', optional(array(lazy(() => errorSchema)))],
+  payments: ['payments', optional(array(lazy(() => paymentSchema)))],
+  cursor: ['cursor', optional(string())],
+});
