@@ -1,0 +1,19 @@
+import { lazy, object, Schema, string } from '../schema';
+import { TerminalCheckout, terminalCheckoutSchema } from './terminalCheckout';
+
+export interface CreateTerminalCheckoutRequest {
+  /**
+   * A unique string that identifies this `CreateCheckout` request. Keys can be any valid string but
+   * must be unique for every `CreateCheckout` request.
+   * See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.
+   */
+  idempotencyKey: string;
+  checkout: TerminalCheckout;
+}
+
+export const createTerminalCheckoutRequestSchema: Schema<CreateTerminalCheckoutRequest> = object(
+  {
+    idempotencyKey: ['idempotency_key', string()],
+    checkout: ['checkout', lazy(() => terminalCheckoutSchema)],
+  }
+);
