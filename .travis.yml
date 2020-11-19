@@ -1,0 +1,29 @@
+language: node_js
+
+node_js:
+  - '10'
+  - '12'
+  - '14'
+
+cache:
+  directories:
+    - node_modules
+
+env:
+  - workerCount=3 timeout=600000
+
+install:
+  - npm install --no-save
+
+before_script:
+  - npm run build
+  - npm run lint
+
+script:
+  - npm test -- --ci --coverage --maxWorkers=2
+
+notifications:
+  email:
+    recipients:
+      - devs-apex-alerts+travis@squareup.com
+    on_success: change
