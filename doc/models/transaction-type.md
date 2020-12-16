@@ -1,7 +1,7 @@
 
 # Transaction Type
 
-Transaction type used in the disputed payment.
+The transaction type used in the disputed payment.
 
 ## Enumeration
 

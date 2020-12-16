@@ -7,7 +7,7 @@ export interface DisputeEvidence {
   disputeId?: string;
   /** The time when the next action is due, in RFC 3339 format. */
   uploadedAt?: string;
-  /** Type of the dispute evidence. */
+  /** The type of the dispute evidence. */
   evidenceType?: string;
 }
 

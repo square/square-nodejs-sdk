@@ -23,7 +23,7 @@ See [Handling errors](#handlingerrors) for more information.
 ```json
 {
   "category": "INVALID_REQUEST_ERROR",
-  "code": "CARD_TOKEN_USED",
+  "code": "ACCESS_TOKEN_EXPIRED",
   "detail": "detail6",
   "field": "field6"
 }

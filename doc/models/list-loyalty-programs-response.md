@@ -29,14 +29,14 @@ A response that contains all loyalty programs.
           }
         }
       ],
-      "created_at": "2020-04-20T16:55:11Z",
+      "created_at": "\"2020-04-20T16:55:11Z\"",
       "id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
       "location_ids": [
         "P034NEENMD09F"
       ],
       "reward_tiers": [
         {
-          "created_at": "2020-04-20T16:55:11Z",
+          "created_at": "\"2020-04-20T16:55:11Z\"",
           "definition": {
             "discount_type": "FIXED_PERCENTAGE",
             "percentage_discount": "10",
@@ -44,7 +44,11 @@ A response that contains all loyalty programs.
           },
           "id": "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
           "name": "10% off entire sale",
-          "points": 10
+          "points": 10,
+          "pricing_rule_reference": {
+            "catalog_version": 1605486402527,
+            "object_id": "74C4JSHESNLTB2A7ITO5HO6F"
+          }
         }
       ],
       "status": "ACTIVE",
@@ -52,7 +56,7 @@ A response that contains all loyalty programs.
         "one": "Point",
         "other": "Points"
       },
-      "updated_at": "2020-05-01T02:00:02Z"
+      "updated_at": "\"2020-05-01T02:00:02Z\""
     }
   ]
 }

@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/square.svg)](https://badge.fury.io/js/square)
 [![Apache-2 license](https://img.shields.io/badge/license-Apache2-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-# Square Node.js SDK - Beta 
+# Square Node.js SDK
 
 Use this JavaScript library to manage Square resources (such as payments, orders, items, and inventory) for your own Square account or on behalf of Square sellers.
 
@@ -20,24 +20,9 @@ The SDK package also exports the type files which help type-check the SDK usage 
 
 ## Installation
 
-### Install the latest SDK using npm:
+Install the latest SDK using npm:
 ```sh
 $ npm install square
-```
-
-### Install the latest SDK using GitHub:
-
-```sh
-git clone https://github.com/square/square-nodejs-sdk.git
-```
-Then, build the SDK:
-```sh
-$ cd square-nodejs-sdk
-$ npm link
-```
-Lastly, run the following in the directory that contains your code:
-```sh
-$ npm link square
 ```
 
 ## How do I import the client and other types from the SDK?
@@ -138,7 +123,6 @@ const newClient = client.withConfiguration({
 * [O Auth]
 
 ### Deprecated APIs
-* [V1 Locations]
 * [V1 Employees]
 * [V1 Transactions]
 * [V1 Items]
@@ -526,7 +510,6 @@ You can also use the Square API to create applications or services that work wit
 [Subscriptions]: doc/api/subscriptions.md
 [Mobile Authorization]: doc/api/mobile-authorization.md
 [O Auth]: doc/api/o-auth.md
-[V1 Locations]: doc/api/v1-locations.md
 [V1 Employees]: doc/api/v1-employees.md
 [V1 Transactions]: doc/api/v1-transactions.md
 [V1 Items]: doc/api/v1-items.md

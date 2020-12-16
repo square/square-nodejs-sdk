@@ -1,7 +1,7 @@
 
 # Dispute State
 
-List of possible dispute states.
+The list of possible dispute states.
 
 ## Enumeration
 

@@ -5,14 +5,14 @@ import { number, object, optional, Schema, string } from '../schema';
  * used as an entry point into a graph of catalog objects, where the objects exist
  * at a specific version.
  */
-export interface VersionedCatalogObject {
+export interface CatalogObjectReference {
   /** The ID of the referenced object. */
   objectId?: string;
   /** The version of the object. */
   catalogVersion?: number;
 }
 
-export const versionedCatalogObjectSchema: Schema<VersionedCatalogObject> = object(
+export const catalogObjectReferenceSchema: Schema<CatalogObjectReference> = object(
   {
     objectId: ['object_id', optional(string())],
     catalogVersion: ['catalog_version', optional(number())],

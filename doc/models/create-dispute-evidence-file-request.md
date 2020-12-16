@@ -1,7 +1,7 @@
 
 # Create Dispute Evidence File Request
 
-Defines parameters for a CreateDisputeEvidenceFile request.
+Defines the parameters for a `CreateDisputeEvidenceFile` request.
 
 ## Structure
 
@@ -11,9 +11,9 @@ Defines parameters for a CreateDisputeEvidenceFile request.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `idempotencyKey` | `string` |  | Unique ID. For more information,<br>see [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency). |
-| `evidenceType` | [`string`](/doc/models/dispute-evidence-type.md) | Optional | Type of the dispute evidence. |
-| `contentType` | `string` | Optional | The MIME type of the uploaded file.<br>One of image/heic, image/heif, image/jpeg, application/pdf,  image/png, image/tiff. |
+| `idempotencyKey` | `string` |  | The Unique ID. For more information, see [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency). |
+| `evidenceType` | [`string`](/doc/models/dispute-evidence-type.md) | Optional | The type of the dispute evidence. |
+| `contentType` | `string` | Optional | The MIME type of the uploaded file.<br>The type can be image/heic, image/heif, image/jpeg, application/pdf, image/png, or image/tiff. |
 
 ## Example (as JSON)
 

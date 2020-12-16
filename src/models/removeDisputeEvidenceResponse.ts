@@ -1,9 +1,9 @@
 import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 
-/** Defines fields in a RemoveDisputeEvidence response. */
+/** Defines the fields in a `RemoveDisputeEvidence` response. */
 export interface RemoveDisputeEvidenceResponse {
-  /** Information on errors encountered during the request. */
+  /** Information about errors encountered during the request. */
   errors?: Error[];
 }
 

@@ -20,6 +20,18 @@ Describes a `UpdateInvoice` response.
 {
   "invoice": {
     "created_at": "2020-06-18T17:45:13Z",
+    "custom_fields": [
+      {
+        "label": "Event Reference Number",
+        "placement": "ABOVE_LINE_ITEMS",
+        "value": "Ref. #1234"
+      },
+      {
+        "label": "Terms of Service",
+        "placement": "BELOW_LINE_ITEMS",
+        "value": "The terms of service are..."
+      }
+    ],
     "description": "We appreciate your business!",
     "id": "gt2zv1z6mnUm1V7KMxxf3w",
     "invoice_number": "inv-100",
@@ -36,14 +48,6 @@ Describes a `UpdateInvoice` response.
           "currency": "USD"
         },
         "due_date": "2030-01-24",
-        "reminders": [
-          {
-            "message": "Your invoice is due tomorrow",
-            "relative_scheduled_days": -1,
-            "status": "PENDING",
-            "uid": "beebd363-e47f-4075-8785-c235aaa7df11"
-          }
-        ],
         "request_method": "EMAIL",
         "request_type": "BALANCE",
         "tipping_enabled": false,

@@ -27,7 +27,6 @@ import { TerminalApi } from './api/terminalApi';
 import { TransactionsApi } from './api/transactionsApi';
 import { V1EmployeesApi } from './api/v1EmployeesApi';
 import { V1ItemsApi } from './api/v1ItemsApi';
-import { V1LocationsApi } from './api/v1LocationsApi';
 import { V1TransactionsApi } from './api/v1TransactionsApi';
 import { accessTokenAuthenticationProvider } from './authentication';
 import {
@@ -41,7 +40,7 @@ import { Configuration, Environment } from './configuration';
 import { DEFAULT_CONFIGURATION } from './defaultConfiguration';
 import { ApiError } from './errors/apiError';
 import { HttpClient } from './http/httpClient';
-import { assertHeaders, mergeHeaders } from './http/httpHeaders';
+import { assertHeaders, mergeHeaders, setHeader } from './http/httpHeaders';
 import {
   AuthenticatorInterface,
   createRequestBuilderFactory,
@@ -49,8 +48,8 @@ import {
 } from './http/requestBuilder';
 
 /** Current SDK version */
-export const SDK_VERSION = '7.0.0';
-const USER_AGENT = 'Square-TypeScript-SDK/7.0.0';
+export const SDK_VERSION = '8.0.0';
+const USER_AGENT = 'Square-TypeScript-SDK/8.0.0';
 
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
@@ -85,7 +84,6 @@ export class Client implements ClientInterface {
   public readonly transactionsApi: TransactionsApi;
   public readonly v1EmployeesApi: V1EmployeesApi;
   public readonly v1ItemsApi: V1ItemsApi;
-  public readonly v1LocationsApi: V1LocationsApi;
   public readonly v1TransactionsApi: V1TransactionsApi;
 
   constructor(config?: Partial<Configuration>) {
@@ -105,6 +103,7 @@ export class Client implements ClientInterface {
         withUserAgent,
         withAdditionalHeaders(this._config),
         withAuthenticationByDefault,
+        withSquareVersion(this._config),
       ]
     );
 
@@ -137,7 +136,6 @@ export class Client implements ClientInterface {
     this.transactionsApi = new TransactionsApi(this);
     this.v1EmployeesApi = new V1EmployeesApi(this);
     this.v1ItemsApi = new V1ItemsApi(this);
-    this.v1LocationsApi = new V1LocationsApi(this);
     this.v1TransactionsApi = new V1TransactionsApi(this);
   }
 
@@ -222,6 +220,16 @@ function withAdditionalHeaders({
 
 function withUserAgent(rb: SdkRequestBuilder) {
   rb.header('user-agent', USER_AGENT);
+}
+
+function withSquareVersion({ squareVersion }: { squareVersion: string }) {
+  return (rb: SdkRequestBuilder) => {
+    rb.interceptRequest(request => {
+      const headers = request.headers ?? {};
+      setHeader(headers, 'Square-Version', squareVersion);
+      return { ...request, headers };
+    });
+  };
 }
 
 function withAuthenticationByDefault(rb: SdkRequestBuilder) {

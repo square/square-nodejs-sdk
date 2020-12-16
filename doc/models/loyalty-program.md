@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` |  | The Square-assigned ID of the loyalty program. Updates to<br>the loyalty program do not modify the identifier. |
-| `status` | [`string`](/doc/models/loyalty-program-status.md) |  | Whether the program is currently active. |
+| `status` | [`string`](/doc/models/loyalty-program-status.md) |  | Indicates whether the program is currently active. |
 | `rewardTiers` | [`LoyaltyProgramRewardTier[]`](/doc/models/loyalty-program-reward-tier.md) |  | The list of rewards for buyers, sorted by ascending points. |
 | `expirationPolicy` | [`LoyaltyProgramExpirationPolicy`](/doc/models/loyalty-program-expiration-policy.md) | Optional | Describes when the loyalty program expires. |
 | `terminology` | [`LoyaltyProgramTerminology`](/doc/models/loyalty-program-terminology.md) |  | - |
@@ -48,7 +48,11 @@
           "currency": "ZMK"
         }
       },
-      "created_at": "created_at7"
+      "created_at": "created_at7",
+      "pricing_rule_reference": {
+        "object_id": "object_id9",
+        "catalog_version": 205
+      }
     },
     {
       "id": "id0",
@@ -70,7 +74,11 @@
           "currency": "ZMW"
         }
       },
-      "created_at": "created_at8"
+      "created_at": "created_at8",
+      "pricing_rule_reference": {
+        "object_id": "object_id0",
+        "catalog_version": 206
+      }
     }
   ],
   "expiration_policy": {

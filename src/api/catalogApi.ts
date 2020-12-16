@@ -89,7 +89,7 @@ import {
   UpsertCatalogObjectResponse,
   upsertCatalogObjectResponseSchema,
 } from '../models/upsertCatalogObjectResponse';
-import { boolean, optional, string } from '../schema';
+import { boolean, number, optional, string } from '../schema';
 import { BaseApi } from './baseApi';
 
 export class CatalogApi extends BaseApi {
@@ -237,27 +237,34 @@ export class CatalogApi extends BaseApi {
    * deleted catalog items, use [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects)
    * and set the `include_deleted_objects` attribute value to `true`.
    *
-   * @param cursor The pagination cursor returned in the previous response. Leave unset for an initial
-   *                         request. See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination)
-   *                         for more information.
-   * @param types  An optional case-insensitive, comma-separated list of object types to retrieve, for
-   *                         example `ITEM,ITEM_VARIATION,CATEGORY,IMAGE`.  The legal values are taken from the
-   *                         CatalogObjectType enum: `ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,
-   *                         `MODIFIER`, `MODIFIER_LIST`, or `IMAGE`.
+   * @param cursor          The pagination cursor returned in the previous response. Leave unset for an
+   *                                  initial request. See [Pagination](https://developer.squareup.
+   *                                  com/docs/basics/api101/pagination) for more information.
+   * @param types           An optional case-insensitive, comma-separated list of object types to retrieve,
+   *                                  for example `ITEM,ITEM_VARIATION,CATEGORY,IMAGE`.  The legal values are taken
+   *                                  from the CatalogObjectType enum: `ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`,
+   *                                  `TAX`, `MODIFIER`, `MODIFIER_LIST`, or `IMAGE`.
+   * @param catalogVersion  The specific version of the catalog objects to be included in the response.
+   *                                  This allows you to retrieve historical versions of objects. The specified version
+   *                                  value is matched against the [CatalogObject](#type-catalogobject)s' `version`
+   *                                  attribute.
    * @return Response from the API call
    */
   async listCatalog(
     cursor?: string,
     types?: string,
+    catalogVersion?: number,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ListCatalogResponse>> {
     const req = this.createRequest('GET', '/v2/catalog/list');
     const mapped = req.prepareArgs({
       cursor: [cursor, optional(string())],
       types: [types, optional(string())],
+      catalogVersion: [catalogVersion, optional(number())],
     });
     req.query('cursor', mapped.cursor);
     req.query('types', mapped.types);
+    req.query('catalog_version', mapped.catalogVersion);
     return req.callAsJson(listCatalogResponseSchema, requestOptions);
   }
 
@@ -321,19 +328,26 @@ export class CatalogApi extends BaseApi {
    *                                           field of the response contains a `CatalogItemVariation`, its parent
    *                                           `CatalogItem` will be returned in the `related_objects` field of the
    *                                           response.  Default value: `false`
+   * @param catalogVersion          Requests objects as of a specific version of the catalog. This allows
+   *                                           you to retrieve historical versions of objects. The value to retrieve a
+   *                                           specific version of an object can be found in the version field of
+   *                                           [CatalogObject](#type-catalogobject)s.
    * @return Response from the API call
    */
   async retrieveCatalogObject(
     objectId: string,
     includeRelatedObjects?: boolean,
+    catalogVersion?: number,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<RetrieveCatalogObjectResponse>> {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({
       objectId: [objectId, string()],
       includeRelatedObjects: [includeRelatedObjects, optional(boolean())],
+      catalogVersion: [catalogVersion, optional(number())],
     });
     req.query('include_related_objects', mapped.includeRelatedObjects);
+    req.query('catalog_version', mapped.catalogVersion);
     req.appendTemplatePath`/v2/catalog/object/${mapped.objectId}`;
     return req.callAsJson(retrieveCatalogObjectResponseSchema, requestOptions);
   }

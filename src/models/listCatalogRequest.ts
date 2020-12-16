@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { number, object, optional, Schema, string } from '../schema';
 
 export interface ListCatalogRequest {
   /**
@@ -14,9 +14,17 @@ export interface ListCatalogRequest {
    * `MODIFIER`, `MODIFIER_LIST`, or `IMAGE`.
    */
   types?: string;
+  /**
+   * The specific version of the catalog objects to be included in the response.
+   * This allows you to retrieve historical
+   * versions of objects. The specified version value is matched against
+   * the [CatalogObject](#type-catalogobject)s' `version` attribute.
+   */
+  catalogVersion?: number;
 }
 
 export const listCatalogRequestSchema: Schema<ListCatalogRequest> = object({
   cursor: ['cursor', optional(string())],
   types: ['types', optional(string())],
+  catalogVersion: ['catalog_version', optional(number())],
 });

@@ -12,55 +12,55 @@ Square API.
 
 | Name | Description |
 |  --- | --- |
-| `INTERNAL_SERVER_ERROR` | 500 Internal Server Error - a general server error occurred. |
-| `UNAUTHORIZED` | 401 Unauthorized - a general authorization error occurred. |
-| `ACCESS_TOKEN_EXPIRED` | 401 Unauthorized - the provided access token has expired. |
-| `ACCESS_TOKEN_REVOKED` | 401 Unauthorized - the provided access token has been revoked. |
-| `CLIENT_DISABLED` | 401 Unauthorized - the provided client has been disabled. |
-| `FORBIDDEN` | 403 Forbidden - a general access error occurred. |
-| `INSUFFICIENT_SCOPES` | 403 Forbidden - the provided access token does not have permission<br>to execute the requested action. |
-| `APPLICATION_DISABLED` | 403 Forbidden - the calling application was disabled. |
-| `V1_APPLICATION` | 403 Forbidden - the calling application was created prior to<br>2016-03-30 and is not compatible with v2 Square API calls. |
-| `V1_ACCESS_TOKEN` | 403 Forbidden - the calling application is using an access token<br>created prior to 2016-03-30 and is not compatible with v2 Square API<br>calls. |
-| `CARD_PROCESSING_NOT_ENABLED` | 403 Forbidden - the location provided in the API call is not<br>enabled for credit card processing. |
-| `BAD_REQUEST` | 400 Bad Request - a general error occurred. |
-| `MISSING_REQUIRED_PARAMETER` | 400 Bad Request - the request is missing a required path, query, or<br>body parameter. |
-| `INCORRECT_TYPE` | 400 Bad Request - the value provided in the request is the wrong<br>type. For example, a string instead of an integer. |
-| `INVALID_TIME` | 400 Bad Request - formatting for the provided time value is<br>incorrect. |
-| `INVALID_TIME_RANGE` | 400 Bad Request - the time range provided in the request is invalid.<br>For example, the end time is before the start time. |
-| `INVALID_VALUE` | 400 Bad Request - the provided value is invalid. For example,<br>including `%` in a phone number. |
-| `INVALID_CURSOR` | 400 Bad Request - the pagination cursor included in the request is<br>invalid. |
-| `UNKNOWN_QUERY_PARAMETER` | 400 Bad Request - the query parameters provided is invalid for the<br>requested endpoint. |
-| `CONFLICTING_PARAMETERS` | 400 Bad Request - 1 or more of the request parameters conflict with<br>each other. |
-| `EXPECTED_JSON_BODY` | 400 Bad Request - the request body is not a JSON object. |
-| `INVALID_SORT_ORDER` | 400 Bad Request - the provided sort order is not a valid key.<br>Currently, sort order must be `ASC` or `DESC`. |
-| `VALUE_REGEX_MISMATCH` | 400 Bad Request - the provided value does not match an expected<br>regular expression. |
-| `VALUE_TOO_SHORT` | 400 Bad Request - the provided string value is shorter than the<br>minimum length allowed. |
-| `VALUE_TOO_LONG` | 400 Bad Request - the provided string value is longer than the<br>maximum length allowed. |
-| `VALUE_TOO_LOW` | 400 Bad Request - the provided value is less than the supported<br>minimum. |
-| `VALUE_TOO_HIGH` | 400 Bad Request - the provided value is greater than the supported<br>maximum. |
-| `VALUE_EMPTY` | 400 Bad Request - the provided value has a default (empty) value<br>such as a blank string. |
-| `ARRAY_LENGTH_TOO_LONG` | 400 Bad Request - the provided array has too many elements. |
-| `ARRAY_LENGTH_TOO_SHORT` | 400 Bad Request - the provided array has too few elements. |
-| `ARRAY_EMPTY` | 400 Bad Request - the provided array is empty. |
-| `EXPECTED_BOOLEAN` | 400 Bad Request - the endpoint expected the provided value to be a<br>boolean. |
-| `EXPECTED_INTEGER` | 400 Bad Request - the endpoint expected the provided value to be an<br>integer. |
-| `EXPECTED_FLOAT` | 400 Bad Request - the endpoint expected the provided value to be a<br>float. |
-| `EXPECTED_STRING` | 400 Bad Request - the endpoint expected the provided value to be a<br>string. |
-| `EXPECTED_OBJECT` | 400 Bad Request - the endpoint expected the provided value to be a<br>JSON object. |
-| `EXPECTED_ARRAY` | 400 Bad Request - the endpoint expected the provided value to be an<br>array or list. |
-| `EXPECTED_MAP` | 400 Bad Request - the endpoint expected the provided value to be a<br>map or associative array. |
-| `EXPECTED_BASE64_ENCODED_BYTE_ARRAY` | 400 Bad Request - the endpoint expected the provided value to be an<br>array encoded in base64. |
-| `INVALID_ARRAY_VALUE` | 400 Bad Request - 1 or more object in the array does not match the<br>array type. |
-| `INVALID_ENUM_VALUE` | 400 Bad Request - the provided static string is not valid for the<br>field. |
-| `INVALID_CONTENT_TYPE` | 400 Bad Request - invalid content type header. |
-| `INVALID_FORM_VALUE` | 400 Bad Request - Only relevant for applications created prior to<br>2016-03-30. Indicates there was an error while parsing form values. |
-| `CUSTOMER_NOT_FOUND` | 400 Bad Request - the provided customer id can't be found in the merchant's customers list. |
-| `ONE_INSTRUMENT_EXPECTED` | 400 Bad Request - a general error occurred. |
-| `NO_FIELDS_SET` | 400 Bad Request - a general error occurred. |
-| `TOO_MANY_MAP_ENTRIES` | 400 Bad Request - too many entries in the map field. |
-| `MAP_KEY_LENGTH_TOO_SHORT` | 400 Bad Request - the length of one of the provided keys in the map is too short. |
-| `MAP_KEY_LENGTH_TOO_LONG` | 400 Bad Request - the length of one of the provided keys in the map is too long. |
+| `INTERNAL_SERVER_ERROR` | A general server error occurred. |
+| `UNAUTHORIZED` | A general authorization error occurred. |
+| `ACCESS_TOKEN_EXPIRED` | The provided access token has expired. |
+| `ACCESS_TOKEN_REVOKED` | The provided access token has been revoked. |
+| `CLIENT_DISABLED` | The provided client has been disabled. |
+| `FORBIDDEN` | A general access error occurred. |
+| `INSUFFICIENT_SCOPES` | The provided access token does not have permission<br>to execute the requested action. |
+| `APPLICATION_DISABLED` | The calling application was disabled. |
+| `V1_APPLICATION` | The calling application was created prior to<br>2016-03-30 and is not compatible with v2 Square API calls. |
+| `V1_ACCESS_TOKEN` | The calling application is using an access token<br>created prior to 2016-03-30 and is not compatible with v2 Square API<br>calls. |
+| `CARD_PROCESSING_NOT_ENABLED` | The location provided in the API call is not<br>enabled for credit card processing. |
+| `BAD_REQUEST` | A general error occurred with the request. |
+| `MISSING_REQUIRED_PARAMETER` | The request is missing a required path, query, or<br>body parameter. |
+| `INCORRECT_TYPE` | The value provided in the request is the wrong<br>type. For example, a string instead of an integer. |
+| `INVALID_TIME` | Formatting for the provided time value is<br>incorrect. |
+| `INVALID_TIME_RANGE` | The time range provided in the request is invalid.<br>For example, the end time is before the start time. |
+| `INVALID_VALUE` | The provided value is invalid. For example,<br>including `%` in a phone number. |
+| `INVALID_CURSOR` | The pagination cursor included in the request is<br>invalid. |
+| `UNKNOWN_QUERY_PARAMETER` | The query parameters provided is invalid for the<br>requested endpoint. |
+| `CONFLICTING_PARAMETERS` | One or more of the request parameters conflict with<br>each other. |
+| `EXPECTED_JSON_BODY` | The request body is not a JSON object. |
+| `INVALID_SORT_ORDER` | The provided sort order is not a valid key.<br>Currently, sort order must be `ASC` or `DESC`. |
+| `VALUE_REGEX_MISMATCH` | The provided value does not match an expected<br>regular expression. |
+| `VALUE_TOO_SHORT` | The provided string value is shorter than the<br>minimum length allowed. |
+| `VALUE_TOO_LONG` | The provided string value is longer than the<br>maximum length allowed. |
+| `VALUE_TOO_LOW` | The provided value is less than the supported<br>minimum. |
+| `VALUE_TOO_HIGH` | The provided value is greater than the supported<br>maximum. |
+| `VALUE_EMPTY` | The provided value has a default (empty) value<br>such as a blank string. |
+| `ARRAY_LENGTH_TOO_LONG` | The provided array has too many elements. |
+| `ARRAY_LENGTH_TOO_SHORT` | The provided array has too few elements. |
+| `ARRAY_EMPTY` | The provided array is empty. |
+| `EXPECTED_BOOLEAN` | The endpoint expected the provided value to be a<br>boolean. |
+| `EXPECTED_INTEGER` | The endpoint expected the provided value to be an<br>integer. |
+| `EXPECTED_FLOAT` | The endpoint expected the provided value to be a<br>float. |
+| `EXPECTED_STRING` | The endpoint expected the provided value to be a<br>string. |
+| `EXPECTED_OBJECT` | The endpoint expected the provided value to be a<br>JSON object. |
+| `EXPECTED_ARRAY` | The endpoint expected the provided value to be an<br>array or list. |
+| `EXPECTED_MAP` | The endpoint expected the provided value to be a<br>map or associative array. |
+| `EXPECTED_BASE64_ENCODED_BYTE_ARRAY` | The endpoint expected the provided value to be an<br>array encoded in base64. |
+| `INVALID_ARRAY_VALUE` | One or more objects in the array does not match the<br>array type. |
+| `INVALID_ENUM_VALUE` | The provided static string is not valid for the<br>field. |
+| `INVALID_CONTENT_TYPE` | Invalid content type header. |
+| `INVALID_FORM_VALUE` | Only relevant for applications created prior to<br>2016-03-30. Indicates there was an error while parsing form values. |
+| `CUSTOMER_NOT_FOUND` | The provided customer id can't be found in the merchant's customers list. |
+| `ONE_INSTRUMENT_EXPECTED` | A general error occurred. |
+| `NO_FIELDS_SET` | A general error occurred. |
+| `TOO_MANY_MAP_ENTRIES` | Too many entries in the map field. |
+| `MAP_KEY_LENGTH_TOO_SHORT` | The length of one of the provided keys in the map is too short. |
+| `MAP_KEY_LENGTH_TOO_LONG` | The length of one of the provided keys in the map is too long. |
 | `CARD_EXPIRED` | The card issuer declined the request because the card is expired. |
 | `INVALID_EXPIRATION` | The expiration date for the payment card is invalid. For example,<br>it indicates a date in the past. |
 | `INVALID_EXPIRATION_YEAR` | The expiration year for the payment card is invalid. For example,<br>it indicates a year in the past or contains invalid characters. |
@@ -104,6 +104,7 @@ Square API.
 | `INVALID_CARD_DATA` | Generic error - the provided card data is invalid. |
 | `SOURCE_USED` | The provided source id was already used to create a card. |
 | `SOURCE_EXPIRED` | The provided source id has expired. |
+| `UNSUPPORTED_LOYALTY_REWARD_TIER` | The referenced loyalty program reward tier is not supported.<br>This could happen if the reward tier created in a first party<br>application is incompatible with the Loyalty API. |
 | `LOCATION_MISMATCH` | Generic error - the given location does not matching what is expected. |
 | `IDEMPOTENCY_KEY_REUSED` | The provided idempotency key has already been used. |
 | `UNEXPECTED_VALUE` | General error - the value provided was unexpected. |
@@ -114,29 +115,29 @@ Square API.
 | `BAD_CERTIFICATE` | Bad certificate. |
 | `INVALID_SQUARE_VERSION_FORMAT` | The provided Square-Version is incorrectly formatted. |
 | `API_VERSION_INCOMPATIBLE` | The provided Square-Version is incompatible with the requested action. |
-| `CARD_DECLINED` | 402 Request failed - the card was declined. |
-| `VERIFY_CVV_FAILURE` | 402 Request failed - the CVV could not be verified. |
-| `VERIFY_AVS_FAILURE` | 402 Request failed - the AVS could not be verified. |
-| `CARD_DECLINED_CALL_ISSUER` | 402 Request failed - the payment card was declined with a request<br>for the card holder to call the issuer. |
-| `CARD_DECLINED_VERIFICATION_REQUIRED` | 402 Request failed - the payment card was declined with a request<br>for additional verification. |
-| `BAD_EXPIRATION` | 402 Request failed - the card expiration date is either missing or<br>incorrectly formatted. |
-| `CHIP_INSERTION_REQUIRED` | 402 Request failed - the card issuer requires that the card be read<br>using a chip reader. |
-| `ALLOWABLE_PIN_TRIES_EXCEEDED` | 402 Request failed - the card has exhausted its available pin entry<br>retries set by the card issuer. Resolving the error typically requires the<br>card holder to contact the card issuer. |
-| `RESERVATION_DECLINED` | 402 Request failed - The card issuer declined the refund. |
-| `NOT_FOUND` | 404 Not Found - a general error occurred. |
-| `APPLE_PAYMENT_PROCESSING_CERTIFICATE_HASH_NOT_FOUND` | 404 Not Found - Square could not find the associated Apple Pay certificate. |
-| `METHOD_NOT_ALLOWED` | 405 Method Not Allowed - a general error occurred. |
-| `NOT_ACCEPTABLE` | 406 Not Acceptable - a general error occurred. |
-| `REQUEST_TIMEOUT` | 408 Request Timeout - a general error occurred. |
-| `CONFLICT` | 409 Conflict - a general error occurred. |
-| `GONE` | 410 Gone - the target resource is no longer available and this<br>condition is likely to be permanent.. |
-| `REQUEST_ENTITY_TOO_LARGE` | 413 Request Entity Too Large - a general error occurred. |
-| `UNSUPPORTED_MEDIA_TYPE` | 415 Unsupported Media Type - a general error occurred. |
-| `UNPROCESSABLE_ENTITY` | 422 Unprocessable Entity - a general error occurred. |
-| `RATE_LIMITED` | 429 Rate Limited - a general error occurred. |
-| `NOT_IMPLEMENTED` | 501 Not Implemented - a general error occurred. |
-| `BAD_GATEWAY` | 502 Bad Gateway - a general error occurred. |
-| `SERVICE_UNAVAILABLE` | 503 Service Unavailable - a general error occurred. |
+| `CARD_DECLINED` | The card was declined. |
+| `VERIFY_CVV_FAILURE` | The CVV could not be verified. |
+| `VERIFY_AVS_FAILURE` | The AVS could not be verified. |
+| `CARD_DECLINED_CALL_ISSUER` | The payment card was declined with a request<br>for the card holder to call the issuer. |
+| `CARD_DECLINED_VERIFICATION_REQUIRED` | The payment card was declined with a request<br>for additional verification. |
+| `BAD_EXPIRATION` | The card expiration date is either missing or<br>incorrectly formatted. |
+| `CHIP_INSERTION_REQUIRED` | The card issuer requires that the card be read<br>using a chip reader. |
+| `ALLOWABLE_PIN_TRIES_EXCEEDED` | The card has exhausted its available pin entry<br>retries set by the card issuer. Resolving the error typically requires the<br>card holder to contact the card issuer. |
+| `RESERVATION_DECLINED` | The card issuer declined the refund. |
+| `NOT_FOUND` | Not Found - a general error occurred. |
+| `APPLE_PAYMENT_PROCESSING_CERTIFICATE_HASH_NOT_FOUND` | Square could not find the associated Apple Pay certificate. |
+| `METHOD_NOT_ALLOWED` | Method Not Allowed - a general error occurred. |
+| `NOT_ACCEPTABLE` | Not Acceptable - a general error occurred. |
+| `REQUEST_TIMEOUT` | Request Timeout - a general error occurred. |
+| `CONFLICT` | Conflict - a general error occurred. |
+| `GONE` | The target resource is no longer available and this<br>condition is likely to be permanent. |
+| `REQUEST_ENTITY_TOO_LARGE` | Request Entity Too Large - a general error occurred. |
+| `UNSUPPORTED_MEDIA_TYPE` | Unsupported Media Type - a general error occurred. |
+| `UNPROCESSABLE_ENTITY` | Unprocessable Entity - a general error occurred. |
+| `RATE_LIMITED` | Rate Limited - a general error occurred. |
+| `NOT_IMPLEMENTED` | Not Implemented - a general error occurred. |
+| `BAD_GATEWAY` | Bad Gateway - a general error occurred. |
+| `SERVICE_UNAVAILABLE` | Service Unavailable - a general error occurred. |
 | `TEMPORARY_ERROR` | A temporary internal error occurred. You can safely retry your call<br>using the same idempotency key. |
-| `GATEWAY_TIMEOUT` | 504 Gateway Timeout - a general error occurred. |
+| `GATEWAY_TIMEOUT` | Gateway Timeout - a general error occurred. |
 

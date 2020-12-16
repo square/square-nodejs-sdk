@@ -20,19 +20,19 @@
       "errors": [
         {
           "category": "PAYMENT_METHOD_ERROR",
-          "code": "ARRAY_LENGTH_TOO_LONG",
+          "code": "CARD_TOKEN_USED",
           "detail": "detail8",
           "field": "field6"
         },
         {
           "category": "REFUND_ERROR",
-          "code": "ARRAY_LENGTH_TOO_SHORT",
+          "code": "AMOUNT_TOO_HIGH",
           "detail": "detail9",
           "field": "field7"
         },
         {
           "category": "API_ERROR",
-          "code": "ARRAY_EMPTY",
+          "code": "UNSUPPORTED_INSTRUMENT_TYPE",
           "detail": "detail0",
           "field": "field8"
         }
@@ -46,7 +46,7 @@
       "errors": [
         {
           "category": "REFUND_ERROR",
-          "code": "ARRAY_LENGTH_TOO_SHORT",
+          "code": "AMOUNT_TOO_HIGH",
           "detail": "detail9",
           "field": "field7"
         }

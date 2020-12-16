@@ -1,7 +1,7 @@
 
 # Create Dispute Evidence Text Response
 
-Defines fields in a CreateDisputeEvidenceText response.
+Defines the fields in a `CreateDisputeEvidenceText` response.
 
 ## Structure
 

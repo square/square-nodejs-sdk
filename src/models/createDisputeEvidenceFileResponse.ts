@@ -2,7 +2,7 @@ import { array, lazy, object, optional, Schema } from '../schema';
 import { DisputeEvidence, disputeEvidenceSchema } from './disputeEvidence';
 import { Error, errorSchema } from './error';
 
-/** Defines fields in a CreateDisputeEvidenceFile response. */
+/** Defines the fields in a `CreateDisputeEvidenceFile` response. */
 export interface CreateDisputeEvidenceFileResponse {
   /** Any errors that occurred during the request. */
   errors?: Error[];

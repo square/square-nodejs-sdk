@@ -24,6 +24,18 @@ Describes a `SearchInvoices` response.
     {
       "invoice": {
         "created_at": "2020-06-18T17:45:13Z",
+        "custom_fields": [
+          {
+            "label": "Event Reference Number",
+            "placement": "ABOVE_LINE_ITEMS",
+            "value": "Ref. #1234"
+          },
+          {
+            "label": "Terms of Service",
+            "placement": "BELOW_LINE_ITEMS",
+            "value": "The terms of service are..."
+          }
+        ],
         "description": "We appreciate your business!",
         "id": "gt2zv1z6mnUm1V7KMxxf3w",
         "invoice_number": "inv-100",

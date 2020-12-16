@@ -55,7 +55,7 @@ export interface Checkout {
    * parameters. For example, if the provided redirect_url is
    * `http://www.example.com/order-complete`, a successful transaction redirects
    * the customer to:
-   * `http://www.example.com/order-complete?checkoutId=xxxxxx&orderId=xxxxxx&referenceId=xxxxxx&transactionId=xxxxxx`
+   * <pre><code>http://www.example.com/order-complete?checkoutId=xxxxxx&amp;orderId=xxxxxx&amp;referenceId=xxxxxx&amp;transactionId=xxxxxx</code></pre>
    * If you do not provide a redirect URL, Square Checkout will display an order
    * confirmation page on your behalf; however Square strongly recommends that
    * you provide a redirect URL so you can verify the transaction results and
