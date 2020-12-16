@@ -18,6 +18,18 @@ Describes a `CreateInvoice` request.
 
 ```json
 {
+  "custom_fields": [
+    {
+      "label": "Event Reference Number",
+      "placement": "ABOVE_LINE_ITEMS",
+      "value": "Ref. #1234"
+    },
+    {
+      "label": "Terms of Service",
+      "placement": "BELOW_LINE_ITEMS",
+      "value": "The terms of service are..."
+    }
+  ],
   "idempotency_key": "ce3748f9-5fc1-4762-aa12-aae5e843f1f4",
   "invoice": {
     "description": "We appreciate your business!",

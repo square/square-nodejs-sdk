@@ -22,7 +22,7 @@ export interface LoyaltyProgram {
    * the loyalty program do not modify the identifier.
    */
   id: string;
-  /** Whether the program is currently active. */
+  /** Indicates whether the program is currently active. */
   status: string;
   /** The list of rewards for buyers, sorted by ascending points. */
   rewardTiers: LoyaltyProgramRewardTier[];

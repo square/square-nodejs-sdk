@@ -1,7 +1,9 @@
 
 # Loyalty Program Reward Definition Scope
 
-Indicates the scope of the reward tier.
+Indicates the scope of the reward tier. DEPRECATED at version 2020-12-16. Discount details
+are now defined using a catalog pricing rule and other catalog objects. For more information, see
+[Get discount details for the reward](https://developer.squareup.com/docs/loyalty-api/overview#get-discount-details).
 
 ## Enumeration
 

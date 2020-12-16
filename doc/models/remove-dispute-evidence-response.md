@@ -1,7 +1,7 @@
 
 # Remove Dispute Evidence Response
 
-Defines fields in a RemoveDisputeEvidence response.
+Defines the fields in a `RemoveDisputeEvidence` response.
 
 ## Structure
 
@@ -11,7 +11,7 @@ Defines fields in a RemoveDisputeEvidence response.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information on errors encountered during the request. |
+| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
 
 ## Example (as JSON)
 

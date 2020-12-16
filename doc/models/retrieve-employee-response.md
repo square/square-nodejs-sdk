@@ -26,19 +26,19 @@
   "errors": [
     {
       "category": "AUTHENTICATION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_SHORT",
+      "code": "VALUE_TOO_SHORT",
       "detail": "detail1",
       "field": "field9"
     },
     {
       "category": "INVALID_REQUEST_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "VALUE_TOO_LONG",
       "detail": "detail2",
       "field": "field0"
     },
     {
       "category": "RATE_LIMIT_ERROR",
-      "code": "CARD_EXPIRED",
+      "code": "VALUE_TOO_LOW",
       "detail": "detail3",
       "field": "field1"
     }

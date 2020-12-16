@@ -1,4 +1,12 @@
-import { array, boolean, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  boolean,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 
 export interface BatchRetrieveCatalogObjectsRequest {
   /** The IDs of the CatalogObjects to be retrieved. */
@@ -14,11 +22,18 @@ export interface BatchRetrieveCatalogObjectsRequest {
    * the response.
    */
   includeRelatedObjects?: boolean;
+  /**
+   * The specific version of the catalog objects to be included in the response.
+   * This allows you to retrieve historical versions of objects. The specified version value is matched against
+   * the [CatalogObject](#type-catalogobject)s' `version` attribute.
+   */
+  catalogVersion?: number;
 }
 
 export const batchRetrieveCatalogObjectsRequestSchema: Schema<BatchRetrieveCatalogObjectsRequest> = object(
   {
     objectIds: ['object_ids', array(string())],
     includeRelatedObjects: ['include_related_objects', optional(boolean())],
+    catalogVersion: ['catalog_version', optional(number())],
   }
 );

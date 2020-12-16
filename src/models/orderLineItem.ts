@@ -13,6 +13,10 @@ import {
   orderLineItemModifierSchema,
 } from './orderLineItemModifier';
 import {
+  OrderLineItemPricingBlocklists,
+  orderLineItemPricingBlocklistsSchema,
+} from './orderLineItemPricingBlocklists';
+import {
   OrderQuantityUnit,
   orderQuantityUnitSchema,
 } from './orderQuantityUnit';
@@ -142,6 +146,12 @@ export interface OrderLineItem {
    * for more information.
    */
   totalMoney?: Money;
+  /**
+   * Describes pricing adjustments that are blocked from manual and
+   * automatic application to a line item. For more information, see
+   * [Apply Taxes and Discounts](https://developer.squareup.com/docs/orders-api/apply-taxes-and-discounts).
+   */
+  pricingBlocklists?: OrderLineItemPricingBlocklists;
 }
 
 export const orderLineItemSchema: Schema<OrderLineItem> = object({
@@ -180,4 +190,8 @@ export const orderLineItemSchema: Schema<OrderLineItem> = object({
     optional(lazy(() => moneySchema)),
   ],
   totalMoney: ['total_money', optional(lazy(() => moneySchema))],
+  pricingBlocklists: [
+    'pricing_blocklists',
+    optional(lazy(() => orderLineItemPricingBlocklistsSchema)),
+  ],
 });

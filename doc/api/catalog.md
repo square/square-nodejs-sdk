@@ -111,6 +111,7 @@ const body: BatchRetrieveCatalogObjectsRequest = {
   objectIds: bodyObjectIds,
 };
 body.includeRelatedObjects = true;
+body.catalogVersion = 118;
 
 try {
   const { result, ...httpResponse } = await catalogApi.batchRetrieveCatalogObjects(body);
@@ -574,6 +575,7 @@ and set the `include_deleted_objects` attribute value to `true`.
 async listCatalog(
   cursor?: string,
   types?: string,
+  catalogVersion?: number,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<ListCatalogResponse>>
 ```
@@ -584,6 +586,7 @@ async listCatalog(
 |  --- | --- | --- | --- |
 | `cursor` | `string` | Query, Optional | The pagination cursor returned in the previous response. Leave unset for an initial request.<br>See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
 | `types` | `string` | Query, Optional | An optional case-insensitive, comma-separated list of object types to retrieve, for example<br>`ITEM,ITEM_VARIATION,CATEGORY,IMAGE`.<br><br>The legal values are taken from the CatalogObjectType enum:<br>`ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,<br>`MODIFIER`, `MODIFIER_LIST`, or `IMAGE`. |
+| `catalogVersion` | `number` | Query, Optional | The specific version of the catalog objects to be included in the response.<br>This allows you to retrieve historical<br>versions of objects. The specified version value is matched against<br>the [CatalogObject](#type-catalogobject)s' `version` attribute. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -595,8 +598,9 @@ async listCatalog(
 ```ts
 const cursor = 'cursor6';
 const types = 'types6';
+const catalogVersion = 126;
 try {
-  const { result, ...httpResponse } = await catalogApi.listCatalog(cursor, types);
+  const { result, ...httpResponse } = await catalogApi.listCatalog(cursor, types, catalogVersion);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -748,6 +752,7 @@ any [CatalogTax](#type-catalogtax) objects that apply to it.
 async retrieveCatalogObject(
   objectId: string,
   includeRelatedObjects?: boolean,
+  catalogVersion?: number,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<RetrieveCatalogObjectResponse>>
 ```
@@ -758,6 +763,7 @@ async retrieveCatalogObject(
 |  --- | --- | --- | --- |
 | `objectId` | `string` | Template, Required | The object ID of any type of catalog objects to be retrieved. |
 | `includeRelatedObjects` | `boolean` | Query, Optional | If `true`, the response will include additional objects that are related to the<br>requested object, as follows:<br><br>If the `object` field of the response contains a `CatalogItem`, its associated<br>`CatalogCategory`, `CatalogTax`, `CatalogImage` and `CatalogModifierList` objects will<br>be returned in the `related_objects` field of the response. If the `object` field of<br>the response contains a `CatalogItemVariation`, its parent `CatalogItem` will be returned<br>in the `related_objects` field of the response.<br><br>Default value: `false` |
+| `catalogVersion` | `number` | Query, Optional | Requests objects as of a specific version of the catalog. This allows you to retrieve historical<br>versions of objects. The value to retrieve a specific version of an object can be found<br>in the version field of [CatalogObject](#type-catalogobject)s. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -769,8 +775,9 @@ async retrieveCatalogObject(
 ```ts
 const objectId = 'object_id8';
 const includeRelatedObjects = false;
+const catalogVersion = 126;
 try {
-  const { result, ...httpResponse } = await catalogApi.retrieveCatalogObject(objectId, includeRelatedObjects);
+  const { result, ...httpResponse } = await catalogApi.retrieveCatalogObject(objectId, includeRelatedObjects, catalogVersion);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

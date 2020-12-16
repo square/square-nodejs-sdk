@@ -1,4 +1,4 @@
-import { boolean, object, optional, Schema } from '../schema';
+import { boolean, number, object, optional, Schema } from '../schema';
 
 export interface RetrieveCatalogObjectRequest {
   /**
@@ -12,8 +12,17 @@ export interface RetrieveCatalogObjectRequest {
    * Default value: `false`
    */
   includeRelatedObjects?: boolean;
+  /**
+   * Requests objects as of a specific version of the catalog. This allows you to retrieve historical
+   * versions of objects. The value to retrieve a specific version of an object can be found
+   * in the version field of [CatalogObject](#type-catalogobject)s.
+   */
+  catalogVersion?: number;
 }
 
 export const retrieveCatalogObjectRequestSchema: Schema<RetrieveCatalogObjectRequest> = object(
-  { includeRelatedObjects: ['include_related_objects', optional(boolean())] }
+  {
+    includeRelatedObjects: ['include_related_objects', optional(boolean())],
+    catalogVersion: ['catalog_version', optional(number())],
+  }
 );

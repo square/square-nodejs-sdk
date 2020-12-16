@@ -16,7 +16,7 @@ export interface UpdateInvoiceRequest {
    */
   idempotencyKey?: string;
   /**
-   * List of fields to clear.
+   * The list of fields to clear.
    * For examples, see [Update an invoice](https://developer.squareup.com/docs/invoices-api/overview#update-an-invoice).
    */
   fieldsToClear?: string[];

@@ -17,6 +17,7 @@ const bookingsApi = client.bookingsApi;
 * [Retrieve Team Member Booking Profile](/doc/api/bookings.md#retrieve-team-member-booking-profile)
 * [Retrieve Booking](/doc/api/bookings.md#retrieve-booking)
 * [Update Booking](/doc/api/bookings.md#update-booking)
+* [Cancel Booking](/doc/api/bookings.md#cancel-booking)
 
 
 # Create Booking
@@ -362,6 +363,51 @@ body.idempotencyKey = 'idempotency_key2';
 
 try {
   const { result, ...httpResponse } = await bookingsApi.updateBooking(bookingId, body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Cancel Booking
+
+Cancels an existing booking.
+
+```ts
+async cancelBooking(
+  bookingId: string,
+  body: CancelBookingRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CancelBookingResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `bookingId` | `string` | Template, Required | The ID of the [Booking](#type-booking) object representing the to-be-cancelled booking. |
+| `body` | [`CancelBookingRequest`](/doc/models/cancel-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`CancelBookingResponse`](/doc/models/cancel-booking-response.md)
+
+## Example Usage
+
+```ts
+const bookingId = 'booking_id4';
+const body: CancelBookingRequest = {};
+body.idempotencyKey = 'idempotency_key2';
+body.bookingVersion = 8;
+
+try {
+  const { result, ...httpResponse } = await bookingsApi.cancelBooking(bookingId, body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

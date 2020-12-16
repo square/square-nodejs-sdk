@@ -2,9 +2,9 @@ import { array, lazy, object, optional, Schema } from '../schema';
 import { Dispute, disputeSchema } from './dispute';
 import { Error, errorSchema } from './error';
 
-/** Defines fields in a AcceptDispute response. */
+/** Defines the fields in an `AcceptDispute` response. */
 export interface AcceptDisputeResponse {
-  /** Information on errors encountered during the request. */
+  /** Information about errors encountered during the request. */
   errors?: Error[];
   /** Represents a dispute a cardholder initiated with their bank. */
   dispute?: Dispute;

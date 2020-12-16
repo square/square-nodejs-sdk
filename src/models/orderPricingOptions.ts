@@ -7,12 +7,18 @@ import { boolean, object, optional, Schema } from '../schema';
  */
 export interface OrderPricingOptions {
   /**
-   * The option to determine whether or not pricing rule-based
+   * The option to determine whether pricing rule-based
    * discounts are automatically applied to an order.
    */
   autoApplyDiscounts?: boolean;
+  /**
+   * The option to determine whether rule-based taxes are automatically
+   * applied to an order when the criteria of the corresponding rules are met.
+   */
+  autoApplyTaxes?: boolean;
 }
 
 export const orderPricingOptionsSchema: Schema<OrderPricingOptions> = object({
   autoApplyDiscounts: ['auto_apply_discounts', optional(boolean())],
+  autoApplyTaxes: ['auto_apply_taxes', optional(boolean())],
 });

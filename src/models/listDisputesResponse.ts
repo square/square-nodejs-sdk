@@ -2,16 +2,15 @@ import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Dispute, disputeSchema } from './dispute';
 import { Error, errorSchema } from './error';
 
-/** Defines fields in a ListDisputes response. */
+/** Defines fields in a `ListDisputes` response. */
 export interface ListDisputesResponse {
-  /** Information on errors encountered during the request. */
+  /** Information about errors encountered during the request. */
   errors?: Error[];
-  /** The list of Disputes. */
+  /** The list of disputes. */
   disputes?: Dispute[];
   /**
    * The pagination cursor to be used in a subsequent request.
-   * If unset, this is the final response.
-   * For more information, see [Paginating](https://developer.squareup.com/docs/basics/api101/pagination).
+   * If unset, this is the final response. For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
    */
   cursor?: string;
 }

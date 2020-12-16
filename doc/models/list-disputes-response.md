@@ -1,7 +1,7 @@
 
 # List Disputes Response
 
-Defines fields in a ListDisputes response.
+Defines fields in a `ListDisputes` response.
 
 ## Structure
 
@@ -11,9 +11,9 @@ Defines fields in a ListDisputes response.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information on errors encountered during the request. |
-| `disputes` | [`Dispute[]`](/doc/models/dispute.md) | Optional | The list of Disputes. |
-| `cursor` | `string` | Optional | The pagination cursor to be used in a subsequent request.<br>If unset, this is the final response.<br>For more information, see [Paginating](https://developer.squareup.com/docs/basics/api101/pagination). |
+| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
+| `disputes` | [`Dispute[]`](/doc/models/dispute.md) | Optional | The list of disputes. |
+| `cursor` | `string` | Optional | The pagination cursor to be used in a subsequent request.<br>If unset, this is the final response. For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). |
 
 ## Example (as JSON)
 
@@ -22,19 +22,19 @@ Defines fields in a ListDisputes response.
   "errors": [
     {
       "category": "AUTHENTICATION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_SHORT",
+      "code": "VALUE_TOO_SHORT",
       "detail": "detail1",
       "field": "field9"
     },
     {
       "category": "INVALID_REQUEST_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "VALUE_TOO_LONG",
       "detail": "detail2",
       "field": "field0"
     },
     {
       "category": "RATE_LIMIT_ERROR",
-      "code": "CARD_EXPIRED",
+      "code": "VALUE_TOO_LOW",
       "detail": "detail3",
       "field": "field1"
     }

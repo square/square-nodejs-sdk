@@ -14,8 +14,8 @@ import {
 import { Money, moneySchema } from './money';
 
 /**
- * Describes a specific payment request in an invoice. Invoices that contain multiple payment requests can
- * specify a maximum of 12 `INSTALLMENT` request types. All of the payment requests must specify the same `request_method`.
+ * Represents a payment request for an [invoice](#type-Invoice). Invoices can specify a maximum
+ * of 13 payment requests, with up to 12 `INSTALLMENT` request types.
  * For more information,
  * see [Payment requests](https://developer.squareup.com/docs/invoices-api/overview#payment-requests).
  */
@@ -69,8 +69,9 @@ export interface InvoicePaymentRequest {
    */
   tippingEnabled?: boolean;
   /**
-   * If the request method is `CHARGE_CARD_ON_FILE`, this field provides the
-   * card to charge.
+   * The ID of the card on file to charge for the payment request. To get the customer’s card on file,
+   * use the `customer_id` of the invoice recipient to call [RetrieveCustomer](#endpoint-Customers-RetrieveCustomer)
+   * in the Customers API. Then, get the ID of the target card from the `cards` field in the response.
    */
   cardId?: string;
   /** A list of one or more reminders to send for the payment request. */

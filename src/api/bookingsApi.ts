@@ -1,6 +1,14 @@
 import { ApiResponse } from '../apiResponse';
 import { RequestOptions } from '../http/requestBuilder';
 import {
+  CancelBookingRequest,
+  cancelBookingRequestSchema,
+} from '../models/cancelBookingRequest';
+import {
+  CancelBookingResponse,
+  cancelBookingResponseSchema,
+} from '../models/cancelBookingResponse';
+import {
   CreateBookingRequest,
   createBookingRequestSchema,
 } from '../models/createBookingRequest';
@@ -196,5 +204,29 @@ export class BookingsApi extends BaseApi {
     req.json(mapped.body);
     req.appendTemplatePath`/v2/bookings/${mapped.bookingId}`;
     return req.callAsJson(updateBookingResponseSchema, requestOptions);
+  }
+
+  /**
+   * Cancels an existing booking.
+   *
+   * @param bookingId  The ID of the [Booking](#type-booking) object representing the
+   *                                                  to-be-cancelled booking.
+   * @param body       An object containing the fields to POST for the request.  See
+   *                                                  the corresponding object definition for field details.
+   * @return Response from the API call
+   */
+  async cancelBooking(
+    bookingId: string,
+    body: CancelBookingRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<CancelBookingResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      bookingId: [bookingId, string()],
+      body: [body, cancelBookingRequestSchema],
+    });
+    req.json(mapped.body);
+    req.appendTemplatePath`/v2/bookings/${mapped.bookingId}/cancel`;
+    return req.callAsJson(cancelBookingResponseSchema, requestOptions);
   }
 }

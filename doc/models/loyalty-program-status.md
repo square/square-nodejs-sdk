@@ -1,7 +1,7 @@
 
 # Loyalty Program Status
 
-Whether the program is currently active.
+Indicates whether the program is currently active.
 
 ## Enumeration
 

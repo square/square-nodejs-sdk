@@ -1,7 +1,7 @@
 
 # Retrieve Dispute Evidence Response
 
-Defines fields in a RetrieveDisputeEvidence response.
+Defines the fields in a `RetrieveDisputeEvidence` response.
 
 ## Structure
 

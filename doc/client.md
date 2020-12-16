@@ -5,6 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2020-12-16'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `accessToken` | `string` | The OAuth 2.0 Access Token to use for API requests. |
 | `timeout` | `number` | Timeout for API calls. |
@@ -15,6 +16,7 @@ The API client can be initialized as follows:
 ```ts
 const client = new Client({
 
+  squareVersion: '2020-12-16',
   environment: Environment.Production
 })
 ```
@@ -54,12 +56,12 @@ import {
   TransactionsApi,
   V1EmployeesApi,
   V1ItemsApi,
-  V1LocationsApi,
   V1TransactionsApi,
 } from 'squarelib';
 
 const client = new Client({
 
+  squareVersion: '2020-12-16',
 })
 const locationsApi = client.locationsApi;
 try {
@@ -84,7 +86,6 @@ The gateway for the SDK. This class acts as a factory for the Apis and also hold
 |  --- | --- |
 | mobileAuthorization | Provides access to MobileAuthorizationApi |
 | oAuth | Provides access to OAuthApi |
-| v1Locations | Provides access to V1LocationsApi |
 | v1Employees | Provides access to V1EmployeesApi |
 | v1Transactions | Provides access to V1TransactionsApi |
 | v1Items | Provides access to V1ItemsApi |

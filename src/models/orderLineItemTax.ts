@@ -1,4 +1,12 @@
-import { dict, lazy, object, optional, Schema, string } from '../schema';
+import {
+  boolean,
+  dict,
+  lazy,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -49,6 +57,12 @@ export interface OrderLineItemTax {
   appliedMoney?: Money;
   /** Indicates whether this is a line item or order level tax. */
   scope?: string;
+  /**
+   * Determines whether the tax was automatically applied to the order based on
+   * the catalog configuration. For an example, see
+   * [Automatically Apply Taxes to an Order](https://developer.squareup.com/docs/orders-api/apply-taxes-and-discounts/auto-apply-taxes).
+   */
+  autoApplied?: boolean;
 }
 
 export const orderLineItemTaxSchema: Schema<OrderLineItemTax> = object({
@@ -60,4 +74,5 @@ export const orderLineItemTaxSchema: Schema<OrderLineItemTax> = object({
   metadata: ['metadata', optional(dict(string()))],
   appliedMoney: ['applied_money', optional(lazy(() => moneySchema))],
   scope: ['scope', optional(string())],
+  autoApplied: ['auto_applied', optional(boolean())],
 });

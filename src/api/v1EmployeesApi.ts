@@ -81,10 +81,8 @@ export class V1EmployeesApi extends BaseApi {
    * until they are activated from the Square Dashboard. Employee status
    * cannot be changed with the Connect API.
    *
-   * <aside class="important">
    * Employee entities cannot be deleted. To disable employee profiles,
    * set the employee's status to <code>INACTIVE</code>
-   * </aside>
    *
    * @param body An object containing the fields to POST for the request.  See the corresponding
    *                                  object definition for field details.
@@ -427,11 +425,9 @@ export class V1EmployeesApi extends BaseApi {
    * particular timecard.
    *
    *
-   * <aside>
    * Only approved accounts can manage their employees with Square.
    * Unapproved accounts cannot use employee management features with the
    * API.
-   * </aside>
    *
    * @param timecardId  The ID of the timecard to list events for.
    * @return Response from the API call
