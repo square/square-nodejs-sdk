@@ -762,7 +762,7 @@ async retrieveCatalogObject(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `objectId` | `string` | Template, Required | The object ID of any type of catalog objects to be retrieved. |
-| `includeRelatedObjects` | `boolean` | Query, Optional | If `true`, the response will include additional objects that are related to the<br>requested object, as follows:<br><br>If the `object` field of the response contains a `CatalogItem`, its associated<br>`CatalogCategory`, `CatalogTax`, `CatalogImage` and `CatalogModifierList` objects will<br>be returned in the `related_objects` field of the response. If the `object` field of<br>the response contains a `CatalogItemVariation`, its parent `CatalogItem` will be returned<br>in the `related_objects` field of the response.<br><br>Default value: `false` |
+| `includeRelatedObjects` | `boolean` | Query, Optional | If `true`, the response will include additional objects that are related to the<br>requested object, as follows:<br><br>If the `object` field of the response contains a `CatalogItem`, its associated<br>`CatalogCategory`, `CatalogTax`, `CatalogImage` and `CatalogModifierList` objects will<br>be returned in the `related_objects` field of the response. If the `object` field of<br>the response contains a `CatalogItemVariation`, its parent `CatalogItem` will be returned<br>in the `related_objects` field of the response.<br><br>Default value: `false`<br>**Default**: `false` |
 | `catalogVersion` | `number` | Query, Optional | Requests objects as of a specific version of the catalog. This allows you to retrieve historical<br>versions of objects. The value to retrieve a specific version of an object can be found<br>in the version field of [CatalogObject](#type-catalogobject)s. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
@@ -791,8 +791,8 @@ try {
 
 # Search Catalog Objects
 
-Searches for [CatalogObject](#type-CatalogObject) of any types against supported search attribute values,
-excluding custom attribute values on items or item variations, against one or more of the specified query expressions,
+Searches for [CatalogObject](#type-CatalogObject) of any type by matching supported search attribute values,
+excluding custom attribute values on items or item variations, against one or more of the specified query expressions.
 
 This (`SearchCatalogObjects`) endpoint differs from the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems)
 endpoint in the following aspects:
@@ -884,7 +884,7 @@ try {
 # Search Catalog Items
 
 Searches for catalog items or item variations by matching supported search attribute values, including
-custom attribute values, against one or more of the specified query expressions,
+custom attribute values, against one or more of the specified query expressions.
 
 This (`SearchCatalogItems`) endpoint differs from the [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects)
 endpoint in the following aspects:

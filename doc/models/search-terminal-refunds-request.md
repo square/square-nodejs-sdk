@@ -11,7 +11,7 @@
 |  --- | --- | --- | --- |
 | `query` | [`TerminalRefundQuery`](/doc/models/terminal-refund-query.md) | Optional | - |
 | `cursor` | `string` | Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query. |
-| `limit` | `number` | Optional | Limit the number of results returned for a single request. |
+| `limit` | `number` | Optional | Limit the number of results returned for a single request.<br>**Constraints**: `>= 1`, `<= 100` |
 
 ## Example (as JSON)
 

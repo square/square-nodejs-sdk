@@ -11,7 +11,7 @@ The payment the cardholder disputed.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `paymentId` | `string` | Optional | Square-generated unique ID of the payment being disputed. |
+| `paymentId` | `string` | Optional | Square-generated unique ID of the payment being disputed.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `192` |
 
 ## Example (as JSON)
 

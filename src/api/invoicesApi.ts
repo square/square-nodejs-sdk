@@ -213,7 +213,8 @@ export class InvoicesApi extends BaseApi {
    * Cancels an invoice. The seller cannot collect payments for
    * the canceled invoice.
    *
-   * You cannot cancel an invoice in a terminal state: `PAID`, `REFUNDED`, `CANCELED`, or `FAILED`.
+   * You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`, `REFUNDED`,
+   * `CANCELED`, or `FAILED`.
    *
    * @param invoiceId  The ID of the [invoice](#type-invoice) to cancel.
    * @param body       An object containing the fields to POST for the request.  See

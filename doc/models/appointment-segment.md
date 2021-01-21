@@ -11,9 +11,9 @@ Defines an appointment segment of a booking.
 
 | Name | Type | Description |
 |  --- | --- | --- |
-| `durationMinutes` | `number` | The time span in minutes of an appointment segment. |
-| `serviceVariationId` | `string` | The ID of the [CatalogItemVariation](#type-CatalogItemVariation) object representing the service booked in this segment. |
-| `teamMemberId` | `string` | The ID of the [TeamMember](#type-TeamMember) object representing the team member booked in this segment. |
+| `durationMinutes` | `number` | The time span in minutes of an appointment segment.<br>**Constraints**: `<= 1500` |
+| `serviceVariationId` | `string` | The ID of the [CatalogItemVariation](#type-CatalogItemVariation) object representing the service booked in this segment.<br>**Constraints**: *Minimum Length*: `1` |
+| `teamMemberId` | `string` | The ID of the [TeamMember](#type-TeamMember) object representing the team member booked in this segment.<br>**Constraints**: *Minimum Length*: `1` |
 | `serviceVariationVersion` | `number` | The current version of the item variation representing the service booked in this segment. |
 
 ## Example (as JSON)

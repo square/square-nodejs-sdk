@@ -54,6 +54,8 @@ const v1ItemsApi = client.v1ItemsApi;
 
 # List Categories
 
+**This endpoint is deprecated. **
+
 Lists all the item categories for a given location.
 
 ```ts
@@ -92,6 +94,8 @@ try {
 
 
 # Create Category
+
+**This endpoint is deprecated. **
 
 Creates an item category.
 
@@ -139,6 +143,8 @@ try {
 
 # Delete Category
 
+**This endpoint is deprecated. **
+
 Deletes an existing item category.
 
 __DeleteCategory__ returns nothing on success but Connect SDKs
@@ -184,6 +190,8 @@ try {
 
 
 # Update Category
+
+**This endpoint is deprecated. **
 
 Modifies the details of an existing item category.
 
@@ -234,6 +242,8 @@ try {
 
 # List Discounts
 
+**This endpoint is deprecated. **
+
 Lists all the discounts for a given location.
 
 ```ts
@@ -272,6 +282,8 @@ try {
 
 
 # Create Discount
+
+**This endpoint is deprecated. **
 
 Creates a discount.
 
@@ -325,6 +337,8 @@ try {
 
 # Delete Discount
 
+**This endpoint is deprecated. **
+
 Deletes an existing discount.
 
 __DeleteDiscount__ returns nothing on success but Connect SDKs
@@ -370,6 +384,8 @@ try {
 
 
 # Update Discount
+
+**This endpoint is deprecated. **
 
 Modifies the details of an existing discount.
 
@@ -426,6 +442,8 @@ try {
 
 # List Fees
 
+**This endpoint is deprecated. **
+
 Lists all the fees (taxes) for a given location.
 
 ```ts
@@ -464,6 +482,8 @@ try {
 
 
 # Create Fee
+
+**This endpoint is deprecated. **
 
 Creates a fee (tax).
 
@@ -513,6 +533,8 @@ try {
 
 # Delete Fee
 
+**This endpoint is deprecated. **
+
 Deletes an existing fee (tax).
 
 __DeleteFee__ returns nothing on success but Connect SDKs
@@ -558,6 +580,8 @@ try {
 
 
 # Update Fee
+
+**This endpoint is deprecated. **
 
 Modifies the details of an existing fee (tax).
 
@@ -610,6 +634,8 @@ try {
 
 # List Inventory
 
+**This endpoint is deprecated. **
+
 Provides inventory information for all inventory-enabled item
 variations.
 
@@ -655,6 +681,8 @@ try {
 
 
 # Adjust Inventory
+
+**This endpoint is deprecated. **
 
 Adjusts the current available inventory of an item variation.
 
@@ -705,6 +733,8 @@ try {
 
 # List Items
 
+**This endpoint is deprecated. **
+
 Provides summary information of all items for a given location.
 
 ```ts
@@ -746,6 +776,8 @@ try {
 
 
 # Create Item
+
+**This endpoint is deprecated. **
 
 Creates an item and at least one variation for it.
 
@@ -806,6 +838,8 @@ try {
 
 # Delete Item
 
+**This endpoint is deprecated. **
+
 Deletes an existing item and all item variations associated with it.
 
 __DeleteItem__ returns nothing on success but Connect SDKs
@@ -852,6 +886,8 @@ try {
 
 # Retrieve Item
 
+**This endpoint is deprecated. **
+
 Provides the details for a single item, including associated modifier
 lists and fees.
 
@@ -894,6 +930,8 @@ try {
 
 
 # Update Item
+
+**This endpoint is deprecated. **
 
 Modifies the core details of an existing item.
 
@@ -946,6 +984,8 @@ try {
 
 # Remove Fee
 
+**This endpoint is deprecated. **
+
 Removes a fee assocation from an item so the fee is no longer
 automatically applied to the item in Square Point of Sale.
 
@@ -991,6 +1031,8 @@ try {
 
 
 # Apply Fee
+
+**This endpoint is deprecated. **
 
 Associates a fee with an item so the fee is automatically applied to
 the item in Square Point of Sale.
@@ -1038,6 +1080,8 @@ try {
 
 # Remove Modifier List
 
+**This endpoint is deprecated. **
+
 Removes a modifier list association from an item so the modifier
 options from the list can no longer be applied to the item.
 
@@ -1084,6 +1128,8 @@ try {
 
 # Apply Modifier List
 
+**This endpoint is deprecated. **
+
 Associates a modifier list with an item so the associated modifier
 options can be applied to the item.
 
@@ -1129,6 +1175,8 @@ try {
 
 
 # Create Variation
+
+**This endpoint is deprecated. **
 
 Creates an item variation for an existing item.
 
@@ -1181,6 +1229,8 @@ try {
 
 # Delete Variation
 
+**This endpoint is deprecated. **
+
 Deletes an existing item variation from an item.
 
 __DeleteVariation__ returns nothing on success but Connect SDKs
@@ -1229,6 +1279,8 @@ try {
 
 
 # Update Variation
+
+**This endpoint is deprecated. **
 
 Modifies the details of an existing item variation.
 
@@ -1284,6 +1336,8 @@ try {
 
 # List Modifier Lists
 
+**This endpoint is deprecated. **
+
 Lists all the modifier lists for a given location.
 
 ```ts
@@ -1322,6 +1376,8 @@ try {
 
 
 # Create Modifier List
+
+**This endpoint is deprecated. **
 
 Creates an item modifier list and at least 1 modifier option for it.
 
@@ -1399,6 +1455,8 @@ try {
 
 # Delete Modifier List
 
+**This endpoint is deprecated. **
+
 Deletes an existing item modifier list and all modifier options
 associated with it.
 
@@ -1446,6 +1504,8 @@ try {
 
 # Retrieve Modifier List
 
+**This endpoint is deprecated. **
+
 Provides the details for a single modifier list.
 
 ```ts
@@ -1487,6 +1547,8 @@ try {
 
 
 # Update Modifier List
+
+**This endpoint is deprecated. **
 
 Modifies the details of an existing item modifier list.
 
@@ -1535,6 +1597,8 @@ try {
 
 
 # Create Modifier Option
+
+**This endpoint is deprecated. **
 
 Creates an item modifier option and adds it to a modifier list.
 
@@ -1591,6 +1655,8 @@ try {
 
 # Delete Modifier Option
 
+**This endpoint is deprecated. **
+
 Deletes an existing item modifier option from a modifier list.
 
 __DeleteModifierOption__ returns nothing on success but Connect
@@ -1639,6 +1705,8 @@ try {
 
 
 # Update Modifier Option
+
+**This endpoint is deprecated. **
 
 Modifies the details of an existing item modifier option.
 
@@ -1698,6 +1766,8 @@ try {
 
 # List Pages
 
+**This endpoint is deprecated. **
+
 Lists all Favorites pages (in Square Point of Sale) for a given
 location.
 
@@ -1737,6 +1807,8 @@ try {
 
 
 # Create Page
+
+**This endpoint is deprecated. **
 
 Creates a Favorites page in Square Point of Sale.
 
@@ -1796,6 +1868,8 @@ try {
 
 # Delete Page
 
+**This endpoint is deprecated. **
+
 Deletes an existing Favorites page and all of its cells.
 
 __DeletePage__ returns nothing on success but Connect SDKs
@@ -1840,6 +1914,8 @@ try {
 
 
 # Update Page
+
+**This endpoint is deprecated. **
 
 Modifies the details of a Favorites page in Square Point of Sale.
 
@@ -1902,6 +1978,8 @@ try {
 
 # Delete Page Cell
 
+**This endpoint is deprecated. **
+
 Deletes a cell from a Favorites page in Square Point of Sale.
 
 __DeletePageCell__ returns nothing on success but Connect SDKs
@@ -1953,6 +2031,8 @@ try {
 
 
 # Update Page Cell
+
+**This endpoint is deprecated. **
 
 Modifies a cell of a Favorites page in Square Point of Sale.
 

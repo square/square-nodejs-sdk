@@ -1,3 +1,5 @@
+/// <reference path='./shim/index.ts' />
+
 export * from './apiResponse';
 export * from './client';
 export * from './configuration';

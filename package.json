@@ -1,5 +1,5 @@
 {
-  "version": "8.0.1",
+  "version": "8.1.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/index.js",
@@ -35,13 +35,13 @@
     "abort-controller": "^3.0.0",
     "stream-equal": "^2.0.1",
     "tsdx": "^0.14.1",
-    "tslib": "^2.0.3",
+    "tslib": "^2.1.0",
     "typescript": "^3.9.7",
     "uuid": "^8.3.0"
   },
   "dependencies": {
     "@apimatic/schema": "^0.4.1",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "detect-node": "^2.0.4",
     "form-data": "^3.0.0",
     "lodash.flatmap": "^4.5.0",

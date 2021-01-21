@@ -129,11 +129,12 @@ bodyInvoicepaymentRequests0Reminders[0] = bodyInvoicepaymentRequests0reminders0;
 
 const bodyInvoicepaymentRequests0: InvoicePaymentRequest = {};
 bodyInvoicepaymentRequests0.uid = 'uid4';
-bodyInvoicepaymentRequests0.requestMethod = 'EMAIL';
+bodyInvoicepaymentRequests0.requestMethod = 'SHARE_MANUALLY';
 bodyInvoicepaymentRequests0.requestType = 'BALANCE';
 bodyInvoicepaymentRequests0.dueDate = '2030-01-24';
 bodyInvoicepaymentRequests0.fixedAmountRequestedMoney = bodyInvoicepaymentRequests0FixedAmountRequestedMoney;
 bodyInvoicepaymentRequests0.tippingEnabled = true;
+bodyInvoicepaymentRequests0.automaticPaymentSource = 'NONE';
 bodyInvoicepaymentRequests0.reminders = bodyInvoicepaymentRequests0Reminders;
 
 bodyInvoicePaymentRequests[0] = bodyInvoicepaymentRequests0;
@@ -145,6 +146,7 @@ bodyInvoice.locationId = 'ES0RJRZYEC39A';
 bodyInvoice.orderId = 'CAISENgvlJ6jLWAzERDzjyHVybY';
 bodyInvoice.primaryRecipient = bodyInvoicePrimaryRecipient;
 bodyInvoice.paymentRequests = bodyInvoicePaymentRequests;
+bodyInvoice.deliveryMethod = 'EMAIL';
 bodyInvoice.invoiceNumber = 'inv-100';
 bodyInvoice.title = 'Event Planning Services';
 bodyInvoice.description = 'We appreciate your business!';
@@ -412,7 +414,7 @@ try {
 Cancels an invoice. The seller cannot collect payments for
 the canceled invoice.
 
-You cannot cancel an invoice in a terminal state: `PAID`, `REFUNDED`, `CANCELED`, or `FAILED`.
+You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`, `REFUNDED`, `CANCELED`, or `FAILED`.
 
 ```ts
 async cancelInvoice(

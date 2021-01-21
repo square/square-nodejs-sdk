@@ -12,7 +12,7 @@ A request to create a new loyalty account.
 | Name | Type | Description |
 |  --- | --- | --- |
 | `loyaltyAccount` | [`LoyaltyAccount`](/doc/models/loyalty-account.md) | Describes a loyalty account. For more information, see<br>[Loyalty Overview](https://developer.squareup.com/docs/loyalty/overview). |
-| `idempotencyKey` | `string` | A unique string that identifies this `CreateLoyaltyAccount` request.<br>Keys can be any valid string, but must be unique for every request. |
+| `idempotencyKey` | `string` | A unique string that identifies this `CreateLoyaltyAccount` request.<br>Keys can be any valid string, but must be unique for every request.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128` |
 
 ## Example (as JSON)
 

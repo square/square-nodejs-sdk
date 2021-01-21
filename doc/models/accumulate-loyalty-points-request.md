@@ -12,7 +12,7 @@ A request to accumulate points for a purchase.
 | Name | Type | Description |
 |  --- | --- | --- |
 | `accumulatePoints` | [`LoyaltyEventAccumulatePoints`](/doc/models/loyalty-event-accumulate-points.md) | Provides metadata when the event `type` is `ACCUMULATE_POINTS`. |
-| `idempotencyKey` | `string` | A unique string that identifies the `AccumulateLoyaltyPoints` request.<br>Keys can be any valid string but must be unique for every request. |
+| `idempotencyKey` | `string` | A unique string that identifies the `AccumulateLoyaltyPoints` request.<br>Keys can be any valid string but must be unique for every request.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128` |
 | `locationId` | `string` | The [location](#type-Location) where the purchase was made. |
 
 ## Example (as JSON)

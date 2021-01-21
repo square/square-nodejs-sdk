@@ -8,7 +8,7 @@ import { object, optional, Schema, string } from '../schema';
  * provide the goods/services or refund the payment).
  */
 export interface RiskEvaluation {
-  /** The timestamp when payment risk was evaluated, in RFC3339 format. */
+  /** The timestamp when payment risk was evaluated, in RFC 3339 format. */
   createdAt?: string;
   riskLevel?: string;
 }

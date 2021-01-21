@@ -36,6 +36,7 @@ Describes a `ListInvoice` response.
             "value": "The terms of service are..."
           }
         ],
+        "delivery_method": "EMAIL",
         "description": "We appreciate your business!",
         "id": "gt2zv1z6mnUm1V7KMxxf3w",
         "invoice_number": "inv-100",
@@ -43,6 +44,7 @@ Describes a `ListInvoice` response.
         "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
         "payment_requests": [
           {
+            "automatic_payment_source": "NONE",
             "computed_amount_money": {
               "amount": 10000,
               "currency": "USD"
@@ -56,7 +58,6 @@ Describes a `ListInvoice` response.
                 "uid": "beebd363-e47f-4075-8785-c235aaa7df11"
               }
             ],
-            "request_method": "EMAIL",
             "request_type": "BALANCE",
             "tipping_enabled": true,
             "total_completed_amount_money": {

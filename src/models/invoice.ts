@@ -19,7 +19,7 @@ import { InvoiceRecipient, invoiceRecipientSchema } from './invoiceRecipient';
 import { Money, moneySchema } from './money';
 
 /**
- * Stores information about an invoice. You use the Invoices API to create and process
+ * Stores information about an invoice. You use the Invoices API to create and manage
  * invoices. For more information, see [Manage Invoices Using the Invoices API](https://developer.squareup.com/docs/invoices-api/overview).
  */
 export interface Invoice {
@@ -48,6 +48,8 @@ export interface Invoice {
    * This field is required when creating an invoice. It must contain at least one payment request.
    */
   paymentRequests?: InvoicePaymentRequest[];
+  /** Indicates how Square delivers the [invoice](#type-Invoice) to the customer. */
+  deliveryMethod?: string;
   /**
    * A user-friendly invoice number. The value is unique within a location.
    * If not provided when creating an invoice, Square assigns a value.
@@ -61,8 +63,7 @@ export interface Invoice {
   description?: string;
   /**
    * The timestamp when the invoice is scheduled for processing, in RFC 3339 format.
-   * After the invoice is published, Square processes the invoice on the specified date,
-   * based on the settings for the invoice payment requests.
+   * After the invoice is published, Square processes the invoice on the specified date, according to the delivery method and payment request settings.
    * If the field is not set, Square processes the invoice immediately after it is published.
    */
   scheduledAt?: string;
@@ -111,6 +112,7 @@ export const invoiceSchema: Schema<Invoice> = object({
     'payment_requests',
     optional(array(lazy(() => invoicePaymentRequestSchema))),
   ],
+  deliveryMethod: ['delivery_method', optional(string())],
   invoiceNumber: ['invoice_number', optional(string())],
   title: ['title', optional(string())],
   description: ['description', optional(string())],

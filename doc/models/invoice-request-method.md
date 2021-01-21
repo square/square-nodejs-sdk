@@ -2,7 +2,7 @@
 # Invoice Request Method
 
 Specifies the action for Square to take for processing the invoice. For example,
-email the invoice, charge a customer's card on file, or do nothing.
+email the invoice, charge a customer's card on file, or do nothing. DEPRECATED at version 2021-01-21. The corresponding `request_method` field is replaced by the `Invoice.delivery_method` and `InvoicePaymentRequest.automatic_payment_source` fields.
 
 ## Enumeration
 

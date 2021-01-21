@@ -16,6 +16,8 @@ const employeesApi = client.employeesApi;
 
 # List Employees
 
+**This endpoint is deprecated. **
+
 ListEmployees
 
 ```ts
@@ -63,6 +65,8 @@ try {
 
 
 # Retrieve Employee
+
+**This endpoint is deprecated. **
 
 RetrieveEmployee
 

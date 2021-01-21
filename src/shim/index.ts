@@ -1,0 +1,2 @@
+interface Blob {}
+interface AbortSignal {}

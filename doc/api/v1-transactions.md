@@ -25,6 +25,8 @@ const v1TransactionsApi = client.v1TransactionsApi;
 
 # List Bank Accounts
 
+**This endpoint is deprecated. **
+
 Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
 
 ```ts
@@ -63,6 +65,8 @@ try {
 
 
 # Retrieve Bank Account
+
+**This endpoint is deprecated. **
 
 Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
 
@@ -283,7 +287,7 @@ async listPayments(
 | `endTime` | `string` | Query, Optional | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. |
 | `limit` | `number` | Query, Optional | The maximum number of payments to return in a single response. This value cannot exceed 200. |
 | `batchToken` | `string` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
-| `includePartial` | `boolean` | Query, Optional | Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed. |
+| `includePartial` | `boolean` | Query, Optional | Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed.<br>**Default**: `false` |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type

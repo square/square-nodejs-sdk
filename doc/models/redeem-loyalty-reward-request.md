@@ -11,8 +11,8 @@ A request to redeem a loyalty reward.
 
 | Name | Type | Description |
 |  --- | --- | --- |
-| `idempotencyKey` | `string` | A unique string that identifies this `RedeemLoyaltyReward` request.<br>Keys can be any valid string, but must be unique for every request. |
-| `locationId` | `string` | The ID of the [location](#type-Location) where the reward is redeemed. |
+| `idempotencyKey` | `string` | A unique string that identifies this `RedeemLoyaltyReward` request.<br>Keys can be any valid string, but must be unique for every request.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128` |
+| `locationId` | `string` | The ID of the [location](#type-Location) where the reward is redeemed.<br>**Constraints**: *Minimum Length*: `1` |
 
 ## Example (as JSON)
 

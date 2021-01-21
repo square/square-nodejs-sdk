@@ -5,19 +5,21 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2020-12-16'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2021-01-21'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
+| `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
+| `timeout` | `number` | Timeout for API calls.<br>*Default*: `60000` |
 | `accessToken` | `string` | The OAuth 2.0 Access Token to use for API requests. |
-| `timeout` | `number` | Timeout for API calls. |
-| `additionalHeaders` | `Record<string, string>` | Additional headers to add to each API call |
 
 The API client can be initialized as follows:
 
 ```ts
 const client = new Client({
-
-  squareVersion: '2020-12-16',
+  squareVersion: null,
+  timeout: 60000,
+  additionalHeaders: {},
   environment: Environment.Production
+  accessToken: 'AccessToken',
 })
 ```
 
@@ -60,8 +62,10 @@ import {
 } from 'squarelib';
 
 const client = new Client({
-
-  squareVersion: '2020-12-16',
+  squareVersion: null,
+  timeout: 60000,
+  additionalHeaders: {},
+  accessToken: 'AccessToken',
 })
 const locationsApi = client.locationsApi;
 try {

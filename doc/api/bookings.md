@@ -213,7 +213,7 @@ async listTeamMemberBookingProfiles(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bookableOnly` | `boolean` | Query, Optional | Indicates whether to include only bookable team members in the returned result (`true`) or not (`false`). |
+| `bookableOnly` | `boolean` | Query, Optional | Indicates whether to include only bookable team members in the returned result (`true`) or not (`false`).<br>**Default**: `false` |
 | `limit` | `number` | Query, Optional | The maximum number of results to return. |
 | `cursor` | `string` | Query, Optional | The cursor for paginating through the results. |
 | `locationId` | `string` | Query, Optional | Indicates whether to include only team members enabled at the given location in the returned result. |

@@ -13,11 +13,11 @@ taken during the shift.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Optional | UUID for this object |
+| `id` | `string` | Optional | UUID for this object<br>**Constraints**: *Maximum Length*: `255` |
 | `employeeId` | `string` | Optional | The ID of the employee this shift belongs to. DEPRECATED at version 2020-08-26. Use `team_member_id` instead |
 | `locationId` | `string` | Optional | The ID of the location this shift occurred at. Should be based on<br>where the employee clocked in. |
 | `timezone` | `string` | Optional | Read-only convenience value that is calculated from the location based<br>on `location_id`. Format: the IANA Timezone Database identifier for the<br>location timezone. |
-| `startAt` | `string` |  | RFC 3339; shifted to location timezone + offset. Precision up to the<br>minute is respected; seconds are truncated. |
+| `startAt` | `string` |  | RFC 3339; shifted to location timezone + offset. Precision up to the<br>minute is respected; seconds are truncated.<br>**Constraints**: *Minimum Length*: `1` |
 | `endAt` | `string` | Optional | RFC 3339; shifted to timezone + offset. Precision up to the minute is<br>respected; seconds are truncated. |
 | `wage` | [`ShiftWage`](/doc/models/shift-wage.md) | Optional | The hourly wage rate used to compensate an employee for this shift. |
 | `breaks` | [`Break[]`](/doc/models/break.md) | Optional | A list of any paid or unpaid breaks that were taken during this shift. |

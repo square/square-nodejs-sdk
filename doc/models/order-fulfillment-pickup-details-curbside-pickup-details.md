@@ -11,7 +11,7 @@ Specific details for curbside pickup.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `curbsideDetails` | `string` | Optional | Specific details for curbside pickup, such as parking number, vehicle model, etc. |
+| `curbsideDetails` | `string` | Optional | Specific details for curbside pickup, such as parking number, vehicle model, etc.<br>**Constraints**: *Maximum Length*: `250` |
 | `buyerArrivedAt` | `string` | Optional | The [timestamp](#workingwithdates) in RFC 3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z",<br>indicating when the buyer arrived and is waiting for pickup. |
 
 ## Example (as JSON)

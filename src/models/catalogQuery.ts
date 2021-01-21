@@ -47,7 +47,7 @@ import { CatalogQueryText, catalogQueryTextSchema } from './catalogQueryText';
  * When a query filter is based on an attribute, the attribute must be searchable.
  * Searchable attributes are listed as follows, along their parent types that can be searched for with applicable query filters.
  * * Searchable attribute and objects queryable by searchable attributes **
- * - `name`:  `CatalogItem`, `CatalogItemVariation`, `CatelogCatogry`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, 'CatalogModifierList`, `CatalogItemOption`, `CatalogItemOptionValue`
+ * - `name`:  `CatalogItem`, `CatalogItemVariation`, `CatalogCategory`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, 'CatalogModifierList`, `CatalogItemOption`, `CatalogItemOptionValue`
  * - `description`: `CatalogItem`, `CatalogItemOptionValue`
  * - `abbreviation`: `CatalogItem`
  * - `upc`: `CatalogItemVariation`
