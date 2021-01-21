@@ -11,7 +11,7 @@ An object describing a job that a team member is assigned to.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `jobTitle` | `string` |  | The title of the job. |
+| `jobTitle` | `string` |  | The title of the job.<br>**Constraints**: *Minimum Length*: `1` |
 | `payType` | [`string`](/doc/models/job-assignment-pay-type.md) |  | Enumerates the possible pay types that a job can be assigned. |
 | `hourlyRate` | [`Money`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `annualRate` | [`Money`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |

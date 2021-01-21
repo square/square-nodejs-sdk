@@ -12,7 +12,7 @@ A request for a filtered set of `BreakType` objects
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Optional | Filter Break Types returned to only those that are associated with the<br>specified location. |
-| `limit` | `number` | Optional | Maximum number of Break Types to return per page. Can range between 1<br>and 200. The default is the maximum at 200. |
+| `limit` | `number` | Optional | Maximum number of Break Types to return per page. Can range between 1<br>and 200. The default is the maximum at 200.<br>**Constraints**: `>= 1`, `<= 200` |
 | `cursor` | `string` | Optional | Pointer to the next page of Break Type results to fetch. |
 
 ## Example (as JSON)

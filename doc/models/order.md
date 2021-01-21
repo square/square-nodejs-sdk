@@ -17,10 +17,10 @@ itemization data.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Optional | The order's unique ID. |
-| `locationId` | `string` |  | The ID of the merchant location this order is associated with. |
-| `referenceId` | `string` | Optional | A client specified identifier to associate an entity in another system<br>with this order. |
+| `locationId` | `string` |  | The ID of the merchant location this order is associated with.<br>**Constraints**: *Minimum Length*: `1` |
+| `referenceId` | `string` | Optional | A client specified identifier to associate an entity in another system<br>with this order.<br>**Constraints**: *Maximum Length*: `40` |
 | `source` | [`OrderSource`](/doc/models/order-source.md) | Optional | Represents the origination details of an order. |
-| `customerId` | `string` | Optional | The [Customer](#type-customer) ID of the customer associated with the order. |
+| `customerId` | `string` | Optional | The [Customer](#type-customer) ID of the customer associated with the order.<br>**Constraints**: *Maximum Length*: `191` |
 | `lineItems` | [`OrderLineItem[]`](/doc/models/order-line-item.md) | Optional | The line items included in the order. |
 | `taxes` | [`OrderLineItemTax[]`](/doc/models/order-line-item-tax.md) | Optional | The list of all taxes associated with the order.<br><br>Taxes can be scoped to either `ORDER` or `LINE_ITEM`. For taxes with `LINE_ITEM` scope, an<br>`OrderLineItemAppliedTax` must be added to each line item that the tax applies to. For taxes<br>with `ORDER` scope, the server will generate an `OrderLineItemAppliedTax` for every line item.<br><br>On reads, each tax in the list will include the total amount of that tax applied to the order.<br><br>__IMPORTANT__: If `LINE_ITEM` scope is set on any taxes in this field, usage of the deprecated<br>`line_items.taxes` field will result in an error. Please use `line_items.applied_taxes`<br>instead. |
 | `discounts` | [`OrderLineItemDiscount[]`](/doc/models/order-line-item-discount.md) | Optional | The list of all discounts associated with the order.<br><br>Discounts can be scoped to either `ORDER` or `LINE_ITEM`. For discounts scoped to `LINE_ITEM`,<br>an `OrderLineItemAppliedDiscount` must be added to each line item that the discount applies to.<br>For discounts with `ORDER` scope, the server will generate an `OrderLineItemAppliedDiscount`<br>for every line item.<br><br>__IMPORTANT__: If `LINE_ITEM` scope is set on any discounts in this field, usage of the deprecated<br>`line_items.discounts` field will result in an error. Please use `line_items.applied_discounts`<br>instead. |

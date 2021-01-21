@@ -12,8 +12,8 @@ see [Custom fields](https://developer.squareup.com/docs/invoices-api/overview#cu
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `label` | `string` | Optional | The label or title of the custom field. This field is required for a custom field. |
-| `value` | `string` | Optional | The text of the custom field. If omitted, only the label is rendered. |
+| `label` | `string` | Optional | The label or title of the custom field. This field is required for a custom field.<br>**Constraints**: *Maximum Length*: `30` |
+| `value` | `string` | Optional | The text of the custom field. If omitted, only the label is rendered.<br>**Constraints**: *Maximum Length*: `2000` |
 | `placement` | [`string`](/doc/models/invoice-custom-field-placement.md) | Optional | Indicates where to render a custom field on the Square-hosted invoice page and in emailed or PDF<br>copies of the invoice. |
 
 ## Example (as JSON)

@@ -39,7 +39,7 @@ export interface PaymentRefund {
   appFeeMoney?: Money;
   /** Processing fees and fee adjustments assessed by Square for this refund. */
   processingFee?: ProcessingFee[];
-  /** The ID of the payment assocated with this refund. */
+  /** The ID of the payment associated with this refund. */
   paymentId?: string;
   /** The ID of the order associated with the refund. */
   orderId?: string;

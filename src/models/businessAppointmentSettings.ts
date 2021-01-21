@@ -14,7 +14,7 @@ import { Money, moneySchema } from './money';
 export interface BusinessAppointmentSettings {
   /**
    * Types of the location allowed for bookings.
-   * See [BookingLocationType](#type-bookinglocationtype) for possible values
+   * See [BusinessAppointmentSettingsBookingLocationType](#type-businessappointmentsettingsbookinglocationtype) for possible values
    */
   locationTypes?: string[];
   /** Time units of a service duration for bookings. */

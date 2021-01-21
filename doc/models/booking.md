@@ -20,8 +20,8 @@ at a given location to a requesting customer in one or more appointment segments
 | `startAt` | `string` | Optional | The timestamp specifying the starting time of this booking. |
 | `locationId` | `string` | Optional | The ID of the [Location](#type-location) object representing the location where the booked service is provided. |
 | `customerId` | `string` | Optional | The ID of the [Customer](#type-Customer) object representing the customer attending this booking |
-| `customerNote` | `string` | Optional | The free-text field for the customer to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a relevant [CatalogObject](#type-CatalogObject) instance. |
-| `sellerNote` | `string` | Optional | The free-text field for the seller to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a specific [CatalogObject](#type-CatalogObject) instance.<br>This field should not be visible to customers. |
+| `customerNote` | `string` | Optional | The free-text field for the customer to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a relevant [CatalogObject](#type-CatalogObject) instance.<br>**Constraints**: *Maximum Length*: `4096` |
+| `sellerNote` | `string` | Optional | The free-text field for the seller to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a specific [CatalogObject](#type-CatalogObject) instance.<br>This field should not be visible to customers.<br>**Constraints**: *Maximum Length*: `4096` |
 | `appointmentSegments` | [`AppointmentSegment[]`](/doc/models/appointment-segment.md) | Optional | A list of appointment segments for this booking. |
 
 ## Example (as JSON)

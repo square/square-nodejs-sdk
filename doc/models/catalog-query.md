@@ -18,7 +18,7 @@ Searchable attributes are listed as follows, along their parent types that can b
 
 * Searchable attribute and objects queryable by searchable attributes **
 
-- `name`:  `CatalogItem`, `CatalogItemVariation`, `CatelogCatogry`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, 'CatalogModifierList`,`CatalogItemOption`,`CatalogItemOptionValue`
+- `name`:  `CatalogItem`, `CatalogItemVariation`, `CatalogCategory`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, 'CatalogModifierList`,`CatalogItemOption`,`CatalogItemOptionValue`
 - `description`: `CatalogItem`, `CatalogItemOptionValue`
 - `abbreviation`: `CatalogItem`
 - `upc`: `CatalogItemVariation`

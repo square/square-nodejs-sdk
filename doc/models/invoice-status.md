@@ -13,7 +13,7 @@ Indicates the status of an invoice.
 |  --- | --- |
 | `DRAFT` | The invoice is a draft. You must publish a draft invoice before Square can process it.<br>A draft invoice has no `public_url`, so it is not available to customers. |
 | `UNPAID` | The invoice is published but not yet paid. |
-| `SCHEDULED` | The invoice is scheduled to be processed. On the scheduled date,<br>Square sends the invoice, initiates an automatic payment, or takes no action, depending on the settings<br>for the invoice payment requests. Square also sets the invoice status to the appropriate state:<br>`UNPAID`, `PAID`, `PARTIALLY_PAID`, or `PAYMENT_PENDING`. |
+| `SCHEDULED` | The invoice is scheduled to be processed. On the scheduled date,<br>Square sends the invoice, initiates an automatic payment, or takes no action, depending on the delivery method and payment request settings. Square also sets the invoice status to the appropriate state:<br>`UNPAID`, `PAID`, `PARTIALLY_PAID`, or `PAYMENT_PENDING`. |
 | `PARTIALLY_PAID` | A partial payment is received for the invoice. |
 | `PAID` | The customer paid the invoice in full. |
 | `PARTIALLY_REFUNDED` | The invoice is paid (or partially paid) and some but not all the amount paid is<br>refunded. |

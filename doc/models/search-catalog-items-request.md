@@ -16,7 +16,7 @@ Defines the request body for the [SearchCatalogItems](#endpoint-Catalog-SearchCa
 | `stockLevels` | [`string[]`](/doc/models/search-catalog-items-request-stock-level.md) | Optional | The stock-level query expression to return item variations with the specified stock levels.<br>See [SearchCatalogItemsRequestStockLevel](#type-searchcatalogitemsrequeststocklevel) for possible values |
 | `enabledLocationIds` | `string[]` | Optional | The enabled-location query expression to return items and item variations having specified enabled locations. |
 | `cursor` | `string` | Optional | The pagination token, returned in the previous response, used to fetch the next batch of pending results. |
-| `limit` | `number` | Optional | The maximum number of results to return per page. The default value is 100. |
+| `limit` | `number` | Optional | The maximum number of results to return per page. The default value is 100.<br>**Constraints**: `<= 100` |
 | `sortOrder` | [`string`](/doc/models/sort-order.md) | Optional | The order (e.g., chronological or alphabetical) in which results from a request are returned. |
 | `productTypes` | [`string[]`](/doc/models/catalog-item-product-type.md) | Optional | The product types query expression to return items or item variations having the specified product types. |
 | `customAttributeFilters` | [`CustomAttributeFilter[]`](/doc/models/custom-attribute-filter.md) | Optional | The customer-attribute filter to return items or item variations matching the specified<br>custom attribute expressions. A maximum number of 10 custom attribute expressions are supported in<br>a single call to the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems) endpoint. |

@@ -11,7 +11,7 @@ The set of line items, service charges, taxes, discounts, tips, etc. being retur
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `uid` | `string` | Optional | Unique ID that identifies the return only within this order. |
+| `uid` | `string` | Optional | Unique ID that identifies the return only within this order.<br>**Constraints**: *Maximum Length*: `60` |
 | `sourceOrderId` | `string` | Optional | Order which contains the original sale of these returned line items. This will be unset<br>for unlinked returns. |
 | `returnLineItems` | [`OrderReturnLineItem[]`](/doc/models/order-return-line-item.md) | Optional | Collection of line items which are being returned. |
 | `returnServiceCharges` | [`OrderReturnServiceCharge[]`](/doc/models/order-return-service-charge.md) | Optional | Collection of service charges which are being returned. |

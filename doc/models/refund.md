@@ -11,12 +11,12 @@ Represents a refund processed for a Square transaction.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` |  | The refund's unique ID. |
-| `locationId` | `string` |  | The ID of the refund's associated location. |
-| `transactionId` | `string` |  | The ID of the transaction that the refunded tender is part of. |
-| `tenderId` | `string` |  | The ID of the refunded tender. |
-| `createdAt` | `string` | Optional | The timestamp for when the refund was created, in RFC 3339 format. |
-| `reason` | `string` |  | The reason for the refund being issued. |
+| `id` | `string` |  | The refund's unique ID.<br>**Constraints**: *Maximum Length*: `255` |
+| `locationId` | `string` |  | The ID of the refund's associated location.<br>**Constraints**: *Maximum Length*: `50` |
+| `transactionId` | `string` |  | The ID of the transaction that the refunded tender is part of.<br>**Constraints**: *Maximum Length*: `192` |
+| `tenderId` | `string` |  | The ID of the refunded tender.<br>**Constraints**: *Maximum Length*: `192` |
+| `createdAt` | `string` | Optional | The timestamp for when the refund was created, in RFC 3339 format.<br>**Constraints**: *Maximum Length*: `32` |
+| `reason` | `string` |  | The reason for the refund being issued.<br>**Constraints**: *Maximum Length*: `192` |
 | `amountMoney` | [`Money`](/doc/models/money.md) |  | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `status` | [`string`](/doc/models/refund-status.md) |  | Indicates a refund's current status. |
 | `processingFeeMoney` | [`Money`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |

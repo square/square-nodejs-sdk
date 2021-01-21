@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `idempotencyKey` | `string` | Optional | A unique key to make this request an idempotent operation. |
+| `idempotencyKey` | `string` | Optional | A unique key to make this request an idempotent operation.<br>**Constraints**: *Maximum Length*: `255` |
 | `bookingVersion` | `number` | Optional | The revision number for the booking used for optimistic concurrency. |
 
 ## Example (as JSON)

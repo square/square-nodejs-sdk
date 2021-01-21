@@ -24,7 +24,7 @@ export interface InvoicePaymentRequest {
   uid?: string;
   /**
    * Specifies the action for Square to take for processing the invoice. For example,
-   * email the invoice, charge a customer's card on file, or do nothing.
+   * email the invoice, charge a customer's card on file, or do nothing. DEPRECATED at version 2021-01-21. The corresponding `request_method` field is replaced by the `Invoice.delivery_method` and `InvoicePaymentRequest.automatic_payment_source` fields.
    */
   requestMethod?: string;
   /**
@@ -38,8 +38,8 @@ export interface InvoicePaymentRequest {
    */
   requestType?: string;
   /**
-   * The due date (in the invoice location's time zone) for the payment request.
-   * After this date, the invoice becomes overdue.
+   * The due date (in the invoice location's time zone) for the payment request, in `YYYY-MM-DD` format.
+   * After this date, the invoice becomes overdue. This field is required to create a payment request.
    */
   dueDate?: string;
   /**
@@ -68,6 +68,8 @@ export interface InvoicePaymentRequest {
    * and the payment `request_type` must be `BALANCE` or `INSTALLMENT`.
    */
   tippingEnabled?: boolean;
+  /** Indicates the automatic payment method for an [invoice payment request](#type-InvoicePaymentRequest). */
+  automaticPaymentSource?: string;
   /**
    * The ID of the card on file to charge for the payment request. To get the customer’s card on file,
    * use the `customer_id` of the invoice recipient to call [RetrieveCustomer](#endpoint-Customers-RetrieveCustomer)
@@ -117,6 +119,7 @@ export const invoicePaymentRequestSchema: Schema<InvoicePaymentRequest> = object
     ],
     percentageRequested: ['percentage_requested', optional(string())],
     tippingEnabled: ['tipping_enabled', optional(boolean())],
+    automaticPaymentSource: ['automatic_payment_source', optional(string())],
     cardId: ['card_id', optional(string())],
     reminders: [
       'reminders',

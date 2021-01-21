@@ -3,8 +3,8 @@ import { DeviceCode, deviceCodeSchema } from './deviceCode';
 
 export interface CreateDeviceCodeRequest {
   /**
-   * A unique string that identifies this CreateCheckout request. Keys can be any valid string but
-   * must be unique for every CreateCheckout request.
+   * A unique string that identifies this CreateDeviceCode request. Keys can
+   * be any valid string but must be unique for every CreateDeviceCode request.
    * See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.
    */
   idempotencyKey: string;

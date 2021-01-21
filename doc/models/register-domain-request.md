@@ -12,7 +12,7 @@ a request to the [RegisterDomain](#endpoint-registerdomain) endpoint.
 
 | Name | Type | Description |
 |  --- | --- | --- |
-| `domainName` | `string` | A domain name as described in RFC-1034 that will be registered with ApplePay |
+| `domainName` | `string` | A domain name as described in RFC-1034 that will be registered with ApplePay<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255` |
 
 ## Example (as JSON)
 

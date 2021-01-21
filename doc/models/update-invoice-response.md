@@ -11,7 +11,7 @@ Describes a `UpdateInvoice` response.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `invoice` | [`Invoice`](/doc/models/invoice.md) | Optional | Stores information about an invoice. You use the Invoices API to create and process<br>invoices. For more information, see [Manage Invoices Using the Invoices API](https://developer.squareup.com/docs/invoices-api/overview). |
+| `invoice` | [`Invoice`](/doc/models/invoice.md) | Optional | Stores information about an invoice. You use the Invoices API to create and manage<br>invoices. For more information, see [Manage Invoices Using the Invoices API](https://developer.squareup.com/docs/invoices-api/overview). |
 | `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
 
 ## Example (as JSON)
@@ -32,6 +32,7 @@ Describes a `UpdateInvoice` response.
         "value": "The terms of service are..."
       }
     ],
+    "delivery_method": "EMAIL",
     "description": "We appreciate your business!",
     "id": "gt2zv1z6mnUm1V7KMxxf3w",
     "invoice_number": "inv-100",
@@ -43,12 +44,12 @@ Describes a `UpdateInvoice` response.
     "order_id": "CAISENgvlJ6jLWAzERDzjyHVybY",
     "payment_requests": [
       {
+        "automatic_payment_source": "NONE",
         "computed_amount_money": {
           "amount": 10000,
           "currency": "USD"
         },
         "due_date": "2030-01-24",
-        "request_method": "EMAIL",
         "request_type": "BALANCE",
         "tipping_enabled": false,
         "total_completed_amount_money": {

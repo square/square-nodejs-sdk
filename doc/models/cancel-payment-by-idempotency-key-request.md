@@ -11,7 +11,7 @@ Specifies the idempotency key of a payment to cancel.
 
 | Name | Type | Description |
 |  --- | --- | --- |
-| `idempotencyKey` | `string` | The `idempotency_key` identifying the payment to be canceled. |
+| `idempotencyKey` | `string` | The `idempotency_key` identifying the payment to be canceled.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `45` |
 
 ## Example (as JSON)
 

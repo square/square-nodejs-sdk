@@ -11,8 +11,8 @@ The query filter to return the search result whose named attribute values are pr
 
 | Name | Type | Description |
 |  --- | --- | --- |
-| `attributeName` | `string` | The name of the attribute to be searched. |
-| `attributePrefix` | `string` | The desired prefix of the search attribute value. |
+| `attributeName` | `string` | The name of the attribute to be searched.<br>**Constraints**: *Minimum Length*: `1` |
+| `attributePrefix` | `string` | The desired prefix of the search attribute value.<br>**Constraints**: *Minimum Length*: `1` |
 
 ## Example (as JSON)
 
