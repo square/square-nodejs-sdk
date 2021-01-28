@@ -89,7 +89,6 @@ describe('Invoices API', () => {
   it('should testCreateInvoice', async () => {
 
     let paymentRequest: InvoicePaymentRequest = {
-      requestMethod: 'SHARE_MANUALLY',
       requestType: 'BALANCE',
       dueDate: (new Date()).toISOString().slice(0, 10)
     }
@@ -101,6 +100,7 @@ describe('Invoices API', () => {
       locationId: locationId,
       paymentRequests: [paymentRequest],
       invoiceNumber: createInvoiceNumber(),
+      deliveryMethod: 'SHARE_MANUALLY',
       primaryRecipient:{
         customerId: newCustomerId
       }
