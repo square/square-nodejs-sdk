@@ -13,8 +13,8 @@ Describes a loyalty account. For more information, see
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Optional | The Square-assigned ID of the loyalty account.<br>**Constraints**: *Maximum Length*: `36` |
-| `mappings` | [`LoyaltyAccountMapping[]`](/doc/models/loyalty-account-mapping.md) |  | The list of mappings that the account is associated with.<br>Currently, a buyer can only be mapped to a loyalty account using<br>a phone number. Therefore, the list can only have one mapping. |
-| `programId` | `string` |  | The Square-assigned ID of the [loyalty program](#type-LoyaltyProgram) to which the account belongs.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
+| `mappings` | [`LoyaltyAccountMapping[]`](/doc/models/loyalty-account-mapping.md) | Required | The list of mappings that the account is associated with.<br>Currently, a buyer can only be mapped to a loyalty account using<br>a phone number. Therefore, the list can only have one mapping. |
+| `programId` | `string` | Required | The Square-assigned ID of the [loyalty program](#type-LoyaltyProgram) to which the account belongs.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
 | `balance` | `number` | Optional | The available point balance in the loyalty account.<br><br>Your application should be able to handle loyalty accounts that have a negative point balance (`balance` is less than 0). This might occur if a seller makes a manual adjustment or as a result of a refund or exchange. |
 | `lifetimePoints` | `number` | Optional | The total points accrued during the lifetime of the account. |
 | `customerId` | `string` | Optional | The Square-assigned ID of the [customer](#type-Customer) that is associated with the account. |

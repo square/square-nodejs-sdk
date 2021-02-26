@@ -40,6 +40,10 @@ The return value from the [CancelPayment](#endpoint-payments-cancelpayment) endp
         "last_4": "1234",
         "prepaid_type": "PREPAID"
       },
+      "card_payment_timeline": {
+        "authorized_at": "2018-10-17T20:38:46.753Z",
+        "voided_at": "2018-10-17T20:38:57.793Z"
+      },
       "cvv_status": "CVV_ACCEPTED",
       "entry_method": "KEYED",
       "statement_description": "SQ *MY MERCHANT",

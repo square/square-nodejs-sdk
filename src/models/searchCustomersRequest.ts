@@ -1,4 +1,4 @@
-import { lazy, number, object, optional, Schema, string } from '../schema';
+import { bigint, lazy, object, optional, Schema, string } from '../schema';
 import { CustomerQuery, customerQuerySchema } from './customerQuery';
 
 /**
@@ -18,7 +18,7 @@ export interface SearchCustomersRequest {
    * If the supplied limit is negative, zero, or is higher than the maximum limit
    * of 100, it will be ignored.
    */
-  limit?: number;
+  limit?: bigint;
   /**
    * Represents a query (including filtering criteria, sorting criteria, or both) used to search
    * for customer profiles.
@@ -29,7 +29,7 @@ export interface SearchCustomersRequest {
 export const searchCustomersRequestSchema: Schema<SearchCustomersRequest> = object(
   {
     cursor: ['cursor', optional(string())],
-    limit: ['limit', optional(number())],
+    limit: ['limit', optional(bigint())],
     query: ['query', optional(lazy(() => customerQuerySchema))],
   }
 );

@@ -1,5 +1,6 @@
 import {
   array,
+  bigint,
   boolean,
   lazy,
   number,
@@ -65,7 +66,7 @@ export interface CatalogItemVariation {
    * is `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.
    * This value is always an integer.
    */
-  inventoryAlertThreshold?: number;
+  inventoryAlertThreshold?: bigint;
   /** Arbitrary user metadata to associate with the item variation. This attribute value length is of Unicode code points. */
   userData?: string;
   /**
@@ -74,7 +75,7 @@ export interface CatalogItemVariation {
    * example, a 30 minute appointment would have the value `1800000`, which is equal to
    * 30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second).
    */
-  serviceDuration?: number;
+  serviceDuration?: bigint;
   /**
    * If the `CatalogItem` that owns this item variation is of type
    * `APPOINTMENTS_SERVICE`, a bool representing whether this service is available for booking.
@@ -112,9 +113,9 @@ export const catalogItemVariationSchema: Schema<CatalogItemVariation> = object({
   ],
   trackInventory: ['track_inventory', optional(boolean())],
   inventoryAlertType: ['inventory_alert_type', optional(string())],
-  inventoryAlertThreshold: ['inventory_alert_threshold', optional(number())],
+  inventoryAlertThreshold: ['inventory_alert_threshold', optional(bigint())],
   userData: ['user_data', optional(string())],
-  serviceDuration: ['service_duration', optional(number())],
+  serviceDuration: ['service_duration', optional(bigint())],
   availableForBooking: ['available_for_booking', optional(boolean())],
   itemOptionValues: [
     'item_option_values',

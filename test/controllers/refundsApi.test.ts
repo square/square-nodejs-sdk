@@ -14,7 +14,7 @@ describe('Refunds API', () => {
 
     const sourceId = 'cnon:card-nonce-ok';
     const money: Money = {
-      amount: 200,
+      amount: BigInt(200),
       currency: 'USD',
     };
 
@@ -23,7 +23,7 @@ describe('Refunds API', () => {
       idempotencyKey: uuidv4(),
       amountMoney: money,
       appFeeMoney: {
-        amount: 10,
+        amount: BigInt(10),
         currency: 'USD',
       },
       autocomplete: true,
@@ -43,7 +43,7 @@ describe('Refunds API', () => {
     let body : RefundPaymentRequest = {
       idempotencyKey: uuidv4(),
       amountMoney: {
-        amount: 200,
+        amount: BigInt(200),
         currency: 'USD'
       },
       paymentId: paymentId,

@@ -23,7 +23,7 @@ describe('Catalog API', () => {
       trackInventory: true,
       pricingType: 'FIXED_PRICING',
       priceMoney: {
-        amount: 100,
+        amount: BigInt(100),
         currency: 'USD'
       }
     }
@@ -120,7 +120,7 @@ describe('Catalog API', () => {
       modifierData: {
         name: "Limited Time Only Price",
         priceMoney: {
-          amount: 200,
+          amount: BigInt(200),
           currency: "USD"
         }
       }

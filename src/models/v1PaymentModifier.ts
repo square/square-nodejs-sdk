@@ -6,7 +6,7 @@ export interface V1PaymentModifier {
   /** The modifier option's name. */
   name?: string;
   appliedMoney?: V1Money;
-  /** TThe ID of the applied modifier option, if available. Modifier options applied in older versions of Square Register might not have an ID. */
+  /** The ID of the applied modifier option, if available. Modifier options applied in older versions of Square Register might not have an ID. */
   modifierOptionId?: string;
 }
 

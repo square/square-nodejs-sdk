@@ -194,7 +194,6 @@ bodyOrderOrder.discounts = bodyOrderOrderDiscounts;
 
 const bodyOrder: CreateOrderRequest = {};
 bodyOrder.order = bodyOrderOrder;
-bodyOrder.locationId = 'location_id4';
 bodyOrder.idempotencyKey = '12ae1696-z1e3-4328-af6d-f1e04d947gd4';
 
 const bodyPrePopulateShippingAddress: Address = {};

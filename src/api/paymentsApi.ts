@@ -32,7 +32,7 @@ import {
   ListPaymentsResponse,
   listPaymentsResponseSchema,
 } from '../models/listPaymentsResponse';
-import { number, optional, string } from '../schema';
+import { bigint, number, optional, string } from '../schema';
 import { BaseApi } from './baseApi';
 
 export class PaymentsApi extends BaseApi {
@@ -68,7 +68,7 @@ export class PaymentsApi extends BaseApi {
     sortOrder?: string,
     cursor?: string,
     locationId?: string,
-    total?: number,
+    total?: bigint,
     last4?: string,
     cardBrand?: string,
     limit?: number,
@@ -81,7 +81,7 @@ export class PaymentsApi extends BaseApi {
       sortOrder: [sortOrder, optional(string())],
       cursor: [cursor, optional(string())],
       locationId: [locationId, optional(string())],
-      total: [total, optional(number())],
+      total: [total, optional(bigint())],
       last4: [last4, optional(string())],
       cardBrand: [cardBrand, optional(string())],
       limit: [limit, optional(number())],

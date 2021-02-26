@@ -19,39 +19,24 @@
 {
   "items": [
     {
-      "id": "id7",
-      "state": "CLOSED",
-      "opened_at": "opened_at5",
-      "ended_at": "ended_at9",
-      "closed_at": "closed_at9"
-    },
-    {
-      "id": "id8",
-      "state": "ENDED",
-      "opened_at": "opened_at6",
-      "ended_at": "ended_at0",
-      "closed_at": "closed_at0"
-    }
-  ],
-  "cursor": "cursor6",
-  "errors": [
-    {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "VALUE_TOO_SHORT",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "VALUE_TOO_LONG",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "VALUE_TOO_LOW",
-      "detail": "detail3",
-      "field": "field1"
+      "closed_at": "2019-11-22T00:44:49.000Z",
+      "closed_cash_money": {
+        "amount": 9970,
+        "currency": "USD"
+      },
+      "description": "Misplaced some change",
+      "ended_at": "2019-11-22T00:44:49.000Z",
+      "expected_cash_money": {
+        "amount": 10000,
+        "currency": "USD"
+      },
+      "id": "DCC99978-09A6-4926-849F-300BE9C5793A",
+      "opened_at": "2019-11-22T00:42:54.000Z",
+      "opened_cash_money": {
+        "amount": 10000,
+        "currency": "USD"
+      },
+      "state": "CLOSED"
     }
   ]
 }

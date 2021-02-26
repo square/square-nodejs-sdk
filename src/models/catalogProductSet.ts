@@ -1,7 +1,7 @@
 import {
   array,
+  bigint,
   boolean,
-  number,
   object,
   optional,
   Schema,
@@ -43,18 +43,18 @@ export interface CatalogProductSet {
    * in the cart for the discount to apply.
    * Cannot be combined with either `quantity_min` or `quantity_max`.
    */
-  quantityExact?: number;
+  quantityExact?: bigint;
   /**
    * If set, there must be at least this many items from `products_any` or `products_all`
    * in a cart for the discount to apply. See `quantity_exact`. Defaults to 0 if
    * `quantity_exact`, `quantity_min` and `quantity_max` are all unspecified.
    */
-  quantityMin?: number;
+  quantityMin?: bigint;
   /**
    * If set, the pricing rule will apply to a maximum of this many items from
    * `products_any` or `products_all`.
    */
-  quantityMax?: number;
+  quantityMax?: bigint;
   /**
    * If set to `true`, the product set will include every item in the catalog.
    * Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.
@@ -66,8 +66,8 @@ export const catalogProductSetSchema: Schema<CatalogProductSet> = object({
   name: ['name', optional(string())],
   productIdsAny: ['product_ids_any', optional(array(string()))],
   productIdsAll: ['product_ids_all', optional(array(string()))],
-  quantityExact: ['quantity_exact', optional(number())],
-  quantityMin: ['quantity_min', optional(number())],
-  quantityMax: ['quantity_max', optional(number())],
+  quantityExact: ['quantity_exact', optional(bigint())],
+  quantityMin: ['quantity_min', optional(bigint())],
+  quantityMax: ['quantity_max', optional(bigint())],
   allProducts: ['all_products', optional(boolean())],
 });

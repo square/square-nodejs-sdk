@@ -10,8 +10,6 @@ export interface CreateOrderRequest {
    * itemization data.
    */
   order?: Order;
-  /** The ID of the business location to associate the order with. */
-  locationId?: string;
   /**
    * A value you specify that uniquely identifies this
    * order among orders you've created.
@@ -25,6 +23,5 @@ export interface CreateOrderRequest {
 
 export const createOrderRequestSchema: Schema<CreateOrderRequest> = object({
   order: ['order', optional(lazy(() => orderSchema))],
-  locationId: ['location_id', optional(string())],
   idempotencyKey: ['idempotency_key', optional(string())],
 });

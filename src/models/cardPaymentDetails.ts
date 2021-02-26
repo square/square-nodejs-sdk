@@ -8,6 +8,10 @@ import {
   string,
 } from '../schema';
 import { Card, cardSchema } from './card';
+import {
+  CardPaymentTimeline,
+  cardPaymentTimelineSchema,
+} from './cardPaymentTimeline';
 import { DeviceDetails, deviceDetailsSchema } from './deviceDetails';
 import { Error, errorSchema } from './error';
 
@@ -67,6 +71,8 @@ export interface CardPaymentDetails {
   statementDescription?: string;
   /** Details about the device that took the payment. */
   deviceDetails?: DeviceDetails;
+  /** The timeline for card payments. */
+  cardPaymentTimeline?: CardPaymentTimeline;
   /**
    * Whether the card must be physically present for the payment to
    * be refunded.  If set to `true`, the card must be present.
@@ -90,6 +96,10 @@ export const cardPaymentDetailsSchema: Schema<CardPaymentDetails> = object({
   verificationResults: ['verification_results', optional(string())],
   statementDescription: ['statement_description', optional(string())],
   deviceDetails: ['device_details', optional(lazy(() => deviceDetailsSchema))],
+  cardPaymentTimeline: [
+    'card_payment_timeline',
+    optional(lazy(() => cardPaymentTimelineSchema)),
+  ],
   refundRequiresCardPresence: [
     'refund_requires_card_presence',
     optional(boolean()),

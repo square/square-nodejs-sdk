@@ -9,9 +9,9 @@ Represents an update request for the `WageSetting` object describing a `TeamMemb
 
 ## Fields
 
-| Name | Type | Description |
-|  --- | --- | --- |
-| `wageSetting` | [`WageSetting`](/doc/models/wage-setting.md) | An object representing a team member's wage information. |
+| Name | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `wageSetting` | [`WageSetting`](/doc/models/wage-setting.md) | Required | An object representing a team member's wage information. |
 
 ## Example (as JSON)
 

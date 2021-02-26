@@ -278,6 +278,18 @@ const client = new Client({
   accessToken: process.env.SQUARE_ACCESS_TOKEN,
 })
 ```
+
+To set a custom environment provide a `customUrl`, and set the environment to `Environment.Custom`:
+
+```javascript
+import { Client, Environment } from 'square'
+
+const client = new Client({
+  environment: Environment.Custom,
+  customUrl: "https://your.customdomain.com",
+  accessToken: process.env.SQUARE_ACCESS_TOKEN,
+})
+```
  
 ### Get an instance of an API object and call its methods
 

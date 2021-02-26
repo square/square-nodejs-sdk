@@ -69,7 +69,7 @@ Square API.
 | `UNSUPPORTED_ENTRY_METHOD` | The entry method for the credit card (swipe, dip, tap) is not supported. |
 | `INVALID_ENCRYPTED_CARD` | The encrypted card information is invalid. |
 | `INVALID_CARD` | The credit card cannot be validated based on the provided details. |
-| `GENERIC_DECLINE` | An unexpected error occurred. |
+| `GENERIC_DECLINE` | Square received a decline from the cardholder's bank without any<br>additional information. If the card information seems correct, the card<br>holder can contact their card issuer to ask for more information. |
 | `CVV_FAILURE` | The card issuer declined the request because the CVV value is invalid. |
 | `ADDRESS_VERIFICATION_FAILURE` | The card issuer declined the request because the postal code is invalid. |
 | `INVALID_ACCOUNT` | The card issuer was not able to locate account on record. |

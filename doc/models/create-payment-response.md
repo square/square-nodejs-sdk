@@ -44,6 +44,10 @@ present, or it might be present with a status of `FAILED`.
         "last_4": "1111",
         "prepaid_type": "PREPAID"
       },
+      "card_payment_timeline": {
+        "authorized_at": "2019-07-10T13:23:49.234Z",
+        "captured_at": "2019-07-10T13:23:49.446Z"
+      },
       "cvv_status": "CVV_ACCEPTED",
       "entry_method": "ON_FILE",
       "statement_description": "SQ *MY MERCHANT",

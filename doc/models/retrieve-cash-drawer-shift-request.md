@@ -7,9 +7,9 @@
 
 ## Fields
 
-| Name | Type | Description |
-|  --- | --- | --- |
-| `locationId` | `string` | The ID of the location to retrieve cash drawer shifts from.<br>**Constraints**: *Minimum Length*: `1` |
+| Name | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `locationId` | `string` | Required | The ID of the location to retrieve cash drawer shifts from.<br>**Constraints**: *Minimum Length*: `1` |
 
 ## Example (as JSON)
 

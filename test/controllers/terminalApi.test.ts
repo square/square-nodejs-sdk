@@ -17,7 +17,7 @@ describe('Terminal API', () => {
         deviceId: sandboxDeviceId
       },
       amountMoney: {
-        amount: 100,
+        amount: BigInt(100),
         currency: 'USD'
       }
     }

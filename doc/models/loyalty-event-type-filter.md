@@ -9,9 +9,9 @@ Filter events by event type.
 
 ## Fields
 
-| Name | Type | Description |
-|  --- | --- | --- |
-| `types` | [`string[]`](/doc/models/loyalty-event-type.md) | The loyalty event types used to filter the result.<br>If multiple values are specified, the endpoint uses a<br>logical OR to combine them.<br>See [LoyaltyEventType](#type-loyaltyeventtype) for possible values |
+| Name | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `types` | [`string[]`](/doc/models/loyalty-event-type.md) | Required | The loyalty event types used to filter the result.<br>If multiple values are specified, the endpoint uses a<br>logical OR to combine them.<br>See [LoyaltyEventType](#type-loyaltyeventtype) for possible values |
 
 ## Example (as JSON)
 

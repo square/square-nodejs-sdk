@@ -13,7 +13,7 @@ describe('Subscriptions API', () =>{
   let customerId     : string
   let locationId     : string
   let subscriptionId : string
-  let subVersion     : number
+  let subVersion     : bigint
 
   beforeAll( async () => {
     subscriptionsApi = testClient.subscriptionsApi
@@ -31,7 +31,7 @@ describe('Subscriptions API', () =>{
           phases: [{
             cadence: 'THIRTY_DAYS',
             recurringPriceMoney: {
-              amount: 100,
+              amount: BigInt(100),
               currency: 'USD'
             }
           }]
@@ -86,7 +86,9 @@ describe('Subscriptions API', () =>{
   })
 
   it('should testSearchSubscriptions', async () => {
-    let { statusCode } = await subscriptionsApi.searchSubscriptions({})
+    let { statusCode } = await subscriptionsApi.searchSubscriptions({
+      limit: 5
+    })
     expect(statusCode).toBe(200)
   })
 
@@ -95,7 +97,7 @@ describe('Subscriptions API', () =>{
       subscription: {
         version: subVersion,
         priceOverrideMoney : {
-          amount: 200,
+          amount: BigInt(200),
           currency: 'USD'
         }
       }

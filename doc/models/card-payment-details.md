@@ -24,6 +24,7 @@ Reflects the current status of a card payment.
 | `verificationResults` | `string` | Optional | For EMV payments, the results of the cardholder verification. The result can be<br>`SUCCESS`, `FAILURE`, or `UNKNOWN`.<br>**Constraints**: *Maximum Length*: `50` |
 | `statementDescription` | `string` | Optional | The statement description sent to the card networks.<br><br>Note: The actual statement description varies and is likely to be truncated and appended with<br>additional information on a per issuer basis.<br>**Constraints**: *Maximum Length*: `50` |
 | `deviceDetails` | [`DeviceDetails`](/doc/models/device-details.md) | Optional | Details about the device that took the payment. |
+| `cardPaymentTimeline` | [`CardPaymentTimeline`](/doc/models/card-payment-timeline.md) | Optional | The timeline for card payments. |
 | `refundRequiresCardPresence` | `boolean` | Optional | Whether the card must be physically present for the payment to<br>be refunded.  If set to `true`, the card must be present. |
 | `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
 

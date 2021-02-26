@@ -31,7 +31,7 @@ describe('Invoices API', () => {
             name: 'New Item',
             quantity: '1',
             basePriceMoney: {
-              amount: 100,
+              amount: BigInt(100),
               currency: 'USD'
             }
           }
@@ -189,7 +189,7 @@ describe('Invoices API', () => {
               name: 'New Item',
               quantity: '1',
               basePriceMoney: {
-                amount: 100,
+                amount: BigInt(100),
                 currency: 'USD'
               }
             }

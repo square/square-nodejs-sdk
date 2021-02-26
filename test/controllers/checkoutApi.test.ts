@@ -27,7 +27,7 @@ describe('Checkout API', () => {
 
     const orderBodyIdempotencyKey = uuidV4();
 
-    const amount = 100;
+    const amount = BigInt(100);
 
     const bodyOrderLineItems: OrderLineItem[] = [];
     bodyOrderLineItems[0] = { quantity: '2' };

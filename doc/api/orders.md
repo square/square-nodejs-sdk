@@ -211,7 +211,6 @@ bodyOrder.discounts = bodyOrderDiscounts;
 
 const body: CreateOrderRequest = {};
 body.order = bodyOrder;
-body.locationId = 'location_id0';
 body.idempotencyKey = '8193148c-9586-11e6-99f9-28cfe92138cf';
 
 try {

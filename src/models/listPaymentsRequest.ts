@@ -1,4 +1,4 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { bigint, number, object, optional, Schema, string } from '../schema';
 
 /**
  * Retrieves a list of payments taken by the account making the request.
@@ -33,7 +33,7 @@ export interface ListPaymentsRequest {
    */
   locationId?: string;
   /** The exact amount in the `total_money` for a payment. */
-  total?: number;
+  total?: bigint;
   /** The last four digits of a payment card. */
   last4?: string;
   /** The brand of the payment card (for example, VISA). */
@@ -54,7 +54,7 @@ export const listPaymentsRequestSchema: Schema<ListPaymentsRequest> = object({
   sortOrder: ['sort_order', optional(string())],
   cursor: ['cursor', optional(string())],
   locationId: ['location_id', optional(string())],
-  total: ['total', optional(number())],
+  total: ['total', optional(bigint())],
   last4: ['last_4', optional(string())],
   cardBrand: ['card_brand', optional(string())],
   limit: ['limit', optional(number())],

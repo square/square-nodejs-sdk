@@ -37,6 +37,9 @@ a request to the [ListPayments](#endpoint-payments-listpayments) endpoint.
           "fingerprint": "sq-1-lHpUJIUyqOPQmH89b6GuQEljmc-mZmu4kSTaMlkLDkJI7NVjAl4Zirn2sk3OeyVKVA",
           "last_4": "1111"
         },
+        "card_payment_timeline": {
+          "authorized_at": "2019-07-09T14:36:13.798Z"
+        },
         "cvv_status": "CVV_ACCEPTED",
         "entry_method": "KEYED",
         "status": "AUTHORIZED"
@@ -67,6 +70,10 @@ a request to the [ListPayments](#endpoint-payments-listpayments) endpoint.
           "exp_year": 2026,
           "fingerprint": "sq-1-TpmjbNBMFdibiIjpQI5LiRgNUBC7u1689i0TgHjnlyHEWYB7tnn-K4QbW4ttvtaqXw",
           "last_4": "2796"
+        },
+        "card_payment_timeline": {
+          "authorized_at": "2019-07-08T01:00:51.617Z",
+          "captured_at": "2019-07-08T01:13:58.508Z"
         },
         "cvv_status": "CVV_ACCEPTED",
         "entry_method": "ON_FILE",

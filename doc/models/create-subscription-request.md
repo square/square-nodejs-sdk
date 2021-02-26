@@ -12,10 +12,10 @@ Defines parameters in a
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `idempotencyKey` | `string` |  | A unique string that identifies this `CreateSubscription` request.<br>If you do not provide a unique string (or provide an empty string as the value),<br>the endpoint treats each request as independent.<br><br>For more information, see [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency).<br>**Constraints**: *Minimum Length*: `1` |
-| `locationId` | `string` |  | The ID of the location the subscription is associated with.<br>**Constraints**: *Minimum Length*: `1` |
-| `planId` | `string` |  | The ID of the subscription plan. For more information, see<br>[Subscription Plan Overview](https://developer.squareup.com/docs/subscriptions/overview).<br>**Constraints**: *Minimum Length*: `1` |
-| `customerId` | `string` |  | The ID of the [customer](#type-customer) profile.<br>**Constraints**: *Minimum Length*: `1` |
+| `idempotencyKey` | `string` | Required | A unique string that identifies this `CreateSubscription` request.<br>If you do not provide a unique string (or provide an empty string as the value),<br>the endpoint treats each request as independent.<br><br>For more information, see [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency).<br>**Constraints**: *Minimum Length*: `1` |
+| `locationId` | `string` | Required | The ID of the location the subscription is associated with.<br>**Constraints**: *Minimum Length*: `1` |
+| `planId` | `string` | Required | The ID of the subscription plan. For more information, see<br>[Subscription Plan Overview](https://developer.squareup.com/docs/subscriptions/overview).<br>**Constraints**: *Minimum Length*: `1` |
+| `customerId` | `string` | Required | The ID of the [customer](#type-customer) profile.<br>**Constraints**: *Minimum Length*: `1` |
 | `startDate` | `string` | Optional | The start date of the subscription, in YYYY-MM-DD format. For example,<br>2013-01-15. If the start date is left empty, the subscription begins<br>immediately. |
 | `canceledDate` | `string` | Optional | The date when the subscription should be canceled, in<br>YYYY-MM-DD format (for example, 2025-02-29). This overrides the plan configuration<br>if it comes before the date the subscription would otherwise end. |
 | `taxPercentage` | `string` | Optional | The tax to add when billing the subscription.<br>The percentage is expressed in decimal form, using a `'.'` as the decimal<br>separator and without a `'%'` sign. For example, a value of 7.5<br>corresponds to 7.5%.<br>**Constraints**: *Maximum Length*: `10` |

@@ -1,4 +1,4 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { bigint, object, optional, Schema, string } from '../schema';
 
 export interface ListCatalogRequest {
   /**
@@ -20,11 +20,11 @@ export interface ListCatalogRequest {
    * versions of objects. The specified version value is matched against
    * the [CatalogObject](#type-catalogobject)s' `version` attribute.
    */
-  catalogVersion?: number;
+  catalogVersion?: bigint;
 }
 
 export const listCatalogRequestSchema: Schema<ListCatalogRequest> = object({
   cursor: ['cursor', optional(string())],
   types: ['types', optional(string())],
-  catalogVersion: ['catalog_version', optional(number())],
+  catalogVersion: ['catalog_version', optional(bigint())],
 });

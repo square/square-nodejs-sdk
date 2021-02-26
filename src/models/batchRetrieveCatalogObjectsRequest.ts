@@ -1,7 +1,7 @@
 import {
   array,
+  bigint,
   boolean,
-  number,
   object,
   optional,
   Schema,
@@ -27,13 +27,13 @@ export interface BatchRetrieveCatalogObjectsRequest {
    * This allows you to retrieve historical versions of objects. The specified version value is matched against
    * the [CatalogObject](#type-catalogobject)s' `version` attribute.
    */
-  catalogVersion?: number;
+  catalogVersion?: bigint;
 }
 
 export const batchRetrieveCatalogObjectsRequestSchema: Schema<BatchRetrieveCatalogObjectsRequest> = object(
   {
     objectIds: ['object_ids', array(string())],
     includeRelatedObjects: ['include_related_objects', optional(boolean())],
-    catalogVersion: ['catalog_version', optional(number())],
+    catalogVersion: ['catalog_version', optional(bigint())],
   }
 );

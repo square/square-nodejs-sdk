@@ -1,4 +1,12 @@
-import { lazy, number, object, optional, Schema, string } from '../schema';
+import {
+  bigint,
+  lazy,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -22,7 +30,7 @@ export interface SubscriptionPhase {
    */
   recurringPriceMoney: Money;
   /** The position this phase appears in the sequence of phases defined for the plan, indexed from 0. This field cannot be changed after a `SubscriptionPhase` is created. */
-  ordinal?: number;
+  ordinal?: bigint;
 }
 
 export const subscriptionPhaseSchema: Schema<SubscriptionPhase> = object({
@@ -30,5 +38,5 @@ export const subscriptionPhaseSchema: Schema<SubscriptionPhase> = object({
   cadence: ['cadence', string()],
   periods: ['periods', optional(number())],
   recurringPriceMoney: ['recurring_price_money', lazy(() => moneySchema)],
-  ordinal: ['ordinal', optional(number())],
+  ordinal: ['ordinal', optional(bigint())],
 });

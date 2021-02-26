@@ -9,9 +9,9 @@ Represents a bulk update request for `TeamMember` objects.
 
 ## Fields
 
-| Name | Type | Description |
-|  --- | --- | --- |
-| `teamMembers` | [`Record<string, UpdateTeamMemberRequest>`](/doc/models/update-team-member-request.md) | The data which will be used to update the `TeamMember` objects. Each key is the `team_member_id` that maps to the `UpdateTeamMemberRequest`. |
+| Name | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `teamMembers` | [`Record<string, UpdateTeamMemberRequest>`](/doc/models/update-team-member-request.md) | Required | The data which will be used to update the `TeamMember` objects. Each key is the `team_member_id` that maps to the `UpdateTeamMemberRequest`. |
 
 ## Example (as JSON)
 

@@ -19,7 +19,7 @@ describe('Disputes API', () => {
       autocomplete: true,
       sourceId: 'cnon:card-nonce-ok',
       amountMoney: {
-        amount: 8803, // In sandbox  amount of 88.03 USD automatically generates a dispute with the reason DUPLICATE.
+        amount: BigInt(8803), // In sandbox  amount of 88.03 USD automatically generates a dispute with the reason DUPLICATE.
         currency: 'USD'
       }
     }

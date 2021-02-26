@@ -12,7 +12,7 @@ Provides metadata when the event `type` is `ADJUST_POINTS`.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `loyaltyProgramId` | `string` | Optional | The Square-assigned ID of the [loyalty program](#type-LoyaltyProgram).<br>**Constraints**: *Maximum Length*: `36` |
-| `points` | `number` |  | The number of points added or removed. |
+| `points` | `number` | Required | The number of points added or removed. |
 | `reason` | `string` | Optional | The reason for the adjustment of points. |
 
 ## Example (as JSON)

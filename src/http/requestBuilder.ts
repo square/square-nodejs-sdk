@@ -1,4 +1,5 @@
 import isNode from 'detect-node';
+import JSONBig from 'json-bigint';
 import { FileWrapper } from '../fileWrapper';
 import { deprecated, sanitizeUrl } from '../apiHelper';
 import { ApiResponse } from '../apiResponse';
@@ -54,11 +55,15 @@ export interface RequestBuilderFactory<BaseUrlParamType, AuthParams> {
   >;
 }
 
+const JSON = JSONBig({ useNativeBigInt: true });
+
 type QueryValue =
   | string
   | string[]
   | number
   | number[]
+  | bigint
+  | bigint[]
   | boolean
   | null
   | undefined;

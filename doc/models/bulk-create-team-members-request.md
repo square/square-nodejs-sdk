@@ -9,9 +9,9 @@ Represents a bulk create request for `TeamMember` objects.
 
 ## Fields
 
-| Name | Type | Description |
-|  --- | --- | --- |
-| `teamMembers` | [`Record<string, CreateTeamMemberRequest>`](/doc/models/create-team-member-request.md) | The data which will be used to create the `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`. |
+| Name | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `teamMembers` | [`Record<string, CreateTeamMemberRequest>`](/doc/models/create-team-member-request.md) | Required | The data which will be used to create the `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`. |
 
 ## Example (as JSON)
 

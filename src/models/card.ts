@@ -1,4 +1,4 @@
-import { lazy, number, object, optional, Schema, string } from '../schema';
+import { bigint, lazy, object, optional, Schema, string } from '../schema';
 import { Address, addressSchema } from './address';
 
 /**
@@ -13,9 +13,9 @@ export interface Card {
   /** The last 4 digits of the card number. */
   last4?: string;
   /** The expiration month of the associated card as an integer between 1 and 12. */
-  expMonth?: number;
+  expMonth?: bigint;
   /** The four-digit year of the card's expiration date. */
-  expYear?: number;
+  expYear?: bigint;
   /** The name of the cardholder. */
   cardholderName?: string;
   /** Represents a physical address. */
@@ -41,8 +41,8 @@ export const cardSchema: Schema<Card> = object({
   id: ['id', optional(string())],
   cardBrand: ['card_brand', optional(string())],
   last4: ['last_4', optional(string())],
-  expMonth: ['exp_month', optional(number())],
-  expYear: ['exp_year', optional(number())],
+  expMonth: ['exp_month', optional(bigint())],
+  expYear: ['exp_year', optional(bigint())],
   cardholderName: ['cardholder_name', optional(string())],
   billingAddress: ['billing_address', optional(lazy(() => addressSchema))],
   fingerprint: ['fingerprint', optional(string())],

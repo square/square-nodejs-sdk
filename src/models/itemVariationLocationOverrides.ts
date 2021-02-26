@@ -1,7 +1,7 @@
 import {
+  bigint,
   boolean,
   lazy,
-  number,
   object,
   optional,
   Schema,
@@ -33,7 +33,7 @@ export interface ItemVariationLocationOverrides {
    * is `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.
    * This value is always an integer.
    */
-  inventoryAlertThreshold?: number;
+  inventoryAlertThreshold?: bigint;
 }
 
 export const itemVariationLocationOverridesSchema: Schema<ItemVariationLocationOverrides> = object(
@@ -43,6 +43,6 @@ export const itemVariationLocationOverridesSchema: Schema<ItemVariationLocationO
     pricingType: ['pricing_type', optional(string())],
     trackInventory: ['track_inventory', optional(boolean())],
     inventoryAlertType: ['inventory_alert_type', optional(string())],
-    inventoryAlertThreshold: ['inventory_alert_threshold', optional(number())],
+    inventoryAlertThreshold: ['inventory_alert_threshold', optional(bigint())],
   }
 );

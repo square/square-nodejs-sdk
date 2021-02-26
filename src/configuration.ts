@@ -4,6 +4,7 @@ export interface Configuration {
   squareVersion: string;
   additionalHeaders: Readonly<Record<string, string>>;
   environment: Environment;
+  customUrl: string;
   accessToken: string;
   unstable_httpClientOptions?: any;
 }
@@ -12,4 +13,5 @@ export interface Configuration {
 export enum Environment {
   Production = 'production',
   Sandbox = 'sandbox',
+  Custom = 'custom',
 }

@@ -1,9 +1,9 @@
 import {
   array,
+  bigint,
   boolean,
   dict,
   lazy,
-  number,
   object,
   optional,
   Schema,
@@ -111,7 +111,7 @@ export interface CatalogObject {
    * The version of the object. When updating an object, the version supplied
    * must match the version in the database, otherwise the write will be rejected as conflicting.
    */
-  version?: number;
+  version?: bigint;
   /**
    * If `true`, the object has been deleted from the database. Must be `false` for new objects
    * being inserted. When deleted, the `updated_at` field will equal the deletion time.
@@ -229,7 +229,7 @@ export const catalogObjectSchema: Schema<CatalogObject> = object({
   type: ['type', string()],
   id: ['id', string()],
   updatedAt: ['updated_at', optional(string())],
-  version: ['version', optional(number())],
+  version: ['version', optional(bigint())],
   isDeleted: ['is_deleted', optional(boolean())],
   customAttributeValues: [
     'custom_attribute_values',

@@ -12,7 +12,7 @@ by a timestamp field.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `sortField` | [`string`](/doc/models/search-orders-sort-field.md) |  | Specifies which timestamp to use to sort SearchOrder results. |
+| `sortField` | [`string`](/doc/models/search-orders-sort-field.md) | Required | Specifies which timestamp to use to sort SearchOrder results. |
 | `sortOrder` | [`string`](/doc/models/sort-order.md) | Optional | The order (e.g., chronological or alphabetical) in which results from a request are returned. |
 
 ## Example (as JSON)
