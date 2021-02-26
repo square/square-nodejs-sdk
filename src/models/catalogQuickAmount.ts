@@ -1,4 +1,4 @@
-import { lazy, number, object, optional, Schema, string } from '../schema';
+import { bigint, lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Represents a Quick Amount in the Catalog. */
@@ -18,14 +18,14 @@ export interface CatalogQuickAmount {
    * Describes the ranking of the Quick Amount provided by machine learning model, in the range [0, 100].
    * MANUAL type amount will always have score = 100.
    */
-  score?: number;
+  score?: bigint;
   /** The order in which this Quick Amount should be displayed. */
-  ordinal?: number;
+  ordinal?: bigint;
 }
 
 export const catalogQuickAmountSchema: Schema<CatalogQuickAmount> = object({
   type: ['type', string()],
   amount: ['amount', lazy(() => moneySchema)],
-  score: ['score', optional(number())],
-  ordinal: ['ordinal', optional(number())],
+  score: ['score', optional(bigint())],
+  ordinal: ['ordinal', optional(bigint())],
 });

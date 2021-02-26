@@ -11,7 +11,7 @@ A parent Catalog Object model represents a set of Quick Amounts and the settings
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `option` | [`string`](/doc/models/catalog-quick-amounts-settings-option.md) |  | Determines a seller's option on Quick Amounts feature. |
+| `option` | [`string`](/doc/models/catalog-quick-amounts-settings-option.md) | Required | Determines a seller's option on Quick Amounts feature. |
 | `eligibleForAutoAmounts` | `boolean` | Optional | Represents location's eligibility for auto amounts<br>The boolean should be consistent with whether there are AUTO amounts in the `amounts`. |
 | `amounts` | [`CatalogQuickAmount[]`](/doc/models/catalog-quick-amount.md) | Optional | Represents a set of Quick Amounts at this location. |
 

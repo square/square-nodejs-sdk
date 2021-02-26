@@ -16,7 +16,7 @@ Price and inventory alerting overrides for a `CatalogItemVariation` at a specifi
 | `pricingType` | [`string`](/doc/models/catalog-pricing-type.md) | Optional | Indicates whether the price of a CatalogItemVariation should be entered manually at the time of sale. |
 | `trackInventory` | `boolean` | Optional | If `true`, inventory tracking is active for the `CatalogItemVariation` at this `Location`. |
 | `inventoryAlertType` | [`string`](/doc/models/inventory-alert-type.md) | Optional | Indicates whether Square should alert the merchant when the inventory quantity of a CatalogItemVariation is low. |
-| `inventoryAlertThreshold` | `number` | Optional | If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`<br>is `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.<br><br>This value is always an integer. |
+| `inventoryAlertThreshold` | `bigint` | Optional | If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`<br>is `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.<br><br>This value is always an integer. |
 
 ## Example (as JSON)
 

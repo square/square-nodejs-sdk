@@ -7,9 +7,9 @@
 
 ## Fields
 
-| Name | Type | Description |
-|  --- | --- | --- |
-| `body` | [`V1Employee`](/doc/models/v1-employee.md) | Represents one of a business's employees. |
+| Name | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`V1Employee`](/doc/models/v1-employee.md) | Required | Represents one of a business's employees. |
 
 ## Example (as JSON)
 

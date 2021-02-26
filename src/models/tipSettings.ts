@@ -16,12 +16,13 @@ export interface TipSettings {
    */
   tipPercentages?: number[];
   /**
-   * Enables the "Smart Tip Amounts" behavior described in https://squareup.com/help/us/en/article/5069-accept-tips-with-the-square-app.
+   * Enables the "Smart Tip Amounts" behavior.
    * Exact tipping options depend on the region the Square seller is active in.
    * In the United States and Canada, tipping options will be presented in whole dollar amounts for
    * payments under 10 USD/CAD respectively.
    * If set to true, the tip_percentages settings is ignored.
    * Defaults to false.
+   * To learn more about smart tipping, see [Accept Tips with the Square App](https://squareup.com/help/us/en/article/5069-accept-tips-with-the-square-app)
    */
   smartTipping?: boolean;
 }

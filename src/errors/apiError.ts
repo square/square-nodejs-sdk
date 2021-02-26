@@ -1,3 +1,4 @@
+import JSONBig from 'json-bigint';
 import { HttpContext } from '../http/httpContext';
 import { HttpRequest } from '../http/httpRequest';
 import { ApiResponse } from '../apiResponse';
@@ -28,6 +29,7 @@ export class ApiError<T = {}> extends Error
     this.body = response.body;
 
     if (typeof response.body === 'string' && response.body !== '') {
+      const JSON = JSONBig({ useNativeBigInt: true });
       try {
         this.result = JSON.parse(response.body);
 

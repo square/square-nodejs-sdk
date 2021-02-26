@@ -17,32 +17,47 @@
 ```json
 {
   "cash_drawer_shift": {
-    "id": "id6",
-    "state": "CLOSED",
-    "opened_at": "opened_at4",
-    "ended_at": "ended_at8",
-    "closed_at": "closed_at8"
-  },
-  "errors": [
-    {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "VALUE_TOO_SHORT",
-      "detail": "detail1",
-      "field": "field9"
+    "cash_paid_in_money": {
+      "amount": 10000,
+      "currency": "USD"
     },
-    {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "VALUE_TOO_LONG",
-      "detail": "detail2",
-      "field": "field0"
+    "cash_paid_out_money": {
+      "amount": -10000,
+      "currency": "USD"
     },
-    {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "VALUE_TOO_LOW",
-      "detail": "detail3",
-      "field": "field1"
-    }
-  ]
+    "cash_payment_money": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "cash_refunds_money": {
+      "amount": -100,
+      "currency": "USD"
+    },
+    "closed_at": "2019-11-22T00:44:49.000Z",
+    "closed_cash_money": {
+      "amount": 9970,
+      "currency": "USD"
+    },
+    "closing_employee_id": "",
+    "description": "Misplaced some change",
+    "device": {
+      "name": "My iPad"
+    },
+    "ended_at": "2019-11-22T00:44:49.000Z",
+    "ending_employee_id": "",
+    "expected_cash_money": {
+      "amount": 10000,
+      "currency": "USD"
+    },
+    "id": "DCC99978-09A6-4926-849F-300BE9C5793A",
+    "opened_at": "2019-11-22T00:42:54.000Z",
+    "opened_cash_money": {
+      "amount": 10000,
+      "currency": "USD"
+    },
+    "opening_employee_id": "",
+    "state": "CLOSED"
+  }
 }
 ```
 

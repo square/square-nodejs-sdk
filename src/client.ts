@@ -26,7 +26,6 @@ import { TeamApi } from './api/teamApi';
 import { TerminalApi } from './api/terminalApi';
 import { TransactionsApi } from './api/transactionsApi';
 import { V1EmployeesApi } from './api/v1EmployeesApi';
-import { V1ItemsApi } from './api/v1ItemsApi';
 import { V1TransactionsApi } from './api/v1TransactionsApi';
 import { accessTokenAuthenticationProvider } from './authentication';
 import {
@@ -41,6 +40,7 @@ import { DEFAULT_CONFIGURATION } from './defaultConfiguration';
 import { ApiError } from './errors/apiError';
 import { HttpClient } from './http/httpClient';
 import { assertHeaders, mergeHeaders, setHeader } from './http/httpHeaders';
+import { pathTemplate, SkipEncode } from './http/pathTemplate';
 import {
   AuthenticatorInterface,
   createRequestBuilderFactory,
@@ -48,8 +48,8 @@ import {
 } from './http/requestBuilder';
 
 /** Current SDK version */
-export const SDK_VERSION = '8.1.1';
-const USER_AGENT = 'Square-TypeScript-SDK/8.1.1';
+export const SDK_VERSION = '9.0.0';
+const USER_AGENT = 'Square-TypeScript-SDK/9.0.0';
 
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
@@ -83,7 +83,6 @@ export class Client implements ClientInterface {
   public readonly terminalApi: TerminalApi;
   public readonly transactionsApi: TransactionsApi;
   public readonly v1EmployeesApi: V1EmployeesApi;
-  public readonly v1ItemsApi: V1ItemsApi;
   public readonly v1TransactionsApi: V1TransactionsApi;
 
   constructor(config?: Partial<Configuration>) {
@@ -135,7 +134,6 @@ export class Client implements ClientInterface {
     this.terminalApi = new TerminalApi(this);
     this.transactionsApi = new TransactionsApi(this);
     this.v1EmployeesApi = new V1EmployeesApi(this);
-    this.v1ItemsApi = new V1ItemsApi(this);
     this.v1TransactionsApi = new V1TransactionsApi(this);
   }
 
@@ -166,6 +164,11 @@ function getBaseUri(server: Server = 'default', config: Configuration): string {
   if (config.environment === Environment.Sandbox) {
     if (server === 'default') {
       return 'https://connect.squareupsandbox.com';
+    }
+  }
+  if (config.environment === Environment.Custom) {
+    if (server === 'default') {
+      return pathTemplate`${new SkipEncode(config.customUrl)}`;
     }
   }
   throw new Error('Could not get Base URL. Invalid environment or server.');

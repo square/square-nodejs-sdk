@@ -5,7 +5,8 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2021-01-21'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2021-02-26'` |
+| `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
 | `timeout` | `number` | Timeout for API calls.<br>*Default*: `60000` |
@@ -57,7 +58,6 @@ import {
   TerminalApi,
   TransactionsApi,
   V1EmployeesApi,
-  V1ItemsApi,
   V1TransactionsApi,
 } from 'squarelib';
 
@@ -80,7 +80,7 @@ try {
 }
 ```
 
-## SquareClient
+## Square Client
 
 The gateway for the SDK. This class acts as a factory for the Apis and also holds the configuration of the SDK.
 
@@ -92,7 +92,6 @@ The gateway for the SDK. This class acts as a factory for the Apis and also hold
 | oAuth | Provides access to OAuthApi |
 | v1Employees | Provides access to V1EmployeesApi |
 | v1Transactions | Provides access to V1TransactionsApi |
-| v1Items | Provides access to V1ItemsApi |
 | applePay | Provides access to ApplePayApi |
 | bankAccounts | Provides access to BankAccountsApi |
 | bookings | Provides access to BookingsApi |

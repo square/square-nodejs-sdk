@@ -9,9 +9,9 @@ A request to update a `BreakType`
 
 ## Fields
 
-| Name | Type | Description |
-|  --- | --- | --- |
-| `breakType` | [`BreakType`](/doc/models/break-type.md) | A defined break template that sets an expectation for possible `Break`<br>instances on a `Shift`. |
+| Name | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `breakType` | [`BreakType`](/doc/models/break-type.md) | Required | A defined break template that sets an expectation for possible `Break`<br>instances on a `Shift`. |
 
 ## Example (as JSON)
 

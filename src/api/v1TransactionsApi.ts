@@ -1,6 +1,5 @@
 import { ApiResponse } from '../apiResponse';
 import { RequestOptions } from '../http/requestBuilder';
-import { V1BankAccount, v1BankAccountSchema } from '../models/v1BankAccount';
 import {
   V1CreateRefundRequest,
   v1CreateRefundRequestSchema,
@@ -18,56 +17,10 @@ import { BaseApi } from './baseApi';
 
 export class V1TransactionsApi extends BaseApi {
   /**
-   * Provides non-confidential details for all of a location's associated bank accounts. This endpoint
-   * does not provide full bank account numbers, and there is no way to obtain a full bank account number
-   * with the Connect API.
-   *
-   * @param locationId  The ID of the location to list bank accounts for.
-   * @return Response from the API call
-   * @deprecated
-   */
-  async listBankAccounts(
-    locationId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<V1BankAccount[]>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ locationId: [locationId, string()] });
-    req.appendTemplatePath`/v1/${mapped.locationId}/bank-accounts`;
-    req.deprecated('V1TransactionsApi.listBankAccounts');
-    return req.callAsJson(array(v1BankAccountSchema), requestOptions);
-  }
-
-  /**
-   * Provides non-confidential details for a merchant's associated bank account. This endpoint does not
-   * provide full bank account numbers, and there is no way to obtain a full bank account number with the
-   * Connect API.
-   *
-   * @param locationId      The ID of the bank account's associated location.
-   * @param bankAccountId   The bank account's Square-issued ID. You obtain this value from Settlement
-   *                                  objects returned.
-   * @return Response from the API call
-   * @deprecated
-   */
-  async retrieveBankAccount(
-    locationId: string,
-    bankAccountId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<V1BankAccount>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      locationId: [locationId, string()],
-      bankAccountId: [bankAccountId, string()],
-    });
-    req.appendTemplatePath`/v1/${mapped.locationId}/bank-accounts/${mapped.bankAccountId}`;
-    req.deprecated('V1TransactionsApi.retrieveBankAccount');
-    return req.callAsJson(v1BankAccountSchema, requestOptions);
-  }
-
-  /**
    * Provides summary information for a merchant's online store orders.
    *
    * @param locationId  The ID of the location to list online store orders for.
-   * @param order       TThe order in which payments are listed in the response.
+   * @param order       The order in which payments are listed in the response.
    * @param limit       The maximum number of payments to return in a single response. This value cannot
    *                              exceed 200.
    * @param batchToken  A pagination cursor to retrieve the next set of results for your original query to
@@ -234,7 +187,7 @@ export class V1TransactionsApi extends BaseApi {
    * during a date range. Date ranges cannot exceed one year in length.
    *
    * @param locationId  The ID of the location to list refunds for.
-   * @param order       TThe order in which payments are listed in the response.
+   * @param order       The order in which payments are listed in the response.
    * @param beginTime   The beginning of the requested reporting period, in ISO 8601 format. If this value
    *                              is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error.
    *                              Default value: The current time minus one year.

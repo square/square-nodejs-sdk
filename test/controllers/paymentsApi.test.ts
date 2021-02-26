@@ -18,7 +18,7 @@ describe('Payments API', () => {
   it('should testCreatePayment response', async () => {
     const sourceId = 'cnon:card-nonce-ok';
     const money: Money = {
-      amount: 200,
+      amount: BigInt(200),
       currency: 'USD',
     };
 
@@ -27,7 +27,7 @@ describe('Payments API', () => {
       idempotencyKey: uuidv4(),
       amountMoney: money,
       appFeeMoney: {
-        amount: 10,
+        amount: BigInt(10),
         currency: 'USD',
       },
       autocomplete: true,
@@ -51,7 +51,7 @@ describe('Payments API', () => {
   it('should testCreatePaymentDelayed response', async () => {
     const sourceId = 'cnon:card-nonce-ok';
     const money: Money = {
-      amount: 200,
+      amount: BigInt(200),
       currency: 'USD',
     };
 
@@ -61,7 +61,7 @@ describe('Payments API', () => {
       amountMoney: money,
       autocomplete: false,
       appFeeMoney: {
-        amount: 10,
+        amount: BigInt(10),
         currency: 'USD',
       },
     };
@@ -89,7 +89,7 @@ describe('Payments API', () => {
   it('should testCreatePaymentDelayed response', async () => {
     const sourceId = 'cnon:card-nonce-ok';
     const money: Money = {
-      amount: 200,
+      amount: BigInt(200),
       currency: 'USD',
     };
 
@@ -100,7 +100,7 @@ describe('Payments API', () => {
       amountMoney: money,
       autocomplete: false,
       appFeeMoney: {
-        amount: 10,
+        amount: BigInt(10),
         currency: 'USD',
       },
     };
@@ -119,7 +119,7 @@ describe('Payments API', () => {
   it('should testCompletePayment response', async () => {
     const sourceId = 'cnon:card-nonce-ok';
     const money: Money = {
-      amount: 200,
+      amount: BigInt(200),
       currency: 'USD',
     };
 
@@ -129,7 +129,7 @@ describe('Payments API', () => {
       amountMoney: money,
       autocomplete: false,
       appFeeMoney: {
-        amount: 10,
+        amount: BigInt(10),
         currency: 'USD',
       },
     };

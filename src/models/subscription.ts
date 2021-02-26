@@ -1,7 +1,7 @@
 import {
   array,
+  bigint,
   lazy,
-  number,
   object,
   optional,
   Schema,
@@ -66,7 +66,7 @@ export interface Subscription {
    * supplied must match the version in the database, otherwise the write will
    * be rejected as conflicting.
    */
-  version?: number;
+  version?: bigint;
   /** The timestamp when the subscription was created, in RFC 3339 format. */
   createdAt?: string;
   /**
@@ -107,7 +107,7 @@ export const subscriptionSchema: Schema<Subscription> = object({
     'price_override_money',
     optional(lazy(() => moneySchema)),
   ],
-  version: ['version', optional(number())],
+  version: ['version', optional(bigint())],
   createdAt: ['created_at', optional(string())],
   cardId: ['card_id', optional(string())],
   paidUntilDate: ['paid_until_date', optional(string())],

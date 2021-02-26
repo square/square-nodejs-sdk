@@ -9,6 +9,7 @@ export interface Location {
   /**
    * The name of the location.
    * This information appears in the dashboard as the nickname.
+   * A location name must be unique within a seller account.
    */
   name?: string;
   /** Represents a physical address. */

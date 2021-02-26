@@ -11,7 +11,7 @@ Describes a `CreateInvoice` request.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `invoice` | [`Invoice`](/doc/models/invoice.md) |  | Stores information about an invoice. You use the Invoices API to create and manage<br>invoices. For more information, see [Manage Invoices Using the Invoices API](https://developer.squareup.com/docs/invoices-api/overview). |
+| `invoice` | [`Invoice`](/doc/models/invoice.md) | Required | Stores information about an invoice. You use the Invoices API to create and manage<br>invoices. For more information, see [Manage Invoices Using the Invoices API](https://developer.squareup.com/docs/invoices-api/overview). |
 | `idempotencyKey` | `string` | Optional | A unique string that identifies the `CreateInvoice` request. If you do not<br>provide `idempotency_key` (or provide an empty string as the value), the endpoint<br>treats each request as independent.<br><br>For more information, see [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).<br>**Constraints**: *Maximum Length*: `128` |
 
 ## Example (as JSON)

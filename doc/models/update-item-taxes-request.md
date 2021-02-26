@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `itemIds` | `string[]` |  | IDs for the CatalogItems associated with the CatalogTax objects being updated. |
+| `itemIds` | `string[]` | Required | IDs for the CatalogItems associated with the CatalogTax objects being updated. |
 | `taxesToEnable` | `string[]` | Optional | IDs of the CatalogTax objects to enable. |
 | `taxesToDisable` | `string[]` | Optional | IDs of the CatalogTax objects to disable. |
 

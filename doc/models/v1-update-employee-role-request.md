@@ -7,9 +7,9 @@
 
 ## Fields
 
-| Name | Type | Description |
-|  --- | --- | --- |
-| `body` | [`V1EmployeeRole`](/doc/models/v1-employee-role.md) | V1EmployeeRole |
+| Name | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`V1EmployeeRole`](/doc/models/v1-employee-role.md) | Required | V1EmployeeRole |
 
 ## Example (as JSON)
 

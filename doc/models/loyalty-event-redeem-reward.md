@@ -11,7 +11,7 @@ Provides metadata when the event `type` is `REDEEM_REWARD`.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `loyaltyProgramId` | `string` |  | The ID of the [loyalty program](#type-LoyaltyProgram).<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
+| `loyaltyProgramId` | `string` | Required | The ID of the [loyalty program](#type-LoyaltyProgram).<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
 | `rewardId` | `string` | Optional | The ID of the redeemed [loyalty reward](#type-LoyaltyReward).<br>This field is returned only if the event source is `LOYALTY_API`.<br>**Constraints**: *Maximum Length*: `36` |
 | `orderId` | `string` | Optional | The ID of the [order](#type-Order) that redeemed the reward.<br>This field is returned only if the Orders API is used to process orders. |
 

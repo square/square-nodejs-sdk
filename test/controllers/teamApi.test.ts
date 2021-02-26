@@ -60,12 +60,12 @@ describe('Team API', () => {
     }))
   })
 
-  it('should testUpdateWageSetting', async () => {
+  xit('should testUpdateWageSetting', async () => {
     const assignment: JobAssignment = {
       jobTitle: "Math tutor",
       payType: "HOURLY",
       hourlyRate: {
-        amount: 2500,
+        amount: BigInt(2500),
         currency: 'USD'
       }
     }

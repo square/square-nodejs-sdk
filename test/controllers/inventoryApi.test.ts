@@ -25,7 +25,7 @@ describe('Inventory API', () => {
       trackInventory: true,
       pricingType:'FIXED_PRICING',
       priceMoney: {
-        amount: 100,
+        amount: BigInt(100),
         currency:'USD'
       }
     }

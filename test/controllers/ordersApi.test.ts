@@ -32,7 +32,7 @@ describe('Orders API', () => {
       name: 'New Item',
       quantity: '1',
       basePriceMoney: {
-        amount: 100,
+        amount: BigInt(100),
         currency: 'USD'
       }
     }
@@ -88,7 +88,7 @@ describe('Orders API', () => {
       name: 'Updated Item',
       quantity: '1',
       basePriceMoney: {
-        amount: 0,
+        amount: BigInt(0),
         currency: 'USD'
       }
     }
@@ -130,7 +130,7 @@ describe('Orders API', () => {
       name: 'New Item',
       quantity: '1',
       basePriceMoney: {
-        amount: 100,
+        amount: BigInt(100),
         currency: 'USD'
       }
     }

@@ -2,6 +2,21 @@ import { LaborApi, CreateBreakTypeRequest, BreakType, LocationsApi, UpdateBreakT
 import { testClient } from "../testClient"
 import { v4 as uuidv4 } from 'uuid'
 
+function formatDateString(date: Date): string {
+  let result: string = '';
+  result += date.getUTCFullYear().toString();
+  result += '-';
+  result += (date.getUTCMonth() + 1).toString().padStart(2, '0');
+  result += '-';
+  result += date.getUTCDate().toString().padStart(2, '0');
+  result += 'T';
+  result += date.getUTCHours().toString().padStart(2, '0');
+  result += ':';
+  result += date.getUTCMinutes().toString().padStart(2, '0');
+  result += ':00Z';
+  return result;
+}
+
 describe('Labor API', () => {
   let laborApi     : LaborApi
   let locationsApi : LocationsApi
@@ -83,7 +98,7 @@ describe('Labor API', () => {
 
   it('should testCreateShift', async () => {
     let newShift : Shift = {
-      startAt: '2019-01-25T03:11:00-05:00',
+      startAt:  formatDateString(new Date()),
       locationId: locationId,
       teamMemberId: memberId
     }
@@ -108,7 +123,7 @@ describe('Labor API', () => {
     let wage: ShiftWage = {
       title: "Manager",
       hourlyRate: {
-        amount: 2500,
+        amount: BigInt(2500),
         currency: 'USD'
       }
     }
@@ -117,7 +132,7 @@ describe('Labor API', () => {
       wage,
       locationId: locationId,
       teamMemberId: memberId,
-      startAt: "2020-03-25T12:00:00Z",
+      startAt: formatDateString(new Date(Date.now() - 6000)),
     }
 
     let body : UpdateShiftRequest = {

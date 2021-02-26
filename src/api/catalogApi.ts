@@ -89,7 +89,7 @@ import {
   UpsertCatalogObjectResponse,
   upsertCatalogObjectResponseSchema,
 } from '../models/upsertCatalogObjectResponse';
-import { boolean, number, optional, string } from '../schema';
+import { bigint, boolean, optional, string } from '../schema';
 import { BaseApi } from './baseApi';
 
 export class CatalogApi extends BaseApi {
@@ -253,14 +253,14 @@ export class CatalogApi extends BaseApi {
   async listCatalog(
     cursor?: string,
     types?: string,
-    catalogVersion?: number,
+    catalogVersion?: bigint,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ListCatalogResponse>> {
     const req = this.createRequest('GET', '/v2/catalog/list');
     const mapped = req.prepareArgs({
       cursor: [cursor, optional(string())],
       types: [types, optional(string())],
-      catalogVersion: [catalogVersion, optional(number())],
+      catalogVersion: [catalogVersion, optional(bigint())],
     });
     req.query('cursor', mapped.cursor);
     req.query('types', mapped.types);
@@ -337,14 +337,14 @@ export class CatalogApi extends BaseApi {
   async retrieveCatalogObject(
     objectId: string,
     includeRelatedObjects?: boolean,
-    catalogVersion?: number,
+    catalogVersion?: bigint,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<RetrieveCatalogObjectResponse>> {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({
       objectId: [objectId, string()],
       includeRelatedObjects: [includeRelatedObjects, optional(boolean())],
-      catalogVersion: [catalogVersion, optional(number())],
+      catalogVersion: [catalogVersion, optional(bigint())],
     });
     req.query('include_related_objects', mapped.includeRelatedObjects);
     req.query('catalog_version', mapped.catalogVersion);

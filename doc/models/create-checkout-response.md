@@ -108,7 +108,7 @@ a request to the __CreateCheckout__ endpoint.
             "amount": 3500,
             "currency": "USD"
           },
-          "name": "Wooven Sweater",
+          "name": "Woven Sweater",
           "quantity": "3",
           "total_money": {
             "amount": 10500,
