@@ -92,7 +92,9 @@ describe('Labor API', () => {
     expect(breakType?.expectedDuration!).toBe('PT1H')
   })
   it('should testSearchShifts', async () => {
-    let { statusCode } = await laborApi.searchShifts({})
+    let { statusCode } = await laborApi.searchShifts({
+      limit: 1
+    })
     expect(statusCode).toBe(200)
   })
 

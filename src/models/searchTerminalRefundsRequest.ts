@@ -8,10 +8,10 @@ export interface SearchTerminalRefundsRequest {
   query?: TerminalRefundQuery;
   /**
    * A pagination cursor returned by a previous call to this endpoint.
-   * Provide this to retrieve the next set of results for the original query.
+   * Provide this cursor to retrieve the next set of results for the original query.
    */
   cursor?: string;
-  /** Limit the number of results returned for a single request. */
+  /** Limits the number of results returned for a single request. */
   limit?: number;
 }
 

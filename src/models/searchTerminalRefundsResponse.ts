@@ -3,9 +3,9 @@ import { Error, errorSchema } from './error';
 import { TerminalRefund, terminalRefundSchema } from './terminalRefund';
 
 export interface SearchTerminalRefundsResponse {
-  /** Information on errors encountered during the request. */
+  /** Information about errors encountered during the request. */
   errors?: Error[];
-  /** The requested search result of `TerminalRefund`s. */
+  /** The requested search result of `TerminalRefund` objects. */
   refunds?: TerminalRefund[];
   /**
    * The pagination cursor to be used in a subsequent request. If empty,

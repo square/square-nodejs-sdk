@@ -3,8 +3,8 @@ import { object, optional, Schema, string } from '../schema';
 export interface TerminalRefundQuerySort {
   /**
    * The order in which results are listed.
-   * - `ASC` - oldest to newest
-   * - `DESC` - newest to oldest (default).
+   * - `ASC` - Oldest to newest.
+   * - `DESC` - Newest to oldest (default).
    */
   sortOrder?: string;
 }

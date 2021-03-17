@@ -1,7 +1,7 @@
 
 # Complete Payment Response
 
-The return value from a [CompletePayment](#endpoint-payments-completepayment) call.
+Defines the response returned by[CompletePayment](#endpoint-payments-completepayment).
 
 ## Structure
 
@@ -25,6 +25,10 @@ The return value from a [CompletePayment](#endpoint-payments-completepayment) ca
     },
     "app_fee_money": {
       "amount": 10,
+      "currency": "USD"
+    },
+    "approved_money": {
+      "amount": 200,
       "currency": "USD"
     },
     "card_details": {
@@ -64,7 +68,8 @@ The return value from a [CompletePayment](#endpoint-payments-completepayment) ca
       "amount": 200,
       "currency": "USD"
     },
-    "updated_at": "2019-07-10T13:40:05.982Z"
+    "updated_at": "2019-07-10T13:40:05.982Z",
+    "version_token": "7knzZI16u3QBh2xXD7FH4GFwESqgam7Z9w2Ya0aSD9i6o"
   }
 }
 ```

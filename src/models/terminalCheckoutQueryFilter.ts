@@ -3,8 +3,8 @@ import { TimeRange, timeRangeSchema } from './timeRange';
 
 export interface TerminalCheckoutQueryFilter {
   /**
-   * `TerminalCheckout`s associated with a specific device. If no device is specified then all
-   * `TerminalCheckout`s for the merchant will be displayed.
+   * The `TerminalCheckout` objects associated with a specific device. If no device is specified, then all
+   * `TerminalCheckout` objects for the merchant are displayed.
    */
   deviceId?: string;
   /**
@@ -16,7 +16,7 @@ export interface TerminalCheckoutQueryFilter {
    */
   createdAt?: TimeRange;
   /**
-   * Filtered results with the desired status of the `TerminalCheckout`
+   * Filtered results with the desired status of the `TerminalCheckout`.
    * Options: PENDING, IN_PROGRESS, CANCELED, COMPLETED
    */
   status?: string;

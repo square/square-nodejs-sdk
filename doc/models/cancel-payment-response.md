@@ -1,7 +1,7 @@
 
 # Cancel Payment Response
 
-The return value from the [CancelPayment](#endpoint-payments-cancelpayment) endpoint.
+Defines the response returned by [CancelPayment](#endpoint-payments-cancelpayment).
 
 ## Structure
 
@@ -25,6 +25,10 @@ The return value from the [CancelPayment](#endpoint-payments-cancelpayment) endp
     },
     "app_fee_money": {
       "amount": 10,
+      "currency": "USD"
+    },
+    "approved_money": {
+      "amount": 200,
       "currency": "USD"
     },
     "card_details": {
@@ -62,7 +66,8 @@ The return value from the [CancelPayment](#endpoint-payments-cancelpayment) endp
       "amount": 200,
       "currency": "USD"
     },
-    "updated_at": "2018-10-17T20:38:57.693Z"
+    "updated_at": "2018-10-17T20:38:57.693Z",
+    "version_token": "lAITJ6l8I8tFu62mCf2W4sxJQxN9FOaH5zwfsdPf7Dm6o"
   }
 }
 ```

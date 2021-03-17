@@ -33,7 +33,9 @@ describe('Terminal API', () => {
   })
 
   it('should testSearchTerminalCheckouts', async () => {
-    let body: SearchTerminalCheckoutsRequest = {}
+    let body: SearchTerminalCheckoutsRequest = {
+      limit: 1
+    }
     let {statusCode} = await terminalApi.searchTerminalCheckouts(body)
     expect(statusCode).toBe(200)
   })

@@ -76,6 +76,7 @@ describe('Orders API', () => {
   it('should testSearchOrders response', async () => {
 
     let body: SearchOrdersRequest = {
+      limit: 1,
       locationIds: [locationId]
     }
     let { statusCode } = await ordersApi.searchOrders(body)

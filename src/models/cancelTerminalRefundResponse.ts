@@ -3,7 +3,7 @@ import { Error, errorSchema } from './error';
 import { TerminalRefund, terminalRefundSchema } from './terminalRefund';
 
 export interface CancelTerminalRefundResponse {
-  /** Information on errors encountered during the request. */
+  /** Information about errors encountered during the request. */
   errors?: Error[];
   refund?: TerminalRefund;
 }

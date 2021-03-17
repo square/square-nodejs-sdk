@@ -53,8 +53,8 @@ import { BaseApi } from './baseApi';
 
 export class TerminalApi extends BaseApi {
   /**
-   * Creates a new Terminal checkout request and sends it to the specified device to take a payment for
-   * the requested amount.
+   * Creates a Terminal checkout request and sends it to the specified device to take a payment
+   * for the requested amount.
    *
    * @param body An object containing the fields to POST for the request.  See
    *                                                     the corresponding object definition for field details.
@@ -95,9 +95,9 @@ export class TerminalApi extends BaseApi {
   }
 
   /**
-   * Retrieves a Terminal checkout request by checkout_id.
+   * Retrieves a Terminal checkout request by `checkout_id`.
    *
-   * @param checkoutId  Unique ID for the desired `TerminalCheckout`
+   * @param checkoutId  The unique ID for the desired `TerminalCheckout`.
    * @return Response from the API call
    */
   async getTerminalCheckout(
@@ -113,7 +113,7 @@ export class TerminalApi extends BaseApi {
   /**
    * Cancels a Terminal checkout request if the status of the request permits it.
    *
-   * @param checkoutId  Unique ID for the desired `TerminalCheckout`
+   * @param checkoutId  The unique ID for the desired `TerminalCheckout`.
    * @return Response from the API call
    */
   async cancelTerminalCheckout(
@@ -146,7 +146,7 @@ export class TerminalApi extends BaseApi {
   }
 
   /**
-   * Retrieves a filtered list of Terminal Interac refund requests created by the seller making the
+   * Retrieves a filtered list of Interac Terminal refund requests created by the seller making the
    * request.
    *
    * @param body An object containing the fields to POST for the request.  See
@@ -166,9 +166,9 @@ export class TerminalApi extends BaseApi {
   }
 
   /**
-   * Retrieves an Interac terminal refund object by ID.
+   * Retrieves an Interac Terminal refund object by ID.
    *
-   * @param terminalRefundId   Unique ID for the desired `TerminalRefund`
+   * @param terminalRefundId   The unique ID for the desired `TerminalRefund`.
    * @return Response from the API call
    */
   async getTerminalRefund(
@@ -184,10 +184,10 @@ export class TerminalApi extends BaseApi {
   }
 
   /**
-   * Cancels an Interac terminal refund request by refund request ID if the status of the request permits
+   * Cancels an Interac Terminal refund request by refund request ID if the status of the request permits
    * it.
    *
-   * @param terminalRefundId   Unique ID for the desired `TerminalRefund`
+   * @param terminalRefundId   The unique ID for the desired `TerminalRefund`.
    * @return Response from the API call
    */
   async cancelTerminalRefund(

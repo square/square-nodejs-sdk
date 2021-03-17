@@ -1,7 +1,7 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
-/** Refunds a payment. */
+/** Describes a request to refund a payment using [RefundPayment](#endpoint-payments-refundpayment). */
 export interface RefundPaymentRequest {
   /**
    * A unique string that identifies this `RefundPayment` request. The key can be any valid string

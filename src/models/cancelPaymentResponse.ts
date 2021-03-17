@@ -2,7 +2,7 @@ import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 import { Payment, paymentSchema } from './payment';
 
-/** The return value from the [CancelPayment](#endpoint-payments-cancelpayment) endpoint. */
+/** Defines the response returned by [CancelPayment](#endpoint-payments-cancelpayment). */
 export interface CancelPaymentResponse {
   /** Information about errors encountered during the request. */
   errors?: Error[];

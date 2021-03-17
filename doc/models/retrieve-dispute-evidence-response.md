@@ -25,6 +25,7 @@ Defines the fields in a `RetrieveDisputeEvidence` response.
       "filetype": "image/tiff"
     },
     "evidence_id": "TOomLInj6iWmP3N8qfCXrB",
+    "evidence_type": "GENERIC_EVIDENCE",
     "uploaded_at": "2018-10-18T16:01:10.000Z"
   }
 }

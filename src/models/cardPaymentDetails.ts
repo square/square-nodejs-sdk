@@ -15,7 +15,7 @@ import {
 import { DeviceDetails, deviceDetailsSchema } from './deviceDetails';
 import { Error, errorSchema } from './error';
 
-/** Reflects the current status of a card payment. */
+/** Reflects the current status of a card payment. Contains only non-confidential information. */
 export interface CardPaymentDetails {
   /**
    * The card payment's current state. The state can be AUTHORIZED, CAPTURED, VOIDED, or

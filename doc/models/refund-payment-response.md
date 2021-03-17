@@ -1,11 +1,11 @@
 
 # Refund Payment Response
 
-Defines the fields that are included in the response body of
-a request to the [RefundPayment](#endpoint-refunds-refundpayment) endpoint.
+Defines the response returned by
+[RefundPayment](#endpoint-payments-refundpayment).
 
-Note: If there are errors processing the request, the refund field might not be
-present or it might be present in a FAILED state.
+If there are errors processing the request, the `refund` field might not be
+present, or it might be present with a status of `FAILED`.
 
 ## Structure
 

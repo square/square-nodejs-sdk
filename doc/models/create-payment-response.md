@@ -1,10 +1,9 @@
 
 # Create Payment Response
 
-Defines the fields that are included in the response body of
-a request to the [CreatePayment](#endpoint-payments-createpayment) endpoint.
+Defines the response returned by [CreatePayment](#endpoint-payments-createpayment).
 
-Note: If there are errors processing the request, the payment field might not be
+If there are errors processing the request, the `payment` field might not be
 present, or it might be present with a status of `FAILED`.
 
 ## Structure
@@ -29,6 +28,10 @@ present, or it might be present with a status of `FAILED`.
     },
     "app_fee_money": {
       "amount": 10,
+      "currency": "USD"
+    },
+    "approved_money": {
+      "amount": 200,
       "currency": "USD"
     },
     "card_details": {
@@ -68,7 +71,8 @@ present, or it might be present with a status of `FAILED`.
       "amount": 200,
       "currency": "USD"
     },
-    "updated_at": "2019-07-10T13:23:49.446Z"
+    "updated_at": "2019-07-10T13:23:49.446Z",
+    "version_token": "H8Vnk5Z11SKcueuRti79jGpszSEsSVdhKRrSKCOzILG6o"
   }
 }
 ```

@@ -1,8 +1,7 @@
 
 # List Payments Response
 
-Defines the fields that are included in the response body of
-a request to the [ListPayments](#endpoint-payments-listpayments) endpoint.
+Defines the response returned by [ListPayments](#endpoint-payments-listpayments).
 
 ## Structure
 
@@ -27,6 +26,16 @@ a request to the [ListPayments](#endpoint-payments-listpayments) endpoint.
         "amount": 1000,
         "currency": "USD"
       },
+      "approved_money": {
+        "amount": 1000,
+        "currency": "USD"
+      },
+      "capabilities": [
+        "EDIT_AMOUNT_UP",
+        "EDIT_AMOUNT_DOWN",
+        "EDIT_TIP_AMOUNT_UP",
+        "EDIT_TIP_AMOUNT_DOWN"
+      ],
       "card_details": {
         "auth_result_code": "NQbV3A",
         "avs_status": "AVS_ACCEPTED",
@@ -54,10 +63,15 @@ a request to the [ListPayments](#endpoint-payments-listpayments) endpoint.
         "amount": 1000,
         "currency": "USD"
       },
-      "updated_at": "2019-07-09T14:36:13.883Z"
+      "updated_at": "2019-07-09T14:36:13.883Z",
+      "version_token": "v6orqdHcW2TwuzCQRdF6a4ktbG8T8nbDcBx8eyrkoZl6o"
     },
     {
       "amount_money": {
+        "amount": 1000,
+        "currency": "USD"
+      },
+      "approved_money": {
         "amount": 1000,
         "currency": "USD"
       },
@@ -100,7 +114,8 @@ a request to the [ListPayments](#endpoint-payments-listpayments) endpoint.
         "amount": 1000,
         "currency": "USD"
       },
-      "updated_at": "2019-07-08T01:13:58.508Z"
+      "updated_at": "2019-07-08T01:13:58.508Z",
+      "version_token": "pE0wanQBErcnO4ubL49pHCV1yAs4BUScWXb8fVvkRqa6o"
     }
   ]
 }

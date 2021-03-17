@@ -1,7 +1,8 @@
 import { number, object, optional, Schema, string } from '../schema';
 
 /**
- * Retrieves a list of refunds for the account making the request.
+ * Describes a request to list refunds using
+ * [ListPaymentRefunds](#endpoint-payments-listpaymentrefunds).
  * The maximum results per page is 100.
  */
 export interface ListPaymentRefundsRequest {

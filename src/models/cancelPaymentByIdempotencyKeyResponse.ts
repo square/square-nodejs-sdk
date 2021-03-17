@@ -2,8 +2,8 @@ import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 
 /**
- * The return value from the
- * [CancelPaymentByIdempotencyKey](#endpoint-payments-cancelpaymentbyidempotencykey) endpoint.
+ * Defines the response returned by
+ * [CancelPaymentByIdempotencyKey](#endpoint-payments-cancelpaymentbyidempotencykey).
  * On success, `errors` is empty.
  */
 export interface CancelPaymentByIdempotencyKeyResponse {

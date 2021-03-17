@@ -84,7 +84,10 @@ export interface Invoice {
   nextPaymentAmountMoney?: Money;
   /** Indicates the status of an invoice. */
   status?: string;
-  /** The time zone of the date values (for example, `due_date`) specified in the invoice. */
+  /**
+   * The time zone used to interpret calendar dates on the invoice, such as `due_date`. When an invoice is created, this field is set to the `timezone` specified for the seller location. The value cannot be changed.
+   * For example, a payment `due_date` of 2021-03-09 with a `timezone` of America/Los\_Angeles becomes overdue at midnight on March 9 in America/Los\_Angeles (which equals a UTC timestamp of 2021-03-10T08:00:00Z).
+   */
   timezone?: string;
   /** The timestamp when the invoice was created, in RFC 3339 format. */
   createdAt?: string;

@@ -3,7 +3,7 @@ import { Error, errorSchema } from './error';
 import { TerminalCheckout, terminalCheckoutSchema } from './terminalCheckout';
 
 export interface CancelTerminalCheckoutResponse {
-  /** Information on errors encountered during the request. */
+  /** Information about errors encountered during the request. */
   errors?: Error[];
   checkout?: TerminalCheckout;
 }
