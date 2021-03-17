@@ -22,7 +22,8 @@ const terminalApi = client.terminalApi;
 
 # Create Terminal Checkout
 
-Creates a new Terminal checkout request and sends it to the specified device to take a payment for the requested amount.
+Creates a Terminal checkout request and sends it to the specified device to take a payment
+for the requested amount.
 
 ```ts
 async createTerminalCheckout(
@@ -152,7 +153,7 @@ try {
 
 # Get Terminal Checkout
 
-Retrieves a Terminal checkout request by checkout_id.
+Retrieves a Terminal checkout request by `checkout_id`.
 
 ```ts
 async getTerminalCheckout(
@@ -165,7 +166,7 @@ async getTerminalCheckout(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `checkoutId` | `string` | Template, Required | Unique ID for the desired `TerminalCheckout` |
+| `checkoutId` | `string` | Template, Required | The unique ID for the desired `TerminalCheckout`. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -204,7 +205,7 @@ async cancelTerminalCheckout(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `checkoutId` | `string` | Template, Required | Unique ID for the desired `TerminalCheckout` |
+| `checkoutId` | `string` | Template, Required | The unique ID for the desired `TerminalCheckout`. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -287,7 +288,7 @@ try {
 
 # Search Terminal Refunds
 
-Retrieves a filtered list of Terminal Interac refund requests created by the seller making the request.
+Retrieves a filtered list of Interac Terminal refund requests created by the seller making the request.
 
 ```ts
 async searchTerminalRefunds(
@@ -346,7 +347,7 @@ try {
 
 # Get Terminal Refund
 
-Retrieves an Interac terminal refund object by ID.
+Retrieves an Interac Terminal refund object by ID.
 
 ```ts
 async getTerminalRefund(
@@ -359,7 +360,7 @@ async getTerminalRefund(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `terminalRefundId` | `string` | Template, Required | Unique ID for the desired `TerminalRefund` |
+| `terminalRefundId` | `string` | Template, Required | The unique ID for the desired `TerminalRefund`. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -385,7 +386,7 @@ try {
 
 # Cancel Terminal Refund
 
-Cancels an Interac terminal refund request by refund request ID if the status of the request permits it.
+Cancels an Interac Terminal refund request by refund request ID if the status of the request permits it.
 
 ```ts
 async cancelTerminalRefund(
@@ -398,7 +399,7 @@ async cancelTerminalRefund(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `terminalRefundId` | `string` | Template, Required | Unique ID for the desired `TerminalRefund` |
+| `terminalRefundId` | `string` | Template, Required | The unique ID for the desired `TerminalRefund`. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type

@@ -75,6 +75,7 @@ describe('Invoices API', () => {
   it('should testSearchInvoices', async () => {
 
     let body: SearchInvoicesRequest = {
+      limit: 1,
       query: {
         filter: {
           locationIds: [locationId]

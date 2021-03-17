@@ -2,10 +2,7 @@ import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 import { Payment, paymentSchema } from './payment';
 
-/**
- * Defines the fields that are included in the response body of
- * a request to the [GetPayment](#endpoint-payments-getpayment) endpoint.
- */
+/** Defines the response returned by [GetPayment](#endpoint-payments-getpayment). */
 export interface GetPaymentResponse {
   /** Information about errors encountered during the request. */
   errors?: Error[];

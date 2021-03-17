@@ -1,5 +1,38 @@
 # Change Log
 
+## Version 9.1.0 (2021-03-17)
+
+## Existing API updates
+
+* **Payments API:**
+  * [CreatePayment](https://developer.squareup.com/reference/square_2021-03-17/payments-api/create-payment). Until now, the `CreatePayment` endpoint supported only taking card payments. In this release, the API now supports cash and external payments. For more information, see [Take Payments.](https://developer.squareup.com/docs/payments-api/take-payments)
+  * [UpdatePayment](https://developer.squareup.com/reference/square_2021-03-17/payments-api/update-payment). This new  endpoint enables developers to change the payment amount and tip amount after a payment is created. For more information, see [Update Payments.](https://developer.squareup.com/docs/payments-api/update-payments)
+ 
+* **Invoices API:**
+  * [InvoiceDeliveryMethod](https://developer.squareup.com/reference/square_2021-03-17/enums/InvoiceDeliveryMethod) enum. Added the read-only `SMS` value.  
+  * [InvoiceRequestMethod](https://developer.squareup.com/reference/square_2021-03-17/enums/InvoiceRequestMethod) enum (deprecated). Added the read-only `SMS`, `SMS_CHARGE_CARD_ON_FILE`, and `SMS_CHARGE_BANK_ON_FILE` values for backward compatibility.  
+  
+  These values direct Square to send invoices and receipts to customers using SMS (text message). SMS settings can be configured from first-party Square applications only; they cannot be configured from the Invoices API. Square does not send invoice reminders when using SMS to communicate with customers.
+
+
+* **Terminal API:**
+  * [TerminalCheckout](https://developer.squareup.com/reference/square_2021-03-17/objects/TerminalCheckout). Previously, `TerminalCheckout` only supported tapped, dipped, or swiped credit cards. It now supports manual card entry and e-money. Added the `payment_type` field to denote a request for a manually entered payment card or an e-money payment.
+  * [TerminalCheckoutPaymentType.](https://developer.squareup.com/reference/square_2021-03-17enums/TerminalCheckoutPaymentType) A new enum for the Terminal checkout payment types that can be requested.
+  * [E-money support](https://developer.squareup.com/docs/terminal-api/e-money-payments) is now available for Terminal checkout requests in Japan.
+
+
+## SDKs
+* **Square Java SDK:**
+  * Updated the OkHttp dependency to version 4.9.0.
+  * Fixed a `NullPointerException` when passing an empty order ID to the `UpdateOrder` method.
+
+## Documentation updates
+
+* **Multi-language code examples.** Previously, various topics showed only cURL examples for the REST API operations. These topics now show examples in multiple languages. You can use the language drop-down list to choose a language.
+  
+* [When to Use Connect V1.](https://developer.squareup.com/docs/build-basics/using-connect-v1) Content is revised to reflect the most current information about when to use the Connect V1 API.
+
+
 ## Version 9.0.0 (2021-02-26)
 ## Existing API updates
 

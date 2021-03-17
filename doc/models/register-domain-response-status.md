@@ -1,7 +1,7 @@
 
 # Register Domain Response Status
 
-The status of domain registration.
+The status of the domain registration.
 
 ## Enumeration
 

@@ -18,38 +18,24 @@ Defines the fields in a `ListDisputeEvidence` response.
 
 ```json
 {
+  "cursor": "G1aSTRm48CLjJsg6Sg3hQN1b1OMaoVuG",
   "evidence": [
     {
-      "evidence_id": "evidence_id6",
-      "dispute_id": "dispute_id8",
-      "uploaded_at": "uploaded_at0",
-      "evidence_type": "REBUTTAL_EXPLANATION"
+      "dispute_id": "bVTprrwk0gygTLZ96VX1oB",
+      "evidence_id": "TOomLInj6iWmP3N8qfCXrB",
+      "evidence_text": "1Z8888888888888888",
+      "evidence_type": "TRACKING_NUMBER",
+      "uploaded_at": "2018-10-18T16:01:10.000Z"
     },
     {
-      "evidence_id": "evidence_id5",
-      "dispute_id": "dispute_id9",
-      "uploaded_at": "uploaded_at1",
-      "evidence_type": "RELATED_TRANSACTION_DOCUMENTATION"
-    }
-  ],
-  "errors": [
-    {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "VALUE_TOO_SHORT",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "VALUE_TOO_LONG",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "VALUE_TOO_LOW",
-      "detail": "detail3",
-      "field": "field1"
+      "dispute_id": "bVTprrwk0gygTLZ96VX1oB",
+      "evidence_file": {
+        "filename": "evidence.tiff",
+        "filetype": "image/tiff"
+      },
+      "evidence_id": "TOomLInj6iWmP3N8qfCXrB",
+      "evidence_type": "GENERIC_EVIDENCE",
+      "uploaded_at": "2018-10-18T16:01:10.000Z"
     }
   ]
 }

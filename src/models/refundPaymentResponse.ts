@@ -3,10 +3,10 @@ import { Error, errorSchema } from './error';
 import { PaymentRefund, paymentRefundSchema } from './paymentRefund';
 
 /**
- * Defines the fields that are included in the response body of
- * a request to the [RefundPayment](#endpoint-refunds-refundpayment) endpoint.
- * Note: If there are errors processing the request, the refund field might not be
- * present or it might be present in a FAILED state.
+ * Defines the response returned by
+ * [RefundPayment](#endpoint-payments-refundpayment).
+ * If there are errors processing the request, the `refund` field might not be
+ * present, or it might be present with a status of `FAILED`.
  */
 export interface RefundPaymentResponse {
   /** Information about errors encountered during the request. */

@@ -8,7 +8,7 @@ export interface DeviceCheckoutOptions {
    * Match a `DeviceCode.device_id` value with `device_id` to get the associated device code.
    */
   deviceId: string;
-  /** Instruct the device to skip the receipt screen. Defaults to false. */
+  /** Instructs the device to skip the receipt screen. Defaults to false. */
   skipReceiptScreen?: boolean;
   tipSettings?: TipSettings;
 }

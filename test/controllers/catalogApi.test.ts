@@ -98,6 +98,7 @@ describe('Catalog API', () => {
 
   it('should testSearchCatalogObjects', async () => {
     let body: SearchCatalogObjectsRequest = {
+      limit: 1
     }
 
     let { statusCode }: ApiResponse<SearchCatalogObjectsResponse> = await catalogApi.searchCatalogObjects(body)
@@ -106,6 +107,7 @@ describe('Catalog API', () => {
 
   it('should testSearchCatalogItems', async () => {
     let body: SearchCatalogItemsRequest = {
+      limit: 1
     }
 
     let { statusCode }: ApiResponse<SearchCatalogItemsResponse> = await catalogApi.searchCatalogItems(body)

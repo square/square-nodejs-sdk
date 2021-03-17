@@ -1,8 +1,7 @@
 
 # Get Payment Response
 
-Defines the fields that are included in the response body of
-a request to the [GetPayment](#endpoint-payments-getpayment) endpoint.
+Defines the response returned by [GetPayment](#endpoint-payments-getpayment).
 
 ## Structure
 
@@ -26,6 +25,10 @@ a request to the [GetPayment](#endpoint-payments-getpayment) endpoint.
     },
     "app_fee_money": {
       "amount": 10,
+      "currency": "USD"
+    },
+    "approved_money": {
+      "amount": 200,
       "currency": "USD"
     },
     "card_details": {
@@ -75,7 +78,8 @@ a request to the [GetPayment](#endpoint-payments-getpayment) endpoint.
       "amount": 200,
       "currency": "USD"
     },
-    "updated_at": "2019-07-10T13:23:49.446Z"
+    "updated_at": "2019-07-10T13:23:49.446Z",
+    "version_token": "hj8JqHWu9R1Kkfu63UuIUmYc7zm6YFOt92g8d2fb9fz6o"
   }
 }
 ```

@@ -4,6 +4,14 @@ import {
   CardPaymentDetails,
   cardPaymentDetailsSchema,
 } from './cardPaymentDetails';
+import {
+  CashPaymentDetails,
+  cashPaymentDetailsSchema,
+} from './cashPaymentDetails';
+import {
+  ExternalPaymentDetails,
+  externalPaymentDetailsSchema,
+} from './externalPaymentDetails';
 import { Money, moneySchema } from './money';
 import { ProcessingFee, processingFeeSchema } from './processingFee';
 import { RiskEvaluation, riskEvaluationSchema } from './riskEvaluation';
@@ -52,6 +60,15 @@ export interface Payment {
    * for more information.
    */
   appFeeMoney?: Money;
+  /**
+   * Represents an amount of money. `Money` fields can be signed or unsigned.
+   * Fields that do not explicitly define whether they are signed or unsigned are
+   * considered unsigned and can only hold positive amounts. For signed fields, the
+   * sign of the value indicates the purpose of the money transfer. See
+   * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
+   * for more information.
+   */
+  approvedMoney?: Money;
   /** The processing fees and fee adjustments assessed by Square for this payment. */
   processingFee?: ProcessingFee[];
   /**
@@ -94,11 +111,22 @@ export interface Payment {
   delayedUntil?: string;
   /**
    * The source type for this payment.
-   * Current values include `CARD`.
+   * Current values include `CARD`, `CASH`, or `EXTERNAL`.
    */
   sourceType?: string;
-  /** Reflects the current status of a card payment. */
+  /** Reflects the current status of a card payment. Contains only non-confidential information. */
   cardDetails?: CardPaymentDetails;
+  /**
+   * Stores details about a cash payment. Contains only non-confidential information. For more information, see
+   * [Take Cash Payments](https://developer.squareup.com/docs/payments-api/take-payments/cash-payments).
+   */
+  cashDetails?: CashPaymentDetails;
+  /**
+   * Stores details about an external payment. Contains only non-confidential information.
+   * For more information, see
+   * [Take External Payments](https://developer.squareup.com/docs/payments-api/take-payments/external-payments).
+   */
+  externalDetails?: ExternalPaymentDetails;
   /** The ID of the location associated with the payment. */
   locationId?: string;
   /** The ID of the order associated with the payment. */
@@ -139,6 +167,14 @@ export interface Payment {
    */
   statementDescriptionIdentifier?: string;
   /**
+   * Actions that can be performed on this payment:
+   * - `EDIT_AMOUNT_UP` - The payment amount can be edited up.
+   * - `EDIT_AMOUNT_DOWN` - The payment amount can be edited down.
+   * - `EDIT_TIP_AMOUNT_UP` - The tip amount can be edited up.
+   * - `EDIT_TIP_AMOUNT_DOWN` - The tip amount can be edited down.
+   */
+  capabilities?: string[];
+  /**
    * The payment's receipt number.
    * The field is missing if a payment is canceled.
    */
@@ -148,6 +184,11 @@ export interface Payment {
    * The field is only populated for COMPLETED payments.
    */
   receiptUrl?: string;
+  /**
+   * Used for optimistic concurrency. This opaque token identifies a specific version of the
+   * `Payment` object.
+   */
+  versionToken?: string;
 }
 
 export const paymentSchema: Schema<Payment> = object({
@@ -158,6 +199,7 @@ export const paymentSchema: Schema<Payment> = object({
   tipMoney: ['tip_money', optional(lazy(() => moneySchema))],
   totalMoney: ['total_money', optional(lazy(() => moneySchema))],
   appFeeMoney: ['app_fee_money', optional(lazy(() => moneySchema))],
+  approvedMoney: ['approved_money', optional(lazy(() => moneySchema))],
   processingFee: [
     'processing_fee',
     optional(array(lazy(() => processingFeeSchema))),
@@ -169,6 +211,11 @@ export const paymentSchema: Schema<Payment> = object({
   delayedUntil: ['delayed_until', optional(string())],
   sourceType: ['source_type', optional(string())],
   cardDetails: ['card_details', optional(lazy(() => cardPaymentDetailsSchema))],
+  cashDetails: ['cash_details', optional(lazy(() => cashPaymentDetailsSchema))],
+  externalDetails: [
+    'external_details',
+    optional(lazy(() => externalPaymentDetailsSchema)),
+  ],
   locationId: ['location_id', optional(string())],
   orderId: ['order_id', optional(string())],
   referenceId: ['reference_id', optional(string())],
@@ -187,6 +234,8 @@ export const paymentSchema: Schema<Payment> = object({
     'statement_description_identifier',
     optional(string()),
   ],
+  capabilities: ['capabilities', optional(array(string()))],
   receiptNumber: ['receipt_number', optional(string())],
   receiptUrl: ['receipt_url', optional(string())],
+  versionToken: ['version_token', optional(string())],
 });

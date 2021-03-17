@@ -18,35 +18,24 @@ Defines the fields in an `AcceptDispute` response.
 
 ```json
 {
-  "errors": [
-    {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "VALUE_TOO_SHORT",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "VALUE_TOO_LONG",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "VALUE_TOO_LOW",
-      "detail": "detail3",
-      "field": "field1"
-    }
-  ],
   "dispute": {
-    "dispute_id": "dispute_id8",
     "amount_money": {
-      "amount": 40,
-      "currency": "BWP"
+      "amount": 2000,
+      "currency": "USD"
     },
-    "reason": "CANCELLED",
-    "state": "INQUIRY_PROCESSING",
-    "due_at": "due_at4"
+    "brand_dispute_id": "100000282394",
+    "card_brand": "VISA",
+    "created_at": "2018-10-18T15:59:13.613Z",
+    "dispute_id": "XDgyFu7yo1E2S5lQGGpYn",
+    "disputed_payments": [
+      {
+        "payment_id": "6Ee10wvqhfipStz297mtUhBXvaB"
+      }
+    ],
+    "due_at": "2018-11-01T00:00:00.000Z",
+    "reason": "NO_KNOWLEDGE",
+    "state": "LOST",
+    "updated_at": "2018-10-18T15:59:13.613Z"
   }
 }
 ```

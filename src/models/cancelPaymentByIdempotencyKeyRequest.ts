@@ -1,6 +1,9 @@
 import { object, Schema, string } from '../schema';
 
-/** Specifies the idempotency key of a payment to cancel. */
+/**
+ * Describes a request to cancel a payment using
+ * [CancelPaymentByIdempotencyKey](#endpoint-payments-cancelpaymentbyidempotencykey).
+ */
 export interface CancelPaymentByIdempotencyKeyRequest {
   /** The `idempotency_key` identifying the payment to be canceled. */
   idempotencyKey: string;

@@ -12,7 +12,9 @@ describe('Team API', () => {
   })
 
   it('should testSearchTeamMembers', async () => {
-    let { statusCode } = await teamApi.searchTeamMembers({})
+    let { statusCode } = await teamApi.searchTeamMembers({
+      limit: 1
+    })
     expect(statusCode).toBe(200)
   })
 

@@ -3,9 +3,9 @@ import { Error, errorSchema } from './error';
 import { TerminalCheckout, terminalCheckoutSchema } from './terminalCheckout';
 
 export interface SearchTerminalCheckoutsResponse {
-  /** Information on errors encountered during the request. */
+  /** Information about errors encountered during the request. */
   errors?: Error[];
-  /** The requested search result of `TerminalCheckout`s. */
+  /** The requested search result of `TerminalCheckout` objects. */
   checkouts?: TerminalCheckout[];
   /**
    * The pagination cursor to be used in a subsequent request. If empty,

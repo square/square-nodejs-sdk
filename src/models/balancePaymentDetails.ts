@@ -1,6 +1,6 @@
 import { object, optional, Schema, string } from '../schema';
 
-/** Reflects the current status of a balance payment. */
+/** Reflects the current status of a balance payment. Contains only non-confidential information. */
 export interface BalancePaymentDetails {
   /** The ID of the account used to fund the payment. */
   accountId?: string;

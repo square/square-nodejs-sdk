@@ -2,13 +2,13 @@ import { lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 export interface TerminalRefund {
-  /** A unique ID for this `TerminalRefund` */
+  /** A unique ID for this `TerminalRefund`. */
   id?: string;
   /** The reference to the payment refund created by completing this `TerminalRefund`. */
   refundId?: string;
-  /** Unique ID of the payment being refunded. */
+  /** The unique ID of the payment being refunded. */
   paymentId: string;
-  /** The reference to the Square order id for the payment identified by the `payment_id`. */
+  /** The reference to the Square order ID for the payment identified by the `payment_id`. */
   orderId?: string;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -25,28 +25,32 @@ export interface TerminalRefund {
    */
   reason?: string;
   /**
-   * The unique Id of the device intended for this `TerminalRefund`.
+   * The unique ID of the device intended for this `TerminalRefund`.
    * The Id can be retrieved from /v2/devices api.
    */
   deviceId?: string;
   /**
-   * The duration as an RFC 3339 duration, after which the refund will be automatically canceled.
-   * TerminalRefunds that are `PENDING` will be automatically `CANCELED` and have a cancellation reason
-   * of `TIMED_OUT`
-   * Default: 5 minutes from creation
+   * The RFC 3339 duration, after which the refund is automatically canceled.
+   * A `TerminalRefund` that is `PENDING` is automatically `CANCELED` and has a cancellation reason
+   * of `TIMED_OUT`.
+   * Default: 5 minutes from creation.
    * Maximum: 5 minutes
    */
   deadlineDuration?: string;
   /**
    * The status of the `TerminalRefund`.
-   * Options: `PENDING`, `IN_PROGRESS`, `CANCELED`, `COMPLETED`
+   * Options: `PENDING`, `IN_PROGRESS`, `CANCELED`, or `COMPLETED`.
    */
   status?: string;
   cancelReason?: string;
-  /** The time when the `TerminalRefund` was created as an RFC 3339 timestamp. */
+  /** The time when the `TerminalRefund` was created, as an RFC 3339 timestamp. */
   createdAt?: string;
-  /** The time when the `TerminalRefund` was last updated as an RFC 3339 timestamp. */
+  /** The time when the `TerminalRefund` was last updated, as an RFC 3339 timestamp. */
   updatedAt?: string;
+  /** The ID of the application that created the refund. */
+  appId?: string;
+  /** The location of the device where the `TerminalRefund` was directed. */
+  locationId?: string;
 }
 
 export const terminalRefundSchema: Schema<TerminalRefund> = object({
@@ -62,4 +66,6 @@ export const terminalRefundSchema: Schema<TerminalRefund> = object({
   cancelReason: ['cancel_reason', optional(string())],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
+  appId: ['app_id', optional(string())],
+  locationId: ['location_id', optional(string())],
 });

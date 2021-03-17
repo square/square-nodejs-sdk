@@ -12,16 +12,16 @@ import { BaseApi } from './baseApi';
 
 export class ApplePayApi extends BaseApi {
   /**
-   * Activates a domain for use with Web Apple Pay and Square. A validation
-   * will be performed on this domain by Apple to ensure is it properly set up as
+   * Activates a domain for use with Apple Pay on the Web and Square. A validation
+   * is performed on this domain by Apple to ensure that it is properly set up as
    * an Apple Pay enabled domain.
    *
    * This endpoint provides an easy way for platform developers to bulk activate
-   * Web Apple Pay with Square for merchants using their platform.
+   * Apple Pay on the Web with Square for merchants using their platform.
    *
-   * To learn more about Apple Pay on Web see the Apple Pay section in the
-   * [Square Payment Form Walkthrough](https://developer.squareup.com/docs/payment-form/payment-form-
-   * walkthrough).
+   * To learn more about Web Apple Pay, see
+   * [Add the Apple Pay on the Web Button](https://developer.squareup.com/docs/payment-form/add-digital-
+   * wallets/apple-pay).
    *
    * @param body An object containing the fields to POST for the request.  See the
    *                                             corresponding object definition for field details.

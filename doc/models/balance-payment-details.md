@@ -1,7 +1,7 @@
 
 # Balance Payment Details
 
-Reflects the current status of a balance payment.
+Reflects the current status of a balance payment. Contains only non-confidential information.
 
 ## Structure
 

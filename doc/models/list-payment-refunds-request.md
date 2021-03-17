@@ -1,7 +1,8 @@
 
 # List Payment Refunds Request
 
-Retrieves a list of refunds for the account making the request.
+Describes a request to list refunds using
+[ListPaymentRefunds](#endpoint-payments-listpaymentrefunds).
 
 The maximum results per page is 100.
 

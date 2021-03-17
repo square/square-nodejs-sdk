@@ -129,7 +129,7 @@ bodyInvoicepaymentRequests0Reminders[0] = bodyInvoicepaymentRequests0reminders0;
 
 const bodyInvoicepaymentRequests0: InvoicePaymentRequest = {};
 bodyInvoicepaymentRequests0.uid = 'uid4';
-bodyInvoicepaymentRequests0.requestMethod = 'SHARE_MANUALLY';
+bodyInvoicepaymentRequests0.requestMethod = 'SMS_CHARGE_CARD_ON_FILE';
 bodyInvoicepaymentRequests0.requestType = 'BALANCE';
 bodyInvoicepaymentRequests0.dueDate = '2030-01-24';
 bodyInvoicepaymentRequests0.fixedAmountRequestedMoney = bodyInvoicepaymentRequests0FixedAmountRequestedMoney;
@@ -138,6 +138,22 @@ bodyInvoicepaymentRequests0.automaticPaymentSource = 'NONE';
 bodyInvoicepaymentRequests0.reminders = bodyInvoicepaymentRequests0Reminders;
 
 bodyInvoicePaymentRequests[0] = bodyInvoicepaymentRequests0;
+
+const bodyInvoiceCustomFields: InvoiceCustomField[] = [];
+
+const bodyInvoicecustomFields0: InvoiceCustomField = {};
+bodyInvoicecustomFields0.label = 'Event Reference Number';
+bodyInvoicecustomFields0.value = 'Ref. #1234';
+bodyInvoicecustomFields0.placement = 'ABOVE_LINE_ITEMS';
+
+bodyInvoiceCustomFields[0] = bodyInvoicecustomFields0;
+
+const bodyInvoicecustomFields1: InvoiceCustomField = {};
+bodyInvoicecustomFields1.label = 'Terms of Service';
+bodyInvoicecustomFields1.value = 'The terms of service are...';
+bodyInvoicecustomFields1.placement = 'BELOW_LINE_ITEMS';
+
+bodyInvoiceCustomFields[1] = bodyInvoicecustomFields1;
 
 const bodyInvoice: Invoice = {};
 bodyInvoice.id = 'id0';
@@ -151,6 +167,7 @@ bodyInvoice.invoiceNumber = 'inv-100';
 bodyInvoice.title = 'Event Planning Services';
 bodyInvoice.description = 'We appreciate your business!';
 bodyInvoice.scheduledAt = '2030-01-13T10:00:00Z';
+bodyInvoice.customFields = bodyInvoiceCustomFields;
 
 const body: CreateInvoiceRequest = {
   invoice: bodyInvoice,
@@ -373,7 +390,7 @@ bodyInvoicepaymentRequests0FixedAmountRequestedMoney.currency = 'USS';
 
 const bodyInvoicepaymentRequests0: InvoicePaymentRequest = {};
 bodyInvoicepaymentRequests0.uid = '2da7964f-f3d2-4f43-81e8-5aa220bf3355';
-bodyInvoicepaymentRequests0.requestMethod = 'SHARE_MANUALLY';
+bodyInvoicepaymentRequests0.requestMethod = 'SMS_CHARGE_CARD_ON_FILE';
 bodyInvoicepaymentRequests0.requestType = 'DEPOSIT';
 bodyInvoicepaymentRequests0.dueDate = 'due_date2';
 bodyInvoicepaymentRequests0.fixedAmountRequestedMoney = bodyInvoicepaymentRequests0FixedAmountRequestedMoney;
