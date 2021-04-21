@@ -18,12 +18,11 @@ A request to adjust (add or subtract) points manually.
 
 ```json
 {
-  "idempotency_key": "idempotency_key6",
   "adjust_points": {
-    "loyalty_program_id": "loyalty_program_id2",
-    "points": 96,
-    "reason": "reason2"
-  }
+    "points": 10,
+    "reason": "Complimentary points"
+  },
+  "idempotency_key": "bc29a517-3dc9-450e-aa76-fae39ee849d1"
 }
 ```
 

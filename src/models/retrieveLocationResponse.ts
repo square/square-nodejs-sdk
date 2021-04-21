@@ -4,7 +4,7 @@ import { Location, locationSchema } from './location';
 
 /**
  * Defines the fields that the
- * [RetrieveLocation](#endpoint-retrievelocation) endpoint returns
+ * [RetrieveLocation]($e/Locations/RetrieveLocation) endpoint returns
  * in a response.
  */
 export interface RetrieveLocationResponse {

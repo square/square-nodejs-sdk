@@ -4,7 +4,7 @@ import { Subscription, subscriptionSchema } from './subscription';
 
 /**
  * Defines the fields that are included in the response from the
- * [SearchSubscriptions](#endpoint-subscriptions-searchsubscriptions) endpoint.
+ * [SearchSubscriptions]($e/Subscriptions/SearchSubscriptions) endpoint.
  */
 export interface SearchSubscriptionsResponse {
   /** Information about errors encountered during the request. */

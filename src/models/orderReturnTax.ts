@@ -12,7 +12,7 @@ export interface OrderReturnTax {
   uid?: string;
   /** `uid` of the Tax from the Order which contains the original charge of this tax. */
   sourceTaxUid?: string;
-  /** The catalog object id referencing [CatalogTax](#type-catalogtax). */
+  /** The catalog object id referencing [CatalogTax]($m/CatalogTax). */
   catalogObjectId?: string;
   /** The tax's name. */
   name?: string;

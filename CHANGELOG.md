@@ -1,5 +1,55 @@
 # Change Log
 
+## Version 10.0.0 (2021-04-21)
+## New API releases
+
+## Existing API updates
+
+* **Subscriptions API:** 
+  *  [ResumeSubscription.](https://developer.squareup.com/reference/square_2021-04-21/subscriptions-api/resume-subscription) This new endpoint enables applications to resume [deactivated subscriptions.](https://developer.squareup.com/docs/subscriptions-api/overview#deactivated-subscriptions) After a subscription is created, there are events that can make a subscription non-billable, causing Square to deactivate the subscription. A seller can also resume deactivated subscriptions in the Seller Dashboard. Applications can call  [ListSubscriptionEvents](https://developer.squareup.com/reference/square_2021-04-21/subscriptions-api/list-subscription-events) to determine why Square deactivated a subscription.
+ 
+* **Customers API:**
+
+  * [Customer](https://developer.squareup.com/reference/square_2021-04-21/objects/Customer) object:
+    * New `version` field (beta). This field represents the current version of the customer profile. You can include it in your `UpdateCustomer` and `DeleteCustomer` requests to  enable optimistic concurrency. For more information, see [Customer profile versions and optimistic concurrency support.](https://developer.squareup.com/docs/customers-api/what-it-does#customer-profile-versions-and-optimistic-concurrency-support) 
+    * The `groups` field and corresponding `CustomerGroupInfo` object are retired.
+    
+  * [Customer webhooks](https://developer.squareup.com/docs/customers-api/use-the-api/customer-webhooks) have moved to the [general availability](https://developer.squareup.com/docs/build-basics/api-lifecycle#general-availability) (GA) state. Event notifications now include the `version` field (beta).
+  
+* **Invoices API:**
+
+  * The [Invoices API](https://developer.squareup.com/docs/invoices-api/overview) has moved to the GA state.
+
+  * [Invoice](https://developer.squareup.com/reference/square_2021-04-21/objects/Invoice) object:
+    * A new required `accepted_payment_methods` field that defines the methods of payment that customers can use to pay an invoice on the Square-hosted invoice page. Valid values are defined in the new [InvoiceAcceptedPaymentMethods](https://developer.squareup.com/reference/square_2021-04-21/objects/InvoiceAcceptedPaymentMethods) enum. For more information, see the [migration notes.](https://developer.squareup.com/docs/invoices-api/overview#migration-notes)
+    * A new `subscription_id` field, which is included in invoices created for subscription billing.
+
+* **Loyalty API:** (beta)
+ 
+  * [RetrieveLoyaltyProgram](https://developer.squareup.com/reference/square_2021-04-21/loyalty-api/retrieve-loyalty-program) endpoint. This new endpoint accepts a program ID or the `main` keyword and returns the loyalty program in a seller's account. For more information, see [Retrieve a loyalty program.](https://developer.squareup.com/docs/loyalty-api/overview#retrieve-loyalty-program) This endpoint is preferred over the `ListLoyaltyPrograms` endpoint.
+
+  * Introduced a new mapping implementation for loyalty accounts:
+    * [LoyaltyAccount](https://developer.squareup.com/reference/square_2021-04-21/objects/LoyaltyAccount) object. Added the `mapping` field (of type `LoyaltyAccountMapping`), which is used to associate the loyalty account with a buyer. This field is recommended over the `mappings` field.
+    * [LoyaltyAccountMapping](https://developer.squareup.com/reference/square_2021-04-21/objects/LoyaltyAccountMapping) object. Added the `phone_number` field to represent a phone number mapping. This field is recommended over the `type` and `value` fields.
+
+  * A new [loyalty.program.created](https://developer.squareup.com/reference/square_2021-04-21/webhooks/loyalty.program.created) webhook. Square now publishes an event notification when a loyalty program is created in the Square Seller Dashboard.
+
+* **Inventory API:** 
+  * [InventoryChange](https://developer.squareup.com/reference/square_2021-04-21/objects/InventoryChange) can now have its own measurement unit.
+
+* **Catalog API:** 
+  * [CatalogItem](https://developer.squareup.com/reference/square_2021-04-21/objects/CatalogItem) introduces the  `sort_name` attribute that can take Japanese writing scripts to sort items by. When it is unspecified, the regular `name` attribute is used for sorting.
+  * [CatalogPricingRule](https://developer.squareup.com/reference/square_2021-04-21/objects/CatalogCatalogPricingRule) has the new `customer_group_ids_any` attribute included to support automatic application of discounts to specified product set purchased by members of any of the customer groups identified by the `customer_group_ids_any` attribute values.
+* **Team API**
+  * New [Team webhooks](https://developer.squareup.com/reference/square_2021-04-21/team-api/webhooks): `team_member.created`, `team_member.updated`, `team_member.wage_setting.updated` to notify on created and updated team members and wage settings.  
+   
+## SDKs 
+* **Connect Node.js SDK:** (retired)
+  * The Connect Node.js SDK is retired and replaced by the [Square Node.js SDK.](https://github.com/square/square-nodejs-sdk) For migration information, see [Connect Node.js SDK README.](https://github.com/square/connect-nodejs-sdk/blob/master/README.md)
+
+
+
+
 ## Version 9.1.0 (2021-03-17)
 
 ## Existing API updates

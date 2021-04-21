@@ -20,6 +20,11 @@ Describes a `CreateInvoice` request.
 {
   "idempotency_key": "ce3748f9-5fc1-4762-aa12-aae5e843f1f4",
   "invoice": {
+    "accepted_payment_methods": {
+      "bank_account": false,
+      "card": true,
+      "square_gift_card": false
+    },
     "custom_fields": [
       {
         "label": "Event Reference Number",

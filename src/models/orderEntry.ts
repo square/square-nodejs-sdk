@@ -1,8 +1,8 @@
 import { number, object, optional, Schema, string } from '../schema';
 
 /**
- * A lightweight description of an [Order](#type-order) that is returned when `returned_entries` is true on a
- * [SearchOrderRequest](#type-searchorderrequest)
+ * A lightweight description of an [Order]($m/Order) that is returned when
+ * `returned_entries` is true on a [SearchOrdersRequest]($e/Orders/SearchOrders)
  */
 export interface OrderEntry {
   /** The id of the Order */

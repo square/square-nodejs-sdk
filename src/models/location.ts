@@ -21,7 +21,7 @@ export interface Location {
   timezone?: string;
   /**
    * The Square features that are enabled for the location.
-   * See [LocationCapability](#type-locationcapability) for possible values.
+   * See [LocationCapability]($m/LocationCapability) for possible values.
    * See [LocationCapability](#type-locationcapability) for possible values
    */
   capabilities?: string[];

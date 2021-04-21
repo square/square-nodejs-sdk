@@ -17,6 +17,10 @@ import {
   listSubscriptionEventsResponseSchema,
 } from '../models/listSubscriptionEventsResponse';
 import {
+  ResumeSubscriptionResponse,
+  resumeSubscriptionResponseSchema,
+} from '../models/resumeSubscriptionResponse';
+import {
   RetrieveSubscriptionResponse,
   retrieveSubscriptionResponseSchema,
 } from '../models/retrieveSubscriptionResponse';
@@ -171,7 +175,7 @@ export class SubscriptionsApi extends BaseApi {
    *                                  to retrieve the next set of results for the original query.  For more information,
    *                                  see [Pagination](https://developer.squareup.com/docs/working-with-
    *                                  apis/pagination).
-   * @param limit           The upper limit on the number of subscription events to return  in the response.
+   * @param limit           The upper limit on the number of subscription events to return in the response.
    *                                  Default: `200`
    * @return Response from the API call
    */
@@ -191,5 +195,23 @@ export class SubscriptionsApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/events`;
     return req.callAsJson(listSubscriptionEventsResponseSchema, requestOptions);
+  }
+
+  /**
+   * Resumes a deactivated subscription.
+   *
+   * @param subscriptionId  The ID of the subscription to resume.
+   * @return Response from the API call
+   */
+  async resumeSubscription(
+    subscriptionId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ResumeSubscriptionResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      subscriptionId: [subscriptionId, string()],
+    });
+    req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/resume`;
+    return req.callAsJson(resumeSubscriptionResponseSchema, requestOptions);
   }
 }

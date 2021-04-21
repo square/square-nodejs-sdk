@@ -35,7 +35,7 @@ export interface ObtainTokenRequest {
    * to 2019-03-13. This parameter is required if `grant_type` is set to
    * `migration_token` to indicate that the application wants to get a replacement
    * OAuth access token. The response also returns a refresh token.
-   * For more information, see [Migrate to Using Refresh Tokens](https://developer.squareup.com/docs/authz/oauth/migration).
+   * For more information, see [Migrate to Using Refresh Tokens](https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens).
    */
   migrationToken?: string;
   /**

@@ -13,7 +13,7 @@ export interface OrderReturnDiscount {
   uid?: string;
   /** `uid` of the Discount from the Order which contains the original application of this discount. */
   sourceDiscountUid?: string;
-  /** The catalog object id referencing [CatalogDiscount](#type-catalogdiscount). */
+  /** The catalog object id referencing [CatalogDiscount]($m/CatalogDiscount). */
   catalogObjectId?: string;
   /** The discount's name. */
   name?: string;

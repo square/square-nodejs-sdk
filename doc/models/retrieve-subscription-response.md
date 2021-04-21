@@ -2,7 +2,7 @@
 # Retrieve Subscription Response
 
 Defines the fields that are included in the response from the
-[RetrieveSubscription](#endpoint-subscriptions-retrievesubscription) endpoint.
+[RetrieveSubscription](/doc/api/subscriptions.md#retrieve-subscription) endpoint.
 
 ## Structure
 

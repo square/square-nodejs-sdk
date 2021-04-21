@@ -2,7 +2,7 @@
 # Add Group to Customer Response
 
 Defines the fields that are included in the response body of
-a request to the [AddGroupToCustomer](#endpoint-addgrouptocustomer) endpoint.
+a request to the [AddGroupToCustomer](/doc/api/customers.md#add-group-to-customer) endpoint.
 
 ## Structure
 

@@ -2,7 +2,7 @@
 # List Subscription Events Request
 
 Defines parameters in a
-[ListSubscriptionEvents](#endpoint-subscriptions-listsubscriptionevents)
+[ListSubscriptionEvents](/doc/api/subscriptions.md#list-subscription-events)
 endpoint request.
 
 ## Structure

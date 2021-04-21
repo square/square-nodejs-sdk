@@ -4,7 +4,7 @@ import { Subscription, subscriptionSchema } from './subscription';
 
 /**
  * Defines the fields that are included in the response from the
- * [UpdateSubscription](#endpoint-subscriptions-updatesubscription) endpoint.
+ * [UpdateSubscription]($e/Subscriptions/UpdateSubscription) endpoint.
  */
 export interface UpdateSubscriptionResponse {
   /** Information about errors encountered during the request. */

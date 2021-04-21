@@ -6,7 +6,7 @@ import {
 
 /**
  * Defines parameters in a
- * [SearchSubscriptions](#endpoint-subscriptions-searchsubscriptions) endpoint
+ * [SearchSubscriptions]($e/Subscriptions/SearchSubscriptions) endpoint
  * request.
  */
 export interface SearchSubscriptionsRequest {

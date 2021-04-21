@@ -2,9 +2,9 @@
 # Update Customer Response
 
 Defines the fields that are included in the response body of
-a request to the UpdateCustomer endpoint.
+a request to the `UpdateCustomer` endpoint.
 
-One of `errors` or `customer` is present in a given response (never both).
+Either `errors` or `customer` is present in a given response (never both).
 
 ## Structure
 
@@ -31,19 +31,18 @@ One of `errors` or `customer` is present in a given response (never both).
       "postal_code": "10003"
     },
     "created_at": "2016-03-23T20:21:54.859Z",
+    "creation_source": "THIRD_PARTY",
     "email_address": "New.Amelia.Earhart@example.com",
     "family_name": "Earhart",
     "given_name": "Amelia",
-    "groups": [
-      {
-        "id": "16894e93-96eb-4ced-b24b-f71d42bf084c",
-        "name": "Aviation Enthusiasts"
-      }
-    ],
     "id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
     "note": "updated customer note",
+    "preferences": {
+      "email_unsubscribed": false
+    },
     "reference_id": "YOUR_REFERENCE_ID",
-    "updated_at": "2016-03-25T20:21:55Z"
+    "updated_at": "2016-05-15T20:21:55Z",
+    "version": 3
   }
 }
 ```

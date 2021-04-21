@@ -7,7 +7,7 @@ import { Money, moneySchema } from './money';
  */
 export interface CalculateLoyaltyPointsRequest {
   /**
-   * The [order](#type-Order) ID for which to calculate the points.
+   * The [order]($m/Order) ID for which to calculate the points.
    * Specify this field if your application uses the Orders API to process orders.
    * Otherwise, specify the `transaction_amount`.
    */

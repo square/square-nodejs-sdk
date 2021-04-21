@@ -23,20 +23,20 @@ export interface Booking {
   version?: number;
   /** Supported booking statuses. */
   status?: string;
-  /** The timestamp specifying the creation time of this booking. */
+  /** The timestamp specifying the creation time of this booking, in RFC 3339 format. */
   createdAt?: string;
-  /** The timestamp specifying the most recent update time of this booking. */
+  /** The timestamp specifying the most recent update time of this booking, in RFC 3339 format. */
   updatedAt?: string;
-  /** The timestamp specifying the starting time of this booking. */
+  /** The timestamp specifying the starting time of this booking, in RFC 3339 format. */
   startAt?: string;
-  /** The ID of the [Location](#type-location) object representing the location where the booked service is provided. */
+  /** The ID of the [Location]($m/Location) object representing the location where the booked service is provided. */
   locationId?: string;
-  /** The ID of the [Customer](#type-Customer) object representing the customer attending this booking */
+  /** The ID of the [Customer]($m/Customer) object representing the customer attending this booking */
   customerId?: string;
-  /** The free-text field for the customer to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a relevant [CatalogObject](#type-CatalogObject) instance. */
+  /** The free-text field for the customer to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a relevant [CatalogObject]($m/CatalogObject) instance. */
   customerNote?: string;
   /**
-   * The free-text field for the seller to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a specific [CatalogObject](#type-CatalogObject) instance.
+   * The free-text field for the seller to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a specific [CatalogObject]($m/CatalogObject) instance.
    * This field should not be visible to customers.
    */
   sellerNote?: string;

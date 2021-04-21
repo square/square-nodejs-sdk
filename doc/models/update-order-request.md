@@ -2,7 +2,7 @@
 # Update Order Request
 
 Defines the fields that are included in requests to the
-[UpdateOrder](#endpoint-orders-updateorder) endpoint.
+[UpdateOrder](/doc/api/orders.md#update-order) endpoint.
 
 ## Structure
 

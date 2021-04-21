@@ -1,5 +1,9 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import {
+  CatalogMeasurementUnit,
+  catalogMeasurementUnitSchema,
+} from './catalogMeasurementUnit';
+import {
   InventoryAdjustment,
   inventoryAdjustmentSchema,
 } from './inventoryAdjustment';
@@ -37,6 +41,13 @@ export interface InventoryChange {
    * particular time from one location to another.
    */
   transfer?: InventoryTransfer;
+  /**
+   * Represents the unit used to measure a `CatalogItemVariation` and
+   * specifies the precision for decimal quantities.
+   */
+  measurementUnit?: CatalogMeasurementUnit;
+  /** The ID of the [CatalogMeasurementUnit]($m/CatalogMeasurementUnit) object representing the catalog measurement unit associated with the inventory change. */
+  measurementUnitId?: string;
 }
 
 export const inventoryChangeSchema: Schema<InventoryChange> = object({
@@ -47,4 +58,9 @@ export const inventoryChangeSchema: Schema<InventoryChange> = object({
   ],
   adjustment: ['adjustment', optional(lazy(() => inventoryAdjustmentSchema))],
   transfer: ['transfer', optional(lazy(() => inventoryTransferSchema))],
+  measurementUnit: [
+    'measurement_unit',
+    optional(lazy(() => catalogMeasurementUnitSchema)),
+  ],
+  measurementUnitId: ['measurement_unit_id', optional(string())],
 });

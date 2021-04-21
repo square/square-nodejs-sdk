@@ -1,7 +1,7 @@
 
 # Update Location Request
 
-Request object for the [UpdateLocation](#endpoint-updatelocation) endpoint.
+Request object for the [UpdateLocation](/doc/api/locations.md#update-location) endpoint.
 
 ## Structure
 

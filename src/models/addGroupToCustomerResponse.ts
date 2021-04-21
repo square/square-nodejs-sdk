@@ -3,7 +3,7 @@ import { Error, errorSchema } from './error';
 
 /**
  * Defines the fields that are included in the response body of
- * a request to the [AddGroupToCustomer](#endpoint-addgrouptocustomer) endpoint.
+ * a request to the [AddGroupToCustomer]($e/Customers/AddGroupToCustomer) endpoint.
  */
 export interface AddGroupToCustomerResponse {
   /** Any errors that occurred during the request. */

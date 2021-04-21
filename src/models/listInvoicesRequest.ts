@@ -12,8 +12,7 @@ export interface ListInvoicesRequest {
   cursor?: string;
   /**
    * The maximum number of invoices to return (200 is the maximum `limit`).
-   * If not provided, the server
-   * uses a default limit of 100 invoices.
+   * If not provided, the server uses a default limit of 100 invoices.
    */
   limit?: number;
 }

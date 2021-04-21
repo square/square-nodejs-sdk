@@ -119,8 +119,8 @@ export interface CatalogObject {
   isDeleted?: boolean;
   /**
    * A map (key-value pairs) of application-defined custom attribute values. The value of a key-value pair
-   * is a [CatalogCustomAttributeValue](#type-CatalogCustomAttributeValue) object. The key is the `key` attribute
-   * value defined in the associated [CatalogCustomAttributeDefinition](#type-CatalogCustomAttributeDefinition)
+   * is a [CatalogCustomAttributeValue]($m/CatalogCustomAttributeValue) object. The key is the `key` attribute
+   * value defined in the associated [CatalogCustomAttributeDefinition]($m/CatalogCustomAttributeDefinition)
    * object defined by the application making the request.
    * If the `CatalogCustomAttributeDefinition` object is
    * defined by another application, the `CatalogCustomAttributeDefinition`'s key attribute value is prefixed by
@@ -146,13 +146,19 @@ export interface CatalogObject {
    * except where specified in the `present_at_location_ids` field. If not specified, defaults to `true`.
    */
   presentAtAllLocations?: boolean;
-  /** A list of locations where the object is present, even if `present_at_all_locations` is `false`. */
+  /**
+   * A list of locations where the object is present, even if `present_at_all_locations` is `false`.
+   * This can include locations that are deactivated.
+   */
   presentAtLocationIds?: string[];
-  /** A list of locations where the object is not present, even if `present_at_all_locations` is `true`. */
+  /**
+   * A list of locations where the object is not present, even if `present_at_all_locations` is `true`.
+   * This can include locations that are deactivated.
+   */
   absentAtLocationIds?: string[];
   /** Identifies the `CatalogImage` attached to this `CatalogObject`. */
   imageId?: string;
-  /** A [CatalogObject](#type-CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog. */
+  /** A [CatalogObject]($m/CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog. */
   itemData?: CatalogItem;
   /** A category to which a `CatalogItem` instance belongs. */
   categoryData?: CatalogCategory;

@@ -12,7 +12,7 @@ import {
   customAttributeFilterSchema,
 } from './customAttributeFilter';
 
-/** Defines the request body for the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems) endpoint. */
+/** Defines the request body for the [SearchCatalogItems]($e/Catalog/SearchCatalogItems) endpoint. */
 export interface SearchCatalogItemsRequest {
   /**
    * The text filter expression to return items or item variations containing specified text in
@@ -40,7 +40,7 @@ export interface SearchCatalogItemsRequest {
   /**
    * The customer-attribute filter to return items or item variations matching the specified
    * custom attribute expressions. A maximum number of 10 custom attribute expressions are supported in
-   * a single call to the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems) endpoint.
+   * a single call to the [SearchCatalogItems]($e/Catalog/SearchCatalogItems) endpoint.
    */
   customAttributeFilters?: CustomAttributeFilter[];
 }

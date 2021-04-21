@@ -95,7 +95,7 @@ export class TeamApi extends BaseApi {
    * will contain explicit error information for this particular create.
    *
    * Learn about [Troubleshooting the Teams API](https://developer.squareup.
-   * com/docs/team/troubleshooting#bulkcreateteammembers).
+   * com/docs/team/troubleshooting#bulk-create-team-members).
    *
    * @param body An object containing the fields to POST for the request.  See
    *                                                    the corresponding object definition for field details.
@@ -122,7 +122,7 @@ export class TeamApi extends BaseApi {
    * of the response
    * will contain explicit error information for this particular update.
    * Learn about [Troubleshooting the Teams API](https://developer.squareup.
-   * com/docs/team/troubleshooting#bulkupdateteammembers).
+   * com/docs/team/troubleshooting#bulk-update-team-members).
    *
    * @param body An object containing the fields to POST for the request.  See
    *                                                    the corresponding object definition for field details.
@@ -165,7 +165,7 @@ export class TeamApi extends BaseApi {
   /**
    * Retrieve a `TeamMember` object for the given `TeamMember.id`.
    * Learn about [Troubleshooting the Teams API](https://developer.squareup.
-   * com/docs/team/troubleshooting#retrieveteammember).
+   * com/docs/team/troubleshooting#retrieve-a-team-member).
    *
    * @param teamMemberId   The ID of the team member to retrieve.
    * @return Response from the API call
@@ -183,7 +183,7 @@ export class TeamApi extends BaseApi {
   /**
    * Updates a single `TeamMember` object. The `TeamMember` will be returned on successful updates.
    * Learn about [Troubleshooting the Teams API](https://developer.squareup.
-   * com/docs/team/troubleshooting#updateteammember).
+   * com/docs/team/troubleshooting#update-a-team-member).
    *
    * @param teamMemberId   The ID of the team member to update.
    * @param body           An object containing the fields to POST for the request.
@@ -230,7 +230,7 @@ export class TeamApi extends BaseApi {
    * it fully replaces the `WageSetting` object for the team member.
    * The `WageSetting` will be returned upon successful update.
    * Learn about [Troubleshooting the Teams API](https://developer.squareup.
-   * com/docs/team/troubleshooting#updatewagesetting).
+   * com/docs/team/troubleshooting#create-or-update-a-wage-setting).
    *
    * @param teamMemberId   The ID of the team member to update the `WageSetting`
    *                                                          object for.

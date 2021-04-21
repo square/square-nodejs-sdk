@@ -16,7 +16,7 @@ import { Money, moneySchema } from './money';
 export interface SubscriptionPhase {
   /** The Square-assigned ID of the subscription phase. This field cannot be changed after a `SubscriptionPhase` is created. */
   uid?: string;
-  /** Determines the billing cadence of a [Subscription](#type-Subscription) */
+  /** Determines the billing cadence of a [Subscription]($m/Subscription) */
   cadence: string;
   /** The number of `cadence`s the phase lasts. If not set, the phase never ends. Only the last phase can be indefinite. This field cannot be changed after a `SubscriptionPhase` is created. */
   periods?: number;

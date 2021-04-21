@@ -1,8 +1,8 @@
 
 # Order Entry
 
-A lightweight description of an [Order](#type-order) that is returned when `returned_entries` is true on a
-[SearchOrderRequest](#type-searchorderrequest)
+A lightweight description of an [Order](/doc/models/order.md) that is returned when
+`returned_entries` is true on a [SearchOrdersRequest](/doc/api/orders.md#search-orders)
 
 ## Structure
 

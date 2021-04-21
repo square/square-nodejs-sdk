@@ -168,8 +168,7 @@ export class BookingsApi extends BaseApi {
   /**
    * Retrieves a booking.
    *
-   * @param bookingId  The ID of the [Booking](#type-booking) object representing the to-be-retrieved
-   *                             booking.
+   * @param bookingId  The ID of the [Booking]($m/Booking) object representing the to-be-retrieved booking.
    * @return Response from the API call
    */
   async retrieveBooking(
@@ -185,8 +184,8 @@ export class BookingsApi extends BaseApi {
   /**
    * Updates a booking.
    *
-   * @param bookingId  The ID of the [Booking](#type-booking) object representing the
-   *                                                  to-be-updated booking.
+   * @param bookingId  The ID of the [Booking]($m/Booking) object representing the to-
+   *                                                  be-updated booking.
    * @param body       An object containing the fields to POST for the request.  See
    *                                                  the corresponding object definition for field details.
    * @return Response from the API call
@@ -209,8 +208,8 @@ export class BookingsApi extends BaseApi {
   /**
    * Cancels an existing booking.
    *
-   * @param bookingId  The ID of the [Booking](#type-booking) object representing the
-   *                                                  to-be-cancelled booking.
+   * @param bookingId  The ID of the [Booking]($m/Booking) object representing the to-
+   *                                                  be-cancelled booking.
    * @param body       An object containing the fields to POST for the request.  See
    *                                                  the corresponding object definition for field details.
    * @return Response from the API call

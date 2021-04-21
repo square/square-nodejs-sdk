@@ -2,7 +2,7 @@
 # Pay Order Response
 
 Defines the fields that are included in the response body of a request to the
-[PayOrder](#endpoint-payorder) endpoint.
+[PayOrder](/doc/api/orders.md#pay-order) endpoint.
 
 ## Structure
 

@@ -1,7 +1,7 @@
 
 # Cancel Payment Response
 
-Defines the response returned by [CancelPayment](#endpoint-payments-cancelpayment).
+Defines the response returned by [CancelPayment](/doc/api/payments.md#cancel-payment).
 
 ## Structure
 

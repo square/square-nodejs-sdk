@@ -2,7 +2,7 @@
 # Remove Group From Customer Response
 
 Defines the fields that are included in the response body of
-a request to the [RemoveGroupFromCustomer](#endpoint-removegroupfromcustomer)
+a request to the [RemoveGroupFromCustomer](/doc/api/customers.md#remove-group-from-customer)
 endpoint.
 
 ## Structure

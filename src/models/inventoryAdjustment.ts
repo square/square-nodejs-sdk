@@ -26,7 +26,7 @@ export interface InventoryAdjustment {
   /** Indicates the state of a tracked item quantity in the lifecycle of goods. */
   toState?: string;
   /**
-   * The Square ID of the [Location](#type-location) where the related
+   * The Square ID of the [Location]($m/Location) where the related
    * quantity of items are being tracked.
    */
   locationId?: string;
@@ -70,7 +70,7 @@ export interface InventoryAdjustment {
   /** Provides information about the application used to generate a change. */
   source?: SourceApplication;
   /**
-   * The Square ID of the [Employee](#type-employee) responsible for the
+   * The Square ID of the [Employee]($m/Employee) responsible for the
    * inventory adjustment.
    */
   employeeId?: string;

@@ -13,11 +13,11 @@ export interface OrderFulfillmentPickupDetails {
   /** Contains information on the recipient of a fulfillment. */
   recipient?: OrderFulfillmentRecipient;
   /**
-   * The [timestamp](#workingwithdates) indicating when this fulfillment
-   * will expire if it is not accepted. Must be in RFC 3339 format
-   * e.g., "2016-09-04T23:59:33.123Z". Expiration time can only be set up to 7
-   * days in the future. If `expires_at` is not set, this pickup fulfillment
-   * will be automatically accepted when placed.
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * indicating when this fulfillment will expire if it is not accepted. Must be in RFC 3339 format
+   * e.g., "2016-09-04T23:59:33.123Z". Expiration time can only be set up to 7 days in the future.
+   * If `expires_at` is not set, this pickup fulfillment will be automatically accepted when
+   * placed.
    */
   expiresAt?: string;
   /**
@@ -30,8 +30,9 @@ export interface OrderFulfillmentPickupDetails {
   /** The schedule type of the pickup fulfillment. */
   scheduleType?: string;
   /**
-   * The [timestamp](#workingwithdates) that represents the start of the pickup window.
-   * Must be in RFC3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * that represents the start of the pickup window. Must be in RFC3339 timestamp format, e.g.,
+   * "2016-09-04T23:59:33.123Z".
    * For fulfillments with the schedule type `ASAP`, this is automatically set
    * to the current time plus the expected duration to prepare the fulfillment.
    */
@@ -53,40 +54,44 @@ export interface OrderFulfillmentPickupDetails {
    */
   note?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when the fulfillment
-   * was placed. Must be in RFC3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * indicating when the fulfillment was placed. Must be in RFC3339 timestamp format, e.g.,
+   * "2016-09-04T23:59:33.123Z".
    */
   placedAt?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when the fulfillment
-   * was accepted. In RFC3339 timestamp format,
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * indicating when the fulfillment was accepted. In RFC3339 timestamp format,
    * e.g., "2016-09-04T23:59:33.123Z".
    */
   acceptedAt?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when the fulfillment
-   * was rejected. In RFC3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * indicating when the fulfillment was rejected. In RFC3339 timestamp format, e.g.,
+   * "2016-09-04T23:59:33.123Z".
    */
   rejectedAt?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when the fulfillment is
-   * marked as ready for pickup. In RFC3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * indicating when the fulfillment is marked as ready for pickup. In RFC3339 timestamp format,
+   * e.g., "2016-09-04T23:59:33.123Z".
    */
   readyAt?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when the fulfillment expired.
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) indicating when the fulfillment expired.
    * In RFC3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
    */
   expiredAt?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when the fulfillment
-   * was picked up by the recipient. In RFC3339 timestamp format,
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * indicating when the fulfillment was picked up by the recipient. In RFC3339 timestamp format,
    * e.g., "2016-09-04T23:59:33.123Z".
    */
   pickedUpAt?: string;
   /**
-   * The [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z",
-   * indicating when the fulfillment was canceled.
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * in RFC3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z", indicating when the
+   * fulfillment was canceled.
    */
   canceledAt?: string;
   /** A description of why the pickup was canceled. Max length: 100 characters. */

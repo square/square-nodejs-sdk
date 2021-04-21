@@ -2,7 +2,7 @@ import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 import { Location, locationSchema } from './location';
 
-/** Response object returned by the [CreateLocation](#endpoint-createlocation) endpoint. */
+/** Response object returned by the [CreateLocation]($e/Locations/CreateLocation) endpoint. */
 export interface CreateLocationResponse {
   /** Information on errors encountered during the request. */
   errors?: Error[];

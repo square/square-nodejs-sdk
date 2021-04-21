@@ -3,8 +3,8 @@ import { Money, moneySchema } from './money';
 
 /**
  * Defines the body parameters that can be included in
- * a request to the [CreateRefund](#endpoint-createrefund) endpoint.
- * Deprecated - recommend using [RefundPayment](#endpoint-refunds-refundpayment)
+ * a request to the [CreateRefund]($e/Transactions/CreateRefund) endpoint.
+ * Deprecated - recommend using [RefundPayment]($e/Refunds/RefundPayment)
  */
 export interface CreateRefundRequest {
   /**
@@ -13,12 +13,12 @@ export interface CreateRefundRequest {
    * If you're unsure whether a particular refund succeeded,
    * you can reattempt it with the same idempotency key without
    * worrying about duplicating the refund.
-   * See [Idempotency keys](#idempotencykeys) for more information.
+   * See [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency) for more information.
    */
   idempotencyKey: string;
   /**
    * The ID of the tender to refund.
-   * A [`Transaction`](#type-transaction) has one or more `tenders` (i.e., methods
+   * A [`Transaction`]($m/Transaction) has one or more `tenders` (i.e., methods
    * of payment) associated with it, and you refund each tender separately with
    * the Connect API.
    */

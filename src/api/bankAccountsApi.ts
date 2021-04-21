@@ -17,7 +17,7 @@ import { BaseApi } from './baseApi';
 
 export class BankAccountsApi extends BaseApi {
   /**
-   * Returns a list of [BankAccount](#type-bankaccount) objects linked to a Square account.
+   * Returns a list of [BankAccount]($m/BankAccount) objects linked to a Square account.
    *
    * @param cursor      The pagination cursor returned by a previous call to this endpoint. Use it in the
    *                              next `ListBankAccounts` request to retrieve the next set  of results.  See the
@@ -49,7 +49,7 @@ export class BankAccountsApi extends BaseApi {
   }
 
   /**
-   * Returns details of a [BankAccount](#type-bankaccount) identified by V1 bank account ID.
+   * Returns details of a [BankAccount]($m/BankAccount) identified by V1 bank account ID.
    *
    * @param v1BankAccountId    Connect V1 ID of the desired `BankAccount`. For more information, see
    *                                     [Retrieve a bank account by using an ID issued by V1 Bank Accounts API](https:
@@ -70,7 +70,7 @@ export class BankAccountsApi extends BaseApi {
   }
 
   /**
-   * Returns details of a [BankAccount](#type-bankaccount)
+   * Returns details of a [BankAccount]($m/BankAccount)
    * linked to a Square account.
    *
    * @param bankAccountId   Square-issued ID of the desired `BankAccount`.

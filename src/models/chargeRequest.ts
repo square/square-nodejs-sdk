@@ -16,8 +16,8 @@ import { Money, moneySchema } from './money';
 
 /**
  * Defines the parameters that can be included in the body of
- * a request to the [Charge](#endpoint-charge) endpoint.
- * Deprecated - recommend using [CreatePayment](#endpoint-payments-createpayment)
+ * a request to the [Charge]($e/Transactions/Charge) endpoint.
+ * Deprecated - recommend using [CreatePayment]($e/Payments/CreatePayment)
  */
 export interface ChargeRequest {
   /**
@@ -26,7 +26,7 @@ export interface ChargeRequest {
    * If you're unsure whether a particular transaction succeeded,
    * you can reattempt it with the same idempotency key without
    * worrying about double-charging the buyer.
-   * See [Idempotency keys](#idempotencykeys) for more information.
+   * See [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency) for more information.
    */
   idempotencyKey: string;
   /**
@@ -58,8 +58,8 @@ export interface ChargeRequest {
   /**
    * If `true`, the request will only perform an Auth on the provided
    * card. You can then later perform either a Capture (with the
-   * [CaptureTransaction](#endpoint-capturetransaction) endpoint) or a Void
-   * (with the [VoidTransaction](#endpoint-voidtransaction) endpoint).
+   * [CaptureTransaction]($e/Transactions/CaptureTransaction) endpoint) or a Void
+   * (with the [VoidTransaction]($e/Transactions/VoidTransaction) endpoint).
    * Default value: `false`
    */
   delayCapture?: boolean;

@@ -4,7 +4,7 @@ import { Payment, paymentSchema } from './payment';
 
 /**
  * Defines the response returned by
- * [UpdatePayment](#endpoint-payments-update).
+ * [UpdatePayment]($e/Payments/UpdatePayment).
  */
 export interface UpdatePaymentResponse {
   /** Any errors that occurred during the request. */

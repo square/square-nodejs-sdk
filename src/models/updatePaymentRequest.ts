@@ -3,7 +3,7 @@ import { Payment, paymentSchema } from './payment';
 
 /**
  * Describes a request to update a payment using
- * [UpdatePayment](#endpoint-payments-updatepayment).
+ * [UpdatePayment]($e/Payments/UpdatePayment).
  */
 export interface UpdatePaymentRequest {
   /** Represents a payment processed by the Square API. */

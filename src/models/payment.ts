@@ -136,7 +136,7 @@ export interface Payment {
    * another system.
    */
   referenceId?: string;
-  /** The [Customer](#type-customer) ID of the customer associated with the payment. */
+  /** The [Customer]($m/Customer) ID of the customer associated with the payment. */
   customerId?: string;
   /** An optional ID of the employee associated with taking the payment. */
   employeeId?: string;

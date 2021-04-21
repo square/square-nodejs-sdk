@@ -94,11 +94,11 @@ import { BaseApi } from './baseApi';
 
 export class CatalogApi extends BaseApi {
   /**
-   * Deletes a set of [CatalogItem](#type-catalogitem)s based on the
+   * Deletes a set of [CatalogItem]($m/CatalogItem)s based on the
    * provided list of target IDs and returns a set of successfully deleted IDs in
    * the response. Deletion is a cascading event such that all children of the
    * targeted object are also deleted. For example, deleting a CatalogItem will
-   * also delete all of its [CatalogItemVariation](#type-catalogitemvariation)
+   * also delete all of its [CatalogItemVariation]($m/CatalogItemVariation)
    * children.
    *
    * `BatchDeleteCatalogObjects` succeeds even if only a portion of the targeted
@@ -126,11 +126,11 @@ export class CatalogApi extends BaseApi {
 
   /**
    * Returns a set of objects based on the provided ID.
-   * Each [CatalogItem](#type-catalogitem) returned in the set includes all of its
+   * Each [CatalogItem]($m/CatalogItem) returned in the set includes all of its
    * child information including: all of its
-   * [CatalogItemVariation](#type-catalogitemvariation) objects, references to
-   * its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of
-   * any [CatalogTax](#type-catalogtax) objects that apply to it.
+   * [CatalogItemVariation]($m/CatalogItemVariation) objects, references to
+   * its [CatalogModifierList]($m/CatalogModifierList) objects, and the ids of
+   * any [CatalogTax]($m/CatalogTax) objects that apply to it.
    *
    * @param body An object containing the fields to POST for the request.
    *                                                          See the corresponding object definition for field
@@ -183,9 +183,9 @@ export class CatalogApi extends BaseApi {
   }
 
   /**
-   * Uploads an image file to be represented by a [CatalogImage](#type-catalogimage) object linked to an
+   * Uploads an image file to be represented by a [CatalogImage]($m/CatalogImage) object linked to an
    * existing
-   * [CatalogObject](#type-catalogobject) instance. A call to this endpoint can upload an image, link an
+   * [CatalogObject]($m/CatalogObject) instance. A call to this endpoint can upload an image, link an
    * image to
    * a catalog object, or do both.
    *
@@ -227,14 +227,14 @@ export class CatalogApi extends BaseApi {
   }
 
   /**
-   * Returns a list of [CatalogObject](#type-catalogobject)s that includes
-   * all objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem)
-   * and [CatalogTax](#type-catalogtax) objects) in the catalog. The `types` parameter
-   * is specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types:
+   * Returns a list of [CatalogObject]($m/CatalogObject)s that includes
+   * all objects of a set of desired types (for example, all [CatalogItem]($m/CatalogItem)
+   * and [CatalogTax]($m/CatalogTax) objects) in the catalog. The `types` parameter
+   * is specified as a comma-separated list of valid [CatalogObject]($m/CatalogObject) types:
    * `ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`, `IMAGE`.
    *
    * __Important:__ ListCatalog does not return deleted catalog items. To retrieve
-   * deleted catalog items, use [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects)
+   * deleted catalog items, use [SearchCatalogObjects]($e/Catalog/SearchCatalogObjects)
    * and set the `include_deleted_objects` attribute value to `true`.
    *
    * @param cursor          The pagination cursor returned in the previous response. Leave unset for an
@@ -246,7 +246,7 @@ export class CatalogApi extends BaseApi {
    *                                  `TAX`, `MODIFIER`, `MODIFIER_LIST`, or `IMAGE`.
    * @param catalogVersion  The specific version of the catalog objects to be included in the response.
    *                                  This allows you to retrieve historical versions of objects. The specified version
-   *                                  value is matched against the [CatalogObject](#type-catalogobject)s' `version`
+   *                                  value is matched against the [CatalogObject]($m/CatalogObject)s' `version`
    *                                  attribute.
    * @return Response from the API call
    */
@@ -269,7 +269,7 @@ export class CatalogApi extends BaseApi {
   }
 
   /**
-   * Creates or updates the target [CatalogObject](#type-catalogobject).
+   * Creates or updates the target [CatalogObject]($m/CatalogObject).
    *
    * @param body An object containing the fields to POST for the request.  See
    *                                                  the corresponding object definition for field details.
@@ -288,12 +288,12 @@ export class CatalogApi extends BaseApi {
   }
 
   /**
-   * Deletes a single [CatalogObject](#type-catalogobject) based on the
+   * Deletes a single [CatalogObject]($m/CatalogObject) based on the
    * provided ID and returns the set of successfully deleted IDs in the response.
    * Deletion is a cascading event such that all children of the targeted object
-   * are also deleted. For example, deleting a [CatalogItem](#type-catalogitem)
+   * are also deleted. For example, deleting a [CatalogItem]($m/CatalogItem)
    * will also delete all of its
-   * [CatalogItemVariation](#type-catalogitemvariation) children.
+   * [CatalogItemVariation]($m/CatalogItemVariation) children.
    *
    * @param objectId  The ID of the catalog object to be deleted. When an object is deleted, other objects
    *                            in the graph that depend on that object will be deleted as well (for example, deleting
@@ -311,13 +311,13 @@ export class CatalogApi extends BaseApi {
   }
 
   /**
-   * Returns a single [CatalogItem](#type-catalogitem) as a
-   * [CatalogObject](#type-catalogobject) based on the provided ID. The returned
-   * object includes all of the relevant [CatalogItem](#type-catalogitem)
-   * information including: [CatalogItemVariation](#type-catalogitemvariation)
+   * Returns a single [CatalogItem]($m/CatalogItem) as a
+   * [CatalogObject]($m/CatalogObject) based on the provided ID. The returned
+   * object includes all of the relevant [CatalogItem]($m/CatalogItem)
+   * information including: [CatalogItemVariation]($m/CatalogItemVariation)
    * children, references to its
-   * [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of
-   * any [CatalogTax](#type-catalogtax) objects that apply to it.
+   * [CatalogModifierList]($m/CatalogModifierList) objects, and the ids of
+   * any [CatalogTax]($m/CatalogTax) objects that apply to it.
    *
    * @param objectId                The object ID of any type of catalog objects to be retrieved.
    * @param includeRelatedObjects   If `true`, the response will include additional objects that are
@@ -331,7 +331,7 @@ export class CatalogApi extends BaseApi {
    * @param catalogVersion          Requests objects as of a specific version of the catalog. This allows
    *                                           you to retrieve historical versions of objects. The value to retrieve a
    *                                           specific version of an object can be found in the version field of
-   *                                           [CatalogObject](#type-catalogobject)s.
+   *                                           [CatalogObject]($m/CatalogObject)s.
    * @return Response from the API call
    */
   async retrieveCatalogObject(
@@ -353,13 +353,13 @@ export class CatalogApi extends BaseApi {
   }
 
   /**
-   * Searches for [CatalogObject](#type-CatalogObject) of any type by matching supported search attribute
+   * Searches for [CatalogObject]($m/CatalogObject) of any type by matching supported search attribute
    * values,
    * excluding custom attribute values on items or item variations, against one or more of the specified
    * query expressions.
    *
-   * This (`SearchCatalogObjects`) endpoint differs from the [SearchCatalogItems](#endpoint-Catalog-
-   * SearchCatalogItems)
+   * This (`SearchCatalogObjects`) endpoint differs from the
+   * [SearchCatalogItems]($e/Catalog/SearchCatalogItems)
    * endpoint in the following aspects:
    *
    * - `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects`
@@ -391,8 +391,8 @@ export class CatalogApi extends BaseApi {
    * including
    * custom attribute values, against one or more of the specified query expressions.
    *
-   * This (`SearchCatalogItems`) endpoint differs from the [SearchCatalogObjects](#endpoint-Catalog-
-   * SearchCatalogObjects)
+   * This (`SearchCatalogItems`) endpoint differs from the
+   * [SearchCatalogObjects]($e/Catalog/SearchCatalogObjects)
    * endpoint in the following aspects:
    *
    * - `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects`
@@ -420,8 +420,8 @@ export class CatalogApi extends BaseApi {
   }
 
   /**
-   * Updates the [CatalogModifierList](#type-catalogmodifierlist) objects
-   * that apply to the targeted [CatalogItem](#type-catalogitem) without having
+   * Updates the [CatalogModifierList]($m/CatalogModifierList) objects
+   * that apply to the targeted [CatalogItem]($m/CatalogItem) without having
    * to perform an upsert on the entire item.
    *
    * @param body An object containing the fields to POST for the request.
@@ -447,8 +447,8 @@ export class CatalogApi extends BaseApi {
   }
 
   /**
-   * Updates the [CatalogTax](#type-catalogtax) objects that apply to the
-   * targeted [CatalogItem](#type-catalogitem) without having to perform an
+   * Updates the [CatalogTax]($m/CatalogTax) objects that apply to the
+   * targeted [CatalogItem]($m/CatalogItem) without having to perform an
    * upsert on the entire item.
    *
    * @param body An object containing the fields to POST for the request.  See the

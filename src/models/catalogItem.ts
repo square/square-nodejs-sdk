@@ -17,7 +17,7 @@ import {
 } from './catalogItemOptionForItem';
 import { CatalogObject, catalogObjectSchema } from './catalogObject';
 
-/** A [CatalogObject](#type-CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog. */
+/** A [CatalogObject]($m/CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog. */
 export interface CatalogItem {
   /** The item's name. This is a searchable attribute for use in applicable query filters, its value must not be empty, and the length is of Unicode code points. */
   name?: string;
@@ -70,6 +70,11 @@ export interface CatalogItem {
    * Maximum: 6 item options.
    */
   itemOptions?: CatalogItemOptionForItem[];
+  /**
+   * A name to sort the item by. If this name is unspecified, namely, the `sort_name` field is absent, the regular `name` field is used for sorting.
+   * It is currently supported for sellers of the Japanese locale only.
+   */
+  sortName?: string;
 }
 
 export const catalogItemSchema: Schema<CatalogItem> = object({
@@ -93,4 +98,5 @@ export const catalogItemSchema: Schema<CatalogItem> = object({
     'item_options',
     optional(array(lazy(() => catalogItemOptionForItemSchema))),
   ],
+  sortName: ['sort_name', optional(string())],
 });

@@ -25,43 +25,46 @@ export interface OrderFulfillmentShipmentDetails {
   /** A link to the tracking webpage on the carrier's website. */
   trackingUrl?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when the shipment was
-   * requested. Must be in RFC 3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * indicating when the shipment was requested.
+   * Must be in RFC 3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
    */
   placedAt?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when this fulfillment was
-   * moved to the `RESERVED` state. Indicates that preparation of this shipment has begun.
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * indicating when this fulfillment wasmoved to the `RESERVED` state. Indicates that preparation
+   * of this shipment has begun.
    * Must be in RFC 3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
    */
   inProgressAt?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when this fulfillment
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) indicating when this fulfillment
    * was moved to the `PREPARED` state. Indicates that the fulfillment is packaged.
    * Must be in RFC 3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
    */
   packagedAt?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when the shipment is
-   * expected to be delivered to the shipping carrier. Must be in RFC 3339 timestamp
-   * format, e.g., "2016-09-04T23:59:33.123Z".
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * indicating when the shipment is expected to be delivered to the shipping carrier. Must be in
+   * RFC 3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
    */
   expectedShippedAt?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when this fulfillment
-   * was moved to the `COMPLETED`state. Indicates that the fulfillment has been given
-   * to the shipping carrier. Must be in RFC 3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
+   * indicating when this fulfillment was moved to the `COMPLETED`state. Indicates that the fulfillment
+   * has been given to the shipping carrier. Must be in RFC 3339 timestamp format, e.g.,
+   * "2016-09-04T23:59:33.123Z".
    */
   shippedAt?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating the shipment was canceled.
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) indicating the shipment was canceled.
    * Must be in RFC 3339 timestamp format, e.g., "2016-09-04T23:59:33.123Z".
    */
   canceledAt?: string;
   /** A description of why the shipment was canceled. */
   cancelReason?: string;
   /**
-   * The [timestamp](#workingwithdates) indicating when the shipment
+   * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) indicating when the shipment
    * failed to be completed. Must be in RFC 3339 timestamp format, e.g.,
    * "2016-09-04T23:59:33.123Z".
    */

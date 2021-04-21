@@ -20,7 +20,7 @@ export interface InventoryCount {
   /** Indicates the state of a tracked item quantity in the lifecycle of goods. */
   state?: string;
   /**
-   * The Square ID of the [Location](#type-location) where the related
+   * The Square ID of the [Location]($m/Location) where the related
    * quantity of items are being tracked.
    */
   locationId?: string;

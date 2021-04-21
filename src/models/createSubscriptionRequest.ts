@@ -3,7 +3,7 @@ import { Money, moneySchema } from './money';
 
 /**
  * Defines parameters in a
- * [CreateSubscription](#endpoint-subscriptions-createsubscription) endpoint request.
+ * [CreateSubscription]($e/Subscriptions/CreateSubscription) endpoint request.
  */
 export interface CreateSubscriptionRequest {
   /**
@@ -20,7 +20,7 @@ export interface CreateSubscriptionRequest {
    * [Subscription Plan Overview](https://developer.squareup.com/docs/subscriptions/overview).
    */
   planId: string;
-  /** The ID of the [customer](#type-customer) profile. */
+  /** The ID of the [customer]($m/Customer) profile. */
   customerId: string;
   /**
    * The start date of the subscription, in YYYY-MM-DD format. For example,
@@ -51,7 +51,7 @@ export interface CreateSubscriptionRequest {
    */
   priceOverrideMoney?: Money;
   /**
-   * The ID of the [customer](#type-customer) [card](#type-card) to charge.
+   * The ID of the [customer]($m/Customer) [card]($m/Card) to charge.
    * If not specified, Square sends an invoice via email. For an example to
    * create a customer and add a card on file, see [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
    */

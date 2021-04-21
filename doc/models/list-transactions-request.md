@@ -2,9 +2,9 @@
 # List Transactions Request
 
 Defines the query parameters that can be included in
-a request to the [ListTransactions](#endpoint-listtransactions) endpoint.
+a request to the [ListTransactions](/doc/api/transactions.md#list-transactions) endpoint.
 
-Deprecated - recommend using [SearchOrders](#endpoint-orders-searchorders)
+Deprecated - recommend using [SearchOrders](/doc/api/orders.md#search-orders)
 
 ## Structure
 
@@ -14,10 +14,10 @@ Deprecated - recommend using [SearchOrders](#endpoint-orders-searchorders)
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `beginTime` | `string` | Optional | The beginning of the requested reporting period, in RFC 3339 format.<br><br>See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.<br><br>Default value: The current time minus one year. |
-| `endTime` | `string` | Optional | The end of the requested reporting period, in RFC 3339 format.<br><br>See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.<br><br>Default value: The current time. |
+| `beginTime` | `string` | Optional | The beginning of the requested reporting period, in RFC 3339 format.<br><br>See [Date ranges](https://developer.squareup.com/docs/build-basics/working-with-dates) for details on date inclusivity/exclusivity.<br><br>Default value: The current time minus one year. |
+| `endTime` | `string` | Optional | The end of the requested reporting period, in RFC 3339 format.<br><br>See [Date ranges](https://developer.squareup.com/docs/build-basics/working-with-dates) for details on date inclusivity/exclusivity.<br><br>Default value: The current time. |
 | `sortOrder` | [`string`](/doc/models/sort-order.md) | Optional | The order (e.g., chronological or alphabetical) in which results from a request are returned. |
-| `cursor` | `string` | Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for your original query.<br><br>See [Paginating results](#paginatingresults) for more information. |
+| `cursor` | `string` | Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for your original query.<br><br>See [Paginating results](https://developer.squareup.com/docs/working-with-apis/pagination) for more information. |
 
 ## Example (as JSON)
 

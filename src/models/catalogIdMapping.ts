@@ -2,9 +2,9 @@ import { object, optional, Schema, string } from '../schema';
 
 /**
  * A mapping between a temporary client-supplied ID and a permanent server-generated ID.
- * When calling [UpsertCatalogObject](#endpoint-Catalog-UpsertCatalogObject) or
- * [BatchUpsertCatalogObjects](#endpoint-Catalog-BatchUpsertCatalogObjects) to
- * create a [CatalogObject](#type-CatalogObject) instance, you can supply
+ * When calling [UpsertCatalogObject]($e/Catalog/UpsertCatalogObject) or
+ * [BatchUpsertCatalogObjects]($e/Catalog/BatchUpsertCatalogObjects) to
+ * create a [CatalogObject]($m/CatalogObject) instance, you can supply
  * a temporary ID for the to-be-created object, especially when the object is to be referenced
  * elsewhere in the same request body. This temporary ID can be any string unique within
  * the call, but must be prefixed by "#".

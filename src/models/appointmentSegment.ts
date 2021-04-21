@@ -4,9 +4,9 @@ import { bigint, number, object, Schema, string } from '../schema';
 export interface AppointmentSegment {
   /** The time span in minutes of an appointment segment. */
   durationMinutes: number;
-  /** The ID of the [CatalogItemVariation](#type-CatalogItemVariation) object representing the service booked in this segment. */
+  /** The ID of the [CatalogItemVariation]($m/CatalogItemVariation) object representing the service booked in this segment. */
   serviceVariationId: string;
-  /** The ID of the [TeamMember](#type-TeamMember) object representing the team member booked in this segment. */
+  /** The ID of the [TeamMember]($m/TeamMember) object representing the team member booked in this segment. */
   teamMemberId: string;
   /** The current version of the item variation representing the service booked in this segment. */
   serviceVariationVersion: bigint;

@@ -2,7 +2,7 @@
 # Update Order Response
 
 Defines the fields that are included in the response body of
-a request to the [UpdateOrder](#endpoint-orders-updateorder) endpoint.
+a request to the [UpdateOrder](/doc/api/orders.md#update-order) endpoint.
 
 ## Structure
 

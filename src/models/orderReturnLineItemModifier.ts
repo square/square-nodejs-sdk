@@ -10,7 +10,7 @@ export interface OrderReturnLineItemModifier {
    * original sale of this line item modifier.
    */
   sourceModifierUid?: string;
-  /** The catalog object id referencing [CatalogModifier](#type-catalogmodifier). */
+  /** The catalog object id referencing [CatalogModifier]($m/CatalogModifier). */
   catalogObjectId?: string;
   /** The name of the item modifier. */
   name?: string;

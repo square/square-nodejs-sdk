@@ -11,7 +11,7 @@ import { Money, moneySchema } from './money';
 export interface OrderLineItemDiscount {
   /** Unique ID that identifies the discount only within this order. */
   uid?: string;
-  /** The catalog object id referencing [CatalogDiscount](#type-catalogdiscount). */
+  /** The catalog object id referencing [CatalogDiscount]($m/CatalogDiscount). */
   catalogObjectId?: string;
   /** The discount's name. */
   name?: string;
@@ -54,7 +54,8 @@ export interface OrderLineItemDiscount {
    * An application may have up to 10 entries per metadata field.
    * Entries written by applications are private and can only be read or modified by the same
    * application.
-   * See [Metadata](https://developer.squareup.com/docs/build-basics/metadata) for more information.
+   * See [Metadata](https://developer.squareup.com/docs/build-basics/metadata) for more
+   * information.
    */
   metadata?: Record<string, string>;
   /** Indicates whether this is a line item or order level discount. */
@@ -68,9 +69,10 @@ export interface OrderLineItemDiscount {
    */
   rewardIds?: string[];
   /**
-   * The object identifier of a [pricing rule](#type-CatalogPricingRule) to be applied automatically
-   * to this discount. The specification and application of the discounts, to which a `pricing_rule_id` is
-   * assigned, are completely controlled by the corresponding pricing rule.
+   * The object identifier of a [pricing rule]($m/CatalogPricingRule) to be applied
+   * automatically to this discount. The specification and application of the discounts, to
+   * which a `pricing_rule_id` is assigned, are completely controlled by the corresponding
+   * pricing rule.
    */
   pricingRuleId?: string;
 }

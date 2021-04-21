@@ -17,6 +17,7 @@ const loyaltyApi = client.loyaltyApi;
 * [Adjust Loyalty Points](/doc/api/loyalty.md#adjust-loyalty-points)
 * [Search Loyalty Events](/doc/api/loyalty.md#search-loyalty-events)
 * [List Loyalty Programs](/doc/api/loyalty.md#list-loyalty-programs)
+* [Retrieve Loyalty Program](/doc/api/loyalty.md#retrieve-loyalty-program)
 * [Calculate Loyalty Points](/doc/api/loyalty.md#calculate-loyalty-points)
 * [Create Loyalty Reward](/doc/api/loyalty.md#create-loyalty-reward)
 * [Search Loyalty Rewards](/doc/api/loyalty.md#search-loyalty-rewards)
@@ -27,7 +28,7 @@ const loyaltyApi = client.loyaltyApi;
 
 # Create Loyalty Account
 
-Creates a loyalty account.
+Creates a loyalty account. To create a loyalty account, you must provide the `program_id` and either the `mapping` field (preferred) or the `mappings` field.
 
 ```ts
 async createLoyaltyAccount(
@@ -52,24 +53,31 @@ async createLoyaltyAccount(
 ```ts
 const bodyLoyaltyAccountMappings: LoyaltyAccountMapping[] = [];
 
-const bodyLoyaltyAccountmappings0: LoyaltyAccountMapping = {
-  type: 'PHONE',
-  value: '+14155551234',
-};
+const bodyLoyaltyAccountmappings0: LoyaltyAccountMapping = {};
 bodyLoyaltyAccountmappings0.id = 'id0';
+bodyLoyaltyAccountmappings0.type = 'PHONE';
+bodyLoyaltyAccountmappings0.value = 'value2';
 bodyLoyaltyAccountmappings0.createdAt = 'created_at8';
+bodyLoyaltyAccountmappings0.phoneNumber = 'phone_number8';
 
 bodyLoyaltyAccountMappings[0] = bodyLoyaltyAccountmappings0;
 
+const bodyLoyaltyAccountMapping: LoyaltyAccountMapping = {};
+bodyLoyaltyAccountMapping.id = 'id6';
+bodyLoyaltyAccountMapping.type = 'PHONE';
+bodyLoyaltyAccountMapping.value = 'value8';
+bodyLoyaltyAccountMapping.createdAt = 'created_at4';
+bodyLoyaltyAccountMapping.phoneNumber = '+14155551234';
+
 const bodyLoyaltyAccount: LoyaltyAccount = {
-  mappings: bodyLoyaltyAccountMappings,
   programId: 'd619f755-2d17-41f3-990d-c04ecedd64dd',
 };
 bodyLoyaltyAccount.id = 'id2';
+bodyLoyaltyAccount.mappings = bodyLoyaltyAccountMappings;
 bodyLoyaltyAccount.balance = 14;
 bodyLoyaltyAccount.lifetimePoints = 38;
 bodyLoyaltyAccount.customerId = 'customer_id0';
-bodyLoyaltyAccount.enrolledAt = 'enrolled_at2';
+bodyLoyaltyAccount.mapping = bodyLoyaltyAccountMapping;
 
 const body: CreateLoyaltyAccountRequest = {
   loyaltyAccount: bodyLoyaltyAccount,
@@ -120,12 +128,12 @@ async searchLoyaltyAccounts(
 ```ts
 const bodyQueryMappings: LoyaltyAccountMapping[] = [];
 
-const bodyQuerymappings0: LoyaltyAccountMapping = {
-  type: 'PHONE',
-  value: '+14155551234',
-};
+const bodyQuerymappings0: LoyaltyAccountMapping = {};
 bodyQuerymappings0.id = 'id4';
+bodyQuerymappings0.type = 'PHONE';
+bodyQuerymappings0.value = 'value6';
 bodyQuerymappings0.createdAt = 'created_at8';
+bodyQuerymappings0.phoneNumber = '+14155551234';
 
 bodyQueryMappings[0] = bodyQuerymappings0;
 
@@ -167,7 +175,7 @@ async retrieveLoyaltyAccount(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `accountId` | `string` | Template, Required | The ID of the [loyalty account](#type-LoyaltyAccount) to retrieve. |
+| `accountId` | `string` | Template, Required | The ID of the [loyalty account](/doc/models/loyalty-account.md) to retrieve. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -200,7 +208,7 @@ Adds points to a loyalty account.
 - If you are not using the Orders API to manage orders,
   you first perform a client-side computation to compute the points.  
   For spend-based and visit-based programs, you can call
-  [CalculateLoyaltyPoints](#endpoint-Loyalty-CalculateLoyaltyPoints) to compute the points. For more information,
+  [CalculateLoyaltyPoints](/doc/api/loyalty.md#calculate-loyalty-points) to compute the points. For more information,
   see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
   You then provide the points in a request to this endpoint.
 
@@ -216,7 +224,7 @@ async accumulateLoyaltyPoints(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `accountId` | `string` | Template, Required | The [loyalty account](#type-LoyaltyAccount) ID to which to add the points. |
+| `accountId` | `string` | Template, Required | The [loyalty account](/doc/models/loyalty-account.md) ID to which to add the points. |
 | `body` | [`AccumulateLoyaltyPointsRequest`](/doc/models/accumulate-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
@@ -257,7 +265,7 @@ try {
 Adds points to or subtracts points from a buyer's account.
 
 Use this endpoint only when you need to manually adjust points. Otherwise, in your application flow, you call
-[AccumulateLoyaltyPoints](#endpoint-Loyalty-AccumulateLoyaltyPoints)
+[AccumulateLoyaltyPoints](/doc/api/loyalty.md#accumulate-loyalty-points)
 to add points when a buyer pays for the purchase.
 
 ```ts
@@ -272,7 +280,7 @@ async adjustLoyaltyPoints(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `accountId` | `string` | Template, Required | The ID of the [loyalty account](#type-LoyaltyAccount) in which to adjust the points. |
+| `accountId` | `string` | Template, Required | The ID of the [loyalty account](/doc/models/loyalty-account.md) in which to adjust the points. |
 | `body` | [`AdjustLoyaltyPointsRequest`](/doc/models/adjust-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
@@ -285,13 +293,13 @@ async adjustLoyaltyPoints(
 ```ts
 const accountId = 'account_id2';
 const bodyAdjustPoints: LoyaltyEventAdjustPoints = {
-  points: 112,
+  points: 10,
 };
 bodyAdjustPoints.loyaltyProgramId = 'loyalty_program_id4';
-bodyAdjustPoints.reason = 'reason0';
+bodyAdjustPoints.reason = 'Complimentary points';
 
 const body: AdjustLoyaltyPointsRequest = {
-  idempotencyKey: 'idempotency_key2',
+  idempotencyKey: 'bc29a517-3dc9-450e-aa76-fae39ee849d1',
   adjustPoints: bodyAdjustPoints,
 };
 
@@ -316,6 +324,8 @@ A Square loyalty program maintains a ledger of events that occur during the life
 buyer's loyalty account. Each change in the point balance
 (for example, points earned, points redeemed, and points expired) is
 recorded in the ledger. Using this endpoint, you can search the ledger for events.
+
+Search results are sorted by `created_at` in descending order.
 
 ```ts
 async searchLoyaltyEvents(
@@ -429,6 +439,47 @@ try {
 ```
 
 
+# Retrieve Loyalty Program
+
+Retrieves the loyalty program in a seller's account, specified by the program ID or the keyword `main`.
+
+Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
+
+```ts
+async retrieveLoyaltyProgram(
+  programId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveLoyaltyProgramResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `programId` | `string` | Template, Required | The ID of the loyalty program or the keyword `main`. Either value can be used to retrieve the single loyalty program that belongs to the seller. |
+| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`RetrieveLoyaltyProgramResponse`](/doc/models/retrieve-loyalty-program-response.md)
+
+## Example Usage
+
+```ts
+const programId = 'program_id0';
+try {
+  const { result, ...httpResponse } = await loyaltyApi.retrieveLoyaltyProgram(programId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
 # Calculate Loyalty Points
 
 Calculates the points a purchase earns.
@@ -453,7 +504,7 @@ async calculateLoyaltyPoints(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `programId` | `string` | Template, Required | The [loyalty program](#type-LoyaltyProgram) ID, which defines the rules for accruing points. |
+| `programId` | `string` | Template, Required | The [loyalty program](/doc/models/loyalty-program.md) ID, which defines the rules for accruing points. |
 | `body` | [`CalculateLoyaltyPointsRequest`](/doc/models/calculate-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
@@ -553,7 +604,9 @@ Searches for loyalty rewards in a loyalty account.
 In the current implementation, the endpoint supports search by the reward `status`.
 
 If you know a reward ID, use the
-[RetrieveLoyaltyReward](#endpoint-Loyalty-RetrieveLoyaltyReward) endpoint.
+[RetrieveLoyaltyReward](/doc/api/loyalty.md#retrieve-loyalty-reward) endpoint.
+
+Search results are sorted by `updated_at` in descending order.
 
 ```ts
 async searchLoyaltyRewards(
@@ -605,7 +658,7 @@ Deletes a loyalty reward by doing the following:
 
 - Returns the loyalty points back to the loyalty account.
 - If an order ID was specified when the reward was created
-  (see [CreateLoyaltyReward](#endpoint-Loyalty-CreateLoyaltyReward)),
+  (see [CreateLoyaltyReward](/doc/api/loyalty.md#create-loyalty-reward)),
   it updates the order by removing the reward and related
   discounts.
 
@@ -622,7 +675,7 @@ async deleteLoyaltyReward(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](#type-LoyaltyReward) to delete. |
+| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](/doc/models/loyalty-reward.md) to delete. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -661,7 +714,7 @@ async retrieveLoyaltyReward(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](#type-LoyaltyReward) to retrieve. |
+| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](/doc/models/loyalty-reward.md) to retrieve. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -711,7 +764,7 @@ async redeemLoyaltyReward(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](#type-LoyaltyReward) to redeem. |
+| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](/doc/models/loyalty-reward.md) to redeem. |
 | `body` | [`RedeemLoyaltyRewardRequest`](/doc/models/redeem-loyalty-reward-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 

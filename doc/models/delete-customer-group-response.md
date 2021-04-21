@@ -2,7 +2,7 @@
 # Delete Customer Group Response
 
 Defines the fields that are included in the response body of
-a request to the [DeleteCustomerGroup](#endpoint-deletecustomergroup) endpoint.
+a request to the [DeleteCustomerGroup](/doc/api/customer-groups.md#delete-customer-group) endpoint.
 
 ## Structure
 

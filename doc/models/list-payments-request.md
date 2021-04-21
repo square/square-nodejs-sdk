@@ -2,7 +2,7 @@
 # List Payments Request
 
 Describes a request to list payments using
-[ListPayments](#endpoint-payments-listpayments).
+[ListPayments](/doc/api/payments.md#list-payments).
 
 The maximum results per page is 100.
 

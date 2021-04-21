@@ -21,7 +21,7 @@ const locationsApi = client.locationsApi;
 Provides information of all locations of a business.
 
 Many Square API endpoints require a `location_id` parameter.
-The `id` field of the [`Location`](#type-location) objects returned by this
+The `id` field of the [`Location`](/doc/models/location.md) objects returned by this
 endpoint correspond to that `location_id` parameter.
 
 ```ts
@@ -90,7 +90,7 @@ bodyLocationAddress.sublocality = 'sublocality6';
 bodyLocationAddress.administrativeDistrictLevel1 = 'GA';
 bodyLocationAddress.postalCode = '30309';
 
-const bodyLocationCapabilities: string[] = ['CREDIT_CARD_PROCESSING', 'CREDIT_CARD_PROCESSING', 'CREDIT_CARD_PROCESSING'];
+const bodyLocationCapabilities: string[] = ['AUTOMATIC_TRANSFERS', 'CREDIT_CARD_PROCESSING', 'AUTOMATIC_TRANSFERS'];
 const bodyLocation: Location = {};
 bodyLocation.id = 'id0';
 bodyLocation.name = 'New location name';
@@ -194,7 +194,7 @@ bodyLocationAddress.sublocality = 'sublocality6';
 bodyLocationAddress.administrativeDistrictLevel1 = 'GA';
 bodyLocationAddress.postalCode = '30309';
 
-const bodyLocationCapabilities: string[] = ['CREDIT_CARD_PROCESSING', 'CREDIT_CARD_PROCESSING', 'CREDIT_CARD_PROCESSING'];
+const bodyLocationCapabilities: string[] = ['AUTOMATIC_TRANSFERS', 'CREDIT_CARD_PROCESSING', 'AUTOMATIC_TRANSFERS'];
 const bodyLocationBusinessHoursPeriods: BusinessHoursPeriod[] = [];
 
 const bodyLocationBusinessHoursperiods0: BusinessHoursPeriod = {};

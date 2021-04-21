@@ -16,6 +16,7 @@ const subscriptionsApi = client.subscriptionsApi;
 * [Update Subscription](/doc/api/subscriptions.md#update-subscription)
 * [Cancel Subscription](/doc/api/subscriptions.md#cancel-subscription)
 * [List Subscription Events](/doc/api/subscriptions.md#list-subscription-events)
+* [Resume Subscription](/doc/api/subscriptions.md#resume-subscription)
 
 
 # Create Subscription
@@ -318,6 +319,45 @@ const cursor = 'cursor6';
 const limit = 172;
 try {
   const { result, ...httpResponse } = await subscriptionsApi.listSubscriptionEvents(subscriptionId, cursor, limit);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Resume Subscription
+
+Resumes a deactivated subscription.
+
+```ts
+async resumeSubscription(
+  subscriptionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ResumeSubscriptionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The ID of the subscription to resume. |
+| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ResumeSubscriptionResponse`](/doc/models/resume-subscription-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+try {
+  const { result, ...httpResponse } = await subscriptionsApi.resumeSubscription(subscriptionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

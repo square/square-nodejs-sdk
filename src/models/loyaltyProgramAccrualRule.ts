@@ -29,7 +29,7 @@ export interface LoyaltyProgramAccrualRule {
    */
   spendAmountMoney?: Money;
   /**
-   * The ID of the [catalog object](#type-CatalogObject) to purchase to earn the number of points defined by the
+   * The ID of the [catalog object]($m/CatalogObject) to purchase to earn the number of points defined by the
    * rule. This is either an item variation or a category, depending on the type. This is defined on
    * `ITEM_VARIATION` rules and `CATEGORY` rules.
    */

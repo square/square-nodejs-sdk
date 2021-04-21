@@ -3,7 +3,7 @@ import { Order, orderSchema } from './order';
 
 /**
  * Defines the fields that are included in requests to the
- * [UpdateOrder](#endpoint-orders-updateorder) endpoint.
+ * [UpdateOrder]($e/Orders/UpdateOrder) endpoint.
  */
 export interface UpdateOrderRequest {
   /**

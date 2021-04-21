@@ -3,7 +3,7 @@ import { Error, errorSchema } from './error';
 import { Payment, paymentSchema } from './payment';
 
 /**
- * Defines the response returned by [CreatePayment](#endpoint-payments-createpayment).
+ * Defines the response returned by [CreatePayment]($e/Payments/CreatePayment).
  * If there are errors processing the request, the `payment` field might not be
  * present, or it might be present with a status of `FAILED`.
  */

@@ -3,7 +3,7 @@ import { Error, errorSchema } from './error';
 
 /**
  * Defines the fields that are included in the response body of
- * a request to the [RemoveGroupFromCustomer](#endpoint-removegroupfromcustomer)
+ * a request to the [RemoveGroupFromCustomer]($e/Customers/RemoveGroupFromCustomer)
  * endpoint.
  */
 export interface RemoveGroupFromCustomerResponse {

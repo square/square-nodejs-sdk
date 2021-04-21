@@ -1,11 +1,11 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
-/** A [CatalogModifier](#type-catalogmodifier). */
+/** A [CatalogModifier]($m/CatalogModifier). */
 export interface OrderLineItemModifier {
   /** Unique ID that identifies the modifier only within this order. */
   uid?: string;
-  /** The catalog object id referencing [CatalogModifier](#type-catalogmodifier). */
+  /** The catalog object id referencing [CatalogModifier]($m/CatalogModifier). */
   catalogObjectId?: string;
   /** The name of the item modifier. */
   name?: string;

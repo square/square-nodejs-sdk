@@ -3,7 +3,7 @@ import { Error, errorSchema } from './error';
 
 /**
  * Defines the fields that are included in the response body of
- * a request to the DeleteCustomerCard endpoint.
+ * a request to the `DeleteCustomerCard` endpoint.
  */
 export interface DeleteCustomerCardResponse {
   /** Any errors that occurred during the request. */

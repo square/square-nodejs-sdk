@@ -1,7 +1,7 @@
 
 # Get Payment Refund Response
 
-Defines the response returned by [GetRefund](#endpoint-refunds-getpaymentrefund).
+Defines the response returned by [GetRefund](/doc/api/refunds.md#get-payment-refund).
 
 Note: If there are errors processing the request, the refund field might not be
 present or it might be present in a FAILED state.

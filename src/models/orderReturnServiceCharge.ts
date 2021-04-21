@@ -25,7 +25,7 @@ export interface OrderReturnServiceCharge {
   sourceServiceChargeUid?: string;
   /** The name of the service charge. */
   name?: string;
-  /** The catalog object ID of the associated [CatalogServiceCharge](#type-catalogservicecharge). */
+  /** The catalog object ID of the associated [OrderServiceCharge]($m/OrderServiceCharge). */
   catalogObjectId?: string;
   /**
    * The percentage of the service charge, as a string representation of
