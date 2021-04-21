@@ -2,7 +2,7 @@
 # Delete Customer Card Response
 
 Defines the fields that are included in the response body of
-a request to the DeleteCustomerCard endpoint.
+a request to the `DeleteCustomerCard` endpoint.
 
 ## Structure
 

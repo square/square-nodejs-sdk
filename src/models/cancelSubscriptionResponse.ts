@@ -4,7 +4,7 @@ import { Subscription, subscriptionSchema } from './subscription';
 
 /**
  * Defines fields that are included in a
- * [CancelSubscription](#endpoint-subscriptions-cancelsubscription) response.
+ * [CancelSubscription]($e/Subscriptions/CancelSubscription) response.
  */
 export interface CancelSubscriptionResponse {
   /** Information about errors encountered during the request. */

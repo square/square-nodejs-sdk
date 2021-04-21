@@ -8,6 +8,10 @@ import {
   string,
 } from '../schema';
 import {
+  InvoiceAcceptedPaymentMethods,
+  invoiceAcceptedPaymentMethodsSchema,
+} from './invoiceAcceptedPaymentMethods';
+import {
   InvoiceCustomField,
   invoiceCustomFieldSchema,
 } from './invoiceCustomField';
@@ -33,7 +37,7 @@ export interface Invoice {
    */
   locationId?: string;
   /**
-   * The ID of the [order](#type-order) for which the invoice is created.
+   * The ID of the [order]($m/Order) for which the invoice is created.
    * This order must be in the `OPEN` state and must belong to the `location_id`
    * specified for this invoice. This field is required when creating an invoice.
    */
@@ -48,13 +52,13 @@ export interface Invoice {
    * This field is required when creating an invoice. It must contain at least one payment request.
    */
   paymentRequests?: InvoicePaymentRequest[];
-  /** Indicates how Square delivers the [invoice](#type-Invoice) to the customer. */
+  /** Indicates how Square delivers the [invoice]($m/Invoice) to the customer. */
   deliveryMethod?: string;
   /**
    * A user-friendly invoice number. The value is unique within a location.
    * If not provided when creating an invoice, Square assigns a value.
    * It increments from 1 and padded with zeros making it 7 characters long
-   * for example, 0000001, 0000002.
+   * (for example, 0000001 and 0000002).
    */
   invoiceNumber?: string;
   /** The title of the invoice. */
@@ -63,7 +67,8 @@ export interface Invoice {
   description?: string;
   /**
    * The timestamp when the invoice is scheduled for processing, in RFC 3339 format.
-   * After the invoice is published, Square processes the invoice on the specified date, according to the delivery method and payment request settings.
+   * After the invoice is published, Square processes the invoice on the specified date,
+   * according to the delivery method and payment request settings.
    * If the field is not set, Square processes the invoice immediately after it is published.
    */
   scheduledAt?: string;
@@ -85,14 +90,20 @@ export interface Invoice {
   /** Indicates the status of an invoice. */
   status?: string;
   /**
-   * The time zone used to interpret calendar dates on the invoice, such as `due_date`. When an invoice is created, this field is set to the `timezone` specified for the seller location. The value cannot be changed.
-   * For example, a payment `due_date` of 2021-03-09 with a `timezone` of America/Los\_Angeles becomes overdue at midnight on March 9 in America/Los\_Angeles (which equals a UTC timestamp of 2021-03-10T08:00:00Z).
+   * The time zone used to interpret calendar dates on the invoice, such as `due_date`.
+   * When an invoice is created, this field is set to the `timezone` specified for the seller
+   * location. The value cannot be changed.
+   * For example, a payment `due_date` of 2021-03-09 with a `timezone` of America/Los\_Angeles
+   * becomes overdue at midnight on March 9 in America/Los\_Angeles (which equals a UTC timestamp
+   * of 2021-03-10T08:00:00Z).
    */
   timezone?: string;
   /** The timestamp when the invoice was created, in RFC 3339 format. */
   createdAt?: string;
   /** The timestamp when the invoice was last updated, in RFC 3339 format. */
   updatedAt?: string;
+  /** The payment methods that customers can use to pay an invoice on the Square-hosted invoice page. */
+  acceptedPaymentMethods?: InvoiceAcceptedPaymentMethods;
   /**
    * Additional seller-defined fields to render on the invoice. These fields are visible to sellers and buyers
    * on the Square-hosted invoice page and in emailed or PDF copies of invoices. For more information, see
@@ -100,6 +111,11 @@ export interface Invoice {
    * Max: 2 custom fields
    */
   customFields?: InvoiceCustomField[];
+  /**
+   * The ID of the [subscription]($m/Subscription) associated with the invoice.
+   * This field is present only on subscription billing invoices.
+   */
+  subscriptionId?: string;
 }
 
 export const invoiceSchema: Schema<Invoice> = object({
@@ -129,8 +145,13 @@ export const invoiceSchema: Schema<Invoice> = object({
   timezone: ['timezone', optional(string())],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
+  acceptedPaymentMethods: [
+    'accepted_payment_methods',
+    optional(lazy(() => invoiceAcceptedPaymentMethodsSchema)),
+  ],
   customFields: [
     'custom_fields',
     optional(array(lazy(() => invoiceCustomFieldSchema))),
   ],
+  subscriptionId: ['subscription_id', optional(string())],
 });

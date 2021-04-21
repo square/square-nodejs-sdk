@@ -2,7 +2,7 @@
 # Update Subscription Response
 
 Defines the fields that are included in the response from the
-[UpdateSubscription](#endpoint-subscriptions-updatesubscription) endpoint.
+[UpdateSubscription](/doc/api/subscriptions.md#update-subscription) endpoint.
 
 ## Structure
 

@@ -3,7 +3,7 @@ import { Error, errorSchema } from './error';
 
 /**
  * Defines the fields that are included in the response body of
- * a request to the [RegisterDomain](#endpoint-registerdomain) endpoint.
+ * a request to the [RegisterDomain]($e/ApplePay/RegisterDomain) endpoint.
  * Either `errors` or `status` are present in a given response (never both).
  */
 export interface RegisterDomainResponse {

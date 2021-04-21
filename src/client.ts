@@ -48,8 +48,8 @@ import {
 } from './http/requestBuilder';
 
 /** Current SDK version */
-export const SDK_VERSION = '9.1.0';
-const USER_AGENT = 'Square-TypeScript-SDK/9.1.0';
+export const SDK_VERSION = '10.0.0';
+const USER_AGENT = 'Square-TypeScript-SDK/10.0.0';
 
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;

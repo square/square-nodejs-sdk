@@ -2,7 +2,7 @@
 # Cancel Subscription Response
 
 Defines fields that are included in a
-[CancelSubscription](#endpoint-subscriptions-cancelsubscription) response.
+[CancelSubscription](/doc/api/subscriptions.md#cancel-subscription) response.
 
 ## Structure
 

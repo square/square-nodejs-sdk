@@ -3,7 +3,7 @@ import { Money, moneySchema } from './money';
 
 /**
  * The hourly wage rate that an employee will earn on a `Shift` for doing the job
- * specified by the `title` property of this object. Deprecated at verison 2020-08-26. Use `TeamMemberWage` instead.
+ * specified by the `title` property of this object. Deprecated at version 2020-08-26. Use `TeamMemberWage` instead.
  */
 export interface EmployeeWage {
   /** UUID for this object. */

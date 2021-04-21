@@ -14,4 +14,6 @@ The possible subscription event types.
 | `START_SUBSCRIPTION` | The subscription started. |
 | `PLAN_CHANGE` | The subscription plan changed. |
 | `STOP_SUBSCRIPTION` | The subscription stopped. |
+| `DEACTIVATE_SUBSCRIPTION` | The subscription deactivated |
+| `RESUME_SUBSCRIPTION` | The subscription resumed. |
 

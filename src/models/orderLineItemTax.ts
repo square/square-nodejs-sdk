@@ -18,7 +18,7 @@ import { Money, moneySchema } from './money';
 export interface OrderLineItemTax {
   /** Unique ID that identifies the tax only within this order. */
   uid?: string;
-  /** The catalog object id referencing [CatalogTax](#type-catalogtax). */
+  /** The catalog object id referencing [CatalogTax]($m/CatalogTax). */
   catalogObjectId?: string;
   /** The tax's name. */
   name?: string;
@@ -43,7 +43,8 @@ export interface OrderLineItemTax {
    * An application may have up to 10 entries per metadata field.
    * Entries written by applications are private and can only be read or modified by the same
    * application.
-   * See [Metadata](https://developer.squareup.com/docs/build-basics/metadata) for more information.
+   * See [Metadata](https://developer.squareup.com/docs/build-basics/metadata) for more
+   * information.
    */
   metadata?: Record<string, string>;
   /**

@@ -102,6 +102,11 @@ describe('Invoices API', () => {
       paymentRequests: [paymentRequest],
       invoiceNumber: createInvoiceNumber(),
       deliveryMethod: 'SHARE_MANUALLY',
+      acceptedPaymentMethods: {
+        card: true,
+        bankAccount: true,
+        squareGiftCard: false,
+      },
       primaryRecipient:{
         customerId: newCustomerId
       }
@@ -146,6 +151,11 @@ describe('Invoices API', () => {
       description: 'A Blank Invoice',
       orderId: newOrderId,
       locationId: locationId,
+      acceptedPaymentMethods: {
+        card: true,
+        bankAccount: true,
+        squareGiftCard: false,
+      },
       paymentRequests: [paymentRequest]
     }
 
@@ -211,6 +221,11 @@ describe('Invoices API', () => {
         description: 'A Blank Invoice',
         locationId: locationId,
         paymentRequests: [paymentRequest],
+        acceptedPaymentMethods: {
+          card: true,
+          bankAccount: true,
+          squareGiftCard: false,
+        },
         orderId: createOrderResponse.result?.order?.id!
       }
 

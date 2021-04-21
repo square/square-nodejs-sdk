@@ -32,7 +32,7 @@ export class LocationsApi extends BaseApi {
    * Provides information of all locations of a business.
    *
    * Many Square API endpoints require a `location_id` parameter.
-   * The `id` field of the [`Location`](#type-location) objects returned by this
+   * The `id` field of the [`Location`]($m/Location) objects returned by this
    * endpoint correspond to that `location_id` parameter.
    *
    * @return Response from the API call

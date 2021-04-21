@@ -23,6 +23,11 @@ Describes a `SearchInvoices` response.
   "invoices": [
     {
       "invoice": {
+        "accepted_payment_methods": {
+          "bank_account": false,
+          "card": true,
+          "square_gift_card": false
+        },
         "created_at": "2020-06-18T17:45:13Z",
         "custom_fields": [
           {

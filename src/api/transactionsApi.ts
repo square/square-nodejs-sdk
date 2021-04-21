@@ -44,20 +44,22 @@ export class TransactionsApi extends BaseApi {
    * Refunds with a `status` of `PENDING` are not currently included in this
    * endpoint's response.
    *
-   * Max results per [page](#paginatingresults): 50
+   * Max results per [page](https://developer.squareup.com/docs/working-with-apis/pagination): 50
    *
    * @param locationId  The ID of the location to list refunds for.
    * @param beginTime   The beginning of the requested reporting period, in RFC 3339 format.  See [Date
-   *                              ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The
-   *                              current time minus one year.
+   *                              ranges](https://developer.squareup.com/docs/build-basics/working-with-dates) for
+   *                              details on date inclusivity/exclusivity.  Default value: The current time minus one
+   *                              year.
    * @param endTime     The end of the requested reporting period, in RFC 3339 format.  See [Date
-   *                              ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The
-   *                              current time.
+   *                              ranges](https://developer.squareup.com/docs/build-basics/working-with-dates) for
+   *                              details on date inclusivity/exclusivity.  Default value: The current time.
    * @param sortOrder   The order in which results are listed in the response (`ASC` for oldest first,
    *                              `DESC` for newest first).  Default value: `DESC`
    * @param cursor      A pagination cursor returned by a previous call to this endpoint. Provide this to
    *                              retrieve the next set of results for your original query.  See [Paginating
-   *                              results](#paginatingresults) for more information.
+   *                              results](https://developer.squareup.com/docs/working-with-apis/pagination) for more
+   *                              information.
    * @return Response from the API call
    * @deprecated
    */
@@ -92,20 +94,22 @@ export class TransactionsApi extends BaseApi {
    * Transactions include payment information from sales and exchanges and refund
    * information from returns and exchanges.
    *
-   * Max results per [page](#paginatingresults): 50
+   * Max results per [page](https://developer.squareup.com/docs/working-with-apis/pagination): 50
    *
    * @param locationId  The ID of the location to list transactions for.
    * @param beginTime   The beginning of the requested reporting period, in RFC 3339 format.  See [Date
-   *                              ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The
-   *                              current time minus one year.
+   *                              ranges](https://developer.squareup.com/docs/build-basics/working-with-dates) for
+   *                              details on date inclusivity/exclusivity.  Default value: The current time minus one
+   *                              year.
    * @param endTime     The end of the requested reporting period, in RFC 3339 format.  See [Date
-   *                              ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The
-   *                              current time.
+   *                              ranges](https://developer.squareup.com/docs/build-basics/working-with-dates) for
+   *                              details on date inclusivity/exclusivity.  Default value: The current time.
    * @param sortOrder   The order in which results are listed in the response (`ASC` for oldest first,
    *                              `DESC` for newest first).  Default value: `DESC`
    * @param cursor      A pagination cursor returned by a previous call to this endpoint. Provide this to
    *                              retrieve the next set of results for your original query.  See [Paginating
-   *                              results](#paginatingresults) for more information.
+   *                              results](https://developer.squareup.com/docs/working-with-apis/pagination) for more
+   *                              information.
    * @return Response from the API call
    * @deprecated
    */
@@ -153,8 +157,8 @@ export class TransactionsApi extends BaseApi {
    *
    * When this response is returned, the amount of Square's processing fee might not yet be
    * calculated. To obtain the processing fee, wait about ten seconds and call
-   * [RetrieveTransaction](#endpoint-retrievetransaction). See the `processing_fee_money`
-   * field of each [Tender included](#type-tender) in the transaction.
+   * [RetrieveTransaction]($e/Transactions/RetrieveTransaction). See the `processing_fee_money`
+   * field of each [Tender included]($m/Tender) in the transaction.
    *
    * @param locationId  The ID of the location to associate the created transaction with.
    * @param body        An object containing the fields to POST for the request.  See the
@@ -202,7 +206,7 @@ export class TransactionsApi extends BaseApi {
   }
 
   /**
-   * Captures a transaction that was created with the [Charge](#endpoint-charge)
+   * Captures a transaction that was created with the [Charge]($e/Transactions/Charge)
    * endpoint with a `delay_capture` value of `true`.
    *
    *
@@ -268,7 +272,7 @@ export class TransactionsApi extends BaseApi {
   }
 
   /**
-   * Cancels a transaction that was created with the [Charge](#endpoint-charge)
+   * Cancels a transaction that was created with the [Charge]($e/Transactions/Charge)
    * endpoint with a `delay_capture` value of `true`.
    *
    *

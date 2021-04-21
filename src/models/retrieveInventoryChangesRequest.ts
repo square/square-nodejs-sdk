@@ -2,7 +2,7 @@ import { object, optional, Schema, string } from '../schema';
 
 export interface RetrieveInventoryChangesRequest {
   /**
-   * The [Location](#type-location) IDs to look up as a comma-separated
+   * The [Location]($m/Location) IDs to look up as a comma-separated
    * list. An empty list queries all locations.
    */
   locationIds?: string;

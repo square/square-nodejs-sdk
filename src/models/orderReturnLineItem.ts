@@ -39,11 +39,11 @@ export interface OrderReturnLineItem {
   quantityUnit?: OrderQuantityUnit;
   /** The note of the returned line item. */
   note?: string;
-  /** The [CatalogItemVariation](#type-catalogitemvariation) id applied to this returned line item. */
+  /** The [CatalogItemVariation]($m/CatalogItemVariation) id applied to this returned line item. */
   catalogObjectId?: string;
   /** The name of the variation applied to this returned line item. */
   variationName?: string;
-  /** The [CatalogModifier](#type-catalogmodifier)s applied to this line item. */
+  /** The [CatalogModifier]($m/CatalogModifier)s applied to this line item. */
   returnModifiers?: OrderReturnLineItemModifier[];
   /**
    * The list of references to `OrderReturnTax` entities applied to the returned line item. Each

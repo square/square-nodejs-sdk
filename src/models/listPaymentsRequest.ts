@@ -2,7 +2,7 @@ import { bigint, number, object, optional, Schema, string } from '../schema';
 
 /**
  * Describes a request to list payments using
- * [ListPayments](#endpoint-payments-listpayments).
+ * [ListPayments]($e/Payments/ListPayments).
  * The maximum results per page is 100.
  */
 export interface ListPaymentsRequest {

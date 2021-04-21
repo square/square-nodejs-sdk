@@ -2,7 +2,7 @@ import { array, lazy, object, optional, Schema, string } from '../schema';
 import { CatalogObject, catalogObjectSchema } from './catalogObject';
 import { Error, errorSchema } from './error';
 
-/** Defines the response body returned from the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems) endpoint. */
+/** Defines the response body returned from the [SearchCatalogItems]($e/Catalog/SearchCatalogItems) endpoint. */
 export interface SearchCatalogItemsResponse {
   /** Any errors that occurred during the request. */
   errors?: Error[];

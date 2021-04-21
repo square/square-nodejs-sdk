@@ -2,7 +2,7 @@
 # Capture Transaction Response
 
 Defines the fields that are included in the response body of
-a request to the [CaptureTransaction](#endpoint-capturetransaction) endpoint.
+a request to the [CaptureTransaction](/doc/api/transactions.md#capture-transaction) endpoint.
 
 ## Structure
 

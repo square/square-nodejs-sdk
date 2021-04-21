@@ -2,7 +2,7 @@
 # Create Refund Response
 
 Defines the fields that are included in the response body of
-a request to the [CreateRefund](#endpoint-createrefund) endpoint.
+a request to the [CreateRefund](/doc/api/transactions.md#create-refund) endpoint.
 
 One of `errors` or `refund` is present in a given response (never both).
 

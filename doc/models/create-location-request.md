@@ -1,7 +1,7 @@
 
 # Create Location Request
 
-Request object for the [CreateLocation](#endpoint-createlocation) endpoint.
+Request object for the [CreateLocation](/doc/api/locations.md#create-location) endpoint.
 
 ## Structure
 

@@ -2,7 +2,7 @@
 # List Subscription Events Response
 
 Defines the fields that are included in the response from the
-[ListSubscriptionEvents](#endpoint-subscriptions-listsubscriptionevents)
+[ListSubscriptionEvents](/doc/api/subscriptions.md#list-subscription-events)
 endpoint.
 
 ## Structure

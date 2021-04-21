@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `sellerId` | `string` | Optional | The ID of the seller, obtainable using the Merchants API. |
-| `createdAt` | `string` | Optional | The RFC-3339 timestamp specifying the booking's creation time. |
+| `createdAt` | `string` | Optional | The RFC 3339 timestamp specifying the booking's creation time. |
 | `bookingEnabled` | `boolean` | Optional | Indicates whether the seller is open for booking. |
 | `customerTimezoneChoice` | [`string`](/doc/models/business-booking-profile-customer-timezone-choice.md) | Optional | Choices of customer-facing time zone used for bookings. |
 | `bookingPolicy` | [`string`](/doc/models/business-booking-profile-booking-policy.md) | Optional | Policies for accepting bookings. |

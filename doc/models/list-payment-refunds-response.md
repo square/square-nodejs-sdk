@@ -1,7 +1,7 @@
 
 # List Payment Refunds Response
 
-Defines the response returned by [ListPaymentRefunds](#endpoint-refunds-listpaymentrefunds).
+Defines the response returned by [ListPaymentRefunds](/doc/api/refunds.md#list-payment-refunds).
 
 Either `errors` or `refunds` is present in a given response (never both).
 

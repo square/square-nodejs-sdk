@@ -1,10 +1,14 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  bigint,
+  lazy,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Address, addressSchema } from './address';
 import { Card, cardSchema } from './card';
-import {
-  CustomerGroupInfo,
-  customerGroupInfoSchema,
-} from './customerGroupInfo';
 import {
   CustomerPreferences,
   customerPreferencesSchema,
@@ -21,7 +25,7 @@ export interface Customer {
   createdAt?: string;
   /** The timestamp when the customer profile was last updated, in RFC 3339 format. */
   updatedAt?: string;
-  /** Payment details of cards stored on file for the customer profile. */
+  /** Payment details of the credit, debit, and gift cards stored on file for the customer profile. */
   cards?: Card[];
   /** The given (i.e., first) name associated with the customer profile. */
   givenName?: string;
@@ -38,14 +42,12 @@ export interface Customer {
   /** The 11-digit phone number associated with the customer profile. */
   phoneNumber?: string;
   /**
-   * The birthday associated with the customer profile, in RFC 3339 format.
-   * Year is optional, timezone and times are not allowed.
-   * For example: `0000-09-01T00:00:00-00:00` indicates a birthday on September 1st.
-   * `1998-09-01T00:00:00-00:00` indications a birthday on September 1st __1998__.
+   * The birthday associated with the customer profile, in RFC 3339 format. The year is optional. The timezone and time are not allowed.
+   * For example, `0000-09-21T00:00:00-00:00` represents a birthday on September 21 and `1998-09-21T00:00:00-00:00` represents a birthday on September 21, 1998.
    */
   birthday?: string;
   /**
-   * An optional, second ID used to associate the customer profile with an
+   * An optional second ID used to associate the customer profile with an
    * entity in another system.
    */
   referenceId?: string;
@@ -53,14 +55,14 @@ export interface Customer {
   note?: string;
   /** Represents communication preferences for the customer profile. */
   preferences?: CustomerPreferences;
-  /** The customer groups and segments the customer belongs to. This deprecated field has been replaced with  the dedicated `group_ids` for customer groups and the dedicated `segment_ids` field for customer segments. You can retrieve information about a given customer group and segment respectively using the Customer Groups API and Customer Segments API. */
-  groups?: CustomerGroupInfo[];
   /** Indicates the method used to create the customer profile. */
   creationSource?: string;
   /** The IDs of customer groups the customer belongs to. */
   groupIds?: string[];
   /** The IDs of segments the customer belongs to. */
   segmentIds?: string[];
+  /** The Square-assigned version number of the customer profile. The version number is incremented each time an update is committed to the customer profile, except for changes to customer segment membership and cards on file. */
+  version?: bigint;
 }
 
 export const customerSchema: Schema<Customer> = object({
@@ -79,8 +81,8 @@ export const customerSchema: Schema<Customer> = object({
   referenceId: ['reference_id', optional(string())],
   note: ['note', optional(string())],
   preferences: ['preferences', optional(lazy(() => customerPreferencesSchema))],
-  groups: ['groups', optional(array(lazy(() => customerGroupInfoSchema)))],
   creationSource: ['creation_source', optional(string())],
   groupIds: ['group_ids', optional(array(string()))],
   segmentIds: ['segment_ids', optional(array(string()))],
+  version: ['version', optional(bigint())],
 });

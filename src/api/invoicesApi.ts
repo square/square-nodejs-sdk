@@ -59,7 +59,7 @@ export class InvoicesApi extends BaseApi {
   /**
    * Returns a list of invoices for a given location. The response
    * is paginated. If truncated, the response includes a `cursor` that you
-   * use in a subsequent request to fetch the next set of invoices.
+   * use in a subsequent request to retrieve the next set of invoices.
    *
    * @param locationId  The ID of the location for which to list invoices.
    * @param cursor      A pagination cursor returned by a previous call to this endpoint.  Provide this
@@ -67,7 +67,7 @@ export class InvoicesApi extends BaseApi {
    *                              information, see [Pagination](https://developer.squareup.com/docs/working-with-
    *                              apis/pagination).
    * @param limit       The maximum number of invoices to return (200 is the maximum `limit`).  If not
-   *                              provided, the server  uses a default limit of 100 invoices.
+   *                              provided, the server uses a default limit of 100 invoices.
    * @return Response from the API call
    */
   async listInvoices(
@@ -89,7 +89,7 @@ export class InvoicesApi extends BaseApi {
   }
 
   /**
-   * Creates a draft [invoice](#type-invoice)
+   * Creates a draft [invoice]($m/Invoice)
    * for an order created using the Orders API.
    *
    * A draft invoice remains in your account and no action is taken.
@@ -119,7 +119,7 @@ export class InvoicesApi extends BaseApi {
    * optionally one customer.
    *
    * The response is paginated. If truncated, the response includes a `cursor`
-   * that you use in a subsequent request to fetch the next set of invoices.
+   * that you use in a subsequent request to retrieve the next set of invoices.
    *
    * @param body An object containing the fields to POST for the request.  See the
    *                                             corresponding object definition for field details.
@@ -139,13 +139,13 @@ export class InvoicesApi extends BaseApi {
 
   /**
    * Deletes the specified invoice. When an invoice is deleted, the
-   * associated Order status changes to CANCELED. You can only delete a draft
+   * associated order status changes to CANCELED. You can only delete a draft
    * invoice (you cannot delete a published invoice, including one that is scheduled for processing).
    *
    * @param invoiceId  The ID of the invoice to delete.
-   * @param version    The version of the [invoice](#type-invoice) to delete. If you do not know the version,
-   *                             you can call [GetInvoice](#endpoint-Invoices-GetInvoice) or  [ListInvoices](#endpoint-
-   *                             Invoices-ListInvoices).
+   * @param version    The version of the [invoice]($m/Invoice) to delete. If you do not know the version,
+   *                             you can call [GetInvoice]($e/Invoices/GetInvoice) or
+   *                             [ListInvoices]($e/Invoices/ListInvoices).
    * @return Response from the API call
    */
   async deleteInvoice(
@@ -166,7 +166,7 @@ export class InvoicesApi extends BaseApi {
   /**
    * Retrieves an invoice by invoice ID.
    *
-   * @param invoiceId  The id of the invoice to retrieve.
+   * @param invoiceId  The ID of the invoice to retrieve.
    * @return Response from the API call
    */
   async getInvoice(
@@ -182,10 +182,10 @@ export class InvoicesApi extends BaseApi {
   /**
    * Updates an invoice by modifying fields, clearing fields, or both. For most updates, you can use a
    * sparse
-   * `Invoice` object to add fields or change values, and use the `fields_to_clear` field to specify
+   * `Invoice` object to add fields or change values and use the `fields_to_clear` field to specify
    * fields to clear.
    * However, some restrictions apply. For example, you cannot change the `order_id` or `location_id`
-   * field, and you
+   * field and you
    * must provide the complete `custom_fields` list to update a custom field. Published invoices have
    * additional restrictions.
    *
@@ -216,7 +216,7 @@ export class InvoicesApi extends BaseApi {
    * You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`, `REFUNDED`,
    * `CANCELED`, or `FAILED`.
    *
-   * @param invoiceId  The ID of the [invoice](#type-invoice) to cancel.
+   * @param invoiceId  The ID of the [invoice]($m/Invoice) to cancel.
    * @param body       An object containing the fields to POST for the request.  See
    *                                                  the corresponding object definition for field details.
    * @return Response from the API call
@@ -247,9 +247,9 @@ export class InvoicesApi extends BaseApi {
    * The invoice `status` also changes from `DRAFT` to a status
    * based on the invoice configuration. For example, the status changes to `UNPAID` if
    * Square emails the invoice or `PARTIALLY_PAID` if Square charge a card on file for a portion of the
-   * invoice amount).
+   * invoice amount.
    *
-   * @param invoiceId  The id of the invoice to publish.
+   * @param invoiceId  The ID of the invoice to publish.
    * @param body       An object containing the fields to POST for the request.  See
    *                                                   the corresponding object definition for field details.
    * @return Response from the API call

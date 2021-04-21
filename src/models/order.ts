@@ -57,7 +57,7 @@ export interface Order {
   referenceId?: string;
   /** Represents the origination details of an order. */
   source?: OrderSource;
-  /** The [Customer](#type-customer) ID of the customer associated with the order. */
+  /** The [Customer]($m/Customer) ID of the customer associated with the order. */
   customerId?: string;
   /** The line items included in the order. */
   lineItems?: OrderLineItem[];
@@ -130,7 +130,7 @@ export interface Order {
   createdAt?: string;
   /** Timestamp for when the order was last updated. In RFC 3339 format, e.g., "2016-09-04T23:59:33.123Z". */
   updatedAt?: string;
-  /** Timestamp for when the order reached a terminal [state](#property-state). In RFC 3339 format, e.g., "2016-09-04T23:59:33.123Z". */
+  /** Timestamp for when the order reached a terminal [state]($m/OrderState). In RFC 3339 format, e.g., "2016-09-04T23:59:33.123Z". */
   closedAt?: string;
   /** The state of the order. */
   state?: string;
@@ -189,7 +189,7 @@ export interface Order {
   /**
    * Pricing options for an order. The options affect how the order's price is calculated.
    * They can be used, for example, to apply automatic price adjustments that are based on pre-configured
-   * [pricing rules](https://developer.squareup.com/docs/reference/square/objects/CatalogPricingRule).
+   * [pricing rules]($m/CatalogPricingRule).
    */
   pricingOptions?: OrderPricingOptions;
   /** A set-like list of rewards that have been added to the order. */

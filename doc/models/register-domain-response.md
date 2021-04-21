@@ -2,7 +2,7 @@
 # Register Domain Response
 
 Defines the fields that are included in the response body of
-a request to the [RegisterDomain](#endpoint-registerdomain) endpoint.
+a request to the [RegisterDomain](/doc/api/apple-pay.md#register-domain) endpoint.
 
 Either `errors` or `status` are present in a given response (never both).
 

@@ -6,7 +6,7 @@ export interface AdditionalRecipient {
   /** The location ID for a recipient (other than the merchant) receiving a portion of this tender. */
   locationId: string;
   /** The description of the additional recipient. */
-  description: string;
+  description?: string;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -16,13 +16,13 @@ export interface AdditionalRecipient {
    * for more information.
    */
   amountMoney: Money;
-  /** The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server. */
+  /** The unique ID for this [AdditionalRecipientReceivable]($m/AdditionalRecipientReceivable), assigned by the server. */
   receivableId?: string;
 }
 
 export const additionalRecipientSchema: Schema<AdditionalRecipient> = object({
   locationId: ['location_id', string()],
-  description: ['description', string()],
+  description: ['description', optional(string())],
   amountMoney: ['amount_money', lazy(() => moneySchema)],
   receivableId: ['receivable_id', optional(string())],
 });

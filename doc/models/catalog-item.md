@@ -1,7 +1,7 @@
 
 # Catalog Item
 
-A [CatalogObject](#type-CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog.
+A [CatalogObject](/doc/models/catalog-object.md) instance of the `ITEM` type, also referred to as an item, in the catalog.
 
 ## Structure
 
@@ -25,6 +25,7 @@ A [CatalogObject](#type-CatalogObject) instance of the `ITEM` type, also referre
 | `productType` | [`string`](/doc/models/catalog-item-product-type.md) | Optional | The type of a CatalogItem. Connect V2 only allows the creation of `REGULAR` or `APPOINTMENTS_SERVICE` items. |
 | `skipModifierScreen` | `boolean` | Optional | If `false`, the Square Point of Sale app will present the `CatalogItem`'s<br>details screen immediately, allowing the merchant to choose `CatalogModifier`s<br>before adding the item to the cart.  This is the default behavior.<br><br>If `true`, the Square Point of Sale app will immediately add the item to the cart with the pre-selected<br>modifiers, and merchants can edit modifiers by drilling down onto the item's details.<br><br>Third-party clients are encouraged to implement similar behaviors. |
 | `itemOptions` | [`CatalogItemOptionForItem[]`](/doc/models/catalog-item-option-for-item.md) | Optional | List of item options IDs for this item. Used to manage and group item<br>variations in a specified order.<br><br>Maximum: 6 item options. |
+| `sortName` | `string` | Optional | A name to sort the item by. If this name is unspecified, namely, the `sort_name` field is absent, the regular `name` field is used for sorting.<br><br>It is currently supported for sellers of the Japanese locale only. |
 
 ## Example (as JSON)
 

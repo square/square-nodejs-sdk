@@ -1,7 +1,7 @@
 
 # Retrieve Merchant Response
 
-The response object returned by the [RetrieveMerchant](#endpoint-retrieveMerchant) endpoint.
+The response object returned by the [RetrieveMerchant](/doc/api/merchants.md#retrieve-merchant) endpoint.
 
 ## Structure
 

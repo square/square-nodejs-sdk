@@ -18,7 +18,7 @@ export interface CreateMobileAuthorizationCodeResponse {
   expiresAt?: string;
   /**
    * Represents an error encountered during a request to the Connect API.
-   * See [Handling errors](#handlingerrors) for more information.
+   * See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-errors) for more information.
    */
   error?: Error;
 }

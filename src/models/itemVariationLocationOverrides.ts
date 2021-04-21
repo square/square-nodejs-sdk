@@ -11,7 +11,7 @@ import { Money, moneySchema } from './money';
 
 /** Price and inventory alerting overrides for a `CatalogItemVariation` at a specific `Location`. */
 export interface ItemVariationLocationOverrides {
-  /** The ID of the `Location`. */
+  /** The ID of the `Location`. This can include locations that are deactivated. */
   locationId?: string;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.

@@ -26,10 +26,18 @@ A response that includes loyalty accounts that satisfy the search criteria.
       "customer_id": "Q8002FAM9V1EZ0ADB2T5609X6NET1H0",
       "id": "79b807d2-d786-46a9-933b-918028d7a8c5",
       "lifetime_points": 20,
+      "mapping": {
+        "created_at": "2020-05-08T21:44:32Z",
+        "id": "66aaab3f-da99-49ed-8b19-b87f851c844f",
+        "phone_number": "+14155551234",
+        "type": "PHONE",
+        "value": "+14155551234"
+      },
       "mappings": [
         {
           "created_at": "2020-05-08T21:44:32Z",
           "id": "66aaab3f-da99-49ed-8b19-b87f851c844f",
+          "phone_number": "+14155551234",
           "type": "PHONE",
           "value": "+14155551234"
         }

@@ -2,7 +2,7 @@
 # Retrieve Location Response
 
 Defines the fields that the
-[RetrieveLocation](#endpoint-retrievelocation) endpoint returns
+[RetrieveLocation](/doc/api/locations.md#retrieve-location) endpoint returns
 in a response.
 
 ## Structure

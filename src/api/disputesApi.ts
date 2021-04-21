@@ -137,8 +137,7 @@ export class DisputesApi extends BaseApi {
    * Removes specified evidence from a dispute.
    *
    * Square does not send the bank any evidence that is removed. Also, you cannot remove evidence after
-   * submitting it to the bank using [SubmitEvidence](https://developer.squareup.
-   * com/docs/reference/square/disputes-api/submit-evidence).
+   * submitting it to the bank using [SubmitEvidence]($e/Disputes/SubmitEvidence).
    *
    * @param disputeId   The ID of the dispute you want to remove evidence from.
    * @param evidenceId  The ID of the evidence you want to remove.
@@ -250,10 +249,8 @@ export class DisputesApi extends BaseApi {
    * Submits evidence to the cardholder's bank.
    *
    * Before submitting evidence, Square compiles all available evidence. This includes evidence uploaded
-   * using the [CreateDisputeEvidenceFile](https://developer.squareup.com/docs/reference/square/disputes-
-   * api/create-dispute-evidence-file) and
-   * [CreateDisputeEvidenceText](https://developer.squareup.com/docs/reference/square/disputes-api/create-
-   * dispute-evidence-text) endpoints and
+   * using the [CreateDisputeEvidenceFile]($e/Disputes/CreateDisputeEvidenceFile) and
+   * [CreateDisputeEvidenceText]($e/Disputes/CreateDisputeEvidenceText) endpoints and
    * evidence automatically provided by Square, when available.
    *
    * @param disputeId  The ID of the dispute that you want to submit evidence for.

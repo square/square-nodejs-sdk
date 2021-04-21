@@ -12,7 +12,7 @@ import { Money, moneySchema } from './money';
 
 /**
  * Describes a request to create a payment using
- * [CreatePayment](#endpoint-payments-createpayment).
+ * [CreatePayment]($e/Payments/CreatePayment).
  */
 export interface CreatePaymentRequest {
   /**
@@ -77,14 +77,14 @@ export interface CreatePaymentRequest {
    * If set to `true`, this payment will be completed when possible. If
    * set to `false`, this payment is held in an approved state until either
    * explicitly completed (captured) or canceled (voided). For more information, see
-   * [Delayed capture](https://developer.squareup.com/docs/payments-api/take-payments#delayed-payments).
+   * [Delayed capture](https://developer.squareup.com/docs/payments-api/take-payments/card-payments#delayed-capture-of-a-card-payment).
    * Default: true
    */
   autocomplete?: boolean;
   /** Associates a previously created order with this payment. */
   orderId?: string;
   /**
-   * The [Customer](#type-customer) ID of the customer associated with the payment.
+   * The [Customer]($m/Customer) ID of the customer associated with the payment.
    * This is required if the `source_id` refers to a card on file created using the Customers API.
    */
   customerId?: string;

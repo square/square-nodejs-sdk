@@ -1,7 +1,7 @@
 
 # List Merchants Response
 
-The response object returned by the [ListMerchant](#endpoint-listmerchant) endpoint.
+The response object returned by the [ListMerchant](/doc/api/merchants.md#list-merchants) endpoint.
 
 ## Structure
 

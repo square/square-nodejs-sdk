@@ -1,7 +1,7 @@
 
 # Update Location Response
 
-Response object returned by the [UpdateLocation](#endpoint-updatelocation) endpoint.
+Response object returned by the [UpdateLocation](/doc/api/locations.md#update-location) endpoint.
 
 ## Structure
 

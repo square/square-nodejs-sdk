@@ -1,5 +1,5 @@
 {
-  "version": "9.1.0",
+  "version": "10.0.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=10.4.0"
   },
   "scripts": {
     "build": "tsdx build",
@@ -41,7 +41,7 @@
     "uuid": "^8.3.0"
   },
   "dependencies": {
-    "@apimatic/schema": "^0.5.1",
+    "@apimatic/schema": "^0.6.0",
     "@types/node": "^14.14.30",
     "axios": "^0.21.1",
     "detect-node": "^2.0.4",

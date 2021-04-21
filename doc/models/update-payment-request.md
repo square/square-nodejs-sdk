@@ -2,7 +2,7 @@
 # Update Payment Request
 
 Describes a request to update a payment using
-[UpdatePayment](#endpoint-payments-updatepayment).
+[UpdatePayment](/doc/api/payments.md#update-payment).
 
 ## Structure
 

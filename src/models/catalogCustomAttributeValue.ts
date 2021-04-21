@@ -10,7 +10,7 @@ export interface CatalogCustomAttributeValue {
   name?: string;
   /** The string value of the custom attribute.  Populated if `type` = `STRING`. */
   stringValue?: string;
-  /** __Read-only.__ The id of the [CatalogCustomAttributeDefinition](#type-CatalogCustomAttributeDefinition) this value belongs to. */
+  /** __Read-only.__ The id of the [CatalogCustomAttributeDefinition]($m/CatalogCustomAttributeDefinition) this value belongs to. */
   customAttributeDefinitionId?: string;
   /** Defines the possible types for a custom attribute. */
   type?: string;

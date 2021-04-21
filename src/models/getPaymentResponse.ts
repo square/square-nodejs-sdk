@@ -2,7 +2,7 @@ import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 import { Payment, paymentSchema } from './payment';
 
-/** Defines the response returned by [GetPayment](#endpoint-payments-getpayment). */
+/** Defines the response returned by [GetPayment]($e/Payments/GetPayment). */
 export interface GetPaymentResponse {
   /** Information about errors encountered during the request. */
   errors?: Error[];

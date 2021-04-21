@@ -11,7 +11,7 @@ import {
 export interface CatalogSubscriptionPlan {
   /** The name of the plan. */
   name?: string;
-  /** A list of SubscriptionPhase containing the [SubscriptionPhase](#type-SubscriptionPhase) for this plan. */
+  /** A list of SubscriptionPhase containing the [SubscriptionPhase]($m/SubscriptionPhase) for this plan. */
   phases?: SubscriptionPhase[];
 }
 

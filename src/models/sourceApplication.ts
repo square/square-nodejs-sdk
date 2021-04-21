@@ -6,7 +6,7 @@ export interface SourceApplication {
   product?: string;
   /**
    * Read-only Square ID assigned to the application. Only used for
-   * [Product](#type-product) type `EXTERNAL_API`.
+   * [Product]($m/Product) type `EXTERNAL_API`.
    */
   applicationId?: string;
   /**

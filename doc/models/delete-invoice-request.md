@@ -11,7 +11,7 @@ Describes a `DeleteInvoice` request.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `version` | `number` | Optional | The version of the [invoice](#type-invoice) to delete.<br>If you do not know the version, you can call [GetInvoice](#endpoint-Invoices-GetInvoice) or<br>[ListInvoices](#endpoint-Invoices-ListInvoices). |
+| `version` | `number` | Optional | The version of the [invoice](/doc/models/invoice.md) to delete.<br>If you do not know the version, you can call [GetInvoice](/doc/api/invoices.md#get-invoice) or<br>[ListInvoices](/doc/api/invoices.md#list-invoices). |
 
 ## Example (as JSON)
 

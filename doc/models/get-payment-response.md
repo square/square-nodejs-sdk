@@ -1,7 +1,7 @@
 
 # Get Payment Response
 
-Defines the response returned by [GetPayment](#endpoint-payments-getpayment).
+Defines the response returned by [GetPayment](/doc/api/payments.md#get-payment).
 
 ## Structure
 

@@ -90,7 +90,7 @@ describe('Disputes API', () => {
     expect(statusCode).toBe(200)
   })
 
-  it('should  testRemoveDisputeEvidence', async () => {
+  it('should test RemoveDisputeEvidence', async () => {
 
     try {
       let { statusCode } = await disputeApi.removeDisputeEvidence(disputeId, textEvidenceId)

@@ -4,7 +4,7 @@ import { Order, orderSchema } from './order';
 
 /**
  * Defines the fields that are included in the response body of a request to the
- * [PayOrder](#endpoint-payorder) endpoint.
+ * [PayOrder]($e/Orders/PayOrder) endpoint.
  */
 export interface PayOrderResponse {
   /** Any errors that occurred during the request. */

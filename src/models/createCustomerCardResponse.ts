@@ -4,8 +4,8 @@ import { Error, errorSchema } from './error';
 
 /**
  * Defines the fields that are included in the response body of
- * a request to the CreateCustomerCard endpoint.
- * One of `errors` or `card` is present in a given response (never both).
+ * a request to the `CreateCustomerCard` endpoint.
+ * Either `errors` or `card` is present in a given response (never both).
  */
 export interface CreateCustomerCardResponse {
   /** Any errors that occurred during the request. */

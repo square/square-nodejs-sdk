@@ -1,7 +1,7 @@
 
 # Invoice Sort Field
 
-Field to use for sorting.
+The field to use for sorting.
 
 ## Enumeration
 

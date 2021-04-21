@@ -2,7 +2,7 @@
 # Custom Attribute Filter
 
 Supported custom attribute query expressions for calling the
-[SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems)
+[SearchCatalogItems](/doc/api/catalog.md#search-catalog-items)
 endpoint to search for items or item variations.
 
 ## Structure

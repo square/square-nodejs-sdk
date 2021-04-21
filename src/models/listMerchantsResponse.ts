@@ -2,7 +2,7 @@ import { array, lazy, number, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 import { Merchant, merchantSchema } from './merchant';
 
-/** The response object returned by the [ListMerchant](#endpoint-listmerchant) endpoint. */
+/** The response object returned by the [ListMerchant]($e/Merchants/ListMerchants) endpoint. */
 export interface ListMerchantsResponse {
   /** Information on errors encountered during the request. */
   errors?: Error[];

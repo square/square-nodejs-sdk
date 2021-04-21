@@ -6,7 +6,7 @@ import { InvoiceSort, invoiceSortSchema } from './invoiceSort';
 export interface InvoiceQuery {
   /** Describes query filters to apply. */
   filter: InvoiceFilter;
-  /** Identifies the  sort field and sort order. */
+  /** Identifies the sort field and sort order. */
   sort?: InvoiceSort;
 }
 

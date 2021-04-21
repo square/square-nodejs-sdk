@@ -23,8 +23,7 @@ A request to search for loyalty accounts.
   "query": {
     "mappings": [
       {
-        "type": "PHONE",
-        "value": "+14155551234"
+        "phone_number": "+14155551234"
       }
     ]
   }

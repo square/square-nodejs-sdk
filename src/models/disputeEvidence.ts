@@ -1,10 +1,18 @@
-import { object, optional, Schema, string } from '../schema';
+import { lazy, object, optional, Schema, string } from '../schema';
+import {
+  DisputeEvidenceFile,
+  disputeEvidenceFileSchema,
+} from './disputeEvidenceFile';
 
 export interface DisputeEvidence {
   /** The Square-generated ID of the evidence. */
   evidenceId?: string;
   /** The ID of the dispute the evidence is associated with. */
   disputeId?: string;
+  /** A file to be uploaded as dispute evidence. */
+  evidenceFile?: DisputeEvidenceFile;
+  /** Raw text */
+  evidenceText?: string;
   /** The time when the next action is due, in RFC 3339 format. */
   uploadedAt?: string;
   /** The type of the dispute evidence. */
@@ -14,6 +22,11 @@ export interface DisputeEvidence {
 export const disputeEvidenceSchema: Schema<DisputeEvidence> = object({
   evidenceId: ['evidence_id', optional(string())],
   disputeId: ['dispute_id', optional(string())],
+  evidenceFile: [
+    'evidence_file',
+    optional(lazy(() => disputeEvidenceFileSchema)),
+  ],
+  evidenceText: ['evidence_text', optional(string())],
   uploadedAt: ['uploaded_at', optional(string())],
   evidenceType: ['evidence_type', optional(string())],
 });

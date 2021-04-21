@@ -23,10 +23,18 @@ A response that includes loyalty account created.
     "created_at": "2020-05-08T21:44:32Z",
     "id": "79b807d2-d786-46a9-933b-918028d7a8c5",
     "lifetime_points": 0,
+    "mapping": {
+      "created_at": "2020-05-08T21:44:32Z",
+      "id": "66aaab3f-da99-49ed-8b19-b87f851c844f",
+      "phone_number": "+14155551234",
+      "type": "PHONE",
+      "value": "+14155551234"
+    },
     "mappings": [
       {
         "created_at": "2020-05-08T21:44:32Z",
         "id": "66aaab3f-da99-49ed-8b19-b87f851c844f",
+        "phone_number": "+14155551234",
         "type": "PHONE",
         "value": "+14155551234"
       }

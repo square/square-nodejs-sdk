@@ -29,7 +29,7 @@ export interface LoyaltyProgram {
   /** Describes when the loyalty program expires. */
   expirationPolicy?: LoyaltyProgramExpirationPolicy;
   terminology: LoyaltyProgramTerminology;
-  /** The [locations](#type-Location) at which the program is active. */
+  /** The [locations]($m/Location) at which the program is active. */
   locationIds: string[];
   /** The timestamp when the program was created, in RFC 3339 format. */
   createdAt: string;

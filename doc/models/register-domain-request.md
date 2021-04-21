@@ -2,7 +2,7 @@
 # Register Domain Request
 
 Defines the parameters that can be included in the body of
-a request to the [RegisterDomain](#endpoint-registerdomain) endpoint.
+a request to the [RegisterDomain](/doc/api/apple-pay.md#register-domain) endpoint.
 
 ## Structure
 
@@ -12,7 +12,7 @@ a request to the [RegisterDomain](#endpoint-registerdomain) endpoint.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `domainName` | `string` | Required | A domain name as described in RFC-1034 that will be registered with ApplePay<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255` |
+| `domainName` | `string` | Required | A domain name as described in RFC-1034 that will be registered with ApplePay.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255` |
 
 ## Example (as JSON)
 

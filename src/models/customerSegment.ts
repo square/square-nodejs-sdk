@@ -2,12 +2,13 @@ import { object, optional, Schema, string } from '../schema';
 
 /**
  * Represents a group of customer profiles that match one or more predefined filter criteria.
- * Segments (also known as Smart Groups) are defined and created within Customer Directory in the Square Dashboard or Point of Sale.
+ * Segments (also known as Smart Groups) are defined and created within the Customer Directory in the
+ * Square Seller Dashboard or Point of Sale.
  */
 export interface CustomerSegment {
-  /** Unique Square-generated ID for the segment. */
+  /** A unique Square-generated ID for the segment. */
   id?: string;
-  /** Name of the segment. */
+  /** The name of the segment. */
   name: string;
   /** The timestamp when the segment was created, in RFC 3339 format. */
   createdAt?: string;

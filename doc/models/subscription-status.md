@@ -14,4 +14,5 @@ Possible subscription status values.
 | `PENDING` | The subscription starts in the future. |
 | `ACTIVE` | The subscription is active. |
 | `CANCELED` | The subscription is canceled. |
+| `DEACTIVATED` | The subscription is deactivated. |
 

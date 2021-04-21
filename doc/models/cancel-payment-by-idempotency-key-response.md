@@ -2,7 +2,7 @@
 # Cancel Payment by Idempotency Key Response
 
 Defines the response returned by
-[CancelPaymentByIdempotencyKey](#endpoint-payments-cancelpaymentbyidempotencykey).
+[CancelPaymentByIdempotencyKey](/doc/api/payments.md#cancel-payment-by-idempotency-key).
 On success, `errors` is empty.
 
 ## Structure

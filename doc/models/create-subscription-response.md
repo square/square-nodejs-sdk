@@ -2,7 +2,7 @@
 # Create Subscription Response
 
 Defines the fields that are included in the response from the
-[CreateSubscription](#endpoint-subscriptions-createsubscription) endpoint.
+[CreateSubscription](/doc/api/subscriptions.md#create-subscription) endpoint.
 
 ## Structure
 

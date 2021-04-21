@@ -20,7 +20,7 @@ export interface OrderServiceCharge {
   uid?: string;
   /** The name of the service charge. */
   name?: string;
-  /** The catalog object ID referencing the service charge [CatalogObject](#type-catalogobject). */
+  /** The catalog object ID referencing the service charge [CatalogObject]($m/CatalogObject). */
   catalogObjectId?: string;
   /**
    * The service charge percentage as a string representation of a

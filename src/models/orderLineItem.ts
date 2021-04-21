@@ -46,7 +46,7 @@ export interface OrderLineItem {
   quantityUnit?: OrderQuantityUnit;
   /** The note of the line item. */
   note?: string;
-  /** The [CatalogItemVariation](#type-catalogitemvariation) id applied to this line item. */
+  /** The [CatalogItemVariation]($m/CatalogItemVariation) id applied to this line item. */
   catalogObjectId?: string;
   /** The name of the variation applied to this line item. */
   variationName?: string;
@@ -63,10 +63,11 @@ export interface OrderLineItem {
    * An application may have up to 10 entries per metadata field.
    * Entries written by applications are private and can only be read or modified by the same
    * application.
-   * See [Metadata](https://developer.squareup.com/docs/build-basics/metadata) for more information.
+   * See [Metadata](https://developer.squareup.com/docs/build-basics/metadata) for more
+   * information.
    */
   metadata?: Record<string, string>;
-  /** The [CatalogModifier](#type-catalogmodifier)s applied to this line item. */
+  /** The [CatalogModifier]($m/CatalogModifier)s applied to this line item. */
   modifiers?: OrderLineItemModifier[];
   /**
    * The list of references to taxes applied to this line item. Each

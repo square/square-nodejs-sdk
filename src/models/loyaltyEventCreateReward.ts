@@ -2,10 +2,10 @@ import { number, object, optional, Schema, string } from '../schema';
 
 /** Provides metadata when the event `type` is `CREATE_REWARD`. */
 export interface LoyaltyEventCreateReward {
-  /** The ID of the [loyalty program](#type-LoyaltyProgram). */
+  /** The ID of the [loyalty program]($m/LoyaltyProgram). */
   loyaltyProgramId: string;
   /**
-   * The Square-assigned ID of the created [loyalty reward](#type-LoyaltyReward).
+   * The Square-assigned ID of the created [loyalty reward]($m/LoyaltyReward).
    * This field is returned only if the event source is `LOYALTY_API`.
    */
   rewardId?: string;

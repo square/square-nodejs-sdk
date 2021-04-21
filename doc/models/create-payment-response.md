@@ -1,7 +1,7 @@
 
 # Create Payment Response
 
-Defines the response returned by [CreatePayment](#endpoint-payments-createpayment).
+Defines the response returned by [CreatePayment](/doc/api/payments.md#create-payment).
 
 If there are errors processing the request, the `payment` field might not be
 present, or it might be present with a status of `FAILED`.

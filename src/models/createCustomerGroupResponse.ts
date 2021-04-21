@@ -4,16 +4,16 @@ import { Error, errorSchema } from './error';
 
 /**
  * Defines the fields that are included in the response body of
- * a request to the [CreateCustomerGroup](#endpoint-createcustomergroup) endpoint.
- * One of `errors` or `group` is present in a given response (never both).
+ * a request to the [CreateCustomerGroup]($e/CustomerGroups/CreateCustomerGroup) endpoint.
+ * Either `errors` or `group` is present in a given response (never both).
  */
 export interface CreateCustomerGroupResponse {
   /** Any errors that occurred during the request. */
   errors?: Error[];
   /**
    * Represents a group of customer profiles.
-   * Customer groups can be created, modified, and have their membership defined either via
-   * the Customers API or within Customer Directory in the Square Dashboard or Point of Sale.
+   * Customer groups can be created, be modified, and have their membership defined using
+   * the Customers API or within the Customer Directory in the Square Seller Dashboard or Point of Sale.
    */
   group?: CustomerGroup;
 }

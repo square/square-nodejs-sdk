@@ -2,7 +2,7 @@ import { number, object, optional, Schema, string } from '../schema';
 
 /**
  * Defines parameters in a
- * [ListSubscriptionEvents](#endpoint-subscriptions-listsubscriptionevents)
+ * [ListSubscriptionEvents]($e/Subscriptions/ListSubscriptionEvents)
  * endpoint request.
  */
 export interface ListSubscriptionEventsRequest {

@@ -20,19 +20,19 @@
       "errors": [
         {
           "category": "PAYMENT_METHOD_ERROR",
-          "code": "CARD_TOKEN_USED",
+          "code": "REFUND_DECLINED",
           "detail": "detail8",
           "field": "field6"
         },
         {
           "category": "REFUND_ERROR",
-          "code": "AMOUNT_TOO_HIGH",
+          "code": "INVALID_CARD_DATA",
           "detail": "detail9",
           "field": "field7"
         },
         {
           "category": "API_ERROR",
-          "code": "UNSUPPORTED_INSTRUMENT_TYPE",
+          "code": "SOURCE_USED",
           "detail": "detail0",
           "field": "field8"
         }
@@ -46,7 +46,7 @@
       "errors": [
         {
           "category": "REFUND_ERROR",
-          "code": "AMOUNT_TOO_HIGH",
+          "code": "INVALID_CARD_DATA",
           "detail": "detail9",
           "field": "field7"
         }

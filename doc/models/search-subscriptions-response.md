@@ -2,7 +2,7 @@
 # Search Subscriptions Response
 
 Defines the fields that are included in the response from the
-[SearchSubscriptions](#endpoint-subscriptions-searchsubscriptions) endpoint.
+[SearchSubscriptions](/doc/api/subscriptions.md#search-subscriptions) endpoint.
 
 ## Structure
 

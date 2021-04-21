@@ -1,7 +1,7 @@
 
 # Create Location Response
 
-Response object returned by the [CreateLocation](#endpoint-createlocation) endpoint.
+Response object returned by the [CreateLocation](/doc/api/locations.md#create-location) endpoint.
 
 ## Structure
 

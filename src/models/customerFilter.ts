@@ -16,10 +16,9 @@ import { TimeRange, timeRangeSchema } from './timeRange';
  */
 export interface CustomerFilter {
   /**
-   * Creation source filter.
+   * The creation source filter.
    * If one or more creation sources are set, customer profiles are included in,
-   * or excluded from, the result if they match at least one of the filter
-   * criteria.
+   * or excluded from, the result if they match at least one of the filter criteria.
    */
   creationSource?: CustomerCreationSourceFilter;
   /**
@@ -40,20 +39,20 @@ export interface CustomerFilter {
   updatedAt?: TimeRange;
   /**
    * A filter to select customers based on exact or fuzzy matching of
-   * customer attributes against a specified query. Depending on customer attributes,
-   * the filter can be case sensitive. This filter can be either exact or fuzzy. It cannot be both.
+   * customer attributes against a specified query. Depending on the customer attributes,
+   * the filter can be case-sensitive. This filter can be exact or fuzzy, but it cannot be both.
    */
   emailAddress?: CustomerTextFilter;
   /**
    * A filter to select customers based on exact or fuzzy matching of
-   * customer attributes against a specified query. Depending on customer attributes,
-   * the filter can be case sensitive. This filter can be either exact or fuzzy. It cannot be both.
+   * customer attributes against a specified query. Depending on the customer attributes,
+   * the filter can be case-sensitive. This filter can be exact or fuzzy, but it cannot be both.
    */
   phoneNumber?: CustomerTextFilter;
   /**
    * A filter to select customers based on exact or fuzzy matching of
-   * customer attributes against a specified query. Depending on customer attributes,
-   * the filter can be case sensitive. This filter can be either exact or fuzzy. It cannot be both.
+   * customer attributes against a specified query. Depending on the customer attributes,
+   * the filter can be case-sensitive. This filter can be exact or fuzzy, but it cannot be both.
    */
   referenceId?: CustomerTextFilter;
   /**

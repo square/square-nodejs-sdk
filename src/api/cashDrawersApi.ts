@@ -58,8 +58,8 @@ export class CashDrawersApi extends BaseApi {
 
   /**
    * Provides the summary details for a single cash drawer shift. See
-   * [ListCashDrawerShiftEvents](#endpoint-CashDrawers-ListCashDrawerShiftEvents) for a list of cash
-   * drawer shift events.
+   * [ListCashDrawerShiftEvents]($e/CashDrawers/ListCashDrawerShiftEvents) for a list of cash drawer
+   * shift events.
    *
    * @param locationId  The ID of the location to retrieve cash drawer shifts from.
    * @param shiftId     The shift ID.

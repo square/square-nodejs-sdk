@@ -27,11 +27,11 @@ const catalogApi = client.catalogApi;
 
 # Batch Delete Catalog Objects
 
-Deletes a set of [CatalogItem](#type-catalogitem)s based on the
+Deletes a set of [CatalogItem](/doc/models/catalog-item.md)s based on the
 provided list of target IDs and returns a set of successfully deleted IDs in
 the response. Deletion is a cascading event such that all children of the
 targeted object are also deleted. For example, deleting a CatalogItem will
-also delete all of its [CatalogItemVariation](#type-catalogitemvariation)
+also delete all of its [CatalogItemVariation](/doc/models/catalog-item-variation.md)
 children.
 
 `BatchDeleteCatalogObjects` succeeds even if only a portion of the targeted
@@ -79,11 +79,11 @@ try {
 # Batch Retrieve Catalog Objects
 
 Returns a set of objects based on the provided ID.
-Each [CatalogItem](#type-catalogitem) returned in the set includes all of its
+Each [CatalogItem](/doc/models/catalog-item.md) returned in the set includes all of its
 child information including: all of its
-[CatalogItemVariation](#type-catalogitemvariation) objects, references to
-its [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of
-any [CatalogTax](#type-catalogtax) objects that apply to it.
+[CatalogItemVariation](/doc/models/catalog-item-variation.md) objects, references to
+its [CatalogModifierList](/doc/models/catalog-modifier-list.md) objects, and the ids of
+any [CatalogTax](/doc/models/catalog-tax.md) objects that apply to it.
 
 ```ts
 async batchRetrieveCatalogObjects(
@@ -447,8 +447,8 @@ try {
 
 # Create Catalog Image
 
-Uploads an image file to be represented by a [CatalogImage](#type-catalogimage) object linked to an existing
-[CatalogObject](#type-catalogobject) instance. A call to this endpoint can upload an image, link an image to
+Uploads an image file to be represented by a [CatalogImage](/doc/models/catalog-image.md) object linked to an existing
+[CatalogObject](/doc/models/catalog-object.md) instance. A call to this endpoint can upload an image, link an image to
 a catalog object, or do both.
 
 This `CreateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in
@@ -561,14 +561,14 @@ try {
 
 # List Catalog
 
-Returns a list of [CatalogObject](#type-catalogobject)s that includes
-all objects of a set of desired types (for example, all [CatalogItem](#type-catalogitem)
-and [CatalogTax](#type-catalogtax) objects) in the catalog. The `types` parameter
-is specified as a comma-separated list of valid [CatalogObject](#type-catalogobject) types:
+Returns a list of [CatalogObject](/doc/models/catalog-object.md)s that includes
+all objects of a set of desired types (for example, all [CatalogItem](/doc/models/catalog-item.md)
+and [CatalogTax](/doc/models/catalog-tax.md) objects) in the catalog. The `types` parameter
+is specified as a comma-separated list of valid [CatalogObject](/doc/models/catalog-object.md) types:
 `ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`, `IMAGE`.
 
 __Important:__ ListCatalog does not return deleted catalog items. To retrieve
-deleted catalog items, use [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects)
+deleted catalog items, use [SearchCatalogObjects](/doc/api/catalog.md#search-catalog-objects)
 and set the `include_deleted_objects` attribute value to `true`.
 
 ```ts
@@ -586,7 +586,7 @@ async listCatalog(
 |  --- | --- | --- | --- |
 | `cursor` | `string` | Query, Optional | The pagination cursor returned in the previous response. Leave unset for an initial request.<br>See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
 | `types` | `string` | Query, Optional | An optional case-insensitive, comma-separated list of object types to retrieve, for example<br>`ITEM,ITEM_VARIATION,CATEGORY,IMAGE`.<br><br>The legal values are taken from the CatalogObjectType enum:<br>`ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,<br>`MODIFIER`, `MODIFIER_LIST`, or `IMAGE`. |
-| `catalogVersion` | `bigint` | Query, Optional | The specific version of the catalog objects to be included in the response.<br>This allows you to retrieve historical<br>versions of objects. The specified version value is matched against<br>the [CatalogObject](#type-catalogobject)s' `version` attribute. |
+| `catalogVersion` | `bigint` | Query, Optional | The specific version of the catalog objects to be included in the response.<br>This allows you to retrieve historical<br>versions of objects. The specified version value is matched against<br>the [CatalogObject](/doc/models/catalog-object.md)s' `version` attribute. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -614,7 +614,7 @@ try {
 
 # Upsert Catalog Object
 
-Creates or updates the target [CatalogObject](#type-catalogobject).
+Creates or updates the target [CatalogObject](/doc/models/catalog-object.md).
 
 ```ts
 async upsertCatalogObject(
@@ -696,12 +696,12 @@ try {
 
 # Delete Catalog Object
 
-Deletes a single [CatalogObject](#type-catalogobject) based on the
+Deletes a single [CatalogObject](/doc/models/catalog-object.md) based on the
 provided ID and returns the set of successfully deleted IDs in the response.
 Deletion is a cascading event such that all children of the targeted object
-are also deleted. For example, deleting a [CatalogItem](#type-catalogitem)
+are also deleted. For example, deleting a [CatalogItem](/doc/models/catalog-item.md)
 will also delete all of its
-[CatalogItemVariation](#type-catalogitemvariation) children.
+[CatalogItemVariation](/doc/models/catalog-item-variation.md) children.
 
 ```ts
 async deleteCatalogObject(
@@ -740,13 +740,13 @@ try {
 
 # Retrieve Catalog Object
 
-Returns a single [CatalogItem](#type-catalogitem) as a
-[CatalogObject](#type-catalogobject) based on the provided ID. The returned
-object includes all of the relevant [CatalogItem](#type-catalogitem)
-information including: [CatalogItemVariation](#type-catalogitemvariation)
+Returns a single [CatalogItem](/doc/models/catalog-item.md) as a
+[CatalogObject](/doc/models/catalog-object.md) based on the provided ID. The returned
+object includes all of the relevant [CatalogItem](/doc/models/catalog-item.md)
+information including: [CatalogItemVariation](/doc/models/catalog-item-variation.md)
 children, references to its
-[CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of
-any [CatalogTax](#type-catalogtax) objects that apply to it.
+[CatalogModifierList](/doc/models/catalog-modifier-list.md) objects, and the ids of
+any [CatalogTax](/doc/models/catalog-tax.md) objects that apply to it.
 
 ```ts
 async retrieveCatalogObject(
@@ -763,7 +763,7 @@ async retrieveCatalogObject(
 |  --- | --- | --- | --- |
 | `objectId` | `string` | Template, Required | The object ID of any type of catalog objects to be retrieved. |
 | `includeRelatedObjects` | `boolean` | Query, Optional | If `true`, the response will include additional objects that are related to the<br>requested object, as follows:<br><br>If the `object` field of the response contains a `CatalogItem`, its associated<br>`CatalogCategory`, `CatalogTax`, `CatalogImage` and `CatalogModifierList` objects will<br>be returned in the `related_objects` field of the response. If the `object` field of<br>the response contains a `CatalogItemVariation`, its parent `CatalogItem` will be returned<br>in the `related_objects` field of the response.<br><br>Default value: `false`<br>**Default**: `false` |
-| `catalogVersion` | `bigint` | Query, Optional | Requests objects as of a specific version of the catalog. This allows you to retrieve historical<br>versions of objects. The value to retrieve a specific version of an object can be found<br>in the version field of [CatalogObject](#type-catalogobject)s. |
+| `catalogVersion` | `bigint` | Query, Optional | Requests objects as of a specific version of the catalog. This allows you to retrieve historical<br>versions of objects. The value to retrieve a specific version of an object can be found<br>in the version field of [CatalogObject](/doc/models/catalog-object.md)s. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -791,10 +791,10 @@ try {
 
 # Search Catalog Objects
 
-Searches for [CatalogObject](#type-CatalogObject) of any type by matching supported search attribute values,
+Searches for [CatalogObject](/doc/models/catalog-object.md) of any type by matching supported search attribute values,
 excluding custom attribute values on items or item variations, against one or more of the specified query expressions.
 
-This (`SearchCatalogObjects`) endpoint differs from the [SearchCatalogItems](#endpoint-Catalog-SearchCatalogItems)
+This (`SearchCatalogObjects`) endpoint differs from the [SearchCatalogItems](/doc/api/catalog.md#search-catalog-items)
 endpoint in the following aspects:
 
 - `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects` can search for any type of catalog objects.
@@ -886,7 +886,7 @@ try {
 Searches for catalog items or item variations by matching supported search attribute values, including
 custom attribute values, against one or more of the specified query expressions.
 
-This (`SearchCatalogItems`) endpoint differs from the [SearchCatalogObjects](#endpoint-Catalog-SearchCatalogObjects)
+This (`SearchCatalogItems`) endpoint differs from the [SearchCatalogObjects](/doc/api/catalog.md#search-catalog-objects)
 endpoint in the following aspects:
 
 - `SearchCatalogItems` can only search for items or item variations, whereas `SearchCatalogObjects` can search for any type of catalog objects.
@@ -1004,8 +1004,8 @@ try {
 
 # Update Item Modifier Lists
 
-Updates the [CatalogModifierList](#type-catalogmodifierlist) objects
-that apply to the targeted [CatalogItem](#type-catalogitem) without having
+Updates the [CatalogModifierList](/doc/models/catalog-modifier-list.md) objects
+that apply to the targeted [CatalogItem](/doc/models/catalog-item.md) without having
 to perform an upsert on the entire item.
 
 ```ts
@@ -1053,8 +1053,8 @@ try {
 
 # Update Item Taxes
 
-Updates the [CatalogTax](#type-catalogtax) objects that apply to the
-targeted [CatalogItem](#type-catalogitem) without having to perform an
+Updates the [CatalogTax](/doc/models/catalog-tax.md) objects that apply to the
+targeted [CatalogItem](/doc/models/catalog-item.md) without having to perform an
 upsert on the entire item.
 
 ```ts

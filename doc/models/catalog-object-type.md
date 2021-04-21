@@ -24,7 +24,7 @@ containing type-specific properties in the `*_data` field corresponding to the o
 | `PRODUCT_SET` | A product set, corresponding to `CatalogProductSet`.<br>The product-set-specific data will be stored in the `product_set_data` field. |
 | `TIME_PERIOD` | A time period, corresponding to `CatalogTimePeriod`.<br>The time-period-specific data will be stored in the `time_period_data` field. |
 | `MEASUREMENT_UNIT` | A measurement unit, corresponding to `CatalogMeasurementUnit`. The unit of<br>measure and precision in which an item variation should be sold. |
-| `SUBSCRIPTION_PLAN` | A subscription plan, corresponding to<br>[CatalogSubscriptionPlan](#type-CatalogSubscriptionPlan).<br><br>The subscription plan data is stored in the `subscription_plan_data` field of the<br>[CatalogObject](#type-CatalogObject). |
+| `SUBSCRIPTION_PLAN` | A subscription plan, corresponding to<br>[CatalogSubscriptionPlan](/doc/models/catalog-subscription-plan.md).<br><br>The subscription plan data is stored in the `subscription_plan_data` field of the<br>[CatalogObject](/doc/models/catalog-object.md). |
 | `ITEM_OPTION` | Represents a list of item option values that can be assigned to item<br>variations. For example, a color option or size option for a t-shirt. |
 | `ITEM_OPTION_VAL` | Represents an option value associated with one or more item options.<br>For example, an item option of "Size" may have item option values such as<br>"Small" or "Medium". |
 | `CUSTOM_ATTRIBUTE_DEFINITION` | Represents the definition of a custom attribute |

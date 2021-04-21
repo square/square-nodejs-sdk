@@ -7,7 +7,7 @@ import {
 export interface BusinessBookingProfile {
   /** The ID of the seller, obtainable using the Merchants API. */
   sellerId?: string;
-  /** The RFC-3339 timestamp specifying the booking's creation time. */
+  /** The RFC 3339 timestamp specifying the booking's creation time. */
   createdAt?: string;
   /** Indicates whether the seller is open for booking. */
   bookingEnabled?: boolean;

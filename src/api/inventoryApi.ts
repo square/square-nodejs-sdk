@@ -45,10 +45,10 @@ import { BaseApi } from './baseApi';
 
 export class InventoryApi extends BaseApi {
   /**
-   * Returns the [InventoryAdjustment](#type-inventoryadjustment) object
+   * Returns the [InventoryAdjustment]($m/InventoryAdjustment) object
    * with the provided `adjustment_id`.
    *
-   * @param adjustmentId  ID of the [InventoryAdjustment](#type-inventoryadjustment) to retrieve.
+   * @param adjustmentId  ID of the [InventoryAdjustment]($m/InventoryAdjustment) to retrieve.
    * @return Response from the API call
    */
   async retrieveInventoryAdjustment(
@@ -122,8 +122,8 @@ export class InventoryApi extends BaseApi {
 
   /**
    * Returns current counts for the provided
-   * [CatalogObject](#type-catalogobject)s at the requested
-   * [Location](#type-location)s.
+   * [CatalogObject]($m/CatalogObject)s at the requested
+   * [Location]($m/Location)s.
    *
    * Results are paginated and sorted in descending order according to their
    * `calculated_at` timestamp (newest first).
@@ -157,10 +157,10 @@ export class InventoryApi extends BaseApi {
   }
 
   /**
-   * Returns the [InventoryPhysicalCount](#type-inventoryphysicalcount)
+   * Returns the [InventoryPhysicalCount]($m/InventoryPhysicalCount)
    * object with the provided `physical_count_id`.
    *
-   * @param physicalCountId   ID of the [InventoryPhysicalCount](#type-inventoryphysicalcount) to retrieve.
+   * @param physicalCountId   ID of the [InventoryPhysicalCount]($m/InventoryPhysicalCount) to retrieve.
    * @return Response from the API call
    */
   async retrieveInventoryPhysicalCount(
@@ -180,13 +180,13 @@ export class InventoryApi extends BaseApi {
 
   /**
    * Retrieves the current calculated stock count for a given
-   * [CatalogObject](#type-catalogobject) at a given set of
-   * [Location](#type-location)s. Responses are paginated and unsorted.
+   * [CatalogObject]($m/CatalogObject) at a given set of
+   * [Location]($m/Location)s. Responses are paginated and unsorted.
    * For more sophisticated queries, use a batch endpoint.
    *
-   * @param catalogObjectId   ID of the [CatalogObject](#type-catalogobject) to retrieve.
-   * @param locationIds       The [Location](#type-location) IDs to look up as a comma-separated list. An
-   *                                    empty list queries all locations.
+   * @param catalogObjectId   ID of the [CatalogObject]($m/CatalogObject) to retrieve.
+   * @param locationIds       The [Location]($m/Location) IDs to look up as a comma-separated list. An empty
+   *                                    list queries all locations.
    * @param cursor            A pagination cursor returned by a previous call to this endpoint. Provide this
    *                                    to retrieve the next set of results for the original query.  See the
    *                                    [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)
@@ -213,8 +213,8 @@ export class InventoryApi extends BaseApi {
 
   /**
    * Returns a set of physical counts and inventory adjustments for the
-   * provided [CatalogObject](#type-catalogobject) at the requested
-   * [Location](#type-location)s.
+   * provided [CatalogObject]($m/CatalogObject) at the requested
+   * [Location]($m/Location)s.
    *
    * Results are paginated and sorted in descending order according to their
    * `occurred_at` timestamp (newest first).
@@ -223,9 +223,9 @@ export class InventoryApi extends BaseApi {
    * used to display recent changes for a specific item. For more
    * sophisticated queries, use a batch endpoint.
    *
-   * @param catalogObjectId   ID of the [CatalogObject](#type-catalogobject) to retrieve.
-   * @param locationIds       The [Location](#type-location) IDs to look up as a comma-separated list. An
-   *                                    empty list queries all locations.
+   * @param catalogObjectId   ID of the [CatalogObject]($m/CatalogObject) to retrieve.
+   * @param locationIds       The [Location]($m/Location) IDs to look up as a comma-separated list. An empty
+   *                                    list queries all locations.
    * @param cursor            A pagination cursor returned by a previous call to this endpoint. Provide this
    *                                    to retrieve the next set of results for the original query.  See the
    *                                    [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)

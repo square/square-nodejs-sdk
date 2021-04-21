@@ -61,6 +61,10 @@ import {
   retrieveLoyaltyAccountResponseSchema,
 } from '../models/retrieveLoyaltyAccountResponse';
 import {
+  RetrieveLoyaltyProgramResponse,
+  retrieveLoyaltyProgramResponseSchema,
+} from '../models/retrieveLoyaltyProgramResponse';
+import {
   RetrieveLoyaltyRewardResponse,
   retrieveLoyaltyRewardResponseSchema,
 } from '../models/retrieveLoyaltyRewardResponse';
@@ -93,7 +97,8 @@ import { BaseApi } from './baseApi';
 
 export class LoyaltyApi extends BaseApi {
   /**
-   * Creates a loyalty account.
+   * Creates a loyalty account. To create a loyalty account, you must provide the `program_id` and either
+   * the `mapping` field (preferred) or the `mappings` field.
    *
    * @param body An object containing the fields to POST for the request.  See
    *                                                   the corresponding object definition for field details.
@@ -138,7 +143,7 @@ export class LoyaltyApi extends BaseApi {
   /**
    * Retrieves a loyalty account.
    *
-   * @param accountId  The ID of the [loyalty account](#type-LoyaltyAccount) to retrieve.
+   * @param accountId  The ID of the [loyalty account]($m/LoyaltyAccount) to retrieve.
    * @return Response from the API call
    */
   async retrieveLoyaltyAccount(
@@ -159,13 +164,13 @@ export class LoyaltyApi extends BaseApi {
    * - If you are not using the Orders API to manage orders,
    * you first perform a client-side computation to compute the points.
    * For spend-based and visit-based programs, you can call
-   * [CalculateLoyaltyPoints](#endpoint-Loyalty-CalculateLoyaltyPoints) to compute the points. For more
+   * [CalculateLoyaltyPoints]($e/Loyalty/CalculateLoyaltyPoints) to compute the points. For more
    * information,
    * see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
    * You then provide the points in a request to this endpoint.
    *
-   * @param accountId  The [loyalty account](#type-LoyaltyAccount) ID to
-   *                                                            which to add the points.
+   * @param accountId  The [loyalty account]($m/LoyaltyAccount) ID to which
+   *                                                            to add the points.
    * @param body       An object containing the fields to POST for the
    *                                                            request.  See the corresponding object definition for
    *                                                            field details.
@@ -194,10 +199,10 @@ export class LoyaltyApi extends BaseApi {
    *
    * Use this endpoint only when you need to manually adjust points. Otherwise, in your application flow,
    * you call
-   * [AccumulateLoyaltyPoints](#endpoint-Loyalty-AccumulateLoyaltyPoints)
+   * [AccumulateLoyaltyPoints]($e/Loyalty/AccumulateLoyaltyPoints)
    * to add points when a buyer pays for the purchase.
    *
-   * @param accountId  The ID of the [loyalty account](#type-LoyaltyAccount) in
+   * @param accountId  The ID of the [loyalty account]($m/LoyaltyAccount) in
    *                                                        which to adjust the points.
    * @param body       An object containing the fields to POST for the request.
    *                                                        See the corresponding object definition for field details.
@@ -225,6 +230,8 @@ export class LoyaltyApi extends BaseApi {
    * buyer's loyalty account. Each change in the point balance
    * (for example, points earned, points redeemed, and points expired) is
    * recorded in the ledger. Using this endpoint, you can search the ledger for events.
+   *
+   * Search results are sorted by `created_at` in descending order.
    *
    * @param body An object containing the fields to POST for the request.  See
    *                                                  the corresponding object definition for field details.
@@ -256,6 +263,28 @@ export class LoyaltyApi extends BaseApi {
   }
 
   /**
+   * Retrieves the loyalty program in a seller's account, specified by the program ID or the keyword
+   * `main`.
+   *
+   * Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can
+   * have only one loyalty program, which is created and managed from the Seller Dashboard. For more
+   * information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
+   *
+   * @param programId  The ID of the loyalty program or the keyword `main`. Either value can be used to
+   *                             retrieve the single loyalty program that belongs to the seller.
+   * @return Response from the API call
+   */
+  async retrieveLoyaltyProgram(
+    programId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<RetrieveLoyaltyProgramResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ programId: [programId, string()] });
+    req.appendTemplatePath`/v2/loyalty/programs/${mapped.programId}`;
+    return req.callAsJson(retrieveLoyaltyProgramResponseSchema, requestOptions);
+  }
+
+  /**
    * Calculates the points a purchase earns.
    *
    * - If you are using the Orders API to manage orders, you provide `order_id` in the request. The
@@ -266,7 +295,7 @@ export class LoyaltyApi extends BaseApi {
    * An application might call this endpoint to show the points that a buyer can earn with the
    * specific purchase.
    *
-   * @param programId  The [loyalty program](#type-LoyaltyProgram) ID, which
+   * @param programId  The [loyalty program]($m/LoyaltyProgram) ID, which
    *                                                           defines the rules for accruing points.
    * @param body       An object containing the fields to POST for the request.
    *                                                           See the corresponding object definition for field
@@ -320,7 +349,9 @@ export class LoyaltyApi extends BaseApi {
    * In the current implementation, the endpoint supports search by the reward `status`.
    *
    * If you know a reward ID, use the
-   * [RetrieveLoyaltyReward](#endpoint-Loyalty-RetrieveLoyaltyReward) endpoint.
+   * [RetrieveLoyaltyReward]($e/Loyalty/RetrieveLoyaltyReward) endpoint.
+   *
+   * Search results are sorted by `updated_at` in descending order.
    *
    * @param body An object containing the fields to POST for the request.  See
    *                                                   the corresponding object definition for field details.
@@ -343,13 +374,13 @@ export class LoyaltyApi extends BaseApi {
    *
    * - Returns the loyalty points back to the loyalty account.
    * - If an order ID was specified when the reward was created
-   * (see [CreateLoyaltyReward](#endpoint-Loyalty-CreateLoyaltyReward)),
+   * (see [CreateLoyaltyReward]($e/Loyalty/CreateLoyaltyReward)),
    * it updates the order by removing the reward and related
    * discounts.
    *
    * You cannot delete a reward that has reached the terminal state (REDEEMED).
    *
-   * @param rewardId  The ID of the [loyalty reward](#type-LoyaltyReward) to delete.
+   * @param rewardId  The ID of the [loyalty reward]($m/LoyaltyReward) to delete.
    * @return Response from the API call
    */
   async deleteLoyaltyReward(
@@ -365,7 +396,7 @@ export class LoyaltyApi extends BaseApi {
   /**
    * Retrieves a loyalty reward.
    *
-   * @param rewardId  The ID of the [loyalty reward](#type-LoyaltyReward) to retrieve.
+   * @param rewardId  The ID of the [loyalty reward]($m/LoyaltyReward) to retrieve.
    * @return Response from the API call
    */
   async retrieveLoyaltyReward(
@@ -391,8 +422,7 @@ export class LoyaltyApi extends BaseApi {
    * In other words, points used for the reward cannot be returned
    * to the account.
    *
-   * @param rewardId  The ID of the [loyalty reward](#type-LoyaltyReward) to
-   *                                                       redeem.
+   * @param rewardId  The ID of the [loyalty reward]($m/LoyaltyReward) to redeem.
    * @param body      An object containing the fields to POST for the request.
    *                                                       See the corresponding object definition for field details.
    * @return Response from the API call

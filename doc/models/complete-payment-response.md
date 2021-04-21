@@ -1,7 +1,7 @@
 
 # Complete Payment Response
 
-Defines the response returned by[CompletePayment](#endpoint-payments-completepayment).
+Defines the response returned by[CompletePayment](/doc/api/payments.md#complete-payment).
 
 ## Structure
 

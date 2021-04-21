@@ -32,7 +32,7 @@ export interface ObtainTokenResponse {
   idToken?: string;
   /**
    * A refresh token. OAuth refresh tokens are 64 bytes long.
-   * For more information, see [OAuth access token management](https://developer.squareup.com/docs/authz/oauth/how-it-works#oauth-access-token-management).
+   * For more information, see [OAuth access token management](https://developer.squareup.com/docs/oauth-api/how-it-works#oauth-access-token-management).
    */
   refreshToken?: string;
   /**

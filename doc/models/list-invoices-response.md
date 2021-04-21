@@ -12,7 +12,7 @@ Describes a `ListInvoice` response.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `invoices` | [`Invoice[]`](/doc/models/invoice.md) | Optional | The invoices retrieved. |
-| `cursor` | `string` | Optional | When a response is truncated, it includes a cursor that you can use in a<br>subsequent request to fetch the next set of invoices. If empty, this is the final<br>response.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `cursor` | `string` | Optional | When a response is truncated, it includes a cursor that you can use in a<br>subsequent request to retrieve the next set of invoices. If empty, this is the final<br>response.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
 | `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
 
 ## Example (as JSON)
@@ -23,6 +23,11 @@ Describes a `ListInvoice` response.
   "invoices": [
     {
       "invoice": {
+        "accepted_payment_methods": {
+          "bank_account": false,
+          "card": true,
+          "square_gift_card": false
+        },
         "created_at": "2020-06-18T17:45:13Z",
         "custom_fields": [
           {

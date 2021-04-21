@@ -22,12 +22,12 @@ export interface InventoryTransfer {
   /** Indicates the state of a tracked item quantity in the lifecycle of goods. */
   state?: string;
   /**
-   * The Square ID of the [Location](#type-location) where the related
+   * The Square ID of the [Location]($m/Location) where the related
    * quantity of items were tracked before the transfer.
    */
   fromLocationId?: string;
   /**
-   * The Square ID of the [Location](#type-location) where the related
+   * The Square ID of the [Location]($m/Location) where the related
    * quantity of items were tracked after the transfer.
    */
   toLocationId?: string;
@@ -62,7 +62,7 @@ export interface InventoryTransfer {
   /** Provides information about the application used to generate a change. */
   source?: SourceApplication;
   /**
-   * The Square ID of the [Employee](#type-employee) responsible for the
+   * The Square ID of the [Employee]($m/Employee) responsible for the
    * inventory transfer.
    */
   employeeId?: string;

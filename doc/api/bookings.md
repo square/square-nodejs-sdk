@@ -297,7 +297,7 @@ async retrieveBooking(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bookingId` | `string` | Template, Required | The ID of the [Booking](#type-booking) object representing the to-be-retrieved booking. |
+| `bookingId` | `string` | Template, Required | The ID of the [Booking](/doc/models/booking.md) object representing the to-be-retrieved booking. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -337,7 +337,7 @@ async updateBooking(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bookingId` | `string` | Template, Required | The ID of the [Booking](#type-booking) object representing the to-be-updated booking. |
+| `bookingId` | `string` | Template, Required | The ID of the [Booking](/doc/models/booking.md) object representing the to-be-updated booking. |
 | `body` | [`UpdateBookingRequest`](/doc/models/update-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 
@@ -390,7 +390,7 @@ async cancelBooking(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bookingId` | `string` | Template, Required | The ID of the [Booking](#type-booking) object representing the to-be-cancelled booking. |
+| `bookingId` | `string` | Template, Required | The ID of the [Booking](/doc/models/booking.md) object representing the to-be-cancelled booking. |
 | `body` | [`CancelBookingRequest`](/doc/models/cancel-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
 

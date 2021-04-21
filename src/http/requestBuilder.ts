@@ -118,7 +118,7 @@ export interface RequestBuilder<BaseUrlParamType, AuthParams> {
   acceptJson(): void;
   accept(acceptHeaderValue: string): void;
   contentType(contentTypeHeaderValue: string): void;
-  header(name: string, value?: string | boolean | number): void;
+  header(name: string, value?: string | boolean | number | bigint): void;
   headers(headersToMerge: Record<string, string>): void;
   query(name: string, value: QueryValue): void;
   query(parameters?: Record<string, QueryValue> | null): void;
@@ -237,7 +237,7 @@ export class DefaultRequestBuilder<BaseUrlParamType, AuthParams>
   contentType(contentTypeHeaderValue: string): void {
     this._contentType = contentTypeHeaderValue;
   }
-  header(name: string, value?: string | boolean | number): void {
+  header(name: string, value?: string | boolean | number | bigint): void {
     if (value === undefined) {
       return;
     }
