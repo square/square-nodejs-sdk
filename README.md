@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/square/square-nodejs-sdk.svg?token=7KUGXNa8mbAXsapsn66r&branch=master)](https://travis-ci.com/square/square-nodejs-sdk)
+[![Node.js CI](https://github.com/square/square-nodejs-sdk/actions/workflows/node.js.yml/badge.svg)](https://github.com/square/square-nodejs-sdk/actions/workflows/node.js.yml)
 [![npm version](https://badge.fury.io/js/square.svg)](https://badge.fury.io/js/square)
 [![Apache-2 license](https://img.shields.io/badge/license-Apache2-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
