@@ -11,6 +11,9 @@ on:
 
 jobs:
   build:
+    env:
+      SQUARE_ENVIRONMENT: sandbox
+      SQUARE_SANDBOX_TOKEN: ${{ secrets.SQUARE_SANDBOX_TOKEN }}
 
     runs-on: ubuntu-latest
 
