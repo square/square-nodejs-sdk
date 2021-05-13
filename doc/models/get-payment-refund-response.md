@@ -14,8 +14,8 @@ present or it might be present in a FAILED state.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
-| `refund` | [`PaymentRefund`](/doc/models/payment-refund.md) | Optional | Represents a refund of a payment made using Square. Contains information about<br>the original payment and the amount of money refunded. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
+| `refund` | [`PaymentRefund \| undefined`](/doc/models/payment-refund.md) | Optional | Represents a refund of a payment made using Square. Contains information about<br>the original payment and the amount of money refunded. |
 
 ## Example (as JSON)
 

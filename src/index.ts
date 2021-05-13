@@ -1,10 +1,15 @@
-/// <reference path='./shim/index.ts' />
-
-export * from './apiResponse';
 export * from './client';
 export * from './configuration';
+export {
+  AbortError,
+  ApiResponse,
+  ArgumentsValidationError,
+  cloneFileWrapper,
+  FileWrapper,
+  isFileWrapper,
+  ResponseValidationError,
+} from './core';
 export * from './defaultConfiguration';
-export * from './fileWrapper';
 export * from './api/applePayApi';
 export * from './api/bankAccountsApi';
 export * from './api/bookingsApi';
@@ -28,19 +33,19 @@ export * from './api/oAuthApi';
 export * from './api/ordersApi';
 export * from './api/paymentsApi';
 export * from './api/refundsApi';
+export * from './api/sitesApi';
+export * from './api/snippetsApi';
 export * from './api/subscriptionsApi';
 export * from './api/teamApi';
 export * from './api/terminalApi';
 export * from './api/transactionsApi';
 export * from './api/v1EmployeesApi';
 export * from './api/v1TransactionsApi';
-export * from './errors/abortError';
-export * from './errors/argumentsValidationError';
-export * from './errors/responseValidationError';
 export * from './errors/apiError';
 export { AcceptDisputeResponse } from './models/acceptDisputeResponse';
 export { AccumulateLoyaltyPointsRequest } from './models/accumulateLoyaltyPointsRequest';
 export { AccumulateLoyaltyPointsResponse } from './models/accumulateLoyaltyPointsResponse';
+export { ACHDetails } from './models/aCHDetails';
 export { AddGroupToCustomerResponse } from './models/addGroupToCustomerResponse';
 export { AdditionalRecipient } from './models/additionalRecipient';
 export { Address } from './models/address';
@@ -50,6 +55,7 @@ export { AppointmentSegment } from './models/appointmentSegment';
 export { Availability } from './models/availability';
 export { BalancePaymentDetails } from './models/balancePaymentDetails';
 export { BankAccount } from './models/bankAccount';
+export { BankAccountPaymentDetails } from './models/bankAccountPaymentDetails';
 export { BatchChangeInventoryRequest } from './models/batchChangeInventoryRequest';
 export { BatchChangeInventoryResponse } from './models/batchChangeInventoryResponse';
 export { BatchDeleteCatalogObjectsRequest } from './models/batchDeleteCatalogObjectsRequest';
@@ -216,6 +222,7 @@ export { DeleteInvoiceRequest } from './models/deleteInvoiceRequest';
 export { DeleteInvoiceResponse } from './models/deleteInvoiceResponse';
 export { DeleteLoyaltyRewardResponse } from './models/deleteLoyaltyRewardResponse';
 export { DeleteShiftResponse } from './models/deleteShiftResponse';
+export { DeleteSnippetResponse } from './models/deleteSnippetResponse';
 export { Device } from './models/device';
 export { DeviceCheckoutOptions } from './models/deviceCheckoutOptions';
 export { DeviceCode } from './models/deviceCode';
@@ -294,6 +301,7 @@ export { ListPaymentsRequest } from './models/listPaymentsRequest';
 export { ListPaymentsResponse } from './models/listPaymentsResponse';
 export { ListRefundsRequest } from './models/listRefundsRequest';
 export { ListRefundsResponse } from './models/listRefundsResponse';
+export { ListSitesResponse } from './models/listSitesResponse';
 export { ListSubscriptionEventsRequest } from './models/listSubscriptionEventsRequest';
 export { ListSubscriptionEventsResponse } from './models/listSubscriptionEventsResponse';
 export { ListTeamMemberBookingProfilesRequest } from './models/listTeamMemberBookingProfilesRequest';
@@ -416,6 +424,7 @@ export { RetrieveLoyaltyProgramResponse } from './models/retrieveLoyaltyProgramR
 export { RetrieveLoyaltyRewardResponse } from './models/retrieveLoyaltyRewardResponse';
 export { RetrieveMerchantResponse } from './models/retrieveMerchantResponse';
 export { RetrieveOrderResponse } from './models/retrieveOrderResponse';
+export { RetrieveSnippetResponse } from './models/retrieveSnippetResponse';
 export { RetrieveSubscriptionResponse } from './models/retrieveSubscriptionResponse';
 export { RetrieveTeamMemberBookingProfileResponse } from './models/retrieveTeamMemberBookingProfileResponse';
 export { RetrieveTeamMemberResponse } from './models/retrieveTeamMemberResponse';
@@ -475,6 +484,9 @@ export { ShiftQuery } from './models/shiftQuery';
 export { ShiftSort } from './models/shiftSort';
 export { ShiftWage } from './models/shiftWage';
 export { ShiftWorkday } from './models/shiftWorkday';
+export { Site } from './models/site';
+export { Snippet } from './models/snippet';
+export { SnippetResponse } from './models/snippetResponse';
 export { SourceApplication } from './models/sourceApplication';
 export { StandardUnitDescription } from './models/standardUnitDescription';
 export { StandardUnitDescriptionGroup } from './models/standardUnitDescriptionGroup';
@@ -533,6 +545,8 @@ export { UpdateWorkweekConfigRequest } from './models/updateWorkweekConfigReques
 export { UpdateWorkweekConfigResponse } from './models/updateWorkweekConfigResponse';
 export { UpsertCatalogObjectRequest } from './models/upsertCatalogObjectRequest';
 export { UpsertCatalogObjectResponse } from './models/upsertCatalogObjectResponse';
+export { UpsertSnippetRequest } from './models/upsertSnippetRequest';
+export { UpsertSnippetResponse } from './models/upsertSnippetResponse';
 export { V1CreateEmployeeRoleRequest } from './models/v1CreateEmployeeRoleRequest';
 export { V1CreateRefundRequest } from './models/v1CreateRefundRequest';
 export { V1Employee } from './models/v1Employee';

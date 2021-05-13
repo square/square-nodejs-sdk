@@ -14,8 +14,8 @@ Either `errors` or `status` are present in a given response (never both).
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `status` | [`string`](/doc/models/register-domain-response-status.md) | Optional | The status of the domain registration. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `status` | [`string \| undefined`](/doc/models/register-domain-response-status.md) | Optional | The status of the domain registration. |
 
 ## Example (as JSON)
 

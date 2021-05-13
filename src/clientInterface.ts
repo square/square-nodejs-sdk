@@ -1,4 +1,4 @@
-import { RequestBuilderFactory } from './http/requestBuilder';
+import { RequestBuilderFactory } from './core';
 
 export interface ClientInterface {
   getRequestBuilderFactory(): SdkRequestBuilderFactory;

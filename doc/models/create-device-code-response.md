@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `deviceCode` | [`DeviceCode`](/doc/models/device-code.md) | Optional | - |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `deviceCode` | [`DeviceCode \| undefined`](/doc/models/device-code.md) | Optional | - |
 
 ## Example (as JSON)
 

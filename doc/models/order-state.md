@@ -11,7 +11,7 @@ The state of the order.
 
 | Name | Description |
 |  --- | --- |
-| `OPEN` | Indicates the order is open. Open orders may be updated. |
-| `COMPLETED` | Indicates the order is completed. Completed orders are fully paid. This is a terminal state. |
-| `CANCELED` | Indicates the order is canceled. Canceled orders are not paid. This is a terminal state. |
+| `OPEN` | Indicates that the order is open. Open orders can be updated. |
+| `COMPLETED` | Indicates that the order is completed. Completed orders are fully paid. This is a terminal state. |
+| `CANCELED` | Indicates that the order is canceled. Canceled orders are not paid. This is a terminal state. |
 

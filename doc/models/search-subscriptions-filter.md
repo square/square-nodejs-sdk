@@ -11,8 +11,8 @@ Represents a set of SearchSubscriptionsQuery filters used to limit the set of Su
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customerIds` | `string[]` | Optional | A filter to select subscriptions based on the customer. |
-| `locationIds` | `string[]` | Optional | A filter to select subscriptions based the location. |
+| `customerIds` | `string[] \| undefined` | Optional | A filter to select subscriptions based on the customer. |
+| `locationIds` | `string[] \| undefined` | Optional | A filter to select subscriptions based the location. |
 
 ## Example (as JSON)
 

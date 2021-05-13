@@ -13,8 +13,8 @@ the request resulted in errors.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `shift` | [`Shift`](/doc/models/shift.md) | Optional | A record of the hourly rate, start, and end times for a single work shift<br>for an employee. May include a record of the start and end times for breaks<br>taken during the shift. |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `shift` | [`Shift \| undefined`](/doc/models/shift.md) | Optional | A record of the hourly rate, start, and end times for a single work shift<br>for an employee. May include a record of the start and end times for breaks<br>taken during the shift. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)
 

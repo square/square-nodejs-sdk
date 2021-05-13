@@ -37,7 +37,7 @@ async createTerminalCheckout(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CreateTerminalCheckoutRequest`](/doc/models/create-terminal-checkout-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -108,7 +108,7 @@ async searchTerminalCheckouts(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`SearchTerminalCheckoutsRequest`](/doc/models/search-terminal-checkouts-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -167,7 +167,7 @@ async getTerminalCheckout(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `checkoutId` | `string` | Template, Required | The unique ID for the desired `TerminalCheckout`. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -206,7 +206,7 @@ async cancelTerminalCheckout(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `checkoutId` | `string` | Template, Required | The unique ID for the desired `TerminalCheckout`. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -245,7 +245,7 @@ async createTerminalRefund(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CreateTerminalRefundRequest`](/doc/models/create-terminal-refund-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -302,7 +302,7 @@ async searchTerminalRefunds(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`SearchTerminalRefundsRequest`](/doc/models/search-terminal-refunds-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -361,7 +361,7 @@ async getTerminalRefund(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `terminalRefundId` | `string` | Template, Required | The unique ID for the desired `TerminalRefund`. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -400,7 +400,7 @@ async cancelTerminalRefund(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `terminalRefundId` | `string` | Template, Required | The unique ID for the desired `TerminalRefund`. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

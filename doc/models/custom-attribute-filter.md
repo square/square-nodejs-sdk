@@ -13,12 +13,12 @@ endpoint to search for items or item variations.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customAttributeDefinitionId` | `string` | Optional | A query expression to filter items or item variations by matching their custom attributes'<br>`custom_attribute_definition_id`<br>property value against the the specified id. |
-| `key` | `string` | Optional | A query expression to filter items or item variations by matching their custom attributes'<br>`key` property value against<br>the specified key. |
-| `stringFilter` | `string` | Optional | A query expression to filter items or item variations by matching their custom attributes'<br>`string_value`  property value<br>against the specified text. |
-| `numberFilter` | [`Range`](/doc/models/range.md) | Optional | The range of a number value between the specified lower and upper bounds. |
-| `selectionUidsFilter` | `string[]` | Optional | A query expression to filter items or item variations by matching  their custom attributes'<br>`selection_uid_values`<br>values against the specified selection uids. |
-| `boolFilter` | `boolean` | Optional | A query expression to filter items or item variations by matching their custom attributes'<br>`boolean_value` property values<br>against the specified Boolean expression. |
+| `customAttributeDefinitionId` | `string \| undefined` | Optional | A query expression to filter items or item variations by matching their custom attributes'<br>`custom_attribute_definition_id`<br>property value against the the specified id. |
+| `key` | `string \| undefined` | Optional | A query expression to filter items or item variations by matching their custom attributes'<br>`key` property value against<br>the specified key. |
+| `stringFilter` | `string \| undefined` | Optional | A query expression to filter items or item variations by matching their custom attributes'<br>`string_value`  property value<br>against the specified text. |
+| `numberFilter` | [`Range \| undefined`](/doc/models/range.md) | Optional | The range of a number value between the specified lower and upper bounds. |
+| `selectionUidsFilter` | `string[] \| undefined` | Optional | A query expression to filter items or item variations by matching  their custom attributes'<br>`selection_uid_values`<br>values against the specified selection uids. |
+| `boolFilter` | `boolean \| undefined` | Optional | A query expression to filter items or item variations by matching their custom attributes'<br>`boolean_value` property values<br>against the specified Boolean expression. |
 
 ## Example (as JSON)
 

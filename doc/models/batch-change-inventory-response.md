@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `counts` | [`InventoryCount[]`](/doc/models/inventory-count.md) | Optional | The current counts for all objects referenced in the request. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `counts` | [`InventoryCount[] \| undefined`](/doc/models/inventory-count.md) | Optional | The current counts for all objects referenced in the request. |
 
 ## Example (as JSON)
 

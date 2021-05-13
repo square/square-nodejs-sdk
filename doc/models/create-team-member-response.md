@@ -11,8 +11,8 @@ Represents a response from a create request, containing the created `TeamMember`
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMember` | [`TeamMember`](/doc/models/team-member.md) | Optional | A record representing an individual team member for a business. |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | The errors that occurred during the request. |
+| `teamMember` | [`TeamMember \| undefined`](/doc/models/team-member.md) | Optional | A record representing an individual team member for a business. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | The errors that occurred during the request. |
 
 ## Example (as JSON)
 

@@ -40,7 +40,7 @@ async createSubscription(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CreateSubscriptionRequest`](/doc/models/create-subscription-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -110,7 +110,7 @@ async searchSubscriptions(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`SearchSubscriptionsRequest`](/doc/models/search-subscriptions-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -162,7 +162,7 @@ async retrieveSubscription(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscriptionId` | `string` | Template, Required | The ID of the subscription to retrieve. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -204,7 +204,7 @@ async updateSubscription(
 |  --- | --- | --- | --- |
 | `subscriptionId` | `string` | Template, Required | The ID for the subscription to update. |
 | `body` | [`UpdateSubscriptionRequest`](/doc/models/update-subscription-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -261,7 +261,7 @@ async cancelSubscription(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscriptionId` | `string` | Template, Required | The ID of the subscription to cancel. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -303,9 +303,9 @@ async listSubscriptionEvents(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscriptionId` | `string` | Template, Required | The ID of the subscription to retrieve the events for. |
-| `cursor` | `string` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
-| `limit` | `number` | Query, Optional | The upper limit on the number of subscription events to return<br>in the response.<br><br>Default: `200` |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `limit` | `number \| undefined` | Query, Optional | The upper limit on the number of subscription events to return<br>in the response.<br><br>Default: `200` |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -346,7 +346,7 @@ async resumeSubscription(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscriptionId` | `string` | Template, Required | The ID of the subscription to resume. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

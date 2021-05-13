@@ -1,6 +1,4 @@
-import { ApiResponse } from '../apiResponse';
-import { FileWrapper } from '../fileWrapper';
-import { RequestOptions } from '../http/requestBuilder';
+import { ApiResponse, FileWrapper, RequestOptions } from '../core';
 import {
   BatchDeleteCatalogObjectsRequest,
   batchDeleteCatalogObjectsRequestSchema,
@@ -238,8 +236,8 @@ export class CatalogApi extends BaseApi {
    * and set the `include_deleted_objects` attribute value to `true`.
    *
    * @param cursor          The pagination cursor returned in the previous response. Leave unset for an
-   *                                  initial request. See [Pagination](https://developer.squareup.
-   *                                  com/docs/basics/api101/pagination) for more information.
+   *                                  initial request. The page size is currently set to be 100. See [Pagination](https:
+   *                                  //developer.squareup.com/docs/basics/api101/pagination) for more information.
    * @param types           An optional case-insensitive, comma-separated list of object types to retrieve,
    *                                  for example `ITEM,ITEM_VARIATION,CATEGORY,IMAGE`.  The legal values are taken
    *                                  from the CatalogObjectType enum: `ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`,

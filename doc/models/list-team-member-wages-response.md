@@ -12,9 +12,9 @@ a set of `TeamMemberWage`.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMemberWages` | [`TeamMemberWage[]`](/doc/models/team-member-wage.md) | Optional | A page of Team Member Wage results. |
-| `cursor` | `string` | Optional | Value supplied in the subsequent request to fetch the next next page<br>of Team Member Wage results. |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `teamMemberWages` | [`TeamMemberWage[] \| undefined`](/doc/models/team-member-wage.md) | Optional | A page of Team Member Wage results. |
+| `cursor` | `string \| undefined` | Optional | Value supplied in the subsequent request to fetch the next next page<br>of Team Member Wage results. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)
 

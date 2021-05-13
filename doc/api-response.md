@@ -11,5 +11,5 @@ An interface for the result of an API call.
 | statusCode | number | Response status codee. |
 | headers | Record<string, string> | Response headers. |
 | result | T | Response data. |
-| body | string | Blob | NodeJS.ReadableStream | Original body from the response. |
+| body | string \| Blob \| NodeJS.ReadableStream | Original body from the response. |
 

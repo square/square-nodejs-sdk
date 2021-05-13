@@ -11,9 +11,9 @@ Represents a search request for a filtered list of `TeamMember` objects.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `query` | [`SearchTeamMembersQuery`](/doc/models/search-team-members-query.md) | Optional | Represents the parameters in a search for `TeamMember` objects. |
-| `limit` | `number` | Optional | The maximum number of `TeamMember` objects in a page (25 by default).<br>**Constraints**: `>= 1`, `<= 25` |
-| `cursor` | `string` | Optional | The opaque cursor for fetching the next page. Read about<br>[pagination](https://developer.squareup.com/docs/working-with-apis/pagination) with Square APIs for more information. |
+| `query` | [`SearchTeamMembersQuery \| undefined`](/doc/models/search-team-members-query.md) | Optional | Represents the parameters in a search for `TeamMember` objects. |
+| `limit` | `number \| undefined` | Optional | The maximum number of `TeamMember` objects in a page (25 by default).<br>**Constraints**: `>= 1`, `<= 25` |
+| `cursor` | `string \| undefined` | Optional | The opaque cursor for fetching the next page. Read about<br>[pagination](https://developer.squareup.com/docs/working-with-apis/pagination) with Square APIs for more information. |
 
 ## Example (as JSON)
 

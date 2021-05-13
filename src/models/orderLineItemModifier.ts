@@ -3,9 +3,9 @@ import { Money, moneySchema } from './money';
 
 /** A [CatalogModifier]($m/CatalogModifier). */
 export interface OrderLineItemModifier {
-  /** Unique ID that identifies the modifier only within this order. */
+  /** A unique ID that identifies the modifier only within this order. */
   uid?: string;
-  /** The catalog object id referencing [CatalogModifier]($m/CatalogModifier). */
+  /** The catalog object ID referencing [CatalogModifier]($m/CatalogModifier). */
   catalogObjectId?: string;
   /** The name of the item modifier. */
   name?: string;

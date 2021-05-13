@@ -11,7 +11,7 @@ Represents the hours of operation for a business location.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `periods` | [`BusinessHoursPeriod[]`](/doc/models/business-hours-period.md) | Optional | The list of time periods during which the business is open. There may be at most 10<br>periods per day. |
+| `periods` | [`BusinessHoursPeriod[] \| undefined`](/doc/models/business-hours-period.md) | Optional | The list of time periods during which the business is open. There may be at most 10<br>periods per day. |
 
 ## Example (as JSON)
 

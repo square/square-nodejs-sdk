@@ -12,8 +12,8 @@ Describes a subscription plan. For more information, see
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `string` | Optional | The name of the plan. |
-| `phases` | [`SubscriptionPhase[]`](/doc/models/subscription-phase.md) | Optional | A list of SubscriptionPhase containing the [SubscriptionPhase](/doc/models/subscription-phase.md) for this plan. |
+| `name` | `string` | Required | The name of the plan. |
+| `phases` | [`SubscriptionPhase[]`](/doc/models/subscription-phase.md) | Required | A list of SubscriptionPhase containing the [SubscriptionPhase](/doc/models/subscription-phase.md) for this plan. |
 
 ## Example (as JSON)
 

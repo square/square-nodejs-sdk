@@ -19,8 +19,8 @@ returns only active team members assigned to either location "A" or "B".
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `locationIds` | `string[]` | Optional | When present, filter by team members assigned to the specified locations.<br>When empty, include team members assigned to any location. |
-| `status` | [`string`](/doc/models/team-member-status.md) | Optional | Enumerates the possible statuses the team member can have within a business. |
+| `locationIds` | `string[] \| undefined` | Optional | When present, filter by team members assigned to the specified locations.<br>When empty, include team members assigned to any location. |
+| `status` | [`string \| undefined`](/doc/models/team-member-status.md) | Optional | Enumerates the possible statuses the team member can have within a business. |
 
 ## Example (as JSON)
 

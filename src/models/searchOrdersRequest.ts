@@ -15,37 +15,36 @@ import {
 
 /**
  * The request does not have any required fields. When given no query criteria,
- * SearchOrders will return all results for all of the merchant’s locations. When fetching additional
- * pages using a `cursor`, the `query` must be equal to the `query` used to fetch the first page of
+ * `SearchOrders` returns all results for all of the seller's locations. When retrieving additional
+ * pages using a `cursor`, the `query` must be equal to the `query` used to retrieve the first page of
  * results.
  */
 export interface SearchOrdersRequest {
   /**
    * The location IDs for the orders to query. All locations must belong to
    * the same merchant.
-   * Min: 1 location IDs.
+   * Min: 1 location ID.
    * Max: 10 location IDs.
    */
   locationIds?: string[];
   /**
    * A pagination cursor returned by a previous call to this endpoint.
-   * Provide this to retrieve the next set of results for your original query.
-   * See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more
-   * information.
+   * Provide this cursor to retrieve the next set of results for your original query.
+   * For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
    */
   cursor?: string;
   /** Contains query criteria for the search. */
   query?: SearchOrdersQuery;
   /**
-   * Maximum number of results to be returned in a single page. It is
+   * The maximum number of results to be returned in a single page. It is
    * possible to receive fewer results than the specified limit on a given page.
    * Default: `500`
    */
   limit?: number;
   /**
-   * Boolean that controls the format of the search results. If `true`,
-   * SearchOrders will return [`OrderEntry`]($m/OrderEntry) objects. If `false`, SearchOrders
-   * will return complete Order objects.
+   * A Boolean that controls the format of the search results. If `true`,
+   * `SearchOrders` returns [OrderEntry]($m/OrderEntry) objects. If `false`, `SearchOrders`
+   * returns complete order objects.
    * Default: `false`.
    */
   returnEntries?: boolean;

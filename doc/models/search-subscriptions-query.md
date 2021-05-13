@@ -11,7 +11,7 @@ Represents a query (including filtering criteria) used to search for subscriptio
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `filter` | [`SearchSubscriptionsFilter`](/doc/models/search-subscriptions-filter.md) | Optional | Represents a set of SearchSubscriptionsQuery filters used to limit the set of Subscriptions returned by SearchSubscriptions. |
+| `filter` | [`SearchSubscriptionsFilter \| undefined`](/doc/models/search-subscriptions-filter.md) | Optional | Represents a set of SearchSubscriptionsQuery filters used to limit the set of Subscriptions returned by SearchSubscriptions. |
 
 ## Example (as JSON)
 

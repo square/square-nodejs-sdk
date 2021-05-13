@@ -11,12 +11,12 @@ An object representing a team member's wage information.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMemberId` | `string` | Optional | The unique ID of the `TeamMember` whom this wage setting describes. |
-| `jobAssignments` | [`JobAssignment[]`](/doc/models/job-assignment.md) | Optional | <b>Required</b> The ordered list of jobs that the team member is assigned to.<br>The first job assignment is considered the team member's "Primary Job".<br><br><br><b>Min Length 1    Max Length 12</b> |
-| `isOvertimeExempt` | `boolean` | Optional | Whether the team member is exempt from the overtime rules of the seller country. |
-| `version` | `number` | Optional | Used for resolving concurrency issues; request will fail if version<br>provided does not match server version at time of request. If not provided,<br>Square executes a blind write, potentially overwriting data from another write. Read<br>about [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency)<br>in Square APIs for more information. |
-| `createdAt` | `string` | Optional | The timestamp in RFC 3339 format describing when the wage setting object was created.<br>Ex: "2018-10-04T04:00:00-07:00" or "2019-02-05T12:00:00Z" |
-| `updatedAt` | `string` | Optional | The timestamp in RFC 3339 format describing when the wage setting object was last updated.<br>Ex: "2018-10-04T04:00:00-07:00" or "2019-02-05T12:00:00Z" |
+| `teamMemberId` | `string \| undefined` | Optional | The unique ID of the `TeamMember` whom this wage setting describes. |
+| `jobAssignments` | [`JobAssignment[] \| undefined`](/doc/models/job-assignment.md) | Optional | <b>Required</b> The ordered list of jobs that the team member is assigned to.<br>The first job assignment is considered the team member's "Primary Job".<br><br><br><b>Min Length 1    Max Length 12</b> |
+| `isOvertimeExempt` | `boolean \| undefined` | Optional | Whether the team member is exempt from the overtime rules of the seller country. |
+| `version` | `number \| undefined` | Optional | Used for resolving concurrency issues; request will fail if version<br>provided does not match server version at time of request. If not provided,<br>Square executes a blind write, potentially overwriting data from another write. Read<br>about [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency)<br>in Square APIs for more information. |
+| `createdAt` | `string \| undefined` | Optional | The timestamp in RFC 3339 format describing when the wage setting object was created.<br>Ex: "2018-10-04T04:00:00-07:00" or "2019-02-05T12:00:00Z" |
+| `updatedAt` | `string \| undefined` | Optional | The timestamp in RFC 3339 format describing when the wage setting object was last updated.<br>Ex: "2018-10-04T04:00:00-07:00" or "2019-02-05T12:00:00Z" |
 
 ## Example (as JSON)
 

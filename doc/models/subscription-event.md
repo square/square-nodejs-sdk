@@ -15,7 +15,7 @@ Describes changes to subscription and billing states.
 | `subscriptionEventType` | [`string`](/doc/models/subscription-event-subscription-event-type.md) | Required | The possible subscription event types. |
 | `effectiveDate` | `string` | Required | The date, in YYYY-MM-DD format (for<br>example, 2013-01-15), when the subscription event went into effect. |
 | `planId` | `string` | Required | The ID of the subscription plan associated with the subscription. |
-| `info` | [`SubscriptionEventInfo`](/doc/models/subscription-event-info.md) | Optional | Provides information about the subscription event. |
+| `info` | [`SubscriptionEventInfo \| undefined`](/doc/models/subscription-event-info.md) | Optional | Provides information about the subscription event. |
 
 ## Example (as JSON)
 

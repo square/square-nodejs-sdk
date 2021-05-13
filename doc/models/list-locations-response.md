@@ -14,8 +14,8 @@ One of `errors` or `locations` is present in a given response (never both).
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `locations` | [`Location[]`](/doc/models/location.md) | Optional | The business locations. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `locations` | [`Location[] \| undefined`](/doc/models/location.md) | Optional | The business locations. |
 
 ## Example (as JSON)
 

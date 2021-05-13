@@ -11,8 +11,8 @@ The search criteria for the loyalty accounts.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `mappings` | [`LoyaltyAccountMapping[]`](/doc/models/loyalty-account-mapping.md) | Optional | The set of mappings to use in the loyalty account search.<br><br>This cannot be combined with `customer_ids`.<br><br>Max: 30 mappings |
-| `customerIds` | `string[]` | Optional | The set of customer IDs to use in the loyalty account search.<br><br>This cannot be combined with `mappings`.<br><br>Max: 30 customer IDs |
+| `mappings` | [`LoyaltyAccountMapping[] \| undefined`](/doc/models/loyalty-account-mapping.md) | Optional | The set of mappings to use in the loyalty account search.<br><br>This cannot be combined with `customer_ids`.<br><br>Max: 30 mappings |
+| `customerIds` | `string[] \| undefined` | Optional | The set of customer IDs to use in the loyalty account search.<br><br>This cannot be combined with `mappings`.<br><br>Max: 30 customer IDs |
 
 ## Example (as JSON)
 
@@ -21,8 +21,6 @@ The search criteria for the loyalty accounts.
   "mappings": [
     {
       "id": "id4",
-      "type": "PHONE",
-      "value": "value6",
       "created_at": "created_at8",
       "phone_number": "phone_number8"
     }

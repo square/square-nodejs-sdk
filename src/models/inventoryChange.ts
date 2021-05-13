@@ -19,7 +19,7 @@ import {
 /**
  * Represents a single physical count, inventory, adjustment, or transfer
  * that is part of the history of inventory changes for a particular
- * `CatalogObject`.
+ * [CatalogObject]($m/CatalogObject) instance.
  */
 export interface InventoryChange {
   /** Indicates how the inventory change was applied to a tracked quantity of items. */

@@ -12,9 +12,9 @@ Defines the fields that are included in requests to the
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `idempotencyKey` | `string` | Required | A value you specify that uniquely identifies this request among requests you've sent. If<br>you're unsure whether a particular payment request was completed successfully, you can reattempt<br>it with the same idempotency key without worrying about duplicate payments.<br><br>See [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency) for more<br>information.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `192` |
-| `orderVersion` | `number` | Optional | The version of the order being paid. If not supplied, the latest version will be paid. |
-| `paymentIds` | `string[]` | Optional | The IDs of the [payments](/doc/models/payment.md) to collect.<br>The payment total must match the order total. |
+| `idempotencyKey` | `string` | Required | A value you specify that uniquely identifies this request among requests you have sent. If<br>you are unsure whether a particular payment request was completed successfully, you can reattempt<br>it with the same idempotency key without worrying about duplicate payments.<br><br>For more information, see [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `192` |
+| `orderVersion` | `number \| undefined` | Optional | The version of the order being paid. If not supplied, the latest version will be paid. |
+| `paymentIds` | `string[] \| undefined` | Optional | The IDs of the [payments](/doc/models/payment.md) to collect.<br>The payment total must match the order total. |
 
 ## Example (as JSON)
 

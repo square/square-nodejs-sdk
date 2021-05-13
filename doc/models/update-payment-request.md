@@ -12,7 +12,7 @@ Describes a request to update a payment using
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `payment` | [`Payment`](/doc/models/payment.md) | Optional | Represents a payment processed by the Square API. |
+| `payment` | [`Payment \| undefined`](/doc/models/payment.md) | Optional | Represents a payment processed by the Square API. |
 | `idempotencyKey` | `string` | Required | A unique string that identifies this `UpdatePayment` request. Keys can be any valid string<br>but must be unique for every `UpdatePayment` request.<br><br>The maximum is 45 characters.<br><br>For more information, see [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency).<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `45` |
 
 ## Example (as JSON)

@@ -1,5 +1,4 @@
-import { ApiResponse } from '../apiResponse';
-import { RequestOptions } from '../http/requestBuilder';
+import { ApiResponse, RequestOptions } from '../core';
 import {
   ListEmployeesResponse,
   listEmployeesResponseSchema,

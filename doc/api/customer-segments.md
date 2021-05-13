@@ -29,8 +29,8 @@ async listCustomerSegments(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `cursor` | `string` | Query, Optional | A pagination cursor returned by previous calls to `ListCustomerSegments`.<br>This cursor is used to retrieve the next set of query results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by previous calls to `ListCustomerSegments`.<br>This cursor is used to retrieve the next set of query results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -69,7 +69,7 @@ async retrieveCustomerSegment(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `segmentId` | `string` | Template, Required | The Square-issued ID of the customer segment. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

@@ -11,10 +11,10 @@ Defines the response body returned from the [SearchCatalogItems](/doc/api/catalo
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `items` | [`CatalogObject[]`](/doc/models/catalog-object.md) | Optional | Returned items matching the specified query expressions. |
-| `cursor` | `string` | Optional | Pagination token used in the next request to return more of the search result. |
-| `matchedVariationIds` | `string[]` | Optional | Ids of returned item variations matching the specified query expression. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `items` | [`CatalogObject[] \| undefined`](/doc/models/catalog-object.md) | Optional | Returned items matching the specified query expressions. |
+| `cursor` | `string \| undefined` | Optional | Pagination token used in the next request to return more of the search result. |
+| `matchedVariationIds` | `string[] \| undefined` | Optional | Ids of returned item variations matching the specified query expression. |
 
 ## Example (as JSON)
 

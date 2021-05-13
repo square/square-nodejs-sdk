@@ -32,8 +32,8 @@ async listCustomerGroups(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `cursor` | `string` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for your original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for your original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -74,7 +74,7 @@ async createCustomerGroup(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CreateCustomerGroupRequest`](/doc/models/create-customer-group-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -124,7 +124,7 @@ async deleteCustomerGroup(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `groupId` | `string` | Template, Required | The ID of the customer group to delete. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -163,7 +163,7 @@ async retrieveCustomerGroup(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `groupId` | `string` | Template, Required | The ID of the customer group to retrieve. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -204,7 +204,7 @@ async updateCustomerGroup(
 |  --- | --- | --- | --- |
 | `groupId` | `string` | Template, Required | The ID of the customer group to update. |
 | `body` | [`UpdateCustomerGroupRequest`](/doc/models/update-customer-group-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

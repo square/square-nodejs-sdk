@@ -36,7 +36,7 @@ async retrieveInventoryAdjustment(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `adjustmentId` | `string` | Template, Required | ID of the [InventoryAdjustment](/doc/models/inventory-adjustment.md) to retrieve. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -79,7 +79,7 @@ async batchChangeInventory(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`BatchChangeInventoryRequest`](/doc/models/batch-change-inventory-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -140,8 +140,9 @@ bodychanges0.measurementUnit = bodychanges0MeasurementUnit;
 
 bodyChanges[0] = bodychanges0;
 
-const body: BatchChangeInventoryRequest = {};
-body.idempotencyKey = '8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe';
+const body: BatchChangeInventoryRequest = {
+  idempotencyKey: '8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe',
+};
 body.changes = bodyChanges;
 body.ignoreUnchangedCounts = true;
 
@@ -181,7 +182,7 @@ async batchRetrieveInventoryChanges(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`BatchRetrieveInventoryChangesRequest`](/doc/models/batch-retrieve-inventory-changes-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -241,7 +242,7 @@ async batchRetrieveInventoryCounts(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`BatchRetrieveInventoryCountsRequest`](/doc/models/batch-retrieve-inventory-counts-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -290,7 +291,7 @@ async retrieveInventoryPhysicalCount(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `physicalCountId` | `string` | Template, Required | ID of the<br>[InventoryPhysicalCount](/doc/models/inventory-physical-count.md) to retrieve. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -334,9 +335,9 @@ async retrieveInventoryCount(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `catalogObjectId` | `string` | Template, Required | ID of the [CatalogObject](/doc/models/catalog-object.md) to retrieve. |
-| `locationIds` | `string` | Query, Optional | The [Location](/doc/models/location.md) IDs to look up as a comma-separated<br>list. An empty list queries all locations. |
-| `cursor` | `string` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `locationIds` | `string \| undefined` | Query, Optional | The [Location](/doc/models/location.md) IDs to look up as a comma-separated<br>list. An empty list queries all locations. |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -388,9 +389,9 @@ async retrieveInventoryChanges(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `catalogObjectId` | `string` | Template, Required | ID of the [CatalogObject](/doc/models/catalog-object.md) to retrieve. |
-| `locationIds` | `string` | Query, Optional | The [Location](/doc/models/location.md) IDs to look up as a comma-separated<br>list. An empty list queries all locations. |
-| `cursor` | `string` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `locationIds` | `string \| undefined` | Query, Optional | The [Location](/doc/models/location.md) IDs to look up as a comma-separated<br>list. An empty list queries all locations. |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

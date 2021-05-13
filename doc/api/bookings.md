@@ -36,7 +36,7 @@ async createBooking(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CreateBookingRequest`](/doc/models/create-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -86,7 +86,7 @@ async searchAvailability(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`SearchAvailabilityRequest`](/doc/models/search-availability-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -173,7 +173,7 @@ async retrieveBusinessBookingProfile(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -213,11 +213,11 @@ async listTeamMemberBookingProfiles(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bookableOnly` | `boolean` | Query, Optional | Indicates whether to include only bookable team members in the returned result (`true`) or not (`false`).<br>**Default**: `false` |
-| `limit` | `number` | Query, Optional | The maximum number of results to return. |
-| `cursor` | `string` | Query, Optional | The cursor for paginating through the results. |
-| `locationId` | `string` | Query, Optional | Indicates whether to include only team members enabled at the given location in the returned result. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `bookableOnly` | `boolean \| undefined` | Query, Optional | Indicates whether to include only bookable team members in the returned result (`true`) or not (`false`).<br>**Default**: `false` |
+| `limit` | `number \| undefined` | Query, Optional | The maximum number of results to return. |
+| `cursor` | `string \| undefined` | Query, Optional | The cursor for paginating through the results. |
+| `locationId` | `string \| undefined` | Query, Optional | Indicates whether to include only team members enabled at the given location in the returned result. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -259,7 +259,7 @@ async retrieveTeamMemberBookingProfile(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `teamMemberId` | `string` | Template, Required | The ID of the team member to retrieve. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -298,7 +298,7 @@ async retrieveBooking(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `bookingId` | `string` | Template, Required | The ID of the [Booking](/doc/models/booking.md) object representing the to-be-retrieved booking. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -339,7 +339,7 @@ async updateBooking(
 |  --- | --- | --- | --- |
 | `bookingId` | `string` | Template, Required | The ID of the [Booking](/doc/models/booking.md) object representing the to-be-updated booking. |
 | `body` | [`UpdateBookingRequest`](/doc/models/update-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -392,7 +392,7 @@ async cancelBooking(
 |  --- | --- | --- | --- |
 | `bookingId` | `string` | Template, Required | The ID of the [Booking](/doc/models/booking.md) object representing the to-be-cancelled booking. |
 | `body` | [`CancelBookingRequest`](/doc/models/cancel-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

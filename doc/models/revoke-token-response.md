@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `success` | `boolean` | Optional | If the request is successful, this is true. |
+| `success` | `boolean \| undefined` | Optional | If the request is successful, this is true. |
 
 ## Example (as JSON)
 

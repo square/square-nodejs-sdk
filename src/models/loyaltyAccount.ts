@@ -1,12 +1,4 @@
-import {
-  array,
-  lazy,
-  number,
-  object,
-  optional,
-  Schema,
-  string,
-} from '../schema';
+import { lazy, number, object, optional, Schema, string } from '../schema';
 import {
   LoyaltyAccountMapping,
   loyaltyAccountMappingSchema,
@@ -19,15 +11,6 @@ import {
 export interface LoyaltyAccount {
   /** The Square-assigned ID of the loyalty account. */
   id?: string;
-  /**
-   * The list of mappings that the account is associated with.
-   * Currently, a buyer can only be mapped to a loyalty account using
-   * a phone number. Therefore, the list can only have one mapping.
-   * One of the following is required when creating a loyalty account:
-   * - (Preferred) The `mapping` field, with the buyer's phone number specified in the `phone_number` field.
-   * - This `mappings` field.
-   */
-  mappings?: LoyaltyAccountMapping[];
   /** The Square-assigned ID of the [loyalty program]($m/LoyaltyProgram) to which the account belongs. */
   programId: string;
   /**
@@ -55,10 +38,6 @@ export interface LoyaltyAccount {
 
 export const loyaltyAccountSchema: Schema<LoyaltyAccount> = object({
   id: ['id', optional(string())],
-  mappings: [
-    'mappings',
-    optional(array(lazy(() => loyaltyAccountMappingSchema))),
-  ],
   programId: ['program_id', string()],
   balance: ['balance', optional(number())],
   lifetimePoints: ['lifetime_points', optional(number())],

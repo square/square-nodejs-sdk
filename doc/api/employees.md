@@ -34,11 +34,11 @@ async listEmployees(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `locationId` | `string` | Query, Optional | - |
-| `status` | [`string`](/doc/models/employee-status.md) | Query, Optional | Specifies the EmployeeStatus to filter the employee by. |
-| `limit` | `number` | Query, Optional | The number of employees to be returned on each page. |
-| `cursor` | `string` | Query, Optional | The token required to retrieve the specified page of results. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `locationId` | `string \| undefined` | Query, Optional | - |
+| `status` | [`string \| undefined`](/doc/models/employee-status.md) | Query, Optional | Specifies the EmployeeStatus to filter the employee by. |
+| `limit` | `number \| undefined` | Query, Optional | The number of employees to be returned on each page. |
+| `cursor` | `string \| undefined` | Query, Optional | The token required to retrieve the specified page of results. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -82,7 +82,7 @@ async retrieveEmployee(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Template, Required | UUID for the employee that was requested. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

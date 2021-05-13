@@ -13,8 +13,8 @@ in a response.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information on errors encountered during the request. |
-| `location` | [`Location`](/doc/models/location.md) | Optional | - |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Information on errors encountered during the request. |
+| `location` | [`Location \| undefined`](/doc/models/location.md) | Optional | - |
 
 ## Example (as JSON)
 

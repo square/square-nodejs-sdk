@@ -1,8 +1,8 @@
 
 # Search Orders Customer Filter
 
-Filter based on Order `customer_id` and any Tender `customer_id`
-associated with the Order. Does not filter based on the
+A filter based on the order `customer_id` and any tender `customer_id`
+associated with the order. It does not filter based on the
 [FulfillmentRecipient](/doc/models/order-fulfillment-recipient.md) `customer_id`.
 
 ## Structure
@@ -13,7 +13,7 @@ associated with the Order. Does not filter based on the
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customerIds` | `string[]` | Optional | List of customer IDs to filter by.<br><br>Max: 10 customer IDs. |
+| `customerIds` | `string[] \| undefined` | Optional | A list of customer IDs to filter by.<br><br>Max: 10 customer IDs. |
 
 ## Example (as JSON)
 

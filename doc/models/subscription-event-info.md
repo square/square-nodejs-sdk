@@ -11,8 +11,8 @@ Provides information about the subscription event.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `detail` | `string` | Optional | A human-readable explanation for the event. |
-| `code` | [`string`](/doc/models/subscription-event-info-code.md) | Optional | The possible subscription event info codes. |
+| `detail` | `string \| undefined` | Optional | A human-readable explanation for the event. |
+| `code` | [`string \| undefined`](/doc/models/subscription-event-info-code.md) | Optional | The possible subscription event info codes. |
 
 ## Example (as JSON)
 

@@ -4,26 +4,25 @@ import { Order, orderSchema } from './order';
 import { OrderEntry, orderEntrySchema } from './orderEntry';
 
 /**
- * Only one of `order_entries` or `orders` fields will be set, depending on whether
- * `return_entries` was set on the [SearchOrdersRequest]($e/Orders/SearchOrders).
+ * Either the `order_entries` or `orders` field is set, depending on whether
+ * `return_entries` is set on the [SearchOrdersRequest]($e/Orders/SearchOrders).
  */
 export interface SearchOrdersResponse {
   /**
-   * List of [OrderEntries]($m/OrderEntry) that fit the query
-   * conditions. Populated only if `return_entries` was set to `true` in the request.
+   * A list of [OrderEntries]($m/OrderEntry) that fit the query
+   * conditions. The list is populated only if `return_entries` is set to `true` in the request.
    */
   orderEntries?: OrderEntry[];
   /**
-   * List of
-   * [Order]($m/Order) objects that match query conditions. Populated only if
-   * `return_entries` in the request is set to `false`.
+   * A list of
+   * [Order]($m/Order) objects that match the query conditions. The list is populated only if
+   * `return_entries` is set to `false` in the request.
    */
   orders?: Order[];
   /**
    * The pagination cursor to be used in a subsequent request. If unset,
    * this is the final response.
-   * See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more
-   * information.
+   * For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
    */
   cursor?: string;
   /** [Errors]($m/Error) encountered during the search. */

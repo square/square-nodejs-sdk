@@ -11,8 +11,8 @@ A response that contains all loyalty programs.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `programs` | [`LoyaltyProgram[]`](/doc/models/loyalty-program.md) | Optional | A list of `LoyaltyProgram` for the merchant. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `programs` | [`LoyaltyProgram[] \| undefined`](/doc/models/loyalty-program.md) | Optional | A list of `LoyaltyProgram` for the merchant. |
 
 ## Example (as JSON)
 

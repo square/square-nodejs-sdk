@@ -1,7 +1,7 @@
 
 # Order Line Item Tax Scope
 
-Indicates whether this is a line item or order level tax.
+Indicates whether this is a line-item or order-level tax.
 
 ## Enumeration
 

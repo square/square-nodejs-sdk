@@ -8,11 +8,11 @@ import { Money, moneySchema } from './money';
  * order subtotal.
  */
 export interface OrderReturnTax {
-  /** Unique ID that identifies the return tax only within this order. */
+  /** A unique ID that identifies the returned tax only within this order. */
   uid?: string;
-  /** `uid` of the Tax from the Order which contains the original charge of this tax. */
+  /** The tax `uid` from the order that contains the original tax charge. */
   sourceTaxUid?: string;
-  /** The catalog object id referencing [CatalogTax]($m/CatalogTax). */
+  /** The catalog object ID referencing [CatalogTax]($m/CatalogTax). */
   catalogObjectId?: string;
   /** The tax's name. */
   name?: string;
@@ -32,7 +32,7 @@ export interface OrderReturnTax {
    * for more information.
    */
   appliedMoney?: Money;
-  /** Indicates whether this is a line item or order level tax. */
+  /** Indicates whether this is a line-item or order-level tax. */
   scope?: string;
 }
 

@@ -11,8 +11,8 @@ Represents a response from a bulk update request, containing the updated `TeamMe
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMembers` | [`Record<string, UpdateTeamMemberResponse>`](/doc/models/update-team-member-response.md) | Optional | The successfully updated `TeamMember` objects. Each key is the `team_member_id` that maps to the `UpdateTeamMemberRequest`. |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | The errors that occurred during the request. |
+| `teamMembers` | [`Record<string, UpdateTeamMemberResponse> \| undefined`](/doc/models/update-team-member-response.md) | Optional | The successfully updated `TeamMember` objects. Each key is the `team_member_id` that maps to the `UpdateTeamMemberRequest`. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | The errors that occurred during the request. |
 
 ## Example (as JSON)
 

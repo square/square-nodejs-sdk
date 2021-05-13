@@ -2,7 +2,7 @@ import { object, optional, Schema, string } from '../schema';
 
 /** Information about fulfillment updates. */
 export interface OrderFulfillmentUpdatedUpdate {
-  /** Unique ID that identifies the fulfillment only within this order. */
+  /** A unique ID that identifies the fulfillment only within this order. */
   fulfillmentUid?: string;
   /** The current state of this fulfillment. */
   oldState?: string;

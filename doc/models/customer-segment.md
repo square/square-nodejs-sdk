@@ -14,10 +14,10 @@ Square Seller Dashboard or Point of Sale.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Optional | A unique Square-generated ID for the segment.<br>**Constraints**: *Maximum Length*: `255` |
+| `id` | `string \| undefined` | Optional | A unique Square-generated ID for the segment.<br>**Constraints**: *Maximum Length*: `255` |
 | `name` | `string` | Required | The name of the segment. |
-| `createdAt` | `string` | Optional | The timestamp when the segment was created, in RFC 3339 format. |
-| `updatedAt` | `string` | Optional | The timestamp when the segment was last updated, in RFC 3339 format. |
+| `createdAt` | `string \| undefined` | Optional | The timestamp when the segment was created, in RFC 3339 format. |
+| `updatedAt` | `string \| undefined` | Optional | The timestamp when the segment was last updated, in RFC 3339 format. |
 
 ## Example (as JSON)
 

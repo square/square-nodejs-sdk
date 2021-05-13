@@ -11,9 +11,9 @@ A response that includes loyalty accounts that satisfy the search criteria.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `loyaltyAccounts` | [`LoyaltyAccount[]`](/doc/models/loyalty-account.md) | Optional | The loyalty accounts that met the search criteria,  <br>in order of creation date. |
-| `cursor` | `string` | Optional | The pagination cursor to use in a subsequent<br>request. If empty, this is the final response.<br>For more information,<br>see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `loyaltyAccounts` | [`LoyaltyAccount[] \| undefined`](/doc/models/loyalty-account.md) | Optional | The loyalty accounts that met the search criteria,  <br>in order of creation date. |
+| `cursor` | `string \| undefined` | Optional | The pagination cursor to use in a subsequent<br>request. If empty, this is the final response.<br>For more information,<br>see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). |
 
 ## Example (as JSON)
 
@@ -29,19 +29,8 @@ A response that includes loyalty accounts that satisfy the search criteria.
       "mapping": {
         "created_at": "2020-05-08T21:44:32Z",
         "id": "66aaab3f-da99-49ed-8b19-b87f851c844f",
-        "phone_number": "+14155551234",
-        "type": "PHONE",
-        "value": "+14155551234"
+        "phone_number": "+14155551234"
       },
-      "mappings": [
-        {
-          "created_at": "2020-05-08T21:44:32Z",
-          "id": "66aaab3f-da99-49ed-8b19-b87f851c844f",
-          "phone_number": "+14155551234",
-          "type": "PHONE",
-          "value": "+14155551234"
-        }
-      ],
       "program_id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
       "updated_at": "2020-05-08T21:44:32Z"
     }

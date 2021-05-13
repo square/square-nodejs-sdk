@@ -14,8 +14,8 @@ Either `errors` or `customer` is present in a given response (never both).
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `customer` | [`Customer`](/doc/models/customer.md) | Optional | Represents a Square customer profile, which can have one or more<br>cards on file associated with it. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `customer` | [`Customer \| undefined`](/doc/models/customer.md) | Optional | Represents a Square customer profile, which can have one or more<br>cards on file associated with it. |
 
 ## Example (as JSON)
 

@@ -11,9 +11,9 @@ Defines the response returned by [ListPayments](/doc/api/payments.md#list-paymen
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
-| `payments` | [`Payment[]`](/doc/models/payment.md) | Optional | The requested list of payments. |
-| `cursor` | `string` | Optional | The pagination cursor to be used in a subsequent request. If empty,<br>this is the final response.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
+| `payments` | [`Payment[] \| undefined`](/doc/models/payment.md) | Optional | The requested list of payments. |
+| `cursor` | `string \| undefined` | Optional | The pagination cursor to be used in a subsequent request. If empty,<br>this is the final response.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). |
 
 ## Example (as JSON)
 

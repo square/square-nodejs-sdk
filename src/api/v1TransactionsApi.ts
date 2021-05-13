@@ -1,5 +1,4 @@
-import { ApiResponse } from '../apiResponse';
-import { RequestOptions } from '../http/requestBuilder';
+import { ApiResponse, RequestOptions } from '../core';
 import {
   V1CreateRefundRequest,
   v1CreateRefundRequestSchema,
@@ -26,6 +25,7 @@ export class V1TransactionsApi extends BaseApi {
    * @param batchToken  A pagination cursor to retrieve the next set of results for your original query to
    *                              the endpoint.
    * @return Response from the API call
+   * @deprecated
    */
   async listOrders(
     locationId: string,
@@ -45,6 +45,7 @@ export class V1TransactionsApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('batch_token', mapped.batchToken);
     req.appendTemplatePath`/v1/${mapped.locationId}/orders`;
+    req.deprecated('V1TransactionsApi.listOrders');
     return req.callAsJson(array(v1OrderSchema), requestOptions);
   }
 
@@ -55,6 +56,7 @@ export class V1TransactionsApi extends BaseApi {
    * @param orderId     The order's Square-issued ID. You obtain this value from Order objects returned by
    *                              the List Orders endpoint
    * @return Response from the API call
+   * @deprecated
    */
   async retrieveOrder(
     locationId: string,
@@ -67,6 +69,7 @@ export class V1TransactionsApi extends BaseApi {
       orderId: [orderId, string()],
     });
     req.appendTemplatePath`/v1/${mapped.locationId}/orders/${mapped.orderId}`;
+    req.deprecated('V1TransactionsApi.retrieveOrder');
     return req.callAsJson(v1OrderSchema, requestOptions);
   }
 
@@ -80,6 +83,7 @@ export class V1TransactionsApi extends BaseApi {
    * @param body        An object containing the fields to POST for the request.  See
    *                                                   the corresponding object definition for field details.
    * @return Response from the API call
+   * @deprecated
    */
   async updateOrder(
     locationId: string,
@@ -95,6 +99,7 @@ export class V1TransactionsApi extends BaseApi {
     });
     req.json(mapped.body);
     req.appendTemplatePath`/v1/${mapped.locationId}/orders/${mapped.orderId}`;
+    req.deprecated('V1TransactionsApi.updateOrder');
     return req.callAsJson(v1OrderSchema, requestOptions);
   }
 
@@ -128,6 +133,7 @@ export class V1TransactionsApi extends BaseApi {
    *                                   payments will have the tenders collected so far, but the itemizations will be
    *                                   empty until the payment is completed.
    * @return Response from the API call
+   * @deprecated
    */
   async listPayments(
     locationId: string,
@@ -156,6 +162,7 @@ export class V1TransactionsApi extends BaseApi {
     req.query('batch_token', mapped.batchToken);
     req.query('include_partial', mapped.includePartial);
     req.appendTemplatePath`/v1/${mapped.locationId}/payments`;
+    req.deprecated('V1TransactionsApi.listPayments');
     return req.callAsJson(array(v1PaymentSchema), requestOptions);
   }
 
@@ -167,6 +174,7 @@ export class V1TransactionsApi extends BaseApi {
    *                              List Payments endpoint, Settlement objects returned by the List Settlements endpoint,
    *                              or Refund objects returned by the List Refunds endpoint.
    * @return Response from the API call
+   * @deprecated
    */
   async retrievePayment(
     locationId: string,
@@ -179,6 +187,7 @@ export class V1TransactionsApi extends BaseApi {
       paymentId: [paymentId, string()],
     });
     req.appendTemplatePath`/v1/${mapped.locationId}/payments/${mapped.paymentId}`;
+    req.deprecated('V1TransactionsApi.retrievePayment');
     return req.callAsJson(v1PaymentSchema, requestOptions);
   }
 
@@ -201,6 +210,7 @@ export class V1TransactionsApi extends BaseApi {
    * @param batchToken  A pagination cursor to retrieve the next set of results for your original query to
    *                              the endpoint.
    * @return Response from the API call
+   * @deprecated
    */
   async listRefunds(
     locationId: string,
@@ -226,6 +236,7 @@ export class V1TransactionsApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('batch_token', mapped.batchToken);
     req.appendTemplatePath`/v1/${mapped.locationId}/refunds`;
+    req.deprecated('V1TransactionsApi.listRefunds');
     return req.callAsJson(array(v1RefundSchema), requestOptions);
   }
 
@@ -247,6 +258,7 @@ export class V1TransactionsApi extends BaseApi {
    * @param body        An object containing the fields to POST for the request.  See
    *                                                    the corresponding object definition for field details.
    * @return Response from the API call
+   * @deprecated
    */
   async createRefund(
     locationId: string,
@@ -260,6 +272,7 @@ export class V1TransactionsApi extends BaseApi {
     });
     req.json(mapped.body);
     req.appendTemplatePath`/v1/${mapped.locationId}/refunds`;
+    req.deprecated('V1TransactionsApi.createRefund');
     return req.callAsJson(v1RefundSchema, requestOptions);
   }
 
@@ -287,6 +300,7 @@ export class V1TransactionsApi extends BaseApi {
    * @param batchToken  A pagination cursor to retrieve the next set of results for your original query to
    *                              the endpoint.
    * @return Response from the API call
+   * @deprecated
    */
   async listSettlements(
     locationId: string,
@@ -315,6 +329,7 @@ export class V1TransactionsApi extends BaseApi {
     req.query('status', mapped.status);
     req.query('batch_token', mapped.batchToken);
     req.appendTemplatePath`/v1/${mapped.locationId}/settlements`;
+    req.deprecated('V1TransactionsApi.listSettlements');
     return req.callAsJson(array(v1SettlementSchema), requestOptions);
   }
 
@@ -341,6 +356,7 @@ export class V1TransactionsApi extends BaseApi {
    * @param settlementId  The settlement's Square-issued ID. You obtain this value from Settlement objects
    *                                returned by the List Settlements endpoint.
    * @return Response from the API call
+   * @deprecated
    */
   async retrieveSettlement(
     locationId: string,
@@ -353,6 +369,7 @@ export class V1TransactionsApi extends BaseApi {
       settlementId: [settlementId, string()],
     });
     req.appendTemplatePath`/v1/${mapped.locationId}/settlements/${mapped.settlementId}`;
+    req.deprecated('V1TransactionsApi.retrieveSettlement');
     return req.callAsJson(v1SettlementSchema, requestOptions);
   }
 }
