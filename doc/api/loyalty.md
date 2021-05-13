@@ -28,7 +28,7 @@ const loyaltyApi = client.loyaltyApi;
 
 # Create Loyalty Account
 
-Creates a loyalty account. To create a loyalty account, you must provide the `program_id` and either the `mapping` field (preferred) or the `mappings` field.
+Creates a loyalty account. To create a loyalty account, you must provide the `program_id` and a `mapping` with the `phone_number` of the buyer.
 
 ```ts
 async createLoyaltyAccount(
@@ -42,7 +42,7 @@ async createLoyaltyAccount(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CreateLoyaltyAccountRequest`](/doc/models/create-loyalty-account-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -51,21 +51,8 @@ async createLoyaltyAccount(
 ## Example Usage
 
 ```ts
-const bodyLoyaltyAccountMappings: LoyaltyAccountMapping[] = [];
-
-const bodyLoyaltyAccountmappings0: LoyaltyAccountMapping = {};
-bodyLoyaltyAccountmappings0.id = 'id0';
-bodyLoyaltyAccountmappings0.type = 'PHONE';
-bodyLoyaltyAccountmappings0.value = 'value2';
-bodyLoyaltyAccountmappings0.createdAt = 'created_at8';
-bodyLoyaltyAccountmappings0.phoneNumber = 'phone_number8';
-
-bodyLoyaltyAccountMappings[0] = bodyLoyaltyAccountmappings0;
-
 const bodyLoyaltyAccountMapping: LoyaltyAccountMapping = {};
 bodyLoyaltyAccountMapping.id = 'id6';
-bodyLoyaltyAccountMapping.type = 'PHONE';
-bodyLoyaltyAccountMapping.value = 'value8';
 bodyLoyaltyAccountMapping.createdAt = 'created_at4';
 bodyLoyaltyAccountMapping.phoneNumber = '+14155551234';
 
@@ -73,10 +60,10 @@ const bodyLoyaltyAccount: LoyaltyAccount = {
   programId: 'd619f755-2d17-41f3-990d-c04ecedd64dd',
 };
 bodyLoyaltyAccount.id = 'id2';
-bodyLoyaltyAccount.mappings = bodyLoyaltyAccountMappings;
 bodyLoyaltyAccount.balance = 14;
 bodyLoyaltyAccount.lifetimePoints = 38;
 bodyLoyaltyAccount.customerId = 'customer_id0';
+bodyLoyaltyAccount.enrolledAt = 'enrolled_at2';
 bodyLoyaltyAccount.mapping = bodyLoyaltyAccountMapping;
 
 const body: CreateLoyaltyAccountRequest = {
@@ -117,7 +104,7 @@ async searchLoyaltyAccounts(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`SearchLoyaltyAccountsRequest`](/doc/models/search-loyalty-accounts-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -130,8 +117,6 @@ const bodyQueryMappings: LoyaltyAccountMapping[] = [];
 
 const bodyQuerymappings0: LoyaltyAccountMapping = {};
 bodyQuerymappings0.id = 'id4';
-bodyQuerymappings0.type = 'PHONE';
-bodyQuerymappings0.value = 'value6';
 bodyQuerymappings0.createdAt = 'created_at8';
 bodyQuerymappings0.phoneNumber = '+14155551234';
 
@@ -176,7 +161,7 @@ async retrieveLoyaltyAccount(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `accountId` | `string` | Template, Required | The ID of the [loyalty account](/doc/models/loyalty-account.md) to retrieve. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -226,7 +211,7 @@ async accumulateLoyaltyPoints(
 |  --- | --- | --- | --- |
 | `accountId` | `string` | Template, Required | The [loyalty account](/doc/models/loyalty-account.md) ID to which to add the points. |
 | `body` | [`AccumulateLoyaltyPointsRequest`](/doc/models/accumulate-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -282,7 +267,7 @@ async adjustLoyaltyPoints(
 |  --- | --- | --- | --- |
 | `accountId` | `string` | Template, Required | The ID of the [loyalty account](/doc/models/loyalty-account.md) in which to adjust the points. |
 | `body` | [`AdjustLoyaltyPointsRequest`](/doc/models/adjust-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -339,7 +324,7 @@ async searchLoyaltyEvents(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`SearchLoyaltyEventsRequest`](/doc/models/search-loyalty-events-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -404,8 +389,12 @@ try {
 
 # List Loyalty Programs
 
+**This endpoint is deprecated. **
+
 Returns a list of loyalty programs in the seller's account.
-Currently, a seller can only have one loyalty program.
+Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
+
+Replaced with [RetrieveLoyaltyProgram](/doc/api/loyalty.md#retrieve-loyalty-program) when used with the keyword `main`.
 
 ```ts
 async listLoyaltyPrograms(
@@ -417,7 +406,7 @@ async listLoyaltyPrograms(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -457,7 +446,7 @@ async retrieveLoyaltyProgram(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `programId` | `string` | Template, Required | The ID of the loyalty program or the keyword `main`. Either value can be used to retrieve the single loyalty program that belongs to the seller. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -506,7 +495,7 @@ async calculateLoyaltyPoints(
 |  --- | --- | --- | --- |
 | `programId` | `string` | Template, Required | The [loyalty program](/doc/models/loyalty-program.md) ID, which defines the rules for accruing points. |
 | `body` | [`CalculateLoyaltyPointsRequest`](/doc/models/calculate-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -560,7 +549,7 @@ async createLoyaltyReward(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CreateLoyaltyRewardRequest`](/doc/models/create-loyalty-reward-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -620,7 +609,7 @@ async searchLoyaltyRewards(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`SearchLoyaltyRewardsRequest`](/doc/models/search-loyalty-rewards-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -676,7 +665,7 @@ async deleteLoyaltyReward(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](/doc/models/loyalty-reward.md) to delete. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -715,7 +704,7 @@ async retrieveLoyaltyReward(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](/doc/models/loyalty-reward.md) to retrieve. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -766,7 +755,7 @@ async redeemLoyaltyReward(
 |  --- | --- | --- | --- |
 | `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](/doc/models/loyalty-reward.md) to redeem. |
 | `body` | [`RedeemLoyaltyRewardRequest`](/doc/models/redeem-loyalty-reward-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

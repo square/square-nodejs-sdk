@@ -1,5 +1,5 @@
 {
-  "version": "10.0.0",
+  "version": "11.0.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/index.js",
@@ -29,11 +29,8 @@
   "description": "Use Square APIs to manage and run business including payment, customer, product, inventory, and employee management.",
   "author": "Square Developer Platform",
   "devDependencies": {
-    "@types/detect-node": "^2.0.0",
     "@types/json-bigint": "^1.0.0",
-    "@types/lodash.flatmap": "^4.5.6",
     "@types/uuid": "^8.3.0",
-    "abort-controller": "^3.0.0",
     "stream-equal": "^2.0.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.1.0",
@@ -41,14 +38,10 @@
     "uuid": "^8.3.0"
   },
   "dependencies": {
+    "@apimatic/core": "^0.6.1",
     "@apimatic/schema": "^0.6.0",
     "@types/node": "^14.14.30",
-    "axios": "^0.21.1",
-    "detect-node": "^2.0.4",
-    "form-data": "^3.0.0",
-    "json-bigint": "^1.0.0",
-    "lodash.flatmap": "^4.5.0",
-    "tiny-warning": "^1.0.3"
+    "json-bigint": "^1.0.0"
   },
   "repository": {
     "type": "git",

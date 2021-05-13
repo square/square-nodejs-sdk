@@ -1,6 +1,4 @@
-import { ApiResponse } from '../apiResponse';
-import { FileWrapper } from '../fileWrapper';
-import { RequestOptions } from '../http/requestBuilder';
+import { ApiResponse, FileWrapper, RequestOptions } from '../core';
 import {
   AcceptDisputeResponse,
   acceptDisputeResponseSchema,

@@ -1,6 +1,6 @@
 import { array, object, Schema, string } from '../schema';
 
-/** Filter by current Order `state`. */
+/** Filter by the current order `state`. */
 export interface SearchOrdersStateFilter {
   /**
    * States to filter for.

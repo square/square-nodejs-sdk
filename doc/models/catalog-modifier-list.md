@@ -16,10 +16,10 @@ the modifier list are allowed.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `string` | Optional | The name for the `CatalogModifierList` instance. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points.<br>**Constraints**: *Maximum Length*: `255` |
-| `ordinal` | `number` | Optional | Determines where this modifier list appears in a list of `CatalogModifierList` values. |
-| `selectionType` | [`string`](/doc/models/catalog-modifier-list-selection-type.md) | Optional | Indicates whether a CatalogModifierList supports multiple selections. |
-| `modifiers` | [`CatalogObject[]`](/doc/models/catalog-object.md) | Optional | The options included in the `CatalogModifierList`.<br>You must include at least one `CatalogModifier`.<br>Each CatalogObject must have type `MODIFIER` and contain<br>`CatalogModifier` data. |
+| `name` | `string \| undefined` | Optional | The name for the `CatalogModifierList` instance. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points.<br>**Constraints**: *Maximum Length*: `255` |
+| `ordinal` | `number \| undefined` | Optional | Determines where this modifier list appears in a list of `CatalogModifierList` values. |
+| `selectionType` | [`string \| undefined`](/doc/models/catalog-modifier-list-selection-type.md) | Optional | Indicates whether a CatalogModifierList supports multiple selections. |
+| `modifiers` | [`CatalogObject[] \| undefined`](/doc/models/catalog-object.md) | Optional | The options included in the `CatalogModifierList`.<br>You must include at least one `CatalogModifier`.<br>Each CatalogObject must have type `MODIFIER` and contain<br>`CatalogModifier` data. |
 
 ## Example (as JSON)
 

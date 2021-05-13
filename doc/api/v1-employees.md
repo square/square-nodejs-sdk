@@ -43,16 +43,16 @@ async listEmployees(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `order` | [`string`](/doc/models/sort-order.md) | Query, Optional | The order in which employees are listed in the response, based on their created_at field.      Default value: ASC |
-| `beginUpdatedAt` | `string` | Query, Optional | If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format |
-| `endUpdatedAt` | `string` | Query, Optional | If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format. |
-| `beginCreatedAt` | `string` | Query, Optional | If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format. |
-| `endCreatedAt` | `string` | Query, Optional | If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format. |
-| `status` | [`string`](/doc/models/v1-list-employees-request-status.md) | Query, Optional | If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). |
-| `externalId` | `string` | Query, Optional | If provided, the endpoint returns only employee entities with the specified external_id. |
-| `limit` | `number` | Query, Optional | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. |
-| `batchToken` | `string` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `order` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | The order in which employees are listed in the response, based on their created_at field.      Default value: ASC |
+| `beginUpdatedAt` | `string \| undefined` | Query, Optional | If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format |
+| `endUpdatedAt` | `string \| undefined` | Query, Optional | If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format. |
+| `beginCreatedAt` | `string \| undefined` | Query, Optional | If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format. |
+| `endCreatedAt` | `string \| undefined` | Query, Optional | If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format. |
+| `status` | [`string \| undefined`](/doc/models/v1-list-employees-request-status.md) | Query, Optional | If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). |
+| `externalId` | `string \| undefined` | Query, Optional | If provided, the endpoint returns only employee entities with the specified external_id. |
+| `limit` | `number \| undefined` | Query, Optional | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. |
+| `batchToken` | `string \| undefined` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -106,7 +106,7 @@ async createEmployee(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`V1Employee`](/doc/models/v1-employee.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -156,7 +156,7 @@ async retrieveEmployee(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `employeeId` | `string` | Template, Required | The employee's ID. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -197,7 +197,7 @@ async updateEmployee(
 |  --- | --- | --- | --- |
 | `employeeId` | `string` | Template, Required | The ID of the role to modify. |
 | `body` | [`V1Employee`](/doc/models/v1-employee.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -249,10 +249,10 @@ async listEmployeeRoles(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `order` | [`string`](/doc/models/sort-order.md) | Query, Optional | The order in which employees are listed in the response, based on their created_at field.Default value: ASC |
-| `limit` | `number` | Query, Optional | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. |
-| `batchToken` | `string` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `order` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | The order in which employees are listed in the response, based on their created_at field.Default value: ASC |
+| `limit` | `number \| undefined` | Query, Optional | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. |
+| `batchToken` | `string \| undefined` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -305,7 +305,7 @@ async createEmployeeRole(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`V1EmployeeRole`](/doc/models/v1-employee-role.md) | Body, Required | An EmployeeRole object with a name and permissions, and an optional owner flag. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -353,7 +353,7 @@ async retrieveEmployeeRole(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `roleId` | `string` | Template, Required | The role's ID. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -394,7 +394,7 @@ async updateEmployeeRole(
 |  --- | --- | --- | --- |
 | `roleId` | `string` | Template, Required | The ID of the role to modify. |
 | `body` | [`V1EmployeeRole`](/doc/models/v1-employee-role.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

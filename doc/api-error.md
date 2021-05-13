@@ -13,6 +13,6 @@ The ApiError extends the ApiResponse interface, so all ApiResponse properties ar
 | statusCode | number | Response status codee. |
 | headers | Record<string, string> | Response headers. |
 | result | T | Response data. |
-| body | string | Blob | NodeJS.ReadableStream | Original body from the response. |
+| body | string \| Blob \| NodeJS.ReadableStream | Original body from the response. |
 | errors? | Error[] | Represents an error encountered during a request to the Connect API |
 

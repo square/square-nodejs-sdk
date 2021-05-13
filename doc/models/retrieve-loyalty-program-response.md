@@ -11,8 +11,8 @@ A response that contains the loyalty program.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `program` | [`LoyaltyProgram`](/doc/models/loyalty-program.md) | Optional | - |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `program` | [`LoyaltyProgram \| undefined`](/doc/models/loyalty-program.md) | Optional | - |
 
 ## Example (as JSON)
 

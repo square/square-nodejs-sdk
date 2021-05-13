@@ -11,8 +11,8 @@ Latitude and longitude coordinates.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `latitude` | `number` | Optional | The latitude of the coordinate expressed in degrees. |
-| `longitude` | `number` | Optional | The longitude of the coordinate expressed in degrees. |
+| `latitude` | `number \| undefined` | Optional | The latitude of the coordinate expressed in degrees. |
+| `longitude` | `number \| undefined` | Optional | The longitude of the coordinate expressed in degrees. |
 
 ## Example (as JSON)
 

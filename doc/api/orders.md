@@ -21,12 +21,11 @@ const ordersApi = client.ordersApi;
 
 # Create Order
 
-Creates a new [Order](/doc/models/order.md) which can include information on products for
+Creates a new [order](/doc/models/order.md) that can include information about products for
 purchase and settings to apply to the purchase.
 
-To pay for a created order, please refer to the
-[Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders)
-guide.
+To pay for a created order, see
+[Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
 
 You can modify open orders using the [UpdateOrder](/doc/api/orders.md#update-order) endpoint.
 
@@ -42,7 +41,7 @@ async createOrder(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CreateOrderRequest`](/doc/models/create-order-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -229,9 +228,9 @@ try {
 
 # Batch Retrieve Orders
 
-Retrieves a set of [Order](/doc/models/order.md)s by their IDs.
+Retrieves a set of [orders](/doc/models/order.md) by their IDs.
 
-If a given Order ID does not exist, the ID is ignored instead of generating an error.
+If a given order ID does not exist, the ID is ignored instead of generating an error.
 
 ```ts
 async batchRetrieveOrders(
@@ -245,7 +244,7 @@ async batchRetrieveOrders(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`BatchRetrieveOrdersRequest`](/doc/models/batch-retrieve-orders-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -289,7 +288,7 @@ async calculateOrder(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CalculateOrderRequest`](/doc/models/calculate-order-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -434,19 +433,19 @@ try {
 
 Search all orders for one or more locations. Orders include all sales,
 returns, and exchanges regardless of how or when they entered the Square
-Ecosystem (e.g. Point of Sale, Invoices, Connect APIs, etc).
+ecosystem (such as Point of Sale, Invoices, and Connect APIs).
 
-SearchOrders requests need to specify which locations to search and define a
-[`SearchOrdersQuery`](/doc/models/search-orders-query.md) object which controls
-how to sort or filter the results. Your SearchOrdersQuery can:
+`SearchOrders` requests need to specify which locations to search and define a
+[SearchOrdersQuery](/doc/models/search-orders-query.md) object that controls
+how to sort or filter the results. Your `SearchOrdersQuery` can:
 
 Set filter criteria.
-Set sort order.
-Determine whether to return results as complete Order objects, or as
+Set the sort order.
+Determine whether to return results as complete `Order` objects or as
 [OrderEntry](/doc/models/order-entry.md) objects.
 
 Note that details for orders processed with Square Point of Sale while in
-offline mode may not be transmitted to Square for up to 72 hours. Offline
+offline mode might not be transmitted to Square for up to 72 hours. Offline
 orders have a `created_at` value that reflects the time the order was created,
 not the time it was subsequently transmitted to Square.
 
@@ -462,7 +461,7 @@ async searchOrders(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`SearchOrdersRequest`](/doc/models/search-orders-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -560,7 +559,7 @@ async retrieveOrder(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `orderId` | `string` | Template, Required | The ID of the order to retrieve. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -585,21 +584,21 @@ try {
 
 # Update Order
 
-Updates an open [Order](/doc/models/order.md) by adding, replacing, or deleting
+Updates an open [order](/doc/models/order.md) by adding, replacing, or deleting
 fields. Orders with a `COMPLETED` or `CANCELED` state cannot be updated.
 
-An UpdateOrder request requires the following:
+An `UpdateOrder` request requires the following:
 
 - The `order_id` in the endpoint path, identifying the order to update.
 - The latest `version` of the order to update.
 - The [sparse order](https://developer.squareup.com/docs/orders-api/manage-orders#sparse-order-objects)
-  containing only the fields to update and the version the update is
-  being applied to.
+  containing only the fields to update and the version to which the update is
+  being applied.
 - If deleting fields, the [dot notation paths](https://developer.squareup.com/docs/orders-api/manage-orders#on-dot-notation)
-  identifying fields to clear.
+  identifying the fields to clear.
 
-To pay for an order, please refer to the
-[Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders) guide.
+To pay for an order, see
+[Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
 
 ```ts
 async updateOrder(
@@ -615,7 +614,7 @@ async updateOrder(
 |  --- | --- | --- | --- |
 | `orderId` | `string` | Template, Required | The ID of the order to update. |
 | `body` | [`UpdateOrderRequest`](/doc/models/update-order-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -714,20 +713,20 @@ try {
 
 # Pay Order
 
-Pay for an [order](/doc/models/order.md) using one or more approved [payments](/doc/models/payment.md),
+Pay for an [order](/doc/models/order.md) using one or more approved [payments](/doc/models/payment.md)
 or settle an order with a total of `0`.
 
 The total of the `payment_ids` listed in the request must be equal to the order
 total. Orders with a total amount of `0` can be marked as paid by specifying an empty
 array of `payment_ids` in the request.
 
-To be used with PayOrder, a payment must:
+To be used with `PayOrder`, a payment must:
 
 - Reference the order by specifying the `order_id` when [creating the payment](/doc/api/payments.md#create-payment).
   Any approved payments that reference the same `order_id` not specified in the
-  `payment_ids` will be canceled.
+  `payment_ids` is canceled.
 - Be approved with [delayed capture](https://developer.squareup.com/docs/payments-api/take-payments#delayed-capture).
-  Using a delayed capture payment with PayOrder will complete the approved payment.
+  Using a delayed capture payment with `PayOrder` completes the approved payment.
 
 ```ts
 async payOrder(
@@ -743,7 +742,7 @@ async payOrder(
 |  --- | --- | --- | --- |
 | `orderId` | `string` | Template, Required | The ID of the order being paid. |
 | `body` | [`PayOrderRequest`](/doc/models/pay-order-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

@@ -22,23 +22,23 @@ export interface InventoryTransfer {
   /** Indicates the state of a tracked item quantity in the lifecycle of goods. */
   state?: string;
   /**
-   * The Square ID of the [Location]($m/Location) where the related
-   * quantity of items were tracked before the transfer.
+   * The Square-generated ID of the [Location]($m/Location) where the related
+   * quantity of items was tracked before the transfer.
    */
   fromLocationId?: string;
   /**
-   * The Square ID of the [Location]($m/Location) where the related
-   * quantity of items were tracked after the transfer.
+   * The Square-generated ID of the [Location]($m/Location) where the related
+   * quantity of items was tracked after the transfer.
    */
   toLocationId?: string;
   /**
-   * The Square generated ID of the
-   * `CatalogObject` being tracked.
+   * The Square-generated ID of the
+   * [CatalogObject]($m/CatalogObject) being tracked.
    */
   catalogObjectId?: string;
   /**
-   * The `CatalogObjectType` of the
-   * `CatalogObject` being tracked.Tracking is only
+   * The [type]($m/CatalogObjectType) of the
+   * [CatalogObject]($m/CatalogObject) being tracked.Tracking is only
    * supported for the `ITEM_VARIATION` type.
    */
   catalogObjectType?: string;
@@ -48,21 +48,21 @@ export interface InventoryTransfer {
    */
   quantity?: string;
   /**
-   * A client-generated timestamp in RFC 3339 format that indicates when
+   * A client-generated RFC 3339-formatted timestamp that indicates when
    * the transfer took place. For write actions, the `occurred_at` timestamp
    * cannot be older than 24 hours or in the future relative to the time of the
    * request.
    */
   occurredAt?: string;
   /**
-   * A read-only timestamp in RFC 3339 format that indicates when Square
+   * An RFC 3339-formatted timestamp that indicates when Square
    * received the transfer request.
    */
   createdAt?: string;
   /** Provides information about the application used to generate a change. */
   source?: SourceApplication;
   /**
-   * The Square ID of the [Employee]($m/Employee) responsible for the
+   * The Square-generated ID of the [Employee]($m/Employee) responsible for the
    * inventory transfer.
    */
   employeeId?: string;

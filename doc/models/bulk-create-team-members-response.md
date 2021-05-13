@@ -11,8 +11,8 @@ Represents a response from a bulk create request, containing the created `TeamMe
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMembers` | [`Record<string, CreateTeamMemberResponse>`](/doc/models/create-team-member-response.md) | Optional | The successfully created `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`. |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | The errors that occurred during the request. |
+| `teamMembers` | [`Record<string, CreateTeamMemberResponse> \| undefined`](/doc/models/create-team-member-response.md) | Optional | The successfully created `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | The errors that occurred during the request. |
 
 ## Example (as JSON)
 

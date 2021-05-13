@@ -1,4 +1,4 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import { array, lazy, object, Schema, string } from '../schema';
 import {
   SubscriptionPhase,
   subscriptionPhaseSchema,
@@ -10,14 +10,14 @@ import {
  */
 export interface CatalogSubscriptionPlan {
   /** The name of the plan. */
-  name?: string;
+  name: string;
   /** A list of SubscriptionPhase containing the [SubscriptionPhase]($m/SubscriptionPhase) for this plan. */
-  phases?: SubscriptionPhase[];
+  phases: SubscriptionPhase[];
 }
 
 export const catalogSubscriptionPlanSchema: Schema<CatalogSubscriptionPlan> = object(
   {
-    name: ['name', optional(string())],
-    phases: ['phases', optional(array(lazy(() => subscriptionPhaseSchema)))],
+    name: ['name', string()],
+    phases: ['phases', array(lazy(() => subscriptionPhaseSchema))],
   }
 );

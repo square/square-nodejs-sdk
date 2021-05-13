@@ -21,8 +21,8 @@ to the new object. The permanent ID is unique across the Square catalog.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `clientObjectId` | `string` | Optional | The client-supplied temporary `#`-prefixed ID for a new `CatalogObject`. |
-| `objectId` | `string` | Optional | The permanent ID for the CatalogObject created by the server. |
+| `clientObjectId` | `string \| undefined` | Optional | The client-supplied temporary `#`-prefixed ID for a new `CatalogObject`. |
+| `objectId` | `string \| undefined` | Optional | The permanent ID for the CatalogObject created by the server. |
 
 ## Example (as JSON)
 

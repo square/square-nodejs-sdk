@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `items` | [`V1Order[]`](/doc/models/v1-order.md) | Optional | - |
+| `items` | [`V1Order[] \| undefined`](/doc/models/v1-order.md) | Optional | - |
 
 ## Example (as JSON)
 

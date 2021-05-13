@@ -2,13 +2,13 @@ import { lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
- * A rounding adjustment of the money being returned. Commonly used to apply Cash Rounding
- * when the minimum unit of account is smaller than the lowest physical denomination of currency.
+ * A rounding adjustment of the money being returned. Commonly used to apply cash rounding
+ * when the minimum unit of the account is smaller than the lowest physical denomination of the currency.
  */
 export interface OrderRoundingAdjustment {
-  /** Unique ID that identifies the rounding adjustment only within this order. */
+  /** A unique ID that identifies the rounding adjustment only within this order. */
   uid?: string;
-  /** The name of the rounding adjustment from the original sale Order. */
+  /** The name of the rounding adjustment from the original sale order. */
   name?: string;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.

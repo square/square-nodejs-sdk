@@ -9,13 +9,13 @@ import { Money, moneySchema } from './money';
  * set of participating line items.
  */
 export interface OrderLineItemAppliedTax {
-  /** Unique ID that identifies the applied tax only within this order. */
+  /** A unique ID that identifies the applied tax only within this order. */
   uid?: string;
   /**
-   * The `uid` of the tax for which this applied tax represents.  Must reference
+   * The `uid` of the tax for which this applied tax represents. It must reference
    * a tax present in the `order.taxes` field.
-   * This field is immutable. To change which taxes apply to a line item, delete and add new
-   * `OrderLineItemAppliedTax`s.
+   * This field is immutable. To change which taxes apply to a line item, delete and add a new
+   * `OrderLineItemAppliedTax`.
    */
   taxUid: string;
   /**

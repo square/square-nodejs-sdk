@@ -11,8 +11,8 @@ Reflects the current status of a balance payment. Contains only non-confidential
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `accountId` | `string` | Optional | The ID of the account used to fund the payment. |
-| `status` | `string` | Optional | The balance payment’s current state. The state can be COMPLETED or FAILED. |
+| `accountId` | `string \| undefined` | Optional | The ID of the account used to fund the payment. |
+| `status` | `string \| undefined` | Optional | The balance payment’s current state. The state can be COMPLETED or FAILED. |
 
 ## Example (as JSON)
 

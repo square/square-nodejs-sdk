@@ -1,6 +1,6 @@
-import { AUTHORIZATION_HEADER, setHeader } from './http/httpHeaders';
-import { passThroughInterceptor } from './http/httpInterceptor';
-import { AuthenticatorInterface } from './http/requestBuilder';
+import { AUTHORIZATION_HEADER, setHeader } from './core';
+import { passThroughInterceptor } from './core';
+import { AuthenticatorInterface } from './core';
 
 /** None authentication provider */
 export const noneAuthenticationProvider = () => passThroughInterceptor;

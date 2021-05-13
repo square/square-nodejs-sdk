@@ -45,10 +45,10 @@ async listBreakTypes(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `locationId` | `string` | Query, Optional | Filter Break Types returned to only those that are associated with the<br>specified location. |
-| `limit` | `number` | Query, Optional | Maximum number of Break Types to return per page. Can range between 1<br>and 200. The default is the maximum at 200. |
-| `cursor` | `string` | Query, Optional | Pointer to the next page of Break Type results to fetch. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `locationId` | `string \| undefined` | Query, Optional | Filter Break Types returned to only those that are associated with the<br>specified location. |
+| `limit` | `number \| undefined` | Query, Optional | Maximum number of Break Types to return per page. Can range between 1<br>and 200. The default is the maximum at 200. |
+| `cursor` | `string \| undefined` | Query, Optional | Pointer to the next page of Break Type results to fetch. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -102,7 +102,7 @@ async createBreakType(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CreateBreakTypeRequest`](/doc/models/create-break-type-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -158,7 +158,7 @@ async deleteBreakType(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Template, Required | UUID for the `BreakType` being deleted. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -197,7 +197,7 @@ async getBreakType(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Template, Required | UUID for the `BreakType` being retrieved. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -238,7 +238,7 @@ async updateBreakType(
 |  --- | --- | --- | --- |
 | `id` | `string` | Template, Required | UUID for the `BreakType` being updated. |
 | `body` | [`UpdateBreakTypeRequest`](/doc/models/update-break-type-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -295,10 +295,10 @@ async listEmployeeWages(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `employeeId` | `string` | Query, Optional | Filter wages returned to only those that are associated with the specified employee. |
-| `limit` | `number` | Query, Optional | Maximum number of Employee Wages to return per page. Can range between<br>1 and 200. The default is the maximum at 200. |
-| `cursor` | `string` | Query, Optional | Pointer to the next page of Employee Wage results to fetch. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `employeeId` | `string \| undefined` | Query, Optional | Filter wages returned to only those that are associated with the specified employee. |
+| `limit` | `number \| undefined` | Query, Optional | Maximum number of Employee Wages to return per page. Can range between<br>1 and 200. The default is the maximum at 200. |
+| `cursor` | `string \| undefined` | Query, Optional | Pointer to the next page of Employee Wage results to fetch. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -341,7 +341,7 @@ async getEmployeeWage(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Template, Required | UUID for the `EmployeeWage` being retrieved. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -398,7 +398,7 @@ async createShift(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`CreateShiftRequest`](/doc/models/create-shift-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -490,7 +490,7 @@ async searchShifts(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`SearchShiftsRequest`](/doc/models/search-shifts-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -571,7 +571,7 @@ async deleteShift(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Template, Required | UUID for the `Shift` being deleted. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -610,7 +610,7 @@ async getShift(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Template, Required | UUID for the `Shift` being retrieved. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -657,7 +657,7 @@ async updateShift(
 |  --- | --- | --- | --- |
 | `id` | `string` | Template, Required | ID of the object being updated. |
 | `body` | [`UpdateShiftRequest`](/doc/models/update-shift-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -736,10 +736,10 @@ async listTeamMemberWages(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMemberId` | `string` | Query, Optional | Filter wages returned to only those that are associated with the<br>specified team member. |
-| `limit` | `number` | Query, Optional | Maximum number of Team Member Wages to return per page. Can range between<br>1 and 200. The default is the maximum at 200. |
-| `cursor` | `string` | Query, Optional | Pointer to the next page of Employee Wage results to fetch. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `teamMemberId` | `string \| undefined` | Query, Optional | Filter wages returned to only those that are associated with the<br>specified team member. |
+| `limit` | `number \| undefined` | Query, Optional | Maximum number of Team Member Wages to return per page. Can range between<br>1 and 200. The default is the maximum at 200. |
+| `cursor` | `string \| undefined` | Query, Optional | Pointer to the next page of Employee Wage results to fetch. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -780,7 +780,7 @@ async getTeamMemberWage(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Template, Required | UUID for the `TeamMemberWage` being retrieved. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -819,9 +819,9 @@ async listWorkweekConfigs(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `limit` | `number` | Query, Optional | Maximum number of Workweek Configs to return per page. |
-| `cursor` | `string` | Query, Optional | Pointer to the next page of Workweek Config results to fetch. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `limit` | `number \| undefined` | Query, Optional | Maximum number of Workweek Configs to return per page. |
+| `cursor` | `string \| undefined` | Query, Optional | Pointer to the next page of Workweek Config results to fetch. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -863,7 +863,7 @@ async updateWorkweekConfig(
 |  --- | --- | --- | --- |
 | `id` | `string` | Template, Required | UUID for the `WorkweekConfig` object being updated. |
 | `body` | [`UpdateWorkweekConfigRequest`](/doc/models/update-workweek-config-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

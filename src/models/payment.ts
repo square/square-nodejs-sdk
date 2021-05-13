@@ -1,6 +1,10 @@
 import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Address, addressSchema } from './address';
 import {
+  BankAccountPaymentDetails,
+  bankAccountPaymentDetailsSchema,
+} from './bankAccountPaymentDetails';
+import {
   CardPaymentDetails,
   cardPaymentDetailsSchema,
 } from './cardPaymentDetails';
@@ -80,7 +84,7 @@ export interface Payment {
    * for more information.
    */
   refundedMoney?: Money;
-  /** Indicates whether the payment is APPROVED, COMPLETED, CANCELED, or FAILED. */
+  /** Indicates whether the payment is APPROVED, PENDING, COMPLETED, CANCELED, or FAILED. */
   status?: string;
   /**
    * The duration of time after the payment's creation when Square automatically applies the
@@ -111,7 +115,7 @@ export interface Payment {
   delayedUntil?: string;
   /**
    * The source type for this payment.
-   * Current values include `CARD`, `CASH`, or `EXTERNAL`.
+   * Current values include `CARD`, `BANK_ACCOUNT`, `CASH`, or `EXTERNAL`.
    */
   sourceType?: string;
   /** Reflects the current status of a card payment. Contains only non-confidential information. */
@@ -121,6 +125,8 @@ export interface Payment {
    * [Take Cash Payments](https://developer.squareup.com/docs/payments-api/take-payments/cash-payments).
    */
   cashDetails?: CashPaymentDetails;
+  /** Additional details about BANK_ACCOUNT type payments. */
+  bankAccountDetails?: BankAccountPaymentDetails;
   /**
    * Stores details about an external payment. Contains only non-confidential information.
    * For more information, see
@@ -212,6 +218,10 @@ export const paymentSchema: Schema<Payment> = object({
   sourceType: ['source_type', optional(string())],
   cardDetails: ['card_details', optional(lazy(() => cardPaymentDetailsSchema))],
   cashDetails: ['cash_details', optional(lazy(() => cashPaymentDetailsSchema))],
+  bankAccountDetails: [
+    'bank_account_details',
+    optional(lazy(() => bankAccountPaymentDetailsSchema)),
+  ],
   externalDetails: [
     'external_details',
     optional(lazy(() => externalPaymentDetailsSchema)),

@@ -2,7 +2,7 @@ import { array, object, optional, Schema, string } from '../schema';
 
 /**
  * Defines the fields that are included in requests to the
- * BatchRetrieveOrders endpoint.
+ * `BatchRetrieveOrders` endpoint.
  */
 export interface BatchRetrieveOrdersRequest {
   /**

@@ -11,8 +11,8 @@ A request for a set of `WorkweekConfig` objects
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `limit` | `number` | Optional | Maximum number of Workweek Configs to return per page. |
-| `cursor` | `string` | Optional | Pointer to the next page of Workweek Config results to fetch. |
+| `limit` | `number \| undefined` | Optional | Maximum number of Workweek Configs to return per page. |
+| `cursor` | `string \| undefined` | Optional | Pointer to the next page of Workweek Config results to fetch. |
 
 ## Example (as JSON)
 

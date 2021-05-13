@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `employees` | [`Employee[]`](/doc/models/employee.md) | Optional | - |
-| `cursor` | `string` | Optional | The token to be used to retrieve the next page of results. |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `employees` | [`Employee[] \| undefined`](/doc/models/employee.md) | Optional | - |
+| `cursor` | `string \| undefined` | Optional | The token to be used to retrieve the next page of results. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)
 

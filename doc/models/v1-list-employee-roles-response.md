@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `items` | [`V1EmployeeRole[]`](/doc/models/v1-employee-role.md) | Optional | - |
+| `items` | [`V1EmployeeRole[] \| undefined`](/doc/models/v1-employee-role.md) | Optional | - |
 
 ## Example (as JSON)
 

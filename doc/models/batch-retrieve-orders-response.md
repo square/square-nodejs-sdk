@@ -2,7 +2,7 @@
 # Batch Retrieve Orders Response
 
 Defines the fields that are included in the response body of
-a request to the BatchRetrieveOrders endpoint.
+a request to the `BatchRetrieveOrders` endpoint.
 
 ## Structure
 
@@ -12,8 +12,8 @@ a request to the BatchRetrieveOrders endpoint.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `orders` | [`Order[]`](/doc/models/order.md) | Optional | The requested orders. This will omit any requested orders that do not exist. |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `orders` | [`Order[] \| undefined`](/doc/models/order.md) | Optional | The requested orders. This will omit any requested orders that do not exist. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)
 

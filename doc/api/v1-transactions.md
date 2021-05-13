@@ -23,6 +23,8 @@ const v1TransactionsApi = client.v1TransactionsApi;
 
 # List Orders
 
+**This endpoint is deprecated. **
+
 Provides summary information for a merchant's online store orders.
 
 ```ts
@@ -40,10 +42,10 @@ async listOrders(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Template, Required | The ID of the location to list online store orders for. |
-| `order` | [`string`](/doc/models/sort-order.md) | Query, Optional | The order in which payments are listed in the response. |
-| `limit` | `number` | Query, Optional | The maximum number of payments to return in a single response. This value cannot exceed 200. |
-| `batchToken` | `string` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `order` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | The order in which payments are listed in the response. |
+| `limit` | `number \| undefined` | Query, Optional | The maximum number of payments to return in a single response. This value cannot exceed 200. |
+| `batchToken` | `string \| undefined` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -71,6 +73,8 @@ try {
 
 # Retrieve Order
 
+**This endpoint is deprecated. **
+
 Provides comprehensive information for a single online store order, including the order's history.
 
 ```ts
@@ -87,7 +91,7 @@ async retrieveOrder(
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Template, Required | The ID of the order's associated location. |
 | `orderId` | `string` | Template, Required | The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -113,6 +117,8 @@ try {
 
 # Update Order
 
+**This endpoint is deprecated. **
+
 Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
 
 ```ts
@@ -131,7 +137,7 @@ async updateOrder(
 | `locationId` | `string` | Template, Required | The ID of the order's associated location. |
 | `orderId` | `string` | Template, Required | The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint |
 | `body` | [`V1UpdateOrderRequest`](/doc/models/v1-update-order-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -165,6 +171,8 @@ try {
 
 # List Payments
 
+**This endpoint is deprecated. **
+
 Provides summary information for all payments taken for a given
 Square account during a date range. Date ranges cannot exceed 1 year in
 length. See Date ranges for details of inclusive and exclusive dates.
@@ -195,13 +203,13 @@ async listPayments(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Template, Required | The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business's locations. |
-| `order` | [`string`](/doc/models/sort-order.md) | Query, Optional | The order in which payments are listed in the response. |
-| `beginTime` | `string` | Query, Optional | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. |
-| `endTime` | `string` | Query, Optional | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. |
-| `limit` | `number` | Query, Optional | The maximum number of payments to return in a single response. This value cannot exceed 200. |
-| `batchToken` | `string` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
-| `includePartial` | `boolean` | Query, Optional | Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed.<br>**Default**: `false` |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `order` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | The order in which payments are listed in the response. |
+| `beginTime` | `string \| undefined` | Query, Optional | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. |
+| `endTime` | `string \| undefined` | Query, Optional | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. |
+| `limit` | `number \| undefined` | Query, Optional | The maximum number of payments to return in a single response. This value cannot exceed 200. |
+| `batchToken` | `string \| undefined` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
+| `includePartial` | `boolean \| undefined` | Query, Optional | Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed.<br>**Default**: `false` |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -232,6 +240,8 @@ try {
 
 # Retrieve Payment
 
+**This endpoint is deprecated. **
+
 Provides comprehensive information for a single payment.
 
 ```ts
@@ -248,7 +258,7 @@ async retrievePayment(
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Template, Required | The ID of the payment's associated location. |
 | `paymentId` | `string` | Template, Required | The Square-issued payment ID. payment_id comes from Payment objects returned by the List Payments endpoint, Settlement objects returned by the List Settlements endpoint, or Refund objects returned by the List Refunds endpoint. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -274,6 +284,8 @@ try {
 
 # List Refunds
 
+**This endpoint is deprecated. **
+
 Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
 
 ```ts
@@ -293,12 +305,12 @@ async listRefunds(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Template, Required | The ID of the location to list refunds for. |
-| `order` | [`string`](/doc/models/sort-order.md) | Query, Optional | The order in which payments are listed in the response. |
-| `beginTime` | `string` | Query, Optional | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. |
-| `endTime` | `string` | Query, Optional | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. |
-| `limit` | `number` | Query, Optional | The approximate number of refunds to return in a single response. Default: 100. Max: 200. Response may contain more results than the prescribed limit when refunds are made simultaneously to multiple tenders in a payment or when refunds are generated in an exchange to account for the value of returned goods. |
-| `batchToken` | `string` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `order` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | The order in which payments are listed in the response. |
+| `beginTime` | `string \| undefined` | Query, Optional | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. |
+| `endTime` | `string \| undefined` | Query, Optional | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. |
+| `limit` | `number \| undefined` | Query, Optional | The approximate number of refunds to return in a single response. Default: 100. Max: 200. Response may contain more results than the prescribed limit when refunds are made simultaneously to multiple tenders in a payment or when refunds are generated in an exchange to account for the value of returned goods. |
+| `batchToken` | `string \| undefined` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -328,6 +340,8 @@ try {
 
 # Create Refund
 
+**This endpoint is deprecated. **
+
 Issues a refund for a previously processed payment. You must issue
 a refund within 60 days of the associated payment.
 
@@ -355,7 +369,7 @@ async createRefund(
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Template, Required | The ID of the original payment's associated location. |
 | `body` | [`V1CreateRefundRequest`](/doc/models/v1-create-refund-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -392,6 +406,8 @@ try {
 
 # List Settlements
 
+**This endpoint is deprecated. **
+
 Provides summary information for all deposits and withdrawals
 initiated by Square to a linked bank account during a date range. Date
 ranges cannot exceed one year in length.
@@ -417,13 +433,13 @@ async listSettlements(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Template, Required | The ID of the location to list settlements for. If you specify me, this endpoint returns settlements aggregated from all of the business's locations. |
-| `order` | [`string`](/doc/models/sort-order.md) | Query, Optional | The order in which settlements are listed in the response. |
-| `beginTime` | `string` | Query, Optional | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. |
-| `endTime` | `string` | Query, Optional | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. |
-| `limit` | `number` | Query, Optional | The maximum number of settlements to return in a single response. This value cannot exceed 200. |
-| `status` | [`string`](/doc/models/v1-list-settlements-request-status.md) | Query, Optional | Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). |
-| `batchToken` | `string` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `order` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | The order in which settlements are listed in the response. |
+| `beginTime` | `string \| undefined` | Query, Optional | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. |
+| `endTime` | `string \| undefined` | Query, Optional | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. |
+| `limit` | `number \| undefined` | Query, Optional | The maximum number of settlements to return in a single response. This value cannot exceed 200. |
+| `status` | [`string \| undefined`](/doc/models/v1-list-settlements-request-status.md) | Query, Optional | Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). |
+| `batchToken` | `string \| undefined` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
@@ -453,6 +469,8 @@ try {
 
 
 # Retrieve Settlement
+
+**This endpoint is deprecated. **
 
 Provides comprehensive information for a single settlement.
 
@@ -486,7 +504,7 @@ async retrieveSettlement(
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Template, Required | The ID of the settlements's associated location. |
 | `settlementId` | `string` | Template, Required | The settlement's Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint. |
-| `requestOptions` | `RequestOptions` | Optional | Pass additional request options. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 

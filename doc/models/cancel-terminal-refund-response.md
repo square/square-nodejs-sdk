@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
-| `refund` | [`TerminalRefund`](/doc/models/terminal-refund.md) | Optional | - |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
+| `refund` | [`TerminalRefund \| undefined`](/doc/models/terminal-refund.md) | Optional | - |
 
 ## Example (as JSON)
 

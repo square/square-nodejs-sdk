@@ -1,7 +1,5 @@
 import JSONBig from 'json-bigint';
-import { HttpContext } from '../http/httpContext';
-import { HttpRequest } from '../http/httpRequest';
-import { ApiResponse } from '../apiResponse';
+import { ApiResponse, HttpContext, HttpRequest } from '../core';
 import { Error as SquareError } from '../models/error';
 
 /**

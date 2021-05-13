@@ -1,5 +1,4 @@
-import { ApiResponse } from '../apiResponse';
-import { RequestOptions } from '../http/requestBuilder';
+import { ApiResponse, RequestOptions } from '../core';
 import {
   AccumulateLoyaltyPointsRequest,
   accumulateLoyaltyPointsRequestSchema,
@@ -97,8 +96,8 @@ import { BaseApi } from './baseApi';
 
 export class LoyaltyApi extends BaseApi {
   /**
-   * Creates a loyalty account. To create a loyalty account, you must provide the `program_id` and either
-   * the `mapping` field (preferred) or the `mappings` field.
+   * Creates a loyalty account. To create a loyalty account, you must provide the `program_id` and a
+   * `mapping` with the `phone_number` of the buyer.
    *
    * @param body An object containing the fields to POST for the request.  See
    *                                                   the corresponding object definition for field details.
@@ -251,14 +250,22 @@ export class LoyaltyApi extends BaseApi {
 
   /**
    * Returns a list of loyalty programs in the seller's account.
-   * Currently, a seller can only have one loyalty program.
+   * Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can
+   * have only one loyalty program, which is created and managed from the Seller Dashboard. For more
+   * information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
+   *
+   *
+   * Replaced with [RetrieveLoyaltyProgram]($e/Loyalty/RetrieveLoyaltyProgram) when used with the keyword
+   * `main`.
    *
    * @return Response from the API call
+   * @deprecated
    */
   async listLoyaltyPrograms(
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ListLoyaltyProgramsResponse>> {
     const req = this.createRequest('GET', '/v2/loyalty/programs');
+    req.deprecated('LoyaltyApi.listLoyaltyPrograms');
     return req.callAsJson(listLoyaltyProgramsResponseSchema, requestOptions);
   }
 

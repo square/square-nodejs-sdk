@@ -11,9 +11,9 @@ A request for a set of `TeamMemberWage` objects
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMemberId` | `string` | Optional | Filter wages returned to only those that are associated with the<br>specified team member. |
-| `limit` | `number` | Optional | Maximum number of Team Member Wages to return per page. Can range between<br>1 and 200. The default is the maximum at 200.<br>**Constraints**: `>= 1`, `<= 200` |
-| `cursor` | `string` | Optional | Pointer to the next page of Employee Wage results to fetch. |
+| `teamMemberId` | `string \| undefined` | Optional | Filter wages returned to only those that are associated with the<br>specified team member. |
+| `limit` | `number \| undefined` | Optional | Maximum number of Team Member Wages to return per page. Can range between<br>1 and 200. The default is the maximum at 200.<br>**Constraints**: `>= 1`, `<= 200` |
+| `cursor` | `string \| undefined` | Optional | Pointer to the next page of Employee Wage results to fetch. |
 
 ## Example (as JSON)
 

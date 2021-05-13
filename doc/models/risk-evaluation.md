@@ -16,8 +16,8 @@ provide the goods/services or refund the payment).
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `createdAt` | `string` | Optional | The timestamp when payment risk was evaluated, in RFC 3339 format. |
-| `riskLevel` | [`string`](/doc/models/risk-evaluation-risk-level.md) | Optional | - |
+| `createdAt` | `string \| undefined` | Optional | The timestamp when payment risk was evaluated, in RFC 3339 format. |
+| `riskLevel` | [`string \| undefined`](/doc/models/risk-evaluation-risk-level.md) | Optional | - |
 
 ## Example (as JSON)
 

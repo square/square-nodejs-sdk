@@ -1,7 +1,7 @@
 
 # Order Line Item Discount Scope
 
-Indicates whether this is a line item or order level discount.
+Indicates whether this is a line-item or order-level discount.
 
 ## Enumeration
 

@@ -11,8 +11,8 @@ The response object returned by the [RetrieveMerchant](/doc/api/merchants.md#ret
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Information on errors encountered during the request. |
-| `merchant` | [`Merchant`](/doc/models/merchant.md) | Optional | Represents a Square seller. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Information on errors encountered during the request. |
+| `merchant` | [`Merchant \| undefined`](/doc/models/merchant.md) | Optional | Represents a Square seller. |
 
 ## Example (as JSON)
 

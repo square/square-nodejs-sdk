@@ -21,6 +21,8 @@ import { OAuthApi } from './api/oAuthApi';
 import { OrdersApi } from './api/ordersApi';
 import { PaymentsApi } from './api/paymentsApi';
 import { RefundsApi } from './api/refundsApi';
+import { SitesApi } from './api/sitesApi';
+import { SnippetsApi } from './api/snippetsApi';
 import { SubscriptionsApi } from './api/subscriptionsApi';
 import { TeamApi } from './api/teamApi';
 import { TerminalApi } from './api/terminalApi';
@@ -38,18 +40,20 @@ import {
 import { Configuration, Environment } from './configuration';
 import { DEFAULT_CONFIGURATION } from './defaultConfiguration';
 import { ApiError } from './errors/apiError';
-import { HttpClient } from './http/httpClient';
-import { assertHeaders, mergeHeaders, setHeader } from './http/httpHeaders';
-import { pathTemplate, SkipEncode } from './http/pathTemplate';
+import { assertHeaders, mergeHeaders, setHeader } from './core';
+import { pathTemplate, SkipEncode } from './core';
 import {
   AuthenticatorInterface,
   createRequestBuilderFactory,
+  HttpClient,
   HttpClientInterface,
-} from './http/requestBuilder';
+  XmlSerializerInterface,
+} from './core';
+import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '10.0.0';
-const USER_AGENT = 'Square-TypeScript-SDK/10.0.0';
+export const SDK_VERSION = '11.0.0';
+const USER_AGENT = 'Square-TypeScript-SDK/11.0.0';
 
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
@@ -78,6 +82,8 @@ export class Client implements ClientInterface {
   public readonly ordersApi: OrdersApi;
   public readonly paymentsApi: PaymentsApi;
   public readonly refundsApi: RefundsApi;
+  public readonly sitesApi: SitesApi;
+  public readonly snippetsApi: SnippetsApi;
   public readonly subscriptionsApi: SubscriptionsApi;
   public readonly teamApi: TeamApi;
   public readonly terminalApi: TerminalApi;
@@ -103,7 +109,8 @@ export class Client implements ClientInterface {
         withAdditionalHeaders(this._config),
         withAuthenticationByDefault,
         withSquareVersion(this._config),
-      ]
+      ],
+      new XmlSerialization()
     );
 
     this.applePayApi = new ApplePayApi(this);
@@ -129,6 +136,8 @@ export class Client implements ClientInterface {
     this.ordersApi = new OrdersApi(this);
     this.paymentsApi = new PaymentsApi(this);
     this.refundsApi = new RefundsApi(this);
+    this.sitesApi = new SitesApi(this);
+    this.snippetsApi = new SnippetsApi(this);
     this.subscriptionsApi = new SubscriptionsApi(this);
     this.teamApi = new TeamApi(this);
     this.terminalApi = new TerminalApi(this);
@@ -178,13 +187,15 @@ function createRequestHandlerFactory(
   baseUrlProvider: (server?: Server) => string,
   authProvider: AuthenticatorInterface<AuthParams>,
   httpClient: HttpClient,
-  addons: ((rb: SdkRequestBuilder) => void)[]
+  addons: ((rb: SdkRequestBuilder) => void)[],
+  xmlSerializer: XmlSerializerInterface
 ): SdkRequestBuilderFactory {
   const requestBuilderFactory = createRequestBuilderFactory(
     createHttpClientAdapter(httpClient),
     baseUrlProvider,
     ApiError,
-    authProvider
+    authProvider,
+    xmlSerializer
   );
 
   return tap(requestBuilderFactory, ...addons);

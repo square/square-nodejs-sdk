@@ -5,7 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2021-04-21'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2021-05-13'` |
 | `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
@@ -53,6 +53,8 @@ import {
   OrdersApi,
   PaymentsApi,
   RefundsApi,
+  SitesApi,
+  SnippetsApi,
   SubscriptionsApi,
   TeamApi,
   TerminalApi,
@@ -114,6 +116,8 @@ The gateway for the SDK. This class acts as a factory for the Apis and also hold
 | orders | Gets OrdersApi |
 | payments | Gets PaymentsApi |
 | refunds | Gets RefundsApi |
+| sites | Gets SitesApi |
+| snippets | Gets SnippetsApi |
 | subscriptions | Gets SubscriptionsApi |
 | team | Gets TeamApi |
 | terminal | Gets TerminalApi |

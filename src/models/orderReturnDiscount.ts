@@ -9,11 +9,11 @@ import { Money, moneySchema } from './money';
  * order subtotal.
  */
 export interface OrderReturnDiscount {
-  /** Unique ID that identifies the return discount only within this order. */
+  /** A unique ID that identifies the returned discount only within this order. */
   uid?: string;
-  /** `uid` of the Discount from the Order which contains the original application of this discount. */
+  /** The discount `uid` from the order that contains the original application of this discount. */
   sourceDiscountUid?: string;
-  /** The catalog object id referencing [CatalogDiscount]($m/CatalogDiscount). */
+  /** The catalog object ID referencing [CatalogDiscount]($m/CatalogDiscount). */
   catalogObjectId?: string;
   /** The discount's name. */
   name?: string;
@@ -21,7 +21,7 @@ export interface OrderReturnDiscount {
   type?: string;
   /**
    * The percentage of the tax, as a string representation of a decimal number.
-   * A value of `7.25` corresponds to a percentage of 7.25%.
+   * A value of `"7.25"` corresponds to a percentage of 7.25%.
    * `percentage` is not set for amount-based discounts.
    */
   percentage?: string;
@@ -43,7 +43,7 @@ export interface OrderReturnDiscount {
    * for more information.
    */
   appliedMoney?: Money;
-  /** Indicates whether this is a line item or order level discount. */
+  /** Indicates whether this is a line-item or order-level discount. */
   scope?: string;
 }
 

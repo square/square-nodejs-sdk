@@ -1,31 +1,31 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Address, addressSchema } from './address';
 
-/** Contains information on the recipient of a fulfillment. */
+/** Contains information about the recipient of a fulfillment. */
 export interface OrderFulfillmentRecipient {
   /**
-   * The Customer ID of the customer associated with the fulfillment.
+   * The customer ID of the customer associated with the fulfillment.
    * If `customer_id` is provided, the fulfillment recipient's `display_name`,
    * `email_address`, and `phone_number` are automatically populated from the
    * targeted customer profile. If these fields are set in the request, the request
-   * values will override the information from the customer profile. If the
+   * values overrides the information from the customer profile. If the
    * targeted customer profile does not contain the necessary information and
-   * these fields are left unset, the request will result in an error.
+   * these fields are left unset, the request results in an error.
    */
   customerId?: string;
   /**
    * The display name of the fulfillment recipient.
-   * If provided, overrides the value pulled from the customer profile indicated by `customer_id`.
+   * If provided, the display name overrides the value pulled from the customer profile indicated by `customer_id`.
    */
   displayName?: string;
   /**
    * The email address of the fulfillment recipient.
-   * If provided, overrides the value pulled from the customer profile indicated by `customer_id`.
+   * If provided, the email address overrides the value pulled from the customer profile indicated by `customer_id`.
    */
   emailAddress?: string;
   /**
    * The phone number of the fulfillment recipient.
-   * If provided, overrides the value pulled from the customer profile indicated by `customer_id`.
+   * If provided, the phone number overrides the value pulled from the customer profile indicated by `customer_id`.
    */
   phoneNumber?: string;
   /** Represents a physical address. */

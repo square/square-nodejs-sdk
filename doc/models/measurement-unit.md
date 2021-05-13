@@ -13,14 +13,14 @@ or inches. Exactly one of the following fields are required: `custom_unit`,
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customUnit` | [`MeasurementUnitCustom`](/doc/models/measurement-unit-custom.md) | Optional | The information needed to define a custom unit, provided by the seller. |
-| `areaUnit` | [`string`](/doc/models/measurement-unit-area.md) | Optional | Unit of area used to measure a quantity. |
-| `lengthUnit` | [`string`](/doc/models/measurement-unit-length.md) | Optional | The unit of length used to measure a quantity. |
-| `volumeUnit` | [`string`](/doc/models/measurement-unit-volume.md) | Optional | The unit of volume used to measure a quantity. |
-| `weightUnit` | [`string`](/doc/models/measurement-unit-weight.md) | Optional | Unit of weight used to measure a quantity. |
-| `genericUnit` | [`string`](/doc/models/measurement-unit-generic.md) | Optional | - |
-| `timeUnit` | [`string`](/doc/models/measurement-unit-time.md) | Optional | Unit of time used to measure a quantity (a duration). |
-| `type` | [`string`](/doc/models/measurement-unit-unit-type.md) | Optional | Describes the type of this unit and indicates which field contains the unit information. This is an ‘open’ enum. |
+| `customUnit` | [`MeasurementUnitCustom \| undefined`](/doc/models/measurement-unit-custom.md) | Optional | The information needed to define a custom unit, provided by the seller. |
+| `areaUnit` | [`string \| undefined`](/doc/models/measurement-unit-area.md) | Optional | Unit of area used to measure a quantity. |
+| `lengthUnit` | [`string \| undefined`](/doc/models/measurement-unit-length.md) | Optional | The unit of length used to measure a quantity. |
+| `volumeUnit` | [`string \| undefined`](/doc/models/measurement-unit-volume.md) | Optional | The unit of volume used to measure a quantity. |
+| `weightUnit` | [`string \| undefined`](/doc/models/measurement-unit-weight.md) | Optional | Unit of weight used to measure a quantity. |
+| `genericUnit` | [`string \| undefined`](/doc/models/measurement-unit-generic.md) | Optional | - |
+| `timeUnit` | [`string \| undefined`](/doc/models/measurement-unit-time.md) | Optional | Unit of time used to measure a quantity (a duration). |
+| `type` | [`string \| undefined`](/doc/models/measurement-unit-unit-type.md) | Optional | Describes the type of this unit and indicates which field contains the unit information. This is an ‘open’ enum. |
 
 ## Example (as JSON)
 

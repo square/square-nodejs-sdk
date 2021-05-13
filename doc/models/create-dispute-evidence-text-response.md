@@ -11,8 +11,8 @@ Defines the fields in a `CreateDisputeEvidenceText` response.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[]`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `evidence` | [`DisputeEvidence`](/doc/models/dispute-evidence.md) | Optional | - |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `evidence` | [`DisputeEvidence \| undefined`](/doc/models/dispute-evidence.md) | Optional | - |
 
 ## Example (as JSON)
 

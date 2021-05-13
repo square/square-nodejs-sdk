@@ -32,22 +32,22 @@ associated payment.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Optional | The tender's unique ID. |
-| `type` | [`string`](/doc/models/v1-tender-type.md) | Optional | - |
-| `name` | `string` | Optional | A human-readable description of the tender. |
-| `employeeId` | `string` | Optional | The ID of the employee that processed the tender. |
-| `receiptUrl` | `string` | Optional | The URL of the receipt for the tender. |
-| `cardBrand` | [`string`](/doc/models/v1-tender-card-brand.md) | Optional | The brand of a credit card. |
-| `panSuffix` | `string` | Optional | The last four digits of the provided credit card's account number. |
-| `entryMethod` | [`string`](/doc/models/v1-tender-entry-method.md) | Optional | - |
-| `paymentNote` | `string` | Optional | Notes entered by the merchant about the tender at the time of payment, if any. Typically only present for tender with the type: OTHER. |
-| `totalMoney` | [`V1Money`](/doc/models/v1-money.md) | Optional | - |
-| `tenderedMoney` | [`V1Money`](/doc/models/v1-money.md) | Optional | - |
-| `tenderedAt` | `string` | Optional | The time when the tender was created, in ISO 8601 format. |
-| `settledAt` | `string` | Optional | The time when the tender was settled, in ISO 8601 format. |
-| `changeBackMoney` | [`V1Money`](/doc/models/v1-money.md) | Optional | - |
-| `refundedMoney` | [`V1Money`](/doc/models/v1-money.md) | Optional | - |
-| `isExchange` | `boolean` | Optional | Indicates whether or not the tender is associated with an exchange. If is_exchange is true, the tender represents the value of goods returned in an exchange not the actual money paid. The exchange value reduces the tender amounts needed to pay for items purchased in the exchange. |
+| `id` | `string \| undefined` | Optional | The tender's unique ID. |
+| `type` | [`string \| undefined`](/doc/models/v1-tender-type.md) | Optional | - |
+| `name` | `string \| undefined` | Optional | A human-readable description of the tender. |
+| `employeeId` | `string \| undefined` | Optional | The ID of the employee that processed the tender. |
+| `receiptUrl` | `string \| undefined` | Optional | The URL of the receipt for the tender. |
+| `cardBrand` | [`string \| undefined`](/doc/models/v1-tender-card-brand.md) | Optional | The brand of a credit card. |
+| `panSuffix` | `string \| undefined` | Optional | The last four digits of the provided credit card's account number. |
+| `entryMethod` | [`string \| undefined`](/doc/models/v1-tender-entry-method.md) | Optional | - |
+| `paymentNote` | `string \| undefined` | Optional | Notes entered by the merchant about the tender at the time of payment, if any. Typically only present for tender with the type: OTHER. |
+| `totalMoney` | [`V1Money \| undefined`](/doc/models/v1-money.md) | Optional | - |
+| `tenderedMoney` | [`V1Money \| undefined`](/doc/models/v1-money.md) | Optional | - |
+| `tenderedAt` | `string \| undefined` | Optional | The time when the tender was created, in ISO 8601 format. |
+| `settledAt` | `string \| undefined` | Optional | The time when the tender was settled, in ISO 8601 format. |
+| `changeBackMoney` | [`V1Money \| undefined`](/doc/models/v1-money.md) | Optional | - |
+| `refundedMoney` | [`V1Money \| undefined`](/doc/models/v1-money.md) | Optional | - |
+| `isExchange` | `boolean \| undefined` | Optional | Indicates whether or not the tender is associated with an exchange. If is_exchange is true, the tender represents the value of goods returned in an exchange not the actual money paid. The exchange value reduces the tender amounts needed to pay for items purchased in the exchange. |
 
 ## Example (as JSON)
 

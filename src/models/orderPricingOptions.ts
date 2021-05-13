@@ -2,7 +2,7 @@ import { boolean, object, optional, Schema } from '../schema';
 
 /**
  * Pricing options for an order. The options affect how the order's price is calculated.
- * They can be used, for example, to apply automatic price adjustments that are based on pre-configured
+ * They can be used, for example, to apply automatic price adjustments that are based on preconfigured
  * [pricing rules]($m/CatalogPricingRule).
  */
 export interface OrderPricingOptions {

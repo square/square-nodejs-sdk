@@ -11,12 +11,12 @@ V1EmployeeRole
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Optional | The role's unique ID, Can only be set by Square. |
+| `id` | `string \| undefined` | Optional | The role's unique ID, Can only be set by Square. |
 | `name` | `string` | Required | The role's merchant-defined name. |
 | `permissions` | [`string[]`](/doc/models/v1-employee-role-permissions.md) | Required | The role's permissions.<br>See [V1EmployeeRolePermissions](#type-v1employeerolepermissions) for possible values |
-| `isOwner` | `boolean` | Optional | If true, employees with this role have all permissions, regardless of the values indicated in permissions. |
-| `createdAt` | `string` | Optional | The time when the employee entity was created, in ISO 8601 format. Is set by Square when the Role is created. |
-| `updatedAt` | `string` | Optional | The time when the employee entity was most recently updated, in ISO 8601 format. Is set by Square when the Role updated. |
+| `isOwner` | `boolean \| undefined` | Optional | If true, employees with this role have all permissions, regardless of the values indicated in permissions. |
+| `createdAt` | `string \| undefined` | Optional | The time when the employee entity was created, in ISO 8601 format. Is set by Square when the Role is created. |
+| `updatedAt` | `string \| undefined` | Optional | The time when the employee entity was most recently updated, in ISO 8601 format. Is set by Square when the Role updated. |
 
 ## Example (as JSON)
 

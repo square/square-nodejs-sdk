@@ -12,7 +12,7 @@
 | `id` | `string` | Required | The Square-assigned ID of the loyalty program. Updates to<br>the loyalty program do not modify the identifier.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
 | `status` | [`string`](/doc/models/loyalty-program-status.md) | Required | Indicates whether the program is currently active. |
 | `rewardTiers` | [`LoyaltyProgramRewardTier[]`](/doc/models/loyalty-program-reward-tier.md) | Required | The list of rewards for buyers, sorted by ascending points. |
-| `expirationPolicy` | [`LoyaltyProgramExpirationPolicy`](/doc/models/loyalty-program-expiration-policy.md) | Optional | Describes when the loyalty program expires. |
+| `expirationPolicy` | [`LoyaltyProgramExpirationPolicy \| undefined`](/doc/models/loyalty-program-expiration-policy.md) | Optional | Describes when the loyalty program expires. |
 | `terminology` | [`LoyaltyProgramTerminology`](/doc/models/loyalty-program-terminology.md) | Required | - |
 | `locationIds` | `string[]` | Required | The [locations](/doc/models/location.md) at which the program is active. |
 | `createdAt` | `string` | Required | The timestamp when the program was created, in RFC 3339 format.<br>**Constraints**: *Minimum Length*: `1` |

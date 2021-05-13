@@ -12,7 +12,7 @@ __CreateMobileAuthorizationCode__ endpoint.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `locationId` | `string` | Optional | The Square location ID the authorization code should be tied to.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `191` |
+| `locationId` | `string \| undefined` | Optional | The Square location ID the authorization code should be tied to.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `191` |
 
 ## Example (as JSON)
 

@@ -11,16 +11,16 @@ Represents one of a business's employees.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Optional | The employee's unique ID. |
+| `id` | `string \| undefined` | Optional | The employee's unique ID. |
 | `firstName` | `string` | Required | The employee's first name. |
 | `lastName` | `string` | Required | The employee's last name. |
-| `roleIds` | `string[]` | Optional | The ids of the employee's associated roles. Currently, you can specify only one or zero roles per employee. |
-| `authorizedLocationIds` | `string[]` | Optional | The IDs of the locations the employee is allowed to clock in at. |
-| `email` | `string` | Optional | The employee's email address. |
-| `status` | [`string`](/doc/models/v1-employee-status.md) | Optional | - |
-| `externalId` | `string` | Optional | An ID the merchant can set to associate the employee with an entity in another system. |
-| `createdAt` | `string` | Optional | The time when the employee entity was created, in ISO 8601 format. |
-| `updatedAt` | `string` | Optional | The time when the employee entity was most recently updated, in ISO 8601 format. |
+| `roleIds` | `string[] \| undefined` | Optional | The ids of the employee's associated roles. Currently, you can specify only one or zero roles per employee. |
+| `authorizedLocationIds` | `string[] \| undefined` | Optional | The IDs of the locations the employee is allowed to clock in at. |
+| `email` | `string \| undefined` | Optional | The employee's email address. |
+| `status` | [`string \| undefined`](/doc/models/v1-employee-status.md) | Optional | - |
+| `externalId` | `string \| undefined` | Optional | An ID the merchant can set to associate the employee with an entity in another system. |
+| `createdAt` | `string \| undefined` | Optional | The time when the employee entity was created, in ISO 8601 format. |
+| `updatedAt` | `string \| undefined` | Optional | The time when the employee entity was most recently updated, in ISO 8601 format. |
 
 ## Example (as JSON)
 

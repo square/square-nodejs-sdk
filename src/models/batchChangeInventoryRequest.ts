@@ -17,7 +17,7 @@ export interface BatchChangeInventoryRequest {
    * [API Development 101](https://developer.squareup.com/docs/basics/api101/overview) section for more
    * information.
    */
-  idempotencyKey?: string;
+  idempotencyKey: string;
   /**
    * The set of physical counts and inventory adjustments to be made.
    * Changes are applied based on the client-supplied timestamp and may be sent
@@ -33,7 +33,7 @@ export interface BatchChangeInventoryRequest {
 
 export const batchChangeInventoryRequestSchema: Schema<BatchChangeInventoryRequest> = object(
   {
-    idempotencyKey: ['idempotency_key', optional(string())],
+    idempotencyKey: ['idempotency_key', string()],
     changes: ['changes', optional(array(lazy(() => inventoryChangeSchema)))],
     ignoreUnchangedCounts: ['ignore_unchanged_counts', optional(boolean())],
   }

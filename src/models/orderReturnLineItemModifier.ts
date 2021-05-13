@@ -3,14 +3,14 @@ import { Money, moneySchema } from './money';
 
 /** A line item modifier being returned. */
 export interface OrderReturnLineItemModifier {
-  /** Unique ID that identifies the return modifier only within this order. */
+  /** A unique ID that identifies the return modifier only within this order. */
   uid?: string;
   /**
-   * `uid` of the Modifier from the LineItem from the Order which contains the
+   * The modifier `uid` from the order's line item that contains the
    * original sale of this line item modifier.
    */
   sourceModifierUid?: string;
-  /** The catalog object id referencing [CatalogModifier]($m/CatalogModifier). */
+  /** The catalog object ID referencing [CatalogModifier]($m/CatalogModifier). */
   catalogObjectId?: string;
   /** The name of the item modifier. */
   name?: string;

@@ -1,5 +1,39 @@
 # Change Log
 
+## Version 11.0.0 (2021-05-13)
+## New API releases
+
+* **Sites API.** The [Sites API](https://developer.squareup.com/reference/square_2021-05-13/sites-api) lets you retrieve basic details about the Square Online sites that belong to a Square seller. For more information, see [Sites API Overview.](https://developer.squareup.com/docs/sites-api/overview)
+
+
+* **Snippets API.** The [Snippets API](https://developer.squareup.com/reference/square_2021-05-13/snippets-api) lets you manage snippets that provide custom functionality on Square Online sites. A snippet is a script that is injected into all pages on a site, except for checkout pages. For more information, see [Snippets API Overview.](https://developer.squareup.com/docs/snippets-api/overview)
+
+The Sites API and Snippets API are publicly available to all developers as part of an early access program (EAP). For more information, see [Early access program for Square Online APIs.](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis)
+
+## API updates
+
+* **Payments API.**
+  * [CreatePayment.](https://developer.squareup.com/reference/square_2021-05-13/payments-api/create-payment) The endpoint now supports ACH bank transfer payments. For more information, see [ACH Payment](https://developer.squareup.com/docs/payments-api/take-payments/ach-payments).
+
+* **Loyalty API:**
+  * The [Loyalty API](https://developer.squareup.com/docs/loyalty-api/overview) has moved to the [general availability](https://developer.squareup.com/docs/build-basics/api-lifecycle#general-availability) (GA) state.
+  
+  * The [ListLoyaltyPrograms](https://developer.squareup.com/reference/square_2021-05-13/loyalty-api/list-loyalty-programs) endpoint is deprecated and replaced by the [RetrieveLoyaltyProgram](https://developer.squareup.com/reference/square_2021-05-13/loyalty-api/retrieve-loyalty-program) endpoint when used with the `main` keyword.
+  
+  * [LoyaltyAccount](https://developer.squareup.com/reference/square_2021-05-13/objects/LoyaltyAccount)  object. The `mappings` field is retired and replaced by `mapping`. 
+
+  * [LoyaltyAccountMapping](https://developer.squareup.com/reference/square_2021-05-13/objects/LoyaltyAccountMapping) object. The `type` and `value` fields are retired and replaced by `phone_number`.  
+    
+    Starting in Square version 2021-05-13: 
+    * `mappings` is not accepted in `CreateLoyaltyAccount` requests or returned in responses.  
+    * `type` and `value` are not accepted in `CreateLoyaltyAccount` or `SearchLoyaltyAccounts` requests or returned in responses.
+    
+    For more information, see [Migration notes.](https://developer.squareup.com/docs/loyalty-api/overview#migration-notes)
+  
+## Documentation updates
+* **Getting Started** Added step that shows how to use the API Logs to examine a transaction. 
+
+
 ## Version 10.0.0 (2021-04-21)
 ## New API releases
 

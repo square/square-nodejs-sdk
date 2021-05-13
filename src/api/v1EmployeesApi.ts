@@ -1,5 +1,4 @@
-import { ApiResponse } from '../apiResponse';
-import { RequestOptions } from '../http/requestBuilder';
+import { ApiResponse, RequestOptions } from '../core';
 import { V1Employee, v1EmployeeSchema } from '../models/v1Employee';
 import { V1EmployeeRole, v1EmployeeRoleSchema } from '../models/v1EmployeeRole';
 import { array, number, optional, string } from '../schema';
