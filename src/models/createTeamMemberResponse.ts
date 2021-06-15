@@ -2,7 +2,7 @@ import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 import { TeamMember, teamMemberSchema } from './teamMember';
 
-/** Represents a response from a create request, containing the created `TeamMember` object or error messages. */
+/** Represents a response from a create request containing the created `TeamMember` object or error messages. */
 export interface CreateTeamMemberResponse {
   /** A record representing an individual team member for a business. */
   teamMember?: TeamMember;

@@ -14,6 +14,10 @@ import {
   catalogItemOptionValueForItemVariationSchema,
 } from './catalogItemOptionValueForItemVariation';
 import {
+  CatalogStockConversion,
+  catalogStockConversionSchema,
+} from './catalogStockConversion';
+import {
   ItemVariationLocationOverrides,
   itemVariationLocationOverridesSchema,
 } from './itemVariationLocationOverrides';
@@ -93,10 +97,21 @@ export interface CatalogItemVariation {
    */
   measurementUnitId?: string;
   /**
+   * Whether stock is counted directly on this variation (TRUE) or only on its components (FALSE).
+   * For backward compatibility missing values will be interpreted as TRUE.
+   */
+  stockable?: boolean;
+  /**
    * Tokens of employees that can perform the service represented by this variation. Only valid for
    * variations of type `APPOINTMENTS_SERVICE`.
    */
   teamMemberIds?: string[];
+  /**
+   * Represents the rule of conversion between a stockable [CatalogItemVariation]($m/CatalogItemVariation)
+   * and a non-stockable sell-by or receive-by `CatalogItemVariation` that
+   * share the same underlying stock.
+   */
+  stockableConversion?: CatalogStockConversion;
 }
 
 export const catalogItemVariationSchema: Schema<CatalogItemVariation> = object({
@@ -122,5 +137,10 @@ export const catalogItemVariationSchema: Schema<CatalogItemVariation> = object({
     optional(array(lazy(() => catalogItemOptionValueForItemVariationSchema))),
   ],
   measurementUnitId: ['measurement_unit_id', optional(string())],
+  stockable: ['stockable', optional(boolean())],
   teamMemberIds: ['team_member_ids', optional(array(string()))],
+  stockableConversion: [
+    'stockable_conversion',
+    optional(lazy(() => catalogStockConversionSchema)),
+  ],
 });

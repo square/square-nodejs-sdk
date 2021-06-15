@@ -3,7 +3,7 @@ import { array, object, optional, Schema, string } from '../schema';
 /**
  * Represents a filter used in a search for `TeamMember` objects. `AND` logic is applied
  * between the individual fields, and `OR` logic is applied within list-based fields.
- * For example, setting this filter value,
+ * For example, setting this filter value:
  * ```
  * filter = (locations_ids = ["A", "B"], status = ACTIVE)
  * ```
@@ -11,8 +11,8 @@ import { array, object, optional, Schema, string } from '../schema';
  */
 export interface SearchTeamMembersFilter {
   /**
-   * When present, filter by team members assigned to the specified locations.
-   * When empty, include team members assigned to any location.
+   * When present, filters by team members assigned to the specified locations.
+   * When empty, includes team members assigned to any location.
    */
   locationIds?: string[];
   /** Enumerates the possible statuses the team member can have within a business. */

@@ -26,13 +26,13 @@ Defines the fields in an `AcceptDispute` response.
     "brand_dispute_id": "100000282394",
     "card_brand": "VISA",
     "created_at": "2018-10-18T15:59:13.613Z",
-    "dispute_id": "XDgyFu7yo1E2S5lQGGpYn",
     "disputed_payments": [
       {
         "payment_id": "6Ee10wvqhfipStz297mtUhBXvaB"
       }
     ],
     "due_at": "2018-11-01T00:00:00.000Z",
+    "id": "XDgyFu7yo1E2S5lQGGpYn",
     "reason": "NO_KNOWLEDGE",
     "state": "LOST",
     "updated_at": "2018-10-18T15:59:13.613Z"

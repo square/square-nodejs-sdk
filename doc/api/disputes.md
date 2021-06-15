@@ -14,10 +14,10 @@ const disputesApi = client.disputesApi;
 * [Retrieve Dispute](/doc/api/disputes.md#retrieve-dispute)
 * [Accept Dispute](/doc/api/disputes.md#accept-dispute)
 * [List Dispute Evidence](/doc/api/disputes.md#list-dispute-evidence)
-* [Remove Dispute Evidence](/doc/api/disputes.md#remove-dispute-evidence)
-* [Retrieve Dispute Evidence](/doc/api/disputes.md#retrieve-dispute-evidence)
 * [Create Dispute Evidence File](/doc/api/disputes.md#create-dispute-evidence-file)
 * [Create Dispute Evidence Text](/doc/api/disputes.md#create-dispute-evidence-text)
+* [Delete Dispute Evidence](/doc/api/disputes.md#delete-dispute-evidence)
+* [Retrieve Dispute Evidence](/doc/api/disputes.md#retrieve-dispute-evidence)
 * [Submit Evidence](/doc/api/disputes.md#submit-evidence)
 
 
@@ -155,6 +155,7 @@ Returns a list of evidence associated with a dispute.
 ```ts
 async listDisputeEvidence(
   disputeId: string,
+  cursor?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<ListDisputeEvidenceResponse>>
 ```
@@ -164,6 +165,7 @@ async listDisputeEvidence(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `disputeId` | `string` | Template, Required | The ID of the dispute. |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -174,98 +176,9 @@ async listDisputeEvidence(
 
 ```ts
 const disputeId = 'dispute_id2';
+const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await disputesApi.listDisputeEvidence(disputeId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch(error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Remove Dispute Evidence
-
-Removes specified evidence from a dispute.
-
-Square does not send the bank any evidence that is removed. Also, you cannot remove evidence after
-submitting it to the bank using [SubmitEvidence](/doc/api/disputes.md#submit-evidence).
-
-```ts
-async removeDisputeEvidence(
-  disputeId: string,
-  evidenceId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RemoveDisputeEvidenceResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `disputeId` | `string` | Template, Required | The ID of the dispute you want to remove evidence from. |
-| `evidenceId` | `string` | Template, Required | The ID of the evidence you want to remove. |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`RemoveDisputeEvidenceResponse`](/doc/models/remove-dispute-evidence-response.md)
-
-## Example Usage
-
-```ts
-const disputeId = 'dispute_id2';
-const evidenceId = 'evidence_id2';
-try {
-  const { result, ...httpResponse } = await disputesApi.removeDisputeEvidence(disputeId, evidenceId);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch(error) {
-  if (error instanceof ApiError) {
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
-
-
-# Retrieve Dispute Evidence
-
-Returns the specific evidence metadata associated with a specific dispute.
-
-You must maintain a copy of the evidence you upload if you want to reference it later. You cannot
-download the evidence after you upload it.
-
-```ts
-async retrieveDisputeEvidence(
-  disputeId: string,
-  evidenceId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveDisputeEvidenceResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `disputeId` | `string` | Template, Required | The ID of the dispute that you want to retrieve evidence from. |
-| `evidenceId` | `string` | Template, Required | The ID of the evidence to retrieve. |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`RetrieveDisputeEvidenceResponse`](/doc/models/retrieve-dispute-evidence-response.md)
-
-## Example Usage
-
-```ts
-const disputeId = 'dispute_id2';
-const evidenceId = 'evidence_id2';
-try {
-  const { result, ...httpResponse } = await disputesApi.retrieveDisputeEvidence(disputeId, evidenceId);
+  const { result, ...httpResponse } = await disputesApi.listDisputeEvidence(disputeId, cursor);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -364,6 +277,96 @@ body.evidenceType = 'TRACKING_NUMBER';
 
 try {
   const { result, ...httpResponse } = await disputesApi.createDisputeEvidenceText(disputeId, body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Delete Dispute Evidence
+
+Removes specified evidence from a dispute.
+
+Square does not send the bank any evidence that is removed. Also, you cannot remove evidence after
+submitting it to the bank using [SubmitEvidence](/doc/api/disputes.md#submit-evidence).
+
+```ts
+async deleteDisputeEvidence(
+  disputeId: string,
+  evidenceId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteDisputeEvidenceResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `disputeId` | `string` | Template, Required | The ID of the dispute you want to remove evidence from. |
+| `evidenceId` | `string` | Template, Required | The ID of the evidence you want to remove. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`DeleteDisputeEvidenceResponse`](/doc/models/delete-dispute-evidence-response.md)
+
+## Example Usage
+
+```ts
+const disputeId = 'dispute_id2';
+const evidenceId = 'evidence_id2';
+try {
+  const { result, ...httpResponse } = await disputesApi.deleteDisputeEvidence(disputeId, evidenceId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Retrieve Dispute Evidence
+
+Returns the evidence metadata specified by the evidence ID in the request URL path
+
+You must maintain a copy of the evidence you upload if you want to reference it later. You cannot
+download the evidence after you upload it.
+
+```ts
+async retrieveDisputeEvidence(
+  disputeId: string,
+  evidenceId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveDisputeEvidenceResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `disputeId` | `string` | Template, Required | The ID of the dispute that you want to retrieve evidence from. |
+| `evidenceId` | `string` | Template, Required | The ID of the evidence to retrieve. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`RetrieveDisputeEvidenceResponse`](/doc/models/retrieve-dispute-evidence-response.md)
+
+## Example Usage
+
+```ts
+const disputeId = 'dispute_id2';
+const evidenceId = 'evidence_id2';
+try {
+  const { result, ...httpResponse } = await disputesApi.retrieveDisputeEvidence(disputeId, evidenceId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

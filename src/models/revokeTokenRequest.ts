@@ -3,7 +3,7 @@ import { boolean, object, optional, Schema, string } from '../schema';
 export interface RevokeTokenRequest {
   /**
    * The Square issued ID for your application, available from the
-   * [application dashboard](https://connect.squareup.com/apps).
+   * [developer dashboard](https://developer.squareup.com/apps).
    */
   clientId?: string;
   /**

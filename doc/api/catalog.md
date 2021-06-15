@@ -585,7 +585,7 @@ async listCatalog(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `cursor` | `string \| undefined` | Query, Optional | The pagination cursor returned in the previous response. Leave unset for an initial request.<br>The page size is currently set to be 100.<br>See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
-| `types` | `string \| undefined` | Query, Optional | An optional case-insensitive, comma-separated list of object types to retrieve, for example<br>`ITEM,ITEM_VARIATION,CATEGORY,IMAGE`.<br><br>The legal values are taken from the CatalogObjectType enum:<br>`ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,<br>`MODIFIER`, `MODIFIER_LIST`, or `IMAGE`. |
+| `types` | `string \| undefined` | Query, Optional | An optional case-insensitive, comma-separated list of object types to retrieve.<br><br>The valid values are defined in the [CatalogObjectType](/doc/models/catalog-object-type.md) enum, including<br>`ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,<br>`MODIFIER`, `MODIFIER_LIST`, or `IMAGE`.<br><br>If this is unspecified, the operation returns objects of all the types at the version of the Square API used to make the request. |
 | `catalogVersion` | `bigint \| undefined` | Query, Optional | The specific version of the catalog objects to be included in the response.<br>This allows you to retrieve historical<br>versions of objects. The specified version value is matched against<br>the [CatalogObject](/doc/models/catalog-object.md)s' `version` attribute. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -658,12 +658,92 @@ bodyObjectcatalogV1Ids2.locationId = 'location_id2';
 
 bodyObjectCatalogV1Ids[2] = bodyObjectcatalogV1Ids2;
 
+const bodyObjectItemDataVariations: CatalogObject[] = [];
+
+const bodyObjectItemDatavariations0CustomAttributeValues: Record<string, CatalogCustomAttributeValue> = {};
+const bodyObjectItemDatavariations0CatalogV1Ids: CatalogV1Id[] = [];
+
+const bodyObjectItemDatavariations0catalogV1Ids0: CatalogV1Id = {};
+bodyObjectItemDatavariations0catalogV1Ids0.catalogV1Id = 'catalog_v1_id9';
+bodyObjectItemDatavariations0catalogV1Ids0.locationId = 'location_id9';
+
+bodyObjectItemDatavariations0CatalogV1Ids[0] = bodyObjectItemDatavariations0catalogV1Ids0;
+
+const bodyObjectItemDatavariations0ItemVariationData: CatalogItemVariation = {};
+bodyObjectItemDatavariations0ItemVariationData.itemId = '#Cocoa';
+bodyObjectItemDatavariations0ItemVariationData.name = 'Small';
+bodyObjectItemDatavariations0ItemVariationData.sku = 'sku3';
+bodyObjectItemDatavariations0ItemVariationData.upc = 'upc1';
+bodyObjectItemDatavariations0ItemVariationData.ordinal = 119;
+bodyObjectItemDatavariations0ItemVariationData.pricingType = 'VARIABLE_PRICING';
+
+const bodyObjectItemDatavariations0: CatalogObject = {
+  type: 'ITEM_VARIATION',
+  id: '#Small',
+};
+bodyObjectItemDatavariations0.updatedAt = 'updated_at9';
+bodyObjectItemDatavariations0.version = 69;
+bodyObjectItemDatavariations0.isDeleted = true;
+bodyObjectItemDatavariations0.customAttributeValues = bodyObjectItemDatavariations0CustomAttributeValues;
+bodyObjectItemDatavariations0.catalogV1Ids = bodyObjectItemDatavariations0CatalogV1Ids;
+bodyObjectItemDatavariations0.itemVariationData = bodyObjectItemDatavariations0ItemVariationData;
+
+bodyObjectItemDataVariations[0] = bodyObjectItemDatavariations0;
+
+const bodyObjectItemDatavariations1CustomAttributeValues: Record<string, CatalogCustomAttributeValue> = {};
+const bodyObjectItemDatavariations1CatalogV1Ids: CatalogV1Id[] = [];
+
+const bodyObjectItemDatavariations1catalogV1Ids0: CatalogV1Id = {};
+bodyObjectItemDatavariations1catalogV1Ids0.catalogV1Id = 'catalog_v1_id8';
+bodyObjectItemDatavariations1catalogV1Ids0.locationId = 'location_id8';
+
+bodyObjectItemDatavariations1CatalogV1Ids[0] = bodyObjectItemDatavariations1catalogV1Ids0;
+
+const bodyObjectItemDatavariations1catalogV1Ids1: CatalogV1Id = {};
+bodyObjectItemDatavariations1catalogV1Ids1.catalogV1Id = 'catalog_v1_id9';
+bodyObjectItemDatavariations1catalogV1Ids1.locationId = 'location_id9';
+
+bodyObjectItemDatavariations1CatalogV1Ids[1] = bodyObjectItemDatavariations1catalogV1Ids1;
+
+const bodyObjectItemDatavariations1catalogV1Ids2: CatalogV1Id = {};
+bodyObjectItemDatavariations1catalogV1Ids2.catalogV1Id = 'catalog_v1_id0';
+bodyObjectItemDatavariations1catalogV1Ids2.locationId = 'location_id0';
+
+bodyObjectItemDatavariations1CatalogV1Ids[2] = bodyObjectItemDatavariations1catalogV1Ids2;
+
+const bodyObjectItemDatavariations1ItemVariationDataPriceMoney: Money = {};
+bodyObjectItemDatavariations1ItemVariationDataPriceMoney.amount = 400;
+bodyObjectItemDatavariations1ItemVariationDataPriceMoney.currency = 'USD';
+
+const bodyObjectItemDatavariations1ItemVariationData: CatalogItemVariation = {};
+bodyObjectItemDatavariations1ItemVariationData.itemId = '#Cocoa';
+bodyObjectItemDatavariations1ItemVariationData.name = 'Large';
+bodyObjectItemDatavariations1ItemVariationData.sku = 'sku4';
+bodyObjectItemDatavariations1ItemVariationData.upc = 'upc2';
+bodyObjectItemDatavariations1ItemVariationData.ordinal = 118;
+bodyObjectItemDatavariations1ItemVariationData.pricingType = 'FIXED_PRICING';
+bodyObjectItemDatavariations1ItemVariationData.priceMoney = bodyObjectItemDatavariations1ItemVariationDataPriceMoney;
+
+const bodyObjectItemDatavariations1: CatalogObject = {
+  type: 'ITEM_VARIATION',
+  id: '#Large',
+};
+bodyObjectItemDatavariations1.updatedAt = 'updated_at0';
+bodyObjectItemDatavariations1.version = 68;
+bodyObjectItemDatavariations1.isDeleted = false;
+bodyObjectItemDatavariations1.customAttributeValues = bodyObjectItemDatavariations1CustomAttributeValues;
+bodyObjectItemDatavariations1.catalogV1Ids = bodyObjectItemDatavariations1CatalogV1Ids;
+bodyObjectItemDatavariations1.itemVariationData = bodyObjectItemDatavariations1ItemVariationData;
+
+bodyObjectItemDataVariations[1] = bodyObjectItemDatavariations1;
+
 const bodyObjectItemData: CatalogItem = {};
 bodyObjectItemData.name = 'Cocoa';
-bodyObjectItemData.description = 'Hot chocolate';
+bodyObjectItemData.description = 'Hot Chocolate';
 bodyObjectItemData.abbreviation = 'Ch';
 bodyObjectItemData.labelColor = 'label_color4';
 bodyObjectItemData.availableOnline = false;
+bodyObjectItemData.variations = bodyObjectItemDataVariations;
 
 const bodyObject: CatalogObject = {
   type: 'ITEM',

@@ -24,8 +24,8 @@ Defines the fields in a `CreateDisputeEvidenceFile` response.
       "filename": "evidence.tiff",
       "filetype": "image/tiff"
     },
-    "evidence_id": "TOomLInj6iWmP3N8qfCXrB",
     "evidence_type": "GENERIC_EVIDENCE",
+    "id": "TOomLInj6iWmP3N8qfCXrB",
     "uploaded_at": "2018-10-18T16:01:10.000Z"
   }
 }

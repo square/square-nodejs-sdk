@@ -7,6 +7,8 @@ import {
 export interface DisputeEvidence {
   /** The Square-generated ID of the evidence. */
   evidenceId?: string;
+  /** The Square-generated ID of the evidence. */
+  id?: string;
   /** The ID of the dispute the evidence is associated with. */
   disputeId?: string;
   /** A file to be uploaded as dispute evidence. */
@@ -21,6 +23,7 @@ export interface DisputeEvidence {
 
 export const disputeEvidenceSchema: Schema<DisputeEvidence> = object({
   evidenceId: ['evidence_id', optional(string())],
+  id: ['id', optional(string())],
   disputeId: ['dispute_id', optional(string())],
   evidenceFile: [
     'evidence_file',

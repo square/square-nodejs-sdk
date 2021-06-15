@@ -1,11 +1,7 @@
 import { object, optional, Schema, string } from '../schema';
 
 export interface TerminalCheckoutQuerySort {
-  /**
-   * The order in which results are listed.
-   * - `ASC` - Oldest to newest.
-   * - `DESC` - Newest to oldest (default).
-   */
+  /** The order (e.g., chronological or alphabetical) in which results from a request are returned. */
   sortOrder?: string;
 }
 

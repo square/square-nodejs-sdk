@@ -6,7 +6,7 @@ import {
 
 /** Represents a bulk create request for `TeamMember` objects. */
 export interface BulkCreateTeamMembersRequest {
-  /** The data which will be used to create the `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`. */
+  /** The data used to create the `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`. */
   teamMembers: Record<string, CreateTeamMemberRequest>;
 }
 

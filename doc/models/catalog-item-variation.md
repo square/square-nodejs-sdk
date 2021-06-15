@@ -28,7 +28,9 @@ may have a maximum of 250 item variations.
 | `availableForBooking` | `boolean \| undefined` | Optional | If the `CatalogItem` that owns this item variation is of type<br>`APPOINTMENTS_SERVICE`, a bool representing whether this service is available for booking. |
 | `itemOptionValues` | [`CatalogItemOptionValueForItemVariation[] \| undefined`](/doc/models/catalog-item-option-value-for-item-variation.md) | Optional | List of item option values associated with this item variation. Listed<br>in the same order as the item options of the parent item. |
 | `measurementUnitId` | `string \| undefined` | Optional | ID of the ‘CatalogMeasurementUnit’ that is used to measure the quantity<br>sold of this item variation. If left unset, the item will be sold in<br>whole quantities. |
+| `stockable` | `boolean \| undefined` | Optional | Whether stock is counted directly on this variation (TRUE) or only on its components (FALSE).<br>For backward compatibility missing values will be interpreted as TRUE. |
 | `teamMemberIds` | `string[] \| undefined` | Optional | Tokens of employees that can perform the service represented by this variation. Only valid for<br>variations of type `APPOINTMENTS_SERVICE`. |
+| `stockableConversion` | [`CatalogStockConversion \| undefined`](/doc/models/catalog-stock-conversion.md) | Optional | Represents the rule of conversion between a stockable [CatalogItemVariation](/doc/models/catalog-item-variation.md)<br>and a non-stockable sell-by or receive-by `CatalogItemVariation` that<br>share the same underlying stock. |
 
 ## Example (as JSON)
 

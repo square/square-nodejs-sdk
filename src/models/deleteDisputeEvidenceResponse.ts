@@ -1,12 +1,12 @@
 import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 
-/** Defines the fields in a `RemoveDisputeEvidence` response. */
-export interface RemoveDisputeEvidenceResponse {
+/** Defines the fields in a `DeleteDisputeEvidence` response. */
+export interface DeleteDisputeEvidenceResponse {
   /** Information about errors encountered during the request. */
   errors?: Error[];
 }
 
-export const removeDisputeEvidenceResponseSchema: Schema<RemoveDisputeEvidenceResponse> = object(
+export const deleteDisputeEvidenceResponseSchema: Schema<DeleteDisputeEvidenceResponse> = object(
   { errors: ['errors', optional(array(lazy(() => errorSchema)))] }
 );

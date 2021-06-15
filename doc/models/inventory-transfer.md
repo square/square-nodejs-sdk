@@ -31,7 +31,7 @@ particular time from one location to another.
 {
   "id": "id0",
   "reference_id": "reference_id2",
-  "state": "IN_TRANSIT_TO",
+  "state": "SUPPORTED_BY_NEWER_VERSION",
   "from_location_id": "from_location_id2",
   "to_location_id": "to_location_id8"
 }

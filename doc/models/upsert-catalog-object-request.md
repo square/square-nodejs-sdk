@@ -21,8 +21,32 @@
     "id": "#Cocoa",
     "item_data": {
       "abbreviation": "Ch",
-      "description": "Hot chocolate",
-      "name": "Cocoa"
+      "description": "Hot Chocolate",
+      "name": "Cocoa",
+      "variations": [
+        {
+          "id": "#Small",
+          "item_variation_data": {
+            "item_id": "#Cocoa",
+            "name": "Small",
+            "pricing_type": "VARIABLE_PRICING"
+          },
+          "type": "ITEM_VARIATION"
+        },
+        {
+          "id": "#Large",
+          "item_variation_data": {
+            "item_id": "#Cocoa",
+            "name": "Large",
+            "price_money": {
+              "amount": 400,
+              "currency": "USD"
+            },
+            "pricing_type": "FIXED_PRICING"
+          },
+          "type": "ITEM_VARIATION"
+        }
+      ]
     },
     "type": "ITEM"
   }

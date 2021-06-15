@@ -127,7 +127,7 @@ bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;
 bodyQueryFilter.status = 'COMPLETED';
 
 const bodyQuerySort: TerminalCheckoutQuerySort = {};
-bodyQuerySort.sortOrder = 'sort_order8';
+bodyQuerySort.sortOrder = 'DESC';
 
 const bodyQuery: TerminalCheckoutQuery = {};
 bodyQuery.filter = bodyQueryFilter;

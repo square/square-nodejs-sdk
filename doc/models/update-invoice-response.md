@@ -39,7 +39,7 @@ Describes a `UpdateInvoice` response.
     ],
     "delivery_method": "EMAIL",
     "description": "We appreciate your business!",
-    "id": "gt2zv1z6mnUm1V7KMxxf3w",
+    "id": "inv:0-ChCHu2mZEabLeeHahQnXDjZQECY",
     "invoice_number": "inv-100",
     "location_id": "ES0RJRZYEC39A",
     "next_payment_amount_money": {

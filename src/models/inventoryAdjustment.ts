@@ -1,4 +1,8 @@
 import { lazy, object, optional, Schema, string } from '../schema';
+import {
+  InventoryAdjustmentGroup,
+  inventoryAdjustmentGroupSchema,
+} from './inventoryAdjustmentGroup';
 import { Money, moneySchema } from './money';
 import {
   SourceApplication,
@@ -36,7 +40,7 @@ export interface InventoryAdjustment {
    */
   catalogObjectId?: string;
   /**
-   * The [type](entity:CatalogObjectType] of the
+   * The [type]($m/CatalogObjectType) of the
    * [CatalogObject]($m/CatalogObject) being tracked. Tracking is only
    * supported for the `ITEM_VARIATION` type.
    */
@@ -95,6 +99,7 @@ export interface InventoryAdjustment {
    * app.
    */
   goodsReceiptId?: string;
+  adjustmentGroup?: InventoryAdjustmentGroup;
 }
 
 export const inventoryAdjustmentSchema: Schema<InventoryAdjustment> = object({
@@ -115,4 +120,8 @@ export const inventoryAdjustmentSchema: Schema<InventoryAdjustment> = object({
   refundId: ['refund_id', optional(string())],
   purchaseOrderId: ['purchase_order_id', optional(string())],
   goodsReceiptId: ['goods_receipt_id', optional(string())],
+  adjustmentGroup: [
+    'adjustment_group',
+    optional(lazy(() => inventoryAdjustmentGroupSchema)),
+  ],
 });

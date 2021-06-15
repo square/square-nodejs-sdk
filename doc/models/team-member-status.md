@@ -11,6 +11,6 @@ Enumerates the possible statuses the team member can have within a business.
 
 | Name | Description |
 |  --- | --- |
-| `ACTIVE` | The team member can log in to Point of Sale and Dashboard. |
-| `INACTIVE` | The team member can no longer log in to Point of Sale or Dashboard,<br>but their sales reports remain available. |
+| `ACTIVE` | The team member can sign in to Point of Sale and the Seller Dashboard. |
+| `INACTIVE` | The team member can no longer sign in to Point of Sale or the Seller Dashboard,<br>but the team member's sales reports remain available. |
 

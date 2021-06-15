@@ -1,7 +1,7 @@
 
 # Update Wage Setting Response
 
-Represents a response from an update request, containing the updated `WageSetting` object
+Represents a response from an update request containing the updated `WageSetting` object
 or error messages.
 
 ## Structure

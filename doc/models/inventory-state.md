@@ -23,4 +23,7 @@ Indicates the state of a tracked item quantity in the lifecycle of goods.
 | `NONE` | A placeholder indicating that the related quantity of items are not<br>currently tracked in Square. Transferring quantities from the `NONE` state<br>to a tracked state (e.g., `IN_STOCK`) introduces stock into the system. |
 | `WASTE` | The related quantity of items are lost or damaged and cannot be<br>sold. |
 | `UNLINKED_RETURN` | The related quantity of items were returned but not linked to a<br>previous transaction. Unlinked returns are not tracked in Square.<br>Transferring a quantity from `UNLINKED_RETURN` to a tracked state (e.g.,<br>`IN_STOCK`) introduces new stock into the system. |
+| `COMPOSED` | The related quantity of items that are part of a composition consisting one or more components. |
+| `DECOMPOSED` | The related quantity of items that are part of a component. |
+| `SUPPORTED_BY_NEWER_VERSION` | This state is not supported by this version of the Square API. We recommend that you upgrade the client to use the appropriate version of the Square API supporting this state. |
 

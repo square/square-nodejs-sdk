@@ -142,8 +142,8 @@ export class TransactionsApi extends BaseApi {
    *
    * Your request to this endpoint must include _either_:
    *
-   * - A value for the `card_nonce` parameter (to charge a card nonce generated
-   * with the `SqPaymentForm`)
+   * - A value for the `card_nonce` parameter (to charge a card payment token generated
+   * with the Web Payments SDK)
    * - Values for the `customer_card_id` and `customer_id` parameters (to charge
    * a customer's card on file)
    *

@@ -1,6 +1,8 @@
 
 # Loyalty Program Terminology
 
+Represents the naming used for loyalty points.
+
 ## Structure
 
 `LoyaltyProgramTerminology`

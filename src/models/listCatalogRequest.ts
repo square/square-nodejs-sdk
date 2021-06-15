@@ -8,11 +8,11 @@ export interface ListCatalogRequest {
    */
   cursor?: string;
   /**
-   * An optional case-insensitive, comma-separated list of object types to retrieve, for example
-   * `ITEM,ITEM_VARIATION,CATEGORY,IMAGE`.
-   * The legal values are taken from the CatalogObjectType enum:
+   * An optional case-insensitive, comma-separated list of object types to retrieve.
+   * The valid values are defined in the [CatalogObjectType]($m/CatalogObjectType) enum, including
    * `ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,
    * `MODIFIER`, `MODIFIER_LIST`, or `IMAGE`.
+   * If this is unspecified, the operation returns objects of all the types at the version of the Square API used to make the request.
    */
   types?: string;
   /**

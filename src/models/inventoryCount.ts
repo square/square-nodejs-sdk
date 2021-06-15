@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { boolean, object, optional, Schema, string } from '../schema';
 
 /**
  * Represents Square-estimated quantity of items in a particular state at a
@@ -34,6 +34,14 @@ export interface InventoryCount {
    * the estimated count is received.
    */
   calculatedAt?: string;
+  /**
+   * Whether the inventory count is for composed variation (TRUE) or not (FALSE). If true, the inventory count will not be present in the response of
+   * any of these endpoints: [BatchChangeInventory]($e/Inventory/BatchChangeInventory),
+   * [BatchRetrieveInventoryChanges]($e/Inventory/BatchRetrieveInventoryChanges),
+   * [BatchRetrieveInventoryCounts]($e/Inventory/BatchRetrieveInventoryCounts), and
+   * [RetrieveInventoryChanges]($e/Inventory/RetrieveInventoryChanges).
+   */
+  isEstimated?: boolean;
 }
 
 export const inventoryCountSchema: Schema<InventoryCount> = object({
@@ -43,4 +51,5 @@ export const inventoryCountSchema: Schema<InventoryCount> = object({
   locationId: ['location_id', optional(string())],
   quantity: ['quantity', optional(string())],
   calculatedAt: ['calculated_at', optional(string())],
+  isEstimated: ['is_estimated', optional(boolean())],
 });

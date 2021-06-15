@@ -12,9 +12,9 @@ Defines parameters in a
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `idempotencyKey` | `string` | Required | A unique string that identifies this `CreateSubscription` request.<br>If you do not provide a unique string (or provide an empty string as the value),<br>the endpoint treats each request as independent.<br><br>For more information, see [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency).<br>**Constraints**: *Minimum Length*: `1` |
+| `idempotencyKey` | `string \| undefined` | Optional | A unique string that identifies this `CreateSubscription` request.<br>If you do not provide a unique string (or provide an empty string as the value),<br>the endpoint treats each request as independent.<br><br>For more information, see [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency). |
 | `locationId` | `string` | Required | The ID of the location the subscription is associated with.<br>**Constraints**: *Minimum Length*: `1` |
-| `planId` | `string` | Required | The ID of the subscription plan. For more information, see<br>[Subscription Plan Overview](https://developer.squareup.com/docs/subscriptions/overview).<br>**Constraints**: *Minimum Length*: `1` |
+| `planId` | `string` | Required | The ID of the subscription plan created using the Catalog API.<br>For more information, see<br>[Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan) and<br>[Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).<br>**Constraints**: *Minimum Length*: `1` |
 | `customerId` | `string` | Required | The ID of the [customer](/doc/models/customer.md) profile.<br>**Constraints**: *Minimum Length*: `1` |
 | `startDate` | `string \| undefined` | Optional | The start date of the subscription, in YYYY-MM-DD format. For example,<br>2013-01-15. If the start date is left empty, the subscription begins<br>immediately. |
 | `canceledDate` | `string \| undefined` | Optional | The date when the subscription should be canceled, in<br>YYYY-MM-DD format (for example, 2025-02-29). This overrides the plan configuration<br>if it comes before the date the subscription would otherwise end. |

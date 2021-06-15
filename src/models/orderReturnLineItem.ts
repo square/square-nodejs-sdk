@@ -43,6 +43,8 @@ export interface OrderReturnLineItem {
   catalogObjectId?: string;
   /** The name of the variation applied to this return line item. */
   variationName?: string;
+  /** Represents the line item type. */
+  itemType?: string;
   /** The [CatalogModifier]($m/CatalogModifier)s applied to this line item. */
   returnModifiers?: OrderReturnLineItemModifier[];
   /**
@@ -127,6 +129,7 @@ export const orderReturnLineItemSchema: Schema<OrderReturnLineItem> = object({
   note: ['note', optional(string())],
   catalogObjectId: ['catalog_object_id', optional(string())],
   variationName: ['variation_name', optional(string())],
+  itemType: ['item_type', optional(string())],
   returnModifiers: [
     'return_modifiers',
     optional(array(lazy(() => orderReturnLineItemModifierSchema))),

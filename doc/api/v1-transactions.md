@@ -23,7 +23,7 @@ const v1TransactionsApi = client.v1TransactionsApi;
 
 # List Orders
 
-**This endpoint is deprecated. **
+**This endpoint is deprecated.**
 
 Provides summary information for a merchant's online store orders.
 
@@ -73,7 +73,7 @@ try {
 
 # Retrieve Order
 
-**This endpoint is deprecated. **
+**This endpoint is deprecated.**
 
 Provides comprehensive information for a single online store order, including the order's history.
 
@@ -117,7 +117,7 @@ try {
 
 # Update Order
 
-**This endpoint is deprecated. **
+**This endpoint is deprecated.**
 
 Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
 
@@ -171,7 +171,7 @@ try {
 
 # List Payments
 
-**This endpoint is deprecated. **
+**This endpoint is deprecated.**
 
 Provides summary information for all payments taken for a given
 Square account during a date range. Date ranges cannot exceed 1 year in
@@ -240,7 +240,7 @@ try {
 
 # Retrieve Payment
 
-**This endpoint is deprecated. **
+**This endpoint is deprecated.**
 
 Provides comprehensive information for a single payment.
 
@@ -284,7 +284,7 @@ try {
 
 # List Refunds
 
-**This endpoint is deprecated. **
+**This endpoint is deprecated.**
 
 Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
 
@@ -340,7 +340,7 @@ try {
 
 # Create Refund
 
-**This endpoint is deprecated. **
+**This endpoint is deprecated.**
 
 Issues a refund for a previously processed payment. You must issue
 a refund within 60 days of the associated payment.
@@ -406,7 +406,7 @@ try {
 
 # List Settlements
 
-**This endpoint is deprecated. **
+**This endpoint is deprecated.**
 
 Provides summary information for all deposits and withdrawals
 initiated by Square to a linked bank account during a date range. Date
@@ -470,7 +470,7 @@ try {
 
 # Retrieve Settlement
 
-**This endpoint is deprecated. **
+**This endpoint is deprecated.**
 
 Provides comprehensive information for a single settlement.
 

@@ -18,18 +18,9 @@ Describes query criteria for searching invoices.
 
 ```json
 {
-  "filter": {
-    "location_ids": [
-      "location_ids4"
-    ],
-    "customer_ids": [
-      "customer_ids3",
-      "customer_ids2"
-    ]
-  },
+  "filter": null,
   "sort": {
-    "field": "field2",
-    "order": "DESC"
+    "field": "INVOICE_SORT_DATE"
   }
 }
 ```

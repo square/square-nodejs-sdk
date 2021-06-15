@@ -44,13 +44,15 @@ describe('Disputes API', () => {
       ])
     }))
 
-    disputeId = (result.disputes!)[0].disputeId!
+    const firstDispute = result.disputes![0];
+    disputeId = firstDispute.id! || firstDispute.disputeId!;
   })
 
   it('should  testRetrieveDispute', async () => {
     let {result, statusCode} = await disputeApi.retrieveDispute(disputeId)
+    const localDisputeId = result.dispute?.id! || result.dispute?.disputeId!;
     expect(statusCode).toBe(200)
-    expect(result.dispute?.disputeId).toBe(disputeId)
+    expect(localDisputeId).toBe(disputeId);
   })
 
   it('should testCreateDisputeEvidenceText', async () => {
@@ -65,19 +67,18 @@ describe('Disputes API', () => {
     let { result, statusCode } = await disputeApi.createDisputeEvidenceText(disputeId, body)
     expect(statusCode).toBe(200)
 
-    textEvidenceId = result.evidence?.evidenceId!
+    const evidence = result.evidence;
+    textEvidenceId = evidence?.evidenceId! || evidence?.id!;
   })
 
   it('should  testRetrieveDisputeEvidence', async () => {
 
     try {
-
       let { result, statusCode } = await disputeApi.retrieveDisputeEvidence(disputeId, textEvidenceId)
       expect(statusCode).toBe(200)
       expect(result).toEqual(expect.objectContaining({
         evidence: expect.objectContaining({
-          evidenceId: textEvidenceId,
-          disputeId: disputeId
+          evidenceId: textEvidenceId
         })
       }))
     } catch (error) {
@@ -90,10 +91,10 @@ describe('Disputes API', () => {
     expect(statusCode).toBe(200)
   })
 
-  it('should test RemoveDisputeEvidence', async () => {
+  it('should test DeleteDisputeEvidence', async () => {
 
     try {
-      let { statusCode } = await disputeApi.removeDisputeEvidence(disputeId, textEvidenceId)
+      let { statusCode } = await disputeApi.deleteDisputeEvidence(disputeId, textEvidenceId)
       expect(statusCode).toBe(200)
 
     } catch (error) {
@@ -116,7 +117,7 @@ describe('Disputes API', () => {
 
     let { result, statusCode } = await disputeApi.createDisputeEvidenceFile(disputeId, body, imageFile)
     expect(statusCode).toBe(201)
-    expect(result.evidence?.disputeId!).toBe(disputeId)
+    expect(result.evidence?.disputeId!).toBe(disputeId);
   })
 
   it('should  testSubmitEvidence', async () => {

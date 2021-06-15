@@ -5,7 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2021-05-13'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2021-06-16'` |
 | `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
@@ -32,6 +32,7 @@ import {
   ApplePayApi,
   BankAccountsApi,
   BookingsApi,
+  CardsApi,
   CashDrawersApi,
   CatalogApi,
   CheckoutApi,
@@ -42,6 +43,8 @@ import {
   DevicesApi,
   DisputesApi,
   EmployeesApi,
+  GiftCardActivitiesApi,
+  GiftCardsApi,
   InventoryApi,
   InvoicesApi,
   LaborApi,
@@ -97,6 +100,7 @@ The gateway for the SDK. This class acts as a factory for the Apis and also hold
 | applePay | Gets ApplePayApi |
 | bankAccounts | Gets BankAccountsApi |
 | bookings | Gets BookingsApi |
+| cards | Gets CardsApi |
 | cashDrawers | Gets CashDrawersApi |
 | catalog | Gets CatalogApi |
 | customers | Gets CustomersApi |
@@ -105,6 +109,8 @@ The gateway for the SDK. This class acts as a factory for the Apis and also hold
 | devices | Gets DevicesApi |
 | disputes | Gets DisputesApi |
 | employees | Gets EmployeesApi |
+| giftCards | Gets GiftCardsApi |
+| giftCardActivities | Gets GiftCardActivitiesApi |
 | inventory | Gets InventoryApi |
 | invoices | Gets InvoicesApi |
 | labor | Gets LaborApi |

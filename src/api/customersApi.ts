@@ -93,7 +93,7 @@ export class CustomersApi extends BaseApi {
   }
 
   /**
-   * Creates a new customer for a business, which can have associated cards on file.
+   * Creates a new customer for a business.
    *
    * You must provide at least one of the following values in your request to this
    * endpoint:
@@ -148,7 +148,8 @@ export class CustomersApi extends BaseApi {
   }
 
   /**
-   * Deletes a customer profile from a business, including any linked cards on file.
+   * Deletes a customer profile from a business. This operation also unlinks any associated cards on file.
+   *
    *
    * As a best practice, you should include the `version` field in the request to enable [optimistic
    * concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency) control.
@@ -207,9 +208,8 @@ export class CustomersApi extends BaseApi {
    * To update a customer profile that was created by merging existing profiles, you must use the ID of
    * the newly created profile.
    *
-   * You cannot use this endpoint to change cards on file. To change a card on file, call
-   * [DeleteCustomerCard]($e/Customers/DeleteCustomerCard) to delete the existing card and then call
-   * [CreateCustomerCard]($e/Customers/CreateCustomerCard) to create a new card.
+   * You cannot use this endpoint to change cards on file. To make changes, use the [Cards API]($e/Cards)
+   * or [Gift Cards API]($e/GiftCards).
    *
    * @param customerId  The ID of the customer to update.
    * @param body        An object containing the fields to POST for the request.  See
@@ -243,6 +243,7 @@ export class CustomersApi extends BaseApi {
    * @param body        An object containing the fields to POST for the request.
    *                                                        See the corresponding object definition for field details.
    * @return Response from the API call
+   * @deprecated
    */
   async createCustomerCard(
     customerId: string,
@@ -256,6 +257,7 @@ export class CustomersApi extends BaseApi {
     });
     req.json(mapped.body);
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/cards`;
+    req.deprecated('CustomersApi.createCustomerCard');
     return req.callAsJson(createCustomerCardResponseSchema, requestOptions);
   }
 
@@ -265,6 +267,7 @@ export class CustomersApi extends BaseApi {
    * @param customerId  The ID of the customer that the card on file belongs to.
    * @param cardId      The ID of the card on file to delete.
    * @return Response from the API call
+   * @deprecated
    */
   async deleteCustomerCard(
     customerId: string,
@@ -277,6 +280,7 @@ export class CustomersApi extends BaseApi {
       cardId: [cardId, string()],
     });
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/cards/${mapped.cardId}`;
+    req.deprecated('CustomersApi.deleteCustomerCard');
     return req.callAsJson(deleteCustomerCardResponseSchema, requestOptions);
   }
 

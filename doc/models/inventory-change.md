@@ -30,13 +30,13 @@ that is part of the history of inventory changes for a particular
     "reference_id": "reference_id0",
     "catalog_object_id": "catalog_object_id6",
     "catalog_object_type": "catalog_object_type6",
-    "state": "ORDERED_FROM_VENDOR"
+    "state": "RETURNED_BY_CUSTOMER"
   },
   "adjustment": {
     "id": "id4",
     "reference_id": "reference_id2",
-    "from_state": "RESERVED_FOR_SALE",
-    "to_state": "WASTE",
+    "from_state": "WASTE",
+    "to_state": "DECOMPOSED",
     "location_id": "location_id8"
   },
   "transfer": {

@@ -20,9 +20,9 @@ Defines the fields in a `CreateDisputeEvidenceText` response.
 {
   "evidence": {
     "dispute_id": "bVTprrwk0gygTLZ96VX1oB",
-    "evidence_id": "TOomLInj6iWmP3N8qfCXrB",
     "evidence_text": "1Z8888888888888888",
     "evidence_type": "TRACKING_NUMBER",
+    "id": "TOomLInj6iWmP3N8qfCXrB",
     "uploaded_at": "2018-10-18T16:01:10.000Z"
   }
 }

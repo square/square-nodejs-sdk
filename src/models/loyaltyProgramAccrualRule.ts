@@ -1,4 +1,12 @@
-import { lazy, number, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Defines an accrual rule, which is how buyers can earn points. */
@@ -29,11 +37,26 @@ export interface LoyaltyProgramAccrualRule {
    */
   spendAmountMoney?: Money;
   /**
-   * The ID of the [catalog object]($m/CatalogObject) to purchase to earn the number of points defined by the
-   * rule. This is either an item variation or a category, depending on the type. This is defined on
-   * `ITEM_VARIATION` rules and `CATEGORY` rules.
+   * When the accrual rule is item-based or category-based, this field specifies the ID
+   * of the [catalog object]($m/CatalogObject) that buyers can purchase to earn points.
+   * If `accrual_type` is `ITEM_VARIATION`, the object is an item variation.
+   * If `accrual_type` is `CATEGORY`, the object is a category.
    */
   catalogObjectId?: string;
+  /**
+   * When the accrual rule is spend-based (`accrual_type` is `SPEND`), this field
+   * lists the IDs of any `CATEGORY` catalog objects that are excluded from points accrual.
+   * You can use the [BatchRetrieveCatalogObjects]($e/Catalog/BatchRetrieveCatalogObjects)
+   * endpoint to retrieve information about the excluded categories.
+   */
+  excludedCategoryIds?: string[];
+  /**
+   * When the accrual rule is spend-based (`accrual_type` is `SPEND`), this field
+   * lists the IDs of any `ITEM_VARIATION` catalog objects that are excluded from points accrual.
+   * You can use the [BatchRetrieveCatalogObjects]($e/Catalog/BatchRetrieveCatalogObjects)
+   * endpoint to retrieve information about the excluded item variations.
+   */
+  excludedItemVariationIds?: string[];
 }
 
 export const loyaltyProgramAccrualRuleSchema: Schema<LoyaltyProgramAccrualRule> = object(
@@ -46,5 +69,10 @@ export const loyaltyProgramAccrualRuleSchema: Schema<LoyaltyProgramAccrualRule> 
     ],
     spendAmountMoney: ['spend_amount_money', optional(lazy(() => moneySchema))],
     catalogObjectId: ['catalog_object_id', optional(string())],
+    excludedCategoryIds: ['excluded_category_ids', optional(array(string()))],
+    excludedItemVariationIds: [
+      'excluded_item_variation_ids',
+      optional(array(string())),
+    ],
   }
 );

@@ -1,7 +1,7 @@
 
 # Retrieve Wage Setting Response
 
-Represents a response from a retrieve request, containing the specified `WageSetting` object or error messages.
+Represents a response from a retrieve request containing the specified `WageSetting` object or error messages.
 
 ## Structure
 

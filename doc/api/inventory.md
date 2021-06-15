@@ -105,13 +105,13 @@ const bodychanges0Adjustment: InventoryAdjustment = {};
 bodychanges0Adjustment.id = 'id6';
 bodychanges0Adjustment.referenceId = 'reference_id4';
 bodychanges0Adjustment.fromState = 'SOLD';
-bodychanges0Adjustment.toState = 'IN_TRANSIT_TO';
+bodychanges0Adjustment.toState = 'SOLD_ONLINE';
 bodychanges0Adjustment.locationId = 'location_id0';
 
 const bodychanges0Transfer: InventoryTransfer = {};
 bodychanges0Transfer.id = 'id0';
 bodychanges0Transfer.referenceId = 'reference_id8';
-bodychanges0Transfer.state = 'SOLD';
+bodychanges0Transfer.state = 'UNLINKED_RETURN';
 bodychanges0Transfer.fromLocationId = 'from_location_id2';
 bodychanges0Transfer.toLocationId = 'to_location_id2';
 
@@ -253,7 +253,7 @@ async batchRetrieveInventoryCounts(
 ```ts
 const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
 const bodyLocationIds: string[] = ['59TNP9SA8VGDA'];
-const bodyStates: string[] = ['IN_TRANSIT_TO'];
+const bodyStates: string[] = ['SUPPORTED_BY_NEWER_VERSION'];
 const body: BatchRetrieveInventoryCountsRequest = {};
 body.catalogObjectIds = bodyCatalogObjectIds;
 body.locationIds = bodyLocationIds;

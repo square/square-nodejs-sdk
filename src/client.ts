@@ -1,6 +1,7 @@
 import { ApplePayApi } from './api/applePayApi';
 import { BankAccountsApi } from './api/bankAccountsApi';
 import { BookingsApi } from './api/bookingsApi';
+import { CardsApi } from './api/cardsApi';
 import { CashDrawersApi } from './api/cashDrawersApi';
 import { CatalogApi } from './api/catalogApi';
 import { CheckoutApi } from './api/checkoutApi';
@@ -10,6 +11,8 @@ import { CustomerSegmentsApi } from './api/customerSegmentsApi';
 import { DevicesApi } from './api/devicesApi';
 import { DisputesApi } from './api/disputesApi';
 import { EmployeesApi } from './api/employeesApi';
+import { GiftCardActivitiesApi } from './api/giftCardActivitiesApi';
+import { GiftCardsApi } from './api/giftCardsApi';
 import { InventoryApi } from './api/inventoryApi';
 import { InvoicesApi } from './api/invoicesApi';
 import { LaborApi } from './api/laborApi';
@@ -52,8 +55,8 @@ import {
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '11.0.0';
-const USER_AGENT = 'Square-TypeScript-SDK/11.0.0';
+export const SDK_VERSION = '12.0.0';
+const USER_AGENT = 'Square-TypeScript-SDK/12.0.0';
 
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
@@ -62,6 +65,7 @@ export class Client implements ClientInterface {
   public readonly applePayApi: ApplePayApi;
   public readonly bankAccountsApi: BankAccountsApi;
   public readonly bookingsApi: BookingsApi;
+  public readonly cardsApi: CardsApi;
   public readonly cashDrawersApi: CashDrawersApi;
   public readonly catalogApi: CatalogApi;
   public readonly checkoutApi: CheckoutApi;
@@ -71,6 +75,8 @@ export class Client implements ClientInterface {
   public readonly devicesApi: DevicesApi;
   public readonly disputesApi: DisputesApi;
   public readonly employeesApi: EmployeesApi;
+  public readonly giftCardActivitiesApi: GiftCardActivitiesApi;
+  public readonly giftCardsApi: GiftCardsApi;
   public readonly inventoryApi: InventoryApi;
   public readonly invoicesApi: InvoicesApi;
   public readonly laborApi: LaborApi;
@@ -116,6 +122,7 @@ export class Client implements ClientInterface {
     this.applePayApi = new ApplePayApi(this);
     this.bankAccountsApi = new BankAccountsApi(this);
     this.bookingsApi = new BookingsApi(this);
+    this.cardsApi = new CardsApi(this);
     this.cashDrawersApi = new CashDrawersApi(this);
     this.catalogApi = new CatalogApi(this);
     this.checkoutApi = new CheckoutApi(this);
@@ -125,6 +132,8 @@ export class Client implements ClientInterface {
     this.devicesApi = new DevicesApi(this);
     this.disputesApi = new DisputesApi(this);
     this.employeesApi = new EmployeesApi(this);
+    this.giftCardActivitiesApi = new GiftCardActivitiesApi(this);
+    this.giftCardsApi = new GiftCardsApi(this);
     this.inventoryApi = new InventoryApi(this);
     this.invoicesApi = new InvoicesApi(this);
     this.laborApi = new LaborApi(this);
