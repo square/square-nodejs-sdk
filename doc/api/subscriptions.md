@@ -54,11 +54,11 @@ bodyPriceOverrideMoney.amount = 100;
 bodyPriceOverrideMoney.currency = 'USD';
 
 const body: CreateSubscriptionRequest = {
-  idempotencyKey: '8193148c-9586-11e6-99f9-28cfe92138cf',
   locationId: 'S8GWD5R9QB376',
   planId: '6JHXF3B2CW3YKHDV4XEM674H',
   customerId: 'CHFGVKYY8RSV93M5KCYTG4PN0G',
 };
+body.idempotencyKey = '8193148c-9586-11e6-99f9-28cfe92138cf';
 body.startDate = '2020-08-01';
 body.canceledDate = 'canceled_date0';
 body.taxPercentage = '5';

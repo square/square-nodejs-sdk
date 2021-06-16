@@ -1,11 +1,11 @@
 
-# Remove Dispute Evidence Response
+# Delete Dispute Evidence Response
 
-Defines the fields in a `RemoveDisputeEvidence` response.
+Defines the fields in a `DeleteDisputeEvidence` response.
 
 ## Structure
 
-`RemoveDisputeEvidenceResponse`
+`DeleteDisputeEvidenceResponse`
 
 ## Fields
 

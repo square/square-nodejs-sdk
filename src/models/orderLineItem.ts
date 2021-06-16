@@ -50,6 +50,8 @@ export interface OrderLineItem {
   catalogObjectId?: string;
   /** The name of the variation applied to this line item. */
   variationName?: string;
+  /** Represents the line item type. */
+  itemType?: string;
   /**
    * Application-defined data attached to this line item. Metadata fields are intended
    * to store descriptive references or associations with an entity in another system or store brief
@@ -165,6 +167,7 @@ export const orderLineItemSchema: Schema<OrderLineItem> = object({
   note: ['note', optional(string())],
   catalogObjectId: ['catalog_object_id', optional(string())],
   variationName: ['variation_name', optional(string())],
+  itemType: ['item_type', optional(string())],
   metadata: ['metadata', optional(dict(string()))],
   modifiers: [
     'modifiers',

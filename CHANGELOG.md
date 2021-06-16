@@ -1,5 +1,66 @@
 # Change Log
 
+## Version 12.0.0 (2021-06-16)
+## New API releases
+* **Gift Cards API and Gift Card Activities API.** Gift card support is integrated in the [Square Seller Dashboard](https://squareup.com/dashboard/) and the [Square Point of Sale](https://squareup.com/us/en/point-of-sale)  application. Sellers can sell, redeem, track, and reload Square gift cards. Now developers can use the [Gift Cards API](https://developer.squareup.com/reference/square_2021-06-16/gift-cards-api) and the [Gift Card Activities API](https://developer.squareup.com/reference/square_2021-06-16/gift-card-activities-api) to integrate Square gift cards into third-party applications. For more information, see [Gift Cards API Overview.](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api)
+
+* **Cards API.** The [Cards API](https://developer.squareup.com/reference/square_2021-06-16/cards-api) replaces the deprecated `CreateCustomerCard` and `DeleteCustomerCard` endpoints and lets an application save a customer payment card on file along with other card management operations. For more information, see [Cards API Overview.](https://developer.squareup.com/docs/cards-api/overview) 
+
+## API updates
+* **Catalog API:**
+  * [CatalogPricingRule](https://developer.squareup.com/reference/square_2021-06-16/objects/CatalogPricingRule). Support of the [customer group discount](https://developer.squareup.com/reference/square_2021-06-16/objects/CatalogPricingRule#definition__property-customer_group_ids_any) becomes GA. For more information, see [CreateCustomerGroupDiscounts.](https://developer.squareup.com/docs/catalog-api/configure-customer-group-discounts)
+  * [CatalogItemVariation](https://developer.squareup.com/reference/square_2021-06-16/objects/CatalogItemVariation). Offers Beta support of the [stockable](https://developer.squareup.com/reference/square_2021-06-16/objects/CatalogItemVariation#definition__property-stockable) and [stockable_conversion](https://developer.squareup.com/reference/square_2021-06-16/objects/CatalogItemVariation#definition__property-stockable_conversion) attributes to enable sales of a product in multiple measurement units.  
+  * [UpsertCatalogObject](https://developer.squareup.com/reference/square_2021-06-16/catalog-api/upsert-catalog-object) and [BatchUpsertCatalogObjects](https://developer.squareup.com/reference/square_2021-06-16/catalog-api/batch-upsert-catalog-objects). Support creating an item with stockable and non-stockable variations with a specified stock conversion between the two. For more information, see [Enable Stock Conversion.](https://developer.squareup.com/docs/inventory-api/enable-stock-conversion)
+  * [UpsertCatalogObject](https://developer.squareup.com/reference/square_2021-06-16/catalog-api/upsert-catalog-object) and [BatchUpsertCatalogObjects](https://developer.squareup.com/reference/square_2021-06-16/catalog-api/batch-upsert-catalog-objects). Require that an item be created with at least one variation. Otherwise, an `INVALID_REQUEST` error is returned. 
+  
+* **Customers API:**
+  * Using the Customers API to manage cards on file is deprecated:
+    * The [CreateCustomerCard](https://developer.squareup.com/reference/square_2021-06-16/customers-api/create-customer-card) endpoint is deprecated and replaced by the [CreateCard](https://developer.squareup.com/reference/square_2021-06-16/cards-api/create-card) and [LinkCustomerToGiftCard](https://developer.squareup.com/reference/square_2021-06-16/gift-cards-api/link-customer-to-gift-card) endpoints.
+    * The [DeleteCustomerCard](https://developer.squareup.com/reference/square_2021-06-16/customers-api/delete-customer-card) endpoint is deprecated and replaced by the [DisableCard](https://developer.squareup.com/reference/square_2021-06-16/cards-api/disable-card) and [UnlinkCustomerFromGiftCard](https://developer.squareup.com/reference/square_2021-06-16/gift-cards-api/unlink-customer-from-gift-card) endpoints.
+    * The `cards` field in the [Customer](https://developer.squareup.com/reference/square_2021-06-16/objects/Customer) object is deprecated and replaced by the following endpoints:
+      * [ListCards](https://developer.squareup.com/reference/square_2021-06-16/cards-api/list-cards) to retrieve credit and debit cards on file.
+      * [ListGiftCards](https://developer.squareup.com/reference/square_2021-06-16/gift-cards-api/list-gift-cards) to retrieve gift cards on file.  
+
+       For more information, see [Migrate to the Cards API and Gift Cards API.](https://developer.squareup.com/docs/customers-api/use-the-api/integrate-with-other-services#migrate-customer-cards)
+     
+     * [Customer](https://developer.squareup.com/reference/square_2021-06-16/objects/Customer) object. In the `cards` field, the IDs for gift cards now have a `gftc:` prefix followed by the card number. This is a service-level change that applies to all Square API versions.
+
+* **Disputes API:** 
+  * The Disputes API is now GA. 
+  * `RemoveDisputeEvidence`. Renamed to [DeleteDisputeEvidence](https://developer.squareup.com/reference/square_2021-06-16/objects/DeleteDisputeEvidence).
+  * [CreateDisputeEvidenceFile.](https://developer.squareup.com/reference/square_2021-06-16/objects/CreateDisputeEvidenceFile) The URL is changed from `/v2/disputes/{dispute_id}/evidence_file` to `/v2/disputes/{dispute_id}/evidence-files`.
+  * [CreateDisputeEvidenceText.](https://developer.squareup.com/reference/square_2021-06-16/objects/CreateDisputeEvidenceText) The URL is changed from `/v2/disputes/{dispute_id}/evidence_text` to `/v2/disputes/{dispute_id}/evidence-text`.
+  * [ListDisputeEvidence.](https://developer.squareup.com/reference/square_2021-06-16/objects/ListDisputeEvidence) The  endpoint now returns a pagination cursor and accepts a pagination cursor in requests.
+  * `DISPUTES_READ` and `DISPUTES_WRITE` permissions are required for all Disputes API endpoints instead of `PAYMENTS_READ` and `PAYMENTS_WRITE`.
+  * [DisputeEvidence.](https://developer.squareup.com/reference/square_2021-06-16/objects/DisputeEvidence) The `evidence_id` field is deprecated and replaced by the `id` field.
+  * The `dispute.state.changed` webhook is renamed to `dispute.state.updated`.
+  * [Dispute](https://developer.squareup.com/reference/square_2021-06-16/objects/Dispute) object. The following breaking changes are made: 
+    * The `dispute_id` field is deprecated and replaced by the `id` field.
+    * The `reported_date` field is deprecated and replaced by the `reported_at` field.
+    * The `evidence_ids` field is deprecated with no replacement.
+
+  For more information about the GA release of the Disputes API, see [Disputes Overview.](https://developer.squareup.com/docs/disputes-api/overview) 
+  
+
+* **Inventory API:**
+  * [CatalogStockConversion](https://developer.squareup.com/docs/{SQUARE_TECH_REF}/objects/CatalogStockConversion) (Beta). Enables selling a product in multiple measurement units and lets Square sellers manage inventory counts of the product's stockable and a non-stockable variations in a self-consistent manner. For more information, see [Enable Stock Conversion.](https://developer.squareup.com/docs/inventory-api/enable-stock-conversion)
+
+* **Invoices API:**
+  * [CreateInvoice.](https://developer.squareup.com/reference/square_2021-06-16/invoices-api/create-invoice) The `location_id` field is now optional and defaults to the location ID of the associated order. If specified in the request, the value must match the location ID of the associated order. This is a service-level change that applies to all Square API versions.
+
+* **Loyalty API:**
+  * [LoyaltyProgramAccrualRule](https://developer.squareup.com/reference/square_2021-06-16/objects/LoyaltyProgramAccrualRule) object. New `excluded_category_ids` and `excluded_item_variation_ids` fields that represent any categories and items that are excluded from accruing points in spend-based loyalty programs.
+
+* **Subscriptions API:**
+  * [Subscription.](https://developer.squareup.com/reference/square_2021-06-16/objects/Subscription) The `paid_until_date` field is renamed to `charge_through_date`.
+  * [UpdateSubscription.](https://developer.squareup.com/reference/square_2021-06-16/subscriptions-api/update-subscription) The `version` field is now optional because it can update only the latest version of a subscription.
+
+  * [CreateSubscription.](https://developer.squareup.com/reference/square_2021-06-16/subscriptions-api/create-subscription) The `idempotency_key` field is now optional in the request. If you do not provide it, each `CreateSubscription` assumes a unique (never used before) value and creates a subscription for each call.
+
+## Documentation updates
+* [Order fee structure.](https://developer.squareup.com/docs/payments-pricing#orders-api-fee-structure) Documented the transaction fee related to using the Orders API with a non-Square payments provider.
+
+
 ## Version 11.0.0 (2021-05-13)
 ## New API releases
 

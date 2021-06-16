@@ -1,7 +1,7 @@
 
 # Update Team Member Response
 
-Represents a response from an update request, containing the updated `TeamMember` object or error messages.
+Represents a response from an update request containing the updated `TeamMember` object or error messages.
 
 ## Structure
 

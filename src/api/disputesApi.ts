@@ -20,6 +20,10 @@ import {
   createDisputeEvidenceTextResponseSchema,
 } from '../models/createDisputeEvidenceTextResponse';
 import {
+  DeleteDisputeEvidenceResponse,
+  deleteDisputeEvidenceResponseSchema,
+} from '../models/deleteDisputeEvidenceResponse';
+import {
   ListDisputeEvidenceResponse,
   listDisputeEvidenceResponseSchema,
 } from '../models/listDisputeEvidenceResponse';
@@ -27,10 +31,6 @@ import {
   ListDisputesResponse,
   listDisputesResponseSchema,
 } from '../models/listDisputesResponse';
-import {
-  RemoveDisputeEvidenceResponse,
-  removeDisputeEvidenceResponseSchema,
-} from '../models/removeDisputeEvidenceResponse';
 import {
   RetrieveDisputeEvidenceResponse,
   retrieveDisputeEvidenceResponseSchema,
@@ -119,67 +119,24 @@ export class DisputesApi extends BaseApi {
    * Returns a list of evidence associated with a dispute.
    *
    * @param disputeId  The ID of the dispute.
+   * @param cursor     A pagination cursor returned by a previous call to this endpoint. Provide this cursor
+   *                             to retrieve the next set of results for the original query. For more information, see
+   *                             [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
    * @return Response from the API call
    */
   async listDisputeEvidence(
     disputeId: string,
+    cursor?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ListDisputeEvidenceResponse>> {
     const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({ disputeId: [disputeId, string()] });
+    const mapped = req.prepareArgs({
+      disputeId: [disputeId, string()],
+      cursor: [cursor, optional(string())],
+    });
+    req.query('cursor', mapped.cursor);
     req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence`;
     return req.callAsJson(listDisputeEvidenceResponseSchema, requestOptions);
-  }
-
-  /**
-   * Removes specified evidence from a dispute.
-   *
-   * Square does not send the bank any evidence that is removed. Also, you cannot remove evidence after
-   * submitting it to the bank using [SubmitEvidence]($e/Disputes/SubmitEvidence).
-   *
-   * @param disputeId   The ID of the dispute you want to remove evidence from.
-   * @param evidenceId  The ID of the evidence you want to remove.
-   * @return Response from the API call
-   */
-  async removeDisputeEvidence(
-    disputeId: string,
-    evidenceId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<RemoveDisputeEvidenceResponse>> {
-    const req = this.createRequest('DELETE');
-    const mapped = req.prepareArgs({
-      disputeId: [disputeId, string()],
-      evidenceId: [evidenceId, string()],
-    });
-    req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence/${mapped.evidenceId}`;
-    return req.callAsJson(removeDisputeEvidenceResponseSchema, requestOptions);
-  }
-
-  /**
-   * Returns the specific evidence metadata associated with a specific dispute.
-   *
-   * You must maintain a copy of the evidence you upload if you want to reference it later. You cannot
-   * download the evidence after you upload it.
-   *
-   * @param disputeId   The ID of the dispute that you want to retrieve evidence from.
-   * @param evidenceId  The ID of the evidence to retrieve.
-   * @return Response from the API call
-   */
-  async retrieveDisputeEvidence(
-    disputeId: string,
-    evidenceId: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<RetrieveDisputeEvidenceResponse>> {
-    const req = this.createRequest('GET');
-    const mapped = req.prepareArgs({
-      disputeId: [disputeId, string()],
-      evidenceId: [evidenceId, string()],
-    });
-    req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence/${mapped.evidenceId}`;
-    return req.callAsJson(
-      retrieveDisputeEvidenceResponseSchema,
-      requestOptions
-    );
   }
 
   /**
@@ -208,7 +165,7 @@ export class DisputesApi extends BaseApi {
       request: JSON.stringify(mapped.request),
       image_file: imageFile,
     });
-    req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence_file`;
+    req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence-files`;
     return req.callAsJson(
       createDisputeEvidenceFileResponseSchema,
       requestOptions
@@ -236,9 +193,60 @@ export class DisputesApi extends BaseApi {
       body: [body, createDisputeEvidenceTextRequestSchema],
     });
     req.json(mapped.body);
-    req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence_text`;
+    req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence-text`;
     return req.callAsJson(
       createDisputeEvidenceTextResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Removes specified evidence from a dispute.
+   *
+   * Square does not send the bank any evidence that is removed. Also, you cannot remove evidence after
+   * submitting it to the bank using [SubmitEvidence]($e/Disputes/SubmitEvidence).
+   *
+   * @param disputeId   The ID of the dispute you want to remove evidence from.
+   * @param evidenceId  The ID of the evidence you want to remove.
+   * @return Response from the API call
+   */
+  async deleteDisputeEvidence(
+    disputeId: string,
+    evidenceId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<DeleteDisputeEvidenceResponse>> {
+    const req = this.createRequest('DELETE');
+    const mapped = req.prepareArgs({
+      disputeId: [disputeId, string()],
+      evidenceId: [evidenceId, string()],
+    });
+    req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence/${mapped.evidenceId}`;
+    return req.callAsJson(deleteDisputeEvidenceResponseSchema, requestOptions);
+  }
+
+  /**
+   * Returns the evidence metadata specified by the evidence ID in the request URL path
+   *
+   * You must maintain a copy of the evidence you upload if you want to reference it later. You cannot
+   * download the evidence after you upload it.
+   *
+   * @param disputeId   The ID of the dispute that you want to retrieve evidence from.
+   * @param evidenceId  The ID of the evidence to retrieve.
+   * @return Response from the API call
+   */
+  async retrieveDisputeEvidence(
+    disputeId: string,
+    evidenceId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<RetrieveDisputeEvidenceResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      disputeId: [disputeId, string()],
+      evidenceId: [evidenceId, string()],
+    });
+    req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence/${mapped.evidenceId}`;
+    return req.callAsJson(
+      retrieveDisputeEvidenceResponseSchema,
       requestOptions
     );
   }

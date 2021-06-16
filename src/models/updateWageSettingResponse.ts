@@ -3,7 +3,7 @@ import { Error, errorSchema } from './error';
 import { WageSetting, wageSettingSchema } from './wageSetting';
 
 /**
- * Represents a response from an update request, containing the updated `WageSetting` object
+ * Represents a response from an update request containing the updated `WageSetting` object
  * or error messages.
  */
 export interface UpdateWageSettingResponse {

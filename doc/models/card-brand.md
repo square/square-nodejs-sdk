@@ -24,4 +24,5 @@ Indicates a card's brand, such as `VISA` or `MASTERCARD`.
 | `INTERAC` |
 | `EFTPOS` |
 | `FELICA` |
+| `EBT` |
 

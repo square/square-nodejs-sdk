@@ -29,13 +29,13 @@ Defines fields in a `ListDisputes` response.
       "brand_dispute_id": "100000809947",
       "card_brand": "VISA",
       "created_at": "2018-10-12T02:20:25.577Z",
-      "dispute_id": "OnY1AZwhSi775rbNIK4gv",
       "disputed_payments": [
         {
           "payment_id": "APgIq6RX2jM6DKDhMHiC6QEkuaB"
         }
       ],
       "due_at": "2018-10-11T00:00:00.000Z",
+      "id": "OnY1AZwhSi775rbNIK4gv",
       "reason": "NO_KNOWLEDGE",
       "state": "EVIDENCE_REQUIRED",
       "updated_at": "2018-10-12T02:20:25.577Z"

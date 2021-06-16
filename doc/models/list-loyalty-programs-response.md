@@ -23,6 +23,14 @@ A response that contains all loyalty programs.
       "accrual_rules": [
         {
           "accrual_type": "SPEND",
+          "excluded_category_ids": [
+            "7ZERJKO5PVYXCVUHV2JCZ2UG",
+            "FQKAOJE5C4FIMF5A2URMLW6V"
+          ],
+          "excluded_item_variation_ids": [
+            "CBZXBUVVTYUBZGQO44RHMR6B",
+            "EDILT24Z2NISEXDKGY6HP7XV"
+          ],
           "points": 1,
           "spend_amount_money": {
             "amount": 100

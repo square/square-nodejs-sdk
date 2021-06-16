@@ -1,8 +1,7 @@
 
 # Customer
 
-Represents a Square customer profile, which can have one or more
-cards on file associated with it.
+Represents a Square customer profile in the Customer Directory of a Square seller.
 
 ## Structure
 
@@ -15,7 +14,7 @@ cards on file associated with it.
 | `id` | `string \| undefined` | Optional | A unique Square-assigned ID for the customer profile. |
 | `createdAt` | `string \| undefined` | Optional | The timestamp when the customer profile was created, in RFC 3339 format. |
 | `updatedAt` | `string \| undefined` | Optional | The timestamp when the customer profile was last updated, in RFC 3339 format. |
-| `cards` | [`Card[] \| undefined`](/doc/models/card.md) | Optional | Payment details of the credit, debit, and gift cards stored on file for the customer profile. |
+| `cards` | [`Card[] \| undefined`](/doc/models/card.md) | Optional | Payment details of the credit, debit, and gift cards stored on file for the customer profile.<br><br>DEPRECATED at version 2021-06-16. Replaced by calling [ListCards](/doc/api/cards.md#list-cards) (for credit and debit cards on file)<br>or [ListGiftCards](/doc/api/gift-cards.md#list-gift-cards) (for gift cards on file) and including the `customer_id` query parameter.<br>For more information, see [Migrate to the Cards API and Gift Cards API](https://developer.squareup.com/docs/customers-api/use-the-api/integrate-with-other-services#migrate-customer-cards). |
 | `givenName` | `string \| undefined` | Optional | The given (i.e., first) name associated with the customer profile. |
 | `familyName` | `string \| undefined` | Optional | The family (i.e., last) name associated with the customer profile. |
 | `nickname` | `string \| undefined` | Optional | A nickname for the customer profile. |
@@ -42,14 +41,14 @@ cards on file associated with it.
   "cards": [
     {
       "id": "id7",
-      "card_brand": "AMERICAN_EXPRESS",
+      "card_brand": "EBT",
       "last_4": "last_49",
       "exp_month": 79,
       "exp_year": 217
     },
     {
       "id": "id8",
-      "card_brand": "MASTERCARD",
+      "card_brand": "FELICA",
       "last_4": "last_40",
       "exp_month": 78,
       "exp_year": 218

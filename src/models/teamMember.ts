@@ -14,26 +14,26 @@ export interface TeamMember {
   isOwner?: boolean;
   /** Enumerates the possible statuses the team member can have within a business. */
   status?: string;
-  /** The given (i.e., first) name associated with the team member. */
+  /** The given name (that is, the first name) associated with the team member. */
   givenName?: string;
-  /** The family (i.e., last) name associated with the team member. */
+  /** The family name (that is, the last name) associated with the team member. */
   familyName?: string;
   /** The email address associated with the team member. */
   emailAddress?: string;
   /**
-   * The team member's phone number in E.164 format. Examples:
+   * The team member's phone number, in E.164 format. For example:
    * +14155552671 - the country code is 1 for US
    * +551155256325 - the country code is 55 for BR
    */
   phoneNumber?: string;
   /**
-   * The timestamp in RFC 3339 format describing when the team member was created.
-   * Ex: "2018-10-04T04:00:00-07:00" or "2019-02-05T12:00:00Z"
+   * The timestamp, in RFC 3339 format, describing when the team member was created.
+   * For example, "2018-10-04T04:00:00-07:00" or "2019-02-05T12:00:00Z".
    */
   createdAt?: string;
   /**
-   * The timestamp in RFC 3339 format describing when the team member was last updated.
-   * Ex: "2018-10-04T04:00:00-07:00" or "2019-02-05T12:00:00Z"
+   * The timestamp, in RFC 3339 format, describing when the team member was last updated.
+   * For example, "2018-10-04T04:00:00-07:00" or "2019-02-05T12:00:00Z".
    */
   updatedAt?: string;
   /** An object that represents a team member's assignment to locations. */

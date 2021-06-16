@@ -51,7 +51,10 @@ export interface CatalogItem {
    * may also be added to or deleted from an item using `UpdateItemModifierLists`.
    */
   modifierListInfo?: CatalogItemModifierListInfo[];
-  /** A list of CatalogObjects containing the `CatalogItemVariation`s for this item. */
+  /**
+   * A list of [CatalogItemVariation]($m/CatalogItemVariation) objects for this item. An item must have
+   * at least one variation.
+   */
   variations?: CatalogObject[];
   /** The type of a CatalogItem. Connect V2 only allows the creation of `REGULAR` or `APPOINTMENTS_SERVICE` items. */
   productType?: string;

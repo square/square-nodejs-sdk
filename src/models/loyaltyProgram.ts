@@ -16,6 +16,11 @@ import {
   loyaltyProgramTerminologySchema,
 } from './loyaltyProgramTerminology';
 
+/**
+ * Represents a Square loyalty program. Loyalty programs define how buyers can earn points and redeem points for rewards.
+ * Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard.
+ * For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
+ */
 export interface LoyaltyProgram {
   /**
    * The Square-assigned ID of the loyalty program. Updates to
@@ -28,6 +33,7 @@ export interface LoyaltyProgram {
   rewardTiers: LoyaltyProgramRewardTier[];
   /** Describes when the loyalty program expires. */
   expirationPolicy?: LoyaltyProgramExpirationPolicy;
+  /** Represents the naming used for loyalty points. */
   terminology: LoyaltyProgramTerminology;
   /** The [locations]($m/Location) at which the program is active. */
   locationIds: string[];

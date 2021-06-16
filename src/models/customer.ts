@@ -14,10 +14,7 @@ import {
   customerPreferencesSchema,
 } from './customerPreferences';
 
-/**
- * Represents a Square customer profile, which can have one or more
- * cards on file associated with it.
- */
+/** Represents a Square customer profile in the Customer Directory of a Square seller. */
 export interface Customer {
   /** A unique Square-assigned ID for the customer profile. */
   id?: string;
@@ -25,7 +22,12 @@ export interface Customer {
   createdAt?: string;
   /** The timestamp when the customer profile was last updated, in RFC 3339 format. */
   updatedAt?: string;
-  /** Payment details of the credit, debit, and gift cards stored on file for the customer profile. */
+  /**
+   * Payment details of the credit, debit, and gift cards stored on file for the customer profile.
+   * DEPRECATED at version 2021-06-16. Replaced by calling [ListCards]($e/Cards/ListCards) (for credit and debit cards on file)
+   * or [ListGiftCards]($e/GiftCards/ListGiftCards) (for gift cards on file) and including the `customer_id` query parameter.
+   * For more information, see [Migrate to the Cards API and Gift Cards API](https://developer.squareup.com/docs/customers-api/use-the-api/integrate-with-other-services#migrate-customer-cards).
+   */
   cards?: Card[];
   /** The given (i.e., first) name associated with the customer profile. */
   givenName?: string;

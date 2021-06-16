@@ -33,13 +33,12 @@ export interface Invoice {
   version?: number;
   /**
    * The ID of the location that this invoice is associated with.
-   * This field is required when creating an invoice.
+   * If specified in a `CreateInvoice` request, the value must match the `location_id` of the associated order.
    */
   locationId?: string;
   /**
    * The ID of the [order]($m/Order) for which the invoice is created.
-   * This order must be in the `OPEN` state and must belong to the `location_id`
-   * specified for this invoice. This field is required when creating an invoice.
+   * This order must be in the `OPEN` state. This field is required when creating an invoice.
    */
   orderId?: string;
   /** Provides customer data that Square uses to deliver an invoice. */

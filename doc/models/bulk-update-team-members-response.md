@@ -1,7 +1,7 @@
 
 # Bulk Update Team Members Response
 
-Represents a response from a bulk update request, containing the updated `TeamMember` objects or error messages.
+Represents a response from a bulk update request containing the updated `TeamMember` objects or error messages.
 
 ## Structure
 

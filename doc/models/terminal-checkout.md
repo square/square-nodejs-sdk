@@ -22,7 +22,7 @@
 | `updatedAt` | `string \| undefined` | Optional | The time when the `TerminalCheckout` was last updated, as an RFC 3339 timestamp. |
 | `appId` | `string \| undefined` | Optional | The ID of the application that created the checkout. |
 | `locationId` | `string \| undefined` | Optional | The location of the device where the `TerminalCheckout` was directed. |
-| `paymentType` | [`string \| undefined`](/doc/models/terminal-checkout-payment-type.md) | Optional | - |
+| `paymentType` | [`string \| undefined`](/doc/models/checkout-options-payment-type.md) | Optional | - |
 
 ## Example (as JSON)
 

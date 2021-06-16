@@ -1,7 +1,7 @@
 
 # Retrieve Team Member Response
 
-Represents a response from a retrieve request, containing a `TeamMember` object or error messages.
+Represents a response from a retrieve request containing a `TeamMember` object or error messages.
 
 ## Structure
 

@@ -12,7 +12,7 @@ A response that contains the loyalty program.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `program` | [`LoyaltyProgram \| undefined`](/doc/models/loyalty-program.md) | Optional | - |
+| `program` | [`LoyaltyProgram \| undefined`](/doc/models/loyalty-program.md) | Optional | Represents a Square loyalty program. Loyalty programs define how buyers can earn points and redeem points for rewards.<br>Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard.<br>For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview). |
 
 ## Example (as JSON)
 
@@ -22,6 +22,14 @@ A response that contains the loyalty program.
     "accrual_rules": [
       {
         "accrual_type": "SPEND",
+        "excluded_category_ids": [
+          "7ZERJKO5PVYXCVUHV2JCZ2UG",
+          "FQKAOJE5C4FIMF5A2URMLW6V"
+        ],
+        "excluded_item_variation_ids": [
+          "CBZXBUVVTYUBZGQO44RHMR6B",
+          "EDILT24Z2NISEXDKGY6HP7XV"
+        ],
         "points": 1,
         "spend_amount_money": {
           "amount": 100

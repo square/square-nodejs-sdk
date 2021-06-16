@@ -12,12 +12,14 @@ export interface CreateSubscriptionRequest {
    * the endpoint treats each request as independent.
    * For more information, see [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency).
    */
-  idempotencyKey: string;
+  idempotencyKey?: string;
   /** The ID of the location the subscription is associated with. */
   locationId: string;
   /**
-   * The ID of the subscription plan. For more information, see
-   * [Subscription Plan Overview](https://developer.squareup.com/docs/subscriptions/overview).
+   * The ID of the subscription plan created using the Catalog API.
+   * For more information, see
+   * [Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan) and
+   * [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
    */
   planId: string;
   /** The ID of the [customer]($m/Customer) profile. */
@@ -67,7 +69,7 @@ export interface CreateSubscriptionRequest {
 
 export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> = object(
   {
-    idempotencyKey: ['idempotency_key', string()],
+    idempotencyKey: ['idempotency_key', optional(string())],
     locationId: ['location_id', string()],
     planId: ['plan_id', string()],
     customerId: ['customer_id', string()],

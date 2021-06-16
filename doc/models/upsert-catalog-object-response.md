@@ -18,21 +18,67 @@
 ```json
 {
   "catalog_object": {
-    "id": "7SB3ZQYJ5GDMVFL7JK46JCHT",
+    "id": "R2TA2FOBUGCJZNIWJSOSNAI4",
     "is_deleted": false,
     "item_data": {
       "abbreviation": "Ch",
-      "description": "Hot chocolate",
-      "name": "Cocoa"
+      "description": "Hot Chocolate",
+      "name": "Cocoa",
+      "product_type": "REGULAR",
+      "variations": [
+        {
+          "id": "QRT53UP4LITLWGOGBZCUWP63",
+          "is_deleted": false,
+          "item_variation_data": {
+            "item_id": "R2TA2FOBUGCJZNIWJSOSNAI4",
+            "name": "Small",
+            "ordinal": 0,
+            "pricing_type": "VARIABLE_PRICING",
+            "stockable": true
+          },
+          "present_at_all_locations": true,
+          "type": "ITEM_VARIATION",
+          "updated_at": "2021-06-14T15:51:39.021Z",
+          "version": 1623685899021
+        },
+        {
+          "id": "NS77DKEIQ3AEQTCP727DSA7U",
+          "is_deleted": false,
+          "item_variation_data": {
+            "item_id": "R2TA2FOBUGCJZNIWJSOSNAI4",
+            "name": "Large",
+            "ordinal": 1,
+            "price_money": {
+              "amount": 400,
+              "currency": "USD"
+            },
+            "pricing_type": "FIXED_PRICING",
+            "stockable": true
+          },
+          "present_at_all_locations": true,
+          "type": "ITEM_VARIATION",
+          "updated_at": "2021-06-14T15:51:39.021Z",
+          "version": 1623685899021
+        }
+      ]
     },
+    "present_at_all_locations": true,
     "type": "ITEM",
-    "updated_at": "2016-11-16T22:32:42.996Z",
-    "version": 1479335562996
+    "updated_at": "2021-06-14T15:51:39.021Z",
+    "version": 1623685899021
   },
   "id_mappings": [
     {
       "client_object_id": "#Cocoa",
-      "object_id": "7SB3ZQYJ5GDMVFL7JK46JCHT"
+      "object_id": "R2TA2FOBUGCJZNIWJSOSNAI4"
+    },
+    {
+      "client_object_id": "#Small",
+      "object_id": "QRT53UP4LITLWGOGBZCUWP63"
+    },
+    {
+      "client_object_id": "#Large",
+      "object_id": "NS77DKEIQ3AEQTCP727DSA7U"
     }
   ]
 }

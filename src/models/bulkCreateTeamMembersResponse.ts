@@ -5,7 +5,7 @@ import {
 } from './createTeamMemberResponse';
 import { Error, errorSchema } from './error';
 
-/** Represents a response from a bulk create request, containing the created `TeamMember` objects or error messages. */
+/** Represents a response from a bulk create request containing the created `TeamMember` objects or error messages. */
 export interface BulkCreateTeamMembersResponse {
   /** The successfully created `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`. */
   teamMembers?: Record<string, CreateTeamMemberResponse>;

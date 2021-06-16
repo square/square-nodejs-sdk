@@ -10,10 +10,7 @@ import { Error, errorSchema } from './error';
 export interface RetrieveCustomerResponse {
   /** Any errors that occurred during the request. */
   errors?: Error[];
-  /**
-   * Represents a Square customer profile, which can have one or more
-   * cards on file associated with it.
-   */
+  /** Represents a Square customer profile in the Customer Directory of a Square seller. */
   customer?: Customer;
 }
 

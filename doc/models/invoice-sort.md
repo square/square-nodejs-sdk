@@ -18,8 +18,8 @@ Identifies the sort field and sort order.
 
 ```json
 {
-  "field": "field6",
-  "order": "DESC"
+  "field": "INVOICE_SORT_DATE",
+  "order": null
 }
 ```
 

@@ -1,7 +1,7 @@
 
 # Bulk Create Team Members Response
 
-Represents a response from a bulk create request, containing the created `TeamMember` objects or error messages.
+Represents a response from a bulk create request containing the created `TeamMember` objects or error messages.
 
 ## Structure
 

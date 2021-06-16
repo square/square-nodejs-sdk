@@ -34,7 +34,7 @@ hand or from syncing with an external system.
   "reference_id": "reference_id2",
   "catalog_object_id": "catalog_object_id6",
   "catalog_object_type": "catalog_object_type6",
-  "state": "IN_TRANSIT_TO"
+  "state": "SUPPORTED_BY_NEWER_VERSION"
 }
 ```
 

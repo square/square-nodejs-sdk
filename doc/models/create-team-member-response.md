@@ -1,7 +1,7 @@
 
 # Create Team Member Response
 
-Represents a response from a create request, containing the created `TeamMember` object or error messages.
+Represents a response from a create request containing the created `TeamMember` object or error messages.
 
 ## Structure
 
