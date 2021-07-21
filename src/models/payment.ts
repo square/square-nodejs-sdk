@@ -13,6 +13,10 @@ import {
   cashPaymentDetailsSchema,
 } from './cashPaymentDetails';
 import {
+  DigitalWalletDetails,
+  digitalWalletDetailsSchema,
+} from './digitalWalletDetails';
+import {
   ExternalPaymentDetails,
   externalPaymentDetailsSchema,
 } from './externalPaymentDetails';
@@ -115,7 +119,7 @@ export interface Payment {
   delayedUntil?: string;
   /**
    * The source type for this payment.
-   * Current values include `CARD`, `BANK_ACCOUNT`, `CASH`, or `EXTERNAL`.
+   * Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `CASH`, or `EXTERNAL`.
    */
   sourceType?: string;
   /** Reflects the current status of a card payment. Contains only non-confidential information. */
@@ -133,6 +137,8 @@ export interface Payment {
    * [Take External Payments](https://developer.squareup.com/docs/payments-api/take-payments/external-payments).
    */
   externalDetails?: ExternalPaymentDetails;
+  /** Additional details about `WALLET` type payments. Contains only non-confidential information. */
+  walletDetails?: DigitalWalletDetails;
   /** The ID of the location associated with the payment. */
   locationId?: string;
   /** The ID of the order associated with the payment. */
@@ -225,6 +231,10 @@ export const paymentSchema: Schema<Payment> = object({
   externalDetails: [
     'external_details',
     optional(lazy(() => externalPaymentDetailsSchema)),
+  ],
+  walletDetails: [
+    'wallet_details',
+    optional(lazy(() => digitalWalletDetailsSchema)),
   ],
   locationId: ['location_id', optional(string())],
   orderId: ['order_id', optional(string())],

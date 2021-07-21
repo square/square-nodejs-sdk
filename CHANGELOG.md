@@ -1,5 +1,50 @@
 # Change Log
 
+## Version 13.0.0 (2021-07-21)
+## API updates
+
+* **Orders  API:** 
+  * [OrderServiceCharge](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderServiceCharge) object. Added a new field, `type`. It identifies the service charge type.
+
+  * [OrderQuantityUnit](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderQuantityUnit), 
+    [OrderLineItem](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderLineItem), 
+    [OrderLineItemDiscount](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderLineItemDiscount), 
+    [OrderLineItemModifier](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderLineItemModifier), 
+    [OrderLineItemTax](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderLineItemTax), 
+    [OrderServiceCharge](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderServiceCharge), 
+    [OrderReturnLineItem](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderReturnLineItem), 
+    [OrderReturnLineItemModifier](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderReturnLineItemModifier), 
+    [OrderReturnServiceCharge](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderReturnServiceCharge), 
+    [OrderReturnTax](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderReturnTax), and 
+    [OrderReturnDiscount](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderReturnDiscount) objects. Added a new field, `catalog_version`.
+* **Locations API:**
+  * [Location](https://developer.squareup.com/reference/square_2021-07-21/objects/Location) object. Added a new field `tax_ids` of type `TaxIds`. In the current implementation, sellers in Ireland and France can configure tax IDs during the onboarding process. They can also provide the information later by updating the location information in the Seller Dashboard. These tax IDs appear in this field.
+
+* **Loyalty API:**
+  * As of July 15, 2021, the country in which the seller’s Square account is activated determines whether Square uses pretax or post-tax purchase amounts to calculate accrued points. This change supports consumption tax models, such as value-added tax (VAT). Previously, point accrual was based on pretax purchase amounts only. This change does not affect the existing point balance of loyalty accounts. For more information, see [Availability of Square Loyalty.](https://developer.squareup.com/docs/loyalty-api/overview#loyalty-market-availability)
+
+* **Payments API:** 
+  * [UpdatePayment](https://developer.squareup.com/reference/square_2021-07-21/payments-api/update-payment). The endpoint has moved to the [general availability](https://developer.squareup.com/docs/build-basics/api-lifecycle#general-availability) (GA) state. Also, you can now update gift card payments (similar to card, cash, and external payments).
+
+* **Subscriptions API:**
+  * The [Subscriptions API](https://developer.squareup.com/docs/subscriptions-api/overview) has moved to the [general availability](https://developer.squareup.com/docs/build-basics/api-lifecycle#general-availability) (GA) state.
+  * [CatalogSubscriptionPlan](https://developer.squareup.com/reference/square_2021-07-21/objects/CatalogSubscriptionPlan) object. The `name` and `price` are now write-once fields. You specify these values at the time  of creating a plan. After the plan is created, these fields cannot be updated. This makes a subscription plan immutable. 
+
+* **Inventory API:**
+  * [RetrieveInventoryTransfer.](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Retrieve-Inventory-Transfer) This new endpoint is introduced to support the retrieval of inventory transfer.
+  * [RetrieveInventoryChanges.](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Retrieve-Inventory-Changes) This endpoint is deprecated. Its support ends when it is retired in about 12 months.  
+  * The following endpoints have updated URLs to conform to the standard REST API convention. For more information about migrating deprecated URLs to updated URLs in your application, see [Inventory API: Migrate to Updated API Entities.](https://developer.squareup.com/docs/inventory-api/migrate-to-updated-api-entities)
+    * [RetrieveInventoryAdjustment](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Retrieve-Inventory-Adjustment)
+    * [BatchChangeInventory](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Batch-Change-Inventory)
+    * [BatchRetrieveInventoryChanges](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Batch-Retrieve-Inventory-Changes) 
+    * [BatchRetrieveInventoryCounts](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Batch-Retrieve-Inventory-Counts)
+    * [RetrieveInventoryPhysicalCount](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Retrieve-Inventory-Physical-Count)
+
+## Documentation updates
+* **Webhooks.** Revised the steps and descriptions for creating and using webhooks. For more information, see [Webhooks Overview.](https://developer.squareup.com/docs/webhooks/overview)
+
+
+
 ## Version 12.0.0 (2021-06-16)
 ## New API releases
 * **Gift Cards API and Gift Card Activities API.** Gift card support is integrated in the [Square Seller Dashboard](https://squareup.com/dashboard/) and the [Square Point of Sale](https://squareup.com/us/en/point-of-sale)  application. Sellers can sell, redeem, track, and reload Square gift cards. Now developers can use the [Gift Cards API](https://developer.squareup.com/reference/square_2021-06-16/gift-cards-api) and the [Gift Card Activities API](https://developer.squareup.com/reference/square_2021-06-16/gift-card-activities-api) to integrate Square gift cards into third-party applications. For more information, see [Gift Cards API Overview.](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api)

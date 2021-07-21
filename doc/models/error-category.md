@@ -18,4 +18,5 @@ request to the Connect API.
 | `RATE_LIMIT_ERROR` | Your application reached the Connect API rate limit. Retry your<br>request after a while. |
 | `PAYMENT_METHOD_ERROR` | An error occurred while processing a payment method. Most commonly,<br>the details of the payment method were invalid (such as a card's CVV<br>or expiration date). |
 | `REFUND_ERROR` | An error occurred while attempting to process a refund. |
+| `MERCHANT_SUBSCRIPTION_ERROR` | An error occurred when checking a merchant subscription status |
 

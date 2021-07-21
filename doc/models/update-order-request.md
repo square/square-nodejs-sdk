@@ -44,7 +44,8 @@ Defines the fields that are included in requests to the
             "volume_unit": "GENERIC_FLUID_OUNCE",
             "weight_unit": "METRIC_KILOGRAM"
           },
-          "precision": 201
+          "precision": 201,
+          "catalog_version": 135
         },
         "note": "note3",
         "catalog_object_id": "catalog_object_id5"

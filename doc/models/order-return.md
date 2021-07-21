@@ -43,7 +43,8 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
           "volume_unit": "IMPERIAL_CUBIC_FOOT",
           "weight_unit": "METRIC_KILOGRAM"
         },
-        "precision": 73
+        "precision": 73,
+        "catalog_version": 249
       },
       "note": "note9"
     },
@@ -63,7 +64,8 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
           "volume_unit": "IMPERIAL_CUBIC_YARD",
           "weight_unit": "METRIC_GRAM"
         },
-        "precision": 74
+        "precision": 74,
+        "catalog_version": 248
       },
       "note": "note8"
     },
@@ -83,7 +85,8 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
           "volume_unit": "METRIC_MILLILITER",
           "weight_unit": "METRIC_MILLIGRAM"
         },
-        "precision": 75
+        "precision": 75,
+        "catalog_version": 247
       },
       "note": "note7"
     }
@@ -94,14 +97,14 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
       "source_service_charge_uid": "source_service_charge_uid3",
       "name": "name3",
       "catalog_object_id": "catalog_object_id3",
-      "percentage": "percentage1"
+      "catalog_version": 197
     },
     {
       "uid": "uid4",
       "source_service_charge_uid": "source_service_charge_uid2",
       "name": "name4",
       "catalog_object_id": "catalog_object_id2",
-      "percentage": "percentage2"
+      "catalog_version": 196
     }
   ],
   "return_taxes": [
@@ -109,8 +112,8 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
       "uid": "uid6",
       "source_tax_uid": "source_tax_uid4",
       "catalog_object_id": "catalog_object_id0",
-      "name": "name6",
-      "type": "INCLUSIVE"
+      "catalog_version": 116,
+      "name": "name6"
     }
   ]
 }

@@ -17,6 +17,7 @@ contributes to the order subtotal.
 |  --- | --- | --- | --- |
 | `uid` | `string \| undefined` | Optional | A unique ID that identifies the tax only within this order.<br>**Constraints**: *Maximum Length*: `60` |
 | `catalogObjectId` | `string \| undefined` | Optional | The catalog object ID referencing [CatalogTax](/doc/models/catalog-tax.md).<br>**Constraints**: *Maximum Length*: `192` |
+| `catalogVersion` | `bigint \| undefined` | Optional | The version of the catalog object that this tax references. |
 | `name` | `string \| undefined` | Optional | The tax's name.<br>**Constraints**: *Maximum Length*: `255` |
 | `type` | [`string \| undefined`](/doc/models/order-line-item-tax-type.md) | Optional | Indicates how the tax is applied to the associated line item or order. |
 | `percentage` | `string \| undefined` | Optional | The percentage of the tax, as a string representation of a decimal<br>number. For example, a value of `"7.25"` corresponds to a percentage of<br>7.25%.<br>**Constraints**: *Maximum Length*: `10` |
@@ -31,9 +32,9 @@ contributes to the order subtotal.
 {
   "uid": "uid0",
   "catalog_object_id": "catalog_object_id6",
+  "catalog_version": 126,
   "name": "name0",
-  "type": "INCLUSIVE",
-  "percentage": "percentage8"
+  "type": "INCLUSIVE"
 }
 ```
 

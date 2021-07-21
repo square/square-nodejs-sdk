@@ -1,4 +1,13 @@
-import { array, dict, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  bigint,
+  dict,
+  lazy,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -13,6 +22,8 @@ export interface OrderLineItemDiscount {
   uid?: string;
   /** The catalog object ID referencing [CatalogDiscount]($m/CatalogDiscount). */
   catalogObjectId?: string;
+  /** The version of the catalog object that this discount references. */
+  catalogVersion?: bigint;
   /** The discount's name. */
   name?: string;
   /** Indicates how the discount is applied to the associated line item or order. */
@@ -80,6 +91,7 @@ export const orderLineItemDiscountSchema: Schema<OrderLineItemDiscount> = object
   {
     uid: ['uid', optional(string())],
     catalogObjectId: ['catalog_object_id', optional(string())],
+    catalogVersion: ['catalog_version', optional(bigint())],
     name: ['name', optional(string())],
     type: ['type', optional(string())],
     percentage: ['percentage', optional(string())],

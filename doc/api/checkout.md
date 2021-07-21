@@ -53,6 +53,7 @@ bodyOrderOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGR
 const bodyOrderOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
 bodyOrderOrderlineItems0QuantityUnit.measurementUnit = bodyOrderOrderlineItems0QuantityUnitMeasurementUnit;
 bodyOrderOrderlineItems0QuantityUnit.precision = 191;
+bodyOrderOrderlineItems0QuantityUnit.catalogVersion = 131;
 
 const bodyOrderOrderlineItems0AppliedTaxes: OrderLineItemAppliedTax[] = [];
 
@@ -109,6 +110,7 @@ bodyOrderOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'IMPERIAL_STONE
 const bodyOrderOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
 bodyOrderOrderlineItems1QuantityUnit.measurementUnit = bodyOrderOrderlineItems1QuantityUnitMeasurementUnit;
 bodyOrderOrderlineItems1QuantityUnit.precision = 192;
+bodyOrderOrderlineItems1QuantityUnit.catalogVersion = 130;
 
 const bodyOrderOrderlineItems1BasePriceMoney: Money = {};
 bodyOrderOrderlineItems1BasePriceMoney.amount = 2500;
@@ -135,6 +137,7 @@ bodyOrderOrderlineItems2QuantityUnitMeasurementUnit.weightUnit = 'IMPERIAL_POUND
 const bodyOrderOrderlineItems2QuantityUnit: OrderQuantityUnit = {};
 bodyOrderOrderlineItems2QuantityUnit.measurementUnit = bodyOrderOrderlineItems2QuantityUnitMeasurementUnit;
 bodyOrderOrderlineItems2QuantityUnit.precision = 193;
+bodyOrderOrderlineItems2QuantityUnit.catalogVersion = 129;
 
 const bodyOrderOrderlineItems2BasePriceMoney: Money = {};
 bodyOrderOrderlineItems2BasePriceMoney.amount = 3500;
@@ -157,6 +160,7 @@ const bodyOrderOrderTaxes: OrderLineItemTax[] = [];
 const bodyOrderOrdertaxes0: OrderLineItemTax = {};
 bodyOrderOrdertaxes0.uid = '38ze1696-z1e3-5628-af6d-f1e04d947fg3';
 bodyOrderOrdertaxes0.catalogObjectId = 'catalog_object_id7';
+bodyOrderOrdertaxes0.catalogVersion = 47;
 bodyOrderOrdertaxes0.name = 'name9';
 bodyOrderOrdertaxes0.type = 'INCLUSIVE';
 bodyOrderOrdertaxes0.percentage = '7.75';
@@ -173,9 +177,9 @@ bodyOrderOrderdiscounts0AmountMoney.currency = 'USD';
 const bodyOrderOrderdiscounts0: OrderLineItemDiscount = {};
 bodyOrderOrderdiscounts0.uid = '56ae1696-z1e3-9328-af6d-f1e04d947gd4';
 bodyOrderOrderdiscounts0.catalogObjectId = 'catalog_object_id1';
+bodyOrderOrderdiscounts0.catalogVersion = 73;
 bodyOrderOrderdiscounts0.name = 'name7';
 bodyOrderOrderdiscounts0.type = 'FIXED_AMOUNT';
-bodyOrderOrderdiscounts0.percentage = 'percentage5';
 bodyOrderOrderdiscounts0.amountMoney = bodyOrderOrderdiscounts0AmountMoney;
 bodyOrderOrderdiscounts0.scope = 'LINE_ITEM';
 

@@ -19,20 +19,20 @@
     {
       "errors": [
         {
-          "category": "PAYMENT_METHOD_ERROR",
-          "code": "REFUND_DECLINED",
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "INVALID_CONTENT_TYPE",
           "detail": "detail8",
           "field": "field6"
         },
         {
-          "category": "REFUND_ERROR",
-          "code": "INVALID_CARD_DATA",
+          "category": "API_ERROR",
+          "code": "INVALID_FORM_VALUE",
           "detail": "detail9",
           "field": "field7"
         },
         {
-          "category": "API_ERROR",
-          "code": "SOURCE_USED",
+          "category": "AUTHENTICATION_ERROR",
+          "code": "CUSTOMER_NOT_FOUND",
           "detail": "detail0",
           "field": "field8"
         }
@@ -45,8 +45,8 @@
     {
       "errors": [
         {
-          "category": "REFUND_ERROR",
-          "code": "INVALID_CARD_DATA",
+          "category": "API_ERROR",
+          "code": "INVALID_FORM_VALUE",
           "detail": "detail9",
           "field": "field7"
         }

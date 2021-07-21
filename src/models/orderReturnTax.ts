@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { bigint, lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -14,6 +14,8 @@ export interface OrderReturnTax {
   sourceTaxUid?: string;
   /** The catalog object ID referencing [CatalogTax]($m/CatalogTax). */
   catalogObjectId?: string;
+  /** The version of the catalog object that this tax references. */
+  catalogVersion?: bigint;
   /** The tax's name. */
   name?: string;
   /** Indicates how the tax is applied to the associated line item or order. */
@@ -40,6 +42,7 @@ export const orderReturnTaxSchema: Schema<OrderReturnTax> = object({
   uid: ['uid', optional(string())],
   sourceTaxUid: ['source_tax_uid', optional(string())],
   catalogObjectId: ['catalog_object_id', optional(string())],
+  catalogVersion: ['catalog_version', optional(bigint())],
   name: ['name', optional(string())],
   type: ['type', optional(string())],
   percentage: ['percentage', optional(string())],

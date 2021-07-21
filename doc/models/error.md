@@ -22,8 +22,8 @@ See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-
 
 ```json
 {
-  "category": "INVALID_REQUEST_ERROR",
-  "code": "CARD_DECLINED_CALL_ISSUER",
+  "category": "RATE_LIMIT_ERROR",
+  "code": "EXPECTED_OBJECT",
   "detail": "detail6",
   "field": "field6"
 }

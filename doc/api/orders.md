@@ -70,6 +70,7 @@ bodyOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGRAM';
 const bodyOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems0QuantityUnit.measurementUnit = bodyOrderlineItems0QuantityUnitMeasurementUnit;
 bodyOrderlineItems0QuantityUnit.precision = 189;
+bodyOrderlineItems0QuantityUnit.catalogVersion = 133;
 
 const bodyOrderlineItems0BasePriceMoney: Money = {};
 bodyOrderlineItems0BasePriceMoney.amount = 1599;
@@ -102,6 +103,7 @@ bodyOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'METRIC_GRAM';
 const bodyOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems1QuantityUnit.measurementUnit = bodyOrderlineItems1QuantityUnitMeasurementUnit;
 bodyOrderlineItems1QuantityUnit.precision = 188;
+bodyOrderlineItems1QuantityUnit.catalogVersion = 134;
 
 const bodyOrderlineItems1Modifiers: OrderLineItemModifier[] = [];
 
@@ -109,16 +111,12 @@ const bodyOrderlineItems1modifiers0BasePriceMoney: Money = {};
 bodyOrderlineItems1modifiers0BasePriceMoney.amount = 53;
 bodyOrderlineItems1modifiers0BasePriceMoney.currency = 'TTD';
 
-const bodyOrderlineItems1modifiers0TotalPriceMoney: Money = {};
-bodyOrderlineItems1modifiers0TotalPriceMoney.amount = 51;
-bodyOrderlineItems1modifiers0TotalPriceMoney.currency = 'EUR';
-
 const bodyOrderlineItems1modifiers0: OrderLineItemModifier = {};
 bodyOrderlineItems1modifiers0.uid = 'uid1';
 bodyOrderlineItems1modifiers0.catalogObjectId = 'CHQX7Y4KY6N5KINJKZCFURPZ';
+bodyOrderlineItems1modifiers0.catalogVersion = 69;
 bodyOrderlineItems1modifiers0.name = 'name1';
 bodyOrderlineItems1modifiers0.basePriceMoney = bodyOrderlineItems1modifiers0BasePriceMoney;
-bodyOrderlineItems1modifiers0.totalPriceMoney = bodyOrderlineItems1modifiers0TotalPriceMoney;
 
 bodyOrderlineItems1Modifiers[0] = bodyOrderlineItems1modifiers0;
 
@@ -154,6 +152,7 @@ const bodyOrderTaxes: OrderLineItemTax[] = [];
 const bodyOrdertaxes0: OrderLineItemTax = {};
 bodyOrdertaxes0.uid = 'state-sales-tax';
 bodyOrdertaxes0.catalogObjectId = 'catalog_object_id1';
+bodyOrdertaxes0.catalogVersion = 189;
 bodyOrdertaxes0.name = 'State Sales Tax';
 bodyOrdertaxes0.type = 'UNKNOWN_TAX';
 bodyOrdertaxes0.percentage = '9';
@@ -166,6 +165,7 @@ const bodyOrderDiscounts: OrderLineItemDiscount[] = [];
 const bodyOrderdiscounts0: OrderLineItemDiscount = {};
 bodyOrderdiscounts0.uid = 'labor-day-sale';
 bodyOrderdiscounts0.catalogObjectId = 'catalog_object_id5';
+bodyOrderdiscounts0.catalogVersion = 89;
 bodyOrderdiscounts0.name = 'Labor Day Sale';
 bodyOrderdiscounts0.type = 'FIXED_PERCENTAGE';
 bodyOrderdiscounts0.percentage = '5';
@@ -176,9 +176,9 @@ bodyOrderDiscounts[0] = bodyOrderdiscounts0;
 const bodyOrderdiscounts1: OrderLineItemDiscount = {};
 bodyOrderdiscounts1.uid = 'membership-discount';
 bodyOrderdiscounts1.catalogObjectId = 'DB7L55ZH2BGWI4H23ULIWOQ7';
+bodyOrderdiscounts1.catalogVersion = 90;
 bodyOrderdiscounts1.name = 'name2';
 bodyOrderdiscounts1.type = 'FIXED_AMOUNT';
-bodyOrderdiscounts1.percentage = 'percentage0';
 bodyOrderdiscounts1.scope = 'ORDER';
 
 bodyOrderDiscounts[1] = bodyOrderdiscounts1;
@@ -190,9 +190,9 @@ bodyOrderdiscounts2AmountMoney.currency = 'USD';
 const bodyOrderdiscounts2: OrderLineItemDiscount = {};
 bodyOrderdiscounts2.uid = 'one-dollar-off';
 bodyOrderdiscounts2.catalogObjectId = 'catalog_object_id7';
+bodyOrderdiscounts2.catalogVersion = 91;
 bodyOrderdiscounts2.name = 'Sale - $1.00 off';
 bodyOrderdiscounts2.type = 'VARIABLE_PERCENTAGE';
-bodyOrderdiscounts2.percentage = 'percentage1';
 bodyOrderdiscounts2.amountMoney = bodyOrderdiscounts2AmountMoney;
 bodyOrderdiscounts2.scope = 'LINE_ITEM';
 
@@ -317,6 +317,7 @@ bodyOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGRAM';
 const bodyOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems0QuantityUnit.measurementUnit = bodyOrderlineItems0QuantityUnitMeasurementUnit;
 bodyOrderlineItems0QuantityUnit.precision = 189;
+bodyOrderlineItems0QuantityUnit.catalogVersion = 133;
 
 const bodyOrderlineItems0BasePriceMoney: Money = {};
 bodyOrderlineItems0BasePriceMoney.amount = 500;
@@ -349,6 +350,7 @@ bodyOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'METRIC_GRAM';
 const bodyOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems1QuantityUnit.measurementUnit = bodyOrderlineItems1QuantityUnitMeasurementUnit;
 bodyOrderlineItems1QuantityUnit.precision = 188;
+bodyOrderlineItems1QuantityUnit.catalogVersion = 134;
 
 const bodyOrderlineItems1BasePriceMoney: Money = {};
 bodyOrderlineItems1BasePriceMoney.amount = 300;
@@ -371,6 +373,7 @@ const bodyOrderDiscounts: OrderLineItemDiscount[] = [];
 const bodyOrderdiscounts0: OrderLineItemDiscount = {};
 bodyOrderdiscounts0.uid = 'uid1';
 bodyOrderdiscounts0.catalogObjectId = 'catalog_object_id5';
+bodyOrderdiscounts0.catalogVersion = 89;
 bodyOrderdiscounts0.name = '50% Off';
 bodyOrderdiscounts0.type = 'FIXED_PERCENTAGE';
 bodyOrderdiscounts0.percentage = '50';
@@ -644,6 +647,7 @@ bodyOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGRAM';
 const bodyOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems0QuantityUnit.measurementUnit = bodyOrderlineItems0QuantityUnitMeasurementUnit;
 bodyOrderlineItems0QuantityUnit.precision = 189;
+bodyOrderlineItems0QuantityUnit.catalogVersion = 133;
 
 const bodyOrderlineItems0: OrderLineItem = {
   quantity: 'quantity7',
@@ -671,6 +675,7 @@ bodyOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'METRIC_GRAM';
 const bodyOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems1QuantityUnit.measurementUnit = bodyOrderlineItems1QuantityUnitMeasurementUnit;
 bodyOrderlineItems1QuantityUnit.precision = 188;
+bodyOrderlineItems1QuantityUnit.catalogVersion = 134;
 
 const bodyOrderlineItems1: OrderLineItem = {
   quantity: 'quantity6',

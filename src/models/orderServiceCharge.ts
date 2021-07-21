@@ -1,5 +1,6 @@
 import {
   array,
+  bigint,
   boolean,
   dict,
   lazy,
@@ -22,6 +23,8 @@ export interface OrderServiceCharge {
   name?: string;
   /** The catalog object ID referencing the service charge [CatalogObject]($m/CatalogObject). */
   catalogObjectId?: string;
+  /** The version of the catalog object that this service charge references. */
+  catalogVersion?: bigint;
   /**
    * The service charge percentage as a string representation of a
    * decimal number. For example, `"7.25"` indicates a service charge of 7.25%.
@@ -105,12 +108,14 @@ export interface OrderServiceCharge {
    * For more information, see [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
    */
   metadata?: Record<string, string>;
+  type?: string;
 }
 
 export const orderServiceChargeSchema: Schema<OrderServiceCharge> = object({
   uid: ['uid', optional(string())],
   name: ['name', optional(string())],
   catalogObjectId: ['catalog_object_id', optional(string())],
+  catalogVersion: ['catalog_version', optional(bigint())],
   percentage: ['percentage', optional(string())],
   amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
   appliedMoney: ['applied_money', optional(lazy(() => moneySchema))],
@@ -123,4 +128,5 @@ export const orderServiceChargeSchema: Schema<OrderServiceCharge> = object({
     optional(array(lazy(() => orderLineItemAppliedTaxSchema))),
   ],
   metadata: ['metadata', optional(dict(string()))],
+  type: ['type', optional(string())],
 });

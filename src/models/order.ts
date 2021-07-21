@@ -57,7 +57,13 @@ export interface Order {
   referenceId?: string;
   /** Represents the origination details of an order. */
   source?: OrderSource;
-  /** The ID of the [customer]($m/Customer) associated with the order. */
+  /**
+   * The ID of the [customer]($m/Customer) associated with the order.
+   * __IMPORTANT:__ You should specify a `customer_id` if you want the corresponding payment transactions
+   * to be explicitly linked to the customer in the Seller Dashboard. If this field is omitted, the
+   * `customer_id` assigned to any underlying `Payment` objects is ignored and might result in the
+   * creation of new [instant profiles](https://developer.squareup.com/docs/customers-api/what-it-does#instant-profiles).
+   */
   customerId?: string;
   /** The line items included in the order. */
   lineItems?: OrderLineItem[];

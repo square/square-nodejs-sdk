@@ -1,4 +1,5 @@
 import {
+  bigint,
   boolean,
   dict,
   lazy,
@@ -20,6 +21,8 @@ export interface OrderLineItemTax {
   uid?: string;
   /** The catalog object ID referencing [CatalogTax]($m/CatalogTax). */
   catalogObjectId?: string;
+  /** The version of the catalog object that this tax references. */
+  catalogVersion?: bigint;
   /** The tax's name. */
   name?: string;
   /** Indicates how the tax is applied to the associated line item or order. */
@@ -68,6 +71,7 @@ export interface OrderLineItemTax {
 export const orderLineItemTaxSchema: Schema<OrderLineItemTax> = object({
   uid: ['uid', optional(string())],
   catalogObjectId: ['catalog_object_id', optional(string())],
+  catalogVersion: ['catalog_version', optional(bigint())],
   name: ['name', optional(string())],
   type: ['type', optional(string())],
   percentage: ['percentage', optional(string())],
