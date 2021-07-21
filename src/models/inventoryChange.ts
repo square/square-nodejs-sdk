@@ -22,7 +22,7 @@ import {
  * [CatalogObject]($m/CatalogObject) instance.
  */
 export interface InventoryChange {
-  /** Indicates how the inventory change was applied to a tracked quantity of items. */
+  /** Indicates how the inventory change was applied to a tracked product quantity. */
   type?: string;
   /**
    * Represents the quantity of an item variation that is physically present

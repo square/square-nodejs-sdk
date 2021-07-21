@@ -19,6 +19,7 @@ export interface ExternalPaymentDetails {
    * - EMONEY - Paid using an E-money provider.
    * - CARD - A credit or debit card that Square does not support.
    * - STORED_BALANCE - Use for house accounts, store credit, and so forth.
+   * - FOOD_VOUCHER - Restaurant voucher provided by employers to employees to pay for meals
    * - OTHER - A type not listed here.
    */
   type: string;

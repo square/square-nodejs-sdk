@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  bigint,
+  lazy,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 import {
   OrderLineItemAppliedDiscount,
@@ -41,6 +49,8 @@ export interface OrderReturnLineItem {
   note?: string;
   /** The [CatalogItemVariation]($m/CatalogItemVariation) ID applied to this return line item. */
   catalogObjectId?: string;
+  /** The version of the catalog object that this line item references. */
+  catalogVersion?: bigint;
   /** The name of the variation applied to this return line item. */
   variationName?: string;
   /** Represents the line item type. */
@@ -128,6 +138,7 @@ export const orderReturnLineItemSchema: Schema<OrderReturnLineItem> = object({
   ],
   note: ['note', optional(string())],
   catalogObjectId: ['catalog_object_id', optional(string())],
+  catalogVersion: ['catalog_version', optional(bigint())],
   variationName: ['variation_name', optional(string())],
   itemType: ['item_type', optional(string())],
   returnModifiers: [

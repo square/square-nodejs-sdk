@@ -64,7 +64,7 @@ describe('Inventory API', () => {
     itemVariationId = (result.catalogObject?.itemData?.variations!)[0].id!
   })
 
-  it('should testBatchChangeInventory', async () => {
+  xit('should testBatchChangeInventory', async () => {
 
     const eightHours = 1000 * 60 * 60 * 8
 
@@ -98,7 +98,7 @@ describe('Inventory API', () => {
     ]))
   })
 
-  it('should testBatchRetrieveInventoryChanges', async () => {
+  xit('should testBatchRetrieveInventoryChanges', async () => {
 
     let body: BatchRetrieveInventoryChangesRequest = {
       types: ['ADJUSTMENT'],
@@ -118,7 +118,7 @@ describe('Inventory API', () => {
     expect(statusCode).toBe(200);
   })
 
-  it('should testRetrieveInventoryAdjustment', async () => {
+  xit('should testRetrieveInventoryAdjustment', async () => {
 
     let { statusCode }: ApiResponse<RetrieveInventoryAdjustmentResponse> = await inventoryApi.retrieveInventoryAdjustment(inventoryAdjustId)
     expect(statusCode).toBe(200);
@@ -130,7 +130,7 @@ describe('Inventory API', () => {
     expect(statusCode).toBe(200);
   })
 
-  it('should testBatchRetrieveInventoryCounts', async () => {
+  xit('should testBatchRetrieveInventoryCounts', async () => {
 
     let body: BatchRetrieveInventoryCountsRequest = {
       catalogObjectIds: [itemVariationId],
@@ -140,7 +140,7 @@ describe('Inventory API', () => {
     expect(statusCode).toBe(200);
   })
 
-  it('should testRetrieveInventoryPhysicalCount', async () => {
+  xit('should testRetrieveInventoryPhysicalCount', async () => {
     let sellCoffee: InventoryPhysicalCount = {
       quantity: '1',
       catalogObjectId: itemVariationId,

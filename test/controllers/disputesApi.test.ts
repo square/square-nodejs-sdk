@@ -78,7 +78,7 @@ describe('Disputes API', () => {
       expect(statusCode).toBe(200)
       expect(result).toEqual(expect.objectContaining({
         evidence: expect.objectContaining({
-          evidenceId: textEvidenceId
+          id: textEvidenceId
         })
       }))
     } catch (error) {

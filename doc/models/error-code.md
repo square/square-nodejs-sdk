@@ -23,6 +23,7 @@ Square API.
 | `V1_APPLICATION` | The calling application was created prior to<br>2016-03-30 and is not compatible with v2 Square API calls. |
 | `V1_ACCESS_TOKEN` | The calling application is using an access token<br>created prior to 2016-03-30 and is not compatible with v2 Square API<br>calls. |
 | `CARD_PROCESSING_NOT_ENABLED` | The location provided in the API call is not<br>enabled for credit card processing. |
+| `MERCHANT_SUBSCRIPTION_NOT_FOUND` | A required subscription was not found for the merchant |
 | `BAD_REQUEST` | A general error occurred with the request. |
 | `MISSING_REQUIRED_PARAMETER` | The request is missing a required path, query, or<br>body parameter. |
 | `INCORRECT_TYPE` | The value provided in the request is the wrong<br>type. For example, a string instead of an integer. |

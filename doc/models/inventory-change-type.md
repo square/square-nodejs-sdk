@@ -1,7 +1,7 @@
 
 # Inventory Change Type
 
-Indicates how the inventory change was applied to a tracked quantity of items.
+Indicates how the inventory change was applied to a tracked product quantity.
 
 ## Enumeration
 

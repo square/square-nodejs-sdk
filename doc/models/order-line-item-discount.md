@@ -18,6 +18,7 @@ amount contributed by the item to the order subtotal.
 |  --- | --- | --- | --- |
 | `uid` | `string \| undefined` | Optional | A unique ID that identifies the discount only within this order.<br>**Constraints**: *Maximum Length*: `60` |
 | `catalogObjectId` | `string \| undefined` | Optional | The catalog object ID referencing [CatalogDiscount](/doc/models/catalog-discount.md).<br>**Constraints**: *Maximum Length*: `192` |
+| `catalogVersion` | `bigint \| undefined` | Optional | The version of the catalog object that this discount references. |
 | `name` | `string \| undefined` | Optional | The discount's name.<br>**Constraints**: *Maximum Length*: `255` |
 | `type` | [`string \| undefined`](/doc/models/order-line-item-discount-type.md) | Optional | Indicates how the discount is applied to the associated line item or order. |
 | `percentage` | `string \| undefined` | Optional | The percentage of the discount, as a string representation of a decimal number.<br>A value of `7.25` corresponds to a percentage of 7.25%.<br><br>`percentage` is not set for amount-based discounts.<br>**Constraints**: *Maximum Length*: `10` |
@@ -34,9 +35,9 @@ amount contributed by the item to the order subtotal.
 {
   "uid": "uid0",
   "catalog_object_id": "catalog_object_id6",
+  "catalog_version": 126,
   "name": "name0",
-  "type": "UNKNOWN_DISCOUNT",
-  "percentage": "percentage8"
+  "type": "UNKNOWN_DISCOUNT"
 }
 ```
 

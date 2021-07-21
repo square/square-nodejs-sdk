@@ -2,7 +2,7 @@
 # Loyalty Account
 
 Describes a loyalty account. For more information, see
-[Loyalty Overview](https://developer.squareup.com/docs/loyalty/overview).
+[Manage Loyalty Accounts Using the Loyalty API](https://developer.squareup.com/docs/loyalty-api/overview).
 
 ## Structure
 

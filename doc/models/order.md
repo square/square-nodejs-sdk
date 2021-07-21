@@ -20,7 +20,7 @@ itemization data.
 | `locationId` | `string` | Required | The ID of the seller location that this order is associated with.<br>**Constraints**: *Minimum Length*: `1` |
 | `referenceId` | `string \| undefined` | Optional | A client-specified ID to associate an entity in another system<br>with this order.<br>**Constraints**: *Maximum Length*: `40` |
 | `source` | [`OrderSource \| undefined`](/doc/models/order-source.md) | Optional | Represents the origination details of an order. |
-| `customerId` | `string \| undefined` | Optional | The ID of the [customer](/doc/models/customer.md) associated with the order.<br>**Constraints**: *Maximum Length*: `191` |
+| `customerId` | `string \| undefined` | Optional | The ID of the [customer](/doc/models/customer.md) associated with the order.<br><br>__IMPORTANT:__ You should specify a `customer_id` if you want the corresponding payment transactions<br>to be explicitly linked to the customer in the Seller Dashboard. If this field is omitted, the<br>`customer_id` assigned to any underlying `Payment` objects is ignored and might result in the<br>creation of new [instant profiles](https://developer.squareup.com/docs/customers-api/what-it-does#instant-profiles).<br>**Constraints**: *Maximum Length*: `191` |
 | `lineItems` | [`OrderLineItem[] \| undefined`](/doc/models/order-line-item.md) | Optional | The line items included in the order. |
 | `taxes` | [`OrderLineItemTax[] \| undefined`](/doc/models/order-line-item-tax.md) | Optional | The list of all taxes associated with the order.<br><br>Taxes can be scoped to either `ORDER` or `LINE_ITEM`. For taxes with `LINE_ITEM` scope, an<br>`OrderLineItemAppliedTax` must be added to each line item that the tax applies to. For taxes<br>with `ORDER` scope, the server generates an `OrderLineItemAppliedTax` for every line item.<br><br>On reads, each tax in the list includes the total amount of that tax applied to the order.<br><br>__IMPORTANT__: If `LINE_ITEM` scope is set on any taxes in this field, using the deprecated<br>`line_items.taxes` field results in an error. Use `line_items.applied_taxes`<br>instead. |
 | `discounts` | [`OrderLineItemDiscount[] \| undefined`](/doc/models/order-line-item-discount.md) | Optional | The list of all discounts associated with the order.<br><br>Discounts can be scoped to either `ORDER` or `LINE_ITEM`. For discounts scoped to `LINE_ITEM`,<br>an `OrderLineItemAppliedDiscount` must be added to each line item that the discount applies to.<br>For discounts with `ORDER` scope, the server generates an `OrderLineItemAppliedDiscount`<br>for every line item.<br><br>__IMPORTANT__: If `LINE_ITEM` scope is set on any discounts in this field, using the deprecated<br>`line_items.discounts` field results in an error. Use `line_items.applied_discounts`<br>instead. |
@@ -73,7 +73,8 @@ itemization data.
           "volume_unit": "GENERIC_PINT",
           "weight_unit": "METRIC_KILOGRAM"
         },
-        "precision": 199
+        "precision": 199,
+        "catalog_version": 133
       },
       "note": "note5",
       "catalog_object_id": "catalog_object_id7"
@@ -93,7 +94,8 @@ itemization data.
           "volume_unit": "GENERIC_QUART",
           "weight_unit": "METRIC_GRAM"
         },
-        "precision": 200
+        "precision": 200,
+        "catalog_version": 134
       },
       "note": "note6",
       "catalog_object_id": "catalog_object_id6"
@@ -113,7 +115,8 @@ itemization data.
           "volume_unit": "GENERIC_GALLON",
           "weight_unit": "METRIC_MILLIGRAM"
         },
-        "precision": 201
+        "precision": 201,
+        "catalog_version": 135
       },
       "note": "note7",
       "catalog_object_id": "catalog_object_id5"

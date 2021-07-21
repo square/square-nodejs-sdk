@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { bigint, lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /** A [CatalogModifier]($m/CatalogModifier). */
@@ -7,6 +7,8 @@ export interface OrderLineItemModifier {
   uid?: string;
   /** The catalog object ID referencing [CatalogModifier]($m/CatalogModifier). */
   catalogObjectId?: string;
+  /** The version of the catalog object that this modifier references. */
+  catalogVersion?: bigint;
   /** The name of the item modifier. */
   name?: string;
   /**
@@ -33,6 +35,7 @@ export const orderLineItemModifierSchema: Schema<OrderLineItemModifier> = object
   {
     uid: ['uid', optional(string())],
     catalogObjectId: ['catalog_object_id', optional(string())],
+    catalogVersion: ['catalog_version', optional(bigint())],
     name: ['name', optional(string())],
     basePriceMoney: ['base_price_money', optional(lazy(() => moneySchema))],
     totalPriceMoney: ['total_price_money', optional(lazy(() => moneySchema))],

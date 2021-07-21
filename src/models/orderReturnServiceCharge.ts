@@ -1,5 +1,6 @@
 import {
   array,
+  bigint,
   boolean,
   lazy,
   object,
@@ -27,6 +28,8 @@ export interface OrderReturnServiceCharge {
   name?: string;
   /** The catalog object ID of the associated [OrderServiceCharge]($m/OrderServiceCharge). */
   catalogObjectId?: string;
+  /** The version of the catalog object that this service charge references. */
+  catalogVersion?: bigint;
   /**
    * The percentage of the service charge, as a string representation of
    * a decimal number. For example, a value of `"7.25"` corresponds to a
@@ -97,6 +100,7 @@ export const orderReturnServiceChargeSchema: Schema<OrderReturnServiceCharge> = 
     sourceServiceChargeUid: ['source_service_charge_uid', optional(string())],
     name: ['name', optional(string())],
     catalogObjectId: ['catalog_object_id', optional(string())],
+    catalogVersion: ['catalog_version', optional(bigint())],
     percentage: ['percentage', optional(string())],
     amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
     appliedMoney: ['applied_money', optional(lazy(() => moneySchema))],

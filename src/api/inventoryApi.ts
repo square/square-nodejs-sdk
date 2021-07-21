@@ -39,10 +39,37 @@ import {
   RetrieveInventoryPhysicalCountResponse,
   retrieveInventoryPhysicalCountResponseSchema,
 } from '../models/retrieveInventoryPhysicalCountResponse';
+import {
+  RetrieveInventoryTransferResponse,
+  retrieveInventoryTransferResponseSchema,
+} from '../models/retrieveInventoryTransferResponse';
 import { optional, string } from '../schema';
 import { BaseApi } from './baseApi';
 
 export class InventoryApi extends BaseApi {
+  /**
+   * Deprecated version of [RetrieveInventoryAdjustment]($e/Inventory/RetrieveInventoryAdjustment) after
+   * the endpoint URL
+   * is updated to conform to the standard convention.
+   *
+   * @param adjustmentId  ID of the [InventoryAdjustment]($m/InventoryAdjustment) to retrieve.
+   * @return Response from the API call
+   * @deprecated
+   */
+  async deprecatedRetrieveInventoryAdjustment(
+    adjustmentId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<RetrieveInventoryAdjustmentResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ adjustmentId: [adjustmentId, string()] });
+    req.appendTemplatePath`/v2/inventory/adjustment/${mapped.adjustmentId}`;
+    req.deprecated('InventoryApi.deprecatedRetrieveInventoryAdjustment');
+    return req.callAsJson(
+      retrieveInventoryAdjustmentResponseSchema,
+      requestOptions
+    );
+  }
+
   /**
    * Returns the [InventoryAdjustment]($m/InventoryAdjustment) object
    * with the provided `adjustment_id`.
@@ -56,9 +83,92 @@ export class InventoryApi extends BaseApi {
   ): Promise<ApiResponse<RetrieveInventoryAdjustmentResponse>> {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ adjustmentId: [adjustmentId, string()] });
-    req.appendTemplatePath`/v2/inventory/adjustment/${mapped.adjustmentId}`;
+    req.appendTemplatePath`/v2/inventory/adjustments/${mapped.adjustmentId}`;
     return req.callAsJson(
       retrieveInventoryAdjustmentResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Deprecated version of [BatchChangeInventory]($e/Inventory/BatchChangeInventory) after the endpoint
+   * URL
+   * is updated to conform to the standard convention.
+   *
+   * @param body An object containing the fields to POST for the request.  See
+   *                                                   the corresponding object definition for field details.
+   * @return Response from the API call
+   * @deprecated
+   */
+  async deprecatedBatchChangeInventory(
+    body: BatchChangeInventoryRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<BatchChangeInventoryResponse>> {
+    const req = this.createRequest('POST', '/v2/inventory/batch-change');
+    const mapped = req.prepareArgs({
+      body: [body, batchChangeInventoryRequestSchema],
+    });
+    req.json(mapped.body);
+    req.deprecated('InventoryApi.deprecatedBatchChangeInventory');
+    return req.callAsJson(batchChangeInventoryResponseSchema, requestOptions);
+  }
+
+  /**
+   * Deprecated version of [BatchRetrieveInventoryChanges]($e/Inventory/BatchRetrieveInventoryChanges)
+   * after the endpoint URL
+   * is updated to conform to the standard convention.
+   *
+   * @param body An object containing the fields to POST for the
+   *                                                            request.  See the corresponding object definition for
+   *                                                            field details.
+   * @return Response from the API call
+   * @deprecated
+   */
+  async deprecatedBatchRetrieveInventoryChanges(
+    body: BatchRetrieveInventoryChangesRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<BatchRetrieveInventoryChangesResponse>> {
+    const req = this.createRequest(
+      'POST',
+      '/v2/inventory/batch-retrieve-changes'
+    );
+    const mapped = req.prepareArgs({
+      body: [body, batchRetrieveInventoryChangesRequestSchema],
+    });
+    req.json(mapped.body);
+    req.deprecated('InventoryApi.deprecatedBatchRetrieveInventoryChanges');
+    return req.callAsJson(
+      batchRetrieveInventoryChangesResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Deprecated version of [BatchRetrieveInventoryCounts]($e/Inventory/BatchRetrieveInventoryCounts)
+   * after the endpoint URL
+   * is updated to conform to the standard convention.
+   *
+   * @param body An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
+   * @return Response from the API call
+   * @deprecated
+   */
+  async deprecatedBatchRetrieveInventoryCounts(
+    body: BatchRetrieveInventoryCountsRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<BatchRetrieveInventoryCountsResponse>> {
+    const req = this.createRequest(
+      'POST',
+      '/v2/inventory/batch-retrieve-counts'
+    );
+    const mapped = req.prepareArgs({
+      body: [body, batchRetrieveInventoryCountsRequestSchema],
+    });
+    req.json(mapped.body);
+    req.deprecated('InventoryApi.deprecatedBatchRetrieveInventoryCounts');
+    return req.callAsJson(
+      batchRetrieveInventoryCountsResponseSchema,
       requestOptions
     );
   }
@@ -78,7 +188,10 @@ export class InventoryApi extends BaseApi {
     body: BatchChangeInventoryRequest,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<BatchChangeInventoryResponse>> {
-    const req = this.createRequest('POST', '/v2/inventory/batch-change');
+    const req = this.createRequest(
+      'POST',
+      '/v2/inventory/changes/batch-create'
+    );
     const mapped = req.prepareArgs({
       body: [body, batchChangeInventoryRequestSchema],
     });
@@ -107,7 +220,7 @@ export class InventoryApi extends BaseApi {
   ): Promise<ApiResponse<BatchRetrieveInventoryChangesResponse>> {
     const req = this.createRequest(
       'POST',
-      '/v2/inventory/batch-retrieve-changes'
+      '/v2/inventory/changes/batch-retrieve'
     );
     const mapped = req.prepareArgs({
       body: [body, batchRetrieveInventoryChangesRequestSchema],
@@ -143,7 +256,7 @@ export class InventoryApi extends BaseApi {
   ): Promise<ApiResponse<BatchRetrieveInventoryCountsResponse>> {
     const req = this.createRequest(
       'POST',
-      '/v2/inventory/batch-retrieve-counts'
+      '/v2/inventory/counts/batch-retrieve'
     );
     const mapped = req.prepareArgs({
       body: [body, batchRetrieveInventoryCountsRequestSchema],
@@ -151,6 +264,31 @@ export class InventoryApi extends BaseApi {
     req.json(mapped.body);
     return req.callAsJson(
       batchRetrieveInventoryCountsResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Deprecated version of [RetrieveInventoryPhysicalCount]($e/Inventory/RetrieveInventoryPhysicalCount)
+   * after the endpoint URL
+   * is updated to conform to the standard convention.
+   *
+   * @param physicalCountId   ID of the [InventoryPhysicalCount]($m/InventoryPhysicalCount) to retrieve.
+   * @return Response from the API call
+   * @deprecated
+   */
+  async deprecatedRetrieveInventoryPhysicalCount(
+    physicalCountId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<RetrieveInventoryPhysicalCountResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({
+      physicalCountId: [physicalCountId, string()],
+    });
+    req.appendTemplatePath`/v2/inventory/physical-count/${mapped.physicalCountId}`;
+    req.deprecated('InventoryApi.deprecatedRetrieveInventoryPhysicalCount');
+    return req.callAsJson(
+      retrieveInventoryPhysicalCountResponseSchema,
       requestOptions
     );
   }
@@ -170,9 +308,29 @@ export class InventoryApi extends BaseApi {
     const mapped = req.prepareArgs({
       physicalCountId: [physicalCountId, string()],
     });
-    req.appendTemplatePath`/v2/inventory/physical-count/${mapped.physicalCountId}`;
+    req.appendTemplatePath`/v2/inventory/physical-counts/${mapped.physicalCountId}`;
     return req.callAsJson(
       retrieveInventoryPhysicalCountResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Returns the [InventoryTransfer]($m/InventoryTransfer) object
+   * with the provided `transfer_id`.
+   *
+   * @param transferId  ID of the [InventoryTransfer]($m/InventoryTransfer) to retrieve.
+   * @return Response from the API call
+   */
+  async retrieveInventoryTransfer(
+    transferId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<RetrieveInventoryTransferResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ transferId: [transferId, string()] });
+    req.appendTemplatePath`/v2/inventory/transfers/${mapped.transferId}`;
+    return req.callAsJson(
+      retrieveInventoryTransferResponseSchema,
       requestOptions
     );
   }
@@ -215,6 +373,10 @@ export class InventoryApi extends BaseApi {
    * provided [CatalogObject]($m/CatalogObject) at the requested
    * [Location]($m/Location)s.
    *
+   * You can achieve the same result by calling
+   * [BatchRetrieveInventoryChanges]($e/Inventory/BatchRetrieveInventoryChanges)
+   * and having the `catalog_object_ids` list contain a single element of the `CatalogObject` ID.
+   *
    * Results are paginated and sorted in descending order according to their
    * `occurred_at` timestamp (newest first).
    *
@@ -230,6 +392,7 @@ export class InventoryApi extends BaseApi {
    *                                    [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)
    *                                    guide for more information.
    * @return Response from the API call
+   * @deprecated
    */
   async retrieveInventoryChanges(
     catalogObjectId: string,
@@ -246,6 +409,7 @@ export class InventoryApi extends BaseApi {
     req.query('location_ids', mapped.locationIds);
     req.query('cursor', mapped.cursor);
     req.appendTemplatePath`/v2/inventory/${mapped.catalogObjectId}/changes`;
+    req.deprecated('InventoryApi.retrieveInventoryChanges');
     return req.callAsJson(
       retrieveInventoryChangesResponseSchema,
       requestOptions

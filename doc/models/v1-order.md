@@ -44,19 +44,19 @@ V1Order
   "errors": [
     {
       "category": "AUTHENTICATION_ERROR",
-      "code": "UNPROCESSABLE_ENTITY",
+      "code": "NOT_ACCEPTABLE",
       "detail": "detail1",
       "field": "field9"
     },
     {
       "category": "INVALID_REQUEST_ERROR",
-      "code": "RATE_LIMITED",
+      "code": "REQUEST_TIMEOUT",
       "detail": "detail2",
       "field": "field0"
     },
     {
       "category": "RATE_LIMIT_ERROR",
-      "code": "NOT_IMPLEMENTED",
+      "code": "CONFLICT",
       "detail": "detail3",
       "field": "field1"
     }

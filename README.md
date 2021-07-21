@@ -8,7 +8,7 @@ Use this JavaScript library to manage Square resources (such as payments, orders
 
 ## Requirements
 
-The SDK requires [Node.js](https://nodejs.org/en/) version 10 or later and does not support being used in browsers / frontend applications.
+The SDK requires [Node.js](https://nodejs.org/en/) version 10 or later.
 
 We intend to update the SDK to support the current and LTS versions of Node.js while dropping support for versions that have reached their EOL.
 

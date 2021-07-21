@@ -1,4 +1,4 @@
-import { lazy, number, object, optional, Schema } from '../schema';
+import { bigint, lazy, number, object, optional, Schema } from '../schema';
 import { MeasurementUnit, measurementUnitSchema } from './measurementUnit';
 
 /**
@@ -19,6 +19,11 @@ export interface OrderQuantityUnit {
    * Min: 0. Max: 5.
    */
   precision?: number;
+  /**
+   * The version of the catalog object that this measurement unit references.
+   * This field is set when this is a catalog-backed measurement unit.
+   */
+  catalogVersion?: bigint;
 }
 
 export const orderQuantityUnitSchema: Schema<OrderQuantityUnit> = object({
@@ -27,4 +32,5 @@ export const orderQuantityUnitSchema: Schema<OrderQuantityUnit> = object({
     optional(lazy(() => measurementUnitSchema)),
   ],
   precision: ['precision', optional(number())],
+  catalogVersion: ['catalog_version', optional(bigint())],
 });

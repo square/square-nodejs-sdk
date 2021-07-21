@@ -18,7 +18,7 @@
 | `createdAt` | `string \| undefined` | Optional | The time when the location was created, in RFC 3339 format. |
 | `merchantId` | `string \| undefined` | Optional | The ID of the merchant that owns the location. |
 | `country` | [`string \| undefined`](/doc/models/country.md) | Optional | Indicates the country associated with another entity, such as a business.<br>Values are in [ISO 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm). |
-| `languageCode` | `string \| undefined` | Optional | The language associated with the location, in<br>[BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A). |
+| `languageCode` | `string \| undefined` | Optional | The language associated with the location, in<br>[BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A).<br>For more information, see [Location language code](https://developer.squareup.com/docs/locations-api#location-language-code). |
 | `currency` | [`string \| undefined`](/doc/models/currency.md) | Optional | Indicates the associated currency for an amount of money. Values correspond<br>to [ISO 4217](https://wikipedia.org/wiki/ISO_4217). |
 | `phoneNumber` | `string \| undefined` | Optional | The phone number of the location in human readable format. |
 | `businessName` | `string \| undefined` | Optional | The business name of the location<br>This is the name visible to the customers of the location.<br>For example, this name appears on customer receipts. |
@@ -35,6 +35,7 @@
 | `posBackgroundUrl` | `string \| undefined` | Optional | The URL of the Point of Sale background image for the location. |
 | `mcc` | `string \| undefined` | Optional | The merchant category code (MCC) of the location, as standardized by ISO 18245.<br>The MCC describes the kind of goods or services sold at the location. |
 | `fullFormatLogoUrl` | `string \| undefined` | Optional | The URL of a full-format logo image for the location. The Seller must choose this logo in the<br>Seller dashboard (Receipts section) for the logo to appear on transactions (such as receipts, invoices)<br>that Square generates on behalf of the Seller. This image can have an aspect ratio of 2:1 or greater<br>and is recommended to be at least 1280x648 pixels. |
+| `taxIds` | [`TaxIds \| undefined`](/doc/models/tax-ids.md) | Optional | The tax IDs that a Location is operating under. |
 
 ## Example (as JSON)
 

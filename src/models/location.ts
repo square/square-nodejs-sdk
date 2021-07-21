@@ -2,6 +2,7 @@ import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Address, addressSchema } from './address';
 import { BusinessHours, businessHoursSchema } from './businessHours';
 import { Coordinates, coordinatesSchema } from './coordinates';
+import { TaxIds, taxIdsSchema } from './taxIds';
 
 export interface Location {
   /** The Square-issued ID of the location. */
@@ -39,6 +40,7 @@ export interface Location {
   /**
    * The language associated with the location, in
    * [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A).
+   * For more information, see [Location language code](https://developer.squareup.com/docs/locations-api#location-language-code).
    */
   languageCode?: string;
   /**
@@ -97,6 +99,8 @@ export interface Location {
    * and is recommended to be at least 1280x648 pixels.
    */
   fullFormatLogoUrl?: string;
+  /** The tax IDs that a Location is operating under. */
+  taxIds?: TaxIds;
 }
 
 export const locationSchema: Schema<Location> = object({
@@ -126,4 +130,5 @@ export const locationSchema: Schema<Location> = object({
   posBackgroundUrl: ['pos_background_url', optional(string())],
   mcc: ['mcc', optional(string())],
   fullFormatLogoUrl: ['full_format_logo_url', optional(string())],
+  taxIds: ['tax_ids', optional(lazy(() => taxIdsSchema))],
 });

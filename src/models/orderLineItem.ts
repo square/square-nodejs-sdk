@@ -1,4 +1,13 @@
-import { array, dict, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  bigint,
+  dict,
+  lazy,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 import {
   OrderLineItemAppliedDiscount,
@@ -48,6 +57,8 @@ export interface OrderLineItem {
   note?: string;
   /** The [CatalogItemVariation]($m/CatalogItemVariation) ID applied to this line item. */
   catalogObjectId?: string;
+  /** The version of the catalog object that this line item references. */
+  catalogVersion?: bigint;
   /** The name of the variation applied to this line item. */
   variationName?: string;
   /** Represents the line item type. */
@@ -166,6 +177,7 @@ export const orderLineItemSchema: Schema<OrderLineItem> = object({
   ],
   note: ['note', optional(string())],
   catalogObjectId: ['catalog_object_id', optional(string())],
+  catalogVersion: ['catalog_version', optional(bigint())],
   variationName: ['variation_name', optional(string())],
   itemType: ['item_type', optional(string())],
   metadata: ['metadata', optional(dict(string()))],
