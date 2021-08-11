@@ -78,6 +78,9 @@ const newClient = client.withConfiguration({
 * [Disputes]
 * [Checkout]
 * [Apple Pay]
+* [Cards]
+
+### Terminal
 * [Terminal]
 
 ### Orders
@@ -101,6 +104,10 @@ const newClient = client.withConfiguration({
 ### Loyalty
 * [Loyalty]
 
+### Gift Cards
+* [Gift Cards]
+* [Gift Card Activities]
+
 ### Bookings
 * [Bookings]
 
@@ -108,12 +115,11 @@ const newClient = client.withConfiguration({
 * [Merchants]
 * [Locations]
 * [Devices]
+* [Cash Drawers]
 
 ### Team
 * [Team]
-* [Employees]
 * [Labor]
-* [Cash Drawers]
 
 ### Financials
 * [Bank Accounts]
@@ -127,6 +133,7 @@ const newClient = client.withConfiguration({
 * [OAuth]
 
 ### Deprecated APIs
+* [Employees]
 * [V1 Employees]
 * [V1 Transactions]
 * [V1 Items]
@@ -516,12 +523,15 @@ You can also use the Square API to create applications or services that work wit
 [Inventory]: doc/api/inventory.md
 [Labor]: doc/api/labor.md
 [Loyalty]: doc/api/loyalty.md
+[Gift Cards]: doc/api/gift-cards.md
+[Gift Card Activities]: doc/api/gift-card-activities.md
 [Bookings]: doc/api/bookings.md
 [Locations]: doc/api/locations.md
 [Merchants]: doc/api/merchants.md
 [Orders]: doc/api/orders.md
 [Invoices]: doc/api/invoices.md
 [Apple Pay]: doc/api/apple-pay.md
+[Cards]: doc/api/cards.md
 [Refunds]: doc/api/refunds.md
 [Subscriptions]: doc/api/subscriptions.md
 [Mobile Authorization]: doc/api/mobile-authorization.md
