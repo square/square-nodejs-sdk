@@ -119,7 +119,6 @@ const newClient = client.withConfiguration({
 
 ### Team
 * [Team]
-* [Employees]
 * [Labor]
 
 ### Financials
@@ -134,6 +133,7 @@ const newClient = client.withConfiguration({
 * [OAuth]
 
 ### Deprecated APIs
+* [Employees]
 * [V1 Employees]
 * [V1 Transactions]
 * [V1 Items]
