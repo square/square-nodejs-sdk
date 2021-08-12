@@ -1,0 +1,33 @@
+# This workflow will trigger an automerge
+# Checks PR title, author, and branch name.
+# If the properties match a generated SDK PR,
+# corresponding labels are applied with labeler
+# and triggers automerge.
+
+name: Automerge
+on:
+  pull_request:
+    branches: [ master, main ]
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+  status: {}
+jobs:
+  labeler:
+    runs-on: ubuntu-latest
+    steps:
+      - name: automerge-labeler
+        uses: fuxingloh/multi-labeler@v1
+
+  automerge:
+    needs: labeler
+    runs-on: ubuntu-latest
+    steps:
+      - name: automerge
+        uses: "pascalgn/automerge-action@v0.14.2"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: "automerge,automerge-branch,automerge-author"
