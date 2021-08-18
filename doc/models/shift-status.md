@@ -1,7 +1,7 @@
 
 # Shift Status
 
-Enumerates the possible status of a `Shift`
+Enumerates the possible status of a `Shift`.
 
 ## Enumeration
 

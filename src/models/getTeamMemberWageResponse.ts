@@ -3,13 +3,13 @@ import { Error, errorSchema } from './error';
 import { TeamMemberWage, teamMemberWageSchema } from './teamMemberWage';
 
 /**
- * A response to a request to get a `TeamMemberWage`. Contains
- * the requested `TeamMemberWage` objects. May contain a set of `Error` objects if
+ * A response to a request to get a `TeamMemberWage`. The response contains
+ * the requested `TeamMemberWage` objects and might contain a set of `Error` objects if
  * the request resulted in errors.
  */
 export interface GetTeamMemberWageResponse {
   /**
-   * The hourly wage rate that a team member will earn on a `Shift` for doing the job
+   * The hourly wage rate that a team member earns on a `Shift` for doing the job
    * specified by the `title` property of this object.
    */
   teamMemberWage?: TeamMemberWage;

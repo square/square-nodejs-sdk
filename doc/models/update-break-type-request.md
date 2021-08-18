@@ -1,7 +1,7 @@
 
 # Update Break Type Request
 
-A request to update a `BreakType`
+A request to update a `BreakType`.
 
 ## Structure
 

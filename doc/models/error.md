@@ -23,7 +23,7 @@ See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-
 ```json
 {
   "category": "RATE_LIMIT_ERROR",
-  "code": "EXPECTED_OBJECT",
+  "code": "ARRAY_EMPTY",
   "detail": "detail6",
   "field": "field6"
 }

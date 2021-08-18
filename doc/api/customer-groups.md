@@ -24,6 +24,7 @@ Retrieves the list of customer groups of a business.
 ```ts
 async listCustomerGroups(
   cursor?: string,
+  limit?: number,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<ListCustomerGroupsResponse>>
 ```
@@ -33,6 +34,7 @@ async listCustomerGroups(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for your original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `limit` | `number \| undefined` | Query, Optional | The maximum number of results to return in a single page. This limit is advisory. The response might contain more or fewer results.<br>The limit is ignored if it is less than 1 or greater than 50. The default value is 50.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -43,8 +45,9 @@ async listCustomerGroups(
 
 ```ts
 const cursor = 'cursor6';
+const limit = 172;
 try {
-  const { result, ...httpResponse } = await customerGroupsApi.listCustomerGroups(cursor);
+  const { result, ...httpResponse } = await customerGroupsApi.listCustomerGroups(cursor, limit);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

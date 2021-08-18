@@ -9,7 +9,7 @@ import { TimeRange, timeRangeSchema } from './timeRange';
 export interface ShiftFilter {
   /** Fetch shifts for the specified location. */
   locationIds: string[];
-  /** Fetch shifts for the specified employees. DEPRECATED at version 2020-08-26. Use `team_member_ids` instead */
+  /** Fetch shifts for the specified employees. DEPRECATED at version 2020-08-26. Use `team_member_ids` instead. */
   employeeIds?: string[];
   /** Specifies the `status` of `Shift` records to be returned. */
   status?: string;
@@ -34,7 +34,7 @@ export interface ShiftFilter {
    * a `Shift` must start or end in before passing the filter condition.
    */
   workday?: ShiftWorkday;
-  /** Fetch shifts for the specified team members. Replaced `employee_ids` at version "2020-08-26" */
+  /** Fetch shifts for the specified team members. Replaced `employee_ids` at version "2020-08-26". */
   teamMemberIds: string[];
 }
 

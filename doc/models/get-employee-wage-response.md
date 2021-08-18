@@ -1,8 +1,8 @@
 
 # Get Employee Wage Response
 
-A response to a request to get an `EmployeeWage`. Contains
-the requested `EmployeeWage` objects. May contain a set of `Error` objects if
+A response to a request to get an `EmployeeWage`. The response contains
+the requested `EmployeeWage` objects and might contain a set of `Error` objects if
 the request resulted in errors.
 
 ## Structure
@@ -13,7 +13,7 @@ the request resulted in errors.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `employeeWage` | [`EmployeeWage \| undefined`](/doc/models/employee-wage.md) | Optional | The hourly wage rate that an employee will earn on a `Shift` for doing the job<br>specified by the `title` property of this object. Deprecated at version 2020-08-26. Use `TeamMemberWage` instead. |
+| `employeeWage` | [`EmployeeWage \| undefined`](/doc/models/employee-wage.md) | Optional | The hourly wage rate that an employee earns on a `Shift` for doing the job<br>specified by the `title` property of this object. Deprecated at version 2020-08-26. Use `TeamMemberWage` instead. |
 | `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)

@@ -96,8 +96,9 @@ export class GiftCardsApi extends BaseApi {
   }
 
   /**
-   * Creates a digital gift card. You must activate the gift card before
-   * it can be used. For more information, see
+   * Creates a digital gift card or registers a physical (plastic) gift card. You must activate the gift
+   * card before
+   * it can be used for payment. For more information, see
    * [Selling gift cards](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api#selling-
    * square-gift-cards).
    *

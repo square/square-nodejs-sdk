@@ -5,7 +5,7 @@ import { Shift, shiftSchema } from './shift';
 export interface UpdateShiftRequest {
   /**
    * A record of the hourly rate, start, and end times for a single work shift
-   * for an employee. May include a record of the start and end times for breaks
+   * for an employee. This might include a record of the start and end times for breaks
    * taken during the shift.
    */
   shift: Shift;

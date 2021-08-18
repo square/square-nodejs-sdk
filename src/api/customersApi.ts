@@ -55,7 +55,7 @@ import {
   UpdateCustomerResponse,
   updateCustomerResponseSchema,
 } from '../models/updateCustomerResponse';
-import { bigint, optional, string } from '../schema';
+import { bigint, number, optional, string } from '../schema';
 import { BaseApi } from './baseApi';
 
 export class CustomersApi extends BaseApi {
@@ -69,13 +69,18 @@ export class CustomersApi extends BaseApi {
    * @param cursor     A pagination cursor returned by a previous call to this endpoint. Provide this cursor
    *                             to retrieve the next set of results for your original query.  For more information,
    *                             see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
-   * @param sortField  Indicates how customers should be sorted.  Default: `DEFAULT`.
+   * @param limit      The maximum number of results to return in a single page. This limit is advisory. The
+   *                             response might contain more or fewer results.  The limit is ignored if it is less than
+   *                             1 or greater than 100. The default value is 100.  For more information, see
+   *                             [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+   * @param sortField  Indicates how customers should be sorted.  The default value is `DEFAULT`.
    * @param sortOrder  Indicates whether customers should be sorted in ascending (`ASC`) or descending
-   *                             (`DESC`) order.  Default: `ASC`.
+   *                             (`DESC`) order.  The default value is `ASC`.
    * @return Response from the API call
    */
   async listCustomers(
     cursor?: string,
+    limit?: number,
     sortField?: string,
     sortOrder?: string,
     requestOptions?: RequestOptions
@@ -83,10 +88,12 @@ export class CustomersApi extends BaseApi {
     const req = this.createRequest('GET', '/v2/customers');
     const mapped = req.prepareArgs({
       cursor: [cursor, optional(string())],
+      limit: [limit, optional(number())],
       sortField: [sortField, optional(string())],
       sortOrder: [sortOrder, optional(string())],
     });
     req.query('cursor', mapped.cursor);
+    req.query('limit', mapped.limit);
     req.query('sort_field', mapped.sortField);
     req.query('sort_order', mapped.sortOrder);
     return req.callAsJson(listCustomersResponseSchema, requestOptions);
@@ -159,8 +166,8 @@ export class CustomersApi extends BaseApi {
    * the newly created profile.
    *
    * @param customerId  The ID of the customer to delete.
-   * @param version     The current version of the customer profile.   As a best practice, you should
-   *                              include this parameter to enable [optimistic concurrency](https://developer.squareup.
+   * @param version     The current version of the customer profile.  As a best practice, you should include
+   *                              this parameter to enable [optimistic concurrency](https://developer.squareup.
    *                              com/docs/working-with-apis/optimistic-concurrency) control.  For more information,
    *                              see [Delete a customer profile](https://developer.squareup.com/docs/customers-api/use-
    *                              the-api/keep-records#delete-customer-profile).

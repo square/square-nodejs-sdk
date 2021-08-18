@@ -1,8 +1,8 @@
 
 # List Break Types Response
 
-The response to a request for a set of `BreakTypes`. Contains
-the requested `BreakType` objects. May contain a set of `Error` objects if
+The response to a request for a set of `BreakType` objects. The response contains
+the requested `BreakType` objects and might contain a set of `Error` objects if
 the request resulted in errors.
 
 ## Structure
@@ -14,7 +14,7 @@ the request resulted in errors.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `breakTypes` | [`BreakType[] \| undefined`](/doc/models/break-type.md) | Optional | A page of `BreakType` results. |
-| `cursor` | `string \| undefined` | Optional | Value supplied in the subsequent request to fetch the next next page<br>of Break Type results. |
+| `cursor` | `string \| undefined` | Optional | The value supplied in the subsequent request to fetch the next page<br>of `BreakType` results. |
 | `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)

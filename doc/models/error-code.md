@@ -85,6 +85,8 @@ Square API.
 | `EXPIRATION_FAILURE` | The card expiration date is either invalid or indicates that the<br>card is expired. |
 | `CARD_NOT_SUPPORTED` | The card is not supported either in the geographic region or by<br>the [merchant category code](https://developer.squareup.com/docs/locations-api#initialize-a-merchant-category-code) (MCC). |
 | `INVALID_PIN` | The card issuer declined the request because the PIN is invalid. |
+| `MISSING_PIN` | The payment is missing a required PIN. |
+| `MISSING_ACCOUNT_TYPE` | The payment is missing a required ACCOUNT_TYPE parameter. |
 | `INVALID_POSTAL_CODE` | The postal code is incorrectly formatted. |
 | `INVALID_FEES` | The app_fee_money on a payment is too high. |
 | `MANUALLY_ENTERED_PAYMENT_NOT_SUPPORTED` | The card must be swiped, tapped, or dipped. Payments attempted by manually entering the card number are declined. |
