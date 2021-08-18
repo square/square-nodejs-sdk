@@ -1,9 +1,9 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { BreakType, breakTypeSchema } from './breakType';
 
-/** A request to create a new `BreakType` */
+/** A request to create a new `BreakType`. */
 export interface CreateBreakTypeRequest {
-  /** Unique string value to insure idempotency of the operation */
+  /** A unique string value to ensure the idempotency of the operation. */
   idempotencyKey?: string;
   /**
    * A defined break template that sets an expectation for possible `Break`

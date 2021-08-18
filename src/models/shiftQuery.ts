@@ -2,7 +2,7 @@ import { lazy, object, optional, Schema } from '../schema';
 import { ShiftFilter, shiftFilterSchema } from './shiftFilter';
 import { ShiftSort, shiftSortSchema } from './shiftSort';
 
-/** The parameters of a `Shift` search query. Includes filter and sort options. */
+/** The parameters of a `Shift` search query, which includes filter and sort options. */
 export interface ShiftQuery {
   /**
    * Defines a filter used in a search for `Shift` records. `AND` logic is

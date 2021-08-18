@@ -3,14 +3,14 @@ import { Error, errorSchema } from './error';
 import { WorkweekConfig, workweekConfigSchema } from './workweekConfig';
 
 /**
- * The response to a request to update a `WorkweekConfig` object. Contains
- * the updated `WorkweekConfig` object. May contain a set of `Error` objects if
+ * The response to a request to update a `WorkweekConfig` object. The response contains
+ * the updated `WorkweekConfig` object and might contain a set of `Error` objects if
  * the request resulted in errors.
  */
 export interface UpdateWorkweekConfigResponse {
   /**
-   * Sets the Day of the week and hour of the day that a business starts a
-   * work week. Used for the calculation of overtime pay.
+   * Sets the day of the week and hour of the day that a business starts a
+   * workweek. This is used to calculate overtime pay.
    */
   workweekConfig?: WorkweekConfig;
   /** Any errors that occurred during the request. */

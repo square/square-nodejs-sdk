@@ -25,19 +25,19 @@ V1PaymentTax
   "errors": [
     {
       "category": "AUTHENTICATION_ERROR",
-      "code": "NOT_ACCEPTABLE",
+      "code": "UNPROCESSABLE_ENTITY",
       "detail": "detail1",
       "field": "field9"
     },
     {
       "category": "INVALID_REQUEST_ERROR",
-      "code": "REQUEST_TIMEOUT",
+      "code": "RATE_LIMITED",
       "detail": "detail2",
       "field": "field0"
     },
     {
       "category": "RATE_LIMIT_ERROR",
-      "code": "CONFLICT",
+      "code": "NOT_IMPLEMENTED",
       "detail": "detail3",
       "field": "field1"
     }

@@ -3,14 +3,14 @@ import { Error, errorSchema } from './error';
 import { Shift, shiftSchema } from './shift';
 
 /**
- * The response to a request for `Shift` objects. Contains
- * the requested `Shift` objects. May contain a set of `Error` objects if
+ * The response to a request for `Shift` objects. The response contains
+ * the requested `Shift` objects and might contain a set of `Error` objects if
  * the request resulted in errors.
  */
 export interface SearchShiftsResponse {
-  /** Shifts */
+  /** Shifts. */
   shifts?: Shift[];
-  /** Opaque cursor for fetching the next page. */
+  /** An opaque cursor for fetching the next page. */
   cursor?: string;
   /** Any errors that occurred during the request. */
   errors?: Error[];

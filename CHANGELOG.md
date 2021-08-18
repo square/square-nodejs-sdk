@@ -1,48 +1,33 @@
 # Change Log
 
-## Version 13.0.0 (2021-07-21)
-## API updates
+## Version 13.1.0 (2021-08-18)
+## API updates 
 
-* **Orders  API:** 
-  * [OrderServiceCharge](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderServiceCharge) object. Added a new field, `type`. It identifies the service charge type.
+* **Customers API:**
+  * [Customer](https://developer.squareup.com/reference/square_2021-08-18/objects/Customer) object. The `version` field has moved to the [general availability](https://developer.squareup.com/docs/build-basics/api-lifecycle#general-availability) (GA) state. This field represents the current version of the customer profile and enables optimistic concurrency control. For more information, see [Customer profile versions and optimistic concurrency support.](https://developer.squareup.com/docs/customers-api/what-it-does#customer-profile-versions-and-optimistic-concurrency-support) 
+  * [ListCustomers](https://developer.squareup.com/reference/square_2021-08-18/customers-api/list-customers) endpoint. The new, optional `limit` query parameter can be used to specify the maximum number of results in a paginated response.
 
-  * [OrderQuantityUnit](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderQuantityUnit), 
-    [OrderLineItem](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderLineItem), 
-    [OrderLineItemDiscount](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderLineItemDiscount), 
-    [OrderLineItemModifier](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderLineItemModifier), 
-    [OrderLineItemTax](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderLineItemTax), 
-    [OrderServiceCharge](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderServiceCharge), 
-    [OrderReturnLineItem](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderReturnLineItem), 
-    [OrderReturnLineItemModifier](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderReturnLineItemModifier), 
-    [OrderReturnServiceCharge](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderReturnServiceCharge), 
-    [OrderReturnTax](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderReturnTax), and 
-    [OrderReturnDiscount](https://developer.squareup.com/reference/square_2021-07-21/objects/OrderReturnDiscount) objects. Added a new field, `catalog_version`.
-* **Locations API:**
-  * [Location](https://developer.squareup.com/reference/square_2021-07-21/objects/Location) object. Added a new field `tax_ids` of type `TaxIds`. In the current implementation, sellers in Ireland and France can configure tax IDs during the onboarding process. They can also provide the information later by updating the location information in the Seller Dashboard. These tax IDs appear in this field.
+* **Customer Groups API:**
+  * [ListCustomerGroups](https://developer.squareup.com/reference/square_2021-08-18/customer-groups-api/list-customer-groups) endpoint. The new, optional `limit` query parameter can be used to specify the maximum number of results in a paginated response.
+
+* **Customer Segments API:**
+  * [ListCustomerSegments](https://developer.squareup.com/reference/square_2021-08-18/customer-segments-api/list-customer-segments) endpoint. The new, optional `limit` query parameter can be used to specify the maximum number of results in a paginated response.
+
+* **Invoices API:**
+  * Square Invoices Plus is a monthly subscription plan that allows access to premium invoice features. After Invoices Plus is launched in September 2021, a subscription will be required to create invoices with custom fields and installment payments. For more information, including how to handle new errors, see [Premium features available with Invoices Plus.](https://developer.squareup.com/docs/invoices-api/overview#invoices-plus-subscription)
 
 * **Loyalty API:**
-  * As of July 15, 2021, the country in which the seller’s Square account is activated determines whether Square uses pretax or post-tax purchase amounts to calculate accrued points. This change supports consumption tax models, such as value-added tax (VAT). Previously, point accrual was based on pretax purchase amounts only. This change does not affect the existing point balance of loyalty accounts. For more information, see [Availability of Square Loyalty.](https://developer.squareup.com/docs/loyalty-api/overview#loyalty-market-availability)
-
-* **Payments API:** 
-  * [UpdatePayment](https://developer.squareup.com/reference/square_2021-07-21/payments-api/update-payment). The endpoint has moved to the [general availability](https://developer.squareup.com/docs/build-basics/api-lifecycle#general-availability) (GA) state. Also, you can now update gift card payments (similar to card, cash, and external payments).
-
-* **Subscriptions API:**
-  * The [Subscriptions API](https://developer.squareup.com/docs/subscriptions-api/overview) has moved to the [general availability](https://developer.squareup.com/docs/build-basics/api-lifecycle#general-availability) (GA) state.
-  * [CatalogSubscriptionPlan](https://developer.squareup.com/reference/square_2021-07-21/objects/CatalogSubscriptionPlan) object. The `name` and `price` are now write-once fields. You specify these values at the time  of creating a plan. After the plan is created, these fields cannot be updated. This makes a subscription plan immutable. 
-
-* **Inventory API:**
-  * [RetrieveInventoryTransfer.](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Retrieve-Inventory-Transfer) This new endpoint is introduced to support the retrieval of inventory transfer.
-  * [RetrieveInventoryChanges.](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Retrieve-Inventory-Changes) This endpoint is deprecated. Its support ends when it is retired in about 12 months.  
-  * The following endpoints have updated URLs to conform to the standard REST API convention. For more information about migrating deprecated URLs to updated URLs in your application, see [Inventory API: Migrate to Updated API Entities.](https://developer.squareup.com/docs/inventory-api/migrate-to-updated-api-entities)
-    * [RetrieveInventoryAdjustment](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Retrieve-Inventory-Adjustment)
-    * [BatchChangeInventory](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Batch-Change-Inventory)
-    * [BatchRetrieveInventoryChanges](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Batch-Retrieve-Inventory-Changes) 
-    * [BatchRetrieveInventoryCounts](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Batch-Retrieve-Inventory-Counts)
-    * [RetrieveInventoryPhysicalCount](https://developer.squareup.com/reference/square_2021-07-21/inventory-api/Retrieve-Inventory-Physical-Count)
+  * [LoyaltyAccount](https://developer.squareup.com/reference/square_2021-08-18/objects/LoyaltyAccount) object. Added a new `expiring_point_deadlines` field that specifies when points in the account balance are scheduled to expire. This field contains a list of [LoyaltyAccountExpiringPointDeadline](https://developer.squareup.com/reference/square_2021-08-18/objects/LoyaltyAccountExpiringPointDeadline) objects. For more information, see [Expiring points.](https://developer.squareup.com/docs/loyalty-api/overview#expiring-points)
 
 ## Documentation updates
-* **Webhooks.** Revised the steps and descriptions for creating and using webhooks. For more information, see [Webhooks Overview.](https://developer.squareup.com/docs/webhooks/overview)
 
+* [App Marketplace.](https://developer.squareup.com/docs/app-marketplace) Added the following topics:
+  * [How to apply.](https://developer.squareup.com/docs/app-marketplace#how-to-apply) Documented the process to list an application on the Square App Marketplace.
+  * [App Marketplace API Usage Requirements.](https://developer.squareup.com/docs/app-marketplace/requirements) Added a topic that describes a set of API usage requirements and recommendations for partner applications.   
+
+* [Automatic communications from Square about invoices.](https://developer.squareup.com/docs/invoices-api/overview#automatic-communication-from-square-to-customers) Documented the invoice-related communications sent from Square to customers and sellers. 
+
+* [Snippets best practices.](https://developer.squareup.com/docs/snippets-api/overview#best-practices) Documented best practices and additional requirements for snippets and applications that integrate with the Snippets API.
 
 
 ## Version 12.0.0 (2021-06-16)
