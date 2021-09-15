@@ -9,7 +9,7 @@ import { CustomerSort, customerSortSchema } from './customerSort';
 export interface CustomerQuery {
   /**
    * Represents a set of `CustomerQuery` filters used to limit the set of
-   * customers returned by the [SearchCustomers]($e/Customers/SearchCustomers) endpoint.
+   * `Customers` returned by `SearchCustomers`.
    */
   filter?: CustomerFilter;
   /** Specifies how searched customers profiles are sorted, including the sort key and sort order. */

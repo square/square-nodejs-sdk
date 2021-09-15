@@ -1,18 +1,18 @@
 import { number, object, optional, Schema, string } from '../schema';
 
-/** A request for a filtered set of `BreakType` objects. */
+/** A request for a filtered set of `BreakType` objects */
 export interface ListBreakTypesRequest {
   /**
-   * Filter the returned `BreakType` results to only those that are associated with the
+   * Filter Break Types returned to only those that are associated with the
    * specified location.
    */
   locationId?: string;
   /**
-   * The maximum number of `BreakType` results to return per page. The number can range between 1
-   * and 200. The default is 200.
+   * Maximum number of Break Types to return per page. Can range between 1
+   * and 200. The default is the maximum at 200.
    */
   limit?: number;
-  /** A pointer to the next page of `BreakType` results to fetch. */
+  /** Pointer to the next page of Break Type results to fetch. */
   cursor?: string;
 }
 

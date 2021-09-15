@@ -1,7 +1,7 @@
 
 # Shift Query
 
-The parameters of a `Shift` search query, which includes filter and sort options.
+The parameters of a `Shift` search query. Includes filter and sort options.
 
 ## Structure
 

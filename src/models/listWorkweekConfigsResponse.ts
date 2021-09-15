@@ -3,16 +3,16 @@ import { Error, errorSchema } from './error';
 import { WorkweekConfig, workweekConfigSchema } from './workweekConfig';
 
 /**
- * The response to a request for a set of `WorkweekConfig` objects. The response contains
- * the requested `WorkweekConfig` objects and might contain a set of `Error` objects if
+ * The response to a request for a set of `WorkweekConfig` objects. Contains
+ * the requested `WorkweekConfig` objects. May contain a set of `Error` objects if
  * the request resulted in errors.
  */
 export interface ListWorkweekConfigsResponse {
-  /** A page of `EmployeeWage` results. */
+  /** A page of Employee Wage results. */
   workweekConfigs?: WorkweekConfig[];
   /**
-   * The value supplied in the subsequent request to fetch the next page of
-   * `EmployeeWage` results.
+   * Value supplied in the subsequent request to fetch the next page of
+   * Employee Wage results.
    */
   cursor?: string;
   /** Any errors that occurred during the request. */

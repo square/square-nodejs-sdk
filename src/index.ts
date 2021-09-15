@@ -358,7 +358,6 @@ export { ListWorkweekConfigsRequest } from './models/listWorkweekConfigsRequest'
 export { ListWorkweekConfigsResponse } from './models/listWorkweekConfigsResponse';
 export { Location } from './models/location';
 export { LoyaltyAccount } from './models/loyaltyAccount';
-export { LoyaltyAccountExpiringPointDeadline } from './models/loyaltyAccountExpiringPointDeadline';
 export { LoyaltyAccountMapping } from './models/loyaltyAccountMapping';
 export { LoyaltyEvent } from './models/loyaltyEvent';
 export { LoyaltyEventAccumulatePoints } from './models/loyaltyEventAccumulatePoints';

@@ -1,33 +1,25 @@
 # Change Log
 
-## Version 13.1.0 (2021-08-18)
-## API updates 
+## Version 14.0.0 (2021-09-15)
+## API updates
 
-* **Customers API:**
-  * [Customer](https://developer.squareup.com/reference/square_2021-08-18/objects/Customer) object. The `version` field has moved to the [general availability](https://developer.squareup.com/docs/build-basics/api-lifecycle#general-availability) (GA) state. This field represents the current version of the customer profile and enables optimistic concurrency control. For more information, see [Customer profile versions and optimistic concurrency support.](https://developer.squareup.com/docs/customers-api/what-it-does#customer-profile-versions-and-optimistic-concurrency-support) 
-  * [ListCustomers](https://developer.squareup.com/reference/square_2021-08-18/customers-api/list-customers) endpoint. The new, optional `limit` query parameter can be used to specify the maximum number of results in a paginated response.
+* **Invoices API:** 
+  * [Invoice](https://developer.squareup.com/reference/square_2021-09-15/objects/Invoice) object. Added a new, optional `sale_or_service_date` field used to specify the date of the sale or the date that the service is rendered. If specified, this date is displayed on the invoice.
 
-* **Customer Groups API:**
-  * [ListCustomerGroups](https://developer.squareup.com/reference/square_2021-08-18/customer-groups-api/list-customer-groups) endpoint. The new, optional `limit` query parameter can be used to specify the maximum number of results in a paginated response.
+* **Orders API:**
+   * [CreateOrder](https://developer.squareup.com/reference/square_2021-09-15/orders-api/create-order). The endpoint now supports creating temporary, draft orders. For more information, see [Create a draft order.](https://developer.squareup.com/docs/orders-api/create-orders#create-a-draft-order)
+   * [CloneOrder](https://developer.squareup.com/reference/square_2021-09-15/orders-api/clone-order). The Orders API supports this new endpoint to clone an existing order. For more information, see [Clone an order.](https://developer.squareup.com/docs/orders-api/create-orders#clone-an-order)
+   * These fields have moved to the [general availability (GA)](https://developer.squareup.com/docs/build-basics/api-lifecycle#general-availability) state: [OrderLineItem.item_type](https://developer.squareup.com/reference/square_2021-09-15/objects/OrderLineItem#definition__property-item_type), [OrderServiceCharge.type](https://developer.squareup.com/reference/square_2021-09-15/objects/OrderServiceCharge#definition__property-type), and `catalog_version` field on every order type that contains this field.
 
-* **Customer Segments API:**
-  * [ListCustomerSegments](https://developer.squareup.com/reference/square_2021-08-18/customer-segments-api/list-customer-segments) endpoint. The new, optional `limit` query parameter can be used to specify the maximum number of results in a paginated response.
+* **Team API:**
+  * [SearchTeamMembersFilter](https://developer.squareup.com/reference/square_2021-09-15/objects/SearchTeamMembersFilter) object now has an `is_owner` field that when set, causes a team member search to return only the seller who owns a Square account.
 
-* **Invoices API:**
-  * Square Invoices Plus is a monthly subscription plan that allows access to premium invoice features. After Invoices Plus is launched in September 2021, a subscription will be required to create invoices with custom fields and installment payments. For more information, including how to handle new errors, see [Premium features available with Invoices Plus.](https://developer.squareup.com/docs/invoices-api/overview#invoices-plus-subscription)
-
-* **Loyalty API:**
-  * [LoyaltyAccount](https://developer.squareup.com/reference/square_2021-08-18/objects/LoyaltyAccount) object. Added a new `expiring_point_deadlines` field that specifies when points in the account balance are scheduled to expire. This field contains a list of [LoyaltyAccountExpiringPointDeadline](https://developer.squareup.com/reference/square_2021-08-18/objects/LoyaltyAccountExpiringPointDeadline) objects. For more information, see [Expiring points.](https://developer.squareup.com/docs/loyalty-api/overview#expiring-points)
+* **Terminal API:**
+  * [TerminalCheckout](https://developer.squareup.com/reference/square_2021-09-15/objects/TerminalCheckout) object.   The `customer_id` field is now GA. 
 
 ## Documentation updates
-
-* [App Marketplace.](https://developer.squareup.com/docs/app-marketplace) Added the following topics:
-  * [How to apply.](https://developer.squareup.com/docs/app-marketplace#how-to-apply) Documented the process to list an application on the Square App Marketplace.
-  * [App Marketplace API Usage Requirements.](https://developer.squareup.com/docs/app-marketplace/requirements) Added a topic that describes a set of API usage requirements and recommendations for partner applications.   
-
-* [Automatic communications from Square about invoices.](https://developer.squareup.com/docs/invoices-api/overview#automatic-communication-from-square-to-customers) Documented the invoice-related communications sent from Square to customers and sellers. 
-
-* [Snippets best practices.](https://developer.squareup.com/docs/snippets-api/overview#best-practices) Documented best practices and additional requirements for snippets and applications that integrate with the Snippets API.
+* **OAuth API:**
+  * Revised API descriptions for the ObtainToken and Authorize endpoints. Clarified that the Authorize endpoint is not a callable API but is used to direct the seller to the Square authorization page. For more information about the Authorize endpoint, see [Create the Redirect URL and Square Authorization Page URL.](https://developer.squareup.com/docs/oauth-api/create-urls-for-square-authorization)
 
 
 ## Version 12.0.0 (2021-06-16)

@@ -45,9 +45,9 @@ async listBreakTypes(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `locationId` | `string \| undefined` | Query, Optional | Filter the returned `BreakType` results to only those that are associated with the<br>specified location. |
-| `limit` | `number \| undefined` | Query, Optional | The maximum number of `BreakType` results to return per page. The number can range between 1<br>and 200. The default is 200. |
-| `cursor` | `string \| undefined` | Query, Optional | A pointer to the next page of `BreakType` results to fetch. |
+| `locationId` | `string \| undefined` | Query, Optional | Filter Break Types returned to only those that are associated with the<br>specified location. |
+| `limit` | `number \| undefined` | Query, Optional | Maximum number of Break Types to return per page. Can range between 1<br>and 200. The default is the maximum at 200. |
+| `cursor` | `string \| undefined` | Query, Optional | Pointer to the next page of Break Type results to fetch. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -86,7 +86,7 @@ endpoint:
 - `expected_duration`
 - `is_paid`
 
-You can only have three `BreakType` instances per location. If you attempt to add a fourth
+You can only have 3 `BreakType` instances per location. If you attempt to add a 4th
 `BreakType` for a location, an `INVALID_REQUEST_ERROR` "Exceeded limit of 3 breaks per location."
 is returned.
 
@@ -157,7 +157,7 @@ async deleteBreakType(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The UUID for the `BreakType` being deleted. |
+| `id` | `string` | Template, Required | UUID for the `BreakType` being deleted. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -183,7 +183,7 @@ try {
 
 # Get Break Type
 
-Returns a single `BreakType` specified by `id`.
+Returns a single `BreakType` specified by id.
 
 ```ts
 async getBreakType(
@@ -196,7 +196,7 @@ async getBreakType(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The UUID for the `BreakType` being retrieved. |
+| `id` | `string` | Template, Required | UUID for the `BreakType` being retrieved. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -236,7 +236,7 @@ async updateBreakType(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The UUID for the `BreakType` being updated. |
+| `id` | `string` | Template, Required | UUID for the `BreakType` being updated. |
 | `body` | [`UpdateBreakTypeRequest`](/doc/models/update-break-type-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -295,9 +295,9 @@ async listEmployeeWages(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `employeeId` | `string \| undefined` | Query, Optional | Filter the returned wages to only those that are associated with the specified employee. |
-| `limit` | `number \| undefined` | Query, Optional | The maximum number of `EmployeeWage` results to return per page. The number can range between<br>1 and 200. The default is 200. |
-| `cursor` | `string \| undefined` | Query, Optional | A pointer to the next page of `EmployeeWage` results to fetch. |
+| `employeeId` | `string \| undefined` | Query, Optional | Filter wages returned to only those that are associated with the specified employee. |
+| `limit` | `number \| undefined` | Query, Optional | Maximum number of Employee Wages to return per page. Can range between<br>1 and 200. The default is the maximum at 200. |
+| `cursor` | `string \| undefined` | Query, Optional | Pointer to the next page of Employee Wage results to fetch. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -327,7 +327,7 @@ try {
 
 **This endpoint is deprecated.**
 
-Returns a single `EmployeeWage` specified by `id`.
+Returns a single `EmployeeWage` specified by id.
 
 ```ts
 async getEmployeeWage(
@@ -340,7 +340,7 @@ async getEmployeeWage(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The UUID for the `EmployeeWage` being retrieved. |
+| `id` | `string` | Template, Required | UUID for the `EmployeeWage` being retrieved. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -368,7 +368,7 @@ try {
 
 Creates a new `Shift`.
 
-A `Shift` represents a complete workday for a single employee.
+A `Shift` represents a complete work day for a single employee.
 You must provide the following values in your request to this
 endpoint:
 
@@ -380,11 +380,11 @@ An attempt to create a new `Shift` can result in a `BAD_REQUEST` error when:
 
 - The `status` of the new `Shift` is `OPEN` and the employee has another
   shift with an `OPEN` status.
-- The `start_at` date is in the future.
-- The `start_at` or `end_at` date overlaps another shift for the same employee.
-- The `Break` instances are set in the request and a break `start_at`
-  is before the `Shift.start_at`, a break `end_at` is after
-  the `Shift.end_at`, or both.
+- The `start_at` date is in the future
+- the `start_at` or `end_at` overlaps another shift for the same employee
+- If `Break`s are set in the request, a break `start_at`
+  must not be before the `Shift.start_at`. A break `end_at` must not be after
+  the `Shift.end_at`
 
 ```ts
 async createShift(
@@ -464,19 +464,19 @@ try {
 Returns a paginated list of `Shift` records for a business.
 The list to be returned can be filtered by:
 
-- Location IDs.
-- Employee IDs.
-- Shift status (`OPEN` and `CLOSED`).
-- Shift start.
-- Shift end.
-- Workday details.
+- Location IDs **and**
+- employee IDs **and**
+- shift status (`OPEN`, `CLOSED`) **and**
+- shift start **and**
+- shift end **and**
+- work day details
 
 The list can be sorted by:
 
-- `start_at`.
-- `end_at`.
-- `created_at`.
-- `updated_at`.
+- `start_at`
+- `end_at`
+- `created_at`
+- `updated_at`
 
 ```ts
 async searchShifts(
@@ -570,7 +570,7 @@ async deleteShift(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The UUID for the `Shift` being deleted. |
+| `id` | `string` | Template, Required | UUID for the `Shift` being deleted. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -596,7 +596,7 @@ try {
 
 # Get Shift
 
-Returns a single `Shift` specified by `id`.
+Returns a single `Shift` specified by id.
 
 ```ts
 async getShift(
@@ -609,7 +609,7 @@ async getShift(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The UUID for the `Shift` being retrieved. |
+| `id` | `string` | Template, Required | UUID for the `Shift` being retrieved. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -637,10 +637,10 @@ try {
 
 Updates an existing `Shift`.
 
-When adding a `Break` to a `Shift`, any earlier `Break` instances in the `Shift` have
+When adding a `Break` to a `Shift`, any earlier `Breaks` in the `Shift` have
 the `end_at` property set to a valid RFC-3339 datetime string.
 
-When closing a `Shift`, all `Break` instances in the `Shift` must be complete with `end_at`
+When closing a `Shift`, all `Break` instances in the shift must be complete with `end_at`
 set on each `Break`.
 
 ```ts
@@ -655,7 +655,7 @@ async updateShift(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The ID of the object being updated. |
+| `id` | `string` | Template, Required | ID of the object being updated. |
 | `body` | [`UpdateShiftRequest`](/doc/models/update-shift-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -736,9 +736,9 @@ async listTeamMemberWages(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMemberId` | `string \| undefined` | Query, Optional | Filter the returned wages to only those that are associated with the<br>specified team member. |
-| `limit` | `number \| undefined` | Query, Optional | The maximum number of `TeamMemberWage` results to return per page. The number can range between<br>1 and 200. The default is 200. |
-| `cursor` | `string \| undefined` | Query, Optional | A pointer to the next page of `EmployeeWage` results to fetch. |
+| `teamMemberId` | `string \| undefined` | Query, Optional | Filter wages returned to only those that are associated with the<br>specified team member. |
+| `limit` | `number \| undefined` | Query, Optional | Maximum number of Team Member Wages to return per page. Can range between<br>1 and 200. The default is the maximum at 200. |
+| `cursor` | `string \| undefined` | Query, Optional | Pointer to the next page of Employee Wage results to fetch. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -766,7 +766,7 @@ try {
 
 # Get Team Member Wage
 
-Returns a single `TeamMemberWage` specified by `id`.
+Returns a single `TeamMemberWage` specified by id.
 
 ```ts
 async getTeamMemberWage(
@@ -779,7 +779,7 @@ async getTeamMemberWage(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The UUID for the `TeamMemberWage` being retrieved. |
+| `id` | `string` | Template, Required | UUID for the `TeamMemberWage` being retrieved. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -819,8 +819,8 @@ async listWorkweekConfigs(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `limit` | `number \| undefined` | Query, Optional | The maximum number of `WorkweekConfigs` results to return per page. |
-| `cursor` | `string \| undefined` | Query, Optional | A pointer to the next page of `WorkweekConfig` results to fetch. |
+| `limit` | `number \| undefined` | Query, Optional | Maximum number of Workweek Configs to return per page. |
+| `cursor` | `string \| undefined` | Query, Optional | Pointer to the next page of Workweek Config results to fetch. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -861,7 +861,7 @@ async updateWorkweekConfig(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string` | Template, Required | The UUID for the `WorkweekConfig` object being updated. |
+| `id` | `string` | Template, Required | UUID for the `WorkweekConfig` object being updated. |
 | `body` | [`UpdateWorkweekConfigRequest`](/doc/models/update-workweek-config-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 

@@ -1,8 +1,8 @@
 
 # Get Break Type Response
 
-The response to a request to get a `BreakType`. The response contains
-the requested `BreakType` objects and might contain a set of `Error` objects if
+The response to a request to get a `BreakType`. Contains
+the requested `BreakType` objects. May contain a set of `Error` objects if
 the request resulted in errors.
 
 ## Structure

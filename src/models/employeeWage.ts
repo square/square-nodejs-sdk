@@ -2,11 +2,11 @@ import { lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
- * The hourly wage rate that an employee earns on a `Shift` for doing the job
+ * The hourly wage rate that an employee will earn on a `Shift` for doing the job
  * specified by the `title` property of this object. Deprecated at version 2020-08-26. Use `TeamMemberWage` instead.
  */
 export interface EmployeeWage {
-  /** The UUID for this object. */
+  /** UUID for this object. */
   id?: string;
   /** The `Employee` that this wage is assigned to. */
   employeeId?: string;

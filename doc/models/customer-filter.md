@@ -2,7 +2,7 @@
 # Customer Filter
 
 Represents a set of `CustomerQuery` filters used to limit the set of
-customers returned by the [SearchCustomers](/doc/api/customers.md#search-customers) endpoint.
+`Customers` returned by `SearchCustomers`.
 
 ## Structure
 

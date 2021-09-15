@@ -1,7 +1,7 @@
 
 # List Workweek Configs Request
 
-A request for a set of `WorkweekConfig` objects.
+A request for a set of `WorkweekConfig` objects
 
 ## Structure
 
@@ -11,8 +11,8 @@ A request for a set of `WorkweekConfig` objects.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `limit` | `number \| undefined` | Optional | The maximum number of `WorkweekConfigs` results to return per page. |
-| `cursor` | `string \| undefined` | Optional | A pointer to the next page of `WorkweekConfig` results to fetch. |
+| `limit` | `number \| undefined` | Optional | Maximum number of Workweek Configs to return per page. |
+| `cursor` | `string \| undefined` | Optional | Pointer to the next page of Workweek Config results to fetch. |
 
 ## Example (as JSON)
 

@@ -1,8 +1,8 @@
 
 # List Team Member Wages Response
 
-The response to a request for a set of `TeamMemberWage` objects. The response contains
-a set of `TeamMemberWage` objects.
+The response to a request for a set of `TeamMemberWage` objects. Contains
+a set of `TeamMemberWage`.
 
 ## Structure
 
@@ -12,8 +12,8 @@ a set of `TeamMemberWage` objects.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMemberWages` | [`TeamMemberWage[] \| undefined`](/doc/models/team-member-wage.md) | Optional | A page of `TeamMemberWage` results. |
-| `cursor` | `string \| undefined` | Optional | The value supplied in the subsequent request to fetch the next page<br>of `TeamMemberWage` results. |
+| `teamMemberWages` | [`TeamMemberWage[] \| undefined`](/doc/models/team-member-wage.md) | Optional | A page of Team Member Wage results. |
+| `cursor` | `string \| undefined` | Optional | Value supplied in the subsequent request to fetch the next next page<br>of Team Member Wage results. |
 | `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)

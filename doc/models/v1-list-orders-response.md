@@ -20,19 +20,19 @@
       "errors": [
         {
           "category": "MERCHANT_SUBSCRIPTION_ERROR",
-          "code": "INVALID_PHONE_NUMBER",
+          "code": "INVALID_CONTENT_TYPE",
           "detail": "detail8",
           "field": "field6"
         },
         {
           "category": "API_ERROR",
-          "code": "CHECKOUT_EXPIRED",
+          "code": "INVALID_FORM_VALUE",
           "detail": "detail9",
           "field": "field7"
         },
         {
           "category": "AUTHENTICATION_ERROR",
-          "code": "BAD_CERTIFICATE",
+          "code": "CUSTOMER_NOT_FOUND",
           "detail": "detail0",
           "field": "field8"
         }
@@ -46,7 +46,7 @@
       "errors": [
         {
           "category": "API_ERROR",
-          "code": "CHECKOUT_EXPIRED",
+          "code": "INVALID_FORM_VALUE",
           "detail": "detail9",
           "field": "field7"
         }
