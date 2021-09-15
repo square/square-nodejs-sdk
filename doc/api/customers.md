@@ -33,7 +33,6 @@ profiles can take closer to one minute or longer, especially during network inci
 ```ts
 async listCustomers(
   cursor?: string,
-  limit?: number,
   sortField?: string,
   sortOrder?: string,
   requestOptions?: RequestOptions
@@ -45,9 +44,8 @@ async listCustomers(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for your original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
-| `limit` | `number \| undefined` | Query, Optional | The maximum number of results to return in a single page. This limit is advisory. The response might contain more or fewer results.<br>The limit is ignored if it is less than 1 or greater than 100. The default value is 100.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
-| `sortField` | [`string \| undefined`](/doc/models/customer-sort-field.md) | Query, Optional | Indicates how customers should be sorted.<br><br>The default value is `DEFAULT`. |
-| `sortOrder` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | Indicates whether customers should be sorted in ascending (`ASC`) or<br>descending (`DESC`) order.<br><br>The default value is `ASC`. |
+| `sortField` | [`string \| undefined`](/doc/models/customer-sort-field.md) | Query, Optional | Indicates how customers should be sorted.<br><br>Default: `DEFAULT`. |
+| `sortOrder` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | Indicates whether customers should be sorted in ascending (`ASC`) or<br>descending (`DESC`) order.<br><br>Default: `ASC`. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -58,11 +56,10 @@ async listCustomers(
 
 ```ts
 const cursor = 'cursor6';
-const limit = 172;
 const sortField = 'DEFAULT';
 const sortOrder = 'DESC';
 try {
-  const { result, ...httpResponse } = await customersApi.listCustomers(cursor, limit, sortField, sortOrder);
+  const { result, ...httpResponse } = await customersApi.listCustomers(cursor, sortField, sortOrder);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

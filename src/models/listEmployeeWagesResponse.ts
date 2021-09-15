@@ -3,15 +3,15 @@ import { EmployeeWage, employeeWageSchema } from './employeeWage';
 import { Error, errorSchema } from './error';
 
 /**
- * The response to a request for a set of `EmployeeWage` objects. The response contains
- * a set of `EmployeeWage` objects.
+ * The response to a request for a set of `EmployeeWage` objects. Contains
+ * a set of `EmployeeWage`.
  */
 export interface ListEmployeeWagesResponse {
-  /** A page of `EmployeeWage` results. */
+  /** A page of Employee Wage results. */
   employeeWages?: EmployeeWage[];
   /**
-   * The value supplied in the subsequent request to fetch the next page
-   * of `EmployeeWage` results.
+   * Value supplied in the subsequent request to fetch the next next page
+   * of Employee Wage results.
    */
   cursor?: string;
   /** Any errors that occurred during the request. */

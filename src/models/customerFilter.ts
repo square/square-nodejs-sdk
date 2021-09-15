@@ -12,7 +12,7 @@ import { TimeRange, timeRangeSchema } from './timeRange';
 
 /**
  * Represents a set of `CustomerQuery` filters used to limit the set of
- * customers returned by the [SearchCustomers]($e/Customers/SearchCustomers) endpoint.
+ * `Customers` returned by `SearchCustomers`.
  */
 export interface CustomerFilter {
   /**

@@ -1,7 +1,7 @@
 
 # Delete Break Type Response
 
-The response to a request to delete a `BreakType`. The response might contain a set
+The response to a request to delete a `BreakType`. May contain a set
 of `Error` objects if the request resulted in errors.
 
 ## Structure

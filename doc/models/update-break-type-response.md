@@ -1,8 +1,8 @@
 
 # Update Break Type Response
 
-A response to a request to update a `BreakType`. The response contains
-the requested `BreakType` objects and might contain a set of `Error` objects if
+A response to a request to update a `BreakType`. Contains
+the requested `BreakType` objects. May contain a set of `Error` objects if
 the request resulted in errors.
 
 ## Structure

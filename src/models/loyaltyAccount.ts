@@ -1,16 +1,4 @@
-import {
-  array,
-  lazy,
-  number,
-  object,
-  optional,
-  Schema,
-  string,
-} from '../schema';
-import {
-  LoyaltyAccountExpiringPointDeadline,
-  loyaltyAccountExpiringPointDeadlineSchema,
-} from './loyaltyAccountExpiringPointDeadline';
+import { lazy, number, object, optional, Schema, string } from '../schema';
 import {
   LoyaltyAccountMapping,
   loyaltyAccountMappingSchema,
@@ -26,7 +14,7 @@ export interface LoyaltyAccount {
   /** The Square-assigned ID of the [loyalty program]($m/LoyaltyProgram) to which the account belongs. */
   programId: string;
   /**
-   * The available point balance in the loyalty account. If points are scheduled to expire, they are listed in the `expiring_point_deadlines` field.
+   * The available point balance in the loyalty account.
    * Your application should be able to handle loyalty accounts that have a negative point balance (`balance` is less than 0). This might occur if a seller makes a manual adjustment or as a result of a refund or exchange.
    */
   balance?: number;
@@ -46,11 +34,6 @@ export interface LoyaltyAccount {
    * [Loyalty Overview](https://developer.squareup.com/docs/loyalty/overview).
    */
   mapping?: LoyaltyAccountMapping;
-  /**
-   * The schedule for when points expire in the loyalty account balance. This field is present only if the account has points that are scheduled to expire.
-   * The total number of points in this field equals the number of points in the `balance` field.
-   */
-  expiringPointDeadlines?: LoyaltyAccountExpiringPointDeadline[];
 }
 
 export const loyaltyAccountSchema: Schema<LoyaltyAccount> = object({
@@ -63,8 +46,4 @@ export const loyaltyAccountSchema: Schema<LoyaltyAccount> = object({
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
   mapping: ['mapping', optional(lazy(() => loyaltyAccountMappingSchema))],
-  expiringPointDeadlines: [
-    'expiring_point_deadlines',
-    optional(array(lazy(() => loyaltyAccountExpiringPointDeadlineSchema))),
-  ],
 });

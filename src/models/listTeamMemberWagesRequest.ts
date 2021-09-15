@@ -1,18 +1,18 @@
 import { number, object, optional, Schema, string } from '../schema';
 
-/** A request for a set of `TeamMemberWage` objects. */
+/** A request for a set of `TeamMemberWage` objects */
 export interface ListTeamMemberWagesRequest {
   /**
-   * Filter the returned wages to only those that are associated with the
+   * Filter wages returned to only those that are associated with the
    * specified team member.
    */
   teamMemberId?: string;
   /**
-   * The maximum number of `TeamMemberWage` results to return per page. The number can range between
-   * 1 and 200. The default is 200.
+   * Maximum number of Team Member Wages to return per page. Can range between
+   * 1 and 200. The default is the maximum at 200.
    */
   limit?: number;
-  /** A pointer to the next page of `EmployeeWage` results to fetch. */
+  /** Pointer to the next page of Employee Wage results to fetch. */
   cursor?: string;
 }
 
