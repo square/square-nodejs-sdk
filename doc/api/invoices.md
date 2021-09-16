@@ -174,6 +174,7 @@ bodyInvoice.description = 'We appreciate your business!';
 bodyInvoice.scheduledAt = '2030-01-13T10:00:00Z';
 bodyInvoice.acceptedPaymentMethods = bodyInvoiceAcceptedPaymentMethods;
 bodyInvoice.customFields = bodyInvoiceCustomFields;
+bodyInvoice.saleOrServiceDate = '2030-01-24';
 
 const body: CreateInvoiceRequest = {
   invoice: bodyInvoice,

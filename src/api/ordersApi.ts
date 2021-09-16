@@ -16,6 +16,14 @@ import {
   calculateOrderResponseSchema,
 } from '../models/calculateOrderResponse';
 import {
+  CloneOrderRequest,
+  cloneOrderRequestSchema,
+} from '../models/cloneOrderRequest';
+import {
+  CloneOrderResponse,
+  cloneOrderResponseSchema,
+} from '../models/cloneOrderResponse';
+import {
   CreateOrderRequest,
   createOrderRequestSchema,
 } from '../models/createOrderRequest';
@@ -116,6 +124,25 @@ export class OrdersApi extends BaseApi {
     });
     req.json(mapped.body);
     return req.callAsJson(calculateOrderResponseSchema, requestOptions);
+  }
+
+  /**
+   * Creates a new order, in the `DRAFT` state, by duplicating an existing order. The newly created order
+   * has
+   * only the core fields (such as line items, taxes, and discounts) copied from the original order.
+   *
+   * @param body An object containing the fields to POST for the request.  See the
+   *                                         corresponding object definition for field details.
+   * @return Response from the API call
+   */
+  async cloneOrder(
+    body: CloneOrderRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<CloneOrderResponse>> {
+    const req = this.createRequest('POST', '/v2/orders/clone');
+    const mapped = req.prepareArgs({ body: [body, cloneOrderRequestSchema] });
+    req.json(mapped.body);
+    return req.callAsJson(cloneOrderResponseSchema, requestOptions);
   }
 
   /**

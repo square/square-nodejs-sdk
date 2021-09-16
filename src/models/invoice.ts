@@ -47,10 +47,16 @@ export interface Invoice {
   primaryRecipient?: InvoiceRecipient;
   /**
    * The payment schedule for the invoice, represented by one or more payment requests that
-   * define payment settings, such as amount due and due date. You can specify a maximum of 13
-   * payment requests, with up to 12 `INSTALLMENT` request types. For more information, see
-   * [Payment requests](https://developer.squareup.com/docs/invoices-api/overview#payment-requests).
+   * define payment settings, such as amount due and due date. An invoice supports the following payment request combinations:
+   * - One balance
+   * - One deposit with one balance
+   * - 2–12 installments
+   * - One deposit with 2–12 installments
    * This field is required when creating an invoice. It must contain at least one payment request.
+   * All payment requests for the invoice must equal the total order amount. For more information, see
+   * [Payment requests](https://developer.squareup.com/docs/invoices-api/overview#payment-requests).
+   * Adding `INSTALLMENT` payment requests to an invoice requires an
+   * [Invoices Plus subscription](https://developer.squareup.com/docs/invoices-api/overview#invoices-plus-subscription).
    */
   paymentRequests?: InvoicePaymentRequest[];
   /** Indicates how Square delivers the [invoice]($m/Invoice) to the customer. */
@@ -109,6 +115,8 @@ export interface Invoice {
    * Additional seller-defined fields to render on the invoice. These fields are visible to sellers and buyers
    * on the Square-hosted invoice page and in emailed or PDF copies of invoices. For more information, see
    * [Custom fields](https://developer.squareup.com/docs/invoices-api/overview#custom-fields).
+   * Adding custom fields to an invoice requires an
+   * [Invoices Plus subscription](https://developer.squareup.com/docs/invoices-api/overview#invoices-plus-subscription).
    * Max: 2 custom fields
    */
   customFields?: InvoiceCustomField[];
@@ -117,6 +125,11 @@ export interface Invoice {
    * This field is present only on subscription billing invoices.
    */
   subscriptionId?: string;
+  /**
+   * The date of the sale or the date that the service is rendered, in `YYYY-MM-DD` format.
+   * This field can be used to specify a past or future date which is displayed on the invoice.
+   */
+  saleOrServiceDate?: string;
 }
 
 export const invoiceSchema: Schema<Invoice> = object({
@@ -155,4 +168,5 @@ export const invoiceSchema: Schema<Invoice> = object({
     optional(array(lazy(() => invoiceCustomFieldSchema))),
   ],
   subscriptionId: ['subscription_id', optional(string())],
+  saleOrServiceDate: ['sale_or_service_date', optional(string())],
 });

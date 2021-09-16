@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, boolean, object, optional, Schema, string } from '../schema';
 
 /**
  * Represents a filter used in a search for `TeamMember` objects. `AND` logic is applied
@@ -17,11 +17,14 @@ export interface SearchTeamMembersFilter {
   locationIds?: string[];
   /** Enumerates the possible statuses the team member can have within a business. */
   status?: string;
+  /** When present and set to true, returns the team member who is the owner of the Square account. */
+  isOwner?: boolean;
 }
 
 export const searchTeamMembersFilterSchema: Schema<SearchTeamMembersFilter> = object(
   {
     locationIds: ['location_ids', optional(array(string()))],
     status: ['status', optional(string())],
+    isOwner: ['is_owner', optional(boolean())],
   }
 );

@@ -43,6 +43,7 @@ itemization data.
 | `totalDiscountMoney` | [`Money \| undefined`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `totalTipMoney` | [`Money \| undefined`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `totalServiceChargeMoney` | [`Money \| undefined`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
+| `ticketName` | `string \| undefined` | Optional | A short-term identifier for the order (such as a customer first name, table number, or<br>auto-generated order number that resets daily). For orders created in Square Point of Sale, the `ticket_name` is<br>printed on in-person tickets and stubs. It converts to the `kitchen_printing.name` field in the<br>bill cart feature details.<br>**Constraints**: *Maximum Length*: `30` |
 | `pricingOptions` | [`OrderPricingOptions \| undefined`](/doc/models/order-pricing-options.md) | Optional | Pricing options for an order. The options affect how the order's price is calculated.<br>They can be used, for example, to apply automatic price adjustments that are based on preconfigured<br>[pricing rules](/doc/models/catalog-pricing-rule.md). |
 | `rewards` | [`OrderReward[] \| undefined`](/doc/models/order-reward.md) | Optional | A set-like list of Rewards that have been added to the Order. |
 
@@ -74,6 +75,7 @@ itemization data.
           "weight_unit": "METRIC_KILOGRAM"
         },
         "precision": 199,
+        "catalog_object_id": "catalog_object_id9",
         "catalog_version": 133
       },
       "note": "note5",
@@ -95,6 +97,7 @@ itemization data.
           "weight_unit": "METRIC_GRAM"
         },
         "precision": 200,
+        "catalog_object_id": "catalog_object_id0",
         "catalog_version": 134
       },
       "note": "note6",
@@ -116,6 +119,7 @@ itemization data.
           "weight_unit": "METRIC_MILLIGRAM"
         },
         "precision": 201,
+        "catalog_object_id": "catalog_object_id1",
         "catalog_version": 135
       },
       "note": "note7",

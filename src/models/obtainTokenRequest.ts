@@ -2,13 +2,13 @@ import { array, boolean, object, optional, Schema, string } from '../schema';
 
 export interface ObtainTokenRequest {
   /**
-   * The Square-issued ID of your application, available from the
-   * [developer dashboard](https://developer.squareup.com/apps).
+   * The Square-issued ID of your application, available from the OAuth page
+   * for your application on the Developer Dashboard.
    */
   clientId: string;
   /**
    * The Square-issued application secret for your application, available
-   * from the [developer dashboard](https://developer.squareup.com/apps).
+   * from the OAuth page for your application on the Developer Dashboard.
    */
   clientSecret: string;
   /**
@@ -17,7 +17,7 @@ export interface ObtainTokenRequest {
    * the application wants to exchange an authorization code for an OAuth access token.
    */
   code?: string;
-  /** The redirect URL assigned in the [developer dashboard](https://developer.squareup.com/apps). */
+  /** The redirect URL assigned in the OAuth page for your application on the Developer Dashboard. */
   redirectUri?: string;
   /**
    * Specifies the method to request an OAuth access token.
@@ -47,7 +47,7 @@ export interface ObtainTokenRequest {
   scopes?: string[];
   /**
    * A boolean indicating a request for a short-lived access token.
-   * The short-lived access token returned in the response will expire in 24 hours.
+   * The short-lived access token returned in the response expires in 24 hours.
    */
   shortLived?: boolean;
 }

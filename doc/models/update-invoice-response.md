@@ -71,6 +71,7 @@ Describes a `UpdateInvoice` response.
       "given_name": "Amelia",
       "phone_number": "1-212-555-4240"
     },
+    "sale_or_service_date": "2030-01-24",
     "scheduled_at": "2030-01-13T10:00:00Z",
     "status": "UNPAID",
     "timezone": "America/Los_Angeles",

@@ -8,7 +8,7 @@ Use this JavaScript library to manage Square resources (such as payments, orders
 
 ## Requirements
 
-The SDK requires [Node.js](https://nodejs.org/en/) version 10 or later.
+The SDK requires [Node.js](https://nodejs.org/en/) version 10 or later and does not support being used in browsers / frontend applications.
 
 We intend to update the SDK to support the current and LTS versions of Node.js while dropping support for versions that have reached their EOL.
 
@@ -41,6 +41,10 @@ const { Client, Environment } = require('square')
 ### Import Gotcha
 
 Do not mix ES module and CommonJS imports in the same codebase. This will likely cause issues that are hard to debug. For more information, do a web search for "Dual Package Hazard Node".
+
+## Common Issues
+
+- The SDK sometimes returns a response that includes a value that is a [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt). When this response is sent to a client from the server, typically using Express, it throws an error because `BigInt.prototype.toJSON` doesn’t exist. [MDN has a guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#use_within_json) for working around this issue.
 
 ## How do I initialize the client?
 
@@ -78,6 +82,9 @@ const newClient = client.withConfiguration({
 * [Disputes]
 * [Checkout]
 * [Apple Pay]
+* [Cards]
+
+### Terminal
 * [Terminal]
 
 ### Orders
@@ -101,6 +108,10 @@ const newClient = client.withConfiguration({
 ### Loyalty
 * [Loyalty]
 
+### Gift Cards
+* [Gift Cards]
+* [Gift Card Activities]
+
 ### Bookings
 * [Bookings]
 
@@ -108,12 +119,11 @@ const newClient = client.withConfiguration({
 * [Merchants]
 * [Locations]
 * [Devices]
+* [Cash Drawers]
 
 ### Team
 * [Team]
-* [Employees]
 * [Labor]
-* [Cash Drawers]
 
 ### Financials
 * [Bank Accounts]
@@ -127,6 +137,7 @@ const newClient = client.withConfiguration({
 * [OAuth]
 
 ### Deprecated APIs
+* [Employees]
 * [V1 Employees]
 * [V1 Transactions]
 * [V1 Items]
@@ -532,3 +543,6 @@ You can also use the Square API to create applications or services that work wit
 [Transactions]: doc/api/transactions.md
 [Sites]: doc/api/sites.md
 [Snippets]: doc/api/snippets.md
+[Cards]: doc/api/cards.md
+[Gift Cards]: doc/api/gift-cards.md
+[Gift Card Activities]: doc/api/gift-card-activities.md

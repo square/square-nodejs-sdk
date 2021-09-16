@@ -44,6 +44,7 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
           "weight_unit": "METRIC_KILOGRAM"
         },
         "precision": 73,
+        "catalog_object_id": "catalog_object_id5",
         "catalog_version": 249
       },
       "note": "note9"
@@ -65,6 +66,7 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
           "weight_unit": "METRIC_GRAM"
         },
         "precision": 74,
+        "catalog_object_id": "catalog_object_id4",
         "catalog_version": 248
       },
       "note": "note8"
@@ -86,6 +88,7 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
           "weight_unit": "METRIC_MILLIGRAM"
         },
         "precision": 75,
+        "catalog_object_id": "catalog_object_id3",
         "catalog_version": 247
       },
       "note": "note7"

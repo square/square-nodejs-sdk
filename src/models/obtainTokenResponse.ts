@@ -26,13 +26,13 @@ export interface ObtainTokenResponse {
    */
   planId?: string;
   /**
-   * Then OpenID token belonging to this this person. Only present if the
-   * OPENID scope is included in the authorize request.
+   * Then OpenID token belonging to this person. Only present if the
+   * OPENID scope is included in the authorization request.
    */
   idToken?: string;
   /**
    * A refresh token. OAuth refresh tokens are 64 bytes long.
-   * For more information, see [OAuth access token management](https://developer.squareup.com/docs/oauth-api/how-it-works#oauth-access-token-management).
+   * For more information, see [Refresh, Revoke, and Limit the Scope of OAuth Tokens](https://developer.squareup.com/docs/oauth-api/refresh-revoke-limit-scope).
    */
   refreshToken?: string;
   /**

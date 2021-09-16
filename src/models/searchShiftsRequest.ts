@@ -3,11 +3,11 @@ import { ShiftQuery, shiftQuerySchema } from './shiftQuery';
 
 /** A request for a filtered and sorted set of `Shift` objects. */
 export interface SearchShiftsRequest {
-  /** The parameters of a `Shift` search query. Includes filter and sort options. */
+  /** The parameters of a `Shift` search query, which includes filter and sort options. */
   query?: ShiftQuery;
-  /** number of resources in a page (200 by default). */
+  /** The number of resources in a page (200 by default). */
   limit?: number;
-  /** opaque cursor for fetching the next page. */
+  /** An opaque cursor for fetching the next page. */
   cursor?: string;
 }
 

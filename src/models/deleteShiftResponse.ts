@@ -2,7 +2,7 @@ import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 
 /**
- * The response to a request to delete a `Shift`. May contain a set of
+ * The response to a request to delete a `Shift`. The response might contain a set of
  * `Error` objects if the request resulted in errors.
  */
 export interface DeleteShiftResponse {

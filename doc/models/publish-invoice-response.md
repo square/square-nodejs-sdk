@@ -76,6 +76,7 @@ Describes a `PublishInvoice` response.
       "phone_number": "1-212-555-4240"
     },
     "public_url": "https://squareup.com/pay-invoice/inv:0-ChCHu2mZEabLeeHahQnXDjZQECY",
+    "sale_or_service_date": "2030-01-24",
     "scheduled_at": "2030-01-13T10:00:00Z",
     "status": "SCHEDULED",
     "timezone": "America/Los_Angeles",

@@ -212,6 +212,7 @@ const bodyQueryFilterLocationIds: string[] = ['0G5P3VGACMMQZ'];
 const bodyQueryFilter: SearchTeamMembersFilter = {};
 bodyQueryFilter.locationIds = bodyQueryFilterLocationIds;
 bodyQueryFilter.status = 'ACTIVE';
+bodyQueryFilter.isOwner = false;
 
 const bodyQuery: SearchTeamMembersQuery = {};
 bodyQuery.filter = bodyQueryFilter;

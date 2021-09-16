@@ -52,6 +52,8 @@ export interface TerminalCheckout {
   /** The location of the device where the `TerminalCheckout` was directed. */
   locationId?: string;
   paymentType?: string;
+  /** An optional ID of the customer associated with the checkout. */
+  customerId?: string;
 }
 
 export const terminalCheckoutSchema: Schema<TerminalCheckout> = object({
@@ -69,4 +71,5 @@ export const terminalCheckoutSchema: Schema<TerminalCheckout> = object({
   appId: ['app_id', optional(string())],
   locationId: ['location_id', optional(string())],
   paymentType: ['payment_type', optional(string())],
+  customerId: ['customer_id', optional(string())],
 });

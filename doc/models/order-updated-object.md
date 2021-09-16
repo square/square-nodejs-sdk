@@ -19,7 +19,7 @@
     "order_id": "order_id6",
     "version": 176,
     "location_id": "location_id4",
-    "state": "COMPLETED",
+    "state": "OPEN",
     "created_at": "created_at2"
   }
 }

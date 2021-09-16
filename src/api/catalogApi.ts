@@ -356,7 +356,7 @@ export class CatalogApi extends BaseApi {
    * Searches for [CatalogObject]($m/CatalogObject) of any type by matching supported search attribute
    * values,
    * excluding custom attribute values on items or item variations, against one or more of the specified
-   * query expressions.
+   * query filters.
    *
    * This (`SearchCatalogObjects`) endpoint differs from the
    * [SearchCatalogItems]($e/Catalog/SearchCatalogItems)
@@ -389,7 +389,7 @@ export class CatalogApi extends BaseApi {
   /**
    * Searches for catalog items or item variations by matching supported search attribute values,
    * including
-   * custom attribute values, against one or more of the specified query expressions.
+   * custom attribute values, against one or more of the specified query filters.
    *
    * This (`SearchCatalogItems`) endpoint differs from the
    * [SearchCatalogObjects]($e/Catalog/SearchCatalogObjects)
