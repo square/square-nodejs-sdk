@@ -45,6 +45,7 @@ Defines the fields that are included in requests to the
             "weight_unit": "METRIC_KILOGRAM"
           },
           "precision": 201,
+          "catalog_object_id": "catalog_object_id1",
           "catalog_version": 135
         },
         "note": "note3",

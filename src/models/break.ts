@@ -2,19 +2,19 @@ import { boolean, object, optional, Schema, string } from '../schema';
 
 /** A record of an employee's break during a shift. */
 export interface Break {
-  /** UUID for this object */
+  /** The UUID for this object. */
   id?: string;
   /**
-   * RFC 3339; follows same timezone info as `Shift`. Precision up to
+   * RFC 3339; follows the same timezone information as `Shift`. Precision up to
    * the minute is respected; seconds are truncated.
    */
   startAt: string;
   /**
-   * RFC 3339; follows same timezone info as `Shift`. Precision up to
+   * RFC 3339; follows the same timezone information as `Shift`. Precision up to
    * the minute is respected; seconds are truncated.
    */
   endAt?: string;
-  /** The `BreakType` this `Break` was templated on. */
+  /** The `BreakType` that this `Break` was templated on. */
   breakTypeId: string;
   /** A human-readable name. */
   name: string;

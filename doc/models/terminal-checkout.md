@@ -23,6 +23,7 @@
 | `appId` | `string \| undefined` | Optional | The ID of the application that created the checkout. |
 | `locationId` | `string \| undefined` | Optional | The location of the device where the `TerminalCheckout` was directed. |
 | `paymentType` | [`string \| undefined`](/doc/models/checkout-options-payment-type.md) | Optional | - |
+| `customerId` | `string \| undefined` | Optional | An optional ID of the customer associated with the checkout. |
 
 ## Example (as JSON)
 

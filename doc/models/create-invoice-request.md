@@ -59,6 +59,7 @@ Describes a `CreateInvoice` request.
     "primary_recipient": {
       "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4"
     },
+    "sale_or_service_date": "2030-01-24",
     "scheduled_at": "2030-01-13T10:00:00Z",
     "title": "Event Planning Services"
   }

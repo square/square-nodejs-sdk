@@ -13,6 +13,7 @@ const ordersApi = client.ordersApi;
 * [Create Order](/doc/api/orders.md#create-order)
 * [Batch Retrieve Orders](/doc/api/orders.md#batch-retrieve-orders)
 * [Calculate Order](/doc/api/orders.md#calculate-order)
+* [Clone Order](/doc/api/orders.md#clone-order)
 * [Search Orders](/doc/api/orders.md#search-orders)
 * [Retrieve Order](/doc/api/orders.md#retrieve-order)
 * [Update Order](/doc/api/orders.md#update-order)
@@ -70,6 +71,7 @@ bodyOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGRAM';
 const bodyOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems0QuantityUnit.measurementUnit = bodyOrderlineItems0QuantityUnitMeasurementUnit;
 bodyOrderlineItems0QuantityUnit.precision = 189;
+bodyOrderlineItems0QuantityUnit.catalogObjectId = 'catalog_object_id1';
 bodyOrderlineItems0QuantityUnit.catalogVersion = 133;
 
 const bodyOrderlineItems0BasePriceMoney: Money = {};
@@ -103,6 +105,7 @@ bodyOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'METRIC_GRAM';
 const bodyOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems1QuantityUnit.measurementUnit = bodyOrderlineItems1QuantityUnitMeasurementUnit;
 bodyOrderlineItems1QuantityUnit.precision = 188;
+bodyOrderlineItems1QuantityUnit.catalogObjectId = 'catalog_object_id0';
 bodyOrderlineItems1QuantityUnit.catalogVersion = 134;
 
 const bodyOrderlineItems1Modifiers: OrderLineItemModifier[] = [];
@@ -317,6 +320,7 @@ bodyOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGRAM';
 const bodyOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems0QuantityUnit.measurementUnit = bodyOrderlineItems0QuantityUnitMeasurementUnit;
 bodyOrderlineItems0QuantityUnit.precision = 189;
+bodyOrderlineItems0QuantityUnit.catalogObjectId = 'catalog_object_id1';
 bodyOrderlineItems0QuantityUnit.catalogVersion = 133;
 
 const bodyOrderlineItems0BasePriceMoney: Money = {};
@@ -350,6 +354,7 @@ bodyOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'METRIC_GRAM';
 const bodyOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems1QuantityUnit.measurementUnit = bodyOrderlineItems1QuantityUnitMeasurementUnit;
 bodyOrderlineItems1QuantityUnit.precision = 188;
+bodyOrderlineItems1QuantityUnit.catalogObjectId = 'catalog_object_id0';
 bodyOrderlineItems1QuantityUnit.catalogVersion = 134;
 
 const bodyOrderlineItems1BasePriceMoney: Money = {};
@@ -421,6 +426,51 @@ body.proposedRewards = bodyProposedRewards;
 
 try {
   const { result, ...httpResponse } = await ordersApi.calculateOrder(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Clone Order
+
+Creates a new order, in the `DRAFT` state, by duplicating an existing order. The newly created order has
+only the core fields (such as line items, taxes, and discounts) copied from the original order.
+
+```ts
+async cloneOrder(
+  body: CloneOrderRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CloneOrderResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CloneOrderRequest`](/doc/models/clone-order-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`CloneOrderResponse`](/doc/models/clone-order-response.md)
+
+## Example Usage
+
+```ts
+const body: CloneOrderRequest = {
+  orderId: 'ZAISEM52YcpmcWAzERDOyiWS123',
+};
+body.version = 3;
+body.idempotencyKey = 'UNIQUE_STRING';
+
+try {
+  const { result, ...httpResponse } = await ordersApi.cloneOrder(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -647,6 +697,7 @@ bodyOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGRAM';
 const bodyOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems0QuantityUnit.measurementUnit = bodyOrderlineItems0QuantityUnitMeasurementUnit;
 bodyOrderlineItems0QuantityUnit.precision = 189;
+bodyOrderlineItems0QuantityUnit.catalogObjectId = 'catalog_object_id1';
 bodyOrderlineItems0QuantityUnit.catalogVersion = 133;
 
 const bodyOrderlineItems0: OrderLineItem = {
@@ -675,6 +726,7 @@ bodyOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'METRIC_GRAM';
 const bodyOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
 bodyOrderlineItems1QuantityUnit.measurementUnit = bodyOrderlineItems1QuantityUnitMeasurementUnit;
 bodyOrderlineItems1QuantityUnit.precision = 188;
+bodyOrderlineItems1QuantityUnit.catalogObjectId = 'catalog_object_id0';
 bodyOrderlineItems1QuantityUnit.catalogVersion = 134;
 
 const bodyOrderlineItems1: OrderLineItem = {

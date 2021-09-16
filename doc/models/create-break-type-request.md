@@ -1,7 +1,7 @@
 
 # Create Break Type Request
 
-A request to create a new `BreakType`
+A request to create a new `BreakType`.
 
 ## Structure
 
@@ -11,7 +11,7 @@ A request to create a new `BreakType`
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `idempotencyKey` | `string \| undefined` | Optional | Unique string value to insure idempotency of the operation<br>**Constraints**: *Maximum Length*: `128` |
+| `idempotencyKey` | `string \| undefined` | Optional | A unique string value to ensure the idempotency of the operation.<br>**Constraints**: *Maximum Length*: `128` |
 | `breakType` | [`BreakType`](/doc/models/break-type.md) | Required | A defined break template that sets an expectation for possible `Break`<br>instances on a `Shift`. |
 
 ## Example (as JSON)

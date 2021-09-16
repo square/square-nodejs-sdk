@@ -78,6 +78,7 @@ Describes a `SearchInvoices` response.
         "given_name": "Amelia",
         "phone_number": "1-212-555-4240"
       },
+      "sale_or_service_date": "2030-01-24",
       "scheduled_at": "2030-01-13T10:00:00Z",
       "status": "DRAFT",
       "timezone": "America/Los_Angeles",
@@ -144,6 +145,7 @@ Describes a `SearchInvoices` response.
         "phone_number": "1-212-555-4240"
       },
       "public_url": "https://squareup.com/pay-invoice/h9sfsfTGTSnYEhISUDBhEQ",
+      "sale_or_service_date": "2030-01-24",
       "status": "PARTIALLY_PAID",
       "timezone": "America/Los_Angeles",
       "updated_at": "2021-01-23T15:29:56Z",

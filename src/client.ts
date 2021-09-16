@@ -30,7 +30,6 @@ import { SubscriptionsApi } from './api/subscriptionsApi';
 import { TeamApi } from './api/teamApi';
 import { TerminalApi } from './api/terminalApi';
 import { TransactionsApi } from './api/transactionsApi';
-import { V1EmployeesApi } from './api/v1EmployeesApi';
 import { V1TransactionsApi } from './api/v1TransactionsApi';
 import { accessTokenAuthenticationProvider } from './authentication';
 import {
@@ -55,8 +54,8 @@ import {
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '14.0.0';
-const USER_AGENT = 'Square-TypeScript-SDK/14.0.0';
+export const SDK_VERSION = '14.1.0';
+const USER_AGENT = 'Square-TypeScript-SDK/14.1.0';
 
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
@@ -94,7 +93,6 @@ export class Client implements ClientInterface {
   public readonly teamApi: TeamApi;
   public readonly terminalApi: TerminalApi;
   public readonly transactionsApi: TransactionsApi;
-  public readonly v1EmployeesApi: V1EmployeesApi;
   public readonly v1TransactionsApi: V1TransactionsApi;
 
   constructor(config?: Partial<Configuration>) {
@@ -151,7 +149,6 @@ export class Client implements ClientInterface {
     this.teamApi = new TeamApi(this);
     this.terminalApi = new TerminalApi(this);
     this.transactionsApi = new TransactionsApi(this);
-    this.v1EmployeesApi = new V1EmployeesApi(this);
     this.v1TransactionsApi = new V1TransactionsApi(this);
   }
 

@@ -1,8 +1,8 @@
 
 # List Employee Wages Response
 
-The response to a request for a set of `EmployeeWage` objects. Contains
-a set of `EmployeeWage`.
+The response to a request for a set of `EmployeeWage` objects. The response contains
+a set of `EmployeeWage` objects.
 
 ## Structure
 
@@ -12,8 +12,8 @@ a set of `EmployeeWage`.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `employeeWages` | [`EmployeeWage[] \| undefined`](/doc/models/employee-wage.md) | Optional | A page of Employee Wage results. |
-| `cursor` | `string \| undefined` | Optional | Value supplied in the subsequent request to fetch the next next page<br>of Employee Wage results. |
+| `employeeWages` | [`EmployeeWage[] \| undefined`](/doc/models/employee-wage.md) | Optional | A page of `EmployeeWage` results. |
+| `cursor` | `string \| undefined` | Optional | The value supplied in the subsequent request to fetch the next page<br>of `EmployeeWage` results. |
 | `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)

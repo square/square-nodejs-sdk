@@ -18,8 +18,8 @@ Filter by the current order `state`.
 ```json
 {
   "states": [
-    "CANCELED",
-    "OPEN"
+    "OPEN",
+    "COMPLETED"
   ]
 }
 ```

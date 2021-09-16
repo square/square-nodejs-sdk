@@ -3,16 +3,16 @@ import { BreakType, breakTypeSchema } from './breakType';
 import { Error, errorSchema } from './error';
 
 /**
- * The response to a request for a set of `BreakTypes`. Contains
- * the requested `BreakType` objects. May contain a set of `Error` objects if
+ * The response to a request for a set of `BreakType` objects. The response contains
+ * the requested `BreakType` objects and might contain a set of `Error` objects if
  * the request resulted in errors.
  */
 export interface ListBreakTypesResponse {
   /** A page of `BreakType` results. */
   breakTypes?: BreakType[];
   /**
-   * Value supplied in the subsequent request to fetch the next next page
-   * of Break Type results.
+   * The value supplied in the subsequent request to fetch the next page
+   * of `BreakType` results.
    */
   cursor?: string;
   /** Any errors that occurred during the request. */

@@ -1,7 +1,7 @@
 
 # List Employee Wages Request
 
-A request for a set of `EmployeeWage` objects
+A request for a set of `EmployeeWage` objects.
 
 ## Structure
 
@@ -11,9 +11,9 @@ A request for a set of `EmployeeWage` objects
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `employeeId` | `string \| undefined` | Optional | Filter wages returned to only those that are associated with the specified employee. |
-| `limit` | `number \| undefined` | Optional | Maximum number of Employee Wages to return per page. Can range between<br>1 and 200. The default is the maximum at 200.<br>**Constraints**: `>= 1`, `<= 200` |
-| `cursor` | `string \| undefined` | Optional | Pointer to the next page of Employee Wage results to fetch. |
+| `employeeId` | `string \| undefined` | Optional | Filter the returned wages to only those that are associated with the specified employee. |
+| `limit` | `number \| undefined` | Optional | The maximum number of `EmployeeWage` results to return per page. The number can range between<br>1 and 200. The default is 200.<br>**Constraints**: `>= 1`, `<= 200` |
+| `cursor` | `string \| undefined` | Optional | A pointer to the next page of `EmployeeWage` results to fetch. |
 
 ## Example (as JSON)
 

@@ -21,7 +21,8 @@ Represents the parameters in a search for `TeamMember` objects.
     "location_ids": [
       "location_ids4"
     ],
-    "status": "ACTIVE"
+    "status": "ACTIVE",
+    "is_owner": false
   }
 }
 ```

@@ -193,6 +193,13 @@ export interface Order {
    */
   totalServiceChargeMoney?: Money;
   /**
+   * A short-term identifier for the order (such as a customer first name, table number, or
+   * auto-generated order number that resets daily). For orders created in Square Point of Sale, the `ticket_name` is
+   * printed on in-person tickets and stubs. It converts to the `kitchen_printing.name` field in the
+   * bill cart feature details.
+   */
+  ticketName?: string;
+  /**
    * Pricing options for an order. The options affect how the order's price is calculated.
    * They can be used, for example, to apply automatic price adjustments that are based on preconfigured
    * [pricing rules]($m/CatalogPricingRule).
@@ -251,6 +258,7 @@ export const orderSchema: Schema<Order> = object({
     'total_service_charge_money',
     optional(lazy(() => moneySchema)),
   ],
+  ticketName: ['ticket_name', optional(string())],
   pricingOptions: [
     'pricing_options',
     optional(lazy(() => orderPricingOptionsSchema)),

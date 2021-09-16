@@ -53,6 +53,7 @@ bodyOrderOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGR
 const bodyOrderOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
 bodyOrderOrderlineItems0QuantityUnit.measurementUnit = bodyOrderOrderlineItems0QuantityUnitMeasurementUnit;
 bodyOrderOrderlineItems0QuantityUnit.precision = 191;
+bodyOrderOrderlineItems0QuantityUnit.catalogObjectId = 'catalog_object_id7';
 bodyOrderOrderlineItems0QuantityUnit.catalogVersion = 131;
 
 const bodyOrderOrderlineItems0AppliedTaxes: OrderLineItemAppliedTax[] = [];
@@ -110,6 +111,7 @@ bodyOrderOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'IMPERIAL_STONE
 const bodyOrderOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
 bodyOrderOrderlineItems1QuantityUnit.measurementUnit = bodyOrderOrderlineItems1QuantityUnitMeasurementUnit;
 bodyOrderOrderlineItems1QuantityUnit.precision = 192;
+bodyOrderOrderlineItems1QuantityUnit.catalogObjectId = 'catalog_object_id6';
 bodyOrderOrderlineItems1QuantityUnit.catalogVersion = 130;
 
 const bodyOrderOrderlineItems1BasePriceMoney: Money = {};
@@ -137,6 +139,7 @@ bodyOrderOrderlineItems2QuantityUnitMeasurementUnit.weightUnit = 'IMPERIAL_POUND
 const bodyOrderOrderlineItems2QuantityUnit: OrderQuantityUnit = {};
 bodyOrderOrderlineItems2QuantityUnit.measurementUnit = bodyOrderOrderlineItems2QuantityUnitMeasurementUnit;
 bodyOrderOrderlineItems2QuantityUnit.precision = 193;
+bodyOrderOrderlineItems2QuantityUnit.catalogObjectId = 'catalog_object_id5';
 bodyOrderOrderlineItems2QuantityUnit.catalogVersion = 129;
 
 const bodyOrderOrderlineItems2BasePriceMoney: Money = {};

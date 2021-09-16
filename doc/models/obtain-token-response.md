@@ -15,8 +15,8 @@
 | `merchantId` | `string \| undefined` | Optional | The ID of the authorizing merchant's business.<br>**Constraints**: *Minimum Length*: `8`, *Maximum Length*: `191` |
 | `subscriptionId` | `string \| undefined` | Optional | __LEGACY FIELD__. The ID of a subscription plan the merchant signed up<br>for. Only present if the merchant signed up for a subscription during authorization. |
 | `planId` | `string \| undefined` | Optional | __LEGACY FIELD__. The ID of the subscription plan the merchant signed<br>up for. Only present if the merchant signed up for a subscription during<br>authorization. |
-| `idToken` | `string \| undefined` | Optional | Then OpenID token belonging to this this person. Only present if the<br>OPENID scope is included in the authorize request. |
-| `refreshToken` | `string \| undefined` | Optional | A refresh token. OAuth refresh tokens are 64 bytes long.<br>For more information, see [OAuth access token management](https://developer.squareup.com/docs/oauth-api/how-it-works#oauth-access-token-management).<br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `1024` |
+| `idToken` | `string \| undefined` | Optional | Then OpenID token belonging to this person. Only present if the<br>OPENID scope is included in the authorization request. |
+| `refreshToken` | `string \| undefined` | Optional | A refresh token. OAuth refresh tokens are 64 bytes long.<br>For more information, see [Refresh, Revoke, and Limit the Scope of OAuth Tokens](https://developer.squareup.com/docs/oauth-api/refresh-revoke-limit-scope).<br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `1024` |
 | `shortLived` | `boolean \| undefined` | Optional | A boolean indicating the access token is a short-lived access token.<br>The short-lived access token returned in the response will expire in 24 hours. |
 
 ## Example (as JSON)

@@ -24,7 +24,7 @@
   "order_id": "order_id6",
   "version": 172,
   "location_id": "location_id4",
-  "state": "CANCELED",
+  "state": "OPEN",
   "created_at": "created_at2"
 }
 ```

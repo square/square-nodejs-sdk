@@ -5,7 +5,7 @@ import { Money, moneySchema } from './money';
 export interface ShiftWage {
   /**
    * The name of the job performed during this shift. Square
-   * labor-reporting UIs may group shifts together by title.
+   * labor-reporting UIs might group shifts together by title.
    */
   title?: string;
   /**

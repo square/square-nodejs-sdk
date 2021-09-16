@@ -25,7 +25,7 @@ are ANDed together.
   "state_filter": {
     "states": [
       "CANCELED",
-      "OPEN"
+      "DRAFT"
     ]
   },
   "date_time_filter": {

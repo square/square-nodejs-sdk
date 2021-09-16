@@ -1,8 +1,8 @@
 
 # Create Break Type Response
 
-The response to the request to create a `BreakType`. Contains
-the created `BreakType` object. May contain a set of `Error` objects if
+The response to the request to create a `BreakType`. The response contains
+the created `BreakType` object and might contain a set of `Error` objects if
 the request resulted in errors.
 
 ## Structure

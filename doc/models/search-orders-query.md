@@ -21,8 +21,8 @@ Contains query criteria for the search.
   "filter": {
     "state_filter": {
       "states": [
-        "COMPLETED",
-        "OPEN"
+        "CANCELED",
+        "COMPLETED"
       ]
     },
     "date_time_filter": {
