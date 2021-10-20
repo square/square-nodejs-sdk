@@ -24,6 +24,10 @@ Defines the response returned by
       "amount": 1000,
       "currency": "USD"
     },
+    "application_details": {
+      "application_id": "sq0ids-TcgftTEtKxJTRF1lCFJ9TA",
+      "square_product": "ECOMMERCE_API"
+    },
     "approved_money": {
       "amount": 1000,
       "currency": "USD"
@@ -35,45 +39,52 @@ Defines the response returned by
       "EDIT_TIP_AMOUNT_DOWN"
     ],
     "card_details": {
-      "auth_result_code": "ajM2ZF",
+      "auth_result_code": "68aLBM",
       "avs_status": "AVS_ACCEPTED",
       "card": {
         "bin": "411111",
         "card_brand": "VISA",
-        "card_type": "CREDIT",
-        "exp_month": 2,
+        "card_type": "DEBIT",
+        "exp_month": 11,
         "exp_year": 2022,
-        "fingerprint": "sq-1-n_BL15KP87ClDa4-h2nXOI0fp5VnxNH6hfhzqhptTfAgxgLuGFcg6jIPngDz4IkkTQ",
-        "last_4": "1111"
+        "fingerprint": "sq-1-Hxim77tbdcbGejOejnoAklBVJed2YFLTmirfl8Q5XZzObTc8qY_U8RkwzoNL8dCEcQ",
+        "last_4": "1111",
+        "prepaid_type": "NOT_PREPAID"
       },
       "card_payment_timeline": {
-        "authorized_at": "2021-02-24T03:33:43.681Z"
+        "authorized_at": "2021-10-13T20:26:44.364Z"
       },
       "cvv_status": "CVV_ACCEPTED",
-      "entry_method": "KEYED",
-      "statement_description": "SQ *MY BUSINESS GOSQ.COM",
+      "entry_method": "ON_FILE",
+      "statement_description": "SQ *EXAMPLE TEST GOSQ.C",
       "status": "AUTHORIZED"
     },
-    "created_at": "2021-03-02T19:53:31.055Z",
+    "created_at": "2021-10-13T20:26:44.191Z",
+    "customer_id": "W92WH6P11H4Z77CTET0RNTGFW8",
     "delay_action": "CANCEL",
     "delay_duration": "PT168H",
-    "delayed_until": "2021-03-09T19:53:31.055Z",
-    "id": "XllelosAAfmkf9mOa0YB4PqSZACZY",
-    "location_id": "XTI0H92143A39",
-    "order_id": "B6qiKWus1d3TBoN2Qn5kfDiWZlfZY",
-    "receipt_number": "Xlle",
+    "delayed_until": "2021-10-20T20:26:44.191Z",
+    "id": "1QjqpBVyrI9S4H9sTGDWU9JeiWdZY",
+    "location_id": "L88917AVBK2S5",
+    "note": "Example Note",
+    "order_id": "nUSN9TdxpiK3SrQg3wzmf6r8LP9YY",
+    "receipt_number": "1Qjq",
+    "risk_evaluation": {
+      "created_at": "2021-10-13T20:26:45.271Z",
+      "risk_level": "NORMAL"
+    },
     "source_type": "CARD",
     "status": "APPROVED",
     "tip_money": {
-      "amount": 300,
+      "amount": 100,
       "currency": "USD"
     },
     "total_money": {
-      "amount": 1300,
+      "amount": 1100,
       "currency": "USD"
     },
-    "updated_at": "2021-03-02T19:53:31.164Z",
-    "version_token": "9TKsTawsWZvdZZD5uhAZFWfd3chxFXB49cgFpD2Kujf6o"
+    "updated_at": "2021-10-13T20:26:44.364Z",
+    "version_token": "rDrXnqiS7fJgexccgdpzmwqTiXui1aIKCp9EchZ7trE6o"
   }
 }
 ```

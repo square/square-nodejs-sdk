@@ -20,8 +20,8 @@ Defines the fields that are included in the response from the
 ```json
 {
   "subscription": {
-    "charged_through_date": "2020-06-11",
-    "created_at": "2020-08-03T21:53:10Z",
+    "charged_through_date": "2021-11-20",
+    "created_at": "2021-10-20T21:53:10Z",
     "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
     "id": "8151fc89-da15-4eb9-a685-1a70883cebfc",
     "invoice_ids": [
@@ -29,13 +29,16 @@ Defines the fields that are included in the response from the
       "rcX_i3sNmHTGKhI4W2mceA"
     ],
     "location_id": "S8GWD5R9QB376",
-    "paid_until_date": "2020-06-11",
+    "paid_until_date": "2021-11-20",
     "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
     "price_override_money": {
       "amount": 1000,
       "currency": "USD"
     },
-    "start_date": "2020-05-11",
+    "source": {
+      "name": "My App"
+    },
+    "start_date": "2021-10-20",
     "status": "ACTIVE",
     "timezone": "America/Los_Angeles"
   }

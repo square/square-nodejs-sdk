@@ -137,7 +137,7 @@ describe('Payments API', () => {
     const { result: { payment }, statusCode: createStatusCode } = await paymentsApi.createPayment(body);
     expect(createStatusCode).toBe(200);
 
-    const { statusCode} = await paymentsApi.completePayment(payment?.id!);
+    const { statusCode} = await paymentsApi.completePayment(payment?.id!, {});
     expect(statusCode).toBe(200);
   });
 });

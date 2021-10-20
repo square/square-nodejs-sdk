@@ -1,4 +1,4 @@
-import JSONBig from 'json-bigint';
+import JSONBig from '@apimatic/json-bigint';
 import { ApiResponse, HttpContext, HttpRequest } from '../core';
 import { Error as SquareError } from '../models/error';
 
@@ -27,7 +27,7 @@ export class ApiError<T = {}> extends Error
     this.body = response.body;
 
     if (typeof response.body === 'string' && response.body !== '') {
-      const JSON = JSONBig({ useNativeBigInt: true });
+      const JSON = JSONBig();
       try {
         this.result = JSON.parse(response.body);
 

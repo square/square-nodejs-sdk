@@ -13,6 +13,7 @@ Represents a set of SearchSubscriptionsQuery filters used to limit the set of Su
 |  --- | --- | --- | --- |
 | `customerIds` | `string[] \| undefined` | Optional | A filter to select subscriptions based on the customer. |
 | `locationIds` | `string[] \| undefined` | Optional | A filter to select subscriptions based the location. |
+| `sourceNames` | `string[] \| undefined` | Optional | A filter to select subscriptions based on the source application. |
 
 ## Example (as JSON)
 
@@ -24,6 +25,9 @@ Represents a set of SearchSubscriptionsQuery filters used to limit the set of Su
   ],
   "location_ids": [
     "location_ids0"
+  ],
+  "source_names": [
+    "source_names8"
   ]
 }
 ```

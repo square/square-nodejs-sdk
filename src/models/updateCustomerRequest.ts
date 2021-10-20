@@ -1,5 +1,6 @@
 import { bigint, lazy, object, optional, Schema, string } from '../schema';
 import { Address, addressSchema } from './address';
+import { CustomerTaxIds, customerTaxIdsSchema } from './customerTaxIds';
 
 /**
  * Defines the body parameters that can be included in a request to the
@@ -64,6 +65,11 @@ export interface UpdateCustomerRequest {
    * As a best practice, you should include this field to enable [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency) control. For more information, see [Update a customer profile](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#update-a-customer-profile).
    */
   version?: bigint;
+  /**
+   * Represents the tax ID associated with a customer profile. The corresponding `tax_ids` field is available only for customers of sellers in France, Ireland, or the United Kingdom.
+   * For more information, see [Customer tax IDs](https://developer.squareup.com/docs/customers-api/what-it-does#customer-tax-ids).
+   */
+  taxIds?: CustomerTaxIds;
 }
 
 export const updateCustomerRequestSchema: Schema<UpdateCustomerRequest> = object(
@@ -79,5 +85,6 @@ export const updateCustomerRequestSchema: Schema<UpdateCustomerRequest> = object
     note: ['note', optional(string())],
     birthday: ['birthday', optional(string())],
     version: ['version', optional(bigint())],
+    taxIds: ['tax_ids', optional(lazy(() => customerTaxIdsSchema))],
   }
 );

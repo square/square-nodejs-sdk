@@ -4,6 +4,7 @@ import { BusinessHours, businessHoursSchema } from './businessHours';
 import { Coordinates, coordinatesSchema } from './coordinates';
 import { TaxIds, taxIdsSchema } from './taxIds';
 
+/** Represents one of a business's locations. */
 export interface Location {
   /** The Square-issued ID of the location. */
   id?: string;

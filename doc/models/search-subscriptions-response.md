@@ -22,21 +22,24 @@ Defines the fields that are included in the response from the
 {
   "subscriptions": [
     {
-      "canceled_date": "2020-04-14",
+      "canceled_date": "2021-10-20",
       "card_id": "ccof:mueUsvgajChmjEbp4GB",
-      "charged_through_date": "2020-05-14",
-      "created_at": "2020-08-03T21:53:10Z",
+      "charged_through_date": "2021-11-20",
+      "created_at": "2021-10-20T21:53:10Z",
       "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
       "id": "de86fc96-8664-474b-af1a-abbe59cacf0e",
       "location_id": "S8GWD5R9QB376",
-      "paid_until_date": "2020-05-14",
+      "paid_until_date": "2021-11-20",
       "plan_id": "L3TJVDHVBEQEGQDEZL2JJM7R",
-      "start_date": "2020-04-14",
+      "source": {
+        "name": "My Application"
+      },
+      "start_date": "2021-10-20",
       "status": "CANCELED",
       "timezone": "UTC"
     },
     {
-      "created_at": "2020-08-03T21:53:10Z",
+      "created_at": "2021-10-20T21:53:10Z",
       "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
       "id": "56214fb2-cc85-47a1-93bc-44f3766bb56f",
       "location_id": "S8GWD5R9QB376",
@@ -45,15 +48,18 @@ Defines the fields that are included in the response from the
         "amount": 100,
         "currency": "USD"
       },
-      "start_date": "2020-08-01",
+      "source": {
+        "name": "My Application"
+      },
+      "start_date": "2021-10-20",
       "status": "PENDING",
       "tax_percentage": "5",
       "timezone": "America/Los_Angeles",
       "version": 1594155459464
     },
     {
-      "charged_through_date": "2020-06-11",
-      "created_at": "2020-08-03T21:53:10Z",
+      "charged_through_date": "2021-11-20",
+      "created_at": "2021-10-20T21:53:10Z",
       "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
       "id": "8151fc89-da15-4eb9-a685-1a70883cebfc",
       "invoice_ids": [
@@ -61,13 +67,16 @@ Defines the fields that are included in the response from the
         "rcX_i3sNmHTGKhI4W2mceA"
       ],
       "location_id": "S8GWD5R9QB376",
-      "paid_until_date": "2020-06-11",
+      "paid_until_date": "2021-11-20",
       "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
       "price_override_money": {
         "amount": 1000,
         "currency": "USD"
       },
-      "start_date": "2020-05-11",
+      "source": {
+        "name": "My Application"
+      },
+      "start_date": "2021-10-20",
       "status": "ACTIVE",
       "timezone": "America/Los_Angeles"
     }

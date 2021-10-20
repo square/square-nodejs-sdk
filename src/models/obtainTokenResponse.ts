@@ -10,7 +10,7 @@ export interface ObtainTokenResponse {
   accessToken?: string;
   /** This value is always _bearer_. */
   tokenType?: string;
-  /** The date when access_token expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format. */
+  /** The date when the access_token expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format. */
   expiresAt?: string;
   /** The ID of the authorizing merchant's business. */
   merchantId?: string;
@@ -26,7 +26,7 @@ export interface ObtainTokenResponse {
    */
   planId?: string;
   /**
-   * Then OpenID token belonging to this person. Only present if the
+   * The OpenID token belonging to this person. Only present if the
    * OPENID scope is included in the authorization request.
    */
   idToken?: string;

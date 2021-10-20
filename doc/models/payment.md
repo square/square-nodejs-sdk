@@ -35,7 +35,8 @@ Represents a payment processed by the Square API.
 | `orderId` | `string \| undefined` | Optional | The ID of the order associated with the payment.<br>**Constraints**: *Maximum Length*: `192` |
 | `referenceId` | `string \| undefined` | Optional | An optional ID that associates the payment with an entity in<br>another system.<br>**Constraints**: *Maximum Length*: `40` |
 | `customerId` | `string \| undefined` | Optional | The [Customer](/doc/models/customer.md) ID of the customer associated with the payment.<br>**Constraints**: *Maximum Length*: `191` |
-| `employeeId` | `string \| undefined` | Optional | An optional ID of the employee associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` |
+| `employeeId` | `string \| undefined` | Optional | __Deprecated__: Use `Payment.team_member_id` instead.<br><br>An optional ID of the employee associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` |
+| `teamMemberId` | `string \| undefined` | Optional | An optional ID of the [TeamMember](/doc/models/team-member.md) associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` |
 | `refundIds` | `string[] \| undefined` | Optional | A list of `refund_id`s identifying refunds for the payment. |
 | `riskEvaluation` | [`RiskEvaluation \| undefined`](/doc/models/risk-evaluation.md) | Optional | Represents fraud risk information for the associated payment.<br><br>When you take a payment through Square's Payments API (using the `CreatePayment`<br>endpoint), Square evaluates it and assigns a risk level to the payment. Sellers<br>can use this information to determine the course of action (for example,<br>provide the goods/services or refund the payment). |
 | `buyerEmailAddress` | `string \| undefined` | Optional | The buyer's email address.<br>**Constraints**: *Maximum Length*: `255` |
@@ -46,6 +47,8 @@ Represents a payment processed by the Square API.
 | `capabilities` | `string[] \| undefined` | Optional | Actions that can be performed on this payment:<br><br>- `EDIT_AMOUNT_UP` - The payment amount can be edited up.<br>- `EDIT_AMOUNT_DOWN` - The payment amount can be edited down.<br>- `EDIT_TIP_AMOUNT_UP` - The tip amount can be edited up.<br>- `EDIT_TIP_AMOUNT_DOWN` - The tip amount can be edited down. |
 | `receiptNumber` | `string \| undefined` | Optional | The payment's receipt number.<br>The field is missing if a payment is canceled.<br>**Constraints**: *Maximum Length*: `4` |
 | `receiptUrl` | `string \| undefined` | Optional | The URL for the payment's receipt.<br>The field is only populated for COMPLETED payments.<br>**Constraints**: *Maximum Length*: `255` |
+| `deviceDetails` | [`DeviceDetails \| undefined`](/doc/models/device-details.md) | Optional | Details about the device that took the payment. |
+| `applicationDetails` | [`ApplicationDetails \| undefined`](/doc/models/application-details.md) | Optional | Details about the application that took the payment. |
 | `versionToken` | `string \| undefined` | Optional | Used for optimistic concurrency. This opaque token identifies a specific version of the<br>`Payment` object. |
 
 ## Example (as JSON)

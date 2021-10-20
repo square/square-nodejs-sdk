@@ -20,15 +20,18 @@ Defines fields that are included in a
 ```json
 {
   "subscription": {
-    "canceled_date": "2020-05-01",
+    "canceled_date": "2021-10-20",
     "card_id": "ccof:qy5x8hHGYsgLrp4Q4GB",
-    "created_at": "2020-08-03T21:53:10Z",
+    "created_at": "2021-10-20T21:53:10Z",
     "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
     "id": "910afd30-464a-4e00-a8d8-2296eEXAMPLE",
     "location_id": "S8GWD5R9QB376",
-    "paid_until_date": "2020-05-01",
+    "paid_until_date": "2021-11-20",
     "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
-    "start_date": "2020-04-24",
+    "source": {
+      "name": "My App"
+    },
+    "start_date": "2021-10-20",
     "status": "ACTIVE",
     "timezone": "America/Los_Angeles",
     "version": 1594311617331

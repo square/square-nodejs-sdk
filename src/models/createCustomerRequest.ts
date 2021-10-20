@@ -1,5 +1,6 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Address, addressSchema } from './address';
+import { CustomerTaxIds, customerTaxIdsSchema } from './customerTaxIds';
 
 /**
  * Defines the body parameters that can be included in a request to the
@@ -64,6 +65,11 @@ export interface CreateCustomerRequest {
    * You can also specify this value in `YYYY-MM-DD` format.
    */
   birthday?: string;
+  /**
+   * Represents the tax ID associated with a customer profile. The corresponding `tax_ids` field is available only for customers of sellers in France, Ireland, or the United Kingdom.
+   * For more information, see [Customer tax IDs](https://developer.squareup.com/docs/customers-api/what-it-does#customer-tax-ids).
+   */
+  taxIds?: CustomerTaxIds;
 }
 
 export const createCustomerRequestSchema: Schema<CreateCustomerRequest> = object(
@@ -79,5 +85,6 @@ export const createCustomerRequestSchema: Schema<CreateCustomerRequest> = object
     referenceId: ['reference_id', optional(string())],
     note: ['note', optional(string())],
     birthday: ['birthday', optional(string())],
+    taxIds: ['tax_ids', optional(lazy(() => customerTaxIdsSchema))],
   }
 );

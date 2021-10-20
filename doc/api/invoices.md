@@ -233,7 +233,7 @@ const bodyQueryFilter: InvoiceFilter = {
 bodyQueryFilter.customerIds = bodyQueryFilterCustomerIds;
 
 const bodyQuerySort: InvoiceSort = {
-  field: 'INVOICE_SORT_DATE',
+  field: null,
 };
 bodyQuerySort.order = 'DESC';
 

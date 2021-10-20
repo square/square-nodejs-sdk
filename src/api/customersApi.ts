@@ -70,7 +70,7 @@ export class CustomersApi extends BaseApi {
    *                             to retrieve the next set of results for your original query.  For more information,
    *                             see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
    * @param limit      The maximum number of results to return in a single page. This limit is advisory. The
-   *                             response might contain more or fewer results.  The limit is ignored if it is less than
+   *                             response might contain more or fewer results. The limit is ignored if it is less than
    *                             1 or greater than 100. The default value is 100.  For more information, see
    *                             [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
    * @param sortField  Indicates how customers should be sorted.  The default value is `DEFAULT`.

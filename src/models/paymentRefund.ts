@@ -49,6 +49,8 @@ export interface PaymentRefund {
   createdAt?: string;
   /** The timestamp of when the refund was last updated, in RFC 3339 format. */
   updatedAt?: string;
+  /** An optional ID of the team member associated with taking the payment. */
+  teamMemberId?: string;
 }
 
 export const paymentRefundSchema: Schema<PaymentRefund> = object({
@@ -66,4 +68,5 @@ export const paymentRefundSchema: Schema<PaymentRefund> = object({
   reason: ['reason', optional(string())],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
+  teamMemberId: ['team_member_id', optional(string())],
 });

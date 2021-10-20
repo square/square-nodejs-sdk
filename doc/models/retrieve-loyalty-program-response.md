@@ -36,14 +36,14 @@ A response that contains the loyalty program.
         }
       }
     ],
-    "created_at": "\"2020-04-20T16:55:11Z\"",
+    "created_at": "2020-04-20T16:55:11Z",
     "id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
     "location_ids": [
       "P034NEENMD09F"
     ],
     "reward_tiers": [
       {
-        "created_at": "\"2020-04-20T16:55:11Z\"",
+        "created_at": "2020-04-20T16:55:11Z",
         "definition": {
           "discount_type": "FIXED_PERCENTAGE",
           "percentage_discount": "10",
@@ -63,7 +63,7 @@ A response that contains the loyalty program.
       "one": "Point",
       "other": "Points"
     },
-    "updated_at": "\"2020-05-01T02:00:02Z\""
+    "updated_at": "2020-05-01T02:00:02Z"
   }
 }
 ```

@@ -28,6 +28,9 @@ request.
       ],
       "location_ids": [
         "S8GWD5R9QB376"
+      ],
+      "source_names": [
+        "My App"
       ]
     }
   }

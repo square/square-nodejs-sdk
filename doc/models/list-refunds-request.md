@@ -2,7 +2,7 @@
 # List Refunds Request
 
 Defines the query parameters that can be included in
-a request to the [ListRefunds](/doc/api/transactions.md#list-refunds) endpoint.
+a request to the [ListRefunds]($e/Transactions/ListRefunds) endpoint.
 
 Deprecated - recommend using [SearchOrders](/doc/api/orders.md#search-orders)
 

@@ -20,66 +20,69 @@ Defines the response returned by [GetPayment](/doc/api/payments.md#get-payment).
 {
   "payment": {
     "amount_money": {
-      "amount": 200,
+      "amount": 555,
       "currency": "USD"
     },
-    "app_fee_money": {
-      "amount": 10,
-      "currency": "USD"
+    "application_details": {
+      "application_id": "sq0ids-Pw67AZAlLVB7hsRmwlJPuA",
+      "square_product": "VIRTUAL_TERMINAL"
     },
     "approved_money": {
-      "amount": 200,
+      "amount": 555,
       "currency": "USD"
     },
     "card_details": {
-      "auth_result_code": "nsAyY2",
+      "auth_result_code": "2Nkw7q",
       "avs_status": "AVS_ACCEPTED",
       "card": {
         "bin": "411111",
         "card_brand": "VISA",
         "card_type": "DEBIT",
-        "exp_month": 7,
-        "exp_year": 2026,
-        "fingerprint": "sq-1-TpmjbNBMFdibiIjpQI5LiRgNUBC7u1689i0TgHjnlyHEWYB7tnn-K4QbW4ttvtaqXw",
+        "exp_month": 11,
+        "exp_year": 2022,
+        "fingerprint": "sq-1-Hxim77tbdcbGejOejnoAklBVJed2YFLTmirfl8Q5XZzObTc8qY_U8RkwzoNL8dCEcQ",
         "last_4": "1111",
-        "prepaid_type": "PREPAID"
+        "prepaid_type": "NOT_PREPAID"
       },
       "card_payment_timeline": {
-        "authorized_at": "2019-07-10T13:23:49.234Z",
-        "captured_at": "2019-07-10T13:23:49.446Z"
+        "authorized_at": "2021-10-13T19:34:33.680Z",
+        "captured_at": "2021-10-13T19:34:34.340Z"
       },
       "cvv_status": "CVV_ACCEPTED",
-      "entry_method": "ON_FILE",
-      "statement_description": "SQ *MY MERCHANT",
+      "entry_method": "KEYED",
+      "statement_description": "SQ *EXAMPLE TEST GOSQ.C",
       "status": "CAPTURED"
     },
-    "created_at": "2019-07-10T13:23:49.154Z",
-    "customer_id": "RDX9Z4XTIZR7MRZJUXNY9HUK6I",
-    "id": "GQTFp1ZlXdpoW4o6eGiZhbjosiDFf",
-    "location_id": "XTI0H92143A39",
-    "note": "Brief description",
-    "order_id": "m2Hr8Hk8A3CTyQQ1k4ynExg92tO3",
+    "created_at": "2021-10-13T19:34:33.524Z",
+    "delay_action": "CANCEL",
+    "delay_duration": "PT168H",
+    "delayed_until": "2021-10-20T19:34:33.524Z",
+    "employee_id": "TMoK_ogh6rH1o4dV",
+    "id": "bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY",
+    "location_id": "L88917AVBK2S5",
+    "note": "Test Note",
+    "order_id": "d7eKah653Z579f3gVtjlxpSlmUcZY",
     "processing_fee": [
       {
         "amount_money": {
-          "amount": 36,
+          "amount": 34,
           "currency": "USD"
         },
-        "effective_at": "2019-07-10T15:23:49.000Z",
+        "effective_at": "2021-10-13T21:34:35.000Z",
         "type": "INITIAL"
       }
     ],
-    "receipt_number": "GQTF",
-    "receipt_url": "https://squareup.com/receipt/preview/GQTFp1ZlXdpoW4o6eGiZhbjosiDFf",
-    "reference_id": "123456",
+    "receipt_number": "bP9m",
+    "receipt_url": "https://squareup.com/receipt/preview/bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY",
     "source_type": "CARD",
     "status": "COMPLETED",
+    "team_member_id": "TMoK_ogh6rH1o4dV",
     "total_money": {
-      "amount": 200,
+      "amount": 555,
       "currency": "USD"
     },
-    "updated_at": "2019-07-10T13:23:49.446Z",
-    "version_token": "hj8JqHWu9R1Kkfu63UuIUmYc7zm6YFOt92g8d2fb9fz6o"
+    "updated_at": "2021-10-13T19:34:34.339Z",
+    "version_token": "56pRkL3slrzet2iQrTp9n0bdJVYTB9YEWdTNjQfZOPV6o"
   }
 }
 ```

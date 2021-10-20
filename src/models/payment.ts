@@ -1,6 +1,10 @@
 import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Address, addressSchema } from './address';
 import {
+  ApplicationDetails,
+  applicationDetailsSchema,
+} from './applicationDetails';
+import {
   BankAccountPaymentDetails,
   bankAccountPaymentDetailsSchema,
 } from './bankAccountPaymentDetails';
@@ -12,6 +16,7 @@ import {
   CashPaymentDetails,
   cashPaymentDetailsSchema,
 } from './cashPaymentDetails';
+import { DeviceDetails, deviceDetailsSchema } from './deviceDetails';
 import {
   DigitalWalletDetails,
   digitalWalletDetailsSchema,
@@ -150,8 +155,13 @@ export interface Payment {
   referenceId?: string;
   /** The [Customer]($m/Customer) ID of the customer associated with the payment. */
   customerId?: string;
-  /** An optional ID of the employee associated with taking the payment. */
+  /**
+   * __Deprecated__: Use `Payment.team_member_id` instead.
+   * An optional ID of the employee associated with taking the payment.
+   */
   employeeId?: string;
+  /** An optional ID of the [TeamMember]($m/TeamMember) associated with taking the payment. */
+  teamMemberId?: string;
   /** A list of `refund_id`s identifying refunds for the payment. */
   refundIds?: string[];
   /**
@@ -248,6 +258,10 @@ export interface Payment {
    * The field is only populated for COMPLETED payments.
    */
   receiptUrl?: string;
+  /** Details about the device that took the payment. */
+  deviceDetails?: DeviceDetails;
+  /** Details about the application that took the payment. */
+  applicationDetails?: ApplicationDetails;
   /**
    * Used for optimistic concurrency. This opaque token identifies a specific version of the
    * `Payment` object.
@@ -293,6 +307,7 @@ export const paymentSchema: Schema<Payment> = object({
   referenceId: ['reference_id', optional(string())],
   customerId: ['customer_id', optional(string())],
   employeeId: ['employee_id', optional(string())],
+  teamMemberId: ['team_member_id', optional(string())],
   refundIds: ['refund_ids', optional(array(string()))],
   riskEvaluation: [
     'risk_evaluation',
@@ -309,5 +324,10 @@ export const paymentSchema: Schema<Payment> = object({
   capabilities: ['capabilities', optional(array(string()))],
   receiptNumber: ['receipt_number', optional(string())],
   receiptUrl: ['receipt_url', optional(string())],
+  deviceDetails: ['device_details', optional(lazy(() => deviceDetailsSchema))],
+  applicationDetails: [
+    'application_details',
+    optional(lazy(() => applicationDetailsSchema)),
+  ],
   versionToken: ['version_token', optional(string())],
 });

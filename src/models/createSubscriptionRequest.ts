@@ -1,5 +1,9 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
+import {
+  SubscriptionSource,
+  subscriptionSourceSchema,
+} from './subscriptionSource';
 
 /**
  * Defines parameters in a
@@ -65,6 +69,8 @@ export interface CreateSubscriptionRequest {
    * a list of time zones, see [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
    */
   timezone?: string;
+  /** The origination details of the subscription. */
+  source?: SubscriptionSource;
 }
 
 export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> = object(
@@ -82,5 +88,6 @@ export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> 
     ],
     cardId: ['card_id', optional(string())],
     timezone: ['timezone', optional(string())],
+    source: ['source', optional(lazy(() => subscriptionSourceSchema))],
   }
 );

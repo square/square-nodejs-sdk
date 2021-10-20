@@ -1,6 +1,8 @@
 
 # Location
 
+Represents one of a business's locations.
+
 ## Structure
 
 `Location`
