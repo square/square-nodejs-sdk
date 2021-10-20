@@ -13,6 +13,7 @@ import {
   CustomerPreferences,
   customerPreferencesSchema,
 } from './customerPreferences';
+import { CustomerTaxIds, customerTaxIdsSchema } from './customerTaxIds';
 
 /** Represents a Square customer profile in the Customer Directory of a Square seller. */
 export interface Customer {
@@ -91,6 +92,11 @@ export interface Customer {
   segmentIds?: string[];
   /** The Square-assigned version number of the customer profile. The version number is incremented each time an update is committed to the customer profile, except for changes to customer segment membership and cards on file. */
   version?: bigint;
+  /**
+   * Represents the tax ID associated with a customer profile. The corresponding `tax_ids` field is available only for customers of sellers in France, Ireland, or the United Kingdom.
+   * For more information, see [Customer tax IDs](https://developer.squareup.com/docs/customers-api/what-it-does#customer-tax-ids).
+   */
+  taxIds?: CustomerTaxIds;
 }
 
 export const customerSchema: Schema<Customer> = object({
@@ -113,4 +119,5 @@ export const customerSchema: Schema<Customer> = object({
   groupIds: ['group_ids', optional(array(string()))],
   segmentIds: ['segment_ids', optional(array(string()))],
   version: ['version', optional(bigint())],
+  taxIds: ['tax_ids', optional(lazy(() => customerTaxIdsSchema))],
 });

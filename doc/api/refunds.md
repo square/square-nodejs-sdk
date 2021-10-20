@@ -109,20 +109,22 @@ async refundPayment(
 
 ```ts
 const bodyAmountMoney: Money = {};
-bodyAmountMoney.amount = 100;
+bodyAmountMoney.amount = 1000;
 bodyAmountMoney.currency = 'USD';
 
 const bodyAppFeeMoney: Money = {};
-bodyAppFeeMoney.amount = 114;
-bodyAppFeeMoney.currency = 'GEL';
+bodyAppFeeMoney.amount = 10;
+bodyAppFeeMoney.currency = 'USD';
 
 const body: RefundPaymentRequest = {
-  idempotencyKey: 'a7e36d40-d24b-11e8-b568-0800200c9a66',
+  idempotencyKey: '9b7f2dcf-49da-4411-b23e-a2d6af21333a',
   amountMoney: bodyAmountMoney,
-  paymentId: 'UNOE3kv2BZwqHlJ830RCt5YCuaB',
+  paymentId: 'R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY',
 };
 body.appFeeMoney = bodyAppFeeMoney;
-body.reason = 'reason8';
+body.reason = 'Example';
+body.paymentVersionToken = 'payment_version_token6';
+body.teamMemberId = 'team_member_id4';
 
 try {
   const { result, ...httpResponse } = await refundsApi.refundPayment(body);

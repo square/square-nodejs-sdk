@@ -8,6 +8,10 @@ import {
   string,
 } from '../schema';
 import { Money, moneySchema } from './money';
+import {
+  SubscriptionSource,
+  subscriptionSourceSchema,
+} from './subscriptionSource';
 
 /**
  * Represents a customer subscription to a subscription plan.
@@ -91,6 +95,8 @@ export interface Subscription {
    * Format: the IANA Timezone Database identifier for the location timezone (for example, `America/Los_Angeles`).
    */
   timezone?: string;
+  /** The origination details of the subscription. */
+  source?: SubscriptionSource;
 }
 
 export const subscriptionSchema: Schema<Subscription> = object({
@@ -112,4 +118,5 @@ export const subscriptionSchema: Schema<Subscription> = object({
   createdAt: ['created_at', optional(string())],
   cardId: ['card_id', optional(string())],
   timezone: ['timezone', optional(string())],
+  source: ['source', optional(lazy(() => subscriptionSourceSchema))],
 });

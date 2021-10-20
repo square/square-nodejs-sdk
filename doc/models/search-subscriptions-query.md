@@ -24,6 +24,9 @@ Represents a query (including filtering criteria) used to search for subscriptio
     ],
     "location_ids": [
       "location_ids4"
+    ],
+    "source_names": [
+      "source_names2"
     ]
   }
 }

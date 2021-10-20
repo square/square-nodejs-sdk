@@ -1,5 +1,50 @@
 # Change Log
 
+## Version 15.0.0 (2021-10-20)
+## API updates
+* **Transactions API.** Three previously deprecated endpoints (`ListRefunds`,  `Charge`, and `CreateRefund`) in the [Transactions API](https://developer.squareup.com/reference/square_2021-10-20/transactions-api) are removed from Square API version 2021-10-20 and later. These endpoints will work if you are using Square API versions prior to 2021-10-20. However, these endpoints will eventually be retired from all Square versions. 
+
+   * Instead of the Transactions API `Charge` endpoint, use the Payments API [CreatePayment](https://developer.squareup.com/reference/square_2021-10-20/payments-api/create-payment) endpoint.
+   * Instead of the Transactions API `CreateRefund` endpoint, use the Refunds API [RefundPayment](https://developer.squareup.com/reference/square_2021-10-20/payments-api/refund-payment) endpoint.
+   * Instead of the Transactions API `ListRefunds` endpoint, use the Refunds API [ListPaymentRefund](https://developer.squareup.com/reference/square_2021-10-20/payments-api/list-payment-refunds) endpoint. 
+
+* **Payments API:** 
+  * [Payment](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment) object.
+    * Added the [device_details](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-device_details) read-only field to view details of the device used to take a payment. This `Payment`-level field provides device information for all types of payments. Previously, device details were only available for card payments (`Payment.card_details.device_details`), which is now deprecated.
+    * Added the [team_member_id](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-team_member_id) that applications can use to view the ID of the [TeamMember](https://developer.squareup.com/reference/square_2021-10-20/objects/TeamMember) associated with the payment. Use this field instead of the `Payment.employee_id` field, which is now deprecated. 
+    * Added the [application_details](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-application_details) read-only field to view details of the application that took the payment. 
+
+    * These `Payment` fields have moved to the [general availability](https://developer.squareup.com/docs/build-basics/api-lifecycle) (GA) state:[tip_money](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-tip_money), [delay_duration](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-delay_duration), [statement_description_identifier](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-statement_description_identifier), [delay_duration](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-delay_duration), [delay_action](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-delay_action), [delayed_until](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-delayed_until), and [statement_description_identifier](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-statement_description_identifier).
+
+    * The [ACH Bank Transfer Payments](https://developer.squareup.com/docs/payments-api/take-payments/ach-payments) feature has moved to the GA state. Accordingly, the [bank_account_details](https://developer.squareup.com/reference/square_2021-10-20/objects/Payment#definition__property-bank_account_details) field (and its [BankAccountPaymentDetails](https://developer.squareup.com/reference/square_2021-10-20/objects/BankAccountPaymentDetails) type) are moved to the GA state. 
+  * [CreatePayment](https://developer.squareup.com/reference/square_2021-10-20/payments-api/create-payment) endpoint. 
+    * Added the [team_member_id](https://developer.squareup.com/reference/square_2021-10-20/payments-api/create-payment#request__property-team_member_id) request field to record the ID of the team member associated with the payment.
+    * The [accept_partial_authorization](https://developer.squareup.com/reference/square_2021-10-20/payments-api/create-payment#request__property-accept_partial_authorization) request field has moved to the GA state.
+  * [CompletePayment](https://developer.squareup.com/reference/square_2021-10-20/payments-api/complete-payment) endpoint. Added the `version_token` request field to support optimistic concurrency. For more information, see [Delayed capture of a card payment.](https://developer.squareup.com/docs/payments-api/take-payments/card-payments#delayed-capture-of-a-card-payment) 
+
+* **Refunds API:**
+  * [RefundPayment](https://developer.squareup.com/reference/square_2021-10-20/refunds-api/refund-payment) endpoint.    
+    * Added the `team_member_id` request field to record the ID of the team  member associated with the refund. 
+    * Added the `payment_version_token` request field to support optimistic concurrency. For more information, see [Refund  Payment.](https://developer.squareup.com/docs/payments-api/refund-payments#optimistic-concurrency)
+
+* **Customers API:**
+  * [Customer](https://developer.squareup.com/reference/square_2021-10-20/objects/Customer) object. Added a new `tax_ids` field of the [CustomerTaxIds](https://developer.squareup.com/reference/square_2021-10-20/objects/CustomerTaxIds) type, which can contain the EU VAT ID of the customer. This field is available only for customers of sellers in France, Ireland, or the United Kingdom. For more information, see [Customer tax IDs.](https://developer.squareup.com/docs/customers-api/what-it-does#customer-tax-ids)
+
+  * [UpdateCustomer](https://developer.squareup.com/reference/square_2021-10-20/customers-api/update-customer) endpoint. The Customers API now returns a `400 BAD_REQUEST` error if the request body does not contain any fields. For earlier Square versions, the Customers API will continue to return a `200 OK` response along with the customer profile. For more information, see [Migration notes.](https://developer.squareup.com/docs/customers-api/what-it-does#migration-notes)
+
+* **Invoices API:**
+  * [InvoiceRecipient](https://developer.squareup.com/reference/square_2021-10-20/objects/InvoiceRecipient) object. Added a new, read-only `tax_ids` field of the [InvoiceRecipientTaxIds](https://developer.squareup.com/reference/square_2021-10-20/objects/InvoiceRecipientTaxIds) type, which can contain the EU VAT ID of the invoice recipient. This field is available only for customers of sellers in Ireland or the United Kingdom. If defined, `tax_ids` is returned for all Square API versions. For more information, see [Invoice recipient tax IDs.](https://developer.squareup.com/docs/invoices-api/overview#recipient-tax-ids)
+  * Square now sends emails for test invoices that are published in the Sandbox environment.
+
+* **Catalog API:**
+  * [CatalogSubscriptionPlan.name](https://developer.squareup.com/reference/square_2021-10-20/objects/CatalogSubscriptionPlan#definition__property-name) can be updated after the subscription plan is created. The change is retroactively applicable to prior versions of the Square API.
+
+* **Subscriptions API:**
+  * The new [SubscriptionSource](https://developer.squareup.com/reference/square_2021-10-20/objects/SubscriptionSource) data type is introduced to encapsulate the source where a subscription is created. The new `SubscriptionSource.name` value is propagated to the `Order.source` attribute when an order is made on the subscription. The new feature is retroactively applicable to prior versions of the Square API.
+  * The new [Subscription.source](https://developer.squareup.com/reference/square_2021-10-20/objects/Subscription#definition__property-source) attribute is introduced to indicate the source where the subscription was created. This new feature is retroactively applicable to prior versions of the Square API. 
+  * The new [SearchSubscriptionsFilter.source_names](https://developer.squareup.com/reference/square_2021-10-20/objects/SearchSubscriptionFilter#definition__property-source_names) query expression is introduced to enable search for subscriptions by the subscription source name. This new feature is retroactively applicable to prior versions of the Square API.
+
+
 ## Version 14.1.0 (2021-09-15)
 ## API updates
 

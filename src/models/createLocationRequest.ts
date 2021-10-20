@@ -3,6 +3,7 @@ import { Location, locationSchema } from './location';
 
 /** Request object for the [CreateLocation]($e/Locations/CreateLocation) endpoint. */
 export interface CreateLocationRequest {
+  /** Represents one of a business's locations. */
   location?: Location;
 }
 

@@ -21,7 +21,7 @@ Defines the fields that are included in the response from the
 {
   "subscription": {
     "card_id": "ccof:qy5x8hHGYsgLrp4Q4GB",
-    "created_at": "2020-08-03T21:53:10Z",
+    "created_at": "2021-10-20T21:53:10Z",
     "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
     "id": "56214fb2-cc85-47a1-93bc-44f3766bb56f",
     "location_id": "S8GWD5R9QB376",
@@ -30,7 +30,10 @@ Defines the fields that are included in the response from the
       "amount": 100,
       "currency": "USD"
     },
-    "start_date": "2020-08-01",
+    "source": {
+      "name": "My App"
+    },
+    "start_date": "2021-10-20",
     "status": "PENDING",
     "tax_percentage": "5",
     "timezone": "America/Los_Angeles",

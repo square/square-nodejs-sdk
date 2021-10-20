@@ -2,7 +2,7 @@
 # Charge Request
 
 Defines the parameters that can be included in the body of
-a request to the [Charge](/doc/api/transactions.md#charge) endpoint.
+a request to the [Charge]($e/Transactions/Charge) endpoint.
 
 Deprecated - recommend using [CreatePayment](/doc/api/payments.md#create-payment)
 

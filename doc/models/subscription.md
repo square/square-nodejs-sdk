@@ -28,6 +28,7 @@ For an overview of the `Subscription` type, see
 | `createdAt` | `string \| undefined` | Optional | The timestamp when the subscription was created, in RFC 3339 format. |
 | `cardId` | `string \| undefined` | Optional | The ID of the [customer](/doc/models/customer.md) [card](/doc/models/card.md)<br>that is charged for the subscription. |
 | `timezone` | `string \| undefined` | Optional | Timezone that will be used in date calculations for the subscription.<br>Defaults to the timezone of the location based on `location_id`.<br>Format: the IANA Timezone Database identifier for the location timezone (for example, `America/Los_Angeles`). |
+| `source` | [`SubscriptionSource \| undefined`](/doc/models/subscription-source.md) | Optional | The origination details of the subscription. |
 
 ## Example (as JSON)
 

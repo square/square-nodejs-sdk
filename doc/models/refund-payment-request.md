@@ -16,17 +16,24 @@ Describes a request to refund a payment using [RefundPayment](/doc/api/refunds.m
 | `appFeeMoney` | [`Money \| undefined`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `paymentId` | `string` | Required | The unique ID of the payment being refunded.<br>**Constraints**: *Minimum Length*: `1` |
 | `reason` | `string \| undefined` | Optional | A description of the reason for the refund.<br>**Constraints**: *Maximum Length*: `192` |
+| `paymentVersionToken` | `string \| undefined` | Optional | Used for optimistic concurrency. This opaque token identifies the current `Payment`<br>version that the caller expects. If the server has a different version of the Payment,<br>the update fails and a response with a VERSION_MISMATCH error is returned.<br>If the versions match, or the field is not provided, the refund proceeds as normal. |
+| `teamMemberId` | `string \| undefined` | Optional | An optional [TeamMember](/doc/models/team-member.md) ID to associate with this refund.<br>**Constraints**: *Maximum Length*: `192` |
 
 ## Example (as JSON)
 
 ```json
 {
   "amount_money": {
-    "amount": 100,
+    "amount": 1000,
     "currency": "USD"
   },
-  "idempotency_key": "a7e36d40-d24b-11e8-b568-0800200c9a66",
-  "payment_id": "UNOE3kv2BZwqHlJ830RCt5YCuaB"
+  "app_fee_money": {
+    "amount": 10,
+    "currency": "USD"
+  },
+  "idempotency_key": "9b7f2dcf-49da-4411-b23e-a2d6af21333a",
+  "payment_id": "R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",
+  "reason": "Example"
 }
 ```
 

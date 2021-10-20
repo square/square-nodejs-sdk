@@ -120,7 +120,7 @@ async createPayment(
 
 ```ts
 const bodyAmountMoney: Money = {};
-bodyAmountMoney.amount = 200;
+bodyAmountMoney.amount = 1000;
 bodyAmountMoney.currency = 'USD';
 
 const bodyTipMoney: Money = {};
@@ -132,8 +132,8 @@ bodyAppFeeMoney.amount = 10;
 bodyAppFeeMoney.currency = 'USD';
 
 const body: CreatePaymentRequest = {
-  sourceId: 'ccof:uIbfJXhXETSP197M3GB',
-  idempotencyKey: '4935a656-a929-4792-b97c-8848be85c27c',
+  sourceId: 'ccof:GaJGNaZa8x4OgDJn4GB',
+  idempotencyKey: '7b0f3ec5-086a-4871-8f13-3c81b3875218',
   amountMoney: bodyAmountMoney,
 };
 body.tipMoney = bodyTipMoney;
@@ -141,8 +141,8 @@ body.appFeeMoney = bodyAppFeeMoney;
 body.delayDuration = 'delay_duration6';
 body.autocomplete = true;
 body.orderId = 'order_id0';
-body.customerId = 'VDKXEEKPJN48QDG3BGGFAK05P8';
-body.locationId = 'XK3DBG77NJBFX';
+body.customerId = 'W92WH6P11H4Z77CTET0RNTGFW8';
+body.locationId = 'L88917AVBK2S5';
 body.referenceId = '123456';
 body.note = 'Brief description';
 
@@ -284,7 +284,7 @@ bodyPaymentAmountMoney.amount = 1000;
 bodyPaymentAmountMoney.currency = 'USD';
 
 const bodyPaymentTipMoney: Money = {};
-bodyPaymentTipMoney.amount = 300;
+bodyPaymentTipMoney.amount = 100;
 bodyPaymentTipMoney.currency = 'USD';
 
 const bodyPayment: Payment = {};
@@ -293,10 +293,10 @@ bodyPayment.createdAt = 'created_at0';
 bodyPayment.updatedAt = 'updated_at8';
 bodyPayment.amountMoney = bodyPaymentAmountMoney;
 bodyPayment.tipMoney = bodyPaymentTipMoney;
-bodyPayment.versionToken = 'Z3okDzm2VRv5m5nE3WGx381ItTNhvjkB4VapByyz54h6o';
+bodyPayment.versionToken = 'ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o';
 
 const body: UpdatePaymentRequest = {
-  idempotencyKey: '3d3c3b22-9572-4fc6-1111-e4d2f41b4122',
+  idempotencyKey: '956f8b13-e4ec-45d6-85e8-d1d95ef0c5de',
 };
 body.payment = bodyPayment;
 
@@ -363,6 +363,7 @@ You can use this endpoint to complete a payment with the APPROVED `status`.
 ```ts
 async completePayment(
   paymentId: string,
+  body: CompletePaymentRequest,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<CompletePaymentResponse>>
 ```
@@ -372,6 +373,7 @@ async completePayment(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `paymentId` | `string` | Template, Required | The unique ID identifying the payment to be completed. |
+| `body` | [`CompletePaymentRequest`](/doc/models/complete-payment-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -382,8 +384,11 @@ async completePayment(
 
 ```ts
 const paymentId = 'payment_id0';
+const body: CompletePaymentRequest = {};
+body.versionToken = 'version_token2';
+
 try {
-  const { result, ...httpResponse } = await paymentsApi.completePayment(paymentId);
+  const { result, ...httpResponse } = await paymentsApi.completePayment(paymentId, body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

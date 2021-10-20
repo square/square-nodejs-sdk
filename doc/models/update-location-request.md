@@ -11,7 +11,7 @@ Request object for the [UpdateLocation](/doc/api/locations.md#update-location) e
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `location` | [`Location \| undefined`](/doc/models/location.md) | Optional | - |
+| `location` | [`Location \| undefined`](/doc/models/location.md) | Optional | Represents one of a business's locations. |
 
 ## Example (as JSON)
 

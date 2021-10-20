@@ -23,56 +23,67 @@ present, or it might be present with a status of `FAILED`.
 {
   "payment": {
     "amount_money": {
-      "amount": 200,
+      "amount": 1000,
       "currency": "USD"
     },
     "app_fee_money": {
       "amount": 10,
       "currency": "USD"
     },
+    "application_details": {
+      "application_id": "sq0ids-TcgftTEtKxJTRF1lCFJ9TA",
+      "square_product": "ECOMMERCE_API"
+    },
     "approved_money": {
-      "amount": 200,
+      "amount": 1000,
       "currency": "USD"
     },
     "card_details": {
-      "auth_result_code": "nsAyY2",
+      "auth_result_code": "vNEn2f",
       "avs_status": "AVS_ACCEPTED",
       "card": {
         "bin": "411111",
         "card_brand": "VISA",
         "card_type": "DEBIT",
-        "exp_month": 7,
-        "exp_year": 2026,
-        "fingerprint": "sq-1-TpmjbNBMFdibiIjpQI5LiRgNUBC7u1689i0TgHjnlyHEWYB7tnn-K4QbW4ttvtaqXw",
+        "exp_month": 11,
+        "exp_year": 2022,
+        "fingerprint": "sq-1-Hxim77tbdcbGejOejnoAklBVJed2YFLTmirfl8Q5XZzObTc8qY_U8RkwzoNL8dCEcQ",
         "last_4": "1111",
-        "prepaid_type": "PREPAID"
+        "prepaid_type": "NOT_PREPAID"
       },
       "card_payment_timeline": {
-        "authorized_at": "2019-07-10T13:23:49.234Z",
-        "captured_at": "2019-07-10T13:23:49.446Z"
+        "authorized_at": "2021-10-13T21:14:29.732Z",
+        "captured_at": "2021-10-13T21:14:30.504Z"
       },
       "cvv_status": "CVV_ACCEPTED",
       "entry_method": "ON_FILE",
-      "statement_description": "SQ *MY MERCHANT",
+      "statement_description": "SQ *EXAMPLE TEST GOSQ.C",
       "status": "CAPTURED"
     },
-    "created_at": "2019-07-10T13:23:49.154Z",
-    "customer_id": "RDX9Z4XTIZR7MRZJUXNY9HUK6I",
-    "id": "GQTFp1ZlXdpoW4o6eGiZhbjosiDFf",
-    "location_id": "XTI0H92143A39",
-    "note": "Brief description",
-    "order_id": "m2Hr8Hk8A3CTyQQ1k4ynExg92tO3",
-    "receipt_number": "GQTF",
-    "receipt_url": "https://squareup.com/receipt/preview/GQTFp1ZlXdpoW4o6eGiZhbjosiDFf",
+    "created_at": "2021-10-13T21:14:29.577Z",
+    "customer_id": "W92WH6P11H4Z77CTET0RNTGFW8",
+    "delay_action": "CANCEL",
+    "delay_duration": "PT168H",
+    "delayed_until": "2021-10-20T21:14:29.577Z",
+    "id": "R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",
+    "location_id": "L88917AVBK2S5",
+    "note": "Brief Description",
+    "order_id": "pRsjRTgFWATl7so6DxdKBJa7ssbZY",
+    "receipt_number": "R2B3",
+    "receipt_url": "https://squareupstaging.com/receipt/preview/R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",
     "reference_id": "123456",
+    "risk_evaluation": {
+      "created_at": "2021-10-13T21:14:30.423Z",
+      "risk_level": "NORMAL"
+    },
     "source_type": "CARD",
     "status": "COMPLETED",
     "total_money": {
-      "amount": 200,
+      "amount": 1000,
       "currency": "USD"
     },
-    "updated_at": "2019-07-10T13:23:49.446Z",
-    "version_token": "H8Vnk5Z11SKcueuRti79jGpszSEsSVdhKRrSKCOzILG6o"
+    "updated_at": "2021-10-13T21:14:30.504Z",
+    "version_token": "TPtNEOBOa6Qq6E3C3IjckSVOM6b3hMbfhjvTxHBQUsB6o"
   }
 }
 ```

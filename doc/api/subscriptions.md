@@ -53,18 +53,22 @@ const bodyPriceOverrideMoney: Money = {};
 bodyPriceOverrideMoney.amount = 100;
 bodyPriceOverrideMoney.currency = 'USD';
 
+const bodySource: SubscriptionSource = {};
+bodySource.name = 'My App';
+
 const body: CreateSubscriptionRequest = {
   locationId: 'S8GWD5R9QB376',
   planId: '6JHXF3B2CW3YKHDV4XEM674H',
   customerId: 'CHFGVKYY8RSV93M5KCYTG4PN0G',
 };
 body.idempotencyKey = '8193148c-9586-11e6-99f9-28cfe92138cf';
-body.startDate = '2020-08-01';
+body.startDate = '2021-10-20';
 body.canceledDate = 'canceled_date0';
 body.taxPercentage = '5';
 body.priceOverrideMoney = bodyPriceOverrideMoney;
 body.cardId = 'ccof:qy5x8hHGYsgLrp4Q4GB';
 body.timezone = 'America/Los_Angeles';
+body.source = bodySource;
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.createSubscription(body);
@@ -121,9 +125,11 @@ async searchSubscriptions(
 ```ts
 const bodyQueryFilterCustomerIds: string[] = ['CHFGVKYY8RSV93M5KCYTG4PN0G'];
 const bodyQueryFilterLocationIds: string[] = ['S8GWD5R9QB376'];
+const bodyQueryFilterSourceNames: string[] = ['My App'];
 const bodyQueryFilter: SearchSubscriptionsFilter = {};
 bodyQueryFilter.customerIds = bodyQueryFilterCustomerIds;
 bodyQueryFilter.locationIds = bodyQueryFilterLocationIds;
+bodyQueryFilter.sourceNames = bodyQueryFilterSourceNames;
 
 const bodyQuery: SearchSubscriptionsQuery = {};
 bodyQuery.filter = bodyQueryFilter;

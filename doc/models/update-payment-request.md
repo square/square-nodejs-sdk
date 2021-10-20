@@ -19,17 +19,17 @@ Describes a request to update a payment using
 
 ```json
 {
-  "idempotency_key": "3d3c3b22-9572-4fc6-1111-e4d2f41b4122",
+  "idempotency_key": "956f8b13-e4ec-45d6-85e8-d1d95ef0c5de",
   "payment": {
     "amount_money": {
       "amount": 1000,
       "currency": "USD"
     },
     "tip_money": {
-      "amount": 300,
+      "amount": 100,
       "currency": "USD"
     },
-    "version_token": "Z3okDzm2VRv5m5nE3WGx381ItTNhvjkB4VapByyz54h6o"
+    "version_token": "ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o"
   }
 }
 ```

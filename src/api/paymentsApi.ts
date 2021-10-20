@@ -12,6 +12,10 @@ import {
   cancelPaymentResponseSchema,
 } from '../models/cancelPaymentResponse';
 import {
+  CompletePaymentRequest,
+  completePaymentRequestSchema,
+} from '../models/completePaymentRequest';
+import {
   CompletePaymentResponse,
   completePaymentResponseSchema,
 } from '../models/completePaymentResponse';
@@ -234,14 +238,21 @@ export class PaymentsApi extends BaseApi {
    * You can use this endpoint to complete a payment with the APPROVED `status`.
    *
    * @param paymentId  The unique ID identifying the payment to be completed.
+   * @param body       An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async completePayment(
     paymentId: string,
+    body: CompletePaymentRequest,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<CompletePaymentResponse>> {
     const req = this.createRequest('POST');
-    const mapped = req.prepareArgs({ paymentId: [paymentId, string()] });
+    const mapped = req.prepareArgs({
+      paymentId: [paymentId, string()],
+      body: [body, completePaymentRequestSchema],
+    });
+    req.json(mapped.body);
     req.appendTemplatePath`/v2/payments/${mapped.paymentId}/complete`;
     return req.callAsJson(completePaymentResponseSchema, requestOptions);
   }

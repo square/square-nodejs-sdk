@@ -55,7 +55,7 @@ export interface Card {
    */
   billingAddress?: Address;
   /**
-   * __Not currently set.__ Intended as a Square-assigned identifier, based
+   * Intended as a Square-assigned identifier, based
    * on the card number, to identify the card across multiple locations within a
    * single application.
    */

@@ -22,6 +22,7 @@ Defines parameters in a
 | `priceOverrideMoney` | [`Money \| undefined`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `cardId` | `string \| undefined` | Optional | The ID of the [customer](/doc/models/customer.md) [card](/doc/models/card.md) to charge.<br>If not specified, Square sends an invoice via email. For an example to<br>create a customer and add a card on file, see [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough). |
 | `timezone` | `string \| undefined` | Optional | The timezone that is used in date calculations for the subscription. If unset, defaults to<br>the location timezone. If a timezone is not configured for the location, defaults to "America/New_York".<br>Format: the IANA Timezone Database identifier for the location timezone. For<br>a list of time zones, see [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). |
+| `source` | [`SubscriptionSource \| undefined`](/doc/models/subscription-source.md) | Optional | The origination details of the subscription. |
 
 ## Example (as JSON)
 
@@ -36,7 +37,10 @@ Defines parameters in a
     "amount": 100,
     "currency": "USD"
   },
-  "start_date": "2020-08-01",
+  "source": {
+    "name": "My App"
+  },
+  "start_date": "2021-10-20",
   "tax_percentage": "5",
   "timezone": "America/Los_Angeles"
 }

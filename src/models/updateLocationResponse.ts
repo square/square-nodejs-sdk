@@ -6,6 +6,7 @@ import { Location, locationSchema } from './location';
 export interface UpdateLocationResponse {
   /** Information on errors encountered during the request. */
   errors?: Error[];
+  /** Represents one of a business's locations. */
   location?: Location;
 }
 
