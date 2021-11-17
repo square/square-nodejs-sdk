@@ -93,6 +93,7 @@ async createCard(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyCardBillingAddress: Address = {};
 bodyCardBillingAddress.addressLine1 = '500 Electric Ave';
 bodyCardBillingAddress.addressLine2 = 'Suite 600';

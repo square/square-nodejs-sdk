@@ -7,7 +7,8 @@ import { BaseApi } from './baseApi';
 
 export class SitesApi extends BaseApi {
   /**
-   * Lists the Square Online sites that belong to a seller.
+   * Lists the Square Online sites that belong to a seller. Sites are listed in descending order by the
+   * `created_at` date.
    *
    *
    * __Note:__ Square Online APIs are publicly available as part of an early access program. For more

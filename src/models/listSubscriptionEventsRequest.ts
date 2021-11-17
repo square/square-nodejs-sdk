@@ -1,21 +1,21 @@
 import { number, object, optional, Schema, string } from '../schema';
 
 /**
- * Defines parameters in a
+ * Defines input parameters in a request to the
  * [ListSubscriptionEvents]($e/Subscriptions/ListSubscriptionEvents)
- * endpoint request.
+ * endpoint.
  */
 export interface ListSubscriptionEventsRequest {
   /**
-   * A pagination cursor returned by a previous call to this endpoint.
-   * Provide this to retrieve the next set of results for the original query.
+   * When the total number of resulting subscription events exceeds the limit of a paged response,
+   * specify the cursor returned from a preceding response here to fetch the next set of results.
+   * If the cursor is unset, the response contains the last page of the results.
    * For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
    */
   cursor?: string;
   /**
    * The upper limit on the number of subscription events to return
-   * in the response.
-   * Default: `200`
+   * in a paged response.
    */
   limit?: number;
 }

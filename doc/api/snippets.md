@@ -134,6 +134,7 @@ async upsertSnippet(
 
 ```ts
 const siteId = 'site_id6';
+const contentType = null;
 const bodySnippet: Snippet = {
   content: '<script>var js = 1;</script>',
 };

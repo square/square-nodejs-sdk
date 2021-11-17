@@ -55,8 +55,9 @@ export class TerminalApi extends BaseApi {
    * Creates a Terminal checkout request and sends it to the specified device to take a payment
    * for the requested amount.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                     the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                             request.  See the corresponding object definition for
+   *                                                             field details.
    * @return Response from the API call
    */
   async createTerminalCheckout(
@@ -67,6 +68,7 @@ export class TerminalApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createTerminalCheckoutRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createTerminalCheckoutResponseSchema, requestOptions);
   }
@@ -74,8 +76,9 @@ export class TerminalApi extends BaseApi {
   /**
    * Retrieves a filtered list of Terminal checkout requests created by the account making the request.
    *
-   * @param body An object containing the fields to POST for the request.
-   *                                                      See the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                              request.  See the corresponding object definition for
+   *                                                              field details.
    * @return Response from the API call
    */
   async searchTerminalCheckouts(
@@ -86,6 +89,7 @@ export class TerminalApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchTerminalCheckoutsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       searchTerminalCheckoutsResponseSchema,
@@ -128,8 +132,9 @@ export class TerminalApi extends BaseApi {
   /**
    * Creates a request to refund an Interac payment completed on a Square Terminal.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                   the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
    * @return Response from the API call
    */
   async createTerminalRefund(
@@ -140,6 +145,7 @@ export class TerminalApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createTerminalRefundRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createTerminalRefundResponseSchema, requestOptions);
   }
@@ -148,8 +154,9 @@ export class TerminalApi extends BaseApi {
    * Retrieves a filtered list of Interac Terminal refund requests created by the seller making the
    * request.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                    the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                            request.  See the corresponding object definition for
+   *                                                            field details.
    * @return Response from the API call
    */
   async searchTerminalRefunds(
@@ -160,6 +167,7 @@ export class TerminalApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchTerminalRefundsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchTerminalRefundsResponseSchema, requestOptions);
   }

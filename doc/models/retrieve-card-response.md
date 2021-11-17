@@ -2,7 +2,7 @@
 # Retrieve Card Response
 
 Defines the fields that are included in the response body of
-a request to the [RetrieveCard](#endpoint-cards-retrievecard) endpoint.
+a request to the [RetrieveCard](/doc/api/cards.md#retrieve-card) endpoint.
 
 Note: if there are errors processing the request, the card field will not be
 present.
@@ -42,6 +42,7 @@ present.
     "fingerprint": "ex-p-cs80EK9Flz7LsCMv-szbptQ_ssAGrhemzSTsPFgt9nzyE6t7okiLIQc-qw_quqKX4Q",
     "id": "ccof:uIbfJXhXETSP197M3GB",
     "last_4": "1111",
+    "merchant_id": "6SSW7HV8K2ST5",
     "prepaid_type": "NOT_PREPAID",
     "reference_id": "user-id-1",
     "version": 1

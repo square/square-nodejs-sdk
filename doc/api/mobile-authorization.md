@@ -45,6 +45,7 @@ async createMobileAuthorizationCode(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const body: CreateMobileAuthorizationCodeRequest = {};
 body.locationId = 'YOUR_LOCATION_ID';
 

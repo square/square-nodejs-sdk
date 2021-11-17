@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `bookableOnly` | `boolean \| undefined` | Optional | Indicates whether to include only bookable team members in the returned result (`true`) or not (`false`). |
-| `limit` | `number \| undefined` | Optional | The maximum number of results to return. |
+| `limit` | `number \| undefined` | Optional | The maximum number of results to return.<br>**Constraints**: `>= 1`, `<= 100` |
 | `cursor` | `string \| undefined` | Optional | The cursor for paginating through the results. |
 | `locationId` | `string \| undefined` | Optional | Indicates whether to include only team members enabled at the given location in the returned result. |
 

@@ -27,8 +27,8 @@ export interface RefundPaymentRequest {
    * for more information.
    */
   appFeeMoney?: Money;
-  /** The unique ID of the payment being refunded. */
-  paymentId: string;
+  /** The unique ID of the payment being refunded. Must be provided and non-empty. */
+  paymentId?: string;
   /** A description of the reason for the refund. */
   reason?: string;
   /**
@@ -46,7 +46,7 @@ export const refundPaymentRequestSchema: Schema<RefundPaymentRequest> = object({
   idempotencyKey: ['idempotency_key', string()],
   amountMoney: ['amount_money', lazy(() => moneySchema)],
   appFeeMoney: ['app_fee_money', optional(lazy(() => moneySchema))],
-  paymentId: ['payment_id', string()],
+  paymentId: ['payment_id', optional(string())],
   reason: ['reason', optional(string())],
   paymentVersionToken: ['payment_version_token', optional(string())],
   teamMemberId: ['team_member_id', optional(string())],

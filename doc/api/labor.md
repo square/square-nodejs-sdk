@@ -111,6 +111,7 @@ async createBreakType(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyBreakType: BreakType = {
   locationId: 'CGJN03P1D08GF',
   breakName: 'Lunch Break',
@@ -248,6 +249,7 @@ async updateBreakType(
 
 ```ts
 const id = 'id0';
+const contentType = null;
 const bodyBreakType: BreakType = {
   locationId: '26M7H24AZ9N6R',
   breakName: 'Lunch',
@@ -407,6 +409,7 @@ async createShift(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyShiftWageHourlyRate: Money = {};
 bodyShiftWageHourlyRate.amount = 1100;
 bodyShiftWageHourlyRate.currency = 'USD';
@@ -499,6 +502,7 @@ async searchShifts(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQueryFilterLocationIds: string[] = ['location_ids2'];
 const bodyQueryFilterTeamMemberIds: string[] = ['team_member_ids9', 'team_member_ids0'];
 const bodyQueryFilterEmployeeIds: string[] = ['employee_ids7'];
@@ -667,6 +671,7 @@ async updateShift(
 
 ```ts
 const id = 'id0';
+const contentType = null;
 const bodyShiftWageHourlyRate: Money = {};
 bodyShiftWageHourlyRate.amount = 1500;
 bodyShiftWageHourlyRate.currency = 'USD';
@@ -873,6 +878,7 @@ async updateWorkweekConfig(
 
 ```ts
 const id = 'id0';
+const contentType = null;
 const bodyWorkweekConfig: WorkweekConfig = {
   startOfWeek: 'MON',
   startOfDayLocalTime: '10:00',

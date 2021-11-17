@@ -63,8 +63,9 @@ export class CustomerGroupsApi extends BaseApi {
    *
    * The request must include the `name` value of the group.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
    * @return Response from the API call
    */
   async createCustomerGroup(
@@ -75,6 +76,7 @@ export class CustomerGroupsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createCustomerGroupRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createCustomerGroupResponseSchema, requestOptions);
   }
@@ -114,9 +116,10 @@ export class CustomerGroupsApi extends BaseApi {
   /**
    * Updates a customer group as identified by the `group_id` value.
    *
-   * @param groupId  The ID of the customer group to update.
-   * @param body     An object containing the fields to POST for the request.
-   *                                                      See the corresponding object definition for field details.
+   * @param groupId      The ID of the customer group to update.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
    * @return Response from the API call
    */
   async updateCustomerGroup(
@@ -129,6 +132,7 @@ export class CustomerGroupsApi extends BaseApi {
       groupId: [groupId, string()],
       body: [body, updateCustomerGroupRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/customers/groups/${mapped.groupId}`;
     return req.callAsJson(updateCustomerGroupResponseSchema, requestOptions);

@@ -39,6 +39,7 @@ async createCheckout(
 
 ```ts
 const locationId = 'location_id4';
+const contentType = null;
 const bodyOrderOrderSource: OrderSource = {};
 bodyOrderOrderSource.name = 'name8';
 

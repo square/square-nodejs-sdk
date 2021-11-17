@@ -6,8 +6,8 @@ import {
 } from './subscriptionSource';
 
 /**
- * Defines parameters in a
- * [CreateSubscription]($e/Subscriptions/CreateSubscription) endpoint request.
+ * Defines input parameters in a request to the
+ * [CreateSubscription]($e/Subscriptions/CreateSubscription) endpoint.
  */
 export interface CreateSubscriptionRequest {
   /**
@@ -26,18 +26,21 @@ export interface CreateSubscriptionRequest {
    * [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
    */
   planId: string;
-  /** The ID of the [customer]($m/Customer) profile. */
+  /** The ID of the [customer]($m/Customer) subscribing to the subscription plan. */
   customerId: string;
   /**
-   * The start date of the subscription, in YYYY-MM-DD format. For example,
-   * 2013-01-15. If the start date is left empty, the subscription begins
-   * immediately.
+   * The `YYYY-MM-DD`-formatted date to start the subscription.
+   * If it is unspecified, the subscription starts immediately.
    */
   startDate?: string;
   /**
-   * The date when the subscription should be canceled, in
-   * YYYY-MM-DD format (for example, 2025-02-29). This overrides the plan configuration
-   * if it comes before the date the subscription would otherwise end.
+   * The `YYYY-MM-DD`-formatted date when the newly created subscription is scheduled for cancellation.
+   * This date overrides the cancellation date set in the plan configuration.
+   * If the cancellation date is earlier than the end date of a subscription cycle, the subscription stops
+   * at the canceled date and the subscriber is sent a prorated invoice at the beginning of the canceled cycle.
+   * When the subscription plan of the newly created subscription has a fixed number of cycles and the `canceled_date`
+   * occurs before the subscription plan expires, the specified `canceled_date` sets the date when the subscription
+   * stops through the end of the last cycle.
    */
   canceledDate?: string;
   /**
@@ -57,9 +60,9 @@ export interface CreateSubscriptionRequest {
    */
   priceOverrideMoney?: Money;
   /**
-   * The ID of the [customer]($m/Customer) [card]($m/Card) to charge.
-   * If not specified, Square sends an invoice via email. For an example to
-   * create a customer and add a card on file, see [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
+   * The ID of the [subscriber's]($m/Customer) [card]($m/Card) to charge.
+   * If it is not specified, the subscriber receives an invoice via email. For an example to
+   * create a customer profile for a subscriber and add a card on file, see [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
    */
   cardId?: string;
   /**

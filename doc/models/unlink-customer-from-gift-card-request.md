@@ -1,7 +1,7 @@
 
 # Unlink Customer From Gift Card Request
 
-A request to unlink a customer to a gift card
+A request to unlink a customer from a gift card.
 
 ## Structure
 
@@ -11,7 +11,7 @@ A request to unlink a customer to a gift card
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customerId` | `string` | Required | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `191` |
+| `customerId` | `string` | Required | The ID of the customer to unlink from the gift card.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `191` |
 
 ## Example (as JSON)
 

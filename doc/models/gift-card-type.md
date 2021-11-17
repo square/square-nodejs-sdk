@@ -1,6 +1,8 @@
 
 # Gift Card Type
 
+Indicates the gift card type.
+
 ## Enumeration
 
 `GiftCardType`

@@ -10,6 +10,7 @@ const bookingsApi = client.bookingsApi;
 
 ## Methods
 
+* [List Bookings](/doc/api/bookings.md#list-bookings)
 * [Create Booking](/doc/api/bookings.md#create-booking)
 * [Search Availability](/doc/api/bookings.md#search-availability)
 * [Retrieve Business Booking Profile](/doc/api/bookings.md#retrieve-business-booking-profile)
@@ -18,6 +19,60 @@ const bookingsApi = client.bookingsApi;
 * [Retrieve Booking](/doc/api/bookings.md#retrieve-booking)
 * [Update Booking](/doc/api/bookings.md#update-booking)
 * [Cancel Booking](/doc/api/bookings.md#cancel-booking)
+
+
+# List Bookings
+
+Retrieve a collection of bookings.
+
+```ts
+async listBookings(
+  limit?: number,
+  cursor?: string,
+  teamMemberId?: string,
+  locationId?: string,
+  startAtMin?: string,
+  startAtMax?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListBookingsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `limit` | `number \| undefined` | Query, Optional | The maximum number of results per page to return in a paged response. |
+| `cursor` | `string \| undefined` | Query, Optional | The pagination cursor from the preceding response to return the next page of the results. Do not set this when retrieving the first page of the results. |
+| `teamMemberId` | `string \| undefined` | Query, Optional | The team member for whom to retrieve bookings. If this is not set, bookings of all members are retrieved. |
+| `locationId` | `string \| undefined` | Query, Optional | The location for which to retrieve bookings. If this is not set, all locations' bookings are retrieved. |
+| `startAtMin` | `string \| undefined` | Query, Optional | The RFC 3339 timestamp specifying the earliest of the start time. If this is not set, the current time is used. |
+| `startAtMax` | `string \| undefined` | Query, Optional | The RFC 3339 timestamp specifying the latest of the start time. If this is not set, the time of 31 days after `start_at_min` is used. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListBookingsResponse`](/doc/models/list-bookings-response.md)
+
+## Example Usage
+
+```ts
+const limit = 172;
+const cursor = 'cursor6';
+const teamMemberId = 'team_member_id0';
+const locationId = 'location_id4';
+const startAtMin = 'start_at_min8';
+const startAtMax = 'start_at_max8';
+try {
+  const { result, ...httpResponse } = await bookingsApi.listBookings(limit, cursor, teamMemberId, locationId, startAtMin, startAtMax);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
 
 
 # Create Booking
@@ -45,6 +100,7 @@ async createBooking(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyBooking: Booking = {};
 bodyBooking.id = 'id8';
 bodyBooking.version = 148;
@@ -95,6 +151,7 @@ async searchAvailability(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQueryFilterStartAtRange: TimeRange = {};
 bodyQueryFilterStartAtRange.startAt = 'start_at8';
 bodyQueryFilterStartAtRange.endAt = 'end_at4';
@@ -349,6 +406,7 @@ async updateBooking(
 
 ```ts
 const bookingId = 'booking_id4';
+const contentType = null;
 const bodyBooking: Booking = {};
 bodyBooking.id = 'id8';
 bodyBooking.version = 148;
@@ -402,6 +460,7 @@ async cancelBooking(
 
 ```ts
 const bookingId = 'booking_id4';
+const contentType = null;
 const body: CancelBookingRequest = {};
 body.idempotencyKey = 'idempotency_key2';
 body.bookingVersion = 8;

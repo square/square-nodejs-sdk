@@ -89,6 +89,7 @@ async createDeviceCode(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyDeviceCode: DeviceCode = {
   productType: null,
 };

@@ -4,9 +4,12 @@ import {
   searchSubscriptionsFilterSchema,
 } from './searchSubscriptionsFilter';
 
-/** Represents a query (including filtering criteria) used to search for subscriptions. */
+/** Represents a query, consisting of specified query expressions, used to search for subscriptions. */
 export interface SearchSubscriptionsQuery {
-  /** Represents a set of SearchSubscriptionsQuery filters used to limit the set of Subscriptions returned by SearchSubscriptions. */
+  /**
+   * Represents a set of query expressions (filters) to narrow the scope of targeted subscriptions returned by
+   * the [SearchSubscriptions]($e/Subscriptions/SearchSubscriptions) endpoint.
+   */
   filter?: SearchSubscriptionsFilter;
 }
 

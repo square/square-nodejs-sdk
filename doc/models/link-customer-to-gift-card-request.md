@@ -1,7 +1,7 @@
 
 # Link Customer to Gift Card Request
 
-A request to link a customer to a gift card
+A request to link a customer to a gift card.
 
 ## Structure
 
@@ -11,7 +11,7 @@ A request to link a customer to a gift card
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customerId` | `string` | Required | The ID of the customer to be linked.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `191` |
+| `customerId` | `string` | Required | The ID of the customer to link to the gift card.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `191` |
 
 ## Example (as JSON)
 

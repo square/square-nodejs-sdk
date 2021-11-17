@@ -55,20 +55,19 @@ export class GiftCardsApi extends BaseApi {
    * Lists all gift cards. You can specify optional filters to retrieve
    * a subset of the gift cards.
    *
-   * @param type        If a type is provided, gift cards of this type are returned  (see
-   *                              [GiftCardType]($m/GiftCardType)). If no type is provided, it returns gift cards of
-   *                              all types.
-   * @param state       If the state is provided, it returns the gift cards in the specified state  (see
-   *                              [GiftCardStatus]($m/GiftCardStatus)). Otherwise, it returns the gift cards of all
-   *                              states.
-   * @param limit       If a value is provided, it returns only that number of results per page. The maximum
-   *                              number of results allowed per page is 50. The default value is 30.
+   * @param type        If a [type]($m/GiftCardType) is provided, the endpoint returns gift cards of the
+   *                              specified type. Otherwise, the endpoint returns gift cards of all types.
+   * @param state       If a [state]($m/GiftCardStatus) is provided, the endpoint returns the gift cards in
+   *                              the specified state. Otherwise, the endpoint returns the gift cards of all states.
+   * @param limit       If a limit is provided, the endpoint returns only the specified number of results
+   *                              per page. The maximum value is 50. The default value is 30. For more information, see
+   *                              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
    * @param cursor      A pagination cursor returned by a previous call to this endpoint. Provide this
    *                              cursor to retrieve the next set of results for the original query. If a cursor is not
-   *                              provided, it returns the first page of the results.  For more information, see
-   *                              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
-   * @param customerId  If a value is provided, returns only the gift cards linked to the specified
-   *                              customer
+   *                              provided, the endpoint returns the first page of the results.  For more information,
+   *                              see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+   * @param customerId  If a customer ID is provided, the endpoint returns only the gift cards linked to the
+   *                              specified customer.
    * @return Response from the API call
    */
   async listGiftCards(
@@ -102,8 +101,8 @@ export class GiftCardsApi extends BaseApi {
    * [Selling gift cards](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api#selling-
    * square-gift-cards).
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                             corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createGiftCard(
@@ -114,6 +113,7 @@ export class GiftCardsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createGiftCardRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createGiftCardResponseSchema, requestOptions);
   }
@@ -121,8 +121,9 @@ export class GiftCardsApi extends BaseApi {
   /**
    * Retrieves a gift card using the gift card account number (GAN).
    *
-   * @param body An object containing the fields to POST for the request.
-   *                                                      See the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                              request.  See the corresponding object definition for
+   *                                                              field details.
    * @return Response from the API call
    */
   async retrieveGiftCardFromGAN(
@@ -133,6 +134,7 @@ export class GiftCardsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, retrieveGiftCardFromGANRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       retrieveGiftCardFromGANResponseSchema,
@@ -141,10 +143,11 @@ export class GiftCardsApi extends BaseApi {
   }
 
   /**
-   * Retrieves a gift card using a nonce (a secure token) that represents the gift card.
+   * Retrieves a gift card using a secure payment token that represents the gift card.
    *
-   * @param body An object containing the fields to POST for the request.
-   *                                                        See the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                                request.  See the corresponding object definition
+   *                                                                for field details.
    * @return Response from the API call
    */
   async retrieveGiftCardFromNonce(
@@ -155,6 +158,7 @@ export class GiftCardsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, retrieveGiftCardFromNonceRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       retrieveGiftCardFromNonceResponseSchema,
@@ -163,9 +167,9 @@ export class GiftCardsApi extends BaseApi {
   }
 
   /**
-   * Links a customer to a gift card
+   * Links a customer to a gift card, which is also referred to as adding a card on file.
    *
-   * @param giftCardId   The ID of the gift card to link.
+   * @param giftCardId   The ID of the gift card to be linked.
    * @param body         An object containing the fields to POST for the
    *                                                             request.  See the corresponding object definition for
    *                                                             field details.
@@ -181,15 +185,16 @@ export class GiftCardsApi extends BaseApi {
       giftCardId: [giftCardId, string()],
       body: [body, linkCustomerToGiftCardRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/gift-cards/${mapped.giftCardId}/link-customer`;
     return req.callAsJson(linkCustomerToGiftCardResponseSchema, requestOptions);
   }
 
   /**
-   * Unlinks a customer from a gift card
+   * Unlinks a customer from a gift card, which is also referred to as removing a card on file.
    *
-   * @param giftCardId
+   * @param giftCardId   The ID of the gift card to be unlinked.
    * @param body         An object containing the fields to POST for the
    *                                                                 request.  See the corresponding object definition
    *                                                                 for field details.
@@ -205,6 +210,7 @@ export class GiftCardsApi extends BaseApi {
       giftCardId: [giftCardId, string()],
       body: [body, unlinkCustomerFromGiftCardRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/gift-cards/${mapped.giftCardId}/unlink-customer`;
     return req.callAsJson(

@@ -12,9 +12,25 @@ import {
   createSubscriptionResponseSchema,
 } from '../models/createSubscriptionResponse';
 import {
+  DeleteSubscriptionActionResponse,
+  deleteSubscriptionActionResponseSchema,
+} from '../models/deleteSubscriptionActionResponse';
+import {
   ListSubscriptionEventsResponse,
   listSubscriptionEventsResponseSchema,
 } from '../models/listSubscriptionEventsResponse';
+import {
+  PauseSubscriptionRequest,
+  pauseSubscriptionRequestSchema,
+} from '../models/pauseSubscriptionRequest';
+import {
+  PauseSubscriptionResponse,
+  pauseSubscriptionResponseSchema,
+} from '../models/pauseSubscriptionResponse';
+import {
+  ResumeSubscriptionRequest,
+  resumeSubscriptionRequestSchema,
+} from '../models/resumeSubscriptionRequest';
 import {
   ResumeSubscriptionResponse,
   resumeSubscriptionResponseSchema,
@@ -32,6 +48,14 @@ import {
   searchSubscriptionsResponseSchema,
 } from '../models/searchSubscriptionsResponse';
 import {
+  SwapPlanRequest,
+  swapPlanRequestSchema,
+} from '../models/swapPlanRequest';
+import {
+  SwapPlanResponse,
+  swapPlanResponseSchema,
+} from '../models/swapPlanResponse';
+import {
   UpdateSubscriptionRequest,
   updateSubscriptionRequestSchema,
 } from '../models/updateSubscriptionRequest';
@@ -44,15 +68,15 @@ import { BaseApi } from './baseApi';
 
 export class SubscriptionsApi extends BaseApi {
   /**
-   * Creates a subscription for a customer to a subscription plan.
+   * Creates a subscription to a subscription plan by a customer.
    *
    * If you provide a card on file in the request, Square charges the card for
    * the subscription. Otherwise, Square bills an invoice to the customer's email
    * address. The subscription starts immediately, unless the request includes
    * the optional `start_date`. Each individual subscription is associated with a particular location.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                                 corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                         See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createSubscription(
@@ -63,12 +87,14 @@ export class SubscriptionsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createSubscriptionRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createSubscriptionResponseSchema, requestOptions);
   }
 
   /**
    * Searches for subscriptions.
+   *
    * Results are ordered chronologically by subscription creation date. If
    * the request specifies more than one location ID,
    * the endpoint orders the result
@@ -86,8 +112,9 @@ export class SubscriptionsApi extends BaseApi {
    * [Retrieve subscriptions](https://developer.squareup.com/docs/subscriptions-api/overview#retrieve-
    * subscriptions).
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
    * @return Response from the API call
    */
   async searchSubscriptions(
@@ -98,6 +125,7 @@ export class SubscriptionsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchSubscriptionsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchSubscriptionsResponseSchema, requestOptions);
   }
@@ -106,16 +134,22 @@ export class SubscriptionsApi extends BaseApi {
    * Retrieves a subscription.
    *
    * @param subscriptionId  The ID of the subscription to retrieve.
+   * @param include         A query parameter to specify related information to be included in the response.
+   *                                  The supported query parameter values are:   - `actions`: to include scheduled
+   *                                  actions on the targeted subscription.
    * @return Response from the API call
    */
   async retrieveSubscription(
     subscriptionId: string,
+    include?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<RetrieveSubscriptionResponse>> {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({
       subscriptionId: [subscriptionId, string()],
+      include: [include, optional(string())],
     });
+    req.query('include', mapped.include);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}`;
     return req.callAsJson(retrieveSubscriptionResponseSchema, requestOptions);
   }
@@ -124,7 +158,7 @@ export class SubscriptionsApi extends BaseApi {
    * Updates a subscription. You can set, modify, and clear the
    * `subscription` field values.
    *
-   * @param subscriptionId  The ID for the subscription to update.
+   * @param subscriptionId  The ID of the subscription to update.
    * @param body            An object containing the fields to POST for the
    *                                                            request.  See the corresponding object definition for
    *                                                            field details.
@@ -140,14 +174,40 @@ export class SubscriptionsApi extends BaseApi {
       subscriptionId: [subscriptionId, string()],
       body: [body, updateSubscriptionRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}`;
     return req.callAsJson(updateSubscriptionResponseSchema, requestOptions);
   }
 
   /**
-   * Sets the `canceled_date` field to the end of the active billing period.
-   * After this date, the status changes from ACTIVE to CANCELED.
+   * Deletes a scheduled action for a subscription.
+   *
+   * @param subscriptionId  The ID of the subscription the targeted action is to act upon.
+   * @param actionId        The ID of the targeted action to be deleted.
+   * @return Response from the API call
+   */
+  async deleteSubscriptionAction(
+    subscriptionId: string,
+    actionId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<DeleteSubscriptionActionResponse>> {
+    const req = this.createRequest('DELETE');
+    const mapped = req.prepareArgs({
+      subscriptionId: [subscriptionId, string()],
+      actionId: [actionId, string()],
+    });
+    req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/actions/${mapped.actionId}`;
+    return req.callAsJson(
+      deleteSubscriptionActionResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Schedules a `CANCEL` action to cancel an active subscription
+   * by setting the `canceled_date` field to the end of the active billing period
+   * and changing the subscription status from ACTIVE to CANCELED after this date.
    *
    * @param subscriptionId  The ID of the subscription to cancel.
    * @return Response from the API call
@@ -170,12 +230,13 @@ export class SubscriptionsApi extends BaseApi {
    * subscription was canceled) events are returned.
    *
    * @param subscriptionId  The ID of the subscription to retrieve the events for.
-   * @param cursor          A pagination cursor returned by a previous call to this endpoint. Provide this
-   *                                  to retrieve the next set of results for the original query.  For more information,
-   *                                  see [Pagination](https://developer.squareup.com/docs/working-with-
-   *                                  apis/pagination).
-   * @param limit           The upper limit on the number of subscription events to return in the response.
-   *                                  Default: `200`
+   * @param cursor          When the total number of resulting subscription events exceeds the limit of a
+   *                                  paged response,  specify the cursor returned from a preceding response here to
+   *                                  fetch the next set of results. If the cursor is unset, the response contains the
+   *                                  last page of the results.  For more information, see [Pagination](https:
+   *                                  //developer.squareup.com/docs/working-with-apis/pagination).
+   * @param limit           The upper limit on the number of subscription events to return in a paged
+   *                                  response.
    * @return Response from the API call
    */
   async listSubscriptionEvents(
@@ -197,20 +258,76 @@ export class SubscriptionsApi extends BaseApi {
   }
 
   /**
-   * Resumes a deactivated subscription.
+   * Schedules a `PAUSE` action to pause an active subscription.
+   *
+   * @param subscriptionId  The ID of the subscription to pause.
+   * @param body            An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
+   * @return Response from the API call
+   */
+  async pauseSubscription(
+    subscriptionId: string,
+    body: PauseSubscriptionRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<PauseSubscriptionResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      subscriptionId: [subscriptionId, string()],
+      body: [body, pauseSubscriptionRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/pause`;
+    return req.callAsJson(pauseSubscriptionResponseSchema, requestOptions);
+  }
+
+  /**
+   * Schedules a `RESUME` action to resume a paused or a deactivated subscription.
    *
    * @param subscriptionId  The ID of the subscription to resume.
+   * @param body            An object containing the fields to POST for the
+   *                                                            request.  See the corresponding object definition for
+   *                                                            field details.
    * @return Response from the API call
    */
   async resumeSubscription(
     subscriptionId: string,
+    body: ResumeSubscriptionRequest,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ResumeSubscriptionResponse>> {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({
       subscriptionId: [subscriptionId, string()],
+      body: [body, resumeSubscriptionRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/resume`;
     return req.callAsJson(resumeSubscriptionResponseSchema, requestOptions);
+  }
+
+  /**
+   * Schedules a `SWAP_PLAN` action to swap a subscription plan in an existing subscription.
+   *
+   * @param subscriptionId  The ID of the subscription to swap the subscription plan for.
+   * @param body            An object containing the fields to POST for the request.  See
+   *                                                  the corresponding object definition for field details.
+   * @return Response from the API call
+   */
+  async swapPlan(
+    subscriptionId: string,
+    body: SwapPlanRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<SwapPlanResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      subscriptionId: [subscriptionId, string()],
+      body: [body, swapPlanRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/swap-plan`;
+    return req.callAsJson(swapPlanResponseSchema, requestOptions);
   }
 }

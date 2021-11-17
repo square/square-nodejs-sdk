@@ -51,7 +51,7 @@ async listDisputes(
 
 ```ts
 const cursor = 'cursor6';
-const states = 'EVIDENCE_REQUIRED';
+const states = 'INQUIRY_EVIDENCE_REQUIRED';
 const locationId = 'location_id4';
 try {
   const { result, ...httpResponse } = await disputesApi.listDisputes(cursor, states, locationId);
@@ -221,6 +221,7 @@ async createDisputeEvidenceFile(
 
 ```ts
 const disputeId = 'dispute_id2';
+const contentType = null;
 const request: CreateDisputeEvidenceFileRequest = {
   idempotencyKey: 'idempotency_key2',
 };
@@ -269,6 +270,7 @@ async createDisputeEvidenceText(
 
 ```ts
 const disputeId = 'dispute_id2';
+const contentType = null;
 const body: CreateDisputeEvidenceTextRequest = {
   idempotencyKey: 'ed3ee3933d946f1514d505d173c82648',
   evidenceText: '1Z8888888888888888',

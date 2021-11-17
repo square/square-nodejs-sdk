@@ -4,7 +4,7 @@ import { object, optional, Schema, string } from '../schema';
 export interface SubscriptionEventInfo {
   /** A human-readable explanation for the event. */
   detail?: string;
-  /** The possible subscription event info codes. */
+  /** Supported info codes of a subscription event. */
   code?: string;
 }
 

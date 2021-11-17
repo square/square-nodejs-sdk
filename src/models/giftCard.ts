@@ -5,6 +5,7 @@ import { Money, moneySchema } from './money';
 export interface GiftCard {
   /** The Square-assigned ID of the gift card. */
   id?: string;
+  /** Indicates the gift card type. */
   type: string;
   /**
    * Indicates the source that generated the gift card

@@ -124,7 +124,8 @@ export interface Payment {
   delayedUntil?: string;
   /**
    * The source type for this payment.
-   * Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `CASH`, or `EXTERNAL`.
+   * Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `BUY_NOW_PAY_LATER`, `CASH`, or
+   * `EXTERNAL`.
    */
   sourceType?: string;
   /** Reflects the current status of a card payment. Contains only non-confidential information. */

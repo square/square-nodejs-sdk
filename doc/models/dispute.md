@@ -39,7 +39,7 @@ Represents a dispute a cardholder initiated with their bank.
     "currency": "NGN"
   },
   "reason": "NOT_AS_DESCRIBED",
-  "state": "EVIDENCE_REQUIRED"
+  "state": "PROCESSING"
 }
 ```
 

@@ -67,6 +67,7 @@ async renewToken(
 
 ```ts
 const clientId = 'client_id8';
+const contentType = null;
 const body: RenewTokenRequest = {};
 body.accessToken = 'ACCESS_TOKEN';
 
@@ -128,6 +129,7 @@ async revokeToken(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const body: RevokeTokenRequest = {};
 body.clientId = 'CLIENT_ID';
 body.accessToken = 'ACCESS_TOKEN';
@@ -191,6 +193,7 @@ async obtainToken(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyScopes: string[] = ['scopes6', 'scopes7', 'scopes8'];
 const body: ObtainTokenRequest = {
   clientId: 'APPLICATION_ID',

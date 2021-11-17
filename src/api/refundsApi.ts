@@ -89,8 +89,8 @@ export class RefundsApi extends BaseApi {
    * refund of a cash or external payment. For more information, see
    * [Refund Payment](https://developer.squareup.com/docs/payments-api/refund-payments).
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                            corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async refundPayment(
@@ -101,6 +101,7 @@ export class RefundsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, refundPaymentRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(refundPaymentResponseSchema, requestOptions);
   }

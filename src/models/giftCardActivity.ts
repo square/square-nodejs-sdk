@@ -57,6 +57,7 @@ import { Money, moneySchema } from './money';
 export interface GiftCardActivity {
   /** The unique ID of the gift card activity. */
   id?: string;
+  /** Indicates the gift card activity type. */
   type: string;
   /** The ID of the location at which the activity occurred. */
   locationId: string;

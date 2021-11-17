@@ -1,7 +1,7 @@
 
 # Subscription Event Subscription Event Type
 
-The possible subscription event types.
+Supported types of an event occurred to a subscription.
 
 ## Enumeration
 
@@ -11,9 +11,10 @@ The possible subscription event types.
 
 | Name | Description |
 |  --- | --- |
-| `START_SUBSCRIPTION` | The subscription started. |
-| `PLAN_CHANGE` | The subscription plan changed. |
-| `STOP_SUBSCRIPTION` | The subscription stopped. |
-| `DEACTIVATE_SUBSCRIPTION` | The subscription deactivated |
-| `RESUME_SUBSCRIPTION` | The subscription resumed. |
+| `START_SUBSCRIPTION` | The subscription was started. |
+| `PLAN_CHANGE` | The subscription plan was changed. |
+| `STOP_SUBSCRIPTION` | The subscription was stopped. |
+| `DEACTIVATE_SUBSCRIPTION` | The subscription was deactivated |
+| `RESUME_SUBSCRIPTION` | The subscription was resumed. |
+| `PAUSE_SUBSCRIPTION` | The subscription was paused. |
 

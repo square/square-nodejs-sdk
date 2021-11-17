@@ -4,16 +4,13 @@ import {
   subscriptionEventInfoSchema,
 } from './subscriptionEventInfo';
 
-/** Describes changes to subscription and billing states. */
+/** Describes changes to a subscription and the subscription status. */
 export interface SubscriptionEvent {
   /** The ID of the subscription event. */
   id: string;
-  /** The possible subscription event types. */
+  /** Supported types of an event occurred to a subscription. */
   subscriptionEventType: string;
-  /**
-   * The date, in YYYY-MM-DD format (for
-   * example, 2013-01-15), when the subscription event went into effect.
-   */
+  /** The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) when the subscription event occurred. */
   effectiveDate: string;
   /** The ID of the subscription plan associated with the subscription. */
   planId: string;

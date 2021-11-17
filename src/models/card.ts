@@ -62,6 +62,8 @@ export interface Card {
   fingerprint?: string;
   /** The ID of a customer created using the Customers API to be associated with the card. */
   customerId?: string;
+  /** The ID of the merchant associated with the card. */
+  merchantId?: string;
   /**
    * An optional user-defined reference ID that associates this card with
    * another entity in an external system. For example, a customer ID from an
@@ -97,6 +99,7 @@ export const cardSchema: Schema<Card> = object({
   billingAddress: ['billing_address', optional(lazy(() => addressSchema))],
   fingerprint: ['fingerprint', optional(string())],
   customerId: ['customer_id', optional(string())],
+  merchantId: ['merchant_id', optional(string())],
   referenceId: ['reference_id', optional(string())],
   enabled: ['enabled', optional(boolean())],
   cardType: ['card_type', optional(string())],

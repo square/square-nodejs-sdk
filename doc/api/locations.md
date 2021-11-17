@@ -81,6 +81,7 @@ async createLocation(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyLocationAddress: Address = {};
 bodyLocationAddress.addressLine1 = '1234 Peachtree St. NE';
 bodyLocationAddress.addressLine2 = 'address_line_26';
@@ -185,6 +186,7 @@ async updateLocation(
 
 ```ts
 const locationId = 'location_id4';
+const contentType = null;
 const bodyLocationAddress: Address = {};
 bodyLocationAddress.addressLine1 = '1234 Peachtree St. NE';
 bodyLocationAddress.addressLine2 = 'address_line_26';

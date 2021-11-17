@@ -3,8 +3,8 @@ import { Error, errorSchema } from './error';
 import { GiftCard, giftCardSchema } from './giftCard';
 
 /**
- * A response that contains a `GiftCard`. The response might contain a set of `Error` objects
- * if the request resulted in errors.
+ * A response that contains a `GiftCard` object. If the request resulted in errors,
+ * the response contains a set of `Error` objects.
  */
 export interface RetrieveGiftCardFromNonceResponse {
   /** Any errors that occurred during the request. */

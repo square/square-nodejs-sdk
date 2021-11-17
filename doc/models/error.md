@@ -23,7 +23,7 @@ See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-
 ```json
 {
   "category": "RATE_LIMIT_ERROR",
-  "code": "ARRAY_EMPTY",
+  "code": "INVALID_EXPIRATION_DATE",
   "detail": "detail6",
   "field": "field6"
 }

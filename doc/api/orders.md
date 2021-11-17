@@ -51,6 +51,7 @@ async createOrder(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyOrderSource: OrderSource = {};
 bodyOrderSource.name = 'name6';
 
@@ -256,6 +257,7 @@ async batchRetrieveOrders(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyOrderIds: string[] = ['CAISEM82RcpmcFBM0TfOyiHV3es', 'CAISENgvlJ6jLWAzERDzjyHVybY'];
 const body: BatchRetrieveOrdersRequest = {
   orderIds: bodyOrderIds,
@@ -300,6 +302,7 @@ async calculateOrder(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyOrderSource: OrderSource = {};
 bodyOrderSource.name = 'name6';
 
@@ -463,6 +466,7 @@ async cloneOrder(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const body: CloneOrderRequest = {
   orderId: 'ZAISEM52YcpmcWAzERDOyiWS123',
 };
@@ -523,6 +527,7 @@ async searchOrders(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyLocationIds: string[] = ['057P5VYJ4A5X1', '18YC4JDH91E1H'];
 const bodyQueryFilterStateFilterStates: string[] = ['COMPLETED'];
 const bodyQueryFilterStateFilter: SearchOrdersStateFilter = {
@@ -677,6 +682,7 @@ async updateOrder(
 
 ```ts
 const orderId = 'order_id6';
+const contentType = null;
 const bodyOrderSource: OrderSource = {};
 bodyOrderSource.name = 'name6';
 
@@ -809,6 +815,7 @@ async payOrder(
 
 ```ts
 const orderId = 'order_id6';
+const contentType = null;
 const bodyPaymentIds: string[] = ['EnZdNAlWCmfh6Mt5FMNST1o7taB', '0LRiVlbXVwe8ozu4KbZxd12mvaB'];
 const body: PayOrderRequest = {
   idempotencyKey: 'c043a359-7ad9-4136-82a9-c3f1d66dcbff',

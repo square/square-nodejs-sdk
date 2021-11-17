@@ -78,9 +78,9 @@ export class SnippetsApi extends BaseApi {
    * information, see [Early access program for Square Online APIs](https://developer.squareup.
    * com/docs/online-api#early-access-program-for-square-online-apis).
    *
-   * @param siteId  The ID of the site where you want to add or update the snippet.
-   * @param body    An object containing the fields to POST for the request.  See the
-   *                                               corresponding object definition for field details.
+   * @param siteId       The ID of the site where you want to add or update the snippet.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async upsertSnippet(
@@ -93,6 +93,7 @@ export class SnippetsApi extends BaseApi {
       siteId: [siteId, string()],
       body: [body, upsertSnippetRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/sites/${mapped.siteId}/snippet`;
     return req.callAsJson(upsertSnippetResponseSchema, requestOptions);

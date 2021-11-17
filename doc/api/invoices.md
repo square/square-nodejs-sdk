@@ -96,6 +96,7 @@ async createInvoice(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyInvoicePrimaryRecipientAddress: Address = {};
 bodyInvoicePrimaryRecipientAddress.addressLine1 = 'address_line_10';
 bodyInvoicePrimaryRecipientAddress.addressLine2 = 'address_line_20';
@@ -225,6 +226,7 @@ async searchInvoices(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQueryFilterLocationIds: string[] = ['ES0RJRZYEC39A'];
 const bodyQueryFilterCustomerIds: string[] = ['JDKYHBWT1D4F8MFH63DBMEN8Y4'];
 const bodyQueryFilter: InvoiceFilter = {
@@ -375,6 +377,7 @@ async updateInvoice(
 
 ```ts
 const invoiceId = 'invoice_id0';
+const contentType = null;
 const bodyInvoicePrimaryRecipientAddress: Address = {};
 bodyInvoicePrimaryRecipientAddress.addressLine1 = 'address_line_10';
 bodyInvoicePrimaryRecipientAddress.addressLine2 = 'address_line_20';
@@ -464,6 +467,7 @@ async cancelInvoice(
 
 ```ts
 const invoiceId = 'invoice_id0';
+const contentType = null;
 const body: CancelInvoiceRequest = {
   version: 0,
 };
@@ -519,6 +523,7 @@ async publishInvoice(
 
 ```ts
 const invoiceId = 'invoice_id0';
+const contentType = null;
 const body: PublishInvoiceRequest = {
   version: 1,
 };

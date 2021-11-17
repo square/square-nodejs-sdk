@@ -1,7 +1,7 @@
 
 # Subscription Event
 
-Describes changes to subscription and billing states.
+Describes changes to a subscription and the subscription status.
 
 ## Structure
 
@@ -12,8 +12,8 @@ Describes changes to subscription and billing states.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Required | The ID of the subscription event. |
-| `subscriptionEventType` | [`string`](/doc/models/subscription-event-subscription-event-type.md) | Required | The possible subscription event types. |
-| `effectiveDate` | `string` | Required | The date, in YYYY-MM-DD format (for<br>example, 2013-01-15), when the subscription event went into effect. |
+| `subscriptionEventType` | [`string`](/doc/models/subscription-event-subscription-event-type.md) | Required | Supported types of an event occurred to a subscription. |
+| `effectiveDate` | `string` | Required | The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) when the subscription event occurred. |
 | `planId` | `string` | Required | The ID of the subscription plan associated with the subscription. |
 | `info` | [`SubscriptionEventInfo \| undefined`](/doc/models/subscription-event-info.md) | Optional | Provides information about the subscription event. |
 
@@ -22,12 +22,12 @@ Describes changes to subscription and billing states.
 ```json
 {
   "id": "id0",
-  "subscription_event_type": "STOP_SUBSCRIPTION",
+  "subscription_event_type": "RESUME_SUBSCRIPTION",
   "effective_date": "effective_date0",
   "plan_id": "plan_id8",
   "info": {
     "detail": "detail6",
-    "code": "CUSTOMER_NO_EMAIL"
+    "code": "CUSTOMER_DELETED"
   }
 }
 ```

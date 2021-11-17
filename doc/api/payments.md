@@ -119,6 +119,7 @@ async createPayment(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyAmountMoney: Money = {};
 bodyAmountMoney.amount = 1000;
 bodyAmountMoney.currency = 'USD';
@@ -194,6 +195,7 @@ async cancelPaymentByIdempotencyKey(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const body: CancelPaymentByIdempotencyKeyRequest = {
   idempotencyKey: 'a7e36d40-d24b-11e8-b568-0800200c9a66',
 };
@@ -279,6 +281,7 @@ async updatePayment(
 
 ```ts
 const paymentId = 'payment_id0';
+const contentType = null;
 const bodyPaymentAmountMoney: Money = {};
 bodyPaymentAmountMoney.amount = 1000;
 bodyPaymentAmountMoney.currency = 'USD';
@@ -384,6 +387,7 @@ async completePayment(
 
 ```ts
 const paymentId = 'payment_id0';
+const contentType = null;
 const body: CompletePaymentRequest = {};
 body.versionToken = 'version_token2';
 

@@ -46,8 +46,8 @@ export class LocationsApi extends BaseApi {
   /**
    * Creates a location.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                             corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createLocation(
@@ -58,6 +58,7 @@ export class LocationsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createLocationRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createLocationResponseSchema, requestOptions);
   }
@@ -84,9 +85,9 @@ export class LocationsApi extends BaseApi {
   /**
    * Updates a location.
    *
-   * @param locationId  The ID of the location to update.
-   * @param body        An object containing the fields to POST for the request.  See
-   *                                                    the corresponding object definition for field details.
+   * @param locationId   The ID of the location to update.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    */
   async updateLocation(
@@ -99,6 +100,7 @@ export class LocationsApi extends BaseApi {
       locationId: [locationId, string()],
       body: [body, updateLocationRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/locations/${mapped.locationId}`;
     return req.callAsJson(updateLocationResponseSchema, requestOptions);

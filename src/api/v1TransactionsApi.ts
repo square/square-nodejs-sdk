@@ -77,11 +77,11 @@ export class V1TransactionsApi extends BaseApi {
    * Updates the details of an online store order. Every update you perform on an order corresponds to
    * one of three actions:
    *
-   * @param locationId  The ID of the order's associated location.
-   * @param orderId     The order's Square-issued ID. You obtain this value from Order
-   *                                                   objects returned by the List Orders endpoint
-   * @param body        An object containing the fields to POST for the request.  See
-   *                                                   the corresponding object definition for field details.
+   * @param locationId   The ID of the order's associated location.
+   * @param orderId      The order's Square-issued ID. You obtain this value from Order
+   *                                                    objects returned by the List Orders endpoint
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    * @deprecated
    */
@@ -97,6 +97,7 @@ export class V1TransactionsApi extends BaseApi {
       orderId: [orderId, string()],
       body: [body, v1UpdateOrderRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v1/${mapped.locationId}/orders/${mapped.orderId}`;
     req.deprecated('V1TransactionsApi.updateOrder');
@@ -254,9 +255,9 @@ export class V1TransactionsApi extends BaseApi {
    * purposes, you can create fake cash payments in Square Point of Sale and
    * refund them.
    *
-   * @param locationId  The ID of the original payment's associated location.
-   * @param body        An object containing the fields to POST for the request.  See
-   *                                                    the corresponding object definition for field details.
+   * @param locationId   The ID of the original payment's associated location.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    * @deprecated
    */
@@ -270,6 +271,7 @@ export class V1TransactionsApi extends BaseApi {
       locationId: [locationId, string()],
       body: [body, v1CreateRefundRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v1/${mapped.locationId}/refunds`;
     req.deprecated('V1TransactionsApi.createRefund');

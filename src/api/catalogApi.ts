@@ -103,8 +103,9 @@ export class CatalogApi extends BaseApi {
    * IDs can be deleted. The response will only include IDs that were
    * actually deleted.
    *
-   * @param body An object containing the fields to POST for the request.
-   *                                                        See the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                                request.  See the corresponding object definition
+   *                                                                for field details.
    * @return Response from the API call
    */
   async batchDeleteCatalogObjects(
@@ -115,6 +116,7 @@ export class CatalogApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, batchDeleteCatalogObjectsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       batchDeleteCatalogObjectsResponseSchema,
@@ -130,9 +132,9 @@ export class CatalogApi extends BaseApi {
    * its [CatalogModifierList]($m/CatalogModifierList) objects, and the ids of
    * any [CatalogTax]($m/CatalogTax) objects that apply to it.
    *
-   * @param body An object containing the fields to POST for the request.
-   *                                                          See the corresponding object definition for field
-   *                                                          details.
+   * @param body         An object containing the fields to POST for the
+   *                                                                  request.  See the corresponding object definition
+   *                                                                  for field details.
    * @return Response from the API call
    */
   async batchRetrieveCatalogObjects(
@@ -143,6 +145,7 @@ export class CatalogApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, batchRetrieveCatalogObjectsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       batchRetrieveCatalogObjectsResponseSchema,
@@ -161,8 +164,9 @@ export class CatalogApi extends BaseApi {
    * request (items, variations, modifier lists, discounts, and taxes) is no more
    * than 10,000.
    *
-   * @param body An object containing the fields to POST for the request.
-   *                                                        See the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                                request.  See the corresponding object definition
+   *                                                                for field details.
    * @return Response from the API call
    */
   async batchUpsertCatalogObjects(
@@ -173,6 +177,7 @@ export class CatalogApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, batchUpsertCatalogObjectsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       batchUpsertCatalogObjectsResponseSchema,
@@ -204,6 +209,7 @@ export class CatalogApi extends BaseApi {
     const mapped = req.prepareArgs({
       request: [request, optional(createCatalogImageRequestSchema)],
     });
+    req.header('Content-Type', 'multipart/form-data');
     req.formData({
       request: JSON.stringify(mapped.request),
       image_file: imageFile,
@@ -271,8 +277,9 @@ export class CatalogApi extends BaseApi {
   /**
    * Creates or updates the target [CatalogObject]($m/CatalogObject).
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
    * @return Response from the API call
    */
   async upsertCatalogObject(
@@ -283,6 +290,7 @@ export class CatalogApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, upsertCatalogObjectRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(upsertCatalogObjectResponseSchema, requestOptions);
   }
@@ -370,8 +378,9 @@ export class CatalogApi extends BaseApi {
    * items or item variations, whereas `SearchCatalogObjects` does.
    * - The both endpoints have different call conventions, including the query filter formats.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                   the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
    * @return Response from the API call
    */
   async searchCatalogObjects(
@@ -382,6 +391,7 @@ export class CatalogApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchCatalogObjectsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchCatalogObjectsResponseSchema, requestOptions);
   }
@@ -403,8 +413,8 @@ export class CatalogApi extends BaseApi {
    * items or item variations, whereas `SearchCatalogObjects` does.
    * - The both endpoints use different call conventions, including the query filter formats.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                                 corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                         See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async searchCatalogItems(
@@ -415,6 +425,7 @@ export class CatalogApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchCatalogItemsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchCatalogItemsResponseSchema, requestOptions);
   }
@@ -424,8 +435,9 @@ export class CatalogApi extends BaseApi {
    * that apply to the targeted [CatalogItem]($m/CatalogItem) without having
    * to perform an upsert on the entire item.
    *
-   * @param body An object containing the fields to POST for the request.
-   *                                                      See the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                              request.  See the corresponding object definition for
+   *                                                              field details.
    * @return Response from the API call
    */
   async updateItemModifierLists(
@@ -439,6 +451,7 @@ export class CatalogApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, updateItemModifierListsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       updateItemModifierListsResponseSchema,
@@ -451,8 +464,8 @@ export class CatalogApi extends BaseApi {
    * targeted [CatalogItem]($m/CatalogItem) without having to perform an
    * upsert on the entire item.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                              corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                      See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async updateItemTaxes(
@@ -463,6 +476,7 @@ export class CatalogApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, updateItemTaxesRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(updateItemTaxesResponseSchema, requestOptions);
   }

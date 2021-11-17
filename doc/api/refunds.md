@@ -108,6 +108,7 @@ async refundPayment(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyAmountMoney: Money = {};
 bodyAmountMoney.amount = 1000;
 bodyAmountMoney.currency = 'USD';
@@ -119,9 +120,9 @@ bodyAppFeeMoney.currency = 'USD';
 const body: RefundPaymentRequest = {
   idempotencyKey: '9b7f2dcf-49da-4411-b23e-a2d6af21333a',
   amountMoney: bodyAmountMoney,
-  paymentId: 'R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY',
 };
 body.appFeeMoney = bodyAppFeeMoney;
+body.paymentId = 'R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY';
 body.reason = 'Example';
 body.paymentVersionToken = 'payment_version_token6';
 body.teamMemberId = 'team_member_id4';

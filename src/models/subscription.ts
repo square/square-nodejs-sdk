@@ -9,12 +9,16 @@ import {
 } from '../schema';
 import { Money, moneySchema } from './money';
 import {
+  SubscriptionAction,
+  subscriptionActionSchema,
+} from './subscriptionAction';
+import {
   SubscriptionSource,
   subscriptionSourceSchema,
 } from './subscriptionSource';
 
 /**
- * Represents a customer subscription to a subscription plan.
+ * Represents a subscription to a subscription plan by a subscriber.
  * For an overview of the `Subscription` type, see
  * [Subscription object](https://developer.squareup.com/docs/subscriptions-api/overview#subscription-object-overview).
  */
@@ -23,36 +27,31 @@ export interface Subscription {
   id?: string;
   /** The ID of the location associated with the subscription. */
   locationId?: string;
-  /** The ID of the associated [subscription plan]($m/CatalogSubscriptionPlan). */
+  /** The ID of the subscribed-to [subscription plan]($m/CatalogSubscriptionPlan). */
   planId?: string;
-  /** The ID of the associated [customer]($m/Customer) profile. */
+  /** The ID of the subscribing [customer]($m/Customer) profile. */
   customerId?: string;
-  /**
-   * The start date of the subscription, in YYYY-MM-DD format (for example,
-   * 2013-01-15).
-   */
+  /** The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) to start the subscription. */
   startDate?: string;
   /**
-   * The subscription cancellation date, in YYYY-MM-DD format (for
-   * example, 2013-01-15). On this date, the subscription status changes
-   * to `CANCELED` and the subscription billing stops.
-   * If you don't set this field, the subscription plan dictates if and
-   * when subscription ends.
-   * You cannot update this field, you can only clear it.
+   * The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) to cancel the subscription,
+   * when the subscription status changes to `CANCELED` and the subscription billing stops.
+   * If this field is not set, the subscription ends according its subscription plan.
+   * This field cannot be updated, other than being cleared.
    */
   canceledDate?: string;
   /**
-   * The date up to which the customer is invoiced for the
-   * subscription, in YYYY-MM-DD format (for example, 2013-01-15).
+   * The `YYYY-MM-DD`-formatted date up to when the subscriber is invoiced for the
+   * subscription.
    * After the invoice is sent for a given billing period,
    * this date will be the last day of the billing period.
    * For example,
-   * suppose for the month of May a customer gets an invoice
+   * suppose for the month of May a subscriber gets an invoice
    * (or charged the card) on May 1. For the monthly billing scenario,
    * this date is then set to May 31.
    */
   chargedThroughDate?: string;
-  /** Possible subscription status values. */
+  /** Supported subscription statuses. */
   status?: string;
   /**
    * The tax amount applied when billing the subscription. The
@@ -85,8 +84,8 @@ export interface Subscription {
   /** The timestamp when the subscription was created, in RFC 3339 format. */
   createdAt?: string;
   /**
-   * The ID of the [customer]($m/Customer) [card]($m/Card)
-   * that is charged for the subscription.
+   * The ID of the [subscriber's]($m/Customer) [card]($m/Card)
+   * used to charge for the subscription.
    */
   cardId?: string;
   /**
@@ -97,6 +96,13 @@ export interface Subscription {
   timezone?: string;
   /** The origination details of the subscription. */
   source?: SubscriptionSource;
+  /**
+   * The list of scheduled actions on this subscription. It is set only in the response from the
+   * [RetrieveSubscription]($e/Subscriptions/RetrieveSubscription) or
+   * [SearchSubscriptions]($e/Subscriptions/SearchSubscriptions) endpoint with the query parameter
+   * of `include=actions`.
+   */
+  actions?: SubscriptionAction[];
 }
 
 export const subscriptionSchema: Schema<Subscription> = object({
@@ -119,4 +125,5 @@ export const subscriptionSchema: Schema<Subscription> = object({
   cardId: ['card_id', optional(string())],
   timezone: ['timezone', optional(string())],
   source: ['source', optional(lazy(() => subscriptionSourceSchema))],
+  actions: ['actions', optional(array(lazy(() => subscriptionActionSchema)))],
 });

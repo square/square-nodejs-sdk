@@ -20,10 +20,10 @@ Represents an `UpsertSnippet` response. The response can include either `snippet
 {
   "snippet": {
     "content": "<script>var js = 1;</script>",
-    "created_at": "2021-03-11T25:40:09Z",
+    "created_at": "2021-03-11T25:40:09.000000Z",
     "id": "snippet_5d178150-a6c0-11eb-a9f1-437e6a2881e7",
     "site_id": "site_278075276488921835",
-    "updated_at": "2021-03-11T25:40:09Z"
+    "updated_at": "2021-03-11T25:40:09.000000Z"
   }
 }
 ```
