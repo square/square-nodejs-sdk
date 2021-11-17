@@ -26,9 +26,9 @@ export class MobileAuthorizationApi extends BaseApi {
    * [valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-
    * tokens).
    *
-   * @param body An object containing the fields to POST for the
-   *                                                            request.  See the corresponding object definition for
-   *                                                            field details.
+   * @param body         An object containing the fields to POST for
+   *                                                                    the request.  See the corresponding object
+   *                                                                    definition for field details.
    * @return Response from the API call
    */
   async createMobileAuthorizationCode(
@@ -39,6 +39,7 @@ export class MobileAuthorizationApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createMobileAuthorizationCodeRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       createMobileAuthorizationCodeResponseSchema,

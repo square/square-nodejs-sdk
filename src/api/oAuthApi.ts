@@ -70,6 +70,7 @@ export class OAuthApi extends BaseApi {
       body: [body, renewTokenRequestSchema],
       authorization: [authorization, string()],
     });
+    req.header('Content-Type', 'application/json');
     req.header('Authorization', mapped.authorization);
     req.json(mapped.body);
     req.appendTemplatePath`/oauth2/clients/${mapped.clientId}/access-token/renew`;
@@ -111,6 +112,7 @@ export class OAuthApi extends BaseApi {
       body: [body, revokeTokenRequestSchema],
       authorization: [authorization, string()],
     });
+    req.header('Content-Type', 'application/json');
     req.header('Authorization', mapped.authorization);
     req.json(mapped.body);
     req.authenticate(false);
@@ -136,8 +138,8 @@ export class OAuthApi extends BaseApi {
    * __Note:__ OAuth tokens should be encrypted and stored on a secure server.
    * Application clients should never interact directly with OAuth tokens.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                          corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                  the corresponding object definition for field details.
    * @return Response from the API call
    */
   async obtainToken(
@@ -146,6 +148,7 @@ export class OAuthApi extends BaseApi {
   ): Promise<ApiResponse<ObtainTokenResponse>> {
     const req = this.createRequest('POST', '/oauth2/token');
     const mapped = req.prepareArgs({ body: [body, obtainTokenRequestSchema] });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.authenticate(false);
     return req.callAsJson(obtainTokenResponseSchema, requestOptions);

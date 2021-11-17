@@ -32,7 +32,8 @@ A response that contains the loyalty program.
         ],
         "points": 1,
         "spend_amount_money": {
-          "amount": 100
+          "amount": 100,
+          "currency": "USD"
         }
       }
     ],

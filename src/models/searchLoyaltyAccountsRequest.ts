@@ -8,7 +8,7 @@ import {
 export interface SearchLoyaltyAccountsRequest {
   /** The search criteria for the loyalty accounts. */
   query?: SearchLoyaltyAccountsRequestLoyaltyAccountQuery;
-  /** The maximum number of results to include in the response. */
+  /** The maximum number of results to include in the response. The default value is 30. */
   limit?: number;
   /**
    * A pagination cursor returned by a previous call to

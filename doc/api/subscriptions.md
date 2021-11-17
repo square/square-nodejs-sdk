@@ -14,14 +14,17 @@ const subscriptionsApi = client.subscriptionsApi;
 * [Search Subscriptions](/doc/api/subscriptions.md#search-subscriptions)
 * [Retrieve Subscription](/doc/api/subscriptions.md#retrieve-subscription)
 * [Update Subscription](/doc/api/subscriptions.md#update-subscription)
+* [Delete Subscription Action](/doc/api/subscriptions.md#delete-subscription-action)
 * [Cancel Subscription](/doc/api/subscriptions.md#cancel-subscription)
 * [List Subscription Events](/doc/api/subscriptions.md#list-subscription-events)
+* [Pause Subscription](/doc/api/subscriptions.md#pause-subscription)
 * [Resume Subscription](/doc/api/subscriptions.md#resume-subscription)
+* [Swap Plan](/doc/api/subscriptions.md#swap-plan)
 
 
 # Create Subscription
 
-Creates a subscription for a customer to a subscription plan.
+Creates a subscription to a subscription plan by a customer.
 
 If you provide a card on file in the request, Square charges the card for
 the subscription. Otherwise, Square bills an invoice to the customer's email
@@ -49,6 +52,7 @@ async createSubscription(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyPriceOverrideMoney: Money = {};
 bodyPriceOverrideMoney.amount = 100;
 bodyPriceOverrideMoney.currency = 'USD';
@@ -86,6 +90,7 @@ try {
 # Search Subscriptions
 
 Searches for subscriptions.
+
 Results are ordered chronologically by subscription creation date. If
 the request specifies more than one location ID,
 the endpoint orders the result
@@ -123,6 +128,7 @@ async searchSubscriptions(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQueryFilterCustomerIds: string[] = ['CHFGVKYY8RSV93M5KCYTG4PN0G'];
 const bodyQueryFilterLocationIds: string[] = ['S8GWD5R9QB376'];
 const bodyQueryFilterSourceNames: string[] = ['My App'];
@@ -134,10 +140,12 @@ bodyQueryFilter.sourceNames = bodyQueryFilterSourceNames;
 const bodyQuery: SearchSubscriptionsQuery = {};
 bodyQuery.filter = bodyQueryFilter;
 
+const bodyInclude: string[] = ['include4', 'include5', 'include6'];
 const body: SearchSubscriptionsRequest = {};
 body.cursor = 'cursor0';
 body.limit = 164;
 body.query = bodyQuery;
+body.include = bodyInclude;
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.searchSubscriptions(body);
@@ -159,6 +167,7 @@ Retrieves a subscription.
 ```ts
 async retrieveSubscription(
   subscriptionId: string,
+  include?: string,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<RetrieveSubscriptionResponse>>
 ```
@@ -168,6 +177,7 @@ async retrieveSubscription(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscriptionId` | `string` | Template, Required | The ID of the subscription to retrieve. |
+| `include` | `string \| undefined` | Query, Optional | A query parameter to specify related information to be included in the response.<br><br>The supported query parameter values are:<br><br>- `actions`: to include scheduled actions on the targeted subscription. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -178,8 +188,9 @@ async retrieveSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
+const include = 'include2';
 try {
-  const { result, ...httpResponse } = await subscriptionsApi.retrieveSubscription(subscriptionId);
+  const { result, ...httpResponse } = await subscriptionsApi.retrieveSubscription(subscriptionId, include);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -208,7 +219,7 @@ async updateSubscription(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `subscriptionId` | `string` | Template, Required | The ID for the subscription to update. |
+| `subscriptionId` | `string` | Template, Required | The ID of the subscription to update. |
 | `body` | [`UpdateSubscriptionRequest`](/doc/models/update-subscription-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -220,6 +231,7 @@ async updateSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
+const contentType = null;
 const bodySubscriptionPriceOverrideMoney: Money = {};
 bodySubscriptionPriceOverrideMoney.amount = 2000;
 bodySubscriptionPriceOverrideMoney.currency = 'USD';
@@ -250,10 +262,53 @@ try {
 ```
 
 
+# Delete Subscription Action
+
+Deletes a scheduled action for a subscription.
+
+```ts
+async deleteSubscriptionAction(
+  subscriptionId: string,
+  actionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteSubscriptionActionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The ID of the subscription the targeted action is to act upon. |
+| `actionId` | `string` | Template, Required | The ID of the targeted action to be deleted. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`DeleteSubscriptionActionResponse`](/doc/models/delete-subscription-action-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+const actionId = 'action_id6';
+try {
+  const { result, ...httpResponse } = await subscriptionsApi.deleteSubscriptionAction(subscriptionId, actionId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
 # Cancel Subscription
 
-Sets the `canceled_date` field to the end of the active billing period.
-After this date, the status changes from ACTIVE to CANCELED.
+Schedules a `CANCEL` action to cancel an active subscription
+by setting the `canceled_date` field to the end of the active billing period
+and changing the subscription status from ACTIVE to CANCELED after this date.
 
 ```ts
 async cancelSubscription(
@@ -309,8 +364,8 @@ async listSubscriptionEvents(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscriptionId` | `string` | Template, Required | The ID of the subscription to retrieve the events for. |
-| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
-| `limit` | `number \| undefined` | Query, Optional | The upper limit on the number of subscription events to return<br>in the response.<br><br>Default: `200` |
+| `cursor` | `string \| undefined` | Query, Optional | When the total number of resulting subscription events exceeds the limit of a paged response,<br>specify the cursor returned from a preceding response here to fetch the next set of results.<br>If the cursor is unset, the response contains the last page of the results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `limit` | `number \| undefined` | Query, Optional | The upper limit on the number of subscription events to return<br>in a paged response. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -336,13 +391,63 @@ try {
 ```
 
 
+# Pause Subscription
+
+Schedules a `PAUSE` action to pause an active subscription.
+
+```ts
+async pauseSubscription(
+  subscriptionId: string,
+  body: PauseSubscriptionRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<PauseSubscriptionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The ID of the subscription to pause. |
+| `body` | [`PauseSubscriptionRequest`](/doc/models/pause-subscription-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`PauseSubscriptionResponse`](/doc/models/pause-subscription-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+const contentType = null;
+const body: PauseSubscriptionRequest = {};
+body.pauseEffectiveDate = 'pause_effective_date6';
+body.pauseCycleDuration = 94;
+body.resumeEffectiveDate = 'resume_effective_date4';
+body.resumeChangeTiming = 'IMMEDIATE';
+body.pauseReason = 'pause_reason2';
+
+try {
+  const { result, ...httpResponse } = await subscriptionsApi.pauseSubscription(subscriptionId, body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
 # Resume Subscription
 
-Resumes a deactivated subscription.
+Schedules a `RESUME` action to resume a paused or a deactivated subscription.
 
 ```ts
 async resumeSubscription(
   subscriptionId: string,
+  body: ResumeSubscriptionRequest,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<ResumeSubscriptionResponse>>
 ```
@@ -352,6 +457,7 @@ async resumeSubscription(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscriptionId` | `string` | Template, Required | The ID of the subscription to resume. |
+| `body` | [`ResumeSubscriptionRequest`](/doc/models/resume-subscription-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -362,8 +468,59 @@ async resumeSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
+const contentType = null;
+const body: ResumeSubscriptionRequest = {};
+body.resumeEffectiveDate = 'resume_effective_date4';
+body.resumeChangeTiming = 'IMMEDIATE';
+
 try {
-  const { result, ...httpResponse } = await subscriptionsApi.resumeSubscription(subscriptionId);
+  const { result, ...httpResponse } = await subscriptionsApi.resumeSubscription(subscriptionId, body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Swap Plan
+
+Schedules a `SWAP_PLAN` action to swap a subscription plan in an existing subscription.
+
+```ts
+async swapPlan(
+  subscriptionId: string,
+  body: SwapPlanRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SwapPlanResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The ID of the subscription to swap the subscription plan for. |
+| `body` | [`SwapPlanRequest`](/doc/models/swap-plan-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`SwapPlanResponse`](/doc/models/swap-plan-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+const contentType = null;
+const body: SwapPlanRequest = {
+  newPlanId: 'new_plan_id2',
+};
+
+try {
+  const { result, ...httpResponse } = await subscriptionsApi.swapPlan(subscriptionId, body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

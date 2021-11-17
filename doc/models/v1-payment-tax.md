@@ -25,19 +25,19 @@ V1PaymentTax
   "errors": [
     {
       "category": "AUTHENTICATION_ERROR",
-      "code": "UNPROCESSABLE_ENTITY",
+      "code": "MISSING_PIN",
       "detail": "detail1",
       "field": "field9"
     },
     {
       "category": "INVALID_REQUEST_ERROR",
-      "code": "RATE_LIMITED",
+      "code": "MISSING_ACCOUNT_TYPE",
       "detail": "detail2",
       "field": "field0"
     },
     {
       "category": "RATE_LIMIT_ERROR",
-      "code": "NOT_IMPLEMENTED",
+      "code": "INVALID_POSTAL_CODE",
       "detail": "detail3",
       "field": "field1"
     }

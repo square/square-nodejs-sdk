@@ -72,8 +72,8 @@ export class OrdersApi extends BaseApi {
    *
    * You can modify open orders using the [UpdateOrder]($e/Orders/UpdateOrder) endpoint.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                          corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                  the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createOrder(
@@ -82,6 +82,7 @@ export class OrdersApi extends BaseApi {
   ): Promise<ApiResponse<CreateOrderResponse>> {
     const req = this.createRequest('POST', '/v2/orders');
     const mapped = req.prepareArgs({ body: [body, createOrderRequestSchema] });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createOrderResponseSchema, requestOptions);
   }
@@ -91,8 +92,9 @@ export class OrdersApi extends BaseApi {
    *
    * If a given order ID does not exist, the ID is ignored instead of generating an error.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
    * @return Response from the API call
    */
   async batchRetrieveOrders(
@@ -103,6 +105,7 @@ export class OrdersApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, batchRetrieveOrdersRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(batchRetrieveOrdersResponseSchema, requestOptions);
   }
@@ -110,8 +113,8 @@ export class OrdersApi extends BaseApi {
   /**
    * Enables applications to preview order pricing without creating an order.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                             corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    */
   async calculateOrder(
@@ -122,6 +125,7 @@ export class OrdersApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, calculateOrderRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(calculateOrderResponseSchema, requestOptions);
   }
@@ -131,8 +135,8 @@ export class OrdersApi extends BaseApi {
    * has
    * only the core fields (such as line items, taxes, and discounts) copied from the original order.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                         corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See the
+   *                                                 corresponding object definition for field details.
    * @return Response from the API call
    */
   async cloneOrder(
@@ -141,6 +145,7 @@ export class OrdersApi extends BaseApi {
   ): Promise<ApiResponse<CloneOrderResponse>> {
     const req = this.createRequest('POST', '/v2/orders/clone');
     const mapped = req.prepareArgs({ body: [body, cloneOrderRequestSchema] });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(cloneOrderResponseSchema, requestOptions);
   }
@@ -164,8 +169,8 @@ export class OrdersApi extends BaseApi {
    * orders have a `created_at` value that reflects the time the order was created,
    * not the time it was subsequently transmitted to Square.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                           corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                   the corresponding object definition for field details.
    * @return Response from the API call
    */
   async searchOrders(
@@ -174,6 +179,7 @@ export class OrdersApi extends BaseApi {
   ): Promise<ApiResponse<SearchOrdersResponse>> {
     const req = this.createRequest('POST', '/v2/orders/search');
     const mapped = req.prepareArgs({ body: [body, searchOrdersRequestSchema] });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchOrdersResponseSchema, requestOptions);
   }
@@ -213,9 +219,9 @@ export class OrdersApi extends BaseApi {
    * To pay for an order, see
    * [Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
    *
-   * @param orderId  The ID of the order to update.
-   * @param body     An object containing the fields to POST for the request.  See the
-   *                                              corresponding object definition for field details.
+   * @param orderId      The ID of the order to update.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                  the corresponding object definition for field details.
    * @return Response from the API call
    */
   async updateOrder(
@@ -228,6 +234,7 @@ export class OrdersApi extends BaseApi {
       orderId: [orderId, string()],
       body: [body, updateOrderRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/orders/${mapped.orderId}`;
     return req.callAsJson(updateOrderResponseSchema, requestOptions);
@@ -251,9 +258,9 @@ export class OrdersApi extends BaseApi {
    * payments#delayed-capture).
    * Using a delayed capture payment with `PayOrder` completes the approved payment.
    *
-   * @param orderId  The ID of the order being paid.
-   * @param body     An object containing the fields to POST for the request.  See the
-   *                                           corresponding object definition for field details.
+   * @param orderId      The ID of the order being paid.
+   * @param body         An object containing the fields to POST for the request.  See the
+   *                                               corresponding object definition for field details.
    * @return Response from the API call
    */
   async payOrder(
@@ -266,6 +273,7 @@ export class OrdersApi extends BaseApi {
       orderId: [orderId, string()],
       body: [body, payOrderRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/orders/${mapped.orderId}/pay`;
     return req.callAsJson(payOrderResponseSchema, requestOptions);

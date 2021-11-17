@@ -148,6 +148,7 @@ async updateOrder(
 ```ts
 const locationId = 'location_id4';
 const orderId = 'order_id6';
+const contentType = null;
 const body: V1UpdateOrderRequest = {
   action: 'REFUND',
 };
@@ -379,6 +380,7 @@ async createRefund(
 
 ```ts
 const locationId = 'location_id4';
+const contentType = null;
 const bodyRefundedMoney: V1Money = {};
 bodyRefundedMoney.amount = 222;
 bodyRefundedMoney.currencyCode = 'CLF';

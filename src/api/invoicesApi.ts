@@ -95,8 +95,8 @@ export class InvoicesApi extends BaseApi {
    * You must publish the invoice before Square can process it (send it to the customer's email address
    * or charge the customer’s card on file).
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                            corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createInvoice(
@@ -107,6 +107,7 @@ export class InvoicesApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createInvoiceRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createInvoiceResponseSchema, requestOptions);
   }
@@ -120,8 +121,8 @@ export class InvoicesApi extends BaseApi {
    * The response is paginated. If truncated, the response includes a `cursor`
    * that you use in a subsequent request to retrieve the next set of invoices.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                             corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    */
   async searchInvoices(
@@ -132,6 +133,7 @@ export class InvoicesApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchInvoicesRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchInvoicesResponseSchema, requestOptions);
   }
@@ -188,9 +190,9 @@ export class InvoicesApi extends BaseApi {
    * must provide the complete `custom_fields` list to update a custom field. Published invoices have
    * additional restrictions.
    *
-   * @param invoiceId  The ID of the invoice to update.
-   * @param body       An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param invoiceId    The ID of the invoice to update.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async updateInvoice(
@@ -203,6 +205,7 @@ export class InvoicesApi extends BaseApi {
       invoiceId: [invoiceId, string()],
       body: [body, updateInvoiceRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}`;
     return req.callAsJson(updateInvoiceResponseSchema, requestOptions);
@@ -215,9 +218,9 @@ export class InvoicesApi extends BaseApi {
    * You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`, `REFUNDED`,
    * `CANCELED`, or `FAILED`.
    *
-   * @param invoiceId  The ID of the [invoice]($m/Invoice) to cancel.
-   * @param body       An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param invoiceId    The ID of the [invoice]($m/Invoice) to cancel.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async cancelInvoice(
@@ -230,6 +233,7 @@ export class InvoicesApi extends BaseApi {
       invoiceId: [invoiceId, string()],
       body: [body, cancelInvoiceRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}/cancel`;
     return req.callAsJson(cancelInvoiceResponseSchema, requestOptions);
@@ -248,9 +252,9 @@ export class InvoicesApi extends BaseApi {
    * Square emails the invoice or `PARTIALLY_PAID` if Square charge a card on file for a portion of the
    * invoice amount.
    *
-   * @param invoiceId  The ID of the invoice to publish.
-   * @param body       An object containing the fields to POST for the request.  See
-   *                                                   the corresponding object definition for field details.
+   * @param invoiceId    The ID of the invoice to publish.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    */
   async publishInvoice(
@@ -263,6 +267,7 @@ export class InvoicesApi extends BaseApi {
       invoiceId: [invoiceId, string()],
       body: [body, publishInvoiceRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}/publish`;
     return req.callAsJson(publishInvoiceResponseSchema, requestOptions);

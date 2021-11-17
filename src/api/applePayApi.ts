@@ -22,8 +22,8 @@ export class ApplePayApi extends BaseApi {
    * [Add the Apple Pay on the Web Button](https://developer.squareup.com/docs/payment-form/add-digital-
    * wallets/apple-pay).
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                             corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    */
   async registerDomain(
@@ -34,6 +34,7 @@ export class ApplePayApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, registerDomainRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(registerDomainResponseSchema, requestOptions);
   }

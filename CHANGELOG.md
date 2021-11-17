@@ -1,5 +1,31 @@
 # Change Log
 
+## Version 16.0.0 (2021-11-17)
+## API updates
+
+* **Cards API.** The [Card](https://developer.squareup.com/reference/square_2021-11-17/objects/card) object and webhook response body for all webhooks are updated updated with fields.
+  * Added the [Card.merchant_id](https://developer.squareup.com/reference/square_2021-11-17/objects/Card#definition__property-merchant_id) field to identify the Square seller that stored the payment card on file. 
+  * Added a [Card](https://developer.squareup.com/reference/square_2021-11-17/objects/Card) object to the response bodies of all [Cards API webhooks](https://developer.squareup.com/docs/webhooks/v2webhook-events-tech-ref#cards-api). The `Card` is added as a child of the `data.object` field in all webhook responses.
+
+* **Bookings API.** The new [ListBookings](https://developer.squareup.com/reference/square_2021-11-17/bookings-api/list-bookings) endpoint supports browsing a collection of bookings of a seller. For more information, see [Use the Bookings API: list bookings.](https://developer.squareup.com/docs/bookings-api/use-the-api#list-bookings) 
+
+* **Subscriptions API.** Introduced the new [actions framework](https://developer.squareup.com/docs/subscriptions-api/overview#subscriptions-actions-overview) representing scheduled, future changes to subscriptions. 
+  *  The new [PauseSubscription](https://developer.squareup.com/reference/square_2021-11-17/subscriptions-api/pause-subscription) endpoint supports temporarily pausing a subscription. Calling this endpoint schedules a new `PAUSE` action.
+  * The new [SwapPlan](https://developer.squareup.com/reference/square_2021-11-17/subscriptions-api/swap-plan) endpoint supports changing the subscription plan associated with a single customer. Calling this endpoint schedules a new `SWAP_PLAN` action.
+  * The new [DeleteSubscriptionAction](https://developer.squareup.com/reference/square_2021-11-17/subscriptions-api/delete-subscription-action) endpoint supports deleting a scheduled action.
+  * The [ResumeSubscription](https://developer.squareup.com/reference/square_2021-11-17/subscriptions-api/resume-subscription) endpoint has been updated to support resuming a paused subscription. Calling this endpoint schedules a new `RESUME` action. 
+  * The [CancelSubscription](https://developer.squareup.com/reference/square_2021-11-17/subscriptions-api/cancel-subscription) endpoint now schedules a new `CANCEL` action.
+  * Added an optional `include` body parameter to the [SearchSubscriptions](https://developer.squareup.com/reference/square_2021-11-17/subscriptions-api/search-subscriptions) endpoint. Include `actions` in the request to return all [actions](https://developer.squareup.com/docs/subscriptions-api/overview#subscriptions-actions-overview) associated with the subscriptions.
+
+## Documentation Update
+
+* **Migration  Guides.**
+  * [Migrate from the Connect V1 Refunds API.](https://developer.squareup.com/docs/migrate-from-v1/guides/v1-refunds)  The topic is updated to include information to migrate from  the v1 ListRefunds endpoint to the appropriate Square API counterparts.  
+  * [Migrate from the Connect V1 Payments API.](https://developer.squareup.com/docs/migrate-from-v1/guides/v1-payments)  The topic provides developers information to migrate from the Connect V1 Payments API to the appropriate Square API counterparts.  
+
+  Code that relies on these V1 API endpoints must be updated to avoid breaking when these APIs reach retirement.
+
+
 ## Version 15.0.0 (2021-10-20)
 ## API updates
 * **Transactions API.** Three previously deprecated endpoints (`ListRefunds`,  `Charge`, and `CreateRefund`) in the [Transactions API](https://developer.squareup.com/reference/square_2021-10-20/transactions-api) are removed from Square API version 2021-10-20 and later. These endpoints will work if you are using Square API versions prior to 2021-10-20. However, these endpoints will eventually be retired from all Square versions. 

@@ -59,6 +59,7 @@ async batchDeleteCatalogObjects(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI', 'AA27W3M2GGTF3H6AVPNB77CK'];
 const body: BatchDeleteCatalogObjectsRequest = {};
 body.objectIds = bodyObjectIds;
@@ -106,6 +107,7 @@ async batchRetrieveCatalogObjects(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI', 'AA27W3M2GGTF3H6AVPNB77CK'];
 const body: BatchRetrieveCatalogObjectsRequest = {
   objectIds: bodyObjectIds,
@@ -159,6 +161,7 @@ async batchUpsertCatalogObjects(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyBatches: CatalogObjectBatch[] = [];
 
 const bodybatches0Objects: CatalogObject[] = [];
@@ -477,6 +480,7 @@ async createCatalogImage(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const requestImageCustomAttributeValues: Record<string, CatalogCustomAttributeValue> = {};
 const requestImageCatalogV1Ids: CatalogV1Id[] = [];
 
@@ -637,6 +641,7 @@ async upsertCatalogObject(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyObjectCustomAttributeValues: Record<string, CatalogCustomAttributeValue> = {};
 const bodyObjectCatalogV1Ids: CatalogV1Id[] = [];
 
@@ -903,6 +908,7 @@ async searchCatalogObjects(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyObjectTypes: string[] = ['ITEM'];
 const bodyQuerySortedAttributeQuery: CatalogQuerySortedAttribute = {
   attributeName: 'attribute_name6',
@@ -995,6 +1001,7 @@ async searchCatalogItems(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyCategoryIds: string[] = ['WINE_CATEGORY_ID'];
 const bodyStockLevels: string[] = ['OUT', 'LOW'];
 const bodyEnabledLocationIds: string[] = ['ATL_LOCATION_ID'];
@@ -1109,6 +1116,7 @@ async updateItemModifierLists(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyItemIds: string[] = ['H42BRLUJ5KTZTTMPVSLFAACQ', '2JXOBJIHCWBQ4NZ3RIXQGJA6'];
 const bodyModifierListsToEnable: string[] = ['H42BRLUJ5KTZTTMPVSLFAACQ', '2JXOBJIHCWBQ4NZ3RIXQGJA6'];
 const bodyModifierListsToDisable: string[] = ['7WRC16CJZDVLSNDQ35PP6YAD'];
@@ -1158,6 +1166,7 @@ async updateItemTaxes(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyItemIds: string[] = ['H42BRLUJ5KTZTTMPVSLFAACQ', '2JXOBJIHCWBQ4NZ3RIXQGJA6'];
 const bodyTaxesToEnable: string[] = ['4WRCNHCJZDVLSNDQ35PP6YAD'];
 const bodyTaxesToDisable: string[] = ['AQCEGCEBBQONINDOHRGZISEX'];

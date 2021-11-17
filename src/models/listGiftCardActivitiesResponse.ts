@@ -3,18 +3,19 @@ import { Error, errorSchema } from './error';
 import { GiftCardActivity, giftCardActivitySchema } from './giftCardActivity';
 
 /**
- * A response that contains one or more `GiftCardActivity`. The response might contain a set of `Error` objects
- * if the request resulted in errors.
+ * A response that contains a list of `GiftCardActivity` objects. If the request resulted in errors,
+ * the response contains a set of `Error` objects.
  */
 export interface ListGiftCardActivitiesResponse {
   /** Any errors that occurred during the request. */
   errors?: Error[];
-  /** Gift card activities retrieved. */
+  /** The requested gift card activities or an empty object if none are found. */
   giftCardActivities?: GiftCardActivity[];
   /**
    * When a response is truncated, it includes a cursor that you can use in a
-   * subsequent request to fetch the next set of activities. If empty, this is
+   * subsequent request to retrieve the next set of activities. If a cursor is not present, this is
    * the final response.
+   * For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
    */
   cursor?: string;
 }

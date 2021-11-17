@@ -51,6 +51,7 @@ async createTeamMember(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyTeamMemberAssignedLocationsLocationIds: string[] = ['YSGH2WBKG94QZ', 'GA2Y9HSJ8KRYT'];
 const bodyTeamMemberAssignedLocations: TeamMemberAssignedLocations = {};
 bodyTeamMemberAssignedLocations.assignmentType = 'EXPLICIT_LOCATIONS';
@@ -114,6 +115,7 @@ async bulkCreateTeamMembers(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyTeamMembers: Record<string, CreateTeamMemberRequest> = {};
 const body: BulkCreateTeamMembersRequest = {
   teamMembers: bodyTeamMembers,
@@ -161,6 +163,7 @@ async bulkUpdateTeamMembers(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyTeamMembers: Record<string, UpdateTeamMemberRequest> = {};
 const body: BulkUpdateTeamMembersRequest = {
   teamMembers: bodyTeamMembers,
@@ -208,6 +211,7 @@ async searchTeamMembers(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQueryFilterLocationIds: string[] = ['0G5P3VGACMMQZ'];
 const bodyQueryFilter: SearchTeamMembersFilter = {};
 bodyQueryFilter.locationIds = bodyQueryFilterLocationIds;
@@ -304,6 +308,7 @@ async updateTeamMember(
 
 ```ts
 const teamMemberId = 'team_member_id0';
+const contentType = null;
 const bodyTeamMemberAssignedLocationsLocationIds: string[] = ['YSGH2WBKG94QZ', 'GA2Y9HSJ8KRYT'];
 const bodyTeamMemberAssignedLocations: TeamMemberAssignedLocations = {};
 bodyTeamMemberAssignedLocations.assignmentType = 'EXPLICIT_LOCATIONS';
@@ -409,6 +414,7 @@ async updateWageSetting(
 
 ```ts
 const teamMemberId = 'team_member_id0';
+const contentType = null;
 const bodyWageSettingJobAssignments: JobAssignment[] = [];
 
 const bodyWageSettingjobAssignments0HourlyRate: Money = {};

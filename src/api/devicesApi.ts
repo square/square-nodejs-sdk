@@ -59,8 +59,8 @@ export class DevicesApi extends BaseApi {
    * Creates a DeviceCode that can be used to login to a Square Terminal device to enter the connected
    * terminal mode.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                               corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                       See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createDeviceCode(
@@ -71,6 +71,7 @@ export class DevicesApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createDeviceCodeRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createDeviceCodeResponseSchema, requestOptions);
   }

@@ -108,6 +108,7 @@ async createCustomer(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyAddress: Address = {};
 bodyAddress.addressLine1 = '500 Electric Ave';
 bodyAddress.addressLine2 = 'Suite 600';
@@ -176,6 +177,7 @@ async searchCustomers(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQueryFilterCreationSourceValues: string[] = ['THIRD_PARTY'];
 const bodyQueryFilterCreationSource: CustomerCreationSourceFilter = {};
 bodyQueryFilterCreationSource.values = bodyQueryFilterCreationSourceValues;
@@ -358,6 +360,7 @@ async updateCustomer(
 
 ```ts
 const customerId = 'customer_id8';
+const contentType = null;
 const body: UpdateCustomerRequest = {};
 body.givenName = 'given_name8';
 body.familyName = 'family_name0';
@@ -415,6 +418,7 @@ async createCustomerCard(
 
 ```ts
 const customerId = 'customer_id8';
+const contentType = null;
 const bodyBillingAddress: Address = {};
 bodyBillingAddress.addressLine1 = '500 Electric Ave';
 bodyBillingAddress.addressLine2 = 'Suite 600';

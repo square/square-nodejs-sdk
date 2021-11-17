@@ -42,6 +42,7 @@ async registerDomain(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const body: RegisterDomainRequest = {
   domainName: 'example.com',
 };

@@ -95,8 +95,9 @@ export class InventoryApi extends BaseApi {
    * URL
    * is updated to conform to the standard convention.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                   the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
    * @return Response from the API call
    * @deprecated
    */
@@ -108,6 +109,7 @@ export class InventoryApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, batchChangeInventoryRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.deprecated('InventoryApi.deprecatedBatchChangeInventory');
     return req.callAsJson(batchChangeInventoryResponseSchema, requestOptions);
@@ -118,9 +120,9 @@ export class InventoryApi extends BaseApi {
    * after the endpoint URL
    * is updated to conform to the standard convention.
    *
-   * @param body An object containing the fields to POST for the
-   *                                                            request.  See the corresponding object definition for
-   *                                                            field details.
+   * @param body         An object containing the fields to POST for
+   *                                                                    the request.  See the corresponding object
+   *                                                                    definition for field details.
    * @return Response from the API call
    * @deprecated
    */
@@ -135,6 +137,7 @@ export class InventoryApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, batchRetrieveInventoryChangesRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.deprecated('InventoryApi.deprecatedBatchRetrieveInventoryChanges');
     return req.callAsJson(
@@ -148,9 +151,9 @@ export class InventoryApi extends BaseApi {
    * after the endpoint URL
    * is updated to conform to the standard convention.
    *
-   * @param body An object containing the fields to POST for the request.
-   *                                                           See the corresponding object definition for field
-   *                                                           details.
+   * @param body         An object containing the fields to POST for the
+   *                                                                   request.  See the corresponding object
+   *                                                                   definition for field details.
    * @return Response from the API call
    * @deprecated
    */
@@ -165,6 +168,7 @@ export class InventoryApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, batchRetrieveInventoryCountsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.deprecated('InventoryApi.deprecatedBatchRetrieveInventoryCounts');
     return req.callAsJson(
@@ -180,8 +184,9 @@ export class InventoryApi extends BaseApi {
    * referenced in the request.
    * On failure: returns a list of related errors.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                   the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
    * @return Response from the API call
    */
   async batchChangeInventory(
@@ -195,6 +200,7 @@ export class InventoryApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, batchChangeInventoryRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(batchChangeInventoryResponseSchema, requestOptions);
   }
@@ -209,9 +215,9 @@ export class InventoryApi extends BaseApi {
    * BatchRetrieveInventoryChanges is a catch-all query endpoint for queries
    * that cannot be handled by other, simpler endpoints.
    *
-   * @param body An object containing the fields to POST for the
-   *                                                            request.  See the corresponding object definition for
-   *                                                            field details.
+   * @param body         An object containing the fields to POST for
+   *                                                                    the request.  See the corresponding object
+   *                                                                    definition for field details.
    * @return Response from the API call
    */
   async batchRetrieveInventoryChanges(
@@ -225,6 +231,7 @@ export class InventoryApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, batchRetrieveInventoryChangesRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       batchRetrieveInventoryChangesResponseSchema,
@@ -245,9 +252,9 @@ export class InventoryApi extends BaseApi {
    * returned. This allows clients to perform a "sync" operation, for example
    * in response to receiving a Webhook notification.
    *
-   * @param body An object containing the fields to POST for the request.
-   *                                                           See the corresponding object definition for field
-   *                                                           details.
+   * @param body         An object containing the fields to POST for the
+   *                                                                   request.  See the corresponding object
+   *                                                                   definition for field details.
    * @return Response from the API call
    */
   async batchRetrieveInventoryCounts(
@@ -261,6 +268,7 @@ export class InventoryApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, batchRetrieveInventoryCountsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       batchRetrieveInventoryCountsResponseSchema,

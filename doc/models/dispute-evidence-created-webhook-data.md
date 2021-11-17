@@ -28,7 +28,7 @@
         "currency": "NGN"
       },
       "reason": "NOT_AS_DESCRIBED",
-      "state": "EVIDENCE_REQUIRED"
+      "state": "PROCESSING"
     }
   }
 }

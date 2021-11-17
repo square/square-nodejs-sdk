@@ -68,8 +68,8 @@ export class TeamApi extends BaseApi {
    * Learn about [Troubleshooting the Team API](https://developer.squareup.
    * com/docs/team/troubleshooting#createteammember).
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                               corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                       See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createTeamMember(
@@ -80,6 +80,7 @@ export class TeamApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createTeamMemberRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createTeamMemberResponseSchema, requestOptions);
   }
@@ -96,8 +97,9 @@ export class TeamApi extends BaseApi {
    * Learn about [Troubleshooting the Team API](https://developer.squareup.
    * com/docs/team/troubleshooting#bulk-create-team-members).
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                    the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                            request.  See the corresponding object definition for
+   *                                                            field details.
    * @return Response from the API call
    */
   async bulkCreateTeamMembers(
@@ -108,6 +110,7 @@ export class TeamApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, bulkCreateTeamMembersRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(bulkCreateTeamMembersResponseSchema, requestOptions);
   }
@@ -123,8 +126,9 @@ export class TeamApi extends BaseApi {
    * Learn about [Troubleshooting the Team API](https://developer.squareup.
    * com/docs/team/troubleshooting#bulk-update-team-members).
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                    the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                            request.  See the corresponding object definition for
+   *                                                            field details.
    * @return Response from the API call
    */
   async bulkUpdateTeamMembers(
@@ -135,6 +139,7 @@ export class TeamApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, bulkUpdateTeamMembersRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(bulkUpdateTeamMembersResponseSchema, requestOptions);
   }
@@ -145,8 +150,8 @@ export class TeamApi extends BaseApi {
    * - location IDs
    * - `status`
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                                corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                        See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async searchTeamMembers(
@@ -157,6 +162,7 @@ export class TeamApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchTeamMembersRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchTeamMembersResponseSchema, requestOptions);
   }
@@ -199,6 +205,7 @@ export class TeamApi extends BaseApi {
       teamMemberId: [teamMemberId, string()],
       body: [body, updateTeamMemberRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/team-members/${mapped.teamMemberId}`;
     return req.callAsJson(updateTeamMemberResponseSchema, requestOptions);
@@ -248,6 +255,7 @@ export class TeamApi extends BaseApi {
       teamMemberId: [teamMemberId, string()],
       body: [body, updateWageSettingRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/team-members/${mapped.teamMemberId}/wage-setting`;
     return req.callAsJson(updateWageSettingResponseSchema, requestOptions);

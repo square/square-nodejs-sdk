@@ -23,7 +23,7 @@
       "currency": "HRK"
     },
     "reason": "DUPLICATE",
-    "state": "ACCEPTED"
+    "state": "PROCESSING"
   }
 }
 ```

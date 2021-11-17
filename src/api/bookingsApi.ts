@@ -16,6 +16,10 @@ import {
   createBookingResponseSchema,
 } from '../models/createBookingResponse';
 import {
+  ListBookingsResponse,
+  listBookingsResponseSchema,
+} from '../models/listBookingsResponse';
+import {
   ListTeamMemberBookingProfilesResponse,
   listTeamMemberBookingProfilesResponseSchema,
 } from '../models/listTeamMemberBookingProfilesResponse';
@@ -52,10 +56,53 @@ import { BaseApi } from './baseApi';
 
 export class BookingsApi extends BaseApi {
   /**
+   * Retrieve a collection of bookings.
+   *
+   * @param limit          The maximum number of results per page to return in a paged response.
+   * @param cursor         The pagination cursor from the preceding response to return the next page of the
+   *                                 results. Do not set this when retrieving the first page of the results.
+   * @param teamMemberId   The team member for whom to retrieve bookings. If this is not set, bookings of
+   *                                 all members are retrieved.
+   * @param locationId     The location for which to retrieve bookings. If this is not set, all locations'
+   *                                 bookings are retrieved.
+   * @param startAtMin     The RFC 3339 timestamp specifying the earliest of the start time. If this is not
+   *                                 set, the current time is used.
+   * @param startAtMax     The RFC 3339 timestamp specifying the latest of the start time. If this is not
+   *                                 set, the time of 31 days after `start_at_min` is used.
+   * @return Response from the API call
+   */
+  async listBookings(
+    limit?: number,
+    cursor?: string,
+    teamMemberId?: string,
+    locationId?: string,
+    startAtMin?: string,
+    startAtMax?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListBookingsResponse>> {
+    const req = this.createRequest('GET', '/v2/bookings');
+    const mapped = req.prepareArgs({
+      limit: [limit, optional(number())],
+      cursor: [cursor, optional(string())],
+      teamMemberId: [teamMemberId, optional(string())],
+      locationId: [locationId, optional(string())],
+      startAtMin: [startAtMin, optional(string())],
+      startAtMax: [startAtMax, optional(string())],
+    });
+    req.query('limit', mapped.limit);
+    req.query('cursor', mapped.cursor);
+    req.query('team_member_id', mapped.teamMemberId);
+    req.query('location_id', mapped.locationId);
+    req.query('start_at_min', mapped.startAtMin);
+    req.query('start_at_max', mapped.startAtMax);
+    return req.callAsJson(listBookingsResponseSchema, requestOptions);
+  }
+
+  /**
    * Creates a booking.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                            corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createBooking(
@@ -66,6 +113,7 @@ export class BookingsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createBookingRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createBookingResponseSchema, requestOptions);
   }
@@ -73,8 +121,8 @@ export class BookingsApi extends BaseApi {
   /**
    * Searches for availabilities for booking.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                                 corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                         See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async searchAvailability(
@@ -85,6 +133,7 @@ export class BookingsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchAvailabilityRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchAvailabilityResponseSchema, requestOptions);
   }
@@ -183,10 +232,10 @@ export class BookingsApi extends BaseApi {
   /**
    * Updates a booking.
    *
-   * @param bookingId  The ID of the [Booking]($m/Booking) object representing the to-
-   *                                                  be-updated booking.
-   * @param body       An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param bookingId    The ID of the [Booking]($m/Booking) object representing the to-
+   *                                                    be-updated booking.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async updateBooking(
@@ -199,6 +248,7 @@ export class BookingsApi extends BaseApi {
       bookingId: [bookingId, string()],
       body: [body, updateBookingRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/bookings/${mapped.bookingId}`;
     return req.callAsJson(updateBookingResponseSchema, requestOptions);
@@ -207,10 +257,10 @@ export class BookingsApi extends BaseApi {
   /**
    * Cancels an existing booking.
    *
-   * @param bookingId  The ID of the [Booking]($m/Booking) object representing the to-
-   *                                                  be-cancelled booking.
-   * @param body       An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param bookingId    The ID of the [Booking]($m/Booking) object representing the to-
+   *                                                    be-cancelled booking.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async cancelBooking(
@@ -223,6 +273,7 @@ export class BookingsApi extends BaseApi {
       bookingId: [bookingId, string()],
       body: [body, cancelBookingRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/bookings/${mapped.bookingId}/cancel`;
     return req.callAsJson(cancelBookingResponseSchema, requestOptions);

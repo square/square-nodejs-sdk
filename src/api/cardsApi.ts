@@ -67,8 +67,8 @@ export class CardsApi extends BaseApi {
   /**
    * Adds a card on file to an existing merchant.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                         corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See the
+   *                                                 corresponding object definition for field details.
    * @return Response from the API call
    */
   async createCard(
@@ -77,6 +77,7 @@ export class CardsApi extends BaseApi {
   ): Promise<ApiResponse<CreateCardResponse>> {
     const req = this.createRequest('POST', '/v2/cards');
     const mapped = req.prepareArgs({ body: [body, createCardRequestSchema] });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createCardResponseSchema, requestOptions);
   }

@@ -16,9 +16,10 @@ export class CheckoutApi extends BaseApi {
    * directed to in order to provide their payment information using a
    * payment processing workflow hosted on connect.squareup.com.
    *
-   * @param locationId  The ID of the business location to associate the checkout with.
-   * @param body        An object containing the fields to POST for the request.  See
-   *                                                    the corresponding object definition for field details.
+   * @param locationId   The ID of the business location to associate the checkout
+   *                                                     with.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createCheckout(
@@ -31,6 +32,7 @@ export class CheckoutApi extends BaseApi {
       locationId: [locationId, string()],
       body: [body, createCheckoutRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/checkouts`;
     return req.callAsJson(createCheckoutResponseSchema, requestOptions);

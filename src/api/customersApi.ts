@@ -111,8 +111,8 @@ export class CustomersApi extends BaseApi {
    * - `email_address`
    * - `phone_number`
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                             corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createCustomer(
@@ -123,6 +123,7 @@ export class CustomersApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createCustomerRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createCustomerResponseSchema, requestOptions);
   }
@@ -138,8 +139,8 @@ export class CustomersApi extends BaseApi {
    * for the search operation in well under 30 seconds. Occasionally, propagation of the new or updated
    * profiles can take closer to one minute or longer, especially during network incidents and outages.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                              corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                      See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async searchCustomers(
@@ -150,6 +151,7 @@ export class CustomersApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchCustomersRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchCustomersResponseSchema, requestOptions);
   }
@@ -218,9 +220,9 @@ export class CustomersApi extends BaseApi {
    * You cannot use this endpoint to change cards on file. To make changes, use the [Cards API]($e/Cards)
    * or [Gift Cards API]($e/GiftCards).
    *
-   * @param customerId  The ID of the customer to update.
-   * @param body        An object containing the fields to POST for the request.  See
-   *                                                    the corresponding object definition for field details.
+   * @param customerId   The ID of the customer to update.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                     the corresponding object definition for field details.
    * @return Response from the API call
    */
   async updateCustomer(
@@ -233,6 +235,7 @@ export class CustomersApi extends BaseApi {
       customerId: [customerId, string()],
       body: [body, updateCustomerRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/customers/${mapped.customerId}`;
     return req.callAsJson(updateCustomerResponseSchema, requestOptions);
@@ -245,10 +248,10 @@ export class CustomersApi extends BaseApi {
    * calls with the same card nonce return the same card record that was created
    * with the provided nonce during the _first_ call.
    *
-   * @param customerId  The Square ID of the customer profile the card is linked
-   *                                                        to.
-   * @param body        An object containing the fields to POST for the request.
-   *                                                        See the corresponding object definition for field details.
+   * @param customerId   The Square ID of the customer profile the card is linked
+   *                                                         to.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                         See the corresponding object definition for field details.
    * @return Response from the API call
    * @deprecated
    */
@@ -262,6 +265,7 @@ export class CustomersApi extends BaseApi {
       customerId: [customerId, string()],
       body: [body, createCustomerCardRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/cards`;
     req.deprecated('CustomersApi.createCustomerCard');

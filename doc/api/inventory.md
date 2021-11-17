@@ -135,6 +135,7 @@ async deprecatedBatchChangeInventory(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyChanges: InventoryChange[] = [];
 
 const bodychanges0PhysicalCount: InventoryPhysicalCount = {};
@@ -234,6 +235,7 @@ async deprecatedBatchRetrieveInventoryChanges(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
 const bodyLocationIds: string[] = ['C6W5YS5QM06F5'];
 const bodyTypes: string[] = ['PHYSICAL_COUNT'];
@@ -287,6 +289,7 @@ async deprecatedBatchRetrieveInventoryCounts(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
 const bodyLocationIds: string[] = ['59TNP9SA8VGDA'];
 const bodyStates: string[] = ['SUPPORTED_BY_NEWER_VERSION'];
@@ -339,6 +342,7 @@ async batchChangeInventory(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyChanges: InventoryChange[] = [];
 
 const bodychanges0PhysicalCount: InventoryPhysicalCount = {};
@@ -442,6 +446,7 @@ async batchRetrieveInventoryChanges(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
 const bodyLocationIds: string[] = ['C6W5YS5QM06F5'];
 const bodyTypes: string[] = ['PHYSICAL_COUNT'];
@@ -502,6 +507,7 @@ async batchRetrieveInventoryCounts(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
 const bodyLocationIds: string[] = ['59TNP9SA8VGDA'];
 const bodyStates: string[] = ['SUPPORTED_BY_NEWER_VERSION'];

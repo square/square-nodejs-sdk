@@ -122,8 +122,8 @@ export class PaymentsApi extends BaseApi {
    * The endpoint creates a
    * `Payment` object and returns it in the response.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                            corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createPayment(
@@ -134,6 +134,7 @@ export class PaymentsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createPaymentRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createPaymentResponseSchema, requestOptions);
   }
@@ -154,9 +155,9 @@ export class PaymentsApi extends BaseApi {
    * endpoint
    * returns successfully.
    *
-   * @param body An object containing the fields to POST for the
-   *                                                            request.  See the corresponding object definition for
-   *                                                            field details.
+   * @param body         An object containing the fields to POST for
+   *                                                                    the request.  See the corresponding object
+   *                                                                    definition for field details.
    * @return Response from the API call
    */
   async cancelPaymentByIdempotencyKey(
@@ -167,6 +168,7 @@ export class PaymentsApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, cancelPaymentByIdempotencyKeyRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(
       cancelPaymentByIdempotencyKeyResponseSchema,
@@ -194,9 +196,9 @@ export class PaymentsApi extends BaseApi {
    * Updates a payment with the APPROVED status.
    * You can update the `amount_money` and `tip_money` using this endpoint.
    *
-   * @param paymentId  The ID of the payment to update.
-   * @param body       An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param paymentId    The ID of the payment to update.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                    the corresponding object definition for field details.
    * @return Response from the API call
    */
   async updatePayment(
@@ -209,6 +211,7 @@ export class PaymentsApi extends BaseApi {
       paymentId: [paymentId, string()],
       body: [body, updatePaymentRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/payments/${mapped.paymentId}`;
     return req.callAsJson(updatePaymentResponseSchema, requestOptions);
@@ -237,9 +240,9 @@ export class PaymentsApi extends BaseApi {
    *
    * You can use this endpoint to complete a payment with the APPROVED `status`.
    *
-   * @param paymentId  The unique ID identifying the payment to be completed.
-   * @param body       An object containing the fields to POST for the request.  See
-   *                                                    the corresponding object definition for field details.
+   * @param paymentId    The unique ID identifying the payment to be completed.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                      See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async completePayment(
@@ -252,6 +255,7 @@ export class PaymentsApi extends BaseApi {
       paymentId: [paymentId, string()],
       body: [body, completePaymentRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/payments/${mapped.paymentId}/complete`;
     return req.callAsJson(completePaymentResponseSchema, requestOptions);

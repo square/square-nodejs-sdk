@@ -46,6 +46,7 @@ async createTerminalCheckout(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyCheckoutAmountMoney: Money = {};
 bodyCheckoutAmountMoney.amount = 2610;
 bodyCheckoutAmountMoney.currency = 'USD';
@@ -117,6 +118,7 @@ async searchTerminalCheckouts(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQueryFilterCreatedAt: TimeRange = {};
 bodyQueryFilterCreatedAt.startAt = 'start_at2';
 bodyQueryFilterCreatedAt.endAt = 'end_at0';
@@ -254,6 +256,7 @@ async createTerminalRefund(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyRefundAmountMoney: Money = {};
 bodyRefundAmountMoney.amount = 111;
 bodyRefundAmountMoney.currency = 'CAD';
@@ -311,6 +314,7 @@ async searchTerminalRefunds(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQueryFilterCreatedAt: TimeRange = {};
 bodyQueryFilterCreatedAt.startAt = 'start_at2';
 bodyQueryFilterCreatedAt.endAt = 'end_at0';

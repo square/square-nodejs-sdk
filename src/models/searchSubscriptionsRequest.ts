@@ -1,29 +1,42 @@
-import { lazy, number, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   SearchSubscriptionsQuery,
   searchSubscriptionsQuerySchema,
 } from './searchSubscriptionsQuery';
 
 /**
- * Defines parameters in a
- * [SearchSubscriptions]($e/Subscriptions/SearchSubscriptions) endpoint
- * request.
+ * Defines input parameters in a request to the
+ * [SearchSubscriptions]($e/Subscriptions/SearchSubscriptions) endpoint.
  */
 export interface SearchSubscriptionsRequest {
   /**
-   * A pagination cursor returned by a previous call to this endpoint.
-   * Provide this to retrieve the next set of results for the original query.
+   * When the total number of resulting subscriptions exceeds the limit of a paged response,
+   * specify the cursor returned from a preceding response here to fetch the next set of results.
+   * If the cursor is unset, the response contains the last page of the results.
    * For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
    */
   cursor?: string;
   /**
    * The upper limit on the number of subscriptions to return
-   * in the response.
-   * Default: `200`
+   * in a paged response.
    */
   limit?: number;
-  /** Represents a query (including filtering criteria) used to search for subscriptions. */
+  /** Represents a query, consisting of specified query expressions, used to search for subscriptions. */
   query?: SearchSubscriptionsQuery;
+  /**
+   * A query parameter to specify related information to be included in the response.
+   * The supported query parameter values are:
+   * - `actions`: to include scheduled actions on the targeted subscriptions.
+   */
+  include?: string[];
 }
 
 export const searchSubscriptionsRequestSchema: Schema<SearchSubscriptionsRequest> = object(
@@ -31,5 +44,6 @@ export const searchSubscriptionsRequestSchema: Schema<SearchSubscriptionsRequest
     cursor: ['cursor', optional(string())],
     limit: ['limit', optional(number())],
     query: ['query', optional(lazy(() => searchSubscriptionsQuerySchema))],
+    include: ['include', optional(array(string()))],
   }
 );

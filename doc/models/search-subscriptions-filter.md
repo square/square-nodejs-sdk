@@ -1,7 +1,8 @@
 
 # Search Subscriptions Filter
 
-Represents a set of SearchSubscriptionsQuery filters used to limit the set of Subscriptions returned by SearchSubscriptions.
+Represents a set of query expressions (filters) to narrow the scope of targeted subscriptions returned by
+the [SearchSubscriptions](/doc/api/subscriptions.md#search-subscriptions) endpoint.
 
 ## Structure
 
@@ -11,8 +12,8 @@ Represents a set of SearchSubscriptionsQuery filters used to limit the set of Su
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customerIds` | `string[] \| undefined` | Optional | A filter to select subscriptions based on the customer. |
-| `locationIds` | `string[] \| undefined` | Optional | A filter to select subscriptions based the location. |
+| `customerIds` | `string[] \| undefined` | Optional | A filter to select subscriptions based on the subscribing customer IDs. |
+| `locationIds` | `string[] \| undefined` | Optional | A filter to select subscriptions based on the location. |
 | `sourceNames` | `string[] \| undefined` | Optional | A filter to select subscriptions based on the source application. |
 
 ## Example (as JSON)

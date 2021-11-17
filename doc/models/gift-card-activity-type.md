@@ -1,6 +1,8 @@
 
 # Gift Card Activity Type
 
+Indicates the gift card activity type.
+
 ## Enumeration
 
 `GiftCardActivityType`

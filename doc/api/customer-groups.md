@@ -86,6 +86,7 @@ async createCustomerGroup(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyGroup: CustomerGroup = {
   name: 'Loyal Customers',
 };
@@ -217,6 +218,7 @@ async updateCustomerGroup(
 
 ```ts
 const groupId = 'group_id0';
+const contentType = null;
 const bodyGroup: CustomerGroup = {
   name: 'Loyal Customers',
 };

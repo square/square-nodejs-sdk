@@ -99,8 +99,9 @@ export class LoyaltyApi extends BaseApi {
    * Creates a loyalty account. To create a loyalty account, you must provide the `program_id` and a
    * `mapping` with the `phone_number` of the buyer.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                   the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
    * @return Response from the API call
    */
   async createLoyaltyAccount(
@@ -111,6 +112,7 @@ export class LoyaltyApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createLoyaltyAccountRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createLoyaltyAccountResponseSchema, requestOptions);
   }
@@ -123,8 +125,9 @@ export class LoyaltyApi extends BaseApi {
    *
    * Search results are sorted by `created_at` in ascending order.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                    the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the
+   *                                                            request.  See the corresponding object definition for
+   *                                                            field details.
    * @return Response from the API call
    */
   async searchLoyaltyAccounts(
@@ -135,6 +138,7 @@ export class LoyaltyApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchLoyaltyAccountsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchLoyaltyAccountsResponseSchema, requestOptions);
   }
@@ -171,11 +175,11 @@ export class LoyaltyApi extends BaseApi {
    * For more information, see [Availability of Square Loyalty](https://developer.squareup.
    * com/docs/loyalty-api/overview#loyalty-market-availability).
    *
-   * @param accountId  The [loyalty account]($m/LoyaltyAccount) ID to which
-   *                                                            to add the points.
-   * @param body       An object containing the fields to POST for the
-   *                                                            request.  See the corresponding object definition for
-   *                                                            field details.
+   * @param accountId    The [loyalty account]($m/LoyaltyAccount) ID to which
+   *                                                              to add the points.
+   * @param body         An object containing the fields to POST for the
+   *                                                              request.  See the corresponding object definition for
+   *                                                              field details.
    * @return Response from the API call
    */
   async accumulateLoyaltyPoints(
@@ -188,6 +192,7 @@ export class LoyaltyApi extends BaseApi {
       accountId: [accountId, string()],
       body: [body, accumulateLoyaltyPointsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/loyalty/accounts/${mapped.accountId}/accumulate`;
     return req.callAsJson(
@@ -204,10 +209,11 @@ export class LoyaltyApi extends BaseApi {
    * [AccumulateLoyaltyPoints]($e/Loyalty/AccumulateLoyaltyPoints)
    * to add points when a buyer pays for the purchase.
    *
-   * @param accountId  The ID of the [loyalty account]($m/LoyaltyAccount) in
-   *                                                        which to adjust the points.
-   * @param body       An object containing the fields to POST for the request.
-   *                                                        See the corresponding object definition for field details.
+   * @param accountId    The ID of the [loyalty account]($m/LoyaltyAccount) in
+   *                                                          which to adjust the points.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
    * @return Response from the API call
    */
   async adjustLoyaltyPoints(
@@ -220,6 +226,7 @@ export class LoyaltyApi extends BaseApi {
       accountId: [accountId, string()],
       body: [body, adjustLoyaltyPointsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/loyalty/accounts/${mapped.accountId}/adjust`;
     return req.callAsJson(adjustLoyaltyPointsResponseSchema, requestOptions);
@@ -235,8 +242,9 @@ export class LoyaltyApi extends BaseApi {
    *
    * Search results are sorted by `created_at` in descending order.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
    * @return Response from the API call
    */
   async searchLoyaltyEvents(
@@ -247,6 +255,7 @@ export class LoyaltyApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchLoyaltyEventsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchLoyaltyEventsResponseSchema, requestOptions);
   }
@@ -310,11 +319,11 @@ export class LoyaltyApi extends BaseApi {
    * For more information, see [Availability of Square Loyalty](https://developer.squareup.
    * com/docs/loyalty-api/overview#loyalty-market-availability).
    *
-   * @param programId  The [loyalty program]($m/LoyaltyProgram) ID, which
-   *                                                           defines the rules for accruing points.
-   * @param body       An object containing the fields to POST for the request.
-   *                                                           See the corresponding object definition for field
-   *                                                           details.
+   * @param programId    The [loyalty program]($m/LoyaltyProgram) ID, which
+   *                                                             defines the rules for accruing points.
+   * @param body         An object containing the fields to POST for the
+   *                                                             request.  See the corresponding object definition for
+   *                                                             field details.
    * @return Response from the API call
    */
   async calculateLoyaltyPoints(
@@ -327,6 +336,7 @@ export class LoyaltyApi extends BaseApi {
       programId: [programId, string()],
       body: [body, calculateLoyaltyPointsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/loyalty/programs/${mapped.programId}/calculate`;
     return req.callAsJson(calculateLoyaltyPointsResponseSchema, requestOptions);
@@ -342,8 +352,9 @@ export class LoyaltyApi extends BaseApi {
    * After a reward is created, the points are locked and
    * not available for the buyer to redeem another reward.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
    * @return Response from the API call
    */
   async createLoyaltyReward(
@@ -354,6 +365,7 @@ export class LoyaltyApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createLoyaltyRewardRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createLoyaltyRewardResponseSchema, requestOptions);
   }
@@ -368,8 +380,9 @@ export class LoyaltyApi extends BaseApi {
    *
    * Search results are sorted by `updated_at` in descending order.
    *
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                   the corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
    * @return Response from the API call
    */
   async searchLoyaltyRewards(
@@ -380,6 +393,7 @@ export class LoyaltyApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, searchLoyaltyRewardsRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchLoyaltyRewardsResponseSchema, requestOptions);
   }
@@ -437,9 +451,11 @@ export class LoyaltyApi extends BaseApi {
    * In other words, points used for the reward cannot be returned
    * to the account.
    *
-   * @param rewardId  The ID of the [loyalty reward]($m/LoyaltyReward) to redeem.
-   * @param body      An object containing the fields to POST for the request.
-   *                                                       See the corresponding object definition for field details.
+   * @param rewardId     The ID of the [loyalty reward]($m/LoyaltyReward) to
+   *                                                          redeem.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
    * @return Response from the API call
    */
   async redeemLoyaltyReward(
@@ -452,6 +468,7 @@ export class LoyaltyApi extends BaseApi {
       rewardId: [rewardId, string()],
       body: [body, redeemLoyaltyRewardRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/loyalty/rewards/${mapped.rewardId}/redeem`;
     return req.callAsJson(redeemLoyaltyRewardResponseSchema, requestOptions);

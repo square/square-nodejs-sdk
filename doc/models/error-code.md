@@ -62,6 +62,10 @@ Square API.
 | `TOO_MANY_MAP_ENTRIES` | Too many entries in the map field. |
 | `MAP_KEY_LENGTH_TOO_SHORT` | The length of one of the provided keys in the map is too short. |
 | `MAP_KEY_LENGTH_TOO_LONG` | The length of one of the provided keys in the map is too long. |
+| `CUSTOMER_MISSING_NAME` | The provided customer does not have a recorded name. |
+| `CUSTOMER_MISSING_EMAIL` | The provided customer does not have a recorded email. |
+| `INVALID_PAUSE_LENGTH` | The subscription cannot be paused longer than the duration of the current phase. |
+| `INVALID_DATE` | The subscription cannot be paused/resumed on the given date. |
 | `CARD_EXPIRED` | The card issuer declined the request because the card is expired. |
 | `INVALID_EXPIRATION` | The expiration date for the payment card is invalid. For example,<br>it indicates a date in the past. |
 | `INVALID_EXPIRATION_YEAR` | The expiration year for the payment card is invalid. For example,<br>it indicates a year in the past or contains invalid characters. |

@@ -135,8 +135,8 @@ export class LaborApi extends BaseApi {
    * `BreakType` for a location, an `INVALID_REQUEST_ERROR` "Exceeded limit of 3 breaks per location."
    * is returned.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                              corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                      See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createBreakType(
@@ -147,6 +147,7 @@ export class LaborApi extends BaseApi {
     const mapped = req.prepareArgs({
       body: [body, createBreakTypeRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createBreakTypeResponseSchema, requestOptions);
   }
@@ -188,9 +189,9 @@ export class LaborApi extends BaseApi {
   /**
    * Updates an existing `BreakType`.
    *
-   * @param id   The UUID for the `BreakType` being updated.
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                              corresponding object definition for field details.
+   * @param id           The UUID for the `BreakType` being updated.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                      See the corresponding object definition for field details.
    * @return Response from the API call
    */
   async updateBreakType(
@@ -203,6 +204,7 @@ export class LaborApi extends BaseApi {
       id: [id, string()],
       body: [body, updateBreakTypeRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/labor/break-types/${mapped.id}`;
     return req.callAsJson(updateBreakTypeResponseSchema, requestOptions);
@@ -276,8 +278,8 @@ export class LaborApi extends BaseApi {
    * is before the `Shift.start_at`, a break `end_at` is after
    * the `Shift.end_at`, or both.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                          corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                  the corresponding object definition for field details.
    * @return Response from the API call
    */
   async createShift(
@@ -286,6 +288,7 @@ export class LaborApi extends BaseApi {
   ): Promise<ApiResponse<CreateShiftResponse>> {
     const req = this.createRequest('POST', '/v2/labor/shifts');
     const mapped = req.prepareArgs({ body: [body, createShiftRequestSchema] });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createShiftResponseSchema, requestOptions);
   }
@@ -306,8 +309,8 @@ export class LaborApi extends BaseApi {
    * - `created_at`.
    * - `updated_at`.
    *
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                           corresponding object definition for field details.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                   the corresponding object definition for field details.
    * @return Response from the API call
    */
   async searchShifts(
@@ -316,6 +319,7 @@ export class LaborApi extends BaseApi {
   ): Promise<ApiResponse<SearchShiftsResponse>> {
     const req = this.createRequest('POST', '/v2/labor/shifts/search');
     const mapped = req.prepareArgs({ body: [body, searchShiftsRequestSchema] });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchShiftsResponseSchema, requestOptions);
   }
@@ -361,9 +365,9 @@ export class LaborApi extends BaseApi {
    * When closing a `Shift`, all `Break` instances in the `Shift` must be complete with `end_at`
    * set on each `Break`.
    *
-   * @param id   The ID of the object being updated.
-   * @param body An object containing the fields to POST for the request.  See the
-   *                                          corresponding object definition for field details.
+   * @param id           The ID of the object being updated.
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                  the corresponding object definition for field details.
    * @return Response from the API call
    */
   async updateShift(
@@ -376,6 +380,7 @@ export class LaborApi extends BaseApi {
       id: [id, string()],
       body: [body, updateShiftRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/labor/shifts/${mapped.id}`;
     return req.callAsJson(updateShiftResponseSchema, requestOptions);
@@ -450,9 +455,10 @@ export class LaborApi extends BaseApi {
   /**
    * Updates a `WorkweekConfig`.
    *
-   * @param id   The UUID for the `WorkweekConfig` object being updated.
-   * @param body An object containing the fields to POST for the request.  See
-   *                                                   the corresponding object definition for field details.
+   * @param id           The UUID for the `WorkweekConfig` object being updated.
+   * @param body         An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
    * @return Response from the API call
    */
   async updateWorkweekConfig(
@@ -465,6 +471,7 @@ export class LaborApi extends BaseApi {
       id: [id, string()],
       body: [body, updateWorkweekConfigRequestSchema],
     });
+    req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/labor/workweek-configs/${mapped.id}`;
     return req.callAsJson(updateWorkweekConfigResponseSchema, requestOptions);

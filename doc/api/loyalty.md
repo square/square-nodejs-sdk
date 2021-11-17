@@ -51,6 +51,7 @@ async createLoyaltyAccount(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyLoyaltyAccountMapping: LoyaltyAccountMapping = {};
 bodyLoyaltyAccountMapping.id = 'id6';
 bodyLoyaltyAccountMapping.createdAt = 'created_at4';
@@ -113,6 +114,7 @@ async searchLoyaltyAccounts(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQueryMappings: LoyaltyAccountMapping[] = [];
 
 const bodyQuerymappings0: LoyaltyAccountMapping = {};
@@ -223,6 +225,7 @@ async accumulateLoyaltyPoints(
 
 ```ts
 const accountId = 'account_id2';
+const contentType = null;
 const bodyAccumulatePoints: LoyaltyEventAccumulatePoints = {};
 bodyAccumulatePoints.loyaltyProgramId = 'loyalty_program_id8';
 bodyAccumulatePoints.points = 90;
@@ -279,6 +282,7 @@ async adjustLoyaltyPoints(
 
 ```ts
 const accountId = 'account_id2';
+const contentType = null;
 const bodyAdjustPoints: LoyaltyEventAdjustPoints = {
   points: 10,
 };
@@ -335,6 +339,7 @@ async searchLoyaltyEvents(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQueryFilterLoyaltyAccountFilter: LoyaltyEventLoyaltyAccountFilter = {
   loyaltyAccountId: 'loyalty_account_id6',
 };
@@ -510,6 +515,7 @@ async calculateLoyaltyPoints(
 
 ```ts
 const programId = 'program_id0';
+const contentType = null;
 const bodyTransactionAmountMoney: Money = {};
 bodyTransactionAmountMoney.amount = 72;
 bodyTransactionAmountMoney.currency = 'UZS';
@@ -563,6 +569,7 @@ async createLoyaltyReward(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyReward: LoyaltyReward = {
   loyaltyAccountId: '5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd',
   rewardTierId: 'e1b39225-9da5-43d1-a5db-782cdd8ad94f',
@@ -623,6 +630,7 @@ async searchLoyaltyRewards(
 ## Example Usage
 
 ```ts
+const contentType = null;
 const bodyQuery: SearchLoyaltyRewardsRequestLoyaltyRewardQuery = {
   loyaltyAccountId: '5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd',
 };
@@ -770,6 +778,7 @@ async redeemLoyaltyReward(
 
 ```ts
 const rewardId = 'reward_id4';
+const contentType = null;
 const body: RedeemLoyaltyRewardRequest = {
   idempotencyKey: '98adc7f7-6963-473b-b29c-f3c9cdd7d994',
   locationId: 'P034NEENMD09F',

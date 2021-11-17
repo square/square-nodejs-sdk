@@ -31,7 +31,7 @@ export interface Booking {
   startAt?: string;
   /** The ID of the [Location]($m/Location) object representing the location where the booked service is provided. */
   locationId?: string;
-  /** The ID of the [Customer]($m/Customer) object representing the customer attending this booking */
+  /** The ID of the [Customer]($m/Customer) object representing the customer receiving the booked service. */
   customerId?: string;
   /** The free-text field for the customer to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a relevant [CatalogObject]($m/CatalogObject) instance. */
   customerNote?: string;

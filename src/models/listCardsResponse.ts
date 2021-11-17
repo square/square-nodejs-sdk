@@ -4,7 +4,7 @@ import { Error, errorSchema } from './error';
 
 /**
  * Defines the fields that are included in the response body of
- * a request to the [ListCards](#endpoint-cards-listcards) endpoint.
+ * a request to the [ListCards]($e/Cards/ListCards) endpoint.
  * Note: if there are errors processing the request, the card field will not be
  * present.
  */
