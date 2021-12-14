@@ -1,8 +1,8 @@
 
 # List Locations Response
 
-Defines the fields that are included in the response body of
-a request to the __ListLocations__ endpoint.
+Defines the fields that are included in the response body of a request
+to the [ListLocations](/doc/api/locations.md#list-locations) endpoint.
 
 One of `errors` or `locations` is present in a given response (never both).
 
@@ -30,7 +30,7 @@ One of `errors` or `locations` is present in a given response (never both).
         "locality": "San Francisco",
         "postal_code": "94114"
       },
-      "business_name": "Pumbaa's business name",
+      "business_name": "Jet Fuel Coffee",
       "capabilities": [
         "CREDIT_CARD_PROCESSING"
       ],
@@ -40,7 +40,7 @@ One of `errors` or `locations` is present in a given response (never both).
       "id": "18YC4JDH91E1H",
       "language_code": "en-US",
       "merchant_id": "3MYCJG5GVYQ8Q",
-      "name": "your location name",
+      "name": "Grant Park",
       "phone_number": "+1 650-354-7217",
       "status": "ACTIVE",
       "timezone": "America/Los_Angeles"

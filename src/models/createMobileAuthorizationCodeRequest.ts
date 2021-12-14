@@ -2,10 +2,10 @@ import { object, optional, Schema, string } from '../schema';
 
 /**
  * Defines the body parameters that can be provided in a request to the
- * __CreateMobileAuthorizationCode__ endpoint.
+ * `CreateMobileAuthorizationCode` endpoint.
  */
 export interface CreateMobileAuthorizationCodeRequest {
-  /** The Square location ID the authorization code should be tied to. */
+  /** The Square location ID that the authorization code should be tied to. */
   locationId?: string;
 }
 

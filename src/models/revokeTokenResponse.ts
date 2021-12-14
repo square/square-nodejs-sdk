@@ -1,7 +1,7 @@
 import { boolean, object, optional, Schema } from '../schema';
 
 export interface RevokeTokenResponse {
-  /** If the request is successful, this is true. */
+  /** If the request is successful, this is `true`. */
   success?: boolean;
 }
 

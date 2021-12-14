@@ -1,5 +1,35 @@
 # Change Log
 
+## Version 17.0.0 (2021-12-15)
+### API updates
+
+* **Invoices API:**
+  * The Invoices API now supports seller accounts in France. For more information, see [International availability and considerations.](https://developer.squareup.com/docs/invoices-api/overview#international-availability-invoices)
+  * France only: [`Invoice`](https://developer.squareup.com/reference/square_2021-12-15/objects/Invoice) object. Added a new `payment_conditions` field, which contains payment terms and conditions that are displayed on the invoice. This field is available only for sellers in France. For more information, see [Payment conditions.](https://developer.squareup.com/docs/invoices-api/overview#payment-conditions)
+
+    Square version 2021-12-15 or higher is required to set this field, but it is returned in `ListInvoices` and `RetrieveInvoice` requests for all Square versions.
+
+* **Cards API**
+  * Added the `CARD_DECLINED_VERIFICATION_REQUIRED` error code to the list of error codes returned by [CreateCard](https://developer.squareup.com/reference/square_2021-12-15/cards-api/CreateCard). 
+* **Catalog API:**
+  * [CreateCatalogImage](https://developer.squareup.com/reference/square_2021-12-15/catalog-api/create-catalog-image) endpoint
+    *  Updated to support attaching multiple images to a [Catalogbject](https://developer.squareup.com/reference/square_2021-12-15/objects/CatalogObject) instance. 
+    *  Added `is_primary` option to let the caller choose to attach an image as the primary image on the object for display with the Square Point of Sale and other first-party Square applications. For more information, see [Upload and Attach Images.](https://developer.squareup.com/docs/catalog-api/upload-and-attach-images)
+  * [CatalogObject](https://developer.squareup.com/reference/square_2021-12-15/objects/CatalogObject) object
+    * Retired the `image_id` field, used to hold a single image object attached to an image-supporting object of the `ITEM`, `ITEM_VARIATION`, `CATEGORY`, or `MODIFIER_LIST` type, in Square API version 2021-12-15 and later, which supports attachment of multiple images. The `image_id` field is still supported in Square API version prior to 2021-12-15. For more information, see [Work with Images: Overview.](https://developer.squareup.com/docs/catalog-api/cookbook/create-catalog-image#overview)
+  * [CatalogItem](https://developer.squareup.com/reference/square_2021-12-15/objects/CatalogItem), [CatalogItemVariation](https://developer.squareup.com/reference/square_2021-12-15/objects/CatalogItemVariation), [CatalogCategory](https://developer.squareup.com/reference/square_2021-12-15/objects/CatalogCategory) or [CatalogModifierList](https://developer.squareup.com/reference/square_2021-12-15/objects/CatalogModifierList) object
+    *  Added `image_ids` list to hold attached image objects. The first element of `image_ids` list refers to the primary image attached to the catalog object. For more information, see [Work with Images: Overview.](https://developer.squareup.com/docs/catalog-api/cookbook/create-catalog-image#overview)
+  * [UpdateCatalogImage](https://developer.squareup.com/reference/square_2021-12-15/catalog-api/update-catalog-image) endpoint
+    *  Added to support replacing the image file encapsulated by an existing [CatalogImage](https://developer.squareup.com/reference/square_2021-12-15/objects/CatalogImage) object. For more information, see [Replace image file on a CatalogImage object.](https://developer.squareup.com/docs/catalog-api/manage-images#replace-the-image-file-of-a-catalogimage-object)
+
+  * [CatalogPricingRule](https://developer.squareup.com/reference/square_2021-12-15/objects/CatalogPricingRule) object
+    * Added  [minimum_order_subtotal_money](https://developer.squareup.com/reference/square_2021-12-15/objects/CatalogPricingRule#definition__property-minimum_order_subtotal_money) field to require that the minimum order subtotal be reached before the pricing rule may be applied. 
+
+### Documentation updates
+* Added a new top-level node for Developer Tools. This node includes such features as Sandbox, API Logs, and Webhooks.
+* Added [Webhook Event Logs (beta)](https://developer.squareup.com/docs/devtools/webhook-logs) documentation to the Developer Tools node.
+
+
 ## Version 16.0.0 (2021-11-17)
 ## API updates
 

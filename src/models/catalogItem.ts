@@ -74,6 +74,12 @@ export interface CatalogItem {
    */
   itemOptions?: CatalogItemOptionForItem[];
   /**
+   * The IDs of images associated with this `CatalogItem` instance.
+   * These images will be shown to customers in Square Online Store.
+   * The first image will show up as the icon for this item in POS.
+   */
+  imageIds?: string[];
+  /**
    * A name to sort the item by. If this name is unspecified, namely, the `sort_name` field is absent, the regular `name` field is used for sorting.
    * It is currently supported for sellers of the Japanese locale only.
    */
@@ -101,5 +107,6 @@ export const catalogItemSchema: Schema<CatalogItem> = object({
     'item_options',
     optional(array(lazy(() => catalogItemOptionForItemSchema))),
   ],
+  imageIds: ['image_ids', optional(array(string()))],
   sortName: ['sort_name', optional(string())],
 });

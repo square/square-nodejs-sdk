@@ -221,7 +221,6 @@ async createDisputeEvidenceFile(
 
 ```ts
 const disputeId = 'dispute_id2';
-const contentType = null;
 const request: CreateDisputeEvidenceFileRequest = {
   idempotencyKey: 'idempotency_key2',
 };

@@ -142,8 +142,6 @@ export interface CatalogObject {
    * This can include locations that are deactivated.
    */
   absentAtLocationIds?: string[];
-  /** Identifies the `CatalogImage` attached to this `CatalogObject`. */
-  imageId?: string;
   /** A [CatalogObject]($m/CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog. */
   itemData?: CatalogItem;
   /** A category to which a `CatalogItem` instance belongs. */
@@ -238,7 +236,6 @@ export const catalogObjectSchema: Schema<CatalogObject> = object({
   presentAtAllLocations: ['present_at_all_locations', optional(boolean())],
   presentAtLocationIds: ['present_at_location_ids', optional(array(string()))],
   absentAtLocationIds: ['absent_at_location_ids', optional(array(string()))],
-  imageId: ['image_id', optional(string())],
   itemData: ['item_data', optional(lazy(() => catalogItemSchema))],
   categoryData: ['category_data', optional(lazy(() => catalogCategorySchema))],
   itemVariationData: [

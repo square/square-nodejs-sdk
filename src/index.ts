@@ -589,6 +589,8 @@ export { UpdateBookingRequest } from './models/updateBookingRequest';
 export { UpdateBookingResponse } from './models/updateBookingResponse';
 export { UpdateBreakTypeRequest } from './models/updateBreakTypeRequest';
 export { UpdateBreakTypeResponse } from './models/updateBreakTypeResponse';
+export { UpdateCatalogImageRequest } from './models/updateCatalogImageRequest';
+export { UpdateCatalogImageResponse } from './models/updateCatalogImageResponse';
 export { UpdateCustomerGroupRequest } from './models/updateCustomerGroupRequest';
 export { UpdateCustomerGroupResponse } from './models/updateCustomerGroupResponse';
 export { UpdateCustomerRequest } from './models/updateCustomerRequest';

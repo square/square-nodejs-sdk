@@ -64,6 +64,14 @@ import {
   searchCatalogObjectsResponseSchema,
 } from '../models/searchCatalogObjectsResponse';
 import {
+  UpdateCatalogImageRequest,
+  updateCatalogImageRequestSchema,
+} from '../models/updateCatalogImageRequest';
+import {
+  UpdateCatalogImageResponse,
+  updateCatalogImageResponseSchema,
+} from '../models/updateCatalogImageResponse';
+import {
   UpdateItemModifierListsRequest,
   updateItemModifierListsRequestSchema,
 } from '../models/updateItemModifierListsRequest';
@@ -186,11 +194,11 @@ export class CatalogApi extends BaseApi {
   }
 
   /**
-   * Uploads an image file to be represented by a [CatalogImage]($m/CatalogImage) object linked to an
-   * existing
-   * [CatalogObject]($m/CatalogObject) instance. A call to this endpoint can upload an image, link an
-   * image to
-   * a catalog object, or do both.
+   * Uploads an image file to be represented by a [CatalogImage]($m/CatalogImage) object that can be
+   * linked to an existing
+   * [CatalogObject]($m/CatalogObject) instance. The resulting `CatalogImage` is unattached to any
+   * `CatalogObject` if the `object_id`
+   * is not specified.
    *
    * This `CreateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an
    * image file part in
@@ -209,12 +217,44 @@ export class CatalogApi extends BaseApi {
     const mapped = req.prepareArgs({
       request: [request, optional(createCatalogImageRequestSchema)],
     });
-    req.header('Content-Type', 'multipart/form-data');
     req.formData({
       request: JSON.stringify(mapped.request),
       image_file: imageFile,
     });
     return req.callAsJson(createCatalogImageResponseSchema, requestOptions);
+  }
+
+  /**
+   * Uploads a new image file to replace the existing one in the specified
+   * [CatalogImage]($m/CatalogImage) object.
+   *
+   * This `UpdateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an
+   * image file part in
+   * JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
+   *
+   * @param imageId    The ID of the `CatalogImage` object to update the
+   *                                                       encapsulated image file.
+   * @param request
+   * @param imageFile
+   * @return Response from the API call
+   */
+  async updateCatalogImage(
+    imageId: string,
+    request?: UpdateCatalogImageRequest,
+    imageFile?: FileWrapper,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<UpdateCatalogImageResponse>> {
+    const req = this.createRequest('PUT');
+    const mapped = req.prepareArgs({
+      imageId: [imageId, string()],
+      request: [request, optional(updateCatalogImageRequestSchema)],
+    });
+    req.formData({
+      request: JSON.stringify(mapped.request),
+      image_file: imageFile,
+    });
+    req.appendTemplatePath`/v2/catalog/images/${mapped.imageId}`;
+    return req.callAsJson(updateCatalogImageResponseSchema, requestOptions);
   }
 
   /**
@@ -231,11 +271,12 @@ export class CatalogApi extends BaseApi {
   }
 
   /**
-   * Returns a list of [CatalogObject]($m/CatalogObject)s that includes
-   * all objects of a set of desired types (for example, all [CatalogItem]($m/CatalogItem)
-   * and [CatalogTax]($m/CatalogTax) objects) in the catalog. The `types` parameter
-   * is specified as a comma-separated list of valid [CatalogObject]($m/CatalogObject) types:
-   * `ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`, `IMAGE`.
+   * Returns a list of all [CatalogObject]($m/CatalogObject)s of the specified types in the catalog.
+   *
+   * The `types` parameter is specified as a comma-separated list of the
+   * [CatalogObjectType]($m/CatalogObjectType) values,
+   * for example, "`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`,
+   * `IMAGE`".
    *
    * __Important:__ ListCatalog does not return deleted catalog items. To retrieve
    * deleted catalog items, use [SearchCatalogObjects]($e/Catalog/SearchCatalogObjects)
@@ -246,14 +287,20 @@ export class CatalogApi extends BaseApi {
    *                                  //developer.squareup.com/docs/basics/api101/pagination) for more information.
    * @param types           An optional case-insensitive, comma-separated list of object types to retrieve.
    *                                  The valid values are defined in the [CatalogObjectType]($m/CatalogObjectType)
-   *                                  enum, including `ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,
-   *                                  `MODIFIER`, `MODIFIER_LIST`, or `IMAGE`.  If this is unspecified, the operation
-   *                                  returns objects of all the types at the version of the Square API used to make
-   *                                  the request.
+   *                                  enum, for example, `ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,
+   *                                  `MODIFIER`, `MODIFIER_LIST`, `IMAGE`, etc.  If this is unspecified, the operation
+   *                                  returns objects of all the top level types at the version of the Square API used
+   *                                  to make the request. Object types that are nested onto other object types are not
+   *                                  included in the defaults.  At the current API version the default object types
+   *                                  are: ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST, DINING_OPTION, TAX_EXEMPTION,
+   *                                  SERVICE_CHARGE, PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,
+   *                                  SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION,
+   *                                  QUICK_AMOUNT_SETTINGS.
    * @param catalogVersion  The specific version of the catalog objects to be included in the response.
    *                                  This allows you to retrieve historical versions of objects. The specified version
    *                                  value is matched against the [CatalogObject]($m/CatalogObject)s' `version`
-   *                                  attribute.
+   *                                  attribute.  If not included, results will be from the current version of the
+   *                                  catalog.
    * @return Response from the API call
    */
   async listCatalog(
@@ -329,17 +376,24 @@ export class CatalogApi extends BaseApi {
    *
    * @param objectId                The object ID of any type of catalog objects to be retrieved.
    * @param includeRelatedObjects   If `true`, the response will include additional objects that are
-   *                                           related to the requested object, as follows:  If the `object` field of
-   *                                           the response contains a `CatalogItem`, its associated `CatalogCategory`,
-   *                                           `CatalogTax`, `CatalogImage` and `CatalogModifierList` objects will be
-   *                                           returned in the `related_objects` field of the response. If the `object`
-   *                                           field of the response contains a `CatalogItemVariation`, its parent
-   *                                           `CatalogItem` will be returned in the `related_objects` field of the
-   *                                           response.  Default value: `false`
+   *                                           related to the requested objects. Related objects are defined as any
+   *                                           objects referenced by ID by the results in the `objects` field of the
+   *                                           response. These objects are put in the `related_objects` field. Setting
+   *                                           this to `true` is helpful when the objects are needed for immediate
+   *                                           display to a user. This process only goes one level deep. Objects
+   *                                           referenced by the related objects will not be included. For example,  if
+   *                                           the `objects` field of the response contains a CatalogItem, its
+   *                                           associated CatalogCategory objects, CatalogTax objects, CatalogImage
+   *                                           objects and CatalogModifierLists will be returned in the
+   *                                           `related_objects` field of the response. If the `objects` field of the
+   *                                           response contains a CatalogItemVariation, its parent CatalogItem will be
+   *                                           returned in the `related_objects` field of the response.  Default value:
+   *                                           `false`
    * @param catalogVersion          Requests objects as of a specific version of the catalog. This allows
    *                                           you to retrieve historical versions of objects. The value to retrieve a
    *                                           specific version of an object can be found in the version field of
-   *                                           [CatalogObject]($m/CatalogObject)s.
+   *                                           [CatalogObject]($m/CatalogObject)s. If not included, results will be
+   *                                           from the current version of the catalog.
    * @return Response from the API call
    */
   async retrieveCatalogObject(

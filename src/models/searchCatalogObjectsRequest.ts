@@ -18,7 +18,10 @@ export interface SearchCatalogObjectsRequest {
   cursor?: string;
   /**
    * The desired set of object types to appear in the search results.
-   * If not specified, the following catalog object types will be used as default:
+   * If this is unspecified, the operation returns objects of all the top level types at the version
+   * of the Square API used to make the request. Object types that are nested onto other object types
+   * are not included in the defaults.
+   * At the current API version the default object types are:
    * ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST, DINING_OPTION, TAX_EXEMPTION,
    * SERVICE_CHARGE, PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,
    * SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION, QUICK_AMOUNT_SETTINGS.
@@ -31,14 +34,17 @@ export interface SearchCatalogObjectsRequest {
   includeDeletedObjects?: boolean;
   /**
    * If `true`, the response will include additional objects that are related to the
-   * requested object, as follows:
-   * If a CatalogItem is returned in the object field of the response,
-   * its associated CatalogCategory, CatalogTax objects,
-   * CatalogImage objects and CatalogModifierList objects
-   * will be included in the `related_objects` field of the response.
-   * If a CatalogItemVariation is returned in the object field of the
-   * response, its parent CatalogItem will be included in the `related_objects` field of
+   * requested objects. Related objects are objects that are referenced by object ID by the objects
+   * in the response. This is helpful if the objects are being fetched for immediate display to a user.
+   * This process only goes one level deep. Objects referenced by the related objects will not be included.
+   * For example:
+   * If the `objects` field of the response contains a CatalogItem, its associated
+   * CatalogCategory objects, CatalogTax objects, CatalogImage objects and
+   * CatalogModifierLists will be returned in the `related_objects` field of the
+   * response. If the `objects` field of the response contains a CatalogItemVariation,
+   * its parent CatalogItem will be returned in the `related_objects` field of
    * the response.
+   * Default value: `false`
    */
   includeRelatedObjects?: boolean;
   /**

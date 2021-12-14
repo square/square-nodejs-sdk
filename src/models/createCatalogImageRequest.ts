@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { boolean, lazy, object, optional, Schema, string } from '../schema';
 import { CatalogObject, catalogObjectSchema } from './catalogObject';
 
 export interface CreateCatalogImageRequest {
@@ -9,9 +9,9 @@ export interface CreateCatalogImageRequest {
    */
   idempotencyKey: string;
   /**
-   * Unique ID of the `CatalogObject` to attach to this `CatalogImage`. Leave this
+   * Unique ID of the `CatalogObject` to attach this `CatalogImage` object to. Leave this
    * field empty to create unattached images, for example if you are building an integration
-   * where these images can be attached to catalog items at a later time.
+   * where an image can be attached to catalog items at a later time.
    */
   objectId?: string;
   /**
@@ -23,6 +23,13 @@ export interface CreateCatalogImageRequest {
    * [Design a Catalog](https://developer.squareup.com/docs/catalog-api/design-a-catalog) guide.
    */
   image: CatalogObject;
+  /**
+   * If this is set to `true`, the image created will be the primary, or first image of the object referenced by `object_id`.
+   * If the `CatalogObject` already has a primary `CatalogImage`, setting this field to `true` will replace the primary image.
+   * If this is set to `false` and you use the Square API version 2021-12-15 or later, the image id will be appended to the list of `image_ids` on the object.
+   * With Square API version 2021-12-15 or later, the default value is `false`. Otherwise, the effective default value is `true`.
+   */
+  isPrimary?: boolean;
 }
 
 export const createCatalogImageRequestSchema: Schema<CreateCatalogImageRequest> = object(
@@ -30,5 +37,6 @@ export const createCatalogImageRequestSchema: Schema<CreateCatalogImageRequest> 
     idempotencyKey: ['idempotency_key', string()],
     objectId: ['object_id', optional(string())],
     image: ['image', lazy(() => catalogObjectSchema)],
+    isPrimary: ['is_primary', optional(boolean())],
   }
 );

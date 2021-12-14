@@ -102,6 +102,11 @@ export interface CatalogItemVariation {
    */
   stockable?: boolean;
   /**
+   * The IDs of images associated with this `CatalogItemVariation` instance.
+   * These images will be shown to customers in Square Online Store.
+   */
+  imageIds?: string[];
+  /**
    * Tokens of employees that can perform the service represented by this variation. Only valid for
    * variations of type `APPOINTMENTS_SERVICE`.
    */
@@ -138,6 +143,7 @@ export const catalogItemVariationSchema: Schema<CatalogItemVariation> = object({
   ],
   measurementUnitId: ['measurement_unit_id', optional(string())],
   stockable: ['stockable', optional(boolean())],
+  imageIds: ['image_ids', optional(array(string()))],
   teamMemberIds: ['team_member_ids', optional(array(string()))],
   stockableConversion: [
     'stockable_conversion',

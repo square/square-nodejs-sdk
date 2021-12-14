@@ -28,10 +28,13 @@ export interface CatalogImage {
    * using the [SearchCatalogObjects]($e/Catalog/SearchCatalogObjects).
    */
   caption?: string;
+  /** The immutable order ID for this image object created by the Photo Studio service in Square Online Store. */
+  photoStudioOrderId?: string;
 }
 
 export const catalogImageSchema: Schema<CatalogImage> = object({
   name: ['name', optional(string())],
   url: ['url', optional(string())],
   caption: ['caption', optional(string())],
+  photoStudioOrderId: ['photo_studio_order_id', optional(string())],
 });

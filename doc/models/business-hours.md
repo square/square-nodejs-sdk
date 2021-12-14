@@ -1,7 +1,7 @@
 
 # Business Hours
 
-Represents the hours of operation for a business location.
+The hours of operation for a location.
 
 ## Structure
 

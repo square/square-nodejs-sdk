@@ -3,14 +3,13 @@ import { Error, errorSchema } from './error';
 import { Location, locationSchema } from './location';
 
 /**
- * Defines the fields that the
- * [RetrieveLocation]($e/Locations/RetrieveLocation) endpoint returns
- * in a response.
+ * Defines the fields that the [RetrieveLocation]($e/Locations/RetrieveLocation)
+ * endpoint returns in a response.
  */
 export interface RetrieveLocationResponse {
   /** Information on errors encountered during the request. */
   errors?: Error[];
-  /** Represents one of a business's locations. */
+  /** Represents one of a business's [locations](https://developer.squareup.com/docs/locations-api). */
   location?: Location;
 }
 

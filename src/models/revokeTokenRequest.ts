@@ -2,18 +2,18 @@ import { boolean, object, optional, Schema, string } from '../schema';
 
 export interface RevokeTokenRequest {
   /**
-   * The Square-issued ID for your application, available from
-   * the OAuth page for your application on the Developer Dashboard.
+   * The Square-issued ID for your application, which is available in the OAuth page in the
+   * [Developer Dashboard](https://developer.squareup.com/apps).
    */
   clientId?: string;
   /**
    * The access token of the merchant whose token you want to revoke.
-   * Do not provide a value for merchant_id if you provide this parameter.
+   * Do not provide a value for `merchant_id` if you provide this parameter.
    */
   accessToken?: string;
   /**
    * The ID of the merchant whose token you want to revoke.
-   * Do not provide a value for access_token if you provide this parameter.
+   * Do not provide a value for `access_token` if you provide this parameter.
    */
   merchantId?: string;
   /**
