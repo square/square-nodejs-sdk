@@ -4,9 +4,9 @@ import { BusinessHours, businessHoursSchema } from './businessHours';
 import { Coordinates, coordinatesSchema } from './coordinates';
 import { TaxIds, taxIdsSchema } from './taxIds';
 
-/** Represents one of a business's locations. */
+/** Represents one of a business's [locations](https://developer.squareup.com/docs/locations-api). */
 export interface Location {
-  /** The Square-issued ID of the location. */
+  /** A short, generated string of letters and numbers that uniquely identifies this location instance. */
   id?: string;
   /**
    * The name of the location.
@@ -44,7 +44,7 @@ export interface Location {
   address?: Address;
   /**
    * The [IANA Timezone](https://www.iana.org/time-zones) identifier for
-   * the timezone of the location.
+   * the timezone of the location. For example, `"America/Los_Angeles"`.
    */
   timezone?: string;
   /**
@@ -53,7 +53,7 @@ export interface Location {
    * See [LocationCapability](#type-locationcapability) for possible values
    */
   capabilities?: string[];
-  /** The status of the location, whether a location is active or inactive. */
+  /** A location's status. */
   status?: string;
   /**
    * The time when the location was created, in RFC 3339 format.
@@ -80,26 +80,20 @@ export interface Location {
   currency?: string;
   /** The phone number of the location in human readable format. For example, `+353 80 0 098 8099`. */
   phoneNumber?: string;
-  /**
-   * The business name of the location
-   * This is the name visible to the customers of the location.
-   * For example, this name appears on customer receipts.
-   */
+  /** The business name of the location, visible to the location's customers. */
   businessName?: string;
-  /** A location's physical or mobile type. */
+  /** A location's type. */
   type?: string;
   /** The website URL of the location.  For example, `https://squareup.com`. */
   websiteUrl?: string;
-  /** Represents the hours of operation for a business location. */
+  /** The hours of operation for a location. */
   businessHours?: BusinessHours;
   /**
-   * The email of the location.
-   * This email is visible to the customers of the location.
-   * For example, the email appears on customer receipts.
-   * For example, `help@squareup.com`.
+   * The email address of the location, visible to the location's customers.
+   * This can be unique to the location, and is not always the email address for the business owner or admin.
    */
   businessEmail?: string;
-  /** The description of the location. */
+  /** The description of the location. For example, `Main Street location`. */
   description?: string;
   /** The Twitter username of the location without the '@' symbol. For example, `Square`. */
   twitterUsername?: string;
@@ -110,23 +104,24 @@ export interface Location {
   /** Latitude and longitude coordinates. */
   coordinates?: Coordinates;
   /**
-   * The URL of the logo image for the location. The Seller must choose this logo in the Seller
-   * dashboard (Receipts section) for the logo to appear on transactions (such as receipts, invoices)
-   * that Square generates on behalf of the Seller. This image should have an aspect ratio
-   * close to 1:1 and is recommended to be at least 200x200 pixels.
+   * The URL of the logo image for the location. When configured in the Seller
+   * dashboard (Receipts section), the logo appears on transactions (such as receipts and invoices)
+   * that Square generates on behalf of the Seller. This image should have a roughly square (1:1) aspect ratio
+   * and is recommended to be at least 200x200 pixels.
    */
   logoUrl?: string;
   /** The URL of the Point of Sale background image for the location. */
   posBackgroundUrl?: string;
   /**
-   * The merchant category code (MCC) of the location, as standardized by ISO 18245.
-   * The MCC describes the kind of goods or services sold at the location.
+   * A four-digit number that describes the kind of goods or services sold at the location.
+   * The merchant category code (MCC) of the location is standardized by ISO 18245.
+   * For example, `5045`.
    */
   mcc?: string;
   /**
-   * The URL of a full-format logo image for the location. The Seller must choose this logo in the
-   * Seller dashboard (Receipts section) for the logo to appear on transactions (such as receipts, invoices)
-   * that Square generates on behalf of the Seller. This image can have an aspect ratio of 2:1 or greater
+   * The URL of a full-format logo image for the location. When configured in the Seller
+   * dashboard (Receipts section), the logo appears on transactions (such as receipts and invoices)
+   * that Square generates on behalf of the Seller. This image can be wider than it is tall,
    * and is recommended to be at least 1280x648 pixels.
    */
   fullFormatLogoUrl?: string;

@@ -20,6 +20,7 @@ the modifier list are allowed.
 | `ordinal` | `number \| undefined` | Optional | Determines where this modifier list appears in a list of `CatalogModifierList` values. |
 | `selectionType` | [`string \| undefined`](/doc/models/catalog-modifier-list-selection-type.md) | Optional | Indicates whether a CatalogModifierList supports multiple selections. |
 | `modifiers` | [`CatalogObject[] \| undefined`](/doc/models/catalog-object.md) | Optional | The options included in the `CatalogModifierList`.<br>You must include at least one `CatalogModifier`.<br>Each CatalogObject must have type `MODIFIER` and contain<br>`CatalogModifier` data. |
+| `imageIds` | `string[] \| undefined` | Optional | The IDs of images associated with this `CatalogModifierList` instance.<br>Currently these images are not displayed by Square, but are free to be displayed in 3rd party applications. |
 
 ## Example (as JSON)
 

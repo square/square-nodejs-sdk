@@ -32,8 +32,8 @@ export interface SearchSubscriptionsRequest {
   /** Represents a query, consisting of specified query expressions, used to search for subscriptions. */
   query?: SearchSubscriptionsQuery;
   /**
-   * A query parameter to specify related information to be included in the response.
-   * The supported query parameter values are:
+   * An option to include related information in the response.
+   * The supported values are:
    * - `actions`: to include scheduled actions on the targeted subscriptions.
    */
   include?: string[];

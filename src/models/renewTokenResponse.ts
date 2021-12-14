@@ -10,19 +10,19 @@ export interface RenewTokenResponse {
   accessToken?: string;
   /** This value is always _bearer_. */
   tokenType?: string;
-  /** The date when access_token expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format. */
+  /** The date when the `access_token` expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format. */
   expiresAt?: string;
   /** The ID of the authorizing merchant's business. */
   merchantId?: string;
   /**
    * __LEGACY FIELD__. The ID of the merchant subscription associated with
-   * the authorization. Only present if the merchant signed up for a subscription
-   * during authorization..
+   * the authorization. The ID is only present if the merchant signed up for a subscription
+   * during authorization.
    */
   subscriptionId?: string;
   /**
    * __LEGACY FIELD__. The ID of the subscription plan the merchant signed
-   * up for. Only present if the merchant signed up for a subscription during
+   * up for. The ID is only present if the merchant signed up for a subscription plan during
    * authorization.
    */
   planId?: string;

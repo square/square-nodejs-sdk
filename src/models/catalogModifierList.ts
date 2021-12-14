@@ -30,6 +30,11 @@ export interface CatalogModifierList {
    * `CatalogModifier` data.
    */
   modifiers?: CatalogObject[];
+  /**
+   * The IDs of images associated with this `CatalogModifierList` instance.
+   * Currently these images are not displayed by Square, but are free to be displayed in 3rd party applications.
+   */
+  imageIds?: string[];
 }
 
 export const catalogModifierListSchema: Schema<CatalogModifierList> = object({
@@ -37,4 +42,5 @@ export const catalogModifierListSchema: Schema<CatalogModifierList> = object({
   ordinal: ['ordinal', optional(number())],
   selectionType: ['selection_type', optional(string())],
   modifiers: ['modifiers', optional(array(lazy(() => catalogObjectSchema)))],
+  imageIds: ['image_ids', optional(array(string()))],
 });

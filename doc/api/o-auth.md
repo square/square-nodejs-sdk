@@ -24,10 +24,10 @@ const oAuthApi = client.oAuthApi;
 
 Renews an OAuth access token before it expires.
 
-OAuth access tokens besides your application's personal access token expire after __30 days__.
-You can also renew expired tokens within __15 days__ of their expiration.
+OAuth access tokens besides your application's personal access token expire after 30 days.
+You can also renew expired tokens within 15 days of their expiration.
 You cannot renew an access token that has been expired for more than 15 days.
-Instead, the associated user must re-complete the OAuth flow from the beginning.
+Instead, the associated user must recomplete the OAuth flow from the beginning.
 
 __Important:__ The `Authorization` header for this endpoint must have the
 following format:
@@ -37,7 +37,7 @@ Authorization: Client APPLICATION_SECRET
 ```
 
 Replace `APPLICATION_SECRET` with the application secret on the Credentials
-page in the [developer dashboard](https://developer.squareup.com/apps).
+page in the [Developer Dashboard](https://developer.squareup.com/apps).
 
 :information_source: **Note** This endpoint does not require authentication.
 
@@ -54,7 +54,7 @@ async renewToken(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `clientId` | `string` | Template, Required | Your application ID, available from the OAuth page for your<br>application on the Developer Dashboard. |
+| `clientId` | `string` | Template, Required | Your application ID, which is available in the OAuth page in the [Developer Dashboard](https://developer.squareup.com/apps). |
 | `body` | [`RenewTokenRequest`](/doc/models/renew-token-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `authorization` | `string` | Header, Required | Client APPLICATION_SECRET |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |

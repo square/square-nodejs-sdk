@@ -1,7 +1,7 @@
 
 # Location Type
 
-A location's physical or mobile type.
+A location's type.
 
 ## Enumeration
 

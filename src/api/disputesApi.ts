@@ -143,10 +143,10 @@ export class DisputesApi extends BaseApi {
    * Uploads a file to use as evidence in a dispute challenge. The endpoint accepts HTTP
    * multipart/form-data file uploads in HEIC, HEIF, JPEG, PDF, PNG, and TIFF formats.
    *
-   * @param disputeId    The ID of the dispute you want to upload evidence
-   *                                                                for.
-   * @param request      Defines the parameters for a
-   *                                                                `CreateDisputeEvidenceFile` request.
+   * @param disputeId  The ID of the dispute you want to upload evidence
+   *                                                              for.
+   * @param request    Defines the parameters for a
+   *                                                              `CreateDisputeEvidenceFile` request.
    * @param imageFile
    * @return Response from the API call
    */
@@ -161,7 +161,6 @@ export class DisputesApi extends BaseApi {
       disputeId: [disputeId, string()],
       request: [request, optional(createDisputeEvidenceFileRequestSchema)],
     });
-    req.header('Content-Type', 'multipart/form-data');
     req.formData({
       request: JSON.stringify(mapped.request),
       image_file: imageFile,

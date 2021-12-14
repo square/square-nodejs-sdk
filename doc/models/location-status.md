@@ -1,7 +1,7 @@
 
 # Location Status
 
-The status of the location, whether a location is active or inactive.
+A location's status.
 
 ## Enumeration
 
@@ -12,5 +12,5 @@ The status of the location, whether a location is active or inactive.
 | Name | Description |
 |  --- | --- |
 | `ACTIVE` | A location that is active for business. |
-| `INACTIVE` | A location that is not active for business. Inactive locations just provide historical<br>information, so typically clients limit interaction with or hide these locations. |
+| `INACTIVE` | A location that is not active for business. Inactive locations provide historical<br>information. Hide inactive locations unless the user has requested to see them. |
 

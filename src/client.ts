@@ -54,8 +54,8 @@ import {
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '16.0.0';
-const USER_AGENT = 'Square-TypeScript-SDK/16.0.0';
+export const SDK_VERSION = '17.0.0';
+const USER_AGENT = 'Square-TypeScript-SDK/17.0.0';
 
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;

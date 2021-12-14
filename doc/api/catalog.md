@@ -14,6 +14,7 @@ const catalogApi = client.catalogApi;
 * [Batch Retrieve Catalog Objects](/doc/api/catalog.md#batch-retrieve-catalog-objects)
 * [Batch Upsert Catalog Objects](/doc/api/catalog.md#batch-upsert-catalog-objects)
 * [Create Catalog Image](/doc/api/catalog.md#create-catalog-image)
+* [Update Catalog Image](/doc/api/catalog.md#update-catalog-image)
 * [Catalog Info](/doc/api/catalog.md#catalog-info)
 * [List Catalog](/doc/api/catalog.md#list-catalog)
 * [Upsert Catalog Object](/doc/api/catalog.md#upsert-catalog-object)
@@ -376,8 +377,10 @@ bodybatches0objects2catalogV1Ids2.locationId = 'location_id8';
 
 bodybatches0objects2CatalogV1Ids[2] = bodybatches0objects2catalogV1Ids2;
 
+const bodybatches0objects2CategoryDataImageIds: string[] = ['image_ids1', 'image_ids2'];
 const bodybatches0objects2CategoryData: CatalogCategory = {};
 bodybatches0objects2CategoryData.name = 'Beverages';
+bodybatches0objects2CategoryData.imageIds = bodybatches0objects2CategoryDataImageIds;
 
 const bodybatches0objects2: CatalogObject = {
   type: 'CATEGORY',
@@ -450,9 +453,9 @@ try {
 
 # Create Catalog Image
 
-Uploads an image file to be represented by a [CatalogImage](/doc/models/catalog-image.md) object linked to an existing
-[CatalogObject](/doc/models/catalog-object.md) instance. A call to this endpoint can upload an image, link an image to
-a catalog object, or do both.
+Uploads an image file to be represented by a [CatalogImage](/doc/models/catalog-image.md) object that can be linked to an existing
+[CatalogObject](/doc/models/catalog-object.md) instance. The resulting `CatalogImage` is unattached to any `CatalogObject` if the `object_id`
+is not specified.
 
 This `CreateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in
 JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
@@ -480,7 +483,6 @@ async createCatalogImage(
 ## Example Usage
 
 ```ts
-const contentType = null;
 const requestImageCustomAttributeValues: Record<string, CatalogCustomAttributeValue> = {};
 const requestImageCatalogV1Ids: CatalogV1Id[] = [];
 
@@ -494,6 +496,7 @@ const requestImageImageData: CatalogImage = {};
 requestImageImageData.name = 'name0';
 requestImageImageData.url = 'url4';
 requestImageImageData.caption = 'A picture of a cup of coffee';
+requestImageImageData.photoStudioOrderId = 'photo_studio_order_id2';
 
 const requestImage: CatalogObject = {
   type: 'IMAGE',
@@ -511,10 +514,62 @@ const request: CreateCatalogImageRequest = {
   image: requestImage,
 };
 request.objectId = 'ND6EA5AAJEO5WL3JNNIAQA32';
+request.isPrimary = false;
 
 const imageFile = new FileWrapper(fs.createReadStream('dummy_file'));
 try {
   const { result, ...httpResponse } = await catalogApi.createCatalogImage(request, imageFile);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Catalog Image
+
+Uploads a new image file to replace the existing one in the specified [CatalogImage](/doc/models/catalog-image.md) object.
+
+This `UpdateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in
+JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
+
+```ts
+async updateCatalogImage(
+  imageId: string,
+  request?: UpdateCatalogImageRequest,
+  imageFile?: FileWrapper,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateCatalogImageResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `imageId` | `string` | Template, Required | The ID of the `CatalogImage` object to update the encapsulated image file. |
+| `request` | [`UpdateCatalogImageRequest \| undefined`](/doc/models/update-catalog-image-request.md) | Form, Optional | - |
+| `imageFile` | `FileWrapper \| undefined` | Form, Optional | - |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`UpdateCatalogImageResponse`](/doc/models/update-catalog-image-response.md)
+
+## Example Usage
+
+```ts
+const imageId = 'image_id4';
+const request: UpdateCatalogImageRequest = {
+  idempotencyKey: '528dea59-7bfb-43c1-bd48-4a6bba7dd61f86',
+};
+
+const imageFile = new FileWrapper(fs.createReadStream('dummy_file'));
+try {
+  const { result, ...httpResponse } = await catalogApi.updateCatalogImage(imageId, request, imageFile);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -565,11 +620,10 @@ try {
 
 # List Catalog
 
-Returns a list of [CatalogObject](/doc/models/catalog-object.md)s that includes
-all objects of a set of desired types (for example, all [CatalogItem](/doc/models/catalog-item.md)
-and [CatalogTax](/doc/models/catalog-tax.md) objects) in the catalog. The `types` parameter
-is specified as a comma-separated list of valid [CatalogObject](/doc/models/catalog-object.md) types:
-`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`, `IMAGE`.
+Returns a list of all [CatalogObject](/doc/models/catalog-object.md)s of the specified types in the catalog.
+
+The `types` parameter is specified as a comma-separated list of the [CatalogObjectType](/doc/models/catalog-object-type.md) values,
+for example, "`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`, `IMAGE`".
 
 __Important:__ ListCatalog does not return deleted catalog items. To retrieve
 deleted catalog items, use [SearchCatalogObjects](/doc/api/catalog.md#search-catalog-objects)
@@ -589,8 +643,8 @@ async listCatalog(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `cursor` | `string \| undefined` | Query, Optional | The pagination cursor returned in the previous response. Leave unset for an initial request.<br>The page size is currently set to be 100.<br>See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
-| `types` | `string \| undefined` | Query, Optional | An optional case-insensitive, comma-separated list of object types to retrieve.<br><br>The valid values are defined in the [CatalogObjectType](/doc/models/catalog-object-type.md) enum, including<br>`ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,<br>`MODIFIER`, `MODIFIER_LIST`, or `IMAGE`.<br><br>If this is unspecified, the operation returns objects of all the types at the version of the Square API used to make the request. |
-| `catalogVersion` | `bigint \| undefined` | Query, Optional | The specific version of the catalog objects to be included in the response.<br>This allows you to retrieve historical<br>versions of objects. The specified version value is matched against<br>the [CatalogObject](/doc/models/catalog-object.md)s' `version` attribute. |
+| `types` | `string \| undefined` | Query, Optional | An optional case-insensitive, comma-separated list of object types to retrieve.<br><br>The valid values are defined in the [CatalogObjectType](/doc/models/catalog-object-type.md) enum, for example,<br>`ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,<br>`MODIFIER`, `MODIFIER_LIST`, `IMAGE`, etc.<br><br>If this is unspecified, the operation returns objects of all the top level types at the version<br>of the Square API used to make the request. Object types that are nested onto other object types<br>are not included in the defaults.<br><br>At the current API version the default object types are:<br>ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST, DINING_OPTION, TAX_EXEMPTION,<br>SERVICE_CHARGE, PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,<br>SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION, QUICK_AMOUNT_SETTINGS. |
+| `catalogVersion` | `bigint \| undefined` | Query, Optional | The specific version of the catalog objects to be included in the response.<br>This allows you to retrieve historical<br>versions of objects. The specified version value is matched against<br>the [CatalogObject](/doc/models/catalog-object.md)s' `version` attribute.  If not included, results will<br>be from the current version of the catalog. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -847,8 +901,8 @@ async retrieveCatalogObject(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `objectId` | `string` | Template, Required | The object ID of any type of catalog objects to be retrieved. |
-| `includeRelatedObjects` | `boolean \| undefined` | Query, Optional | If `true`, the response will include additional objects that are related to the<br>requested object, as follows:<br><br>If the `object` field of the response contains a `CatalogItem`, its associated<br>`CatalogCategory`, `CatalogTax`, `CatalogImage` and `CatalogModifierList` objects will<br>be returned in the `related_objects` field of the response. If the `object` field of<br>the response contains a `CatalogItemVariation`, its parent `CatalogItem` will be returned<br>in the `related_objects` field of the response.<br><br>Default value: `false`<br>**Default**: `false` |
-| `catalogVersion` | `bigint \| undefined` | Query, Optional | Requests objects as of a specific version of the catalog. This allows you to retrieve historical<br>versions of objects. The value to retrieve a specific version of an object can be found<br>in the version field of [CatalogObject](/doc/models/catalog-object.md)s. |
+| `includeRelatedObjects` | `boolean \| undefined` | Query, Optional | If `true`, the response will include additional objects that are related to the<br>requested objects. Related objects are defined as any objects referenced by ID by the results in the `objects` field<br>of the response. These objects are put in the `related_objects` field. Setting this to `true` is<br>helpful when the objects are needed for immediate display to a user.<br>This process only goes one level deep. Objects referenced by the related objects will not be included. For example,<br><br>if the `objects` field of the response contains a CatalogItem, its associated<br>CatalogCategory objects, CatalogTax objects, CatalogImage objects and<br>CatalogModifierLists will be returned in the `related_objects` field of the<br>response. If the `objects` field of the response contains a CatalogItemVariation,<br>its parent CatalogItem will be returned in the `related_objects` field of<br>the response.<br><br>Default value: `false`<br>**Default**: `false` |
+| `catalogVersion` | `bigint \| undefined` | Query, Optional | Requests objects as of a specific version of the catalog. This allows you to retrieve historical<br>versions of objects. The value to retrieve a specific version of an object can be found<br>in the version field of [CatalogObject](/doc/models/catalog-object.md)s. If not included, results will<br>be from the current version of the catalog. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
