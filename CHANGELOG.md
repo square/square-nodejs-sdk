@@ -1,5 +1,7 @@
 # Change Log
 
+For general API and SDK changelogs, see  [Square APIs and SDKs Release Notes](https://developer.squareup.com/docs/changelog/connect).
+
 ## Version 17.0.0 (2021-12-15)
 ### API updates
 

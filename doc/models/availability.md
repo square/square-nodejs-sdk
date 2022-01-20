@@ -1,7 +1,7 @@
 
 # Availability
 
-Describes a slot available for booking, encapsulating appointment segments, the location and starting time.
+Defines an appointment slot that encapsulates the appointment segments, location and  starting time avaialable for booking.
 
 ## Structure
 
@@ -26,7 +26,13 @@ Describes a slot available for booking, encapsulating appointment segments, the 
       "duration_minutes": 4,
       "service_variation_id": "service_variation_id4",
       "team_member_id": "team_member_id0",
-      "service_variation_version": 172
+      "service_variation_version": 172,
+      "intermission_minutes": 178,
+      "any_team_member": false,
+      "resource_ids": [
+        "resource_ids0",
+        "resource_ids1"
+      ]
     }
   ]
 }

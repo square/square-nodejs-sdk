@@ -4,9 +4,9 @@ import {
   searchAvailabilityFilterSchema,
 } from './searchAvailabilityFilter';
 
-/** Query conditions to search for availabilities of bookings. */
+/** The query used to search for buyer-accessible availabilities of bookings. */
 export interface SearchAvailabilityQuery {
-  /** A query filter to search for availabilities by. */
+  /** A query filter to search for buyer-accessible availabilities by. */
   filter: SearchAvailabilityFilter;
 }
 

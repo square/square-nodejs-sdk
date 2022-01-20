@@ -31,6 +31,15 @@ export interface CatalogDiscount {
   /** The color of the discount display label in the Square Point of Sale app. This must be a valid hex color code. */
   labelColor?: string;
   modifyTaxBasis?: string;
+  /**
+   * Represents an amount of money. `Money` fields can be signed or unsigned.
+   * Fields that do not explicitly define whether they are signed or unsigned are
+   * considered unsigned and can only hold positive amounts. For signed fields, the
+   * sign of the value indicates the purpose of the money transfer. See
+   * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
+   * for more information.
+   */
+  maximumAmountMoney?: Money;
 }
 
 export const catalogDiscountSchema: Schema<CatalogDiscount> = object({
@@ -41,4 +50,8 @@ export const catalogDiscountSchema: Schema<CatalogDiscount> = object({
   pinRequired: ['pin_required', optional(boolean())],
   labelColor: ['label_color', optional(string())],
   modifyTaxBasis: ['modify_tax_basis', optional(string())],
+  maximumAmountMoney: [
+    'maximum_amount_money',
+    optional(lazy(() => moneySchema)),
+  ],
 });

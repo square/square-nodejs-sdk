@@ -8,7 +8,7 @@ import {
 export interface RetrieveTeamMemberBookingProfileResponse {
   /** The booking profile of a seller's team member, including the team member's ID, display name, description and whether the team member can be booked as a service provider. */
   teamMemberBookingProfile?: TeamMemberBookingProfile;
-  /** Any errors that occurred during the request. */
+  /** Errors that occurred during the request. */
   errors?: Error[];
 }
 

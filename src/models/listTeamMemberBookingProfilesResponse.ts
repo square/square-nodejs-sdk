@@ -8,9 +8,9 @@ import {
 export interface ListTeamMemberBookingProfilesResponse {
   /** The list of team member booking profiles. */
   teamMemberBookingProfiles?: TeamMemberBookingProfile[];
-  /** The cursor for paginating through the results. */
+  /** The pagination cursor to be used in the subsequent request to get the next page of the results. Stop retrieving the next page of the results when the cursor is not set. */
   cursor?: string;
-  /** Any errors that occurred during the request. */
+  /** Errors that occurred during the request. */
   errors?: Error[];
 }
 

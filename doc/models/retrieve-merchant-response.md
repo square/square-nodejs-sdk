@@ -21,6 +21,7 @@ The response object returned by the [RetrieveMerchant](/doc/api/merchants.md#ret
   "merchant": {
     "business_name": "Apple A Day",
     "country": "US",
+    "created_at": "2021-12-10T19:25:52.484Z",
     "currency": "USD",
     "id": "DM7VKY8Q63GNP",
     "language_code": "en-US",

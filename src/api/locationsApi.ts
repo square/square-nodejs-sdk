@@ -28,7 +28,8 @@ import { BaseApi } from './baseApi';
 
 export class LocationsApi extends BaseApi {
   /**
-   * Provides details about all of the seller's locations,
+   * Provides details about all of the seller's [locations](https://developer.squareup.com/docs/locations-
+   * api),
    * including those with an inactive status.
    *
    * @return Response from the API call
@@ -86,7 +87,7 @@ export class LocationsApi extends BaseApi {
   }
 
   /**
-   * Updates a location.
+   * Updates a [location](https://developer.squareup.com/docs/locations-api).
    *
    * @param locationId   The ID of the location to update.
    * @param body         An object containing the fields to POST for the request.  See

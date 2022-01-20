@@ -213,8 +213,6 @@ bodyPrePopulateShippingAddress.sublocality = 'sublocality0';
 bodyPrePopulateShippingAddress.administrativeDistrictLevel1 = 'CA';
 bodyPrePopulateShippingAddress.postalCode = '94103';
 bodyPrePopulateShippingAddress.country = 'US';
-bodyPrePopulateShippingAddress.firstName = 'Jane';
-bodyPrePopulateShippingAddress.lastName = 'Doe';
 
 const bodyAdditionalRecipients: ChargeRequestAdditionalRecipient[] = [];
 

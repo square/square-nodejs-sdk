@@ -8,7 +8,7 @@ export interface CancelBookingResponse {
    * at a given location to a requesting customer in one or more appointment segments.
    */
   booking?: Booking;
-  /** Any errors that occurred during the request. */
+  /** Errors that occurred during the request. */
   errors?: Error[];
 }
 

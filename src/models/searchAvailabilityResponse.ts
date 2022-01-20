@@ -3,9 +3,9 @@ import { Availability, availabilitySchema } from './availability';
 import { Error, errorSchema } from './error';
 
 export interface SearchAvailabilityResponse {
-  /** List of slots available for booking. */
+  /** List of appointment slots available for booking. */
   availabilities?: Availability[];
-  /** Any errors that occurred during the request. */
+  /** Errors that occurred during the request. */
   errors?: Error[];
 }
 

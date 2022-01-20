@@ -101,37 +101,67 @@ For more information, see [Loyalty Program Overview](https://developer.squareup.
     {
       "accrual_type": "ITEM_VARIATION",
       "points": 100,
-      "visit_minimum_amount_money": {
-        "amount": 238,
-        "currency": "ISK"
+      "visit_data": {
+        "minimum_amount_money": {
+          "amount": 160,
+          "currency": "TTD"
+        },
+        "tax_mode": "BEFORE_TAX"
       },
-      "spend_amount_money": {
-        "amount": 98,
-        "currency": "UGX"
+      "spend_data": {
+        "amount_money": {
+          "amount": 128,
+          "currency": "BHD"
+        },
+        "excluded_category_ids": [
+          "excluded_category_ids2",
+          "excluded_category_ids3",
+          "excluded_category_ids4"
+        ],
+        "excluded_item_variation_ids": [
+          "excluded_item_variation_ids5",
+          "excluded_item_variation_ids4",
+          "excluded_item_variation_ids3"
+        ],
+        "tax_mode": "BEFORE_TAX"
       },
-      "catalog_object_id": "catalog_object_id8",
-      "excluded_category_ids": [
-        "excluded_category_ids6",
-        "excluded_category_ids5"
-      ]
+      "item_variation_data": {
+        "item_variation_id": "item_variation_id8"
+      },
+      "category_data": {
+        "category_id": "category_id4"
+      }
     },
     {
       "accrual_type": "SPEND",
       "points": 99,
-      "visit_minimum_amount_money": {
-        "amount": 237,
-        "currency": "JMD"
+      "visit_data": {
+        "minimum_amount_money": {
+          "amount": 161,
+          "currency": "TWD"
+        },
+        "tax_mode": "AFTER_TAX"
       },
-      "spend_amount_money": {
-        "amount": 99,
-        "currency": "USD"
+      "spend_data": {
+        "amount_money": {
+          "amount": 129,
+          "currency": "BIF"
+        },
+        "excluded_category_ids": [
+          "excluded_category_ids3"
+        ],
+        "excluded_item_variation_ids": [
+          "excluded_item_variation_ids6",
+          "excluded_item_variation_ids5"
+        ],
+        "tax_mode": "AFTER_TAX"
       },
-      "catalog_object_id": "catalog_object_id7",
-      "excluded_category_ids": [
-        "excluded_category_ids5",
-        "excluded_category_ids4",
-        "excluded_category_ids3"
-      ]
+      "item_variation_data": {
+        "item_variation_id": "item_variation_id9"
+      },
+      "category_data": {
+        "category_id": "category_id5"
+      }
     }
   ]
 }
