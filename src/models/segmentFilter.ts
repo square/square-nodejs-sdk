@@ -1,9 +1,9 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { FilterValue, filterValueSchema } from './filterValue';
 
-/** A query filter to search for appointment segments by. */
+/** A query filter to search for buyer-accessible appointment segments by. */
 export interface SegmentFilter {
-  /** The ID of the [CatalogItemVariation]($m/CatalogItemVariation) representing the service booked in this segment. */
+  /** The ID of the [CatalogItemVariation]($m/CatalogItemVariation) object representing the service booked in this segment. */
   serviceVariationId: string;
   /**
    * A filter to select resources based on an exact field value. For any given

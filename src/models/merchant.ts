@@ -21,6 +21,11 @@ export interface Merchant {
   status?: string;
   /** The ID of the main `Location` for this merchant. */
   mainLocationId?: string;
+  /**
+   * The time when the merchant was created, in RFC 3339 format.
+   *    For more information, see [Working with Dates](https://developer.squareup.com/docs/build-basics/working-with-dates).
+   */
+  createdAt?: string;
 }
 
 export const merchantSchema: Schema<Merchant> = object({
@@ -31,4 +36,5 @@ export const merchantSchema: Schema<Merchant> = object({
   currency: ['currency', optional(string())],
   status: ['status', optional(string())],
   mainLocationId: ['main_location_id', optional(string())],
+  createdAt: ['created_at', optional(string())],
 });

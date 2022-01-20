@@ -13,11 +13,10 @@ Defines an accrual rule, which is how buyers can earn points.
 |  --- | --- | --- | --- |
 | `accrualType` | [`string`](/doc/models/loyalty-program-accrual-rule-type.md) | Required | The type of the accrual rule that defines how buyers can earn points. |
 | `points` | `number \| undefined` | Optional | The number of points that<br>buyers earn based on the `accrual_type`.<br>**Constraints**: `>= 1` |
-| `visitMinimumAmountMoney` | [`Money \| undefined`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
-| `spendAmountMoney` | [`Money \| undefined`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
-| `catalogObjectId` | `string \| undefined` | Optional | When the accrual rule is item-based or category-based, this field specifies the ID<br>of the [catalog object](/doc/models/catalog-object.md) that buyers can purchase to earn points.<br>If `accrual_type` is `ITEM_VARIATION`, the object is an item variation.<br>If `accrual_type` is `CATEGORY`, the object is a category. |
-| `excludedCategoryIds` | `string[] \| undefined` | Optional | When the accrual rule is spend-based (`accrual_type` is `SPEND`), this field<br>lists the IDs of any `CATEGORY` catalog objects that are excluded from points accrual.<br><br>You can use the [BatchRetrieveCatalogObjects](/doc/api/catalog.md#batch-retrieve-catalog-objects)<br>endpoint to retrieve information about the excluded categories. |
-| `excludedItemVariationIds` | `string[] \| undefined` | Optional | When the accrual rule is spend-based (`accrual_type` is `SPEND`), this field<br>lists the IDs of any `ITEM_VARIATION` catalog objects that are excluded from points accrual.<br><br>You can use the [BatchRetrieveCatalogObjects](/doc/api/catalog.md#batch-retrieve-catalog-objects)<br>endpoint to retrieve information about the excluded item variations. |
+| `visitData` | [`LoyaltyProgramAccrualRuleVisitData \| undefined`](/doc/models/loyalty-program-accrual-rule-visit-data.md) | Optional | Represents additional data for rules with the `VISIT` accrual type. |
+| `spendData` | [`LoyaltyProgramAccrualRuleSpendData \| undefined`](/doc/models/loyalty-program-accrual-rule-spend-data.md) | Optional | Represents additional data for rules with the `SPEND` accrual type. |
+| `itemVariationData` | [`LoyaltyProgramAccrualRuleItemVariationData \| undefined`](/doc/models/loyalty-program-accrual-rule-item-variation-data.md) | Optional | Represents additional data for rules with the `ITEM_VARIATION` accrual type. |
+| `categoryData` | [`LoyaltyProgramAccrualRuleCategoryData \| undefined`](/doc/models/loyalty-program-accrual-rule-category-data.md) | Optional | Represents additional data for rules with the `CATEGORY` accrual type. |
 
 ## Example (as JSON)
 
@@ -25,19 +24,33 @@ Defines an accrual rule, which is how buyers can earn points.
 {
   "accrual_type": "ITEM_VARIATION",
   "points": 236,
-  "visit_minimum_amount_money": {
-    "amount": 118,
-    "currency": "BTN"
+  "visit_data": {
+    "minimum_amount_money": {
+      "amount": 24,
+      "currency": "GEL"
+    },
+    "tax_mode": "BEFORE_TAX"
   },
-  "spend_amount_money": {
-    "amount": 218,
-    "currency": "GNF"
+  "spend_data": {
+    "amount_money": {
+      "amount": 248,
+      "currency": "MXV"
+    },
+    "excluded_category_ids": [
+      "excluded_category_ids4"
+    ],
+    "excluded_item_variation_ids": [
+      "excluded_item_variation_ids3",
+      "excluded_item_variation_ids4"
+    ],
+    "tax_mode": "BEFORE_TAX"
   },
-  "catalog_object_id": "catalog_object_id6",
-  "excluded_category_ids": [
-    "excluded_category_ids8",
-    "excluded_category_ids9"
-  ]
+  "item_variation_data": {
+    "item_variation_id": "item_variation_id0"
+  },
+  "category_data": {
+    "category_id": "category_id4"
+  }
 }
 ```
 

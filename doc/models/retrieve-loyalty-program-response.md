@@ -22,18 +22,21 @@ A response that contains the loyalty program.
     "accrual_rules": [
       {
         "accrual_type": "SPEND",
-        "excluded_category_ids": [
-          "7ZERJKO5PVYXCVUHV2JCZ2UG",
-          "FQKAOJE5C4FIMF5A2URMLW6V"
-        ],
-        "excluded_item_variation_ids": [
-          "CBZXBUVVTYUBZGQO44RHMR6B",
-          "EDILT24Z2NISEXDKGY6HP7XV"
-        ],
         "points": 1,
-        "spend_amount_money": {
-          "amount": 100,
-          "currency": "USD"
+        "spend_data": {
+          "amount_money": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "excluded_category_ids": [
+            "7ZERJKO5PVYXCVUHV2JCZ2UG",
+            "FQKAOJE5C4FIMF5A2URMLW6V"
+          ],
+          "excluded_item_variation_ids": [
+            "CBZXBUVVTYUBZGQO44RHMR6B",
+            "EDILT24Z2NISEXDKGY6HP7XV"
+          ],
+          "tax_mode": "BEFORE_TAX"
         }
       }
     ],

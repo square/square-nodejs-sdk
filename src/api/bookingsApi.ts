@@ -58,6 +58,10 @@ export class BookingsApi extends BaseApi {
   /**
    * Retrieve a collection of bookings.
    *
+   * To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
+   * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and
+   * `APPOINTMENTS_READ` for the OAuth scope.
+   *
    * @param limit          The maximum number of results per page to return in a paged response.
    * @param cursor         The pagination cursor from the preceding response to return the next page of the
    *                                 results. Do not set this when retrieving the first page of the results.
@@ -101,6 +105,10 @@ export class BookingsApi extends BaseApi {
   /**
    * Creates a booking.
    *
+   * To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
+   * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and
+   * `APPOINTMENTS_WRITE` for the OAuth scope.
+   *
    * @param body         An object containing the fields to POST for the request.  See
    *                                                    the corresponding object definition for field details.
    * @return Response from the API call
@@ -120,6 +128,10 @@ export class BookingsApi extends BaseApi {
 
   /**
    * Searches for availabilities for booking.
+   *
+   * To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
+   * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and
+   * `APPOINTMENTS_READ` for the OAuth scope.
    *
    * @param body         An object containing the fields to POST for the request.
    *                                                         See the corresponding object definition for field details.
@@ -161,8 +173,9 @@ export class BookingsApi extends BaseApi {
    *
    * @param bookableOnly  Indicates whether to include only bookable team members in the returned result
    *                                 (`true`) or not (`false`).
-   * @param limit         The maximum number of results to return.
-   * @param cursor        The cursor for paginating through the results.
+   * @param limit         The maximum number of results to return in a paged response.
+   * @param cursor        The pagination cursor from the preceding response to return the next page of the
+   *                                 results. Do not set this when retrieving the first page of the results.
    * @param locationId    Indicates whether to include only team members enabled at the given location in
    *                                 the returned result.
    * @return Response from the API call
@@ -216,6 +229,10 @@ export class BookingsApi extends BaseApi {
   /**
    * Retrieves a booking.
    *
+   * To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
+   * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and
+   * `APPOINTMENTS_READ` for the OAuth scope.
+   *
    * @param bookingId  The ID of the [Booking]($m/Booking) object representing the to-be-retrieved booking.
    * @return Response from the API call
    */
@@ -231,6 +248,10 @@ export class BookingsApi extends BaseApi {
 
   /**
    * Updates a booking.
+   *
+   * To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
+   * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and
+   * `APPOINTMENTS_WRITE` for the OAuth scope.
    *
    * @param bookingId    The ID of the [Booking]($m/Booking) object representing the to-
    *                                                    be-updated booking.
@@ -256,6 +277,10 @@ export class BookingsApi extends BaseApi {
 
   /**
    * Cancels an existing booking.
+   *
+   * To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
+   * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and
+   * `APPOINTMENTS_WRITE` for the OAuth scope.
    *
    * @param bookingId    The ID of the [Booking]($m/Booking) object representing the to-
    *                                                    be-cancelled booking.

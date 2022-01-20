@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `booking` | [`Booking \| undefined`](/doc/models/booking.md) | Optional | Represents a booking as a time-bound service contract for a seller's staff member to provide a specified service<br>at a given location to a requesting customer in one or more appointment segments. |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Errors that occurred during the request. |
 
 ## Example (as JSON)
 

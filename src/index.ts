@@ -73,6 +73,7 @@ export { BatchRetrieveOrdersResponse } from './models/batchRetrieveOrdersRespons
 export { BatchUpsertCatalogObjectsRequest } from './models/batchUpsertCatalogObjectsRequest';
 export { BatchUpsertCatalogObjectsResponse } from './models/batchUpsertCatalogObjectsResponse';
 export { Booking } from './models/booking';
+export { BookingCreatorDetails } from './models/bookingCreatorDetails';
 export { Break } from './models/break';
 export { BreakType } from './models/breakType';
 export { BulkCreateTeamMembersRequest } from './models/bulkCreateTeamMembersRequest';
@@ -385,6 +386,10 @@ export { LoyaltyEventRedeemReward } from './models/loyaltyEventRedeemReward';
 export { LoyaltyEventTypeFilter } from './models/loyaltyEventTypeFilter';
 export { LoyaltyProgram } from './models/loyaltyProgram';
 export { LoyaltyProgramAccrualRule } from './models/loyaltyProgramAccrualRule';
+export { LoyaltyProgramAccrualRuleCategoryData } from './models/loyaltyProgramAccrualRuleCategoryData';
+export { LoyaltyProgramAccrualRuleItemVariationData } from './models/loyaltyProgramAccrualRuleItemVariationData';
+export { LoyaltyProgramAccrualRuleSpendData } from './models/loyaltyProgramAccrualRuleSpendData';
+export { LoyaltyProgramAccrualRuleVisitData } from './models/loyaltyProgramAccrualRuleVisitData';
 export { LoyaltyProgramExpirationPolicy } from './models/loyaltyProgramExpirationPolicy';
 export { LoyaltyProgramRewardDefinition } from './models/loyaltyProgramRewardDefinition';
 export { LoyaltyProgramRewardTier } from './models/loyaltyProgramRewardTier';

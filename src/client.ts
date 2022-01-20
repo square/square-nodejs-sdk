@@ -40,26 +40,29 @@ import {
   Server,
 } from './clientInterface';
 import { Configuration, Environment } from './configuration';
-import { DEFAULT_CONFIGURATION } from './defaultConfiguration';
+import { DEFAULT_CONFIGURATION, DEFAULT_RETRY_CONFIG } from './defaultConfiguration';
 import { ApiError } from './errors/apiError';
 import { assertHeaders, mergeHeaders, setHeader } from './core';
 import { pathTemplate, SkipEncode } from './core';
+import { updateUserAgent } from './core';
 import {
   AuthenticatorInterface,
   createRequestBuilderFactory,
   HttpClient,
   HttpClientInterface,
+  RetryConfiguration,
   XmlSerializerInterface,
 } from './core';
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '17.0.0';
-const USER_AGENT = 'Square-TypeScript-SDK/17.0.0';
-
+export const SDK_VERSION = '17.1.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
+  private _timeout: number;
+  private _retryConfig: RetryConfiguration;
   private _requestBuilderFactory: SdkRequestBuilderFactory;
+  private _userAgent: string;
 
   public readonly applePayApi: ApplePayApi;
   public readonly bankAccountsApi: BankAccountsApi;
@@ -100,21 +103,36 @@ export class Client implements ClientInterface {
       ...DEFAULT_CONFIGURATION,
       ...config,
     };
+    this._retryConfig = {
+      ...DEFAULT_RETRY_CONFIG,
+      ...this._config.httpClientOptions?.retryConfig
+    };
+    this._timeout = typeof this._config.httpClientOptions?.timeout != 'undefined' ?
+      this._config.httpClientOptions.timeout :
+      this._config.timeout;
+    this._userAgent = updateUserAgent(
+      'Square-TypeScript-SDK/17.1.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      this._config.squareVersion,
+      this._config.userAgentDetail,
+    );
     this._requestBuilderFactory = createRequestHandlerFactory(
       server => getBaseUri(server, this._config),
       accessTokenAuthenticationProvider(this._config),
       new HttpClient({
-        timeout: this._config.timeout,
+        timeout: this._timeout,
         clientConfigOverrides: this._config.unstable_httpClientOptions,
+        httpAgent: this._config.httpClientOptions?.httpAgent,
+        httpsAgent: this._config.httpClientOptions?.httpsAgent,
       }),
       [
         withErrorHandlers,
-        withUserAgent,
+        withUserAgent(this._userAgent),
         withAdditionalHeaders(this._config),
         withAuthenticationByDefault,
         withSquareVersion(this._config),
       ],
-      new XmlSerialization()
+      new XmlSerialization(),
+      this._retryConfig
     );
 
     this.applePayApi = new ApplePayApi(this);
@@ -194,14 +212,16 @@ function createRequestHandlerFactory(
   authProvider: AuthenticatorInterface<AuthParams>,
   httpClient: HttpClient,
   addons: ((rb: SdkRequestBuilder) => void)[],
-  xmlSerializer: XmlSerializerInterface
+  xmlSerializer: XmlSerializerInterface,
+  retryConfig: RetryConfiguration
 ): SdkRequestBuilderFactory {
   const requestBuilderFactory = createRequestBuilderFactory(
     createHttpClientAdapter(httpClient),
     baseUrlProvider,
     ApiError,
     authProvider,
-    xmlSerializer
+    xmlSerializer,
+    retryConfig
   );
 
   return tap(requestBuilderFactory, ...addons);
@@ -238,9 +258,16 @@ function withAdditionalHeaders({
   };
 }
 
-function withUserAgent(rb: SdkRequestBuilder) {
-  rb.header('user-agent', USER_AGENT);
+function withUserAgent(userAgent: string) {
+  return (rb: SdkRequestBuilder) => {
+    rb.interceptRequest(request => {
+      const headers = request.headers ?? {};
+      setHeader(headers, 'user-agent', userAgent);
+      return { ...request, headers };
+    });
+  }
 }
+
 
 function withSquareVersion({ squareVersion }: { squareVersion: string }) {
   return (rb: SdkRequestBuilder) => {

@@ -5,20 +5,24 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2021-12-15'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2022-01-20'` |
 | `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
+| `userAgentDetail` | `string` | User agent detail to append in the user agent header<br>*Default*: `'\'\''` |
 | `timeout` | `number` | Timeout for API calls.<br>*Default*: `60000` |
+| `httpClientOptions` | `Partial<HttpClientOptions>` | Stable configurable http client options. |
+| `unstableHttpClientOptions` | `any` | Unstable configurable http client options. |
 | `accessToken` | `string` | The OAuth 2.0 Access Token to use for API requests. |
 
 The API client can be initialized as follows:
 
 ```ts
 const client = new Client({
-  squareVersion: '2021-12-15',
+  squareVersion: '2022-01-20',
   timeout: 60000,
   additionalHeaders: {},
+  userAgentDetail: '',
   environment: Environment.Production,
   accessToken: 'AccessToken',
 })
@@ -66,9 +70,10 @@ import {
 } from 'square';
 
 const client = new Client({
-  squareVersion: '2021-12-15',
+  squareVersion: '2022-01-20',
   timeout: 60000,
   additionalHeaders: {},
+  userAgentDetail: '',
   accessToken: 'AccessToken',
 })
 const locationsApi = client.locationsApi;

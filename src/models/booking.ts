@@ -1,5 +1,6 @@
 import {
   array,
+  boolean,
   lazy,
   number,
   object,
@@ -11,6 +12,10 @@ import {
   AppointmentSegment,
   appointmentSegmentSchema,
 } from './appointmentSegment';
+import {
+  BookingCreatorDetails,
+  bookingCreatorDetailsSchema,
+} from './bookingCreatorDetails';
 
 /**
  * Represents a booking as a time-bound service contract for a seller's staff member to provide a specified service
@@ -23,11 +28,11 @@ export interface Booking {
   version?: number;
   /** Supported booking statuses. */
   status?: string;
-  /** The timestamp specifying the creation time of this booking, in RFC 3339 format. */
+  /** The RFC 3339 timestamp specifying the creation time of this booking. */
   createdAt?: string;
-  /** The timestamp specifying the most recent update time of this booking, in RFC 3339 format. */
+  /** The RFC 3339 timestamp specifying the most recent update time of this booking. */
   updatedAt?: string;
-  /** The timestamp specifying the starting time of this booking, in RFC 3339 format. */
+  /** The RFC 3339 timestamp specifying the starting time of this booking. */
   startAt?: string;
   /** The ID of the [Location]($m/Location) object representing the location where the booked service is provided. */
   locationId?: string;
@@ -42,6 +47,19 @@ export interface Booking {
   sellerNote?: string;
   /** A list of appointment segments for this booking. */
   appointmentSegments?: AppointmentSegment[];
+  /**
+   * Additional time at the end of a booking.
+   * Applications should not make this field visible to customers of a seller.
+   */
+  transitionTimeMinutes?: number;
+  /** Whether the booking is of a full business day. */
+  allDay?: boolean;
+  /** Supported types of location where service is provided. */
+  locationType?: string;
+  /** Information about a booking creator. */
+  creatorDetails?: BookingCreatorDetails;
+  /** Supported sources a booking was created from. */
+  source?: string;
 }
 
 export const bookingSchema: Schema<Booking> = object({
@@ -59,4 +77,12 @@ export const bookingSchema: Schema<Booking> = object({
     'appointment_segments',
     optional(array(lazy(() => appointmentSegmentSchema))),
   ],
+  transitionTimeMinutes: ['transition_time_minutes', optional(number())],
+  allDay: ['all_day', optional(boolean())],
+  locationType: ['location_type', optional(string())],
+  creatorDetails: [
+    'creator_details',
+    optional(lazy(() => bookingCreatorDetailsSchema)),
+  ],
+  source: ['source', optional(string())],
 });

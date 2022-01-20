@@ -18,6 +18,7 @@ A discount applicable to items.
 | `pinRequired` | `boolean \| undefined` | Optional | Indicates whether a mobile staff member needs to enter their PIN to apply the<br>discount to a payment in the Square Point of Sale app. |
 | `labelColor` | `string \| undefined` | Optional | The color of the discount display label in the Square Point of Sale app. This must be a valid hex color code. |
 | `modifyTaxBasis` | [`string \| undefined`](/doc/models/catalog-discount-modify-tax-basis.md) | Optional | - |
+| `maximumAmountMoney` | [`Money \| undefined`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 
 ## Example (as JSON)
 

@@ -170,11 +170,6 @@ export class LoyaltyApi extends BaseApi {
    * [CalculateLoyaltyPoints]($e/Loyalty/CalculateLoyaltyPoints) to compute the points
    * that you provide to this endpoint.
    *
-   * __Note:__ The country of the seller's Square account determines whether tax is included in the
-   * purchase amount when accruing points for spend-based and visit-based programs.
-   * For more information, see [Availability of Square Loyalty](https://developer.squareup.
-   * com/docs/loyalty-api/overview#loyalty-market-availability).
-   *
    * @param accountId    The [loyalty account]($m/LoyaltyAccount) ID to which
    *                                                              to add the points.
    * @param body         An object containing the fields to POST for the
@@ -306,7 +301,7 @@ export class LoyaltyApi extends BaseApi {
   /**
    * Calculates the points a purchase earns.
    *
-   * - If you are using the Orders API to manage orders, you provide `order_id` in the request. The
+   * - If you are using the Orders API to manage orders, you provide the `order_id` in the request. The
    * endpoint calculates the points by reading the order.
    * - If you are not using the Orders API to manage orders, you provide the purchase amount in
    * the request for the endpoint to calculate the points.
@@ -314,10 +309,8 @@ export class LoyaltyApi extends BaseApi {
    * An application might call this endpoint to show the points that a buyer can earn with the
    * specific purchase.
    *
-   * __Note:__ The country of the seller's Square account determines whether tax is included in the
-   * purchase amount when accruing points for spend-based and visit-based programs.
-   * For more information, see [Availability of Square Loyalty](https://developer.squareup.
-   * com/docs/loyalty-api/overview#loyalty-market-availability).
+   * For spend-based and visit-based programs, the `tax_mode` setting of the accrual rule indicates how
+   * taxes should be treated for loyalty points accrual.
    *
    * @param programId    The [loyalty program]($m/LoyaltyProgram) ID, which
    *                                                             defines the rules for accruing points.

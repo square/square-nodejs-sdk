@@ -5,7 +5,7 @@ import {
 } from './searchAvailabilityQuery';
 
 export interface SearchAvailabilityRequest {
-  /** Query conditions to search for availabilities of bookings. */
+  /** The query used to search for buyer-accessible availabilities of bookings. */
   query: SearchAvailabilityQuery;
 }
 

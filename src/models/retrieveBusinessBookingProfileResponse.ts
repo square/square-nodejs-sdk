@@ -7,7 +7,7 @@ import { Error, errorSchema } from './error';
 
 export interface RetrieveBusinessBookingProfileResponse {
   businessBookingProfile?: BusinessBookingProfile;
-  /** Any errors that occurred during the request. */
+  /** Errors that occurred during the request. */
   errors?: Error[];
 }
 

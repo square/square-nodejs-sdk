@@ -15,14 +15,19 @@ at a given location to a requesting customer in one or more appointment segments
 | `id` | `string \| undefined` | Optional | A unique ID of this object representing a booking. |
 | `version` | `number \| undefined` | Optional | The revision number for the booking used for optimistic concurrency. |
 | `status` | [`string \| undefined`](/doc/models/booking-status.md) | Optional | Supported booking statuses. |
-| `createdAt` | `string \| undefined` | Optional | The timestamp specifying the creation time of this booking, in RFC 3339 format. |
-| `updatedAt` | `string \| undefined` | Optional | The timestamp specifying the most recent update time of this booking, in RFC 3339 format. |
-| `startAt` | `string \| undefined` | Optional | The timestamp specifying the starting time of this booking, in RFC 3339 format. |
+| `createdAt` | `string \| undefined` | Optional | The RFC 3339 timestamp specifying the creation time of this booking. |
+| `updatedAt` | `string \| undefined` | Optional | The RFC 3339 timestamp specifying the most recent update time of this booking. |
+| `startAt` | `string \| undefined` | Optional | The RFC 3339 timestamp specifying the starting time of this booking. |
 | `locationId` | `string \| undefined` | Optional | The ID of the [Location](/doc/models/location.md) object representing the location where the booked service is provided. |
 | `customerId` | `string \| undefined` | Optional | The ID of the [Customer](/doc/models/customer.md) object representing the customer receiving the booked service. |
 | `customerNote` | `string \| undefined` | Optional | The free-text field for the customer to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a relevant [CatalogObject](/doc/models/catalog-object.md) instance.<br>**Constraints**: *Maximum Length*: `4096` |
 | `sellerNote` | `string \| undefined` | Optional | The free-text field for the seller to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a specific [CatalogObject](/doc/models/catalog-object.md) instance.<br>This field should not be visible to customers.<br>**Constraints**: *Maximum Length*: `4096` |
 | `appointmentSegments` | [`AppointmentSegment[] \| undefined`](/doc/models/appointment-segment.md) | Optional | A list of appointment segments for this booking. |
+| `transitionTimeMinutes` | `number \| undefined` | Optional | Additional time at the end of a booking.<br>Applications should not make this field visible to customers of a seller. |
+| `allDay` | `boolean \| undefined` | Optional | Whether the booking is of a full business day. |
+| `locationType` | [`string \| undefined`](/doc/models/business-appointment-settings-booking-location-type.md) | Optional | Supported types of location where service is provided. |
+| `creatorDetails` | [`BookingCreatorDetails \| undefined`](/doc/models/booking-creator-details.md) | Optional | Information about a booking creator. |
+| `source` | [`string \| undefined`](/doc/models/booking-booking-source.md) | Optional | Supported sources a booking was created from. |
 
 ## Example (as JSON)
 

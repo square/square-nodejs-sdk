@@ -1,7 +1,7 @@
 
 # Business Appointment Settings Booking Location Type
 
-Types of location where service is provided.
+Supported types of location where service is provided.
 
 ## Enumeration
 
