@@ -6,7 +6,7 @@ import { Merchant, merchantSchema } from './merchant';
 export interface RetrieveMerchantResponse {
   /** Information on errors encountered during the request. */
   errors?: Error[];
-  /** Represents a Square seller. */
+  /** Represents a business that sells with Square. */
   merchant?: Merchant;
 }
 

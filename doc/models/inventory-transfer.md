@@ -24,6 +24,7 @@ particular time from one location to another.
 | `createdAt` | `string \| undefined` | Optional | An RFC 3339-formatted timestamp that indicates when Square<br>received the transfer request.<br>**Constraints**: *Maximum Length*: `34` |
 | `source` | [`SourceApplication \| undefined`](/doc/models/source-application.md) | Optional | Provides information about the application used to generate a change. |
 | `employeeId` | `string \| undefined` | Optional | The Square-generated ID of the [Employee](/doc/models/employee.md) responsible for the<br>inventory transfer.<br>**Constraints**: *Maximum Length*: `100` |
+| `teamMemberId` | `string \| undefined` | Optional | The Square-generated ID of the [Team Member](/doc/models/team-member.md) responsible for the<br>inventory transfer.<br>**Constraints**: *Maximum Length*: `100` |
 
 ## Example (as JSON)
 

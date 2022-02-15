@@ -1,4 +1,5 @@
-import { object, optional, Schema, string } from '../schema';
+import { array, lazy, object, optional, Schema, string } from '../schema';
+import { Error, errorSchema } from './error';
 
 export interface RenewTokenResponse {
   /**
@@ -26,6 +27,11 @@ export interface RenewTokenResponse {
    * authorization.
    */
   planId?: string;
+  /**
+   * An error object that provides details about how creation of the obtain
+   * token failed.
+   */
+  errors?: Error[];
 }
 
 export const renewTokenResponseSchema: Schema<RenewTokenResponse> = object({
@@ -35,4 +41,5 @@ export const renewTokenResponseSchema: Schema<RenewTokenResponse> = object({
   merchantId: ['merchant_id', optional(string())],
   subscriptionId: ['subscription_id', optional(string())],
   planId: ['plan_id', optional(string())],
+  errors: ['errors', optional(array(lazy(() => errorSchema)))],
 });

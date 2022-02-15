@@ -66,6 +66,11 @@ export interface InventoryTransfer {
    * inventory transfer.
    */
   employeeId?: string;
+  /**
+   * The Square-generated ID of the [Team Member]($m/TeamMember) responsible for the
+   * inventory transfer.
+   */
+  teamMemberId?: string;
 }
 
 export const inventoryTransferSchema: Schema<InventoryTransfer> = object({
@@ -81,4 +86,5 @@ export const inventoryTransferSchema: Schema<InventoryTransfer> = object({
   createdAt: ['created_at', optional(string())],
   source: ['source', optional(lazy(() => sourceApplicationSchema))],
   employeeId: ['employee_id', optional(string())],
+  teamMemberId: ['team_member_id', optional(string())],
 });

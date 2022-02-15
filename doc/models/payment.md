@@ -31,6 +31,7 @@ Represents a payment processed by the Square API.
 | `bankAccountDetails` | [`BankAccountPaymentDetails \| undefined`](/doc/models/bank-account-payment-details.md) | Optional | Additional details about BANK_ACCOUNT type payments. |
 | `externalDetails` | [`ExternalPaymentDetails \| undefined`](/doc/models/external-payment-details.md) | Optional | Stores details about an external payment. Contains only non-confidential information.<br>For more information, see<br>[Take External Payments](https://developer.squareup.com/docs/payments-api/take-payments/external-payments). |
 | `walletDetails` | [`DigitalWalletDetails \| undefined`](/doc/models/digital-wallet-details.md) | Optional | Additional details about `WALLET` type payments. Contains only non-confidential information. |
+| `buyNowPayLaterDetails` | [`BuyNowPayLaterDetails \| undefined`](/doc/models/buy-now-pay-later-details.md) | Optional | Additional details about a Buy Now Pay Later payment type. |
 | `locationId` | `string \| undefined` | Optional | The ID of the location associated with the payment.<br>**Constraints**: *Maximum Length*: `50` |
 | `orderId` | `string \| undefined` | Optional | The ID of the order associated with the payment.<br>**Constraints**: *Maximum Length*: `192` |
 | `referenceId` | `string \| undefined` | Optional | An optional ID that associates the payment with an entity in<br>another system.<br>**Constraints**: *Maximum Length*: `40` |

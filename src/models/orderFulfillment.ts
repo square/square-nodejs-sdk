@@ -1,4 +1,8 @@
-import { dict, lazy, object, optional, Schema, string } from '../schema';
+import { array, dict, lazy, object, optional, Schema, string } from '../schema';
+import {
+  OrderFulfillmentFulfillmentEntry,
+  orderFulfillmentFulfillmentEntrySchema,
+} from './orderFulfillmentFulfillmentEntry';
 import {
   OrderFulfillmentPickupDetails,
   orderFulfillmentPickupDetailsSchema,
@@ -16,6 +20,23 @@ export interface OrderFulfillment {
   type?: string;
   /** The current state of this fulfillment. */
   state?: string;
+  /**
+   * The `line_item_application` describes what order line items this fulfillment applies
+   * to. It can be `ALL` or `ENTRY_LIST` with a supplied list of fulfillment entries.
+   */
+  lineItemApplication?: string;
+  /**
+   * A list of entries pertaining to the fulfillment of an order. Each entry must reference
+   * a valid `uid` for an order line item in the `line_item_uid` field, as well as a `quantity` to
+   * fulfill.
+   * Multiple entries can reference the same line item `uid`, as long as the total quantity among
+   * all fulfillment entries referencing a single line item does not exceed the quantity of the
+   * order's line item itself.
+   * An order cannot be marked as `COMPLETED` before all fulfillments are `COMPLETED`,
+   * `CANCELED`, or `FAILED`. Fulfillments can be created and completed independently
+   * before order completion.
+   */
+  entries?: OrderFulfillmentFulfillmentEntry[];
   /**
    * Application-defined data attached to this fulfillment. Metadata fields are intended
    * to store descriptive references or associations with an entity in another system or store brief
@@ -42,6 +63,11 @@ export const orderFulfillmentSchema: Schema<OrderFulfillment> = object({
   uid: ['uid', optional(string())],
   type: ['type', optional(string())],
   state: ['state', optional(string())],
+  lineItemApplication: ['line_item_application', optional(string())],
+  entries: [
+    'entries',
+    optional(array(lazy(() => orderFulfillmentFulfillmentEntrySchema))),
+  ],
   metadata: ['metadata', optional(dict(string()))],
   pickupDetails: [
     'pickup_details',

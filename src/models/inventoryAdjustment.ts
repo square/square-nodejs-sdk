@@ -76,6 +76,11 @@ export interface InventoryAdjustment {
    */
   employeeId?: string;
   /**
+   * The Square-generated ID of the [Team Member]($m/TeamMember) responsible for the
+   * inventory adjustment.
+   */
+  teamMemberId?: string;
+  /**
    * The Square-generated ID of the [Transaction][#type-transaction] that
    * caused the adjustment. Only relevant for payment-related state
    * transitions.
@@ -116,6 +121,7 @@ export const inventoryAdjustmentSchema: Schema<InventoryAdjustment> = object({
   createdAt: ['created_at', optional(string())],
   source: ['source', optional(lazy(() => sourceApplicationSchema))],
   employeeId: ['employee_id', optional(string())],
+  teamMemberId: ['team_member_id', optional(string())],
   transactionId: ['transaction_id', optional(string())],
   refundId: ['refund_id', optional(string())],
   purchaseOrderId: ['purchase_order_id', optional(string())],

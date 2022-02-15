@@ -1,17 +1,17 @@
 import { object, optional, Schema, string } from '../schema';
 
-/** Represents a Square seller. */
+/** Represents a business that sells with Square. */
 export interface Merchant {
   /** The Square-issued ID of the merchant. */
   id?: string;
-  /** The business name of the merchant. */
+  /** The name of the merchant's overall business. */
   businessName?: string;
   /**
    * Indicates the country associated with another entity, such as a business.
    * Values are in [ISO 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm).
    */
   country: string;
-  /** The language code associated with the merchant account, in BCP 47 format. */
+  /** The code indicating the [language preferences](https://developer.squareup.com/docs/build-basics/general-considerations/language-preferences) of the merchant, in [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A). For example, `en-US` or `fr-CA`. */
   languageCode?: string;
   /**
    * Indicates the associated currency for an amount of money. Values correspond
@@ -19,7 +19,7 @@ export interface Merchant {
    */
   currency?: string;
   status?: string;
-  /** The ID of the main `Location` for this merchant. */
+  /** The ID of the [main `Location`](https://developer.squareup.com/docs/locations-api#about-the-main-location) for this merchant. */
   mainLocationId?: string;
   /**
    * The time when the merchant was created, in RFC 3339 format.

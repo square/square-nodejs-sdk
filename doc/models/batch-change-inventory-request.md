@@ -21,12 +21,12 @@
     {
       "physical_count": {
         "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
-        "employee_id": "LRK57NSQ5X7PUD05",
         "location_id": "C6W5YS5QM06F5",
         "occurred_at": "2016-11-16T22:25:24.878Z",
         "quantity": "53",
         "reference_id": "1536bfbf-efed-48bf-b17d-a197141b2a92",
-        "state": "IN_STOCK"
+        "state": "IN_STOCK",
+        "team_member_id": "LRK57NSQ5X7PUD05"
       },
       "type": "PHYSICAL_COUNT"
     }

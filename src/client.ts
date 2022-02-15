@@ -42,8 +42,9 @@ import {
 import { Configuration, Environment } from './configuration';
 import { DEFAULT_CONFIGURATION, DEFAULT_RETRY_CONFIG } from './defaultConfiguration';
 import { ApiError } from './errors/apiError';
-import { assertHeaders, mergeHeaders, setHeader } from './core';
+import { assertHeaders, mergeHeaders } from './core';
 import { pathTemplate, SkipEncode } from './core';
+import { setHeader } from './core';
 import { updateUserAgent } from './core';
 import {
   AuthenticatorInterface,
@@ -56,7 +57,7 @@ import {
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '17.1.0';
+export const SDK_VERSION = '17.2.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -111,7 +112,7 @@ export class Client implements ClientInterface {
       this._config.httpClientOptions.timeout :
       this._config.timeout;
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/17.1.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/17.2.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail,
     );

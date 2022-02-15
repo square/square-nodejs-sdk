@@ -146,7 +146,7 @@ bodychanges0PhysicalCount.catalogObjectType = 'catalog_object_type4';
 bodychanges0PhysicalCount.state = 'IN_STOCK';
 bodychanges0PhysicalCount.locationId = 'C6W5YS5QM06F5';
 bodychanges0PhysicalCount.quantity = '53';
-bodychanges0PhysicalCount.employeeId = 'LRK57NSQ5X7PUD05';
+bodychanges0PhysicalCount.teamMemberId = 'LRK57NSQ5X7PUD05';
 bodychanges0PhysicalCount.occurredAt = '2016-11-16T22:25:24.878Z';
 
 const bodychanges0Adjustment: InventoryAdjustment = {};
@@ -353,7 +353,7 @@ bodychanges0PhysicalCount.catalogObjectType = 'catalog_object_type4';
 bodychanges0PhysicalCount.state = 'IN_STOCK';
 bodychanges0PhysicalCount.locationId = 'C6W5YS5QM06F5';
 bodychanges0PhysicalCount.quantity = '53';
-bodychanges0PhysicalCount.employeeId = 'LRK57NSQ5X7PUD05';
+bodychanges0PhysicalCount.teamMemberId = 'LRK57NSQ5X7PUD05';
 bodychanges0PhysicalCount.occurredAt = '2016-11-16T22:25:24.878Z';
 
 const bodychanges0Adjustment: InventoryAdjustment = {};

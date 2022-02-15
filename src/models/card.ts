@@ -37,7 +37,7 @@ export interface Card {
    * single application.
    */
   fingerprint?: string;
-  /** The ID of a customer created using the Customers API to be associated with the card. */
+  /** **Required** The ID of a customer created using the Customers API to be associated with the card. */
   customerId?: string;
   /** The ID of the merchant associated with the card. */
   merchantId?: string;

@@ -20,7 +20,6 @@
     "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
     "catalog_object_type": "ITEM_VARIATION",
     "created_at": "2016-11-16T22:25:24.878Z",
-    "employee_id": "LRK57NSQ5X7PUD05",
     "id": "ANZADNPLKADOJKJIUANKLMLQ",
     "location_id": "C6W5YS5QM06F5",
     "occurred_at": "2016-11-16T22:25:24.878Z",
@@ -31,7 +30,8 @@
       "name": "Square Point of Sale 4.37",
       "product": "SQUARE_POS"
     },
-    "state": "IN_STOCK"
+    "state": "IN_STOCK",
+    "team_member_id": "LRK57NSQ5X7PUD05"
   },
   "errors": []
 }

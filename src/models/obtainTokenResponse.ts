@@ -1,4 +1,13 @@
-import { boolean, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  boolean,
+  lazy,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
+import { Error, errorSchema } from './error';
 
 export interface ObtainTokenResponse {
   /**
@@ -39,6 +48,11 @@ export interface ObtainTokenResponse {
    * The short-lived access token returned in the response expires in 24 hours.
    */
   shortLived?: boolean;
+  /**
+   * An error object that provides details about how creation of the obtain
+   * token failed.
+   */
+  errors?: Error[];
 }
 
 export const obtainTokenResponseSchema: Schema<ObtainTokenResponse> = object({
@@ -51,4 +65,5 @@ export const obtainTokenResponseSchema: Schema<ObtainTokenResponse> = object({
   idToken: ['id_token', optional(string())],
   refreshToken: ['refresh_token', optional(string())],
   shortLived: ['short_lived', optional(boolean())],
+  errors: ['errors', optional(array(lazy(() => errorSchema)))],
 });
