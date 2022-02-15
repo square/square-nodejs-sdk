@@ -16,14 +16,16 @@ const merchantsApi = client.merchantsApi;
 
 # List Merchants
 
-Returns `Merchant` information for a given access token.
+Provides details about the merchant associated with a given access token.
 
-If you don't know a `Merchant` ID, you can use this endpoint to retrieve the merchant ID for an access token.
-You can specify your personal access token to get your own merchant information or specify an OAuth token
-to get the information for the  merchant that granted you access.
+The access token used to connect your application to a Square seller is associated
+with a single merchant. That means that `ListMerchants` returns a list
+with a single `Merchant` object. You can specify your personal access token
+to get your own merchant information or specify an OAuth token to get the
+information for the merchant that granted your application access.
 
 If you know the merchant ID, you can also use the [RetrieveMerchant](/doc/api/merchants.md#retrieve-merchant)
-endpoint to get the merchant information.
+endpoint to retrieve the merchant information.
 
 ```ts
 async listMerchants(
@@ -62,7 +64,7 @@ try {
 
 # Retrieve Merchant
 
-Retrieve a `Merchant` object for the given `merchant_id`.
+Retrieves the `Merchant` object for the given `merchant_id`.
 
 ```ts
 async retrieveMerchant(

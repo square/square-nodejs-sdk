@@ -23,6 +23,7 @@ hand or from syncing with an external system.
 | `quantity` | `string \| undefined` | Optional | The number of items affected by the physical count as a decimal string.<br>The number can support up to 5 digits after the decimal point.<br>**Constraints**: *Maximum Length*: `26` |
 | `source` | [`SourceApplication \| undefined`](/doc/models/source-application.md) | Optional | Provides information about the application used to generate a change. |
 | `employeeId` | `string \| undefined` | Optional | The Square-generated ID of the [Employee](/doc/models/employee.md) responsible for the<br>physical count.<br>**Constraints**: *Maximum Length*: `100` |
+| `teamMemberId` | `string \| undefined` | Optional | The Square-generated ID of the [Team Member](/doc/models/team-member.md) responsible for the<br>physical count.<br>**Constraints**: *Maximum Length*: `100` |
 | `occurredAt` | `string \| undefined` | Optional | A client-generated RFC 3339-formatted timestamp that indicates when<br>the physical count was examined. For physical count updates, the `occurred_at`<br>timestamp cannot be older than 24 hours or in the future relative to the<br>time of the request.<br>**Constraints**: *Maximum Length*: `34` |
 | `createdAt` | `string \| undefined` | Optional | An RFC 3339-formatted timestamp that indicates when the physical count is received.<br>**Constraints**: *Maximum Length*: `34` |
 

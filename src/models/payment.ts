@@ -9,6 +9,10 @@ import {
   bankAccountPaymentDetailsSchema,
 } from './bankAccountPaymentDetails';
 import {
+  BuyNowPayLaterDetails,
+  buyNowPayLaterDetailsSchema,
+} from './buyNowPayLaterDetails';
+import {
   CardPaymentDetails,
   cardPaymentDetailsSchema,
 } from './cardPaymentDetails';
@@ -146,6 +150,8 @@ export interface Payment {
   externalDetails?: ExternalPaymentDetails;
   /** Additional details about `WALLET` type payments. Contains only non-confidential information. */
   walletDetails?: DigitalWalletDetails;
+  /** Additional details about a Buy Now Pay Later payment type. */
+  buyNowPayLaterDetails?: BuyNowPayLaterDetails;
   /** The ID of the location associated with the payment. */
   locationId?: string;
   /** The ID of the order associated with the payment. */
@@ -257,6 +263,10 @@ export const paymentSchema: Schema<Payment> = object({
   walletDetails: [
     'wallet_details',
     optional(lazy(() => digitalWalletDetailsSchema)),
+  ],
+  buyNowPayLaterDetails: [
+    'buy_now_pay_later_details',
+    optional(lazy(() => buyNowPayLaterDetailsSchema)),
   ],
   locationId: ['location_id', optional(string())],
   orderId: ['order_id', optional(string())],

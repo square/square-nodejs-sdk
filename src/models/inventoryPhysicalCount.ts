@@ -53,6 +53,11 @@ export interface InventoryPhysicalCount {
    */
   employeeId?: string;
   /**
+   * The Square-generated ID of the [Team Member]($m/TeamMember) responsible for the
+   * physical count.
+   */
+  teamMemberId?: string;
+  /**
    * A client-generated RFC 3339-formatted timestamp that indicates when
    * the physical count was examined. For physical count updates, the `occurred_at`
    * timestamp cannot be older than 24 hours or in the future relative to the
@@ -74,6 +79,7 @@ export const inventoryPhysicalCountSchema: Schema<InventoryPhysicalCount> = obje
     quantity: ['quantity', optional(string())],
     source: ['source', optional(lazy(() => sourceApplicationSchema))],
     employeeId: ['employee_id', optional(string())],
+    teamMemberId: ['team_member_id', optional(string())],
     occurredAt: ['occurred_at', optional(string())],
     createdAt: ['created_at', optional(string())],
   }

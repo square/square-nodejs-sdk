@@ -21,7 +21,6 @@
     "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
     "catalog_object_type": "ITEM_VARIATION",
     "created_at": "2016-11-17T13:02:15.142Z",
-    "employee_id": "LRK57NSQ5X7PUD05",
     "from_location_id": "C6W5YS5QM06F5",
     "id": "UDMOEO78BG6GYWA2XDRYX3KB",
     "occurred_at": "2016-11-16T25:44:22.837Z",
@@ -33,6 +32,7 @@
       "product": "SQUARE_POS"
     },
     "state": "IN_STOCK",
+    "team_member_id": "LRK57NSQ5X7PUD05",
     "to_location_id": "59TNP9SA8VGDA"
   }
 }

@@ -17,7 +17,11 @@ import { CustomerTaxIds, customerTaxIdsSchema } from './customerTaxIds';
 
 /** Represents a Square customer profile in the Customer Directory of a Square seller. */
 export interface Customer {
-  /** A unique Square-assigned ID for the customer profile. */
+  /**
+   * A unique Square-assigned ID for the customer profile.
+   * If you need this ID for an API request, use the ID returned when you created the customer profile or call the [SearchCustomers]($e/Customers/SearchCustomers)
+   * or [ListCustomers]($e/Customers/ListCustomers) endpoint.
+   */
   id?: string;
   /** The timestamp when the customer profile was created, in RFC 3339 format. */
   createdAt?: string;
@@ -70,7 +74,7 @@ export interface Customer {
   /** The Square-assigned version number of the customer profile. The version number is incremented each time an update is committed to the customer profile, except for changes to customer segment membership and cards on file. */
   version?: bigint;
   /**
-   * Represents the tax ID associated with a customer profile. The corresponding `tax_ids` field is available only for customers of sellers in France, Ireland, or the United Kingdom.
+   * Represents the tax ID associated with a [customer profile]($m/Customer). The corresponding `tax_ids` field is available only for customers of sellers in EU countries or the United Kingdom.
    * For more information, see [Customer tax IDs](https://developer.squareup.com/docs/customers-api/what-it-does#customer-tax-ids).
    */
   taxIds?: CustomerTaxIds;

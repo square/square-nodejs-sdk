@@ -25,6 +25,7 @@ particular time and location.
 | `createdAt` | `string \| undefined` | Optional | An RFC 3339-formatted timestamp that indicates when the inventory adjustment is received.<br>**Constraints**: *Maximum Length*: `34` |
 | `source` | [`SourceApplication \| undefined`](/doc/models/source-application.md) | Optional | Provides information about the application used to generate a change. |
 | `employeeId` | `string \| undefined` | Optional | The Square-generated ID of the [Employee](/doc/models/employee.md) responsible for the<br>inventory adjustment.<br>**Constraints**: *Maximum Length*: `100` |
+| `teamMemberId` | `string \| undefined` | Optional | The Square-generated ID of the [Team Member](/doc/models/team-member.md) responsible for the<br>inventory adjustment.<br>**Constraints**: *Maximum Length*: `100` |
 | `transactionId` | `string \| undefined` | Optional | The Square-generated ID of the [Transaction][#type-transaction] that<br>caused the adjustment. Only relevant for payment-related state<br>transitions.<br>**Constraints**: *Maximum Length*: `255` |
 | `refundId` | `string \| undefined` | Optional | The Square-generated ID of the [Refund][#type-refund] that<br>caused the adjustment. Only relevant for refund-related state<br>transitions.<br>**Constraints**: *Maximum Length*: `255` |
 | `purchaseOrderId` | `string \| undefined` | Optional | The Square-generated ID of the purchase order that caused the<br>adjustment. Only relevant for state transitions from the Square for Retail<br>app.<br>**Constraints**: *Maximum Length*: `100` |
