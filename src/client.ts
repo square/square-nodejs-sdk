@@ -31,6 +31,7 @@ import { TeamApi } from './api/teamApi';
 import { TerminalApi } from './api/terminalApi';
 import { TransactionsApi } from './api/transactionsApi';
 import { V1TransactionsApi } from './api/v1TransactionsApi';
+import { VendorsApi } from './api/vendorsApi';
 import { accessTokenAuthenticationProvider } from './authentication';
 import {
   AuthParams,
@@ -40,7 +41,10 @@ import {
   Server,
 } from './clientInterface';
 import { Configuration, Environment } from './configuration';
-import { DEFAULT_CONFIGURATION, DEFAULT_RETRY_CONFIG } from './defaultConfiguration';
+import {
+  DEFAULT_CONFIGURATION,
+  DEFAULT_RETRY_CONFIG,
+} from './defaultConfiguration';
 import { ApiError } from './errors/apiError';
 import { assertHeaders, mergeHeaders } from './core';
 import { pathTemplate, SkipEncode } from './core';
@@ -57,7 +61,7 @@ import {
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '17.2.0';
+export const SDK_VERSION = '17.3.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -98,6 +102,7 @@ export class Client implements ClientInterface {
   public readonly terminalApi: TerminalApi;
   public readonly transactionsApi: TransactionsApi;
   public readonly v1TransactionsApi: V1TransactionsApi;
+  public readonly vendorsApi: VendorsApi;
 
   constructor(config?: Partial<Configuration>) {
     this._config = {
@@ -106,15 +111,16 @@ export class Client implements ClientInterface {
     };
     this._retryConfig = {
       ...DEFAULT_RETRY_CONFIG,
-      ...this._config.httpClientOptions?.retryConfig
+      ...this._config.httpClientOptions?.retryConfig,
     };
-    this._timeout = typeof this._config.httpClientOptions?.timeout != 'undefined' ?
-      this._config.httpClientOptions.timeout :
-      this._config.timeout;
+    this._timeout =
+      typeof this._config.httpClientOptions?.timeout != 'undefined'
+        ? this._config.httpClientOptions.timeout
+        : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/17.2.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/17.3.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
-      this._config.userAgentDetail,
+      this._config.userAgentDetail
     );
     this._requestBuilderFactory = createRequestHandlerFactory(
       server => getBaseUri(server, this._config),
@@ -169,6 +175,7 @@ export class Client implements ClientInterface {
     this.terminalApi = new TerminalApi(this);
     this.transactionsApi = new TransactionsApi(this);
     this.v1TransactionsApi = new V1TransactionsApi(this);
+    this.vendorsApi = new VendorsApi(this);
   }
 
   public getRequestBuilderFactory(): SdkRequestBuilderFactory {
@@ -266,9 +273,8 @@ function withUserAgent(userAgent: string) {
       setHeader(headers, 'user-agent', userAgent);
       return { ...request, headers };
     });
-  }
+  };
 }
-
 
 function withSquareVersion({ squareVersion }: { squareVersion: string }) {
   return (rb: SdkRequestBuilder) => {

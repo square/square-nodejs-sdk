@@ -10,9 +10,9 @@ const cashDrawersApi = client.cashDrawersApi;
 
 ## Methods
 
-* [List Cash Drawer Shifts](/doc/api/cash-drawers.md#list-cash-drawer-shifts)
-* [Retrieve Cash Drawer Shift](/doc/api/cash-drawers.md#retrieve-cash-drawer-shift)
-* [List Cash Drawer Shift Events](/doc/api/cash-drawers.md#list-cash-drawer-shift-events)
+* [List Cash Drawer Shifts](../../doc/api/cash-drawers.md#list-cash-drawer-shifts)
+* [Retrieve Cash Drawer Shift](../../doc/api/cash-drawers.md#retrieve-cash-drawer-shift)
+* [List Cash Drawer Shift Events](../../doc/api/cash-drawers.md#list-cash-drawer-shift-events)
 
 
 # List Cash Drawer Shifts
@@ -37,7 +37,7 @@ async listCashDrawerShifts(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Query, Required | The ID of the location to query for a list of cash drawer shifts. |
-| `sortOrder` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | The order in which cash drawer shifts are listed in the response,<br>based on their opened_at field. Default value: ASC |
+| `sortOrder` | [`string \| undefined`](../../doc/models/sort-order.md) | Query, Optional | The order in which cash drawer shifts are listed in the response,<br>based on their opened_at field. Default value: ASC |
 | `beginTime` | `string \| undefined` | Query, Optional | The inclusive start time of the query on opened_at, in ISO 8601 format. |
 | `endTime` | `string \| undefined` | Query, Optional | The exclusive end date of the query on opened_at, in ISO 8601 format. |
 | `limit` | `number \| undefined` | Query, Optional | Number of cash drawer shift events in a page of results (200 by<br>default, 1000 max). |
@@ -46,7 +46,7 @@ async listCashDrawerShifts(
 
 ## Response Type
 
-[`ListCashDrawerShiftsResponse`](/doc/models/list-cash-drawer-shifts-response.md)
+[`ListCashDrawerShiftsResponse`](../../doc/models/list-cash-drawer-shifts-response.md)
 
 ## Example Usage
 
@@ -73,7 +73,7 @@ try {
 # Retrieve Cash Drawer Shift
 
 Provides the summary details for a single cash drawer shift. See
-[ListCashDrawerShiftEvents](/doc/api/cash-drawers.md#list-cash-drawer-shift-events) for a list of cash drawer shift events.
+[ListCashDrawerShiftEvents](../../doc/api/cash-drawers.md#list-cash-drawer-shift-events) for a list of cash drawer shift events.
 
 ```ts
 async retrieveCashDrawerShift(
@@ -93,7 +93,7 @@ async retrieveCashDrawerShift(
 
 ## Response Type
 
-[`RetrieveCashDrawerShiftResponse`](/doc/models/retrieve-cash-drawer-shift-response.md)
+[`RetrieveCashDrawerShiftResponse`](../../doc/models/retrieve-cash-drawer-shift-response.md)
 
 ## Example Usage
 
@@ -139,7 +139,7 @@ async listCashDrawerShiftEvents(
 
 ## Response Type
 
-[`ListCashDrawerShiftEventsResponse`](/doc/models/list-cash-drawer-shift-events-response.md)
+[`ListCashDrawerShiftEventsResponse`](../../doc/models/list-cash-drawer-shift-events-response.md)
 
 ## Example Usage
 

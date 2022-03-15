@@ -12,8 +12,8 @@ or error messages.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `wageSetting` | [`WageSetting \| undefined`](/doc/models/wage-setting.md) | Optional | An object representing a team member's wage information. |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | The errors that occurred during the request. |
+| `wageSetting` | [`WageSetting \| undefined`](../../doc/models/wage-setting.md) | Optional | An object representing a team member's wage information. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | The errors that occurred during the request. |
 
 ## Example (as JSON)
 

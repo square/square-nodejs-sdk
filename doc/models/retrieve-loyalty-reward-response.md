@@ -11,8 +11,8 @@ A response that includes the loyalty reward.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `reward` | [`LoyaltyReward \| undefined`](/doc/models/loyalty-reward.md) | Optional | Represents a contract to redeem loyalty points for a [reward tier](/doc/models/loyalty-program-reward-tier.md) discount. Loyalty rewards can be in an ISSUED, REDEEMED, or DELETED state. For more information, see [Redeem loyalty rewards](https://developer.squareup.com/docs/loyalty-api/overview#redeem-loyalty-rewards). |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `reward` | [`LoyaltyReward \| undefined`](../../doc/models/loyalty-reward.md) | Optional | Represents a contract to redeem loyalty points for a [reward tier](../../doc/models/loyalty-program-reward-tier.md) discount. Loyalty rewards can be in an ISSUED, REDEEMED, or DELETED state.<br>For more information, see [Manage loyalty rewards](../../https://developer.squareup.com/docs/loyalty-api/loyalty-rewards). |
 
 ## Example (as JSON)
 

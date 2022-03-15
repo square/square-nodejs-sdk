@@ -1,7 +1,7 @@
 
 # Invoice Automatic Payment Source
 
-Indicates the automatic payment method for an [invoice payment request](/doc/models/invoice-payment-request.md).
+Indicates the automatic payment method for an [invoice payment request](../../doc/models/invoice-payment-request.md).
 
 ## Enumeration
 

@@ -10,9 +10,9 @@ const refundsApi = client.refundsApi;
 
 ## Methods
 
-* [List Payment Refunds](/doc/api/refunds.md#list-payment-refunds)
-* [Refund Payment](/doc/api/refunds.md#refund-payment)
-* [Get Payment Refund](/doc/api/refunds.md#get-payment-refund)
+* [List Payment Refunds](../../doc/api/refunds.md#list-payment-refunds)
+* [Refund Payment](../../doc/api/refunds.md#refund-payment)
+* [Get Payment Refund](../../doc/api/refunds.md#get-payment-refund)
 
 
 # List Payment Refunds
@@ -45,16 +45,16 @@ async listPaymentRefunds(
 | `beginTime` | `string \| undefined` | Query, Optional | The timestamp for the beginning of the requested reporting period, in RFC 3339 format.<br><br>Default: The current time minus one year. |
 | `endTime` | `string \| undefined` | Query, Optional | The timestamp for the end of the requested reporting period, in RFC 3339 format.<br><br>Default: The current time. |
 | `sortOrder` | `string \| undefined` | Query, Optional | The order in which results are listed:<br><br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default). |
-| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](../../https://developer.squareup.com/docs/basics/api101/pagination). |
 | `locationId` | `string \| undefined` | Query, Optional | Limit results to the location supplied. By default, results are returned<br>for all locations associated with the seller. |
-| `status` | `string \| undefined` | Query, Optional | If provided, only refunds with the given status are returned.<br>For a list of refund status values, see [PaymentRefund](/doc/models/payment-refund.md).<br><br>Default: If omitted, refunds are returned regardless of their status. |
-| `sourceType` | `string \| undefined` | Query, Optional | If provided, only returns refunds whose payments have the indicated source type.<br>Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `CASH`, and `EXTERNAL`.<br>For information about these payment source types, see<br>[Take Payments](https://developer.squareup.com/docs/payments-api/take-payments).<br><br>Default: If omitted, refunds are returned regardless of the source type. |
+| `status` | `string \| undefined` | Query, Optional | If provided, only refunds with the given status are returned.<br>For a list of refund status values, see [PaymentRefund](../../doc/models/payment-refund.md).<br><br>Default: If omitted, refunds are returned regardless of their status. |
+| `sourceType` | `string \| undefined` | Query, Optional | If provided, only returns refunds whose payments have the indicated source type.<br>Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `CASH`, and `EXTERNAL`.<br>For information about these payment source types, see<br>[Take Payments](../../https://developer.squareup.com/docs/payments-api/take-payments).<br><br>Default: If omitted, refunds are returned regardless of the source type. |
 | `limit` | `number \| undefined` | Query, Optional | The maximum number of results to be returned in a single page.<br><br>It is possible to receive fewer results than the specified limit on a given page.<br><br>If the supplied value is greater than 100, no more than 100 results are returned.<br><br>Default: 100 |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`ListPaymentRefundsResponse`](/doc/models/list-payment-refunds-response.md)
+[`ListPaymentRefundsResponse`](../../doc/models/list-payment-refunds-response.md)
 
 ## Example Usage
 
@@ -85,7 +85,7 @@ try {
 Refunds a payment. You can refund the entire payment amount or a
 portion of it. You can use this endpoint to refund a card payment or record a
 refund of a cash or external payment. For more information, see
-[Refund Payment](https://developer.squareup.com/docs/payments-api/refund-payments).
+[Refund Payment](../../https://developer.squareup.com/docs/payments-api/refund-payments).
 
 ```ts
 async refundPayment(
@@ -98,12 +98,12 @@ async refundPayment(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`RefundPaymentRequest`](/doc/models/refund-payment-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`RefundPaymentRequest`](../../doc/models/refund-payment-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`RefundPaymentResponse`](/doc/models/refund-payment-response.md)
+[`RefundPaymentResponse`](../../doc/models/refund-payment-response.md)
 
 ## Example Usage
 
@@ -160,7 +160,7 @@ async getPaymentRefund(
 
 ## Response Type
 
-[`GetPaymentRefundResponse`](/doc/models/get-payment-refund-response.md)
+[`GetPaymentRefundResponse`](../../doc/models/get-payment-refund-response.md)
 
 ## Example Usage
 

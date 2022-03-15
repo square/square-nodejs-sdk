@@ -364,9 +364,9 @@ export class LoyaltyApi extends BaseApi {
   }
 
   /**
-   * Searches for loyalty rewards in a loyalty account.
-   *
-   * In the current implementation, the endpoint supports search by the reward `status`.
+   * Searches for loyalty rewards. This endpoint accepts a request with no query filters and returns
+   * results for all loyalty accounts.
+   * If you include a `query` object, `loyalty_account_id` is required and `status` is  optional.
    *
    * If you know a reward ID, use the
    * [RetrieveLoyaltyReward]($e/Loyalty/RetrieveLoyaltyReward) endpoint.

@@ -11,7 +11,7 @@ Describes a gift card activity of the DEACTIVATE type.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `reason` | [`string`](/doc/models/gift-card-activity-deactivate-reason.md) | Required | - |
+| `reason` | [`string`](../../doc/models/gift-card-activity-deactivate-reason.md) | Required | - |
 
 ## Example (as JSON)
 

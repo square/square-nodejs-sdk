@@ -27,10 +27,7 @@ export interface RenewTokenResponse {
    * authorization.
    */
   planId?: string;
-  /**
-   * An error object that provides details about how creation of the obtain
-   * token failed.
-   */
+  /** Any errors that occurred during the request. */
   errors?: Error[];
 }
 

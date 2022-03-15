@@ -3,7 +3,7 @@
 
 A filter based on the order `customer_id` and any tender `customer_id`
 associated with the order. It does not filter based on the
-[FulfillmentRecipient](/doc/models/order-fulfillment-recipient.md) `customer_id`.
+[FulfillmentRecipient](../../doc/models/order-fulfillment-recipient.md) `customer_id`.
 
 ## Structure
 

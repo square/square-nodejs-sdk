@@ -37,9 +37,9 @@ export interface InventoryTransfer {
    */
   catalogObjectId?: string;
   /**
-   * The [type]($m/CatalogObjectType) of the
-   * [CatalogObject]($m/CatalogObject) being tracked.Tracking is only
-   * supported for the `ITEM_VARIATION` type.
+   * The [type]($m/CatalogObjectType) of the [CatalogObject]($m/CatalogObject) being tracked.
+   * The Inventory API supports setting and reading the `"catalog_object_type": "ITEM_VARIATION"` field value.
+   * In addition, it can also read the `"catalog_object_type": "ITEM"` field value that is set by the Square Restaurants app.
    */
   catalogObjectType?: string;
   /**

@@ -16,7 +16,7 @@ export interface ListCustomerGroupsResponse {
    * A pagination cursor to retrieve the next set of results for your
    * original query to the endpoint. This value is present only if the request
    * succeeded and additional results are available.
-   * For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+   * For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
    */
   cursor?: string;
 }

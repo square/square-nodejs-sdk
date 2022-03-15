@@ -10,14 +10,14 @@ const teamApi = client.teamApi;
 
 ## Methods
 
-* [Create Team Member](/doc/api/team.md#create-team-member)
-* [Bulk Create Team Members](/doc/api/team.md#bulk-create-team-members)
-* [Bulk Update Team Members](/doc/api/team.md#bulk-update-team-members)
-* [Search Team Members](/doc/api/team.md#search-team-members)
-* [Retrieve Team Member](/doc/api/team.md#retrieve-team-member)
-* [Update Team Member](/doc/api/team.md#update-team-member)
-* [Retrieve Wage Setting](/doc/api/team.md#retrieve-wage-setting)
-* [Update Wage Setting](/doc/api/team.md#update-wage-setting)
+* [Create Team Member](../../doc/api/team.md#create-team-member)
+* [Bulk Create Team Members](../../doc/api/team.md#bulk-create-team-members)
+* [Bulk Update Team Members](../../doc/api/team.md#bulk-update-team-members)
+* [Search Team Members](../../doc/api/team.md#search-team-members)
+* [Retrieve Team Member](../../doc/api/team.md#retrieve-team-member)
+* [Update Team Member](../../doc/api/team.md#update-team-member)
+* [Retrieve Wage Setting](../../doc/api/team.md#retrieve-wage-setting)
+* [Update Wage Setting](../../doc/api/team.md#update-wage-setting)
 
 
 # Create Team Member
@@ -28,7 +28,7 @@ You must provide the following values in your request to this endpoint:
 - `given_name`
 - `family_name`
 
-Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#createteammember).
+Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#createteammember).
 
 ```ts
 async createTeamMember(
@@ -41,12 +41,12 @@ async createTeamMember(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreateTeamMemberRequest`](/doc/models/create-team-member-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CreateTeamMemberRequest`](../../doc/models/create-team-member-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CreateTeamMemberResponse`](/doc/models/create-team-member-response.md)
+[`CreateTeamMemberResponse`](../../doc/models/create-team-member-response.md)
 
 ## Example Usage
 
@@ -92,7 +92,7 @@ This process is non-transactional and processes as much of the request as possib
 the request cannot be successfully processed, the request is not marked as failed, but the body of the response
 contains explicit error information for the failed create.
 
-Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#bulk-create-team-members).
+Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#bulk-create-team-members).
 
 ```ts
 async bulkCreateTeamMembers(
@@ -105,12 +105,12 @@ async bulkCreateTeamMembers(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`BulkCreateTeamMembersRequest`](/doc/models/bulk-create-team-members-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`BulkCreateTeamMembersRequest`](../../doc/models/bulk-create-team-members-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`BulkCreateTeamMembersResponse`](/doc/models/bulk-create-team-members-response.md)
+[`BulkCreateTeamMembersResponse`](../../doc/models/bulk-create-team-members-response.md)
 
 ## Example Usage
 
@@ -140,7 +140,7 @@ Updates multiple `TeamMember` objects. The updated `TeamMember` objects are retu
 This process is non-transactional and processes as much of the request as possible. If one of the updates in
 the request cannot be successfully processed, the request is not marked as failed, but the body of the response
 contains explicit error information for the failed update.
-Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#bulk-update-team-members).
+Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#bulk-update-team-members).
 
 ```ts
 async bulkUpdateTeamMembers(
@@ -153,12 +153,12 @@ async bulkUpdateTeamMembers(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`BulkUpdateTeamMembersRequest`](/doc/models/bulk-update-team-members-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`BulkUpdateTeamMembersRequest`](../../doc/models/bulk-update-team-members-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`BulkUpdateTeamMembersResponse`](/doc/models/bulk-update-team-members-response.md)
+[`BulkUpdateTeamMembersResponse`](../../doc/models/bulk-update-team-members-response.md)
 
 ## Example Usage
 
@@ -201,12 +201,12 @@ async searchTeamMembers(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`SearchTeamMembersRequest`](/doc/models/search-team-members-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`SearchTeamMembersRequest`](../../doc/models/search-team-members-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`SearchTeamMembersResponse`](/doc/models/search-team-members-response.md)
+[`SearchTeamMembersResponse`](../../doc/models/search-team-members-response.md)
 
 ## Example Usage
 
@@ -242,7 +242,7 @@ try {
 # Retrieve Team Member
 
 Retrieves a `TeamMember` object for the given `TeamMember.id`.
-Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrieve-a-team-member).
+Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#retrieve-a-team-member).
 
 ```ts
 async retrieveTeamMember(
@@ -260,7 +260,7 @@ async retrieveTeamMember(
 
 ## Response Type
 
-[`RetrieveTeamMemberResponse`](/doc/models/retrieve-team-member-response.md)
+[`RetrieveTeamMemberResponse`](../../doc/models/retrieve-team-member-response.md)
 
 ## Example Usage
 
@@ -282,7 +282,7 @@ try {
 # Update Team Member
 
 Updates a single `TeamMember` object. The `TeamMember` object is returned on successful updates.
-Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#update-a-team-member).
+Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#update-a-team-member).
 
 ```ts
 async updateTeamMember(
@@ -297,12 +297,12 @@ async updateTeamMember(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `teamMemberId` | `string` | Template, Required | The ID of the team member to update. |
-| `body` | [`UpdateTeamMemberRequest`](/doc/models/update-team-member-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`UpdateTeamMemberRequest`](../../doc/models/update-team-member-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`UpdateTeamMemberResponse`](/doc/models/update-team-member-response.md)
+[`UpdateTeamMemberResponse`](../../doc/models/update-team-member-response.md)
 
 ## Example Usage
 
@@ -345,7 +345,7 @@ try {
 
 Retrieves a `WageSetting` object for a team member specified
 by `TeamMember.id`.
-Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).
+Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).
 
 ```ts
 async retrieveWageSetting(
@@ -363,7 +363,7 @@ async retrieveWageSetting(
 
 ## Response Type
 
-[`RetrieveWageSettingResponse`](/doc/models/retrieve-wage-setting-response.md)
+[`RetrieveWageSettingResponse`](../../doc/models/retrieve-wage-setting-response.md)
 
 ## Example Usage
 
@@ -388,7 +388,7 @@ Creates or updates a `WageSetting` object. The object is created if a
 `WageSetting` with the specified `team_member_id` does not exist. Otherwise,
 it fully replaces the `WageSetting` object for the team member.
 The `WageSetting` is returned on a successful update.
-Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).
+Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).
 
 ```ts
 async updateWageSetting(
@@ -403,12 +403,12 @@ async updateWageSetting(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `teamMemberId` | `string` | Template, Required | The ID of the team member for which to update the `WageSetting` object. |
-| `body` | [`UpdateWageSettingRequest`](/doc/models/update-wage-setting-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`UpdateWageSettingRequest`](../../doc/models/update-wage-setting-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`UpdateWageSettingResponse`](/doc/models/update-wage-setting-response.md)
+[`UpdateWageSettingResponse`](../../doc/models/update-wage-setting-response.md)
 
 ## Example Usage
 

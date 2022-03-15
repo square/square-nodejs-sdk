@@ -1,7 +1,7 @@
 
 # Subscription Cadence
 
-Determines the billing cadence of a [Subscription](/doc/models/subscription.md)
+Determines the billing cadence of a [Subscription](../../doc/models/subscription.md)
 
 ## Enumeration
 

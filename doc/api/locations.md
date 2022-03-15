@@ -10,15 +10,15 @@ const locationsApi = client.locationsApi;
 
 ## Methods
 
-* [List Locations](/doc/api/locations.md#list-locations)
-* [Create Location](/doc/api/locations.md#create-location)
-* [Retrieve Location](/doc/api/locations.md#retrieve-location)
-* [Update Location](/doc/api/locations.md#update-location)
+* [List Locations](../../doc/api/locations.md#list-locations)
+* [Create Location](../../doc/api/locations.md#create-location)
+* [Retrieve Location](../../doc/api/locations.md#retrieve-location)
+* [Update Location](../../doc/api/locations.md#update-location)
 
 
 # List Locations
 
-Provides details about all of the seller's [locations](https://developer.squareup.com/docs/locations-api),
+Provides details about all of the seller's [locations](../../https://developer.squareup.com/docs/locations-api),
 including those with an inactive status.
 
 ```ts
@@ -35,7 +35,7 @@ async listLocations(
 
 ## Response Type
 
-[`ListLocationsResponse`](/doc/models/list-locations-response.md)
+[`ListLocationsResponse`](../../doc/models/list-locations-response.md)
 
 ## Example Usage
 
@@ -55,7 +55,7 @@ try {
 
 # Create Location
 
-Creates a [location](https://developer.squareup.com/docs/locations-api).
+Creates a [location](../../https://developer.squareup.com/docs/locations-api).
 Creating new locations allows for separate configuration of receipt layouts, item prices,
 and sales reports. Developers can use locations to separate sales activity via applications
 that integrate with Square from sales activity elsewhere in a seller's account.
@@ -74,12 +74,12 @@ async createLocation(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreateLocationRequest`](/doc/models/create-location-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CreateLocationRequest`](../../doc/models/create-location-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CreateLocationResponse`](/doc/models/create-location-response.md)
+[`CreateLocationResponse`](../../doc/models/create-location-response.md)
 
 ## Example Usage
 
@@ -97,12 +97,11 @@ bodyLocationAddress.postalCode = '30309';
 const bodyLocationCapabilities: string[] = ['AUTOMATIC_TRANSFERS', 'CREDIT_CARD_PROCESSING', 'AUTOMATIC_TRANSFERS'];
 const bodyLocation: Location = {};
 bodyLocation.id = 'id0';
-bodyLocation.name = 'New location name';
+bodyLocation.name = 'Midtown';
 bodyLocation.address = bodyLocationAddress;
 bodyLocation.timezone = 'timezone0';
 bodyLocation.capabilities = bodyLocationCapabilities;
-bodyLocation.description = 'My new location.';
-bodyLocation.facebookUrl = 'null';
+bodyLocation.description = 'Midtown Atlanta store';
 
 const body: CreateLocationRequest = {};
 body.location = bodyLocation;
@@ -123,7 +122,7 @@ try {
 # Retrieve Location
 
 Retrieves details of a single location. Specify "main"
-as the location ID to retrieve details of the [main location](https://developer.squareup.com/docs/locations-api#about-the-main-location).
+as the location ID to retrieve details of the [main location](../../https://developer.squareup.com/docs/locations-api#about-the-main-location).
 
 ```ts
 async retrieveLocation(
@@ -141,7 +140,7 @@ async retrieveLocation(
 
 ## Response Type
 
-[`RetrieveLocationResponse`](/doc/models/retrieve-location-response.md)
+[`RetrieveLocationResponse`](../../doc/models/retrieve-location-response.md)
 
 ## Example Usage
 
@@ -162,7 +161,7 @@ try {
 
 # Update Location
 
-Updates a [location](https://developer.squareup.com/docs/locations-api).
+Updates a [location](../../https://developer.squareup.com/docs/locations-api).
 
 ```ts
 async updateLocation(
@@ -177,12 +176,12 @@ async updateLocation(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `locationId` | `string` | Template, Required | The ID of the location to update. |
-| `body` | [`UpdateLocationRequest`](/doc/models/update-location-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`UpdateLocationRequest`](../../doc/models/update-location-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`UpdateLocationResponse`](/doc/models/update-location-response.md)
+[`UpdateLocationResponse`](../../doc/models/update-location-response.md)
 
 ## Example Usage
 
@@ -190,38 +189,47 @@ async updateLocation(
 const locationId = 'location_id4';
 const contentType = null;
 const bodyLocationAddress: Address = {};
-bodyLocationAddress.addressLine1 = '1234 Peachtree St. NE';
+bodyLocationAddress.addressLine1 = 'address_line_16';
 bodyLocationAddress.addressLine2 = 'address_line_26';
 bodyLocationAddress.addressLine3 = 'address_line_32';
-bodyLocationAddress.locality = 'Atlanta';
+bodyLocationAddress.locality = 'locality6';
 bodyLocationAddress.sublocality = 'sublocality6';
-bodyLocationAddress.administrativeDistrictLevel1 = 'GA';
-bodyLocationAddress.postalCode = '30309';
 
 const bodyLocationCapabilities: string[] = ['AUTOMATIC_TRANSFERS', 'CREDIT_CARD_PROCESSING', 'AUTOMATIC_TRANSFERS'];
 const bodyLocationBusinessHoursPeriods: BusinessHoursPeriod[] = [];
 
 const bodyLocationBusinessHoursperiods0: BusinessHoursPeriod = {};
-bodyLocationBusinessHoursperiods0.dayOfWeek = 'MON';
-bodyLocationBusinessHoursperiods0.startLocalTime = '09:00';
-bodyLocationBusinessHoursperiods0.endLocalTime = '17:00';
+bodyLocationBusinessHoursperiods0.dayOfWeek = 'FRI';
+bodyLocationBusinessHoursperiods0.startLocalTime = '07:00';
+bodyLocationBusinessHoursperiods0.endLocalTime = '18:00';
 
 bodyLocationBusinessHoursPeriods[0] = bodyLocationBusinessHoursperiods0;
+
+const bodyLocationBusinessHoursperiods1: BusinessHoursPeriod = {};
+bodyLocationBusinessHoursperiods1.dayOfWeek = 'SAT';
+bodyLocationBusinessHoursperiods1.startLocalTime = '07:00';
+bodyLocationBusinessHoursperiods1.endLocalTime = '18:00';
+
+bodyLocationBusinessHoursPeriods[1] = bodyLocationBusinessHoursperiods1;
+
+const bodyLocationBusinessHoursperiods2: BusinessHoursPeriod = {};
+bodyLocationBusinessHoursperiods2.dayOfWeek = 'SUN';
+bodyLocationBusinessHoursperiods2.startLocalTime = '09:00';
+bodyLocationBusinessHoursperiods2.endLocalTime = '15:00';
+
+bodyLocationBusinessHoursPeriods[2] = bodyLocationBusinessHoursperiods2;
 
 const bodyLocationBusinessHours: BusinessHours = {};
 bodyLocationBusinessHours.periods = bodyLocationBusinessHoursPeriods;
 
 const bodyLocation: Location = {};
 bodyLocation.id = 'id0';
-bodyLocation.name = 'Updated nickname';
+bodyLocation.name = 'name0';
 bodyLocation.address = bodyLocationAddress;
 bodyLocation.timezone = 'timezone0';
 bodyLocation.capabilities = bodyLocationCapabilities;
 bodyLocation.businessHours = bodyLocationBusinessHours;
-bodyLocation.description = 'Updated description';
-bodyLocation.twitterUsername = 'twitter';
-bodyLocation.instagramUsername = 'instagram';
-bodyLocation.facebookUrl = 'null';
+bodyLocation.description = 'Midtown Atlanta store - Open weekends';
 
 const body: UpdateLocationRequest = {};
 body.location = bodyLocation;

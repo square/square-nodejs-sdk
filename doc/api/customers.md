@@ -10,16 +10,16 @@ const customersApi = client.customersApi;
 
 ## Methods
 
-* [List Customers](/doc/api/customers.md#list-customers)
-* [Create Customer](/doc/api/customers.md#create-customer)
-* [Search Customers](/doc/api/customers.md#search-customers)
-* [Delete Customer](/doc/api/customers.md#delete-customer)
-* [Retrieve Customer](/doc/api/customers.md#retrieve-customer)
-* [Update Customer](/doc/api/customers.md#update-customer)
-* [Create Customer Card](/doc/api/customers.md#create-customer-card)
-* [Delete Customer Card](/doc/api/customers.md#delete-customer-card)
-* [Remove Group From Customer](/doc/api/customers.md#remove-group-from-customer)
-* [Add Group to Customer](/doc/api/customers.md#add-group-to-customer)
+* [List Customers](../../doc/api/customers.md#list-customers)
+* [Create Customer](../../doc/api/customers.md#create-customer)
+* [Search Customers](../../doc/api/customers.md#search-customers)
+* [Delete Customer](../../doc/api/customers.md#delete-customer)
+* [Retrieve Customer](../../doc/api/customers.md#retrieve-customer)
+* [Update Customer](../../doc/api/customers.md#update-customer)
+* [Create Customer Card](../../doc/api/customers.md#create-customer-card)
+* [Delete Customer Card](../../doc/api/customers.md#delete-customer-card)
+* [Remove Group From Customer](../../doc/api/customers.md#remove-group-from-customer)
+* [Add Group to Customer](../../doc/api/customers.md#add-group-to-customer)
 
 
 # List Customers
@@ -44,15 +44,15 @@ async listCustomers(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for your original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
-| `limit` | `number \| undefined` | Query, Optional | The maximum number of results to return in a single page. This limit is advisory. The response might contain more or fewer results.<br>The limit is ignored if it is less than 1 or greater than 100. The default value is 100.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
-| `sortField` | [`string \| undefined`](/doc/models/customer-sort-field.md) | Query, Optional | Indicates how customers should be sorted.<br><br>The default value is `DEFAULT`. |
-| `sortOrder` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | Indicates whether customers should be sorted in ascending (`ASC`) or<br>descending (`DESC`) order.<br><br>The default value is `ASC`. |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for your original query.<br><br>For more information, see [Pagination](../../https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
+| `limit` | `number \| undefined` | Query, Optional | The maximum number of results to return in a single page. This limit is advisory. The response might contain more or fewer results.<br>If the specified limit is less than 1 or greater than 100, Square returns a `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error. The default value is 100.<br><br>For more information, see [Pagination](../../https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
+| `sortField` | [`string \| undefined`](../../doc/models/customer-sort-field.md) | Query, Optional | Indicates how customers should be sorted.<br><br>The default value is `DEFAULT`. |
+| `sortOrder` | [`string \| undefined`](../../doc/models/sort-order.md) | Query, Optional | Indicates whether customers should be sorted in ascending (`ASC`) or<br>descending (`DESC`) order.<br><br>The default value is `ASC`. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`ListCustomersResponse`](/doc/models/list-customers-response.md)
+[`ListCustomersResponse`](../../doc/models/list-customers-response.md)
 
 ## Example Usage
 
@@ -98,12 +98,12 @@ async createCustomer(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreateCustomerRequest`](/doc/models/create-customer-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CreateCustomerRequest`](../../doc/models/create-customer-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CreateCustomerResponse`](/doc/models/create-customer-response.md)
+[`CreateCustomerResponse`](../../doc/models/create-customer-response.md)
 
 ## Example Usage
 
@@ -167,12 +167,12 @@ async searchCustomers(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`SearchCustomersRequest`](/doc/models/search-customers-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`SearchCustomersRequest`](../../doc/models/search-customers-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`SearchCustomersResponse`](/doc/models/search-customers-response.md)
+[`SearchCustomersResponse`](../../doc/models/search-customers-response.md)
 
 ## Example Usage
 
@@ -245,7 +245,7 @@ try {
 
 Deletes a customer profile from a business. This operation also unlinks any associated cards on file.
 
-As a best practice, you should include the `version` field in the request to enable [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency) control. The value must be set to the current version of the customer profile.
+As a best practice, you should include the `version` field in the request to enable [optimistic concurrency](../../https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency) control. The value must be set to the current version of the customer profile.
 
 To delete a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.
 
@@ -262,12 +262,12 @@ async deleteCustomer(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customerId` | `string` | Template, Required | The ID of the customer to delete. |
-| `version` | `bigint \| undefined` | Query, Optional | The current version of the customer profile.<br><br>As a best practice, you should include this parameter to enable [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency) control.  For more information, see [Delete a customer profile](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#delete-customer-profile). |
+| `version` | `bigint \| undefined` | Query, Optional | The current version of the customer profile.<br><br>As a best practice, you should include this parameter to enable [optimistic concurrency](../../https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control.  For more information, see [Delete a customer profile](../../https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#delete-customer-profile). |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`DeleteCustomerResponse`](/doc/models/delete-customer-response.md)
+[`DeleteCustomerResponse`](../../doc/models/delete-customer-response.md)
 
 ## Example Usage
 
@@ -307,7 +307,7 @@ async retrieveCustomer(
 
 ## Response Type
 
-[`RetrieveCustomerResponse`](/doc/models/retrieve-customer-response.md)
+[`RetrieveCustomerResponse`](../../doc/models/retrieve-customer-response.md)
 
 ## Example Usage
 
@@ -330,11 +330,11 @@ try {
 
 Updates a customer profile. To change an attribute, specify the new value. To remove an attribute, specify the value as an empty string or empty object.
 
-As a best practice, you should include the `version` field in the request to enable [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency) control. The value must be set to the current version of the customer profile.
+As a best practice, you should include the `version` field in the request to enable [optimistic concurrency](../../https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency) control. The value must be set to the current version of the customer profile.
 
 To update a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.
 
-You cannot use this endpoint to change cards on file. To make changes, use the [Cards API](/doc/api/cards.md) or [Gift Cards API](/doc/api/gift-cards.md).
+You cannot use this endpoint to change cards on file. To make changes, use the [Cards API](../../doc/api/cards.md) or [Gift Cards API](../../doc/api/gift-cards.md).
 
 ```ts
 async updateCustomer(
@@ -349,12 +349,12 @@ async updateCustomer(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customerId` | `string` | Template, Required | The ID of the customer to update. |
-| `body` | [`UpdateCustomerRequest`](/doc/models/update-customer-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`UpdateCustomerRequest`](../../doc/models/update-customer-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`UpdateCustomerResponse`](/doc/models/update-customer-response.md)
+[`UpdateCustomerResponse`](../../doc/models/update-customer-response.md)
 
 ## Example Usage
 
@@ -407,12 +407,12 @@ async createCustomerCard(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customerId` | `string` | Template, Required | The Square ID of the customer profile the card is linked to. |
-| `body` | [`CreateCustomerCardRequest`](/doc/models/create-customer-card-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CreateCustomerCardRequest`](../../doc/models/create-customer-card-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CreateCustomerCardResponse`](/doc/models/create-customer-card-response.md)
+[`CreateCustomerCardResponse`](../../doc/models/create-customer-card-response.md)
 
 ## Example Usage
 
@@ -473,7 +473,7 @@ async deleteCustomerCard(
 
 ## Response Type
 
-[`DeleteCustomerCardResponse`](/doc/models/delete-customer-card-response.md)
+[`DeleteCustomerCardResponse`](../../doc/models/delete-customer-card-response.md)
 
 ## Example Usage
 
@@ -518,7 +518,7 @@ async removeGroupFromCustomer(
 
 ## Response Type
 
-[`RemoveGroupFromCustomerResponse`](/doc/models/remove-group-from-customer-response.md)
+[`RemoveGroupFromCustomerResponse`](../../doc/models/remove-group-from-customer-response.md)
 
 ## Example Usage
 
@@ -563,7 +563,7 @@ async addGroupToCustomer(
 
 ## Response Type
 
-[`AddGroupToCustomerResponse`](/doc/models/add-group-to-customer-response.md)
+[`AddGroupToCustomerResponse`](../../doc/models/add-group-to-customer-response.md)
 
 ## Example Usage
 

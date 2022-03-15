@@ -31,12 +31,12 @@ export interface Customer {
    * Payment details of the credit, debit, and gift cards stored on file for the customer profile.
    * DEPRECATED at version 2021-06-16. Replaced by calling [ListCards]($e/Cards/ListCards) (for credit and debit cards on file)
    * or [ListGiftCards]($e/GiftCards/ListGiftCards) (for gift cards on file) and including the `customer_id` query parameter.
-   * For more information, see [Migrate to the Cards API and Gift Cards API](https://developer.squareup.com/docs/customers-api/use-the-api/integrate-with-other-services#migrate-customer-cards).
+   * For more information, see [Migration notes](https://developer.squareup.com/docs/customers-api/what-it-does#migrate-customer-cards).
    */
   cards?: Card[];
-  /** The given (i.e., first) name associated with the customer profile. */
+  /** The given name (that is, the first name) associated with the customer profile. */
   givenName?: string;
-  /** The family (i.e., last) name associated with the customer profile. */
+  /** The family name (that is, the last name) associated with the customer profile. */
   familyName?: string;
   /** A nickname for the customer profile. */
   nickname?: string;
@@ -49,7 +49,7 @@ export interface Customer {
    * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
    */
   address?: Address;
-  /** The 11-digit phone number associated with the customer profile. */
+  /** The phone number associated with the customer profile. A phone number can contain 9–16 digits, with an optional `+` prefix. */
   phoneNumber?: string;
   /**
    * The birthday associated with the customer profile, in RFC 3339 format. The year is optional. The timezone and time are not allowed.

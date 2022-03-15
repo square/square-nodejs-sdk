@@ -4,7 +4,7 @@ import {
   appointmentSegmentSchema,
 } from './appointmentSegment';
 
-/** Defines an appointment slot that encapsulates the appointment segments, location and  starting time avaialable for booking. */
+/** Defines an appointment slot that encapsulates the appointment segments, location and starting time available for booking. */
 export interface Availability {
   /** The RFC 3339 timestamp specifying the beginning time of the slot available for booking. */
   startAt?: string;

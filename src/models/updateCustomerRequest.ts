@@ -22,7 +22,7 @@ export interface UpdateCustomerRequest {
    * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
    */
   address?: Address;
-  /** The 11-digit phone number associated with the customer profile. */
+  /** The phone number associated with the customer profile. A phone number can contain 9–16 digits, with an optional `+` prefix. */
   phoneNumber?: string;
   /**
    * An optional second ID used to associate the customer profile with an
@@ -39,7 +39,7 @@ export interface UpdateCustomerRequest {
   birthday?: string;
   /**
    * The current version of the customer profile.
-   * As a best practice, you should include this field to enable [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency) control. For more information, see [Update a customer profile](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#update-a-customer-profile).
+   * As a best practice, you should include this field to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control. For more information, see [Update a customer profile](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#update-a-customer-profile).
    */
   version?: bigint;
   /**

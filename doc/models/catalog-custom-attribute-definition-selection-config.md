@@ -12,7 +12,7 @@ Configuration associated with `SELECTION`-type custom attribute definitions.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `maxAllowedSelections` | `number \| undefined` | Optional | The maximum number of selections that can be set. The maximum value for this<br>attribute is 100. The default value is 1. The value can be modified, but changing the value will not<br>affect existing custom attribute values on objects. Clients need to<br>handle custom attributes with more selected values than allowed by this limit.<br>**Constraints**: `<= 100` |
-| `allowedSelections` | [`CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection[] \| undefined`](/doc/models/catalog-custom-attribute-definition-selection-config-custom-attribute-selection.md) | Optional | The set of valid `CatalogCustomAttributeSelections`. Up to a maximum of 100<br>selections can be defined. Can be modified. |
+| `allowedSelections` | [`CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection[] \| undefined`](../../doc/models/catalog-custom-attribute-definition-selection-config-custom-attribute-selection.md) | Optional | The set of valid `CatalogCustomAttributeSelections`. Up to a maximum of 100<br>selections can be defined. Can be modified. |
 
 ## Example (as JSON)
 

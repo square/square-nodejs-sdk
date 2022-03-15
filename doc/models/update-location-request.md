@@ -1,7 +1,7 @@
 
 # Update Location Request
 
-Request object for the [UpdateLocation](/doc/api/locations.md#update-location) endpoint.
+Request object for the [UpdateLocation](../../doc/api/locations.md#update-location) endpoint.
 
 ## Structure
 
@@ -11,33 +11,33 @@ Request object for the [UpdateLocation](/doc/api/locations.md#update-location) e
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `location` | [`Location \| undefined`](/doc/models/location.md) | Optional | Represents one of a business's [locations](https://developer.squareup.com/docs/locations-api). |
+| `location` | [`Location \| undefined`](../../doc/models/location.md) | Optional | Represents one of a business's [locations](../../https://developer.squareup.com/docs/locations-api). |
 
 ## Example (as JSON)
 
 ```json
 {
   "location": {
-    "address": {
-      "address_line_1": "1234 Peachtree St. NE",
-      "administrative_district_level_1": "GA",
-      "locality": "Atlanta",
-      "postal_code": "30309"
-    },
     "business_hours": {
       "periods": [
         {
-          "day_of_week": "MON",
-          "end_local_time": "17:00",
+          "day_of_week": "FRI",
+          "end_local_time": "18:00",
+          "start_local_time": "07:00"
+        },
+        {
+          "day_of_week": "SAT",
+          "end_local_time": "18:00",
+          "start_local_time": "07:00"
+        },
+        {
+          "day_of_week": "SUN",
+          "end_local_time": "15:00",
           "start_local_time": "09:00"
         }
       ]
     },
-    "description": "Updated description",
-    "facebook_url": "null",
-    "instagram_username": "instagram",
-    "name": "Updated nickname",
-    "twitter_username": "twitter"
+    "description": "Midtown Atlanta store - Open weekends"
   }
 }
 ```

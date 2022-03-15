@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `idempotencyKey` | `string` | Required | A unique string that identifies this UpdateCatalogImage request.<br>Keys can be any valid string but must be unique for every UpdateCatalogImage request.<br><br>See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.<br>**Constraints**: *Minimum Length*: `1` |
+| `idempotencyKey` | `string` | Required | A unique string that identifies this UpdateCatalogImage request.<br>Keys can be any valid string but must be unique for every UpdateCatalogImage request.<br><br>See [Idempotency keys](../../https://developer.squareup.com/docs/basics/api101/idempotency) for more information.<br>**Constraints**: *Minimum Length*: `1` |
 
 ## Example (as JSON)
 

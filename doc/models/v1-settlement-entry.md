@@ -12,9 +12,9 @@ V1SettlementEntry
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `paymentId` | `string \| undefined` | Optional | The settlement's unique identifier. |
-| `type` | [`string \| undefined`](/doc/models/v1-settlement-entry-type.md) | Optional | - |
-| `amountMoney` | [`V1Money \| undefined`](/doc/models/v1-money.md) | Optional | - |
-| `feeMoney` | [`V1Money \| undefined`](/doc/models/v1-money.md) | Optional | - |
+| `type` | [`string \| undefined`](../../doc/models/v1-settlement-entry-type.md) | Optional | - |
+| `amountMoney` | [`V1Money \| undefined`](../../doc/models/v1-money.md) | Optional | - |
+| `feeMoney` | [`V1Money \| undefined`](../../doc/models/v1-money.md) | Optional | - |
 
 ## Example (as JSON)
 

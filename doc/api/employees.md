@@ -10,8 +10,8 @@ const employeesApi = client.employeesApi;
 
 ## Methods
 
-* [List Employees](/doc/api/employees.md#list-employees)
-* [Retrieve Employee](/doc/api/employees.md#retrieve-employee)
+* [List Employees](../../doc/api/employees.md#list-employees)
+* [Retrieve Employee](../../doc/api/employees.md#retrieve-employee)
 
 
 # List Employees
@@ -35,14 +35,14 @@ async listEmployees(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `locationId` | `string \| undefined` | Query, Optional | - |
-| `status` | [`string \| undefined`](/doc/models/employee-status.md) | Query, Optional | Specifies the EmployeeStatus to filter the employee by. |
+| `status` | [`string \| undefined`](../../doc/models/employee-status.md) | Query, Optional | Specifies the EmployeeStatus to filter the employee by. |
 | `limit` | `number \| undefined` | Query, Optional | The number of employees to be returned on each page. |
 | `cursor` | `string \| undefined` | Query, Optional | The token required to retrieve the specified page of results. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`ListEmployeesResponse`](/doc/models/list-employees-response.md)
+[`ListEmployeesResponse`](../../doc/models/list-employees-response.md)
 
 ## Example Usage
 
@@ -86,7 +86,7 @@ async retrieveEmployee(
 
 ## Response Type
 
-[`RetrieveEmployeeResponse`](/doc/models/retrieve-employee-response.md)
+[`RetrieveEmployeeResponse`](../../doc/models/retrieve-employee-response.md)
 
 ## Example Usage
 

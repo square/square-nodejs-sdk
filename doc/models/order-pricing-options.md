@@ -3,7 +3,7 @@
 
 Pricing options for an order. The options affect how the order's price is calculated.
 They can be used, for example, to apply automatic price adjustments that are based on preconfigured
-[pricing rules](/doc/models/catalog-pricing-rule.md).
+[pricing rules](../../doc/models/catalog-pricing-rule.md).
 
 ## Structure
 

@@ -11,7 +11,7 @@ A request to update a `WorkweekConfig` object.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `workweekConfig` | [`WorkweekConfig`](/doc/models/workweek-config.md) | Required | Sets the day of the week and hour of the day that a business starts a<br>workweek. This is used to calculate overtime pay. |
+| `workweekConfig` | [`WorkweekConfig`](../../doc/models/workweek-config.md) | Required | Sets the day of the week and hour of the day that a business starts a<br>workweek. This is used to calculate overtime pay. |
 
 ## Example (as JSON)
 

@@ -10,13 +10,13 @@ const giftCardsApi = client.giftCardsApi;
 
 ## Methods
 
-* [List Gift Cards](/doc/api/gift-cards.md#list-gift-cards)
-* [Create Gift Card](/doc/api/gift-cards.md#create-gift-card)
-* [Retrieve Gift Card From GAN](/doc/api/gift-cards.md#retrieve-gift-card-from-gan)
-* [Retrieve Gift Card From Nonce](/doc/api/gift-cards.md#retrieve-gift-card-from-nonce)
-* [Link Customer to Gift Card](/doc/api/gift-cards.md#link-customer-to-gift-card)
-* [Unlink Customer From Gift Card](/doc/api/gift-cards.md#unlink-customer-from-gift-card)
-* [Retrieve Gift Card](/doc/api/gift-cards.md#retrieve-gift-card)
+* [List Gift Cards](../../doc/api/gift-cards.md#list-gift-cards)
+* [Create Gift Card](../../doc/api/gift-cards.md#create-gift-card)
+* [Retrieve Gift Card From GAN](../../doc/api/gift-cards.md#retrieve-gift-card-from-gan)
+* [Retrieve Gift Card From Nonce](../../doc/api/gift-cards.md#retrieve-gift-card-from-nonce)
+* [Link Customer to Gift Card](../../doc/api/gift-cards.md#link-customer-to-gift-card)
+* [Unlink Customer From Gift Card](../../doc/api/gift-cards.md#unlink-customer-from-gift-card)
+* [Retrieve Gift Card](../../doc/api/gift-cards.md#retrieve-gift-card)
 
 
 # List Gift Cards
@@ -39,16 +39,16 @@ async listGiftCards(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `type` | `string \| undefined` | Query, Optional | If a [type](/doc/models/gift-card-type.md) is provided, the endpoint returns gift cards of the specified type.<br>Otherwise, the endpoint returns gift cards of all types. |
-| `state` | `string \| undefined` | Query, Optional | If a [state](/doc/models/gift-card-status.md) is provided, the endpoint returns the gift cards in the specified state.<br>Otherwise, the endpoint returns the gift cards of all states. |
-| `limit` | `number \| undefined` | Query, Optional | If a limit is provided, the endpoint returns only the specified number of results per page.<br>The maximum value is 50. The default value is 30.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
-| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>If a cursor is not provided, the endpoint returns the first page of the results.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `type` | `string \| undefined` | Query, Optional | If a [type](../../doc/models/gift-card-type.md) is provided, the endpoint returns gift cards of the specified type.<br>Otherwise, the endpoint returns gift cards of all types. |
+| `state` | `string \| undefined` | Query, Optional | If a [state](../../doc/models/gift-card-status.md) is provided, the endpoint returns the gift cards in the specified state.<br>Otherwise, the endpoint returns the gift cards of all states. |
+| `limit` | `number \| undefined` | Query, Optional | If a limit is provided, the endpoint returns only the specified number of results per page.<br>The maximum value is 50. The default value is 30.<br>For more information, see [Pagination](../../https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>If a cursor is not provided, the endpoint returns the first page of the results.<br>For more information, see [Pagination](../../https://developer.squareup.com/docs/working-with-apis/pagination). |
 | `customerId` | `string \| undefined` | Query, Optional | If a customer ID is provided, the endpoint returns only the gift cards linked to the specified customer. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`ListGiftCardsResponse`](/doc/models/list-gift-cards-response.md)
+[`ListGiftCardsResponse`](../../doc/models/list-gift-cards-response.md)
 
 ## Example Usage
 
@@ -75,7 +75,7 @@ try {
 
 Creates a digital gift card or registers a physical (plastic) gift card. You must activate the gift card before
 it can be used for payment. For more information, see
-[Selling gift cards](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api#selling-square-gift-cards).
+[Selling gift cards](../../https://developer.squareup.com/docs/gift-cards/using-gift-cards-api#selling-square-gift-cards).
 
 ```ts
 async createGiftCard(
@@ -88,12 +88,12 @@ async createGiftCard(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreateGiftCardRequest`](/doc/models/create-gift-card-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CreateGiftCardRequest`](../../doc/models/create-gift-card-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CreateGiftCardResponse`](/doc/models/create-gift-card-response.md)
+[`CreateGiftCardResponse`](../../doc/models/create-gift-card-response.md)
 
 ## Example Usage
 
@@ -146,12 +146,12 @@ async retrieveGiftCardFromGAN(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`RetrieveGiftCardFromGANRequest`](/doc/models/retrieve-gift-card-from-gan-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`RetrieveGiftCardFromGANRequest`](../../doc/models/retrieve-gift-card-from-gan-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`RetrieveGiftCardFromGANResponse`](/doc/models/retrieve-gift-card-from-gan-response.md)
+[`RetrieveGiftCardFromGANResponse`](../../doc/models/retrieve-gift-card-from-gan-response.md)
 
 ## Example Usage
 
@@ -189,12 +189,12 @@ async retrieveGiftCardFromNonce(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`RetrieveGiftCardFromNonceRequest`](/doc/models/retrieve-gift-card-from-nonce-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`RetrieveGiftCardFromNonceRequest`](../../doc/models/retrieve-gift-card-from-nonce-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`RetrieveGiftCardFromNonceResponse`](/doc/models/retrieve-gift-card-from-nonce-response.md)
+[`RetrieveGiftCardFromNonceResponse`](../../doc/models/retrieve-gift-card-from-nonce-response.md)
 
 ## Example Usage
 
@@ -234,12 +234,12 @@ async linkCustomerToGiftCard(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `giftCardId` | `string` | Template, Required | The ID of the gift card to be linked. |
-| `body` | [`LinkCustomerToGiftCardRequest`](/doc/models/link-customer-to-gift-card-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`LinkCustomerToGiftCardRequest`](../../doc/models/link-customer-to-gift-card-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`LinkCustomerToGiftCardResponse`](/doc/models/link-customer-to-gift-card-response.md)
+[`LinkCustomerToGiftCardResponse`](../../doc/models/link-customer-to-gift-card-response.md)
 
 ## Example Usage
 
@@ -280,12 +280,12 @@ async unlinkCustomerFromGiftCard(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `giftCardId` | `string` | Template, Required | The ID of the gift card to be unlinked. |
-| `body` | [`UnlinkCustomerFromGiftCardRequest`](/doc/models/unlink-customer-from-gift-card-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`UnlinkCustomerFromGiftCardRequest`](../../doc/models/unlink-customer-from-gift-card-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`UnlinkCustomerFromGiftCardResponse`](/doc/models/unlink-customer-from-gift-card-response.md)
+[`UnlinkCustomerFromGiftCardResponse`](../../doc/models/unlink-customer-from-gift-card-response.md)
 
 ## Example Usage
 
@@ -329,7 +329,7 @@ async retrieveGiftCard(
 
 ## Response Type
 
-[`RetrieveGiftCardResponse`](/doc/models/retrieve-gift-card-response.md)
+[`RetrieveGiftCardResponse`](../../doc/models/retrieve-gift-card-response.md)
 
 ## Example Usage
 

@@ -2,7 +2,7 @@
 # Retrieve Customer Group Response
 
 Defines the fields that are included in the response body of
-a request to the [RetrieveCustomerGroup](/doc/api/customer-groups.md#retrieve-customer-group) endpoint.
+a request to the [RetrieveCustomerGroup](../../doc/api/customer-groups.md#retrieve-customer-group) endpoint.
 
 Either `errors` or `group` is present in a given response (never both).
 
@@ -14,8 +14,8 @@ Either `errors` or `group` is present in a given response (never both).
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `group` | [`CustomerGroup \| undefined`](/doc/models/customer-group.md) | Optional | Represents a group of customer profiles.<br><br>Customer groups can be created, be modified, and have their membership defined using<br>the Customers API or within the Customer Directory in the Square Seller Dashboard or Point of Sale. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `group` | [`CustomerGroup \| undefined`](../../doc/models/customer-group.md) | Optional | Represents a group of customer profiles.<br><br>Customer groups can be created, be modified, and have their membership defined using<br>the Customers API or within the Customer Directory in the Square Seller Dashboard or Point of Sale. |
 
 ## Example (as JSON)
 

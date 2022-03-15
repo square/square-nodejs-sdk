@@ -10,10 +10,10 @@ const cardsApi = client.cardsApi;
 
 ## Methods
 
-* [List Cards](/doc/api/cards.md#list-cards)
-* [Create Card](/doc/api/cards.md#create-card)
-* [Retrieve Card](/doc/api/cards.md#retrieve-card)
-* [Disable Card](/doc/api/cards.md#disable-card)
+* [List Cards](../../doc/api/cards.md#list-cards)
+* [Create Card](../../doc/api/cards.md#create-card)
+* [Retrieve Card](../../doc/api/cards.md#retrieve-card)
+* [Disable Card](../../doc/api/cards.md#disable-card)
 
 
 # List Cards
@@ -36,16 +36,16 @@ async listCards(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for your original query.<br><br>See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for your original query.<br><br>See [Pagination](../../https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
 | `customerId` | `string \| undefined` | Query, Optional | Limit results to cards associated with the customer supplied.<br>By default, all cards owned by the merchant are returned. |
 | `includeDisabled` | `boolean \| undefined` | Query, Optional | Includes disabled cards.<br>By default, all enabled cards owned by the merchant are returned.<br>**Default**: `false` |
 | `referenceId` | `string \| undefined` | Query, Optional | Limit results to cards associated with the reference_id supplied. |
-| `sortOrder` | [`string \| undefined`](/doc/models/sort-order.md) | Query, Optional | Sorts the returned list by when the card was created with the specified order.<br>This field defaults to ASC. |
+| `sortOrder` | [`string \| undefined`](../../doc/models/sort-order.md) | Query, Optional | Sorts the returned list by when the card was created with the specified order.<br>This field defaults to ASC. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`ListCardsResponse`](/doc/models/list-cards-response.md)
+[`ListCardsResponse`](../../doc/models/list-cards-response.md)
 
 ## Example Usage
 
@@ -83,12 +83,12 @@ async createCard(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreateCardRequest`](/doc/models/create-card-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CreateCardRequest`](../../doc/models/create-card-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CreateCardResponse`](/doc/models/create-card-response.md)
+[`CreateCardResponse`](../../doc/models/create-card-response.md)
 
 ## Example Usage
 
@@ -155,7 +155,7 @@ async retrieveCard(
 
 ## Response Type
 
-[`RetrieveCardResponse`](/doc/models/retrieve-card-response.md)
+[`RetrieveCardResponse`](../../doc/models/retrieve-card-response.md)
 
 ## Example Usage
 
@@ -195,7 +195,7 @@ async disableCard(
 
 ## Response Type
 
-[`DisableCardResponse`](/doc/models/disable-card-response.md)
+[`DisableCardResponse`](../../doc/models/disable-card-response.md)
 
 ## Example Usage
 

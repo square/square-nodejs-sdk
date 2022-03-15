@@ -10,22 +10,22 @@ const bookingsApi = client.bookingsApi;
 
 ## Methods
 
-* [List Bookings](/doc/api/bookings.md#list-bookings)
-* [Create Booking](/doc/api/bookings.md#create-booking)
-* [Search Availability](/doc/api/bookings.md#search-availability)
-* [Retrieve Business Booking Profile](/doc/api/bookings.md#retrieve-business-booking-profile)
-* [List Team Member Booking Profiles](/doc/api/bookings.md#list-team-member-booking-profiles)
-* [Retrieve Team Member Booking Profile](/doc/api/bookings.md#retrieve-team-member-booking-profile)
-* [Retrieve Booking](/doc/api/bookings.md#retrieve-booking)
-* [Update Booking](/doc/api/bookings.md#update-booking)
-* [Cancel Booking](/doc/api/bookings.md#cancel-booking)
+* [List Bookings](../../doc/api/bookings.md#list-bookings)
+* [Create Booking](../../doc/api/bookings.md#create-booking)
+* [Search Availability](../../doc/api/bookings.md#search-availability)
+* [Retrieve Business Booking Profile](../../doc/api/bookings.md#retrieve-business-booking-profile)
+* [List Team Member Booking Profiles](../../doc/api/bookings.md#list-team-member-booking-profiles)
+* [Retrieve Team Member Booking Profile](../../doc/api/bookings.md#retrieve-team-member-booking-profile)
+* [Retrieve Booking](../../doc/api/bookings.md#retrieve-booking)
+* [Update Booking](../../doc/api/bookings.md#update-booking)
+* [Cancel Booking](../../doc/api/bookings.md#cancel-booking)
 
 
 # List Bookings
 
 Retrieve a collection of bookings.
 
-To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.  
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
@@ -54,7 +54,7 @@ async listBookings(
 
 ## Response Type
 
-[`ListBookingsResponse`](/doc/models/list-bookings-response.md)
+[`ListBookingsResponse`](../../doc/models/list-bookings-response.md)
 
 ## Example Usage
 
@@ -82,7 +82,7 @@ try {
 
 Creates a booking.
 
-To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.  
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
 ```ts
@@ -96,12 +96,12 @@ async createBooking(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreateBookingRequest`](/doc/models/create-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CreateBookingRequest`](../../doc/models/create-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CreateBookingResponse`](/doc/models/create-booking-response.md)
+[`CreateBookingResponse`](../../doc/models/create-booking-response.md)
 
 ## Example Usage
 
@@ -136,7 +136,7 @@ try {
 
 Searches for availabilities for booking.
 
-To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.  
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
@@ -150,12 +150,12 @@ async searchAvailability(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`SearchAvailabilityRequest`](/doc/models/search-availability-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`SearchAvailabilityRequest`](../../doc/models/search-availability-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`SearchAvailabilityResponse`](/doc/models/search-availability-response.md)
+[`SearchAvailabilityResponse`](../../doc/models/search-availability-response.md)
 
 ## Example Usage
 
@@ -243,7 +243,7 @@ async retrieveBusinessBookingProfile(
 
 ## Response Type
 
-[`RetrieveBusinessBookingProfileResponse`](/doc/models/retrieve-business-booking-profile-response.md)
+[`RetrieveBusinessBookingProfileResponse`](../../doc/models/retrieve-business-booking-profile-response.md)
 
 ## Example Usage
 
@@ -287,7 +287,7 @@ async listTeamMemberBookingProfiles(
 
 ## Response Type
 
-[`ListTeamMemberBookingProfilesResponse`](/doc/models/list-team-member-booking-profiles-response.md)
+[`ListTeamMemberBookingProfilesResponse`](../../doc/models/list-team-member-booking-profiles-response.md)
 
 ## Example Usage
 
@@ -329,7 +329,7 @@ async retrieveTeamMemberBookingProfile(
 
 ## Response Type
 
-[`RetrieveTeamMemberBookingProfileResponse`](/doc/models/retrieve-team-member-booking-profile-response.md)
+[`RetrieveTeamMemberBookingProfileResponse`](../../doc/models/retrieve-team-member-booking-profile-response.md)
 
 ## Example Usage
 
@@ -352,7 +352,7 @@ try {
 
 Retrieves a booking.
 
-To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.  
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
@@ -366,12 +366,12 @@ async retrieveBooking(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bookingId` | `string` | Template, Required | The ID of the [Booking](/doc/models/booking.md) object representing the to-be-retrieved booking. |
+| `bookingId` | `string` | Template, Required | The ID of the [Booking](../../doc/models/booking.md) object representing the to-be-retrieved booking. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`RetrieveBookingResponse`](/doc/models/retrieve-booking-response.md)
+[`RetrieveBookingResponse`](../../doc/models/retrieve-booking-response.md)
 
 ## Example Usage
 
@@ -394,7 +394,7 @@ try {
 
 Updates a booking.
 
-To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.  
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
 ```ts
@@ -409,13 +409,13 @@ async updateBooking(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bookingId` | `string` | Template, Required | The ID of the [Booking](/doc/models/booking.md) object representing the to-be-updated booking. |
-| `body` | [`UpdateBookingRequest`](/doc/models/update-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `bookingId` | `string` | Template, Required | The ID of the [Booking](../../doc/models/booking.md) object representing the to-be-updated booking. |
+| `body` | [`UpdateBookingRequest`](../../doc/models/update-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`UpdateBookingResponse`](/doc/models/update-booking-response.md)
+[`UpdateBookingResponse`](../../doc/models/update-booking-response.md)
 
 ## Example Usage
 
@@ -451,7 +451,7 @@ try {
 
 Cancels an existing booking.
 
-To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.  
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
 ```ts
@@ -466,13 +466,13 @@ async cancelBooking(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `bookingId` | `string` | Template, Required | The ID of the [Booking](/doc/models/booking.md) object representing the to-be-cancelled booking. |
-| `body` | [`CancelBookingRequest`](/doc/models/cancel-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `bookingId` | `string` | Template, Required | The ID of the [Booking](../../doc/models/booking.md) object representing the to-be-cancelled booking. |
+| `body` | [`CancelBookingRequest`](../../doc/models/cancel-booking-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CancelBookingResponse`](/doc/models/cancel-booking-response.md)
+[`CancelBookingResponse`](../../doc/models/cancel-booking-response.md)
 
 ## Example Usage
 

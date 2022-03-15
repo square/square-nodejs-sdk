@@ -2,7 +2,7 @@
 # List Cards Response
 
 Defines the fields that are included in the response body of
-a request to the [ListCards](/doc/api/cards.md#list-cards) endpoint.
+a request to the [ListCards](../../doc/api/cards.md#list-cards) endpoint.
 
 Note: if there are errors processing the request, the card field will not be
 present.
@@ -15,9 +15,9 @@ present.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Information on errors encountered during the request. |
-| `cards` | [`Card[] \| undefined`](/doc/models/card.md) | Optional | The requested list of `Card`s. |
-| `cursor` | `string \| undefined` | Optional | The pagination cursor to be used in a subsequent request. If empty,<br>this is the final response.<br><br>See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information on errors encountered during the request. |
+| `cards` | [`Card[] \| undefined`](../../doc/models/card.md) | Optional | The requested list of `Card`s. |
+| `cursor` | `string \| undefined` | Optional | The pagination cursor to be used in a subsequent request. If empty,<br>this is the final response.<br><br>See [Pagination](../../https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
 
 ## Example (as JSON)
 

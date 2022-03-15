@@ -20,10 +20,10 @@ Square updates the customer ID in response to a merge operation, but does not up
 | `givenName` | `string \| undefined` | Optional | The recipient's given (that is, first) name. |
 | `familyName` | `string \| undefined` | Optional | The recipient's family (that is, last) name. |
 | `emailAddress` | `string \| undefined` | Optional | The recipient's email address. |
-| `address` | [`Address \| undefined`](/doc/models/address.md) | Optional | Represents a postal address in a country.<br>For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses). |
+| `address` | [`Address \| undefined`](../../doc/models/address.md) | Optional | Represents a postal address in a country.<br>For more information, see [Working with Addresses](../../https://developer.squareup.com/docs/build-basics/working-with-addresses). |
 | `phoneNumber` | `string \| undefined` | Optional | The recipient's phone number. |
 | `companyName` | `string \| undefined` | Optional | The name of the recipient's company. |
-| `taxIds` | [`InvoiceRecipientTaxIds \| undefined`](/doc/models/invoice-recipient-tax-ids.md) | Optional | Represents the tax IDs for an invoice recipient. The country of the seller account determines<br>whether the corresponding `tax_ids` field is available for the customer. For more information,<br>see [Invoice recipient tax IDs](https://developer.squareup.com/docs/invoices-api/overview#recipient-tax-ids). |
+| `taxIds` | [`InvoiceRecipientTaxIds \| undefined`](../../doc/models/invoice-recipient-tax-ids.md) | Optional | Represents the tax IDs for an invoice recipient. The country of the seller account determines<br>whether the corresponding `tax_ids` field is available for the customer. For more information,<br>see [Invoice recipient tax IDs](../../https://developer.squareup.com/docs/invoices-api/overview#recipient-tax-ids). |
 
 ## Example (as JSON)
 

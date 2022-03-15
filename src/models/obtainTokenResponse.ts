@@ -48,10 +48,7 @@ export interface ObtainTokenResponse {
    * The short-lived access token returned in the response expires in 24 hours.
    */
   shortLived?: boolean;
-  /**
-   * An error object that provides details about how creation of the obtain
-   * token failed.
-   */
+  /** Any errors that occurred during the request. */
   errors?: Error[];
 }
 

@@ -10,13 +10,13 @@ const paymentsApi = client.paymentsApi;
 
 ## Methods
 
-* [List Payments](/doc/api/payments.md#list-payments)
-* [Create Payment](/doc/api/payments.md#create-payment)
-* [Cancel Payment by Idempotency Key](/doc/api/payments.md#cancel-payment-by-idempotency-key)
-* [Get Payment](/doc/api/payments.md#get-payment)
-* [Update Payment](/doc/api/payments.md#update-payment)
-* [Cancel Payment](/doc/api/payments.md#cancel-payment)
-* [Complete Payment](/doc/api/payments.md#complete-payment)
+* [List Payments](../../doc/api/payments.md#list-payments)
+* [Create Payment](../../doc/api/payments.md#create-payment)
+* [Cancel Payment by Idempotency Key](../../doc/api/payments.md#cancel-payment-by-idempotency-key)
+* [Get Payment](../../doc/api/payments.md#get-payment)
+* [Update Payment](../../doc/api/payments.md#update-payment)
+* [Cancel Payment](../../doc/api/payments.md#cancel-payment)
+* [Complete Payment](../../doc/api/payments.md#complete-payment)
 
 
 # List Payments
@@ -50,7 +50,7 @@ async listPayments(
 | `beginTime` | `string \| undefined` | Query, Optional | The timestamp for the beginning of the reporting period, in RFC 3339 format.<br>Inclusive. Default: The current time minus one year. |
 | `endTime` | `string \| undefined` | Query, Optional | The timestamp for the end of the reporting period, in RFC 3339 format.<br><br>Default: The current time. |
 | `sortOrder` | `string \| undefined` | Query, Optional | The order in which results are listed:<br><br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default). |
-| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](../../https://developer.squareup.com/docs/basics/api101/pagination). |
 | `locationId` | `string \| undefined` | Query, Optional | Limit results to the location supplied. By default, results are returned<br>for the default (main) location associated with the seller. |
 | `total` | `bigint \| undefined` | Query, Optional | The exact amount in the `total_money` for a payment. |
 | `last4` | `string \| undefined` | Query, Optional | The last four digits of a payment card. |
@@ -60,7 +60,7 @@ async listPayments(
 
 ## Response Type
 
-[`ListPaymentsResponse`](/doc/models/list-payments-response.md)
+[`ListPaymentsResponse`](../../doc/models/list-payments-response.md)
 
 ## Example Usage
 
@@ -109,12 +109,12 @@ async createPayment(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreatePaymentRequest`](/doc/models/create-payment-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CreatePaymentRequest`](../../doc/models/create-payment-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CreatePaymentResponse`](/doc/models/create-payment-response.md)
+[`CreatePaymentResponse`](../../doc/models/create-payment-response.md)
 
 ## Example Usage
 
@@ -185,12 +185,12 @@ async cancelPaymentByIdempotencyKey(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CancelPaymentByIdempotencyKeyRequest`](/doc/models/cancel-payment-by-idempotency-key-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CancelPaymentByIdempotencyKeyRequest`](../../doc/models/cancel-payment-by-idempotency-key-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CancelPaymentByIdempotencyKeyResponse`](/doc/models/cancel-payment-by-idempotency-key-response.md)
+[`CancelPaymentByIdempotencyKeyResponse`](../../doc/models/cancel-payment-by-idempotency-key-response.md)
 
 ## Example Usage
 
@@ -233,7 +233,7 @@ async getPayment(
 
 ## Response Type
 
-[`GetPaymentResponse`](/doc/models/get-payment-response.md)
+[`GetPaymentResponse`](../../doc/models/get-payment-response.md)
 
 ## Example Usage
 
@@ -270,12 +270,12 @@ async updatePayment(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `paymentId` | `string` | Template, Required | The ID of the payment to update. |
-| `body` | [`UpdatePaymentRequest`](/doc/models/update-payment-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`UpdatePaymentRequest`](../../doc/models/update-payment-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`UpdatePaymentResponse`](/doc/models/update-payment-response.md)
+[`UpdatePaymentResponse`](../../doc/models/update-payment-response.md)
 
 ## Example Usage
 
@@ -337,7 +337,7 @@ async cancelPayment(
 
 ## Response Type
 
-[`CancelPaymentResponse`](/doc/models/cancel-payment-response.md)
+[`CancelPaymentResponse`](../../doc/models/cancel-payment-response.md)
 
 ## Example Usage
 
@@ -376,12 +376,12 @@ async completePayment(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `paymentId` | `string` | Template, Required | The unique ID identifying the payment to be completed. |
-| `body` | [`CompletePaymentRequest`](/doc/models/complete-payment-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CompletePaymentRequest`](../../doc/models/complete-payment-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CompletePaymentResponse`](/doc/models/complete-payment-response.md)
+[`CompletePaymentResponse`](../../doc/models/complete-payment-response.md)
 
 ## Example Usage
 

@@ -12,9 +12,9 @@ a set of `EmployeeWage` objects.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `employeeWages` | [`EmployeeWage[] \| undefined`](/doc/models/employee-wage.md) | Optional | A page of `EmployeeWage` results. |
+| `employeeWages` | [`EmployeeWage[] \| undefined`](../../doc/models/employee-wage.md) | Optional | A page of `EmployeeWage` results. |
 | `cursor` | `string \| undefined` | Optional | The value supplied in the subsequent request to fetch the next page<br>of `EmployeeWage` results. |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)
 

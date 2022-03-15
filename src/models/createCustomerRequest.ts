@@ -9,7 +9,7 @@ import { CustomerTaxIds, customerTaxIdsSchema } from './customerTaxIds';
 export interface CreateCustomerRequest {
   /**
    * The idempotency key for the request.	For more information, see
-   * [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
+   * [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
    */
   idempotencyKey?: string;
   /** The given name (that is, the first name) associated with the customer profile. */
@@ -27,7 +27,7 @@ export interface CreateCustomerRequest {
    * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
    */
   address?: Address;
-  /** The 11-digit phone number associated with the customer profile. */
+  /** The phone number associated with the customer profile. A phone number can contain 9–16 digits, with an optional `+` prefix. */
   phoneNumber?: string;
   /**
    * An optional second ID used to associate the customer profile with an

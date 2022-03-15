@@ -15,7 +15,7 @@ export interface ListCustomerSegmentsResponse {
    * A pagination cursor to be used in subsequent calls to `ListCustomerSegments`
    * to retrieve the next set of query results. The cursor is only present if the request succeeded and
    * additional results are available.
-   * For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+   * For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
    */
   cursor?: string;
 }

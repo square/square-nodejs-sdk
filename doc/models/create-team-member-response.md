@@ -11,8 +11,8 @@ Represents a response from a create request containing the created `TeamMember` 
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMember` | [`TeamMember \| undefined`](/doc/models/team-member.md) | Optional | A record representing an individual team member for a business. |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | The errors that occurred during the request. |
+| `teamMember` | [`TeamMember \| undefined`](../../doc/models/team-member.md) | Optional | A record representing an individual team member for a business. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | The errors that occurred during the request. |
 
 ## Example (as JSON)
 
@@ -26,14 +26,16 @@ Represents a response from a create request containing the created `TeamMember` 
         "YSGH2WBKG94QZ"
       ]
     },
-    "email_address": "joe_doe@gmail.com",
+    "created_at": "2021-06-11T22:55:45Z",
+    "email_address": "joe_doe@example.com",
     "family_name": "Doe",
     "given_name": "Joe",
     "id": "1yJlHapkseYnNPETIU1B",
     "is_owner": false,
     "phone_number": "+14159283333",
     "reference_id": "reference_id_1",
-    "status": "ACTIVE"
+    "status": "ACTIVE",
+    "updated_at": "2021-06-11T22:55:45Z"
   }
 }
 ```
