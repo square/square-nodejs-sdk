@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `filter` | [`TerminalCheckoutQueryFilter \| undefined`](/doc/models/terminal-checkout-query-filter.md) | Optional | - |
-| `sort` | [`TerminalCheckoutQuerySort \| undefined`](/doc/models/terminal-checkout-query-sort.md) | Optional | - |
+| `filter` | [`TerminalCheckoutQueryFilter \| undefined`](../../doc/models/terminal-checkout-query-filter.md) | Optional | - |
+| `sort` | [`TerminalCheckoutQuerySort \| undefined`](../../doc/models/terminal-checkout-query-sort.md) | Optional | - |
 
 ## Example (as JSON)
 

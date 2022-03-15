@@ -2,7 +2,7 @@
 # Remove Group From Customer Response
 
 Defines the fields that are included in the response body of
-a request to the [RemoveGroupFromCustomer](/doc/api/customers.md#remove-group-from-customer)
+a request to the [RemoveGroupFromCustomer](../../doc/api/customers.md#remove-group-from-customer)
 endpoint.
 
 ## Structure
@@ -13,7 +13,7 @@ endpoint.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)
 

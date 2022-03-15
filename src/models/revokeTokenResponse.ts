@@ -4,10 +4,7 @@ import { Error, errorSchema } from './error';
 export interface RevokeTokenResponse {
   /** If the request is successful, this is `true`. */
   success?: boolean;
-  /**
-   * An error object that provides details about how creation of the obtain
-   * token failed.
-   */
+  /** Any errors that occurred during the request. */
   errors?: Error[];
 }
 

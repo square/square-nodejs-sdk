@@ -5,7 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2022-02-16'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2022-03-16'` |
 | `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
@@ -19,7 +19,7 @@ The API client can be initialized as follows:
 
 ```ts
 const client = new Client({
-  squareVersion: '2022-02-16',
+  squareVersion: '2022-03-16',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
@@ -58,7 +58,10 @@ import {
   Break,
   BreakType,
   BulkCreateTeamMembersRequest,
+  BulkCreateVendorsRequest,
+  BulkRetrieveVendorsRequest,
   BulkUpdateTeamMembersRequest,
+  BulkUpdateVendorsRequest,
   BusinessHours,
   BusinessHoursPeriod,
   BuyNowPayLaterDetails,
@@ -147,6 +150,7 @@ import {
   CreateTeamMemberRequest,
   CreateTerminalCheckoutRequest,
   CreateTerminalRefundRequest,
+  CreateVendorRequest,
   CustomAttributeFilter,
   CustomerCreationSourceFilter,
   CustomerFilter,
@@ -309,6 +313,9 @@ import {
   SearchTeamMembersRequest,
   SearchTerminalCheckoutsRequest,
   SearchTerminalRefundsRequest,
+  SearchVendorsRequest,
+  SearchVendorsRequestFilter,
+  SearchVendorsRequestSort,
   SegmentFilter,
   Shift,
   ShiftFilter,
@@ -360,6 +367,7 @@ import {
   UpdateShiftRequest,
   UpdateSubscriptionRequest,
   UpdateTeamMemberRequest,
+  UpdateVendorRequest,
   UpdateWageSettingRequest,
   UpdateWorkweekConfigRequest,
   UpsertCatalogObjectRequest,
@@ -368,12 +376,15 @@ import {
   V1Money,
   V1TransactionsApi,
   V1UpdateOrderRequest,
+  Vendor,
+  VendorContact,
+  VendorsApi,
   WageSetting,
   WorkweekConfig,
 } from 'square';
 
 const client = new Client({
-  squareVersion: '2022-02-16',
+  squareVersion: '2022-03-16',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
@@ -433,4 +444,5 @@ The gateway for the SDK. This class acts as a factory for the Apis and also hold
 | subscriptions | Gets SubscriptionsApi |
 | team | Gets TeamApi |
 | terminal | Gets TerminalApi |
+| vendors | Gets VendorsApi |
 

@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `items` | [`V1Settlement[] \| undefined`](/doc/models/v1-settlement.md) | Optional | - |
+| `items` | [`V1Settlement[] \| undefined`](../../doc/models/v1-settlement.md) | Optional | - |
 
 ## Example (as JSON)
 

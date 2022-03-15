@@ -10,20 +10,20 @@ const loyaltyApi = client.loyaltyApi;
 
 ## Methods
 
-* [Create Loyalty Account](/doc/api/loyalty.md#create-loyalty-account)
-* [Search Loyalty Accounts](/doc/api/loyalty.md#search-loyalty-accounts)
-* [Retrieve Loyalty Account](/doc/api/loyalty.md#retrieve-loyalty-account)
-* [Accumulate Loyalty Points](/doc/api/loyalty.md#accumulate-loyalty-points)
-* [Adjust Loyalty Points](/doc/api/loyalty.md#adjust-loyalty-points)
-* [Search Loyalty Events](/doc/api/loyalty.md#search-loyalty-events)
-* [List Loyalty Programs](/doc/api/loyalty.md#list-loyalty-programs)
-* [Retrieve Loyalty Program](/doc/api/loyalty.md#retrieve-loyalty-program)
-* [Calculate Loyalty Points](/doc/api/loyalty.md#calculate-loyalty-points)
-* [Create Loyalty Reward](/doc/api/loyalty.md#create-loyalty-reward)
-* [Search Loyalty Rewards](/doc/api/loyalty.md#search-loyalty-rewards)
-* [Delete Loyalty Reward](/doc/api/loyalty.md#delete-loyalty-reward)
-* [Retrieve Loyalty Reward](/doc/api/loyalty.md#retrieve-loyalty-reward)
-* [Redeem Loyalty Reward](/doc/api/loyalty.md#redeem-loyalty-reward)
+* [Create Loyalty Account](../../doc/api/loyalty.md#create-loyalty-account)
+* [Search Loyalty Accounts](../../doc/api/loyalty.md#search-loyalty-accounts)
+* [Retrieve Loyalty Account](../../doc/api/loyalty.md#retrieve-loyalty-account)
+* [Accumulate Loyalty Points](../../doc/api/loyalty.md#accumulate-loyalty-points)
+* [Adjust Loyalty Points](../../doc/api/loyalty.md#adjust-loyalty-points)
+* [Search Loyalty Events](../../doc/api/loyalty.md#search-loyalty-events)
+* [List Loyalty Programs](../../doc/api/loyalty.md#list-loyalty-programs)
+* [Retrieve Loyalty Program](../../doc/api/loyalty.md#retrieve-loyalty-program)
+* [Calculate Loyalty Points](../../doc/api/loyalty.md#calculate-loyalty-points)
+* [Create Loyalty Reward](../../doc/api/loyalty.md#create-loyalty-reward)
+* [Search Loyalty Rewards](../../doc/api/loyalty.md#search-loyalty-rewards)
+* [Delete Loyalty Reward](../../doc/api/loyalty.md#delete-loyalty-reward)
+* [Retrieve Loyalty Reward](../../doc/api/loyalty.md#retrieve-loyalty-reward)
+* [Redeem Loyalty Reward](../../doc/api/loyalty.md#redeem-loyalty-reward)
 
 
 # Create Loyalty Account
@@ -41,12 +41,12 @@ async createLoyaltyAccount(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreateLoyaltyAccountRequest`](/doc/models/create-loyalty-account-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CreateLoyaltyAccountRequest`](../../doc/models/create-loyalty-account-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CreateLoyaltyAccountResponse`](/doc/models/create-loyalty-account-response.md)
+[`CreateLoyaltyAccountResponse`](../../doc/models/create-loyalty-account-response.md)
 
 ## Example Usage
 
@@ -104,12 +104,12 @@ async searchLoyaltyAccounts(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`SearchLoyaltyAccountsRequest`](/doc/models/search-loyalty-accounts-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`SearchLoyaltyAccountsRequest`](../../doc/models/search-loyalty-accounts-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`SearchLoyaltyAccountsResponse`](/doc/models/search-loyalty-accounts-response.md)
+[`SearchLoyaltyAccountsResponse`](../../doc/models/search-loyalty-accounts-response.md)
 
 ## Example Usage
 
@@ -162,12 +162,12 @@ async retrieveLoyaltyAccount(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `accountId` | `string` | Template, Required | The ID of the [loyalty account](/doc/models/loyalty-account.md) to retrieve. |
+| `accountId` | `string` | Template, Required | The ID of the [loyalty account](../../doc/models/loyalty-account.md) to retrieve. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`RetrieveLoyaltyAccountResponse`](/doc/models/retrieve-loyalty-account-response.md)
+[`RetrieveLoyaltyAccountResponse`](../../doc/models/retrieve-loyalty-account-response.md)
 
 ## Example Usage
 
@@ -195,7 +195,7 @@ Adds points to a loyalty account.
 - If you are not using the Orders API to manage orders,
   you first perform a client-side computation to compute the points.  
   For spend-based and visit-based programs, you can first call
-  [CalculateLoyaltyPoints](/doc/api/loyalty.md#calculate-loyalty-points) to compute the points  
+  [CalculateLoyaltyPoints](../../doc/api/loyalty.md#calculate-loyalty-points) to compute the points  
   that you provide to this endpoint.
 
 ```ts
@@ -210,13 +210,13 @@ async accumulateLoyaltyPoints(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `accountId` | `string` | Template, Required | The [loyalty account](/doc/models/loyalty-account.md) ID to which to add the points. |
-| `body` | [`AccumulateLoyaltyPointsRequest`](/doc/models/accumulate-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `accountId` | `string` | Template, Required | The [loyalty account](../../doc/models/loyalty-account.md) ID to which to add the points. |
+| `body` | [`AccumulateLoyaltyPointsRequest`](../../doc/models/accumulate-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`AccumulateLoyaltyPointsResponse`](/doc/models/accumulate-loyalty-points-response.md)
+[`AccumulateLoyaltyPointsResponse`](../../doc/models/accumulate-loyalty-points-response.md)
 
 ## Example Usage
 
@@ -252,7 +252,7 @@ try {
 Adds points to or subtracts points from a buyer's account.
 
 Use this endpoint only when you need to manually adjust points. Otherwise, in your application flow, you call
-[AccumulateLoyaltyPoints](/doc/api/loyalty.md#accumulate-loyalty-points)
+[AccumulateLoyaltyPoints](../../doc/api/loyalty.md#accumulate-loyalty-points)
 to add points when a buyer pays for the purchase.
 
 ```ts
@@ -267,13 +267,13 @@ async adjustLoyaltyPoints(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `accountId` | `string` | Template, Required | The ID of the [loyalty account](/doc/models/loyalty-account.md) in which to adjust the points. |
-| `body` | [`AdjustLoyaltyPointsRequest`](/doc/models/adjust-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `accountId` | `string` | Template, Required | The ID of the [loyalty account](../../doc/models/loyalty-account.md) in which to adjust the points. |
+| `body` | [`AdjustLoyaltyPointsRequest`](../../doc/models/adjust-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`AdjustLoyaltyPointsResponse`](/doc/models/adjust-loyalty-points-response.md)
+[`AdjustLoyaltyPointsResponse`](../../doc/models/adjust-loyalty-points-response.md)
 
 ## Example Usage
 
@@ -326,12 +326,12 @@ async searchLoyaltyEvents(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`SearchLoyaltyEventsRequest`](/doc/models/search-loyalty-events-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`SearchLoyaltyEventsRequest`](../../doc/models/search-loyalty-events-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`SearchLoyaltyEventsResponse`](/doc/models/search-loyalty-events-response.md)
+[`SearchLoyaltyEventsResponse`](../../doc/models/search-loyalty-events-response.md)
 
 ## Example Usage
 
@@ -396,9 +396,9 @@ try {
 **This endpoint is deprecated.**
 
 Returns a list of loyalty programs in the seller's account.
-Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
+Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](../../https://developer.squareup.com/docs/loyalty/overview).
 
-Replaced with [RetrieveLoyaltyProgram](/doc/api/loyalty.md#retrieve-loyalty-program) when used with the keyword `main`.
+Replaced with [RetrieveLoyaltyProgram](../../doc/api/loyalty.md#retrieve-loyalty-program) when used with the keyword `main`.
 
 ```ts
 async listLoyaltyPrograms(
@@ -414,7 +414,7 @@ async listLoyaltyPrograms(
 
 ## Response Type
 
-[`ListLoyaltyProgramsResponse`](/doc/models/list-loyalty-programs-response.md)
+[`ListLoyaltyProgramsResponse`](../../doc/models/list-loyalty-programs-response.md)
 
 ## Example Usage
 
@@ -436,7 +436,7 @@ try {
 
 Retrieves the loyalty program in a seller's account, specified by the program ID or the keyword `main`.
 
-Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
+Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](../../https://developer.squareup.com/docs/loyalty/overview).
 
 ```ts
 async retrieveLoyaltyProgram(
@@ -454,7 +454,7 @@ async retrieveLoyaltyProgram(
 
 ## Response Type
 
-[`RetrieveLoyaltyProgramResponse`](/doc/models/retrieve-loyalty-program-response.md)
+[`RetrieveLoyaltyProgramResponse`](../../doc/models/retrieve-loyalty-program-response.md)
 
 ## Example Usage
 
@@ -499,13 +499,13 @@ async calculateLoyaltyPoints(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `programId` | `string` | Template, Required | The [loyalty program](/doc/models/loyalty-program.md) ID, which defines the rules for accruing points. |
-| `body` | [`CalculateLoyaltyPointsRequest`](/doc/models/calculate-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `programId` | `string` | Template, Required | The [loyalty program](../../doc/models/loyalty-program.md) ID, which defines the rules for accruing points. |
+| `body` | [`CalculateLoyaltyPointsRequest`](../../doc/models/calculate-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CalculateLoyaltyPointsResponse`](/doc/models/calculate-loyalty-points-response.md)
+[`CalculateLoyaltyPointsResponse`](../../doc/models/calculate-loyalty-points-response.md)
 
 ## Example Usage
 
@@ -555,12 +555,12 @@ async createLoyaltyReward(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`CreateLoyaltyRewardRequest`](/doc/models/create-loyalty-reward-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`CreateLoyaltyRewardRequest`](../../doc/models/create-loyalty-reward-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`CreateLoyaltyRewardResponse`](/doc/models/create-loyalty-reward-response.md)
+[`CreateLoyaltyRewardResponse`](../../doc/models/create-loyalty-reward-response.md)
 
 ## Example Usage
 
@@ -596,12 +596,11 @@ try {
 
 # Search Loyalty Rewards
 
-Searches for loyalty rewards in a loyalty account.
-
-In the current implementation, the endpoint supports search by the reward `status`.
+Searches for loyalty rewards. This endpoint accepts a request with no query filters and returns results for all loyalty accounts.
+If you include a `query` object, `loyalty_account_id` is required and `status` is  optional.
 
 If you know a reward ID, use the
-[RetrieveLoyaltyReward](/doc/api/loyalty.md#retrieve-loyalty-reward) endpoint.
+[RetrieveLoyaltyReward](../../doc/api/loyalty.md#retrieve-loyalty-reward) endpoint.
 
 Search results are sorted by `updated_at` in descending order.
 
@@ -616,12 +615,12 @@ async searchLoyaltyRewards(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `body` | [`SearchLoyaltyRewardsRequest`](/doc/models/search-loyalty-rewards-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `body` | [`SearchLoyaltyRewardsRequest`](../../doc/models/search-loyalty-rewards-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`SearchLoyaltyRewardsResponse`](/doc/models/search-loyalty-rewards-response.md)
+[`SearchLoyaltyRewardsResponse`](../../doc/models/search-loyalty-rewards-response.md)
 
 ## Example Usage
 
@@ -656,7 +655,7 @@ Deletes a loyalty reward by doing the following:
 
 - Returns the loyalty points back to the loyalty account.
 - If an order ID was specified when the reward was created
-  (see [CreateLoyaltyReward](/doc/api/loyalty.md#create-loyalty-reward)),
+  (see [CreateLoyaltyReward](../../doc/api/loyalty.md#create-loyalty-reward)),
   it updates the order by removing the reward and related
   discounts.
 
@@ -673,12 +672,12 @@ async deleteLoyaltyReward(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](/doc/models/loyalty-reward.md) to delete. |
+| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](../../doc/models/loyalty-reward.md) to delete. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`DeleteLoyaltyRewardResponse`](/doc/models/delete-loyalty-reward-response.md)
+[`DeleteLoyaltyRewardResponse`](../../doc/models/delete-loyalty-reward-response.md)
 
 ## Example Usage
 
@@ -712,12 +711,12 @@ async retrieveLoyaltyReward(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](/doc/models/loyalty-reward.md) to retrieve. |
+| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](../../doc/models/loyalty-reward.md) to retrieve. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`RetrieveLoyaltyRewardResponse`](/doc/models/retrieve-loyalty-reward-response.md)
+[`RetrieveLoyaltyRewardResponse`](../../doc/models/retrieve-loyalty-reward-response.md)
 
 ## Example Usage
 
@@ -762,13 +761,13 @@ async redeemLoyaltyReward(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](/doc/models/loyalty-reward.md) to redeem. |
-| `body` | [`RedeemLoyaltyRewardRequest`](/doc/models/redeem-loyalty-reward-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](../../doc/models/loyalty-reward.md) to redeem. |
+| `body` | [`RedeemLoyaltyRewardRequest`](../../doc/models/redeem-loyalty-reward-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
 
-[`RedeemLoyaltyRewardResponse`](/doc/models/redeem-loyalty-reward-response.md)
+[`RedeemLoyaltyRewardResponse`](../../doc/models/redeem-loyalty-reward-response.md)
 
 ## Example Usage
 

@@ -17,13 +17,13 @@ order subtotal.
 |  --- | --- | --- | --- |
 | `uid` | `string \| undefined` | Optional | A unique ID that identifies the returned tax only within this order.<br>**Constraints**: *Maximum Length*: `60` |
 | `sourceTaxUid` | `string \| undefined` | Optional | The tax `uid` from the order that contains the original tax charge.<br>**Constraints**: *Maximum Length*: `60` |
-| `catalogObjectId` | `string \| undefined` | Optional | The catalog object ID referencing [CatalogTax](/doc/models/catalog-tax.md).<br>**Constraints**: *Maximum Length*: `192` |
+| `catalogObjectId` | `string \| undefined` | Optional | The catalog object ID referencing [CatalogTax](../../doc/models/catalog-tax.md).<br>**Constraints**: *Maximum Length*: `192` |
 | `catalogVersion` | `bigint \| undefined` | Optional | The version of the catalog object that this tax references. |
 | `name` | `string \| undefined` | Optional | The tax's name.<br>**Constraints**: *Maximum Length*: `255` |
-| `type` | [`string \| undefined`](/doc/models/order-line-item-tax-type.md) | Optional | Indicates how the tax is applied to the associated line item or order. |
+| `type` | [`string \| undefined`](../../doc/models/order-line-item-tax-type.md) | Optional | Indicates how the tax is applied to the associated line item or order. |
 | `percentage` | `string \| undefined` | Optional | The percentage of the tax, as a string representation of a decimal number.<br>For example, a value of `"7.25"` corresponds to a percentage of 7.25%.<br>**Constraints**: *Maximum Length*: `10` |
-| `appliedMoney` | [`Money \| undefined`](/doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
-| `scope` | [`string \| undefined`](/doc/models/order-line-item-tax-scope.md) | Optional | Indicates whether this is a line-item or order-level tax. |
+| `appliedMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](../../https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
+| `scope` | [`string \| undefined`](../../doc/models/order-line-item-tax-scope.md) | Optional | Indicates whether this is a line-item or order-level tax. |
 
 ## Example (as JSON)
 

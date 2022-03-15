@@ -11,7 +11,7 @@ Group of standard measurement units.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `standardUnitDescriptions` | [`StandardUnitDescription[] \| undefined`](/doc/models/standard-unit-description.md) | Optional | List of standard (non-custom) measurement units in this description group. |
+| `standardUnitDescriptions` | [`StandardUnitDescription[] \| undefined`](../../doc/models/standard-unit-description.md) | Optional | List of standard (non-custom) measurement units in this description group. |
 | `languageCode` | `string \| undefined` | Optional | IETF language tag. |
 
 ## Example (as JSON)

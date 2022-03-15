@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `businessBookingProfile` | [`BusinessBookingProfile \| undefined`](/doc/models/business-booking-profile.md) | Optional | - |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Errors that occurred during the request. |
+| `businessBookingProfile` | [`BusinessBookingProfile \| undefined`](../../doc/models/business-booking-profile.md) | Optional | - |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Errors that occurred during the request. |
 
 ## Example (as JSON)
 

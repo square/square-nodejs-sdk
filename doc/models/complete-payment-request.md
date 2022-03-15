@@ -2,7 +2,7 @@
 # Complete Payment Request
 
 Describes a request to complete (capture) a payment using
-[CompletePayment](/doc/api/payments.md#complete-payment).
+[CompletePayment](../../doc/api/payments.md#complete-payment).
 
 By default, payments are set to `autocomplete` immediately after they are created.
 To complete payments manually, set `autocomplete` to `false`.

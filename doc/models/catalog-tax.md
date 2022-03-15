@@ -12,8 +12,8 @@ A tax applicable to an item.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `name` | `string \| undefined` | Optional | The tax's name. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points.<br>**Constraints**: *Maximum Length*: `255` |
-| `calculationPhase` | [`string \| undefined`](/doc/models/tax-calculation-phase.md) | Optional | When to calculate the taxes due on a cart. |
-| `inclusionType` | [`string \| undefined`](/doc/models/tax-inclusion-type.md) | Optional | Whether to the tax amount should be additional to or included in the CatalogItem price. |
+| `calculationPhase` | [`string \| undefined`](../../doc/models/tax-calculation-phase.md) | Optional | When to calculate the taxes due on a cart. |
+| `inclusionType` | [`string \| undefined`](../../doc/models/tax-inclusion-type.md) | Optional | Whether to the tax amount should be additional to or included in the CatalogItem price. |
 | `percentage` | `string \| undefined` | Optional | The percentage of the tax in decimal form, using a `'.'` as the decimal separator and without a `'%'` sign.<br>A value of `7.5` corresponds to 7.5%. |
 | `appliesToCustomAmounts` | `boolean \| undefined` | Optional | If `true`, the fee applies to custom amounts entered into the Square Point of Sale<br>app that are not associated with a particular `CatalogItem`. |
 | `enabled` | `boolean \| undefined` | Optional | A Boolean flag to indicate whether the tax is displayed as enabled (`true`) in the Square Point of Sale app or not (`false`). |

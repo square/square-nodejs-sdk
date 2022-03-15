@@ -2,7 +2,7 @@
 # Void Transaction Response
 
 Defines the fields that are included in the response body of
-a request to the [VoidTransaction](/doc/api/transactions.md#void-transaction) endpoint.
+a request to the [VoidTransaction](../../doc/api/transactions.md#void-transaction) endpoint.
 
 ## Structure
 
@@ -12,7 +12,7 @@ a request to the [VoidTransaction](/doc/api/transactions.md#void-transaction) en
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)
 

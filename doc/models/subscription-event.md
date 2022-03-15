@@ -12,10 +12,10 @@ Describes changes to a subscription and the subscription status.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string` | Required | The ID of the subscription event. |
-| `subscriptionEventType` | [`string`](/doc/models/subscription-event-subscription-event-type.md) | Required | Supported types of an event occurred to a subscription. |
+| `subscriptionEventType` | [`string`](../../doc/models/subscription-event-subscription-event-type.md) | Required | Supported types of an event occurred to a subscription. |
 | `effectiveDate` | `string` | Required | The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) when the subscription event occurred. |
 | `planId` | `string` | Required | The ID of the subscription plan associated with the subscription. |
-| `info` | [`SubscriptionEventInfo \| undefined`](/doc/models/subscription-event-info.md) | Optional | Provides information about the subscription event. |
+| `info` | [`SubscriptionEventInfo \| undefined`](../../doc/models/subscription-event-info.md) | Optional | Provides information about the subscription event. |
 
 ## Example (as JSON)
 

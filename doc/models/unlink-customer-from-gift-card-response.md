@@ -12,8 +12,8 @@ the response contains a set of `Error` objects.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `giftCard` | [`GiftCard \| undefined`](/doc/models/gift-card.md) | Optional | Represents a Square gift card. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `giftCard` | [`GiftCard \| undefined`](../../doc/models/gift-card.md) | Optional | Represents a Square gift card. |
 
 ## Example (as JSON)
 

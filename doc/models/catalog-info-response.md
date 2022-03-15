@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `limits` | [`CatalogInfoResponseLimits \| undefined`](/doc/models/catalog-info-response-limits.md) | Optional | - |
-| `standardUnitDescriptionGroup` | [`StandardUnitDescriptionGroup \| undefined`](/doc/models/standard-unit-description-group.md) | Optional | Group of standard measurement units. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `limits` | [`CatalogInfoResponseLimits \| undefined`](../../doc/models/catalog-info-response-limits.md) | Optional | - |
+| `standardUnitDescriptionGroup` | [`StandardUnitDescriptionGroup \| undefined`](../../doc/models/standard-unit-description-group.md) | Optional | Group of standard measurement units. |
 
 ## Example (as JSON)
 

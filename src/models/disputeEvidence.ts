@@ -15,7 +15,7 @@ export interface DisputeEvidence {
   evidenceFile?: DisputeEvidenceFile;
   /** Raw text */
   evidenceText?: string;
-  /** The time when the next action is due, in RFC 3339 format. */
+  /** The time when the evidence was uploaded, in RFC 3339 format. */
   uploadedAt?: string;
   /** The type of the dispute evidence. */
   evidenceType?: string;

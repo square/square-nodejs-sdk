@@ -2,7 +2,7 @@
 # Swap Plan Request
 
 Defines input parameters in a call to the
-[SwapPlan](/doc/api/subscriptions.md#swap-plan) endpoint.
+[SwapPlan](../../doc/api/subscriptions.md#swap-plan) endpoint.
 
 ## Structure
 

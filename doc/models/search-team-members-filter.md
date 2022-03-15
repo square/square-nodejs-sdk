@@ -20,7 +20,7 @@ returns only active team members assigned to either location "A" or "B".
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `locationIds` | `string[] \| undefined` | Optional | When present, filters by team members assigned to the specified locations.<br>When empty, includes team members assigned to any location. |
-| `status` | [`string \| undefined`](/doc/models/team-member-status.md) | Optional | Enumerates the possible statuses the team member can have within a business. |
+| `status` | [`string \| undefined`](../../doc/models/team-member-status.md) | Optional | Enumerates the possible statuses the team member can have within a business. |
 | `isOwner` | `boolean \| undefined` | Optional | When present and set to true, returns the team member who is the owner of the Square account. |
 
 ## Example (as JSON)

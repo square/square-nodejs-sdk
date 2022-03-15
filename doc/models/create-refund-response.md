@@ -2,7 +2,7 @@
 # Create Refund Response
 
 Defines the fields that are included in the response body of
-a request to the [CreateRefund]($e/Transactions/CreateRefund) endpoint.
+a request to the [CreateRefund](../../$e/Transactions/CreateRefund) endpoint.
 
 One of `errors` or `refund` is present in a given response (never both).
 
@@ -14,8 +14,8 @@ One of `errors` or `refund` is present in a given response (never both).
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `refund` | [`Refund \| undefined`](/doc/models/refund.md) | Optional | Represents a refund processed for a Square transaction. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `refund` | [`Refund \| undefined`](../../doc/models/refund.md) | Optional | Represents a refund processed for a Square transaction. |
 
 ## Example (as JSON)
 

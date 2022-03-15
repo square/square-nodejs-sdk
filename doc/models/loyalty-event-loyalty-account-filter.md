@@ -11,7 +11,7 @@ Filter events by loyalty account.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `loyaltyAccountId` | `string` | Required | The ID of the [loyalty account](/doc/models/loyalty-account.md) associated with loyalty events.<br>**Constraints**: *Minimum Length*: `1` |
+| `loyaltyAccountId` | `string` | Required | The ID of the [loyalty account](../../doc/models/loyalty-account.md) associated with loyalty events.<br>**Constraints**: *Minimum Length*: `1` |
 
 ## Example (as JSON)
 

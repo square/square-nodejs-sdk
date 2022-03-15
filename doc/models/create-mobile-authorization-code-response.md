@@ -13,8 +13,8 @@ a request to the `CreateMobileAuthorizationCode` endpoint.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `authorizationCode` | `string \| undefined` | Optional | The generated authorization code that connects a mobile application instance<br>to a Square account.<br>**Constraints**: *Maximum Length*: `191` |
-| `expiresAt` | `string \| undefined` | Optional | The timestamp when `authorization_code` expires, in<br>[RFC 3339](https://tools.ietf.org/html/rfc3339) format (for example, "2016-09-04T23:59:33.123Z").<br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `48` |
-| `error` | [`Error \| undefined`](/doc/models/error.md) | Optional | Represents an error encountered during a request to the Connect API.<br><br>See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-errors) for more information. |
+| `expiresAt` | `string \| undefined` | Optional | The timestamp when `authorization_code` expires, in<br>[RFC 3339](../../https://tools.ietf.org/html/rfc3339) format (for example, "2016-09-04T23:59:33.123Z").<br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `48` |
+| `error` | [`Error \| undefined`](../../doc/models/error.md) | Optional | Represents an error encountered during a request to the Connect API.<br><br>See [Handling errors](../../https://developer.squareup.com/docs/build-basics/handling-errors) for more information. |
 
 ## Example (as JSON)
 

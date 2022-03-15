@@ -19,9 +19,9 @@ taken during the shift.
 | `timezone` | `string \| undefined` | Optional | The read-only convenience value that is calculated from the location based<br>on the `location_id`. Format: the IANA timezone database identifier for the<br>location timezone. |
 | `startAt` | `string` | Required | RFC 3339; shifted to the location timezone + offset. Precision up to the<br>minute is respected; seconds are truncated.<br>**Constraints**: *Minimum Length*: `1` |
 | `endAt` | `string \| undefined` | Optional | RFC 3339; shifted to the timezone + offset. Precision up to the minute is<br>respected; seconds are truncated. |
-| `wage` | [`ShiftWage \| undefined`](/doc/models/shift-wage.md) | Optional | The hourly wage rate used to compensate an employee for this shift. |
-| `breaks` | [`Break[] \| undefined`](/doc/models/break.md) | Optional | A list of all the paid or unpaid breaks that were taken during this shift. |
-| `status` | [`string \| undefined`](/doc/models/shift-status.md) | Optional | Enumerates the possible status of a `Shift`. |
+| `wage` | [`ShiftWage \| undefined`](../../doc/models/shift-wage.md) | Optional | The hourly wage rate used to compensate an employee for this shift. |
+| `breaks` | [`Break[] \| undefined`](../../doc/models/break.md) | Optional | A list of all the paid or unpaid breaks that were taken during this shift. |
+| `status` | [`string \| undefined`](../../doc/models/shift-status.md) | Optional | Enumerates the possible status of a `Shift`. |
 | `version` | `number \| undefined` | Optional | Used for resolving concurrency issues. The request fails if the version<br>provided does not match the server version at the time of the request. If not provided,<br>Square executes a blind write; potentially overwriting data from another<br>write. |
 | `createdAt` | `string \| undefined` | Optional | A read-only timestamp in RFC 3339 format; presented in UTC. |
 | `updatedAt` | `string \| undefined` | Optional | A read-only timestamp in RFC 3339 format; presented in UTC. |

@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `objects` | [`CatalogObject[] \| undefined`](/doc/models/catalog-object.md) | Optional | A list of [CatalogObject](/doc/models/catalog-object.md)s returned. |
-| `relatedObjects` | [`CatalogObject[] \| undefined`](/doc/models/catalog-object.md) | Optional | A list of [CatalogObject](/doc/models/catalog-object.md)s referenced by the object in the `objects` field. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `objects` | [`CatalogObject[] \| undefined`](../../doc/models/catalog-object.md) | Optional | A list of [CatalogObject](../../doc/models/catalog-object.md)s returned. |
+| `relatedObjects` | [`CatalogObject[] \| undefined`](../../doc/models/catalog-object.md) | Optional | A list of [CatalogObject](../../doc/models/catalog-object.md)s referenced by the object in the `objects` field. |
 
 ## Example (as JSON)
 

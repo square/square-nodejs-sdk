@@ -6,7 +6,7 @@ import { CustomerGroup, customerGroupSchema } from './customerGroup';
  * [CreateCustomerGroup]($e/CustomerGroups/CreateCustomerGroup) endpoint.
  */
 export interface CreateCustomerGroupRequest {
-  /** The idempotency key for the request. For more information, see [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency). */
+  /** The idempotency key for the request. For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency). */
   idempotencyKey?: string;
   /**
    * Represents a group of customer profiles.

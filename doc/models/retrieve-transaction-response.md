@@ -2,7 +2,7 @@
 # Retrieve Transaction Response
 
 Defines the fields that are included in the response body of
-a request to the [RetrieveTransaction](/doc/api/transactions.md#retrieve-transaction) endpoint.
+a request to the [RetrieveTransaction](../../doc/api/transactions.md#retrieve-transaction) endpoint.
 
 One of `errors` or `transaction` is present in a given response (never both).
 
@@ -14,8 +14,8 @@ One of `errors` or `transaction` is present in a given response (never both).
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `transaction` | [`Transaction \| undefined`](/doc/models/transaction.md) | Optional | Represents a transaction processed with Square, either with the<br>Connect API or with Square Point of Sale.<br><br>The `tenders` field of this object lists all methods of payment used to pay in<br>the transaction. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `transaction` | [`Transaction \| undefined`](../../doc/models/transaction.md) | Optional | Represents a transaction processed with Square, either with the<br>Connect API or with Square Point of Sale.<br><br>The `tenders` field of this object lists all methods of payment used to pay in<br>the transaction. |
 
 ## Example (as JSON)
 

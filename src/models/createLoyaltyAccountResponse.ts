@@ -8,7 +8,7 @@ export interface CreateLoyaltyAccountResponse {
   errors?: Error[];
   /**
    * Describes a loyalty account in a [loyalty program]($m/LoyaltyProgram). For more information, see
-   * [Manage Loyalty Accounts Using the Loyalty API](https://developer.squareup.com/docs/loyalty-api/overview).
+   * [Create and Retrieve Loyalty Accounts](https://developer.squareup.com/docs/loyalty-api/loyalty-accounts).
    */
   loyaltyAccount?: LoyaltyAccount;
 }

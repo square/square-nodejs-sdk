@@ -1,7 +1,7 @@
 
 # List Merchants Request
 
-Request object for the [ListMerchant](/doc/api/merchants.md#list-merchants) endpoint.
+Request object for the [ListMerchant](../../doc/api/merchants.md#list-merchants) endpoint.
 
 ## Structure
 

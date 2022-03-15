@@ -1,7 +1,7 @@
 
 # Delete Subscription Action Response
 
-Defines output parameters in a response of the [DeleteSubscriptionAction](/doc/api/subscriptions.md#delete-subscription-action)
+Defines output parameters in a response of the [DeleteSubscriptionAction](../../doc/api/subscriptions.md#delete-subscription-action)
 endpoint.
 
 ## Structure
@@ -12,8 +12,8 @@ endpoint.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Errors encountered during the request. |
-| `subscription` | [`Subscription \| undefined`](/doc/models/subscription.md) | Optional | Represents a subscription to a subscription plan by a subscriber.<br><br>For an overview of the `Subscription` type, see<br>[Subscription object](https://developer.squareup.com/docs/subscriptions-api/overview#subscription-object-overview). |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Errors encountered during the request. |
+| `subscription` | [`Subscription \| undefined`](../../doc/models/subscription.md) | Optional | Represents a subscription to a subscription plan by a subscriber.<br><br>For an overview of the `Subscription` type, see<br>[Subscription object](../../https://developer.squareup.com/docs/subscriptions-api/overview#subscription-object-overview). |
 
 ## Example (as JSON)
 

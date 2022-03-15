@@ -2,7 +2,7 @@
 # Search Subscriptions Filter
 
 Represents a set of query expressions (filters) to narrow the scope of targeted subscriptions returned by
-the [SearchSubscriptions](/doc/api/subscriptions.md#search-subscriptions) endpoint.
+the [SearchSubscriptions](../../doc/api/subscriptions.md#search-subscriptions) endpoint.
 
 ## Structure
 

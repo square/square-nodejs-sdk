@@ -11,9 +11,9 @@ Information about a booking creator.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `creatorType` | [`string \| undefined`](/doc/models/booking-creator-details-creator-type.md) | Optional | Supported types of a booking creator. |
-| `teamMemberId` | `string \| undefined` | Optional | The ID of the team member who created the booking, when the booking creator is of the `TEAM_MEMBER` type.<br>Access to this field requires seller-level permissions. |
-| `customerId` | `string \| undefined` | Optional | The ID of the customer who created the booking, when the booking creator is of the `CUSTOMER` type.<br>Access to this field requires seller-level permissions. |
+| `creatorType` | [`string \| undefined`](../../doc/models/booking-creator-details-creator-type.md) | Optional | Supported types of a booking creator. |
+| `teamMemberId` | `string \| undefined` | Optional | The ID of the team member who created the booking, when the booking creator is of the `TEAM_MEMBER` type.<br>Access to this field requires seller-level permissions.<br>**Constraints**: *Maximum Length*: `32` |
+| `customerId` | `string \| undefined` | Optional | The ID of the customer who created the booking, when the booking creator is of the `CUSTOMER` type.<br>Access to this field requires seller-level permissions.<br>**Constraints**: *Maximum Length*: `192` |
 
 ## Example (as JSON)
 

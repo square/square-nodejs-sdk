@@ -1,7 +1,7 @@
 
 # Invoice Delivery Method
 
-Indicates how Square delivers the [invoice](/doc/models/invoice.md) to the customer.
+Indicates how Square delivers the [invoice](../../doc/models/invoice.md) to the customer.
 
 ## Enumeration
 

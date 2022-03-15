@@ -15,7 +15,7 @@
 | `deviceId` | `string \| undefined` | Optional | The unique id of the device that used this code. Populated when the device is paired up. |
 | `productType` | `string` | Required, Constant | **Default**: `'TERMINAL_API'` |
 | `locationId` | `string \| undefined` | Optional | The location assigned to this code.<br>**Constraints**: *Maximum Length*: `50` |
-| `status` | [`string \| undefined`](/doc/models/device-code-status.md) | Optional | DeviceCode.Status enum. |
+| `status` | [`string \| undefined`](../../doc/models/device-code-status.md) | Optional | DeviceCode.Status enum. |
 | `pairBy` | `string \| undefined` | Optional | When this DeviceCode will expire and no longer login. Timestamp in RFC 3339 format. |
 | `createdAt` | `string \| undefined` | Optional | When this DeviceCode was created. Timestamp in RFC 3339 format. |
 | `statusChangedAt` | `string \| undefined` | Optional | When this DeviceCode's status was last changed. Timestamp in RFC 3339 format. |

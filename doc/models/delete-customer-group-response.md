@@ -2,7 +2,7 @@
 # Delete Customer Group Response
 
 Defines the fields that are included in the response body of
-a request to the [DeleteCustomerGroup](/doc/api/customer-groups.md#delete-customer-group) endpoint.
+a request to the [DeleteCustomerGroup](../../doc/api/customer-groups.md#delete-customer-group) endpoint.
 
 ## Structure
 
@@ -12,7 +12,7 @@ a request to the [DeleteCustomerGroup](/doc/api/customer-groups.md#delete-custom
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)
 

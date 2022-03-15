@@ -1,7 +1,7 @@
 
 # Update Location Response
 
-Response object returned by the [UpdateLocation](/doc/api/locations.md#update-location) endpoint.
+Response object returned by the [UpdateLocation](../../doc/api/locations.md#update-location) endpoint.
 
 ## Structure
 
@@ -11,8 +11,8 @@ Response object returned by the [UpdateLocation](/doc/api/locations.md#update-lo
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Information on errors encountered during the request. |
-| `location` | [`Location \| undefined`](/doc/models/location.md) | Optional | Represents one of a business's [locations](https://developer.squareup.com/docs/locations-api). |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information on errors encountered during the request. |
+| `location` | [`Location \| undefined`](../../doc/models/location.md) | Optional | Represents one of a business's [locations](../../https://developer.squareup.com/docs/locations-api). |
 
 ## Example (as JSON)
 
@@ -25,40 +25,45 @@ Response object returned by the [UpdateLocation](/doc/api/locations.md#update-lo
       "locality": "Atlanta",
       "postal_code": "30309"
     },
-    "business_email": "example@squareup.com",
     "business_hours": {
       "periods": [
         {
-          "day_of_week": "MON",
-          "end_local_time": "17:00",
+          "day_of_week": "FRI",
+          "end_local_time": "18:00",
+          "start_local_time": "07:00"
+        },
+        {
+          "day_of_week": "SAT",
+          "end_local_time": "18:00",
+          "start_local_time": "07:00"
+        },
+        {
+          "day_of_week": "SUN",
+          "end_local_time": "15:00",
           "start_local_time": "09:00"
         }
       ]
     },
-    "business_name": "Business Name",
+    "business_name": "Jet Fuel Coffee",
     "capabilities": [
       "CREDIT_CARD_PROCESSING"
     ],
     "coordinates": {
-      "latitude": 33.788567,
-      "longitude": -84.466947
+      "latitude": 33.7889,
+      "longitude": -84.3841
     },
     "country": "US",
-    "created_at": "2019-07-19T17:58:25Z",
+    "created_at": "2022-02-19T17:58:25Z",
     "currency": "USD",
-    "description": "Updated description",
-    "id": "LOCATION_ID",
-    "instagram_username": "instagram",
+    "description": "Midtown Atlanta store - Open weekends",
+    "id": "3Z4V4WHQK64X9",
     "language_code": "en-US",
-    "mcc": "1234",
-    "merchant_id": "MERCHANT_ID",
-    "name": "Updated nickname",
-    "phone_number": "5559211234",
+    "mcc": "7299",
+    "merchant_id": "3MYCJG5GVYQ8Q",
+    "name": "Midtown",
     "status": "ACTIVE",
     "timezone": "America/New_York",
-    "twitter_username": "twitter",
-    "type": "MOBILE",
-    "website_url": "examplewebsite.com"
+    "type": "PHYSICAL"
   }
 }
 ```

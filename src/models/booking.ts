@@ -34,7 +34,7 @@ export interface Booking {
   updatedAt?: string;
   /** The RFC 3339 timestamp specifying the starting time of this booking. */
   startAt?: string;
-  /** The ID of the [Location]($m/Location) object representing the location where the booked service is provided. */
+  /** The ID of the [Location]($m/Location) object representing the location where the booked service is provided. Once set when the booking is created, its value cannot be changed. */
   locationId?: string;
   /** The ID of the [Customer]($m/Customer) object representing the customer receiving the booked service. */
   customerId?: string;

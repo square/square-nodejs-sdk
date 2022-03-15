@@ -2,7 +2,7 @@
 # Add Group to Customer Response
 
 Defines the fields that are included in the response body of
-a request to the [AddGroupToCustomer](/doc/api/customers.md#add-group-to-customer) endpoint.
+a request to the [AddGroupToCustomer](../../doc/api/customers.md#add-group-to-customer) endpoint.
 
 ## Structure
 
@@ -12,7 +12,7 @@ a request to the [AddGroupToCustomer](/doc/api/customers.md#add-group-to-custome
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)
 

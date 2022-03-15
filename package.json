@@ -1,5 +1,5 @@
 {
-  "version": "17.2.0",
+  "version": "17.3.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/index.js",
@@ -37,8 +37,8 @@
     "uuid": "^8.3.0"
   },
   "dependencies": {
-    "@apimatic/core": "^0.7.2",
-    "@apimatic/json-bigint": "^1.1.0",
+    "@apimatic/core": "^0.7.3",
+    "@apimatic/json-bigint": "^1.2.0",
     "@apimatic/schema": "^0.6.0",
     "@types/node": "^14.14.30"
   },

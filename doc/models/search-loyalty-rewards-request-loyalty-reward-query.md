@@ -11,8 +11,8 @@ The set of search requirements.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `loyaltyAccountId` | `string` | Required | The ID of the [loyalty account](/doc/models/loyalty-account.md) to which the loyalty reward belongs. |
-| `status` | [`string \| undefined`](/doc/models/loyalty-reward-status.md) | Optional | The status of the loyalty reward. |
+| `loyaltyAccountId` | `string` | Required | The ID of the [loyalty account](../../doc/models/loyalty-account.md) to which the loyalty reward belongs. |
+| `status` | [`string \| undefined`](../../doc/models/loyalty-reward-status.md) | Optional | The status of the loyalty reward. |
 
 ## Example (as JSON)
 

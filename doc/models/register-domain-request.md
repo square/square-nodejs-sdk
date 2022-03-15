@@ -2,7 +2,7 @@
 # Register Domain Request
 
 Defines the parameters that can be included in the body of
-a request to the [RegisterDomain](/doc/api/apple-pay.md#register-domain) endpoint.
+a request to the [RegisterDomain](../../doc/api/apple-pay.md#register-domain) endpoint.
 
 ## Structure
 

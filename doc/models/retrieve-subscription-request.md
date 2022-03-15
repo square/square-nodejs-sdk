@@ -2,7 +2,7 @@
 # Retrieve Subscription Request
 
 Defines input parameters in a request to the
-[RetrieveSubscription](/doc/api/subscriptions.md#retrieve-subscription) endpoint.
+[RetrieveSubscription](../../doc/api/subscriptions.md#retrieve-subscription) endpoint.
 
 ## Structure
 

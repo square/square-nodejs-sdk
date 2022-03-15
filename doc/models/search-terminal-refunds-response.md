@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Information about errors encountered during the request. |
-| `refunds` | [`TerminalRefund[] \| undefined`](/doc/models/terminal-refund.md) | Optional | The requested search result of `TerminalRefund` objects. |
-| `cursor` | `string \| undefined` | Optional | The pagination cursor to be used in a subsequent request. If empty,<br>this is the final response.<br><br>See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information about errors encountered during the request. |
+| `refunds` | [`TerminalRefund[] \| undefined`](../../doc/models/terminal-refund.md) | Optional | The requested search result of `TerminalRefund` objects. |
+| `cursor` | `string \| undefined` | Optional | The pagination cursor to be used in a subsequent request. If empty,<br>this is the final response.<br><br>See [Pagination](../../https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
 
 ## Example (as JSON)
 

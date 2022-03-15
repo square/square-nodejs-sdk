@@ -1,7 +1,7 @@
 
 # Create Location Request
 
-Request object for the [CreateLocation](/doc/api/locations.md#create-location) endpoint.
+Request object for the [CreateLocation](../../doc/api/locations.md#create-location) endpoint.
 
 ## Structure
 
@@ -11,7 +11,7 @@ Request object for the [CreateLocation](/doc/api/locations.md#create-location) e
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `location` | [`Location \| undefined`](/doc/models/location.md) | Optional | Represents one of a business's [locations](https://developer.squareup.com/docs/locations-api). |
+| `location` | [`Location \| undefined`](../../doc/models/location.md) | Optional | Represents one of a business's [locations](../../https://developer.squareup.com/docs/locations-api). |
 
 ## Example (as JSON)
 
@@ -24,9 +24,8 @@ Request object for the [CreateLocation](/doc/api/locations.md#create-location) e
       "locality": "Atlanta",
       "postal_code": "30309"
     },
-    "description": "My new location.",
-    "facebook_url": "null",
-    "name": "New location name"
+    "description": "Midtown Atlanta store",
+    "name": "Midtown"
   }
 }
 ```

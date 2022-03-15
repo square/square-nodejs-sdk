@@ -19,10 +19,16 @@ export interface TaxIds {
    * For example, `6910Z`.
    */
   frNaf?: string;
+  /**
+   * The NIF (Numero de Identificacion Fiscal) number is a 9 character tax identifier used in Spain.
+   * If it is present, it has been validated. For example, `73628495A`.
+   */
+  esNif?: string;
 }
 
 export const taxIdsSchema: Schema<TaxIds> = object({
   euVat: ['eu_vat', optional(string())],
   frSiret: ['fr_siret', optional(string())],
   frNaf: ['fr_naf', optional(string())],
+  esNif: ['es_nif', optional(string())],
 });

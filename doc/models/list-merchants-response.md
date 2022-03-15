@@ -1,7 +1,7 @@
 
 # List Merchants Response
 
-The response object returned by the [ListMerchant](/doc/api/merchants.md#list-merchants) endpoint.
+The response object returned by the [ListMerchant](../../doc/api/merchants.md#list-merchants) endpoint.
 
 ## Structure
 
@@ -11,8 +11,8 @@ The response object returned by the [ListMerchant](/doc/api/merchants.md#list-me
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](/doc/models/error.md) | Optional | Information on errors encountered during the request. |
-| `merchant` | [`Merchant[] \| undefined`](/doc/models/merchant.md) | Optional | The requested `Merchant` entities. |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information on errors encountered during the request. |
+| `merchant` | [`Merchant[] \| undefined`](../../doc/models/merchant.md) | Optional | The requested `Merchant` entities. |
 | `cursor` | `number \| undefined` | Optional | If the  response is truncated, the cursor to use in next  request to fetch next set of objects. |
 
 ## Example (as JSON)

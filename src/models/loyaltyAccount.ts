@@ -18,7 +18,7 @@ import {
 
 /**
  * Describes a loyalty account in a [loyalty program]($m/LoyaltyProgram). For more information, see
- * [Manage Loyalty Accounts Using the Loyalty API](https://developer.squareup.com/docs/loyalty-api/overview).
+ * [Create and Retrieve Loyalty Accounts](https://developer.squareup.com/docs/loyalty-api/loyalty-accounts).
  */
 export interface LoyaltyAccount {
   /** The Square-assigned ID of the loyalty account. */
