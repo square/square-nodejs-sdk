@@ -11,8 +11,8 @@ Response object returned by the [CreateLocation](../../doc/api/locations.md#crea
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information on [errors](../../https://developer.squareup.com/docs/build-basics/handling-errors) encountered during the request. |
-| `location` | [`Location \| undefined`](../../doc/models/location.md) | Optional | Represents one of a business's [locations](../../https://developer.squareup.com/docs/locations-api). |
+| `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information on [errors](https://developer.squareup.com/docs/build-basics/handling-errors) encountered during the request. |
+| `location` | [`Location \| undefined`](../../doc/models/location.md) | Optional | Represents one of a business's [locations](https://developer.squareup.com/docs/locations-api). |
 
 ## Example (as JSON)
 

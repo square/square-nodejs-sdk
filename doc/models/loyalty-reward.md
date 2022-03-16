@@ -2,7 +2,7 @@
 # Loyalty Reward
 
 Represents a contract to redeem loyalty points for a [reward tier](../../doc/models/loyalty-program-reward-tier.md) discount. Loyalty rewards can be in an ISSUED, REDEEMED, or DELETED state.
-For more information, see [Manage loyalty rewards](../../https://developer.squareup.com/docs/loyalty-api/loyalty-rewards).
+For more information, see [Manage loyalty rewards](https://developer.squareup.com/docs/loyalty-api/loyalty-rewards).
 
 ## Structure
 

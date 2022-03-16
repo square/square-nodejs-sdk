@@ -87,7 +87,7 @@ Square API.
 | `VOICE_FAILURE` | The card issuer declined the request because the issuer requires voice authorization from the cardholder. |
 | `PAN_FAILURE` | The specified card number is invalid. For example, it is of<br>incorrect length or is incorrectly formatted. |
 | `EXPIRATION_FAILURE` | The card expiration date is either invalid or indicates that the<br>card is expired. |
-| `CARD_NOT_SUPPORTED` | The card is not supported either in the geographic region or by<br>the [merchant category code](../../https://developer.squareup.com/docs/locations-api#initialize-a-merchant-category-code) (MCC). |
+| `CARD_NOT_SUPPORTED` | The card is not supported either in the geographic region or by<br>the [merchant category code](https://developer.squareup.com/docs/locations-api#initialize-a-merchant-category-code) (MCC). |
 | `INVALID_PIN` | The card issuer declined the request because the PIN is invalid. |
 | `MISSING_PIN` | The payment is missing a required PIN. |
 | `MISSING_ACCOUNT_TYPE` | The payment is missing a required ACCOUNT_TYPE parameter. |
@@ -95,7 +95,7 @@ Square API.
 | `INVALID_FEES` | The app_fee_money on a payment is too high. |
 | `MANUALLY_ENTERED_PAYMENT_NOT_SUPPORTED` | The card must be swiped, tapped, or dipped. Payments attempted by manually entering the card number are declined. |
 | `PAYMENT_LIMIT_EXCEEDED` | Square declined the request because the payment amount exceeded the processing limit for this merchant. |
-| `GIFT_CARD_AVAILABLE_AMOUNT` | When a Gift Card is a payment source, you can allow taking a partial payment<br>by adding the `accept_partial_authorization` parameter in the request.<br>However, taking such a partial payment does not work if your request also includes<br>`tip_money`, `app_fee_money`, or both. Square declines such payments and returns<br>the `GIFT_CARD_AVAILABLE_AMOUNT` error.<br>For more information, see<br>[CreatePayment errors (additional information)](../../https://developer.squareup.com/docs/payments-api/error-codes#createpayment-errors-additional-information). |
+| `GIFT_CARD_AVAILABLE_AMOUNT` | When a Gift Card is a payment source, you can allow taking a partial payment<br>by adding the `accept_partial_authorization` parameter in the request.<br>However, taking such a partial payment does not work if your request also includes<br>`tip_money`, `app_fee_money`, or both. Square declines such payments and returns<br>the `GIFT_CARD_AVAILABLE_AMOUNT` error.<br>For more information, see<br>[CreatePayment errors (additional information)](https://developer.squareup.com/docs/payments-api/error-codes#createpayment-errors-additional-information). |
 | `ACCOUNT_UNUSABLE` | The account provided cannot carry out transactions. |
 | `BUYER_REFUSED_PAYMENT` | Bank account rejected or was not authorized for the payment. |
 | `DELAYED_TRANSACTION_EXPIRED` | The application tried to update a delayed-capture payment that has expired. |

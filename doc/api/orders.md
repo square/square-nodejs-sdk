@@ -26,7 +26,7 @@ Creates a new [order](../../doc/models/order.md) that can include information ab
 purchase and settings to apply to the purchase.
 
 To pay for a created order, see
-[Pay for Orders](../../https://developer.squareup.com/docs/orders-api/pay-for-orders).
+[Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
 
 You can modify open orders using the [UpdateOrder](../../doc/api/orders.md#update-order) endpoint.
 
@@ -649,14 +649,14 @@ An `UpdateOrder` request requires the following:
 
 - The `order_id` in the endpoint path, identifying the order to update.
 - The latest `version` of the order to update.
-- The [sparse order](../../https://developer.squareup.com/docs/orders-api/manage-orders#sparse-order-objects)
+- The [sparse order](https://developer.squareup.com/docs/orders-api/manage-orders#sparse-order-objects)
   containing only the fields to update and the version to which the update is
   being applied.
-- If deleting fields, the [dot notation paths](../../https://developer.squareup.com/docs/orders-api/manage-orders#on-dot-notation)
+- If deleting fields, the [dot notation paths](https://developer.squareup.com/docs/orders-api/manage-orders#on-dot-notation)
   identifying the fields to clear.
 
 To pay for an order, see
-[Pay for Orders](../../https://developer.squareup.com/docs/orders-api/pay-for-orders).
+[Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
 
 ```ts
 async updateOrder(
@@ -788,7 +788,7 @@ To be used with `PayOrder`, a payment must:
 - Reference the order by specifying the `order_id` when [creating the payment](../../doc/api/payments.md#create-payment).
   Any approved payments that reference the same `order_id` not specified in the
   `payment_ids` is canceled.
-- Be approved with [delayed capture](../../https://developer.squareup.com/docs/payments-api/take-payments#delayed-capture).
+- Be approved with [delayed capture](https://developer.squareup.com/docs/payments-api/take-payments#delayed-capture).
   Using a delayed capture payment with `PayOrder` completes the approved payment.
 
 ```ts

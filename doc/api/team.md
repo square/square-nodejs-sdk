@@ -28,7 +28,7 @@ You must provide the following values in your request to this endpoint:
 - `given_name`
 - `family_name`
 
-Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#createteammember).
+Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#createteammember).
 
 ```ts
 async createTeamMember(
@@ -92,7 +92,7 @@ This process is non-transactional and processes as much of the request as possib
 the request cannot be successfully processed, the request is not marked as failed, but the body of the response
 contains explicit error information for the failed create.
 
-Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#bulk-create-team-members).
+Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#bulk-create-team-members).
 
 ```ts
 async bulkCreateTeamMembers(
@@ -140,7 +140,7 @@ Updates multiple `TeamMember` objects. The updated `TeamMember` objects are retu
 This process is non-transactional and processes as much of the request as possible. If one of the updates in
 the request cannot be successfully processed, the request is not marked as failed, but the body of the response
 contains explicit error information for the failed update.
-Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#bulk-update-team-members).
+Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#bulk-update-team-members).
 
 ```ts
 async bulkUpdateTeamMembers(
@@ -242,7 +242,7 @@ try {
 # Retrieve Team Member
 
 Retrieves a `TeamMember` object for the given `TeamMember.id`.
-Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#retrieve-a-team-member).
+Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrieve-a-team-member).
 
 ```ts
 async retrieveTeamMember(
@@ -282,7 +282,7 @@ try {
 # Update Team Member
 
 Updates a single `TeamMember` object. The `TeamMember` object is returned on successful updates.
-Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#update-a-team-member).
+Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#update-a-team-member).
 
 ```ts
 async updateTeamMember(
@@ -345,7 +345,7 @@ try {
 
 Retrieves a `WageSetting` object for a team member specified
 by `TeamMember.id`.
-Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).
+Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).
 
 ```ts
 async retrieveWageSetting(
@@ -388,7 +388,7 @@ Creates or updates a `WageSetting` object. The object is created if a
 `WageSetting` with the specified `team_member_id` does not exist. Otherwise,
 it fully replaces the `WageSetting` object for the team member.
 The `WageSetting` is returned on a successful update.
-Learn about [Troubleshooting the Team API](../../https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).
+Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).
 
 ```ts
 async updateWageSetting(

@@ -4,7 +4,7 @@
 Represents a phase in the process of calculating order totals.
 Service charges are applied after the indicated phase.
 
-[Read more about how order totals are calculated.](../../https://developer.squareup.com/docs/orders-api/how-it-works#how-totals-are-calculated)
+[Read more about how order totals are calculated.](https://developer.squareup.com/docs/orders-api/how-it-works#how-totals-are-calculated)
 
 ## Enumeration
 

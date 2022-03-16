@@ -483,7 +483,7 @@ entries are also generated for less common events, like refunds, manual
 adjustments, or chargeback holds.
 
 Square initiates its regular deposits as indicated in the
-[Deposit Options with Square](../../https://squareup.com/help/us/en/article/3807)
+[Deposit Options with Square](https://squareup.com/help/us/en/article/3807)
 help article. Details for a regular deposit are usually not available
 from Connect API endpoints before 10 p.m. PST the same day.
 

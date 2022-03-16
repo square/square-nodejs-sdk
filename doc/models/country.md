@@ -2,7 +2,7 @@
 # Country
 
 Indicates the country associated with another entity, such as a business.
-Values are in [ISO 3166-1-alpha-2 format](../../http://www.iso.org/iso/home/standards/country_codes.htm).
+Values are in [ISO 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm).
 
 ## Enumeration
 

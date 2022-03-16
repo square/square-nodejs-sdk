@@ -11,7 +11,7 @@
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
 | `changes` | [`InventoryChange[] \| undefined`](../../doc/models/inventory-change.md) | Optional | The set of inventory changes for the requested object and locations. |
-| `cursor` | `string \| undefined` | Optional | The pagination cursor to be used in a subsequent request. If unset,<br>this is the final response.<br><br>See the [Pagination](../../https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information. |
+| `cursor` | `string \| undefined` | Optional | The pagination cursor to be used in a subsequent request. If unset,<br>this is the final response.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information. |
 
 ## Example (as JSON)
 

@@ -12,7 +12,7 @@ Response object returned by GetBankAccountByV1Id.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information on errors encountered during the request. |
-| `bankAccount` | [`BankAccount \| undefined`](../../doc/models/bank-account.md) | Optional | Represents a bank account. For more information about<br>linking a bank account to a Square account, see<br>[Bank Accounts API](../../https://developer.squareup.com/docs/bank-accounts-api). |
+| `bankAccount` | [`BankAccount \| undefined`](../../doc/models/bank-account.md) | Optional | Represents a bank account. For more information about<br>linking a bank account to a Square account, see<br>[Bank Accounts API](https://developer.squareup.com/docs/bank-accounts-api). |
 
 ## Example (as JSON)
 
