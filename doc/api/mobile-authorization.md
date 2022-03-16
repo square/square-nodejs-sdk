@@ -22,7 +22,7 @@ Authorization: Bearer ACCESS_TOKEN
 ```
 
 Replace `ACCESS_TOKEN` with a
-[valid production authorization credential](../../https://developer.squareup.com/docs/build-basics/access-tokens).
+[valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-tokens).
 
 ```ts
 async createMobileAuthorizationCode(

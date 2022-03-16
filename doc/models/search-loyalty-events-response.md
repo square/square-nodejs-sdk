@@ -14,7 +14,7 @@ criteria, in order by the `created_at` date.
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
 | `events` | [`LoyaltyEvent[] \| undefined`](../../doc/models/loyalty-event.md) | Optional | The loyalty events that satisfy the search criteria. |
-| `cursor` | `string \| undefined` | Optional | The pagination cursor to be used in a subsequent<br>request. If empty, this is the final response.<br>For more information,<br>see [Pagination](../../https://developer.squareup.com/docs/basics/api101/pagination). |
+| `cursor` | `string \| undefined` | Optional | The pagination cursor to be used in a subsequent<br>request. If empty, this is the final response.<br>For more information,<br>see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). |
 
 ## Example (as JSON)
 

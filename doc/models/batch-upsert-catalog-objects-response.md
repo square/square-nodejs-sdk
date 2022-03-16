@@ -11,7 +11,7 @@
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
 | `objects` | [`CatalogObject[] \| undefined`](../../doc/models/catalog-object.md) | Optional | The created successfully created CatalogObjects. |
-| `updatedAt` | `string \| undefined` | Optional | The database [timestamp](../../https://developer.squareup.com/docs/build-basics/working-with-dates) of this update in RFC 3339 format, e.g., "2016-09-04T23:59:33.123Z". |
+| `updatedAt` | `string \| undefined` | Optional | The database [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) of this update in RFC 3339 format, e.g., "2016-09-04T23:59:33.123Z". |
 | `idMappings` | [`CatalogIdMapping[] \| undefined`](../../doc/models/catalog-id-mapping.md) | Optional | The mapping between client and server IDs for this upsert. |
 
 ## Example (as JSON)

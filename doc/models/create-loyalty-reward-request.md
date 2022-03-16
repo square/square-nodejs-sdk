@@ -11,7 +11,7 @@ A request to create a loyalty reward.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `reward` | [`LoyaltyReward`](../../doc/models/loyalty-reward.md) | Required | Represents a contract to redeem loyalty points for a [reward tier](../../doc/models/loyalty-program-reward-tier.md) discount. Loyalty rewards can be in an ISSUED, REDEEMED, or DELETED state.<br>For more information, see [Manage loyalty rewards](../../https://developer.squareup.com/docs/loyalty-api/loyalty-rewards). |
+| `reward` | [`LoyaltyReward`](../../doc/models/loyalty-reward.md) | Required | Represents a contract to redeem loyalty points for a [reward tier](../../doc/models/loyalty-program-reward-tier.md) discount. Loyalty rewards can be in an ISSUED, REDEEMED, or DELETED state.<br>For more information, see [Manage loyalty rewards](https://developer.squareup.com/docs/loyalty-api/loyalty-rewards). |
 | `idempotencyKey` | `string` | Required | A unique string that identifies this `CreateLoyaltyReward` request.<br>Keys can be any valid string, but must be unique for every request.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128` |
 
 ## Example (as JSON)

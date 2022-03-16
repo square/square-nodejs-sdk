@@ -2,7 +2,7 @@
 # Customer Tax Ids
 
 Represents the tax ID associated with a [customer profile](../../doc/models/customer.md). The corresponding `tax_ids` field is available only for customers of sellers in EU countries or the United Kingdom.
-For more information, see [Customer tax IDs](../../https://developer.squareup.com/docs/customers-api/what-it-does#customer-tax-ids).
+For more information, see [Customer tax IDs](https://developer.squareup.com/docs/customers-api/what-it-does#customer-tax-ids).
 
 ## Structure
 

@@ -19,7 +19,7 @@ This endpoint provides an easy way for platform developers to bulk activate
 Apple Pay on the Web with Square for merchants using their platform.
 
 To learn more about Web Apple Pay, see
-[Add the Apple Pay on the Web Button](../../https://developer.squareup.com/docs/payment-form/add-digital-wallets/apple-pay).
+[Add the Apple Pay on the Web Button](https://developer.squareup.com/docs/payment-form/add-digital-wallets/apple-pay).
 
 ```ts
 async registerDomain(

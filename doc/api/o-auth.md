@@ -20,7 +20,7 @@ const oAuthApi = client.oAuthApi;
 **This endpoint is deprecated.**
 
 `RenewToken` is deprecated. For information about refreshing OAuth access tokens, see
-[Migrate from Renew to Refresh OAuth Tokens](../../https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens).
+[Migrate from Renew to Refresh OAuth Tokens](https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens).
 
 Renews an OAuth access token before it expires.
 
@@ -37,7 +37,7 @@ Authorization: Client APPLICATION_SECRET
 ```
 
 Replace `APPLICATION_SECRET` with the application secret on the Credentials
-page in the [Developer Dashboard](../../https://developer.squareup.com/apps).
+page in the [Developer Dashboard](https://developer.squareup.com/apps).
 
 :information_source: **Note** This endpoint does not require authentication.
 
@@ -54,7 +54,7 @@ async renewToken(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `clientId` | `string` | Template, Required | Your application ID, which is available in the OAuth page in the [Developer Dashboard](../../https://developer.squareup.com/apps). |
+| `clientId` | `string` | Template, Required | Your application ID, which is available in the OAuth page in the [Developer Dashboard](https://developer.squareup.com/apps). |
 | `body` | [`RenewTokenRequest`](../../doc/models/renew-token-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `authorization` | `string` | Header, Required | Client APPLICATION_SECRET |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |

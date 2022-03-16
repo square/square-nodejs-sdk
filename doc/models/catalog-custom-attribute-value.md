@@ -3,7 +3,7 @@
 
 An instance of a custom attribute. Custom attributes can be defined and
 added to `ITEM` and `ITEM_VARIATION` type catalog objects.
-[Read more about custom attributes](../../https://developer.squareup.com/docs/catalog-api/add-custom-attributes).
+[Read more about custom attributes](https://developer.squareup.com/docs/catalog-api/add-custom-attributes).
 
 ## Structure
 

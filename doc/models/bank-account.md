@@ -3,7 +3,7 @@
 
 Represents a bank account. For more information about
 linking a bank account to a Square account, see
-[Bank Accounts API](../../https://developer.squareup.com/docs/bank-accounts-api).
+[Bank Accounts API](https://developer.squareup.com/docs/bank-accounts-api).
 
 ## Structure
 
@@ -15,12 +15,12 @@ linking a bank account to a Square account, see
 |  --- | --- | --- | --- |
 | `id` | `string` | Required | The unique, Square-issued identifier for the bank account.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `30` |
 | `accountNumberSuffix` | `string` | Required | The last few digits of the account number.<br>**Constraints**: *Minimum Length*: `1` |
-| `country` | [`string`](../../doc/models/country.md) | Required | Indicates the country associated with another entity, such as a business.<br>Values are in [ISO 3166-1-alpha-2 format](../../http://www.iso.org/iso/home/standards/country_codes.htm). |
-| `currency` | [`string`](../../doc/models/currency.md) | Required | Indicates the associated currency for an amount of money. Values correspond<br>to [ISO 4217](../../https://wikipedia.org/wiki/ISO_4217). |
+| `country` | [`string`](../../doc/models/country.md) | Required | Indicates the country associated with another entity, such as a business.<br>Values are in [ISO 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm). |
+| `currency` | [`string`](../../doc/models/currency.md) | Required | Indicates the associated currency for an amount of money. Values correspond<br>to [ISO 4217](https://wikipedia.org/wiki/ISO_4217). |
 | `accountType` | [`string`](../../doc/models/bank-account-type.md) | Required | Indicates the financial purpose of the bank account. |
 | `holderName` | `string` | Required | Name of the account holder. This name must match the name<br>on the targeted bank account record.<br>**Constraints**: *Minimum Length*: `1` |
-| `primaryBankIdentificationNumber` | `string` | Required | Primary identifier for the bank. For more information, see<br>[Bank Accounts API](../../https://developer.squareup.com/docs/bank-accounts-api).<br>**Constraints**: *Maximum Length*: `40` |
-| `secondaryBankIdentificationNumber` | `string \| undefined` | Optional | Secondary identifier for the bank. For more information, see<br>[Bank Accounts API](../../https://developer.squareup.com/docs/bank-accounts-api).<br>**Constraints**: *Maximum Length*: `40` |
+| `primaryBankIdentificationNumber` | `string` | Required | Primary identifier for the bank. For more information, see<br>[Bank Accounts API](https://developer.squareup.com/docs/bank-accounts-api).<br>**Constraints**: *Maximum Length*: `40` |
+| `secondaryBankIdentificationNumber` | `string \| undefined` | Optional | Secondary identifier for the bank. For more information, see<br>[Bank Accounts API](https://developer.squareup.com/docs/bank-accounts-api).<br>**Constraints**: *Maximum Length*: `40` |
 | `debitMandateReferenceId` | `string \| undefined` | Optional | Reference identifier that will be displayed to UK bank account owners<br>when collecting direct debit authorization. Only required for UK bank accounts. |
 | `referenceId` | `string \| undefined` | Optional | Client-provided identifier for linking the banking account to an entity<br>in a third-party system (for example, a bank account number or a user identifier). |
 | `locationId` | `string \| undefined` | Optional | The location to which the bank account belongs. |
