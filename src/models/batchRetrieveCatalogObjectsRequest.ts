@@ -33,6 +33,8 @@ export interface BatchRetrieveCatalogObjectsRequest {
    * be from the current version of the catalog.
    */
   catalogVersion?: bigint;
+  /** Indicates whether to include (`true`) or not (`false`) in the response deleted objects, namely, those with the `is_deleted` attribute set to `true`. */
+  includeDeletedObjects?: boolean;
 }
 
 export const batchRetrieveCatalogObjectsRequestSchema: Schema<BatchRetrieveCatalogObjectsRequest> = object(
@@ -40,5 +42,6 @@ export const batchRetrieveCatalogObjectsRequestSchema: Schema<BatchRetrieveCatal
     objectIds: ['object_ids', array(string())],
     includeRelatedObjects: ['include_related_objects', optional(boolean())],
     catalogVersion: ['catalog_version', optional(bigint())],
+    includeDeletedObjects: ['include_deleted_objects', optional(boolean())],
   }
 );

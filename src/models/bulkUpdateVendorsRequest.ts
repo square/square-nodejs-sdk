@@ -4,7 +4,7 @@ import {
   updateVendorRequestSchema,
 } from './updateVendorRequest';
 
-/** Represents an input to a call to [BulkUpdateVendors.]($e/Vendors/BulkUpdateVendors) */
+/** Represents an input to a call to [BulkUpdateVendors]($e/Vendors/BulkUpdateVendors). */
 export interface BulkUpdateVendorsRequest {
   /**
    * A set of [UpdateVendorRequest]($m/UpdateVendorRequest) objects encapsulating to-be-updated [Vendor]($m/Vendor)

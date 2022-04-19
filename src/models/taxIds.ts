@@ -10,7 +10,7 @@ export interface TaxIds {
   euVat?: string;
   /**
    * The SIRET (Système d'Identification du Répertoire des Entreprises et de leurs Etablissements)
-   * number is a 14 digit code issued by the French INSEE. For example, `39922799000021`.
+   * number is a 14-digit code issued by the French INSEE. For example, `39922799000021`.
    */
   frSiret?: string;
   /**
@@ -20,7 +20,7 @@ export interface TaxIds {
    */
   frNaf?: string;
   /**
-   * The NIF (Numero de Identificacion Fiscal) number is a 9 character tax identifier used in Spain.
+   * The NIF (Numero de Identificacion Fiscal) number is a nine-character tax identifier used in Spain.
    * If it is present, it has been validated. For example, `73628495A`.
    */
   esNif?: string;

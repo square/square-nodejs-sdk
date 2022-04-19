@@ -5,7 +5,7 @@ import {
   updateVendorResponseSchema,
 } from './updateVendorResponse';
 
-/** Represents an output from a call to [BulkUpdateVendors.]($e/Vendors/BulkUpdateVendors) */
+/** Represents an output from a call to [BulkUpdateVendors]($e/Vendors/BulkUpdateVendors). */
 export interface BulkUpdateVendorsResponse {
   /** Errors encountered when the request fails. */
   errors?: Error[];

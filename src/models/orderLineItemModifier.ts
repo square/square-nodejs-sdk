@@ -20,6 +20,16 @@ export interface OrderLineItemModifier {
   /** The name of the item modifier. */
   name?: string;
   /**
+   * The quantity of the line item modifier. The modifier quantity can be 0 or more.
+   * For example, suppose a restaurant offers a cheeseburger on the menu. When a buyer orders
+   * this item, the restaurant records the purchase by creating an `Order` object with a line item
+   * for a burger. The line item includes a line item modifier: the name is cheese and the quantity
+   * is 1. The buyer has the option to order extra cheese (or no cheese). If the buyer chooses
+   * the extra cheese option, the modifier quantity increases to 2. If the buyer does not want
+   * any cheese, the modifier quantity is set to 0.
+   */
+  quantity?: string;
+  /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
    * considered unsigned and can only hold positive amounts. For signed fields, the
@@ -61,6 +71,7 @@ export const orderLineItemModifierSchema: Schema<OrderLineItemModifier> = object
     catalogObjectId: ['catalog_object_id', optional(string())],
     catalogVersion: ['catalog_version', optional(bigint())],
     name: ['name', optional(string())],
+    quantity: ['quantity', optional(string())],
     basePriceMoney: ['base_price_money', optional(lazy(() => moneySchema))],
     totalPriceMoney: ['total_price_money', optional(lazy(() => moneySchema))],
     metadata: ['metadata', optional(dict(string()))],

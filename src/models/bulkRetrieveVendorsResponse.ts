@@ -5,7 +5,7 @@ import {
   retrieveVendorResponseSchema,
 } from './retrieveVendorResponse';
 
-/** Represents an output from a call to [BulkRetrieveVendors.]($e/Vendors/BulkRetrieveVendors) */
+/** Represents an output from a call to [BulkRetrieveVendors]($e/Vendors/BulkRetrieveVendors). */
 export interface BulkRetrieveVendorsResponse {
   /** Any errors that occurred during the request. */
   errors?: Error[];

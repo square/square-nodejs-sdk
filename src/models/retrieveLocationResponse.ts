@@ -7,9 +7,9 @@ import { Location, locationSchema } from './location';
  * endpoint returns in a response.
  */
 export interface RetrieveLocationResponse {
-  /** Information on errors encountered during the request. */
+  /** Information about errors encountered during the request. */
   errors?: Error[];
-  /** Represents one of a business's [locations](https://developer.squareup.com/docs/locations-api). */
+  /** Represents one of a business' [locations](https://developer.squareup.com/docs/locations-api). */
   location?: Location;
 }
 

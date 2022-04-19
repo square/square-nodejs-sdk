@@ -226,8 +226,6 @@ export class SubscriptionsApi extends BaseApi {
 
   /**
    * Lists all events for a specific subscription.
-   * In the current implementation, only `START_SUBSCRIPTION` and `STOP_SUBSCRIPTION` (when the
-   * subscription was canceled) events are returned.
    *
    * @param subscriptionId  The ID of the subscription to retrieve the events for.
    * @param cursor          When the total number of resulting subscription events exceeds the limit of a

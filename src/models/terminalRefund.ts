@@ -1,6 +1,7 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
+/** Represents a payment refund processed by the Square Terminal. Only supports Interac (Canadian debit network) payment refunds. */
 export interface TerminalRefund {
   /** A unique ID for this `TerminalRefund`. */
   id?: string;
@@ -19,16 +20,13 @@ export interface TerminalRefund {
    * for more information.
    */
   amountMoney: Money;
-  /**
-   * A description of the reason for the refund.
-   * Note: maximum 192 characters
-   */
-  reason?: string;
+  /** A description of the reason for the refund. */
+  reason: string;
   /**
    * The unique ID of the device intended for this `TerminalRefund`.
    * The Id can be retrieved from /v2/devices api.
    */
-  deviceId?: string;
+  deviceId: string;
   /**
    * The RFC 3339 duration, after which the refund is automatically canceled.
    * A `TerminalRefund` that is `PENDING` is automatically `CANCELED` and has a cancellation reason
@@ -39,7 +37,7 @@ export interface TerminalRefund {
   deadlineDuration?: string;
   /**
    * The status of the `TerminalRefund`.
-   * Options: `PENDING`, `IN_PROGRESS`, `CANCELED`, or `COMPLETED`.
+   * Options: `PENDING`, `IN_PROGRESS`, `CANCEL_REQUESTED`, `CANCELED`, or `COMPLETED`.
    */
   status?: string;
   cancelReason?: string;
@@ -59,8 +57,8 @@ export const terminalRefundSchema: Schema<TerminalRefund> = object({
   paymentId: ['payment_id', string()],
   orderId: ['order_id', optional(string())],
   amountMoney: ['amount_money', lazy(() => moneySchema)],
-  reason: ['reason', optional(string())],
-  deviceId: ['device_id', optional(string())],
+  reason: ['reason', string()],
+  deviceId: ['device_id', string()],
   deadlineDuration: ['deadline_duration', optional(string())],
   status: ['status', optional(string())],
   cancelReason: ['cancel_reason', optional(string())],

@@ -96,10 +96,9 @@ export interface CatalogItemVariation {
    * whole quantities.
    */
   measurementUnitId?: string;
-  /**
-   * Whether stock is counted directly on this variation (TRUE) or only on its components (FALSE).
-   * For backward compatibility missing values will be interpreted as TRUE.
-   */
+  /** Whether this variation can be sold. */
+  sellable?: boolean;
+  /** Whether stock is counted directly on this variation (TRUE) or only on its components (FALSE). */
   stockable?: boolean;
   /**
    * The IDs of images associated with this `CatalogItemVariation` instance.
@@ -142,6 +141,7 @@ export const catalogItemVariationSchema: Schema<CatalogItemVariation> = object({
     optional(array(lazy(() => catalogItemOptionValueForItemVariationSchema))),
   ],
   measurementUnitId: ['measurement_unit_id', optional(string())],
+  sellable: ['sellable', optional(boolean())],
   stockable: ['stockable', optional(boolean())],
   imageIds: ['image_ids', optional(array(string()))],
   teamMemberIds: ['team_member_ids', optional(array(string()))],

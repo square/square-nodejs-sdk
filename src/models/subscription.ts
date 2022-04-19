@@ -63,7 +63,7 @@ export interface Subscription {
   /**
    * The IDs of the [invoices]($m/Invoice) created for the
    * subscription, listed in order when the invoices were created
-   * (oldest invoices appear first).
+   * (newest invoices appear first).
    */
   invoiceIds?: string[];
   /**

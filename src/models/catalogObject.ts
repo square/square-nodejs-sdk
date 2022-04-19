@@ -114,7 +114,7 @@ export interface CatalogObject {
    * `"cocoa_brand"` and the defining application ID is `"abcd1234"`, the key in the map is `"abcd1234:cocoa_brand"`
    * if the application making the request is different from the application defining the custom attribute definition.
    * Otherwise, the key used in the map is simply `"cocoa_brand"`.
-   * Application-defined custom attributes that are set at a global (location-independent) level.
+   * Application-defined custom attributes are set at a global (location-independent) level.
    * Custom attribute values are intended to store additional information about a catalog object
    * or associations with an entity in another system. Do not use custom attributes
    * to store any sensitive information (personally identifiable information, card details, etc.).

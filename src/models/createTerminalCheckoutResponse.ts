@@ -5,6 +5,7 @@ import { TerminalCheckout, terminalCheckoutSchema } from './terminalCheckout';
 export interface CreateTerminalCheckoutResponse {
   /** Information about errors encountered during the request. */
   errors?: Error[];
+  /** Represents a checkout processed by the Square Terminal. */
   checkout?: TerminalCheckout;
 }
 

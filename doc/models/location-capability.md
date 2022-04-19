@@ -1,7 +1,7 @@
 
 # Location Capability
 
-The capabilities a location may have.
+The capabilities a location might have.
 
 ## Enumeration
 

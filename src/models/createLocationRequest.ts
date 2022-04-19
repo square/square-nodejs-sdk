@@ -1,9 +1,9 @@
 import { lazy, object, optional, Schema } from '../schema';
 import { Location, locationSchema } from './location';
 
-/** Request object for the [CreateLocation]($e/Locations/CreateLocation) endpoint. */
+/** The request object for the [CreateLocation]($e/Locations/CreateLocation) endpoint. */
 export interface CreateLocationRequest {
-  /** Represents one of a business's [locations](https://developer.squareup.com/docs/locations-api). */
+  /** Represents one of a business' [locations](https://developer.squareup.com/docs/locations-api). */
   location?: Location;
 }
 

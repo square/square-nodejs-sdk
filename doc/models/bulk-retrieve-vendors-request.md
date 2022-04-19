@@ -1,7 +1,7 @@
 
 # Bulk Retrieve Vendors Request
 
-Represents an input to a call to [BulkRetrieveVendors.](../../doc/api/vendors.md#bulk-retrieve-vendors)
+Represents an input to a call to [BulkRetrieveVendors](../../doc/api/vendors.md#bulk-retrieve-vendors).
 
 ## Structure
 

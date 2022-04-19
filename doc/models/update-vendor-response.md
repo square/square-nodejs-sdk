@@ -1,7 +1,7 @@
 
 # Update Vendor Response
 
-Represents an output from a call to [UpdateVendor.](../../doc/api/vendors.md#update-vendor)
+Represents an output from a call to [UpdateVendor](../../doc/api/vendors.md#update-vendor).
 
 ## Structure
 

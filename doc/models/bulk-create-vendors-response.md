@@ -1,7 +1,7 @@
 
 # Bulk Create Vendors Response
 
-Represents an output from a call to [BulkCreateVendors.](../../doc/api/vendors.md#bulk-create-vendors)
+Represents an output from a call to [BulkCreateVendors](../../doc/api/vendors.md#bulk-create-vendors).
 
 ## Structure
 
@@ -12,7 +12,7 @@ Represents an output from a call to [BulkCreateVendors.](../../doc/api/vendors.m
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `responses` | [`Record<string, CreateVendorResponse> \| undefined`](../../doc/models/create-vendor-response.md) | Optional | A set of [CreateVendorResponse](../../doc/models/create-vendor-response.md) objects encapsulating successfully created [Vendor](../../doc/models/vendor.md)<br>objects or error responses for failed attempts. The set is represented by<br>a collection of idempotency-key/`Vendor`-object or idempotency-key/error-object pairs. The impotency keys correspond to those specified<br>in the input. |
+| `responses` | [`Record<string, CreateVendorResponse> \| undefined`](../../doc/models/create-vendor-response.md) | Optional | A set of [CreateVendorResponse](../../doc/models/create-vendor-response.md) objects encapsulating successfully created [Vendor](../../doc/models/vendor.md)<br>objects or error responses for failed attempts. The set is represented by<br>a collection of idempotency-key/`Vendor`-object or idempotency-key/error-object pairs. The idempotency keys correspond to those specified<br>in the input. |
 
 ## Example (as JSON)
 

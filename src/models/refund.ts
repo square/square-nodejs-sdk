@@ -12,7 +12,7 @@ export interface Refund {
   /** The ID of the refund's associated location. */
   locationId: string;
   /** The ID of the transaction that the refunded tender is part of. */
-  transactionId: string;
+  transactionId?: string;
   /** The ID of the refunded tender. */
   tenderId: string;
   /** The timestamp for when the refund was created, in RFC 3339 format. */
@@ -49,7 +49,7 @@ export interface Refund {
 export const refundSchema: Schema<Refund> = object({
   id: ['id', string()],
   locationId: ['location_id', string()],
-  transactionId: ['transaction_id', string()],
+  transactionId: ['transaction_id', optional(string())],
   tenderId: ['tender_id', string()],
   createdAt: ['created_at', optional(string())],
   reason: ['reason', string()],

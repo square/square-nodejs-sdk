@@ -63,6 +63,7 @@ const bodyCheckoutDeviceOptions: DeviceCheckoutOptions = {
   deviceId: 'dbb5d83a-7838-11ea-bc55-0242ac130003',
 };
 bodyCheckoutDeviceOptions.skipReceiptScreen = false;
+bodyCheckoutDeviceOptions.collectSignature = false;
 bodyCheckoutDeviceOptions.tipSettings = bodyCheckoutDeviceOptionsTipSettings;
 
 const bodyCheckout: TerminalCheckout = {
@@ -95,7 +96,7 @@ try {
 
 # Search Terminal Checkouts
 
-Retrieves a filtered list of Terminal checkout requests created by the account making the request.
+Returns a filtered list of Terminal checkout requests created by the application making the request. Only Terminal checkout requests created for the merchant scoped to the OAuth token are returned. Terminal checkout requests are available for 30 days.
 
 ```ts
 async searchTerminalCheckouts(
@@ -155,7 +156,7 @@ try {
 
 # Get Terminal Checkout
 
-Retrieves a Terminal checkout request by `checkout_id`.
+Retrieves a Terminal checkout request by `checkout_id`. Terminal checkout requests are available for 30 days.
 
 ```ts
 async getTerminalCheckout(
@@ -233,7 +234,7 @@ try {
 
 # Create Terminal Refund
 
-Creates a request to refund an Interac payment completed on a Square Terminal.
+Creates a request to refund an Interac payment completed on a Square Terminal. Refunds for Interac payments on a Square Terminal are supported only for Interac debit cards in Canada. Other refunds for Terminal payments should use the Refunds API. For more information, see [Refunds API](../../doc/api/refunds.md).
 
 ```ts
 async createTerminalRefund(
@@ -264,12 +265,14 @@ bodyRefundAmountMoney.currency = 'CAD';
 const bodyRefund: TerminalRefund = {
   paymentId: '5O5OvgkcNUhl7JBuINflcjKqUzXZY',
   amountMoney: bodyRefundAmountMoney,
+  reason: 'Returning items',
+  deviceId: 'f72dfb8e-4d65-4e56-aade-ec3fb8d33291',
 };
 bodyRefund.id = 'id4';
 bodyRefund.refundId = 'refund_id8';
 bodyRefund.orderId = 'order_id8';
-bodyRefund.reason = 'Returning items';
-bodyRefund.deviceId = 'f72dfb8e-4d65-4e56-aade-ec3fb8d33291';
+bodyRefund.deadlineDuration = 'deadline_duration6';
+bodyRefund.status = 'status6';
 
 const body: CreateTerminalRefundRequest = {
   idempotencyKey: '402a640b-b26f-401f-b406-46f839590c04',
@@ -291,7 +294,7 @@ try {
 
 # Search Terminal Refunds
 
-Retrieves a filtered list of Interac Terminal refund requests created by the seller making the request.
+Retrieves a filtered list of Interac Terminal refund requests created by the seller making the request. Terminal refund requests are available for 30 days.
 
 ```ts
 async searchTerminalRefunds(
@@ -351,7 +354,7 @@ try {
 
 # Get Terminal Refund
 
-Retrieves an Interac Terminal refund object by ID.
+Retrieves an Interac Terminal refund object by ID. Terminal refund objects are available for 30 days.
 
 ```ts
 async getTerminalRefund(

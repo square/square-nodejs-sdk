@@ -1,7 +1,7 @@
 
 # Bulk Retrieve Vendors Response
 
-Represents an output from a call to [BulkRetrieveVendors.](../../doc/api/vendors.md#bulk-retrieve-vendors)
+Represents an output from a call to [BulkRetrieveVendors](../../doc/api/vendors.md#bulk-retrieve-vendors).
 
 ## Structure
 

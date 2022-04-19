@@ -1,7 +1,7 @@
 
 # Create Vendor Request
 
-Represents an input to a call to [CreateVendor.](../../doc/api/vendors.md#create-vendor)
+Represents an input to a call to [CreateVendor](../../doc/api/vendors.md#create-vendor).
 
 ## Structure
 

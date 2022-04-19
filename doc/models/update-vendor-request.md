@@ -1,7 +1,7 @@
 
 # Update Vendor Request
 
-Represents an input to a call to [UpdateVendor.](../../doc/api/vendors.md#update-vendor)
+Represents an input to a call to [UpdateVendor](../../doc/api/vendors.md#update-vendor).
 
 ## Structure
 

@@ -28,6 +28,34 @@ Defines output parameters in a response from the
       "subscription_event_type": "START_SUBSCRIPTION"
     },
     {
+      "effective_date": "2020-05-01",
+      "id": "f2736603-cd2e-47ec-8675-f815fff54f88",
+      "info": {
+        "code": "CUSTOMER_NO_NAME",
+        "detail": "The customer with ID `V74BMG0GPS2KNCWJE1BTYJ37Y0` does not have a name on record."
+      },
+      "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+      "subscription_event_type": "DEACTIVATE_SUBSCRIPTION"
+    },
+    {
+      "effective_date": "2022-05-01",
+      "id": "b426fc85-6859-450b-b0d0-fe3a5d1b565f",
+      "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+      "subscription_event_type": "RESUME_SUBSCRIPTION"
+    },
+    {
+      "effective_date": "2022-05-02",
+      "id": "09f14de1-2f53-4dae-9091-49aa53f83d01",
+      "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+      "subscription_event_type": "PAUSE_SUBSCRIPTION"
+    },
+    {
+      "effective_date": "2020-05-02",
+      "id": "f28a73ac-1a1b-4b0f-8eeb-709a72945776",
+      "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+      "subscription_event_type": "RESUME_SUBSCRIPTION"
+    },
+    {
       "effective_date": "2020-05-06",
       "id": "a0c08083-5db0-4800-85c7-d398de4fbb6e",
       "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
