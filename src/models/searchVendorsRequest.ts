@@ -8,7 +8,7 @@ import {
   searchVendorsRequestSortSchema,
 } from './searchVendorsRequestSort';
 
-/** Represents an input into a call to [SearchVendors.]($e/Vendors/SearchVendors) */
+/** Represents an input into a call to [SearchVendors]($e/Vendors/SearchVendors). */
 export interface SearchVendorsRequest {
   /** Defines supported query expressions to search for vendors by. */
   filter?: SearchVendorsRequestFilter;

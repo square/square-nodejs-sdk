@@ -20,19 +20,19 @@
       "errors": [
         {
           "category": "MERCHANT_SUBSCRIPTION_ERROR",
-          "code": "UNSUPPORTED_ENTRY_METHOD",
+          "code": "INSUFFICIENT_PERMISSIONS",
           "detail": "detail8",
           "field": "field6"
         },
         {
           "category": "API_ERROR",
-          "code": "INVALID_ENCRYPTED_CARD",
+          "code": "CARDHOLDER_INSUFFICIENT_PERMISSIONS",
           "detail": "detail9",
           "field": "field7"
         },
         {
           "category": "AUTHENTICATION_ERROR",
-          "code": "INVALID_CARD",
+          "code": "INVALID_LOCATION",
           "detail": "detail0",
           "field": "field8"
         }
@@ -46,7 +46,7 @@
       "errors": [
         {
           "category": "API_ERROR",
-          "code": "INVALID_ENCRYPTED_CARD",
+          "code": "CARDHOLDER_INSUFFICIENT_PERMISSIONS",
           "detail": "detail9",
           "field": "field7"
         }

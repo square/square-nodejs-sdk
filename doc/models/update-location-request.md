@@ -1,7 +1,7 @@
 
 # Update Location Request
 
-Request object for the [UpdateLocation](../../doc/api/locations.md#update-location) endpoint.
+The request object for the [UpdateLocation](../../doc/api/locations.md#update-location) endpoint.
 
 ## Structure
 
@@ -11,7 +11,7 @@ Request object for the [UpdateLocation](../../doc/api/locations.md#update-locati
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `location` | [`Location \| undefined`](../../doc/models/location.md) | Optional | Represents one of a business's [locations](https://developer.squareup.com/docs/locations-api). |
+| `location` | [`Location \| undefined`](../../doc/models/location.md) | Optional | Represents one of a business' [locations](https://developer.squareup.com/docs/locations-api). |
 
 ## Example (as JSON)
 

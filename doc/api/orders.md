@@ -111,16 +111,12 @@ bodyOrderlineItems1QuantityUnit.catalogVersion = 134;
 
 const bodyOrderlineItems1Modifiers: OrderLineItemModifier[] = [];
 
-const bodyOrderlineItems1modifiers0BasePriceMoney: Money = {};
-bodyOrderlineItems1modifiers0BasePriceMoney.amount = 53;
-bodyOrderlineItems1modifiers0BasePriceMoney.currency = 'TTD';
-
 const bodyOrderlineItems1modifiers0: OrderLineItemModifier = {};
 bodyOrderlineItems1modifiers0.uid = 'uid1';
 bodyOrderlineItems1modifiers0.catalogObjectId = 'CHQX7Y4KY6N5KINJKZCFURPZ';
 bodyOrderlineItems1modifiers0.catalogVersion = 69;
 bodyOrderlineItems1modifiers0.name = 'name1';
-bodyOrderlineItems1modifiers0.basePriceMoney = bodyOrderlineItems1modifiers0BasePriceMoney;
+bodyOrderlineItems1modifiers0.quantity = 'quantity7';
 
 bodyOrderlineItems1Modifiers[0] = bodyOrderlineItems1modifiers0;
 
@@ -788,7 +784,7 @@ To be used with `PayOrder`, a payment must:
 - Reference the order by specifying the `order_id` when [creating the payment](../../doc/api/payments.md#create-payment).
   Any approved payments that reference the same `order_id` not specified in the
   `payment_ids` is canceled.
-- Be approved with [delayed capture](https://developer.squareup.com/docs/payments-api/take-payments#delayed-capture).
+- Be approved with [delayed capture](https://developer.squareup.com/docs/payments-api/take-payments/card-payments/delayed-capture).
   Using a delayed capture payment with `PayOrder` completes the approved payment.
 
 ```ts

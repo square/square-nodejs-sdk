@@ -23,6 +23,7 @@ import { MobileAuthorizationApi } from './api/mobileAuthorizationApi';
 import { OAuthApi } from './api/oAuthApi';
 import { OrdersApi } from './api/ordersApi';
 import { PaymentsApi } from './api/paymentsApi';
+import { PayoutsApi } from './api/payoutsApi';
 import { RefundsApi } from './api/refundsApi';
 import { SitesApi } from './api/sitesApi';
 import { SnippetsApi } from './api/snippetsApi';
@@ -61,7 +62,7 @@ import {
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '17.3.0';
+export const SDK_VERSION = '18.0.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -94,6 +95,7 @@ export class Client implements ClientInterface {
   public readonly oAuthApi: OAuthApi;
   public readonly ordersApi: OrdersApi;
   public readonly paymentsApi: PaymentsApi;
+  public readonly payoutsApi: PayoutsApi;
   public readonly refundsApi: RefundsApi;
   public readonly sitesApi: SitesApi;
   public readonly snippetsApi: SnippetsApi;
@@ -118,7 +120,7 @@ export class Client implements ClientInterface {
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/17.3.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/18.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail
     );
@@ -167,6 +169,7 @@ export class Client implements ClientInterface {
     this.oAuthApi = new OAuthApi(this);
     this.ordersApi = new OrdersApi(this);
     this.paymentsApi = new PaymentsApi(this);
+    this.payoutsApi = new PayoutsApi(this);
     this.refundsApi = new RefundsApi(this);
     this.sitesApi = new SitesApi(this);
     this.snippetsApi = new SnippetsApi(this);

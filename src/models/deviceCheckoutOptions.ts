@@ -10,6 +10,8 @@ export interface DeviceCheckoutOptions {
   deviceId: string;
   /** Instructs the device to skip the receipt screen. Defaults to false. */
   skipReceiptScreen?: boolean;
+  /** Indicates that signature collection is desired during checkout. Defaults to false. */
+  collectSignature?: boolean;
   tipSettings?: TipSettings;
 }
 
@@ -17,6 +19,7 @@ export const deviceCheckoutOptionsSchema: Schema<DeviceCheckoutOptions> = object
   {
     deviceId: ['device_id', string()],
     skipReceiptScreen: ['skip_receipt_screen', optional(boolean())],
+    collectSignature: ['collect_signature', optional(boolean())],
     tipSettings: ['tip_settings', optional(lazy(() => tipSettingsSchema))],
   }
 );

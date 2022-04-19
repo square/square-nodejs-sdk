@@ -74,7 +74,9 @@ export class TerminalApi extends BaseApi {
   }
 
   /**
-   * Retrieves a filtered list of Terminal checkout requests created by the account making the request.
+   * Returns a filtered list of Terminal checkout requests created by the application making the request.
+   * Only Terminal checkout requests created for the merchant scoped to the OAuth token are returned.
+   * Terminal checkout requests are available for 30 days.
    *
    * @param body         An object containing the fields to POST for the
    *                                                              request.  See the corresponding object definition for
@@ -98,7 +100,8 @@ export class TerminalApi extends BaseApi {
   }
 
   /**
-   * Retrieves a Terminal checkout request by `checkout_id`.
+   * Retrieves a Terminal checkout request by `checkout_id`. Terminal checkout requests are available for
+   * 30 days.
    *
    * @param checkoutId  The unique ID for the desired `TerminalCheckout`.
    * @return Response from the API call
@@ -130,7 +133,10 @@ export class TerminalApi extends BaseApi {
   }
 
   /**
-   * Creates a request to refund an Interac payment completed on a Square Terminal.
+   * Creates a request to refund an Interac payment completed on a Square Terminal. Refunds for Interac
+   * payments on a Square Terminal are supported only for Interac debit cards in Canada. Other refunds
+   * for Terminal payments should use the Refunds API. For more information, see [Refunds
+   * API]($e/Refunds).
    *
    * @param body         An object containing the fields to POST for the request.
    *                                                           See the corresponding object definition for field
@@ -152,7 +158,7 @@ export class TerminalApi extends BaseApi {
 
   /**
    * Retrieves a filtered list of Interac Terminal refund requests created by the seller making the
-   * request.
+   * request. Terminal refund requests are available for 30 days.
    *
    * @param body         An object containing the fields to POST for the
    *                                                            request.  See the corresponding object definition for
@@ -173,7 +179,7 @@ export class TerminalApi extends BaseApi {
   }
 
   /**
-   * Retrieves an Interac Terminal refund object by ID.
+   * Retrieves an Interac Terminal refund object by ID. Terminal refund objects are available for 30 days.
    *
    * @param terminalRefundId   The unique ID for the desired `TerminalRefund`.
    * @return Response from the API call

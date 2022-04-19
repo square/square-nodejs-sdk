@@ -11,7 +11,7 @@ Represents a tender (i.e., a method of payment) used in a Square transaction.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `string \| undefined` | Optional | The tender's unique ID.<br>**Constraints**: *Maximum Length*: `192` |
+| `id` | `string \| undefined` | Optional | The tender's unique ID. It is the associated payment ID.<br>**Constraints**: *Maximum Length*: `192` |
 | `locationId` | `string \| undefined` | Optional | The ID of the transaction's associated location.<br>**Constraints**: *Maximum Length*: `50` |
 | `transactionId` | `string \| undefined` | Optional | The ID of the tender's associated transaction.<br>**Constraints**: *Maximum Length*: `192` |
 | `createdAt` | `string \| undefined` | Optional | The timestamp for when the tender was created, in RFC 3339 format.<br>**Constraints**: *Maximum Length*: `32` |

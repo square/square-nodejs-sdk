@@ -1,9 +1,9 @@
 import { dict, lazy, object, Schema } from '../schema';
 import { Vendor, vendorSchema } from './vendor';
 
-/** Represents an input to a call to [BulkCreateVendors.]($e/Vendors/BulkCreateVendors) */
+/** Represents an input to a call to [BulkCreateVendors]($e/Vendors/BulkCreateVendors). */
 export interface BulkCreateVendorsRequest {
-  /** Specifies a set of new [Vendor](entity:Vendor] objects as represented by a collection of idempotency-key/`Vendor`-object pairs. */
+  /** Specifies a set of new [Vendor]($m/Vendor) objects as represented by a collection of idempotency-key/`Vendor`-object pairs. */
   vendors: Record<string, Vendor>;
 }
 

@@ -1,7 +1,7 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Vendor, vendorSchema } from './vendor';
 
-/** Represents an input to a call to [UpdateVendor.]($e/Vendors/UpdateVendor) */
+/** Represents an input to a call to [UpdateVendor]($e/Vendors/UpdateVendor). */
 export interface UpdateVendorRequest {
   /**
    * A client-supplied, universally unique identifier (UUID) for the

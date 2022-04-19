@@ -5,6 +5,7 @@ import {
 } from './deviceCheckoutOptions';
 import { Money, moneySchema } from './money';
 
+/** Represents a checkout processed by the Square Terminal. */
 export interface TerminalCheckout {
   /** A unique ID for this `TerminalCheckout`. */
   id?: string;
@@ -24,7 +25,10 @@ export interface TerminalCheckout {
    * used to complete the checkout.
    */
   referenceId?: string;
-  /** An optional note to associate with the checkout, as well as with any payments used to complete the checkout. */
+  /**
+   * An optional note to associate with the checkout, as well as with any payments used to complete the checkout.
+   * Note: maximum 500 characters
+   */
   note?: string;
   deviceOptions: DeviceCheckoutOptions;
   /**

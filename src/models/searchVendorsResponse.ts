@@ -2,7 +2,7 @@ import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Error, errorSchema } from './error';
 import { Vendor, vendorSchema } from './vendor';
 
-/** Represents an output from a call to [SearchVendors.]($e/Vendors/SearchVendors) */
+/** Represents an output from a call to [SearchVendors]($e/Vendors/SearchVendors). */
 export interface SearchVendorsResponse {
   /** Errors encountered when the request fails. */
   errors?: Error[];

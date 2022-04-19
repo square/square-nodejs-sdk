@@ -1,7 +1,7 @@
 
 # Bulk Update Vendors Request
 
-Represents an input to a call to [BulkUpdateVendors.](../../doc/api/vendors.md#bulk-update-vendors)
+Represents an input to a call to [BulkUpdateVendors](../../doc/api/vendors.md#bulk-update-vendors).
 
 ## Structure
 

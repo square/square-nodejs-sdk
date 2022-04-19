@@ -15,7 +15,7 @@ import {
 
 /** Represents a tender (i.e., a method of payment) used in a Square transaction. */
 export interface Tender {
-  /** The tender's unique ID. */
+  /** The tender's unique ID. It is the associated payment ID. */
   id?: string;
   /** The ID of the transaction's associated location. */
   locationId?: string;

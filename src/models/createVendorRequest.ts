@@ -1,7 +1,7 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Vendor, vendorSchema } from './vendor';
 
-/** Represents an input to a call to [CreateVendor.]($e/Vendors/CreateVendor) */
+/** Represents an input to a call to [CreateVendor]($e/Vendors/CreateVendor). */
 export interface CreateVendorRequest {
   /**
    * A client-supplied, universally unique identifier (UUID) to make this [CreateVendor]($e/Vendors/CreateVendor) call idempotent.

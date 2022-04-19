@@ -1,4 +1,12 @@
-import { lazy, number, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /** A modifier applicable to items at the time of sale. */
@@ -18,6 +26,11 @@ export interface CatalogModifier {
   ordinal?: number;
   /** The ID of the `CatalogModifierList` associated with this modifier. */
   modifierListId?: string;
+  /**
+   * The IDs of images associated with this `CatalogModifier` instance.
+   * Currently these images are not displayed by Square, but are free to be displayed in 3rd party applications.
+   */
+  imageIds?: string[];
 }
 
 export const catalogModifierSchema: Schema<CatalogModifier> = object({
@@ -25,4 +38,5 @@ export const catalogModifierSchema: Schema<CatalogModifier> = object({
   priceMoney: ['price_money', optional(lazy(() => moneySchema))],
   ordinal: ['ordinal', optional(number())],
   modifierListId: ['modifier_list_id', optional(string())],
+  imageIds: ['image_ids', optional(array(string()))],
 });

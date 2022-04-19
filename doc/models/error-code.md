@@ -133,6 +133,7 @@ Square API.
 | `CHIP_INSERTION_REQUIRED` | The card issuer requires that the card be read<br>using a chip reader. |
 | `ALLOWABLE_PIN_TRIES_EXCEEDED` | The card has exhausted its available pin entry<br>retries set by the card issuer. Resolving the error typically requires the<br>card holder to contact the card issuer. |
 | `RESERVATION_DECLINED` | The card issuer declined the refund. |
+| `UNKNOWN_BODY_PARAMETER` | The body parameter is not recognized by the requested endpoint. |
 | `NOT_FOUND` | Not Found - a general error occurred. |
 | `APPLE_PAYMENT_PROCESSING_CERTIFICATE_HASH_NOT_FOUND` | Square could not find the associated Apple Pay certificate. |
 | `METHOD_NOT_ALLOWED` | Method Not Allowed - a general error occurred. |

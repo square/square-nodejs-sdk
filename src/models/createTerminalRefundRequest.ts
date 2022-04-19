@@ -8,6 +8,7 @@ export interface CreateTerminalRefundRequest {
    * See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.
    */
   idempotencyKey: string;
+  /** Represents a payment refund processed by the Square Terminal. Only supports Interac (Canadian debit network) payment refunds. */
   refund?: TerminalRefund;
 }
 

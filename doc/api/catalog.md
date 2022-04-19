@@ -115,6 +115,7 @@ const body: BatchRetrieveCatalogObjectsRequest = {
 };
 body.includeRelatedObjects = true;
 body.catalogVersion = 118;
+body.includeDeletedObjects = false;
 
 try {
   const { result, ...httpResponse } = await catalogApi.batchRetrieveCatalogObjects(body);

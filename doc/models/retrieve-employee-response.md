@@ -26,19 +26,19 @@
   "errors": [
     {
       "category": "AUTHENTICATION_ERROR",
-      "code": "MISSING_PIN",
+      "code": "VERIFY_CVV_FAILURE",
       "detail": "detail1",
       "field": "field9"
     },
     {
       "category": "INVALID_REQUEST_ERROR",
-      "code": "MISSING_ACCOUNT_TYPE",
+      "code": "VERIFY_AVS_FAILURE",
       "detail": "detail2",
       "field": "field0"
     },
     {
       "category": "RATE_LIMIT_ERROR",
-      "code": "INVALID_POSTAL_CODE",
+      "code": "CARD_DECLINED_CALL_ISSUER",
       "detail": "detail3",
       "field": "field1"
     }

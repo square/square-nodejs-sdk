@@ -1,7 +1,7 @@
 
 # Create Location Request
 
-Request object for the [CreateLocation](../../doc/api/locations.md#create-location) endpoint.
+The request object for the [CreateLocation](../../doc/api/locations.md#create-location) endpoint.
 
 ## Structure
 
@@ -11,7 +11,7 @@ Request object for the [CreateLocation](../../doc/api/locations.md#create-locati
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `location` | [`Location \| undefined`](../../doc/models/location.md) | Optional | Represents one of a business's [locations](https://developer.squareup.com/docs/locations-api). |
+| `location` | [`Location \| undefined`](../../doc/models/location.md) | Optional | Represents one of a business' [locations](https://developer.squareup.com/docs/locations-api). |
 
 ## Example (as JSON)
 

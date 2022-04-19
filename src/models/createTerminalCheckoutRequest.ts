@@ -8,6 +8,7 @@ export interface CreateTerminalCheckoutRequest {
    * See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.
    */
   idempotencyKey: string;
+  /** Represents a checkout processed by the Square Terminal. */
   checkout: TerminalCheckout;
 }
 
