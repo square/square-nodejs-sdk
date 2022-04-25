@@ -10,7 +10,7 @@ Use this JavaScript library to manage Square resources (such as payments, orders
 
 Use of the Square Node.js SDK requires:
 
-* Node.js 12 or higher
+* Node.js 13 or higher
 
 This SDK supports Node.js versions that are either current, or that are in long-term support status (LTS).  The SDK does not support Node.js versions that have reached their end-of-life (EOL).  For more information on Node.js versioning, see <https://nodejs.org/en/about/releases/>.
 
