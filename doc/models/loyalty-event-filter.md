@@ -22,32 +22,11 @@ the endpoint uses a logical AND to evaluate them.
 
 ```json
 {
-  "loyalty_account_filter": {
-    "loyalty_account_id": "loyalty_account_id8"
-  },
-  "type_filter": {
-    "types": [
-      "REDEEM_REWARD",
-      "DELETE_REWARD",
-      "ADJUST_POINTS"
-    ]
-  },
-  "date_time_filter": {
-    "created_at": {
-      "start_at": "start_at0",
-      "end_at": "end_at2"
-    }
-  },
-  "location_filter": {
-    "location_ids": [
-      "location_ids0",
-      "location_ids1",
-      "location_ids2"
-    ]
-  },
-  "order_filter": {
-    "order_id": "order_id2"
-  }
+  "loyalty_account_filter": null,
+  "type_filter": null,
+  "date_time_filter": null,
+  "location_filter": null,
+  "order_filter": null
 }
 ```
 

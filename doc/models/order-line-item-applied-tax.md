@@ -24,12 +24,9 @@ set of participating line items.
 
 ```json
 {
-  "uid": "uid0",
+  "uid": null,
   "tax_uid": "tax_uid4",
-  "applied_money": {
-    "amount": 196,
-    "currency": "PLN"
-  }
+  "applied_money": null
 }
 ```
 

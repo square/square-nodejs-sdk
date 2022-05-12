@@ -17,7 +17,7 @@ Represents the origination details of an order.
 
 ```json
 {
-  "name": "name0"
+  "name": null
 }
 ```
 

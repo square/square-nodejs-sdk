@@ -62,14 +62,33 @@ Monetary values are <b>negative</b> if they represent an
 
 ```json
 {
-  "id": "id0",
-  "merchant_id": "merchant_id0",
-  "created_at": "created_at2",
-  "creator_id": "creator_id0",
-  "device": {
-    "id": "id6",
-    "name": "name6"
-  }
+  "id": null,
+  "merchant_id": null,
+  "created_at": null,
+  "creator_id": null,
+  "device": null,
+  "payment_url": null,
+  "receipt_url": null,
+  "inclusive_tax_money": null,
+  "additive_tax_money": null,
+  "tax_money": null,
+  "tip_money": null,
+  "discount_money": null,
+  "total_collected_money": null,
+  "processing_fee_money": null,
+  "net_total_money": null,
+  "refunded_money": null,
+  "swedish_rounding_money": null,
+  "gross_sales_money": null,
+  "net_sales_money": null,
+  "inclusive_tax": null,
+  "additive_tax": null,
+  "tender": null,
+  "refunds": null,
+  "itemizations": null,
+  "surcharge_money": null,
+  "surcharges": null,
+  "is_partial": null
 }
 ```
 

@@ -30,148 +30,16 @@ the transaction.
 
 ```json
 {
-  "id": "id0",
-  "location_id": "location_id4",
-  "created_at": "created_at2",
-  "tenders": [
-    {
-      "id": "id2",
-      "location_id": "location_id6",
-      "transaction_id": "transaction_id0",
-      "created_at": "created_at0",
-      "note": "note8",
-      "type": "OTHER"
-    },
-    {
-      "id": "id3",
-      "location_id": "location_id7",
-      "transaction_id": "transaction_id1",
-      "created_at": "created_at1",
-      "note": "note9",
-      "type": "CARD"
-    },
-    {
-      "id": "id4",
-      "location_id": "location_id8",
-      "transaction_id": "transaction_id2",
-      "created_at": "created_at2",
-      "note": "note0",
-      "type": "CASH"
-    }
-  ],
-  "refunds": [
-    {
-      "id": "id4",
-      "location_id": "location_id8",
-      "transaction_id": "transaction_id2",
-      "tender_id": "tender_id2",
-      "created_at": "created_at2",
-      "reason": "reason0",
-      "amount_money": {
-        "amount": 186,
-        "currency": "YER"
-      },
-      "status": "PENDING",
-      "processing_fee_money": {
-        "amount": 112,
-        "currency": "GEL"
-      },
-      "additional_recipients": [
-        {
-          "location_id": "location_id7",
-          "description": "description3",
-          "amount_money": {
-            "amount": 83,
-            "currency": "JOD"
-          },
-          "receivable_id": "receivable_id3"
-        }
-      ]
-    },
-    {
-      "id": "id5",
-      "location_id": "location_id9",
-      "transaction_id": "transaction_id3",
-      "tender_id": "tender_id3",
-      "created_at": "created_at3",
-      "reason": "reason9",
-      "amount_money": {
-        "amount": 187,
-        "currency": "ZAR"
-      },
-      "status": "APPROVED",
-      "processing_fee_money": {
-        "amount": 113,
-        "currency": "GHS"
-      },
-      "additional_recipients": [
-        {
-          "location_id": "location_id8",
-          "description": "description4",
-          "amount_money": {
-            "amount": 84,
-            "currency": "JPY"
-          },
-          "receivable_id": "receivable_id4"
-        },
-        {
-          "location_id": "location_id9",
-          "description": "description5",
-          "amount_money": {
-            "amount": 85,
-            "currency": "KES"
-          },
-          "receivable_id": "receivable_id5"
-        }
-      ]
-    },
-    {
-      "id": "id6",
-      "location_id": "location_id0",
-      "transaction_id": "transaction_id4",
-      "tender_id": "tender_id4",
-      "created_at": "created_at4",
-      "reason": "reason8",
-      "amount_money": {
-        "amount": 188,
-        "currency": "ZMK"
-      },
-      "status": "REJECTED",
-      "processing_fee_money": {
-        "amount": 114,
-        "currency": "GIP"
-      },
-      "additional_recipients": [
-        {
-          "location_id": "location_id9",
-          "description": "description5",
-          "amount_money": {
-            "amount": 85,
-            "currency": "KES"
-          },
-          "receivable_id": "receivable_id5"
-        },
-        {
-          "location_id": "location_id0",
-          "description": "description6",
-          "amount_money": {
-            "amount": 86,
-            "currency": "KGS"
-          },
-          "receivable_id": "receivable_id6"
-        },
-        {
-          "location_id": "location_id1",
-          "description": "description7",
-          "amount_money": {
-            "amount": 87,
-            "currency": "KHR"
-          },
-          "receivable_id": "receivable_id7"
-        }
-      ]
-    }
-  ]
+  "id": null,
+  "location_id": null,
+  "created_at": null,
+  "tenders": null,
+  "refunds": null,
+  "reference_id": null,
+  "product": null,
+  "client_id": null,
+  "shipping_address": null,
+  "order_id": null
 }
 ```
 

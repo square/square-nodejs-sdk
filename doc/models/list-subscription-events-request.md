@@ -20,8 +20,8 @@ endpoint.
 
 ```json
 {
-  "cursor": "cursor6",
-  "limit": 172
+  "cursor": null,
+  "limit": null
 }
 ```
 

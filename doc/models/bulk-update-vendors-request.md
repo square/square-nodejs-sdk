@@ -19,51 +19,48 @@ Represents an input to a call to [BulkUpdateVendors](../../doc/api/vendors.md#bu
 {
   "vendors": {
     "key0": {
-      "idempotency_key": "idempotency_key5",
+      "idempotency_key": null,
       "vendor": {
-        "id": "id5",
-        "created_at": "created_at3",
-        "updated_at": "updated_at1",
-        "name": "name5",
-        "address": {
-          "address_line_1": "address_line_11",
-          "address_line_2": "address_line_21",
-          "address_line_3": "address_line_37",
-          "locality": "locality1",
-          "sublocality": "sublocality1"
-        }
+        "id": null,
+        "created_at": null,
+        "updated_at": null,
+        "name": null,
+        "address": null,
+        "contacts": null,
+        "account_number": null,
+        "note": null,
+        "version": null,
+        "status": null
       }
     },
     "key1": {
-      "idempotency_key": "idempotency_key6",
+      "idempotency_key": null,
       "vendor": {
-        "id": "id6",
-        "created_at": "created_at4",
-        "updated_at": "updated_at2",
-        "name": "name6",
-        "address": {
-          "address_line_1": "address_line_12",
-          "address_line_2": "address_line_22",
-          "address_line_3": "address_line_38",
-          "locality": "locality2",
-          "sublocality": "sublocality2"
-        }
+        "id": null,
+        "created_at": null,
+        "updated_at": null,
+        "name": null,
+        "address": null,
+        "contacts": null,
+        "account_number": null,
+        "note": null,
+        "version": null,
+        "status": null
       }
     },
     "key2": {
-      "idempotency_key": "idempotency_key7",
+      "idempotency_key": null,
       "vendor": {
-        "id": "id7",
-        "created_at": "created_at5",
-        "updated_at": "updated_at3",
-        "name": "name7",
-        "address": {
-          "address_line_1": "address_line_13",
-          "address_line_2": "address_line_23",
-          "address_line_3": "address_line_39",
-          "locality": "locality3",
-          "sublocality": "sublocality3"
-        }
+        "id": null,
+        "created_at": null,
+        "updated_at": null,
+        "name": null,
+        "address": null,
+        "contacts": null,
+        "account_number": null,
+        "note": null,
+        "version": null,
+        "status": null
       }
     }
   }

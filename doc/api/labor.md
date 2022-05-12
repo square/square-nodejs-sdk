@@ -57,11 +57,8 @@ async listBreakTypes(
 ## Example Usage
 
 ```ts
-const locationId = 'location_id4';
-const limit = 172;
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await laborApi.listBreakTypes(locationId, limit, cursor);
+  const { result, ...httpResponse } = await laborApi.listBreakTypes();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -118,10 +115,6 @@ const bodyBreakType: BreakType = {
   expectedDuration: 'PT30M',
   isPaid: true,
 };
-bodyBreakType.id = 'id2';
-bodyBreakType.version = 124;
-bodyBreakType.createdAt = 'created_at0';
-bodyBreakType.updatedAt = 'updated_at8';
 
 const body: CreateBreakTypeRequest = {
   breakType: bodyBreakType,
@@ -256,10 +249,7 @@ const bodyBreakType: BreakType = {
   expectedDuration: 'PT50M',
   isPaid: true,
 };
-bodyBreakType.id = 'id2';
 bodyBreakType.version = 1;
-bodyBreakType.createdAt = 'created_at0';
-bodyBreakType.updatedAt = 'updated_at8';
 
 const body: UpdateBreakTypeRequest = {
   breakType: bodyBreakType,
@@ -309,11 +299,8 @@ async listEmployeeWages(
 ## Example Usage
 
 ```ts
-const employeeId = 'employee_id0';
-const limit = 172;
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await laborApi.listEmployeeWages(employeeId, limit, cursor);
+  const { result, ...httpResponse } = await laborApi.listEmployeeWages();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -427,7 +414,6 @@ const bodyShiftbreaks0: Break = {
   expectedDuration: 'PT5M',
   isPaid: true,
 };
-bodyShiftbreaks0.id = 'id4';
 bodyShiftbreaks0.endAt = '2019-01-25T06:16:00-05:00';
 
 bodyShiftBreaks[0] = bodyShiftbreaks0;
@@ -435,10 +421,7 @@ bodyShiftBreaks[0] = bodyShiftbreaks0;
 const bodyShift: Shift = {
   startAt: '2019-01-25T03:11:00-05:00',
 };
-bodyShift.id = 'id8';
-bodyShift.employeeId = 'employee_id2';
 bodyShift.locationId = 'PAA1RJZZKXBFG';
-bodyShift.timezone = 'timezone2';
 bodyShift.endAt = '2019-01-25T13:11:00-05:00';
 bodyShift.wage = bodyShiftWage;
 bodyShift.breaks = bodyShiftBreaks;
@@ -503,48 +486,7 @@ async searchShifts(
 
 ```ts
 const contentType = null;
-const bodyQueryFilterLocationIds: string[] = ['location_ids2'];
-const bodyQueryFilterTeamMemberIds: string[] = ['team_member_ids9', 'team_member_ids0'];
-const bodyQueryFilterEmployeeIds: string[] = ['employee_ids7'];
-const bodyQueryFilterStart: TimeRange = {};
-bodyQueryFilterStart.startAt = 'start_at8';
-bodyQueryFilterStart.endAt = 'end_at4';
-
-const bodyQueryFilterEnd: TimeRange = {};
-bodyQueryFilterEnd.startAt = 'start_at2';
-bodyQueryFilterEnd.endAt = 'end_at0';
-
-const bodyQueryFilterWorkdayDateRange: DateRange = {};
-bodyQueryFilterWorkdayDateRange.startDate = 'start_date8';
-bodyQueryFilterWorkdayDateRange.endDate = 'end_date4';
-
-const bodyQueryFilterWorkday: ShiftWorkday = {};
-bodyQueryFilterWorkday.dateRange = bodyQueryFilterWorkdayDateRange;
-bodyQueryFilterWorkday.matchShiftsBy = 'START_AT';
-bodyQueryFilterWorkday.defaultTimezone = 'default_timezone8';
-
-const bodyQueryFilter: ShiftFilter = {
-  locationIds: bodyQueryFilterLocationIds,
-  teamMemberIds: bodyQueryFilterTeamMemberIds,
-};
-bodyQueryFilter.employeeIds = bodyQueryFilterEmployeeIds;
-bodyQueryFilter.status = 'OPEN';
-bodyQueryFilter.start = bodyQueryFilterStart;
-bodyQueryFilter.end = bodyQueryFilterEnd;
-bodyQueryFilter.workday = bodyQueryFilterWorkday;
-
-const bodyQuerySort: ShiftSort = {};
-bodyQuerySort.field = 'CREATED_AT';
-bodyQuerySort.order = 'DESC';
-
-const bodyQuery: ShiftQuery = {};
-bodyQuery.filter = bodyQueryFilter;
-bodyQuery.sort = bodyQuerySort;
-
 const body: SearchShiftsRequest = {};
-body.query = bodyQuery;
-body.limit = 164;
-body.cursor = 'cursor0';
 
 try {
   const { result, ...httpResponse } = await laborApi.searchShifts(body);
@@ -697,10 +639,7 @@ bodyShiftBreaks[0] = bodyShiftbreaks0;
 const bodyShift: Shift = {
   startAt: '2019-01-25T03:11:00-05:00',
 };
-bodyShift.id = 'id8';
-bodyShift.employeeId = 'employee_id2';
 bodyShift.locationId = 'PAA1RJZZKXBFG';
-bodyShift.timezone = 'timezone2';
 bodyShift.endAt = '2019-01-25T13:11:00-05:00';
 bodyShift.wage = bodyShiftWage;
 bodyShift.breaks = bodyShiftBreaks;
@@ -753,11 +692,8 @@ async listTeamMemberWages(
 ## Example Usage
 
 ```ts
-const teamMemberId = 'team_member_id0';
-const limit = 172;
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await laborApi.listTeamMemberWages(teamMemberId, limit, cursor);
+  const { result, ...httpResponse } = await laborApi.listTeamMemberWages();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -835,10 +771,8 @@ async listWorkweekConfigs(
 ## Example Usage
 
 ```ts
-const limit = 172;
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await laborApi.listWorkweekConfigs(limit, cursor);
+  const { result, ...httpResponse } = await laborApi.listWorkweekConfigs();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -883,10 +817,7 @@ const bodyWorkweekConfig: WorkweekConfig = {
   startOfWeek: 'MON',
   startOfDayLocalTime: '10:00',
 };
-bodyWorkweekConfig.id = 'id4';
 bodyWorkweekConfig.version = 10;
-bodyWorkweekConfig.createdAt = 'created_at2';
-bodyWorkweekConfig.updatedAt = 'updated_at0';
 
 const body: UpdateWorkweekConfigRequest = {
   workweekConfig: bodyWorkweekConfig,

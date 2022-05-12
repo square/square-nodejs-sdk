@@ -58,9 +58,7 @@ bodyTeamMemberAssignedLocations.assignmentType = 'EXPLICIT_LOCATIONS';
 bodyTeamMemberAssignedLocations.locationIds = bodyTeamMemberAssignedLocationsLocationIds;
 
 const bodyTeamMember: TeamMember = {};
-bodyTeamMember.id = 'id2';
 bodyTeamMember.referenceId = 'reference_id_1';
-bodyTeamMember.isOwner = false;
 bodyTeamMember.status = 'ACTIVE';
 bodyTeamMember.givenName = 'Joe';
 bodyTeamMember.familyName = 'Doe';
@@ -216,7 +214,6 @@ const bodyQueryFilterLocationIds: string[] = ['0G5P3VGACMMQZ'];
 const bodyQueryFilter: SearchTeamMembersFilter = {};
 bodyQueryFilter.locationIds = bodyQueryFilterLocationIds;
 bodyQueryFilter.status = 'ACTIVE';
-bodyQueryFilter.isOwner = false;
 
 const bodyQuery: SearchTeamMembersQuery = {};
 bodyQuery.filter = bodyQueryFilter;
@@ -224,7 +221,6 @@ bodyQuery.filter = bodyQueryFilter;
 const body: SearchTeamMembersRequest = {};
 body.query = bodyQuery;
 body.limit = 10;
-body.cursor = 'cursor0';
 
 try {
   const { result, ...httpResponse } = await teamApi.searchTeamMembers(body);
@@ -315,9 +311,7 @@ bodyTeamMemberAssignedLocations.assignmentType = 'EXPLICIT_LOCATIONS';
 bodyTeamMemberAssignedLocations.locationIds = bodyTeamMemberAssignedLocationsLocationIds;
 
 const bodyTeamMember: TeamMember = {};
-bodyTeamMember.id = 'id2';
 bodyTeamMember.referenceId = 'reference_id_1';
-bodyTeamMember.isOwner = false;
 bodyTeamMember.status = 'ACTIVE';
 bodyTeamMember.givenName = 'Joe';
 bodyTeamMember.familyName = 'Doe';
@@ -417,10 +411,6 @@ const teamMemberId = 'team_member_id0';
 const contentType = null;
 const bodyWageSettingJobAssignments: JobAssignment[] = [];
 
-const bodyWageSettingjobAssignments0HourlyRate: Money = {};
-bodyWageSettingjobAssignments0HourlyRate.amount = 117;
-bodyWageSettingjobAssignments0HourlyRate.currency = 'ERN';
-
 const bodyWageSettingjobAssignments0AnnualRate: Money = {};
 bodyWageSettingjobAssignments0AnnualRate.amount = 3000000;
 bodyWageSettingjobAssignments0AnnualRate.currency = 'USD';
@@ -429,7 +419,6 @@ const bodyWageSettingjobAssignments0: JobAssignment = {
   jobTitle: 'Manager',
   payType: 'SALARY',
 };
-bodyWageSettingjobAssignments0.hourlyRate = bodyWageSettingjobAssignments0HourlyRate;
 bodyWageSettingjobAssignments0.annualRate = bodyWageSettingjobAssignments0AnnualRate;
 bodyWageSettingjobAssignments0.weeklyHours = 40;
 
@@ -439,26 +428,17 @@ const bodyWageSettingjobAssignments1HourlyRate: Money = {};
 bodyWageSettingjobAssignments1HourlyRate.amount = 1200;
 bodyWageSettingjobAssignments1HourlyRate.currency = 'USD';
 
-const bodyWageSettingjobAssignments1AnnualRate: Money = {};
-bodyWageSettingjobAssignments1AnnualRate.amount = 58;
-bodyWageSettingjobAssignments1AnnualRate.currency = 'DZD';
-
 const bodyWageSettingjobAssignments1: JobAssignment = {
   jobTitle: 'Cashier',
   payType: 'HOURLY',
 };
 bodyWageSettingjobAssignments1.hourlyRate = bodyWageSettingjobAssignments1HourlyRate;
-bodyWageSettingjobAssignments1.annualRate = bodyWageSettingjobAssignments1AnnualRate;
-bodyWageSettingjobAssignments1.weeklyHours = 226;
 
 bodyWageSettingJobAssignments[1] = bodyWageSettingjobAssignments1;
 
 const bodyWageSetting: WageSetting = {};
-bodyWageSetting.teamMemberId = 'team_member_id2';
 bodyWageSetting.jobAssignments = bodyWageSettingJobAssignments;
 bodyWageSetting.isOvertimeExempt = true;
-bodyWageSetting.version = 122;
-bodyWageSetting.createdAt = 'created_at0';
 
 const body: UpdateWageSettingRequest = {
   wageSetting: bodyWageSetting,

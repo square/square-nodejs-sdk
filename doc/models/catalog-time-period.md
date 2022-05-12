@@ -17,7 +17,7 @@ Represents a time period - either a single period or a repeating period.
 
 ```json
 {
-  "event": "event0"
+  "event": null
 }
 ```
 

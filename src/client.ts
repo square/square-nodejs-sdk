@@ -5,6 +5,7 @@ import { CardsApi } from './api/cardsApi';
 import { CashDrawersApi } from './api/cashDrawersApi';
 import { CatalogApi } from './api/catalogApi';
 import { CheckoutApi } from './api/checkoutApi';
+import { CustomerCustomAttributesApi } from './api/customerCustomAttributesApi';
 import { CustomerGroupsApi } from './api/customerGroupsApi';
 import { CustomersApi } from './api/customersApi';
 import { CustomerSegmentsApi } from './api/customerSegmentsApi';
@@ -62,7 +63,7 @@ import {
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '18.0.0';
+export const SDK_VERSION = '19.0.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -77,6 +78,7 @@ export class Client implements ClientInterface {
   public readonly cashDrawersApi: CashDrawersApi;
   public readonly catalogApi: CatalogApi;
   public readonly checkoutApi: CheckoutApi;
+  public readonly customerCustomAttributesApi: CustomerCustomAttributesApi;
   public readonly customerGroupsApi: CustomerGroupsApi;
   public readonly customersApi: CustomersApi;
   public readonly customerSegmentsApi: CustomerSegmentsApi;
@@ -120,7 +122,7 @@ export class Client implements ClientInterface {
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/18.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/19.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail
     );
@@ -151,6 +153,7 @@ export class Client implements ClientInterface {
     this.cashDrawersApi = new CashDrawersApi(this);
     this.catalogApi = new CatalogApi(this);
     this.checkoutApi = new CheckoutApi(this);
+    this.customerCustomAttributesApi = new CustomerCustomAttributesApi(this);
     this.customerGroupsApi = new CustomerGroupsApi(this);
     this.customersApi = new CustomersApi(this);
     this.customerSegmentsApi = new CustomerSegmentsApi(this);

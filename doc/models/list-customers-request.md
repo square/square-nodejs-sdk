@@ -21,10 +21,10 @@ Defines the query parameters that can be included in a request to the
 
 ```json
 {
-  "cursor": "cursor6",
-  "limit": 172,
-  "sort_field": "DEFAULT",
-  "sort_order": "DESC"
+  "cursor": null,
+  "limit": null,
+  "sort_field": null,
+  "sort_order": null
 }
 ```
 

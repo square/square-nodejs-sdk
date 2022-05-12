@@ -18,8 +18,8 @@ Provides information about the subscription event.
 
 ```json
 {
-  "detail": "detail6",
-  "code": "CUSTOMER_DELETED"
+  "detail": null,
+  "code": null
 }
 ```
 

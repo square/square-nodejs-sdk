@@ -19,8 +19,8 @@ Describes a gift card activity of the ADJUST_INCREMENT type.
 ```json
 {
   "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
+    "amount": null,
+    "currency": null
   },
   "reason": "SUPPORT_ISSUE"
 }

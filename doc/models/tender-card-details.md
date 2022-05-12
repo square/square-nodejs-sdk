@@ -19,15 +19,9 @@ Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CAR
 
 ```json
 {
-  "status": "AUTHORIZED",
-  "card": {
-    "id": "id6",
-    "card_brand": "OTHER_BRAND",
-    "last_4": "last_48",
-    "exp_month": 228,
-    "exp_year": 68
-  },
-  "entry_method": "KEYED"
+  "status": null,
+  "card": null,
+  "entry_method": null
 }
 ```
 

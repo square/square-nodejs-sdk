@@ -24,22 +24,14 @@ Contains details about how to fulfill this order.
 
 ```json
 {
-  "uid": "uid0",
-  "type": "PICKUP",
-  "state": "PREPARED",
-  "line_item_application": "ALL",
-  "entries": [
-    {
-      "uid": "uid5",
-      "line_item_uid": "line_item_uid5",
-      "quantity": "quantity1",
-      "metadata": {
-        "key0": "metadata8",
-        "key1": "metadata9",
-        "key2": "metadata0"
-      }
-    }
-  ]
+  "uid": null,
+  "type": null,
+  "state": null,
+  "line_item_application": null,
+  "entries": null,
+  "metadata": null,
+  "pickup_details": null,
+  "shipment_details": null
 }
 ```
 

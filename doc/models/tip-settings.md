@@ -19,14 +19,11 @@
 
 ```json
 {
-  "allow_tipping": false,
-  "separate_tip_screen": false,
-  "custom_tip_field": false,
-  "tip_percentages": [
-    156,
-    157
-  ],
-  "smart_tipping": false
+  "allow_tipping": null,
+  "separate_tip_screen": null,
+  "custom_tip_field": null,
+  "tip_percentages": null,
+  "smart_tipping": null
 }
 ```
 

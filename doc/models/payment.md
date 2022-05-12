@@ -56,17 +56,46 @@ Represents a payment processed by the Square API.
 
 ```json
 {
-  "id": "id0",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
-  },
-  "tip_money": {
-    "amount": 190,
-    "currency": "CHE"
-  }
+  "id": null,
+  "created_at": null,
+  "updated_at": null,
+  "amount_money": null,
+  "tip_money": null,
+  "total_money": null,
+  "app_fee_money": null,
+  "approved_money": null,
+  "processing_fee": null,
+  "refunded_money": null,
+  "status": null,
+  "delay_duration": null,
+  "delay_action": null,
+  "delayed_until": null,
+  "source_type": null,
+  "card_details": null,
+  "cash_details": null,
+  "bank_account_details": null,
+  "external_details": null,
+  "wallet_details": null,
+  "buy_now_pay_later_details": null,
+  "location_id": null,
+  "order_id": null,
+  "reference_id": null,
+  "customer_id": null,
+  "employee_id": null,
+  "team_member_id": null,
+  "refund_ids": null,
+  "risk_evaluation": null,
+  "buyer_email_address": null,
+  "billing_address": null,
+  "shipping_address": null,
+  "note": null,
+  "statement_description_identifier": null,
+  "capabilities": null,
+  "receipt_number": null,
+  "receipt_url": null,
+  "device_details": null,
+  "application_details": null,
+  "version_token": null
 }
 ```
 

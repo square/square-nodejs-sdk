@@ -17,7 +17,7 @@ Describes a `DeleteInvoice` request.
 
 ```json
 {
-  "version": 172
+  "version": null
 }
 ```
 

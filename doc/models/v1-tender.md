@@ -53,11 +53,22 @@ associated payment.
 
 ```json
 {
-  "id": "id0",
-  "type": "UNKNOWN",
-  "name": "name0",
-  "employee_id": "employee_id0",
-  "receipt_url": "receipt_url8"
+  "id": null,
+  "type": null,
+  "name": null,
+  "employee_id": null,
+  "receipt_url": null,
+  "card_brand": null,
+  "pan_suffix": null,
+  "entry_method": null,
+  "payment_note": null,
+  "total_money": null,
+  "tendered_money": null,
+  "tendered_at": null,
+  "settled_at": null,
+  "change_back_money": null,
+  "refunded_money": null,
+  "is_exchange": null
 }
 ```
 

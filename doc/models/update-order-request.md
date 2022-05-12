@@ -20,43 +20,9 @@ Defines the fields that are included in requests to the
 
 ```json
 {
-  "order": {
-    "id": "id6",
-    "location_id": "location_id0",
-    "reference_id": "reference_id4",
-    "source": {
-      "name": "name2"
-    },
-    "customer_id": "customer_id4",
-    "line_items": [
-      {
-        "uid": "uid1",
-        "name": "name1",
-        "quantity": "quantity7",
-        "quantity_unit": {
-          "measurement_unit": {
-            "custom_unit": {
-              "name": "name9",
-              "abbreviation": "abbreviation1"
-            },
-            "area_unit": "METRIC_SQUARE_CENTIMETER",
-            "length_unit": "IMPERIAL_MILE",
-            "volume_unit": "GENERIC_FLUID_OUNCE",
-            "weight_unit": "METRIC_KILOGRAM"
-          },
-          "precision": 201,
-          "catalog_object_id": "catalog_object_id1",
-          "catalog_version": 135
-        },
-        "note": "note3",
-        "catalog_object_id": "catalog_object_id5"
-      }
-    ]
-  },
-  "fields_to_clear": [
-    "fields_to_clear1"
-  ],
-  "idempotency_key": "idempotency_key6"
+  "order": null,
+  "fields_to_clear": null,
+  "idempotency_key": null
 }
 ```
 

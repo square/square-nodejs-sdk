@@ -41,30 +41,31 @@ V1Order
 
 ```json
 {
-  "errors": [
-    {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "VERIFY_CVV_FAILURE",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "VERIFY_AVS_FAILURE",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "CARD_DECLINED_CALL_ISSUER",
-      "detail": "detail3",
-      "field": "field1"
-    }
-  ],
-  "id": "id0",
-  "buyer_email": "buyer_email8",
-  "recipient_name": "recipient_name8",
-  "recipient_phone_number": "recipient_phone_number4"
+  "errors": null,
+  "id": null,
+  "buyer_email": null,
+  "recipient_name": null,
+  "recipient_phone_number": null,
+  "state": null,
+  "shipping_address": null,
+  "subtotal_money": null,
+  "total_shipping_money": null,
+  "total_tax_money": null,
+  "total_price_money": null,
+  "total_discount_money": null,
+  "created_at": null,
+  "updated_at": null,
+  "expires_at": null,
+  "payment_id": null,
+  "buyer_note": null,
+  "completed_note": null,
+  "refunded_note": null,
+  "canceled_note": null,
+  "tender": null,
+  "order_history": null,
+  "promo_code": null,
+  "btc_receive_address": null,
+  "btc_price_satoshi": null
 }
 ```
 

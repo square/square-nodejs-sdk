@@ -87,20 +87,13 @@ async createLocation(
 const contentType = null;
 const bodyLocationAddress: Address = {};
 bodyLocationAddress.addressLine1 = '1234 Peachtree St. NE';
-bodyLocationAddress.addressLine2 = 'address_line_26';
-bodyLocationAddress.addressLine3 = 'address_line_32';
 bodyLocationAddress.locality = 'Atlanta';
-bodyLocationAddress.sublocality = 'sublocality6';
 bodyLocationAddress.administrativeDistrictLevel1 = 'GA';
 bodyLocationAddress.postalCode = '30309';
 
-const bodyLocationCapabilities: string[] = ['AUTOMATIC_TRANSFERS', 'CREDIT_CARD_PROCESSING', 'AUTOMATIC_TRANSFERS'];
 const bodyLocation: Location = {};
-bodyLocation.id = 'id0';
 bodyLocation.name = 'Midtown';
 bodyLocation.address = bodyLocationAddress;
-bodyLocation.timezone = 'timezone0';
-bodyLocation.capabilities = bodyLocationCapabilities;
 bodyLocation.description = 'Midtown Atlanta store';
 
 const body: CreateLocationRequest = {};
@@ -188,14 +181,6 @@ async updateLocation(
 ```ts
 const locationId = 'location_id4';
 const contentType = null;
-const bodyLocationAddress: Address = {};
-bodyLocationAddress.addressLine1 = 'address_line_16';
-bodyLocationAddress.addressLine2 = 'address_line_26';
-bodyLocationAddress.addressLine3 = 'address_line_32';
-bodyLocationAddress.locality = 'locality6';
-bodyLocationAddress.sublocality = 'sublocality6';
-
-const bodyLocationCapabilities: string[] = ['AUTOMATIC_TRANSFERS', 'CREDIT_CARD_PROCESSING', 'AUTOMATIC_TRANSFERS'];
 const bodyLocationBusinessHoursPeriods: BusinessHoursPeriod[] = [];
 
 const bodyLocationBusinessHoursperiods0: BusinessHoursPeriod = {};
@@ -223,11 +208,6 @@ const bodyLocationBusinessHours: BusinessHours = {};
 bodyLocationBusinessHours.periods = bodyLocationBusinessHoursPeriods;
 
 const bodyLocation: Location = {};
-bodyLocation.id = 'id0';
-bodyLocation.name = 'name0';
-bodyLocation.address = bodyLocationAddress;
-bodyLocation.timezone = 'timezone0';
-bodyLocation.capabilities = bodyLocationCapabilities;
 bodyLocation.businessHours = bodyLocationBusinessHours;
 bodyLocation.description = 'Midtown Atlanta store - Open weekends';
 

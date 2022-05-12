@@ -28,11 +28,15 @@ end based on summing all cash drawer shift events.
 
 ```json
 {
-  "id": "id0",
-  "state": "CLOSED",
-  "opened_at": "opened_at8",
-  "ended_at": "ended_at2",
-  "closed_at": "closed_at2"
+  "id": null,
+  "state": null,
+  "opened_at": null,
+  "ended_at": null,
+  "closed_at": null,
+  "description": null,
+  "opened_cash_money": null,
+  "expected_cash_money": null,
+  "closed_cash_money": null
 }
 ```
 

@@ -15,13 +15,7 @@
 
 ```json
 {
-  "order_created": {
-    "order_id": "order_id8",
-    "version": 170,
-    "location_id": "location_id8",
-    "state": "CANCELED",
-    "created_at": "created_at2"
-  }
+  "order_created": null
 }
 ```
 

@@ -29,14 +29,19 @@ The service appointment settings, including where and how the service is provide
 
 ```json
 {
-  "location_types": [
-    "BUSINESS_LOCATION",
-    "CUSTOMER_LOCATION"
-  ],
-  "alignment_time": "HALF_HOURLY",
-  "min_booking_lead_time_seconds": 38,
-  "max_booking_lead_time_seconds": 48,
-  "any_team_member_booking_enabled": false
+  "location_types": null,
+  "alignment_time": null,
+  "min_booking_lead_time_seconds": null,
+  "max_booking_lead_time_seconds": null,
+  "any_team_member_booking_enabled": null,
+  "multiple_service_booking_enabled": null,
+  "max_appointments_per_day_limit_type": null,
+  "max_appointments_per_day_limit": null,
+  "cancellation_window_seconds": null,
+  "cancellation_fee_money": null,
+  "cancellation_policy": null,
+  "cancellation_policy_text": null,
+  "skip_booking_flow_staff_selection": null
 }
 ```
 

@@ -1,11 +1,17 @@
 import { lazy, object, Schema, string } from '../schema';
 import { GiftCard, giftCardSchema } from './giftCard';
 
-/** A request to create a gift card. */
+/** Represents a [CreateGiftCard]($e/GiftCards/CreateGiftCard) request. */
 export interface CreateGiftCardRequest {
-  /** A unique string that identifies the `CreateGiftCard` request. */
+  /**
+   * A unique identifier for this request, used to ensure idempotency. For more information,
+   * see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+   */
   idempotencyKey: string;
-  /** The location ID where the gift card that will be created should be registered. */
+  /**
+   * The ID of the [location]($m/Location) where the gift card should be registered for
+   * reporting purposes. Gift cards can be redeemed at any of the seller's locations.
+   */
   locationId: string;
   /** Represents a Square gift card. */
   giftCard: GiftCard;

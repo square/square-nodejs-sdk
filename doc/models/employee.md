@@ -26,11 +26,16 @@ An employee object that is used by the external API.
 
 ```json
 {
-  "id": "id0",
-  "first_name": "first_name0",
-  "last_name": "last_name8",
-  "email": "email6",
-  "phone_number": "phone_number2"
+  "id": null,
+  "first_name": null,
+  "last_name": null,
+  "email": null,
+  "phone_number": null,
+  "location_ids": null,
+  "status": null,
+  "is_owner": null,
+  "created_at": null,
+  "updated_at": null
 }
 ```
 

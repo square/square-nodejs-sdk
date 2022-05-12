@@ -21,26 +21,11 @@ A collection of various money amounts.
 
 ```json
 {
-  "total_money": {
-    "amount": 250,
-    "currency": "UNKNOWN_CURRENCY"
-  },
-  "tax_money": {
-    "amount": 58,
-    "currency": "KZT"
-  },
-  "discount_money": {
-    "amount": 92,
-    "currency": "XBD"
-  },
-  "tip_money": {
-    "amount": 190,
-    "currency": "CHE"
-  },
-  "service_charge_money": {
-    "amount": 160,
-    "currency": "BZD"
-  }
+  "total_money": null,
+  "tax_money": null,
+  "discount_money": null,
+  "tip_money": null,
+  "service_charge_money": null
 }
 ```
 

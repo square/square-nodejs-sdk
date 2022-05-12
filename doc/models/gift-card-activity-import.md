@@ -19,8 +19,8 @@ Describes a gift card activity of the IMPORT type and the `GiftCardGANSource` is
 ```json
 {
   "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
+    "amount": null,
+    "currency": null
   }
 }
 ```

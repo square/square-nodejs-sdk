@@ -19,12 +19,9 @@ V1PaymentModifier
 
 ```json
 {
-  "name": "name0",
-  "applied_money": {
-    "amount": 196,
-    "currency_code": "LYD"
-  },
-  "modifier_option_id": "modifier_option_id6"
+  "name": null,
+  "applied_money": null,
+  "modifier_option_id": null
 }
 ```
 

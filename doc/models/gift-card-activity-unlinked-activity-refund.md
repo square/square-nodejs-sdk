@@ -20,11 +20,11 @@ Present only when `GiftCardActivityType` is UNLINKED_ACTIVITY_REFUND.
 ```json
 {
   "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
+    "amount": null,
+    "currency": null
   },
-  "reference_id": "reference_id2",
-  "payment_id": "payment_id0"
+  "reference_id": null,
+  "payment_id": null
 }
 ```
 

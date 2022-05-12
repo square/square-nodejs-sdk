@@ -19,8 +19,8 @@ objects that have date properties.
 
 ```json
 {
-  "start_date": "start_date6",
-  "end_date": "end_date0"
+  "start_date": null,
+  "end_date": null
 }
 ```
 

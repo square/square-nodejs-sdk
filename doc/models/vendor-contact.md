@@ -22,11 +22,11 @@ Represents a contact of a [Vendor](../../doc/models/vendor.md).
 
 ```json
 {
-  "id": "id0",
-  "name": "name0",
-  "email_address": "email_address2",
-  "phone_number": "phone_number2",
-  "removed": false,
+  "id": null,
+  "name": null,
+  "email_address": null,
+  "phone_number": null,
+  "removed": null,
   "ordinal": 80
 }
 ```

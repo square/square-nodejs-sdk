@@ -50,11 +50,8 @@ async listDisputes(
 ## Example Usage
 
 ```ts
-const cursor = 'cursor6';
-const states = 'INQUIRY_EVIDENCE_REQUIRED';
-const locationId = 'location_id4';
 try {
-  const { result, ...httpResponse } = await disputesApi.listDisputes(cursor, states, locationId);
+  const { result, ...httpResponse } = await disputesApi.listDisputes();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -176,9 +173,8 @@ async listDisputeEvidence(
 
 ```ts
 const disputeId = 'dispute_id2';
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await disputesApi.listDisputeEvidence(disputeId, cursor);
+  const { result, ...httpResponse } = await disputesApi.listDisputeEvidence(disputeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -221,15 +217,8 @@ async createDisputeEvidenceFile(
 
 ```ts
 const disputeId = 'dispute_id2';
-const request: CreateDisputeEvidenceFileRequest = {
-  idempotencyKey: 'idempotency_key2',
-};
-request.evidenceType = 'REBUTTAL_EXPLANATION';
-request.contentType = 'content_type0';
-
-const imageFile = new FileWrapper(fs.createReadStream('dummy_file'));
 try {
-  const { result, ...httpResponse } = await disputesApi.createDisputeEvidenceFile(disputeId, request, imageFile);
+  const { result, ...httpResponse } = await disputesApi.createDisputeEvidenceFile(disputeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

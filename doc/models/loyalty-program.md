@@ -37,26 +37,13 @@ For more information, see [Loyalty Program Overview](https://developer.squareup.
       "definition": {
         "scope": "CATEGORY",
         "discount_type": "FIXED_PERCENTAGE",
-        "percentage_discount": "percentage_discount1",
-        "catalog_object_ids": [
-          "catalog_object_ids3",
-          "catalog_object_ids4",
-          "catalog_object_ids5"
-        ],
-        "fixed_discount_money": {
-          "amount": 119,
-          "currency": "CUC"
-        },
-        "max_discount_money": {
-          "amount": 163,
-          "currency": "ZMK"
-        }
+        "percentage_discount": null,
+        "catalog_object_ids": null,
+        "fixed_discount_money": null,
+        "max_discount_money": null
       },
       "created_at": "created_at7",
-      "pricing_rule_reference": {
-        "object_id": "object_id9",
-        "catalog_version": 205
-      }
+      "pricing_rule_reference": null
     },
     {
       "id": "id0",
@@ -65,29 +52,16 @@ For more information, see [Loyalty Program Overview](https://developer.squareup.
       "definition": {
         "scope": "ORDER",
         "discount_type": "FIXED_AMOUNT",
-        "percentage_discount": "percentage_discount2",
-        "catalog_object_ids": [
-          "catalog_object_ids4"
-        ],
-        "fixed_discount_money": {
-          "amount": 120,
-          "currency": "CUP"
-        },
-        "max_discount_money": {
-          "amount": 164,
-          "currency": "ZMW"
-        }
+        "percentage_discount": null,
+        "catalog_object_ids": null,
+        "fixed_discount_money": null,
+        "max_discount_money": null
       },
       "created_at": "created_at8",
-      "pricing_rule_reference": {
-        "object_id": "object_id0",
-        "catalog_version": 206
-      }
+      "pricing_rule_reference": null
     }
   ],
-  "expiration_policy": {
-    "expiration_duration": "expiration_duration0"
-  },
+  "expiration_policy": null,
   "terminology": {
     "one": "one0",
     "other": "other6"
@@ -100,68 +74,19 @@ For more information, see [Loyalty Program Overview](https://developer.squareup.
   "accrual_rules": [
     {
       "accrual_type": "ITEM_VARIATION",
-      "points": 100,
-      "visit_data": {
-        "minimum_amount_money": {
-          "amount": 160,
-          "currency": "TTD"
-        },
-        "tax_mode": "BEFORE_TAX"
-      },
-      "spend_data": {
-        "amount_money": {
-          "amount": 128,
-          "currency": "BHD"
-        },
-        "excluded_category_ids": [
-          "excluded_category_ids2",
-          "excluded_category_ids3",
-          "excluded_category_ids4"
-        ],
-        "excluded_item_variation_ids": [
-          "excluded_item_variation_ids5",
-          "excluded_item_variation_ids4",
-          "excluded_item_variation_ids3"
-        ],
-        "tax_mode": "BEFORE_TAX"
-      },
-      "item_variation_data": {
-        "item_variation_id": "item_variation_id8"
-      },
-      "category_data": {
-        "category_id": "category_id4"
-      }
+      "points": null,
+      "visit_data": null,
+      "spend_data": null,
+      "item_variation_data": null,
+      "category_data": null
     },
     {
       "accrual_type": "SPEND",
-      "points": 99,
-      "visit_data": {
-        "minimum_amount_money": {
-          "amount": 161,
-          "currency": "TWD"
-        },
-        "tax_mode": "AFTER_TAX"
-      },
-      "spend_data": {
-        "amount_money": {
-          "amount": 129,
-          "currency": "BIF"
-        },
-        "excluded_category_ids": [
-          "excluded_category_ids3"
-        ],
-        "excluded_item_variation_ids": [
-          "excluded_item_variation_ids6",
-          "excluded_item_variation_ids5"
-        ],
-        "tax_mode": "AFTER_TAX"
-      },
-      "item_variation_data": {
-        "item_variation_id": "item_variation_id9"
-      },
-      "category_data": {
-        "category_id": "category_id5"
-      }
+      "points": null,
+      "visit_data": null,
+      "spend_data": null,
+      "item_variation_data": null,
+      "category_data": null
     }
   ]
 }

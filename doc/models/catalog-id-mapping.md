@@ -28,8 +28,8 @@ to the new object. The permanent ID is unique across the Square catalog.
 
 ```json
 {
-  "client_object_id": "client_object_id0",
-  "object_id": "object_id8"
+  "client_object_id": null,
+  "object_id": null
 }
 ```
 

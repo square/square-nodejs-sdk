@@ -18,16 +18,8 @@ Defines supported query expressions to search for vendors by.
 
 ```json
 {
-  "name": [
-    "name0",
-    "name1",
-    "name2"
-  ],
-  "status": [
-    "ACTIVE",
-    "INACTIVE",
-    "ACTIVE"
-  ]
+  "name": null,
+  "status": null
 }
 ```
 

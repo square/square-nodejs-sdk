@@ -52,28 +52,7 @@ async createOrder(
 
 ```ts
 const contentType = null;
-const bodyOrderSource: OrderSource = {};
-bodyOrderSource.name = 'name6';
-
 const bodyOrderLineItems: OrderLineItem[] = [];
-
-const bodyOrderlineItems0QuantityUnitMeasurementUnitCustomUnit: MeasurementUnitCustom = {
-  name: 'name9',
-  abbreviation: 'abbreviation1',
-};
-
-const bodyOrderlineItems0QuantityUnitMeasurementUnit: MeasurementUnit = {};
-bodyOrderlineItems0QuantityUnitMeasurementUnit.customUnit = bodyOrderlineItems0QuantityUnitMeasurementUnitCustomUnit;
-bodyOrderlineItems0QuantityUnitMeasurementUnit.areaUnit = 'IMPERIAL_SQUARE_INCH';
-bodyOrderlineItems0QuantityUnitMeasurementUnit.lengthUnit = 'METRIC_KILOMETER';
-bodyOrderlineItems0QuantityUnitMeasurementUnit.volumeUnit = 'GENERIC_QUART';
-bodyOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGRAM';
-
-const bodyOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
-bodyOrderlineItems0QuantityUnit.measurementUnit = bodyOrderlineItems0QuantityUnitMeasurementUnit;
-bodyOrderlineItems0QuantityUnit.precision = 189;
-bodyOrderlineItems0QuantityUnit.catalogObjectId = 'catalog_object_id1';
-bodyOrderlineItems0QuantityUnit.catalogVersion = 133;
 
 const bodyOrderlineItems0BasePriceMoney: Money = {};
 bodyOrderlineItems0BasePriceMoney.amount = 1599;
@@ -82,65 +61,29 @@ bodyOrderlineItems0BasePriceMoney.currency = 'USD';
 const bodyOrderlineItems0: OrderLineItem = {
   quantity: '1',
 };
-bodyOrderlineItems0.uid = 'uid1';
 bodyOrderlineItems0.name = 'New York Strip Steak';
-bodyOrderlineItems0.quantityUnit = bodyOrderlineItems0QuantityUnit;
-bodyOrderlineItems0.note = 'note3';
-bodyOrderlineItems0.catalogObjectId = 'catalog_object_id5';
 bodyOrderlineItems0.basePriceMoney = bodyOrderlineItems0BasePriceMoney;
 
 bodyOrderLineItems[0] = bodyOrderlineItems0;
 
-const bodyOrderlineItems1QuantityUnitMeasurementUnitCustomUnit: MeasurementUnitCustom = {
-  name: 'name8',
-  abbreviation: 'abbreviation0',
-};
-
-const bodyOrderlineItems1QuantityUnitMeasurementUnit: MeasurementUnit = {};
-bodyOrderlineItems1QuantityUnitMeasurementUnit.customUnit = bodyOrderlineItems1QuantityUnitMeasurementUnitCustomUnit;
-bodyOrderlineItems1QuantityUnitMeasurementUnit.areaUnit = 'IMPERIAL_ACRE';
-bodyOrderlineItems1QuantityUnitMeasurementUnit.lengthUnit = 'IMPERIAL_INCH';
-bodyOrderlineItems1QuantityUnitMeasurementUnit.volumeUnit = 'GENERIC_PINT';
-bodyOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'METRIC_GRAM';
-
-const bodyOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
-bodyOrderlineItems1QuantityUnit.measurementUnit = bodyOrderlineItems1QuantityUnitMeasurementUnit;
-bodyOrderlineItems1QuantityUnit.precision = 188;
-bodyOrderlineItems1QuantityUnit.catalogObjectId = 'catalog_object_id0';
-bodyOrderlineItems1QuantityUnit.catalogVersion = 134;
-
 const bodyOrderlineItems1Modifiers: OrderLineItemModifier[] = [];
 
 const bodyOrderlineItems1modifiers0: OrderLineItemModifier = {};
-bodyOrderlineItems1modifiers0.uid = 'uid1';
 bodyOrderlineItems1modifiers0.catalogObjectId = 'CHQX7Y4KY6N5KINJKZCFURPZ';
-bodyOrderlineItems1modifiers0.catalogVersion = 69;
-bodyOrderlineItems1modifiers0.name = 'name1';
-bodyOrderlineItems1modifiers0.quantity = 'quantity7';
 
 bodyOrderlineItems1Modifiers[0] = bodyOrderlineItems1modifiers0;
 
 const bodyOrderlineItems1AppliedDiscounts: OrderLineItemAppliedDiscount[] = [];
 
-const bodyOrderlineItems1appliedDiscounts0AppliedMoney: Money = {};
-bodyOrderlineItems1appliedDiscounts0AppliedMoney.amount = 164;
-bodyOrderlineItems1appliedDiscounts0AppliedMoney.currency = 'CUC';
-
 const bodyOrderlineItems1appliedDiscounts0: OrderLineItemAppliedDiscount = {
   discountUid: 'one-dollar-off',
 };
-bodyOrderlineItems1appliedDiscounts0.uid = 'uid4';
-bodyOrderlineItems1appliedDiscounts0.appliedMoney = bodyOrderlineItems1appliedDiscounts0AppliedMoney;
 
 bodyOrderlineItems1AppliedDiscounts[0] = bodyOrderlineItems1appliedDiscounts0;
 
 const bodyOrderlineItems1: OrderLineItem = {
   quantity: '2',
 };
-bodyOrderlineItems1.uid = 'uid0';
-bodyOrderlineItems1.name = 'name0';
-bodyOrderlineItems1.quantityUnit = bodyOrderlineItems1QuantityUnit;
-bodyOrderlineItems1.note = 'note4';
 bodyOrderlineItems1.catalogObjectId = 'BEMYCSMIJL46OCDV4KYIKXIB';
 bodyOrderlineItems1.modifiers = bodyOrderlineItems1Modifiers;
 bodyOrderlineItems1.appliedDiscounts = bodyOrderlineItems1AppliedDiscounts;
@@ -151,10 +94,7 @@ const bodyOrderTaxes: OrderLineItemTax[] = [];
 
 const bodyOrdertaxes0: OrderLineItemTax = {};
 bodyOrdertaxes0.uid = 'state-sales-tax';
-bodyOrdertaxes0.catalogObjectId = 'catalog_object_id1';
-bodyOrdertaxes0.catalogVersion = 189;
 bodyOrdertaxes0.name = 'State Sales Tax';
-bodyOrdertaxes0.type = 'UNKNOWN_TAX';
 bodyOrdertaxes0.percentage = '9';
 bodyOrdertaxes0.scope = 'ORDER';
 
@@ -164,10 +104,7 @@ const bodyOrderDiscounts: OrderLineItemDiscount[] = [];
 
 const bodyOrderdiscounts0: OrderLineItemDiscount = {};
 bodyOrderdiscounts0.uid = 'labor-day-sale';
-bodyOrderdiscounts0.catalogObjectId = 'catalog_object_id5';
-bodyOrderdiscounts0.catalogVersion = 89;
 bodyOrderdiscounts0.name = 'Labor Day Sale';
-bodyOrderdiscounts0.type = 'FIXED_PERCENTAGE';
 bodyOrderdiscounts0.percentage = '5';
 bodyOrderdiscounts0.scope = 'ORDER';
 
@@ -176,9 +113,6 @@ bodyOrderDiscounts[0] = bodyOrderdiscounts0;
 const bodyOrderdiscounts1: OrderLineItemDiscount = {};
 bodyOrderdiscounts1.uid = 'membership-discount';
 bodyOrderdiscounts1.catalogObjectId = 'DB7L55ZH2BGWI4H23ULIWOQ7';
-bodyOrderdiscounts1.catalogVersion = 90;
-bodyOrderdiscounts1.name = 'name2';
-bodyOrderdiscounts1.type = 'FIXED_AMOUNT';
 bodyOrderdiscounts1.scope = 'ORDER';
 
 bodyOrderDiscounts[1] = bodyOrderdiscounts1;
@@ -189,10 +123,7 @@ bodyOrderdiscounts2AmountMoney.currency = 'USD';
 
 const bodyOrderdiscounts2: OrderLineItemDiscount = {};
 bodyOrderdiscounts2.uid = 'one-dollar-off';
-bodyOrderdiscounts2.catalogObjectId = 'catalog_object_id7';
-bodyOrderdiscounts2.catalogVersion = 91;
 bodyOrderdiscounts2.name = 'Sale - $1.00 off';
-bodyOrderdiscounts2.type = 'VARIABLE_PERCENTAGE';
 bodyOrderdiscounts2.amountMoney = bodyOrderdiscounts2AmountMoney;
 bodyOrderdiscounts2.scope = 'LINE_ITEM';
 
@@ -201,10 +132,7 @@ bodyOrderDiscounts[2] = bodyOrderdiscounts2;
 const bodyOrder: Order = {
   locationId: '057P5VYJ4A5X1',
 };
-bodyOrder.id = 'id0';
 bodyOrder.referenceId = 'my-order-001';
-bodyOrder.source = bodyOrderSource;
-bodyOrder.customerId = 'customer_id8';
 bodyOrder.lineItems = bodyOrderLineItems;
 bodyOrder.taxes = bodyOrderTaxes;
 bodyOrder.discounts = bodyOrderDiscounts;
@@ -299,28 +227,7 @@ async calculateOrder(
 
 ```ts
 const contentType = null;
-const bodyOrderSource: OrderSource = {};
-bodyOrderSource.name = 'name6';
-
 const bodyOrderLineItems: OrderLineItem[] = [];
-
-const bodyOrderlineItems0QuantityUnitMeasurementUnitCustomUnit: MeasurementUnitCustom = {
-  name: 'name9',
-  abbreviation: 'abbreviation1',
-};
-
-const bodyOrderlineItems0QuantityUnitMeasurementUnit: MeasurementUnit = {};
-bodyOrderlineItems0QuantityUnitMeasurementUnit.customUnit = bodyOrderlineItems0QuantityUnitMeasurementUnitCustomUnit;
-bodyOrderlineItems0QuantityUnitMeasurementUnit.areaUnit = 'IMPERIAL_SQUARE_INCH';
-bodyOrderlineItems0QuantityUnitMeasurementUnit.lengthUnit = 'METRIC_KILOMETER';
-bodyOrderlineItems0QuantityUnitMeasurementUnit.volumeUnit = 'GENERIC_QUART';
-bodyOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGRAM';
-
-const bodyOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
-bodyOrderlineItems0QuantityUnit.measurementUnit = bodyOrderlineItems0QuantityUnitMeasurementUnit;
-bodyOrderlineItems0QuantityUnit.precision = 189;
-bodyOrderlineItems0QuantityUnit.catalogObjectId = 'catalog_object_id1';
-bodyOrderlineItems0QuantityUnit.catalogVersion = 133;
 
 const bodyOrderlineItems0BasePriceMoney: Money = {};
 bodyOrderlineItems0BasePriceMoney.amount = 500;
@@ -329,32 +236,10 @@ bodyOrderlineItems0BasePriceMoney.currency = 'USD';
 const bodyOrderlineItems0: OrderLineItem = {
   quantity: '1',
 };
-bodyOrderlineItems0.uid = 'uid1';
 bodyOrderlineItems0.name = 'Item 1';
-bodyOrderlineItems0.quantityUnit = bodyOrderlineItems0QuantityUnit;
-bodyOrderlineItems0.note = 'note3';
-bodyOrderlineItems0.catalogObjectId = 'catalog_object_id5';
 bodyOrderlineItems0.basePriceMoney = bodyOrderlineItems0BasePriceMoney;
 
 bodyOrderLineItems[0] = bodyOrderlineItems0;
-
-const bodyOrderlineItems1QuantityUnitMeasurementUnitCustomUnit: MeasurementUnitCustom = {
-  name: 'name8',
-  abbreviation: 'abbreviation0',
-};
-
-const bodyOrderlineItems1QuantityUnitMeasurementUnit: MeasurementUnit = {};
-bodyOrderlineItems1QuantityUnitMeasurementUnit.customUnit = bodyOrderlineItems1QuantityUnitMeasurementUnitCustomUnit;
-bodyOrderlineItems1QuantityUnitMeasurementUnit.areaUnit = 'IMPERIAL_ACRE';
-bodyOrderlineItems1QuantityUnitMeasurementUnit.lengthUnit = 'IMPERIAL_INCH';
-bodyOrderlineItems1QuantityUnitMeasurementUnit.volumeUnit = 'GENERIC_PINT';
-bodyOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'METRIC_GRAM';
-
-const bodyOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
-bodyOrderlineItems1QuantityUnit.measurementUnit = bodyOrderlineItems1QuantityUnitMeasurementUnit;
-bodyOrderlineItems1QuantityUnit.precision = 188;
-bodyOrderlineItems1QuantityUnit.catalogObjectId = 'catalog_object_id0';
-bodyOrderlineItems1QuantityUnit.catalogVersion = 134;
 
 const bodyOrderlineItems1BasePriceMoney: Money = {};
 bodyOrderlineItems1BasePriceMoney.amount = 300;
@@ -363,11 +248,7 @@ bodyOrderlineItems1BasePriceMoney.currency = 'USD';
 const bodyOrderlineItems1: OrderLineItem = {
   quantity: '2',
 };
-bodyOrderlineItems1.uid = 'uid0';
 bodyOrderlineItems1.name = 'Item 2';
-bodyOrderlineItems1.quantityUnit = bodyOrderlineItems1QuantityUnit;
-bodyOrderlineItems1.note = 'note4';
-bodyOrderlineItems1.catalogObjectId = 'catalog_object_id6';
 bodyOrderlineItems1.basePriceMoney = bodyOrderlineItems1BasePriceMoney;
 
 bodyOrderLineItems[1] = bodyOrderlineItems1;
@@ -375,11 +256,7 @@ bodyOrderLineItems[1] = bodyOrderlineItems1;
 const bodyOrderDiscounts: OrderLineItemDiscount[] = [];
 
 const bodyOrderdiscounts0: OrderLineItemDiscount = {};
-bodyOrderdiscounts0.uid = 'uid1';
-bodyOrderdiscounts0.catalogObjectId = 'catalog_object_id5';
-bodyOrderdiscounts0.catalogVersion = 89;
 bodyOrderdiscounts0.name = '50% Off';
-bodyOrderdiscounts0.type = 'FIXED_PERCENTAGE';
 bodyOrderdiscounts0.percentage = '50';
 bodyOrderdiscounts0.scope = 'ORDER';
 
@@ -388,40 +265,12 @@ bodyOrderDiscounts[0] = bodyOrderdiscounts0;
 const bodyOrder: Order = {
   locationId: 'D7AVYMEAPJ3A3',
 };
-bodyOrder.id = 'id0';
-bodyOrder.referenceId = 'reference_id8';
-bodyOrder.source = bodyOrderSource;
-bodyOrder.customerId = 'customer_id8';
 bodyOrder.lineItems = bodyOrderLineItems;
 bodyOrder.discounts = bodyOrderDiscounts;
-
-const bodyProposedRewards: OrderReward[] = [];
-
-const bodyproposedRewards0: OrderReward = {
-  id: 'id6',
-  rewardTierId: 'reward_tier_id2',
-};
-
-bodyProposedRewards[0] = bodyproposedRewards0;
-
-const bodyproposedRewards1: OrderReward = {
-  id: 'id7',
-  rewardTierId: 'reward_tier_id3',
-};
-
-bodyProposedRewards[1] = bodyproposedRewards1;
-
-const bodyproposedRewards2: OrderReward = {
-  id: 'id8',
-  rewardTierId: 'reward_tier_id4',
-};
-
-bodyProposedRewards[2] = bodyproposedRewards2;
 
 const body: CalculateOrderRequest = {
   order: bodyOrder,
 };
-body.proposedRewards = bodyProposedRewards;
 
 try {
   const { result, ...httpResponse } = await ordersApi.calculateOrder(body);
@@ -530,43 +379,16 @@ const bodyQueryFilterStateFilter: SearchOrdersStateFilter = {
   states: bodyQueryFilterStateFilterStates,
 };
 
-const bodyQueryFilterDateTimeFilterCreatedAt: TimeRange = {};
-bodyQueryFilterDateTimeFilterCreatedAt.startAt = 'start_at8';
-bodyQueryFilterDateTimeFilterCreatedAt.endAt = 'end_at4';
-
-const bodyQueryFilterDateTimeFilterUpdatedAt: TimeRange = {};
-bodyQueryFilterDateTimeFilterUpdatedAt.startAt = 'start_at6';
-bodyQueryFilterDateTimeFilterUpdatedAt.endAt = 'end_at6';
-
 const bodyQueryFilterDateTimeFilterClosedAt: TimeRange = {};
 bodyQueryFilterDateTimeFilterClosedAt.startAt = '2018-03-03T20:00:00+00:00';
 bodyQueryFilterDateTimeFilterClosedAt.endAt = '2019-03-04T21:54:45+00:00';
 
 const bodyQueryFilterDateTimeFilter: SearchOrdersDateTimeFilter = {};
-bodyQueryFilterDateTimeFilter.createdAt = bodyQueryFilterDateTimeFilterCreatedAt;
-bodyQueryFilterDateTimeFilter.updatedAt = bodyQueryFilterDateTimeFilterUpdatedAt;
 bodyQueryFilterDateTimeFilter.closedAt = bodyQueryFilterDateTimeFilterClosedAt;
-
-const bodyQueryFilterFulfillmentFilterFulfillmentTypes: string[] = ['SHIPMENT'];
-const bodyQueryFilterFulfillmentFilterFulfillmentStates: string[] = ['CANCELED', 'FAILED'];
-const bodyQueryFilterFulfillmentFilter: SearchOrdersFulfillmentFilter = {};
-bodyQueryFilterFulfillmentFilter.fulfillmentTypes = bodyQueryFilterFulfillmentFilterFulfillmentTypes;
-bodyQueryFilterFulfillmentFilter.fulfillmentStates = bodyQueryFilterFulfillmentFilterFulfillmentStates;
-
-const bodyQueryFilterSourceFilterSourceNames: string[] = ['source_names8'];
-const bodyQueryFilterSourceFilter: SearchOrdersSourceFilter = {};
-bodyQueryFilterSourceFilter.sourceNames = bodyQueryFilterSourceFilterSourceNames;
-
-const bodyQueryFilterCustomerFilterCustomerIds: string[] = ['customer_ids5', 'customer_ids6'];
-const bodyQueryFilterCustomerFilter: SearchOrdersCustomerFilter = {};
-bodyQueryFilterCustomerFilter.customerIds = bodyQueryFilterCustomerFilterCustomerIds;
 
 const bodyQueryFilter: SearchOrdersFilter = {};
 bodyQueryFilter.stateFilter = bodyQueryFilterStateFilter;
 bodyQueryFilter.dateTimeFilter = bodyQueryFilterDateTimeFilter;
-bodyQueryFilter.fulfillmentFilter = bodyQueryFilterFulfillmentFilter;
-bodyQueryFilter.sourceFilter = bodyQueryFilterSourceFilter;
-bodyQueryFilter.customerFilter = bodyQueryFilterCustomerFilter;
 
 const bodyQuerySort: SearchOrdersSort = {
   sortField: 'CLOSED_AT',
@@ -579,7 +401,6 @@ bodyQuery.sort = bodyQuerySort;
 
 const body: SearchOrdersRequest = {};
 body.locationIds = bodyLocationIds;
-body.cursor = 'cursor0';
 body.query = bodyQuery;
 body.limit = 3;
 body.returnEntries = true;
@@ -679,83 +500,7 @@ async updateOrder(
 ```ts
 const orderId = 'order_id6';
 const contentType = null;
-const bodyOrderSource: OrderSource = {};
-bodyOrderSource.name = 'name6';
-
-const bodyOrderLineItems: OrderLineItem[] = [];
-
-const bodyOrderlineItems0QuantityUnitMeasurementUnitCustomUnit: MeasurementUnitCustom = {
-  name: 'name9',
-  abbreviation: 'abbreviation1',
-};
-
-const bodyOrderlineItems0QuantityUnitMeasurementUnit: MeasurementUnit = {};
-bodyOrderlineItems0QuantityUnitMeasurementUnit.customUnit = bodyOrderlineItems0QuantityUnitMeasurementUnitCustomUnit;
-bodyOrderlineItems0QuantityUnitMeasurementUnit.areaUnit = 'IMPERIAL_SQUARE_INCH';
-bodyOrderlineItems0QuantityUnitMeasurementUnit.lengthUnit = 'METRIC_KILOMETER';
-bodyOrderlineItems0QuantityUnitMeasurementUnit.volumeUnit = 'GENERIC_QUART';
-bodyOrderlineItems0QuantityUnitMeasurementUnit.weightUnit = 'METRIC_MILLIGRAM';
-
-const bodyOrderlineItems0QuantityUnit: OrderQuantityUnit = {};
-bodyOrderlineItems0QuantityUnit.measurementUnit = bodyOrderlineItems0QuantityUnitMeasurementUnit;
-bodyOrderlineItems0QuantityUnit.precision = 189;
-bodyOrderlineItems0QuantityUnit.catalogObjectId = 'catalog_object_id1';
-bodyOrderlineItems0QuantityUnit.catalogVersion = 133;
-
-const bodyOrderlineItems0: OrderLineItem = {
-  quantity: 'quantity7',
-};
-bodyOrderlineItems0.uid = 'uid1';
-bodyOrderlineItems0.name = 'name1';
-bodyOrderlineItems0.quantityUnit = bodyOrderlineItems0QuantityUnit;
-bodyOrderlineItems0.note = 'note3';
-bodyOrderlineItems0.catalogObjectId = 'catalog_object_id5';
-
-bodyOrderLineItems[0] = bodyOrderlineItems0;
-
-const bodyOrderlineItems1QuantityUnitMeasurementUnitCustomUnit: MeasurementUnitCustom = {
-  name: 'name8',
-  abbreviation: 'abbreviation0',
-};
-
-const bodyOrderlineItems1QuantityUnitMeasurementUnit: MeasurementUnit = {};
-bodyOrderlineItems1QuantityUnitMeasurementUnit.customUnit = bodyOrderlineItems1QuantityUnitMeasurementUnitCustomUnit;
-bodyOrderlineItems1QuantityUnitMeasurementUnit.areaUnit = 'IMPERIAL_ACRE';
-bodyOrderlineItems1QuantityUnitMeasurementUnit.lengthUnit = 'IMPERIAL_INCH';
-bodyOrderlineItems1QuantityUnitMeasurementUnit.volumeUnit = 'GENERIC_PINT';
-bodyOrderlineItems1QuantityUnitMeasurementUnit.weightUnit = 'METRIC_GRAM';
-
-const bodyOrderlineItems1QuantityUnit: OrderQuantityUnit = {};
-bodyOrderlineItems1QuantityUnit.measurementUnit = bodyOrderlineItems1QuantityUnitMeasurementUnit;
-bodyOrderlineItems1QuantityUnit.precision = 188;
-bodyOrderlineItems1QuantityUnit.catalogObjectId = 'catalog_object_id0';
-bodyOrderlineItems1QuantityUnit.catalogVersion = 134;
-
-const bodyOrderlineItems1: OrderLineItem = {
-  quantity: 'quantity6',
-};
-bodyOrderlineItems1.uid = 'uid0';
-bodyOrderlineItems1.name = 'name0';
-bodyOrderlineItems1.quantityUnit = bodyOrderlineItems1QuantityUnit;
-bodyOrderlineItems1.note = 'note4';
-bodyOrderlineItems1.catalogObjectId = 'catalog_object_id6';
-
-bodyOrderLineItems[1] = bodyOrderlineItems1;
-
-const bodyOrder: Order = {
-  locationId: 'location_id4',
-};
-bodyOrder.id = 'id0';
-bodyOrder.referenceId = 'reference_id8';
-bodyOrder.source = bodyOrderSource;
-bodyOrder.customerId = 'customer_id8';
-bodyOrder.lineItems = bodyOrderLineItems;
-
-const bodyFieldsToClear: string[] = ['fields_to_clear7', 'fields_to_clear8'];
 const body: UpdateOrderRequest = {};
-body.order = bodyOrder;
-body.fieldsToClear = bodyFieldsToClear;
-body.idempotencyKey = 'idempotency_key2';
 
 try {
   const { result, ...httpResponse } = await ordersApi.updateOrder(orderId, body);
@@ -816,7 +561,6 @@ const bodyPaymentIds: string[] = ['EnZdNAlWCmfh6Mt5FMNST1o7taB', '0LRiVlbXVwe8oz
 const body: PayOrderRequest = {
   idempotencyKey: 'c043a359-7ad9-4136-82a9-c3f1d66dcbff',
 };
-body.orderVersion = 82;
 body.paymentIds = bodyPaymentIds;
 
 try {

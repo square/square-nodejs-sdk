@@ -52,10 +52,8 @@ async listInvoices(
 
 ```ts
 const locationId = 'location_id4';
-const cursor = 'cursor6';
-const limit = 172;
 try {
-  const { result, ...httpResponse } = await invoicesApi.listInvoices(locationId, cursor, limit);
+  const { result, ...httpResponse } = await invoicesApi.listInvoices(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -97,43 +95,22 @@ async createInvoice(
 
 ```ts
 const contentType = null;
-const bodyInvoicePrimaryRecipientAddress: Address = {};
-bodyInvoicePrimaryRecipientAddress.addressLine1 = 'address_line_10';
-bodyInvoicePrimaryRecipientAddress.addressLine2 = 'address_line_20';
-bodyInvoicePrimaryRecipientAddress.addressLine3 = 'address_line_36';
-bodyInvoicePrimaryRecipientAddress.locality = 'locality0';
-bodyInvoicePrimaryRecipientAddress.sublocality = 'sublocality0';
-
 const bodyInvoicePrimaryRecipient: InvoiceRecipient = {};
 bodyInvoicePrimaryRecipient.customerId = 'JDKYHBWT1D4F8MFH63DBMEN8Y4';
-bodyInvoicePrimaryRecipient.givenName = 'given_name6';
-bodyInvoicePrimaryRecipient.familyName = 'family_name8';
-bodyInvoicePrimaryRecipient.emailAddress = 'email_address2';
-bodyInvoicePrimaryRecipient.address = bodyInvoicePrimaryRecipientAddress;
 
 const bodyInvoicePaymentRequests: InvoicePaymentRequest[] = [];
-
-const bodyInvoicepaymentRequests0FixedAmountRequestedMoney: Money = {};
-bodyInvoicepaymentRequests0FixedAmountRequestedMoney.amount = 52;
-bodyInvoicepaymentRequests0FixedAmountRequestedMoney.currency = 'USS';
 
 const bodyInvoicepaymentRequests0Reminders: InvoicePaymentReminder[] = [];
 
 const bodyInvoicepaymentRequests0reminders0: InvoicePaymentReminder = {};
-bodyInvoicepaymentRequests0reminders0.uid = 'uid2';
 bodyInvoicepaymentRequests0reminders0.relativeScheduledDays = -1;
 bodyInvoicepaymentRequests0reminders0.message = 'Your invoice is due tomorrow';
-bodyInvoicepaymentRequests0reminders0.status = 'PENDING';
-bodyInvoicepaymentRequests0reminders0.sentAt = 'sent_at2';
 
 bodyInvoicepaymentRequests0Reminders[0] = bodyInvoicepaymentRequests0reminders0;
 
 const bodyInvoicepaymentRequests0: InvoicePaymentRequest = {};
-bodyInvoicepaymentRequests0.uid = 'uid4';
-bodyInvoicepaymentRequests0.requestMethod = 'SMS_CHARGE_CARD_ON_FILE';
 bodyInvoicepaymentRequests0.requestType = 'BALANCE';
 bodyInvoicepaymentRequests0.dueDate = '2030-01-24';
-bodyInvoicepaymentRequests0.fixedAmountRequestedMoney = bodyInvoicepaymentRequests0FixedAmountRequestedMoney;
 bodyInvoicepaymentRequests0.tippingEnabled = true;
 bodyInvoicepaymentRequests0.automaticPaymentSource = 'NONE';
 bodyInvoicepaymentRequests0.reminders = bodyInvoicepaymentRequests0Reminders;
@@ -162,8 +139,6 @@ bodyInvoicecustomFields1.placement = 'BELOW_LINE_ITEMS';
 bodyInvoiceCustomFields[1] = bodyInvoicecustomFields1;
 
 const bodyInvoice: Invoice = {};
-bodyInvoice.id = 'id0';
-bodyInvoice.version = 38;
 bodyInvoice.locationId = 'ES0RJRZYEC39A';
 bodyInvoice.orderId = 'CAISENgvlJ6jLWAzERDzjyHVybY';
 bodyInvoice.primaryRecipient = bodyInvoicePrimaryRecipient;
@@ -247,8 +222,6 @@ bodyQuery.sort = bodyQuerySort;
 const body: SearchInvoicesRequest = {
   query: bodyQuery,
 };
-body.limit = 164;
-body.cursor = 'cursor0';
 
 try {
   const { result, ...httpResponse } = await invoicesApi.searchInvoices(body);
@@ -293,9 +266,8 @@ async deleteInvoice(
 
 ```ts
 const invoiceId = 'invoice_id0';
-const version = 172;
 try {
-  const { result, ...httpResponse } = await invoicesApi.deleteInvoice(invoiceId, version);
+  const { result, ...httpResponse } = await invoicesApi.deleteInvoice(invoiceId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -378,42 +350,15 @@ async updateInvoice(
 ```ts
 const invoiceId = 'invoice_id0';
 const contentType = null;
-const bodyInvoicePrimaryRecipientAddress: Address = {};
-bodyInvoicePrimaryRecipientAddress.addressLine1 = 'address_line_10';
-bodyInvoicePrimaryRecipientAddress.addressLine2 = 'address_line_20';
-bodyInvoicePrimaryRecipientAddress.addressLine3 = 'address_line_36';
-bodyInvoicePrimaryRecipientAddress.locality = 'locality0';
-bodyInvoicePrimaryRecipientAddress.sublocality = 'sublocality0';
-
-const bodyInvoicePrimaryRecipient: InvoiceRecipient = {};
-bodyInvoicePrimaryRecipient.customerId = 'customer_id2';
-bodyInvoicePrimaryRecipient.givenName = 'given_name6';
-bodyInvoicePrimaryRecipient.familyName = 'family_name8';
-bodyInvoicePrimaryRecipient.emailAddress = 'email_address2';
-bodyInvoicePrimaryRecipient.address = bodyInvoicePrimaryRecipientAddress;
-
 const bodyInvoicePaymentRequests: InvoicePaymentRequest[] = [];
-
-const bodyInvoicepaymentRequests0FixedAmountRequestedMoney: Money = {};
-bodyInvoicepaymentRequests0FixedAmountRequestedMoney.amount = 52;
-bodyInvoicepaymentRequests0FixedAmountRequestedMoney.currency = 'USS';
 
 const bodyInvoicepaymentRequests0: InvoicePaymentRequest = {};
 bodyInvoicepaymentRequests0.uid = '2da7964f-f3d2-4f43-81e8-5aa220bf3355';
-bodyInvoicepaymentRequests0.requestMethod = 'SMS_CHARGE_CARD_ON_FILE';
-bodyInvoicepaymentRequests0.requestType = 'DEPOSIT';
-bodyInvoicepaymentRequests0.dueDate = 'due_date2';
-bodyInvoicepaymentRequests0.fixedAmountRequestedMoney = bodyInvoicepaymentRequests0FixedAmountRequestedMoney;
 bodyInvoicepaymentRequests0.tippingEnabled = false;
 
 bodyInvoicePaymentRequests[0] = bodyInvoicepaymentRequests0;
 
 const bodyInvoice: Invoice = {};
-bodyInvoice.id = 'id0';
-bodyInvoice.version = 38;
-bodyInvoice.locationId = 'location_id4';
-bodyInvoice.orderId = 'order_id6';
-bodyInvoice.primaryRecipient = bodyInvoicePrimaryRecipient;
 bodyInvoice.paymentRequests = bodyInvoicePaymentRequests;
 
 const bodyFieldsToClear: string[] = ['payments_requests[2da7964f-f3d2-4f43-81e8-5aa220bf3355].reminders'];

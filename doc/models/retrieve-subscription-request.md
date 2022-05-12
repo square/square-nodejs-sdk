@@ -18,7 +18,7 @@ Defines input parameters in a request to the
 
 ```json
 {
-  "include": "include2"
+  "include": null
 }
 ```
 

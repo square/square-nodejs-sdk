@@ -18,7 +18,7 @@ endpoint.
 
 ```json
 {
-  "version": 172
+  "version": null
 }
 ```
 

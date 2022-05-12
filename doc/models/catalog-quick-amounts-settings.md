@@ -20,27 +20,8 @@ A parent Catalog Object model represents a set of Quick Amounts and the settings
 ```json
 {
   "option": "AUTO",
-  "eligible_for_auto_amounts": false,
-  "amounts": [
-    {
-      "type": "QUICK_AMOUNT_TYPE_MANUAL",
-      "amount": {
-        "amount": 244,
-        "currency": "AWG"
-      },
-      "score": 228,
-      "ordinal": 160
-    },
-    {
-      "type": "QUICK_AMOUNT_TYPE_AUTO",
-      "amount": {
-        "amount": 245,
-        "currency": "AZN"
-      },
-      "score": 229,
-      "ordinal": 161
-    }
-  ]
+  "eligible_for_auto_amounts": null,
+  "amounts": null
 }
 ```
 

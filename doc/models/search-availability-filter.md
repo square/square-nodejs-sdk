@@ -21,47 +21,12 @@ A query filter to search for buyer-accessible availabilities by.
 ```json
 {
   "start_at_range": {
-    "start_at": "start_at6",
-    "end_at": "end_at6"
+    "start_at": null,
+    "end_at": null
   },
-  "location_id": "location_id4",
-  "segment_filters": [
-    {
-      "service_variation_id": "service_variation_id6",
-      "team_member_id_filter": {
-        "all": [
-          "all5"
-        ],
-        "any": [
-          "any2",
-          "any3"
-        ],
-        "none": [
-          "none7"
-        ]
-      }
-    },
-    {
-      "service_variation_id": "service_variation_id5",
-      "team_member_id_filter": {
-        "all": [
-          "all4",
-          "all5",
-          "all6"
-        ],
-        "any": [
-          "any3",
-          "any4",
-          "any5"
-        ],
-        "none": [
-          "none8",
-          "none9"
-        ]
-      }
-    }
-  ],
-  "booking_id": "booking_id4"
+  "location_id": null,
+  "segment_filters": null,
+  "booking_id": null
 }
 ```
 

@@ -23,7 +23,10 @@ export interface GiftCard {
    * for more information.
    */
   balanceMoney?: Money;
-  /** The gift card account number. */
+  /**
+   * The gift card account number (GAN). Buyers can use the GAN to make purchases or check
+   * the gift card balance.
+   */
   gan?: string;
   /**
    * The timestamp when the gift card was created, in RFC 3339 format.
@@ -33,7 +36,7 @@ export interface GiftCard {
    * seller at the time of activation.
    */
   createdAt?: string;
-  /** The IDs of the customers to whom this gift card is linked. */
+  /** The IDs of the [customer profiles]($m/Customer) to whom this gift card is linked. */
   customerIds?: string[];
 }
 

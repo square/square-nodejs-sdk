@@ -57,12 +57,8 @@ async listTransactions(
 
 ```ts
 const locationId = 'location_id4';
-const beginTime = 'begin_time2';
-const endTime = 'end_time2';
-const sortOrder = 'DESC';
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await transactionsApi.listTransactions(locationId, beginTime, endTime, sortOrder, cursor);
+  const { result, ...httpResponse } = await transactionsApi.listTransactions(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

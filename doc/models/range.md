@@ -18,8 +18,8 @@ The range of a number value between the specified lower and upper bounds.
 
 ```json
 {
-  "min": "min2",
-  "max": "max0"
+  "min": null,
+  "max": null
 }
 ```
 

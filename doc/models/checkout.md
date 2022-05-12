@@ -27,11 +27,16 @@ payment types using a checkout workflow hosted on squareup.com.
 
 ```json
 {
-  "id": "id0",
-  "checkout_page_url": "checkout_page_url4",
-  "ask_for_shipping_address": false,
-  "merchant_support_email": "merchant_support_email8",
-  "pre_populate_buyer_email": "pre_populate_buyer_email2"
+  "id": null,
+  "checkout_page_url": null,
+  "ask_for_shipping_address": null,
+  "merchant_support_email": null,
+  "pre_populate_buyer_email": null,
+  "pre_populate_shipping_address": null,
+  "redirect_url": null,
+  "order": null,
+  "created_at": null,
+  "additional_recipients": null
 }
 ```
 

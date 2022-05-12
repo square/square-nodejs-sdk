@@ -29,18 +29,16 @@ external bank account or to the Square balance.
 ```json
 {
   "id": "id0",
-  "status": "PAID",
+  "status": null,
   "location_id": "location_id4",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
-  },
-  "destination": {
-    "type": "BANK_ACCOUNT",
-    "id": "id4"
-  }
+  "created_at": null,
+  "updated_at": null,
+  "amount_money": null,
+  "destination": null,
+  "version": null,
+  "type": null,
+  "payout_fee": null,
+  "arrival_date": null
 }
 ```
 

@@ -67,7 +67,6 @@ const body: CreateSubscriptionRequest = {
 };
 body.idempotencyKey = '8193148c-9586-11e6-99f9-28cfe92138cf';
 body.startDate = '2021-10-20';
-body.canceledDate = 'canceled_date0';
 body.taxPercentage = '5';
 body.priceOverrideMoney = bodyPriceOverrideMoney;
 body.cardId = 'ccof:qy5x8hHGYsgLrp4Q4GB';
@@ -140,12 +139,8 @@ bodyQueryFilter.sourceNames = bodyQueryFilterSourceNames;
 const bodyQuery: SearchSubscriptionsQuery = {};
 bodyQuery.filter = bodyQueryFilter;
 
-const bodyInclude: string[] = ['include4', 'include5', 'include6'];
 const body: SearchSubscriptionsRequest = {};
-body.cursor = 'cursor0';
-body.limit = 164;
 body.query = bodyQuery;
-body.include = bodyInclude;
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.searchSubscriptions(body);
@@ -188,9 +183,8 @@ async retrieveSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
-const include = 'include2';
 try {
-  const { result, ...httpResponse } = await subscriptionsApi.retrieveSubscription(subscriptionId, include);
+  const { result, ...httpResponse } = await subscriptionsApi.retrieveSubscription(subscriptionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -237,11 +231,6 @@ bodySubscriptionPriceOverrideMoney.amount = 2000;
 bodySubscriptionPriceOverrideMoney.currency = 'USD';
 
 const bodySubscription: Subscription = {};
-bodySubscription.id = 'id8';
-bodySubscription.locationId = 'location_id2';
-bodySubscription.planId = 'plan_id0';
-bodySubscription.customerId = 'customer_id6';
-bodySubscription.startDate = 'start_date2';
 bodySubscription.taxPercentage = 'null';
 bodySubscription.priceOverrideMoney = bodySubscriptionPriceOverrideMoney;
 bodySubscription.version = 1594155459464;
@@ -375,10 +364,8 @@ async listSubscriptionEvents(
 
 ```ts
 const subscriptionId = 'subscription_id0';
-const cursor = 'cursor6';
-const limit = 172;
 try {
-  const { result, ...httpResponse } = await subscriptionsApi.listSubscriptionEvents(subscriptionId, cursor, limit);
+  const { result, ...httpResponse } = await subscriptionsApi.listSubscriptionEvents(subscriptionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -420,11 +407,6 @@ async pauseSubscription(
 const subscriptionId = 'subscription_id0';
 const contentType = null;
 const body: PauseSubscriptionRequest = {};
-body.pauseEffectiveDate = 'pause_effective_date6';
-body.pauseCycleDuration = 94;
-body.resumeEffectiveDate = 'resume_effective_date4';
-body.resumeChangeTiming = 'IMMEDIATE';
-body.pauseReason = 'pause_reason2';
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.pauseSubscription(subscriptionId, body);
@@ -469,8 +451,6 @@ async resumeSubscription(
 const subscriptionId = 'subscription_id0';
 const contentType = null;
 const body: ResumeSubscriptionRequest = {};
-body.resumeEffectiveDate = 'resume_effective_date4';
-body.resumeChangeTiming = 'IMMEDIATE';
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.resumeSubscription(subscriptionId, body);

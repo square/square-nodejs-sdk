@@ -18,8 +18,8 @@ Sets the sort order of search results.
 
 ```json
 {
-  "field": "START_AT",
-  "order": "DESC"
+  "field": null,
+  "order": null
 }
 ```
 

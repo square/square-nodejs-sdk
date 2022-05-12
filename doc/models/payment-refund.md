@@ -30,43 +30,20 @@ the original payment and the amount of money refunded.
 ```json
 {
   "id": "id0",
-  "status": "status8",
-  "location_id": "location_id4",
+  "status": null,
+  "location_id": null,
   "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
+    "amount": null,
+    "currency": null
   },
-  "app_fee_money": {
-    "amount": 106,
-    "currency": "GBP"
-  },
-  "processing_fee": [
-    {
-      "effective_at": "effective_at6",
-      "type": "type8",
-      "amount_money": {
-        "amount": 214,
-        "currency": "BWP"
-      }
-    },
-    {
-      "effective_at": "effective_at7",
-      "type": "type7",
-      "amount_money": {
-        "amount": 215,
-        "currency": "BYR"
-      }
-    },
-    {
-      "effective_at": "effective_at8",
-      "type": "type6",
-      "amount_money": {
-        "amount": 216,
-        "currency": "BZD"
-      }
-    }
-  ],
-  "payment_id": "payment_id0"
+  "app_fee_money": null,
+  "processing_fee": null,
+  "payment_id": null,
+  "order_id": null,
+  "reason": null,
+  "created_at": null,
+  "updated_at": null,
+  "team_member_id": null
 }
 ```
 

@@ -24,8 +24,15 @@ import {
 import { Money, moneySchema } from './money';
 
 /**
- * An item variation (i.e., product) in the Catalog object model. Each item
- * may have a maximum of 250 item variations.
+ * An item variation, representing a product for sale, in the Catalog object model. Each [item]($m/CatalogItem) must have at least one
+ * item variation and can have at most 250 item variations.
+ * An item variation can be sellable, stockable, or both if it has a unit of measure for its count for the sold number of the variation, the stocked
+ * number of the variation, or both. For example, when a variation representing wine is stocked and sold by the bottle, the variation is both
+ * stockable and sellable. But when a variation of the wine is sold by the glass, the sold units cannot be used as a measure of the stocked units. This by-the-glass
+ * variation is sellable, but not stockable. To accurately keep track of the wine's inventory count at any time, the sellable count must be
+ * converted to stockable count. Typically, the seller defines this unit conversion. For example, 1 bottle equals 5 glasses. The Square API exposes
+ * the `stockable_conversion` property on the variation to specify the conversion. Thus, when two glasses of the wine are sold, the sellable count
+ * decreases by 2, and the stockable count automatically decreases by 0.4 bottle according to the conversion.
  */
 export interface CatalogItemVariation {
   /** The ID of the `CatalogItem` associated with this item variation. */
@@ -96,9 +103,17 @@ export interface CatalogItemVariation {
    * whole quantities.
    */
   measurementUnitId?: string;
-  /** Whether this variation can be sold. */
+  /**
+   * Whether this variation can be sold. The inventory count of a sellable variation indicates
+   * the number of units available for sale. When a variation is both stockable and sellable,
+   * its sellable inventory count can be smaller than or equal to its stocable count.
+   */
   sellable?: boolean;
-  /** Whether stock is counted directly on this variation (TRUE) or only on its components (FALSE). */
+  /**
+   * Whether stock is counted directly on this variation (TRUE) or only on its components (FALSE).
+   * The inventory count of a stockable variation keeps track of the number of units of this variation in stock
+   * and is not an indicator of the number of units of the variation that can be sold.
+   */
   stockable?: boolean;
   /**
    * The IDs of images associated with this `CatalogItemVariation` instance.

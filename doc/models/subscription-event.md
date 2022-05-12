@@ -25,10 +25,7 @@ Describes changes to a subscription and the subscription status.
   "subscription_event_type": "RESUME_SUBSCRIPTION",
   "effective_date": "effective_date0",
   "plan_id": "plan_id8",
-  "info": {
-    "detail": "detail6",
-    "code": "CUSTOMER_DELETED"
-  }
+  "info": null
 }
 ```
 

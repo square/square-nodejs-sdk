@@ -21,17 +21,11 @@ Contains information about the recipient of a fulfillment.
 
 ```json
 {
-  "customer_id": "customer_id8",
-  "display_name": "display_name0",
-  "email_address": "email_address2",
-  "phone_number": "phone_number2",
-  "address": {
-    "address_line_1": "address_line_16",
-    "address_line_2": "address_line_26",
-    "address_line_3": "address_line_32",
-    "locality": "locality6",
-    "sublocality": "sublocality6"
-  }
+  "customer_id": null,
+  "display_name": null,
+  "email_address": null,
+  "phone_number": null,
+  "address": null
 }
 ```
 

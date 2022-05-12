@@ -22,14 +22,14 @@ Describes a phase in a subscription plan. For more information, see
 
 ```json
 {
-  "uid": "uid0",
+  "uid": null,
   "cadence": "DAILY",
-  "periods": 142,
+  "periods": null,
   "recurring_price_money": {
-    "amount": 66,
-    "currency": "NAD"
+    "amount": null,
+    "currency": null
   },
-  "ordinal": 80
+  "ordinal": null
 }
 ```
 

@@ -26,17 +26,16 @@ Represents a supplier to a seller.
 
 ```json
 {
-  "id": "id0",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "name": "name0",
-  "address": {
-    "address_line_1": "address_line_16",
-    "address_line_2": "address_line_26",
-    "address_line_3": "address_line_32",
-    "locality": "locality6",
-    "sublocality": "sublocality6"
-  }
+  "id": null,
+  "created_at": null,
+  "updated_at": null,
+  "name": null,
+  "address": null,
+  "contacts": null,
+  "account_number": null,
+  "note": null,
+  "version": null,
+  "status": null
 }
 ```
 

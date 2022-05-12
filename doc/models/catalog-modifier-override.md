@@ -19,7 +19,7 @@ Options to control how to override the default behavior of the specified modifie
 ```json
 {
   "modifier_id": "modifier_id2",
-  "on_by_default": false
+  "on_by_default": null
 }
 ```
 

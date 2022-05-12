@@ -20,7 +20,7 @@ by a timestamp field.
 ```json
 {
   "sort_field": "CLOSED_AT",
-  "sort_order": "DESC"
+  "sort_order": null
 }
 ```
 

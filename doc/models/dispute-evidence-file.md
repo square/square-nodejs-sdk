@@ -18,8 +18,8 @@ A file to be uploaded as dispute evidence.
 
 ```json
 {
-  "filename": "filename2",
-  "filetype": "filetype2"
+  "filename": null,
+  "filetype": null
 }
 ```
 

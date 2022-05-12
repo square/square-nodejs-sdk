@@ -16,8 +16,8 @@
 
 ```json
 {
-  "include_related_objects": false,
-  "catalog_version": 126
+  "include_related_objects": null,
+  "catalog_version": null
 }
 ```
 

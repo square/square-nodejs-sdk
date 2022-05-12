@@ -18,17 +18,8 @@ The search criteria for the loyalty accounts.
 
 ```json
 {
-  "mappings": [
-    {
-      "id": "id4",
-      "created_at": "created_at8",
-      "phone_number": "phone_number8"
-    }
-  ],
-  "customer_ids": [
-    "customer_ids1",
-    "customer_ids2"
-  ]
+  "mappings": null,
+  "customer_ids": null
 }
 ```
 

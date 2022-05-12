@@ -18,8 +18,8 @@ Specifies how searched customers profiles are sorted, including the sort key and
 
 ```json
 {
-  "field": "DEFAULT",
-  "order": "DESC"
+  "field": null,
+  "order": null
 }
 ```
 

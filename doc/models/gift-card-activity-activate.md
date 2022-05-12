@@ -21,16 +21,11 @@ Describes a gift card activity of the ACTIVATE type.
 
 ```json
 {
-  "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
-  },
-  "order_id": "order_id6",
-  "line_item_uid": "line_item_uid0",
-  "reference_id": "reference_id2",
-  "buyer_payment_instrument_ids": [
-    "buyer_payment_instrument_ids6"
-  ]
+  "amount_money": null,
+  "order_id": null,
+  "line_item_uid": null,
+  "reference_id": null,
+  "buyer_payment_instrument_ids": null
 }
 ```
 

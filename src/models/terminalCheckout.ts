@@ -4,6 +4,7 @@ import {
   deviceCheckoutOptionsSchema,
 } from './deviceCheckoutOptions';
 import { Money, moneySchema } from './money';
+import { PaymentOptions, paymentOptionsSchema } from './paymentOptions';
 
 /** Represents a checkout processed by the Square Terminal. */
 export interface TerminalCheckout {
@@ -30,6 +31,9 @@ export interface TerminalCheckout {
    * Note: maximum 500 characters
    */
   note?: string;
+  /** The reference to the Square order ID for the checkout request. */
+  orderId?: string;
+  paymentOptions?: PaymentOptions;
   deviceOptions: DeviceCheckoutOptions;
   /**
    * An RFC 3339 duration, after which the checkout is automatically canceled.
@@ -58,6 +62,15 @@ export interface TerminalCheckout {
   paymentType?: string;
   /** An optional ID of the customer associated with the checkout. */
   customerId?: string;
+  /**
+   * Represents an amount of money. `Money` fields can be signed or unsigned.
+   * Fields that do not explicitly define whether they are signed or unsigned are
+   * considered unsigned and can only hold positive amounts. For signed fields, the
+   * sign of the value indicates the purpose of the money transfer. See
+   * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
+   * for more information.
+   */
+  appFeeMoney?: Money;
 }
 
 export const terminalCheckoutSchema: Schema<TerminalCheckout> = object({
@@ -65,6 +78,11 @@ export const terminalCheckoutSchema: Schema<TerminalCheckout> = object({
   amountMoney: ['amount_money', lazy(() => moneySchema)],
   referenceId: ['reference_id', optional(string())],
   note: ['note', optional(string())],
+  orderId: ['order_id', optional(string())],
+  paymentOptions: [
+    'payment_options',
+    optional(lazy(() => paymentOptionsSchema)),
+  ],
   deviceOptions: ['device_options', lazy(() => deviceCheckoutOptionsSchema)],
   deadlineDuration: ['deadline_duration', optional(string())],
   status: ['status', optional(string())],
@@ -76,4 +94,5 @@ export const terminalCheckoutSchema: Schema<TerminalCheckout> = object({
   locationId: ['location_id', optional(string())],
   paymentType: ['payment_type', optional(string())],
   customerId: ['customer_id', optional(string())],
+  appFeeMoney: ['app_fee_money', optional(lazy(() => moneySchema))],
 });

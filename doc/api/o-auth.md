@@ -133,8 +133,6 @@ const contentType = null;
 const body: RevokeTokenRequest = {};
 body.clientId = 'CLIENT_ID';
 body.accessToken = 'ACCESS_TOKEN';
-body.merchantId = 'merchant_id6';
-body.revokeOnlyAccessToken = false;
 
 const authorization = 'Client CLIENT_SECRET';
 try {
@@ -194,17 +192,12 @@ async obtainToken(
 
 ```ts
 const contentType = null;
-const bodyScopes: string[] = ['scopes6', 'scopes7', 'scopes8'];
 const body: ObtainTokenRequest = {
   clientId: 'APPLICATION_ID',
   clientSecret: 'APPLICATION_SECRET',
   grantType: 'authorization_code',
 };
 body.code = 'CODE_FROM_AUTHORIZE';
-body.redirectUri = 'redirect_uri4';
-body.refreshToken = 'refresh_token6';
-body.migrationToken = 'migration_token4';
-body.scopes = bodyScopes;
 
 try {
   const { result, ...httpResponse } = await oAuthApi.obtainToken(body);

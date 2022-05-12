@@ -17,7 +17,7 @@ The origination details of the subscription.
 
 ```json
 {
-  "name": "name0"
+  "name": null
 }
 ```
 

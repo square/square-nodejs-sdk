@@ -42,14 +42,16 @@ linking a bank account to a Square account, see
   "account_type": "BUSINESS_CHECKING",
   "holder_name": "holder_name4",
   "primary_bank_identification_number": "primary_bank_identification_number8",
-  "secondary_bank_identification_number": "secondary_bank_identification_number0",
-  "debit_mandate_reference_id": "debit_mandate_reference_id4",
-  "reference_id": "reference_id2",
-  "location_id": "location_id4",
+  "secondary_bank_identification_number": null,
+  "debit_mandate_reference_id": null,
+  "reference_id": null,
+  "location_id": null,
   "status": "DISABLED",
   "creditable": false,
   "debitable": false,
-  "fingerprint": "fingerprint6"
+  "fingerprint": null,
+  "version": null,
+  "bank_name": null
 }
 ```
 

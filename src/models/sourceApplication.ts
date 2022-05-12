@@ -1,17 +1,17 @@
 import { object, optional, Schema, string } from '../schema';
 
-/** Provides information about the application used to generate a change. */
+/** Represents information about the application used to generate a change. */
 export interface SourceApplication {
-  /** Indicates the Square product used to generate an inventory change. */
+  /** Indicates the Square product used to generate a change. */
   product?: string;
   /**
-   * Read-only Square ID assigned to the application. Only used for
-   * [Product]($m/Product) type `EXTERNAL_API`.
+   * __Read only__ The Square-assigned ID of the application. This field is used only if the
+   * [product]($m/Product) type is `EXTERNAL_API`.
    */
   applicationId?: string;
   /**
-   * Read-only display name assigned to the application
-   * (e.g. `"Custom Application"`, `"Square POS 4.74 for Android"`).
+   * __Read only__ The display name of the application
+   * (for example, `"Custom Application"` or `"Square POS 4.74 for Android"`).
    */
   name?: string;
 }

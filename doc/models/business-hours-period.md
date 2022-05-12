@@ -19,9 +19,9 @@ Represents a period of time during which a business location is open.
 
 ```json
 {
-  "day_of_week": "SAT",
-  "start_local_time": "start_local_time6",
-  "end_local_time": "end_local_time8"
+  "day_of_week": null,
+  "start_local_time": null,
+  "end_local_time": null
 }
 ```
 

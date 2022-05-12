@@ -32,7 +32,7 @@ For a more detailed discussion of the Catalog data model, please see the
 | `absentAtLocationIds` | `string[] \| undefined` | Optional | A list of locations where the object is not present, even if `present_at_all_locations` is `true`.<br>This can include locations that are deactivated. |
 | `itemData` | [`CatalogItem \| undefined`](../../doc/models/catalog-item.md) | Optional | A [CatalogObject](../../doc/models/catalog-object.md) instance of the `ITEM` type, also referred to as an item, in the catalog. |
 | `categoryData` | [`CatalogCategory \| undefined`](../../doc/models/catalog-category.md) | Optional | A category to which a `CatalogItem` instance belongs. |
-| `itemVariationData` | [`CatalogItemVariation \| undefined`](../../doc/models/catalog-item-variation.md) | Optional | An item variation (i.e., product) in the Catalog object model. Each item<br>may have a maximum of 250 item variations. |
+| `itemVariationData` | [`CatalogItemVariation \| undefined`](../../doc/models/catalog-item-variation.md) | Optional | An item variation, representing a product for sale, in the Catalog object model. Each [item](../../doc/models/catalog-item.md) must have at least one<br>item variation and can have at most 250 item variations.<br><br>An item variation can be sellable, stockable, or both if it has a unit of measure for its count for the sold number of the variation, the stocked<br>number of the variation, or both. For example, when a variation representing wine is stocked and sold by the bottle, the variation is both<br>stockable and sellable. But when a variation of the wine is sold by the glass, the sold units cannot be used as a measure of the stocked units. This by-the-glass<br>variation is sellable, but not stockable. To accurately keep track of the wine's inventory count at any time, the sellable count must be<br>converted to stockable count. Typically, the seller defines this unit conversion. For example, 1 bottle equals 5 glasses. The Square API exposes<br>the `stockable_conversion` property on the variation to specify the conversion. Thus, when two glasses of the wine are sold, the sellable count<br>decreases by 2, and the stockable count automatically decreases by 0.4 bottle according to the conversion. |
 | `taxData` | [`CatalogTax \| undefined`](../../doc/models/catalog-tax.md) | Optional | A tax applicable to an item. |
 | `discountData` | [`CatalogDiscount \| undefined`](../../doc/models/catalog-discount.md) | Optional | A discount applicable to items. |
 | `modifierListData` | [`CatalogModifierList \| undefined`](../../doc/models/catalog-modifier-list.md) | Optional | A list of modifiers applicable to items at the time of sale.<br><br>For example, a "Condiments" modifier list applicable to a "Hot Dog" item<br>may contain "Ketchup", "Mustard", and "Relish" modifiers.<br>Use the `selection_type` field to specify whether or not multiple selections from<br>the modifier list are allowed. |
@@ -54,28 +54,31 @@ For a more detailed discussion of the Catalog data model, please see the
 {
   "type": "ITEM_VARIATION",
   "id": "id0",
-  "updated_at": "updated_at4",
-  "version": 172,
-  "is_deleted": false,
-  "custom_attribute_values": {
-    "key0": {
-      "name": "name9",
-      "string_value": "string_value3",
-      "custom_attribute_definition_id": "custom_attribute_definition_id3",
-      "type": "BOOLEAN",
-      "number_value": "number_value9"
-    }
-  },
-  "catalog_v1_ids": [
-    {
-      "catalog_v1_id": "catalog_v1_id4",
-      "location_id": "location_id4"
-    },
-    {
-      "catalog_v1_id": "catalog_v1_id5",
-      "location_id": "location_id5"
-    }
-  ]
+  "updated_at": null,
+  "version": null,
+  "is_deleted": null,
+  "custom_attribute_values": null,
+  "catalog_v1_ids": null,
+  "present_at_all_locations": null,
+  "present_at_location_ids": null,
+  "absent_at_location_ids": null,
+  "item_data": null,
+  "category_data": null,
+  "item_variation_data": null,
+  "tax_data": null,
+  "discount_data": null,
+  "modifier_list_data": null,
+  "modifier_data": null,
+  "time_period_data": null,
+  "product_set_data": null,
+  "pricing_rule_data": null,
+  "image_data": null,
+  "measurement_unit_data": null,
+  "subscription_plan_data": null,
+  "item_option_data": null,
+  "item_option_value_data": null,
+  "custom_attribute_definition_data": null,
+  "quick_amounts_settings_data": null
 }
 ```
 

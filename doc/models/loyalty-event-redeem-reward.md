@@ -20,8 +20,8 @@ Provides metadata when the event `type` is `REDEEM_REWARD`.
 ```json
 {
   "loyalty_program_id": "loyalty_program_id0",
-  "reward_id": "reward_id4",
-  "order_id": "order_id6"
+  "reward_id": null,
+  "order_id": null
 }
 ```
 

@@ -16,13 +16,24 @@
 
 ```json
 {
-  "idempotency_key": "idempotency_key6",
+  "idempotency_key": null,
   "booking": {
-    "id": "id4",
-    "version": 156,
-    "status": "CANCELLED_BY_SELLER",
-    "created_at": "created_at2",
-    "updated_at": "updated_at0"
+    "id": null,
+    "version": null,
+    "status": null,
+    "created_at": null,
+    "updated_at": null,
+    "start_at": null,
+    "location_id": null,
+    "customer_id": null,
+    "customer_note": null,
+    "seller_note": null,
+    "appointment_segments": null,
+    "transition_time_minutes": null,
+    "all_day": null,
+    "location_type": null,
+    "creator_details": null,
+    "source": null
   }
 }
 ```

@@ -28,24 +28,13 @@ Represents a reward tier in a loyalty program. A reward tier defines how buyers 
   "definition": {
     "scope": "ORDER",
     "discount_type": "FIXED_AMOUNT",
-    "percentage_discount": "percentage_discount2",
-    "catalog_object_ids": [
-      "catalog_object_ids6"
-    ],
-    "fixed_discount_money": {
-      "amount": 132,
-      "currency": "TRY"
-    },
-    "max_discount_money": {
-      "amount": 176,
-      "currency": "MYR"
-    }
+    "percentage_discount": null,
+    "catalog_object_ids": null,
+    "fixed_discount_money": null,
+    "max_discount_money": null
   },
   "created_at": "created_at2",
-  "pricing_rule_reference": {
-    "object_id": "object_id0",
-    "catalog_version": 218
-  }
+  "pricing_rule_reference": null
 }
 ```
 

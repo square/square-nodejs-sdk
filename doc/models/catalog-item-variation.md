@@ -1,8 +1,16 @@
 
 # Catalog Item Variation
 
-An item variation (i.e., product) in the Catalog object model. Each item
-may have a maximum of 250 item variations.
+An item variation, representing a product for sale, in the Catalog object model. Each [item](../../doc/models/catalog-item.md) must have at least one
+item variation and can have at most 250 item variations.
+
+An item variation can be sellable, stockable, or both if it has a unit of measure for its count for the sold number of the variation, the stocked
+number of the variation, or both. For example, when a variation representing wine is stocked and sold by the bottle, the variation is both
+stockable and sellable. But when a variation of the wine is sold by the glass, the sold units cannot be used as a measure of the stocked units. This by-the-glass
+variation is sellable, but not stockable. To accurately keep track of the wine's inventory count at any time, the sellable count must be
+converted to stockable count. Typically, the seller defines this unit conversion. For example, 1 bottle equals 5 glasses. The Square API exposes
+the `stockable_conversion` property on the variation to specify the conversion. Thus, when two glasses of the wine are sold, the sellable count
+decreases by 2, and the stockable count automatically decreases by 0.4 bottle according to the conversion.
 
 ## Structure
 
@@ -28,8 +36,8 @@ may have a maximum of 250 item variations.
 | `availableForBooking` | `boolean \| undefined` | Optional | If the `CatalogItem` that owns this item variation is of type<br>`APPOINTMENTS_SERVICE`, a bool representing whether this service is available for booking. |
 | `itemOptionValues` | [`CatalogItemOptionValueForItemVariation[] \| undefined`](../../doc/models/catalog-item-option-value-for-item-variation.md) | Optional | List of item option values associated with this item variation. Listed<br>in the same order as the item options of the parent item. |
 | `measurementUnitId` | `string \| undefined` | Optional | ID of the ‘CatalogMeasurementUnit’ that is used to measure the quantity<br>sold of this item variation. If left unset, the item will be sold in<br>whole quantities. |
-| `sellable` | `boolean \| undefined` | Optional | Whether this variation can be sold. |
-| `stockable` | `boolean \| undefined` | Optional | Whether stock is counted directly on this variation (TRUE) or only on its components (FALSE). |
+| `sellable` | `boolean \| undefined` | Optional | Whether this variation can be sold. The inventory count of a sellable variation indicates<br>the number of units available for sale. When a variation is both stockable and sellable,<br>its sellable inventory count can be smaller than or equal to its stocable count. |
+| `stockable` | `boolean \| undefined` | Optional | Whether stock is counted directly on this variation (TRUE) or only on its components (FALSE).<br>The inventory count of a stockable variation keeps track of the number of units of this variation in stock<br>and is not an indicator of the number of units of the variation that can be sold. |
 | `imageIds` | `string[] \| undefined` | Optional | The IDs of images associated with this `CatalogItemVariation` instance.<br>These images will be shown to customers in Square Online Store. |
 | `teamMemberIds` | `string[] \| undefined` | Optional | Tokens of employees that can perform the service represented by this variation. Only valid for<br>variations of type `APPOINTMENTS_SERVICE`. |
 | `stockableConversion` | [`CatalogStockConversion \| undefined`](../../doc/models/catalog-stock-conversion.md) | Optional | Represents the rule of conversion between a stockable [CatalogItemVariation](../../doc/models/catalog-item-variation.md)<br>and a non-stockable sell-by or receive-by `CatalogItemVariation` that<br>share the same underlying stock. |
@@ -38,11 +46,27 @@ may have a maximum of 250 item variations.
 
 ```json
 {
-  "item_id": "item_id0",
-  "name": "name0",
-  "sku": "sku4",
-  "upc": "upc2",
-  "ordinal": 80
+  "item_id": null,
+  "name": null,
+  "sku": null,
+  "upc": null,
+  "ordinal": null,
+  "pricing_type": null,
+  "price_money": null,
+  "location_overrides": null,
+  "track_inventory": null,
+  "inventory_alert_type": null,
+  "inventory_alert_threshold": null,
+  "user_data": null,
+  "service_duration": null,
+  "available_for_booking": null,
+  "item_option_values": null,
+  "measurement_unit_id": null,
+  "sellable": null,
+  "stockable": null,
+  "image_ids": null,
+  "team_member_ids": null,
+  "stockable_conversion": null
 }
 ```
 

@@ -21,13 +21,10 @@ specified by the `title` property of this object. Deprecated at version 2020-08-
 
 ```json
 {
-  "id": "id0",
-  "employee_id": "employee_id0",
-  "title": "title4",
-  "hourly_rate": {
-    "amount": 172,
-    "currency": "TJS"
-  }
+  "id": null,
+  "employee_id": null,
+  "title": null,
+  "hourly_rate": null
 }
 ```
 

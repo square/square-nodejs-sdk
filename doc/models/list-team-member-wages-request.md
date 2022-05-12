@@ -19,9 +19,9 @@ A request for a set of `TeamMemberWage` objects.
 
 ```json
 {
-  "team_member_id": "team_member_id0",
-  "limit": 172,
-  "cursor": "cursor6"
+  "team_member_id": null,
+  "limit": null,
+  "cursor": null
 }
 ```
 

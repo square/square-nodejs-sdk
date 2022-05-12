@@ -41,10 +41,8 @@ async listCustomerSegments(
 ## Example Usage
 
 ```ts
-const cursor = 'cursor6';
-const limit = 172;
 try {
-  const { result, ...httpResponse } = await customerSegmentsApi.listCustomerSegments(cursor, limit);
+  const { result, ...httpResponse } = await customerSegmentsApi.listCustomerSegments();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

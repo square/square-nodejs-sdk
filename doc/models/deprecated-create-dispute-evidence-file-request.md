@@ -20,8 +20,8 @@ Defines the parameters for a `DeprecatedCreateDisputeEvidenceFile` request.
 ```json
 {
   "idempotency_key": "idempotency_key6",
-  "evidence_type": "RECEIPT",
-  "content_type": "content_type6"
+  "evidence_type": null,
+  "content_type": null
 }
 ```
 

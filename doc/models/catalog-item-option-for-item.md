@@ -18,7 +18,7 @@ For example, a t-shirt item may offer a color option or a size option.
 
 ```json
 {
-  "item_option_id": "item_option_id2"
+  "item_option_id": null
 }
 ```
 

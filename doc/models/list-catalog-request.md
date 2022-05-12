@@ -17,9 +17,9 @@
 
 ```json
 {
-  "cursor": "cursor6",
-  "types": "types6",
-  "catalog_version": 126
+  "cursor": null,
+  "types": null,
+  "catalog_version": null
 }
 ```
 

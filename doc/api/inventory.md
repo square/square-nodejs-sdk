@@ -139,52 +139,17 @@ const contentType = null;
 const bodyChanges: InventoryChange[] = [];
 
 const bodychanges0PhysicalCount: InventoryPhysicalCount = {};
-bodychanges0PhysicalCount.id = 'id0';
 bodychanges0PhysicalCount.referenceId = '1536bfbf-efed-48bf-b17d-a197141b2a92';
 bodychanges0PhysicalCount.catalogObjectId = 'W62UWFY35CWMYGVWK6TWJDNI';
-bodychanges0PhysicalCount.catalogObjectType = 'catalog_object_type4';
 bodychanges0PhysicalCount.state = 'IN_STOCK';
 bodychanges0PhysicalCount.locationId = 'C6W5YS5QM06F5';
 bodychanges0PhysicalCount.quantity = '53';
 bodychanges0PhysicalCount.teamMemberId = 'LRK57NSQ5X7PUD05';
 bodychanges0PhysicalCount.occurredAt = '2016-11-16T22:25:24.878Z';
 
-const bodychanges0Adjustment: InventoryAdjustment = {};
-bodychanges0Adjustment.id = 'id6';
-bodychanges0Adjustment.referenceId = 'reference_id4';
-bodychanges0Adjustment.fromState = 'SOLD';
-bodychanges0Adjustment.toState = 'SOLD_ONLINE';
-bodychanges0Adjustment.locationId = 'location_id0';
-
-const bodychanges0Transfer: InventoryTransfer = {};
-bodychanges0Transfer.id = 'id0';
-bodychanges0Transfer.referenceId = 'reference_id8';
-bodychanges0Transfer.state = 'UNLINKED_RETURN';
-bodychanges0Transfer.fromLocationId = 'from_location_id2';
-bodychanges0Transfer.toLocationId = 'to_location_id2';
-
-const bodychanges0MeasurementUnitMeasurementUnitCustomUnit: MeasurementUnitCustom = {
-  name: 'name0',
-  abbreviation: 'abbreviation2',
-};
-
-const bodychanges0MeasurementUnitMeasurementUnit: MeasurementUnit = {};
-bodychanges0MeasurementUnitMeasurementUnit.customUnit = bodychanges0MeasurementUnitMeasurementUnitCustomUnit;
-bodychanges0MeasurementUnitMeasurementUnit.areaUnit = 'IMPERIAL_SQUARE_FOOT';
-bodychanges0MeasurementUnitMeasurementUnit.lengthUnit = 'METRIC_METER';
-bodychanges0MeasurementUnitMeasurementUnit.volumeUnit = 'METRIC_MILLILITER';
-bodychanges0MeasurementUnitMeasurementUnit.weightUnit = 'IMPERIAL_WEIGHT_OUNCE';
-
-const bodychanges0MeasurementUnit: CatalogMeasurementUnit = {};
-bodychanges0MeasurementUnit.measurementUnit = bodychanges0MeasurementUnitMeasurementUnit;
-bodychanges0MeasurementUnit.precision = 26;
-
 const bodychanges0: InventoryChange = {};
 bodychanges0.type = 'PHYSICAL_COUNT';
 bodychanges0.physicalCount = bodychanges0PhysicalCount;
-bodychanges0.adjustment = bodychanges0Adjustment;
-bodychanges0.transfer = bodychanges0Transfer;
-bodychanges0.measurementUnit = bodychanges0MeasurementUnit;
 
 bodyChanges[0] = bodychanges0;
 
@@ -292,13 +257,10 @@ async deprecatedBatchRetrieveInventoryCounts(
 const contentType = null;
 const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
 const bodyLocationIds: string[] = ['59TNP9SA8VGDA'];
-const bodyStates: string[] = ['SUPPORTED_BY_NEWER_VERSION'];
 const body: BatchRetrieveInventoryCountsRequest = {};
 body.catalogObjectIds = bodyCatalogObjectIds;
 body.locationIds = bodyLocationIds;
 body.updatedAfter = '2016-11-16T00:00:00.000Z';
-body.cursor = 'cursor0';
-body.states = bodyStates;
 
 try {
   const { result, ...httpResponse } = await inventoryApi.deprecatedBatchRetrieveInventoryCounts(body);
@@ -346,52 +308,17 @@ const contentType = null;
 const bodyChanges: InventoryChange[] = [];
 
 const bodychanges0PhysicalCount: InventoryPhysicalCount = {};
-bodychanges0PhysicalCount.id = 'id0';
 bodychanges0PhysicalCount.referenceId = '1536bfbf-efed-48bf-b17d-a197141b2a92';
 bodychanges0PhysicalCount.catalogObjectId = 'W62UWFY35CWMYGVWK6TWJDNI';
-bodychanges0PhysicalCount.catalogObjectType = 'catalog_object_type4';
 bodychanges0PhysicalCount.state = 'IN_STOCK';
 bodychanges0PhysicalCount.locationId = 'C6W5YS5QM06F5';
 bodychanges0PhysicalCount.quantity = '53';
 bodychanges0PhysicalCount.teamMemberId = 'LRK57NSQ5X7PUD05';
 bodychanges0PhysicalCount.occurredAt = '2016-11-16T22:25:24.878Z';
 
-const bodychanges0Adjustment: InventoryAdjustment = {};
-bodychanges0Adjustment.id = 'id6';
-bodychanges0Adjustment.referenceId = 'reference_id4';
-bodychanges0Adjustment.fromState = 'SOLD';
-bodychanges0Adjustment.toState = 'SOLD_ONLINE';
-bodychanges0Adjustment.locationId = 'location_id0';
-
-const bodychanges0Transfer: InventoryTransfer = {};
-bodychanges0Transfer.id = 'id0';
-bodychanges0Transfer.referenceId = 'reference_id8';
-bodychanges0Transfer.state = 'UNLINKED_RETURN';
-bodychanges0Transfer.fromLocationId = 'from_location_id2';
-bodychanges0Transfer.toLocationId = 'to_location_id2';
-
-const bodychanges0MeasurementUnitMeasurementUnitCustomUnit: MeasurementUnitCustom = {
-  name: 'name0',
-  abbreviation: 'abbreviation2',
-};
-
-const bodychanges0MeasurementUnitMeasurementUnit: MeasurementUnit = {};
-bodychanges0MeasurementUnitMeasurementUnit.customUnit = bodychanges0MeasurementUnitMeasurementUnitCustomUnit;
-bodychanges0MeasurementUnitMeasurementUnit.areaUnit = 'IMPERIAL_SQUARE_FOOT';
-bodychanges0MeasurementUnitMeasurementUnit.lengthUnit = 'METRIC_METER';
-bodychanges0MeasurementUnitMeasurementUnit.volumeUnit = 'METRIC_MILLILITER';
-bodychanges0MeasurementUnitMeasurementUnit.weightUnit = 'IMPERIAL_WEIGHT_OUNCE';
-
-const bodychanges0MeasurementUnit: CatalogMeasurementUnit = {};
-bodychanges0MeasurementUnit.measurementUnit = bodychanges0MeasurementUnitMeasurementUnit;
-bodychanges0MeasurementUnit.precision = 26;
-
 const bodychanges0: InventoryChange = {};
 bodychanges0.type = 'PHYSICAL_COUNT';
 bodychanges0.physicalCount = bodychanges0PhysicalCount;
-bodychanges0.adjustment = bodychanges0Adjustment;
-bodychanges0.transfer = bodychanges0Transfer;
-bodychanges0.measurementUnit = bodychanges0MeasurementUnit;
 
 bodyChanges[0] = bodychanges0;
 
@@ -510,13 +437,10 @@ async batchRetrieveInventoryCounts(
 const contentType = null;
 const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
 const bodyLocationIds: string[] = ['59TNP9SA8VGDA'];
-const bodyStates: string[] = ['SUPPORTED_BY_NEWER_VERSION'];
 const body: BatchRetrieveInventoryCountsRequest = {};
 body.catalogObjectIds = bodyCatalogObjectIds;
 body.locationIds = bodyLocationIds;
 body.updatedAfter = '2016-11-16T00:00:00.000Z';
-body.cursor = 'cursor0';
-body.states = bodyStates;
 
 try {
   const { result, ...httpResponse } = await inventoryApi.batchRetrieveInventoryCounts(body);
@@ -686,10 +610,8 @@ async retrieveInventoryCount(
 
 ```ts
 const catalogObjectId = 'catalog_object_id6';
-const locationIds = 'location_ids0';
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await inventoryApi.retrieveInventoryCount(catalogObjectId, locationIds, cursor);
+  const { result, ...httpResponse } = await inventoryApi.retrieveInventoryCount(catalogObjectId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -745,10 +667,8 @@ async retrieveInventoryChanges(
 
 ```ts
 const catalogObjectId = 'catalog_object_id6';
-const locationIds = 'location_ids0';
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await inventoryApi.retrieveInventoryChanges(catalogObjectId, locationIds, cursor);
+  const { result, ...httpResponse } = await inventoryApi.retrieveInventoryChanges(catalogObjectId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

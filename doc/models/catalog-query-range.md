@@ -20,8 +20,8 @@ The query filter to return the search result whose named attribute values fall b
 ```json
 {
   "attribute_name": "attribute_name4",
-  "attribute_min_value": 232,
-  "attribute_max_value": 114
+  "attribute_min_value": null,
+  "attribute_max_value": null
 }
 ```
 

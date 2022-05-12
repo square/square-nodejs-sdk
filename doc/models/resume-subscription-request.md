@@ -19,8 +19,8 @@ Defines input parameters in a request to the
 
 ```json
 {
-  "resume_effective_date": "resume_effective_date2",
-  "resume_change_timing": "IMMEDIATE"
+  "resume_effective_date": null,
+  "resume_change_timing": null
 }
 ```
 

@@ -48,9 +48,8 @@ async listMerchants(
 ## Example Usage
 
 ```ts
-const cursor = 210;
 try {
-  const { result, ...httpResponse } = await merchantsApi.listMerchants(cursor);
+  const { result, ...httpResponse } = await merchantsApi.listMerchants();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

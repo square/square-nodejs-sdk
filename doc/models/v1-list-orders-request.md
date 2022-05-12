@@ -17,9 +17,9 @@
 
 ```json
 {
-  "order": "DESC",
-  "limit": 172,
-  "batch_token": "batch_token2"
+  "order": null,
+  "limit": null,
+  "batch_token": null
 }
 ```
 

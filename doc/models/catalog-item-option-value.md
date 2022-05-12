@@ -23,11 +23,11 @@ its item option values.
 
 ```json
 {
-  "item_option_id": "item_option_id2",
-  "name": "name0",
-  "description": "description0",
-  "color": "color6",
-  "ordinal": 80
+  "item_option_id": null,
+  "name": null,
+  "description": null,
+  "color": null,
+  "ordinal": null
 }
 ```
 

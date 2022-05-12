@@ -17,7 +17,7 @@ Configuration associated with Custom Attribute Definitions of type `STRING`.
 
 ```json
 {
-  "enforce_uniqueness": false
+  "enforce_uniqueness": null
 }
 ```
 

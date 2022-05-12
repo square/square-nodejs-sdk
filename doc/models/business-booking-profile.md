@@ -16,16 +16,20 @@
 | `bookingPolicy` | [`string \| undefined`](../../doc/models/business-booking-profile-booking-policy.md) | Optional | Policies for accepting bookings. |
 | `allowUserCancel` | `boolean \| undefined` | Optional | Indicates whether customers can cancel or reschedule their own bookings (`true`) or not (`false`). |
 | `businessAppointmentSettings` | [`BusinessAppointmentSettings \| undefined`](../../doc/models/business-appointment-settings.md) | Optional | The service appointment settings, including where and how the service is provided. |
+| `supportSellerLevelWrites` | `boolean \| undefined` | Optional | Indicates whether the seller's subscription to Square Appointments supports creating, updating or canceling an appointment through the API (`true`) or not (`false`) using seller permission. |
 
 ## Example (as JSON)
 
 ```json
 {
-  "seller_id": "seller_id8",
-  "created_at": "created_at2",
-  "booking_enabled": false,
-  "customer_timezone_choice": "BUSINESS_LOCATION_TIMEZONE",
-  "booking_policy": "ACCEPT_ALL"
+  "seller_id": null,
+  "created_at": null,
+  "booking_enabled": null,
+  "customer_timezone_choice": null,
+  "booking_policy": null,
+  "allow_user_cancel": null,
+  "business_appointment_settings": null,
+  "support_seller_level_writes": null
 }
 ```
 

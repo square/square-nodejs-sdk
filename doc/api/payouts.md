@@ -54,15 +54,8 @@ async listPayouts(
 ## Example Usage
 
 ```ts
-const locationId = 'location_id4';
-const status = 'PAID';
-const beginTime = 'begin_time2';
-const endTime = 'end_time2';
-const sortOrder = 'DESC';
-const cursor = 'cursor6';
-const limit = 172;
 try {
-  const { result, ...httpResponse } = await payoutsApi.listPayouts(locationId, status, beginTime, endTime, sortOrder, cursor, limit);
+  const { result, ...httpResponse } = await payoutsApi.listPayouts();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -147,11 +140,8 @@ async listPayoutEntries(
 
 ```ts
 const payoutId = 'payout_id6';
-const sortOrder = 'DESC';
-const cursor = 'cursor6';
-const limit = 172;
 try {
-  const { result, ...httpResponse } = await payoutsApi.listPayoutEntries(payoutId, sortOrder, cursor, limit);
+  const { result, ...httpResponse } = await payoutsApi.listPayoutEntries(payoutId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

@@ -18,8 +18,8 @@ A whole number or unreduced fractional ratio.
 
 ```json
 {
-  "quantity": 68,
-  "quantity_denominator": 0
+  "quantity": null,
+  "quantity_denominator": null
 }
 ```
 

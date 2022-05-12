@@ -39,23 +39,28 @@ invoices. For more information, see [Manage Invoices Using the Invoices API](htt
 
 ```json
 {
-  "id": "id0",
-  "version": 172,
-  "location_id": "location_id4",
-  "order_id": "order_id6",
-  "primary_recipient": {
-    "customer_id": "customer_id2",
-    "given_name": "given_name6",
-    "family_name": "family_name8",
-    "email_address": "email_address2",
-    "address": {
-      "address_line_1": "address_line_10",
-      "address_line_2": "address_line_20",
-      "address_line_3": "address_line_36",
-      "locality": "locality0",
-      "sublocality": "sublocality0"
-    }
-  }
+  "id": null,
+  "version": null,
+  "location_id": null,
+  "order_id": null,
+  "primary_recipient": null,
+  "payment_requests": null,
+  "delivery_method": null,
+  "invoice_number": null,
+  "title": null,
+  "description": null,
+  "scheduled_at": null,
+  "public_url": null,
+  "next_payment_amount_money": null,
+  "status": null,
+  "timezone": null,
+  "created_at": null,
+  "updated_at": null,
+  "accepted_payment_methods": null,
+  "custom_fields": null,
+  "subscription_id": null,
+  "sale_or_service_date": null,
+  "payment_conditions": null
 }
 ```
 

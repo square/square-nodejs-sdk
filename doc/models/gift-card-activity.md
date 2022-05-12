@@ -36,16 +36,26 @@ Represents an action performed on a gift card that affects its state or balance.
 
 ```json
 {
-  "id": "id0",
+  "id": null,
   "type": "ADJUST_INCREMENT",
   "location_id": "location_id4",
-  "created_at": "created_at2",
-  "gift_card_id": "gift_card_id8",
-  "gift_card_gan": "gift_card_gan6",
-  "gift_card_balance_money": {
-    "amount": 82,
-    "currency": "LSL"
-  }
+  "created_at": null,
+  "gift_card_id": null,
+  "gift_card_gan": null,
+  "gift_card_balance_money": null,
+  "load_activity_details": null,
+  "activate_activity_details": null,
+  "redeem_activity_details": null,
+  "clear_balance_activity_details": null,
+  "deactivate_activity_details": null,
+  "adjust_increment_activity_details": null,
+  "adjust_decrement_activity_details": null,
+  "refund_activity_details": null,
+  "unlinked_activity_refund_activity_details": null,
+  "import_activity_details": null,
+  "block_activity_details": null,
+  "unblock_activity_details": null,
+  "import_reversal_activity_details": null
 }
 ```
 

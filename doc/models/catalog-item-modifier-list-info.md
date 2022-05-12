@@ -22,15 +22,10 @@ Options to control the properties of a `CatalogModifierList` applied to a `Catal
 ```json
 {
   "modifier_list_id": "modifier_list_id6",
-  "modifier_overrides": [
-    {
-      "modifier_id": "modifier_id1",
-      "on_by_default": true
-    }
-  ],
-  "min_selected_modifiers": 38,
-  "max_selected_modifiers": 198,
-  "enabled": false
+  "modifier_overrides": null,
+  "min_selected_modifiers": null,
+  "max_selected_modifiers": null,
+  "enabled": null
 }
 ```
 

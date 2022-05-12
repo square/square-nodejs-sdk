@@ -23,7 +23,7 @@ particular time and location.
 | `totalPriceMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `occurredAt` | `string \| undefined` | Optional | A client-generated RFC 3339-formatted timestamp that indicates when<br>the inventory adjustment took place. For inventory adjustment updates, the `occurred_at`<br>timestamp cannot be older than 24 hours or in the future relative to the<br>time of the request.<br>**Constraints**: *Maximum Length*: `34` |
 | `createdAt` | `string \| undefined` | Optional | An RFC 3339-formatted timestamp that indicates when the inventory adjustment is received.<br>**Constraints**: *Maximum Length*: `34` |
-| `source` | [`SourceApplication \| undefined`](../../doc/models/source-application.md) | Optional | Provides information about the application used to generate a change. |
+| `source` | [`SourceApplication \| undefined`](../../doc/models/source-application.md) | Optional | Represents information about the application used to generate a change. |
 | `employeeId` | `string \| undefined` | Optional | The Square-generated ID of the [Employee](../../doc/models/employee.md) responsible for the<br>inventory adjustment.<br>**Constraints**: *Maximum Length*: `100` |
 | `teamMemberId` | `string \| undefined` | Optional | The Square-generated ID of the [Team Member](../../doc/models/team-member.md) responsible for the<br>inventory adjustment.<br>**Constraints**: *Maximum Length*: `100` |
 | `transactionId` | `string \| undefined` | Optional | The Square-generated ID of the [Transaction](../../doc/models/transaction.md) that<br>caused the adjustment. Only relevant for payment-related state<br>transitions.<br>**Constraints**: *Maximum Length*: `255` |
@@ -36,11 +36,25 @@ particular time and location.
 
 ```json
 {
-  "id": "id0",
-  "reference_id": "reference_id2",
-  "from_state": "UNLINKED_RETURN",
-  "to_state": "SUPPORTED_BY_NEWER_VERSION",
-  "location_id": "location_id4"
+  "id": null,
+  "reference_id": null,
+  "from_state": null,
+  "to_state": null,
+  "location_id": null,
+  "catalog_object_id": null,
+  "catalog_object_type": null,
+  "quantity": null,
+  "total_price_money": null,
+  "occurred_at": null,
+  "created_at": null,
+  "source": null,
+  "employee_id": null,
+  "team_member_id": null,
+  "transaction_id": null,
+  "refund_id": null,
+  "purchase_order_id": null,
+  "goods_receipt_id": null,
+  "adjustment_group": null
 }
 ```
 

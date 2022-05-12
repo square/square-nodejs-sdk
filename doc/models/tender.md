@@ -30,12 +30,20 @@ Represents a tender (i.e., a method of payment) used in a Square transaction.
 
 ```json
 {
-  "id": "id0",
-  "location_id": "location_id4",
-  "transaction_id": "transaction_id8",
-  "created_at": "created_at2",
-  "note": "note4",
-  "type": "WALLET"
+  "id": null,
+  "location_id": null,
+  "transaction_id": null,
+  "created_at": null,
+  "note": null,
+  "amount_money": null,
+  "tip_money": null,
+  "processing_fee_money": null,
+  "customer_id": null,
+  "type": "WALLET",
+  "card_details": null,
+  "cash_details": null,
+  "additional_recipients": null,
+  "payment_id": null
 }
 ```
 

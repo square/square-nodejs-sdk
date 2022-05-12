@@ -25,11 +25,14 @@ For more information, see [Working with Addresses](https://developer.squareup.co
 
 ```json
 {
-  "address_line_1": "address_line_10",
-  "address_line_2": "address_line_20",
-  "address_line_3": "address_line_36",
-  "locality": "locality0",
-  "sublocality": "sublocality0"
+  "address_line_1": null,
+  "address_line_2": null,
+  "address_line_3": null,
+  "locality": null,
+  "sublocality": null,
+  "administrative_district_level_1": null,
+  "postal_code": null,
+  "country": null
 }
 ```
 

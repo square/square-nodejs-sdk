@@ -43,19 +43,33 @@ Represents one of a business' [locations](https://developer.squareup.com/docs/lo
 
 ```json
 {
-  "id": "id0",
-  "name": "name0",
-  "address": {
-    "address_line_1": "address_line_16",
-    "address_line_2": "address_line_26",
-    "address_line_3": "address_line_32",
-    "locality": "locality6",
-    "sublocality": "sublocality6"
-  },
-  "timezone": "timezone0",
-  "capabilities": [
-    "AUTOMATIC_TRANSFERS"
-  ]
+  "id": null,
+  "name": null,
+  "address": null,
+  "timezone": null,
+  "capabilities": null,
+  "status": null,
+  "created_at": null,
+  "merchant_id": null,
+  "country": null,
+  "language_code": null,
+  "currency": null,
+  "phone_number": null,
+  "business_name": null,
+  "type": null,
+  "website_url": null,
+  "business_hours": null,
+  "business_email": null,
+  "description": null,
+  "twitter_username": null,
+  "instagram_username": null,
+  "facebook_url": null,
+  "coordinates": null,
+  "logo_url": null,
+  "pos_background_url": null,
+  "mcc": null,
+  "full_format_logo_url": null,
+  "tax_ids": null
 }
 ```
 

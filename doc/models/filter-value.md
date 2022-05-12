@@ -23,18 +23,9 @@ Refer to the documentation of the field.
 
 ```json
 {
-  "all": [
-    "all1",
-    "all2"
-  ],
-  "any": [
-    "any6"
-  ],
-  "none": [
-    "none1",
-    "none2",
-    "none3"
-  ]
+  "all": null,
+  "any": null,
+  "none": null
 }
 ```
 

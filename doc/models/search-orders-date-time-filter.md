@@ -32,18 +32,9 @@ in `DateTimeFilter`, you must set the `sort_field` in `SearchOrdersSort` to
 
 ```json
 {
-  "created_at": {
-    "start_at": "start_at4",
-    "end_at": "end_at8"
-  },
-  "updated_at": {
-    "start_at": "start_at6",
-    "end_at": "end_at6"
-  },
-  "closed_at": {
-    "start_at": "start_at4",
-    "end_at": "end_at8"
-  }
+  "created_at": null,
+  "updated_at": null,
+  "closed_at": null
 }
 ```
 

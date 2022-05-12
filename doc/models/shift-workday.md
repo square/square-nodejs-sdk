@@ -20,12 +20,9 @@ a `Shift` must start or end in before passing the filter condition.
 
 ```json
 {
-  "date_range": {
-    "start_date": "start_date6",
-    "end_date": "end_date2"
-  },
-  "match_shifts_by": "INTERSECTION",
-  "default_timezone": "default_timezone6"
+  "date_range": null,
+  "match_shifts_by": null,
+  "default_timezone": null
 }
 ```
 

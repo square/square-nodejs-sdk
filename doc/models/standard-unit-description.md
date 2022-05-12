@@ -19,18 +19,9 @@ Contains the name and abbreviation for standard measurement unit.
 
 ```json
 {
-  "unit": {
-    "custom_unit": {
-      "name": "name0",
-      "abbreviation": "abbreviation2"
-    },
-    "area_unit": "IMPERIAL_ACRE",
-    "length_unit": "IMPERIAL_INCH",
-    "volume_unit": "METRIC_MILLILITER",
-    "weight_unit": "IMPERIAL_STONE"
-  },
-  "name": "name0",
-  "abbreviation": "abbreviation2"
+  "unit": null,
+  "name": null,
+  "abbreviation": null
 }
 ```
 

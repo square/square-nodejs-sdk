@@ -44,10 +44,8 @@ async listCustomerGroups(
 ## Example Usage
 
 ```ts
-const cursor = 'cursor6';
-const limit = 172;
 try {
-  const { result, ...httpResponse } = await customerGroupsApi.listCustomerGroups(cursor, limit);
+  const { result, ...httpResponse } = await customerGroupsApi.listCustomerGroups();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -90,14 +88,10 @@ const contentType = null;
 const bodyGroup: CustomerGroup = {
   name: 'Loyal Customers',
 };
-bodyGroup.id = 'id4';
-bodyGroup.createdAt = 'created_at2';
-bodyGroup.updatedAt = 'updated_at0';
 
 const body: CreateCustomerGroupRequest = {
   group: bodyGroup,
 };
-body.idempotencyKey = 'idempotency_key2';
 
 try {
   const { result, ...httpResponse } = await customerGroupsApi.createCustomerGroup(body);
@@ -222,9 +216,6 @@ const contentType = null;
 const bodyGroup: CustomerGroup = {
   name: 'Loyal Customers',
 };
-bodyGroup.id = 'id4';
-bodyGroup.createdAt = 'created_at2';
-bodyGroup.updatedAt = 'updated_at0';
 
 const body: UpdateCustomerGroupRequest = {
   group: bodyGroup,

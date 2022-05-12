@@ -22,11 +22,11 @@ gift cards.
 
 ```json
 {
-  "type": "type0",
-  "state": "state4",
-  "limit": 172,
-  "cursor": "cursor6",
-  "customer_id": "customer_id8"
+  "type": null,
+  "state": null,
+  "limit": null,
+  "cursor": null,
+  "customer_id": null
 }
 ```
 
