@@ -21,18 +21,11 @@ Represents additional data for rules with the `SPEND` accrual type.
 ```json
 {
   "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
+    "amount": null,
+    "currency": null
   },
-  "excluded_category_ids": [
-    "excluded_category_ids8",
-    "excluded_category_ids9"
-  ],
-  "excluded_item_variation_ids": [
-    "excluded_item_variation_ids1",
-    "excluded_item_variation_ids2",
-    "excluded_item_variation_ids3"
-  ],
+  "excluded_category_ids": null,
+  "excluded_item_variation_ids": null,
   "tax_mode": "BEFORE_TAX"
 }
 ```

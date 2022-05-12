@@ -17,7 +17,7 @@ Represents communication preferences for the customer profile.
 
 ```json
 {
-  "email_unsubscribed": false
+  "email_unsubscribed": null
 }
 ```
 

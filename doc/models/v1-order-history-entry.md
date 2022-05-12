@@ -18,8 +18,8 @@ V1OrderHistoryEntry
 
 ```json
 {
-  "action": "ORDER_PLACED",
-  "created_at": "created_at2"
+  "action": null,
+  "created_at": null
 }
 ```
 

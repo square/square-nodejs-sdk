@@ -18,8 +18,8 @@ Information about the destination against which the payout was made.
 
 ```json
 {
-  "type": "SQUARE_BALANCE",
-  "id": "id0"
+  "type": null,
+  "id": null
 }
 ```
 

@@ -19,10 +19,7 @@ associated with the order. It does not filter based on the
 
 ```json
 {
-  "customer_ids": [
-    "customer_ids1",
-    "customer_ids2"
-  ]
+  "customer_ids": null
 }
 ```
 

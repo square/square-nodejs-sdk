@@ -30,15 +30,19 @@ during the active time period.
 
 ```json
 {
-  "name": "name0",
-  "time_period_ids": [
-    "time_period_ids2",
-    "time_period_ids3",
-    "time_period_ids4"
-  ],
-  "discount_id": "discount_id8",
-  "match_products_id": "match_products_id2",
-  "apply_products_id": "apply_products_id6"
+  "name": null,
+  "time_period_ids": null,
+  "discount_id": null,
+  "match_products_id": null,
+  "apply_products_id": null,
+  "exclude_products_id": null,
+  "valid_from_date": null,
+  "valid_from_local_time": null,
+  "valid_until_date": null,
+  "valid_until_local_time": null,
+  "exclude_strategy": null,
+  "minimum_order_subtotal_money": null,
+  "customer_group_ids_any": null
 }
 ```
 

@@ -57,12 +57,8 @@ async listCustomers(
 ## Example Usage
 
 ```ts
-const cursor = 'cursor6';
-const limit = 172;
-const sortField = 'DEFAULT';
-const sortOrder = 'DESC';
 try {
-  const { result, ...httpResponse } = await customersApi.listCustomers(cursor, limit, sortField, sortOrder);
+  const { result, ...httpResponse } = await customersApi.listCustomers();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -112,19 +108,14 @@ const contentType = null;
 const bodyAddress: Address = {};
 bodyAddress.addressLine1 = '500 Electric Ave';
 bodyAddress.addressLine2 = 'Suite 600';
-bodyAddress.addressLine3 = 'address_line_38';
 bodyAddress.locality = 'New York';
-bodyAddress.sublocality = 'sublocality2';
 bodyAddress.administrativeDistrictLevel1 = 'NY';
 bodyAddress.postalCode = '10003';
 bodyAddress.country = 'US';
 
 const body: CreateCustomerRequest = {};
-body.idempotencyKey = 'idempotency_key2';
 body.givenName = 'Amelia';
 body.familyName = 'Earhart';
-body.companyName = 'company_name2';
-body.nickname = 'nickname2';
 body.emailAddress = 'Amelia.Earhart@example.com';
 body.address = bodyAddress;
 body.phoneNumber = '1-212-555-4240';
@@ -187,32 +178,17 @@ const bodyQueryFilterCreatedAt: TimeRange = {};
 bodyQueryFilterCreatedAt.startAt = '2018-01-01T00:00:00-00:00';
 bodyQueryFilterCreatedAt.endAt = '2018-02-01T00:00:00-00:00';
 
-const bodyQueryFilterUpdatedAt: TimeRange = {};
-bodyQueryFilterUpdatedAt.startAt = 'start_at4';
-bodyQueryFilterUpdatedAt.endAt = 'end_at8';
-
 const bodyQueryFilterEmailAddress: CustomerTextFilter = {};
-bodyQueryFilterEmailAddress.exact = 'exact0';
 bodyQueryFilterEmailAddress.fuzzy = 'example.com';
 
-const bodyQueryFilterPhoneNumber: CustomerTextFilter = {};
-bodyQueryFilterPhoneNumber.exact = 'exact0';
-bodyQueryFilterPhoneNumber.fuzzy = 'fuzzy6';
-
 const bodyQueryFilterGroupIdsAll: string[] = ['545AXB44B4XXWMVQ4W8SBT3HHF'];
-const bodyQueryFilterGroupIdsAny: string[] = ['any0', 'any1', 'any2'];
-const bodyQueryFilterGroupIdsNone: string[] = ['none5', 'none6'];
 const bodyQueryFilterGroupIds: FilterValue = {};
 bodyQueryFilterGroupIds.all = bodyQueryFilterGroupIdsAll;
-bodyQueryFilterGroupIds.any = bodyQueryFilterGroupIdsAny;
-bodyQueryFilterGroupIds.none = bodyQueryFilterGroupIdsNone;
 
 const bodyQueryFilter: CustomerFilter = {};
 bodyQueryFilter.creationSource = bodyQueryFilterCreationSource;
 bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;
-bodyQueryFilter.updatedAt = bodyQueryFilterUpdatedAt;
 bodyQueryFilter.emailAddress = bodyQueryFilterEmailAddress;
-bodyQueryFilter.phoneNumber = bodyQueryFilterPhoneNumber;
 bodyQueryFilter.groupIds = bodyQueryFilterGroupIds;
 
 const bodyQuerySort: CustomerSort = {};
@@ -224,7 +200,6 @@ bodyQuery.filter = bodyQueryFilter;
 bodyQuery.sort = bodyQuerySort;
 
 const body: SearchCustomersRequest = {};
-body.cursor = 'cursor0';
 body.limit = 2;
 body.query = bodyQuery;
 
@@ -273,9 +248,8 @@ async deleteCustomer(
 
 ```ts
 const customerId = 'customer_id8';
-const version = 172;
 try {
-  const { result, ...httpResponse } = await customersApi.deleteCustomer(customerId, version);
+  const { result, ...httpResponse } = await customersApi.deleteCustomer(customerId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -362,10 +336,6 @@ async updateCustomer(
 const customerId = 'customer_id8';
 const contentType = null;
 const body: UpdateCustomerRequest = {};
-body.givenName = 'given_name8';
-body.familyName = 'family_name0';
-body.companyName = 'company_name2';
-body.nickname = 'nickname2';
 body.emailAddress = 'New.Amelia.Earhart@example.com';
 body.phoneNumber = '';
 body.note = 'updated customer note';
@@ -422,9 +392,7 @@ const contentType = null;
 const bodyBillingAddress: Address = {};
 bodyBillingAddress.addressLine1 = '500 Electric Ave';
 bodyBillingAddress.addressLine2 = 'Suite 600';
-bodyBillingAddress.addressLine3 = 'address_line_38';
 bodyBillingAddress.locality = 'New York';
-bodyBillingAddress.sublocality = 'sublocality2';
 bodyBillingAddress.administrativeDistrictLevel1 = 'NY';
 bodyBillingAddress.postalCode = '10003';
 bodyBillingAddress.country = 'US';
@@ -434,7 +402,6 @@ const body: CreateCustomerCardRequest = {
 };
 body.billingAddress = bodyBillingAddress;
 body.cardholderName = 'Amelia Earhart';
-body.verificationToken = 'verification_token0';
 
 try {
   const { result, ...httpResponse } = await customersApi.createCustomerCard(customerId, body);

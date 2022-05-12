@@ -24,17 +24,12 @@ endpoint to search for items or item variations.
 
 ```json
 {
-  "custom_attribute_definition_id": "custom_attribute_definition_id2",
-  "key": "key0",
-  "string_filter": "string_filter2",
-  "number_filter": {
-    "min": "min8",
-    "max": "max4"
-  },
-  "selection_uids_filter": [
-    "selection_uids_filter4",
-    "selection_uids_filter5"
-  ]
+  "custom_attribute_definition_id": null,
+  "key": null,
+  "string_filter": null,
+  "number_filter": null,
+  "selection_uids_filter": null,
+  "bool_filter": null
 }
 ```
 

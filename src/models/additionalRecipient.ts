@@ -16,7 +16,7 @@ export interface AdditionalRecipient {
    * for more information.
    */
   amountMoney: Money;
-  /** The unique ID for this [AdditionalRecipientReceivable]($m/AdditionalRecipientReceivable), assigned by the server. */
+  /** The unique ID for the RETIRED `AdditionalRecipientReceivable` object. This field should be empty for any `AdditionalRecipient` objects created after the retirement. */
   receivableId?: string;
 }
 

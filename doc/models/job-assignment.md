@@ -23,15 +23,9 @@ An object describing a job that a team member is assigned to.
 {
   "job_title": "job_title4",
   "pay_type": "NONE",
-  "hourly_rate": {
-    "amount": 172,
-    "currency": "TJS"
-  },
-  "annual_rate": {
-    "amount": 232,
-    "currency": "TOP"
-  },
-  "weekly_hours": 156
+  "hourly_rate": null,
+  "annual_rate": null,
+  "weekly_hours": null
 }
 ```
 

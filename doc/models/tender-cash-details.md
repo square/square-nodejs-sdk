@@ -18,14 +18,8 @@ Represents the details of a tender with `type` `CASH`.
 
 ```json
 {
-  "buyer_tendered_money": {
-    "amount": 238,
-    "currency": "JMD"
-  },
-  "change_back_money": {
-    "amount": 78,
-    "currency": "MUR"
-  }
+  "buyer_tendered_money": null,
+  "change_back_money": null
 }
 ```
 

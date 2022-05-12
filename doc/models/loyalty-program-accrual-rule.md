@@ -23,34 +23,11 @@ Defines an accrual rule, which is how buyers can earn points.
 ```json
 {
   "accrual_type": "ITEM_VARIATION",
-  "points": 236,
-  "visit_data": {
-    "minimum_amount_money": {
-      "amount": 24,
-      "currency": "GEL"
-    },
-    "tax_mode": "BEFORE_TAX"
-  },
-  "spend_data": {
-    "amount_money": {
-      "amount": 248,
-      "currency": "MXV"
-    },
-    "excluded_category_ids": [
-      "excluded_category_ids4"
-    ],
-    "excluded_item_variation_ids": [
-      "excluded_item_variation_ids3",
-      "excluded_item_variation_ids4"
-    ],
-    "tax_mode": "BEFORE_TAX"
-  },
-  "item_variation_data": {
-    "item_variation_id": "item_variation_id0"
-  },
-  "category_data": {
-    "category_id": "category_id4"
-  }
+  "points": null,
+  "visit_data": null,
+  "spend_data": null,
+  "item_variation_data": null,
+  "category_data": null
 }
 ```
 

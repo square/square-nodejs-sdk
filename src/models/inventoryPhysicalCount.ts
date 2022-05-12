@@ -45,7 +45,7 @@ export interface InventoryPhysicalCount {
    * The number can support up to 5 digits after the decimal point.
    */
   quantity?: string;
-  /** Provides information about the application used to generate a change. */
+  /** Represents information about the application used to generate a change. */
   source?: SourceApplication;
   /**
    * The Square-generated ID of the [Employee]($m/Employee) responsible for the

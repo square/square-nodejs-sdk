@@ -44,11 +44,8 @@ async listBankAccounts(
 ## Example Usage
 
 ```ts
-const cursor = 'cursor6';
-const limit = 172;
-const locationId = 'location_id4';
 try {
-  const { result, ...httpResponse } = await bankAccountsApi.listBankAccounts(cursor, limit, locationId);
+  const { result, ...httpResponse } = await bankAccountsApi.listBankAccounts();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

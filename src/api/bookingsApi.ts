@@ -109,6 +109,10 @@ export class BookingsApi extends BaseApi {
    * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and
    * `APPOINTMENTS_WRITE` for the OAuth scope.
    *
+   * For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed
+   * to *Appointments Plus*
+   * or *Appointments Premium*.
+   *
    * @param body         An object containing the fields to POST for the request.  See
    *                                                    the corresponding object definition for field details.
    * @return Response from the API call
@@ -253,6 +257,10 @@ export class BookingsApi extends BaseApi {
    * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and
    * `APPOINTMENTS_WRITE` for the OAuth scope.
    *
+   * For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed
+   * to *Appointments Plus*
+   * or *Appointments Premium*.
+   *
    * @param bookingId    The ID of the [Booking]($m/Booking) object representing the to-
    *                                                    be-updated booking.
    * @param body         An object containing the fields to POST for the request.  See
@@ -281,6 +289,10 @@ export class BookingsApi extends BaseApi {
    * To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
    * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and
    * `APPOINTMENTS_WRITE` for the OAuth scope.
+   *
+   * For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed
+   * to *Appointments Plus*
+   * or *Appointments Premium*.
    *
    * @param bookingId    The ID of the [Booking]($m/Booking) object representing the to-
    *                                                    be-cancelled booking.

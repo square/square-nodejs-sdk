@@ -176,24 +176,9 @@ async createVendor(
 
 ```ts
 const contentType = null;
-const bodyVendorAddress: Address = {};
-bodyVendorAddress.addressLine1 = 'address_line_18';
-bodyVendorAddress.addressLine2 = 'address_line_28';
-bodyVendorAddress.addressLine3 = 'address_line_34';
-bodyVendorAddress.locality = 'locality8';
-bodyVendorAddress.sublocality = 'sublocality8';
-
-const bodyVendor: Vendor = {};
-bodyVendor.id = 'id2';
-bodyVendor.createdAt = 'created_at0';
-bodyVendor.updatedAt = 'updated_at8';
-bodyVendor.name = 'name2';
-bodyVendor.address = bodyVendorAddress;
-
 const body: CreateVendorRequest = {
   idempotencyKey: 'idempotency_key2',
 };
-body.vendor = bodyVendor;
 
 try {
   const { result, ...httpResponse } = await vendorsApi.createVendor(body);
@@ -234,20 +219,7 @@ async searchVendors(
 
 ```ts
 const contentType = null;
-const bodyFilterName: string[] = ['name8', 'name9'];
-const bodyFilterStatus: string[] = ['ACTIVE'];
-const bodyFilter: SearchVendorsRequestFilter = {};
-bodyFilter.name = bodyFilterName;
-bodyFilter.status = bodyFilterStatus;
-
-const bodySort: SearchVendorsRequestSort = {};
-bodySort.field = 'NAME';
-bodySort.order = 'DESC';
-
 const body: SearchVendorsRequest = {};
-body.filter = bodyFilter;
-body.sort = bodySort;
-body.cursor = 'cursor0';
 
 try {
   const { result, ...httpResponse } = await vendorsApi.searchVendors(body);
@@ -329,19 +301,9 @@ async updateVendor(
 
 ```ts
 const contentType = null;
-const bodyVendorAddress: Address = {};
-bodyVendorAddress.addressLine1 = 'address_line_18';
-bodyVendorAddress.addressLine2 = 'address_line_28';
-bodyVendorAddress.addressLine3 = 'address_line_34';
-bodyVendorAddress.locality = 'locality8';
-bodyVendorAddress.sublocality = 'sublocality8';
-
 const bodyVendor: Vendor = {};
 bodyVendor.id = 'INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4';
-bodyVendor.createdAt = 'created_at0';
-bodyVendor.updatedAt = 'updated_at8';
 bodyVendor.name = 'Jack\'s Chicken Shack';
-bodyVendor.address = bodyVendorAddress;
 bodyVendor.version = 1;
 bodyVendor.status = 'ACTIVE';
 

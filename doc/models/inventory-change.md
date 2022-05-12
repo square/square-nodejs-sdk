@@ -24,41 +24,12 @@ that is part of the history of inventory changes for a particular
 
 ```json
 {
-  "type": "TRANSFER",
-  "physical_count": {
-    "id": "id2",
-    "reference_id": "reference_id0",
-    "catalog_object_id": "catalog_object_id6",
-    "catalog_object_type": "catalog_object_type6",
-    "state": "RETURNED_BY_CUSTOMER"
-  },
-  "adjustment": {
-    "id": "id4",
-    "reference_id": "reference_id2",
-    "from_state": "WASTE",
-    "to_state": "DECOMPOSED",
-    "location_id": "location_id8"
-  },
-  "transfer": {
-    "id": "id8",
-    "reference_id": "reference_id6",
-    "state": "RESERVED_FOR_SALE",
-    "from_location_id": "from_location_id0",
-    "to_location_id": "to_location_id0"
-  },
-  "measurement_unit": {
-    "measurement_unit": {
-      "custom_unit": {
-        "name": "name2",
-        "abbreviation": "abbreviation4"
-      },
-      "area_unit": "IMPERIAL_SQUARE_MILE",
-      "length_unit": "METRIC_MILLIMETER",
-      "volume_unit": "GENERIC_CUP",
-      "weight_unit": "IMPERIAL_STONE"
-    },
-    "precision": 184
-  }
+  "type": null,
+  "physical_count": null,
+  "adjustment": null,
+  "transfer": null,
+  "measurement_unit": null,
+  "measurement_unit_id": null
 }
 ```
 

@@ -22,24 +22,24 @@ Describes a subscription plan. For more information, see
   "name": "name0",
   "phases": [
     {
-      "uid": "uid5",
+      "uid": null,
       "cadence": "EVERY_FOUR_MONTHS",
-      "periods": 241,
+      "periods": null,
       "recurring_price_money": {
-        "amount": 193,
-        "currency": "MOP"
+        "amount": null,
+        "currency": null
       },
-      "ordinal": 207
+      "ordinal": null
     },
     {
-      "uid": "uid6",
+      "uid": null,
       "cadence": "QUARTERLY",
-      "periods": 242,
+      "periods": null,
       "recurring_price_money": {
-        "amount": 194,
-        "currency": "MRO"
+        "amount": null,
+        "currency": null
       },
-      "ordinal": 208
+      "ordinal": null
     }
   ]
 }

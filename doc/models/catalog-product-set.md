@@ -27,17 +27,13 @@ a product set will also include its item variations.
 
 ```json
 {
-  "name": "name0",
-  "product_ids_any": [
-    "product_ids_any8",
-    "product_ids_any9"
-  ],
-  "product_ids_all": [
-    "product_ids_all9",
-    "product_ids_all0"
-  ],
-  "quantity_exact": 90,
-  "quantity_min": 44
+  "name": null,
+  "product_ids_any": null,
+  "product_ids_all": null,
+  "quantity_exact": null,
+  "quantity_min": null,
+  "quantity_max": null,
+  "all_products": null
 }
 ```
 

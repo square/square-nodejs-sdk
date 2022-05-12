@@ -19,12 +19,9 @@ V1PaymentDiscount
 
 ```json
 {
-  "name": "name0",
-  "applied_money": {
-    "amount": 196,
-    "currency_code": "LYD"
-  },
-  "discount_id": "discount_id8"
+  "name": null,
+  "applied_money": null,
+  "discount_id": null
 }
 ```
 

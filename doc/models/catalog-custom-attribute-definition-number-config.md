@@ -15,7 +15,7 @@
 
 ```json
 {
-  "precision": 196
+  "precision": null
 }
 ```
 

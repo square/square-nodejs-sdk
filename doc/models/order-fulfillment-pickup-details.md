@@ -34,23 +34,24 @@ Contains details necessary to fulfill a pickup order.
 
 ```json
 {
-  "recipient": {
-    "customer_id": "customer_id6",
-    "display_name": "display_name8",
-    "email_address": "email_address4",
-    "phone_number": "phone_number4",
-    "address": {
-      "address_line_1": "address_line_14",
-      "address_line_2": "address_line_24",
-      "address_line_3": "address_line_30",
-      "locality": "locality4",
-      "sublocality": "sublocality4"
-    }
-  },
-  "expires_at": "expires_at6",
-  "auto_complete_duration": "auto_complete_duration4",
-  "schedule_type": "SCHEDULED",
-  "pickup_at": "pickup_at4"
+  "recipient": null,
+  "expires_at": null,
+  "auto_complete_duration": null,
+  "schedule_type": null,
+  "pickup_at": null,
+  "pickup_window_duration": null,
+  "prep_time_duration": null,
+  "note": null,
+  "placed_at": null,
+  "accepted_at": null,
+  "rejected_at": null,
+  "ready_at": null,
+  "expired_at": null,
+  "picked_up_at": null,
+  "canceled_at": null,
+  "cancel_reason": null,
+  "is_curbside_pickup": null,
+  "curbside_pickup_details": null
 }
 ```
 

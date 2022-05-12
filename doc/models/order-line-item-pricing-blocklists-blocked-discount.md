@@ -20,9 +20,9 @@ identified by either `discount_uid` or `discount_catalog_object_id`, but not bot
 
 ```json
 {
-  "uid": "uid0",
-  "discount_uid": "discount_uid4",
-  "discount_catalog_object_id": "discount_catalog_object_id2"
+  "uid": null,
+  "discount_uid": null,
+  "discount_catalog_object_id": null
 }
 ```
 

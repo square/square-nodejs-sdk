@@ -47,12 +47,8 @@ async listEmployees(
 ## Example Usage
 
 ```ts
-const locationId = 'location_id4';
-const status = 'ACTIVE';
-const limit = 172;
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await employeesApi.listEmployees(locationId, status, limit, cursor);
+  const { result, ...httpResponse } = await employeesApi.listEmployees();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

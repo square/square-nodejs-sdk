@@ -18,8 +18,8 @@ A request for a set of `WorkweekConfig` objects.
 
 ```json
 {
-  "limit": 172,
-  "cursor": "cursor6"
+  "limit": null,
+  "cursor": null
 }
 ```
 

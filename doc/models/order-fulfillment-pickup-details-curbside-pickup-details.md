@@ -18,8 +18,8 @@ Specific details for curbside pickup.
 
 ```json
 {
-  "curbside_details": "curbside_details6",
-  "buyer_arrived_at": "buyer_arrived_at2"
+  "curbside_details": null,
+  "buyer_arrived_at": null
 }
 ```
 

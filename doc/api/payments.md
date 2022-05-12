@@ -65,17 +65,8 @@ async listPayments(
 ## Example Usage
 
 ```ts
-const beginTime = 'begin_time2';
-const endTime = 'end_time2';
-const sortOrder = 'sort_order0';
-const cursor = 'cursor6';
-const locationId = 'location_id4';
-const total = 10;
-const last4 = 'last_42';
-const cardBrand = 'card_brand6';
-const limit = 172;
 try {
-  const { result, ...httpResponse } = await paymentsApi.listPayments(beginTime, endTime, sortOrder, cursor, locationId, total, last4, cardBrand, limit);
+  const { result, ...httpResponse } = await paymentsApi.listPayments();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -124,10 +115,6 @@ const bodyAmountMoney: Money = {};
 bodyAmountMoney.amount = 1000;
 bodyAmountMoney.currency = 'USD';
 
-const bodyTipMoney: Money = {};
-bodyTipMoney.amount = 198;
-bodyTipMoney.currency = 'CHF';
-
 const bodyAppFeeMoney: Money = {};
 bodyAppFeeMoney.amount = 10;
 bodyAppFeeMoney.currency = 'USD';
@@ -137,11 +124,8 @@ const body: CreatePaymentRequest = {
   idempotencyKey: '7b0f3ec5-086a-4871-8f13-3c81b3875218',
   amountMoney: bodyAmountMoney,
 };
-body.tipMoney = bodyTipMoney;
 body.appFeeMoney = bodyAppFeeMoney;
-body.delayDuration = 'delay_duration6';
 body.autocomplete = true;
-body.orderId = 'order_id0';
 body.customerId = 'W92WH6P11H4Z77CTET0RNTGFW8';
 body.locationId = 'L88917AVBK2S5';
 body.referenceId = '123456';
@@ -291,9 +275,6 @@ bodyPaymentTipMoney.amount = 100;
 bodyPaymentTipMoney.currency = 'USD';
 
 const bodyPayment: Payment = {};
-bodyPayment.id = 'id2';
-bodyPayment.createdAt = 'created_at0';
-bodyPayment.updatedAt = 'updated_at8';
 bodyPayment.amountMoney = bodyPaymentAmountMoney;
 bodyPayment.tipMoney = bodyPaymentTipMoney;
 bodyPayment.versionToken = 'ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o';
@@ -389,7 +370,6 @@ async completePayment(
 const paymentId = 'payment_id0';
 const contentType = null;
 const body: CompletePaymentRequest = {};
-body.versionToken = 'version_token2';
 
 try {
   const { result, ...httpResponse } = await paymentsApi.completePayment(paymentId, body);

@@ -22,33 +22,12 @@ V1PaymentTax
 
 ```json
 {
-  "errors": [
-    {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "VERIFY_CVV_FAILURE",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "VERIFY_AVS_FAILURE",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "CARD_DECLINED_CALL_ISSUER",
-      "detail": "detail3",
-      "field": "field1"
-    }
-  ],
-  "name": "name0",
-  "applied_money": {
-    "amount": 196,
-    "currency_code": "LYD"
-  },
-  "rate": "rate0",
-  "inclusion_type": "ADDITIVE"
+  "errors": null,
+  "name": null,
+  "applied_money": null,
+  "rate": null,
+  "inclusion_type": null,
+  "fee_id": null
 }
 ```
 

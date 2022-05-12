@@ -34,20 +34,24 @@ V1Refund
 
 ```json
 {
-  "type": "FULL",
-  "reason": "reason4",
-  "refunded_money": {
-    "amount": 214,
-    "currency_code": "CHW"
-  },
-  "refunded_processing_fee_money": {
-    "amount": 0,
-    "currency_code": "LBP"
-  },
-  "refunded_tax_money": {
-    "amount": 148,
-    "currency_code": "BAM"
-  }
+  "type": null,
+  "reason": null,
+  "refunded_money": null,
+  "refunded_processing_fee_money": null,
+  "refunded_tax_money": null,
+  "refunded_additive_tax_money": null,
+  "refunded_additive_tax": null,
+  "refunded_inclusive_tax_money": null,
+  "refunded_inclusive_tax": null,
+  "refunded_tip_money": null,
+  "refunded_discount_money": null,
+  "refunded_surcharge_money": null,
+  "refunded_surcharges": null,
+  "created_at": null,
+  "processed_at": null,
+  "payment_id": null,
+  "merchant_id": null,
+  "is_exchange": null
 }
 ```
 

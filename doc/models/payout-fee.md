@@ -19,12 +19,9 @@ Represents a payout fee that can incur as part of a payout.
 
 ```json
 {
-  "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
-  },
-  "effective_at": "effective_at6",
-  "type": "TRANSFER_FEE"
+  "amount_money": null,
+  "effective_at": null,
+  "type": null
 }
 ```
 

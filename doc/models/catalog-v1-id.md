@@ -18,8 +18,8 @@ A Square API V1 identifier of an item, including the object ID and its associate
 
 ```json
 {
-  "catalog_v1_id": "catalog_v1_id4",
-  "location_id": "location_id4"
+  "catalog_v1_id": null,
+  "location_id": null
 }
 ```
 

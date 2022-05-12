@@ -21,14 +21,13 @@
 
 ```json
 {
-  "evidence_id": "evidence_id2",
-  "id": "id0",
-  "dispute_id": "dispute_id2",
-  "evidence_file": {
-    "filename": "filename8",
-    "filetype": "filetype8"
-  },
-  "evidence_text": "evidence_text6"
+  "evidence_id": null,
+  "id": null,
+  "dispute_id": null,
+  "evidence_file": null,
+  "evidence_text": null,
+  "uploaded_at": null,
+  "evidence_type": null
 }
 ```
 

@@ -138,10 +138,6 @@ const contentType = null;
 const bodySnippet: Snippet = {
   content: '<script>var js = 1;</script>',
 };
-bodySnippet.id = 'id4';
-bodySnippet.siteId = 'site_id0';
-bodySnippet.createdAt = 'created_at8';
-bodySnippet.updatedAt = 'updated_at0';
 
 const body: UpsertSnippetRequest = {
   snippet: bodySnippet,

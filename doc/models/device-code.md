@@ -25,17 +25,7 @@
 
 ```json
 {
-  "id": null,
-  "name": null,
-  "code": null,
-  "device_id": null,
-  "product_type": "TERMINAL_API",
-  "location_id": null,
-  "status": null,
-  "pair_by": null,
-  "created_at": null,
-  "status_changed_at": null,
-  "paired_at": null
+  "product_type": "TERMINAL_API"
 }
 ```
 

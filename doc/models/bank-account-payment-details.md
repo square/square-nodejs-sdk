@@ -24,11 +24,14 @@ Additional details about BANK_ACCOUNT type payments.
 
 ```json
 {
-  "bank_name": "bank_name4",
-  "transfer_type": "transfer_type8",
-  "account_ownership_type": "account_ownership_type8",
-  "fingerprint": "fingerprint6",
-  "country": "country4"
+  "bank_name": null,
+  "transfer_type": null,
+  "account_ownership_type": null,
+  "fingerprint": null,
+  "country": null,
+  "statement_description": null,
+  "ach_details": null,
+  "errors": null
 }
 ```
 

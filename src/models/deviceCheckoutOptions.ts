@@ -13,6 +13,11 @@ export interface DeviceCheckoutOptions {
   /** Indicates that signature collection is desired during checkout. Defaults to false. */
   collectSignature?: boolean;
   tipSettings?: TipSettings;
+  /**
+   * Show the itemization screen prior to taking a payment. This field is only meaningful when the
+   * checkout includes an order ID. Defaults to true.
+   */
+  showItemizedCart?: boolean;
 }
 
 export const deviceCheckoutOptionsSchema: Schema<DeviceCheckoutOptions> = object(
@@ -21,5 +26,6 @@ export const deviceCheckoutOptionsSchema: Schema<DeviceCheckoutOptions> = object
     skipReceiptScreen: ['skip_receipt_screen', optional(boolean())],
     collectSignature: ['collect_signature', optional(boolean())],
     tipSettings: ['tip_settings', optional(lazy(() => tipSettingsSchema))],
+    showItemizedCart: ['show_itemized_cart', optional(boolean())],
   }
 );

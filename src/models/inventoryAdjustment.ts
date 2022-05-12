@@ -68,7 +68,7 @@ export interface InventoryAdjustment {
   occurredAt?: string;
   /** An RFC 3339-formatted timestamp that indicates when the inventory adjustment is received. */
   createdAt?: string;
-  /** Provides information about the application used to generate a change. */
+  /** Represents information about the application used to generate a change. */
   source?: SourceApplication;
   /**
    * The Square-generated ID of the [Employee]($m/Employee) responsible for the

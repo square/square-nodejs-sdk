@@ -19,9 +19,9 @@ Information about a booking creator.
 
 ```json
 {
-  "creator_type": "TEAM_MEMBER",
-  "team_member_id": "team_member_id0",
-  "customer_id": "customer_id8"
+  "creator_type": null,
+  "team_member_id": null,
+  "customer_id": null
 }
 ```
 

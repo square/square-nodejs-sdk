@@ -19,36 +19,8 @@ for customer profiles.
 
 ```json
 {
-  "filter": {
-    "creation_source": {
-      "values": [
-        "INVOICES",
-        "LOYALTY",
-        "MARKETING"
-      ],
-      "rule": "INCLUDE"
-    },
-    "created_at": {
-      "start_at": "start_at4",
-      "end_at": "end_at8"
-    },
-    "updated_at": {
-      "start_at": "start_at2",
-      "end_at": "end_at0"
-    },
-    "email_address": {
-      "exact": "exact2",
-      "fuzzy": "fuzzy2"
-    },
-    "phone_number": {
-      "exact": "exact8",
-      "fuzzy": "fuzzy6"
-    }
-  },
-  "sort": {
-    "field": "DEFAULT",
-    "order": "DESC"
-  }
+  "filter": null,
+  "sort": null
 }
 ```
 

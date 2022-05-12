@@ -27,26 +27,11 @@ used by Square's servers to apply each filter property specified.
   "location_ids": [
     "location_ids0"
   ],
-  "employee_ids": [
-    "employee_ids5"
-  ],
-  "status": "OPEN",
-  "start": {
-    "start_at": "start_at6",
-    "end_at": "end_at6"
-  },
-  "end": {
-    "start_at": "start_at0",
-    "end_at": "end_at2"
-  },
-  "workday": {
-    "date_range": {
-      "start_date": "start_date0",
-      "end_date": "end_date6"
-    },
-    "match_shifts_by": "START_AT",
-    "default_timezone": "default_timezone0"
-  },
+  "employee_ids": null,
+  "status": null,
+  "start": null,
+  "end": null,
+  "workday": null,
   "team_member_ids": [
     "team_member_ids7",
     "team_member_ids8"

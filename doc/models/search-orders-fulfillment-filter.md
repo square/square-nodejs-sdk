@@ -18,13 +18,8 @@ Filter based on [order fulfillment](../../doc/models/order-fulfillment.md) infor
 
 ```json
 {
-  "fulfillment_types": [
-    "SHIPMENT",
-    "PICKUP"
-  ],
-  "fulfillment_states": [
-    "PROPOSED"
-  ]
+  "fulfillment_types": null,
+  "fulfillment_states": null
 }
 ```
 

@@ -22,11 +22,12 @@ Represents a Square Online site, which is an online store for a Square seller.
 
 ```json
 {
-  "id": "id0",
-  "site_title": "site_title6",
-  "domain": "domain6",
-  "is_published": false,
-  "created_at": "created_at2"
+  "id": null,
+  "site_title": null,
+  "domain": null,
+  "is_published": null,
+  "created_at": null,
+  "updated_at": null
 }
 ```
 

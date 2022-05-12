@@ -46,12 +46,8 @@ async listDeviceCodes(
 ## Example Usage
 
 ```ts
-const cursor = 'cursor6';
-const locationId = 'location_id4';
-const productType = 'TERMINAL_API';
-const status = 'UNKNOWN';
 try {
-  const { result, ...httpResponse } = await devicesApi.listDeviceCodes(cursor, locationId, productType, status);
+  const { result, ...httpResponse } = await devicesApi.listDeviceCodes();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -93,10 +89,7 @@ const contentType = null;
 const bodyDeviceCode: DeviceCode = {
   productType: null,
 };
-bodyDeviceCode.id = 'id0';
 bodyDeviceCode.name = 'Counter 1';
-bodyDeviceCode.code = 'code8';
-bodyDeviceCode.deviceId = 'device_id6';
 bodyDeviceCode.locationId = 'B5E4484SHHNYH';
 
 const body: CreateDeviceCodeRequest = {

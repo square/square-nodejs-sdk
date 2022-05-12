@@ -11,7 +11,7 @@ Defines an appointment segment of a booking.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `durationMinutes` | `number` | Required | The time span in minutes of an appointment segment.<br>**Constraints**: `<= 1500` |
+| `durationMinutes` | `number \| undefined` | Optional | The time span in minutes of an appointment segment.<br>**Constraints**: `<= 1500` |
 | `serviceVariationId` | `string` | Required | The ID of the [CatalogItemVariation](../../doc/models/catalog-item-variation.md) object representing the service booked in this segment.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
 | `teamMemberId` | `string` | Required | The ID of the [TeamMember](../../doc/models/team-member.md) object representing the team member booked in this segment.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `32` |
 | `serviceVariationVersion` | `bigint` | Required | The current version of the item variation representing the service booked in this segment. |
@@ -23,16 +23,13 @@ Defines an appointment segment of a booking.
 
 ```json
 {
-  "duration_minutes": 144,
+  "duration_minutes": null,
   "service_variation_id": "service_variation_id6",
   "team_member_id": "team_member_id0",
   "service_variation_version": 56,
-  "intermission_minutes": 62,
-  "any_team_member": false,
-  "resource_ids": [
-    "resource_ids0",
-    "resource_ids1"
-  ]
+  "intermission_minutes": null,
+  "any_team_member": null,
+  "resource_ids": null
 }
 ```
 

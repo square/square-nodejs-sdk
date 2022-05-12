@@ -10,7 +10,7 @@ export interface CatalogCustomAttributeValue {
   name?: string;
   /** The string value of the custom attribute.  Populated if `type` = `STRING`. */
   stringValue?: string;
-  /** __Read-only.__ The id of the [CatalogCustomAttributeDefinition]($m/CatalogCustomAttributeDefinition) this value belongs to. */
+  /** The id of the [CatalogCustomAttributeDefinition]($m/CatalogCustomAttributeDefinition) this value belongs to. */
   customAttributeDefinitionId?: string;
   /** Defines the possible types for a custom attribute. */
   type?: string;
@@ -23,7 +23,7 @@ export interface CatalogCustomAttributeValue {
   booleanValue?: boolean;
   /** One or more choices from `allowed_selections`. Populated if `type` = `SELECTION`. */
   selectionUidValues?: string[];
-  /** __Read-only.__ A copy of key from the associated `CatalogCustomAttributeDefinition`. */
+  /** A copy of key from the associated `CatalogCustomAttributeDefinition`. */
   key?: string;
 }
 

@@ -46,20 +46,31 @@ The total amount of the payout will equal the sum of the payout entries for a ba
 {
   "id": "id0",
   "payout_id": "payout_id6",
-  "effective_at": "effective_at6",
-  "type": "REDEMPTION_CODE",
-  "gross_amount_money": {
-    "amount": 186,
-    "currency": "SVC"
-  },
-  "fee_amount_money": {
-    "amount": 126,
-    "currency": "ANG"
-  },
-  "net_amount_money": {
-    "amount": 6,
-    "currency": "AOA"
-  }
+  "effective_at": null,
+  "type": null,
+  "gross_amount_money": null,
+  "fee_amount_money": null,
+  "net_amount_money": null,
+  "type_automatic_savings_details": null,
+  "type_automatic_savings_reversed_details": null,
+  "type_charge_details": null,
+  "type_deposit_fee_details": null,
+  "type_dispute_details": null,
+  "type_fee_details": null,
+  "type_free_processing_details": null,
+  "type_hold_adjustment_details": null,
+  "type_open_dispute_details": null,
+  "type_other_details": null,
+  "type_other_adjustment_details": null,
+  "type_refund_details": null,
+  "type_release_adjustment_details": null,
+  "type_reserve_hold_details": null,
+  "type_reserve_release_details": null,
+  "type_square_capital_payment_details": null,
+  "type_square_capital_reversed_payment_details": null,
+  "type_tax_on_fee_details": null,
+  "type_third_party_fee_details": null,
+  "type_third_party_fee_refund_details": null
 }
 ```
 

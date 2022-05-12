@@ -21,7 +21,7 @@ hand or from syncing with an external system.
 | `state` | [`string \| undefined`](../../doc/models/inventory-state.md) | Optional | Indicates the state of a tracked item quantity in the lifecycle of goods. |
 | `locationId` | `string \| undefined` | Optional | The Square-generated ID of the [Location](../../doc/models/location.md) where the related<br>quantity of items is being tracked.<br>**Constraints**: *Maximum Length*: `100` |
 | `quantity` | `string \| undefined` | Optional | The number of items affected by the physical count as a decimal string.<br>The number can support up to 5 digits after the decimal point.<br>**Constraints**: *Maximum Length*: `26` |
-| `source` | [`SourceApplication \| undefined`](../../doc/models/source-application.md) | Optional | Provides information about the application used to generate a change. |
+| `source` | [`SourceApplication \| undefined`](../../doc/models/source-application.md) | Optional | Represents information about the application used to generate a change. |
 | `employeeId` | `string \| undefined` | Optional | The Square-generated ID of the [Employee](../../doc/models/employee.md) responsible for the<br>physical count.<br>**Constraints**: *Maximum Length*: `100` |
 | `teamMemberId` | `string \| undefined` | Optional | The Square-generated ID of the [Team Member](../../doc/models/team-member.md) responsible for the<br>physical count.<br>**Constraints**: *Maximum Length*: `100` |
 | `occurredAt` | `string \| undefined` | Optional | A client-generated RFC 3339-formatted timestamp that indicates when<br>the physical count was examined. For physical count updates, the `occurred_at`<br>timestamp cannot be older than 24 hours or in the future relative to the<br>time of the request.<br>**Constraints**: *Maximum Length*: `34` |
@@ -31,11 +31,18 @@ hand or from syncing with an external system.
 
 ```json
 {
-  "id": "id0",
-  "reference_id": "reference_id2",
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_object_type": "catalog_object_type6",
-  "state": "SUPPORTED_BY_NEWER_VERSION"
+  "id": null,
+  "reference_id": null,
+  "catalog_object_id": null,
+  "catalog_object_type": null,
+  "state": null,
+  "location_id": null,
+  "quantity": null,
+  "source": null,
+  "employee_id": null,
+  "team_member_id": null,
+  "occurred_at": null,
+  "created_at": null
 }
 ```
 

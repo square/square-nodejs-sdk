@@ -18,8 +18,8 @@ Present only when GiftCardActivityType is IMPORT_REVERSAL and GiftCardGANSource 
 ```json
 {
   "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
+    "amount": null,
+    "currency": null
   }
 }
 ```

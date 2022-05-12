@@ -24,11 +24,8 @@ V1CreateRefundRequest
   "payment_id": "payment_id0",
   "type": "FULL",
   "reason": "reason4",
-  "refunded_money": {
-    "amount": 214,
-    "currency_code": "CHW"
-  },
-  "request_idempotence_key": "request_idempotence_key8"
+  "refunded_money": null,
+  "request_idempotence_key": null
 }
 ```
 

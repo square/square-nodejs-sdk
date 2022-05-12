@@ -50,13 +50,9 @@ async listCards(
 ## Example Usage
 
 ```ts
-const cursor = 'cursor6';
-const customerId = 'customer_id8';
 const includeDisabled = false;
-const referenceId = 'reference_id2';
-const sortOrder = 'DESC';
 try {
-  const { result, ...httpResponse } = await cardsApi.listCards(cursor, customerId, includeDisabled, referenceId, sortOrder);
+  const { result, ...httpResponse } = await cardsApi.listCards(None, None, includeDisabled);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -97,19 +93,12 @@ const contentType = null;
 const bodyCardBillingAddress: Address = {};
 bodyCardBillingAddress.addressLine1 = '500 Electric Ave';
 bodyCardBillingAddress.addressLine2 = 'Suite 600';
-bodyCardBillingAddress.addressLine3 = 'address_line_34';
 bodyCardBillingAddress.locality = 'New York';
-bodyCardBillingAddress.sublocality = 'sublocality8';
 bodyCardBillingAddress.administrativeDistrictLevel1 = 'NY';
 bodyCardBillingAddress.postalCode = '10003';
 bodyCardBillingAddress.country = 'US';
 
 const bodyCard: Card = {};
-bodyCard.id = 'id0';
-bodyCard.cardBrand = 'INTERAC';
-bodyCard.last4 = 'last_42';
-bodyCard.expMonth = 236;
-bodyCard.expYear = 60;
 bodyCard.cardholderName = 'Amelia Earhart';
 bodyCard.billingAddress = bodyCardBillingAddress;
 bodyCard.customerId = 'VDKXEEKPJN48QDG3BGGFAK05P8';
@@ -120,7 +109,6 @@ const body: CreateCardRequest = {
   sourceId: 'cnon:uIbfJXhXETSP197M3GB',
   card: bodyCard,
 };
-body.verificationToken = 'verification_token0';
 
 try {
   const { result, ...httpResponse } = await cardsApi.createCard(body);

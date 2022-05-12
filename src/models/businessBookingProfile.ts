@@ -19,6 +19,8 @@ export interface BusinessBookingProfile {
   allowUserCancel?: boolean;
   /** The service appointment settings, including where and how the service is provided. */
   businessAppointmentSettings?: BusinessAppointmentSettings;
+  /** Indicates whether the seller's subscription to Square Appointments supports creating, updating or canceling an appointment through the API (`true`) or not (`false`) using seller permission. */
+  supportSellerLevelWrites?: boolean;
 }
 
 export const businessBookingProfileSchema: Schema<BusinessBookingProfile> = object(
@@ -32,6 +34,10 @@ export const businessBookingProfileSchema: Schema<BusinessBookingProfile> = obje
     businessAppointmentSettings: [
       'business_appointment_settings',
       optional(lazy(() => businessAppointmentSettingsSchema)),
+    ],
+    supportSellerLevelWrites: [
+      'support_seller_level_writes',
+      optional(boolean()),
     ],
   }
 );

@@ -24,11 +24,14 @@ A [CatalogModifier](../../doc/models/catalog-modifier.md).
 
 ```json
 {
-  "uid": "uid0",
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_version": 126,
-  "name": "name0",
-  "quantity": "quantity6"
+  "uid": null,
+  "catalog_object_id": null,
+  "catalog_version": null,
+  "name": null,
+  "quantity": null,
+  "base_price_money": null,
+  "total_price_money": null,
+  "metadata": null
 }
 ```
 

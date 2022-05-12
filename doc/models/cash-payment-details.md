@@ -20,13 +20,10 @@ Stores details about a cash payment. Contains only non-confidential information.
 ```json
 {
   "buyer_supplied_money": {
-    "amount": 114,
-    "currency": "UNKNOWN_CURRENCY"
+    "amount": null,
+    "currency": null
   },
-  "change_back_money": {
-    "amount": 78,
-    "currency": "MUR"
-  }
+  "change_back_money": null
 }
 ```
 

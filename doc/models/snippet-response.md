@@ -16,33 +16,8 @@
 
 ```json
 {
-  "errors": [
-    {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "VERIFY_CVV_FAILURE",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "VERIFY_AVS_FAILURE",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "CARD_DECLINED_CALL_ISSUER",
-      "detail": "detail3",
-      "field": "field1"
-    }
-  ],
-  "snippet": {
-    "id": "id0",
-    "site_id": "site_id6",
-    "content": "content4",
-    "created_at": "created_at8",
-    "updated_at": "updated_at4"
-  }
+  "errors": null,
+  "snippet": null
 }
 ```
 

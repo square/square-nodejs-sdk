@@ -19,9 +19,9 @@ The payment methods that customers can use to pay an invoice on the Square-hoste
 
 ```json
 {
-  "card": false,
-  "square_gift_card": false,
-  "bank_account": false
+  "card": null,
+  "square_gift_card": null,
+  "bank_account": null
 }
 ```
 

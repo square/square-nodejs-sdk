@@ -18,10 +18,13 @@ Describes query criteria for searching invoices.
 
 ```json
 {
-  "filter": null,
-  "sort": {
-    "field": "INVOICE_SORT_DATE"
-  }
+  "filter": {
+    "location_ids": [
+      "location_ids4"
+    ],
+    "customer_ids": null
+  },
+  "sort": null
 }
 ```
 

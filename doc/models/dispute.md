@@ -32,14 +32,22 @@ Represents a dispute a cardholder initiated with their bank.
 
 ```json
 {
-  "dispute_id": "dispute_id2",
-  "id": "id0",
-  "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
-  },
-  "reason": "NOT_AS_DESCRIBED",
-  "state": "PROCESSING"
+  "dispute_id": null,
+  "id": null,
+  "amount_money": null,
+  "reason": null,
+  "state": null,
+  "due_at": null,
+  "disputed_payment": null,
+  "evidence_ids": null,
+  "card_brand": null,
+  "created_at": null,
+  "updated_at": null,
+  "brand_dispute_id": null,
+  "reported_date": null,
+  "reported_at": null,
+  "version": null,
+  "location_id": null
 }
 ```
 

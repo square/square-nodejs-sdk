@@ -45,16 +45,20 @@ price of items might have changed since the payment was processed.
 
 ```json
 {
-  "name": "name0",
-  "quantity": 149.16,
-  "itemization_type": "GIFT_CARD_UNKNOWN",
-  "item_detail": {
-    "category_name": "category_name0",
-    "sku": "sku6",
-    "item_id": "item_id2",
-    "item_variation_id": "item_variation_id2"
-  },
-  "notes": "notes0"
+  "name": null,
+  "quantity": null,
+  "itemization_type": null,
+  "item_detail": null,
+  "notes": null,
+  "item_variation_name": null,
+  "total_money": null,
+  "single_quantity_money": null,
+  "gross_sales_money": null,
+  "discount_money": null,
+  "net_sales_money": null,
+  "taxes": null,
+  "discounts": null,
+  "modifiers": null
 }
 ```
 

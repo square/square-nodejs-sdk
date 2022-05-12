@@ -21,11 +21,11 @@
 ```json
 {
   "location_id": "location_id4",
-  "sort_order": "DESC",
-  "begin_time": "begin_time2",
-  "end_time": "end_time2",
-  "limit": 172,
-  "cursor": "cursor6"
+  "sort_order": null,
+  "begin_time": null,
+  "end_time": null,
+  "limit": null,
+  "cursor": null
 }
 ```
 

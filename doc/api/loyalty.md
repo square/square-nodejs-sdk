@@ -53,18 +53,11 @@ async createLoyaltyAccount(
 ```ts
 const contentType = null;
 const bodyLoyaltyAccountMapping: LoyaltyAccountMapping = {};
-bodyLoyaltyAccountMapping.id = 'id6';
-bodyLoyaltyAccountMapping.createdAt = 'created_at4';
 bodyLoyaltyAccountMapping.phoneNumber = '+14155551234';
 
 const bodyLoyaltyAccount: LoyaltyAccount = {
   programId: 'd619f755-2d17-41f3-990d-c04ecedd64dd',
 };
-bodyLoyaltyAccount.id = 'id2';
-bodyLoyaltyAccount.balance = 14;
-bodyLoyaltyAccount.lifetimePoints = 38;
-bodyLoyaltyAccount.customerId = 'customer_id0';
-bodyLoyaltyAccount.enrolledAt = 'enrolled_at2';
 bodyLoyaltyAccount.mapping = bodyLoyaltyAccountMapping;
 
 const body: CreateLoyaltyAccountRequest = {
@@ -118,21 +111,16 @@ const contentType = null;
 const bodyQueryMappings: LoyaltyAccountMapping[] = [];
 
 const bodyQuerymappings0: LoyaltyAccountMapping = {};
-bodyQuerymappings0.id = 'id4';
-bodyQuerymappings0.createdAt = 'created_at8';
 bodyQuerymappings0.phoneNumber = '+14155551234';
 
 bodyQueryMappings[0] = bodyQuerymappings0;
 
-const bodyQueryCustomerIds: string[] = ['customer_ids5', 'customer_ids4'];
 const bodyQuery: SearchLoyaltyAccountsRequestLoyaltyAccountQuery = {};
 bodyQuery.mappings = bodyQueryMappings;
-bodyQuery.customerIds = bodyQueryCustomerIds;
 
 const body: SearchLoyaltyAccountsRequest = {};
 body.query = bodyQuery;
 body.limit = 10;
-body.cursor = 'cursor0';
 
 try {
   const { result, ...httpResponse } = await loyaltyApi.searchLoyaltyAccounts(body);
@@ -224,8 +212,6 @@ async accumulateLoyaltyPoints(
 const accountId = 'account_id2';
 const contentType = null;
 const bodyAccumulatePoints: LoyaltyEventAccumulatePoints = {};
-bodyAccumulatePoints.loyaltyProgramId = 'loyalty_program_id8';
-bodyAccumulatePoints.points = 90;
 bodyAccumulatePoints.orderId = 'RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY';
 
 const body: AccumulateLoyaltyPointsRequest = {
@@ -283,7 +269,6 @@ const contentType = null;
 const bodyAdjustPoints: LoyaltyEventAdjustPoints = {
   points: 10,
 };
-bodyAdjustPoints.loyaltyProgramId = 'loyalty_program_id4';
 bodyAdjustPoints.reason = 'Complimentary points';
 
 const body: AdjustLoyaltyPointsRequest = {
@@ -337,37 +322,11 @@ async searchLoyaltyEvents(
 
 ```ts
 const contentType = null;
-const bodyQueryFilterLoyaltyAccountFilter: LoyaltyEventLoyaltyAccountFilter = {
-  loyaltyAccountId: 'loyalty_account_id6',
-};
-
-const bodyQueryFilterTypeFilterTypes: string[] = ['DELETE_REWARD', 'ADJUST_POINTS', 'EXPIRE_POINTS'];
-const bodyQueryFilterTypeFilter: LoyaltyEventTypeFilter = {
-  types: bodyQueryFilterTypeFilterTypes,
-};
-
-const bodyQueryFilterDateTimeFilterCreatedAt: TimeRange = {};
-bodyQueryFilterDateTimeFilterCreatedAt.startAt = 'start_at8';
-bodyQueryFilterDateTimeFilterCreatedAt.endAt = 'end_at4';
-
-const bodyQueryFilterDateTimeFilter: LoyaltyEventDateTimeFilter = {
-  createdAt: bodyQueryFilterDateTimeFilterCreatedAt,
-};
-
-const bodyQueryFilterLocationFilterLocationIds: string[] = ['location_ids2', 'location_ids3', 'location_ids4'];
-const bodyQueryFilterLocationFilter: LoyaltyEventLocationFilter = {
-  locationIds: bodyQueryFilterLocationFilterLocationIds,
-};
-
 const bodyQueryFilterOrderFilter: LoyaltyEventOrderFilter = {
   orderId: 'PyATxhYLfsMqpVkcKJITPydgEYfZY',
 };
 
 const bodyQueryFilter: LoyaltyEventFilter = {};
-bodyQueryFilter.loyaltyAccountFilter = bodyQueryFilterLoyaltyAccountFilter;
-bodyQueryFilter.typeFilter = bodyQueryFilterTypeFilter;
-bodyQueryFilter.dateTimeFilter = bodyQueryFilterDateTimeFilter;
-bodyQueryFilter.locationFilter = bodyQueryFilterLocationFilter;
 bodyQueryFilter.orderFilter = bodyQueryFilterOrderFilter;
 
 const bodyQuery: LoyaltyEventQuery = {};
@@ -376,7 +335,6 @@ bodyQuery.filter = bodyQueryFilter;
 const body: SearchLoyaltyEventsRequest = {};
 body.query = bodyQuery;
 body.limit = 30;
-body.cursor = 'cursor0';
 
 try {
   const { result, ...httpResponse } = await loyaltyApi.searchLoyaltyEvents(body);
@@ -512,13 +470,8 @@ async calculateLoyaltyPoints(
 ```ts
 const programId = 'program_id0';
 const contentType = null;
-const bodyTransactionAmountMoney: Money = {};
-bodyTransactionAmountMoney.amount = 72;
-bodyTransactionAmountMoney.currency = 'UZS';
-
 const body: CalculateLoyaltyPointsRequest = {};
 body.orderId = 'RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY';
-body.transactionAmountMoney = bodyTransactionAmountMoney;
 
 try {
   const { result, ...httpResponse } = await loyaltyApi.calculateLoyaltyPoints(programId, body);
@@ -570,11 +523,7 @@ const bodyReward: LoyaltyReward = {
   loyaltyAccountId: '5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd',
   rewardTierId: 'e1b39225-9da5-43d1-a5db-782cdd8ad94f',
 };
-bodyReward.id = 'id4';
-bodyReward.status = 'REDEEMED';
-bodyReward.points = 230;
 bodyReward.orderId = 'RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY';
-bodyReward.createdAt = 'created_at2';
 
 const body: CreateLoyaltyRewardRequest = {
   reward: bodyReward,
@@ -629,12 +578,10 @@ const contentType = null;
 const bodyQuery: SearchLoyaltyRewardsRequestLoyaltyRewardQuery = {
   loyaltyAccountId: '5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd',
 };
-bodyQuery.status = 'REDEEMED';
 
 const body: SearchLoyaltyRewardsRequest = {};
 body.query = bodyQuery;
 body.limit = 10;
-body.cursor = 'cursor0';
 
 try {
   const { result, ...httpResponse } = await loyaltyApi.searchLoyaltyRewards(body);

@@ -10,6 +10,10 @@ const terminalApi = client.terminalApi;
 
 ## Methods
 
+* [Create Terminal Action](../../doc/api/terminal.md#create-terminal-action)
+* [Search Terminal Actions](../../doc/api/terminal.md#search-terminal-actions)
+* [Get Terminal Action](../../doc/api/terminal.md#get-terminal-action)
+* [Cancel Terminal Action](../../doc/api/terminal.md#cancel-terminal-action)
 * [Create Terminal Checkout](../../doc/api/terminal.md#create-terminal-checkout)
 * [Search Terminal Checkouts](../../doc/api/terminal.md#search-terminal-checkouts)
 * [Get Terminal Checkout](../../doc/api/terminal.md#get-terminal-checkout)
@@ -18,6 +22,196 @@ const terminalApi = client.terminalApi;
 * [Search Terminal Refunds](../../doc/api/terminal.md#search-terminal-refunds)
 * [Get Terminal Refund](../../doc/api/terminal.md#get-terminal-refund)
 * [Cancel Terminal Refund](../../doc/api/terminal.md#cancel-terminal-refund)
+
+
+# Create Terminal Action
+
+Creates a Terminal action request and sends it to the specified device to take a payment
+for the requested amount.
+
+```ts
+async createTerminalAction(
+  body: CreateTerminalActionRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateTerminalActionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreateTerminalActionRequest`](../../doc/models/create-terminal-action-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`CreateTerminalActionResponse`](../../doc/models/create-terminal-action-response.md)
+
+## Example Usage
+
+```ts
+const contentType = null;
+const bodyActionSaveCardOptions: SaveCardOptions = {
+  customerId: '{{CUSTOMER_ID}}',
+};
+bodyActionSaveCardOptions.referenceId = 'user-id-1';
+
+const bodyAction: TerminalAction = {};
+bodyAction.deviceId = '{{DEVICE_ID}}';
+bodyAction.deadlineDuration = 'PT5M';
+bodyAction.type = 'SAVE_CARD';
+bodyAction.saveCardOptions = bodyActionSaveCardOptions;
+
+const body: CreateTerminalActionRequest = {
+  idempotencyKey: 'thahn-70e75c10-47f7-4ab6-88cc-aaa4076d065e',
+  action: bodyAction,
+};
+
+try {
+  const { result, ...httpResponse } = await terminalApi.createTerminalAction(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Search Terminal Actions
+
+Retrieves a filtered list of Terminal action requests created by the account making the request. Terminal action requests are available for 30 days.
+
+```ts
+async searchTerminalActions(
+  body: SearchTerminalActionsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchTerminalActionsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`SearchTerminalActionsRequest`](../../doc/models/search-terminal-actions-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`SearchTerminalActionsResponse`](../../doc/models/search-terminal-actions-response.md)
+
+## Example Usage
+
+```ts
+const contentType = null;
+const bodyQueryFilterCreatedAt: TimeRange = {};
+bodyQueryFilterCreatedAt.startAt = '2022-04-01T00:00:00.000Z';
+
+const bodyQueryFilter: TerminalActionQueryFilter = {};
+bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;
+
+const bodyQuerySort: TerminalActionQuerySort = {};
+bodyQuerySort.sortOrder = 'DESC';
+
+const bodyQuery: TerminalActionQuery = {};
+bodyQuery.filter = bodyQueryFilter;
+bodyQuery.sort = bodyQuerySort;
+
+const body: SearchTerminalActionsRequest = {};
+body.query = bodyQuery;
+body.limit = 2;
+
+try {
+  const { result, ...httpResponse } = await terminalApi.searchTerminalActions(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Terminal Action
+
+Retrieves a Terminal action request by `action_id`. Terminal action requests are available for 30 days.
+
+```ts
+async getTerminalAction(
+  actionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetTerminalActionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `actionId` | `string` | Template, Required | Unique ID for the desired `TerminalAction` |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetTerminalActionResponse`](../../doc/models/get-terminal-action-response.md)
+
+## Example Usage
+
+```ts
+const actionId = 'action_id6';
+try {
+  const { result, ...httpResponse } = await terminalApi.getTerminalAction(actionId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Cancel Terminal Action
+
+Cancels a Terminal action request if the status of the request permits it.
+
+```ts
+async cancelTerminalAction(
+  actionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CancelTerminalActionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `actionId` | `string` | Template, Required | Unique ID for the desired `TerminalAction` |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`CancelTerminalActionResponse`](../../doc/models/cancel-terminal-action-response.md)
+
+## Example Usage
+
+```ts
+const actionId = 'action_id6';
+try {
+  const { result, ...httpResponse } = await terminalApi.cancelTerminalAction(actionId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch(error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
 
 
 # Create Terminal Checkout
@@ -51,30 +245,16 @@ const bodyCheckoutAmountMoney: Money = {};
 bodyCheckoutAmountMoney.amount = 2610;
 bodyCheckoutAmountMoney.currency = 'USD';
 
-const bodyCheckoutDeviceOptionsTipSettingsTipPercentages: number[] = [148, 149, 150];
-const bodyCheckoutDeviceOptionsTipSettings: TipSettings = {};
-bodyCheckoutDeviceOptionsTipSettings.allowTipping = false;
-bodyCheckoutDeviceOptionsTipSettings.separateTipScreen = false;
-bodyCheckoutDeviceOptionsTipSettings.customTipField = false;
-bodyCheckoutDeviceOptionsTipSettings.tipPercentages = bodyCheckoutDeviceOptionsTipSettingsTipPercentages;
-bodyCheckoutDeviceOptionsTipSettings.smartTipping = false;
-
 const bodyCheckoutDeviceOptions: DeviceCheckoutOptions = {
   deviceId: 'dbb5d83a-7838-11ea-bc55-0242ac130003',
 };
-bodyCheckoutDeviceOptions.skipReceiptScreen = false;
-bodyCheckoutDeviceOptions.collectSignature = false;
-bodyCheckoutDeviceOptions.tipSettings = bodyCheckoutDeviceOptionsTipSettings;
 
 const bodyCheckout: TerminalCheckout = {
   amountMoney: bodyCheckoutAmountMoney,
   deviceOptions: bodyCheckoutDeviceOptions,
 };
-bodyCheckout.id = 'id8';
 bodyCheckout.referenceId = 'id11572';
 bodyCheckout.note = 'A brief note';
-bodyCheckout.deadlineDuration = 'deadline_duration0';
-bodyCheckout.status = 'status0';
 
 const body: CreateTerminalCheckoutRequest = {
   idempotencyKey: '28a0c3bc-7839-11ea-bc55-0242ac130003',
@@ -120,25 +300,14 @@ async searchTerminalCheckouts(
 
 ```ts
 const contentType = null;
-const bodyQueryFilterCreatedAt: TimeRange = {};
-bodyQueryFilterCreatedAt.startAt = 'start_at2';
-bodyQueryFilterCreatedAt.endAt = 'end_at0';
-
 const bodyQueryFilter: TerminalCheckoutQueryFilter = {};
-bodyQueryFilter.deviceId = 'device_id8';
-bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;
 bodyQueryFilter.status = 'COMPLETED';
-
-const bodyQuerySort: TerminalCheckoutQuerySort = {};
-bodyQuerySort.sortOrder = 'DESC';
 
 const bodyQuery: TerminalCheckoutQuery = {};
 bodyQuery.filter = bodyQueryFilter;
-bodyQuery.sort = bodyQuerySort;
 
 const body: SearchTerminalCheckoutsRequest = {};
 body.query = bodyQuery;
-body.cursor = 'cursor0';
 body.limit = 2;
 
 try {
@@ -268,11 +437,6 @@ const bodyRefund: TerminalRefund = {
   reason: 'Returning items',
   deviceId: 'f72dfb8e-4d65-4e56-aade-ec3fb8d33291',
 };
-bodyRefund.id = 'id4';
-bodyRefund.refundId = 'refund_id8';
-bodyRefund.orderId = 'order_id8';
-bodyRefund.deadlineDuration = 'deadline_duration6';
-bodyRefund.status = 'status6';
 
 const body: CreateTerminalRefundRequest = {
   idempotencyKey: '402a640b-b26f-401f-b406-46f839590c04',
@@ -318,25 +482,14 @@ async searchTerminalRefunds(
 
 ```ts
 const contentType = null;
-const bodyQueryFilterCreatedAt: TimeRange = {};
-bodyQueryFilterCreatedAt.startAt = 'start_at2';
-bodyQueryFilterCreatedAt.endAt = 'end_at0';
-
 const bodyQueryFilter: TerminalRefundQueryFilter = {};
-bodyQueryFilter.deviceId = 'device_id8';
-bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;
 bodyQueryFilter.status = 'COMPLETED';
-
-const bodyQuerySort: TerminalRefundQuerySort = {};
-bodyQuerySort.sortOrder = 'sort_order8';
 
 const bodyQuery: TerminalRefundQuery = {};
 bodyQuery.filter = bodyQueryFilter;
-bodyQuery.sort = bodyQuerySort;
 
 const body: SearchTerminalRefundsRequest = {};
 body.query = bodyQuery;
-body.cursor = 'cursor0';
 body.limit = 1;
 
 try {

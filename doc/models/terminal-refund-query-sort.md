@@ -15,7 +15,7 @@
 
 ```json
 {
-  "sort_order": "sort_order0"
+  "sort_order": null
 }
 ```
 

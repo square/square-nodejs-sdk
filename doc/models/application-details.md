@@ -18,8 +18,8 @@ Details about the application that took the payment.
 
 ```json
 {
-  "square_product": "TERMINAL_API",
-  "application_id": "application_id4"
+  "square_product": null,
+  "application_id": null
 }
 ```
 

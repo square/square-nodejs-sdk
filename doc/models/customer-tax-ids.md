@@ -18,7 +18,7 @@ For more information, see [Customer tax IDs](https://developer.squareup.com/docs
 
 ```json
 {
-  "eu_vat": "eu_vat2"
+  "eu_vat": null
 }
 ```
 

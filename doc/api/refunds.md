@@ -59,16 +59,8 @@ async listPaymentRefunds(
 ## Example Usage
 
 ```ts
-const beginTime = 'begin_time2';
-const endTime = 'end_time2';
-const sortOrder = 'sort_order0';
-const cursor = 'cursor6';
-const locationId = 'location_id4';
-const status = 'status8';
-const sourceType = 'source_type0';
-const limit = 172;
 try {
-  const { result, ...httpResponse } = await refundsApi.listPaymentRefunds(beginTime, endTime, sortOrder, cursor, locationId, status, sourceType, limit);
+  const { result, ...httpResponse } = await refundsApi.listPaymentRefunds();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -124,8 +116,6 @@ const body: RefundPaymentRequest = {
 body.appFeeMoney = bodyAppFeeMoney;
 body.paymentId = 'R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY';
 body.reason = 'Example';
-body.paymentVersionToken = 'payment_version_token6';
-body.teamMemberId = 'team_member_id4';
 
 try {
   const { result, ...httpResponse } = await refundsApi.refundPayment(body);

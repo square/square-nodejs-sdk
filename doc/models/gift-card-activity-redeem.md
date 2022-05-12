@@ -20,11 +20,11 @@ Present only when `GiftCardActivityType` is REDEEM.
 ```json
 {
   "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
+    "amount": null,
+    "currency": null
   },
-  "payment_id": "payment_id0",
-  "reference_id": "reference_id2"
+  "payment_id": null,
+  "reference_id": null
 }
 ```
 

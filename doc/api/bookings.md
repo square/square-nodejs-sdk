@@ -59,14 +59,8 @@ async listBookings(
 ## Example Usage
 
 ```ts
-const limit = 172;
-const cursor = 'cursor6';
-const teamMemberId = 'team_member_id0';
-const locationId = 'location_id4';
-const startAtMin = 'start_at_min8';
-const startAtMax = 'start_at_max8';
 try {
-  const { result, ...httpResponse } = await bookingsApi.listBookings(limit, cursor, teamMemberId, locationId, startAtMin, startAtMax);
+  const { result, ...httpResponse } = await bookingsApi.listBookings();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -84,6 +78,9 @@ Creates a booking.
 
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 
 ```ts
 async createBooking(
@@ -108,16 +105,10 @@ async createBooking(
 ```ts
 const contentType = null;
 const bodyBooking: Booking = {};
-bodyBooking.id = 'id8';
-bodyBooking.version = 148;
-bodyBooking.status = 'ACCEPTED';
-bodyBooking.createdAt = 'created_at6';
-bodyBooking.updatedAt = 'updated_at4';
 
 const body: CreateBookingRequest = {
   booking: bodyBooking,
 };
-body.idempotencyKey = 'idempotency_key2';
 
 try {
   const { result, ...httpResponse } = await bookingsApi.createBooking(body);
@@ -162,47 +153,10 @@ async searchAvailability(
 ```ts
 const contentType = null;
 const bodyQueryFilterStartAtRange: TimeRange = {};
-bodyQueryFilterStartAtRange.startAt = 'start_at8';
-bodyQueryFilterStartAtRange.endAt = 'end_at4';
-
-const bodyQueryFilterSegmentFilters: SegmentFilter[] = [];
-
-const bodyQueryFiltersegmentFilters0TeamMemberIdFilterAll: string[] = ['all7'];
-const bodyQueryFiltersegmentFilters0TeamMemberIdFilterAny: string[] = ['any0', 'any1'];
-const bodyQueryFiltersegmentFilters0TeamMemberIdFilterNone: string[] = ['none5'];
-const bodyQueryFiltersegmentFilters0TeamMemberIdFilter: FilterValue = {};
-bodyQueryFiltersegmentFilters0TeamMemberIdFilter.all = bodyQueryFiltersegmentFilters0TeamMemberIdFilterAll;
-bodyQueryFiltersegmentFilters0TeamMemberIdFilter.any = bodyQueryFiltersegmentFilters0TeamMemberIdFilterAny;
-bodyQueryFiltersegmentFilters0TeamMemberIdFilter.none = bodyQueryFiltersegmentFilters0TeamMemberIdFilterNone;
-
-const bodyQueryFiltersegmentFilters0: SegmentFilter = {
-  serviceVariationId: 'service_variation_id8',
-};
-bodyQueryFiltersegmentFilters0.teamMemberIdFilter = bodyQueryFiltersegmentFilters0TeamMemberIdFilter;
-
-bodyQueryFilterSegmentFilters[0] = bodyQueryFiltersegmentFilters0;
-
-const bodyQueryFiltersegmentFilters1TeamMemberIdFilterAll: string[] = ['all6', 'all7', 'all8'];
-const bodyQueryFiltersegmentFilters1TeamMemberIdFilterAny: string[] = ['any1', 'any2', 'any3'];
-const bodyQueryFiltersegmentFilters1TeamMemberIdFilterNone: string[] = ['none6', 'none7'];
-const bodyQueryFiltersegmentFilters1TeamMemberIdFilter: FilterValue = {};
-bodyQueryFiltersegmentFilters1TeamMemberIdFilter.all = bodyQueryFiltersegmentFilters1TeamMemberIdFilterAll;
-bodyQueryFiltersegmentFilters1TeamMemberIdFilter.any = bodyQueryFiltersegmentFilters1TeamMemberIdFilterAny;
-bodyQueryFiltersegmentFilters1TeamMemberIdFilter.none = bodyQueryFiltersegmentFilters1TeamMemberIdFilterNone;
-
-const bodyQueryFiltersegmentFilters1: SegmentFilter = {
-  serviceVariationId: 'service_variation_id7',
-};
-bodyQueryFiltersegmentFilters1.teamMemberIdFilter = bodyQueryFiltersegmentFilters1TeamMemberIdFilter;
-
-bodyQueryFilterSegmentFilters[1] = bodyQueryFiltersegmentFilters1;
 
 const bodyQueryFilter: SearchAvailabilityFilter = {
   startAtRange: bodyQueryFilterStartAtRange,
 };
-bodyQueryFilter.locationId = 'location_id6';
-bodyQueryFilter.segmentFilters = bodyQueryFilterSegmentFilters;
-bodyQueryFilter.bookingId = 'booking_id6';
 
 const bodyQuery: SearchAvailabilityQuery = {
   filter: bodyQueryFilter,
@@ -293,11 +247,8 @@ async listTeamMemberBookingProfiles(
 
 ```ts
 const bookableOnly = false;
-const limit = 172;
-const cursor = 'cursor6';
-const locationId = 'location_id4';
 try {
-  const { result, ...httpResponse } = await bookingsApi.listTeamMemberBookingProfiles(bookableOnly, limit, cursor, locationId);
+  const { result, ...httpResponse } = await bookingsApi.listTeamMemberBookingProfiles(bookableOnly);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -397,6 +348,9 @@ Updates a booking.
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
+
 ```ts
 async updateBooking(
   bookingId: string,
@@ -423,16 +377,10 @@ async updateBooking(
 const bookingId = 'booking_id4';
 const contentType = null;
 const bodyBooking: Booking = {};
-bodyBooking.id = 'id8';
-bodyBooking.version = 148;
-bodyBooking.status = 'ACCEPTED';
-bodyBooking.createdAt = 'created_at6';
-bodyBooking.updatedAt = 'updated_at4';
 
 const body: UpdateBookingRequest = {
   booking: bodyBooking,
 };
-body.idempotencyKey = 'idempotency_key2';
 
 try {
   const { result, ...httpResponse } = await bookingsApi.updateBooking(bookingId, body);
@@ -453,6 +401,9 @@ Cancels an existing booking.
 
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 
 ```ts
 async cancelBooking(
@@ -480,8 +431,6 @@ async cancelBooking(
 const bookingId = 'booking_id4';
 const contentType = null;
 const body: CancelBookingRequest = {};
-body.idempotencyKey = 'idempotency_key2';
-body.bookingVersion = 8;
 
 try {
   const { result, ...httpResponse } = await bookingsApi.cancelBooking(bookingId, body);

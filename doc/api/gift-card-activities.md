@@ -56,16 +56,8 @@ async listGiftCardActivities(
 ## Example Usage
 
 ```ts
-const giftCardId = 'gift_card_id8';
-const type = 'type0';
-const locationId = 'location_id4';
-const beginTime = 'begin_time2';
-const endTime = 'end_time2';
-const limit = 172;
-const cursor = 'cursor6';
-const sortOrder = 'sort_order0';
 try {
-  const { result, ...httpResponse } = await giftCardActivitiesApi.listGiftCardActivities(giftCardId, type, locationId, beginTime, endTime, limit, cursor, sortOrder);
+  const { result, ...httpResponse } = await giftCardActivitiesApi.listGiftCardActivities();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -79,9 +71,9 @@ try {
 
 # Create Gift Card Activity
 
-Creates a gift card activity. For more information, see
-[GiftCardActivity](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api#giftcardactivity) and
-[Using activated gift cards](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api#using-activated-gift-cards).
+Creates a gift card activity to manage the balance or state of a [gift card](../../doc/models/gift-card.md).
+For example, you create an `ACTIVATE` activity to activate a gift card with an initial balance
+before the gift card can be used.
 
 ```ts
 async createGiftCardActivity(
@@ -105,31 +97,15 @@ async createGiftCardActivity(
 
 ```ts
 const contentType = null;
-const bodyGiftCardActivityGiftCardBalanceMoney: Money = {};
-bodyGiftCardActivityGiftCardBalanceMoney.amount = 88;
-bodyGiftCardActivityGiftCardBalanceMoney.currency = 'ANG';
-
-const bodyGiftCardActivityActivateActivityDetailsAmountMoney: Money = {};
-bodyGiftCardActivityActivateActivityDetailsAmountMoney.amount = 10;
-bodyGiftCardActivityActivateActivityDetailsAmountMoney.currency = 'MXV';
-
-const bodyGiftCardActivityActivateActivityDetailsBuyerPaymentInstrumentIds: string[] = ['buyer_payment_instrument_ids4', 'buyer_payment_instrument_ids5', 'buyer_payment_instrument_ids6'];
 const bodyGiftCardActivityActivateActivityDetails: GiftCardActivityActivate = {};
-bodyGiftCardActivityActivateActivityDetails.amountMoney = bodyGiftCardActivityActivateActivityDetailsAmountMoney;
 bodyGiftCardActivityActivateActivityDetails.orderId = 'jJNGHm4gLI6XkFbwtiSLqK72KkAZY';
 bodyGiftCardActivityActivateActivityDetails.lineItemUid = 'eIWl7X0nMuO9Ewbh0ChIx';
-bodyGiftCardActivityActivateActivityDetails.referenceId = 'reference_id4';
-bodyGiftCardActivityActivateActivityDetails.buyerPaymentInstrumentIds = bodyGiftCardActivityActivateActivityDetailsBuyerPaymentInstrumentIds;
 
 const bodyGiftCardActivity: GiftCardActivity = {
   type: 'ACTIVATE',
   locationId: '81FN9BNFZTKS4',
 };
-bodyGiftCardActivity.id = 'id2';
-bodyGiftCardActivity.createdAt = 'created_at0';
 bodyGiftCardActivity.giftCardId = 'gftc:6d55a72470d940c6ba09c0ab8ad08d20';
-bodyGiftCardActivity.giftCardGan = 'gift_card_gan8';
-bodyGiftCardActivity.giftCardBalanceMoney = bodyGiftCardActivityGiftCardBalanceMoney;
 bodyGiftCardActivity.activateActivityDetails = bodyGiftCardActivityActivateActivityDetails;
 
 const body: CreateGiftCardActivityRequest = {

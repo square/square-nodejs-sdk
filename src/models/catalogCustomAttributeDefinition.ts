@@ -45,7 +45,7 @@ export interface CatalogCustomAttributeDefinition {
    * any constraints that the seller should observe, etc. May be displayed as a tooltip in Square UIs.
    */
   description?: string;
-  /** Provides information about the application used to generate a change. */
+  /** Represents information about the application used to generate a change. */
   sourceApplication?: SourceApplication;
   /**
    * The set of Catalog Object Types that this Custom Attribute may be applied to.
@@ -70,7 +70,7 @@ export interface CatalogCustomAttributeDefinition {
   /** Configuration associated with `SELECTION`-type custom attribute definitions. */
   selectionConfig?: CatalogCustomAttributeDefinitionSelectionConfig;
   /**
-   * __Read-only.__ The number of custom attributes that reference this
+   * The number of custom attributes that reference this
    * custom attribute definition. Set by the server in response to a ListCatalog
    * request with `include_counts` set to `true`.  If the actual count is greater
    * than 100, `custom_attribute_usage_count` will be set to `100`.

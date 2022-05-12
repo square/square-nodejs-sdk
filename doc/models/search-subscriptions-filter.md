@@ -20,16 +20,9 @@ the [SearchSubscriptions](../../doc/api/subscriptions.md#search-subscriptions) e
 
 ```json
 {
-  "customer_ids": [
-    "customer_ids1",
-    "customer_ids2"
-  ],
-  "location_ids": [
-    "location_ids0"
-  ],
-  "source_names": [
-    "source_names8"
-  ]
+  "customer_ids": null,
+  "location_ids": null,
+  "source_names": null
 }
 ```
 

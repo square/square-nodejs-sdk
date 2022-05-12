@@ -55,11 +55,8 @@ async listOrders(
 
 ```ts
 const locationId = 'location_id4';
-const order = 'DESC';
-const limit = 172;
-const batchToken = 'batch_token2';
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.listOrders(locationId, order, limit, batchToken);
+  const { result, ...httpResponse } = await v1TransactionsApi.listOrders(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -152,10 +149,6 @@ const contentType = null;
 const body: V1UpdateOrderRequest = {
   action: 'REFUND',
 };
-body.shippedTrackingNumber = 'shipped_tracking_number6';
-body.completedNote = 'completed_note6';
-body.refundedNote = 'refunded_note0';
-body.canceledNote = 'canceled_note4';
 
 try {
   const { result, ...httpResponse } = await v1TransactionsApi.updateOrder(locationId, orderId, body);
@@ -220,14 +213,9 @@ async listPayments(
 
 ```ts
 const locationId = 'location_id4';
-const order = 'DESC';
-const beginTime = 'begin_time2';
-const endTime = 'end_time2';
-const limit = 172;
-const batchToken = 'batch_token2';
 const includePartial = false;
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.listPayments(locationId, order, beginTime, endTime, limit, batchToken, includePartial);
+  const { result, ...httpResponse } = await v1TransactionsApi.listPayments(locationId, None, None, None, None, None, includePartial);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -321,13 +309,8 @@ async listRefunds(
 
 ```ts
 const locationId = 'location_id4';
-const order = 'DESC';
-const beginTime = 'begin_time2';
-const endTime = 'end_time2';
-const limit = 172;
-const batchToken = 'batch_token2';
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.listRefunds(locationId, order, beginTime, endTime, limit, batchToken);
+  const { result, ...httpResponse } = await v1TransactionsApi.listRefunds(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -381,17 +364,11 @@ async createRefund(
 ```ts
 const locationId = 'location_id4';
 const contentType = null;
-const bodyRefundedMoney: V1Money = {};
-bodyRefundedMoney.amount = 222;
-bodyRefundedMoney.currencyCode = 'CLF';
-
 const body: V1CreateRefundRequest = {
   paymentId: 'payment_id6',
   type: 'FULL',
   reason: 'reason8',
 };
-body.refundedMoney = bodyRefundedMoney;
-body.requestIdempotenceKey = 'request_idempotence_key2';
 
 try {
   const { result, ...httpResponse } = await v1TransactionsApi.createRefund(locationId, body);
@@ -451,14 +428,8 @@ async listSettlements(
 
 ```ts
 const locationId = 'location_id4';
-const order = 'DESC';
-const beginTime = 'begin_time2';
-const endTime = 'end_time2';
-const limit = 172;
-const status = 'SENT';
-const batchToken = 'batch_token2';
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.listSettlements(locationId, order, beginTime, endTime, limit, status, batchToken);
+  const { result, ...httpResponse } = await v1TransactionsApi.listSettlements(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

@@ -20,8 +20,8 @@ The query expression to specify the key to sort search results.
 ```json
 {
   "attribute_name": "attribute_name4",
-  "initial_attribute_value": "initial_attribute_value6",
-  "sort_order": "DESC"
+  "initial_attribute_value": null,
+  "sort_order": null
 }
 ```
 

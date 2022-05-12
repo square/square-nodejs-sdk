@@ -1,5 +1,9 @@
 import { ApiResponse, RequestOptions } from '../core';
 import {
+  CancelTerminalActionResponse,
+  cancelTerminalActionResponseSchema,
+} from '../models/cancelTerminalActionResponse';
+import {
   CancelTerminalCheckoutResponse,
   cancelTerminalCheckoutResponseSchema,
 } from '../models/cancelTerminalCheckoutResponse';
@@ -7,6 +11,14 @@ import {
   CancelTerminalRefundResponse,
   cancelTerminalRefundResponseSchema,
 } from '../models/cancelTerminalRefundResponse';
+import {
+  CreateTerminalActionRequest,
+  createTerminalActionRequestSchema,
+} from '../models/createTerminalActionRequest';
+import {
+  CreateTerminalActionResponse,
+  createTerminalActionResponseSchema,
+} from '../models/createTerminalActionResponse';
 import {
   CreateTerminalCheckoutRequest,
   createTerminalCheckoutRequestSchema,
@@ -24,6 +36,10 @@ import {
   createTerminalRefundResponseSchema,
 } from '../models/createTerminalRefundResponse';
 import {
+  GetTerminalActionResponse,
+  getTerminalActionResponseSchema,
+} from '../models/getTerminalActionResponse';
+import {
   GetTerminalCheckoutResponse,
   getTerminalCheckoutResponseSchema,
 } from '../models/getTerminalCheckoutResponse';
@@ -31,6 +47,14 @@ import {
   GetTerminalRefundResponse,
   getTerminalRefundResponseSchema,
 } from '../models/getTerminalRefundResponse';
+import {
+  SearchTerminalActionsRequest,
+  searchTerminalActionsRequestSchema,
+} from '../models/searchTerminalActionsRequest';
+import {
+  SearchTerminalActionsResponse,
+  searchTerminalActionsResponseSchema,
+} from '../models/searchTerminalActionsResponse';
 import {
   SearchTerminalCheckoutsRequest,
   searchTerminalCheckoutsRequestSchema,
@@ -51,6 +75,83 @@ import { string } from '../schema';
 import { BaseApi } from './baseApi';
 
 export class TerminalApi extends BaseApi {
+  /**
+   * Creates a Terminal action request and sends it to the specified device to take a payment
+   * for the requested amount.
+   *
+   * @param body         An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
+   * @return Response from the API call
+   */
+  async createTerminalAction(
+    body: CreateTerminalActionRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<CreateTerminalActionResponse>> {
+    const req = this.createRequest('POST', '/v2/terminals/actions');
+    const mapped = req.prepareArgs({
+      body: [body, createTerminalActionRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    return req.callAsJson(createTerminalActionResponseSchema, requestOptions);
+  }
+
+  /**
+   * Retrieves a filtered list of Terminal action requests created by the account making the request.
+   * Terminal action requests are available for 30 days.
+   *
+   * @param body         An object containing the fields to POST for the
+   *                                                            request.  See the corresponding object definition for
+   *                                                            field details.
+   * @return Response from the API call
+   */
+  async searchTerminalActions(
+    body: SearchTerminalActionsRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<SearchTerminalActionsResponse>> {
+    const req = this.createRequest('POST', '/v2/terminals/actions/search');
+    const mapped = req.prepareArgs({
+      body: [body, searchTerminalActionsRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    return req.callAsJson(searchTerminalActionsResponseSchema, requestOptions);
+  }
+
+  /**
+   * Retrieves a Terminal action request by `action_id`. Terminal action requests are available for 30
+   * days.
+   *
+   * @param actionId  Unique ID for the desired `TerminalAction`
+   * @return Response from the API call
+   */
+  async getTerminalAction(
+    actionId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<GetTerminalActionResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ actionId: [actionId, string()] });
+    req.appendTemplatePath`/v2/terminals/actions/${mapped.actionId}`;
+    return req.callAsJson(getTerminalActionResponseSchema, requestOptions);
+  }
+
+  /**
+   * Cancels a Terminal action request if the status of the request permits it.
+   *
+   * @param actionId  Unique ID for the desired `TerminalAction`
+   * @return Response from the API call
+   */
+  async cancelTerminalAction(
+    actionId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<CancelTerminalActionResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({ actionId: [actionId, string()] });
+    req.appendTemplatePath`/v2/terminals/actions/${mapped.actionId}/cancel`;
+    return req.callAsJson(cancelTerminalActionResponseSchema, requestOptions);
+  }
+
   /**
    * Creates a Terminal checkout request and sends it to the specified device to take a payment
    * for the requested amount.

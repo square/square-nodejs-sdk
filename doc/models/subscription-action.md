@@ -20,10 +20,10 @@ Represents an action as a pending change to a subscription.
 
 ```json
 {
-  "id": "id0",
-  "type": "RESUME",
-  "effective_date": "effective_date0",
-  "new_plan_id": "new_plan_id4"
+  "id": null,
+  "type": null,
+  "effective_date": null,
+  "new_plan_id": null
 }
 ```
 

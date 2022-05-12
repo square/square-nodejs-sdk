@@ -20,8 +20,8 @@ the filter can be case-sensitive. This filter can be exact or fuzzy, but it cann
 
 ```json
 {
-  "exact": "exact0",
-  "fuzzy": "fuzzy4"
+  "exact": null,
+  "fuzzy": null
 }
 ```
 

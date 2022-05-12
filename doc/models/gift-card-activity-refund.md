@@ -21,12 +21,9 @@ Present only when `GiftCardActivityType` is REFUND.
 ```json
 {
   "redeem_activity_id": "redeem_activity_id0",
-  "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
-  },
-  "reference_id": "reference_id2",
-  "payment_id": "payment_id0"
+  "amount_money": null,
+  "reference_id": null,
+  "payment_id": null
 }
 ```
 

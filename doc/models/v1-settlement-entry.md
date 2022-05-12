@@ -20,16 +20,10 @@ V1SettlementEntry
 
 ```json
 {
-  "payment_id": "payment_id0",
-  "type": "PAID_SERVICE_FEE",
-  "amount_money": {
-    "amount": 186,
-    "currency_code": "KRW"
-  },
-  "fee_money": {
-    "amount": 108,
-    "currency_code": "UZS"
-  }
+  "payment_id": null,
+  "type": null,
+  "amount_money": null,
+  "fee_money": null
 }
 ```
 

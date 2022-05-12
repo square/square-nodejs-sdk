@@ -53,13 +53,8 @@ async listGiftCards(
 ## Example Usage
 
 ```ts
-const type = 'type0';
-const state = 'state4';
-const limit = 172;
-const cursor = 'cursor6';
-const customerId = 'customer_id8';
 try {
-  const { result, ...httpResponse } = await giftCardsApi.listGiftCards(type, state, limit, cursor, customerId);
+  const { result, ...httpResponse } = await giftCardsApi.listGiftCards();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -73,9 +68,9 @@ try {
 
 # Create Gift Card
 
-Creates a digital gift card or registers a physical (plastic) gift card. You must activate the gift card before
-it can be used for payment. For more information, see
-[Selling gift cards](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api#selling-square-gift-cards).
+Creates a digital gift card or registers a physical (plastic) gift card. After the gift card
+is created, you must call [CreateGiftCardActivity](../../doc/api/gift-card-activities.md#create-gift-card-activity)
+to activate the card with an initial balance before it can be used for payment.
 
 ```ts
 async createGiftCard(
@@ -99,18 +94,9 @@ async createGiftCard(
 
 ```ts
 const contentType = null;
-const bodyGiftCardBalanceMoney: Money = {};
-bodyGiftCardBalanceMoney.amount = 2;
-bodyGiftCardBalanceMoney.currency = 'DOP';
-
 const bodyGiftCard: GiftCard = {
   type: 'DIGITAL',
 };
-bodyGiftCard.id = 'id4';
-bodyGiftCard.ganSource = 'SQUARE';
-bodyGiftCard.state = 'ACTIVE';
-bodyGiftCard.balanceMoney = bodyGiftCardBalanceMoney;
-bodyGiftCard.gan = 'gan0';
 
 const body: CreateGiftCardRequest = {
   idempotencyKey: 'NC9Tm69EjbjtConu',
@@ -311,7 +297,7 @@ try {
 
 # Retrieve Gift Card
 
-Retrieves a gift card using its ID.
+Retrieves a gift card using the gift card ID.
 
 ```ts
 async retrieveGiftCard(

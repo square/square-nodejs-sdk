@@ -26,14 +26,14 @@ or inches. Exactly one of the following fields are required: `custom_unit`,
 
 ```json
 {
-  "custom_unit": {
-    "name": "name2",
-    "abbreviation": "abbreviation4"
-  },
-  "area_unit": "IMPERIAL_SQUARE_MILE",
-  "length_unit": "METRIC_MILLIMETER",
-  "volume_unit": "GENERIC_CUP",
-  "weight_unit": "IMPERIAL_STONE"
+  "custom_unit": null,
+  "area_unit": null,
+  "length_unit": null,
+  "volume_unit": null,
+  "weight_unit": null,
+  "generic_unit": null,
+  "time_unit": null,
+  "type": null
 }
 ```
 

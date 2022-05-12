@@ -20,10 +20,10 @@ V1PaymentItemDetail
 
 ```json
 {
-  "category_name": "category_name8",
-  "sku": "sku4",
-  "item_id": "item_id0",
-  "item_variation_id": "item_variation_id4"
+  "category_name": null,
+  "sku": null,
+  "item_id": null,
+  "item_variation_id": null
 }
 ```
 

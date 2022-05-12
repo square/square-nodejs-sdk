@@ -21,8 +21,8 @@ For example, "Color:Red, Size:Small" or "Color:Blue, Size:Medium".
 
 ```json
 {
-  "item_option_id": "item_option_id2",
-  "item_option_value_id": "item_option_value_id0"
+  "item_option_id": null,
+  "item_option_value_id": null
 }
 ```
 

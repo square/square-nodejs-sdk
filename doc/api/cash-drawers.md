@@ -52,13 +52,8 @@ async listCashDrawerShifts(
 
 ```ts
 const locationId = 'location_id4';
-const sortOrder = 'DESC';
-const beginTime = 'begin_time2';
-const endTime = 'end_time2';
-const limit = 172;
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await cashDrawersApi.listCashDrawerShifts(locationId, sortOrder, beginTime, endTime, limit, cursor);
+  const { result, ...httpResponse } = await cashDrawersApi.listCashDrawerShifts(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -146,10 +141,8 @@ async listCashDrawerShiftEvents(
 ```ts
 const locationId = 'location_id4';
 const shiftId = 'shift_id0';
-const limit = 172;
-const cursor = 'cursor6';
 try {
-  const { result, ...httpResponse } = await cashDrawersApi.listCashDrawerShiftEvents(locationId, shiftId, limit, cursor);
+  const { result, ...httpResponse } = await cashDrawersApi.listCashDrawerShiftEvents(locationId, shiftId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

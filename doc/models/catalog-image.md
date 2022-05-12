@@ -25,10 +25,10 @@ Images on other object types are for use by 3rd party application developers.
 
 ```json
 {
-  "name": "name0",
-  "url": "url4",
-  "caption": "caption4",
-  "photo_studio_order_id": "photo_studio_order_id2"
+  "name": null,
+  "url": null,
+  "caption": null,
+  "photo_studio_order_id": null
 }
 ```
 

@@ -24,14 +24,14 @@ Price and inventory alerting overrides for a `CatalogItemVariation` at a specifi
 
 ```json
 {
-  "location_id": "location_id4",
-  "price_money": {
-    "amount": 202,
-    "currency": "BBD"
-  },
-  "pricing_type": "FIXED_PRICING",
-  "track_inventory": false,
-  "inventory_alert_type": "NONE"
+  "location_id": null,
+  "price_money": null,
+  "pricing_type": null,
+  "track_inventory": null,
+  "inventory_alert_type": null,
+  "inventory_alert_threshold": null,
+  "sold_out": null,
+  "sold_out_valid_until": null
 }
 ```
 

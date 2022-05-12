@@ -20,10 +20,10 @@ Identifiers for the location used by various governments for tax purposes.
 
 ```json
 {
-  "eu_vat": "eu_vat2",
-  "fr_siret": "fr_siret0",
-  "fr_naf": "fr_naf0",
-  "es_nif": "es_nif4"
+  "eu_vat": null,
+  "fr_siret": null,
+  "fr_naf": null,
+  "es_nif": null
 }
 ```
 

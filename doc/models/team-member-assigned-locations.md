@@ -18,10 +18,8 @@ An object that represents a team member's assignment to locations.
 
 ```json
 {
-  "assignment_type": "ALL_CURRENT_AND_FUTURE_LOCATIONS",
-  "location_ids": [
-    "location_ids0"
-  ]
+  "assignment_type": null,
+  "location_ids": null
 }
 ```
 

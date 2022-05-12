@@ -17,9 +17,7 @@ A filter based on order `source` information.
 
 ```json
 {
-  "source_names": [
-    "source_names8"
-  ]
+  "source_names": null
 }
 ```
 
