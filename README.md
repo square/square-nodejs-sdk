@@ -125,7 +125,6 @@ npm test
 * [V1 Items]
 * [Transactions]
 
-<<<<<<< HEAD
 ## Usage
 For more information, see [Using the Square Node.js SDK](https://developer.squareup.com/docs/sdks/nodejs/using-nodejs-sdk).
 
@@ -229,8 +228,6 @@ npm test
 * [V1 Items]
 * [Transactions]
 
-
-||||||| 43d11a7b
 ## Usage
 
 First time using Square? Here’s how to get started:
@@ -593,8 +590,6 @@ The Square Platform is built on the [Square API]. Square has a number of other S
 
 You can also use the Square API to create applications or services that work with payments, orders, inventory, etc. that have been created and managed in Square’s in-person hardware products (Square Point of Sale and Square Register).
 =======
-
->>>>>>> origin/master
 
 [Developer Dashboard]: https://developer.squareup.com/apps
 [Square API]: https://squareup.com/developers
