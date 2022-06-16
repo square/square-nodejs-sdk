@@ -1,7 +1,8 @@
 import { object, Schema, string } from '../schema';
 
-/** Describes a gift card activity of the DEACTIVATE type. */
+/** Represents details about a `DEACTIVATE` [gift card activity type]($m/GiftCardActivityType). */
 export interface GiftCardActivityDeactivate {
+  /** Indicates the reason for deactivating a [gift card]($m/GiftCard). */
   reason: string;
 }
 

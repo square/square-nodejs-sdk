@@ -1,6 +1,8 @@
 
 # Gift Card Activity Adjust Decrement Reason
 
+Indicates the reason for deducting money from a [gift card](../../doc/models/gift-card.md).
+
 ## Enumeration
 
 `GiftCardActivityAdjustDecrementReason`

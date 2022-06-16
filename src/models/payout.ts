@@ -49,7 +49,7 @@ export interface Payout {
    * and will show up as one of the payout entries in a future BATCH payout.
    */
   type?: string;
-  /** A list of processing fees and any taxes on the fees assessed by Square for this payout. */
+  /** A list of transfer fees and any taxes on the fees assessed by Square for this payout. */
   payoutFee?: PayoutFee[];
   /** The calendar date, in ISO 8601 format (YYYY-MM-DD), when the payout is due to arrive in the seller’s banking destination. */
   arrivalDate?: string;

@@ -1,7 +1,7 @@
 
 # Gift Card Activity Load
 
-Present only when `GiftCardActivityType` is LOAD.
+Represents details about a `LOAD` [gift card activity type](../../doc/models/gift-card-activity-type.md).
 
 ## Structure
 
@@ -12,10 +12,10 @@ Present only when `GiftCardActivityType` is LOAD.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `amountMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
-| `orderId` | `string \| undefined` | Optional | The `order_id` of the order associated with the activity.<br>It is populated along with `line_item_uid` and is required if using the Square Orders API. |
-| `lineItemUid` | `string \| undefined` | Optional | The `line_item_uid` of the gift card’s line item in the order associated with the activity.<br>It is populated along with `order_id` and is required if using the Square Orders API. |
-| `referenceId` | `string \| undefined` | Optional | A client-specified ID to associate an entity, in another system, with this gift card<br>activity. This can be used to track the order or payment related information when the Square Orders<br>API is not being used. |
-| `buyerPaymentInstrumentIds` | `string[] \| undefined` | Optional | If you are not using the Orders API, this field is required because it is used to identify a buyer<br>to perform compliance checks. |
+| `orderId` | `string \| undefined` | Optional | The ID of the [order](../../doc/models/order.md) that contains the `GIFT_CARD` line item.<br><br>Applications that use the Square Orders API to process orders must specify the order ID in the<br>[CreateGiftCardActivity](../../doc/api/gift-card-activities.md#create-gift-card-activity) request. |
+| `lineItemUid` | `string \| undefined` | Optional | The UID of the `GIFT_CARD` line item in the order that represents the additional funds for the gift card.<br><br>Applications that use the Square Orders API to process orders must specify the line item UID<br>in the [CreateGiftCardActivity](../../doc/api/gift-card-activities.md#create-gift-card-activity) request. |
+| `referenceId` | `string \| undefined` | Optional | A client-specified ID that associates the gift card activity with an entity in another system.<br><br>Applications that use a custom order processing system can use this field to track information related to<br>an order or payment. |
+| `buyerPaymentInstrumentIds` | `string[] \| undefined` | Optional | The payment instrument IDs used to process the order for the additional funds, such as a credit card ID<br>or bank account ID.<br><br>Applications that use a custom order processing system must specify payment instrument IDs in<br>the [CreateGiftCardActivity](../../doc/api/gift-card-activities.md#create-gift-card-activity) request.<br>Square uses this information to perform compliance checks.<br><br>For applications that use the Square Orders API to process payments, Square has the necessary<br>instrument IDs to perform compliance checks. |
 
 ## Example (as JSON)
 

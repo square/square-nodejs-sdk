@@ -1,7 +1,8 @@
 import { object, Schema, string } from '../schema';
 
-/** Describes a gift card activity of the CLEAR_BALANCE type. */
+/** Represents details about a `CLEAR_BALANCE` [gift card activity type]($m/GiftCardActivityType). */
 export interface GiftCardActivityClearBalance {
+  /** Indicates the reason for clearing the balance of a [gift card]($m/GiftCard). */
   reason: string;
 }
 

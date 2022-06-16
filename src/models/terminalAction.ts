@@ -1,6 +1,8 @@
 import { lazy, object, optional, Schema, string } from '../schema';
+import { DeviceMetadata, deviceMetadataSchema } from './deviceMetadata';
 import { SaveCardOptions, saveCardOptionsSchema } from './saveCardOptions';
 
+/** Represents an action processed by the Square Terminal. */
 export interface TerminalAction {
   /** A unique ID for this `TerminalAction`. */
   id?: string;
@@ -33,6 +35,7 @@ export interface TerminalAction {
   type?: string;
   /** Describes save-card action fields. */
   saveCardOptions?: SaveCardOptions;
+  deviceMetadata?: DeviceMetadata;
 }
 
 export const terminalActionSchema: Schema<TerminalAction> = object({
@@ -48,5 +51,9 @@ export const terminalActionSchema: Schema<TerminalAction> = object({
   saveCardOptions: [
     'save_card_options',
     optional(lazy(() => saveCardOptionsSchema)),
+  ],
+  deviceMetadata: [
+    'device_metadata',
+    optional(lazy(() => deviceMetadataSchema)),
   ],
 });

@@ -53,7 +53,7 @@ import { BaseApi } from './baseApi';
 export class GiftCardsApi extends BaseApi {
   /**
    * Lists all gift cards. You can specify optional filters to retrieve
-   * a subset of the gift cards.
+   * a subset of the gift cards. Results are sorted by `created_at` in ascending order.
    *
    * @param type        If a [type]($m/GiftCardType) is provided, the endpoint returns gift cards of the
    *                              specified type. Otherwise, the endpoint returns gift cards of all types.

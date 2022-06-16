@@ -5,6 +5,7 @@ import { TerminalAction, terminalActionSchema } from './terminalAction';
 export interface GetTerminalActionResponse {
   /** Information on errors encountered during the request. */
   errors?: Error[];
+  /** Represents an action processed by the Square Terminal. */
   action?: TerminalAction;
 }
 

@@ -1,7 +1,7 @@
 
 # Gift Card Activity Block
 
-Describes a gift card activity of the BLOCK type.
+Represents details about a `BLOCK` [gift card activity type](../../doc/models/gift-card-activity-type.md).
 
 ## Structure
 
@@ -11,7 +11,7 @@ Describes a gift card activity of the BLOCK type.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `reason` | `string` | Required, Constant | **Default**: `'CHARGEBACK_BLOCK'` |
+| `reason` | `string` | Required, Constant | Indicates the reason for blocking a [gift card](../../doc/models/gift-card.md).<br>**Default**: `'CHARGEBACK_BLOCK'` |
 
 ## Example (as JSON)
 

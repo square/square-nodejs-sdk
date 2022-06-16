@@ -1,6 +1,8 @@
 
 # Gift Card Activity Clear Balance Reason
 
+Indicates the reason for clearing the balance of a [gift card](../../doc/models/gift-card.md).
+
 ## Enumeration
 
 `GiftCardActivityClearBalanceReason`

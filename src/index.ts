@@ -281,6 +281,7 @@ export { Device } from './models/device';
 export { DeviceCheckoutOptions } from './models/deviceCheckoutOptions';
 export { DeviceCode } from './models/deviceCode';
 export { DeviceDetails } from './models/deviceDetails';
+export { DeviceMetadata } from './models/deviceMetadata';
 export { DigitalWalletDetails } from './models/digitalWalletDetails';
 export { DisableCardResponse } from './models/disableCardResponse';
 export { Dispute } from './models/dispute';

@@ -1,7 +1,7 @@
 import { lazy, object, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
-/** Describes a gift card activity of the ADJUST_INCREMENT type. */
+/** Represents details about an `ADJUST_INCREMENT` [gift card activity type]($m/GiftCardActivityType). */
 export interface GiftCardActivityAdjustIncrement {
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -12,6 +12,7 @@ export interface GiftCardActivityAdjustIncrement {
    * for more information.
    */
   amountMoney: Money;
+  /** Indicates the reason for adding money to a [gift card]($m/GiftCard). */
   reason: string;
 }
 

@@ -28,7 +28,7 @@ export interface SubscriptionPhase {
    * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
    * for more information.
    */
-  recurringPriceMoney: Money;
+  recurringPriceMoney?: Money;
   /** The position this phase appears in the sequence of phases defined for the plan, indexed from 0. This field cannot be changed after a `SubscriptionPhase` is created. */
   ordinal?: bigint;
 }
@@ -37,6 +37,9 @@ export const subscriptionPhaseSchema: Schema<SubscriptionPhase> = object({
   uid: ['uid', optional(string())],
   cadence: ['cadence', string()],
   periods: ['periods', optional(number())],
-  recurringPriceMoney: ['recurring_price_money', lazy(() => moneySchema)],
+  recurringPriceMoney: [
+    'recurring_price_money',
+    optional(lazy(() => moneySchema)),
+  ],
   ordinal: ['ordinal', optional(bigint())],
 });

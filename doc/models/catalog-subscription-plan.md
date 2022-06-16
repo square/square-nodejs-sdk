@@ -25,20 +25,14 @@ Describes a subscription plan. For more information, see
       "uid": null,
       "cadence": "EVERY_FOUR_MONTHS",
       "periods": null,
-      "recurring_price_money": {
-        "amount": null,
-        "currency": null
-      },
+      "recurring_price_money": null,
       "ordinal": null
     },
     {
       "uid": null,
       "cadence": "QUARTERLY",
       "periods": null,
-      "recurring_price_money": {
-        "amount": null,
-        "currency": null
-      },
+      "recurring_price_money": null,
       "ordinal": null
     }
   ]

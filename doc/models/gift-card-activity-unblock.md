@@ -1,7 +1,7 @@
 
 # Gift Card Activity Unblock
 
-Present only when `GiftCardActivityType` is UNBLOCK.
+Represents details about an `UNBLOCK` [gift card activity type](../../doc/models/gift-card-activity-type.md).
 
 ## Structure
 
@@ -11,7 +11,7 @@ Present only when `GiftCardActivityType` is UNBLOCK.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `reason` | `string` | Required, Constant | **Default**: `'CHARGEBACK_UNBLOCK'` |
+| `reason` | `string` | Required, Constant | Indicates the reason for unblocking a [gift card](../../doc/models/gift-card.md).<br>**Default**: `'CHARGEBACK_UNBLOCK'` |
 
 ## Example (as JSON)
 

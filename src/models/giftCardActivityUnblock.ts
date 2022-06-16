@@ -1,7 +1,8 @@
 import { object, Schema, string } from '../schema';
 
-/** Present only when `GiftCardActivityType` is UNBLOCK. */
+/** Represents details about an `UNBLOCK` [gift card activity type]($m/GiftCardActivityType). */
 export interface GiftCardActivityUnblock {
+  /** Indicates the reason for unblocking a [gift card]($m/GiftCard). */
   reason: string;
 }
 

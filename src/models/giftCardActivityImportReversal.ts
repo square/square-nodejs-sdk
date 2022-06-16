@@ -1,7 +1,7 @@
 import { lazy, object, Schema } from '../schema';
 import { Money, moneySchema } from './money';
 
-/** Present only when GiftCardActivityType is IMPORT_REVERSAL and GiftCardGANSource is OTHER */
+/** Represents details about an `IMPORT_REVERSAL` [gift card activity type]($m/GiftCardActivityType). */
 export interface GiftCardActivityImportReversal {
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.

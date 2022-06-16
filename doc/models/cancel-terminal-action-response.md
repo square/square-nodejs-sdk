@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information on errors encountered during the request. |
-| `action` | [`TerminalAction \| undefined`](../../doc/models/terminal-action.md) | Optional | - |
+| `action` | [`TerminalAction \| undefined`](../../doc/models/terminal-action.md) | Optional | Represents an action processed by the Square Terminal. |
 
 ## Example (as JSON)
 

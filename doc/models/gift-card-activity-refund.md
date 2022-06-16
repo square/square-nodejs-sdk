@@ -1,7 +1,7 @@
 
 # Gift Card Activity Refund
 
-Present only when `GiftCardActivityType` is REFUND.
+Represents details about a `REFUND` [gift card activity type](../../doc/models/gift-card-activity-type.md).
 
 ## Structure
 
@@ -11,16 +11,16 @@ Present only when `GiftCardActivityType` is REFUND.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `redeemActivityId` | `string` | Required | The ID for the Redeem activity that needs to be refunded. Hence, the activity it<br>refers to has to be of the REDEEM type. |
+| `redeemActivityId` | `string \| undefined` | Optional | The ID of the refunded `REDEEM` gift card activity. Square populates this field if the<br>`payment_id` in the corresponding [RefundPayment](../../doc/api/refunds.md#refund-payment) request<br>represents a redemption made by the same gift card.<br><br>Applications that use a custom payment processing system can use this field in a<br>[CreateGiftCardActivity](../../doc/api/gift-card-activities.md#create-gift-card-activity)<br>request to link a refund with a `REDEEM` activity for the same gift card. |
 | `amountMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
-| `referenceId` | `string \| undefined` | Optional | A client-specified ID to associate an entity, in another system, with this gift card<br>activity. This can be used to track the order or payment related information when the Square Orders<br>API is not being used. |
-| `paymentId` | `string \| undefined` | Optional | When the Square Payments API is used, Refund is not called on the Gift Cards API.<br>However, when Square reads a Refund activity from the Gift Cards API, the developer needs to know the<br>ID of the payment (made using this gift card) that is being refunded. |
+| `referenceId` | `string \| undefined` | Optional | A client-specified ID that associates the gift card activity with an entity in another system.<br><br>Applications that use a custom payment processing system can use this field to track information<br>related to an order or payment. |
+| `paymentId` | `string \| undefined` | Optional | The ID of the refunded payment. Square populates this field if the refund is for a<br>payment processed by Square. The payment source can be the same gift card or a cross-tender payment from a<br>credit card or a different gift card. Cross-tender payments can only be refunded from Square Point of Sale<br>or other Square products. |
 
 ## Example (as JSON)
 
 ```json
 {
-  "redeem_activity_id": "redeem_activity_id0",
+  "redeem_activity_id": null,
   "amount_money": null,
   "reference_id": null,
   "payment_id": null
