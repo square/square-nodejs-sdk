@@ -70,7 +70,7 @@ present, or it might be present with a status of `FAILED`.
     "note": "Brief Description",
     "order_id": "pRsjRTgFWATl7so6DxdKBJa7ssbZY",
     "receipt_number": "R2B3",
-    "receipt_url": "https://squareupstaging.com/receipt/preview/R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",
+    "receipt_url": "https://squareup.com/receipt/preview/EXAMPLE_RECEIPT_ID",
     "reference_id": "123456",
     "risk_evaluation": {
       "created_at": "2021-10-13T21:14:30.423Z",

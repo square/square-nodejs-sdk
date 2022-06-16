@@ -1,8 +1,9 @@
 
 # Gift Card Activity Import
 
-Describes a gift card activity of the IMPORT type and the `GiftCardGANSource` is OTHER
-(a third-party gift card).
+Represents details about an `IMPORT` [gift card activity type](../../doc/models/gift-card-activity-type.md).
+This activity type is used when Square imports a third-party gift card, in which case the
+`gan_source` of the gift card is set to `OTHER`.
 
 ## Structure
 

@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, number, object, optional, Schema, string } from '../schema';
 
 export interface BatchRetrieveInventoryChangesRequest {
   /**
@@ -40,6 +40,7 @@ export interface BatchRetrieveInventoryChangesRequest {
    * See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information.
    */
   cursor?: string;
+  limit?: number;
 }
 
 export const batchRetrieveInventoryChangesRequestSchema: Schema<BatchRetrieveInventoryChangesRequest> = object(
@@ -51,5 +52,6 @@ export const batchRetrieveInventoryChangesRequestSchema: Schema<BatchRetrieveInv
     updatedAfter: ['updated_after', optional(string())],
     updatedBefore: ['updated_before', optional(string())],
     cursor: ['cursor', optional(string())],
+    limit: ['limit', optional(number())],
   }
 );

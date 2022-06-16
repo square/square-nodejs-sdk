@@ -1,7 +1,7 @@
 import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
-/** Present only when `GiftCardActivityType` is LOAD. */
+/** Represents details about a `LOAD` [gift card activity type]($m/GiftCardActivityType). */
 export interface GiftCardActivityLoad {
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -13,24 +13,31 @@ export interface GiftCardActivityLoad {
    */
   amountMoney?: Money;
   /**
-   * The `order_id` of the order associated with the activity.
-   * It is populated along with `line_item_uid` and is required if using the Square Orders API.
+   * The ID of the [order]($m/Order) that contains the `GIFT_CARD` line item.
+   * Applications that use the Square Orders API to process orders must specify the order ID in the
+   * [CreateGiftCardActivity]($e/GiftCardActivities/CreateGiftCardActivity) request.
    */
   orderId?: string;
   /**
-   * The `line_item_uid` of the gift card’s line item in the order associated with the activity.
-   * It is populated along with `order_id` and is required if using the Square Orders API.
+   * The UID of the `GIFT_CARD` line item in the order that represents the additional funds for the gift card.
+   * Applications that use the Square Orders API to process orders must specify the line item UID
+   * in the [CreateGiftCardActivity]($e/GiftCardActivities/CreateGiftCardActivity) request.
    */
   lineItemUid?: string;
   /**
-   * A client-specified ID to associate an entity, in another system, with this gift card
-   * activity. This can be used to track the order or payment related information when the Square Orders
-   * API is not being used.
+   * A client-specified ID that associates the gift card activity with an entity in another system.
+   * Applications that use a custom order processing system can use this field to track information related to
+   * an order or payment.
    */
   referenceId?: string;
   /**
-   * If you are not using the Orders API, this field is required because it is used to identify a buyer
-   * to perform compliance checks.
+   * The payment instrument IDs used to process the order for the additional funds, such as a credit card ID
+   * or bank account ID.
+   * Applications that use a custom order processing system must specify payment instrument IDs in
+   * the [CreateGiftCardActivity]($e/GiftCardActivities/CreateGiftCardActivity) request.
+   * Square uses this information to perform compliance checks.
+   * For applications that use the Square Orders API to process payments, Square has the necessary
+   * instrument IDs to perform compliance checks.
    */
   buyerPaymentInstrumentIds?: string[];
 }

@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, number, object, optional, Schema, string } from '../schema';
 
 export interface BatchRetrieveInventoryCountsRequest {
   /**
@@ -29,6 +29,7 @@ export interface BatchRetrieveInventoryCountsRequest {
    * The default is null.
    */
   states?: string[];
+  limit?: number;
 }
 
 export const batchRetrieveInventoryCountsRequestSchema: Schema<BatchRetrieveInventoryCountsRequest> = object(
@@ -38,5 +39,6 @@ export const batchRetrieveInventoryCountsRequestSchema: Schema<BatchRetrieveInve
     updatedAfter: ['updated_after', optional(string())],
     cursor: ['cursor', optional(string())],
     states: ['states', optional(array(string()))],
+    limit: ['limit', optional(number())],
   }
 );

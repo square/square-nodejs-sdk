@@ -26,8 +26,7 @@ const terminalApi = client.terminalApi;
 
 # Create Terminal Action
 
-Creates a Terminal action request and sends it to the specified device to take a payment
-for the requested amount.
+Creates a Terminal action request and sends it to the specified device.
 
 ```ts
 async createTerminalAction(

@@ -1,6 +1,8 @@
 
 # Gift Card Activity Block Reason
 
+Indicates the reason for blocking a [gift card](../../doc/models/gift-card.md).
+
 ## Enumeration
 
 `GiftCardActivityBlockReason`

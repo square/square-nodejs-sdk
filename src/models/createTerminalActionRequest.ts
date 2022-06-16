@@ -8,6 +8,7 @@ export interface CreateTerminalActionRequest {
    * See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.
    */
   idempotencyKey: string;
+  /** Represents an action processed by the Square Terminal. */
   action: TerminalAction;
 }
 

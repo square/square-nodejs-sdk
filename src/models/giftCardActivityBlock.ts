@@ -1,7 +1,8 @@
 import { object, Schema, string } from '../schema';
 
-/** Describes a gift card activity of the BLOCK type. */
+/** Represents details about a `BLOCK` [gift card activity type]($m/GiftCardActivityType). */
 export interface GiftCardActivityBlock {
+  /** Indicates the reason for blocking a [gift card]($m/GiftCard). */
   reason: string;
 }
 

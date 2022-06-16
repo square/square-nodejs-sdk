@@ -53,19 +53,29 @@ import {
 } from './giftCardActivityUnlinkedActivityRefund';
 import { Money, moneySchema } from './money';
 
-/** Represents an action performed on a gift card that affects its state or balance. */
+/**
+ * Represents an action performed on a [gift card]($m/GiftCard) that affects its state or balance.
+ * A gift card activity contains information about a specific activity type. For example, a `REDEEM` activity
+ * includes a `redeem_activity_details` field that contains information about the redemption.
+ */
 export interface GiftCardActivity {
-  /** The unique ID of the gift card activity. */
+  /** The Square-assigned ID of the gift card activity. */
   id?: string;
-  /** Indicates the gift card activity type. */
+  /** Indicates the type of [gift card activity]($m/GiftCardActivity). */
   type: string;
-  /** The ID of the location at which the activity occurred. */
+  /** The ID of the [business location]($m/Location) where the activity occurred. */
   locationId: string;
   /** The timestamp when the gift card activity was created, in RFC 3339 format. */
   createdAt?: string;
-  /** The gift card ID. The ID is not required if a GAN is present. */
+  /**
+   * The gift card ID. When creating a gift card activity, `gift_card_id` is not required if
+   * `gift_card_gan` is specified.
+   */
   giftCardId?: string;
-  /** The gift card GAN. The GAN is not required if `gift_card_id` is present. */
+  /**
+   * The gift card account number (GAN). When creating a gift card activity, `gift_card_gan`
+   * is not required if `gift_card_id` is specified.
+   */
   giftCardGan?: string;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -76,34 +86,35 @@ export interface GiftCardActivity {
    * for more information.
    */
   giftCardBalanceMoney?: Money;
-  /** Present only when `GiftCardActivityType` is LOAD. */
+  /** Represents details about a `LOAD` [gift card activity type]($m/GiftCardActivityType). */
   loadActivityDetails?: GiftCardActivityLoad;
-  /** Describes a gift card activity of the ACTIVATE type. */
+  /** Represents details about an `ACTIVATE` [gift card activity type]($m/GiftCardActivityType). */
   activateActivityDetails?: GiftCardActivityActivate;
-  /** Present only when `GiftCardActivityType` is REDEEM. */
+  /** Represents details about a `REDEEM` [gift card activity type]($m/GiftCardActivityType). */
   redeemActivityDetails?: GiftCardActivityRedeem;
-  /** Describes a gift card activity of the CLEAR_BALANCE type. */
+  /** Represents details about a `CLEAR_BALANCE` [gift card activity type]($m/GiftCardActivityType). */
   clearBalanceActivityDetails?: GiftCardActivityClearBalance;
-  /** Describes a gift card activity of the DEACTIVATE type. */
+  /** Represents details about a `DEACTIVATE` [gift card activity type]($m/GiftCardActivityType). */
   deactivateActivityDetails?: GiftCardActivityDeactivate;
-  /** Describes a gift card activity of the ADJUST_INCREMENT type. */
+  /** Represents details about an `ADJUST_INCREMENT` [gift card activity type]($m/GiftCardActivityType). */
   adjustIncrementActivityDetails?: GiftCardActivityAdjustIncrement;
-  /** Describes a gift card activity of the ADJUST_DECREMENT type. */
+  /** Represents details about an `ADJUST_DECREMENT` [gift card activity type]($m/GiftCardActivityType). */
   adjustDecrementActivityDetails?: GiftCardActivityAdjustDecrement;
-  /** Present only when `GiftCardActivityType` is REFUND. */
+  /** Represents details about a `REFUND` [gift card activity type]($m/GiftCardActivityType). */
   refundActivityDetails?: GiftCardActivityRefund;
-  /** Present only when `GiftCardActivityType` is UNLINKED_ACTIVITY_REFUND. */
+  /** Represents details about an `UNLINKED_ACTIVITY_REFUND` [gift card activity type]($m/GiftCardActivityType). */
   unlinkedActivityRefundActivityDetails?: GiftCardActivityUnlinkedActivityRefund;
   /**
-   * Describes a gift card activity of the IMPORT type and the `GiftCardGANSource` is OTHER
-   * (a third-party gift card).
+   * Represents details about an `IMPORT` [gift card activity type]($m/GiftCardActivityType).
+   * This activity type is used when Square imports a third-party gift card, in which case the
+   * `gan_source` of the gift card is set to `OTHER`.
    */
   importActivityDetails?: GiftCardActivityImport;
-  /** Describes a gift card activity of the BLOCK type. */
+  /** Represents details about a `BLOCK` [gift card activity type]($m/GiftCardActivityType). */
   blockActivityDetails?: GiftCardActivityBlock;
-  /** Present only when `GiftCardActivityType` is UNBLOCK. */
+  /** Represents details about an `UNBLOCK` [gift card activity type]($m/GiftCardActivityType). */
   unblockActivityDetails?: GiftCardActivityUnblock;
-  /** Present only when GiftCardActivityType is IMPORT_REVERSAL and GiftCardGANSource is OTHER */
+  /** Represents details about an `IMPORT_REVERSAL` [gift card activity type]($m/GiftCardActivityType). */
   importReversalActivityDetails?: GiftCardActivityImportReversal;
 }
 

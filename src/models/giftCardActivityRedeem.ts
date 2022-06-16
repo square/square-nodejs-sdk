@@ -1,7 +1,7 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
-/** Present only when `GiftCardActivityType` is REDEEM. */
+/** Represents details about a `REDEEM` [gift card activity type]($m/GiftCardActivityType). */
 export interface GiftCardActivityRedeem {
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -13,17 +13,22 @@ export interface GiftCardActivityRedeem {
    */
   amountMoney: Money;
   /**
-   * When the Square Payments API is used, Redeem is not called on the Gift Cards API.
-   * However, when Square reads a Redeem activity from the Gift Cards API, developers need to know the
-   * associated `payment_id`.
+   * The ID of the payment that represents the gift card redemption. Square populates this field
+   * if the payment was processed by Square.
    */
   paymentId?: string;
   /**
-   * A client-specified ID to associate an entity, in another system, with this gift card
-   * activity. This can be used to track the order or payment related information when the Square Orders
-   * API is not being used.
+   * A client-specified ID that associates the gift card activity with an entity in another system.
+   * Applications that use a custom payment processing system can use this field to track information
+   * related to an order or payment.
    */
   referenceId?: string;
+  /**
+   * Indicates the status of a [gift card]($m/GiftCard) redemption. This status is relevant only for
+   * redemptions made from Square products (such as Square Point of Sale) because Square products use a
+   * two-state process. Gift cards redeemed using the Gift Card Activities API always have a `COMPLETED` status.
+   */
+  status?: string;
 }
 
 export const giftCardActivityRedeemSchema: Schema<GiftCardActivityRedeem> = object(
@@ -31,5 +36,6 @@ export const giftCardActivityRedeemSchema: Schema<GiftCardActivityRedeem> = obje
     amountMoney: ['amount_money', lazy(() => moneySchema)],
     paymentId: ['payment_id', optional(string())],
     referenceId: ['reference_id', optional(string())],
+    status: ['status', optional(string())],
   }
 );

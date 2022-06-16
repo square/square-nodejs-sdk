@@ -64,6 +64,8 @@ export interface Card {
    * version for the Card.
    */
   version?: bigint;
+  /** Indicates the brand for a co-branded card. */
+  cardCoBrand?: string;
 }
 
 export const cardSchema: Schema<Card> = object({
@@ -83,4 +85,5 @@ export const cardSchema: Schema<Card> = object({
   prepaidType: ['prepaid_type', optional(string())],
   bin: ['bin', optional(string())],
   version: ['version', optional(bigint())],
+  cardCoBrand: ['card_co_brand', optional(string())],
 });

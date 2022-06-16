@@ -1,7 +1,7 @@
 
 # Gift Card Activity Clear Balance
 
-Describes a gift card activity of the CLEAR_BALANCE type.
+Represents details about a `CLEAR_BALANCE` [gift card activity type](../../doc/models/gift-card-activity-type.md).
 
 ## Structure
 
@@ -11,7 +11,7 @@ Describes a gift card activity of the CLEAR_BALANCE type.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `reason` | [`string`](../../doc/models/gift-card-activity-clear-balance-reason.md) | Required | - |
+| `reason` | [`string`](../../doc/models/gift-card-activity-clear-balance-reason.md) | Required | Indicates the reason for clearing the balance of a [gift card](../../doc/models/gift-card.md). |
 
 ## Example (as JSON)
 

@@ -292,10 +292,9 @@ export class CatalogApi extends BaseApi {
    *                                  returns objects of all the top level types at the version of the Square API used
    *                                  to make the request. Object types that are nested onto other object types are not
    *                                  included in the defaults.  At the current API version the default object types
-   *                                  are: ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST, DINING_OPTION, TAX_EXEMPTION,
-   *                                  SERVICE_CHARGE, PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,
-   *                                  SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION,
-   *                                  QUICK_AMOUNT_SETTINGS.
+   *                                  are: ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST,  PRICING_RULE, PRODUCT_SET,
+   *                                  TIME_PERIOD, MEASUREMENT_UNIT, SUBSCRIPTION_PLAN, ITEM_OPTION,
+   *                                  CUSTOM_ATTRIBUTE_DEFINITION, QUICK_AMOUNT_SETTINGS.
    * @param catalogVersion  The specific version of the catalog objects to be included in the response.
    *                                  This allows you to retrieve historical versions of objects. The specified version
    *                                  value is matched against the [CatalogObject]($m/CatalogObject)s' `version`

@@ -60,11 +60,11 @@ export interface CreatePaymentRequest {
    */
   appFeeMoney?: Money;
   /**
-   * The duration of time after the payment's creation when Square automatically cancels the
-   * payment. This automatic cancellation applies only to payments that do not reach a terminal state
-   * (COMPLETED, CANCELED, or FAILED) before the `delay_duration` time period.
-   * This parameter should be specified as a time duration, in RFC 3339 format, with a minimum value
-   * of 1 minute.
+   * The duration of time after the payment's creation when Square automatically
+   * either completes or cancels the payment depending on the `delay_action` field value.
+   * For more information, see
+   * [Time threshold](https://developer.squareup.com/docs/payments-api/take-payments/card-payments/delayed-capture#time-threshold).
+   * This parameter should be specified as a time duration, in RFC 3339 format.
    * Note: This feature is only supported for card payments. This parameter can only be set for a delayed
    * capture payment (`autocomplete=false`).
    * Default:
@@ -72,6 +72,13 @@ export interface CreatePaymentRequest {
    * - Card-not-present payments: "P7D" (7 days) from the creation time.
    */
   delayDuration?: string;
+  /**
+   * The action to be applied to the payment when the `delay_duration` has elapsed. The action must be
+   * CANCEL or COMPLETE. For more information, see
+   * [Time Threshold](https://developer.squareup.com/docs/payments-api/take-payments/card-payments/delayed-capture#time-threshold).
+   * Default: CANCEL
+   */
+  delayAction?: string;
   /**
    * If set to `true`, this payment will be completed when possible. If
    * set to `false`, this payment is held in an approved state until either
@@ -164,6 +171,7 @@ export const createPaymentRequestSchema: Schema<CreatePaymentRequest> = object({
   tipMoney: ['tip_money', optional(lazy(() => moneySchema))],
   appFeeMoney: ['app_fee_money', optional(lazy(() => moneySchema))],
   delayDuration: ['delay_duration', optional(string())],
+  delayAction: ['delay_action', optional(string())],
   autocomplete: ['autocomplete', optional(boolean())],
   orderId: ['order_id', optional(string())],
   customerId: ['customer_id', optional(string())],
