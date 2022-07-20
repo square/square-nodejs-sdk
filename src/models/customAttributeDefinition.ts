@@ -1,6 +1,5 @@
 import {
   dict,
-  lazy,
   number,
   object,
   optional,
@@ -8,10 +7,6 @@ import {
   string,
   unknown,
 } from '../schema';
-import {
-  SourceApplication,
-  sourceApplicationSchema,
-} from './sourceApplication';
 
 /**
  * Represents a definition for custom attribute values. A custom attribute definition
@@ -51,8 +46,6 @@ export interface CustomAttributeDefinition {
    * required if the `visibility` field is `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
    */
   description?: string;
-  /** Represents information about the application used to generate a change. */
-  sourceApplication?: SourceApplication;
   /**
    * The level of permission that a seller or other applications requires to
    * view this custom attribute definition.
@@ -86,10 +79,6 @@ export const customAttributeDefinitionSchema: Schema<CustomAttributeDefinition> 
     schema: ['schema', optional(dict(unknown()))],
     name: ['name', optional(string())],
     description: ['description', optional(string())],
-    sourceApplication: [
-      'source_application',
-      optional(lazy(() => sourceApplicationSchema)),
-    ],
     visibility: ['visibility', optional(string())],
     version: ['version', optional(number())],
     updatedAt: ['updated_at', optional(string())],

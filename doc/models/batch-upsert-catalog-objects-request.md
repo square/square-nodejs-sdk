@@ -23,7 +23,7 @@
           "id": "#Tea",
           "item_data": {
             "category_id": "#Beverages",
-            "description": "Hot Leaf Juice",
+            "description_html": "<p><strong>Hot</strong> Leaf Juice</p>",
             "name": "Tea",
             "tax_ids": [
               "#SalesTax"
@@ -52,7 +52,7 @@
           "id": "#Coffee",
           "item_data": {
             "category_id": "#Beverages",
-            "description": "Hot Bean Juice",
+            "description_html": "<p>Hot <em>Bean Juice</em></p>",
             "name": "Coffee",
             "tax_ids": [
               "#SalesTax"

@@ -207,6 +207,15 @@ export interface Order {
   pricingOptions?: OrderPricingOptions;
   /** A set-like list of Rewards that have been added to the Order. */
   rewards?: OrderReward[];
+  /**
+   * Represents an amount of money. `Money` fields can be signed or unsigned.
+   * Fields that do not explicitly define whether they are signed or unsigned are
+   * considered unsigned and can only hold positive amounts. For signed fields, the
+   * sign of the value indicates the purpose of the money transfer. See
+   * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
+   * for more information.
+   */
+  netAmountDueMoney?: Money;
 }
 
 export const orderSchema: Schema<Order> = object({
@@ -264,4 +273,8 @@ export const orderSchema: Schema<Order> = object({
     optional(lazy(() => orderPricingOptionsSchema)),
   ],
   rewards: ['rewards', optional(array(lazy(() => orderRewardSchema)))],
+  netAmountDueMoney: [
+    'net_amount_due_money',
+    optional(lazy(() => moneySchema)),
+  ],
 });

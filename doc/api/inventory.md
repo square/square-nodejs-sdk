@@ -210,8 +210,8 @@ body.catalogObjectIds = bodyCatalogObjectIds;
 body.locationIds = bodyLocationIds;
 body.types = bodyTypes;
 body.states = bodyStates;
-body.updatedAfter = '2016-11-01T00:00:00.000Z';
-body.updatedBefore = '2016-12-01T00:00:00.000Z';
+body.updatedAfter = '2016-11-01T00:00:00Z';
+body.updatedBefore = '2016-12-01T00:00:00Z';
 
 try {
   const { result, ...httpResponse } = await inventoryApi.deprecatedBatchRetrieveInventoryChanges(body);
@@ -260,7 +260,7 @@ const bodyLocationIds: string[] = ['59TNP9SA8VGDA'];
 const body: BatchRetrieveInventoryCountsRequest = {};
 body.catalogObjectIds = bodyCatalogObjectIds;
 body.locationIds = bodyLocationIds;
-body.updatedAfter = '2016-11-16T00:00:00.000Z';
+body.updatedAfter = '2016-11-16T00:00:00Z';
 
 try {
   const { result, ...httpResponse } = await inventoryApi.deprecatedBatchRetrieveInventoryCounts(body);
@@ -383,8 +383,8 @@ body.catalogObjectIds = bodyCatalogObjectIds;
 body.locationIds = bodyLocationIds;
 body.types = bodyTypes;
 body.states = bodyStates;
-body.updatedAfter = '2016-11-01T00:00:00.000Z';
-body.updatedBefore = '2016-12-01T00:00:00.000Z';
+body.updatedAfter = '2016-11-01T00:00:00Z';
+body.updatedBefore = '2016-12-01T00:00:00Z';
 
 try {
   const { result, ...httpResponse } = await inventoryApi.batchRetrieveInventoryChanges(body);
@@ -440,7 +440,7 @@ const bodyLocationIds: string[] = ['59TNP9SA8VGDA'];
 const body: BatchRetrieveInventoryCountsRequest = {};
 body.catalogObjectIds = bodyCatalogObjectIds;
 body.locationIds = bodyLocationIds;
-body.updatedAfter = '2016-11-16T00:00:00.000Z';
+body.updatedAfter = '2016-11-16T00:00:00Z';
 
 try {
   const { result, ...httpResponse } = await inventoryApi.batchRetrieveInventoryCounts(body);

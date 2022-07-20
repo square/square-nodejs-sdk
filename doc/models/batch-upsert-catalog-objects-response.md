@@ -55,6 +55,8 @@
       "item_data": {
         "category_id": "LYT72K3WGJFFCIMB63XARP3I",
         "description": "Hot Leaf Juice",
+        "description_html": "<p><strong>Hot</strong> Leaf Juice</p>",
+        "description_plaintext": "Hot Leaf Juice",
         "name": "Tea",
         "tax_ids": [
           "XHSHLHNWSI3HVI4BW5ZUZXI3"
@@ -91,6 +93,8 @@
       "item_data": {
         "category_id": "LYT72K3WGJFFCIMB63XARP3I",
         "description": "Hot Bean Juice",
+        "description_html": "<p>Hot <em>Bean Juice</em></p>",
+        "description_plaintext": "Hot Bean Juice",
         "name": "Coffee",
         "tax_ids": [
           "XHSHLHNWSI3HVI4BW5ZUZXI3"

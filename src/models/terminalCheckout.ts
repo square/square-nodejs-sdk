@@ -31,7 +31,7 @@ export interface TerminalCheckout {
    * Note: maximum 500 characters
    */
   note?: string;
-  /** The reference to the Square order ID for the checkout request. */
+  /** The reference to the Square order ID for the checkout request. Supported only in the US. */
   orderId?: string;
   paymentOptions?: PaymentOptions;
   deviceOptions: DeviceCheckoutOptions;

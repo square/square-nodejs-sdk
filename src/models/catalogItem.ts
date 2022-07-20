@@ -21,7 +21,14 @@ import { CatalogObject, catalogObjectSchema } from './catalogObject';
 export interface CatalogItem {
   /** The item's name. This is a searchable attribute for use in applicable query filters, its value must not be empty, and the length is of Unicode code points. */
   name?: string;
-  /** The item's description. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points. */
+  /**
+   * The item's description. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points.
+   * Deprecated at 2022-07-20, this field is planned to retire in 6 months. You should migrate to use `description_html` to set the description
+   * of the [CatalogItem]($m/CatalogItem) instance.  The `description` and `description_html` field values are kept in sync. If you try to
+   * set the both fields, the `description_html` text value overwrites the `description` value. Updates in one field are also reflected in the other,
+   * except for when you use an early version before Square API 2022-07-20 and `description_html` is set to blank, setting the `description` value to null
+   * does not nullify `description_html`.
+   */
   description?: string;
   /**
    * The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used.
@@ -84,6 +91,32 @@ export interface CatalogItem {
    * It is currently supported for sellers of the Japanese locale only.
    */
   sortName?: string;
+  /**
+   * The item's description as expressed in valid HTML elements. The length of this field value, including those of HTML tags,
+   * is of Unicode points. With application query filters, the text values of the HTML elements and attributes are searchable. Invalid or
+   * unsupported HTML elements or attributes are ignored.
+   * Supported HTML elements include:
+   * - `a`: Link. Supports linking to website URLs, email address, and telephone numbers.
+   * - `b`, `strong`:  Bold text
+   * - `br`: Line break
+   * - `code`: Computer code
+   * - `div`: Section
+   * - `h1-h6`: Headings
+   * - `i`, `em`: Italics
+   * - `li`: List element
+   * - `ol`: Numbered list
+   * - `p`: Paragraph
+   * - `ul`: Bullet list
+   * - `u`: Underline
+   * Supported HTML attributes include:
+   * - `align`: Alignment of the text content
+   * - `href`: Link destination
+   * - `rel`: Relationship between link's target and source
+   * - `target`: Place to open the linked document
+   */
+  descriptionHtml?: string;
+  /** A server-generated plaintext version of the `description_html` field, without formatting tags. */
+  descriptionPlaintext?: string;
 }
 
 export const catalogItemSchema: Schema<CatalogItem> = object({
@@ -109,4 +142,6 @@ export const catalogItemSchema: Schema<CatalogItem> = object({
   ],
   imageIds: ['image_ids', optional(array(string()))],
   sortName: ['sort_name', optional(string())],
+  descriptionHtml: ['description_html', optional(string())],
+  descriptionPlaintext: ['description_plaintext', optional(string())],
 });

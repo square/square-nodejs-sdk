@@ -106,7 +106,7 @@ async searchTerminalActions(
 ```ts
 const contentType = null;
 const bodyQueryFilterCreatedAt: TimeRange = {};
-bodyQueryFilterCreatedAt.startAt = '2022-04-01T00:00:00.000Z';
+bodyQueryFilterCreatedAt.startAt = '2022-04-01T00:00:00Z';
 
 const bodyQueryFilter: TerminalActionQueryFilter = {};
 bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;

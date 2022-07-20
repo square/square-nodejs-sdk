@@ -16,7 +16,6 @@ specifies the key, visibility, schema, and other properties for a custom attribu
 | `schema` | `Record<string, unknown> \| undefined` | Optional | The JSON schema for the custom attribute definition. For more information about the schema,<br>see [Custom Attributes Overview](https://developer.squareup.com/docs/devtools/customattributes/overview). |
 | `name` | `string \| undefined` | Optional | The name of the custom attribute definition for API and seller-facing UI purposes. The name must<br>be unique within the seller and application pair. This field is required if the<br>`visibility` field is `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.<br>**Constraints**: *Maximum Length*: `255` |
 | `description` | `string \| undefined` | Optional | Seller-oriented description of the custom attribute definition, including any constraints<br>that the seller should observe. May be displayed as a tooltip in Square UIs. This field is<br>required if the `visibility` field is `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.<br>**Constraints**: *Maximum Length*: `255` |
-| `sourceApplication` | [`SourceApplication \| undefined`](../../doc/models/source-application.md) | Optional | Represents information about the application used to generate a change. |
 | `visibility` | [`string \| undefined`](../../doc/models/custom-attribute-definition-visibility.md) | Optional | The level of permission that a seller or other applications requires to<br>view this custom attribute definition.<br>The `Visibility` field controls who can read and write the custom attribute values<br>and custom attribute definition. |
 | `version` | `number \| undefined` | Optional | Read only. The current version of the custom attribute definition.<br>The value is incremented each time the custom attribute definition is updated.<br>When updating a custom attribute definition, you can provide this field<br>and specify the current version of the custom attribute definition to enable<br>[optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency).<br><br>On writes, this field must be set to the latest version. Stale writes are rejected.<br><br>This field can also be used to enforce strong consistency for reads. For more information about strong consistency for reads,<br>see [Custom Attributes Overview](https://developer.squareup.com/docs/devtools/customattributes/overview). |
 | `updatedAt` | `string \| undefined` | Optional | The timestamp that indicates when the custom attribute definition was created or most recently updated,<br>in RFC 3339 format. |
@@ -30,7 +29,6 @@ specifies the key, visibility, schema, and other properties for a custom attribu
   "schema": null,
   "name": null,
   "description": null,
-  "source_application": null,
   "visibility": null,
   "version": null,
   "updated_at": null,

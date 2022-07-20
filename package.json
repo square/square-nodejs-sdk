@@ -1,5 +1,5 @@
 {
-  "version": "19.1.0",
+  "version": "20.0.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/index.js",

@@ -8,7 +8,7 @@ import { TimeRange, timeRangeSchema } from './timeRange';
  */
 export interface ShiftFilter {
   /** Fetch shifts for the specified location. */
-  locationIds: string[];
+  locationIds?: string[];
   /** Fetch shifts for the specified employees. DEPRECATED at version 2020-08-26. Use `team_member_ids` instead. */
   employeeIds?: string[];
   /** Specifies the `status` of `Shift` records to be returned. */
@@ -35,15 +35,15 @@ export interface ShiftFilter {
    */
   workday?: ShiftWorkday;
   /** Fetch shifts for the specified team members. Replaced `employee_ids` at version "2020-08-26". */
-  teamMemberIds: string[];
+  teamMemberIds?: string[];
 }
 
 export const shiftFilterSchema: Schema<ShiftFilter> = object({
-  locationIds: ['location_ids', array(string())],
+  locationIds: ['location_ids', optional(array(string()))],
   employeeIds: ['employee_ids', optional(array(string()))],
   status: ['status', optional(string())],
   start: ['start', optional(lazy(() => timeRangeSchema))],
   end: ['end', optional(lazy(() => timeRangeSchema))],
   workday: ['workday', optional(lazy(() => shiftWorkdaySchema))],
-  teamMemberIds: ['team_member_ids', array(string())],
+  teamMemberIds: ['team_member_ids', optional(array(string()))],
 });

@@ -25,9 +25,6 @@ Either `custom_attribute_definition` or `errors` is present in the response.
     "key": "favoritemovie",
     "name": "Favorite Movie",
     "schema": null,
-    "source_application": {
-      "application_id": "sq0idp-vYnkl5YF8SiWyJtfrKMhNA"
-    },
     "updated_at": "2022-04-26T15:39:38Z",
     "version": 2,
     "visibility": "VISIBILITY_READ_ONLY"

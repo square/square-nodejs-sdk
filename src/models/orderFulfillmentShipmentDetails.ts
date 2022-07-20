@@ -6,7 +6,7 @@ import {
 
 /** Contains the details necessary to fulfill a shipment order. */
 export interface OrderFulfillmentShipmentDetails {
-  /** Contains information about the recipient of a fulfillment. */
+  /** Information about the fulfillment recipient. */
   recipient?: OrderFulfillmentRecipient;
   /** The shipping carrier being used to ship this fulfillment (such as UPS, FedEx, or USPS). */
   carrier?: string;

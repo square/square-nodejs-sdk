@@ -185,10 +185,10 @@ bodybatches0objects0ItemDataVariations[0] = bodybatches0objects0ItemDatavariatio
 
 const bodybatches0objects0ItemData: CatalogItem = {};
 bodybatches0objects0ItemData.name = 'Tea';
-bodybatches0objects0ItemData.description = 'Hot Leaf Juice';
 bodybatches0objects0ItemData.categoryId = '#Beverages';
 bodybatches0objects0ItemData.taxIds = bodybatches0objects0ItemDataTaxIds;
 bodybatches0objects0ItemData.variations = bodybatches0objects0ItemDataVariations;
+bodybatches0objects0ItemData.descriptionHtml = '<p><strong>Hot</strong> Leaf Juice</p>';
 
 const bodybatches0objects0: CatalogObject = {
   type: 'ITEM',
@@ -232,10 +232,10 @@ bodybatches0objects1ItemDataVariations[1] = bodybatches0objects1ItemDatavariatio
 
 const bodybatches0objects1ItemData: CatalogItem = {};
 bodybatches0objects1ItemData.name = 'Coffee';
-bodybatches0objects1ItemData.description = 'Hot Bean Juice';
 bodybatches0objects1ItemData.categoryId = '#Beverages';
 bodybatches0objects1ItemData.taxIds = bodybatches0objects1ItemDataTaxIds;
 bodybatches0objects1ItemData.variations = bodybatches0objects1ItemDataVariations;
+bodybatches0objects1ItemData.descriptionHtml = '<p>Hot <em>Bean Juice</em></p>';
 
 const bodybatches0objects1: CatalogObject = {
   type: 'ITEM',
@@ -320,7 +320,7 @@ async createCatalogImage(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `request` | [`CreateCatalogImageRequest \| undefined`](../../doc/models/create-catalog-image-request.md) | Form, Optional | - |
+| `request` | [`CreateCatalogImageRequest \| undefined`](../../doc/models/create-catalog-image-request.md) | Form (JSON-Encoded), Optional | - |
 | `imageFile` | `FileWrapper \| undefined` | Form, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -380,7 +380,7 @@ async updateCatalogImage(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `imageId` | `string` | Template, Required | The ID of the `CatalogImage` object to update the encapsulated image file. |
-| `request` | [`UpdateCatalogImageRequest \| undefined`](../../doc/models/update-catalog-image-request.md) | Form, Optional | - |
+| `request` | [`UpdateCatalogImageRequest \| undefined`](../../doc/models/update-catalog-image-request.md) | Form (JSON-Encoded), Optional | - |
 | `imageFile` | `FileWrapper \| undefined` | Form, Optional | - |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -556,9 +556,9 @@ bodyObjectItemDataVariations[1] = bodyObjectItemDatavariations1;
 
 const bodyObjectItemData: CatalogItem = {};
 bodyObjectItemData.name = 'Cocoa';
-bodyObjectItemData.description = 'Hot Chocolate';
 bodyObjectItemData.abbreviation = 'Ch';
 bodyObjectItemData.variations = bodyObjectItemDataVariations;
+bodyObjectItemData.descriptionHtml = '<p><strong>Hot</strong> Chocolate</p>';
 
 const bodyObject: CatalogObject = {
   type: 'ITEM',

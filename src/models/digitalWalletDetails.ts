@@ -8,7 +8,7 @@ export interface DigitalWalletDetails {
    * `FAILED`.
    */
   status?: string;
-  /** The brand used for the `WALLET` payment. The brand can be `CASH_APP` or `UNKNOWN`. */
+  /** The brand used for the `WALLET` payment. The brand can be `CASH_APP`, `PAYPAY` or `UNKNOWN`. */
   brand?: string;
   /** Additional details about `WALLET` type payments with the `brand` of `CASH_APP`. */
   cashAppDetails?: CashAppDetails;
