@@ -10,7 +10,7 @@ export interface CatalogTax {
   inclusionType?: string;
   /**
    * The percentage of the tax in decimal form, using a `'.'` as the decimal separator and without a `'%'` sign.
-   * A value of `7.5` corresponds to 7.5%.
+   * A value of `7.5` corresponds to 7.5%. For a location-specific tax rate, contact the tax authority of the location or a tax consultant.
    */
   percentage?: string;
   /**

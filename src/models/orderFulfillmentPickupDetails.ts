@@ -10,7 +10,7 @@ import {
 
 /** Contains details necessary to fulfill a pickup order. */
 export interface OrderFulfillmentPickupDetails {
-  /** Contains information about the recipient of a fulfillment. */
+  /** Information about the fulfillment recipient. */
   recipient?: OrderFulfillmentRecipient;
   /**
    * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
@@ -49,7 +49,7 @@ export interface OrderFulfillmentPickupDetails {
    */
   prepTimeDuration?: string;
   /**
-   * A note meant to provide additional instructions about the pickup
+   * A note to provide additional instructions about the pickup
    * fulfillment displayed in the Square Point of Sale application and set by the API.
    */
   note?: string;

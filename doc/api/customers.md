@@ -175,8 +175,8 @@ bodyQueryFilterCreationSource.values = bodyQueryFilterCreationSourceValues;
 bodyQueryFilterCreationSource.rule = 'INCLUDE';
 
 const bodyQueryFilterCreatedAt: TimeRange = {};
-bodyQueryFilterCreatedAt.startAt = '2018-01-01T00:00:00-00:00';
-bodyQueryFilterCreatedAt.endAt = '2018-02-01T00:00:00-00:00';
+bodyQueryFilterCreatedAt.startAt = '2018-01-01T00:00:00+00:00';
+bodyQueryFilterCreatedAt.endAt = '2018-02-01T00:00:00+00:00';
 
 const bodyQueryFilterEmailAddress: CustomerTextFilter = {};
 bodyQueryFilterEmailAddress.fuzzy = 'example.com';

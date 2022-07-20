@@ -21,7 +21,7 @@
     "id": "#Cocoa",
     "item_data": {
       "abbreviation": "Ch",
-      "description": "Hot Chocolate",
+      "description_html": "<p><strong>Hot</strong> Chocolate</p>",
       "name": "Cocoa",
       "variations": [
         {

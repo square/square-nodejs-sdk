@@ -19,9 +19,19 @@ A request for a filtered and sorted set of `Shift` objects.
 
 ```json
 {
-  "query": null,
-  "limit": null,
-  "cursor": null
+  "limit": 100,
+  "query": {
+    "filter": {
+      "workday": {
+        "date_range": {
+          "end_date": "2019-02-03",
+          "start_date": "2019-01-20"
+        },
+        "default_timezone": "America/Los_Angeles",
+        "match_shifts_by": "START_AT"
+      }
+    }
+  }
 }
 ```
 

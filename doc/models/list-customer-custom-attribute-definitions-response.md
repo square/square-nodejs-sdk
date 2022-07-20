@@ -29,9 +29,6 @@ If additional results are available, the `cursor` field is also present along wi
       "key": "favoritemovie",
       "name": "Favorite Movie",
       "schema": null,
-      "source_application": {
-        "application_id": "sq0idp-vYnkl5YF8SiWyJtfrKMhNA"
-      },
       "updated_at": "2022-04-26T15:39:38Z",
       "version": 3,
       "visibility": "VISIBILITY_READ_ONLY"
@@ -42,9 +39,6 @@ If additional results are available, the `cursor` field is also present along wi
       "key": "ownsmovie",
       "name": "Owns Movie",
       "schema": null,
-      "source_application": {
-        "application_id": "sq0idp-vYnkl5YF8SiWyJtfrKMhNA"
-      },
       "updated_at": "2022-04-26T15:49:05Z",
       "version": 1,
       "visibility": "VISIBILITY_HIDDEN"

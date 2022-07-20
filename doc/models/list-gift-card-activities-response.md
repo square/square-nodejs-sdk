@@ -31,12 +31,14 @@ the response contains a set of `Error` objects.
       "gift_card_id": "gftc:6d55a72470d940c6ba09c0ab8ad08d20",
       "id": "gcact_897698f894b44b3db46c6147e26a0e19",
       "location_id": "81FN9BNFZTKS4",
+      "payment_id": "dEv2eksNPy6GqdYiLe4ZBNk6HqXZY",
       "redeem_activity_details": {
         "amount_money": {
           "amount": 300,
           "currency": "USD"
         }
       },
+      "status": "COMPLETED",
       "type": "REDEEM"
     },
     {

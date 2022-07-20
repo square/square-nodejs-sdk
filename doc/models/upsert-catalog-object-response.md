@@ -23,6 +23,8 @@
     "item_data": {
       "abbreviation": "Ch",
       "description": "Hot Chocolate",
+      "description_html": "<p><strong>Hot</strong> Chocolate</p>",
+      "description_plaintext": "Hot Chocolate",
       "name": "Cocoa",
       "product_type": "REGULAR",
       "variations": [

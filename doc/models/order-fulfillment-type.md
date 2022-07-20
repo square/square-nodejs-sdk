@@ -11,6 +11,6 @@ The type of fulfillment.
 
 | Name | Description |
 |  --- | --- |
-| `PICKUP` | A fulfillment to be picked up from a physical [location](../../doc/models/location.md)<br>by a recipient. |
-| `SHIPMENT` | A fulfillment to be shipped by a shipping carrier. |
+| `PICKUP` | A recipient to pick up the fulfillment from a physical [location](../../doc/models/location.md). |
+| `SHIPMENT` | A shipping carrier to ship the fulfillment. |
 

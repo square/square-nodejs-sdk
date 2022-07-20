@@ -408,21 +408,21 @@ bodyShiftWage.hourlyRate = bodyShiftWageHourlyRate;
 const bodyShiftBreaks: Break[] = [];
 
 const bodyShiftbreaks0: Break = {
-  startAt: '2019-01-25T06:11:00-05:00',
+  startAt: '2019-01-25T11:11:00+00:00',
   breakTypeId: 'REGS1EQR1TPZ5',
   name: 'Tea Break',
   expectedDuration: 'PT5M',
   isPaid: true,
 };
-bodyShiftbreaks0.endAt = '2019-01-25T06:16:00-05:00';
+bodyShiftbreaks0.endAt = '2019-01-25T11:16:00+00:00';
 
 bodyShiftBreaks[0] = bodyShiftbreaks0;
 
 const bodyShift: Shift = {
-  startAt: '2019-01-25T03:11:00-05:00',
+  startAt: '2019-01-25T08:11:00+00:00',
 };
 bodyShift.locationId = 'PAA1RJZZKXBFG';
-bodyShift.endAt = '2019-01-25T13:11:00-05:00';
+bodyShift.endAt = '2019-01-25T18:11:00+00:00';
 bodyShift.wage = bodyShiftWage;
 bodyShift.breaks = bodyShiftBreaks;
 bodyShift.teamMemberId = 'ormj0jJJZ5OZIzxrZYJI';
@@ -486,7 +486,24 @@ async searchShifts(
 
 ```ts
 const contentType = null;
+const bodyQueryFilterWorkdayDateRange: DateRange = {};
+bodyQueryFilterWorkdayDateRange.startDate = '2019-01-20';
+bodyQueryFilterWorkdayDateRange.endDate = '2019-02-03';
+
+const bodyQueryFilterWorkday: ShiftWorkday = {};
+bodyQueryFilterWorkday.dateRange = bodyQueryFilterWorkdayDateRange;
+bodyQueryFilterWorkday.matchShiftsBy = 'START_AT';
+bodyQueryFilterWorkday.defaultTimezone = 'America/Los_Angeles';
+
+const bodyQueryFilter: ShiftFilter = {};
+bodyQueryFilter.workday = bodyQueryFilterWorkday;
+
+const bodyQuery: ShiftQuery = {};
+bodyQuery.filter = bodyQueryFilter;
+
 const body: SearchShiftsRequest = {};
+body.query = bodyQuery;
+body.limit = 100;
 
 try {
   const { result, ...httpResponse } = await laborApi.searchShifts(body);
@@ -625,22 +642,22 @@ bodyShiftWage.hourlyRate = bodyShiftWageHourlyRate;
 const bodyShiftBreaks: Break[] = [];
 
 const bodyShiftbreaks0: Break = {
-  startAt: '2019-01-25T06:11:00-05:00',
+  startAt: '2019-01-25T11:11:00+00:00',
   breakTypeId: 'REGS1EQR1TPZ5',
   name: 'Tea Break',
   expectedDuration: 'PT5M',
   isPaid: true,
 };
 bodyShiftbreaks0.id = 'X7GAQYVVRRG6P';
-bodyShiftbreaks0.endAt = '2019-01-25T06:16:00-05:00';
+bodyShiftbreaks0.endAt = '2019-01-25T11:16:00+00:00';
 
 bodyShiftBreaks[0] = bodyShiftbreaks0;
 
 const bodyShift: Shift = {
-  startAt: '2019-01-25T03:11:00-05:00',
+  startAt: '2019-01-25T08:11:00+00:00',
 };
 bodyShift.locationId = 'PAA1RJZZKXBFG';
-bodyShift.endAt = '2019-01-25T13:11:00-05:00';
+bodyShift.endAt = '2019-01-25T18:11:00+00:00';
 bodyShift.wage = bodyShiftWage;
 bodyShift.breaks = bodyShiftBreaks;
 bodyShift.version = 1;

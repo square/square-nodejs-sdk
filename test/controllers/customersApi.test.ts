@@ -25,7 +25,7 @@ describe('Customer API', () => {
   let newcustomerGroupId: string;
   let customAttributeDefinitionKey: string = 'favorite-drink';
 
-  beforeAll( async () => {
+  beforeAll(async () => {
     customersController = testClient.customersApi;
     customersGroupsController = testClient.customerGroupsApi;
     customersCustomAttributesController = testClient.customerCustomAttributesApi;
@@ -43,7 +43,9 @@ describe('Customer API', () => {
 
     // Some tests depend on a Custom Attribute Definition resource
     // Delete it if it exists, then create it.
+    console.log('Deleting any existing custom attribute test data');
     let deleteCadResult = await customersCustomAttributesController.deleteCustomerCustomAttributeDefinition(customAttributeDefinitionKey);
+    console.log('Creating custom attribute test data');
     expect(deleteCadResult.statusCode).toBe(200);
     let cadBody: CreateCustomerCustomAttributeDefinitionRequest = {
       customAttributeDefinition: {
@@ -64,6 +66,7 @@ describe('Customer API', () => {
     // Clean up created customer Group resource
     let deleteCgResult = await customersGroupsController.deleteCustomerGroup(newcustomerGroupId);
     expect(deleteCgResult.statusCode).toBe(200);
+    console.log('Cleaning up custom attribute test data');
     let deleteCadResult = await customersCustomAttributesController.deleteCustomerCustomAttributeDefinition(customAttributeDefinitionKey);
     expect(deleteCadResult.statusCode).toBe(200);
   })
@@ -169,8 +172,6 @@ describe('Customer API', () => {
     expect(response.result.customAttributeDefinition?.schema).toEqual({
       '$ref': 'https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String'
     });
-    expect(response.result.customAttributeDefinition?.sourceApplication?.applicationId).toBeDefined();
-    expect(response.result.customAttributeDefinition?.sourceApplication?.applicationId).not.toBeNull();
     expect(response.result.customAttributeDefinition?.version).toBe(1);
     expect(response.result.customAttributeDefinition?.visibility).toBe('VISIBILITY_READ_WRITE_VALUES');
   });
@@ -191,8 +192,6 @@ describe('Customer API', () => {
     expect(response.result.customAttributeDefinition?.schema).toEqual({
       '$ref': 'https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String'
     });
-    expect(response.result.customAttributeDefinition?.sourceApplication?.applicationId).toBeDefined();
-    expect(response.result.customAttributeDefinition?.sourceApplication?.applicationId).not.toBeNull();
     expect(response.result.customAttributeDefinition?.version).toBe(2);
     expect(response.result.customAttributeDefinition?.visibility).toBe('VISIBILITY_READ_WRITE_VALUES');
   });
@@ -208,8 +207,6 @@ describe('Customer API', () => {
     expect(response.result.customAttributeDefinitions!![0].schema).toEqual({
       '$ref': 'https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String'
     });
-    expect(response.result.customAttributeDefinitions!![0].sourceApplication?.applicationId).toBeDefined();
-    expect(response.result.customAttributeDefinitions!![0].sourceApplication?.applicationId).not.toBeNull();
     expect(response.result.customAttributeDefinitions!![0].version).toBe(2);
     expect(response.result.customAttributeDefinitions!![0].visibility).toBe('VISIBILITY_READ_WRITE_VALUES');
   });

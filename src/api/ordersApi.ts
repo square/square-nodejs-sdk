@@ -208,8 +208,8 @@ export class OrdersApi extends BaseApi {
    *
    * - The `order_id` in the endpoint path, identifying the order to update.
    * - The latest `version` of the order to update.
-   * - The [sparse order](https://developer.squareup.com/docs/orders-api/manage-orders#sparse-order-
-   * objects)
+   * - The [sparse order](https://developer.squareup.com/docs/orders-api/manage-orders/update-
+   * orders#sparse-order-objects)
    * containing only the fields to update and the version to which the update is
    * being applied.
    * - If deleting fields, the [dot notation paths](https://developer.squareup.com/docs/orders-api/manage-
