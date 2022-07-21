@@ -51,6 +51,11 @@ export interface ObtainTokenRequest {
    * The short-lived access token returned in the response expires in 24 hours.
    */
   shortLived?: boolean;
+  /**
+   * Must be provided when using PKCE OAuth flow. The `code_verifier` will be used to verify against the
+   * `code_challenge` associated with the `authorization_code`.
+   */
+  codeVerifier?: string;
 }
 
 export const obtainTokenRequestSchema: Schema<ObtainTokenRequest> = object({
@@ -63,4 +68,5 @@ export const obtainTokenRequestSchema: Schema<ObtainTokenRequest> = object({
   migrationToken: ['migration_token', optional(string())],
   scopes: ['scopes', optional(array(string()))],
   shortLived: ['short_lived', optional(boolean())],
+  codeVerifier: ['code_verifier', optional(string())],
 });

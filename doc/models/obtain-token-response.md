@@ -19,6 +19,9 @@
 | `refreshToken` | `string \| undefined` | Optional | A refresh token. OAuth refresh tokens are 64 bytes long.<br>For more information, see [Refresh, Revoke, and Limit the Scope of OAuth Tokens](https://developer.squareup.com/docs/oauth-api/refresh-revoke-limit-scope).<br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `1024` |
 | `shortLived` | `boolean \| undefined` | Optional | A Boolean indicating that the access token is a short-lived access token.<br>The short-lived access token returned in the response expires in 24 hours. |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `refreshTokenExpiresAt` | `string \| undefined` | Optional | The date when the `refresh_token` expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format.<br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `48` |
+| `appSubscriptionId` | `string \| undefined` | Optional | The subscription id of a v2 subscription the merchant signed up<br>for. The subscription id is only present if the merchant signed up for a subscription during authorization. |
+| `appPlanId` | `string \| undefined` | Optional | The plan id of a v2 subscription plan the merchant signed up<br>for. The plan id is only present if the merchant signed up for a subscription plan during authorization. |
 
 ## Example (as JSON)
 
