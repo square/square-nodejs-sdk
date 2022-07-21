@@ -18,6 +18,7 @@
 | `migrationToken` | `string \| undefined` | Optional | A legacy OAuth access token obtained using a Connect API version prior<br>to 2019-03-13. This parameter is required if `grant_type` is set to<br>`migration_token` to indicate that the application wants to get a replacement<br>OAuth access token. The response also returns a refresh token.<br>For more information, see [Migrate to Using Refresh Tokens](https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens).<br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `1024` |
 | `scopes` | `string[] \| undefined` | Optional | A JSON list of strings representing the permissions that the application is requesting.<br>For example, "`["MERCHANT_PROFILE_READ","PAYMENTS_READ","BANK_ACCOUNTS_READ"]`".<br><br>The access token returned in the response is granted the permissions<br>that comprise the intersection between the requested list of permissions and those<br>that belong to the provided refresh token. |
 | `shortLived` | `boolean \| undefined` | Optional | A Boolean indicating a request for a short-lived access token.<br><br>The short-lived access token returned in the response expires in 24 hours. |
+| `codeVerifier` | `string \| undefined` | Optional | Must be provided when using PKCE OAuth flow. The `code_verifier` will be used to verify against the<br>`code_challenge` associated with the `authorization_code`. |
 
 ## Example (as JSON)
 
