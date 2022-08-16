@@ -30,9 +30,7 @@ instances on a `Shift`.
   "break_name": "break_name8",
   "expected_duration": "expected_duration4",
   "is_paid": false,
-  "version": null,
-  "created_at": null,
-  "updated_at": null
+  "version": null
 }
 ```
 

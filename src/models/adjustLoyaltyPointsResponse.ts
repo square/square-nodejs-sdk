@@ -2,10 +2,7 @@ import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
 import { LoyaltyEvent, loyaltyEventSchema } from './loyaltyEvent';
 
-/**
- * A response that includes the loyalty event that
- * resulted from the successful API call.
- */
+/** Represents an [AdjustLoyaltyPoints]($e/Loyalty/AdjustLoyaltyPoints) request. */
 export interface AdjustLoyaltyPointsResponse {
   /** Any errors that occurred during the request. */
   errors?: Error[];

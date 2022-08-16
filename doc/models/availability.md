@@ -20,7 +20,6 @@ Defines an appointment slot that encapsulates the appointment segments, location
 ```json
 {
   "start_at": null,
-  "location_id": null,
   "appointment_segments": null
 }
 ```

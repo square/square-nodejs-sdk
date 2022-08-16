@@ -41,8 +41,6 @@ taken during the shift.
   "breaks": null,
   "status": null,
   "version": null,
-  "created_at": null,
-  "updated_at": null,
   "team_member_id": null
 }
 ```

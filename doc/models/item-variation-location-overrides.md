@@ -29,9 +29,7 @@ Price and inventory alerting overrides for a `CatalogItemVariation` at a specifi
   "pricing_type": null,
   "track_inventory": null,
   "inventory_alert_type": null,
-  "inventory_alert_threshold": null,
-  "sold_out": null,
-  "sold_out_valid_until": null
+  "inventory_alert_threshold": null
 }
 ```
 

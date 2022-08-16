@@ -24,8 +24,6 @@ Represents additional data for rules with the `SPEND` accrual type.
     "amount": null,
     "currency": null
   },
-  "excluded_category_ids": null,
-  "excluded_item_variation_ids": null,
   "tax_mode": "BEFORE_TAX"
 }
 ```

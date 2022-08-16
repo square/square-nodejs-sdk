@@ -12,6 +12,8 @@ import {
   acceptedPaymentMethodsSchema,
 } from './acceptedPaymentMethods';
 import { CustomField, customFieldSchema } from './customField';
+import { Money, moneySchema } from './money';
+import { ShippingFee, shippingFeeSchema } from './shippingFee';
 
 export interface CheckoutOptions {
   /** Indicates whether the payment allows tipping. */
@@ -30,6 +32,16 @@ export interface CheckoutOptions {
   /** Indicates whether to include the address fields in the payment form. */
   askForShippingAddress?: boolean;
   acceptedPaymentMethods?: AcceptedPaymentMethods;
+  /**
+   * Represents an amount of money. `Money` fields can be signed or unsigned.
+   * Fields that do not explicitly define whether they are signed or unsigned are
+   * considered unsigned and can only hold positive amounts. For signed fields, the
+   * sign of the value indicates the purpose of the money transfer. See
+   * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
+   * for more information.
+   */
+  appFeeMoney?: Money;
+  shippingFee?: ShippingFee;
 }
 
 export const checkoutOptionsSchema: Schema<CheckoutOptions> = object({
@@ -46,4 +58,6 @@ export const checkoutOptionsSchema: Schema<CheckoutOptions> = object({
     'accepted_payment_methods',
     optional(lazy(() => acceptedPaymentMethodsSchema)),
   ],
+  appFeeMoney: ['app_fee_money', optional(lazy(() => moneySchema))],
+  shippingFee: ['shipping_fee', optional(lazy(() => shippingFeeSchema))],
 });

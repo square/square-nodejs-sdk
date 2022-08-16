@@ -41,8 +41,7 @@ hand or from syncing with an external system.
   "source": null,
   "employee_id": null,
   "team_member_id": null,
-  "occurred_at": null,
-  "created_at": null
+  "occurred_at": null
 }
 ```
 

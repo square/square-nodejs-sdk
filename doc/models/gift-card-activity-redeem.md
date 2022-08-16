@@ -24,7 +24,6 @@ Represents details about a `REDEEM` [gift card activity type](../../doc/models/g
     "amount": null,
     "currency": null
   },
-  "payment_id": null,
   "reference_id": null,
   "status": null
 }

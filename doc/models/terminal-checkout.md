@@ -34,7 +34,6 @@ Represents a checkout processed by the Square Terminal.
 
 ```json
 {
-  "id": null,
   "amount_money": {
     "amount": null,
     "currency": null
@@ -51,13 +50,7 @@ Represents a checkout processed by the Square Terminal.
     "show_itemized_cart": null
   },
   "deadline_duration": null,
-  "status": null,
   "cancel_reason": null,
-  "payment_ids": null,
-  "created_at": null,
-  "updated_at": null,
-  "app_id": null,
-  "location_id": null,
   "payment_type": null,
   "customer_id": null,
   "app_fee_money": null

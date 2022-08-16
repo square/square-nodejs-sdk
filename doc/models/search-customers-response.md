@@ -70,9 +70,9 @@ Either `errors` or `customers` is present in a given response (never both).
       "group_ids": [
         "545AXB44B4XXWMVQ4W8SBT3HHF"
       ],
-      "id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+      "id": "A9641GZW2H7Z56YYSD41Q12HDW",
       "note": "a customer",
-      "phone_number": "1-212-555-4240",
+      "phone_number": "1-212-555-9238",
       "preferences": {
         "email_unsubscribed": false
       },

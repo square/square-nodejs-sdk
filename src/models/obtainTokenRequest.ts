@@ -8,9 +8,10 @@ export interface ObtainTokenRequest {
   clientId: string;
   /**
    * The Square-issued application secret for your application, which is available in the OAuth page
-   * in the [Developer Dashboard](https://developer.squareup.com/apps).
+   * in the [Developer Dashboard](https://developer.squareup.com/apps). This parameter is only required when you are not using the [OAuth PKCE (Proof Key for Code Exchange) flow](https://developer.squareup.com/docs/oauth-api/overview#pkce-flow).
+   * The PKCE flow requires a `code_verifier` instead of a `client_secret`.
    */
-  clientSecret: string;
+  clientSecret?: string;
   /**
    * The authorization code to exchange.
    * This code is required if `grant_type` is set to `authorization_code` to indicate that
@@ -60,7 +61,7 @@ export interface ObtainTokenRequest {
 
 export const obtainTokenRequestSchema: Schema<ObtainTokenRequest> = object({
   clientId: ['client_id', string()],
-  clientSecret: ['client_secret', string()],
+  clientSecret: ['client_secret', optional(string())],
   code: ['code', optional(string())],
   redirectUri: ['redirect_uri', optional(string())],
   grantType: ['grant_type', string()],

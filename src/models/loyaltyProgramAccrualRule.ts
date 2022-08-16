@@ -16,7 +16,7 @@ import {
   loyaltyProgramAccrualRuleVisitDataSchema,
 } from './loyaltyProgramAccrualRuleVisitData';
 
-/** Defines an accrual rule, which is how buyers can earn points. */
+/** Represents an accrual rule, which defines how buyers can earn points from the base [loyalty program]($m/LoyaltyProgram). */
 export interface LoyaltyProgramAccrualRule {
   /** The type of the accrual rule that defines how buyers can earn points. */
   accrualType: string;

@@ -28,12 +28,10 @@ added to `ITEM` and `ITEM_VARIATION` type catalog objects.
 {
   "name": null,
   "string_value": null,
-  "custom_attribute_definition_id": null,
   "type": null,
   "number_value": null,
   "boolean_value": null,
-  "selection_uid_values": null,
-  "key": null
+  "selection_uid_values": null
 }
 ```
 

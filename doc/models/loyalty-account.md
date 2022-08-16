@@ -27,14 +27,9 @@ Describes a loyalty account in a [loyalty program](../../doc/models/loyalty-prog
 
 ```json
 {
-  "id": null,
   "program_id": "program_id0",
-  "balance": null,
-  "lifetime_points": null,
   "customer_id": null,
   "enrolled_at": null,
-  "created_at": null,
-  "updated_at": null,
   "mapping": null,
   "expiring_point_deadlines": null
 }

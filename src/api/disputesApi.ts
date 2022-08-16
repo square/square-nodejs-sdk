@@ -54,11 +54,10 @@ export class DisputesApi extends BaseApi {
    *                              cursor to retrieve the next set of results for the original query. For more
    *                              information, see [Pagination](https://developer.squareup.
    *                              com/docs/basics/api101/pagination).
-   * @param states      The dispute states to filter the result. If not specified, the endpoint returns all
-   *                              open disputes (the dispute status is not `INQUIRY_CLOSED`, `WON`, or `LOST`).
+   * @param states      The dispute states used to filter the result. If not specified, the endpoint returns
+   *                              all disputes.
    * @param locationId  The ID of the location for which to return a list of disputes. If not specified, the
-   *                              endpoint returns all open disputes (the dispute status is not `INQUIRY_CLOSED`, `WON`,
-   *                              or `LOST`) associated with all locations.
+   *                              endpoint returns disputes associated with all locations.
    * @return Response from the API call
    */
   async listDisputes(
@@ -121,7 +120,8 @@ export class DisputesApi extends BaseApi {
    * @param disputeId  The ID of the dispute.
    * @param cursor     A pagination cursor returned by a previous call to this endpoint. Provide this cursor
    *                             to retrieve the next set of results for the original query. For more information, see
-   *                             [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
+   *                             [Pagination](https://developer.squareup.com/docs/build-basics/common-api-
+   *                             patterns/pagination).
    * @return Response from the API call
    */
   async listDisputeEvidence(
@@ -143,8 +143,8 @@ export class DisputesApi extends BaseApi {
    * Uploads a file to use as evidence in a dispute challenge. The endpoint accepts HTTP
    * multipart/form-data file uploads in HEIC, HEIF, JPEG, PDF, PNG, and TIFF formats.
    *
-   * @param disputeId  The ID of the dispute you want to upload evidence
-   *                                                              for.
+   * @param disputeId  The ID of the dispute for which you want to upload
+   *                                                              evidence.
    * @param request    Defines the parameters for a
    *                                                              `CreateDisputeEvidenceFile` request.
    * @param imageFile
@@ -175,8 +175,8 @@ export class DisputesApi extends BaseApi {
   /**
    * Uploads text to use as evidence for a dispute challenge.
    *
-   * @param disputeId    The ID of the dispute you want to upload evidence
-   *                                                                for.
+   * @param disputeId    The ID of the dispute for which you want to upload
+   *                                                                evidence.
    * @param body         An object containing the fields to POST for the
    *                                                                request.  See the corresponding object definition
    *                                                                for field details.
@@ -203,11 +203,9 @@ export class DisputesApi extends BaseApi {
 
   /**
    * Removes specified evidence from a dispute.
+   * Square does not send the bank any evidence that is removed.
    *
-   * Square does not send the bank any evidence that is removed. Also, you cannot remove evidence after
-   * submitting it to the bank using [SubmitEvidence]($e/Disputes/SubmitEvidence).
-   *
-   * @param disputeId   The ID of the dispute you want to remove evidence from.
+   * @param disputeId   The ID of the dispute from which you want to remove evidence.
    * @param evidenceId  The ID of the evidence you want to remove.
    * @return Response from the API call
    */
@@ -226,12 +224,12 @@ export class DisputesApi extends BaseApi {
   }
 
   /**
-   * Returns the evidence metadata specified by the evidence ID in the request URL path
+   * Returns the metadata for the evidence specified in the request URL path.
    *
-   * You must maintain a copy of the evidence you upload if you want to reference it later. You cannot
-   * download the evidence after you upload it.
+   * You must maintain a copy of any evidence uploaded if you want to reference it later. Evidence cannot
+   * be downloaded after you upload it.
    *
-   * @param disputeId   The ID of the dispute that you want to retrieve evidence from.
+   * @param disputeId   The ID of the dispute from which you want to retrieve evidence metadata.
    * @param evidenceId  The ID of the evidence to retrieve.
    * @return Response from the API call
    */
@@ -255,12 +253,13 @@ export class DisputesApi extends BaseApi {
   /**
    * Submits evidence to the cardholder's bank.
    *
-   * Before submitting evidence, Square compiles all available evidence. This includes evidence uploaded
+   * The evidence submitted by this endpoint includes evidence uploaded
    * using the [CreateDisputeEvidenceFile]($e/Disputes/CreateDisputeEvidenceFile) and
    * [CreateDisputeEvidenceText]($e/Disputes/CreateDisputeEvidenceText) endpoints and
-   * evidence automatically provided by Square, when available.
+   * evidence automatically provided by Square, when available. Evidence cannot be removed from
+   * a dispute after submission.
    *
-   * @param disputeId  The ID of the dispute that you want to submit evidence for.
+   * @param disputeId  The ID of the dispute for which you want to submit evidence.
    * @return Response from the API call
    */
   async submitEvidence(

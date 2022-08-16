@@ -58,7 +58,6 @@ bodyPriceOverrideMoney.amount = 100;
 bodyPriceOverrideMoney.currency = 'USD';
 
 const bodySource: SubscriptionSource = {};
-bodySource.name = 'My App';
 
 const body: CreateSubscriptionRequest = {
   locationId: 'S8GWD5R9QB376',
@@ -485,7 +484,7 @@ async swapPlan(
 const subscriptionId = 'subscription_id0';
 const contentType = null;
 const body: SwapPlanRequest = {
-  newPlanId: 'new_plan_id2',
+  newPlanId: null,
 };
 
 try {

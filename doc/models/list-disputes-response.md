@@ -23,22 +23,43 @@ Defines fields in a `ListDisputes` response.
   "disputes": [
     {
       "amount_money": {
-        "amount": 1000,
+        "amount": 2500,
         "currency": "USD"
       },
       "brand_dispute_id": "100000809947",
       "card_brand": "VISA",
-      "created_at": "2018-10-12T02:20:25.577Z",
-      "disputed_payments": [
-        {
-          "payment_id": "APgIq6RX2jM6DKDhMHiC6QEkuaB"
-        }
-      ],
-      "due_at": "2018-10-11T00:00:00.000Z",
-      "id": "OnY1AZwhSi775rbNIK4gv",
+      "created_at": "2022-06-29T18:45:22.265Z",
+      "disputed_payment": {
+        "payment_id": "zhyh1ch64kRBrrlfVhwjCEjZWzNZY"
+      },
+      "due_at": "2022-07-13T00:00:00.000Z",
+      "id": "XDgyFu7yo1E2S5lQGGpYn",
+      "location_id": "L1HN3ZMQK64X9",
       "reason": "NO_KNOWLEDGE",
+      "reported_at": "2022-06-29T00:00:00.000Z",
+      "state": "ACCEPTED",
+      "updated_at": "2022-07-07T19:14:42.650Z",
+      "version": 2
+    },
+    {
+      "amount_money": {
+        "amount": 2209,
+        "currency": "USD"
+      },
+      "brand_dispute_id": "r5Of6YaGT7AdeRaVoAGCJw",
+      "card_brand": "VISA",
+      "created_at": "2022-04-29T18:45:22.265Z",
+      "disputed_payment": {
+        "payment_id": "zhyh1ch64kRBrrlfVhwjCEjZWzNZY"
+      },
+      "due_at": "2022-05-13T00:00:00.000Z",
+      "id": "jLGg7aXC7lvKPr9PISt0T",
+      "location_id": "18YC4JDH91E1H",
+      "reason": "NOT_AS_DESCRIBED",
+      "reported_at": "2022-04-29T00:00:00.000Z",
       "state": "EVIDENCE_REQUIRED",
-      "updated_at": "2018-10-12T02:20:25.577Z"
+      "updated_at": "2022-04-29T18:45:22.265Z",
+      "version": 1
     }
   ]
 }

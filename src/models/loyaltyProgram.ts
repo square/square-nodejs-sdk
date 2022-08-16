@@ -36,12 +36,16 @@ export interface LoyaltyProgram {
   /** Represents the naming used for loyalty points. */
   terminology: LoyaltyProgramTerminology;
   /** The [locations]($m/Location) at which the program is active. */
-  locationIds: string[];
+  locationIds?: string[];
   /** The timestamp when the program was created, in RFC 3339 format. */
   createdAt: string;
   /** The timestamp when the reward was last updated, in RFC 3339 format. */
   updatedAt: string;
-  /** Defines how buyers can earn loyalty points. */
+  /**
+   * Defines how buyers can earn loyalty points from the base loyalty program.
+   * To check for associated [loyalty promotions]($m/LoyaltyPromotion) that enable
+   * buyers to earn extra points, call [ListLoyaltyPromotions]($e/Loyalty/ListLoyaltyPromotions).
+   */
   accrualRules: LoyaltyProgramAccrualRule[];
 }
 
@@ -57,7 +61,7 @@ export const loyaltyProgramSchema: Schema<LoyaltyProgram> = object({
     optional(lazy(() => loyaltyProgramExpirationPolicySchema)),
   ],
   terminology: ['terminology', lazy(() => loyaltyProgramTerminologySchema)],
-  locationIds: ['location_ids', array(string())],
+  locationIds: ['location_ids', optional(array(string()))],
   createdAt: ['created_at', string()],
   updatedAt: ['updated_at', string()],
   accrualRules: [

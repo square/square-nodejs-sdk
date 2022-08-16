@@ -33,19 +33,14 @@ at a given location to a requesting customer in one or more appointment segments
 
 ```json
 {
-  "id": null,
   "version": null,
   "status": null,
-  "created_at": null,
-  "updated_at": null,
   "start_at": null,
   "location_id": null,
   "customer_id": null,
   "customer_note": null,
   "seller_note": null,
   "appointment_segments": null,
-  "transition_time_minutes": null,
-  "all_day": null,
   "location_type": null,
   "creator_details": null,
   "source": null

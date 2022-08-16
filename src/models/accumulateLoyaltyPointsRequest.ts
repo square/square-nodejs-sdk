@@ -4,7 +4,7 @@ import {
   loyaltyEventAccumulatePointsSchema,
 } from './loyaltyEventAccumulatePoints';
 
-/** A request to accumulate points for a purchase. */
+/** Represents an [AccumulateLoyaltyPoints]($e/Loyalty/AccumulateLoyaltyPoints) request. */
 export interface AccumulateLoyaltyPointsRequest {
   /** Provides metadata when the event `type` is `ACCUMULATE_POINTS`. */
   accumulatePoints: LoyaltyEventAccumulatePoints;

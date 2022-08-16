@@ -19,6 +19,7 @@ customers returned by the [SearchCustomers](../../doc/api/customers.md#search-cu
 | `phoneNumber` | [`CustomerTextFilter \| undefined`](../../doc/models/customer-text-filter.md) | Optional | A filter to select customers based on exact or fuzzy matching of<br>customer attributes against a specified query. Depending on the customer attributes,<br>the filter can be case-sensitive. This filter can be exact or fuzzy, but it cannot be both. |
 | `referenceId` | [`CustomerTextFilter \| undefined`](../../doc/models/customer-text-filter.md) | Optional | A filter to select customers based on exact or fuzzy matching of<br>customer attributes against a specified query. Depending on the customer attributes,<br>the filter can be case-sensitive. This filter can be exact or fuzzy, but it cannot be both. |
 | `groupIds` | [`FilterValue \| undefined`](../../doc/models/filter-value.md) | Optional | A filter to select resources based on an exact field value. For any given<br>value, the value can only be in one property. Depending on the field, either<br>all properties can be set or only a subset will be available.<br><br>Refer to the documentation of the field. |
+| `customAttribute` | [`CustomerCustomAttributeFilters \| undefined`](../../doc/models/customer-custom-attribute-filters.md) | Optional | The custom attribute filters in a set of [customer filters](../../doc/models/customer-filter.md) used in a search query. Use this filter<br>to search based on [custom attributes](../../doc/models/custom-attribute.md) that are assigned to customer profiles. For more information, see<br>[Search by custom attribute](https://developer.squareup.com/docs/customers-api/use-the-api/search-customers#search-by-custom-attribute). |
 
 ## Example (as JSON)
 
@@ -30,7 +31,8 @@ customers returned by the [SearchCustomers](../../doc/api/customers.md#search-cu
   "email_address": null,
   "phone_number": null,
   "reference_id": null,
-  "group_ids": null
+  "group_ids": null,
+  "custom_attribute": null
 }
 ```
 

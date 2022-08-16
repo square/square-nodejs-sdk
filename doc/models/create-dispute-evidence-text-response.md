@@ -20,10 +20,10 @@ Defines the fields in a `CreateDisputeEvidenceText` response.
 {
   "evidence": {
     "dispute_id": "bVTprrwk0gygTLZ96VX1oB",
-    "evidence_text": "1Z8888888888888888",
-    "evidence_type": "TRACKING_NUMBER",
+    "evidence_text": "The customer purchased the item twice, on April 11 and April 28.",
+    "evidence_type": "REBUTTAL_EXPLANATION",
     "id": "TOomLInj6iWmP3N8qfCXrB",
-    "uploaded_at": "2018-10-18T16:01:10.000Z"
+    "uploaded_at": "2022-05-18T16:01:10.000Z"
   }
 }
 ```

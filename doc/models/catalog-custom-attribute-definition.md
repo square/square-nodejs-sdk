@@ -46,7 +46,6 @@ to store any sensitive information (personally identifiable information, card de
   "string_config": null,
   "number_config": null,
   "selection_config": null,
-  "custom_attribute_usage_count": null,
   "key": null
 }
 ```

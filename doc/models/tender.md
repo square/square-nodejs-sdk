@@ -33,7 +33,6 @@ Represents a tender (i.e., a method of payment) used in a Square transaction.
   "id": null,
   "location_id": null,
   "transaction_id": null,
-  "created_at": null,
   "note": null,
   "amount_money": null,
   "tip_money": null,

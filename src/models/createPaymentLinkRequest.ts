@@ -38,8 +38,6 @@ export interface CreatePaymentLinkRequest {
    * see [Optional Checkout Configurations](https://developer.squareup.com/docs/checkout-api/optional-checkout-configurations).
    */
   prePopulatedData?: PrePopulatedData;
-  /** The application that created the payment link. */
-  source?: string;
   /** A note for the payment. After processing the payment, Square adds this note to the resulting `Payment`. */
   paymentNote?: string;
 }
@@ -58,7 +56,6 @@ export const createPaymentLinkRequestSchema: Schema<CreatePaymentLinkRequest> = 
       'pre_populated_data',
       optional(lazy(() => prePopulatedDataSchema)),
     ],
-    source: ['source', optional(string())],
     paymentNote: ['payment_note', optional(string())],
   }
 );

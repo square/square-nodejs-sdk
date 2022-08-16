@@ -1,10 +1,7 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
-/**
- * A request to calculate the points that a buyer can earn from
- * a specified purchase.
- */
+/** Represents a [CalculateLoyaltyPoints]($e/Loyalty/CalculateLoyaltyPoints) request. */
 export interface CalculateLoyaltyPointsRequest {
   /**
    * The [order]($m/Order) ID for which to calculate the points.
@@ -21,6 +18,16 @@ export interface CalculateLoyaltyPointsRequest {
    * for more information.
    */
   transactionAmountMoney?: Money;
+  /**
+   * The ID of the target [loyalty account]($m/LoyaltyAccount). Optionally specify this field
+   * if your application uses the Orders API to process orders.
+   * If specified, the `promotion_points` field in the response shows the number of points the buyer would
+   * earn from the purchase. In this case, Square uses the account ID to determine whether the promotion's
+   * `trigger_limit` (the maximum number of times that a buyer can trigger the promotion) has been reached.
+   * If not specified, the `promotion_points` field shows the number of points the purchase qualifies
+   * for regardless of the trigger limit.
+   */
+  loyaltyAccountId?: string;
 }
 
 export const calculateLoyaltyPointsRequestSchema: Schema<CalculateLoyaltyPointsRequest> = object(
@@ -30,5 +37,6 @@ export const calculateLoyaltyPointsRequestSchema: Schema<CalculateLoyaltyPointsR
       'transaction_amount_money',
       optional(lazy(() => moneySchema)),
     ],
+    loyaltyAccountId: ['loyalty_account_id', optional(string())],
   }
 );

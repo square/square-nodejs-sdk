@@ -5,7 +5,7 @@ import { Invoice, invoiceSchema } from './invoice';
 export interface UpdateInvoiceRequest {
   /**
    * Stores information about an invoice. You use the Invoices API to create and manage
-   * invoices. For more information, see [Manage Invoices Using the Invoices API](https://developer.squareup.com/docs/invoices-api/overview).
+   * invoices. For more information, see [Invoices API Overview](https://developer.squareup.com/docs/invoices-api/overview).
    */
   invoice: Invoice;
   /**
@@ -17,7 +17,7 @@ export interface UpdateInvoiceRequest {
   idempotencyKey?: string;
   /**
    * The list of fields to clear.
-   * For examples, see [Update an invoice](https://developer.squareup.com/docs/invoices-api/overview#update-an-invoice).
+   * For examples, see [Update an Invoice](https://developer.squareup.com/docs/invoices-api/update-invoices).
    */
   fieldsToClear?: string[];
 }

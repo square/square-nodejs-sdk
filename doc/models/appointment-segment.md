@@ -26,10 +26,7 @@ Defines an appointment segment of a booking.
   "duration_minutes": null,
   "service_variation_id": null,
   "team_member_id": "team_member_id0",
-  "service_variation_version": null,
-  "intermission_minutes": null,
-  "any_team_member": null,
-  "resource_ids": null
+  "service_variation_version": null
 }
 ```
 

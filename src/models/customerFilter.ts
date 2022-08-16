@@ -4,6 +4,10 @@ import {
   customerCreationSourceFilterSchema,
 } from './customerCreationSourceFilter';
 import {
+  CustomerCustomAttributeFilters,
+  customerCustomAttributeFiltersSchema,
+} from './customerCustomAttributeFilters';
+import {
   CustomerTextFilter,
   customerTextFilterSchema,
 } from './customerTextFilter';
@@ -62,6 +66,12 @@ export interface CustomerFilter {
    * Refer to the documentation of the field.
    */
   groupIds?: FilterValue;
+  /**
+   * The custom attribute filters in a set of [customer filters]($m/CustomerFilter) used in a search query. Use this filter
+   * to search based on [custom attributes]($m/CustomAttribute) that are assigned to customer profiles. For more information, see
+   * [Search by custom attribute](https://developer.squareup.com/docs/customers-api/use-the-api/search-customers#search-by-custom-attribute).
+   */
+  customAttribute?: CustomerCustomAttributeFilters;
 }
 
 export const customerFilterSchema: Schema<CustomerFilter> = object({
@@ -78,4 +88,8 @@ export const customerFilterSchema: Schema<CustomerFilter> = object({
   phoneNumber: ['phone_number', optional(lazy(() => customerTextFilterSchema))],
   referenceId: ['reference_id', optional(lazy(() => customerTextFilterSchema))],
   groupIds: ['group_ids', optional(lazy(() => filterValueSchema))],
+  customAttribute: [
+    'custom_attribute',
+    optional(lazy(() => customerCustomAttributeFiltersSchema)),
+  ],
 });

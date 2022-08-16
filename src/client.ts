@@ -34,6 +34,7 @@ import { TerminalApi } from './api/terminalApi';
 import { TransactionsApi } from './api/transactionsApi';
 import { V1TransactionsApi } from './api/v1TransactionsApi';
 import { VendorsApi } from './api/vendorsApi';
+import { WebhookSubscriptionsApi } from './api/webhookSubscriptionsApi';
 import { accessTokenAuthenticationProvider } from './authentication';
 import {
   AuthParams,
@@ -63,7 +64,7 @@ import {
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '20.1.0';
+export const SDK_VERSION = '21.0.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -107,6 +108,7 @@ export class Client implements ClientInterface {
   public readonly transactionsApi: TransactionsApi;
   public readonly v1TransactionsApi: V1TransactionsApi;
   public readonly vendorsApi: VendorsApi;
+  public readonly webhookSubscriptionsApi: WebhookSubscriptionsApi;
 
   constructor(config?: Partial<Configuration>) {
     this._config = {
@@ -122,7 +124,7 @@ export class Client implements ClientInterface {
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/20.1.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/21.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail
     );
@@ -182,6 +184,7 @@ export class Client implements ClientInterface {
     this.transactionsApi = new TransactionsApi(this);
     this.v1TransactionsApi = new V1TransactionsApi(this);
     this.vendorsApi = new VendorsApi(this);
+    this.webhookSubscriptionsApi = new WebhookSubscriptionsApi(this);
   }
 
   public getRequestBuilderFactory(): SdkRequestBuilderFactory {

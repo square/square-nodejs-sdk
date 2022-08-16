@@ -21,11 +21,7 @@ The booking profile of a seller's team member, including the team member's ID, d
 
 ```json
 {
-  "team_member_id": null,
-  "description": null,
-  "display_name": null,
-  "is_bookable": null,
-  "profile_image_url": null
+  "is_bookable": null
 }
 ```
 

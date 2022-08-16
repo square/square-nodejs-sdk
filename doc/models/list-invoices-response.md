@@ -20,6 +20,7 @@ Describes a `ListInvoice` response.
 ```json
 {
   "cursor": "ChoIDhIWVm54ZVRhLXhySFBOejBBM2xJb2daUQoFCI4IGAE",
+  "errors": [],
   "invoices": [
     {
       "accepted_payment_methods": {
@@ -93,6 +94,7 @@ Describes a `ListInvoice` response.
         "square_gift_card": true
       },
       "created_at": "2021-01-23T15:29:12Z",
+      "custom_fields": [],
       "delivery_method": "EMAIL",
       "id": "inv:0-ChC366qAfskpGrBI_1bozs9mEA3",
       "invoice_number": "inv-455",
@@ -112,6 +114,7 @@ Describes a `ListInvoice` response.
           },
           "due_date": "2021-01-23",
           "percentage_requested": "25",
+          "reminders": [],
           "request_type": "DEPOSIT",
           "tipping_enabled": false,
           "total_completed_amount_money": {

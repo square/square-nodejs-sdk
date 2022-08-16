@@ -13,8 +13,8 @@ the request resulted in errors.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `workweekConfigs` | [`WorkweekConfig[] \| undefined`](../../doc/models/workweek-config.md) | Optional | A page of `EmployeeWage` results. |
-| `cursor` | `string \| undefined` | Optional | The value supplied in the subsequent request to fetch the next page of<br>`EmployeeWage` results. |
+| `workweekConfigs` | [`WorkweekConfig[] \| undefined`](../../doc/models/workweek-config.md) | Optional | A page of `WorkweekConfig` results. |
+| `cursor` | `string \| undefined` | Optional | The value supplied in the subsequent request to fetch the next page of<br>`WorkweekConfig` results. |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
 
 ## Example (as JSON)

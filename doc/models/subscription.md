@@ -36,21 +36,12 @@ For an overview of the `Subscription` type, see
 
 ```json
 {
-  "id": null,
-  "location_id": null,
-  "plan_id": null,
-  "customer_id": null,
-  "start_date": null,
   "canceled_date": null,
-  "charged_through_date": null,
   "status": null,
   "tax_percentage": null,
-  "invoice_ids": null,
   "price_override_money": null,
   "version": null,
-  "created_at": null,
   "card_id": null,
-  "timezone": null,
   "source": null,
   "actions": null
 }

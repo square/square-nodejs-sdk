@@ -2,7 +2,7 @@ import { object, optional, Schema, string } from '../schema';
 
 /** Defines the parameters for a `CreateDisputeEvidenceFile` request. */
 export interface CreateDisputeEvidenceFileRequest {
-  /** The Unique ID. For more information, see [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency). */
+  /** A unique key identifying the request. For more information, see [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency). */
   idempotencyKey: string;
   /** The type of the dispute evidence. */
   evidenceType?: string;

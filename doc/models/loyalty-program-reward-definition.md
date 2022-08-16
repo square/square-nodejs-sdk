@@ -26,8 +26,6 @@ are now defined using a catalog pricing rule and other catalog objects. For more
 {
   "scope": "CATEGORY",
   "discount_type": "FIXED_AMOUNT",
-  "percentage_discount": null,
-  "catalog_object_ids": null,
   "fixed_discount_money": null,
   "max_discount_money": null
 }

@@ -194,9 +194,9 @@ async obtainToken(
 const contentType = null;
 const body: ObtainTokenRequest = {
   clientId: 'APPLICATION_ID',
-  clientSecret: 'APPLICATION_SECRET',
   grantType: 'authorization_code',
 };
+body.clientSecret = 'APPLICATION_SECRET';
 body.code = 'CODE_FROM_AUTHORIZE';
 
 try {

@@ -40,10 +40,7 @@ the original payment and the amount of money refunded.
   "processing_fee": null,
   "payment_id": null,
   "order_id": null,
-  "reason": null,
-  "created_at": null,
-  "updated_at": null,
-  "team_member_id": null
+  "reason": null
 }
 ```
 

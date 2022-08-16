@@ -4,6 +4,10 @@ import {
   loyaltyEventAccumulatePointsSchema,
 } from './loyaltyEventAccumulatePoints';
 import {
+  LoyaltyEventAccumulatePromotionPoints,
+  loyaltyEventAccumulatePromotionPointsSchema,
+} from './loyaltyEventAccumulatePromotionPoints';
+import {
   LoyaltyEventAdjustPoints,
   loyaltyEventAdjustPointsSchema,
 } from './loyaltyEventAdjustPoints';
@@ -49,7 +53,7 @@ export interface LoyaltyEvent {
   deleteReward?: LoyaltyEventDeleteReward;
   /** Provides metadata when the event `type` is `ADJUST_POINTS`. */
   adjustPoints?: LoyaltyEventAdjustPoints;
-  /** The ID of the [loyalty account]($m/LoyaltyAccount) in which the event occurred. */
+  /** The ID of the [loyalty account]($m/LoyaltyAccount) associated with the event. */
   loyaltyAccountId: string;
   /** The ID of the [location]($m/Location) where the event occurred. */
   locationId?: string;
@@ -59,6 +63,8 @@ export interface LoyaltyEvent {
   expirePoints?: LoyaltyEventExpirePoints;
   /** Provides metadata when the event `type` is `OTHER`. */
   otherEvent?: LoyaltyEventOther;
+  /** Provides metadata when the event `type` is `ACCUMULATE_PROMOTION_POINTS`. */
+  accumulatePromotionPoints?: LoyaltyEventAccumulatePromotionPoints;
 }
 
 export const loyaltyEventSchema: Schema<LoyaltyEvent> = object({
@@ -93,4 +99,8 @@ export const loyaltyEventSchema: Schema<LoyaltyEvent> = object({
     optional(lazy(() => loyaltyEventExpirePointsSchema)),
   ],
   otherEvent: ['other_event', optional(lazy(() => loyaltyEventOtherSchema))],
+  accumulatePromotionPoints: [
+    'accumulate_promotion_points',
+    optional(lazy(() => loyaltyEventAccumulatePromotionPointsSchema)),
+  ],
 });

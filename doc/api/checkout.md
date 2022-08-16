@@ -20,6 +20,8 @@ const checkoutApi = client.checkoutApi;
 
 # Create Checkout
 
+**This endpoint is deprecated.**
+
 Links a `checkoutId` to a `checkout_page_url` that customers are
 directed to in order to provide their payment information using a
 payment processing workflow hosted on connect.squareup.com.
@@ -154,6 +156,8 @@ bodyPrePopulateShippingAddress.locality = 'San Francisco';
 bodyPrePopulateShippingAddress.administrativeDistrictLevel1 = 'CA';
 bodyPrePopulateShippingAddress.postalCode = '94103';
 bodyPrePopulateShippingAddress.country = 'US';
+bodyPrePopulateShippingAddress.firstName = 'Jane';
+bodyPrePopulateShippingAddress.lastName = 'Doe';
 
 const bodyAdditionalRecipients: ChargeRequestAdditionalRecipient[] = [];
 

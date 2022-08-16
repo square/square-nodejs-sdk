@@ -50,7 +50,6 @@ decreases by 2, and the stockable count automatically decreases by 0.4 bottle ac
   "name": null,
   "sku": null,
   "upc": null,
-  "ordinal": null,
   "pricing_type": null,
   "price_money": null,
   "location_overrides": null,

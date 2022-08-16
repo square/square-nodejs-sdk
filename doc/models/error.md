@@ -23,7 +23,7 @@ See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-
 ```json
 {
   "category": "RATE_LIMIT_ERROR",
-  "code": "ACCESS_TOKEN_EXPIRED",
+  "code": "DELAYED_TRANSACTION_CANCELED",
   "detail": null,
   "field": null
 }

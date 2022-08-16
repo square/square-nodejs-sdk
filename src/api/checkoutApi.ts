@@ -56,6 +56,7 @@ export class CheckoutApi extends BaseApi {
    * @param body         An object containing the fields to POST for the request.  See
    *                                                     the corresponding object definition for field details.
    * @return Response from the API call
+   * @deprecated
    */
   async createCheckout(
     locationId: string,
@@ -70,17 +71,18 @@ export class CheckoutApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/checkouts`;
+    req.deprecated('CheckoutApi.createCheckout');
     return req.callAsJson(createCheckoutResponseSchema, requestOptions);
   }
 
   /**
    * Lists all payment links.
    *
-   * @param cursor A pagination cursor returned by a previous call to this endpoint.  Provide this cursor to
-   *                         retrieve the next set of results for the original query.  If a cursor is not provided, the
-   *                         endpoint returns the first page of the results.  For more  information, see
+   * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this cursor to
+   *                         retrieve the next set of results for the original query. If a cursor is not provided, the
+   *                         endpoint returns the first page of the results. For more  information, see
    *                         [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
-   * @param limit  A limit on the number of results to return per page. The limit is advisory and  the
+   * @param limit  A limit on the number of results to return per page. The limit is advisory and the
    *                         implementation might return more or less results. If the supplied limit is negative, zero,
    *                         or greater than the maximum limit of 1000, it is ignored.  Default value: `100`
    * @return Response from the API call

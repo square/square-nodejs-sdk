@@ -1,8 +1,7 @@
 
 # Adjust Loyalty Points Response
 
-A response that includes the loyalty event that
-resulted from the successful API call.
+Represents an [AdjustLoyaltyPoints](../../doc/api/loyalty.md#adjust-loyalty-points) request.
 
 ## Structure
 

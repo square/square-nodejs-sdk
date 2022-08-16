@@ -23,8 +23,7 @@ Represents details about an `UNLINKED_ACTIVITY_REFUND` [gift card activity type]
     "amount": null,
     "currency": null
   },
-  "reference_id": null,
-  "payment_id": null
+  "reference_id": null
 }
 ```
 

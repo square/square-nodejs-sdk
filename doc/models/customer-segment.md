@@ -22,11 +22,6 @@ Square Seller Dashboard or Point of Sale.
 ## Example (as JSON)
 
 ```json
-{
-  "id": null,
-  "name": "name0",
-  "created_at": null,
-  "updated_at": null
-}
+{}
 ```
 

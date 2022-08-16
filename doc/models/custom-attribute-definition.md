@@ -30,9 +30,7 @@ specifies the key, visibility, schema, and other properties for a custom attribu
   "name": null,
   "description": null,
   "visibility": null,
-  "version": null,
-  "updated_at": null,
-  "created_at": null
+  "version": null
 }
 ```
 

@@ -16,6 +16,8 @@ Describes a `DeleteInvoice` response.
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "errors": []
+}
 ```
 
