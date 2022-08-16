@@ -37,14 +37,9 @@ Contains the details necessary to fulfill a shipment order.
   "shipping_type": null,
   "tracking_number": null,
   "tracking_url": null,
-  "placed_at": null,
-  "in_progress_at": null,
-  "packaged_at": null,
   "expected_shipped_at": null,
-  "shipped_at": null,
   "canceled_at": null,
   "cancel_reason": null,
-  "failed_at": null,
   "failure_reason": null
 }
 ```

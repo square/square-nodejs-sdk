@@ -30,7 +30,6 @@ Represents a refund processed for a Square transaction.
   "location_id": "location_id4",
   "transaction_id": null,
   "tender_id": "tender_id8",
-  "created_at": null,
   "reason": "reason4",
   "amount_money": {
     "amount": null,

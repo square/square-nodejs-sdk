@@ -39,7 +39,6 @@ particular time from one location to another.
   "catalog_object_type": null,
   "quantity": null,
   "occurred_at": null,
-  "created_at": null,
   "source": null,
   "employee_id": null,
   "team_member_id": null

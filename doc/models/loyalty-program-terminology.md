@@ -17,9 +17,6 @@ Represents the naming used for loyalty points.
 ## Example (as JSON)
 
 ```json
-{
-  "one": "one6",
-  "other": "other2"
-}
+{}
 ```
 

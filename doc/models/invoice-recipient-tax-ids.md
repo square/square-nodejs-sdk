@@ -18,8 +18,6 @@ see [Invoice recipient tax IDs](https://developer.squareup.com/docs/invoices-api
 ## Example (as JSON)
 
 ```json
-{
-  "eu_vat": null
-}
+{}
 ```
 

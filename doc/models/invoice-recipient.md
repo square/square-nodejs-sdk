@@ -30,12 +30,7 @@ Square updates the customer ID in response to a merge operation, but does not up
 ```json
 {
   "customer_id": null,
-  "given_name": null,
-  "family_name": null,
-  "email_address": null,
   "address": null,
-  "phone_number": null,
-  "company_name": null,
   "tax_ids": null
 }
 ```

@@ -28,7 +28,6 @@ Contains details about how to fulfill this order.
   "type": null,
   "state": null,
   "line_item_application": null,
-  "entries": null,
   "metadata": null,
   "pickup_details": null,
   "shipment_details": null

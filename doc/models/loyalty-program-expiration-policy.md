@@ -16,8 +16,6 @@ Describes when the loyalty program expires.
 ## Example (as JSON)
 
 ```json
-{
-  "expiration_duration": "expiration_duration8"
-}
+{}
 ```
 

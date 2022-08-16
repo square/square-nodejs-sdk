@@ -25,9 +25,7 @@ An object representing a team member's wage information.
   "team_member_id": null,
   "job_assignments": null,
   "is_overtime_exempt": null,
-  "version": null,
-  "created_at": null,
-  "updated_at": null
+  "version": null
 }
 ```
 

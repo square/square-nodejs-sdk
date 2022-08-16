@@ -1,7 +1,7 @@
 
 # Dispute
 
-Represents a dispute a cardholder initiated with their bank.
+Represents a [dispute](https://developer.squareup.com/docs/disputes-api/overview) a cardholder initiated with their bank.
 
 ## Structure
 
@@ -16,7 +16,7 @@ Represents a dispute a cardholder initiated with their bank.
 | `amountMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `reason` | [`string \| undefined`](../../doc/models/dispute-reason.md) | Optional | The list of possible reasons why a cardholder might initiate a<br>dispute with their bank. |
 | `state` | [`string \| undefined`](../../doc/models/dispute-state.md) | Optional | The list of possible dispute states. |
-| `dueAt` | `string \| undefined` | Optional | The time when the next action is due, in RFC 3339 format.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `40` |
+| `dueAt` | `string \| undefined` | Optional | The deadline by which the seller must respond to the dispute, in [RFC 3339 format](https://developer.squareup.com/docs/build-basics/common-data-types/working-with-dates).<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `40` |
 | `disputedPayment` | [`DisputedPayment \| undefined`](../../doc/models/disputed-payment.md) | Optional | The payment the cardholder disputed. |
 | `evidenceIds` | `string[] \| undefined` | Optional | The IDs of the evidence associated with the dispute. |
 | `cardBrand` | [`string \| undefined`](../../doc/models/card-brand.md) | Optional | Indicates a card's brand, such as `VISA` or `MASTERCARD`. |
@@ -41,8 +41,6 @@ Represents a dispute a cardholder initiated with their bank.
   "disputed_payment": null,
   "evidence_ids": null,
   "card_brand": null,
-  "created_at": null,
-  "updated_at": null,
   "brand_dispute_id": null,
   "reported_date": null,
   "reported_at": null,

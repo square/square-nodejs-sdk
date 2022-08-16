@@ -33,9 +33,7 @@ An employee object that is used by the external API.
   "phone_number": null,
   "location_ids": null,
   "status": null,
-  "is_owner": null,
-  "created_at": null,
-  "updated_at": null
+  "is_owner": null
 }
 ```
 

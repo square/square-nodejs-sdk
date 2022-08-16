@@ -74,6 +74,7 @@ Square API.
 | `UNSUPPORTED_ENTRY_METHOD` | The entry method for the credit card (swipe, dip, tap) is not supported. |
 | `INVALID_ENCRYPTED_CARD` | The encrypted card information is invalid. |
 | `INVALID_CARD` | The credit card cannot be validated based on the provided details. |
+| `PAYMENT_AMOUNT_MISMATCH` | The payment was declined because there was a payment amount mismatch.<br>The money amount Square was expecting does not match the amount provided. |
 | `GENERIC_DECLINE` | Square received a decline without any additional information.<br>If the payment information seems correct, the buyer can contact their<br>issuer to ask for more information. |
 | `CVV_FAILURE` | The card issuer declined the request because the CVV value is invalid. |
 | `ADDRESS_VERIFICATION_FAILURE` | The card issuer declined the request because the postal code is invalid. |
@@ -103,12 +104,12 @@ Square API.
 | `DELAYED_TRANSACTION_CAPTURED` | The application tried to capture a delayed-capture payment that was already captured. |
 | `DELAYED_TRANSACTION_FAILED` | The application tried to update a delayed-capture payment that failed. |
 | `CARD_TOKEN_EXPIRED` | The provided card token (nonce) has expired. |
-| `CARD_TOKEN_USED` | The provided card token (nonce) was already used to process payment. |
+| `CARD_TOKEN_USED` | The provided card token (nonce) was already used to process the payment or refund. |
 | `AMOUNT_TOO_HIGH` | The requested payment amount is too high for the provided payment source. |
 | `UNSUPPORTED_INSTRUMENT_TYPE` | The API request references an unsupported instrument type/ |
 | `REFUND_AMOUNT_INVALID` | The requested refund amount exceeds the amount available to refund. |
 | `REFUND_ALREADY_PENDING` | The payment already has a pending refund. |
-| `PAYMENT_NOT_REFUNDABLE` | The payment is not refundable. For example, a previous refund has<br>already been rejected and no new refunds can be accepted. |
+| `PAYMENT_NOT_REFUNDABLE` | The payment is not refundable. For example, the payment has been disputed and is no longer eligible for<br>refunds. |
 | `REFUND_DECLINED` | Request failed - The card issuer declined the refund. |
 | `INVALID_CARD_DATA` | Generic error - the provided card data is invalid. |
 | `SOURCE_USED` | The provided source id was already used to create a card. |

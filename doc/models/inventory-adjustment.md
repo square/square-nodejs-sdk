@@ -46,14 +46,9 @@ particular time and location.
   "quantity": null,
   "total_price_money": null,
   "occurred_at": null,
-  "created_at": null,
   "source": null,
   "employee_id": null,
   "team_member_id": null,
-  "transaction_id": null,
-  "refund_id": null,
-  "purchase_order_id": null,
-  "goods_receipt_id": null,
   "adjustment_group": null
 }
 ```

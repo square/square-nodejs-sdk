@@ -30,10 +30,7 @@ Represents a payment refund processed by the Square Terminal. Only supports Inte
 
 ```json
 {
-  "id": null,
-  "refund_id": null,
   "payment_id": "payment_id0",
-  "order_id": null,
   "amount_money": {
     "amount": null,
     "currency": null
@@ -41,12 +38,7 @@ Represents a payment refund processed by the Square Terminal. Only supports Inte
   "reason": "reason4",
   "device_id": "device_id6",
   "deadline_duration": null,
-  "status": null,
-  "cancel_reason": null,
-  "created_at": null,
-  "updated_at": null,
-  "app_id": null,
-  "location_id": null
+  "cancel_reason": null
 }
 ```
 

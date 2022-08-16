@@ -9,15 +9,13 @@ export interface ListDisputesRequest {
    */
   cursor?: string;
   /**
-   * The dispute states to filter the result.
-   * If not specified, the endpoint returns all open disputes (the dispute status is not `INQUIRY_CLOSED`, `WON`,
-   * or `LOST`).
+   * The dispute states used to filter the result. If not specified, the endpoint returns all disputes.
    * See [DisputeState](#type-disputestate) for possible values
    */
   states?: string[];
   /**
-   * The ID of the location for which to return a list of disputes. If not specified, the endpoint returns
-   * all open disputes (the dispute status is not `INQUIRY_CLOSED`, `WON`, or `LOST`) associated with all locations.
+   * The ID of the location for which to return a list of disputes.
+   * If not specified, the endpoint returns disputes associated with all locations.
    */
   locationId?: string;
 }

@@ -27,7 +27,6 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
   "uid": null,
   "source_order_id": null,
   "return_line_items": null,
-  "return_service_charges": null,
   "return_taxes": null,
   "return_discounts": null,
   "rounding_adjustment": null,

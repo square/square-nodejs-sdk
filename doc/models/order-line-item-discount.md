@@ -42,9 +42,7 @@ amount contributed by the item to the order subtotal.
   "amount_money": null,
   "applied_money": null,
   "metadata": null,
-  "scope": null,
-  "reward_ids": null,
-  "pricing_rule_id": null
+  "scope": null
 }
 ```
 

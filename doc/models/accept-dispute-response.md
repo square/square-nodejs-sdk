@@ -12,7 +12,7 @@ Defines the fields in an `AcceptDispute` response.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information about errors encountered during the request. |
-| `dispute` | [`Dispute \| undefined`](../../doc/models/dispute.md) | Optional | Represents a dispute a cardholder initiated with their bank. |
+| `dispute` | [`Dispute \| undefined`](../../doc/models/dispute.md) | Optional | Represents a [dispute](https://developer.squareup.com/docs/disputes-api/overview) a cardholder initiated with their bank. |
 
 ## Example (as JSON)
 
@@ -20,22 +20,23 @@ Defines the fields in an `AcceptDispute` response.
 {
   "dispute": {
     "amount_money": {
-      "amount": 2000,
+      "amount": 2500,
       "currency": "USD"
     },
-    "brand_dispute_id": "100000282394",
+    "brand_dispute_id": "100000809947",
     "card_brand": "VISA",
-    "created_at": "2018-10-18T15:59:13.613Z",
-    "disputed_payments": [
-      {
-        "payment_id": "6Ee10wvqhfipStz297mtUhBXvaB"
-      }
-    ],
-    "due_at": "2018-11-01T00:00:00.000Z",
+    "created_at": "2022-06-29T18:45:22.265Z",
+    "disputed_payment": {
+      "payment_id": "zhyh1ch64kRBrrlfVhwjCEjZWzNZY"
+    },
+    "due_at": "2022-07-13T00:00:00.000Z",
     "id": "XDgyFu7yo1E2S5lQGGpYn",
+    "location_id": "L1HN3ZMQK64X9",
     "reason": "NO_KNOWLEDGE",
-    "state": "LOST",
-    "updated_at": "2018-10-18T15:59:13.613Z"
+    "reported_at": "2022-06-29T00:00:00.000Z",
+    "state": "ACCEPTED",
+    "updated_at": "2022-07-07T19:14:42.650Z",
+    "version": 2
   }
 }
 ```

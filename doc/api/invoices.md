@@ -359,6 +359,7 @@ bodyInvoicepaymentRequests0.tippingEnabled = false;
 bodyInvoicePaymentRequests[0] = bodyInvoicepaymentRequests0;
 
 const bodyInvoice: Invoice = {};
+bodyInvoice.version = 1;
 bodyInvoice.paymentRequests = bodyInvoicePaymentRequests;
 
 const bodyFieldsToClear: string[] = ['payments_requests[2da7964f-f3d2-4f43-81e8-5aa220bf3355].reminders'];

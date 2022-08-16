@@ -137,7 +137,7 @@ try {
 
 # Search Customers
 
-Searches the customer profiles associated with a Square account using a supported query filter.
+Searches the customer profiles associated with a Square account using one or more supported query filters.
 
 Calling `SearchCustomers` without any explicit query filter returns all
 customer profiles ordered alphabetically based on `given_name` and

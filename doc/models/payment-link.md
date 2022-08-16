@@ -18,19 +18,16 @@
 | `url` | `string \| undefined` | Optional | The URL of the payment link.<br>**Constraints**: *Maximum Length*: `255` |
 | `createdAt` | `string \| undefined` | Optional | The timestamp when the payment link was created, in RFC 3339 format. |
 | `updatedAt` | `string \| undefined` | Optional | The timestamp when the payment link was last updated, in RFC 3339 format. |
-| `paymentNote` | `string \| undefined` | Optional | An optional note. After Square processes the payment, this note is added to the  <br>resulting `Payment`.<br>**Constraints**: *Maximum Length*: `500` |
+| `paymentNote` | `string \| undefined` | Optional | An optional note. After Square processes the payment, this note is added to the<br>resulting `Payment`.<br>**Constraints**: *Maximum Length*: `500` |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": null,
   "version": 172,
   "description": null,
-  "order_id": null,
   "checkout_options": null,
   "pre_populated_data": null,
-  "url": null,
   "created_at": null,
   "updated_at": null,
   "payment_note": null

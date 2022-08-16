@@ -25,8 +25,6 @@
   "version": null,
   "location_id": null,
   "state": null,
-  "created_at": null,
-  "updated_at": null,
   "fulfillment_update": null
 }
 ```

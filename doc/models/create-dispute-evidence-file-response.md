@@ -21,12 +21,11 @@ Defines the fields in a `CreateDisputeEvidenceFile` response.
   "evidence": {
     "dispute_id": "bVTprrwk0gygTLZ96VX1oB",
     "evidence_file": {
-      "filename": "evidence.tiff",
-      "filetype": "image/tiff"
+      "filename": "customer-interaction.jpg",
+      "filetype": "image/jpeg"
     },
-    "evidence_type": "GENERIC_EVIDENCE",
     "id": "TOomLInj6iWmP3N8qfCXrB",
-    "uploaded_at": "2018-10-18T16:01:10.000Z"
+    "uploaded_at": "2022-05-18T16:01:10.000Z"
   }
 }
 ```

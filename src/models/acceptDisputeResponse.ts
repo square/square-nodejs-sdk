@@ -6,7 +6,7 @@ import { Error, errorSchema } from './error';
 export interface AcceptDisputeResponse {
   /** Information about errors encountered during the request. */
   errors?: Error[];
-  /** Represents a dispute a cardholder initiated with their bank. */
+  /** Represents a [dispute](https://developer.squareup.com/docs/disputes-api/overview) a cardholder initiated with their bank. */
   dispute?: Dispute;
 }
 

@@ -21,7 +21,6 @@ A batch of catalog objects.
     {
       "type": "ITEM_OPTION_VAL",
       "id": "id8",
-      "updated_at": null,
       "version": null,
       "is_deleted": null,
       "custom_attribute_values": null,
@@ -50,7 +49,6 @@ A batch of catalog objects.
     {
       "type": "ITEM_OPTION",
       "id": "id9",
-      "updated_at": null,
       "version": null,
       "is_deleted": null,
       "custom_attribute_values": null,

@@ -16,8 +16,6 @@ Represents additional data for rules with the `ITEM_VARIATION` accrual type.
 ## Example (as JSON)
 
 ```json
-{
-  "item_variation_id": "item_variation_id4"
-}
+{}
 ```
 

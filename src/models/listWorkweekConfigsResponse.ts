@@ -8,11 +8,11 @@ import { WorkweekConfig, workweekConfigSchema } from './workweekConfig';
  * the request resulted in errors.
  */
 export interface ListWorkweekConfigsResponse {
-  /** A page of `EmployeeWage` results. */
+  /** A page of `WorkweekConfig` results. */
   workweekConfigs?: WorkweekConfig[];
   /**
    * The value supplied in the subsequent request to fetch the next page of
-   * `EmployeeWage` results.
+   * `WorkweekConfig` results.
    */
   cursor?: string;
   /** Any errors that occurred during the request. */

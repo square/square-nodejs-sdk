@@ -1,7 +1,7 @@
 
 # Loyalty Program Accrual Rule
 
-Defines an accrual rule, which is how buyers can earn points.
+Represents an accrual rule, which defines how buyers can earn points from the base [loyalty program](../../doc/models/loyalty-program.md).
 
 ## Structure
 
@@ -23,7 +23,6 @@ Defines an accrual rule, which is how buyers can earn points.
 ```json
 {
   "accrual_type": "ITEM_VARIATION",
-  "points": null,
   "visit_data": null,
   "spend_data": null,
   "item_variation_data": null,

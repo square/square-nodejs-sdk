@@ -35,7 +35,6 @@ payment types using a checkout workflow hosted on squareup.com.
   "pre_populate_shipping_address": null,
   "redirect_url": null,
   "order": null,
-  "created_at": null,
   "additional_recipients": null
 }
 ```

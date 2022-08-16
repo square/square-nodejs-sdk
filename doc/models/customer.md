@@ -37,8 +37,6 @@ Represents a Square customer profile in the Customer Directory of a Square selle
 ```json
 {
   "id": null,
-  "created_at": null,
-  "updated_at": null,
   "cards": null,
   "given_name": null,
   "family_name": null,

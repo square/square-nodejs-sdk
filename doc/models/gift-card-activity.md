@@ -38,10 +38,8 @@ includes a `redeem_activity_details` field that contains information about the r
 
 ```json
 {
-  "id": null,
   "type": "ADJUST_INCREMENT",
   "location_id": "location_id4",
-  "created_at": null,
   "gift_card_id": null,
   "gift_card_gan": null,
   "gift_card_balance_money": null,

@@ -18,7 +18,6 @@ Provides metadata when the event `type` is `EXPIRE_POINTS`.
 
 ```json
 {
-  "loyalty_program_id": "loyalty_program_id0",
   "points": 236
 }
 ```

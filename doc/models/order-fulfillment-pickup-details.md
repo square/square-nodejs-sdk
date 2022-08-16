@@ -42,13 +42,6 @@ Contains details necessary to fulfill a pickup order.
   "pickup_window_duration": null,
   "prep_time_duration": null,
   "note": null,
-  "placed_at": null,
-  "accepted_at": null,
-  "rejected_at": null,
-  "ready_at": null,
-  "expired_at": null,
-  "picked_up_at": null,
-  "canceled_at": null,
   "cancel_reason": null,
   "is_curbside_pickup": null,
   "curbside_pickup_details": null

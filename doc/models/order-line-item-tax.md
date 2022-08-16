@@ -38,8 +38,7 @@ contributes to the order subtotal.
   "percentage": null,
   "metadata": null,
   "applied_money": null,
-  "scope": null,
-  "auto_applied": null
+  "scope": null
 }
 ```
 
