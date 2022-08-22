@@ -178,6 +178,7 @@ export { ChargeRequestAdditionalRecipient } from './models/chargeRequestAddition
 export { ChargeResponse } from './models/chargeResponse';
 export { Checkout } from './models/checkout';
 export { CheckoutOptions } from './models/checkoutOptions';
+export { ClearpayDetails } from './models/clearpayDetails';
 export { CloneOrderRequest } from './models/cloneOrderRequest';
 export { CloneOrderResponse } from './models/cloneOrderResponse';
 export { CompletePaymentRequest } from './models/completePaymentRequest';
