@@ -192,7 +192,8 @@ Adds points earned from a purchase to a [loyalty account](../../doc/models/loyal
 - If you are not using the Orders API to manage orders, provide `points` with the number of points to add.
   You must first perform a client-side computation of the points earned from the loyalty program and
   loyalty promotion. For spend-based and visit-based programs, you can call [CalculateLoyaltyPoints](../../doc/api/loyalty.md#calculate-loyalty-points)
-  to compute the points earned from the loyalty program (but not points earned from a loyalty promotion).
+  to compute the points earned from the base loyalty program. For information about computing points earned from a loyalty promotion, see
+  [Calculating promotion points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
 
 ```ts
 async accumulateLoyaltyPoints(
@@ -579,12 +580,12 @@ async createLoyaltyPromotion(
 ```ts
 const programId = 'program_id0';
 const contentType = null;
-const bodyLoyaltyPromotionIncentivePointsMultiplierData: LoyaltyPromotionIncentivePointsMultiplierData = {
+const bodyLoyaltyPromotionIncentiveType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyLoyaltyPromotionIncentivePointsMultiplierData: LoyaltyPromotionIncentivePointsMultiplierData = {
   pointsMultiplier: 3,
 };
 
 const bodyLoyaltyPromotionIncentive: LoyaltyPromotionIncentive = {
-  type: 'POINTS_MULTIPLIER',
+  type: bodyLoyaltyPromotionIncentiveType,
 };
 bodyLoyaltyPromotionIncentive.pointsMultiplierData = bodyLoyaltyPromotionIncentivePointsMultiplierData;
 
@@ -593,10 +594,10 @@ const bodyLoyaltyPromotionAvailableTime: LoyaltyPromotionAvailableTimeData = {
   timePeriods: bodyLoyaltyPromotionAvailableTimeTimePeriods,
 };
 
-const bodyLoyaltyPromotionTriggerLimit: LoyaltyPromotionTriggerLimit = {
+const bodyLoyaltyPromotionTriggerLimitInterval: string = {'' : null, '' : null, '' : null } const bodyLoyaltyPromotionTriggerLimit: LoyaltyPromotionTriggerLimit = {
   times: 1,
 };
-bodyLoyaltyPromotionTriggerLimit.interval = 'DAY';
+bodyLoyaltyPromotionTriggerLimit.interval = bodyLoyaltyPromotionTriggerLimitInterval;
 
 const bodyLoyaltyPromotion: LoyaltyPromotion = {
   name: 'Tuesday Happy Hour Promo',

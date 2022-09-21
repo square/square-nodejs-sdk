@@ -74,9 +74,9 @@ const bodyOrderOrderlineItems0appliedDiscounts0: OrderLineItemAppliedDiscount = 
 
 bodyOrderOrderlineItems0AppliedDiscounts[0] = bodyOrderOrderlineItems0appliedDiscounts0;
 
-const bodyOrderOrderlineItems0BasePriceMoney: Money = {};
-bodyOrderOrderlineItems0BasePriceMoney.amount = 1500;
-bodyOrderOrderlineItems0BasePriceMoney.currency = 'USD';
+const bodyOrderOrderlineItems0BasePriceMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyOrderOrderlineItems0BasePriceMoney: Money = {};
+bodyOrderOrderlineItems0BasePriceMoney.amount = BigInt(1500);
+bodyOrderOrderlineItems0BasePriceMoney.currency = bodyOrderOrderlineItems0BasePriceMoneyCurrency;
 
 const bodyOrderOrderlineItems0: OrderLineItem = {
   quantity: '2',
@@ -88,9 +88,9 @@ bodyOrderOrderlineItems0.basePriceMoney = bodyOrderOrderlineItems0BasePriceMoney
 
 bodyOrderOrderLineItems[0] = bodyOrderOrderlineItems0;
 
-const bodyOrderOrderlineItems1BasePriceMoney: Money = {};
-bodyOrderOrderlineItems1BasePriceMoney.amount = 2500;
-bodyOrderOrderlineItems1BasePriceMoney.currency = 'USD';
+const bodyOrderOrderlineItems1BasePriceMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyOrderOrderlineItems1BasePriceMoney: Money = {};
+bodyOrderOrderlineItems1BasePriceMoney.amount = BigInt(2500);
+bodyOrderOrderlineItems1BasePriceMoney.currency = bodyOrderOrderlineItems1BasePriceMoneyCurrency;
 
 const bodyOrderOrderlineItems1: OrderLineItem = {
   quantity: '1',
@@ -100,9 +100,9 @@ bodyOrderOrderlineItems1.basePriceMoney = bodyOrderOrderlineItems1BasePriceMoney
 
 bodyOrderOrderLineItems[1] = bodyOrderOrderlineItems1;
 
-const bodyOrderOrderlineItems2BasePriceMoney: Money = {};
-bodyOrderOrderlineItems2BasePriceMoney.amount = 3500;
-bodyOrderOrderlineItems2BasePriceMoney.currency = 'USD';
+const bodyOrderOrderlineItems2BasePriceMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyOrderOrderlineItems2BasePriceMoney: Money = {};
+bodyOrderOrderlineItems2BasePriceMoney.amount = BigInt(3500);
+bodyOrderOrderlineItems2BasePriceMoney.currency = bodyOrderOrderlineItems2BasePriceMoneyCurrency;
 
 const bodyOrderOrderlineItems2: OrderLineItem = {
   quantity: '3',
@@ -114,25 +114,25 @@ bodyOrderOrderLineItems[2] = bodyOrderOrderlineItems2;
 
 const bodyOrderOrderTaxes: OrderLineItemTax[] = [];
 
-const bodyOrderOrdertaxes0: OrderLineItemTax = {};
+const bodyOrderOrdertaxes0Type: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyOrderOrdertaxes0Scope: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyOrderOrdertaxes0: OrderLineItemTax = {};
 bodyOrderOrdertaxes0.uid = '38ze1696-z1e3-5628-af6d-f1e04d947fg3';
-bodyOrderOrdertaxes0.type = 'INCLUSIVE';
+bodyOrderOrdertaxes0.type = bodyOrderOrdertaxes0Type;
 bodyOrderOrdertaxes0.percentage = '7.75';
-bodyOrderOrdertaxes0.scope = 'LINE_ITEM';
+bodyOrderOrdertaxes0.scope = bodyOrderOrdertaxes0Scope;
 
 bodyOrderOrderTaxes[0] = bodyOrderOrdertaxes0;
 
 const bodyOrderOrderDiscounts: OrderLineItemDiscount[] = [];
 
-const bodyOrderOrderdiscounts0AmountMoney: Money = {};
-bodyOrderOrderdiscounts0AmountMoney.amount = 100;
-bodyOrderOrderdiscounts0AmountMoney.currency = 'USD';
+const bodyOrderOrderdiscounts0Type: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyOrderOrderdiscounts0AmountMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyOrderOrderdiscounts0AmountMoney: Money = {};
+bodyOrderOrderdiscounts0AmountMoney.amount = BigInt(100);
+bodyOrderOrderdiscounts0AmountMoney.currency = bodyOrderOrderdiscounts0AmountMoneyCurrency;
 
-const bodyOrderOrderdiscounts0: OrderLineItemDiscount = {};
+const bodyOrderOrderdiscounts0Scope: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyOrderOrderdiscounts0: OrderLineItemDiscount = {};
 bodyOrderOrderdiscounts0.uid = '56ae1696-z1e3-9328-af6d-f1e04d947gd4';
-bodyOrderOrderdiscounts0.type = 'FIXED_AMOUNT';
+bodyOrderOrderdiscounts0.type = bodyOrderOrderdiscounts0Type;
 bodyOrderOrderdiscounts0.amountMoney = bodyOrderOrderdiscounts0AmountMoney;
-bodyOrderOrderdiscounts0.scope = 'LINE_ITEM';
+bodyOrderOrderdiscounts0.scope = bodyOrderOrderdiscounts0Scope;
 
 bodyOrderOrderDiscounts[0] = bodyOrderOrderdiscounts0;
 
@@ -149,21 +149,21 @@ const bodyOrder: CreateOrderRequest = {};
 bodyOrder.order = bodyOrderOrder;
 bodyOrder.idempotencyKey = '12ae1696-z1e3-4328-af6d-f1e04d947gd4';
 
-const bodyPrePopulateShippingAddress: Address = {};
+const bodyPrePopulateShippingAddressCountry: string = {'' : null, '' : null } const bodyPrePopulateShippingAddress: Address = {};
 bodyPrePopulateShippingAddress.addressLine1 = '1455 Market St.';
 bodyPrePopulateShippingAddress.addressLine2 = 'Suite 600';
 bodyPrePopulateShippingAddress.locality = 'San Francisco';
 bodyPrePopulateShippingAddress.administrativeDistrictLevel1 = 'CA';
 bodyPrePopulateShippingAddress.postalCode = '94103';
-bodyPrePopulateShippingAddress.country = 'US';
+bodyPrePopulateShippingAddress.country = bodyPrePopulateShippingAddressCountry;
 bodyPrePopulateShippingAddress.firstName = 'Jane';
 bodyPrePopulateShippingAddress.lastName = 'Doe';
 
 const bodyAdditionalRecipients: ChargeRequestAdditionalRecipient[] = [];
 
-const bodyadditionalRecipients0AmountMoney: Money = {};
-bodyadditionalRecipients0AmountMoney.amount = 60;
-bodyadditionalRecipients0AmountMoney.currency = 'USD';
+const bodyadditionalRecipients0AmountMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyadditionalRecipients0AmountMoney: Money = {};
+bodyadditionalRecipients0AmountMoney.amount = BigInt(60);
+bodyadditionalRecipients0AmountMoney.currency = bodyadditionalRecipients0AmountMoneyCurrency;
 
 const bodyadditionalRecipients0: ChargeRequestAdditionalRecipient = {
   locationId: '057P5VYJ4A5X1',
@@ -263,9 +263,9 @@ async createPaymentLink(
 
 ```ts
 const contentType = null;
-const bodyQuickPayPriceMoney: Money = {};
-bodyQuickPayPriceMoney.amount = 10000;
-bodyQuickPayPriceMoney.currency = 'USD';
+const bodyQuickPayPriceMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyQuickPayPriceMoney: Money = {};
+bodyQuickPayPriceMoney.amount = BigInt(10000);
+bodyQuickPayPriceMoney.currency = bodyQuickPayPriceMoneyCurrency;
 
 const bodyQuickPay: QuickPay = {
   name: 'Auto Detailing',

@@ -103,11 +103,11 @@ async createCustomerCustomAttributeDefinition(
 
 ```ts
 const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
+const bodyCustomAttributeDefinitionVisibility: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
 bodyCustomAttributeDefinition.key = 'favoritemovie';
 bodyCustomAttributeDefinition.name = 'Favorite Movie';
 bodyCustomAttributeDefinition.description = 'The favorite movie of the customer.';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_HIDDEN';
+bodyCustomAttributeDefinition.visibility = bodyCustomAttributeDefinitionVisibility;
 
 const body: CreateCustomerCustomAttributeDefinitionRequest = {
   customAttributeDefinition: bodyCustomAttributeDefinition,
@@ -250,9 +250,9 @@ async updateCustomerCustomAttributeDefinition(
 ```ts
 const key = 'key0';
 const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
+const bodyCustomAttributeDefinitionVisibility: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
 bodyCustomAttributeDefinition.description = 'Update the description as desired.';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_ONLY';
+bodyCustomAttributeDefinition.visibility = bodyCustomAttributeDefinitionVisibility;
 
 const body: UpdateCustomerCustomAttributeDefinitionRequest = {
   customAttributeDefinition: bodyCustomAttributeDefinition,

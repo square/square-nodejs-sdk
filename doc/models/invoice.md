@@ -34,6 +34,7 @@ invoices. For more information, see [Invoices API Overview](https://developer.sq
 | `subscriptionId` | `string \| undefined` | Optional | The ID of the [subscription](../../doc/models/subscription.md) associated with the invoice.<br>This field is present only on subscription billing invoices. |
 | `saleOrServiceDate` | `string \| undefined` | Optional | The date of the sale or the date that the service is rendered, in `YYYY-MM-DD` format.<br>This field can be used to specify a past or future date which is displayed on the invoice. |
 | `paymentConditions` | `string \| undefined` | Optional | **France only.** The payment terms and conditions that are displayed on the invoice. For more information,<br>see [Payment conditions](https://developer.squareup.com/docs/invoices-api/overview#payment-conditions).<br><br>For countries other than France, Square returns an `INVALID_REQUEST_ERROR` with a `BAD_REQUEST` code and<br>"Payment conditions are not supported for this location's country" detail if this field is included in `CreateInvoice` or `UpdateInvoice` requests.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2000` |
+| `storePaymentMethodEnabled` | `boolean \| undefined` | Optional | Indicates whether to allow a customer to save a credit or debit card as a card on file or a bank transfer as a<br>bank account on file. If `true`, Square displays a __Save my card on file__ or __Save my bank on file__ checkbox on the<br>invoice payment page. Stored payment information can be used for future automatic payments. The default value is `false`. |
 
 ## Example (as JSON)
 
@@ -54,7 +55,8 @@ invoices. For more information, see [Invoices API Overview](https://developer.sq
   "accepted_payment_methods": null,
   "custom_fields": null,
   "sale_or_service_date": null,
-  "payment_conditions": null
+  "payment_conditions": null,
+  "store_payment_method_enabled": null
 }
 ```
 

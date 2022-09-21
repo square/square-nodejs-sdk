@@ -1,5 +1,6 @@
 import {
   array,
+  boolean,
   lazy,
   number,
   object,
@@ -142,6 +143,12 @@ export interface Invoice {
    * "Payment conditions are not supported for this location's country" detail if this field is included in `CreateInvoice` or `UpdateInvoice` requests.
    */
   paymentConditions?: string;
+  /**
+   * Indicates whether to allow a customer to save a credit or debit card as a card on file or a bank transfer as a
+   * bank account on file. If `true`, Square displays a __Save my card on file__ or __Save my bank on file__ checkbox on the
+   * invoice payment page. Stored payment information can be used for future automatic payments. The default value is `false`.
+   */
+  storePaymentMethodEnabled?: boolean;
 }
 
 export const invoiceSchema: Schema<Invoice> = object({
@@ -182,4 +189,8 @@ export const invoiceSchema: Schema<Invoice> = object({
   subscriptionId: ['subscription_id', optional(string())],
   saleOrServiceDate: ['sale_or_service_date', optional(string())],
   paymentConditions: ['payment_conditions', optional(string())],
+  storePaymentMethodEnabled: [
+    'store_payment_method_enabled',
+    optional(boolean()),
+  ],
 });

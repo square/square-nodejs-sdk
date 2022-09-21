@@ -52,16 +52,6 @@ export interface ObtainTokenResponse {
   errors?: Error[];
   /** The date when the `refresh_token` expires, in [ISO 8601](http://www.iso.org/iso/home/standards/iso8601.htm) format. */
   refreshTokenExpiresAt?: string;
-  /**
-   * The subscription id of a v2 subscription the merchant signed up
-   * for. The subscription id is only present if the merchant signed up for a subscription during authorization.
-   */
-  appSubscriptionId?: string;
-  /**
-   * The plan id of a v2 subscription plan the merchant signed up
-   * for. The plan id is only present if the merchant signed up for a subscription plan during authorization.
-   */
-  appPlanId?: string;
 }
 
 export const obtainTokenResponseSchema: Schema<ObtainTokenResponse> = object({
@@ -76,6 +66,4 @@ export const obtainTokenResponseSchema: Schema<ObtainTokenResponse> = object({
   shortLived: ['short_lived', optional(boolean())],
   errors: ['errors', optional(array(lazy(() => errorSchema)))],
   refreshTokenExpiresAt: ['refresh_token_expires_at', optional(string())],
-  appSubscriptionId: ['app_subscription_id', optional(string())],
-  appPlanId: ['app_plan_id', optional(string())],
 });

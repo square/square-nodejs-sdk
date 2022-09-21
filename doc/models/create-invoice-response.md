@@ -79,6 +79,7 @@ The response returned by the `CreateInvoice` request.
     "sale_or_service_date": "2030-01-24",
     "scheduled_at": "2030-01-13T10:00:00Z",
     "status": "DRAFT",
+    "store_payment_method_enabled": false,
     "timezone": "America/Los_Angeles",
     "title": "Event Planning Services",
     "updated_at": "2020-06-18T17:45:13Z",

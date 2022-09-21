@@ -21,7 +21,7 @@ export interface TerminalAction {
   deadlineDuration?: string;
   /**
    * The status of the `TerminalAction`.
-   * Options: `PENDING`, `IN_PROGRESS`, `CANCELED`, `COMPLETED`
+   * Options: `PENDING`, `IN_PROGRESS`, `CANCEL_REQUESTED`, `CANCELED`, `COMPLETED`
    */
   status?: string;
   cancelReason?: string;

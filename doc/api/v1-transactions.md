@@ -10,25 +10,25 @@ const v1TransactionsApi = client.v1TransactionsApi;
 
 ## Methods
 
-* [List Orders](../../doc/api/v1-transactions.md#list-orders)
-* [Retrieve Order](../../doc/api/v1-transactions.md#retrieve-order)
-* [Update Order](../../doc/api/v1-transactions.md#update-order)
-* [List Payments](../../doc/api/v1-transactions.md#list-payments)
-* [Retrieve Payment](../../doc/api/v1-transactions.md#retrieve-payment)
-* [List Refunds](../../doc/api/v1-transactions.md#list-refunds)
-* [Create Refund](../../doc/api/v1-transactions.md#create-refund)
-* [List Settlements](../../doc/api/v1-transactions.md#list-settlements)
-* [Retrieve Settlement](../../doc/api/v1-transactions.md#retrieve-settlement)
+* [V1 List Orders](../../doc/api/v1-transactions.md#v1-list-orders)
+* [V1 Retrieve Order](../../doc/api/v1-transactions.md#v1-retrieve-order)
+* [V1 Update Order](../../doc/api/v1-transactions.md#v1-update-order)
+* [V1 List Payments](../../doc/api/v1-transactions.md#v1-list-payments)
+* [V1 Retrieve Payment](../../doc/api/v1-transactions.md#v1-retrieve-payment)
+* [V1 List Refunds](../../doc/api/v1-transactions.md#v1-list-refunds)
+* [V1 Create Refund](../../doc/api/v1-transactions.md#v1-create-refund)
+* [V1 List Settlements](../../doc/api/v1-transactions.md#v1-list-settlements)
+* [V1 Retrieve Settlement](../../doc/api/v1-transactions.md#v1-retrieve-settlement)
 
 
-# List Orders
+# V1 List Orders
 
 **This endpoint is deprecated.**
 
 Provides summary information for a merchant's online store orders.
 
 ```ts
-async listOrders(
+async v1ListOrders(
   locationId: string,
   order?: string,
   limit?: number,
@@ -56,7 +56,7 @@ async listOrders(
 ```ts
 const locationId = 'location_id4';
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.listOrders(locationId);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1ListOrders(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -68,14 +68,14 @@ try {
 ```
 
 
-# Retrieve Order
+# V1 Retrieve Order
 
 **This endpoint is deprecated.**
 
 Provides comprehensive information for a single online store order, including the order's history.
 
 ```ts
-async retrieveOrder(
+async v1RetrieveOrder(
   locationId: string,
   orderId: string,
   requestOptions?: RequestOptions
@@ -100,7 +100,7 @@ async retrieveOrder(
 const locationId = 'location_id4';
 const orderId = 'order_id6';
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.retrieveOrder(locationId, orderId);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1RetrieveOrder(locationId, orderId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -112,14 +112,14 @@ try {
 ```
 
 
-# Update Order
+# V1 Update Order
 
 **This endpoint is deprecated.**
 
 Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
 
 ```ts
-async updateOrder(
+async v1UpdateOrder(
   locationId: string,
   orderId: string,
   body: V1UpdateOrderRequest,
@@ -146,12 +146,12 @@ async updateOrder(
 const locationId = 'location_id4';
 const orderId = 'order_id6';
 const contentType = null;
-const body: V1UpdateOrderRequest = {
-  action: 'REFUND',
+const bodyAction: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const body: V1UpdateOrderRequest = {
+  action: bodyAction,
 };
 
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.updateOrder(locationId, orderId, body);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1UpdateOrder(locationId, orderId, body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -163,7 +163,7 @@ try {
 ```
 
 
-# List Payments
+# V1 List Payments
 
 **This endpoint is deprecated.**
 
@@ -180,7 +180,7 @@ list an offline payment chronologically between online payments that
 were seen in a previous request.
 
 ```ts
-async listPayments(
+async v1ListPayments(
   locationId: string,
   order?: string,
   beginTime?: string,
@@ -215,7 +215,7 @@ async listPayments(
 const locationId = 'location_id4';
 const includePartial = false;
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.listPayments(locationId, None, None, None, None, None, includePartial);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1ListPayments(locationId, None, None, None, None, None, includePartial);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -227,14 +227,14 @@ try {
 ```
 
 
-# Retrieve Payment
+# V1 Retrieve Payment
 
 **This endpoint is deprecated.**
 
 Provides comprehensive information for a single payment.
 
 ```ts
-async retrievePayment(
+async v1RetrievePayment(
   locationId: string,
   paymentId: string,
   requestOptions?: RequestOptions
@@ -259,7 +259,7 @@ async retrievePayment(
 const locationId = 'location_id4';
 const paymentId = 'payment_id0';
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.retrievePayment(locationId, paymentId);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1RetrievePayment(locationId, paymentId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -271,14 +271,14 @@ try {
 ```
 
 
-# List Refunds
+# V1 List Refunds
 
 **This endpoint is deprecated.**
 
 Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
 
 ```ts
-async listRefunds(
+async v1ListRefunds(
   locationId: string,
   order?: string,
   beginTime?: string,
@@ -310,7 +310,7 @@ async listRefunds(
 ```ts
 const locationId = 'location_id4';
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.listRefunds(locationId);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1ListRefunds(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -322,7 +322,7 @@ try {
 ```
 
 
-# Create Refund
+# V1 Create Refund
 
 **This endpoint is deprecated.**
 
@@ -340,7 +340,7 @@ purposes, you can create fake cash payments in Square Point of Sale and
 refund them.
 
 ```ts
-async createRefund(
+async v1CreateRefund(
   locationId: string,
   body: V1CreateRefundRequest,
   requestOptions?: RequestOptions
@@ -364,14 +364,14 @@ async createRefund(
 ```ts
 const locationId = 'location_id4';
 const contentType = null;
-const body: V1CreateRefundRequest = {
+const bodyType: string = {'' : null, '' : null, '' : null, '' : null } const body: V1CreateRefundRequest = {
   paymentId: 'payment_id6',
-  type: 'FULL',
+  type: bodyType,
   reason: 'reason8',
 };
 
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.createRefund(locationId, body);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1CreateRefund(locationId, body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -383,7 +383,7 @@ try {
 ```
 
 
-# List Settlements
+# V1 List Settlements
 
 **This endpoint is deprecated.**
 
@@ -395,7 +395,7 @@ ranges cannot exceed one year in length.
 information.
 
 ```ts
-async listSettlements(
+async v1ListSettlements(
   locationId: string,
   order?: string,
   beginTime?: string,
@@ -429,7 +429,7 @@ async listSettlements(
 ```ts
 const locationId = 'location_id4';
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.listSettlements(locationId);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1ListSettlements(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {
@@ -441,7 +441,7 @@ try {
 ```
 
 
-# Retrieve Settlement
+# V1 Retrieve Settlement
 
 **This endpoint is deprecated.**
 
@@ -464,7 +464,7 @@ a bank account within 3 business days, but in exceptional cases it may
 take longer.
 
 ```ts
-async retrieveSettlement(
+async v1RetrieveSettlement(
   locationId: string,
   settlementId: string,
   requestOptions?: RequestOptions
@@ -489,7 +489,7 @@ async retrieveSettlement(
 const locationId = 'location_id4';
 const settlementId = 'settlement_id0';
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.retrieveSettlement(locationId, settlementId);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1RetrieveSettlement(locationId, settlementId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch(error) {

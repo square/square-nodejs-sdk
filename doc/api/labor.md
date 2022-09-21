@@ -397,9 +397,9 @@ async createShift(
 
 ```ts
 const contentType = null;
-const bodyShiftWageHourlyRate: Money = {};
-bodyShiftWageHourlyRate.amount = 1100;
-bodyShiftWageHourlyRate.currency = 'USD';
+const bodyShiftWageHourlyRateCurrency: string = {'' : null, '' : null, '' : null } const bodyShiftWageHourlyRate: Money = {};
+bodyShiftWageHourlyRate.amount = BigInt(1100);
+bodyShiftWageHourlyRate.currency = bodyShiftWageHourlyRateCurrency;
 
 const bodyShiftWage: ShiftWage = {};
 bodyShiftWage.title = 'Barista';
@@ -490,9 +490,9 @@ const bodyQueryFilterWorkdayDateRange: DateRange = {};
 bodyQueryFilterWorkdayDateRange.startDate = '2019-01-20';
 bodyQueryFilterWorkdayDateRange.endDate = '2019-02-03';
 
-const bodyQueryFilterWorkday: ShiftWorkday = {};
+const bodyQueryFilterWorkdayMatchShiftsBy: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyQueryFilterWorkday: ShiftWorkday = {};
 bodyQueryFilterWorkday.dateRange = bodyQueryFilterWorkdayDateRange;
-bodyQueryFilterWorkday.matchShiftsBy = 'START_AT';
+bodyQueryFilterWorkday.matchShiftsBy = bodyQueryFilterWorkdayMatchShiftsBy;
 bodyQueryFilterWorkday.defaultTimezone = 'America/Los_Angeles';
 
 const bodyQueryFilter: ShiftFilter = {};
@@ -631,9 +631,9 @@ async updateShift(
 ```ts
 const id = 'id0';
 const contentType = null;
-const bodyShiftWageHourlyRate: Money = {};
-bodyShiftWageHourlyRate.amount = 1500;
-bodyShiftWageHourlyRate.currency = 'USD';
+const bodyShiftWageHourlyRateCurrency: string = {'' : null, '' : null, '' : null } const bodyShiftWageHourlyRate: Money = {};
+bodyShiftWageHourlyRate.amount = BigInt(1500);
+bodyShiftWageHourlyRate.currency = bodyShiftWageHourlyRateCurrency;
 
 const bodyShiftWage: ShiftWage = {};
 bodyShiftWage.title = 'Bartender';
@@ -830,8 +830,8 @@ async updateWorkweekConfig(
 ```ts
 const id = 'id0';
 const contentType = null;
-const bodyWorkweekConfig: WorkweekConfig = {
-  startOfWeek: 'MON',
+const bodyWorkweekConfigStartOfWeek: string = {'' : null, '' : null, '' : null } const bodyWorkweekConfig: WorkweekConfig = {
+  startOfWeek: bodyWorkweekConfigStartOfWeek,
   startOfDayLocalTime: '10:00',
 };
 bodyWorkweekConfig.version = 10;

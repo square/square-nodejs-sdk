@@ -94,8 +94,8 @@ async createGiftCard(
 
 ```ts
 const contentType = null;
-const bodyGiftCard: GiftCard = {
-  type: 'DIGITAL',
+const bodyGiftCardType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyGiftCard: GiftCard = {
+  type: bodyGiftCardType,
 };
 
 const body: CreateGiftCardRequest = {
