@@ -61,6 +61,7 @@ Describes a `CreateInvoice` request.
     },
     "sale_or_service_date": "2030-01-24",
     "scheduled_at": "2030-01-13T10:00:00Z",
+    "store_payment_method_enabled": false,
     "title": "Event Planning Services"
   }
 }

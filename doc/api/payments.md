@@ -111,13 +111,13 @@ async createPayment(
 
 ```ts
 const contentType = null;
-const bodyAmountMoney: Money = {};
-bodyAmountMoney.amount = 1000;
-bodyAmountMoney.currency = 'USD';
+const bodyAmountMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyAmountMoney: Money = {};
+bodyAmountMoney.amount = BigInt(1000);
+bodyAmountMoney.currency = bodyAmountMoneyCurrency;
 
-const bodyAppFeeMoney: Money = {};
-bodyAppFeeMoney.amount = 10;
-bodyAppFeeMoney.currency = 'USD';
+const bodyAppFeeMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyAppFeeMoney: Money = {};
+bodyAppFeeMoney.amount = BigInt(10);
+bodyAppFeeMoney.currency = bodyAppFeeMoneyCurrency;
 
 const body: CreatePaymentRequest = {
   sourceId: 'ccof:GaJGNaZa8x4OgDJn4GB',
@@ -266,13 +266,13 @@ async updatePayment(
 ```ts
 const paymentId = 'payment_id0';
 const contentType = null;
-const bodyPaymentAmountMoney: Money = {};
-bodyPaymentAmountMoney.amount = 1000;
-bodyPaymentAmountMoney.currency = 'USD';
+const bodyPaymentAmountMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyPaymentAmountMoney: Money = {};
+bodyPaymentAmountMoney.amount = BigInt(1000);
+bodyPaymentAmountMoney.currency = bodyPaymentAmountMoneyCurrency;
 
-const bodyPaymentTipMoney: Money = {};
-bodyPaymentTipMoney.amount = 100;
-bodyPaymentTipMoney.currency = 'USD';
+const bodyPaymentTipMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyPaymentTipMoney: Money = {};
+bodyPaymentTipMoney.amount = BigInt(100);
+bodyPaymentTipMoney.currency = bodyPaymentTipMoneyCurrency;
 
 const bodyPayment: Payment = {};
 bodyPayment.amountMoney = bodyPaymentAmountMoney;

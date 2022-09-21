@@ -27,7 +27,7 @@ export class V1TransactionsApi extends BaseApi {
    * @return Response from the API call
    * @deprecated
    */
-  async listOrders(
+  async v1ListOrders(
     locationId: string,
     order?: string,
     limit?: number,
@@ -45,7 +45,7 @@ export class V1TransactionsApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('batch_token', mapped.batchToken);
     req.appendTemplatePath`/v1/${mapped.locationId}/orders`;
-    req.deprecated('V1TransactionsApi.listOrders');
+    req.deprecated('V1TransactionsApi.v1ListOrders');
     return req.callAsJson(array(v1OrderSchema), requestOptions);
   }
 
@@ -58,7 +58,7 @@ export class V1TransactionsApi extends BaseApi {
    * @return Response from the API call
    * @deprecated
    */
-  async retrieveOrder(
+  async v1RetrieveOrder(
     locationId: string,
     orderId: string,
     requestOptions?: RequestOptions
@@ -69,7 +69,7 @@ export class V1TransactionsApi extends BaseApi {
       orderId: [orderId, string()],
     });
     req.appendTemplatePath`/v1/${mapped.locationId}/orders/${mapped.orderId}`;
-    req.deprecated('V1TransactionsApi.retrieveOrder');
+    req.deprecated('V1TransactionsApi.v1RetrieveOrder');
     return req.callAsJson(v1OrderSchema, requestOptions);
   }
 
@@ -85,7 +85,7 @@ export class V1TransactionsApi extends BaseApi {
    * @return Response from the API call
    * @deprecated
    */
-  async updateOrder(
+  async v1UpdateOrder(
     locationId: string,
     orderId: string,
     body: V1UpdateOrderRequest,
@@ -100,7 +100,7 @@ export class V1TransactionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v1/${mapped.locationId}/orders/${mapped.orderId}`;
-    req.deprecated('V1TransactionsApi.updateOrder');
+    req.deprecated('V1TransactionsApi.v1UpdateOrder');
     return req.callAsJson(v1OrderSchema, requestOptions);
   }
 
@@ -136,7 +136,7 @@ export class V1TransactionsApi extends BaseApi {
    * @return Response from the API call
    * @deprecated
    */
-  async listPayments(
+  async v1ListPayments(
     locationId: string,
     order?: string,
     beginTime?: string,
@@ -163,7 +163,7 @@ export class V1TransactionsApi extends BaseApi {
     req.query('batch_token', mapped.batchToken);
     req.query('include_partial', mapped.includePartial);
     req.appendTemplatePath`/v1/${mapped.locationId}/payments`;
-    req.deprecated('V1TransactionsApi.listPayments');
+    req.deprecated('V1TransactionsApi.v1ListPayments');
     return req.callAsJson(array(v1PaymentSchema), requestOptions);
   }
 
@@ -177,7 +177,7 @@ export class V1TransactionsApi extends BaseApi {
    * @return Response from the API call
    * @deprecated
    */
-  async retrievePayment(
+  async v1RetrievePayment(
     locationId: string,
     paymentId: string,
     requestOptions?: RequestOptions
@@ -188,7 +188,7 @@ export class V1TransactionsApi extends BaseApi {
       paymentId: [paymentId, string()],
     });
     req.appendTemplatePath`/v1/${mapped.locationId}/payments/${mapped.paymentId}`;
-    req.deprecated('V1TransactionsApi.retrievePayment');
+    req.deprecated('V1TransactionsApi.v1RetrievePayment');
     return req.callAsJson(v1PaymentSchema, requestOptions);
   }
 
@@ -213,7 +213,7 @@ export class V1TransactionsApi extends BaseApi {
    * @return Response from the API call
    * @deprecated
    */
-  async listRefunds(
+  async v1ListRefunds(
     locationId: string,
     order?: string,
     beginTime?: string,
@@ -237,7 +237,7 @@ export class V1TransactionsApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('batch_token', mapped.batchToken);
     req.appendTemplatePath`/v1/${mapped.locationId}/refunds`;
-    req.deprecated('V1TransactionsApi.listRefunds');
+    req.deprecated('V1TransactionsApi.v1ListRefunds');
     return req.callAsJson(array(v1RefundSchema), requestOptions);
   }
 
@@ -261,7 +261,7 @@ export class V1TransactionsApi extends BaseApi {
    * @return Response from the API call
    * @deprecated
    */
-  async createRefund(
+  async v1CreateRefund(
     locationId: string,
     body: V1CreateRefundRequest,
     requestOptions?: RequestOptions
@@ -274,7 +274,7 @@ export class V1TransactionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v1/${mapped.locationId}/refunds`;
-    req.deprecated('V1TransactionsApi.createRefund');
+    req.deprecated('V1TransactionsApi.v1CreateRefund');
     return req.callAsJson(v1RefundSchema, requestOptions);
   }
 
@@ -304,7 +304,7 @@ export class V1TransactionsApi extends BaseApi {
    * @return Response from the API call
    * @deprecated
    */
-  async listSettlements(
+  async v1ListSettlements(
     locationId: string,
     order?: string,
     beginTime?: string,
@@ -331,7 +331,7 @@ export class V1TransactionsApi extends BaseApi {
     req.query('status', mapped.status);
     req.query('batch_token', mapped.batchToken);
     req.appendTemplatePath`/v1/${mapped.locationId}/settlements`;
-    req.deprecated('V1TransactionsApi.listSettlements');
+    req.deprecated('V1TransactionsApi.v1ListSettlements');
     return req.callAsJson(array(v1SettlementSchema), requestOptions);
   }
 
@@ -360,7 +360,7 @@ export class V1TransactionsApi extends BaseApi {
    * @return Response from the API call
    * @deprecated
    */
-  async retrieveSettlement(
+  async v1RetrieveSettlement(
     locationId: string,
     settlementId: string,
     requestOptions?: RequestOptions
@@ -371,7 +371,7 @@ export class V1TransactionsApi extends BaseApi {
       settlementId: [settlementId, string()],
     });
     req.appendTemplatePath`/v1/${mapped.locationId}/settlements/${mapped.settlementId}`;
-    req.deprecated('V1TransactionsApi.retrieveSettlement');
+    req.deprecated('V1TransactionsApi.v1RetrieveSettlement');
     return req.callAsJson(v1SettlementSchema, requestOptions);
   }
 }

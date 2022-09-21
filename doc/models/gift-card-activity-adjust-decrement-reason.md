@@ -11,7 +11,8 @@ Indicates the reason for deducting money from a [gift card](../../doc/models/gif
 
 | Name | Description |
 |  --- | --- |
-| `SUSPICIOUS_ACTIVITY` | The seller determined suspicious activity by the buyer. |
-| `BALANCE_ACCIDENTALLY_INCREASED` | The seller previously increased the gift card balance by accident. |
-| `SUPPORT_ISSUE` | The seller decreased the gift card balance to<br>accommodate support issues. |
+| `SUSPICIOUS_ACTIVITY` | The balance was decreased because the seller detected suspicious or fraudulent activity<br>on the gift card. |
+| `BALANCE_ACCIDENTALLY_INCREASED` | The balance was decreased to reverse an unintentional balance increase. |
+| `SUPPORT_ISSUE` | The balance was decreased to accommodate support issues. |
+| `PURCHASE_WAS_REFUNDED` | The balance was decreased because the order used to purchase or reload the<br>gift card was refunded. |
 

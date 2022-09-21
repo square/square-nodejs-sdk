@@ -54,9 +54,9 @@ async createOrder(
 const contentType = null;
 const bodyOrderLineItems: OrderLineItem[] = [];
 
-const bodyOrderlineItems0BasePriceMoney: Money = {};
-bodyOrderlineItems0BasePriceMoney.amount = 1599;
-bodyOrderlineItems0BasePriceMoney.currency = 'USD';
+const bodyOrderlineItems0BasePriceMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyOrderlineItems0BasePriceMoney: Money = {};
+bodyOrderlineItems0BasePriceMoney.amount = BigInt(1599);
+bodyOrderlineItems0BasePriceMoney.currency = bodyOrderlineItems0BasePriceMoneyCurrency;
 
 const bodyOrderlineItems0: OrderLineItem = {
   quantity: '1',
@@ -92,40 +92,40 @@ bodyOrderLineItems[1] = bodyOrderlineItems1;
 
 const bodyOrderTaxes: OrderLineItemTax[] = [];
 
-const bodyOrdertaxes0: OrderLineItemTax = {};
+const bodyOrdertaxes0Scope: string = {'' : null, '' : null, '' : null, '' : null, '' : null } const bodyOrdertaxes0: OrderLineItemTax = {};
 bodyOrdertaxes0.uid = 'state-sales-tax';
 bodyOrdertaxes0.name = 'State Sales Tax';
 bodyOrdertaxes0.percentage = '9';
-bodyOrdertaxes0.scope = 'ORDER';
+bodyOrdertaxes0.scope = bodyOrdertaxes0Scope;
 
 bodyOrderTaxes[0] = bodyOrdertaxes0;
 
 const bodyOrderDiscounts: OrderLineItemDiscount[] = [];
 
-const bodyOrderdiscounts0: OrderLineItemDiscount = {};
+const bodyOrderdiscounts0Scope: string = {'' : null, '' : null, '' : null, '' : null, '' : null } const bodyOrderdiscounts0: OrderLineItemDiscount = {};
 bodyOrderdiscounts0.uid = 'labor-day-sale';
 bodyOrderdiscounts0.name = 'Labor Day Sale';
 bodyOrderdiscounts0.percentage = '5';
-bodyOrderdiscounts0.scope = 'ORDER';
+bodyOrderdiscounts0.scope = bodyOrderdiscounts0Scope;
 
 bodyOrderDiscounts[0] = bodyOrderdiscounts0;
 
-const bodyOrderdiscounts1: OrderLineItemDiscount = {};
+const bodyOrderdiscounts1Scope: string = {'' : null, '' : null, '' : null, '' : null, '' : null } const bodyOrderdiscounts1: OrderLineItemDiscount = {};
 bodyOrderdiscounts1.uid = 'membership-discount';
 bodyOrderdiscounts1.catalogObjectId = 'DB7L55ZH2BGWI4H23ULIWOQ7';
-bodyOrderdiscounts1.scope = 'ORDER';
+bodyOrderdiscounts1.scope = bodyOrderdiscounts1Scope;
 
 bodyOrderDiscounts[1] = bodyOrderdiscounts1;
 
-const bodyOrderdiscounts2AmountMoney: Money = {};
-bodyOrderdiscounts2AmountMoney.amount = 100;
-bodyOrderdiscounts2AmountMoney.currency = 'USD';
+const bodyOrderdiscounts2AmountMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyOrderdiscounts2AmountMoney: Money = {};
+bodyOrderdiscounts2AmountMoney.amount = BigInt(100);
+bodyOrderdiscounts2AmountMoney.currency = bodyOrderdiscounts2AmountMoneyCurrency;
 
-const bodyOrderdiscounts2: OrderLineItemDiscount = {};
+const bodyOrderdiscounts2Scope: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyOrderdiscounts2: OrderLineItemDiscount = {};
 bodyOrderdiscounts2.uid = 'one-dollar-off';
 bodyOrderdiscounts2.name = 'Sale - $1.00 off';
 bodyOrderdiscounts2.amountMoney = bodyOrderdiscounts2AmountMoney;
-bodyOrderdiscounts2.scope = 'LINE_ITEM';
+bodyOrderdiscounts2.scope = bodyOrderdiscounts2Scope;
 
 bodyOrderDiscounts[2] = bodyOrderdiscounts2;
 
@@ -229,9 +229,9 @@ async calculateOrder(
 const contentType = null;
 const bodyOrderLineItems: OrderLineItem[] = [];
 
-const bodyOrderlineItems0BasePriceMoney: Money = {};
-bodyOrderlineItems0BasePriceMoney.amount = 500;
-bodyOrderlineItems0BasePriceMoney.currency = 'USD';
+const bodyOrderlineItems0BasePriceMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyOrderlineItems0BasePriceMoney: Money = {};
+bodyOrderlineItems0BasePriceMoney.amount = BigInt(500);
+bodyOrderlineItems0BasePriceMoney.currency = bodyOrderlineItems0BasePriceMoneyCurrency;
 
 const bodyOrderlineItems0: OrderLineItem = {
   quantity: '1',
@@ -241,9 +241,9 @@ bodyOrderlineItems0.basePriceMoney = bodyOrderlineItems0BasePriceMoney;
 
 bodyOrderLineItems[0] = bodyOrderlineItems0;
 
-const bodyOrderlineItems1BasePriceMoney: Money = {};
-bodyOrderlineItems1BasePriceMoney.amount = 300;
-bodyOrderlineItems1BasePriceMoney.currency = 'USD';
+const bodyOrderlineItems1BasePriceMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyOrderlineItems1BasePriceMoney: Money = {};
+bodyOrderlineItems1BasePriceMoney.amount = BigInt(300);
+bodyOrderlineItems1BasePriceMoney.currency = bodyOrderlineItems1BasePriceMoneyCurrency;
 
 const bodyOrderlineItems1: OrderLineItem = {
   quantity: '2',
@@ -255,10 +255,10 @@ bodyOrderLineItems[1] = bodyOrderlineItems1;
 
 const bodyOrderDiscounts: OrderLineItemDiscount[] = [];
 
-const bodyOrderdiscounts0: OrderLineItemDiscount = {};
+const bodyOrderdiscounts0Scope: string = {'' : null, '' : null, '' : null, '' : null, '' : null } const bodyOrderdiscounts0: OrderLineItemDiscount = {};
 bodyOrderdiscounts0.name = '50% Off';
 bodyOrderdiscounts0.percentage = '50';
-bodyOrderdiscounts0.scope = 'ORDER';
+bodyOrderdiscounts0.scope = bodyOrderdiscounts0Scope;
 
 bodyOrderDiscounts[0] = bodyOrderdiscounts0;
 
@@ -390,10 +390,10 @@ const bodyQueryFilter: SearchOrdersFilter = {};
 bodyQueryFilter.stateFilter = bodyQueryFilterStateFilter;
 bodyQueryFilter.dateTimeFilter = bodyQueryFilterDateTimeFilter;
 
-const bodyQuerySort: SearchOrdersSort = {
-  sortField: 'CLOSED_AT',
+const bodyQuerySortSortField: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyQuerySortSortOrder: string = {'' : null, '' : null, '' : null, '' : null } const bodyQuerySort: SearchOrdersSort = {
+  sortField: bodyQuerySortSortField,
 };
-bodyQuerySort.sortOrder = 'DESC';
+bodyQuerySort.sortOrder = bodyQuerySortSortOrder;
 
 const bodyQuery: SearchOrdersQuery = {};
 bodyQuery.filter = bodyQueryFilter;

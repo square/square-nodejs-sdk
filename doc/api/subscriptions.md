@@ -53,9 +53,9 @@ async createSubscription(
 
 ```ts
 const contentType = null;
-const bodyPriceOverrideMoney: Money = {};
-bodyPriceOverrideMoney.amount = 100;
-bodyPriceOverrideMoney.currency = 'USD';
+const bodyPriceOverrideMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyPriceOverrideMoney: Money = {};
+bodyPriceOverrideMoney.amount = BigInt(100);
+bodyPriceOverrideMoney.currency = bodyPriceOverrideMoneyCurrency;
 
 const bodySource: SubscriptionSource = {};
 

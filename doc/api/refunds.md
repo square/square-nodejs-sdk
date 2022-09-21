@@ -101,13 +101,13 @@ async refundPayment(
 
 ```ts
 const contentType = null;
-const bodyAmountMoney: Money = {};
-bodyAmountMoney.amount = 1000;
-bodyAmountMoney.currency = 'USD';
+const bodyAmountMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyAmountMoney: Money = {};
+bodyAmountMoney.amount = BigInt(1000);
+bodyAmountMoney.currency = bodyAmountMoneyCurrency;
 
-const bodyAppFeeMoney: Money = {};
-bodyAppFeeMoney.amount = 10;
-bodyAppFeeMoney.currency = 'USD';
+const bodyAppFeeMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyAppFeeMoney: Money = {};
+bodyAppFeeMoney.amount = BigInt(10);
+bodyAppFeeMoney.currency = bodyAppFeeMoneyCurrency;
 
 const body: RefundPaymentRequest = {
   idempotencyKey: '9b7f2dcf-49da-4411-b23e-a2d6af21333a',

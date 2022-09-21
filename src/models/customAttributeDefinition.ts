@@ -30,8 +30,8 @@ export interface CustomAttributeDefinition {
    */
   key?: string;
   /**
-   * The JSON schema for the custom attribute definition. For more information about the schema,
-   * see [Custom Attributes Overview](https://developer.squareup.com/docs/devtools/customattributes/overview).
+   * The JSON schema for the custom attribute definition, which determines the data type of the corresponding custom attributes. For more information,
+   * see [Custom Attributes Overview](https://developer.squareup.com/docs/devtools/customattributes/overview). This field is required when creating a definition.
    */
   schema?: Record<string, unknown>;
   /**

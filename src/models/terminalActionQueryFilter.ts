@@ -17,7 +17,7 @@ export interface TerminalActionQueryFilter {
   createdAt?: TimeRange;
   /**
    * Filter results with the desired status of the `TerminalAction`
-   * Options: PENDING, IN_PROGRESS, CANCELED, COMPLETED
+   * Options: `PENDING`, `IN_PROGRESS`, `CANCEL_REQUESTED`, `CANCELED`, `COMPLETED`
    */
   status?: string;
   /** Describes the type of this unit and indicates which field contains the unit information. This is an ‘open’ enum. */

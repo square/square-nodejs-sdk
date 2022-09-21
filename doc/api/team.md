@@ -52,14 +52,14 @@ async createTeamMember(
 
 ```ts
 const contentType = null;
-const bodyTeamMemberAssignedLocationsLocationIds: string[] = ['YSGH2WBKG94QZ', 'GA2Y9HSJ8KRYT'];
+const bodyTeamMemberStatus: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyTeamMemberAssignedLocationsAssignmentType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyTeamMemberAssignedLocationsLocationIds: string[] = ['YSGH2WBKG94QZ', 'GA2Y9HSJ8KRYT'];
 const bodyTeamMemberAssignedLocations: TeamMemberAssignedLocations = {};
-bodyTeamMemberAssignedLocations.assignmentType = 'EXPLICIT_LOCATIONS';
+bodyTeamMemberAssignedLocations.assignmentType = bodyTeamMemberAssignedLocationsAssignmentType;
 bodyTeamMemberAssignedLocations.locationIds = bodyTeamMemberAssignedLocationsLocationIds;
 
 const bodyTeamMember: TeamMember = {};
 bodyTeamMember.referenceId = 'reference_id_1';
-bodyTeamMember.status = 'ACTIVE';
+bodyTeamMember.status = bodyTeamMemberStatus;
 bodyTeamMember.givenName = 'Joe';
 bodyTeamMember.familyName = 'Doe';
 bodyTeamMember.emailAddress = 'joe_doe@gmail.com';
@@ -211,9 +211,9 @@ async searchTeamMembers(
 ```ts
 const contentType = null;
 const bodyQueryFilterLocationIds: string[] = ['0G5P3VGACMMQZ'];
-const bodyQueryFilter: SearchTeamMembersFilter = {};
+const bodyQueryFilterStatus: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyQueryFilter: SearchTeamMembersFilter = {};
 bodyQueryFilter.locationIds = bodyQueryFilterLocationIds;
-bodyQueryFilter.status = 'ACTIVE';
+bodyQueryFilter.status = bodyQueryFilterStatus;
 
 const bodyQuery: SearchTeamMembersQuery = {};
 bodyQuery.filter = bodyQueryFilter;
@@ -305,14 +305,14 @@ async updateTeamMember(
 ```ts
 const teamMemberId = 'team_member_id0';
 const contentType = null;
-const bodyTeamMemberAssignedLocationsLocationIds: string[] = ['YSGH2WBKG94QZ', 'GA2Y9HSJ8KRYT'];
+const bodyTeamMemberStatus: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyTeamMemberAssignedLocationsAssignmentType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyTeamMemberAssignedLocationsLocationIds: string[] = ['YSGH2WBKG94QZ', 'GA2Y9HSJ8KRYT'];
 const bodyTeamMemberAssignedLocations: TeamMemberAssignedLocations = {};
-bodyTeamMemberAssignedLocations.assignmentType = 'EXPLICIT_LOCATIONS';
+bodyTeamMemberAssignedLocations.assignmentType = bodyTeamMemberAssignedLocationsAssignmentType;
 bodyTeamMemberAssignedLocations.locationIds = bodyTeamMemberAssignedLocationsLocationIds;
 
 const bodyTeamMember: TeamMember = {};
 bodyTeamMember.referenceId = 'reference_id_1';
-bodyTeamMember.status = 'ACTIVE';
+bodyTeamMember.status = bodyTeamMemberStatus;
 bodyTeamMember.givenName = 'Joe';
 bodyTeamMember.familyName = 'Doe';
 bodyTeamMember.emailAddress = 'joe_doe@gmail.com';
@@ -411,26 +411,26 @@ const teamMemberId = 'team_member_id0';
 const contentType = null;
 const bodyWageSettingJobAssignments: JobAssignment[] = [];
 
-const bodyWageSettingjobAssignments0AnnualRate: Money = {};
-bodyWageSettingjobAssignments0AnnualRate.amount = 3000000;
-bodyWageSettingjobAssignments0AnnualRate.currency = 'USD';
+const bodyWageSettingjobAssignments0PayType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyWageSettingjobAssignments0AnnualRateCurrency: string = {'' : null, '' : null, '' : null } const bodyWageSettingjobAssignments0AnnualRate: Money = {};
+bodyWageSettingjobAssignments0AnnualRate.amount = BigInt(3000000);
+bodyWageSettingjobAssignments0AnnualRate.currency = bodyWageSettingjobAssignments0AnnualRateCurrency;
 
 const bodyWageSettingjobAssignments0: JobAssignment = {
   jobTitle: 'Manager',
-  payType: 'SALARY',
+  payType: bodyWageSettingjobAssignments0PayType,
 };
 bodyWageSettingjobAssignments0.annualRate = bodyWageSettingjobAssignments0AnnualRate;
 bodyWageSettingjobAssignments0.weeklyHours = 40;
 
 bodyWageSettingJobAssignments[0] = bodyWageSettingjobAssignments0;
 
-const bodyWageSettingjobAssignments1HourlyRate: Money = {};
-bodyWageSettingjobAssignments1HourlyRate.amount = 1200;
-bodyWageSettingjobAssignments1HourlyRate.currency = 'USD';
+const bodyWageSettingjobAssignments1PayType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyWageSettingjobAssignments1HourlyRateCurrency: string = {'' : null, '' : null, '' : null } const bodyWageSettingjobAssignments1HourlyRate: Money = {};
+bodyWageSettingjobAssignments1HourlyRate.amount = BigInt(1200);
+bodyWageSettingjobAssignments1HourlyRate.currency = bodyWageSettingjobAssignments1HourlyRateCurrency;
 
 const bodyWageSettingjobAssignments1: JobAssignment = {
   jobTitle: 'Cashier',
-  payType: 'HOURLY',
+  payType: bodyWageSettingjobAssignments1PayType,
 };
 bodyWageSettingjobAssignments1.hourlyRate = bodyWageSettingjobAssignments1HourlyRate;
 

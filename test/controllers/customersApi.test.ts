@@ -23,7 +23,9 @@ describe('Customer API', () => {
   let newCustomerId : string;
   let newCustomerCardId : string;
   let newcustomerGroupId: string;
-  let customAttributeDefinitionKey: string = 'favorite-drink';
+  let customAttributeDefinitionKey: string = `favorite-drink_${uuidV4()}`;
+  let customAttributeDefinitionName: string = `Favorite Drink_${uuidV4()}`; // name must be unique
+  let customAttributeDefinitionUpdatedName: string = `Preferred Drink_${uuidV4()}`; // name must be unique
 
   beforeAll(async () => {
     customersController = testClient.customersApi;
@@ -50,7 +52,7 @@ describe('Customer API', () => {
     let cadBody: CreateCustomerCustomAttributeDefinitionRequest = {
       customAttributeDefinition: {
         key: customAttributeDefinitionKey,
-        name: 'Favorite Drink',
+        name: customAttributeDefinitionName,
         description: 'A customer\'s favorite drink',
         visibility: 'VISIBILITY_READ_WRITE_VALUES',
         schema: {
@@ -168,7 +170,7 @@ describe('Customer API', () => {
     expect(response.statusCode).toBe(200);
     expect(response.result.customAttributeDefinition?.key).toBe(customAttributeDefinitionKey);
     expect(response.result.customAttributeDefinition?.description).toBe('A customer\'s favorite drink');
-    expect(response.result.customAttributeDefinition?.name).toBe('Favorite Drink');
+    expect(response.result.customAttributeDefinition?.name).toBe(customAttributeDefinitionName);
     expect(response.result.customAttributeDefinition?.schema).toEqual({
       '$ref': 'https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String'
     });
@@ -180,7 +182,7 @@ describe('Customer API', () => {
     let body: UpdateCustomerCustomAttributeDefinitionRequest = {
       customAttributeDefinition: {
         version: 1,
-        name: 'Preferred Drink'
+        name: customAttributeDefinitionUpdatedName
       }
     };
     let response = await customersCustomAttributesController.updateCustomerCustomAttributeDefinition(customAttributeDefinitionKey, body);
@@ -188,7 +190,7 @@ describe('Customer API', () => {
     expect(response.statusCode).toBe(200);
     expect(response.result.customAttributeDefinition?.key).toBe(customAttributeDefinitionKey);
     expect(response.result.customAttributeDefinition?.description).toBe('A customer\'s favorite drink');
-    expect(response.result.customAttributeDefinition?.name).toBe('Preferred Drink');
+    expect(response.result.customAttributeDefinition?.name).toBe(customAttributeDefinitionUpdatedName);
     expect(response.result.customAttributeDefinition?.schema).toEqual({
       '$ref': 'https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String'
     });
@@ -200,15 +202,6 @@ describe('Customer API', () => {
     let response = await customersCustomAttributesController.listCustomerCustomAttributeDefinitions();
     expect(response.result.errors).toBeUndefined();
     expect(response.statusCode).toBe(200);
-    expect(response.result.customAttributeDefinitions?.length).toBe(1);
-    expect(response.result.customAttributeDefinitions!![0].key).toBe(customAttributeDefinitionKey);
-    expect(response.result.customAttributeDefinitions!![0].description).toBe('A customer\'s favorite drink');
-    expect(response.result.customAttributeDefinitions!![0].name).toBe('Preferred Drink');
-    expect(response.result.customAttributeDefinitions!![0].schema).toEqual({
-      '$ref': 'https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String'
-    });
-    expect(response.result.customAttributeDefinitions!![0].version).toBe(2);
-    expect(response.result.customAttributeDefinitions!![0].visibility).toBe('VISIBILITY_READ_WRITE_VALUES');
   });
 
   it('should add a custom attribute to a customer', async () => {

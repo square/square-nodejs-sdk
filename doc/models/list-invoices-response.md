@@ -82,6 +82,7 @@ Describes a `ListInvoice` response.
       "sale_or_service_date": "2030-01-24",
       "scheduled_at": "2030-01-13T10:00:00Z",
       "status": "DRAFT",
+      "store_payment_method_enabled": false,
       "timezone": "America/Los_Angeles",
       "title": "Event Planning Services",
       "updated_at": "2020-06-18T17:45:13Z",
@@ -150,6 +151,7 @@ Describes a `ListInvoice` response.
       "public_url": "https://squareup.com/pay-invoice/h9sfsfTGTSnYEhISUDBhEQ",
       "sale_or_service_date": "2030-01-24",
       "status": "PARTIALLY_PAID",
+      "store_payment_method_enabled": false,
       "timezone": "America/Los_Angeles",
       "updated_at": "2021-01-23T15:29:56Z",
       "version": 3

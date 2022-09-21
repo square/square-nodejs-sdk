@@ -105,13 +105,13 @@ async createCustomer(
 
 ```ts
 const contentType = null;
-const bodyAddress: Address = {};
+const bodyAddressCountry: string = {'' : null, '' : null } const bodyAddress: Address = {};
 bodyAddress.addressLine1 = '500 Electric Ave';
 bodyAddress.addressLine2 = 'Suite 600';
 bodyAddress.locality = 'New York';
 bodyAddress.administrativeDistrictLevel1 = 'NY';
 bodyAddress.postalCode = '10003';
-bodyAddress.country = 'US';
+bodyAddress.country = bodyAddressCountry;
 
 const body: CreateCustomerRequest = {};
 body.givenName = 'Amelia';
@@ -170,9 +170,9 @@ async searchCustomers(
 ```ts
 const contentType = null;
 const bodyQueryFilterCreationSourceValues: string[] = ['THIRD_PARTY'];
-const bodyQueryFilterCreationSource: CustomerCreationSourceFilter = {};
+const bodyQueryFilterCreationSourceRule: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyQueryFilterCreationSource: CustomerCreationSourceFilter = {};
 bodyQueryFilterCreationSource.values = bodyQueryFilterCreationSourceValues;
-bodyQueryFilterCreationSource.rule = 'INCLUDE';
+bodyQueryFilterCreationSource.rule = bodyQueryFilterCreationSourceRule;
 
 const bodyQueryFilterCreatedAt: TimeRange = {};
 bodyQueryFilterCreatedAt.startAt = '2018-01-01T00:00:00+00:00';
@@ -191,16 +191,16 @@ bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;
 bodyQueryFilter.emailAddress = bodyQueryFilterEmailAddress;
 bodyQueryFilter.groupIds = bodyQueryFilterGroupIds;
 
-const bodyQuerySort: CustomerSort = {};
-bodyQuerySort.field = 'CREATED_AT';
-bodyQuerySort.order = 'ASC';
+const bodyQuerySortField: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyQuerySortOrder: string = {'' : null, '' : null, '' : null } const bodyQuerySort: CustomerSort = {};
+bodyQuerySort.field = bodyQuerySortField;
+bodyQuerySort.order = bodyQuerySortOrder;
 
 const bodyQuery: CustomerQuery = {};
 bodyQuery.filter = bodyQueryFilter;
 bodyQuery.sort = bodyQuerySort;
 
 const body: SearchCustomersRequest = {};
-body.limit = 2;
+body.limit = BigInt(2);
 body.query = bodyQuery;
 
 try {
@@ -339,7 +339,7 @@ const body: UpdateCustomerRequest = {};
 body.emailAddress = 'New.Amelia.Earhart@example.com';
 body.phoneNumber = '';
 body.note = 'updated customer note';
-body.version = 2;
+body.version = BigInt(2);
 
 try {
   const { result, ...httpResponse } = await customersApi.updateCustomer(customerId, body);
@@ -389,13 +389,13 @@ async createCustomerCard(
 ```ts
 const customerId = 'customer_id8';
 const contentType = null;
-const bodyBillingAddress: Address = {};
+const bodyBillingAddressCountry: string = {'' : null, '' : null } const bodyBillingAddress: Address = {};
 bodyBillingAddress.addressLine1 = '500 Electric Ave';
 bodyBillingAddress.addressLine2 = 'Suite 600';
 bodyBillingAddress.locality = 'New York';
 bodyBillingAddress.administrativeDistrictLevel1 = 'NY';
 bodyBillingAddress.postalCode = '10003';
-bodyBillingAddress.country = 'US';
+bodyBillingAddress.country = bodyBillingAddressCountry;
 
 const body: CreateCustomerCardRequest = {
   cardNonce: 'YOUR_CARD_NONCE',

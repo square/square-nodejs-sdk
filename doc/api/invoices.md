@@ -100,7 +100,7 @@ bodyInvoicePrimaryRecipient.customerId = 'JDKYHBWT1D4F8MFH63DBMEN8Y4';
 
 const bodyInvoicePaymentRequests: InvoicePaymentRequest[] = [];
 
-const bodyInvoicepaymentRequests0Reminders: InvoicePaymentReminder[] = [];
+const bodyInvoicepaymentRequests0RequestType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyInvoicepaymentRequests0AutomaticPaymentSource: string = {'' : null, '' : null, '' : null, '' : null } const bodyInvoicepaymentRequests0Reminders: InvoicePaymentReminder[] = [];
 
 const bodyInvoicepaymentRequests0reminders0: InvoicePaymentReminder = {};
 bodyInvoicepaymentRequests0reminders0.relativeScheduledDays = -1;
@@ -109,32 +109,32 @@ bodyInvoicepaymentRequests0reminders0.message = 'Your invoice is due tomorrow';
 bodyInvoicepaymentRequests0Reminders[0] = bodyInvoicepaymentRequests0reminders0;
 
 const bodyInvoicepaymentRequests0: InvoicePaymentRequest = {};
-bodyInvoicepaymentRequests0.requestType = 'BALANCE';
+bodyInvoicepaymentRequests0.requestType = bodyInvoicepaymentRequests0RequestType;
 bodyInvoicepaymentRequests0.dueDate = '2030-01-24';
 bodyInvoicepaymentRequests0.tippingEnabled = true;
-bodyInvoicepaymentRequests0.automaticPaymentSource = 'NONE';
+bodyInvoicepaymentRequests0.automaticPaymentSource = bodyInvoicepaymentRequests0AutomaticPaymentSource;
 bodyInvoicepaymentRequests0.reminders = bodyInvoicepaymentRequests0Reminders;
 
 bodyInvoicePaymentRequests[0] = bodyInvoicepaymentRequests0;
 
-const bodyInvoiceAcceptedPaymentMethods: InvoiceAcceptedPaymentMethods = {};
+const bodyInvoiceDeliveryMethod: string = {'' : null, '' : null, '' : null, '' : null, '' : null } const bodyInvoiceAcceptedPaymentMethods: InvoiceAcceptedPaymentMethods = {};
 bodyInvoiceAcceptedPaymentMethods.card = true;
 bodyInvoiceAcceptedPaymentMethods.squareGiftCard = false;
 bodyInvoiceAcceptedPaymentMethods.bankAccount = false;
 
 const bodyInvoiceCustomFields: InvoiceCustomField[] = [];
 
-const bodyInvoicecustomFields0: InvoiceCustomField = {};
+const bodyInvoicecustomFields0Placement: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyInvoicecustomFields0: InvoiceCustomField = {};
 bodyInvoicecustomFields0.label = 'Event Reference Number';
 bodyInvoicecustomFields0.value = 'Ref. #1234';
-bodyInvoicecustomFields0.placement = 'ABOVE_LINE_ITEMS';
+bodyInvoicecustomFields0.placement = bodyInvoicecustomFields0Placement;
 
 bodyInvoiceCustomFields[0] = bodyInvoicecustomFields0;
 
-const bodyInvoicecustomFields1: InvoiceCustomField = {};
+const bodyInvoicecustomFields1Placement: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyInvoicecustomFields1: InvoiceCustomField = {};
 bodyInvoicecustomFields1.label = 'Terms of Service';
 bodyInvoicecustomFields1.value = 'The terms of service are...';
-bodyInvoicecustomFields1.placement = 'BELOW_LINE_ITEMS';
+bodyInvoicecustomFields1.placement = bodyInvoicecustomFields1Placement;
 
 bodyInvoiceCustomFields[1] = bodyInvoicecustomFields1;
 
@@ -143,7 +143,7 @@ bodyInvoice.locationId = 'ES0RJRZYEC39A';
 bodyInvoice.orderId = 'CAISENgvlJ6jLWAzERDzjyHVybY';
 bodyInvoice.primaryRecipient = bodyInvoicePrimaryRecipient;
 bodyInvoice.paymentRequests = bodyInvoicePaymentRequests;
-bodyInvoice.deliveryMethod = 'EMAIL';
+bodyInvoice.deliveryMethod = bodyInvoiceDeliveryMethod;
 bodyInvoice.invoiceNumber = 'inv-100';
 bodyInvoice.title = 'Event Planning Services';
 bodyInvoice.description = 'We appreciate your business!';
@@ -151,6 +151,7 @@ bodyInvoice.scheduledAt = '2030-01-13T10:00:00Z';
 bodyInvoice.acceptedPaymentMethods = bodyInvoiceAcceptedPaymentMethods;
 bodyInvoice.customFields = bodyInvoiceCustomFields;
 bodyInvoice.saleOrServiceDate = '2030-01-24';
+bodyInvoice.storePaymentMethodEnabled = false;
 
 const body: CreateInvoiceRequest = {
   invoice: bodyInvoice,
@@ -209,10 +210,10 @@ const bodyQueryFilter: InvoiceFilter = {
 };
 bodyQueryFilter.customerIds = bodyQueryFilterCustomerIds;
 
-const bodyQuerySort: InvoiceSort = {
+const bodyQuerySortOrder: string = {'' : null, '' : null, '' : null, '' : null } const bodyQuerySort: InvoiceSort = {
   field: null,
 };
-bodyQuerySort.order = 'DESC';
+bodyQuerySort.order = bodyQuerySortOrder;
 
 const bodyQuery: InvoiceQuery = {
   filter: bodyQueryFilter,
