@@ -111,6 +111,7 @@ Square API.
 | `REFUND_ALREADY_PENDING` | The payment already has a pending refund. |
 | `PAYMENT_NOT_REFUNDABLE` | The payment is not refundable. For example, the payment has been disputed and is no longer eligible for<br>refunds. |
 | `REFUND_DECLINED` | Request failed - The card issuer declined the refund. |
+| `INSUFFICIENT_PERMISSIONS_FOR_REFUND` | The Square account does not have the permissions to process this refund. |
 | `INVALID_CARD_DATA` | Generic error - the provided card data is invalid. |
 | `SOURCE_USED` | The provided source id was already used to create a card. |
 | `SOURCE_EXPIRED` | The provided source id has expired. |

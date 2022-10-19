@@ -49,11 +49,11 @@ export interface Customer {
    * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
    */
   address?: Address;
-  /** The phone number associated with the customer profile. A phone number can contain 9–16 digits, with an optional `+` prefix. */
+  /** The phone number associated with the customer profile. */
   phoneNumber?: string;
   /**
-   * The birthday associated with the customer profile, in RFC 3339 format. The year is optional. The timezone and time are not allowed.
-   * For example, `0000-09-21T00:00:00-00:00` represents a birthday on September 21 and `1998-09-21T00:00:00-00:00` represents a birthday on September 21, 1998.
+   * The birthday associated with the customer profile, in `YYYY-MM-DD` format. For example, `1998-09-21`
+   * represents September 21, 1998, and `0000-09-21` represents September 21 (without a birth year).
    */
   birthday?: string;
   /**

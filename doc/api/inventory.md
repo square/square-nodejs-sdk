@@ -138,17 +138,17 @@ async deprecatedBatchChangeInventory(
 const contentType = null;
 const bodyChanges: InventoryChange[] = [];
 
-const bodychanges0Type: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodychanges0PhysicalCountState: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodychanges0PhysicalCount: InventoryPhysicalCount = {};
+const bodychanges0PhysicalCount: InventoryPhysicalCount = {};
 bodychanges0PhysicalCount.referenceId = '1536bfbf-efed-48bf-b17d-a197141b2a92';
 bodychanges0PhysicalCount.catalogObjectId = 'W62UWFY35CWMYGVWK6TWJDNI';
-bodychanges0PhysicalCount.state = bodychanges0PhysicalCountState;
+bodychanges0PhysicalCount.state = 'IN_STOCK';
 bodychanges0PhysicalCount.locationId = 'C6W5YS5QM06F5';
 bodychanges0PhysicalCount.quantity = '53';
 bodychanges0PhysicalCount.teamMemberId = 'LRK57NSQ5X7PUD05';
 bodychanges0PhysicalCount.occurredAt = '2016-11-16T22:25:24.878Z';
 
 const bodychanges0: InventoryChange = {};
-bodychanges0.type = bodychanges0Type;
+bodychanges0.type = 'PHYSICAL_COUNT';
 bodychanges0.physicalCount = bodychanges0PhysicalCount;
 
 bodyChanges[0] = bodychanges0;
@@ -307,17 +307,17 @@ async batchChangeInventory(
 const contentType = null;
 const bodyChanges: InventoryChange[] = [];
 
-const bodychanges0Type: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodychanges0PhysicalCountState: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodychanges0PhysicalCount: InventoryPhysicalCount = {};
+const bodychanges0PhysicalCount: InventoryPhysicalCount = {};
 bodychanges0PhysicalCount.referenceId = '1536bfbf-efed-48bf-b17d-a197141b2a92';
 bodychanges0PhysicalCount.catalogObjectId = 'W62UWFY35CWMYGVWK6TWJDNI';
-bodychanges0PhysicalCount.state = bodychanges0PhysicalCountState;
+bodychanges0PhysicalCount.state = 'IN_STOCK';
 bodychanges0PhysicalCount.locationId = 'C6W5YS5QM06F5';
 bodychanges0PhysicalCount.quantity = '53';
 bodychanges0PhysicalCount.teamMemberId = 'LRK57NSQ5X7PUD05';
 bodychanges0PhysicalCount.occurredAt = '2016-11-16T22:25:24.878Z';
 
 const bodychanges0: InventoryChange = {};
-bodychanges0.type = bodychanges0Type;
+bodychanges0.type = 'PHYSICAL_COUNT';
 bodychanges0.physicalCount = bodychanges0PhysicalCount;
 
 bodyChanges[0] = bodychanges0;

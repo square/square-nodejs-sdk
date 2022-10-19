@@ -1,4 +1,16 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  boolean,
+  lazy,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
+import {
+  DestinationDetails,
+  destinationDetailsSchema,
+} from './destinationDetails';
 import { Money, moneySchema } from './money';
 import { ProcessingFee, processingFeeSchema } from './processingFee';
 
@@ -19,6 +31,15 @@ export interface PaymentRefund {
   status?: string;
   /** The location ID associated with the payment this refund is attached to. */
   locationId?: string;
+  /** Flag indicating whether or not the refund is linked to an existing payment in Square. */
+  unlinked?: boolean;
+  /**
+   * The destination type for this refund.
+   * Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `CASH`, or `EXTERNAL`.
+   */
+  destinationType?: string;
+  /** Details about a refund's destination. */
+  destinationDetails?: DestinationDetails;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -57,6 +78,12 @@ export const paymentRefundSchema: Schema<PaymentRefund> = object({
   id: ['id', string()],
   status: ['status', optional(string())],
   locationId: ['location_id', optional(string())],
+  unlinked: ['unlinked', optional(boolean())],
+  destinationType: ['destination_type', optional(string())],
+  destinationDetails: [
+    'destination_details',
+    optional(lazy(() => destinationDetailsSchema)),
+  ],
   amountMoney: ['amount_money', lazy(() => moneySchema)],
   appFeeMoney: ['app_fee_money', optional(lazy(() => moneySchema))],
   processingFee: [

@@ -23,7 +23,7 @@ See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-
 ```json
 {
   "category": "RATE_LIMIT_ERROR",
-  "code": "DELAYED_TRANSACTION_CANCELED",
+  "code": "EXPECTED_MAP",
   "detail": null,
   "field": null
 }

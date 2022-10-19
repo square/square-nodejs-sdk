@@ -580,12 +580,12 @@ async createLoyaltyPromotion(
 ```ts
 const programId = 'program_id0';
 const contentType = null;
-const bodyLoyaltyPromotionIncentiveType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyLoyaltyPromotionIncentivePointsMultiplierData: LoyaltyPromotionIncentivePointsMultiplierData = {
+const bodyLoyaltyPromotionIncentivePointsMultiplierData: LoyaltyPromotionIncentivePointsMultiplierData = {
   pointsMultiplier: 3,
 };
 
 const bodyLoyaltyPromotionIncentive: LoyaltyPromotionIncentive = {
-  type: bodyLoyaltyPromotionIncentiveType,
+  type: 'POINTS_MULTIPLIER',
 };
 bodyLoyaltyPromotionIncentive.pointsMultiplierData = bodyLoyaltyPromotionIncentivePointsMultiplierData;
 
@@ -594,10 +594,10 @@ const bodyLoyaltyPromotionAvailableTime: LoyaltyPromotionAvailableTimeData = {
   timePeriods: bodyLoyaltyPromotionAvailableTimeTimePeriods,
 };
 
-const bodyLoyaltyPromotionTriggerLimitInterval: string = {'' : null, '' : null, '' : null } const bodyLoyaltyPromotionTriggerLimit: LoyaltyPromotionTriggerLimit = {
+const bodyLoyaltyPromotionTriggerLimit: LoyaltyPromotionTriggerLimit = {
   times: 1,
 };
-bodyLoyaltyPromotionTriggerLimit.interval = bodyLoyaltyPromotionTriggerLimitInterval;
+bodyLoyaltyPromotionTriggerLimit.interval = 'DAY';
 
 const bodyLoyaltyPromotion: LoyaltyPromotion = {
   name: 'Tuesday Happy Hour Promo',

@@ -25,6 +25,7 @@ Describes a `SearchInvoices` response.
     {
       "accepted_payment_methods": {
         "bank_account": false,
+        "buy_now_pay_later": false,
         "card": true,
         "square_gift_card": false
       },
@@ -91,6 +92,7 @@ Describes a `SearchInvoices` response.
     {
       "accepted_payment_methods": {
         "bank_account": false,
+        "buy_now_pay_later": false,
         "card": true,
         "square_gift_card": true
       },

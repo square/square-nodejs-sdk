@@ -90,13 +90,13 @@ async createCard(
 
 ```ts
 const contentType = null;
-const bodyCardBillingAddressCountry: string = {'' : null, '' : null } const bodyCardBillingAddress: Address = {};
+const bodyCardBillingAddress: Address = {};
 bodyCardBillingAddress.addressLine1 = '500 Electric Ave';
 bodyCardBillingAddress.addressLine2 = 'Suite 600';
 bodyCardBillingAddress.locality = 'New York';
 bodyCardBillingAddress.administrativeDistrictLevel1 = 'NY';
 bodyCardBillingAddress.postalCode = '10003';
-bodyCardBillingAddress.country = bodyCardBillingAddressCountry;
+bodyCardBillingAddress.country = 'US';
 
 const bodyCard: Card = {};
 bodyCard.cardholderName = 'Amelia Earhart';

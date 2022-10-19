@@ -1,6 +1,14 @@
 import { lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 import {
+  PaymentBalanceActivityAppFeeRefundDetail,
+  paymentBalanceActivityAppFeeRefundDetailSchema,
+} from './paymentBalanceActivityAppFeeRefundDetail';
+import {
+  PaymentBalanceActivityAppFeeRevenueDetail,
+  paymentBalanceActivityAppFeeRevenueDetailSchema,
+} from './paymentBalanceActivityAppFeeRevenueDetail';
+import {
   PaymentBalanceActivityAutomaticSavingsDetail,
   paymentBalanceActivityAutomaticSavingsDetailSchema,
 } from './paymentBalanceActivityAutomaticSavingsDetail';
@@ -120,6 +128,8 @@ export interface PayoutEntry {
    * for more information.
    */
   netAmountMoney?: Money;
+  typeAppFeeRevenueDetails?: PaymentBalanceActivityAppFeeRevenueDetail;
+  typeAppFeeRefundDetails?: PaymentBalanceActivityAppFeeRefundDetail;
   typeAutomaticSavingsDetails?: PaymentBalanceActivityAutomaticSavingsDetail;
   typeAutomaticSavingsReversedDetails?: PaymentBalanceActivityAutomaticSavingsReversedDetail;
   /** DESCRIPTION OF PaymentBalanceActivityChargeDetail */
@@ -151,6 +161,14 @@ export const payoutEntrySchema: Schema<PayoutEntry> = object({
   grossAmountMoney: ['gross_amount_money', optional(lazy(() => moneySchema))],
   feeAmountMoney: ['fee_amount_money', optional(lazy(() => moneySchema))],
   netAmountMoney: ['net_amount_money', optional(lazy(() => moneySchema))],
+  typeAppFeeRevenueDetails: [
+    'type_app_fee_revenue_details',
+    optional(lazy(() => paymentBalanceActivityAppFeeRevenueDetailSchema)),
+  ],
+  typeAppFeeRefundDetails: [
+    'type_app_fee_refund_details',
+    optional(lazy(() => paymentBalanceActivityAppFeeRefundDetailSchema)),
+  ],
   typeAutomaticSavingsDetails: [
     'type_automatic_savings_details',
     optional(lazy(() => paymentBalanceActivityAutomaticSavingsDetailSchema)),

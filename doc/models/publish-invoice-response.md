@@ -22,6 +22,7 @@ Describes a `PublishInvoice` response.
   "invoice": {
     "accepted_payment_methods": {
       "bank_account": false,
+      "buy_now_pay_later": false,
       "card": true,
       "square_gift_card": false
     },

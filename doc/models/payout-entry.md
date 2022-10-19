@@ -19,6 +19,8 @@ The total amount of the payout will equal the sum of the payout entries for a ba
 | `grossAmountMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `feeAmountMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `netAmountMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
+| `typeAppFeeRevenueDetails` | [`PaymentBalanceActivityAppFeeRevenueDetail \| undefined`](../../doc/models/payment-balance-activity-app-fee-revenue-detail.md) | Optional | - |
+| `typeAppFeeRefundDetails` | [`PaymentBalanceActivityAppFeeRefundDetail \| undefined`](../../doc/models/payment-balance-activity-app-fee-refund-detail.md) | Optional | - |
 | `typeAutomaticSavingsDetails` | [`PaymentBalanceActivityAutomaticSavingsDetail \| undefined`](../../doc/models/payment-balance-activity-automatic-savings-detail.md) | Optional | - |
 | `typeAutomaticSavingsReversedDetails` | [`PaymentBalanceActivityAutomaticSavingsReversedDetail \| undefined`](../../doc/models/payment-balance-activity-automatic-savings-reversed-detail.md) | Optional | - |
 | `typeChargeDetails` | [`PaymentBalanceActivityChargeDetail \| undefined`](../../doc/models/payment-balance-activity-charge-detail.md) | Optional | DESCRIPTION OF PaymentBalanceActivityChargeDetail |
@@ -51,6 +53,8 @@ The total amount of the payout will equal the sum of the payout entries for a ba
   "gross_amount_money": null,
   "fee_amount_money": null,
   "net_amount_money": null,
+  "type_app_fee_revenue_details": null,
+  "type_app_fee_refund_details": null,
   "type_automatic_savings_details": null,
   "type_automatic_savings_reversed_details": null,
   "type_charge_details": null,

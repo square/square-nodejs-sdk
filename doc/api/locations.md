@@ -183,22 +183,22 @@ const locationId = 'location_id4';
 const contentType = null;
 const bodyLocationBusinessHoursPeriods: BusinessHoursPeriod[] = [];
 
-const bodyLocationBusinessHoursperiods0DayOfWeek: string = {'' : null, '' : null, '' : null } const bodyLocationBusinessHoursperiods0: BusinessHoursPeriod = {};
-bodyLocationBusinessHoursperiods0.dayOfWeek = bodyLocationBusinessHoursperiods0DayOfWeek;
+const bodyLocationBusinessHoursperiods0: BusinessHoursPeriod = {};
+bodyLocationBusinessHoursperiods0.dayOfWeek = 'FRI';
 bodyLocationBusinessHoursperiods0.startLocalTime = '07:00';
 bodyLocationBusinessHoursperiods0.endLocalTime = '18:00';
 
 bodyLocationBusinessHoursPeriods[0] = bodyLocationBusinessHoursperiods0;
 
-const bodyLocationBusinessHoursperiods1DayOfWeek: string = {'' : null, '' : null, '' : null } const bodyLocationBusinessHoursperiods1: BusinessHoursPeriod = {};
-bodyLocationBusinessHoursperiods1.dayOfWeek = bodyLocationBusinessHoursperiods1DayOfWeek;
+const bodyLocationBusinessHoursperiods1: BusinessHoursPeriod = {};
+bodyLocationBusinessHoursperiods1.dayOfWeek = 'SAT';
 bodyLocationBusinessHoursperiods1.startLocalTime = '07:00';
 bodyLocationBusinessHoursperiods1.endLocalTime = '18:00';
 
 bodyLocationBusinessHoursPeriods[1] = bodyLocationBusinessHoursperiods1;
 
-const bodyLocationBusinessHoursperiods2DayOfWeek: string = {'' : null, '' : null, '' : null } const bodyLocationBusinessHoursperiods2: BusinessHoursPeriod = {};
-bodyLocationBusinessHoursperiods2.dayOfWeek = bodyLocationBusinessHoursperiods2DayOfWeek;
+const bodyLocationBusinessHoursperiods2: BusinessHoursPeriod = {};
+bodyLocationBusinessHoursperiods2.dayOfWeek = 'SUN';
 bodyLocationBusinessHoursperiods2.startLocalTime = '09:00';
 bodyLocationBusinessHoursperiods2.endLocalTime = '15:00';
 

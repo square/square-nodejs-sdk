@@ -21,8 +21,8 @@ Represents a Square customer profile in the Customer Directory of a Square selle
 | `companyName` | `string \| undefined` | Optional | A business name associated with the customer profile. |
 | `emailAddress` | `string \| undefined` | Optional | The email address associated with the customer profile. |
 | `address` | [`Address \| undefined`](../../doc/models/address.md) | Optional | Represents a postal address in a country.<br>For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses). |
-| `phoneNumber` | `string \| undefined` | Optional | The phone number associated with the customer profile. A phone number can contain 9–16 digits, with an optional `+` prefix. |
-| `birthday` | `string \| undefined` | Optional | The birthday associated with the customer profile, in RFC 3339 format. The year is optional. The timezone and time are not allowed.<br>For example, `0000-09-21T00:00:00-00:00` represents a birthday on September 21 and `1998-09-21T00:00:00-00:00` represents a birthday on September 21, 1998. |
+| `phoneNumber` | `string \| undefined` | Optional | The phone number associated with the customer profile. |
+| `birthday` | `string \| undefined` | Optional | The birthday associated with the customer profile, in `YYYY-MM-DD` format. For example, `1998-09-21`<br>represents September 21, 1998, and `0000-09-21` represents September 21 (without a birth year). |
 | `referenceId` | `string \| undefined` | Optional | An optional second ID used to associate the customer profile with an<br>entity in another system. |
 | `note` | `string \| undefined` | Optional | A custom note associated with the customer profile. |
 | `preferences` | [`CustomerPreferences \| undefined`](../../doc/models/customer-preferences.md) | Optional | Represents communication preferences for the customer profile. |
