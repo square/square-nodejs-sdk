@@ -43,4 +43,5 @@
 | `TAX_ON_FEE` | The tax paid on fee amounts. |
 | `THIRD_PARTY_FEE` | Fees collected by a third-party platform. |
 | `THIRD_PARTY_FEE_REFUND` | Refunded fees from a third-party platform. |
+| `PAYOUT` | Balance change due to money transfer. |
 

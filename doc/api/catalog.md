@@ -166,16 +166,16 @@ const bodyBatches: CatalogObjectBatch[] = [];
 
 const bodybatches0Objects: CatalogObject[] = [];
 
-const bodybatches0objects0Type: string = {'' : null, '' : null, '' : null, '' : null } const bodybatches0objects0ItemDataTaxIds: string[] = ['#SalesTax'];
+const bodybatches0objects0ItemDataTaxIds: string[] = ['#SalesTax'];
 const bodybatches0objects0ItemDataVariations: CatalogObject[] = [];
 
-const bodybatches0objects0ItemDatavariations0Type: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodybatches0objects0ItemDatavariations0ItemVariationDataPricingType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodybatches0objects0ItemDatavariations0ItemVariationData: CatalogItemVariation = {};
+const bodybatches0objects0ItemDatavariations0ItemVariationData: CatalogItemVariation = {};
 bodybatches0objects0ItemDatavariations0ItemVariationData.itemId = '#Tea';
 bodybatches0objects0ItemDatavariations0ItemVariationData.name = 'Mug';
-bodybatches0objects0ItemDatavariations0ItemVariationData.pricingType = bodybatches0objects0ItemDatavariations0ItemVariationDataPricingType;
+bodybatches0objects0ItemDatavariations0ItemVariationData.pricingType = 'FIXED_PRICING';
 
 const bodybatches0objects0ItemDatavariations0: CatalogObject = {
-  type: bodybatches0objects0ItemDatavariations0Type,
+  type: 'ITEM_VARIATION',
   id: '#Tea_Mug',
 };
 bodybatches0objects0ItemDatavariations0.presentAtAllLocations = true;
@@ -191,7 +191,7 @@ bodybatches0objects0ItemData.variations = bodybatches0objects0ItemDataVariations
 bodybatches0objects0ItemData.descriptionHtml = '<p><strong>Hot</strong> Leaf Juice</p>';
 
 const bodybatches0objects0: CatalogObject = {
-  type: bodybatches0objects0Type,
+  type: 'ITEM',
   id: '#Tea',
 };
 bodybatches0objects0.presentAtAllLocations = true;
@@ -199,16 +199,16 @@ bodybatches0objects0.itemData = bodybatches0objects0ItemData;
 
 bodybatches0Objects[0] = bodybatches0objects0;
 
-const bodybatches0objects1Type: string = {'' : null, '' : null, '' : null, '' : null } const bodybatches0objects1ItemDataTaxIds: string[] = ['#SalesTax'];
+const bodybatches0objects1ItemDataTaxIds: string[] = ['#SalesTax'];
 const bodybatches0objects1ItemDataVariations: CatalogObject[] = [];
 
-const bodybatches0objects1ItemDatavariations0Type: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodybatches0objects1ItemDatavariations0ItemVariationDataPricingType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodybatches0objects1ItemDatavariations0ItemVariationData: CatalogItemVariation = {};
+const bodybatches0objects1ItemDatavariations0ItemVariationData: CatalogItemVariation = {};
 bodybatches0objects1ItemDatavariations0ItemVariationData.itemId = '#Coffee';
 bodybatches0objects1ItemDatavariations0ItemVariationData.name = 'Regular';
-bodybatches0objects1ItemDatavariations0ItemVariationData.pricingType = bodybatches0objects1ItemDatavariations0ItemVariationDataPricingType;
+bodybatches0objects1ItemDatavariations0ItemVariationData.pricingType = 'FIXED_PRICING';
 
 const bodybatches0objects1ItemDatavariations0: CatalogObject = {
-  type: bodybatches0objects1ItemDatavariations0Type,
+  type: 'ITEM_VARIATION',
   id: '#Coffee_Regular',
 };
 bodybatches0objects1ItemDatavariations0.presentAtAllLocations = true;
@@ -216,13 +216,13 @@ bodybatches0objects1ItemDatavariations0.itemVariationData = bodybatches0objects1
 
 bodybatches0objects1ItemDataVariations[0] = bodybatches0objects1ItemDatavariations0;
 
-const bodybatches0objects1ItemDatavariations1Type: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodybatches0objects1ItemDatavariations1ItemVariationDataPricingType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodybatches0objects1ItemDatavariations1ItemVariationData: CatalogItemVariation = {};
+const bodybatches0objects1ItemDatavariations1ItemVariationData: CatalogItemVariation = {};
 bodybatches0objects1ItemDatavariations1ItemVariationData.itemId = '#Coffee';
 bodybatches0objects1ItemDatavariations1ItemVariationData.name = 'Large';
-bodybatches0objects1ItemDatavariations1ItemVariationData.pricingType = bodybatches0objects1ItemDatavariations1ItemVariationDataPricingType;
+bodybatches0objects1ItemDatavariations1ItemVariationData.pricingType = 'FIXED_PRICING';
 
 const bodybatches0objects1ItemDatavariations1: CatalogObject = {
-  type: bodybatches0objects1ItemDatavariations1Type,
+  type: 'ITEM_VARIATION',
   id: '#Coffee_Large',
 };
 bodybatches0objects1ItemDatavariations1.presentAtAllLocations = true;
@@ -238,7 +238,7 @@ bodybatches0objects1ItemData.variations = bodybatches0objects1ItemDataVariations
 bodybatches0objects1ItemData.descriptionHtml = '<p>Hot <em>Bean Juice</em></p>';
 
 const bodybatches0objects1: CatalogObject = {
-  type: bodybatches0objects1Type,
+  type: 'ITEM',
   id: '#Coffee',
 };
 bodybatches0objects1.presentAtAllLocations = true;
@@ -246,11 +246,11 @@ bodybatches0objects1.itemData = bodybatches0objects1ItemData;
 
 bodybatches0Objects[1] = bodybatches0objects1;
 
-const bodybatches0objects2Type: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodybatches0objects2CategoryData: CatalogCategory = {};
+const bodybatches0objects2CategoryData: CatalogCategory = {};
 bodybatches0objects2CategoryData.name = 'Beverages';
 
 const bodybatches0objects2: CatalogObject = {
-  type: bodybatches0objects2Type,
+  type: 'CATEGORY',
   id: '#Beverages',
 };
 bodybatches0objects2.presentAtAllLocations = true;
@@ -258,16 +258,16 @@ bodybatches0objects2.categoryData = bodybatches0objects2CategoryData;
 
 bodybatches0Objects[2] = bodybatches0objects2;
 
-const bodybatches0objects3Type: string = {'' : null, '' : null, '' : null } const bodybatches0objects3TaxDataCalculationPhase: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodybatches0objects3TaxDataInclusionType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodybatches0objects3TaxData: CatalogTax = {};
+const bodybatches0objects3TaxData: CatalogTax = {};
 bodybatches0objects3TaxData.name = 'Sales Tax';
-bodybatches0objects3TaxData.calculationPhase = bodybatches0objects3TaxDataCalculationPhase;
-bodybatches0objects3TaxData.inclusionType = bodybatches0objects3TaxDataInclusionType;
+bodybatches0objects3TaxData.calculationPhase = 'TAX_SUBTOTAL_PHASE';
+bodybatches0objects3TaxData.inclusionType = 'ADDITIVE';
 bodybatches0objects3TaxData.percentage = '5.0';
 bodybatches0objects3TaxData.appliesToCustomAmounts = true;
 bodybatches0objects3TaxData.enabled = true;
 
 const bodybatches0objects3: CatalogObject = {
-  type: bodybatches0objects3Type,
+  type: 'TAX',
   id: '#SalesTax',
 };
 bodybatches0objects3.presentAtAllLocations = true;
@@ -331,11 +331,11 @@ async createCatalogImage(
 ## Example Usage
 
 ```ts
-const requestImageType: string = {'' : null, '' : null, '' : null, '' : null, '' : null } const requestImageImageData: CatalogImage = {};
+const requestImageImageData: CatalogImage = {};
 requestImageImageData.caption = 'A picture of a cup of coffee';
 
 const requestImage: CatalogObject = {
-  type: requestImageType,
+  type: 'IMAGE',
   id: '#TEMP_ID',
 };
 requestImage.imageData = requestImageImageData;
@@ -521,33 +521,33 @@ async upsertCatalogObject(
 
 ```ts
 const contentType = null;
-const bodyObjectType: string = {'' : null, '' : null, '' : null, '' : null } const bodyObjectItemDataVariations: CatalogObject[] = [];
+const bodyObjectItemDataVariations: CatalogObject[] = [];
 
-const bodyObjectItemDatavariations0Type: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyObjectItemDatavariations0ItemVariationDataPricingType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyObjectItemDatavariations0ItemVariationData: CatalogItemVariation = {};
+const bodyObjectItemDatavariations0ItemVariationData: CatalogItemVariation = {};
 bodyObjectItemDatavariations0ItemVariationData.itemId = '#Cocoa';
 bodyObjectItemDatavariations0ItemVariationData.name = 'Small';
-bodyObjectItemDatavariations0ItemVariationData.pricingType = bodyObjectItemDatavariations0ItemVariationDataPricingType;
+bodyObjectItemDatavariations0ItemVariationData.pricingType = 'VARIABLE_PRICING';
 
 const bodyObjectItemDatavariations0: CatalogObject = {
-  type: bodyObjectItemDatavariations0Type,
+  type: 'ITEM_VARIATION',
   id: '#Small',
 };
 bodyObjectItemDatavariations0.itemVariationData = bodyObjectItemDatavariations0ItemVariationData;
 
 bodyObjectItemDataVariations[0] = bodyObjectItemDatavariations0;
 
-const bodyObjectItemDatavariations1Type: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyObjectItemDatavariations1ItemVariationDataPricingType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyObjectItemDatavariations1ItemVariationDataPriceMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyObjectItemDatavariations1ItemVariationDataPriceMoney: Money = {};
+const bodyObjectItemDatavariations1ItemVariationDataPriceMoney: Money = {};
 bodyObjectItemDatavariations1ItemVariationDataPriceMoney.amount = BigInt(400);
-bodyObjectItemDatavariations1ItemVariationDataPriceMoney.currency = bodyObjectItemDatavariations1ItemVariationDataPriceMoneyCurrency;
+bodyObjectItemDatavariations1ItemVariationDataPriceMoney.currency = 'USD';
 
 const bodyObjectItemDatavariations1ItemVariationData: CatalogItemVariation = {};
 bodyObjectItemDatavariations1ItemVariationData.itemId = '#Cocoa';
 bodyObjectItemDatavariations1ItemVariationData.name = 'Large';
-bodyObjectItemDatavariations1ItemVariationData.pricingType = bodyObjectItemDatavariations1ItemVariationDataPricingType;
+bodyObjectItemDatavariations1ItemVariationData.pricingType = 'FIXED_PRICING';
 bodyObjectItemDatavariations1ItemVariationData.priceMoney = bodyObjectItemDatavariations1ItemVariationDataPriceMoney;
 
 const bodyObjectItemDatavariations1: CatalogObject = {
-  type: bodyObjectItemDatavariations1Type,
+  type: 'ITEM_VARIATION',
   id: '#Large',
 };
 bodyObjectItemDatavariations1.itemVariationData = bodyObjectItemDatavariations1ItemVariationData;
@@ -561,7 +561,7 @@ bodyObjectItemData.variations = bodyObjectItemDataVariations;
 bodyObjectItemData.descriptionHtml = '<p><strong>Hot</strong> Chocolate</p>';
 
 const bodyObject: CatalogObject = {
-  type: bodyObjectType,
+  type: 'ITEM',
   id: '#Cocoa',
 };
 bodyObject.itemData = bodyObjectItemData;
@@ -778,7 +778,7 @@ const contentType = null;
 const bodyCategoryIds: string[] = ['WINE_CATEGORY_ID'];
 const bodyStockLevels: string[] = ['OUT', 'LOW'];
 const bodyEnabledLocationIds: string[] = ['ATL_LOCATION_ID'];
-const bodySortOrder: string = {'' : null, '' : null, '' : null } const bodyProductTypes: string[] = ['REGULAR'];
+const bodyProductTypes: string[] = ['REGULAR'];
 const bodyCustomAttributeFilters: CustomAttributeFilter[] = [];
 
 const bodycustomAttributeFilters0: CustomAttributeFilter = {};
@@ -814,7 +814,7 @@ body.categoryIds = bodyCategoryIds;
 body.stockLevels = bodyStockLevels;
 body.enabledLocationIds = bodyEnabledLocationIds;
 body.limit = 100;
-body.sortOrder = bodySortOrder;
+body.sortOrder = 'ASC';
 body.productTypes = bodyProductTypes;
 body.customAttributeFilters = bodyCustomAttributeFilters;
 

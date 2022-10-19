@@ -42,14 +42,14 @@ export interface SearchOrdersFilter {
    * [Learn more about filtering orders by time range.](https://developer.squareup.com/docs/orders-api/manage-orders#important-note-on-filtering-orders-by-time-range)
    */
   dateTimeFilter?: SearchOrdersDateTimeFilter;
-  /** Filter based on [order fulfillment]($m/OrderFulfillment) information. */
+  /** Filter based on [order fulfillment]($m/Fulfillment) information. */
   fulfillmentFilter?: SearchOrdersFulfillmentFilter;
   /** A filter based on order `source` information. */
   sourceFilter?: SearchOrdersSourceFilter;
   /**
    * A filter based on the order `customer_id` and any tender `customer_id`
    * associated with the order. It does not filter based on the
-   * [FulfillmentRecipient]($m/OrderFulfillmentRecipient) `customer_id`.
+   * [FulfillmentRecipient]($m/FulfillmentRecipient) `customer_id`.
    */
   customerFilter?: SearchOrdersCustomerFilter;
 }

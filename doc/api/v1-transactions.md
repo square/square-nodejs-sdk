@@ -146,8 +146,8 @@ async v1UpdateOrder(
 const locationId = 'location_id4';
 const orderId = 'order_id6';
 const contentType = null;
-const bodyAction: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const body: V1UpdateOrderRequest = {
-  action: bodyAction,
+const body: V1UpdateOrderRequest = {
+  action: 'REFUND',
 };
 
 try {
@@ -364,9 +364,9 @@ async v1CreateRefund(
 ```ts
 const locationId = 'location_id4';
 const contentType = null;
-const bodyType: string = {'' : null, '' : null, '' : null, '' : null } const body: V1CreateRefundRequest = {
+const body: V1CreateRefundRequest = {
   paymentId: 'payment_id6',
-  type: bodyType,
+  type: 'FULL',
   reason: 'reason8',
 };
 

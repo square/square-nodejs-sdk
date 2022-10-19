@@ -8,8 +8,8 @@ import {
   Schema,
   string,
 } from '../schema';
+import { Fulfillment, fulfillmentSchema } from './fulfillment';
 import { Money, moneySchema } from './money';
-import { OrderFulfillment, orderFulfillmentSchema } from './orderFulfillment';
 import { OrderLineItem, orderLineItemSchema } from './orderLineItem';
 import {
   OrderLineItemDiscount,
@@ -96,7 +96,7 @@ export interface Order {
    * Orders can only be created with at most one fulfillment. However, orders returned
    * by the API might contain multiple fulfillments.
    */
-  fulfillments?: OrderFulfillment[];
+  fulfillments?: Fulfillment[];
   /**
    * A collection of items from sale orders being returned in this one. Normally part of an
    * itemized return or exchange. There is exactly one `Return` object per sale `Order` being
@@ -234,7 +234,7 @@ export const orderSchema: Schema<Order> = object({
   ],
   fulfillments: [
     'fulfillments',
-    optional(array(lazy(() => orderFulfillmentSchema))),
+    optional(array(lazy(() => fulfillmentSchema))),
   ],
   returns: ['returns', optional(array(lazy(() => orderReturnSchema)))],
   returnAmounts: [

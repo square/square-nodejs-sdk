@@ -40,7 +40,7 @@ Either `errors` or `customer` is present in a given response (never both).
     ],
     "id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
     "note": "a customer",
-    "phone_number": "1-212-555-4240",
+    "phone_number": "+1-212-555-4240",
     "preferences": {
       "email_unsubscribed": false
     },

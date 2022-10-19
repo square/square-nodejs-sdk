@@ -1,8 +1,8 @@
 
 # Order Line Item Pricing Blocklists
 
-Describes pricing adjustments that are blocked from manual and
-automatic application to a line item. For more information, see
+Describes pricing adjustments that are blocked from automatic
+application to a line item. For more information, see
 [Apply Taxes and Discounts](https://developer.squareup.com/docs/orders-api/apply-taxes-and-discounts).
 
 ## Structure

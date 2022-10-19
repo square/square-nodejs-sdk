@@ -105,20 +105,20 @@ async createCustomer(
 
 ```ts
 const contentType = null;
-const bodyAddressCountry: string = {'' : null, '' : null } const bodyAddress: Address = {};
+const bodyAddress: Address = {};
 bodyAddress.addressLine1 = '500 Electric Ave';
 bodyAddress.addressLine2 = 'Suite 600';
 bodyAddress.locality = 'New York';
 bodyAddress.administrativeDistrictLevel1 = 'NY';
 bodyAddress.postalCode = '10003';
-bodyAddress.country = bodyAddressCountry;
+bodyAddress.country = 'US';
 
 const body: CreateCustomerRequest = {};
 body.givenName = 'Amelia';
 body.familyName = 'Earhart';
 body.emailAddress = 'Amelia.Earhart@example.com';
 body.address = bodyAddress;
-body.phoneNumber = '1-212-555-4240';
+body.phoneNumber = '+1-212-555-4240';
 body.referenceId = 'YOUR_REFERENCE_ID';
 body.note = 'a customer';
 
@@ -170,9 +170,9 @@ async searchCustomers(
 ```ts
 const contentType = null;
 const bodyQueryFilterCreationSourceValues: string[] = ['THIRD_PARTY'];
-const bodyQueryFilterCreationSourceRule: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyQueryFilterCreationSource: CustomerCreationSourceFilter = {};
+const bodyQueryFilterCreationSource: CustomerCreationSourceFilter = {};
 bodyQueryFilterCreationSource.values = bodyQueryFilterCreationSourceValues;
-bodyQueryFilterCreationSource.rule = bodyQueryFilterCreationSourceRule;
+bodyQueryFilterCreationSource.rule = 'INCLUDE';
 
 const bodyQueryFilterCreatedAt: TimeRange = {};
 bodyQueryFilterCreatedAt.startAt = '2018-01-01T00:00:00+00:00';
@@ -191,9 +191,9 @@ bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;
 bodyQueryFilter.emailAddress = bodyQueryFilterEmailAddress;
 bodyQueryFilter.groupIds = bodyQueryFilterGroupIds;
 
-const bodyQuerySortField: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyQuerySortOrder: string = {'' : null, '' : null, '' : null } const bodyQuerySort: CustomerSort = {};
-bodyQuerySort.field = bodyQuerySortField;
-bodyQuerySort.order = bodyQuerySortOrder;
+const bodyQuerySort: CustomerSort = {};
+bodyQuerySort.field = 'CREATED_AT';
+bodyQuerySort.order = 'ASC';
 
 const bodyQuery: CustomerQuery = {};
 bodyQuery.filter = bodyQueryFilter;
@@ -389,13 +389,13 @@ async createCustomerCard(
 ```ts
 const customerId = 'customer_id8';
 const contentType = null;
-const bodyBillingAddressCountry: string = {'' : null, '' : null } const bodyBillingAddress: Address = {};
+const bodyBillingAddress: Address = {};
 bodyBillingAddress.addressLine1 = '500 Electric Ave';
 bodyBillingAddress.addressLine2 = 'Suite 600';
 bodyBillingAddress.locality = 'New York';
 bodyBillingAddress.administrativeDistrictLevel1 = 'NY';
 bodyBillingAddress.postalCode = '10003';
-bodyBillingAddress.country = bodyBillingAddressCountry;
+bodyBillingAddress.country = 'US';
 
 const body: CreateCustomerCardRequest = {
   cardNonce: 'YOUR_CARD_NONCE',

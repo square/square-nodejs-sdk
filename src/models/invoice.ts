@@ -116,7 +116,7 @@ export interface Invoice {
   createdAt?: string;
   /** The timestamp when the invoice was last updated, in RFC 3339 format. */
   updatedAt?: string;
-  /** The payment methods that customers can use to pay an invoice on the Square-hosted invoice page. */
+  /** The payment methods that customers can use to pay an [invoice]($m/Invoice) on the Square-hosted invoice payment page. */
   acceptedPaymentMethods?: InvoiceAcceptedPaymentMethods;
   /**
    * Additional seller-defined fields that are displayed on the invoice. For more information, see

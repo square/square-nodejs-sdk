@@ -50,7 +50,7 @@ async createTerminalAction(
 
 ```ts
 const contentType = null;
-const bodyActionType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyActionSaveCardOptions: SaveCardOptions = {
+const bodyActionSaveCardOptions: SaveCardOptions = {
   customerId: '{{CUSTOMER_ID}}',
 };
 bodyActionSaveCardOptions.referenceId = 'user-id-1';
@@ -58,7 +58,7 @@ bodyActionSaveCardOptions.referenceId = 'user-id-1';
 const bodyAction: TerminalAction = {};
 bodyAction.deviceId = '{{DEVICE_ID}}';
 bodyAction.deadlineDuration = 'PT5M';
-bodyAction.type = bodyActionType;
+bodyAction.type = 'SAVE_CARD';
 bodyAction.saveCardOptions = bodyActionSaveCardOptions;
 
 const body: CreateTerminalActionRequest = {
@@ -111,8 +111,8 @@ bodyQueryFilterCreatedAt.startAt = '2022-04-01T00:00:00Z';
 const bodyQueryFilter: TerminalActionQueryFilter = {};
 bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;
 
-const bodyQuerySortSortOrder: string = {'' : null, '' : null, '' : null, '' : null } const bodyQuerySort: TerminalActionQuerySort = {};
-bodyQuerySort.sortOrder = bodyQuerySortSortOrder;
+const bodyQuerySort: TerminalActionQuerySort = {};
+bodyQuerySort.sortOrder = 'DESC';
 
 const bodyQuery: TerminalActionQuery = {};
 bodyQuery.filter = bodyQueryFilter;
@@ -240,9 +240,9 @@ async createTerminalCheckout(
 
 ```ts
 const contentType = null;
-const bodyCheckoutAmountMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyCheckoutAmountMoney: Money = {};
+const bodyCheckoutAmountMoney: Money = {};
 bodyCheckoutAmountMoney.amount = BigInt(2610);
-bodyCheckoutAmountMoney.currency = bodyCheckoutAmountMoneyCurrency;
+bodyCheckoutAmountMoney.currency = 'USD';
 
 const bodyCheckoutDeviceOptions: DeviceCheckoutOptions = {
   deviceId: 'dbb5d83a-7838-11ea-bc55-0242ac130003',
@@ -426,9 +426,9 @@ async createTerminalRefund(
 
 ```ts
 const contentType = null;
-const bodyRefundAmountMoneyCurrency: string = {'' : null, '' : null, '' : null } const bodyRefundAmountMoney: Money = {};
+const bodyRefundAmountMoney: Money = {};
 bodyRefundAmountMoney.amount = BigInt(111);
-bodyRefundAmountMoney.currency = bodyRefundAmountMoneyCurrency;
+bodyRefundAmountMoney.currency = 'CAD';
 
 const bodyRefund: TerminalRefund = {
   paymentId: '5O5OvgkcNUhl7JBuINflcjKqUzXZY',

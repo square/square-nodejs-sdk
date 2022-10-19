@@ -95,7 +95,7 @@ export interface CreatePaymentRequest {
    */
   customerId?: string;
   /**
-   * The location ID to associate with the payment. If not specified, the default location is
+   * The location ID to associate with the payment. If not specified, the [main location](https://developer.squareup.com/docs/locations-api#about-the-main-location) is
    * used.
    */
   locationId?: string;

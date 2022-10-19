@@ -259,11 +259,11 @@ async createDisputeEvidenceText(
 ```ts
 const disputeId = 'dispute_id2';
 const contentType = null;
-const bodyEvidenceType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const body: CreateDisputeEvidenceTextRequest = {
+const body: CreateDisputeEvidenceTextRequest = {
   idempotencyKey: 'ed3ee3933d946f1514d505d173c82648',
   evidenceText: '1Z8888888888888888',
 };
-body.evidenceType = bodyEvidenceType;
+body.evidenceType = 'TRACKING_NUMBER';
 
 try {
   const { result, ...httpResponse } = await disputesApi.createDisputeEvidenceText(disputeId, body);

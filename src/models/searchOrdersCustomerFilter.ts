@@ -3,7 +3,7 @@ import { array, object, optional, Schema, string } from '../schema';
 /**
  * A filter based on the order `customer_id` and any tender `customer_id`
  * associated with the order. It does not filter based on the
- * [FulfillmentRecipient]($m/OrderFulfillmentRecipient) `customer_id`.
+ * [FulfillmentRecipient]($m/FulfillmentRecipient) `customer_id`.
  */
 export interface SearchOrdersCustomerFilter {
   /**

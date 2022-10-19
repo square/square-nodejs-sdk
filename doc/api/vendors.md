@@ -301,11 +301,11 @@ async updateVendor(
 
 ```ts
 const contentType = null;
-const bodyVendorStatus: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyVendor: Vendor = {};
+const bodyVendor: Vendor = {};
 bodyVendor.id = 'INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4';
 bodyVendor.name = 'Jack\'s Chicken Shack';
 bodyVendor.version = 1;
-bodyVendor.status = bodyVendorStatus;
+bodyVendor.status = 'ACTIVE';
 
 const body: UpdateVendorRequest = {
   vendor: bodyVendor,

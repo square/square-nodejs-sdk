@@ -97,12 +97,12 @@ async createGiftCardActivity(
 
 ```ts
 const contentType = null;
-const bodyGiftCardActivityType: string = {'' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null, '' : null } const bodyGiftCardActivityActivateActivityDetails: GiftCardActivityActivate = {};
+const bodyGiftCardActivityActivateActivityDetails: GiftCardActivityActivate = {};
 bodyGiftCardActivityActivateActivityDetails.orderId = 'jJNGHm4gLI6XkFbwtiSLqK72KkAZY';
 bodyGiftCardActivityActivateActivityDetails.lineItemUid = 'eIWl7X0nMuO9Ewbh0ChIx';
 
 const bodyGiftCardActivity: GiftCardActivity = {
-  type: bodyGiftCardActivityType,
+  type: 'ACTIVATE',
   locationId: '81FN9BNFZTKS4',
 };
 bodyGiftCardActivity.giftCardId = 'gftc:6d55a72470d940c6ba09c0ab8ad08d20';
