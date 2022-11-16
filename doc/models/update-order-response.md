@@ -42,6 +42,10 @@ a request to the [UpdateOrder](../../doc/api/orders.md#update-order) endpoint.
           "amount": 500,
           "currency": "USD"
         },
+        "total_service_charge_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
         "total_tax_money": {
           "amount": 0,
           "currency": "USD"
@@ -69,6 +73,10 @@ a request to the [UpdateOrder](../../doc/api/orders.md#update-order) endpoint.
         },
         "total_money": {
           "amount": 400,
+          "currency": "USD"
+        },
+        "total_service_charge_money": {
+          "amount": 0,
           "currency": "USD"
         },
         "total_tax_money": {

@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import {
   OrderFulfillmentRecipient,
   orderFulfillmentRecipientSchema,
@@ -9,18 +9,18 @@ export interface OrderFulfillmentShipmentDetails {
   /** Information about the fulfillment recipient. */
   recipient?: OrderFulfillmentRecipient;
   /** The shipping carrier being used to ship this fulfillment (such as UPS, FedEx, or USPS). */
-  carrier?: string;
+  carrier?: string | null;
   /** A note with additional information for the shipping carrier. */
-  shippingNote?: string;
+  shippingNote?: string | null;
   /**
    * A description of the type of shipping product purchased from the carrier
    * (such as First Class, Priority, or Express).
    */
-  shippingType?: string;
+  shippingType?: string | null;
   /** The reference number provided by the carrier to track the shipment's progress. */
-  trackingNumber?: string;
+  trackingNumber?: string | null;
   /** A link to the tracking webpage on the carrier's website. */
-  trackingUrl?: string;
+  trackingUrl?: string | null;
   /**
    * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
    * indicating when the shipment was requested. The timestamp must be in RFC 3339 format
@@ -44,7 +44,7 @@ export interface OrderFulfillmentShipmentDetails {
    * indicating when the shipment is expected to be delivered to the shipping carrier.
    * The timestamp must be in RFC 3339 format (for example, "2016-09-04T23:59:33.123Z").
    */
-  expectedShippedAt?: string;
+  expectedShippedAt?: string | null;
   /**
    * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
    * indicating when this fulfillment was moved to the `COMPLETED` state, which indicates that
@@ -57,9 +57,9 @@ export interface OrderFulfillmentShipmentDetails {
    * indicating the shipment was canceled.
    * The timestamp must be in RFC 3339 format (for example, "2016-09-04T23:59:33.123Z").
    */
-  canceledAt?: string;
+  canceledAt?: string | null;
   /** A description of why the shipment was canceled. */
-  cancelReason?: string;
+  cancelReason?: string | null;
   /**
    * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
    * indicating when the shipment failed to be completed. The timestamp must be in RFC 3339 format
@@ -67,7 +67,7 @@ export interface OrderFulfillmentShipmentDetails {
    */
   failedAt?: string;
   /** A description of why the shipment failed to be completed. */
-  failureReason?: string;
+  failureReason?: string | null;
 }
 
 export const orderFulfillmentShipmentDetailsSchema: Schema<OrderFulfillmentShipmentDetails> = object(
@@ -76,19 +76,19 @@ export const orderFulfillmentShipmentDetailsSchema: Schema<OrderFulfillmentShipm
       'recipient',
       optional(lazy(() => orderFulfillmentRecipientSchema)),
     ],
-    carrier: ['carrier', optional(string())],
-    shippingNote: ['shipping_note', optional(string())],
-    shippingType: ['shipping_type', optional(string())],
-    trackingNumber: ['tracking_number', optional(string())],
-    trackingUrl: ['tracking_url', optional(string())],
+    carrier: ['carrier', optional(nullable(string()))],
+    shippingNote: ['shipping_note', optional(nullable(string()))],
+    shippingType: ['shipping_type', optional(nullable(string()))],
+    trackingNumber: ['tracking_number', optional(nullable(string()))],
+    trackingUrl: ['tracking_url', optional(nullable(string()))],
     placedAt: ['placed_at', optional(string())],
     inProgressAt: ['in_progress_at', optional(string())],
     packagedAt: ['packaged_at', optional(string())],
-    expectedShippedAt: ['expected_shipped_at', optional(string())],
+    expectedShippedAt: ['expected_shipped_at', optional(nullable(string()))],
     shippedAt: ['shipped_at', optional(string())],
-    canceledAt: ['canceled_at', optional(string())],
-    cancelReason: ['cancel_reason', optional(string())],
+    canceledAt: ['canceled_at', optional(nullable(string()))],
+    cancelReason: ['cancel_reason', optional(nullable(string()))],
     failedAt: ['failed_at', optional(string())],
-    failureReason: ['failure_reason', optional(string())],
+    failureReason: ['failure_reason', optional(nullable(string()))],
   }
 );

@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -10,7 +10,7 @@ import { Money, moneySchema } from './money';
  */
 export interface OrderLineItemAppliedDiscount {
   /** A unique ID that identifies the applied discount only within this order. */
-  uid?: string;
+  uid?: string | null;
   /**
    * The `uid` of the discount that the applied discount represents. It must
    * reference a discount present in the `order.discounts` field.
@@ -31,7 +31,7 @@ export interface OrderLineItemAppliedDiscount {
 
 export const orderLineItemAppliedDiscountSchema: Schema<OrderLineItemAppliedDiscount> = object(
   {
-    uid: ['uid', optional(string())],
+    uid: ['uid', optional(nullable(string()))],
     discountUid: ['discount_uid', string()],
     appliedMoney: ['applied_money', optional(lazy(() => moneySchema))],
   }

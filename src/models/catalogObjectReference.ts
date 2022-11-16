@@ -1,4 +1,4 @@
-import { bigint, object, optional, Schema, string } from '../schema';
+import { bigint, nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * A reference to a Catalog object at a specific version. In general this is
@@ -7,14 +7,14 @@ import { bigint, object, optional, Schema, string } from '../schema';
  */
 export interface CatalogObjectReference {
   /** The ID of the referenced object. */
-  objectId?: string;
+  objectId?: string | null;
   /** The version of the object. */
-  catalogVersion?: bigint;
+  catalogVersion?: bigint | null;
 }
 
 export const catalogObjectReferenceSchema: Schema<CatalogObjectReference> = object(
   {
-    objectId: ['object_id', optional(string())],
-    catalogVersion: ['catalog_version', optional(bigint())],
+    objectId: ['object_id', optional(nullable(string()))],
+    catalogVersion: ['catalog_version', optional(nullable(bigint()))],
   }
 );

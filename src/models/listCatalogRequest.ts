@@ -1,4 +1,4 @@
-import { bigint, object, optional, Schema, string } from '../schema';
+import { bigint, nullable, object, optional, Schema, string } from '../schema';
 
 export interface ListCatalogRequest {
   /**
@@ -6,7 +6,7 @@ export interface ListCatalogRequest {
    * The page size is currently set to be 100.
    * See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
    */
-  cursor?: string;
+  cursor?: string | null;
   /**
    * An optional case-insensitive, comma-separated list of object types to retrieve.
    * The valid values are defined in the [CatalogObjectType]($m/CatalogObjectType) enum, for example,
@@ -20,19 +20,18 @@ export interface ListCatalogRequest {
    * PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,
    * SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION, QUICK_AMOUNT_SETTINGS.
    */
-  types?: string;
+  types?: string | null;
   /**
    * The specific version of the catalog objects to be included in the response.
-   * This allows you to retrieve historical
-   * versions of objects. The specified version value is matched against
-   * the [CatalogObject]($m/CatalogObject)s' `version` attribute.  If not included, results will
-   * be from the current version of the catalog.
+   * This allows you to retrieve historical versions of objects. The specified version value is matched against
+   * the [CatalogObject]($m/CatalogObject)s' `version` attribute.  If not included, results will be from the
+   * current version of the catalog.
    */
-  catalogVersion?: bigint;
+  catalogVersion?: bigint | null;
 }
 
 export const listCatalogRequestSchema: Schema<ListCatalogRequest> = object({
-  cursor: ['cursor', optional(string())],
-  types: ['types', optional(string())],
-  catalogVersion: ['catalog_version', optional(bigint())],
+  cursor: ['cursor', optional(nullable(string()))],
+  types: ['types', optional(nullable(string()))],
+  catalogVersion: ['catalog_version', optional(nullable(bigint()))],
 });

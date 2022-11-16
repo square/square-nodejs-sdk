@@ -1,6 +1,7 @@
 import {
   array,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -41,36 +42,36 @@ import { V1PaymentTax, v1PaymentTaxSchema } from './v1PaymentTax';
  */
 export interface V1PaymentItemization {
   /** The item's name. */
-  name?: string;
+  name?: string | null;
   /** The quantity of the item purchased. This can be a decimal value. */
-  quantity?: number;
+  quantity?: number | null;
   itemizationType?: string;
   /** V1PaymentItemDetail */
   itemDetail?: V1PaymentItemDetail;
   /** Notes entered by the merchant about the item at the time of payment, if any. */
-  notes?: string;
+  notes?: string | null;
   /** The name of the item variation purchased, if any. */
-  itemVariationName?: string;
+  itemVariationName?: string | null;
   totalMoney?: V1Money;
   singleQuantityMoney?: V1Money;
   grossSalesMoney?: V1Money;
   discountMoney?: V1Money;
   netSalesMoney?: V1Money;
   /** All taxes applied to this itemization. */
-  taxes?: V1PaymentTax[];
+  taxes?: V1PaymentTax[] | null;
   /** All discounts applied to this itemization. */
-  discounts?: V1PaymentDiscount[];
+  discounts?: V1PaymentDiscount[] | null;
   /** All modifier options applied to this itemization. */
-  modifiers?: V1PaymentModifier[];
+  modifiers?: V1PaymentModifier[] | null;
 }
 
 export const v1PaymentItemizationSchema: Schema<V1PaymentItemization> = object({
-  name: ['name', optional(string())],
-  quantity: ['quantity', optional(number())],
+  name: ['name', optional(nullable(string()))],
+  quantity: ['quantity', optional(nullable(number()))],
   itemizationType: ['itemization_type', optional(string())],
   itemDetail: ['item_detail', optional(lazy(() => v1PaymentItemDetailSchema))],
-  notes: ['notes', optional(string())],
-  itemVariationName: ['item_variation_name', optional(string())],
+  notes: ['notes', optional(nullable(string()))],
+  itemVariationName: ['item_variation_name', optional(nullable(string()))],
   totalMoney: ['total_money', optional(lazy(() => v1MoneySchema))],
   singleQuantityMoney: [
     'single_quantity_money',
@@ -79,13 +80,13 @@ export const v1PaymentItemizationSchema: Schema<V1PaymentItemization> = object({
   grossSalesMoney: ['gross_sales_money', optional(lazy(() => v1MoneySchema))],
   discountMoney: ['discount_money', optional(lazy(() => v1MoneySchema))],
   netSalesMoney: ['net_sales_money', optional(lazy(() => v1MoneySchema))],
-  taxes: ['taxes', optional(array(lazy(() => v1PaymentTaxSchema)))],
+  taxes: ['taxes', optional(nullable(array(lazy(() => v1PaymentTaxSchema))))],
   discounts: [
     'discounts',
-    optional(array(lazy(() => v1PaymentDiscountSchema))),
+    optional(nullable(array(lazy(() => v1PaymentDiscountSchema)))),
   ],
   modifiers: [
     'modifiers',
-    optional(array(lazy(() => v1PaymentModifierSchema))),
+    optional(nullable(array(lazy(() => v1PaymentModifierSchema)))),
   ],
 });

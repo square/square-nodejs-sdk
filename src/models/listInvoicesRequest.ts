@@ -1,4 +1,4 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { nullable, number, object, optional, Schema, string } from '../schema';
 
 /** Describes a `ListInvoice` request. */
 export interface ListInvoicesRequest {
@@ -9,16 +9,16 @@ export interface ListInvoicesRequest {
    * Provide this cursor to retrieve the next set of results for your original query.
    * For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
    */
-  cursor?: string;
+  cursor?: string | null;
   /**
    * The maximum number of invoices to return (200 is the maximum `limit`).
    * If not provided, the server uses a default limit of 100 invoices.
    */
-  limit?: number;
+  limit?: number | null;
 }
 
 export const listInvoicesRequestSchema: Schema<ListInvoicesRequest> = object({
   locationId: ['location_id', string()],
-  cursor: ['cursor', optional(string())],
-  limit: ['limit', optional(number())],
+  cursor: ['cursor', optional(nullable(string()))],
+  limit: ['limit', optional(nullable(number()))],
 });

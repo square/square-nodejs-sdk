@@ -1,4 +1,17 @@
-import { array, dict, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  dict,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
+import {
+  FulfillmentDeliveryDetails,
+  fulfillmentDeliveryDetailsSchema,
+} from './fulfillmentDeliveryDetails';
 import {
   FulfillmentFulfillmentEntry,
   fulfillmentFulfillmentEntrySchema,
@@ -12,10 +25,14 @@ import {
   fulfillmentShipmentDetailsSchema,
 } from './fulfillmentShipmentDetails';
 
-/** Contains details about how to fulfill this order. */
+/**
+ * Contains details about how to fulfill this order.
+ * Orders can only be created with at most one fulfillment using the API.
+ * However, orders returned by the Orders API might contain multiple fulfillments because sellers can create multiple fulfillments using Square products such as Square Online.
+ */
 export interface Fulfillment {
   /** A unique ID that identifies the fulfillment only within this order. */
-  uid?: string;
+  uid?: string | null;
   /** The type of fulfillment. */
   type?: string;
   /** The current state of this fulfillment. */
@@ -52,15 +69,17 @@ export interface Fulfillment {
    * application.
    * For more information, see [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
    */
-  metadata?: Record<string, string>;
+  metadata?: Record<string, string> | null;
   /** Contains details necessary to fulfill a pickup order. */
   pickupDetails?: FulfillmentPickupDetails;
   /** Contains the details necessary to fulfill a shipment order. */
   shipmentDetails?: FulfillmentShipmentDetails;
+  /** Describes delivery details of an order fulfillment. */
+  deliveryDetails?: FulfillmentDeliveryDetails;
 }
 
 export const fulfillmentSchema: Schema<Fulfillment> = object({
-  uid: ['uid', optional(string())],
+  uid: ['uid', optional(nullable(string()))],
   type: ['type', optional(string())],
   state: ['state', optional(string())],
   lineItemApplication: ['line_item_application', optional(string())],
@@ -68,7 +87,7 @@ export const fulfillmentSchema: Schema<Fulfillment> = object({
     'entries',
     optional(array(lazy(() => fulfillmentFulfillmentEntrySchema))),
   ],
-  metadata: ['metadata', optional(dict(string()))],
+  metadata: ['metadata', optional(nullable(dict(string())))],
   pickupDetails: [
     'pickup_details',
     optional(lazy(() => fulfillmentPickupDetailsSchema)),
@@ -76,5 +95,9 @@ export const fulfillmentSchema: Schema<Fulfillment> = object({
   shipmentDetails: [
     'shipment_details',
     optional(lazy(() => fulfillmentShipmentDetailsSchema)),
+  ],
+  deliveryDetails: [
+    'delivery_details',
+    optional(lazy(() => fulfillmentDeliveryDetailsSchema)),
   ],
 });

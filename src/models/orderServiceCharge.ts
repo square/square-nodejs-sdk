@@ -4,6 +4,7 @@ import {
   boolean,
   dict,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -18,19 +19,19 @@ import {
 /** Represents a service charge applied to an order. */
 export interface OrderServiceCharge {
   /** A unique ID that identifies the service charge only within this order. */
-  uid?: string;
+  uid?: string | null;
   /** The name of the service charge. */
-  name?: string;
+  name?: string | null;
   /** The catalog object ID referencing the service charge [CatalogObject]($m/CatalogObject). */
-  catalogObjectId?: string;
+  catalogObjectId?: string | null;
   /** The version of the catalog object that this service charge references. */
-  catalogVersion?: bigint;
+  catalogVersion?: bigint | null;
   /**
    * The service charge percentage as a string representation of a
    * decimal number. For example, `"7.25"` indicates a service charge of 7.25%.
    * Exactly 1 of `percentage` or `amount_money` should be set.
    */
-  percentage?: string;
+  percentage?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -78,7 +79,7 @@ export interface OrderServiceCharge {
    * order-level taxes automatically apply to the service charge. Note that
    * service charges calculated in the `TOTAL_PHASE` cannot be marked as taxable.
    */
-  taxable?: boolean;
+  taxable?: boolean | null;
   /**
    * The list of references to the taxes applied to this service charge. Each
    * `OrderLineItemAppliedTax` has a `tax_uid` that references the `uid` of a top-level
@@ -91,7 +92,7 @@ export interface OrderServiceCharge {
    * in the `SUBTOTAL_PHASE`.
    * To change the amount of a tax, modify the referenced top-level tax.
    */
-  appliedTaxes?: OrderLineItemAppliedTax[];
+  appliedTaxes?: OrderLineItemAppliedTax[] | null;
   /**
    * Application-defined data attached to this service charge. Metadata fields are intended
    * to store descriptive references or associations with an entity in another system or store brief
@@ -107,26 +108,26 @@ export interface OrderServiceCharge {
    * application.
    * For more information, see [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
    */
-  metadata?: Record<string, string>;
+  metadata?: Record<string, string> | null;
   type?: string;
 }
 
 export const orderServiceChargeSchema: Schema<OrderServiceCharge> = object({
-  uid: ['uid', optional(string())],
-  name: ['name', optional(string())],
-  catalogObjectId: ['catalog_object_id', optional(string())],
-  catalogVersion: ['catalog_version', optional(bigint())],
-  percentage: ['percentage', optional(string())],
+  uid: ['uid', optional(nullable(string()))],
+  name: ['name', optional(nullable(string()))],
+  catalogObjectId: ['catalog_object_id', optional(nullable(string()))],
+  catalogVersion: ['catalog_version', optional(nullable(bigint()))],
+  percentage: ['percentage', optional(nullable(string()))],
   amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
   appliedMoney: ['applied_money', optional(lazy(() => moneySchema))],
   totalMoney: ['total_money', optional(lazy(() => moneySchema))],
   totalTaxMoney: ['total_tax_money', optional(lazy(() => moneySchema))],
   calculationPhase: ['calculation_phase', optional(string())],
-  taxable: ['taxable', optional(boolean())],
+  taxable: ['taxable', optional(nullable(boolean()))],
   appliedTaxes: [
     'applied_taxes',
-    optional(array(lazy(() => orderLineItemAppliedTaxSchema))),
+    optional(nullable(array(lazy(() => orderLineItemAppliedTaxSchema)))),
   ],
-  metadata: ['metadata', optional(dict(string()))],
+  metadata: ['metadata', optional(nullable(dict(string())))],
   type: ['type', optional(string())],
 });

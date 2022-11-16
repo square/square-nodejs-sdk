@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Represents additional data for rules with the `SPEND` accrual type. */
@@ -17,13 +25,13 @@ export interface LoyaltyProgramAccrualRuleSpendData {
    * You can use the [BatchRetrieveCatalogObjects]($e/Catalog/BatchRetrieveCatalogObjects)
    * endpoint to retrieve information about the excluded categories.
    */
-  excludedCategoryIds?: string[];
+  excludedCategoryIds?: string[] | null;
   /**
    * The IDs of any `ITEM_VARIATION` catalog objects that are excluded from points accrual.
    * You can use the [BatchRetrieveCatalogObjects]($e/Catalog/BatchRetrieveCatalogObjects)
    * endpoint to retrieve information about the excluded item variations.
    */
-  excludedItemVariationIds?: string[];
+  excludedItemVariationIds?: string[] | null;
   /**
    * Indicates how taxes should be treated when calculating the purchase amount used for loyalty points accrual.
    * This setting applies only to `SPEND` accrual rules or `VISIT` accrual rules that have a minimum spend requirement.
@@ -34,10 +42,13 @@ export interface LoyaltyProgramAccrualRuleSpendData {
 export const loyaltyProgramAccrualRuleSpendDataSchema: Schema<LoyaltyProgramAccrualRuleSpendData> = object(
   {
     amountMoney: ['amount_money', lazy(() => moneySchema)],
-    excludedCategoryIds: ['excluded_category_ids', optional(array(string()))],
+    excludedCategoryIds: [
+      'excluded_category_ids',
+      optional(nullable(array(string()))),
+    ],
     excludedItemVariationIds: [
       'excluded_item_variation_ids',
-      optional(array(string())),
+      optional(nullable(array(string()))),
     ],
     taxMode: ['tax_mode', string()],
   }

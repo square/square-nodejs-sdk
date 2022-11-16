@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 import {
   PaymentBalanceActivityAppFeeRefundDetail,
@@ -99,7 +99,7 @@ export interface PayoutEntry {
   /** The ID of the payout entries’ associated payout. */
   payoutId: string;
   /** The timestamp of when the payout entry affected the balance, in RFC 3339 format. */
-  effectiveAt?: string;
+  effectiveAt?: string | null;
   type?: string;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -132,7 +132,6 @@ export interface PayoutEntry {
   typeAppFeeRefundDetails?: PaymentBalanceActivityAppFeeRefundDetail;
   typeAutomaticSavingsDetails?: PaymentBalanceActivityAutomaticSavingsDetail;
   typeAutomaticSavingsReversedDetails?: PaymentBalanceActivityAutomaticSavingsReversedDetail;
-  /** DESCRIPTION OF PaymentBalanceActivityChargeDetail */
   typeChargeDetails?: PaymentBalanceActivityChargeDetail;
   typeDepositFeeDetails?: PaymentBalanceActivityDepositFeeDetail;
   typeDisputeDetails?: PaymentBalanceActivityDisputeDetail;
@@ -156,7 +155,7 @@ export interface PayoutEntry {
 export const payoutEntrySchema: Schema<PayoutEntry> = object({
   id: ['id', string()],
   payoutId: ['payout_id', string()],
-  effectiveAt: ['effective_at', optional(string())],
+  effectiveAt: ['effective_at', optional(nullable(string()))],
   type: ['type', optional(string())],
   grossAmountMoney: ['gross_amount_money', optional(lazy(() => moneySchema))],
   feeAmountMoney: ['fee_amount_money', optional(lazy(() => moneySchema))],

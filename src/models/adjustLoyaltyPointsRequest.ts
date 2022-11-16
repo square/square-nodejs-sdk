@@ -1,4 +1,12 @@
-import { boolean, lazy, object, optional, Schema, string } from '../schema';
+import {
+  boolean,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   LoyaltyEventAdjustPoints,
   loyaltyEventAdjustPointsSchema,
@@ -18,13 +26,16 @@ export interface AdjustLoyaltyPointsRequest {
    * balance is allowed when subtracting points. If `false`, Square returns a `BAD_REQUEST` error when subtracting
    * the specified number of points would result in a negative balance. The default value is `false`.
    */
-  allowNegativeBalance?: boolean;
+  allowNegativeBalance?: boolean | null;
 }
 
 export const adjustLoyaltyPointsRequestSchema: Schema<AdjustLoyaltyPointsRequest> = object(
   {
     idempotencyKey: ['idempotency_key', string()],
     adjustPoints: ['adjust_points', lazy(() => loyaltyEventAdjustPointsSchema)],
-    allowNegativeBalance: ['allow_negative_balance', optional(boolean())],
+    allowNegativeBalance: [
+      'allow_negative_balance',
+      optional(nullable(boolean())),
+    ],
   }
 );

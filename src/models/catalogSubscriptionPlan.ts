@@ -1,4 +1,12 @@
-import { array, lazy, object, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   SubscriptionPhase,
   subscriptionPhaseSchema,
@@ -11,13 +19,19 @@ import {
 export interface CatalogSubscriptionPlan {
   /** The name of the plan. */
   name: string;
-  /** A list of SubscriptionPhase containing the [SubscriptionPhase]($m/SubscriptionPhase) for this plan. */
-  phases: SubscriptionPhase[];
+  /**
+   * A list of SubscriptionPhase containing the [SubscriptionPhase]($m/SubscriptionPhase) for this plan.
+   * This field it required. Not including this field will throw a REQUIRED_FIELD_MISSING error
+   */
+  phases?: SubscriptionPhase[] | null;
 }
 
 export const catalogSubscriptionPlanSchema: Schema<CatalogSubscriptionPlan> = object(
   {
     name: ['name', string()],
-    phases: ['phases', array(lazy(() => subscriptionPhaseSchema))],
+    phases: [
+      'phases',
+      optional(nullable(array(lazy(() => subscriptionPhaseSchema)))),
+    ],
   }
 );

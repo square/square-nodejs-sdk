@@ -1,4 +1,4 @@
-import { array, lazy, object, optional, Schema } from '../schema';
+import { array, lazy, nullable, object, optional, Schema } from '../schema';
 import {
   OrderLineItemPricingBlocklistsBlockedDiscount,
   orderLineItemPricingBlocklistsBlockedDiscountSchema,
@@ -19,13 +19,13 @@ export interface OrderLineItemPricingBlocklists {
    * Discounts can be blocked by the `discount_uid` (for ad hoc discounts) or
    * the `discount_catalog_object_id` (for catalog discounts).
    */
-  blockedDiscounts?: OrderLineItemPricingBlocklistsBlockedDiscount[];
+  blockedDiscounts?: OrderLineItemPricingBlocklistsBlockedDiscount[] | null;
   /**
    * A list of taxes blocked from applying to the line item.
    * Taxes can be blocked by the `tax_uid` (for ad hoc taxes) or
    * the `tax_catalog_object_id` (for catalog taxes).
    */
-  blockedTaxes?: OrderLineItemPricingBlocklistsBlockedTax[];
+  blockedTaxes?: OrderLineItemPricingBlocklistsBlockedTax[] | null;
 }
 
 export const orderLineItemPricingBlocklistsSchema: Schema<OrderLineItemPricingBlocklists> = object(
@@ -33,13 +33,17 @@ export const orderLineItemPricingBlocklistsSchema: Schema<OrderLineItemPricingBl
     blockedDiscounts: [
       'blocked_discounts',
       optional(
-        array(lazy(() => orderLineItemPricingBlocklistsBlockedDiscountSchema))
+        nullable(
+          array(lazy(() => orderLineItemPricingBlocklistsBlockedDiscountSchema))
+        )
       ),
     ],
     blockedTaxes: [
       'blocked_taxes',
       optional(
-        array(lazy(() => orderLineItemPricingBlocklistsBlockedTaxSchema))
+        nullable(
+          array(lazy(() => orderLineItemPricingBlocklistsBlockedTaxSchema))
+        )
       ),
     ],
   }

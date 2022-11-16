@@ -21,24 +21,9 @@ results are available, the `cursor` field is also present along with `custom_att
 
 ```json
 {
-  "custom_attributes": [
-    {
-      "created_at": "2022-04-26T15:50:27Z",
-      "key": "favoritemovie",
-      "updated_at": "2022-04-26T15:50:27Z",
-      "value": "Dune",
-      "version": 1,
-      "visibility": "VISIBILITY_READ_ONLY"
-    },
-    {
-      "created_at": "2022-04-26T15:51:53Z",
-      "key": "ownsmovie",
-      "updated_at": "2022-04-26T15:51:53Z",
-      "value": false,
-      "version": 1,
-      "visibility": "VISIBILITY_HIDDEN"
-    }
-  ]
+  "custom_attributes": null,
+  "cursor": null,
+  "errors": null
 }
 ```
 

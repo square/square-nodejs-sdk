@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   StandardUnitDescription,
   standardUnitDescriptionSchema,
@@ -7,17 +15,17 @@ import {
 /** Group of standard measurement units. */
 export interface StandardUnitDescriptionGroup {
   /** List of standard (non-custom) measurement units in this description group. */
-  standardUnitDescriptions?: StandardUnitDescription[];
+  standardUnitDescriptions?: StandardUnitDescription[] | null;
   /** IETF language tag. */
-  languageCode?: string;
+  languageCode?: string | null;
 }
 
 export const standardUnitDescriptionGroupSchema: Schema<StandardUnitDescriptionGroup> = object(
   {
     standardUnitDescriptions: [
       'standard_unit_descriptions',
-      optional(array(lazy(() => standardUnitDescriptionSchema))),
+      optional(nullable(array(lazy(() => standardUnitDescriptionSchema)))),
     ],
-    languageCode: ['language_code', optional(string())],
+    languageCode: ['language_code', optional(nullable(string()))],
   }
 );

@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { TimeRange, timeRangeSchema } from './timeRange';
 
 export interface TerminalActionQueryFilter {
@@ -6,7 +6,7 @@ export interface TerminalActionQueryFilter {
    * `TerminalAction`s associated with a specific device. If no device is specified then all
    * `TerminalAction`s for the merchant will be displayed.
    */
-  deviceId?: string;
+  deviceId?: string | null;
   /**
    * Represents a generic time range. The start and end values are
    * represented in RFC 3339 format. Time ranges are customized to be
@@ -19,16 +19,16 @@ export interface TerminalActionQueryFilter {
    * Filter results with the desired status of the `TerminalAction`
    * Options: `PENDING`, `IN_PROGRESS`, `CANCEL_REQUESTED`, `CANCELED`, `COMPLETED`
    */
-  status?: string;
+  status?: string | null;
   /** Describes the type of this unit and indicates which field contains the unit information. This is an ‘open’ enum. */
   type?: string;
 }
 
 export const terminalActionQueryFilterSchema: Schema<TerminalActionQueryFilter> = object(
   {
-    deviceId: ['device_id', optional(string())],
+    deviceId: ['device_id', optional(nullable(string()))],
     createdAt: ['created_at', optional(lazy(() => timeRangeSchema))],
-    status: ['status', optional(string())],
+    status: ['status', optional(nullable(string()))],
     type: ['type', optional(string())],
   }
 );

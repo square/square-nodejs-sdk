@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -9,9 +9,9 @@ export interface TeamMemberWage {
   /** The UUID for this object. */
   id?: string;
   /** The `TeamMember` that this wage is assigned to. */
-  teamMemberId?: string;
+  teamMemberId?: string | null;
   /** The job title that this wage relates to. */
-  title?: string;
+  title?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -25,7 +25,7 @@ export interface TeamMemberWage {
 
 export const teamMemberWageSchema: Schema<TeamMemberWage> = object({
   id: ['id', optional(string())],
-  teamMemberId: ['team_member_id', optional(string())],
-  title: ['title', optional(string())],
+  teamMemberId: ['team_member_id', optional(nullable(string()))],
+  title: ['title', optional(nullable(string()))],
   hourlyRate: ['hourly_rate', optional(lazy(() => moneySchema))],
 });

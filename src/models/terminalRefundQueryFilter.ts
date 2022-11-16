@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { TimeRange, timeRangeSchema } from './timeRange';
 
 export interface TerminalRefundQueryFilter {
@@ -6,7 +6,7 @@ export interface TerminalRefundQueryFilter {
    * `TerminalRefund` objects associated with a specific device. If no device is specified, then all
    * `TerminalRefund` objects for the signed-in account are displayed.
    */
-  deviceId?: string;
+  deviceId?: string | null;
   /**
    * Represents a generic time range. The start and end values are
    * represented in RFC 3339 format. Time ranges are customized to be
@@ -19,13 +19,13 @@ export interface TerminalRefundQueryFilter {
    * Filtered results with the desired status of the `TerminalRefund`.
    * Options: `PENDING`, `IN_PROGRESS`, `CANCEL_REQUESTED`, `CANCELED`, or `COMPLETED`.
    */
-  status?: string;
+  status?: string | null;
 }
 
 export const terminalRefundQueryFilterSchema: Schema<TerminalRefundQueryFilter> = object(
   {
-    deviceId: ['device_id', optional(string())],
+    deviceId: ['device_id', optional(nullable(string()))],
     createdAt: ['created_at', optional(lazy(() => timeRangeSchema))],
-    status: ['status', optional(string())],
+    status: ['status', optional(nullable(string()))],
   }
 );

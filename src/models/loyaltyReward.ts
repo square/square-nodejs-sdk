@@ -1,4 +1,4 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { nullable, number, object, optional, Schema, string } from '../schema';
 
 /**
  * Represents a contract to redeem loyalty points for a [reward tier]($m/LoyaltyProgramRewardTier) discount. Loyalty rewards can be in an ISSUED, REDEEMED, or DELETED state.
@@ -16,7 +16,7 @@ export interface LoyaltyReward {
   /** The number of loyalty points used for the reward. */
   points?: number;
   /** The Square-assigned ID of the [order]($m/Order) to which the reward is attached. */
-  orderId?: string;
+  orderId?: string | null;
   /** The timestamp when the reward was created, in RFC 3339 format. */
   createdAt?: string;
   /** The timestamp when the reward was last updated, in RFC 3339 format. */
@@ -31,7 +31,7 @@ export const loyaltyRewardSchema: Schema<LoyaltyReward> = object({
   loyaltyAccountId: ['loyalty_account_id', string()],
   rewardTierId: ['reward_tier_id', string()],
   points: ['points', optional(number())],
-  orderId: ['order_id', optional(string())],
+  orderId: ['order_id', optional(nullable(string()))],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
   redeemedAt: ['redeemed_at', optional(string())],

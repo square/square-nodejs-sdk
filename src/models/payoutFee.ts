@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Represents a payout fee that can incur as part of a payout. */
@@ -13,13 +13,13 @@ export interface PayoutFee {
    */
   amountMoney?: Money;
   /** The timestamp of when the fee takes effect, in RFC 3339 format. */
-  effectiveAt?: string;
+  effectiveAt?: string | null;
   /** Represents the type of payout fee that can incur as part of a payout. */
   type?: string;
 }
 
 export const payoutFeeSchema: Schema<PayoutFee> = object({
   amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
-  effectiveAt: ['effective_at', optional(string())],
+  effectiveAt: ['effective_at', optional(nullable(string()))],
   type: ['type', optional(string())],
 });

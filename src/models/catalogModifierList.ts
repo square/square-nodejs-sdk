@@ -1,6 +1,7 @@
 import {
   array,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -18,9 +19,9 @@ import { CatalogObject, catalogObjectSchema } from './catalogObject';
  */
 export interface CatalogModifierList {
   /** The name for the `CatalogModifierList` instance. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points. */
-  name?: string;
+  name?: string | null;
   /** Determines where this modifier list appears in a list of `CatalogModifierList` values. */
-  ordinal?: number;
+  ordinal?: number | null;
   /** Indicates whether a CatalogModifierList supports multiple selections. */
   selectionType?: string;
   /**
@@ -29,18 +30,21 @@ export interface CatalogModifierList {
    * Each CatalogObject must have type `MODIFIER` and contain
    * `CatalogModifier` data.
    */
-  modifiers?: CatalogObject[];
+  modifiers?: CatalogObject[] | null;
   /**
    * The IDs of images associated with this `CatalogModifierList` instance.
    * Currently these images are not displayed by Square, but are free to be displayed in 3rd party applications.
    */
-  imageIds?: string[];
+  imageIds?: string[] | null;
 }
 
 export const catalogModifierListSchema: Schema<CatalogModifierList> = object({
-  name: ['name', optional(string())],
-  ordinal: ['ordinal', optional(number())],
+  name: ['name', optional(nullable(string()))],
+  ordinal: ['ordinal', optional(nullable(number()))],
   selectionType: ['selection_type', optional(string())],
-  modifiers: ['modifiers', optional(array(lazy(() => catalogObjectSchema)))],
-  imageIds: ['image_ids', optional(array(string()))],
+  modifiers: [
+    'modifiers',
+    optional(nullable(array(lazy(() => catalogObjectSchema)))),
+  ],
+  imageIds: ['image_ids', optional(nullable(array(string())))],
 });

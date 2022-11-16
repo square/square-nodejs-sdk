@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -13,15 +14,15 @@ import { JobAssignment, jobAssignmentSchema } from './jobAssignment';
 /** An object representing a team member's wage information. */
 export interface WageSetting {
   /** The unique ID of the `TeamMember` whom this wage setting describes. */
-  teamMemberId?: string;
+  teamMemberId?: string | null;
   /**
    * Required. The ordered list of jobs that the team member is assigned to.
    * The first job assignment is considered the team member's primary job.
    * The minimum length is 1 and the maximum length is 12.
    */
-  jobAssignments?: JobAssignment[];
+  jobAssignments?: JobAssignment[] | null;
   /** Whether the team member is exempt from the overtime rules of the seller's country. */
-  isOvertimeExempt?: boolean;
+  isOvertimeExempt?: boolean | null;
   /**
    * Used for resolving concurrency issues. The request fails if the version
    * provided does not match the server version at the time of the request. If not provided,
@@ -42,12 +43,12 @@ export interface WageSetting {
 }
 
 export const wageSettingSchema: Schema<WageSetting> = object({
-  teamMemberId: ['team_member_id', optional(string())],
+  teamMemberId: ['team_member_id', optional(nullable(string()))],
   jobAssignments: [
     'job_assignments',
-    optional(array(lazy(() => jobAssignmentSchema))),
+    optional(nullable(array(lazy(() => jobAssignmentSchema)))),
   ],
-  isOvertimeExempt: ['is_overtime_exempt', optional(boolean())],
+  isOvertimeExempt: ['is_overtime_exempt', optional(nullable(boolean()))],
   version: ['version', optional(number())],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],

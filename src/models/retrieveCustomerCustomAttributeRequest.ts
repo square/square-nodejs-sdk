@@ -1,4 +1,4 @@
-import { boolean, number, object, optional, Schema } from '../schema';
+import { boolean, nullable, number, object, optional, Schema } from '../schema';
 
 /** Represents a [RetrieveCustomerCustomAttribute]($e/CustomerCustomAttributes/RetrieveCustomerCustomAttribute) request. */
 export interface RetrieveCustomerCustomAttributeRequest {
@@ -7,7 +7,7 @@ export interface RetrieveCustomerCustomAttributeRequest {
    * the custom attribute. Set this parameter to `true` to get the name and description of the custom
    * attribute, information about the data type, or other definition details. The default value is `false`.
    */
-  withDefinition?: boolean;
+  withDefinition?: boolean | null;
   /**
    * The current version of the custom attribute, which is used for strongly consistent reads to
    * guarantee that you receive the most up-to-date data. When included in the request, Square
@@ -19,7 +19,7 @@ export interface RetrieveCustomerCustomAttributeRequest {
 
 export const retrieveCustomerCustomAttributeRequestSchema: Schema<RetrieveCustomerCustomAttributeRequest> = object(
   {
-    withDefinition: ['with_definition', optional(boolean())],
+    withDefinition: ['with_definition', optional(nullable(boolean()))],
     version: ['version', optional(number())],
   }
 );

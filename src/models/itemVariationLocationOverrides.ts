@@ -2,6 +2,7 @@ import {
   bigint,
   boolean,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -12,7 +13,7 @@ import { Money, moneySchema } from './money';
 /** Price and inventory alerting overrides for a `CatalogItemVariation` at a specific `Location`. */
 export interface ItemVariationLocationOverrides {
   /** The ID of the `Location`. This can include locations that are deactivated. */
-  locationId?: string;
+  locationId?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -25,7 +26,7 @@ export interface ItemVariationLocationOverrides {
   /** Indicates whether the price of a CatalogItemVariation should be entered manually at the time of sale. */
   pricingType?: string;
   /** If `true`, inventory tracking is active for the `CatalogItemVariation` at this `Location`. */
-  trackInventory?: boolean;
+  trackInventory?: boolean | null;
   /** Indicates whether Square should alert the merchant when the inventory quantity of a CatalogItemVariation is low. */
   inventoryAlertType?: string;
   /**
@@ -33,7 +34,7 @@ export interface ItemVariationLocationOverrides {
    * is `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.
    * This value is always an integer.
    */
-  inventoryAlertThreshold?: bigint;
+  inventoryAlertThreshold?: bigint | null;
   /**
    * Indicates whether the overridden item variation is sold out at the specified location.
    * When inventory tracking is enabled on the item variation either globally or at the specified location,
@@ -53,12 +54,15 @@ export interface ItemVariationLocationOverrides {
 
 export const itemVariationLocationOverridesSchema: Schema<ItemVariationLocationOverrides> = object(
   {
-    locationId: ['location_id', optional(string())],
+    locationId: ['location_id', optional(nullable(string()))],
     priceMoney: ['price_money', optional(lazy(() => moneySchema))],
     pricingType: ['pricing_type', optional(string())],
-    trackInventory: ['track_inventory', optional(boolean())],
+    trackInventory: ['track_inventory', optional(nullable(boolean()))],
     inventoryAlertType: ['inventory_alert_type', optional(string())],
-    inventoryAlertThreshold: ['inventory_alert_threshold', optional(bigint())],
+    inventoryAlertThreshold: [
+      'inventory_alert_threshold',
+      optional(nullable(bigint())),
+    ],
     soldOut: ['sold_out', optional(boolean())],
     soldOutValidUntil: ['sold_out_valid_until', optional(string())],
   }

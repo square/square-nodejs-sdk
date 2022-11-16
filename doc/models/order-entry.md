@@ -13,7 +13,7 @@ A lightweight description of an [order](../../doc/models/order.md) that is retur
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `orderId` | `string \| undefined` | Optional | The ID of the order. |
-| `version` | `number \| undefined` | Optional | The version number, which is incremented each time an update is committed to the order.<br>Orders that were not created through the API do not include a version number and<br>therefore cannot be updated.<br><br>[Read more about working with versions.](https://developer.squareup.com/docs/orders-api/manage-orders#update-orders) |
+| `version` | `number \| undefined` | Optional | The version number, which is incremented each time an update is committed to the order.<br>Orders that were not created through the API do not include a version number and<br>therefore cannot be updated.<br><br>[Read more about working with versions.](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders) |
 | `locationId` | `string \| undefined` | Optional | The location ID the order belongs to. |
 
 ## Example (as JSON)

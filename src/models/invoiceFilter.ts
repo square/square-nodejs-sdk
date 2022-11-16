@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, nullable, object, optional, Schema, string } from '../schema';
 
 /** Describes query filters to apply. */
 export interface InvoiceFilter {
@@ -12,10 +12,10 @@ export interface InvoiceFilter {
    * Specifying a customer is optional. In the current implementation,
    * a maximum of one customer can be specified.
    */
-  customerIds?: string[];
+  customerIds?: string[] | null;
 }
 
 export const invoiceFilterSchema: Schema<InvoiceFilter> = object({
   locationIds: ['location_ids', array(string())],
-  customerIds: ['customer_ids', optional(array(string()))],
+  customerIds: ['customer_ids', optional(nullable(array(string())))],
 });

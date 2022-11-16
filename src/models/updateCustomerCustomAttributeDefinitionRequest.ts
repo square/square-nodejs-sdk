@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import {
   CustomAttributeDefinition,
   customAttributeDefinitionSchema,
@@ -15,7 +15,7 @@ export interface UpdateCustomerCustomAttributeDefinitionRequest {
    * A unique identifier for this request, used to ensure idempotency. For more information,
    * see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
    */
-  idempotencyKey?: string;
+  idempotencyKey?: string | null;
 }
 
 export const updateCustomerCustomAttributeDefinitionRequestSchema: Schema<UpdateCustomerCustomAttributeDefinitionRequest> = object(
@@ -24,6 +24,6 @@ export const updateCustomerCustomAttributeDefinitionRequestSchema: Schema<Update
       'custom_attribute_definition',
       lazy(() => customAttributeDefinitionSchema),
     ],
-    idempotencyKey: ['idempotency_key', optional(string())],
+    idempotencyKey: ['idempotency_key', optional(nullable(string()))],
   }
 );

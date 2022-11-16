@@ -1,9 +1,9 @@
-import { boolean, object, optional, Schema, string } from '../schema';
+import { boolean, nullable, object, optional, Schema, string } from '../schema';
 
 /** A tax applicable to an item. */
 export interface CatalogTax {
   /** The tax's name. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points. */
-  name?: string;
+  name?: string | null;
   /** When to calculate the taxes due on a cart. */
   calculationPhase?: string;
   /** Whether to the tax amount should be additional to or included in the CatalogItem price. */
@@ -12,21 +12,24 @@ export interface CatalogTax {
    * The percentage of the tax in decimal form, using a `'.'` as the decimal separator and without a `'%'` sign.
    * A value of `7.5` corresponds to 7.5%. For a location-specific tax rate, contact the tax authority of the location or a tax consultant.
    */
-  percentage?: string;
+  percentage?: string | null;
   /**
    * If `true`, the fee applies to custom amounts entered into the Square Point of Sale
    * app that are not associated with a particular `CatalogItem`.
    */
-  appliesToCustomAmounts?: boolean;
+  appliesToCustomAmounts?: boolean | null;
   /** A Boolean flag to indicate whether the tax is displayed as enabled (`true`) in the Square Point of Sale app or not (`false`). */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 
 export const catalogTaxSchema: Schema<CatalogTax> = object({
-  name: ['name', optional(string())],
+  name: ['name', optional(nullable(string()))],
   calculationPhase: ['calculation_phase', optional(string())],
   inclusionType: ['inclusion_type', optional(string())],
-  percentage: ['percentage', optional(string())],
-  appliesToCustomAmounts: ['applies_to_custom_amounts', optional(boolean())],
-  enabled: ['enabled', optional(boolean())],
+  percentage: ['percentage', optional(nullable(string()))],
+  appliesToCustomAmounts: [
+    'applies_to_custom_amounts',
+    optional(nullable(boolean())),
+  ],
+  enabled: ['enabled', optional(nullable(boolean()))],
 });

@@ -1,4 +1,4 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { nullable, number, object, optional, Schema, string } from '../schema';
 
 /**
  * Defines the fields that are included in requests to the
@@ -21,11 +21,11 @@ export interface CloneOrderRequest {
    * The originally cloned order is returned.
    * For more information, see [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency).
    */
-  idempotencyKey?: string;
+  idempotencyKey?: string | null;
 }
 
 export const cloneOrderRequestSchema: Schema<CloneOrderRequest> = object({
   orderId: ['order_id', string()],
   version: ['version', optional(number())],
-  idempotencyKey: ['idempotency_key', optional(string())],
+  idempotencyKey: ['idempotency_key', optional(nullable(string()))],
 });

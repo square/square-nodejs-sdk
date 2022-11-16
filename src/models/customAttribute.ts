@@ -1,5 +1,6 @@
 import {
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -29,14 +30,14 @@ export interface CustomAttribute {
    * The value for a simple key can contain up to 60 alphanumeric characters, periods (.),
    * underscores (_), and hyphens (-).
    */
-  key?: string;
+  key?: string | null;
   /**
    * The value assigned to the custom attribute. It is validated against the custom
    * attribute definition's schema on write operations. For more information about custom
    * attribute values,
    * see [Custom Attributes Overview](https://developer.squareup.com/docs/devtools/customattributes/overview).
    */
-  value?: unknown;
+  value?: unknown | null;
   /**
    * Read only. The current version of the custom attribute. This field is incremented when the custom attribute is changed.
    * When updating an existing custom attribute value, you can provide this field
@@ -68,8 +69,8 @@ export interface CustomAttribute {
 }
 
 export const customAttributeSchema: Schema<CustomAttribute> = object({
-  key: ['key', optional(string())],
-  value: ['value', optional(unknown())],
+  key: ['key', optional(nullable(string()))],
+  value: ['value', optional(nullable(unknown()))],
   version: ['version', optional(number())],
   visibility: ['visibility', optional(string())],
   definition: [

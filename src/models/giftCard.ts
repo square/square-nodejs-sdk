@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Represents a Square gift card. */
@@ -27,7 +35,7 @@ export interface GiftCard {
    * The gift card account number (GAN). Buyers can use the GAN to make purchases or check
    * the gift card balance.
    */
-  gan?: string;
+  gan?: string | null;
   /**
    * The timestamp when the gift card was created, in RFC 3339 format.
    * In the case of a digital gift card, it is the time when you create a card
@@ -46,7 +54,7 @@ export const giftCardSchema: Schema<GiftCard> = object({
   ganSource: ['gan_source', optional(string())],
   state: ['state', optional(string())],
   balanceMoney: ['balance_money', optional(lazy(() => moneySchema))],
-  gan: ['gan', optional(string())],
+  gan: ['gan', optional(nullable(string()))],
   createdAt: ['created_at', optional(string())],
   customerIds: ['customer_ids', optional(array(string()))],
 });

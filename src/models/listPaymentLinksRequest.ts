@@ -1,4 +1,4 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { nullable, number, object, optional, Schema, string } from '../schema';
 
 export interface ListPaymentLinksRequest {
   /**
@@ -7,19 +7,19 @@ export interface ListPaymentLinksRequest {
    * If a cursor is not provided, the endpoint returns the first page of the results.
    * For more  information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
    */
-  cursor?: string;
+  cursor?: string | null;
   /**
    * A limit on the number of results to return per page. The limit is advisory and
    * the implementation might return more or less results. If the supplied limit is negative, zero, or
    * greater than the maximum limit of 1000, it is ignored.
    * Default value: `100`
    */
-  limit?: number;
+  limit?: number | null;
 }
 
 export const listPaymentLinksRequestSchema: Schema<ListPaymentLinksRequest> = object(
   {
-    cursor: ['cursor', optional(string())],
-    limit: ['limit', optional(number())],
+    cursor: ['cursor', optional(nullable(string()))],
+    limit: ['limit', optional(nullable(number()))],
   }
 );

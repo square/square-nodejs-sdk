@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Address, addressSchema } from './address';
 import { BusinessHours, businessHoursSchema } from './businessHours';
 import { Coordinates, coordinatesSchema } from './coordinates';
@@ -13,7 +21,7 @@ export interface Location {
    * This information appears in the Seller Dashboard as the nickname.
    * A location name must be unique within a seller account.
    */
-  name?: string;
+  name?: string | null;
   /**
    * Represents a postal address in a country.
    * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
@@ -23,7 +31,7 @@ export interface Location {
    * The [IANA time zone](https://www.iana.org/time-zones) identifier for
    * the time zone of the location. For example, `America/Los_Angeles`.
    */
-  timezone?: string;
+  timezone?: string | null;
   /**
    * The Square features that are enabled for the location.
    * See [LocationCapability]($m/LocationCapability) for possible values.
@@ -49,32 +57,32 @@ export interface Location {
    * [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A).
    * For more information, see [Language Preferences](https://developer.squareup.com/docs/build-basics/general-considerations/language-preferences).
    */
-  languageCode?: string;
+  languageCode?: string | null;
   /**
    * Indicates the associated currency for an amount of money. Values correspond
    * to [ISO 4217](https://wikipedia.org/wiki/ISO_4217).
    */
   currency?: string;
   /** The phone number of the location. For example, `+1 855-700-6000`. */
-  phoneNumber?: string;
+  phoneNumber?: string | null;
   /** The name of the location's overall business. This name is present on receipts and other customer-facing branding. */
-  businessName?: string;
+  businessName?: string | null;
   /** A location's type. */
   type?: string;
   /** The website URL of the location.  For example, `https://squareup.com`. */
-  websiteUrl?: string;
+  websiteUrl?: string | null;
   /** The hours of operation for a location. */
   businessHours?: BusinessHours;
   /** The email address of the location. This can be unique to the location and is not always the email address for the business owner or administrator. */
-  businessEmail?: string;
+  businessEmail?: string | null;
   /** The description of the location. For example, `Main Street location`. */
-  description?: string;
+  description?: string | null;
   /** The Twitter username of the location without the '@' symbol. For example, `Square`. */
-  twitterUsername?: string;
+  twitterUsername?: string | null;
   /** The Instagram username of the location without the '@' symbol. For example, `square`. */
-  instagramUsername?: string;
+  instagramUsername?: string | null;
   /** The Facebook profile URL of the location. The URL should begin with 'facebook.com/'. For example, `https://www.facebook.com/square`. */
-  facebookUrl?: string;
+  facebookUrl?: string | null;
   /** Latitude and longitude coordinates. */
   coordinates?: Coordinates;
   /**
@@ -90,7 +98,7 @@ export interface Location {
    * The [merchant category code (MCC)](https://developer.squareup.com/docs/locations-api#initialize-a-merchant-category-code) of the location as standardized by ISO 18245.
    * For example, `5045`, for a location that sells computer goods and software.
    */
-  mcc?: string;
+  mcc?: string | null;
   /**
    * The URL of a full-format logo image for the location. When configured in the Seller
    * Dashboard (Receipts section), the logo appears on transactions (such as receipts and invoices) that Square generates on behalf of the seller.
@@ -103,30 +111,30 @@ export interface Location {
 
 export const locationSchema: Schema<Location> = object({
   id: ['id', optional(string())],
-  name: ['name', optional(string())],
+  name: ['name', optional(nullable(string()))],
   address: ['address', optional(lazy(() => addressSchema))],
-  timezone: ['timezone', optional(string())],
+  timezone: ['timezone', optional(nullable(string()))],
   capabilities: ['capabilities', optional(array(string()))],
   status: ['status', optional(string())],
   createdAt: ['created_at', optional(string())],
   merchantId: ['merchant_id', optional(string())],
   country: ['country', optional(string())],
-  languageCode: ['language_code', optional(string())],
+  languageCode: ['language_code', optional(nullable(string()))],
   currency: ['currency', optional(string())],
-  phoneNumber: ['phone_number', optional(string())],
-  businessName: ['business_name', optional(string())],
+  phoneNumber: ['phone_number', optional(nullable(string()))],
+  businessName: ['business_name', optional(nullable(string()))],
   type: ['type', optional(string())],
-  websiteUrl: ['website_url', optional(string())],
+  websiteUrl: ['website_url', optional(nullable(string()))],
   businessHours: ['business_hours', optional(lazy(() => businessHoursSchema))],
-  businessEmail: ['business_email', optional(string())],
-  description: ['description', optional(string())],
-  twitterUsername: ['twitter_username', optional(string())],
-  instagramUsername: ['instagram_username', optional(string())],
-  facebookUrl: ['facebook_url', optional(string())],
+  businessEmail: ['business_email', optional(nullable(string()))],
+  description: ['description', optional(nullable(string()))],
+  twitterUsername: ['twitter_username', optional(nullable(string()))],
+  instagramUsername: ['instagram_username', optional(nullable(string()))],
+  facebookUrl: ['facebook_url', optional(nullable(string()))],
   coordinates: ['coordinates', optional(lazy(() => coordinatesSchema))],
   logoUrl: ['logo_url', optional(string())],
   posBackgroundUrl: ['pos_background_url', optional(string())],
-  mcc: ['mcc', optional(string())],
+  mcc: ['mcc', optional(nullable(string()))],
   fullFormatLogoUrl: ['full_format_logo_url', optional(string())],
   taxIds: ['tax_ids', optional(lazy(() => taxIdsSchema))],
 });

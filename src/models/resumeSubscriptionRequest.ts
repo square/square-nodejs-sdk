@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * Defines input parameters in a request to the
@@ -6,14 +6,17 @@ import { object, optional, Schema, string } from '../schema';
  */
 export interface ResumeSubscriptionRequest {
   /** The `YYYY-MM-DD`-formatted date when the subscription reactivated. */
-  resumeEffectiveDate?: string;
+  resumeEffectiveDate?: string | null;
   /** Supported timings when a pending change, as an action, takes place to a subscription. */
   resumeChangeTiming?: string;
 }
 
 export const resumeSubscriptionRequestSchema: Schema<ResumeSubscriptionRequest> = object(
   {
-    resumeEffectiveDate: ['resume_effective_date', optional(string())],
+    resumeEffectiveDate: [
+      'resume_effective_date',
+      optional(nullable(string())),
+    ],
     resumeChangeTiming: ['resume_change_timing', optional(string())],
   }
 );

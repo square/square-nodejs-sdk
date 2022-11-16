@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Represents a [CalculateLoyaltyPoints]($e/Loyalty/CalculateLoyaltyPoints) request. */
@@ -8,7 +8,7 @@ export interface CalculateLoyaltyPointsRequest {
    * Specify this field if your application uses the Orders API to process orders.
    * Otherwise, specify the `transaction_amount_money`.
    */
-  orderId?: string;
+  orderId?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -27,16 +27,16 @@ export interface CalculateLoyaltyPointsRequest {
    * If not specified, the `promotion_points` field shows the number of points the purchase qualifies
    * for regardless of the trigger limit.
    */
-  loyaltyAccountId?: string;
+  loyaltyAccountId?: string | null;
 }
 
 export const calculateLoyaltyPointsRequestSchema: Schema<CalculateLoyaltyPointsRequest> = object(
   {
-    orderId: ['order_id', optional(string())],
+    orderId: ['order_id', optional(nullable(string()))],
     transactionAmountMoney: [
       'transaction_amount_money',
       optional(lazy(() => moneySchema)),
     ],
-    loyaltyAccountId: ['loyalty_account_id', optional(string())],
+    loyaltyAccountId: ['loyalty_account_id', optional(nullable(string()))],
   }
 );

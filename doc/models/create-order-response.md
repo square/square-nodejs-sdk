@@ -111,6 +111,10 @@ Either `errors` or `order` is present in a given response, but never both.
           "amount": 1648,
           "currency": "USD"
         },
+        "total_service_charge_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
         "total_tax_money": {
           "amount": 136,
           "currency": "USD"
@@ -190,6 +194,10 @@ Either `errors` or `order` is present in a given response, but never both.
         },
         "total_money": {
           "amount": 4528,
+          "currency": "USD"
+        },
+        "total_service_charge_money": {
+          "amount": 0,
           "currency": "USD"
         },
         "total_tax_money": {

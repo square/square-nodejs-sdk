@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * Describes a request to complete (capture) a payment using
@@ -12,9 +12,9 @@ export interface CompletePaymentRequest {
    * version that the caller expects. If the server has a different version of the Payment,
    * the update fails and a response with a VERSION_MISMATCH error is returned.
    */
-  versionToken?: string;
+  versionToken?: string | null;
 }
 
 export const completePaymentRequestSchema: Schema<CompletePaymentRequest> = object(
-  { versionToken: ['version_token', optional(string())] }
+  { versionToken: ['version_token', optional(nullable(string()))] }
 );

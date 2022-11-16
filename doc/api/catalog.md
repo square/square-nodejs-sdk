@@ -39,6 +39,10 @@ children.
 IDs can be deleted. The response will only include IDs that were
 actually deleted.
 
+To ensure consistency, only one delete request is processed at a time per seller account.  
+While one (batch or non-batch) delete request is being processed, other (batched and non-batched)
+delete requests are rejected with the `429` error code.
+
 ```ts
 async batchDeleteCatalogObjects(
   body: BatchDeleteCatalogObjectsRequest,
@@ -139,6 +143,10 @@ request may still succeed. Each batch may contain up to 1,000 objects, and
 batches will be processed in order as long as the total object count for the
 request (items, variations, modifier lists, discounts, and taxes) is no more
 than 10,000.
+
+To ensure consistency, only one update request is processed at a time per seller account.  
+While one (batch or non-batch) update request is being processed, other (batched and non-batched)
+update requests are rejected with the `429` error code.
 
 ```ts
 async batchUpsertCatalogObjects(
@@ -472,7 +480,7 @@ async listCatalog(
 |  --- | --- | --- | --- |
 | `cursor` | `string \| undefined` | Query, Optional | The pagination cursor returned in the previous response. Leave unset for an initial request.<br>The page size is currently set to be 100.<br>See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. |
 | `types` | `string \| undefined` | Query, Optional | An optional case-insensitive, comma-separated list of object types to retrieve.<br><br>The valid values are defined in the [CatalogObjectType](../../doc/models/catalog-object-type.md) enum, for example,<br>`ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,<br>`MODIFIER`, `MODIFIER_LIST`, `IMAGE`, etc.<br><br>If this is unspecified, the operation returns objects of all the top level types at the version<br>of the Square API used to make the request. Object types that are nested onto other object types<br>are not included in the defaults.<br><br>At the current API version the default object types are:<br>ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST,<br>PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,<br>SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION, QUICK_AMOUNT_SETTINGS. |
-| `catalogVersion` | `bigint \| undefined` | Query, Optional | The specific version of the catalog objects to be included in the response.<br>This allows you to retrieve historical<br>versions of objects. The specified version value is matched against<br>the [CatalogObject](../../doc/models/catalog-object.md)s' `version` attribute.  If not included, results will<br>be from the current version of the catalog. |
+| `catalogVersion` | `bigint \| undefined` | Query, Optional | The specific version of the catalog objects to be included in the response.<br>This allows you to retrieve historical versions of objects. The specified version value is matched against<br>the [CatalogObject](../../doc/models/catalog-object.md)s' `version` attribute.  If not included, results will be from the<br>current version of the catalog. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -497,7 +505,11 @@ try {
 
 # Upsert Catalog Object
 
-Creates or updates the target [CatalogObject](../../doc/models/catalog-object.md).
+Creates a new or updates the specified [CatalogObject](../../doc/models/catalog-object.md).
+
+To ensure consistency, only one update request is processed at a time per seller account.  
+While one (batch or non-batch) update request is being processed, other (batched and non-batched)
+update requests are rejected with the `429` error code.
 
 ```ts
 async upsertCatalogObject(
@@ -592,6 +604,10 @@ Deletion is a cascading event such that all children of the targeted object
 are also deleted. For example, deleting a [CatalogItem](../../doc/models/catalog-item.md)
 will also delete all of its
 [CatalogItemVariation](../../doc/models/catalog-item-variation.md) children.
+
+To ensure consistency, only one delete request is processed at a time per seller account.  
+While one (batch or non-batch) delete request is being processed, other (batched and non-batched)
+delete requests are rejected with the `429` error code.
 
 ```ts
 async deleteCatalogObject(

@@ -1,4 +1,12 @@
-import { lazy, number, object, optional, Schema, string } from '../schema';
+import {
+  lazy,
+  nullable,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   LoyaltyProgramAccrualRuleCategoryData,
   loyaltyProgramAccrualRuleCategoryDataSchema,
@@ -24,7 +32,7 @@ export interface LoyaltyProgramAccrualRule {
    * The number of points that
    * buyers earn based on the `accrual_type`.
    */
-  points?: number;
+  points?: number | null;
   /** Represents additional data for rules with the `VISIT` accrual type. */
   visitData?: LoyaltyProgramAccrualRuleVisitData;
   /** Represents additional data for rules with the `SPEND` accrual type. */
@@ -38,7 +46,7 @@ export interface LoyaltyProgramAccrualRule {
 export const loyaltyProgramAccrualRuleSchema: Schema<LoyaltyProgramAccrualRule> = object(
   {
     accrualType: ['accrual_type', string()],
-    points: ['points', optional(number())],
+    points: ['points', optional(nullable(number()))],
     visitData: [
       'visit_data',
       optional(lazy(() => loyaltyProgramAccrualRuleVisitDataSchema)),

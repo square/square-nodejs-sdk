@@ -23,6 +23,7 @@ Represents an accrual rule, which defines how buyers can earn points from the ba
 ```json
 {
   "accrual_type": "ITEM_VARIATION",
+  "points": null,
   "visit_data": null,
   "spend_data": null,
   "item_variation_data": null,

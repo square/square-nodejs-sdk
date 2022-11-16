@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /** The hourly wage rate used to compensate an employee for this shift. */
@@ -7,7 +7,7 @@ export interface ShiftWage {
    * The name of the job performed during this shift. Square
    * labor-reporting UIs might group shifts together by title.
    */
-  title?: string;
+  title?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -20,6 +20,6 @@ export interface ShiftWage {
 }
 
 export const shiftWageSchema: Schema<ShiftWage> = object({
-  title: ['title', optional(string())],
+  title: ['title', optional(nullable(string()))],
   hourlyRate: ['hourly_rate', optional(lazy(() => moneySchema))],
 });

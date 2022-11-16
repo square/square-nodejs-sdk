@@ -1,17 +1,20 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /** Details about the device that took the payment. */
 export interface DeviceDetails {
   /** The Square-issued ID of the device. */
-  deviceId?: string;
+  deviceId?: string | null;
   /** The Square-issued installation ID for the device. */
-  deviceInstallationId?: string;
+  deviceInstallationId?: string | null;
   /** The name of the device set by the seller. */
-  deviceName?: string;
+  deviceName?: string | null;
 }
 
 export const deviceDetailsSchema: Schema<DeviceDetails> = object({
-  deviceId: ['device_id', optional(string())],
-  deviceInstallationId: ['device_installation_id', optional(string())],
-  deviceName: ['device_name', optional(string())],
+  deviceId: ['device_id', optional(nullable(string()))],
+  deviceInstallationId: [
+    'device_installation_id',
+    optional(nullable(string())),
+  ],
+  deviceName: ['device_name', optional(nullable(string()))],
 });

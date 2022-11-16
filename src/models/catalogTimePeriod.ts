@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /** Represents a time period - either a single period or a repeating period. */
 export interface CatalogTimePeriod {
@@ -16,9 +16,9 @@ export interface CatalogTimePeriod {
    * and `END:VEVENT` is not required in the request. The response will always
    * include them.
    */
-  event?: string;
+  event?: string | null;
 }
 
 export const catalogTimePeriodSchema: Schema<CatalogTimePeriod> = object({
-  event: ['event', optional(string())],
+  event: ['event', optional(nullable(string()))],
 });

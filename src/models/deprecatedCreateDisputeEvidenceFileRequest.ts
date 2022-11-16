@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /** Defines the parameters for a `DeprecatedCreateDisputeEvidenceFile` request. */
 export interface DeprecatedCreateDisputeEvidenceFileRequest {
@@ -10,13 +10,13 @@ export interface DeprecatedCreateDisputeEvidenceFileRequest {
    * The MIME type of the uploaded file.
    * The type can be image/heic, image/heif, image/jpeg, application/pdf, image/png, or image/tiff.
    */
-  contentType?: string;
+  contentType?: string | null;
 }
 
 export const deprecatedCreateDisputeEvidenceFileRequestSchema: Schema<DeprecatedCreateDisputeEvidenceFileRequest> = object(
   {
     idempotencyKey: ['idempotency_key', string()],
     evidenceType: ['evidence_type', optional(string())],
-    contentType: ['content_type', optional(string())],
+    contentType: ['content_type', optional(nullable(string()))],
   }
 );

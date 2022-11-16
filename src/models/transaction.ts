@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Address, addressSchema } from './address';
 import { Refund, refundSchema } from './refund';
 import { Tender, tenderSchema } from './tender';
@@ -13,19 +21,19 @@ export interface Transaction {
   /** The transaction's unique ID, issued by Square payments servers. */
   id?: string;
   /** The ID of the transaction's associated location. */
-  locationId?: string;
+  locationId?: string | null;
   /** The timestamp for when the transaction was created, in RFC 3339 format. */
   createdAt?: string;
   /** The tenders used to pay in the transaction. */
-  tenders?: Tender[];
+  tenders?: Tender[] | null;
   /** Refunds that have been applied to any tender in the transaction. */
-  refunds?: Refund[];
+  refunds?: Refund[] | null;
   /**
    * If the transaction was created with the [Charge]($e/Transactions/Charge)
    * endpoint, this value is the same as the value provided for the `reference_id`
    * parameter in the request to that endpoint. Otherwise, it is not set.
    */
-  referenceId?: string;
+  referenceId?: string | null;
   /** Indicates the Square product used to process a transaction. */
   product?: string;
   /**
@@ -38,25 +46,25 @@ export interface Transaction {
    * It is not currently possible with the Connect API to perform a transaction
    * lookup by this value.
    */
-  clientId?: string;
+  clientId?: string | null;
   /**
    * Represents a postal address in a country.
    * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
    */
   shippingAddress?: Address;
   /** The order_id is an identifier for the order associated with this transaction, if any. */
-  orderId?: string;
+  orderId?: string | null;
 }
 
 export const transactionSchema: Schema<Transaction> = object({
   id: ['id', optional(string())],
-  locationId: ['location_id', optional(string())],
+  locationId: ['location_id', optional(nullable(string()))],
   createdAt: ['created_at', optional(string())],
-  tenders: ['tenders', optional(array(lazy(() => tenderSchema)))],
-  refunds: ['refunds', optional(array(lazy(() => refundSchema)))],
-  referenceId: ['reference_id', optional(string())],
+  tenders: ['tenders', optional(nullable(array(lazy(() => tenderSchema))))],
+  refunds: ['refunds', optional(nullable(array(lazy(() => refundSchema))))],
+  referenceId: ['reference_id', optional(nullable(string()))],
   product: ['product', optional(string())],
-  clientId: ['client_id', optional(string())],
+  clientId: ['client_id', optional(nullable(string()))],
   shippingAddress: ['shipping_address', optional(lazy(() => addressSchema))],
-  orderId: ['order_id', optional(string())],
+  orderId: ['order_id', optional(nullable(string()))],
 });

@@ -19,15 +19,9 @@ Represents a response for an individual upsert request in a [BulkUpsertCustomerC
 
 ```json
 {
-  "custom_attribute": {
-    "created_at": "2021-12-08T23:14:47Z",
-    "key": "favoritemovie",
-    "updated_at": "2021-12-09T00:16:23Z",
-    "value": "Dune",
-    "version": 1,
-    "visibility": "VISIBILITY_READ_WRITE_VALUES"
-  },
-  "customer_id": "N3NCVYY3WS27HF0HKANA3R9FP8"
+  "customer_id": null,
+  "custom_attribute": null,
+  "errors": null
 }
 ```
 

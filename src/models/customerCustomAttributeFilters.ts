@@ -1,4 +1,4 @@
-import { array, lazy, object, optional, Schema } from '../schema';
+import { array, lazy, nullable, object, optional, Schema } from '../schema';
 import {
   CustomerCustomAttributeFilter,
   customerCustomAttributeFilterSchema,
@@ -14,14 +14,16 @@ export interface CustomerCustomAttributeFilters {
    * The custom attribute filters. Each filter must specify `key` and include the `filter` field with a type-specific filter,
    * the `updated_at` field, or both. The provided keys must be unique within the list of custom attribute filters.
    */
-  filters?: CustomerCustomAttributeFilter[];
+  filters?: CustomerCustomAttributeFilter[] | null;
 }
 
 export const customerCustomAttributeFiltersSchema: Schema<CustomerCustomAttributeFilters> = object(
   {
     filters: [
       'filters',
-      optional(array(lazy(() => customerCustomAttributeFilterSchema))),
+      optional(
+        nullable(array(lazy(() => customerCustomAttributeFilterSchema)))
+      ),
     ],
   }
 );

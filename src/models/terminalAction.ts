@@ -1,5 +1,6 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { DeviceMetadata, deviceMetadataSchema } from './deviceMetadata';
+import { ReceiptOptions, receiptOptionsSchema } from './receiptOptions';
 import { SaveCardOptions, saveCardOptionsSchema } from './saveCardOptions';
 
 /** Represents an action processed by the Square Terminal. */
@@ -10,7 +11,7 @@ export interface TerminalAction {
    * The unique Id of the device intended for this `TerminalAction`.
    * The Id can be retrieved from /v2/devices api.
    */
-  deviceId?: string;
+  deviceId?: string | null;
   /**
    * The duration as an RFC 3339 duration, after which the action will be automatically canceled.
    * TerminalActions that are `PENDING` will be automatically `CANCELED` and have a cancellation reason
@@ -18,7 +19,7 @@ export interface TerminalAction {
    * Default: 5 minutes from creation
    * Maximum: 5 minutes
    */
-  deadlineDuration?: string;
+  deadlineDuration?: string | null;
   /**
    * The status of the `TerminalAction`.
    * Options: `PENDING`, `IN_PROGRESS`, `CANCEL_REQUESTED`, `CANCELED`, `COMPLETED`
@@ -35,13 +36,15 @@ export interface TerminalAction {
   type?: string;
   /** Describes save-card action fields. */
   saveCardOptions?: SaveCardOptions;
+  /** Describes receipt action fields. */
+  receiptOptions?: ReceiptOptions;
   deviceMetadata?: DeviceMetadata;
 }
 
 export const terminalActionSchema: Schema<TerminalAction> = object({
   id: ['id', optional(string())],
-  deviceId: ['device_id', optional(string())],
-  deadlineDuration: ['deadline_duration', optional(string())],
+  deviceId: ['device_id', optional(nullable(string()))],
+  deadlineDuration: ['deadline_duration', optional(nullable(string()))],
   status: ['status', optional(string())],
   cancelReason: ['cancel_reason', optional(string())],
   createdAt: ['created_at', optional(string())],
@@ -51,6 +54,10 @@ export const terminalActionSchema: Schema<TerminalAction> = object({
   saveCardOptions: [
     'save_card_options',
     optional(lazy(() => saveCardOptionsSchema)),
+  ],
+  receiptOptions: [
+    'receipt_options',
+    optional(lazy(() => receiptOptionsSchema)),
   ],
   deviceMetadata: [
     'device_metadata',

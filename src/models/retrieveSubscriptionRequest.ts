@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * Defines input parameters in a request to the
@@ -10,9 +10,9 @@ export interface RetrieveSubscriptionRequest {
    * The supported query parameter values are:
    * - `actions`: to include scheduled actions on the targeted subscription.
    */
-  include?: string;
+  include?: string | null;
 }
 
 export const retrieveSubscriptionRequestSchema: Schema<RetrieveSubscriptionRequest> = object(
-  { include: ['include', optional(string())] }
+  { include: ['include', optional(nullable(string()))] }
 );

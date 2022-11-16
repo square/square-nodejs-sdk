@@ -1,4 +1,12 @@
-import { lazy, number, object, optional, Schema, string } from '../schema';
+import {
+  lazy,
+  nullable,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { CheckoutOptions, checkoutOptionsSchema } from './checkoutOptions';
 import { PrePopulatedData, prePopulatedDataSchema } from './prePopulatedData';
 
@@ -11,7 +19,7 @@ export interface PaymentLink {
    * The optional description of the `payment_link` object.
    * It is primarily for use by your application and is not used anywhere.
    */
-  description?: string;
+  description?: string | null;
   /** The ID of the order associated with the payment link. */
   orderId?: string;
   checkoutOptions?: CheckoutOptions;
@@ -31,13 +39,13 @@ export interface PaymentLink {
    * An optional note. After Square processes the payment, this note is added to the
    * resulting `Payment`.
    */
-  paymentNote?: string;
+  paymentNote?: string | null;
 }
 
 export const paymentLinkSchema: Schema<PaymentLink> = object({
   id: ['id', optional(string())],
   version: ['version', number()],
-  description: ['description', optional(string())],
+  description: ['description', optional(nullable(string()))],
   orderId: ['order_id', optional(string())],
   checkoutOptions: [
     'checkout_options',
@@ -50,5 +58,5 @@ export const paymentLinkSchema: Schema<PaymentLink> = object({
   url: ['url', optional(string())],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
-  paymentNote: ['payment_note', optional(string())],
+  paymentNote: ['payment_note', optional(nullable(string()))],
 });

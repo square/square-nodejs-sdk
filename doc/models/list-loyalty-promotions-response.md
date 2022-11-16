@@ -39,6 +39,10 @@ If additional results are available, the `cursor` field is also present along wi
       },
       "loyalty_program_id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
       "name": "Tuesday Happy Hour Promo",
+      "qualifying_item_variation_ids": [
+        "CJ3RYL56ITAKMD4VRCM7XERS",
+        "AT3RYLR3TUA9C34VRCB7X5RR"
+      ],
       "status": "ACTIVE",
       "trigger_limit": {
         "interval": "DAY",
@@ -72,6 +76,9 @@ If additional results are available, the `cursor` field is also present along wi
         "currency": "USD"
       },
       "name": "July Special",
+      "qualifying_category_ids": [
+        "XTQPYLR3IIU9C44VRCB3XD12"
+      ],
       "status": "ENDED",
       "trigger_limit": {
         "interval": "ALL_TIME",

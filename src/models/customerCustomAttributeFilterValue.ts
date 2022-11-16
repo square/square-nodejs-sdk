@@ -1,4 +1,4 @@
-import { boolean, lazy, object, optional, Schema } from '../schema';
+import { boolean, lazy, nullable, object, optional, Schema } from '../schema';
 import {
   CustomerAddressFilter,
   customerAddressFilterSchema,
@@ -52,7 +52,7 @@ export interface CustomerCustomAttributeFilterValue {
   /** Specifies a decimal number range. */
   number?: FloatNumberRange;
   /** A filter for a query based on the value of a `Boolean`-type custom attribute. */
-  mBoolean?: boolean;
+  mBoolean?: boolean | null;
   /**
    * The customer address filter. This filter is used in a [CustomerCustomAttributeFilterValue]($m/CustomerCustomAttributeFilterValue) filter when
    * searching by an `Address`-type custom attribute.
@@ -68,7 +68,7 @@ export const customerCustomAttributeFilterValueSchema: Schema<CustomerCustomAttr
     selection: ['selection', optional(lazy(() => filterValueSchema))],
     date: ['date', optional(lazy(() => timeRangeSchema))],
     number: ['number', optional(lazy(() => floatNumberRangeSchema))],
-    mBoolean: ['boolean', optional(boolean())],
+    mBoolean: ['boolean', optional(nullable(boolean()))],
     address: ['address', optional(lazy(() => customerAddressFilterSchema))],
   }
 );

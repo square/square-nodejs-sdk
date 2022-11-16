@@ -4,6 +4,7 @@ import {
   boolean,
   dict,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -102,7 +103,7 @@ export interface CatalogObject {
    * If `true`, the object has been deleted from the database. Must be `false` for new objects
    * being inserted. When deleted, the `updated_at` field will equal the deletion time.
    */
-  isDeleted?: boolean;
+  isDeleted?: boolean | null;
   /**
    * A map (key-value pairs) of application-defined custom attribute values. The value of a key-value pair
    * is a [CatalogCustomAttributeValue]($m/CatalogCustomAttributeValue) object. The key is the `key` attribute
@@ -119,29 +120,29 @@ export interface CatalogObject {
    * or associations with an entity in another system. Do not use custom attributes
    * to store any sensitive information (personally identifiable information, card details, etc.).
    */
-  customAttributeValues?: Record<string, CatalogCustomAttributeValue>;
+  customAttributeValues?: Record<string, CatalogCustomAttributeValue> | null;
   /**
    * The Connect v1 IDs for this object at each location where it is present, where they
    * differ from the object's Connect V2 ID. The field will only be present for objects that
    * have been created or modified by legacy APIs.
    */
-  catalogV1Ids?: CatalogV1Id[];
+  catalogV1Ids?: CatalogV1Id[] | null;
   /**
    * If `true`, this object is present at all locations (including future locations), except where specified in
    * the `absent_at_location_ids` field. If `false`, this object is not present at any locations (including future locations),
    * except where specified in the `present_at_location_ids` field. If not specified, defaults to `true`.
    */
-  presentAtAllLocations?: boolean;
+  presentAtAllLocations?: boolean | null;
   /**
    * A list of locations where the object is present, even if `present_at_all_locations` is `false`.
    * This can include locations that are deactivated.
    */
-  presentAtLocationIds?: string[];
+  presentAtLocationIds?: string[] | null;
   /**
    * A list of locations where the object is not present, even if `present_at_all_locations` is `true`.
    * This can include locations that are deactivated.
    */
-  absentAtLocationIds?: string[];
+  absentAtLocationIds?: string[] | null;
   /** A [CatalogObject]($m/CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog. */
   itemData?: CatalogItem;
   /** A category to which a `CatalogItem` instance belongs. */
@@ -231,18 +232,27 @@ export const catalogObjectSchema: Schema<CatalogObject> = object({
   id: ['id', string()],
   updatedAt: ['updated_at', optional(string())],
   version: ['version', optional(bigint())],
-  isDeleted: ['is_deleted', optional(boolean())],
+  isDeleted: ['is_deleted', optional(nullable(boolean()))],
   customAttributeValues: [
     'custom_attribute_values',
-    optional(dict(lazy(() => catalogCustomAttributeValueSchema))),
+    optional(nullable(dict(lazy(() => catalogCustomAttributeValueSchema)))),
   ],
   catalogV1Ids: [
     'catalog_v1_ids',
-    optional(array(lazy(() => catalogV1IdSchema))),
+    optional(nullable(array(lazy(() => catalogV1IdSchema)))),
   ],
-  presentAtAllLocations: ['present_at_all_locations', optional(boolean())],
-  presentAtLocationIds: ['present_at_location_ids', optional(array(string()))],
-  absentAtLocationIds: ['absent_at_location_ids', optional(array(string()))],
+  presentAtAllLocations: [
+    'present_at_all_locations',
+    optional(nullable(boolean())),
+  ],
+  presentAtLocationIds: [
+    'present_at_location_ids',
+    optional(nullable(array(string()))),
+  ],
+  absentAtLocationIds: [
+    'absent_at_location_ids',
+    optional(nullable(array(string()))),
+  ],
   itemData: ['item_data', optional(lazy(() => catalogItemSchema))],
   categoryData: ['category_data', optional(lazy(() => catalogCategorySchema))],
   itemVariationData: [

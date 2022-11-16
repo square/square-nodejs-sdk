@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { ShiftWorkday, shiftWorkdaySchema } from './shiftWorkday';
 import { TimeRange, timeRangeSchema } from './timeRange';
 
@@ -8,9 +16,9 @@ import { TimeRange, timeRangeSchema } from './timeRange';
  */
 export interface ShiftFilter {
   /** Fetch shifts for the specified location. */
-  locationIds?: string[];
+  locationIds?: string[] | null;
   /** Fetch shifts for the specified employees. DEPRECATED at version 2020-08-26. Use `team_member_ids` instead. */
-  employeeIds?: string[];
+  employeeIds?: string[] | null;
   /** Specifies the `status` of `Shift` records to be returned. */
   status?: string;
   /**
@@ -35,15 +43,15 @@ export interface ShiftFilter {
    */
   workday?: ShiftWorkday;
   /** Fetch shifts for the specified team members. Replaced `employee_ids` at version "2020-08-26". */
-  teamMemberIds?: string[];
+  teamMemberIds?: string[] | null;
 }
 
 export const shiftFilterSchema: Schema<ShiftFilter> = object({
-  locationIds: ['location_ids', optional(array(string()))],
-  employeeIds: ['employee_ids', optional(array(string()))],
+  locationIds: ['location_ids', optional(nullable(array(string())))],
+  employeeIds: ['employee_ids', optional(nullable(array(string())))],
   status: ['status', optional(string())],
   start: ['start', optional(lazy(() => timeRangeSchema))],
   end: ['end', optional(lazy(() => timeRangeSchema))],
   workday: ['workday', optional(lazy(() => shiftWorkdaySchema))],
-  teamMemberIds: ['team_member_ids', optional(array(string()))],
+  teamMemberIds: ['team_member_ids', optional(nullable(array(string())))],
 });

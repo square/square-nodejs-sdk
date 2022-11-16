@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { MeasurementUnit, measurementUnitSchema } from './measurementUnit';
 
 /** Contains the name and abbreviation for standard measurement unit. */
@@ -10,15 +10,15 @@ export interface StandardUnitDescription {
    */
   unit?: MeasurementUnit;
   /** UI display name of the measurement unit. For example, 'Pound'. */
-  name?: string;
+  name?: string | null;
   /** UI display abbreviation for the measurement unit. For example, 'lb'. */
-  abbreviation?: string;
+  abbreviation?: string | null;
 }
 
 export const standardUnitDescriptionSchema: Schema<StandardUnitDescription> = object(
   {
     unit: ['unit', optional(lazy(() => measurementUnitSchema))],
-    name: ['name', optional(string())],
-    abbreviation: ['abbreviation', optional(string())],
+    name: ['name', optional(nullable(string()))],
+    abbreviation: ['abbreviation', optional(nullable(string()))],
   }
 );

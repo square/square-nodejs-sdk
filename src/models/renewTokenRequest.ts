@@ -1,10 +1,10 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 export interface RenewTokenRequest {
   /** The token you want to renew. */
-  accessToken?: string;
+  accessToken?: string | null;
 }
 
 export const renewTokenRequestSchema: Schema<RenewTokenRequest> = object({
-  accessToken: ['access_token', optional(string())],
+  accessToken: ['access_token', optional(nullable(string()))],
 });

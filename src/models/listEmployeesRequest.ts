@@ -1,18 +1,18 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { nullable, number, object, optional, Schema, string } from '../schema';
 
 export interface ListEmployeesRequest {
-  locationId?: string;
+  locationId?: string | null;
   /** The status of the Employee being retrieved. */
   status?: string;
   /** The number of employees to be returned on each page. */
-  limit?: number;
+  limit?: number | null;
   /** The token required to retrieve the specified page of results. */
-  cursor?: string;
+  cursor?: string | null;
 }
 
 export const listEmployeesRequestSchema: Schema<ListEmployeesRequest> = object({
-  locationId: ['location_id', optional(string())],
+  locationId: ['location_id', optional(nullable(string()))],
   status: ['status', optional(string())],
-  limit: ['limit', optional(number())],
-  cursor: ['cursor', optional(string())],
+  limit: ['limit', optional(nullable(number()))],
+  cursor: ['cursor', optional(nullable(string()))],
 });

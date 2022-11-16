@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Address, addressSchema } from './address';
 
 /**
@@ -8,9 +8,9 @@ import { Address, addressSchema } from './address';
  */
 export interface PrePopulatedData {
   /** The buyer email to prepopulate in the payment form. */
-  buyerEmail?: string;
+  buyerEmail?: string | null;
   /** The buyer phone number to prepopulate in the payment form. */
-  buyerPhoneNumber?: string;
+  buyerPhoneNumber?: string | null;
   /**
    * Represents a postal address in a country.
    * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
@@ -19,7 +19,7 @@ export interface PrePopulatedData {
 }
 
 export const prePopulatedDataSchema: Schema<PrePopulatedData> = object({
-  buyerEmail: ['buyer_email', optional(string())],
-  buyerPhoneNumber: ['buyer_phone_number', optional(string())],
+  buyerEmail: ['buyer_email', optional(nullable(string()))],
+  buyerPhoneNumber: ['buyer_phone_number', optional(nullable(string()))],
   buyerAddress: ['buyer_address', optional(lazy(() => addressSchema))],
 });

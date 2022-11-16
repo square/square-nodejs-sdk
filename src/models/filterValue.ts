@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * A filter to select resources based on an exact field value. For any given
@@ -8,18 +8,18 @@ import { array, object, optional, Schema, string } from '../schema';
  */
 export interface FilterValue {
   /** A list of terms that must be present on the field of the resource. */
-  all?: string[];
+  all?: string[] | null;
   /**
    * A list of terms where at least one of them must be present on the
    * field of the resource.
    */
-  any?: string[];
+  any?: string[] | null;
   /** A list of terms that must not be present on the field the resource */
-  none?: string[];
+  none?: string[] | null;
 }
 
 export const filterValueSchema: Schema<FilterValue> = object({
-  all: ['all', optional(array(string()))],
-  any: ['any', optional(array(string()))],
-  none: ['none', optional(array(string()))],
+  all: ['all', optional(nullable(array(string())))],
+  any: ['any', optional(nullable(array(string())))],
+  none: ['none', optional(nullable(array(string())))],
 });

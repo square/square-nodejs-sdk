@@ -1,6 +1,6 @@
 import {
-  array,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -12,7 +12,7 @@ import { Money, moneySchema } from './money';
 /** A modifier applicable to items at the time of sale. */
 export interface CatalogModifier {
   /** The modifier name.  This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points. */
-  name?: string;
+  name?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -23,20 +23,20 @@ export interface CatalogModifier {
    */
   priceMoney?: Money;
   /** Determines where this `CatalogModifier` appears in the `CatalogModifierList`. */
-  ordinal?: number;
+  ordinal?: number | null;
   /** The ID of the `CatalogModifierList` associated with this modifier. */
-  modifierListId?: string;
+  modifierListId?: string | null;
   /**
-   * The IDs of images associated with this `CatalogModifier` instance.
-   * Currently these images are not displayed by Square, but are free to be displayed in 3rd party applications.
+   * The ID of the image associated with this `CatalogModifier` instance.
+   * Currently this image is not displayed by Square, but is free to be displayed in 3rd party applications.
    */
-  imageIds?: string[];
+  imageId?: string | null;
 }
 
 export const catalogModifierSchema: Schema<CatalogModifier> = object({
-  name: ['name', optional(string())],
+  name: ['name', optional(nullable(string()))],
   priceMoney: ['price_money', optional(lazy(() => moneySchema))],
-  ordinal: ['ordinal', optional(number())],
-  modifierListId: ['modifier_list_id', optional(string())],
-  imageIds: ['image_ids', optional(array(string()))],
+  ordinal: ['ordinal', optional(nullable(number()))],
+  modifierListId: ['modifier_list_id', optional(nullable(string()))],
+  imageId: ['image_id', optional(nullable(string()))],
 });

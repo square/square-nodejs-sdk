@@ -62,6 +62,10 @@
           "amount": 250,
           "currency": "USD"
         },
+        "total_service_charge_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
         "total_tax_money": {
           "amount": 0,
           "currency": "USD"
@@ -99,6 +103,10 @@
         },
         "total_money": {
           "amount": 300,
+          "currency": "USD"
+        },
+        "total_service_charge_money": {
+          "amount": 0,
           "currency": "USD"
         },
         "total_tax_money": {

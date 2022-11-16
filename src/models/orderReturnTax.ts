@@ -1,4 +1,12 @@
-import { bigint, lazy, object, optional, Schema, string } from '../schema';
+import {
+  bigint,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -9,22 +17,22 @@ import { Money, moneySchema } from './money';
  */
 export interface OrderReturnTax {
   /** A unique ID that identifies the returned tax only within this order. */
-  uid?: string;
+  uid?: string | null;
   /** The tax `uid` from the order that contains the original tax charge. */
-  sourceTaxUid?: string;
+  sourceTaxUid?: string | null;
   /** The catalog object ID referencing [CatalogTax]($m/CatalogTax). */
-  catalogObjectId?: string;
+  catalogObjectId?: string | null;
   /** The version of the catalog object that this tax references. */
-  catalogVersion?: bigint;
+  catalogVersion?: bigint | null;
   /** The tax's name. */
-  name?: string;
+  name?: string | null;
   /** Indicates how the tax is applied to the associated line item or order. */
   type?: string;
   /**
    * The percentage of the tax, as a string representation of a decimal number.
    * For example, a value of `"7.25"` corresponds to a percentage of 7.25%.
    */
-  percentage?: string;
+  percentage?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -39,13 +47,13 @@ export interface OrderReturnTax {
 }
 
 export const orderReturnTaxSchema: Schema<OrderReturnTax> = object({
-  uid: ['uid', optional(string())],
-  sourceTaxUid: ['source_tax_uid', optional(string())],
-  catalogObjectId: ['catalog_object_id', optional(string())],
-  catalogVersion: ['catalog_version', optional(bigint())],
-  name: ['name', optional(string())],
+  uid: ['uid', optional(nullable(string()))],
+  sourceTaxUid: ['source_tax_uid', optional(nullable(string()))],
+  catalogObjectId: ['catalog_object_id', optional(nullable(string()))],
+  catalogVersion: ['catalog_version', optional(nullable(bigint()))],
+  name: ['name', optional(nullable(string()))],
   type: ['type', optional(string())],
-  percentage: ['percentage', optional(string())],
+  percentage: ['percentage', optional(nullable(string()))],
   appliedMoney: ['applied_money', optional(lazy(() => moneySchema))],
   scope: ['scope', optional(string())],
 });

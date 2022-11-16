@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -20,15 +21,21 @@ export interface CatalogQuickAmountsSettings {
    * Represents location's eligibility for auto amounts
    * The boolean should be consistent with whether there are AUTO amounts in the `amounts`.
    */
-  eligibleForAutoAmounts?: boolean;
+  eligibleForAutoAmounts?: boolean | null;
   /** Represents a set of Quick Amounts at this location. */
-  amounts?: CatalogQuickAmount[];
+  amounts?: CatalogQuickAmount[] | null;
 }
 
 export const catalogQuickAmountsSettingsSchema: Schema<CatalogQuickAmountsSettings> = object(
   {
     option: ['option', string()],
-    eligibleForAutoAmounts: ['eligible_for_auto_amounts', optional(boolean())],
-    amounts: ['amounts', optional(array(lazy(() => catalogQuickAmountSchema)))],
+    eligibleForAutoAmounts: [
+      'eligible_for_auto_amounts',
+      optional(nullable(boolean())),
+    ],
+    amounts: [
+      'amounts',
+      optional(nullable(array(lazy(() => catalogQuickAmountSchema)))),
+    ],
   }
 );

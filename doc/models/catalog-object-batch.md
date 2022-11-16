@@ -19,7 +19,7 @@ A batch of catalog objects.
 {
   "objects": [
     {
-      "type": "ITEM_OPTION_VAL",
+      "type": "CUSTOM_ATTRIBUTE_DEFINITION",
       "id": "id8",
       "version": null,
       "is_deleted": null,
@@ -47,7 +47,7 @@ A batch of catalog objects.
       "quick_amounts_settings_data": null
     },
     {
-      "type": "ITEM_OPTION",
+      "type": "ITEM_OPTION_VAL",
       "id": "id9",
       "version": null,
       "is_deleted": null,

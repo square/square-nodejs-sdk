@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import {
   InventoryAdjustmentGroup,
   inventoryAdjustmentGroupSchema,
@@ -24,7 +24,7 @@ export interface InventoryAdjustment {
    * `InventoryAdjustment` to an external
    * system.
    */
-  referenceId?: string;
+  referenceId?: string | null;
   /** Indicates the state of a tracked item quantity in the lifecycle of goods. */
   fromState?: string;
   /** Indicates the state of a tracked item quantity in the lifecycle of goods. */
@@ -33,23 +33,23 @@ export interface InventoryAdjustment {
    * The Square-generated ID of the [Location]($m/Location) where the related
    * quantity of items is being tracked.
    */
-  locationId?: string;
+  locationId?: string | null;
   /**
    * The Square-generated ID of the
    * [CatalogObject]($m/CatalogObject) being tracked.
    */
-  catalogObjectId?: string;
+  catalogObjectId?: string | null;
   /**
    * The [type]($m/CatalogObjectType) of the [CatalogObject]($m/CatalogObject) being tracked.
    * The Inventory API supports setting and reading the `"catalog_object_type": "ITEM_VARIATION"` field value.
    * In addition, it can also read the `"catalog_object_type": "ITEM"` field value that is set by the Square Restaurants app.
    */
-  catalogObjectType?: string;
+  catalogObjectType?: string | null;
   /**
    * The number of items affected by the adjustment as a decimal string.
    * Can support up to 5 digits after the decimal point.
    */
-  quantity?: string;
+  quantity?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -65,7 +65,7 @@ export interface InventoryAdjustment {
    * timestamp cannot be older than 24 hours or in the future relative to the
    * time of the request.
    */
-  occurredAt?: string;
+  occurredAt?: string | null;
   /** An RFC 3339-formatted timestamp that indicates when the inventory adjustment is received. */
   createdAt?: string;
   /** Represents information about the application used to generate a change. */
@@ -74,12 +74,12 @@ export interface InventoryAdjustment {
    * The Square-generated ID of the [Employee]($m/Employee) responsible for the
    * inventory adjustment.
    */
-  employeeId?: string;
+  employeeId?: string | null;
   /**
    * The Square-generated ID of the [Team Member]($m/TeamMember) responsible for the
    * inventory adjustment.
    */
-  teamMemberId?: string;
+  teamMemberId?: string | null;
   /**
    * The Square-generated ID of the [Transaction]($m/Transaction) that
    * caused the adjustment. Only relevant for payment-related state
@@ -109,19 +109,19 @@ export interface InventoryAdjustment {
 
 export const inventoryAdjustmentSchema: Schema<InventoryAdjustment> = object({
   id: ['id', optional(string())],
-  referenceId: ['reference_id', optional(string())],
+  referenceId: ['reference_id', optional(nullable(string()))],
   fromState: ['from_state', optional(string())],
   toState: ['to_state', optional(string())],
-  locationId: ['location_id', optional(string())],
-  catalogObjectId: ['catalog_object_id', optional(string())],
-  catalogObjectType: ['catalog_object_type', optional(string())],
-  quantity: ['quantity', optional(string())],
+  locationId: ['location_id', optional(nullable(string()))],
+  catalogObjectId: ['catalog_object_id', optional(nullable(string()))],
+  catalogObjectType: ['catalog_object_type', optional(nullable(string()))],
+  quantity: ['quantity', optional(nullable(string()))],
   totalPriceMoney: ['total_price_money', optional(lazy(() => moneySchema))],
-  occurredAt: ['occurred_at', optional(string())],
+  occurredAt: ['occurred_at', optional(nullable(string()))],
   createdAt: ['created_at', optional(string())],
   source: ['source', optional(lazy(() => sourceApplicationSchema))],
-  employeeId: ['employee_id', optional(string())],
-  teamMemberId: ['team_member_id', optional(string())],
+  employeeId: ['employee_id', optional(nullable(string()))],
+  teamMemberId: ['team_member_id', optional(nullable(string()))],
   transactionId: ['transaction_id', optional(string())],
   refundId: ['refund_id', optional(string())],
   purchaseOrderId: ['purchase_order_id', optional(string())],

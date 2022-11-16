@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 export interface TerminalRefundQuerySort {
   /**
@@ -6,9 +6,9 @@ export interface TerminalRefundQuerySort {
    * - `ASC` - Oldest to newest.
    * - `DESC` - Newest to oldest (default).
    */
-  sortOrder?: string;
+  sortOrder?: string | null;
 }
 
 export const terminalRefundQuerySortSchema: Schema<TerminalRefundQuerySort> = object(
-  { sortOrder: ['sort_order', optional(string())] }
+  { sortOrder: ['sort_order', optional(nullable(string()))] }
 );

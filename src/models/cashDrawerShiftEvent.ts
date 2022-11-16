@@ -1,11 +1,11 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 export interface CashDrawerShiftEvent {
   /** The unique ID of the event. */
   id?: string;
   /** The ID of the employee that created the event. */
-  employeeId?: string;
+  employeeId?: string | null;
   /**
    * The types of events on a CashDrawerShift.
    * Each event type represents an employee action on the actual cash drawer
@@ -27,14 +27,14 @@ export interface CashDrawerShiftEvent {
    * An optional description of the event, entered by the employee that
    * created the event.
    */
-  description?: string;
+  description?: string | null;
 }
 
 export const cashDrawerShiftEventSchema: Schema<CashDrawerShiftEvent> = object({
   id: ['id', optional(string())],
-  employeeId: ['employee_id', optional(string())],
+  employeeId: ['employee_id', optional(nullable(string()))],
   eventType: ['event_type', optional(string())],
   eventMoney: ['event_money', optional(lazy(() => moneySchema))],
   createdAt: ['created_at', optional(string())],
-  description: ['description', optional(string())],
+  description: ['description', optional(nullable(string()))],
 });

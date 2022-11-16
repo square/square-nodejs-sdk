@@ -3,6 +3,7 @@ import {
   boolean,
   dict,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -18,13 +19,13 @@ import { Money, moneySchema } from './money';
  */
 export interface OrderLineItemTax {
   /** A unique ID that identifies the tax only within this order. */
-  uid?: string;
+  uid?: string | null;
   /** The catalog object ID referencing [CatalogTax]($m/CatalogTax). */
-  catalogObjectId?: string;
+  catalogObjectId?: string | null;
   /** The version of the catalog object that this tax references. */
-  catalogVersion?: bigint;
+  catalogVersion?: bigint | null;
   /** The tax's name. */
-  name?: string;
+  name?: string | null;
   /** Indicates how the tax is applied to the associated line item or order. */
   type?: string;
   /**
@@ -32,7 +33,7 @@ export interface OrderLineItemTax {
    * number. For example, a value of `"7.25"` corresponds to a percentage of
    * 7.25%.
    */
-  percentage?: string;
+  percentage?: string | null;
   /**
    * Application-defined data attached to this tax. Metadata fields are intended
    * to store descriptive references or associations with an entity in another system or store brief
@@ -48,7 +49,7 @@ export interface OrderLineItemTax {
    * application.
    * For more information, see [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
    */
-  metadata?: Record<string, string>;
+  metadata?: Record<string, string> | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -69,13 +70,13 @@ export interface OrderLineItemTax {
 }
 
 export const orderLineItemTaxSchema: Schema<OrderLineItemTax> = object({
-  uid: ['uid', optional(string())],
-  catalogObjectId: ['catalog_object_id', optional(string())],
-  catalogVersion: ['catalog_version', optional(bigint())],
-  name: ['name', optional(string())],
+  uid: ['uid', optional(nullable(string()))],
+  catalogObjectId: ['catalog_object_id', optional(nullable(string()))],
+  catalogVersion: ['catalog_version', optional(nullable(bigint()))],
+  name: ['name', optional(nullable(string()))],
   type: ['type', optional(string())],
-  percentage: ['percentage', optional(string())],
-  metadata: ['metadata', optional(dict(string()))],
+  percentage: ['percentage', optional(nullable(string()))],
+  metadata: ['metadata', optional(nullable(dict(string())))],
   appliedMoney: ['applied_money', optional(lazy(() => moneySchema))],
   scope: ['scope', optional(string())],
   autoApplied: ['auto_applied', optional(boolean())],

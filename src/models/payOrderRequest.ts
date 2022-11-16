@@ -1,4 +1,12 @@
-import { array, number, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  nullable,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 
 /**
  * Defines the fields that are included in requests to the
@@ -13,16 +21,16 @@ export interface PayOrderRequest {
    */
   idempotencyKey: string;
   /** The version of the order being paid. If not supplied, the latest version will be paid. */
-  orderVersion?: number;
+  orderVersion?: number | null;
   /**
    * The IDs of the [payments]($m/Payment) to collect.
    * The payment total must match the order total.
    */
-  paymentIds?: string[];
+  paymentIds?: string[] | null;
 }
 
 export const payOrderRequestSchema: Schema<PayOrderRequest> = object({
   idempotencyKey: ['idempotency_key', string()],
-  orderVersion: ['order_version', optional(number())],
-  paymentIds: ['payment_ids', optional(array(string()))],
+  orderVersion: ['order_version', optional(nullable(number()))],
+  paymentIds: ['payment_ids', optional(nullable(array(string())))],
 });

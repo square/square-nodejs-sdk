@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -29,7 +29,7 @@ export interface ExternalPaymentDetails {
    */
   source: string;
   /** An ID to associate the payment to its originating source. */
-  sourceId?: string;
+  sourceId?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -45,7 +45,7 @@ export const externalPaymentDetailsSchema: Schema<ExternalPaymentDetails> = obje
   {
     type: ['type', string()],
     source: ['source', string()],
-    sourceId: ['source_id', optional(string())],
+    sourceId: ['source_id', optional(nullable(string()))],
     sourceFeeMoney: ['source_fee_money', optional(lazy(() => moneySchema))],
   }
 );

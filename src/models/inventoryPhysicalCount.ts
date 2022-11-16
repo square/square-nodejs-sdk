@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import {
   SourceApplication,
   sourceApplicationSchema,
@@ -21,49 +21,49 @@ export interface InventoryPhysicalCount {
    * [InventoryPhysicalCount]($m/InventoryPhysicalCount) to an external
    * system.
    */
-  referenceId?: string;
+  referenceId?: string | null;
   /**
    * The Square-generated ID of the
    * [CatalogObject]($m/CatalogObject) being tracked.
    */
-  catalogObjectId?: string;
+  catalogObjectId?: string | null;
   /**
    * The [type]($m/CatalogObjectType) of the [CatalogObject]($m/CatalogObject) being tracked.
    * The Inventory API supports setting and reading the `"catalog_object_type": "ITEM_VARIATION"` field value.
    * In addition, it can also read the `"catalog_object_type": "ITEM"` field value that is set by the Square Restaurants app.
    */
-  catalogObjectType?: string;
+  catalogObjectType?: string | null;
   /** Indicates the state of a tracked item quantity in the lifecycle of goods. */
   state?: string;
   /**
    * The Square-generated ID of the [Location]($m/Location) where the related
    * quantity of items is being tracked.
    */
-  locationId?: string;
+  locationId?: string | null;
   /**
    * The number of items affected by the physical count as a decimal string.
    * The number can support up to 5 digits after the decimal point.
    */
-  quantity?: string;
+  quantity?: string | null;
   /** Represents information about the application used to generate a change. */
   source?: SourceApplication;
   /**
    * The Square-generated ID of the [Employee]($m/Employee) responsible for the
    * physical count.
    */
-  employeeId?: string;
+  employeeId?: string | null;
   /**
    * The Square-generated ID of the [Team Member]($m/TeamMember) responsible for the
    * physical count.
    */
-  teamMemberId?: string;
+  teamMemberId?: string | null;
   /**
    * A client-generated RFC 3339-formatted timestamp that indicates when
    * the physical count was examined. For physical count updates, the `occurred_at`
    * timestamp cannot be older than 24 hours or in the future relative to the
    * time of the request.
    */
-  occurredAt?: string;
+  occurredAt?: string | null;
   /** An RFC 3339-formatted timestamp that indicates when the physical count is received. */
   createdAt?: string;
 }
@@ -71,16 +71,16 @@ export interface InventoryPhysicalCount {
 export const inventoryPhysicalCountSchema: Schema<InventoryPhysicalCount> = object(
   {
     id: ['id', optional(string())],
-    referenceId: ['reference_id', optional(string())],
-    catalogObjectId: ['catalog_object_id', optional(string())],
-    catalogObjectType: ['catalog_object_type', optional(string())],
+    referenceId: ['reference_id', optional(nullable(string()))],
+    catalogObjectId: ['catalog_object_id', optional(nullable(string()))],
+    catalogObjectType: ['catalog_object_type', optional(nullable(string()))],
     state: ['state', optional(string())],
-    locationId: ['location_id', optional(string())],
-    quantity: ['quantity', optional(string())],
+    locationId: ['location_id', optional(nullable(string()))],
+    quantity: ['quantity', optional(nullable(string()))],
     source: ['source', optional(lazy(() => sourceApplicationSchema))],
-    employeeId: ['employee_id', optional(string())],
-    teamMemberId: ['team_member_id', optional(string())],
-    occurredAt: ['occurred_at', optional(string())],
+    employeeId: ['employee_id', optional(nullable(string()))],
+    teamMemberId: ['team_member_id', optional(nullable(string()))],
+    occurredAt: ['occurred_at', optional(nullable(string()))],
     createdAt: ['created_at', optional(string())],
   }
 );

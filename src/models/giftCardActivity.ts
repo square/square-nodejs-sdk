@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import {
   GiftCardActivityActivate,
   giftCardActivityActivateSchema,
@@ -71,12 +71,12 @@ export interface GiftCardActivity {
    * The gift card ID. When creating a gift card activity, `gift_card_id` is not required if
    * `gift_card_gan` is specified.
    */
-  giftCardId?: string;
+  giftCardId?: string | null;
   /**
    * The gift card account number (GAN). When creating a gift card activity, `gift_card_gan`
    * is not required if `gift_card_id` is specified.
    */
-  giftCardGan?: string;
+  giftCardGan?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -123,8 +123,8 @@ export const giftCardActivitySchema: Schema<GiftCardActivity> = object({
   type: ['type', string()],
   locationId: ['location_id', string()],
   createdAt: ['created_at', optional(string())],
-  giftCardId: ['gift_card_id', optional(string())],
-  giftCardGan: ['gift_card_gan', optional(string())],
+  giftCardId: ['gift_card_id', optional(nullable(string()))],
+  giftCardGan: ['gift_card_gan', optional(nullable(string()))],
   giftCardBalanceMoney: [
     'gift_card_balance_money',
     optional(lazy(() => moneySchema)),

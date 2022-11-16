@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Vendor, vendorSchema } from './vendor';
 
 /** Represents an input to a call to [UpdateVendor]($e/Vendors/UpdateVendor). */
@@ -10,12 +10,12 @@ export interface UpdateVendorRequest {
    * [API Development 101](https://developer.squareup.com/docs/basics/api101/overview) section for more
    * information.
    */
-  idempotencyKey?: string;
+  idempotencyKey?: string | null;
   /** Represents a supplier to a seller. */
   vendor: Vendor;
 }
 
 export const updateVendorRequestSchema: Schema<UpdateVendorRequest> = object({
-  idempotencyKey: ['idempotency_key', optional(string())],
+  idempotencyKey: ['idempotency_key', optional(nullable(string()))],
   vendor: ['vendor', lazy(() => vendorSchema)],
 });

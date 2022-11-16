@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { CustomAttribute, customAttributeSchema } from './customAttribute';
 
 /**
@@ -18,13 +18,13 @@ export interface BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttribut
    * A unique identifier for this individual upsert request, used to ensure idempotency.
    * For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
    */
-  idempotencyKey?: string;
+  idempotencyKey?: string | null;
 }
 
 export const bulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequestSchema: Schema<BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest> = object(
   {
     customerId: ['customer_id', string()],
     customAttribute: ['custom_attribute', lazy(() => customAttributeSchema)],
-    idempotencyKey: ['idempotency_key', optional(string())],
+    idempotencyKey: ['idempotency_key', optional(nullable(string()))],
   }
 );

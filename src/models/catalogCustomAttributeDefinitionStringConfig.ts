@@ -1,4 +1,4 @@
-import { boolean, object, optional, Schema } from '../schema';
+import { boolean, nullable, object, optional, Schema } from '../schema';
 
 /** Configuration associated with Custom Attribute Definitions of type `STRING`. */
 export interface CatalogCustomAttributeDefinitionStringConfig {
@@ -9,9 +9,9 @@ export interface CatalogCustomAttributeDefinitionStringConfig {
    * duplicated within a seller's catalog. May not be modified after the
    * definition has been created.
    */
-  enforceUniqueness?: boolean;
+  enforceUniqueness?: boolean | null;
 }
 
 export const catalogCustomAttributeDefinitionStringConfigSchema: Schema<CatalogCustomAttributeDefinitionStringConfig> = object(
-  { enforceUniqueness: ['enforce_uniqueness', optional(boolean())] }
+  { enforceUniqueness: ['enforce_uniqueness', optional(nullable(boolean()))] }
 );

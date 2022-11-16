@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * A filter based on the order `customer_id` and any tender `customer_id`
@@ -10,9 +10,9 @@ export interface SearchOrdersCustomerFilter {
    * A list of customer IDs to filter by.
    * Max: 10 customer IDs.
    */
-  customerIds?: string[];
+  customerIds?: string[] | null;
 }
 
 export const searchOrdersCustomerFilterSchema: Schema<SearchOrdersCustomerFilter> = object(
-  { customerIds: ['customer_ids', optional(array(string()))] }
+  { customerIds: ['customer_ids', optional(nullable(array(string())))] }
 );

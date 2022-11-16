@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Order, orderSchema } from './order';
 
 /**
@@ -15,11 +23,11 @@ export interface UpdateOrderRequest {
    */
   order?: Order;
   /**
-   * The [dot notation paths](https://developer.squareup.com/docs/orders-api/manage-orders#on-dot-notation)
+   * The [dot notation paths](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#identifying-fields-to-delete)
    * fields to clear. For example, `line_items[uid].note`.
-   * For more information, see [Deleting fields](https://developer.squareup.com/docs/orders-api/manage-orders#delete-fields).
+   * For more information, see [Deleting fields](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#deleting-fields).
    */
-  fieldsToClear?: string[];
+  fieldsToClear?: string[] | null;
   /**
    * A value you specify that uniquely identifies this update request.
    * If you are unsure whether a particular update was applied to an order successfully,
@@ -28,11 +36,11 @@ export interface UpdateOrderRequest {
    * The latest order version is returned.
    * For more information, see [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency).
    */
-  idempotencyKey?: string;
+  idempotencyKey?: string | null;
 }
 
 export const updateOrderRequestSchema: Schema<UpdateOrderRequest> = object({
   order: ['order', optional(lazy(() => orderSchema))],
-  fieldsToClear: ['fields_to_clear', optional(array(string()))],
-  idempotencyKey: ['idempotency_key', optional(string())],
+  fieldsToClear: ['fields_to_clear', optional(nullable(array(string())))],
+  idempotencyKey: ['idempotency_key', optional(nullable(string()))],
 });

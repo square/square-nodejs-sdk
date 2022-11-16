@@ -1,4 +1,4 @@
-import { number, object, optional, Schema } from '../schema';
+import { nullable, number, object, optional, Schema } from '../schema';
 
 export interface CatalogCustomAttributeDefinitionNumberConfig {
   /**
@@ -10,9 +10,9 @@ export interface CatalogCustomAttributeDefinitionNumberConfig {
    * - if the precision is 2, the quantity can be 0.01, 0.12, etc.
    * Default: 5
    */
-  precision?: number;
+  precision?: number | null;
 }
 
 export const catalogCustomAttributeDefinitionNumberConfigSchema: Schema<CatalogCustomAttributeDefinitionNumberConfig> = object(
-  { precision: ['precision', optional(number())] }
+  { precision: ['precision', optional(nullable(number()))] }
 );

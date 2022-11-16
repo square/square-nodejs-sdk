@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /** Details about the application that took the payment. */
 export interface ApplicationDetails {
@@ -13,10 +13,10 @@ export interface ApplicationDetails {
    * If a seller uses a [Square App Marketplace](https://developer.squareup.com/docs/app-marketplace)
    * application to process payments, the field contains the corresponding application ID.
    */
-  applicationId?: string;
+  applicationId?: string | null;
 }
 
 export const applicationDetailsSchema: Schema<ApplicationDetails> = object({
   squareProduct: ['square_product', optional(string())],
-  applicationId: ['application_id', optional(string())],
+  applicationId: ['application_id', optional(nullable(string()))],
 });

@@ -1,8 +1,6 @@
 
 # Payment Balance Activity Charge Detail
 
-DESCRIPTION OF PaymentBalanceActivityChargeDetail
-
 ## Structure
 
 `PaymentBalanceActivityChargeDetail`

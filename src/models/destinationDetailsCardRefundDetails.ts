@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Card, cardSchema } from './card';
 
 export interface DestinationDetailsCardRefundDetails {
@@ -11,12 +11,12 @@ export interface DestinationDetailsCardRefundDetails {
    * The method used to enter the card's details for the refund. The method can be
    * `KEYED`, `SWIPED`, `EMV`, `ON_FILE`, or `CONTACTLESS`.
    */
-  entryMethod?: string;
+  entryMethod?: string | null;
 }
 
 export const destinationDetailsCardRefundDetailsSchema: Schema<DestinationDetailsCardRefundDetails> = object(
   {
     card: ['card', optional(lazy(() => cardSchema))],
-    entryMethod: ['entry_method', optional(string())],
+    entryMethod: ['entry_method', optional(nullable(string()))],
   }
 );
