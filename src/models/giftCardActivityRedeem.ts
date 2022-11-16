@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Represents details about a `REDEEM` [gift card activity type]($m/GiftCardActivityType). */
@@ -22,7 +22,7 @@ export interface GiftCardActivityRedeem {
    * Applications that use a custom payment processing system can use this field to track information
    * related to an order or payment.
    */
-  referenceId?: string;
+  referenceId?: string | null;
   /**
    * Indicates the status of a [gift card]($m/GiftCard) redemption. This status is relevant only for
    * redemptions made from Square products (such as Square Point of Sale) because Square products use a
@@ -35,7 +35,7 @@ export const giftCardActivityRedeemSchema: Schema<GiftCardActivityRedeem> = obje
   {
     amountMoney: ['amount_money', lazy(() => moneySchema)],
     paymentId: ['payment_id', optional(string())],
-    referenceId: ['reference_id', optional(string())],
+    referenceId: ['reference_id', optional(nullable(string()))],
     status: ['status', optional(string())],
   }
 );

@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { V1Money, v1MoneySchema } from './v1Money';
 
 /** V1CreateRefundRequest */
@@ -14,7 +14,7 @@ export interface V1CreateRefundRequest {
   reason: string;
   refundedMoney?: V1Money;
   /** An optional key to ensure idempotence if you issue the same PARTIAL refund request more than once. */
-  requestIdempotenceKey?: string;
+  requestIdempotenceKey?: string | null;
 }
 
 export const v1CreateRefundRequestSchema: Schema<V1CreateRefundRequest> = object(
@@ -23,6 +23,9 @@ export const v1CreateRefundRequestSchema: Schema<V1CreateRefundRequest> = object
     type: ['type', string()],
     reason: ['reason', string()],
     refundedMoney: ['refunded_money', optional(lazy(() => v1MoneySchema))],
-    requestIdempotenceKey: ['request_idempotence_key', optional(string())],
+    requestIdempotenceKey: [
+      'request_idempotence_key',
+      optional(nullable(string())),
+    ],
   }
 );

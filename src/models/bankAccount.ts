@@ -1,4 +1,12 @@
-import { boolean, number, object, optional, Schema, string } from '../schema';
+import {
+  boolean,
+  nullable,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 
 /**
  * Represents a bank account. For more information about
@@ -36,19 +44,19 @@ export interface BankAccount {
    * Secondary identifier for the bank. For more information, see
    * [Bank Accounts API](https://developer.squareup.com/docs/bank-accounts-api).
    */
-  secondaryBankIdentificationNumber?: string;
+  secondaryBankIdentificationNumber?: string | null;
   /**
    * Reference identifier that will be displayed to UK bank account owners
    * when collecting direct debit authorization. Only required for UK bank accounts.
    */
-  debitMandateReferenceId?: string;
+  debitMandateReferenceId?: string | null;
   /**
    * Client-provided identifier for linking the banking account to an entity
    * in a third-party system (for example, a bank account number or a user identifier).
    */
-  referenceId?: string;
+  referenceId?: string | null;
   /** The location to which the bank account belongs. */
-  locationId?: string;
+  locationId?: string | null;
   /** Indicates the current verification status of a `BankAccount` object. */
   status: string;
   /** Indicates whether it is possible for Square to send money to this bank account. */
@@ -63,14 +71,14 @@ export interface BankAccount {
    * account information. The account fingerprint can be used to compare account
    * entries and determine if the they represent the same real-world bank account.
    */
-  fingerprint?: string;
+  fingerprint?: string | null;
   /** The current version of the `BankAccount`. */
   version?: number;
   /**
    * Read only. Name of actual financial institution.
    * For example "Bank of America".
    */
-  bankName?: string;
+  bankName?: string | null;
 }
 
 export const bankAccountSchema: Schema<BankAccount> = object({
@@ -86,15 +94,18 @@ export const bankAccountSchema: Schema<BankAccount> = object({
   ],
   secondaryBankIdentificationNumber: [
     'secondary_bank_identification_number',
-    optional(string()),
+    optional(nullable(string())),
   ],
-  debitMandateReferenceId: ['debit_mandate_reference_id', optional(string())],
-  referenceId: ['reference_id', optional(string())],
-  locationId: ['location_id', optional(string())],
+  debitMandateReferenceId: [
+    'debit_mandate_reference_id',
+    optional(nullable(string())),
+  ],
+  referenceId: ['reference_id', optional(nullable(string()))],
+  locationId: ['location_id', optional(nullable(string()))],
   status: ['status', string()],
   creditable: ['creditable', boolean()],
   debitable: ['debitable', boolean()],
-  fingerprint: ['fingerprint', optional(string())],
+  fingerprint: ['fingerprint', optional(nullable(string()))],
   version: ['version', optional(number())],
-  bankName: ['bank_name', optional(string())],
+  bankName: ['bank_name', optional(nullable(string()))],
 });

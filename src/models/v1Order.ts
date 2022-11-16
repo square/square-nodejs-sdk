@@ -1,6 +1,7 @@
 import {
   array,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -19,15 +20,15 @@ import { V1Tender, v1TenderSchema } from './v1Tender';
 /** V1Order */
 export interface V1Order {
   /** Any errors that occurred during the request. */
-  errors?: Error[];
+  errors?: Error[] | null;
   /** The order's unique identifier. */
   id?: string;
   /** The email address of the order's buyer. */
-  buyerEmail?: string;
+  buyerEmail?: string | null;
   /** The name of the order's buyer. */
-  recipientName?: string;
+  recipientName?: string | null;
   /** The phone number to use for the order's delivery. */
-  recipientPhoneNumber?: string;
+  recipientPhoneNumber?: string | null;
   state?: string;
   /**
    * Represents a postal address in a country.
@@ -44,17 +45,17 @@ export interface V1Order {
   /** The time when the order was last modified, in ISO 8601 format. */
   updatedAt?: string;
   /** The time when the order expires if no action is taken, in ISO 8601 format. */
-  expiresAt?: string;
+  expiresAt?: string | null;
   /** The unique identifier of the payment associated with the order. */
-  paymentId?: string;
+  paymentId?: string | null;
   /** A note provided by the buyer when the order was created, if any. */
-  buyerNote?: string;
+  buyerNote?: string | null;
   /** A note provided by the merchant when the order's state was set to COMPLETED, if any */
-  completedNote?: string;
+  completedNote?: string | null;
   /** A note provided by the merchant when the order's state was set to REFUNDED, if any. */
-  refundedNote?: string;
+  refundedNote?: string | null;
   /** A note provided by the merchant when the order's state was set to CANCELED, if any. */
-  canceledNote?: string;
+  canceledNote?: string | null;
   /**
    * A tender represents a discrete monetary exchange. Square represents this
    * exchange as a money object with a specific currency and amount, where the
@@ -76,21 +77,24 @@ export interface V1Order {
    */
   tender?: V1Tender;
   /** The history of actions associated with the order. */
-  orderHistory?: V1OrderHistoryEntry[];
+  orderHistory?: V1OrderHistoryEntry[] | null;
   /** The promo code provided by the buyer, if any. */
-  promoCode?: string;
+  promoCode?: string | null;
   /** For Bitcoin transactions, the address that the buyer sent Bitcoin to. */
-  btcReceiveAddress?: string;
+  btcReceiveAddress?: string | null;
   /** For Bitcoin transactions, the price of the buyer's order in satoshi (100 million satoshi equals 1 BTC). */
-  btcPriceSatoshi?: number;
+  btcPriceSatoshi?: number | null;
 }
 
 export const v1OrderSchema: Schema<V1Order> = object({
-  errors: ['errors', optional(array(lazy(() => errorSchema)))],
+  errors: ['errors', optional(nullable(array(lazy(() => errorSchema))))],
   id: ['id', optional(string())],
-  buyerEmail: ['buyer_email', optional(string())],
-  recipientName: ['recipient_name', optional(string())],
-  recipientPhoneNumber: ['recipient_phone_number', optional(string())],
+  buyerEmail: ['buyer_email', optional(nullable(string()))],
+  recipientName: ['recipient_name', optional(nullable(string()))],
+  recipientPhoneNumber: [
+    'recipient_phone_number',
+    optional(nullable(string())),
+  ],
   state: ['state', optional(string())],
   shippingAddress: ['shipping_address', optional(lazy(() => addressSchema))],
   subtotalMoney: ['subtotal_money', optional(lazy(() => v1MoneySchema))],
@@ -106,18 +110,18 @@ export const v1OrderSchema: Schema<V1Order> = object({
   ],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
-  expiresAt: ['expires_at', optional(string())],
-  paymentId: ['payment_id', optional(string())],
-  buyerNote: ['buyer_note', optional(string())],
-  completedNote: ['completed_note', optional(string())],
-  refundedNote: ['refunded_note', optional(string())],
-  canceledNote: ['canceled_note', optional(string())],
+  expiresAt: ['expires_at', optional(nullable(string()))],
+  paymentId: ['payment_id', optional(nullable(string()))],
+  buyerNote: ['buyer_note', optional(nullable(string()))],
+  completedNote: ['completed_note', optional(nullable(string()))],
+  refundedNote: ['refunded_note', optional(nullable(string()))],
+  canceledNote: ['canceled_note', optional(nullable(string()))],
   tender: ['tender', optional(lazy(() => v1TenderSchema))],
   orderHistory: [
     'order_history',
-    optional(array(lazy(() => v1OrderHistoryEntrySchema))),
+    optional(nullable(array(lazy(() => v1OrderHistoryEntrySchema)))),
   ],
-  promoCode: ['promo_code', optional(string())],
-  btcReceiveAddress: ['btc_receive_address', optional(string())],
-  btcPriceSatoshi: ['btc_price_satoshi', optional(number())],
+  promoCode: ['promo_code', optional(nullable(string()))],
+  btcReceiveAddress: ['btc_receive_address', optional(nullable(string()))],
+  btcPriceSatoshi: ['btc_price_satoshi', optional(nullable(number()))],
 });

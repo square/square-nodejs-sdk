@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -23,18 +24,24 @@ export interface BatchChangeInventoryRequest {
    * Changes are applied based on the client-supplied timestamp and may be sent
    * out of order.
    */
-  changes?: InventoryChange[];
+  changes?: InventoryChange[] | null;
   /**
    * Indicates whether the current physical count should be ignored if
    * the quantity is unchanged since the last physical count. Default: `true`.
    */
-  ignoreUnchangedCounts?: boolean;
+  ignoreUnchangedCounts?: boolean | null;
 }
 
 export const batchChangeInventoryRequestSchema: Schema<BatchChangeInventoryRequest> = object(
   {
     idempotencyKey: ['idempotency_key', string()],
-    changes: ['changes', optional(array(lazy(() => inventoryChangeSchema)))],
-    ignoreUnchangedCounts: ['ignore_unchanged_counts', optional(boolean())],
+    changes: [
+      'changes',
+      optional(nullable(array(lazy(() => inventoryChangeSchema)))),
+    ],
+    ignoreUnchangedCounts: [
+      'ignore_unchanged_counts',
+      optional(nullable(boolean())),
+    ],
   }
 );

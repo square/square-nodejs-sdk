@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -16,26 +17,26 @@ export interface BusinessAppointmentSettings {
    * Types of the location allowed for bookings.
    * See [BusinessAppointmentSettingsBookingLocationType](#type-businessappointmentsettingsbookinglocationtype) for possible values
    */
-  locationTypes?: string[];
+  locationTypes?: string[] | null;
   /** Time units of a service duration for bookings. */
   alignmentTime?: string;
   /** The minimum lead time in seconds before a service can be booked. Bookings must be created at least this far ahead of the booking's starting time. */
-  minBookingLeadTimeSeconds?: number;
+  minBookingLeadTimeSeconds?: number | null;
   /** The maximum lead time in seconds before a service can be booked. Bookings must be created at most this far ahead of the booking's starting time. */
-  maxBookingLeadTimeSeconds?: number;
+  maxBookingLeadTimeSeconds?: number | null;
   /**
    * Indicates whether a customer can choose from all available time slots and have a staff member assigned
    * automatically (`true`) or not (`false`).
    */
-  anyTeamMemberBookingEnabled?: boolean;
+  anyTeamMemberBookingEnabled?: boolean | null;
   /** Indicates whether a customer can book multiple services in a single online booking. */
-  multipleServiceBookingEnabled?: boolean;
+  multipleServiceBookingEnabled?: boolean | null;
   /** Types of daily appointment limits. */
   maxAppointmentsPerDayLimitType?: string;
   /** The maximum number of daily appointments per team member or per location. */
-  maxAppointmentsPerDayLimit?: number;
+  maxAppointmentsPerDayLimit?: number | null;
   /** The cut-off time in seconds for allowing clients to cancel or reschedule an appointment. */
-  cancellationWindowSeconds?: number;
+  cancellationWindowSeconds?: number | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -48,30 +49,30 @@ export interface BusinessAppointmentSettings {
   /** The category of the seller’s cancellation policy. */
   cancellationPolicy?: string;
   /** The free-form text of the seller's cancellation policy. */
-  cancellationPolicyText?: string;
+  cancellationPolicyText?: string | null;
   /** Indicates whether customers has an assigned staff member (`true`) or can select s staff member of their choice (`false`). */
-  skipBookingFlowStaffSelection?: boolean;
+  skipBookingFlowStaffSelection?: boolean | null;
 }
 
 export const businessAppointmentSettingsSchema: Schema<BusinessAppointmentSettings> = object(
   {
-    locationTypes: ['location_types', optional(array(string()))],
+    locationTypes: ['location_types', optional(nullable(array(string())))],
     alignmentTime: ['alignment_time', optional(string())],
     minBookingLeadTimeSeconds: [
       'min_booking_lead_time_seconds',
-      optional(number()),
+      optional(nullable(number())),
     ],
     maxBookingLeadTimeSeconds: [
       'max_booking_lead_time_seconds',
-      optional(number()),
+      optional(nullable(number())),
     ],
     anyTeamMemberBookingEnabled: [
       'any_team_member_booking_enabled',
-      optional(boolean()),
+      optional(nullable(boolean())),
     ],
     multipleServiceBookingEnabled: [
       'multiple_service_booking_enabled',
-      optional(boolean()),
+      optional(nullable(boolean())),
     ],
     maxAppointmentsPerDayLimitType: [
       'max_appointments_per_day_limit_type',
@@ -79,21 +80,24 @@ export const businessAppointmentSettingsSchema: Schema<BusinessAppointmentSettin
     ],
     maxAppointmentsPerDayLimit: [
       'max_appointments_per_day_limit',
-      optional(number()),
+      optional(nullable(number())),
     ],
     cancellationWindowSeconds: [
       'cancellation_window_seconds',
-      optional(number()),
+      optional(nullable(number())),
     ],
     cancellationFeeMoney: [
       'cancellation_fee_money',
       optional(lazy(() => moneySchema)),
     ],
     cancellationPolicy: ['cancellation_policy', optional(string())],
-    cancellationPolicyText: ['cancellation_policy_text', optional(string())],
+    cancellationPolicyText: [
+      'cancellation_policy_text',
+      optional(nullable(string())),
+    ],
     skipBookingFlowStaffSelection: [
       'skip_booking_flow_staff_selection',
-      optional(boolean()),
+      optional(nullable(boolean())),
     ],
   }
 );

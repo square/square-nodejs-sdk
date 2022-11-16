@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Represents details about an `UNLINKED_ACTIVITY_REFUND` [gift card activity type]($m/GiftCardActivityType). */
@@ -13,7 +13,7 @@ export interface GiftCardActivityUnlinkedActivityRefund {
    */
   amountMoney: Money;
   /** A client-specified ID that associates the gift card activity with an entity in another system. */
-  referenceId?: string;
+  referenceId?: string | null;
   /** The ID of the refunded payment. This field is not used starting in Square version 2022-06-16. */
   paymentId?: string;
 }
@@ -21,7 +21,7 @@ export interface GiftCardActivityUnlinkedActivityRefund {
 export const giftCardActivityUnlinkedActivityRefundSchema: Schema<GiftCardActivityUnlinkedActivityRefund> = object(
   {
     amountMoney: ['amount_money', lazy(() => moneySchema)],
-    referenceId: ['reference_id', optional(string())],
+    referenceId: ['reference_id', optional(nullable(string()))],
     paymentId: ['payment_id', optional(string())],
   }
 );

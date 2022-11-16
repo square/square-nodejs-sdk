@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Represents a payment refund processed by the Square Terminal. Only supports Interac (Canadian debit network) payment refunds. */
@@ -34,7 +34,7 @@ export interface TerminalRefund {
    * Default: 5 minutes from creation.
    * Maximum: 5 minutes
    */
-  deadlineDuration?: string;
+  deadlineDuration?: string | null;
   /**
    * The status of the `TerminalRefund`.
    * Options: `PENDING`, `IN_PROGRESS`, `CANCEL_REQUESTED`, `CANCELED`, or `COMPLETED`.
@@ -59,7 +59,7 @@ export const terminalRefundSchema: Schema<TerminalRefund> = object({
   amountMoney: ['amount_money', lazy(() => moneySchema)],
   reason: ['reason', string()],
   deviceId: ['device_id', string()],
-  deadlineDuration: ['deadline_duration', optional(string())],
+  deadlineDuration: ['deadline_duration', optional(nullable(string()))],
   status: ['status', optional(string())],
   cancelReason: ['cancel_reason', optional(string())],
   createdAt: ['created_at', optional(string())],

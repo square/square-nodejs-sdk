@@ -2,6 +2,7 @@ import {
   array,
   dict,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -54,7 +55,7 @@ export interface Order {
    * A client-specified ID to associate an entity in another system
    * with this order.
    */
-  referenceId?: string;
+  referenceId?: string | null;
   /** Represents the origination details of an order. */
   source?: OrderSource;
   /**
@@ -64,9 +65,9 @@ export interface Order {
    * `customer_id` assigned to any underlying `Payment` objects is ignored and might result in the
    * creation of new [instant profiles](https://developer.squareup.com/docs/customers-api/what-it-does#instant-profiles).
    */
-  customerId?: string;
+  customerId?: string | null;
   /** The line items included in the order. */
-  lineItems?: OrderLineItem[];
+  lineItems?: OrderLineItem[] | null;
   /**
    * The list of all taxes associated with the order.
    * Taxes can be scoped to either `ORDER` or `LINE_ITEM`. For taxes with `LINE_ITEM` scope, an
@@ -77,7 +78,7 @@ export interface Order {
    * `line_items.taxes` field results in an error. Use `line_items.applied_taxes`
    * instead.
    */
-  taxes?: OrderLineItemTax[];
+  taxes?: OrderLineItemTax[] | null;
   /**
    * The list of all discounts associated with the order.
    * Discounts can be scoped to either `ORDER` or `LINE_ITEM`. For discounts scoped to `LINE_ITEM`,
@@ -88,15 +89,15 @@ export interface Order {
    * `line_items.discounts` field results in an error. Use `line_items.applied_discounts`
    * instead.
    */
-  discounts?: OrderLineItemDiscount[];
+  discounts?: OrderLineItemDiscount[] | null;
   /** A list of service charges applied to the order. */
-  serviceCharges?: OrderServiceCharge[];
+  serviceCharges?: OrderServiceCharge[] | null;
   /**
    * Details about order fulfillment.
    * Orders can only be created with at most one fulfillment. However, orders returned
    * by the API might contain multiple fulfillments.
    */
-  fulfillments?: Fulfillment[];
+  fulfillments?: Fulfillment[] | null;
   /**
    * A collection of items from sale orders being returned in this one. Normally part of an
    * itemized return or exchange. There is exactly one `Return` object per sale `Order` being
@@ -131,7 +132,7 @@ export interface Order {
    * application.
    * For more information, see  [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
    */
-  metadata?: Record<string, string>;
+  metadata?: Record<string, string> | null;
   /** The timestamp for when the order was created, in RFC 3339 format (for example, "2016-09-04T23:59:33.123Z"). */
   createdAt?: string;
   /** The timestamp for when the order was last updated, in RFC 3339 format (for example, "2016-09-04T23:59:33.123Z"). */
@@ -144,7 +145,7 @@ export interface Order {
    * The version number, which is incremented each time an update is committed to the order.
    * Orders not created through the API do not include a version number and
    * therefore cannot be updated.
-   * [Read more about working with versions](https://developer.squareup.com/docs/orders-api/manage-orders#update-orders).
+   * [Read more about working with versions](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders).
    */
   version?: number;
   /**
@@ -196,7 +197,7 @@ export interface Order {
    * A short-term identifier for the order (such as a customer first name,
    * table number, or auto-generated order number that resets daily).
    */
-  ticketName?: string;
+  ticketName?: string | null;
   /**
    * Pricing options for an order. The options affect how the order's price is calculated.
    * They can be used, for example, to apply automatic price adjustments that are based on preconfigured
@@ -219,22 +220,28 @@ export interface Order {
 export const orderSchema: Schema<Order> = object({
   id: ['id', optional(string())],
   locationId: ['location_id', string()],
-  referenceId: ['reference_id', optional(string())],
+  referenceId: ['reference_id', optional(nullable(string()))],
   source: ['source', optional(lazy(() => orderSourceSchema))],
-  customerId: ['customer_id', optional(string())],
-  lineItems: ['line_items', optional(array(lazy(() => orderLineItemSchema)))],
-  taxes: ['taxes', optional(array(lazy(() => orderLineItemTaxSchema)))],
+  customerId: ['customer_id', optional(nullable(string()))],
+  lineItems: [
+    'line_items',
+    optional(nullable(array(lazy(() => orderLineItemSchema)))),
+  ],
+  taxes: [
+    'taxes',
+    optional(nullable(array(lazy(() => orderLineItemTaxSchema)))),
+  ],
   discounts: [
     'discounts',
-    optional(array(lazy(() => orderLineItemDiscountSchema))),
+    optional(nullable(array(lazy(() => orderLineItemDiscountSchema)))),
   ],
   serviceCharges: [
     'service_charges',
-    optional(array(lazy(() => orderServiceChargeSchema))),
+    optional(nullable(array(lazy(() => orderServiceChargeSchema)))),
   ],
   fulfillments: [
     'fulfillments',
-    optional(array(lazy(() => fulfillmentSchema))),
+    optional(nullable(array(lazy(() => fulfillmentSchema)))),
   ],
   returns: ['returns', optional(array(lazy(() => orderReturnSchema)))],
   returnAmounts: [
@@ -248,7 +255,7 @@ export const orderSchema: Schema<Order> = object({
   ],
   tenders: ['tenders', optional(array(lazy(() => tenderSchema)))],
   refunds: ['refunds', optional(array(lazy(() => refundSchema)))],
-  metadata: ['metadata', optional(dict(string()))],
+  metadata: ['metadata', optional(nullable(dict(string())))],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
   closedAt: ['closed_at', optional(string())],
@@ -265,7 +272,7 @@ export const orderSchema: Schema<Order> = object({
     'total_service_charge_money',
     optional(lazy(() => moneySchema)),
   ],
-  ticketName: ['ticket_name', optional(string())],
+  ticketName: ['ticket_name', optional(nullable(string()))],
   pricingOptions: [
     'pricing_options',
     optional(lazy(() => orderPricingOptionsSchema)),

@@ -1,6 +1,7 @@
 import {
   array,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -50,9 +51,9 @@ export interface Payout {
    */
   type?: string;
   /** A list of transfer fees and any taxes on the fees assessed by Square for this payout. */
-  payoutFee?: PayoutFee[];
+  payoutFee?: PayoutFee[] | null;
   /** The calendar date, in ISO 8601 format (YYYY-MM-DD), when the payout is due to arrive in the seller’s banking destination. */
-  arrivalDate?: string;
+  arrivalDate?: string | null;
 }
 
 export const payoutSchema: Schema<Payout> = object({
@@ -65,6 +66,9 @@ export const payoutSchema: Schema<Payout> = object({
   destination: ['destination', optional(lazy(() => destinationSchema))],
   version: ['version', optional(number())],
   type: ['type', optional(string())],
-  payoutFee: ['payout_fee', optional(array(lazy(() => payoutFeeSchema)))],
-  arrivalDate: ['arrival_date', optional(string())],
+  payoutFee: [
+    'payout_fee',
+    optional(nullable(array(lazy(() => payoutFeeSchema)))),
+  ],
+  arrivalDate: ['arrival_date', optional(nullable(string()))],
 });

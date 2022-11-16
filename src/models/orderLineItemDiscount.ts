@@ -3,6 +3,7 @@ import {
   bigint,
   dict,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -19,13 +20,13 @@ import { Money, moneySchema } from './money';
  */
 export interface OrderLineItemDiscount {
   /** A unique ID that identifies the discount only within this order. */
-  uid?: string;
+  uid?: string | null;
   /** The catalog object ID referencing [CatalogDiscount]($m/CatalogDiscount). */
-  catalogObjectId?: string;
+  catalogObjectId?: string | null;
   /** The version of the catalog object that this discount references. */
-  catalogVersion?: bigint;
+  catalogVersion?: bigint | null;
   /** The discount's name. */
-  name?: string;
+  name?: string | null;
   /** Indicates how the discount is applied to the associated line item or order. */
   type?: string;
   /**
@@ -33,7 +34,7 @@ export interface OrderLineItemDiscount {
    * A value of `7.25` corresponds to a percentage of 7.25%.
    * `percentage` is not set for amount-based discounts.
    */
-  percentage?: string;
+  percentage?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -67,7 +68,7 @@ export interface OrderLineItemDiscount {
    * application.
    * For more information, see [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
    */
-  metadata?: Record<string, string>;
+  metadata?: Record<string, string> | null;
   /** Indicates whether this is a line-item or order-level discount. */
   scope?: string;
   /**
@@ -89,15 +90,15 @@ export interface OrderLineItemDiscount {
 
 export const orderLineItemDiscountSchema: Schema<OrderLineItemDiscount> = object(
   {
-    uid: ['uid', optional(string())],
-    catalogObjectId: ['catalog_object_id', optional(string())],
-    catalogVersion: ['catalog_version', optional(bigint())],
-    name: ['name', optional(string())],
+    uid: ['uid', optional(nullable(string()))],
+    catalogObjectId: ['catalog_object_id', optional(nullable(string()))],
+    catalogVersion: ['catalog_version', optional(nullable(bigint()))],
+    name: ['name', optional(nullable(string()))],
     type: ['type', optional(string())],
-    percentage: ['percentage', optional(string())],
+    percentage: ['percentage', optional(nullable(string()))],
     amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
     appliedMoney: ['applied_money', optional(lazy(() => moneySchema))],
-    metadata: ['metadata', optional(dict(string()))],
+    metadata: ['metadata', optional(nullable(dict(string())))],
     scope: ['scope', optional(string())],
     rewardIds: ['reward_ids', optional(array(string()))],
     pricingRuleId: ['pricing_rule_id', optional(string())],

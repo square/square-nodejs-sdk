@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   OrderMoneyAmounts,
   orderMoneyAmountsSchema,
@@ -24,14 +32,14 @@ import {
 /** The set of line items, service charges, taxes, discounts, tips, and other items being returned in an order. */
 export interface OrderReturn {
   /** A unique ID that identifies the return only within this order. */
-  uid?: string;
+  uid?: string | null;
   /**
    * An order that contains the original sale of these return line items. This is unset
    * for unlinked returns.
    */
-  sourceOrderId?: string;
+  sourceOrderId?: string | null;
   /** A collection of line items that are being returned. */
-  returnLineItems?: OrderReturnLineItem[];
+  returnLineItems?: OrderReturnLineItem[] | null;
   /** A collection of service charges that are being returned. */
   returnServiceCharges?: OrderReturnServiceCharge[];
   /**
@@ -39,13 +47,13 @@ export interface OrderReturn {
    * applied tax amount to be returned. The taxes must reference a top-level tax ID from the source
    * order.
    */
-  returnTaxes?: OrderReturnTax[];
+  returnTaxes?: OrderReturnTax[] | null;
   /**
    * A collection of references to discounts being returned for an order, including the total
    * applied discount amount to be returned. The discounts must reference a top-level discount ID
    * from the source order.
    */
-  returnDiscounts?: OrderReturnDiscount[];
+  returnDiscounts?: OrderReturnDiscount[] | null;
   /**
    * A rounding adjustment of the money being returned. Commonly used to apply cash rounding
    * when the minimum unit of the account is smaller than the lowest physical denomination of the currency.
@@ -56,11 +64,11 @@ export interface OrderReturn {
 }
 
 export const orderReturnSchema: Schema<OrderReturn> = object({
-  uid: ['uid', optional(string())],
-  sourceOrderId: ['source_order_id', optional(string())],
+  uid: ['uid', optional(nullable(string()))],
+  sourceOrderId: ['source_order_id', optional(nullable(string()))],
   returnLineItems: [
     'return_line_items',
-    optional(array(lazy(() => orderReturnLineItemSchema))),
+    optional(nullable(array(lazy(() => orderReturnLineItemSchema)))),
   ],
   returnServiceCharges: [
     'return_service_charges',
@@ -68,11 +76,11 @@ export const orderReturnSchema: Schema<OrderReturn> = object({
   ],
   returnTaxes: [
     'return_taxes',
-    optional(array(lazy(() => orderReturnTaxSchema))),
+    optional(nullable(array(lazy(() => orderReturnTaxSchema)))),
   ],
   returnDiscounts: [
     'return_discounts',
-    optional(array(lazy(() => orderReturnDiscountSchema))),
+    optional(nullable(array(lazy(() => orderReturnDiscountSchema)))),
   ],
   roundingAdjustment: [
     'rounding_adjustment',

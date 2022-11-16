@@ -1,6 +1,7 @@
 import {
   bigint,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -15,11 +16,11 @@ import { Money, moneySchema } from './money';
  */
 export interface SubscriptionPhase {
   /** The Square-assigned ID of the subscription phase. This field cannot be changed after a `SubscriptionPhase` is created. */
-  uid?: string;
+  uid?: string | null;
   /** Determines the billing cadence of a [Subscription]($m/Subscription) */
   cadence: string;
   /** The number of `cadence`s the phase lasts. If not set, the phase never ends. Only the last phase can be indefinite. This field cannot be changed after a `SubscriptionPhase` is created. */
-  periods?: number;
+  periods?: number | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -30,16 +31,16 @@ export interface SubscriptionPhase {
    */
   recurringPriceMoney?: Money;
   /** The position this phase appears in the sequence of phases defined for the plan, indexed from 0. This field cannot be changed after a `SubscriptionPhase` is created. */
-  ordinal?: bigint;
+  ordinal?: bigint | null;
 }
 
 export const subscriptionPhaseSchema: Schema<SubscriptionPhase> = object({
-  uid: ['uid', optional(string())],
+  uid: ['uid', optional(nullable(string()))],
   cadence: ['cadence', string()],
-  periods: ['periods', optional(number())],
+  periods: ['periods', optional(nullable(number()))],
   recurringPriceMoney: [
     'recurring_price_money',
     optional(lazy(() => moneySchema)),
   ],
-  ordinal: ['ordinal', optional(bigint())],
+  ordinal: ['ordinal', optional(nullable(bigint()))],
 });

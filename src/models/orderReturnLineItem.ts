@@ -2,6 +2,7 @@ import {
   array,
   bigint,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -28,11 +29,11 @@ import {
 /** The line item being returned in an order. */
 export interface OrderReturnLineItem {
   /** A unique ID for this return line-item entry. */
-  uid?: string;
+  uid?: string | null;
   /** The `uid` of the line item in the original sale order. */
-  sourceLineItemUid?: string;
+  sourceLineItemUid?: string | null;
   /** The name of the line item. */
-  name?: string;
+  name?: string | null;
   /**
    * The quantity returned, formatted as a decimal number.
    * For example, `"3"`.
@@ -46,31 +47,31 @@ export interface OrderReturnLineItem {
    */
   quantityUnit?: OrderQuantityUnit;
   /** The note of the return line item. */
-  note?: string;
+  note?: string | null;
   /** The [CatalogItemVariation]($m/CatalogItemVariation) ID applied to this return line item. */
-  catalogObjectId?: string;
+  catalogObjectId?: string | null;
   /** The version of the catalog object that this line item references. */
-  catalogVersion?: bigint;
+  catalogVersion?: bigint | null;
   /** The name of the variation applied to this return line item. */
-  variationName?: string;
+  variationName?: string | null;
   /** Represents the line item type. */
   itemType?: string;
   /** The [CatalogModifier]($m/CatalogModifier)s applied to this line item. */
-  returnModifiers?: OrderReturnLineItemModifier[];
+  returnModifiers?: OrderReturnLineItemModifier[] | null;
   /**
    * The list of references to `OrderReturnTax` entities applied to the return line item. Each
    * `OrderLineItemAppliedTax` has a `tax_uid` that references the `uid` of a top-level
    * `OrderReturnTax` applied to the return line item. On reads, the applied amount
    * is populated.
    */
-  appliedTaxes?: OrderLineItemAppliedTax[];
+  appliedTaxes?: OrderLineItemAppliedTax[] | null;
   /**
    * The list of references to `OrderReturnDiscount` entities applied to the return line item. Each
    * `OrderLineItemAppliedDiscount` has a `discount_uid` that references the `uid` of a top-level
    * `OrderReturnDiscount` applied to the return line item. On reads, the applied amount
    * is populated.
    */
-  appliedDiscounts?: OrderLineItemAppliedDiscount[];
+  appliedDiscounts?: OrderLineItemAppliedDiscount[] | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -128,30 +129,30 @@ export interface OrderReturnLineItem {
 }
 
 export const orderReturnLineItemSchema: Schema<OrderReturnLineItem> = object({
-  uid: ['uid', optional(string())],
-  sourceLineItemUid: ['source_line_item_uid', optional(string())],
-  name: ['name', optional(string())],
+  uid: ['uid', optional(nullable(string()))],
+  sourceLineItemUid: ['source_line_item_uid', optional(nullable(string()))],
+  name: ['name', optional(nullable(string()))],
   quantity: ['quantity', string()],
   quantityUnit: [
     'quantity_unit',
     optional(lazy(() => orderQuantityUnitSchema)),
   ],
-  note: ['note', optional(string())],
-  catalogObjectId: ['catalog_object_id', optional(string())],
-  catalogVersion: ['catalog_version', optional(bigint())],
-  variationName: ['variation_name', optional(string())],
+  note: ['note', optional(nullable(string()))],
+  catalogObjectId: ['catalog_object_id', optional(nullable(string()))],
+  catalogVersion: ['catalog_version', optional(nullable(bigint()))],
+  variationName: ['variation_name', optional(nullable(string()))],
   itemType: ['item_type', optional(string())],
   returnModifiers: [
     'return_modifiers',
-    optional(array(lazy(() => orderReturnLineItemModifierSchema))),
+    optional(nullable(array(lazy(() => orderReturnLineItemModifierSchema)))),
   ],
   appliedTaxes: [
     'applied_taxes',
-    optional(array(lazy(() => orderLineItemAppliedTaxSchema))),
+    optional(nullable(array(lazy(() => orderLineItemAppliedTaxSchema)))),
   ],
   appliedDiscounts: [
     'applied_discounts',
-    optional(array(lazy(() => orderLineItemAppliedDiscountSchema))),
+    optional(nullable(array(lazy(() => orderLineItemAppliedDiscountSchema)))),
   ],
   basePriceMoney: ['base_price_money', optional(lazy(() => moneySchema))],
   variationTotalPriceMoney: [

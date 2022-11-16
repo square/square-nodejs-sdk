@@ -1,6 +1,7 @@
 import {
   array,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -44,7 +45,7 @@ export interface CatalogCustomAttributeDefinition {
    * Seller-oriented description of the meaning of this Custom Attribute,
    * any constraints that the seller should observe, etc. May be displayed as a tooltip in Square UIs.
    */
-  description?: string;
+  description?: string | null;
   /** Represents information about the application used to generate a change. */
   sourceApplication?: SourceApplication;
   /**
@@ -82,14 +83,14 @@ export interface CatalogCustomAttributeDefinition {
    * custom attribute definition has been created.
    * Must be between 1 and 60 characters, and may only contain the characters `[a-zA-Z0-9_-]`.
    */
-  key?: string;
+  key?: string | null;
 }
 
 export const catalogCustomAttributeDefinitionSchema: Schema<CatalogCustomAttributeDefinition> = object(
   {
     type: ['type', string()],
     name: ['name', string()],
-    description: ['description', optional(string())],
+    description: ['description', optional(nullable(string()))],
     sourceApplication: [
       'source_application',
       optional(lazy(() => sourceApplicationSchema)),
@@ -115,6 +116,6 @@ export const catalogCustomAttributeDefinitionSchema: Schema<CatalogCustomAttribu
       'custom_attribute_usage_count',
       optional(number()),
     ],
-    key: ['key', optional(string())],
+    key: ['key', optional(nullable(string()))],
   }
 );

@@ -2,6 +2,7 @@ import {
   array,
   bigint,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -33,44 +34,44 @@ export interface Customer {
    * or [ListGiftCards]($e/GiftCards/ListGiftCards) (for gift cards on file) and including the `customer_id` query parameter.
    * For more information, see [Migration notes](https://developer.squareup.com/docs/customers-api/what-it-does#migrate-customer-cards).
    */
-  cards?: Card[];
+  cards?: Card[] | null;
   /** The given name (that is, the first name) associated with the customer profile. */
-  givenName?: string;
+  givenName?: string | null;
   /** The family name (that is, the last name) associated with the customer profile. */
-  familyName?: string;
+  familyName?: string | null;
   /** A nickname for the customer profile. */
-  nickname?: string;
+  nickname?: string | null;
   /** A business name associated with the customer profile. */
-  companyName?: string;
+  companyName?: string | null;
   /** The email address associated with the customer profile. */
-  emailAddress?: string;
+  emailAddress?: string | null;
   /**
    * Represents a postal address in a country.
    * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
    */
   address?: Address;
   /** The phone number associated with the customer profile. */
-  phoneNumber?: string;
+  phoneNumber?: string | null;
   /**
    * The birthday associated with the customer profile, in `YYYY-MM-DD` format. For example, `1998-09-21`
    * represents September 21, 1998, and `0000-09-21` represents September 21 (without a birth year).
    */
-  birthday?: string;
+  birthday?: string | null;
   /**
    * An optional second ID used to associate the customer profile with an
    * entity in another system.
    */
-  referenceId?: string;
+  referenceId?: string | null;
   /** A custom note associated with the customer profile. */
-  note?: string;
+  note?: string | null;
   /** Represents communication preferences for the customer profile. */
   preferences?: CustomerPreferences;
   /** Indicates the method used to create the customer profile. */
   creationSource?: string;
   /** The IDs of customer groups the customer belongs to. */
-  groupIds?: string[];
+  groupIds?: string[] | null;
   /** The IDs of segments the customer belongs to. */
-  segmentIds?: string[];
+  segmentIds?: string[] | null;
   /** The Square-assigned version number of the customer profile. The version number is incremented each time an update is committed to the customer profile, except for changes to customer segment membership and cards on file. */
   version?: bigint;
   /**
@@ -84,21 +85,21 @@ export const customerSchema: Schema<Customer> = object({
   id: ['id', optional(string())],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
-  cards: ['cards', optional(array(lazy(() => cardSchema)))],
-  givenName: ['given_name', optional(string())],
-  familyName: ['family_name', optional(string())],
-  nickname: ['nickname', optional(string())],
-  companyName: ['company_name', optional(string())],
-  emailAddress: ['email_address', optional(string())],
+  cards: ['cards', optional(nullable(array(lazy(() => cardSchema))))],
+  givenName: ['given_name', optional(nullable(string()))],
+  familyName: ['family_name', optional(nullable(string()))],
+  nickname: ['nickname', optional(nullable(string()))],
+  companyName: ['company_name', optional(nullable(string()))],
+  emailAddress: ['email_address', optional(nullable(string()))],
   address: ['address', optional(lazy(() => addressSchema))],
-  phoneNumber: ['phone_number', optional(string())],
-  birthday: ['birthday', optional(string())],
-  referenceId: ['reference_id', optional(string())],
-  note: ['note', optional(string())],
+  phoneNumber: ['phone_number', optional(nullable(string()))],
+  birthday: ['birthday', optional(nullable(string()))],
+  referenceId: ['reference_id', optional(nullable(string()))],
+  note: ['note', optional(nullable(string()))],
   preferences: ['preferences', optional(lazy(() => customerPreferencesSchema))],
   creationSource: ['creation_source', optional(string())],
-  groupIds: ['group_ids', optional(array(string()))],
-  segmentIds: ['segment_ids', optional(array(string()))],
+  groupIds: ['group_ids', optional(nullable(array(string())))],
+  segmentIds: ['segment_ids', optional(nullable(array(string())))],
   version: ['version', optional(bigint())],
   taxIds: ['tax_ids', optional(lazy(() => customerTaxIdsSchema))],
 });

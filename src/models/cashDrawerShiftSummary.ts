@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -13,13 +13,13 @@ export interface CashDrawerShiftSummary {
   /** The current state of a cash drawer shift. */
   state?: string;
   /** The shift start time in ISO 8601 format. */
-  openedAt?: string;
+  openedAt?: string | null;
   /** The shift end time in ISO 8601 format. */
-  endedAt?: string;
+  endedAt?: string | null;
   /** The shift close time in ISO 8601 format. */
-  closedAt?: string;
+  closedAt?: string | null;
   /** An employee free-text description of a cash drawer shift. */
-  description?: string;
+  description?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -53,10 +53,10 @@ export const cashDrawerShiftSummarySchema: Schema<CashDrawerShiftSummary> = obje
   {
     id: ['id', optional(string())],
     state: ['state', optional(string())],
-    openedAt: ['opened_at', optional(string())],
-    endedAt: ['ended_at', optional(string())],
-    closedAt: ['closed_at', optional(string())],
-    description: ['description', optional(string())],
+    openedAt: ['opened_at', optional(nullable(string()))],
+    endedAt: ['ended_at', optional(nullable(string()))],
+    closedAt: ['closed_at', optional(nullable(string()))],
+    description: ['description', optional(nullable(string()))],
     openedCashMoney: ['opened_cash_money', optional(lazy(() => moneySchema))],
     expectedCashMoney: [
       'expected_cash_money',

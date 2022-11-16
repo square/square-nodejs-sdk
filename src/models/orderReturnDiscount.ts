@@ -1,4 +1,12 @@
-import { bigint, lazy, object, optional, Schema, string } from '../schema';
+import {
+  bigint,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -10,15 +18,15 @@ import { Money, moneySchema } from './money';
  */
 export interface OrderReturnDiscount {
   /** A unique ID that identifies the returned discount only within this order. */
-  uid?: string;
+  uid?: string | null;
   /** The discount `uid` from the order that contains the original application of this discount. */
-  sourceDiscountUid?: string;
+  sourceDiscountUid?: string | null;
   /** The catalog object ID referencing [CatalogDiscount]($m/CatalogDiscount). */
-  catalogObjectId?: string;
+  catalogObjectId?: string | null;
   /** The version of the catalog object that this discount references. */
-  catalogVersion?: bigint;
+  catalogVersion?: bigint | null;
   /** The discount's name. */
-  name?: string;
+  name?: string | null;
   /** Indicates how the discount is applied to the associated line item or order. */
   type?: string;
   /**
@@ -26,7 +34,7 @@ export interface OrderReturnDiscount {
    * A value of `"7.25"` corresponds to a percentage of 7.25%.
    * `percentage` is not set for amount-based discounts.
    */
-  percentage?: string;
+  percentage?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -50,13 +58,13 @@ export interface OrderReturnDiscount {
 }
 
 export const orderReturnDiscountSchema: Schema<OrderReturnDiscount> = object({
-  uid: ['uid', optional(string())],
-  sourceDiscountUid: ['source_discount_uid', optional(string())],
-  catalogObjectId: ['catalog_object_id', optional(string())],
-  catalogVersion: ['catalog_version', optional(bigint())],
-  name: ['name', optional(string())],
+  uid: ['uid', optional(nullable(string()))],
+  sourceDiscountUid: ['source_discount_uid', optional(nullable(string()))],
+  catalogObjectId: ['catalog_object_id', optional(nullable(string()))],
+  catalogVersion: ['catalog_version', optional(nullable(bigint()))],
+  name: ['name', optional(nullable(string()))],
   type: ['type', optional(string())],
-  percentage: ['percentage', optional(string())],
+  percentage: ['percentage', optional(nullable(string()))],
   amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
   appliedMoney: ['applied_money', optional(lazy(() => moneySchema))],
   scope: ['scope', optional(string())],

@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * An additional seller-defined and customer-facing field to include on the invoice. For more information,
@@ -8,9 +8,9 @@ import { object, optional, Schema, string } from '../schema';
  */
 export interface InvoiceCustomField {
   /** The label or title of the custom field. This field is required for a custom field. */
-  label?: string;
+  label?: string | null;
   /** The text of the custom field. If omitted, only the label is rendered. */
-  value?: string;
+  value?: string | null;
   /**
    * Indicates where to render a custom field on the Square-hosted invoice page and in emailed or PDF
    * copies of the invoice.
@@ -19,7 +19,7 @@ export interface InvoiceCustomField {
 }
 
 export const invoiceCustomFieldSchema: Schema<InvoiceCustomField> = object({
-  label: ['label', optional(string())],
-  value: ['value', optional(string())],
+  label: ['label', optional(nullable(string()))],
+  value: ['value', optional(nullable(string()))],
   placement: ['placement', optional(string())],
 });

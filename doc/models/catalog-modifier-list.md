@@ -28,6 +28,7 @@ the modifier list are allowed.
 {
   "id": "#MilkType",
   "modifier_list_data": {
+    "allow_quantities": false,
     "modifiers": [
       {
         "modifier_data": {

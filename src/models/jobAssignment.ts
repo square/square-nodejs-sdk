@@ -1,4 +1,12 @@
-import { lazy, number, object, optional, Schema, string } from '../schema';
+import {
+  lazy,
+  nullable,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /** An object describing a job that a team member is assigned to. */
@@ -26,7 +34,7 @@ export interface JobAssignment {
    */
   annualRate?: Money;
   /** The planned hours per week for the job. Set if the job `PayType` is `SALARY`. */
-  weeklyHours?: number;
+  weeklyHours?: number | null;
 }
 
 export const jobAssignmentSchema: Schema<JobAssignment> = object({
@@ -34,5 +42,5 @@ export const jobAssignmentSchema: Schema<JobAssignment> = object({
   payType: ['pay_type', string()],
   hourlyRate: ['hourly_rate', optional(lazy(() => moneySchema))],
   annualRate: ['annual_rate', optional(lazy(() => moneySchema))],
-  weeklyHours: ['weekly_hours', optional(number())],
+  weeklyHours: ['weekly_hours', optional(nullable(number()))],
 });

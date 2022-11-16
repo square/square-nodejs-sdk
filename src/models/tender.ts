@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   AdditionalRecipient,
   additionalRecipientSchema,
@@ -18,13 +26,13 @@ export interface Tender {
   /** The tender's unique ID. It is the associated payment ID. */
   id?: string;
   /** The ID of the transaction's associated location. */
-  locationId?: string;
+  locationId?: string | null;
   /** The ID of the tender's associated transaction. */
-  transactionId?: string;
+  transactionId?: string | null;
   /** The timestamp for when the tender was created, in RFC 3339 format. */
   createdAt?: string;
   /** An optional note associated with the tender at the time of payment. */
-  note?: string;
+  note?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -56,7 +64,7 @@ export interface Tender {
    * If the tender is associated with a customer or represents a customer's card on file,
    * this is the ID of the associated customer.
    */
-  customerId?: string;
+  customerId?: string | null;
   /** Indicates a tender's type. */
   type: string;
   /** Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD` */
@@ -67,33 +75,33 @@ export interface Tender {
    * Additional recipients (other than the merchant) receiving a portion of this tender.
    * For example, fees assessed on the purchase by a third party integration.
    */
-  additionalRecipients?: AdditionalRecipient[];
+  additionalRecipients?: AdditionalRecipient[] | null;
   /**
    * The ID of the [Payment]($m/Payment) that corresponds to this tender.
    * This value is only present for payments created with the v2 Payments API.
    */
-  paymentId?: string;
+  paymentId?: string | null;
 }
 
 export const tenderSchema: Schema<Tender> = object({
   id: ['id', optional(string())],
-  locationId: ['location_id', optional(string())],
-  transactionId: ['transaction_id', optional(string())],
+  locationId: ['location_id', optional(nullable(string()))],
+  transactionId: ['transaction_id', optional(nullable(string()))],
   createdAt: ['created_at', optional(string())],
-  note: ['note', optional(string())],
+  note: ['note', optional(nullable(string()))],
   amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
   tipMoney: ['tip_money', optional(lazy(() => moneySchema))],
   processingFeeMoney: [
     'processing_fee_money',
     optional(lazy(() => moneySchema)),
   ],
-  customerId: ['customer_id', optional(string())],
+  customerId: ['customer_id', optional(nullable(string()))],
   type: ['type', string()],
   cardDetails: ['card_details', optional(lazy(() => tenderCardDetailsSchema))],
   cashDetails: ['cash_details', optional(lazy(() => tenderCashDetailsSchema))],
   additionalRecipients: [
     'additional_recipients',
-    optional(array(lazy(() => additionalRecipientSchema))),
+    optional(nullable(array(lazy(() => additionalRecipientSchema)))),
   ],
-  paymentId: ['payment_id', optional(string())],
+  paymentId: ['payment_id', optional(nullable(string()))],
 });

@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -18,13 +19,13 @@ export interface CatalogItemModifierListInfo {
   /** The ID of the `CatalogModifierList` controlled by this `CatalogModifierListInfo`. */
   modifierListId: string;
   /** A set of `CatalogModifierOverride` objects that override whether a given `CatalogModifier` is enabled by default. */
-  modifierOverrides?: CatalogModifierOverride[];
+  modifierOverrides?: CatalogModifierOverride[] | null;
   /** If 0 or larger, the smallest number of `CatalogModifier`s that must be selected from this `CatalogModifierList`. */
-  minSelectedModifiers?: number;
+  minSelectedModifiers?: number | null;
   /** If 0 or larger, the largest number of `CatalogModifier`s that can be selected from this `CatalogModifierList`. */
-  maxSelectedModifiers?: number;
+  maxSelectedModifiers?: number | null;
   /** If `true`, enable this `CatalogModifierList`. The default value is `true`. */
-  enabled?: boolean;
+  enabled?: boolean | null;
 }
 
 export const catalogItemModifierListInfoSchema: Schema<CatalogItemModifierListInfo> = object(
@@ -32,10 +33,16 @@ export const catalogItemModifierListInfoSchema: Schema<CatalogItemModifierListIn
     modifierListId: ['modifier_list_id', string()],
     modifierOverrides: [
       'modifier_overrides',
-      optional(array(lazy(() => catalogModifierOverrideSchema))),
+      optional(nullable(array(lazy(() => catalogModifierOverrideSchema)))),
     ],
-    minSelectedModifiers: ['min_selected_modifiers', optional(number())],
-    maxSelectedModifiers: ['max_selected_modifiers', optional(number())],
-    enabled: ['enabled', optional(boolean())],
+    minSelectedModifiers: [
+      'min_selected_modifiers',
+      optional(nullable(number())),
+    ],
+    maxSelectedModifiers: [
+      'max_selected_modifiers',
+      optional(nullable(number())),
+    ],
+    enabled: ['enabled', optional(nullable(boolean()))],
   }
 );

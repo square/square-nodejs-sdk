@@ -1,5 +1,6 @@
 import {
   dict,
+  nullable,
   number,
   object,
   optional,
@@ -28,24 +29,24 @@ export interface CustomAttributeDefinition {
    * after the custom attribute definition is created. This field is required when creating
    * a definition and must be unique per application, seller, and resource type.
    */
-  key?: string;
+  key?: string | null;
   /**
    * The JSON schema for the custom attribute definition, which determines the data type of the corresponding custom attributes. For more information,
    * see [Custom Attributes Overview](https://developer.squareup.com/docs/devtools/customattributes/overview). This field is required when creating a definition.
    */
-  schema?: Record<string, unknown>;
+  schema?: Record<string, unknown> | null;
   /**
    * The name of the custom attribute definition for API and seller-facing UI purposes. The name must
    * be unique within the seller and application pair. This field is required if the
    * `visibility` field is `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
    */
-  name?: string;
+  name?: string | null;
   /**
    * Seller-oriented description of the custom attribute definition, including any constraints
    * that the seller should observe. May be displayed as a tooltip in Square UIs. This field is
    * required if the `visibility` field is `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
    */
-  description?: string;
+  description?: string | null;
   /**
    * The level of permission that a seller or other applications requires to
    * view this custom attribute definition.
@@ -75,10 +76,10 @@ export interface CustomAttributeDefinition {
 
 export const customAttributeDefinitionSchema: Schema<CustomAttributeDefinition> = object(
   {
-    key: ['key', optional(string())],
-    schema: ['schema', optional(dict(unknown()))],
-    name: ['name', optional(string())],
-    description: ['description', optional(string())],
+    key: ['key', optional(nullable(string()))],
+    schema: ['schema', optional(nullable(dict(unknown())))],
+    name: ['name', optional(nullable(string()))],
+    description: ['description', optional(nullable(string()))],
     visibility: ['visibility', optional(string())],
     version: ['version', optional(number())],
     updatedAt: ['updated_at', optional(string())],

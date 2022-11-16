@@ -1,4 +1,12 @@
-import { array, lazy, number, object, optional, Schema } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  number,
+  object,
+  optional,
+  Schema,
+} from '../schema';
 import {
   CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection,
   catalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelectionSchema,
@@ -12,24 +20,29 @@ export interface CatalogCustomAttributeDefinitionSelectionConfig {
    * affect existing custom attribute values on objects. Clients need to
    * handle custom attributes with more selected values than allowed by this limit.
    */
-  maxAllowedSelections?: number;
+  maxAllowedSelections?: number | null;
   /**
    * The set of valid `CatalogCustomAttributeSelections`. Up to a maximum of 100
    * selections can be defined. Can be modified.
    */
-  allowedSelections?: CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection[];
+  allowedSelections?: CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection[] | null;
 }
 
 export const catalogCustomAttributeDefinitionSelectionConfigSchema: Schema<CatalogCustomAttributeDefinitionSelectionConfig> = object(
   {
-    maxAllowedSelections: ['max_allowed_selections', optional(number())],
+    maxAllowedSelections: [
+      'max_allowed_selections',
+      optional(nullable(number())),
+    ],
     allowedSelections: [
       'allowed_selections',
       optional(
-        array(
-          lazy(
-            () =>
-              catalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelectionSchema
+        nullable(
+          array(
+            lazy(
+              () =>
+                catalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelectionSchema
+            )
           )
         )
       ),

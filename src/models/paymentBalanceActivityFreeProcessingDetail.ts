@@ -1,10 +1,10 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 export interface PaymentBalanceActivityFreeProcessingDetail {
   /** The ID of the payment associated with this activity. */
-  paymentId?: string;
+  paymentId?: string | null;
 }
 
 export const paymentBalanceActivityFreeProcessingDetailSchema: Schema<PaymentBalanceActivityFreeProcessingDetail> = object(
-  { paymentId: ['payment_id', optional(string())] }
+  { paymentId: ['payment_id', optional(nullable(string()))] }
 );

@@ -1,4 +1,12 @@
-import { boolean, lazy, object, optional, Schema, string } from '../schema';
+import {
+  boolean,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   OrderFulfillmentPickupDetailsCurbsidePickupDetails,
   orderFulfillmentPickupDetailsCurbsidePickupDetailsSchema,
@@ -19,14 +27,14 @@ export interface OrderFulfillmentPickupDetails {
    * If `expires_at` is not set, this pickup fulfillment is automatically accepted when
    * placed.
    */
-  expiresAt?: string;
+  expiresAt?: string | null;
   /**
    * The duration of time after which an open and accepted pickup fulfillment
    * is automatically moved to the `COMPLETED` state. The duration must be in RFC 3339
    * format (for example, "P1W3D").
    * If not set, this pickup fulfillment remains accepted until it is canceled or completed.
    */
-  autoCompleteDuration?: string;
+  autoCompleteDuration?: string | null;
   /** The schedule type of the pickup fulfillment. */
   scheduleType?: string;
   /**
@@ -36,23 +44,23 @@ export interface OrderFulfillmentPickupDetails {
    * For fulfillments with the schedule type `ASAP`, this is automatically set
    * to the current time plus the expected duration to prepare the fulfillment.
    */
-  pickupAt?: string;
+  pickupAt?: string | null;
   /**
    * The window of time in which the order should be picked up after the `pickup_at` timestamp.
    * Must be in RFC 3339 duration format, e.g., "P1W3D". Can be used as an
    * informational guideline for merchants.
    */
-  pickupWindowDuration?: string;
+  pickupWindowDuration?: string | null;
   /**
    * The duration of time it takes to prepare this fulfillment.
    * The duration must be in RFC 3339 format (for example, "P1W3D").
    */
-  prepTimeDuration?: string;
+  prepTimeDuration?: string | null;
   /**
    * A note to provide additional instructions about the pickup
    * fulfillment displayed in the Square Point of Sale application and set by the API.
    */
-  note?: string;
+  note?: string | null;
   /**
    * The [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates)
    * indicating when the fulfillment was placed. The timestamp must be in RFC 3339 format
@@ -96,9 +104,9 @@ export interface OrderFulfillmentPickupDetails {
    */
   canceledAt?: string;
   /** A description of why the pickup was canceled. The maximum length: 100 characters. */
-  cancelReason?: string;
+  cancelReason?: string | null;
   /** If set to `true`, indicates that this pickup order is for curbside pickup, not in-store pickup. */
-  isCurbsidePickup?: boolean;
+  isCurbsidePickup?: boolean | null;
   /** Specific details for curbside pickup. */
   curbsidePickupDetails?: OrderFulfillmentPickupDetailsCurbsidePickupDetails;
 }
@@ -109,13 +117,19 @@ export const orderFulfillmentPickupDetailsSchema: Schema<OrderFulfillmentPickupD
       'recipient',
       optional(lazy(() => orderFulfillmentRecipientSchema)),
     ],
-    expiresAt: ['expires_at', optional(string())],
-    autoCompleteDuration: ['auto_complete_duration', optional(string())],
+    expiresAt: ['expires_at', optional(nullable(string()))],
+    autoCompleteDuration: [
+      'auto_complete_duration',
+      optional(nullable(string())),
+    ],
     scheduleType: ['schedule_type', optional(string())],
-    pickupAt: ['pickup_at', optional(string())],
-    pickupWindowDuration: ['pickup_window_duration', optional(string())],
-    prepTimeDuration: ['prep_time_duration', optional(string())],
-    note: ['note', optional(string())],
+    pickupAt: ['pickup_at', optional(nullable(string()))],
+    pickupWindowDuration: [
+      'pickup_window_duration',
+      optional(nullable(string())),
+    ],
+    prepTimeDuration: ['prep_time_duration', optional(nullable(string()))],
+    note: ['note', optional(nullable(string()))],
     placedAt: ['placed_at', optional(string())],
     acceptedAt: ['accepted_at', optional(string())],
     rejectedAt: ['rejected_at', optional(string())],
@@ -123,8 +137,8 @@ export const orderFulfillmentPickupDetailsSchema: Schema<OrderFulfillmentPickupD
     expiredAt: ['expired_at', optional(string())],
     pickedUpAt: ['picked_up_at', optional(string())],
     canceledAt: ['canceled_at', optional(string())],
-    cancelReason: ['cancel_reason', optional(string())],
-    isCurbsidePickup: ['is_curbside_pickup', optional(boolean())],
+    cancelReason: ['cancel_reason', optional(nullable(string()))],
+    isCurbsidePickup: ['is_curbside_pickup', optional(nullable(boolean()))],
     curbsidePickupDetails: [
       'curbside_pickup_details',
       optional(

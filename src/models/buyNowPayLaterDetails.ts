@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { AfterpayDetails, afterpayDetailsSchema } from './afterpayDetails';
 import { ClearpayDetails, clearpayDetailsSchema } from './clearpayDetails';
 
@@ -8,7 +8,7 @@ export interface BuyNowPayLaterDetails {
    * The brand used for the Buy Now Pay Later payment.
    * The brand can be `AFTERPAY`, `CLEARPAY` or `UNKNOWN`.
    */
-  brand?: string;
+  brand?: string | null;
   /** Additional details about Afterpay payments. */
   afterpayDetails?: AfterpayDetails;
   /** Additional details about Clearpay payments. */
@@ -17,7 +17,7 @@ export interface BuyNowPayLaterDetails {
 
 export const buyNowPayLaterDetailsSchema: Schema<BuyNowPayLaterDetails> = object(
   {
-    brand: ['brand', optional(string())],
+    brand: ['brand', optional(nullable(string()))],
     afterpayDetails: [
       'afterpay_details',
       optional(lazy(() => afterpayDetailsSchema)),

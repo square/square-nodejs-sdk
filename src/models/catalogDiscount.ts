@@ -1,10 +1,18 @@
-import { boolean, lazy, object, optional, Schema, string } from '../schema';
+import {
+  boolean,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /** A discount applicable to items. */
 export interface CatalogDiscount {
   /** The discount name. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points. */
-  name?: string;
+  name?: string | null;
   /** How to apply a CatalogDiscount to a CatalogItem. */
   discountType?: string;
   /**
@@ -13,7 +21,7 @@ export interface CatalogDiscount {
    * is `VARIABLE_PERCENTAGE`.
    * Do not use this field for amount-based or variable discounts.
    */
-  percentage?: string;
+  percentage?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -27,9 +35,9 @@ export interface CatalogDiscount {
    * Indicates whether a mobile staff member needs to enter their PIN to apply the
    * discount to a payment in the Square Point of Sale app.
    */
-  pinRequired?: boolean;
+  pinRequired?: boolean | null;
   /** The color of the discount display label in the Square Point of Sale app. This must be a valid hex color code. */
-  labelColor?: string;
+  labelColor?: string | null;
   modifyTaxBasis?: string;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -43,12 +51,12 @@ export interface CatalogDiscount {
 }
 
 export const catalogDiscountSchema: Schema<CatalogDiscount> = object({
-  name: ['name', optional(string())],
+  name: ['name', optional(nullable(string()))],
   discountType: ['discount_type', optional(string())],
-  percentage: ['percentage', optional(string())],
+  percentage: ['percentage', optional(nullable(string()))],
   amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
-  pinRequired: ['pin_required', optional(boolean())],
-  labelColor: ['label_color', optional(string())],
+  pinRequired: ['pin_required', optional(nullable(boolean()))],
+  labelColor: ['label_color', optional(nullable(string()))],
   modifyTaxBasis: ['modify_tax_basis', optional(string())],
   maximumAmountMoney: [
     'maximum_amount_money',

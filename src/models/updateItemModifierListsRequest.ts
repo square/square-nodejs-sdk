@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, nullable, object, optional, Schema, string } from '../schema';
 
 export interface UpdateItemModifierListsRequest {
   /** The IDs of the catalog items associated with the CatalogModifierList objects being updated. */
@@ -7,12 +7,12 @@ export interface UpdateItemModifierListsRequest {
    * The IDs of the CatalogModifierList objects to enable for the CatalogItem.
    * At least one of `modifier_lists_to_enable` or `modifier_lists_to_disable` must be specified.
    */
-  modifierListsToEnable?: string[];
+  modifierListsToEnable?: string[] | null;
   /**
    * The IDs of the CatalogModifierList objects to disable for the CatalogItem.
    * At least one of `modifier_lists_to_enable` or `modifier_lists_to_disable` must be specified.
    */
-  modifierListsToDisable?: string[];
+  modifierListsToDisable?: string[] | null;
 }
 
 export const updateItemModifierListsRequestSchema: Schema<UpdateItemModifierListsRequest> = object(
@@ -20,11 +20,11 @@ export const updateItemModifierListsRequestSchema: Schema<UpdateItemModifierList
     itemIds: ['item_ids', array(string())],
     modifierListsToEnable: [
       'modifier_lists_to_enable',
-      optional(array(string())),
+      optional(nullable(array(string()))),
     ],
     modifierListsToDisable: [
       'modifier_lists_to_disable',
-      optional(array(string())),
+      optional(nullable(array(string()))),
     ],
   }
 );

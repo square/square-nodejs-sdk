@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * Represents a generic time range. The start and end values are
@@ -12,15 +12,15 @@ export interface TimeRange {
    * A datetime value in RFC 3339 format indicating when the time range
    * starts.
    */
-  startAt?: string;
+  startAt?: string | null;
   /**
    * A datetime value in RFC 3339 format indicating when the time range
    * ends.
    */
-  endAt?: string;
+  endAt?: string | null;
 }
 
 export const timeRangeSchema: Schema<TimeRange> = object({
-  startAt: ['start_at', optional(string())],
-  endAt: ['end_at', optional(string())],
+  startAt: ['start_at', optional(nullable(string()))],
+  endAt: ['end_at', optional(nullable(string()))],
 });

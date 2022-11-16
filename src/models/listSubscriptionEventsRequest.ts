@@ -1,4 +1,4 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { nullable, number, object, optional, Schema, string } from '../schema';
 
 /**
  * Defines input parameters in a request to the
@@ -12,17 +12,17 @@ export interface ListSubscriptionEventsRequest {
    * If the cursor is unset, the response contains the last page of the results.
    * For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
    */
-  cursor?: string;
+  cursor?: string | null;
   /**
    * The upper limit on the number of subscription events to return
    * in a paged response.
    */
-  limit?: number;
+  limit?: number | null;
 }
 
 export const listSubscriptionEventsRequestSchema: Schema<ListSubscriptionEventsRequest> = object(
   {
-    cursor: ['cursor', optional(string())],
-    limit: ['limit', optional(number())],
+    cursor: ['cursor', optional(nullable(string()))],
+    limit: ['limit', optional(nullable(number()))],
   }
 );

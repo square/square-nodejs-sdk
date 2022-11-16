@@ -1,6 +1,7 @@
 import {
   array,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -31,18 +32,18 @@ export interface Vendor {
    * The name of the [Vendor]($m/Vendor).
    * This field is required when attempting to create or update a [Vendor]($m/Vendor).
    */
-  name?: string;
+  name?: string | null;
   /**
    * Represents a postal address in a country.
    * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
    */
   address?: Address;
   /** The contacts of the [Vendor]($m/Vendor). */
-  contacts?: VendorContact[];
+  contacts?: VendorContact[] | null;
   /** The account number of the [Vendor]($m/Vendor). */
-  accountNumber?: string;
+  accountNumber?: string | null;
   /** A note detailing information about the [Vendor]($m/Vendor). */
-  note?: string;
+  note?: string | null;
   /** The version of the [Vendor]($m/Vendor). */
   version?: number;
   /**
@@ -56,11 +57,14 @@ export const vendorSchema: Schema<Vendor> = object({
   id: ['id', optional(string())],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
-  name: ['name', optional(string())],
+  name: ['name', optional(nullable(string()))],
   address: ['address', optional(lazy(() => addressSchema))],
-  contacts: ['contacts', optional(array(lazy(() => vendorContactSchema)))],
-  accountNumber: ['account_number', optional(string())],
-  note: ['note', optional(string())],
+  contacts: [
+    'contacts',
+    optional(nullable(array(lazy(() => vendorContactSchema)))),
+  ],
+  accountNumber: ['account_number', optional(nullable(string()))],
+  note: ['note', optional(nullable(string()))],
   version: ['version', optional(number())],
   status: ['status', optional(string())],
 });

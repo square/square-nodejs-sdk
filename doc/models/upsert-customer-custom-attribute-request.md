@@ -19,8 +19,13 @@ Represents an [UpsertCustomerCustomAttribute](../../doc/api/customer-custom-attr
 ```json
 {
   "custom_attribute": {
-    "value": "Dune"
-  }
+    "key": null,
+    "value": null,
+    "version": null,
+    "visibility": null,
+    "definition": null
+  },
+  "idempotency_key": null
 }
 ```
 

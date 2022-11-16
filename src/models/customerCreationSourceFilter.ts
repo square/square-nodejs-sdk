@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * The creation source filter.
@@ -10,7 +10,7 @@ export interface CustomerCreationSourceFilter {
    * The list of creation sources used as filtering criteria.
    * See [CustomerCreationSource](#type-customercreationsource) for possible values
    */
-  values?: string[];
+  values?: string[] | null;
   /**
    * Indicates whether customers should be included in, or excluded from,
    * the result set when they match the filtering criteria.
@@ -20,7 +20,7 @@ export interface CustomerCreationSourceFilter {
 
 export const customerCreationSourceFilterSchema: Schema<CustomerCreationSourceFilter> = object(
   {
-    values: ['values', optional(array(string()))],
+    values: ['values', optional(nullable(array(string())))],
     rule: ['rule', optional(string())],
   }
 );

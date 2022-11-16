@@ -1,4 +1,12 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   LoyaltyPromotionAvailableTimeData,
   loyaltyPromotionAvailableTimeDataSchema,
@@ -60,6 +68,22 @@ export interface LoyaltyPromotion {
    * for more information.
    */
   minimumSpendAmountMoney?: Money;
+  /**
+   * The IDs of any qualifying `ITEM_VARIATION` [catalog objects]($m/CatalogObject). If specified,
+   * the purchase must include at least one of these items to qualify for the promotion.
+   * This option is valid only if the base loyalty program uses a `VISIT` or `SPEND` accrual rule.
+   * With `SPEND` accrual rules, make sure that qualifying promotional items are not excluded.
+   * You can specify `qualifying_item_variation_ids` or `qualifying_category_ids` for a given promotion, but not both.
+   */
+  qualifyingItemVariationIds?: string[] | null;
+  /**
+   * The IDs of any qualifying `CATEGORY` [catalog objects]($m/CatalogObject). If specified,
+   * the purchase must include at least one item from one of these categories to qualify for the promotion.
+   * This option is valid only if the base loyalty program uses a `VISIT` or `SPEND` accrual rule.
+   * With `SPEND` accrual rules, make sure that qualifying promotional items are not excluded.
+   * You can specify `qualifying_category_ids` or `qualifying_item_variation_ids` for a promotion, but not both.
+   */
+  qualifyingCategoryIds?: string[] | null;
 }
 
 export const loyaltyPromotionSchema: Schema<LoyaltyPromotion> = object({
@@ -82,5 +106,13 @@ export const loyaltyPromotionSchema: Schema<LoyaltyPromotion> = object({
   minimumSpendAmountMoney: [
     'minimum_spend_amount_money',
     optional(lazy(() => moneySchema)),
+  ],
+  qualifyingItemVariationIds: [
+    'qualifying_item_variation_ids',
+    optional(nullable(array(string()))),
+  ],
+  qualifyingCategoryIds: [
+    'qualifying_category_ids',
+    optional(nullable(array(string()))),
   ],
 });

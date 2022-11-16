@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Address, addressSchema } from './address';
 import {
   InvoiceRecipientTaxIds,
@@ -17,7 +17,7 @@ export interface InvoiceRecipient {
    * The ID of the customer. This is the customer profile ID that
    * you provide when creating a draft invoice.
    */
-  customerId?: string;
+  customerId?: string | null;
   /** The recipient's given (that is, first) name. */
   givenName?: string;
   /** The recipient's family (that is, last) name. */
@@ -42,7 +42,7 @@ export interface InvoiceRecipient {
 }
 
 export const invoiceRecipientSchema: Schema<InvoiceRecipient> = object({
-  customerId: ['customer_id', optional(string())],
+  customerId: ['customer_id', optional(nullable(string()))],
   givenName: ['given_name', optional(string())],
   familyName: ['family_name', optional(string())],
   emailAddress: ['email_address', optional(string())],

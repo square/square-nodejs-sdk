@@ -13,29 +13,14 @@ Describes a subscription plan. For more information, see
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `name` | `string` | Required | The name of the plan. |
-| `phases` | [`SubscriptionPhase[]`](../../doc/models/subscription-phase.md) | Required | A list of SubscriptionPhase containing the [SubscriptionPhase](../../doc/models/subscription-phase.md) for this plan. |
+| `phases` | [`SubscriptionPhase[] \| undefined`](../../doc/models/subscription-phase.md) | Optional | A list of SubscriptionPhase containing the [SubscriptionPhase](../../doc/models/subscription-phase.md) for this plan.<br>This field it required. Not including this field will throw a REQUIRED_FIELD_MISSING error |
 
 ## Example (as JSON)
 
 ```json
 {
   "name": "name0",
-  "phases": [
-    {
-      "uid": null,
-      "cadence": "EVERY_FOUR_MONTHS",
-      "periods": null,
-      "recurring_price_money": null,
-      "ordinal": null
-    },
-    {
-      "uid": null,
-      "cadence": "QUARTERLY",
-      "periods": null,
-      "recurring_price_money": null,
-      "ordinal": null
-    }
-  ]
+  "phases": null
 }
 ```
 

@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { DateRange, dateRangeSchema } from './dateRange';
 
 /**
@@ -19,11 +19,11 @@ export interface ShiftWorkday {
    * must be provided as a fallback. Format: the IANA timezone database
    * identifier for the relevant timezone.
    */
-  defaultTimezone?: string;
+  defaultTimezone?: string | null;
 }
 
 export const shiftWorkdaySchema: Schema<ShiftWorkday> = object({
   dateRange: ['date_range', optional(lazy(() => dateRangeSchema))],
   matchShiftsBy: ['match_shifts_by', optional(string())],
-  defaultTimezone: ['default_timezone', optional(string())],
+  defaultTimezone: ['default_timezone', optional(nullable(string()))],
 });

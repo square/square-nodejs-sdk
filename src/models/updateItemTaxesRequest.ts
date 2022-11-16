@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, nullable, object, optional, Schema, string } from '../schema';
 
 export interface UpdateItemTaxesRequest {
   /**
@@ -10,18 +10,18 @@ export interface UpdateItemTaxesRequest {
    * IDs of the CatalogTax objects to enable.
    * At least one of `taxes_to_enable` or `taxes_to_disable` must be specified.
    */
-  taxesToEnable?: string[];
+  taxesToEnable?: string[] | null;
   /**
    * IDs of the CatalogTax objects to disable.
    * At least one of `taxes_to_enable` or `taxes_to_disable` must be specified.
    */
-  taxesToDisable?: string[];
+  taxesToDisable?: string[] | null;
 }
 
 export const updateItemTaxesRequestSchema: Schema<UpdateItemTaxesRequest> = object(
   {
     itemIds: ['item_ids', array(string())],
-    taxesToEnable: ['taxes_to_enable', optional(array(string()))],
-    taxesToDisable: ['taxes_to_disable', optional(array(string()))],
+    taxesToEnable: ['taxes_to_enable', optional(nullable(array(string())))],
+    taxesToDisable: ['taxes_to_disable', optional(nullable(array(string())))],
   }
 );

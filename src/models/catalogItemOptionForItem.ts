@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * An option that can be assigned to an item.
@@ -6,9 +6,9 @@ import { object, optional, Schema, string } from '../schema';
  */
 export interface CatalogItemOptionForItem {
   /** The unique id of the item option, used to form the dimensions of the item option matrix in a specified order. */
-  itemOptionId?: string;
+  itemOptionId?: string | null;
 }
 
 export const catalogItemOptionForItemSchema: Schema<CatalogItemOptionForItem> = object(
-  { itemOptionId: ['item_option_id', optional(string())] }
+  { itemOptionId: ['item_option_id', optional(nullable(string()))] }
 );

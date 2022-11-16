@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -25,14 +26,14 @@ export interface Checkout {
    * The URL that the buyer's browser should be redirected to after the
    * checkout is completed.
    */
-  checkoutPageUrl?: string;
+  checkoutPageUrl?: string | null;
   /**
    * If `true`, Square Checkout will collect shipping information on your
    * behalf and store that information with the transaction information in your
    * Square Dashboard.
    * Default: `false`.
    */
-  askForShippingAddress?: boolean;
+  askForShippingAddress?: boolean | null;
   /**
    * The email address to display on the Square Checkout confirmation page
    * and confirmation email that the buyer can use to contact the merchant.
@@ -40,13 +41,13 @@ export interface Checkout {
    * primary email address associated with the merchant's Square account.
    * Default: none; only exists if explicitly set.
    */
-  merchantSupportEmail?: string;
+  merchantSupportEmail?: string | null;
   /**
    * If provided, the buyer's email is pre-populated on the checkout page
    * as an editable text field.
    * Default: none; only exists if explicitly set.
    */
-  prePopulateBuyerEmail?: string;
+  prePopulateBuyerEmail?: string | null;
   /**
    * Represents a postal address in a country.
    * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
@@ -64,7 +65,7 @@ export interface Checkout {
    * you provide a redirect URL so you can verify the transaction results and
    * finalize the order through your existing/normal confirmation workflow.
    */
-  redirectUrl?: string;
+  redirectUrl?: string | null;
   /**
    * Contains all information related to a single order to process with Square,
    * including line items that specify the products to purchase. `Order` objects also
@@ -79,24 +80,33 @@ export interface Checkout {
    * Additional recipients (other than the merchant) receiving a portion of this checkout.
    * For example, fees assessed on the purchase by a third party integration.
    */
-  additionalRecipients?: AdditionalRecipient[];
+  additionalRecipients?: AdditionalRecipient[] | null;
 }
 
 export const checkoutSchema: Schema<Checkout> = object({
   id: ['id', optional(string())],
-  checkoutPageUrl: ['checkout_page_url', optional(string())],
-  askForShippingAddress: ['ask_for_shipping_address', optional(boolean())],
-  merchantSupportEmail: ['merchant_support_email', optional(string())],
-  prePopulateBuyerEmail: ['pre_populate_buyer_email', optional(string())],
+  checkoutPageUrl: ['checkout_page_url', optional(nullable(string()))],
+  askForShippingAddress: [
+    'ask_for_shipping_address',
+    optional(nullable(boolean())),
+  ],
+  merchantSupportEmail: [
+    'merchant_support_email',
+    optional(nullable(string())),
+  ],
+  prePopulateBuyerEmail: [
+    'pre_populate_buyer_email',
+    optional(nullable(string())),
+  ],
   prePopulateShippingAddress: [
     'pre_populate_shipping_address',
     optional(lazy(() => addressSchema)),
   ],
-  redirectUrl: ['redirect_url', optional(string())],
+  redirectUrl: ['redirect_url', optional(nullable(string()))],
   order: ['order', optional(lazy(() => orderSchema))],
   createdAt: ['created_at', optional(string())],
   additionalRecipients: [
     'additional_recipients',
-    optional(array(lazy(() => additionalRecipientSchema))),
+    optional(nullable(array(lazy(() => additionalRecipientSchema)))),
   ],
 });

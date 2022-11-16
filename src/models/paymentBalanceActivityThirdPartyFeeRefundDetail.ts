@@ -1,15 +1,15 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 export interface PaymentBalanceActivityThirdPartyFeeRefundDetail {
   /** The ID of the payment associated with this activity. */
-  paymentId?: string;
+  paymentId?: string | null;
   /** The public refund id associated with this activity. */
-  refundId?: string;
+  refundId?: string | null;
 }
 
 export const paymentBalanceActivityThirdPartyFeeRefundDetailSchema: Schema<PaymentBalanceActivityThirdPartyFeeRefundDetail> = object(
   {
-    paymentId: ['payment_id', optional(string())],
-    refundId: ['refund_id', optional(string())],
+    paymentId: ['payment_id', optional(nullable(string()))],
+    refundId: ['refund_id', optional(nullable(string()))],
   }
 );

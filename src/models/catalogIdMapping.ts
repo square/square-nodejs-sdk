@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * A mapping between a temporary client-supplied ID and a permanent server-generated ID.
@@ -13,12 +13,12 @@ import { object, optional, Schema, string } from '../schema';
  */
 export interface CatalogIdMapping {
   /** The client-supplied temporary `#`-prefixed ID for a new `CatalogObject`. */
-  clientObjectId?: string;
+  clientObjectId?: string | null;
   /** The permanent ID for the CatalogObject created by the server. */
-  objectId?: string;
+  objectId?: string | null;
 }
 
 export const catalogIdMappingSchema: Schema<CatalogIdMapping> = object({
-  clientObjectId: ['client_object_id', optional(string())],
-  objectId: ['object_id', optional(string())],
+  clientObjectId: ['client_object_id', optional(nullable(string()))],
+  objectId: ['object_id', optional(nullable(string()))],
 });

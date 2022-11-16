@@ -1,6 +1,7 @@
 import {
   array,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -19,18 +20,18 @@ export interface Shift {
   /** The UUID for this object. */
   id?: string;
   /** The ID of the employee this shift belongs to. DEPRECATED at version 2020-08-26. Use `team_member_id` instead. */
-  employeeId?: string;
+  employeeId?: string | null;
   /**
    * The ID of the location this shift occurred at. The location should be based on
    * where the employee clocked in.
    */
-  locationId?: string;
+  locationId?: string | null;
   /**
    * The read-only convenience value that is calculated from the location based
    * on the `location_id`. Format: the IANA timezone database identifier for the
    * location timezone.
    */
-  timezone?: string;
+  timezone?: string | null;
   /**
    * RFC 3339; shifted to the location timezone + offset. Precision up to the
    * minute is respected; seconds are truncated.
@@ -40,11 +41,11 @@ export interface Shift {
    * RFC 3339; shifted to the timezone + offset. Precision up to the minute is
    * respected; seconds are truncated.
    */
-  endAt?: string;
+  endAt?: string | null;
   /** The hourly wage rate used to compensate an employee for this shift. */
   wage?: ShiftWage;
   /** A list of all the paid or unpaid breaks that were taken during this shift. */
-  breaks?: Break[];
+  breaks?: Break[] | null;
   /** Enumerates the possible status of a `Shift`. */
   status?: string;
   /**
@@ -59,21 +60,21 @@ export interface Shift {
   /** A read-only timestamp in RFC 3339 format; presented in UTC. */
   updatedAt?: string;
   /** The ID of the team member this shift belongs to. Replaced `employee_id` at version "2020-08-26". */
-  teamMemberId?: string;
+  teamMemberId?: string | null;
 }
 
 export const shiftSchema: Schema<Shift> = object({
   id: ['id', optional(string())],
-  employeeId: ['employee_id', optional(string())],
-  locationId: ['location_id', optional(string())],
-  timezone: ['timezone', optional(string())],
+  employeeId: ['employee_id', optional(nullable(string()))],
+  locationId: ['location_id', optional(nullable(string()))],
+  timezone: ['timezone', optional(nullable(string()))],
   startAt: ['start_at', string()],
-  endAt: ['end_at', optional(string())],
+  endAt: ['end_at', optional(nullable(string()))],
   wage: ['wage', optional(lazy(() => shiftWageSchema))],
-  breaks: ['breaks', optional(array(lazy(() => breakSchema)))],
+  breaks: ['breaks', optional(nullable(array(lazy(() => breakSchema))))],
   status: ['status', optional(string())],
   version: ['version', optional(number())],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
-  teamMemberId: ['team_member_id', optional(string())],
+  teamMemberId: ['team_member_id', optional(nullable(string()))],
 });

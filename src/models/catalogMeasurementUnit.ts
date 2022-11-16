@@ -1,4 +1,4 @@
-import { lazy, number, object, optional, Schema } from '../schema';
+import { lazy, nullable, number, object, optional, Schema } from '../schema';
 import { MeasurementUnit, measurementUnitSchema } from './measurementUnit';
 
 /**
@@ -21,7 +21,7 @@ export interface CatalogMeasurementUnit {
    * - if the precision is 2, the quantity can be 0.01, 0.12, etc.
    * Default: 3
    */
-  precision?: number;
+  precision?: number | null;
 }
 
 export const catalogMeasurementUnitSchema: Schema<CatalogMeasurementUnit> = object(
@@ -30,6 +30,6 @@ export const catalogMeasurementUnitSchema: Schema<CatalogMeasurementUnit> = obje
       'measurement_unit',
       optional(lazy(() => measurementUnitSchema)),
     ],
-    precision: ['precision', optional(number())],
+    precision: ['precision', optional(nullable(number()))],
   }
 );

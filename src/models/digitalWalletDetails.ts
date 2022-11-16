@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { CashAppDetails, cashAppDetailsSchema } from './cashAppDetails';
 
 /** Additional details about `WALLET` type payments. Contains only non-confidential information. */
@@ -7,16 +7,16 @@ export interface DigitalWalletDetails {
    * The status of the `WALLET` payment. The status can be `AUTHORIZED`, `CAPTURED`, `VOIDED`, or
    * `FAILED`.
    */
-  status?: string;
+  status?: string | null;
   /** The brand used for the `WALLET` payment. The brand can be `CASH_APP`, `PAYPAY` or `UNKNOWN`. */
-  brand?: string;
+  brand?: string | null;
   /** Additional details about `WALLET` type payments with the `brand` of `CASH_APP`. */
   cashAppDetails?: CashAppDetails;
 }
 
 export const digitalWalletDetailsSchema: Schema<DigitalWalletDetails> = object({
-  status: ['status', optional(string())],
-  brand: ['brand', optional(string())],
+  status: ['status', optional(nullable(string()))],
+  brand: ['brand', optional(nullable(string()))],
   cashAppDetails: [
     'cash_app_details',
     optional(lazy(() => cashAppDetailsSchema)),

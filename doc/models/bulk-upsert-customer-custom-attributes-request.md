@@ -18,40 +18,38 @@ Represents a [BulkUpsertCustomerCustomAttributes](../../doc/api/customer-custom-
 ```json
 {
   "values": {
-    "id1": {
+    "key0": {
+      "customer_id": "customer_id8",
       "custom_attribute": {
-        "key": "favoritemovie",
-        "value": "Dune"
+        "key": null,
+        "value": null,
+        "version": null,
+        "visibility": null,
+        "definition": null
       },
-      "customer_id": "N3NCVYY3WS27HF0HKANA3R9FP8"
+      "idempotency_key": null
     },
-    "id2": {
+    "key1": {
+      "customer_id": "customer_id9",
       "custom_attribute": {
-        "key": "ownsmovie",
-        "value": false
+        "key": null,
+        "value": null,
+        "version": null,
+        "visibility": null,
+        "definition": null
       },
-      "customer_id": "SY8EMWRNDN3TQDP2H4KS1QWMMM"
+      "idempotency_key": null
     },
-    "id3": {
+    "key2": {
+      "customer_id": "customer_id0",
       "custom_attribute": {
-        "key": "favoritemovie",
-        "value": "Star Wars"
+        "key": null,
+        "value": null,
+        "version": null,
+        "visibility": null,
+        "definition": null
       },
-      "customer_id": "SY8EMWRNDN3TQDP2H4KS1QWMMM"
-    },
-    "id4": {
-      "custom_attribute": {
-        "key": "square:a0f1505a-2aa1-490d-91a8-8d31ff181808",
-        "value": "10.5"
-      },
-      "customer_id": "N3NCVYY3WS27HF0HKANA3R9FP8"
-    },
-    "id5": {
-      "custom_attribute": {
-        "key": "sq0ids-0evKIskIGaY45fCyNL66aw:backupemail",
-        "value": "fake-email@squareup.com"
-      },
-      "customer_id": "70548QG1HN43B05G0KCZ4MMC1G"
+      "idempotency_key": null
     }
   }
 }

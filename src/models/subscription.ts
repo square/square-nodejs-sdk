@@ -2,6 +2,7 @@ import {
   array,
   bigint,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -39,7 +40,7 @@ export interface Subscription {
    * If this field is not set, the subscription ends according its subscription plan.
    * This field cannot be updated, other than being cleared.
    */
-  canceledDate?: string;
+  canceledDate?: string | null;
   /**
    * The `YYYY-MM-DD`-formatted date up to when the subscriber is invoiced for the
    * subscription.
@@ -59,7 +60,7 @@ export interface Subscription {
    * separator and without a `'%'` sign. For example, a value of `7.5`
    * corresponds to 7.5%.
    */
-  taxPercentage?: string;
+  taxPercentage?: string | null;
   /**
    * The IDs of the [invoices]($m/Invoice) created for the
    * subscription, listed in order when the invoices were created
@@ -87,7 +88,7 @@ export interface Subscription {
    * The ID of the [subscriber's]($m/Customer) [card]($m/Card)
    * used to charge for the subscription.
    */
-  cardId?: string;
+  cardId?: string | null;
   /**
    * Timezone that will be used in date calculations for the subscription.
    * Defaults to the timezone of the location based on `location_id`.
@@ -103,7 +104,7 @@ export interface Subscription {
    * [SearchSubscriptions]($e/Subscriptions/SearchSubscriptions) with the input parameter
    * of `include:["actions"]`.
    */
-  actions?: SubscriptionAction[];
+  actions?: SubscriptionAction[] | null;
 }
 
 export const subscriptionSchema: Schema<Subscription> = object({
@@ -112,10 +113,10 @@ export const subscriptionSchema: Schema<Subscription> = object({
   planId: ['plan_id', optional(string())],
   customerId: ['customer_id', optional(string())],
   startDate: ['start_date', optional(string())],
-  canceledDate: ['canceled_date', optional(string())],
+  canceledDate: ['canceled_date', optional(nullable(string()))],
   chargedThroughDate: ['charged_through_date', optional(string())],
   status: ['status', optional(string())],
-  taxPercentage: ['tax_percentage', optional(string())],
+  taxPercentage: ['tax_percentage', optional(nullable(string()))],
   invoiceIds: ['invoice_ids', optional(array(string()))],
   priceOverrideMoney: [
     'price_override_money',
@@ -123,8 +124,11 @@ export const subscriptionSchema: Schema<Subscription> = object({
   ],
   version: ['version', optional(bigint())],
   createdAt: ['created_at', optional(string())],
-  cardId: ['card_id', optional(string())],
+  cardId: ['card_id', optional(nullable(string()))],
   timezone: ['timezone', optional(string())],
   source: ['source', optional(lazy(() => subscriptionSourceSchema))],
-  actions: ['actions', optional(array(lazy(() => subscriptionActionSchema)))],
+  actions: [
+    'actions',
+    optional(nullable(array(lazy(() => subscriptionActionSchema)))),
+  ],
 });

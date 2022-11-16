@@ -34,7 +34,15 @@ Represents a [RetrieveLoyaltyPromotionPromotions](../../doc/api/loyalty.md#retri
       "type": "POINTS_MULTIPLIER"
     },
     "loyalty_program_id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
+    "minimum_spend_amount_money": {
+      "amount": 2000,
+      "currency": "USD"
+    },
     "name": "Tuesday Happy Hour Promo",
+    "qualifying_item_variation_ids": [
+      "CJ3RYL56ITAKMD4VRCM7XERS",
+      "AT3RYLR3TUA9C34VRCB7X5RR"
+    ],
     "status": "ACTIVE",
     "trigger_limit": {
       "interval": "DAY",

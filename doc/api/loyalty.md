@@ -599,12 +599,19 @@ const bodyLoyaltyPromotionTriggerLimit: LoyaltyPromotionTriggerLimit = {
 };
 bodyLoyaltyPromotionTriggerLimit.interval = 'DAY';
 
+const bodyLoyaltyPromotionMinimumSpendAmountMoney: Money = {};
+bodyLoyaltyPromotionMinimumSpendAmountMoney.amount = BigInt(2000);
+bodyLoyaltyPromotionMinimumSpendAmountMoney.currency = 'USD';
+
+const bodyLoyaltyPromotionQualifyingCategoryIds: string[] = ['XTQPYLR3IIU9C44VRCB3XD12'];
 const bodyLoyaltyPromotion: LoyaltyPromotion = {
   name: 'Tuesday Happy Hour Promo',
   incentive: bodyLoyaltyPromotionIncentive,
   availableTime: bodyLoyaltyPromotionAvailableTime,
 };
 bodyLoyaltyPromotion.triggerLimit = bodyLoyaltyPromotionTriggerLimit;
+bodyLoyaltyPromotion.minimumSpendAmountMoney = bodyLoyaltyPromotionMinimumSpendAmountMoney;
+bodyLoyaltyPromotion.qualifyingCategoryIds = bodyLoyaltyPromotionQualifyingCategoryIds;
 
 const body: CreateLoyaltyPromotionRequest = {
   loyaltyPromotion: bodyLoyaltyPromotion,

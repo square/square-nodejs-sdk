@@ -5,7 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2022-10-19'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2022-11-16'` |
 | `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
@@ -40,7 +40,7 @@ The API client can be initialized as follows:
 
 ```ts
 const client = new Client({
-  squareVersion: '2022-10-19',
+  squareVersion: '2022-11-16',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
@@ -53,10 +53,10 @@ const client = new Client({
 
 ```ts
 import fs from 'fs';
-import { ApiError, Client, FileWrapper, LocationsApi } from 'square';
+import { ApiError, Client, FileWrapper } from 'square';
 
 const client = new Client({
-  squareVersion: '2022-10-19',
+  squareVersion: '2022-11-16',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
@@ -89,6 +89,7 @@ The gateway for the SDK. This class acts as a factory for the Apis and also hold
 | applePay | Gets ApplePayApi |
 | bankAccounts | Gets BankAccountsApi |
 | bookings | Gets BookingsApi |
+| bookingCustomAttributes | Gets BookingCustomAttributesApi |
 | cards | Gets CardsApi |
 | cashDrawers | Gets CashDrawersApi |
 | catalog | Gets CatalogApi |
@@ -110,6 +111,7 @@ The gateway for the SDK. This class acts as a factory for the Apis and also hold
 | loyalty | Gets LoyaltyApi |
 | merchants | Gets MerchantsApi |
 | orders | Gets OrdersApi |
+| orderCustomAttributes | Gets OrderCustomAttributesApi |
 | payments | Gets PaymentsApi |
 | payouts | Gets PayoutsApi |
 | refunds | Gets RefundsApi |

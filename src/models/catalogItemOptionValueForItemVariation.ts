@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * A `CatalogItemOptionValue` links an item variation to an item option as
@@ -8,14 +8,14 @@ import { object, optional, Schema, string } from '../schema';
  */
 export interface CatalogItemOptionValueForItemVariation {
   /** The unique id of an item option. */
-  itemOptionId?: string;
+  itemOptionId?: string | null;
   /** The unique id of the selected value for the item option. */
-  itemOptionValueId?: string;
+  itemOptionValueId?: string | null;
 }
 
 export const catalogItemOptionValueForItemVariationSchema: Schema<CatalogItemOptionValueForItemVariation> = object(
   {
-    itemOptionId: ['item_option_id', optional(string())],
-    itemOptionValueId: ['item_option_value_id', optional(string())],
+    itemOptionId: ['item_option_id', optional(nullable(string()))],
+    itemOptionValueId: ['item_option_value_id', optional(nullable(string()))],
   }
 );

@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { TimeRange, timeRangeSchema } from './timeRange';
 
 export interface TerminalCheckoutQueryFilter {
@@ -6,7 +6,7 @@ export interface TerminalCheckoutQueryFilter {
    * The `TerminalCheckout` objects associated with a specific device. If no device is specified, then all
    * `TerminalCheckout` objects for the merchant are displayed.
    */
-  deviceId?: string;
+  deviceId?: string | null;
   /**
    * Represents a generic time range. The start and end values are
    * represented in RFC 3339 format. Time ranges are customized to be
@@ -19,13 +19,13 @@ export interface TerminalCheckoutQueryFilter {
    * Filtered results with the desired status of the `TerminalCheckout`.
    * Options: `PENDING`, `IN_PROGRESS`, `CANCEL_REQUESTED`, `CANCELED`, `COMPLETED`
    */
-  status?: string;
+  status?: string | null;
 }
 
 export const terminalCheckoutQueryFilterSchema: Schema<TerminalCheckoutQueryFilter> = object(
   {
-    deviceId: ['device_id', optional(string())],
+    deviceId: ['device_id', optional(nullable(string()))],
     createdAt: ['created_at', optional(lazy(() => timeRangeSchema))],
-    status: ['status', optional(string())],
+    status: ['status', optional(nullable(string()))],
   }
 );

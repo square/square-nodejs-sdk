@@ -1,4 +1,12 @@
-import { boolean, lazy, object, optional, Schema, string } from '../schema';
+import {
+  boolean,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { V1Money, v1MoneySchema } from './v1Money';
 
 /**
@@ -25,45 +33,45 @@ export interface V1Tender {
   id?: string;
   type?: string;
   /** A human-readable description of the tender. */
-  name?: string;
+  name?: string | null;
   /** The ID of the employee that processed the tender. */
-  employeeId?: string;
+  employeeId?: string | null;
   /** The URL of the receipt for the tender. */
-  receiptUrl?: string;
+  receiptUrl?: string | null;
   /** The brand of a credit card. */
   cardBrand?: string;
   /** The last four digits of the provided credit card's account number. */
-  panSuffix?: string;
+  panSuffix?: string | null;
   entryMethod?: string;
   /** Notes entered by the merchant about the tender at the time of payment, if any. Typically only present for tender with the type: OTHER. */
-  paymentNote?: string;
+  paymentNote?: string | null;
   totalMoney?: V1Money;
   tenderedMoney?: V1Money;
   /** The time when the tender was created, in ISO 8601 format. */
-  tenderedAt?: string;
+  tenderedAt?: string | null;
   /** The time when the tender was settled, in ISO 8601 format. */
-  settledAt?: string;
+  settledAt?: string | null;
   changeBackMoney?: V1Money;
   refundedMoney?: V1Money;
   /** Indicates whether or not the tender is associated with an exchange. If is_exchange is true, the tender represents the value of goods returned in an exchange not the actual money paid. The exchange value reduces the tender amounts needed to pay for items purchased in the exchange. */
-  isExchange?: boolean;
+  isExchange?: boolean | null;
 }
 
 export const v1TenderSchema: Schema<V1Tender> = object({
   id: ['id', optional(string())],
   type: ['type', optional(string())],
-  name: ['name', optional(string())],
-  employeeId: ['employee_id', optional(string())],
-  receiptUrl: ['receipt_url', optional(string())],
+  name: ['name', optional(nullable(string()))],
+  employeeId: ['employee_id', optional(nullable(string()))],
+  receiptUrl: ['receipt_url', optional(nullable(string()))],
   cardBrand: ['card_brand', optional(string())],
-  panSuffix: ['pan_suffix', optional(string())],
+  panSuffix: ['pan_suffix', optional(nullable(string()))],
   entryMethod: ['entry_method', optional(string())],
-  paymentNote: ['payment_note', optional(string())],
+  paymentNote: ['payment_note', optional(nullable(string()))],
   totalMoney: ['total_money', optional(lazy(() => v1MoneySchema))],
   tenderedMoney: ['tendered_money', optional(lazy(() => v1MoneySchema))],
-  tenderedAt: ['tendered_at', optional(string())],
-  settledAt: ['settled_at', optional(string())],
+  tenderedAt: ['tendered_at', optional(nullable(string()))],
+  settledAt: ['settled_at', optional(nullable(string()))],
   changeBackMoney: ['change_back_money', optional(lazy(() => v1MoneySchema))],
   refundedMoney: ['refunded_money', optional(lazy(() => v1MoneySchema))],
-  isExchange: ['is_exchange', optional(boolean())],
+  isExchange: ['is_exchange', optional(nullable(boolean()))],
 });

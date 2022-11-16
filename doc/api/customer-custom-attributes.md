@@ -522,7 +522,6 @@ const customerId = 'customer_id8';
 const key = 'key0';
 const contentType = null;
 const bodyCustomAttribute: CustomAttribute = {};
-bodyCustomAttribute.value = '"Dune"';
 
 const body: UpsertCustomerCustomAttributeRequest = {
   customAttribute: bodyCustomAttribute,

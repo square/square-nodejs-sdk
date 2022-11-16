@@ -1,19 +1,27 @@
-import { array, boolean, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  boolean,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 
 /** An employee object that is used by the external API. */
 export interface Employee {
   /** UUID for this object. */
   id?: string;
   /** The employee's first name. */
-  firstName?: string;
+  firstName?: string | null;
   /** The employee's last name. */
-  lastName?: string;
+  lastName?: string | null;
   /** The employee's email address */
-  email?: string;
+  email?: string | null;
   /** The employee's phone number in E.164 format, i.e. "+12125554250" */
-  phoneNumber?: string;
+  phoneNumber?: string | null;
   /** A list of location IDs where this employee has access to. */
-  locationIds?: string[];
+  locationIds?: string[] | null;
   /** The status of the Employee being retrieved. */
   status?: string;
   /**
@@ -21,7 +29,7 @@ export interface Employee {
    * has one owner employee, and that employee has full authority over
    * the account.
    */
-  isOwner?: boolean;
+  isOwner?: boolean | null;
   /** A read-only timestamp in RFC 3339 format. */
   createdAt?: string;
   /** A read-only timestamp in RFC 3339 format. */
@@ -30,13 +38,13 @@ export interface Employee {
 
 export const employeeSchema: Schema<Employee> = object({
   id: ['id', optional(string())],
-  firstName: ['first_name', optional(string())],
-  lastName: ['last_name', optional(string())],
-  email: ['email', optional(string())],
-  phoneNumber: ['phone_number', optional(string())],
-  locationIds: ['location_ids', optional(array(string()))],
+  firstName: ['first_name', optional(nullable(string()))],
+  lastName: ['last_name', optional(nullable(string()))],
+  email: ['email', optional(nullable(string()))],
+  phoneNumber: ['phone_number', optional(nullable(string()))],
+  locationIds: ['location_ids', optional(nullable(array(string())))],
   status: ['status', optional(string())],
-  isOwner: ['is_owner', optional(boolean())],
+  isOwner: ['is_owner', optional(nullable(boolean()))],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
 });

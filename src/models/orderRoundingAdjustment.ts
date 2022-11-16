@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -7,9 +7,9 @@ import { Money, moneySchema } from './money';
  */
 export interface OrderRoundingAdjustment {
   /** A unique ID that identifies the rounding adjustment only within this order. */
-  uid?: string;
+  uid?: string | null;
   /** The name of the rounding adjustment from the original sale order. */
-  name?: string;
+  name?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -23,8 +23,8 @@ export interface OrderRoundingAdjustment {
 
 export const orderRoundingAdjustmentSchema: Schema<OrderRoundingAdjustment> = object(
   {
-    uid: ['uid', optional(string())],
-    name: ['name', optional(string())],
+    uid: ['uid', optional(nullable(string()))],
+    name: ['name', optional(nullable(string()))],
     amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
   }
 );

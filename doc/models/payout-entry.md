@@ -23,7 +23,7 @@ The total amount of the payout will equal the sum of the payout entries for a ba
 | `typeAppFeeRefundDetails` | [`PaymentBalanceActivityAppFeeRefundDetail \| undefined`](../../doc/models/payment-balance-activity-app-fee-refund-detail.md) | Optional | - |
 | `typeAutomaticSavingsDetails` | [`PaymentBalanceActivityAutomaticSavingsDetail \| undefined`](../../doc/models/payment-balance-activity-automatic-savings-detail.md) | Optional | - |
 | `typeAutomaticSavingsReversedDetails` | [`PaymentBalanceActivityAutomaticSavingsReversedDetail \| undefined`](../../doc/models/payment-balance-activity-automatic-savings-reversed-detail.md) | Optional | - |
-| `typeChargeDetails` | [`PaymentBalanceActivityChargeDetail \| undefined`](../../doc/models/payment-balance-activity-charge-detail.md) | Optional | DESCRIPTION OF PaymentBalanceActivityChargeDetail |
+| `typeChargeDetails` | [`PaymentBalanceActivityChargeDetail \| undefined`](../../doc/models/payment-balance-activity-charge-detail.md) | Optional | - |
 | `typeDepositFeeDetails` | [`PaymentBalanceActivityDepositFeeDetail \| undefined`](../../doc/models/payment-balance-activity-deposit-fee-detail.md) | Optional | - |
 | `typeDisputeDetails` | [`PaymentBalanceActivityDisputeDetail \| undefined`](../../doc/models/payment-balance-activity-dispute-detail.md) | Optional | - |
 | `typeFeeDetails` | [`PaymentBalanceActivityFeeDetail \| undefined`](../../doc/models/payment-balance-activity-fee-detail.md) | Optional | - |

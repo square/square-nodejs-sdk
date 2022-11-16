@@ -1,21 +1,21 @@
-import { boolean, object, optional, Schema } from '../schema';
+import { boolean, nullable, object, optional, Schema } from '../schema';
 
 export interface AcceptedPaymentMethods {
   /** Whether Apple Pay is accepted at checkout. */
-  applePay?: boolean;
+  applePay?: boolean | null;
   /** Whether Google Pay is accepted at checkout. */
-  googlePay?: boolean;
+  googlePay?: boolean | null;
   /** Whether Cash App Pay is accepted at checkout. */
-  cashAppPay?: boolean;
+  cashAppPay?: boolean | null;
   /** Whether Afterpay/Clearpay is accepted at checkout. */
-  afterpayClearpay?: boolean;
+  afterpayClearpay?: boolean | null;
 }
 
 export const acceptedPaymentMethodsSchema: Schema<AcceptedPaymentMethods> = object(
   {
-    applePay: ['apple_pay', optional(boolean())],
-    googlePay: ['google_pay', optional(boolean())],
-    cashAppPay: ['cash_app_pay', optional(boolean())],
-    afterpayClearpay: ['afterpay_clearpay', optional(boolean())],
+    applePay: ['apple_pay', optional(nullable(boolean()))],
+    googlePay: ['google_pay', optional(nullable(boolean()))],
+    cashAppPay: ['cash_app_pay', optional(nullable(boolean()))],
+    afterpayClearpay: ['afterpay_clearpay', optional(nullable(boolean()))],
   }
 );

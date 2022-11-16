@@ -2,6 +2,7 @@ import {
   bigint,
   dict,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -12,13 +13,13 @@ import { Money, moneySchema } from './money';
 /** A [CatalogModifier]($m/CatalogModifier). */
 export interface OrderLineItemModifier {
   /** A unique ID that identifies the modifier only within this order. */
-  uid?: string;
+  uid?: string | null;
   /** The catalog object ID referencing [CatalogModifier]($m/CatalogModifier). */
-  catalogObjectId?: string;
+  catalogObjectId?: string | null;
   /** The version of the catalog object that this modifier references. */
-  catalogVersion?: bigint;
+  catalogVersion?: bigint | null;
   /** The name of the item modifier. */
-  name?: string;
+  name?: string | null;
   /**
    * The quantity of the line item modifier. The modifier quantity can be 0 or more.
    * For example, suppose a restaurant offers a cheeseburger on the menu. When a buyer orders
@@ -28,7 +29,7 @@ export interface OrderLineItemModifier {
    * the extra cheese option, the modifier quantity increases to 2. If the buyer does not want
    * any cheese, the modifier quantity is set to 0.
    */
-  quantity?: string;
+  quantity?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -62,18 +63,18 @@ export interface OrderLineItemModifier {
    * application.
    * For more information, see  [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
    */
-  metadata?: Record<string, string>;
+  metadata?: Record<string, string> | null;
 }
 
 export const orderLineItemModifierSchema: Schema<OrderLineItemModifier> = object(
   {
-    uid: ['uid', optional(string())],
-    catalogObjectId: ['catalog_object_id', optional(string())],
-    catalogVersion: ['catalog_version', optional(bigint())],
-    name: ['name', optional(string())],
-    quantity: ['quantity', optional(string())],
+    uid: ['uid', optional(nullable(string()))],
+    catalogObjectId: ['catalog_object_id', optional(nullable(string()))],
+    catalogVersion: ['catalog_version', optional(nullable(bigint()))],
+    name: ['name', optional(nullable(string()))],
+    quantity: ['quantity', optional(nullable(string()))],
     basePriceMoney: ['base_price_money', optional(lazy(() => moneySchema))],
     totalPriceMoney: ['total_price_money', optional(lazy(() => moneySchema))],
-    metadata: ['metadata', optional(dict(string()))],
+    metadata: ['metadata', optional(nullable(dict(string())))],
   }
 );

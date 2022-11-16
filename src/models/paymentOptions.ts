@@ -1,11 +1,11 @@
-import { boolean, object, optional, Schema, string } from '../schema';
+import { boolean, nullable, object, optional, Schema, string } from '../schema';
 
 export interface PaymentOptions {
   /**
    * Indicates whether the `Payment` objects created from this `TerminalCheckout` are automatically
    * `COMPLETED` or left in an `APPROVED` state for later modification.
    */
-  autocomplete?: boolean;
+  autocomplete?: boolean | null;
   /**
    * The duration of time after the payment's creation when Square automatically cancels the
    * payment. This automatic cancellation applies only to payments that do not reach a terminal state
@@ -18,7 +18,7 @@ export interface PaymentOptions {
    * - Card-present payments: "PT36H" (36 hours) from the creation time.
    * - Card-not-present payments: "P7D" (7 days) from the creation time.
    */
-  delayDuration?: string;
+  delayDuration?: string | null;
   /**
    * If set to `true` and charging a Square Gift Card, a payment might be returned with
    * `amount_money` equal to less than what was requested. For example, a request for $20 when charging
@@ -31,14 +31,14 @@ export interface PaymentOptions {
    * [Take Partial Payments](https://developer.squareup.com/docs/payments-api/take-payments/card-payments/partial-payments-with-gift-cards).
    * Default: false
    */
-  acceptPartialAuthorization?: boolean;
+  acceptPartialAuthorization?: boolean | null;
 }
 
 export const paymentOptionsSchema: Schema<PaymentOptions> = object({
-  autocomplete: ['autocomplete', optional(boolean())],
-  delayDuration: ['delay_duration', optional(string())],
+  autocomplete: ['autocomplete', optional(nullable(boolean()))],
+  delayDuration: ['delay_duration', optional(nullable(string()))],
   acceptPartialAuthorization: [
     'accept_partial_authorization',
-    optional(boolean()),
+    optional(nullable(boolean())),
   ],
 });

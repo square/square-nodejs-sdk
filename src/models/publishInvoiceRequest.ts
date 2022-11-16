@@ -1,4 +1,4 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { nullable, number, object, optional, Schema, string } from '../schema';
 
 /** Describes a `PublishInvoice` request. */
 export interface PublishInvoiceRequest {
@@ -13,12 +13,12 @@ export interface PublishInvoiceRequest {
    * treats each request as independent.
    * For more information, see [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
    */
-  idempotencyKey?: string;
+  idempotencyKey?: string | null;
 }
 
 export const publishInvoiceRequestSchema: Schema<PublishInvoiceRequest> = object(
   {
     version: ['version', number()],
-    idempotencyKey: ['idempotency_key', optional(string())],
+    idempotencyKey: ['idempotency_key', optional(nullable(string()))],
   }
 );

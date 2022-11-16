@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -20,7 +21,7 @@ import { CatalogObject, catalogObjectSchema } from './catalogObject';
 /** A [CatalogObject]($m/CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog. */
 export interface CatalogItem {
   /** The item's name. This is a searchable attribute for use in applicable query filters, its value must not be empty, and the length is of Unicode code points. */
-  name?: string;
+  name?: string | null;
   /**
    * The item's description. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points.
    * Deprecated at 2022-07-20, this field is planned to retire in 6 months. You should migrate to use `description_html` to set the description
@@ -29,40 +30,40 @@ export interface CatalogItem {
    * except for when you use an early version before Square API 2022-07-20 and `description_html` is set to blank, setting the `description` value to null
    * does not nullify `description_html`.
    */
-  description?: string;
+  description?: string | null;
   /**
    * The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used.
    * This attribute is searchable, and its value length is of Unicode code points.
    */
-  abbreviation?: string;
+  abbreviation?: string | null;
   /** The color of the item's display label in the Square Point of Sale app. This must be a valid hex color code. */
-  labelColor?: string;
+  labelColor?: string | null;
   /** If `true`, the item can be added to shipping orders from the merchant's online store. */
-  availableOnline?: boolean;
+  availableOnline?: boolean | null;
   /** If `true`, the item can be added to pickup orders from the merchant's online store. */
-  availableForPickup?: boolean;
+  availableForPickup?: boolean | null;
   /** If `true`, the item can be added to electronically fulfilled orders from the merchant's online store. */
-  availableElectronically?: boolean;
+  availableElectronically?: boolean | null;
   /** The ID of the item's category, if any. */
-  categoryId?: string;
+  categoryId?: string | null;
   /**
    * A set of IDs indicating the taxes enabled for
    * this item. When updating an item, any taxes listed here will be added to the item.
    * Taxes may also be added to or deleted from an item using `UpdateItemTaxes`.
    */
-  taxIds?: string[];
+  taxIds?: string[] | null;
   /**
    * A set of `CatalogItemModifierListInfo` objects
    * representing the modifier lists that apply to this item, along with the overrides and min
    * and max limits that are specific to this item. Modifier lists
    * may also be added to or deleted from an item using `UpdateItemModifierLists`.
    */
-  modifierListInfo?: CatalogItemModifierListInfo[];
+  modifierListInfo?: CatalogItemModifierListInfo[] | null;
   /**
    * A list of [CatalogItemVariation]($m/CatalogItemVariation) objects for this item. An item must have
    * at least one variation.
    */
-  variations?: CatalogObject[];
+  variations?: CatalogObject[] | null;
   /** The type of a CatalogItem. Connect V2 only allows the creation of `REGULAR` or `APPOINTMENTS_SERVICE` items. */
   productType?: string;
   /**
@@ -73,24 +74,24 @@ export interface CatalogItem {
    * modifiers, and merchants can edit modifiers by drilling down onto the item's details.
    * Third-party clients are encouraged to implement similar behaviors.
    */
-  skipModifierScreen?: boolean;
+  skipModifierScreen?: boolean | null;
   /**
    * List of item options IDs for this item. Used to manage and group item
    * variations in a specified order.
    * Maximum: 6 item options.
    */
-  itemOptions?: CatalogItemOptionForItem[];
+  itemOptions?: CatalogItemOptionForItem[] | null;
   /**
    * The IDs of images associated with this `CatalogItem` instance.
    * These images will be shown to customers in Square Online Store.
    * The first image will show up as the icon for this item in POS.
    */
-  imageIds?: string[];
+  imageIds?: string[] | null;
   /**
    * A name to sort the item by. If this name is unspecified, namely, the `sort_name` field is absent, the regular `name` field is used for sorting.
    * It is currently supported for sellers of the Japanese locale only.
    */
-  sortName?: string;
+  sortName?: string | null;
   /**
    * The item's description as expressed in valid HTML elements. The length of this field value, including those of HTML tags,
    * is of Unicode points. With application query filters, the text values of the HTML elements and attributes are searchable. Invalid or
@@ -114,34 +115,40 @@ export interface CatalogItem {
    * - `rel`: Relationship between link's target and source
    * - `target`: Place to open the linked document
    */
-  descriptionHtml?: string;
+  descriptionHtml?: string | null;
   /** A server-generated plaintext version of the `description_html` field, without formatting tags. */
   descriptionPlaintext?: string;
 }
 
 export const catalogItemSchema: Schema<CatalogItem> = object({
-  name: ['name', optional(string())],
-  description: ['description', optional(string())],
-  abbreviation: ['abbreviation', optional(string())],
-  labelColor: ['label_color', optional(string())],
-  availableOnline: ['available_online', optional(boolean())],
-  availableForPickup: ['available_for_pickup', optional(boolean())],
-  availableElectronically: ['available_electronically', optional(boolean())],
-  categoryId: ['category_id', optional(string())],
-  taxIds: ['tax_ids', optional(array(string()))],
+  name: ['name', optional(nullable(string()))],
+  description: ['description', optional(nullable(string()))],
+  abbreviation: ['abbreviation', optional(nullable(string()))],
+  labelColor: ['label_color', optional(nullable(string()))],
+  availableOnline: ['available_online', optional(nullable(boolean()))],
+  availableForPickup: ['available_for_pickup', optional(nullable(boolean()))],
+  availableElectronically: [
+    'available_electronically',
+    optional(nullable(boolean())),
+  ],
+  categoryId: ['category_id', optional(nullable(string()))],
+  taxIds: ['tax_ids', optional(nullable(array(string())))],
   modifierListInfo: [
     'modifier_list_info',
-    optional(array(lazy(() => catalogItemModifierListInfoSchema))),
+    optional(nullable(array(lazy(() => catalogItemModifierListInfoSchema)))),
   ],
-  variations: ['variations', optional(array(lazy(() => catalogObjectSchema)))],
+  variations: [
+    'variations',
+    optional(nullable(array(lazy(() => catalogObjectSchema)))),
+  ],
   productType: ['product_type', optional(string())],
-  skipModifierScreen: ['skip_modifier_screen', optional(boolean())],
+  skipModifierScreen: ['skip_modifier_screen', optional(nullable(boolean()))],
   itemOptions: [
     'item_options',
-    optional(array(lazy(() => catalogItemOptionForItemSchema))),
+    optional(nullable(array(lazy(() => catalogItemOptionForItemSchema)))),
   ],
-  imageIds: ['image_ids', optional(array(string()))],
-  sortName: ['sort_name', optional(string())],
-  descriptionHtml: ['description_html', optional(string())],
+  imageIds: ['image_ids', optional(nullable(array(string())))],
+  sortName: ['sort_name', optional(nullable(string()))],
+  descriptionHtml: ['description_html', optional(nullable(string()))],
   descriptionPlaintext: ['description_plaintext', optional(string())],
 });

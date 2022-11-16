@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   AdditionalRecipient,
   additionalRecipientSchema,
@@ -12,7 +20,7 @@ export interface Refund {
   /** The ID of the refund's associated location. */
   locationId: string;
   /** The ID of the transaction that the refunded tender is part of. */
-  transactionId?: string;
+  transactionId?: string | null;
   /** The ID of the refunded tender. */
   tenderId: string;
   /** The timestamp for when the refund was created, in RFC 3339 format. */
@@ -43,13 +51,13 @@ export interface Refund {
    * Additional recipients (other than the merchant) receiving a portion of this refund.
    * For example, fees assessed on a refund of a purchase by a third party integration.
    */
-  additionalRecipients?: AdditionalRecipient[];
+  additionalRecipients?: AdditionalRecipient[] | null;
 }
 
 export const refundSchema: Schema<Refund> = object({
   id: ['id', string()],
   locationId: ['location_id', string()],
-  transactionId: ['transaction_id', optional(string())],
+  transactionId: ['transaction_id', optional(nullable(string()))],
   tenderId: ['tender_id', string()],
   createdAt: ['created_at', optional(string())],
   reason: ['reason', string()],
@@ -61,6 +69,6 @@ export const refundSchema: Schema<Refund> = object({
   ],
   additionalRecipients: [
     'additional_recipients',
-    optional(array(lazy(() => additionalRecipientSchema))),
+    optional(nullable(array(lazy(() => additionalRecipientSchema)))),
   ],
 });

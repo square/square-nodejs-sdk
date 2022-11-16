@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Invoice, invoiceSchema } from './invoice';
 
 /** Describes a `UpdateInvoice` request. */
@@ -14,16 +22,16 @@ export interface UpdateInvoiceRequest {
    * treats each request as independent.
    * For more information, see [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
    */
-  idempotencyKey?: string;
+  idempotencyKey?: string | null;
   /**
    * The list of fields to clear.
    * For examples, see [Update an Invoice](https://developer.squareup.com/docs/invoices-api/update-invoices).
    */
-  fieldsToClear?: string[];
+  fieldsToClear?: string[] | null;
 }
 
 export const updateInvoiceRequestSchema: Schema<UpdateInvoiceRequest> = object({
   invoice: ['invoice', lazy(() => invoiceSchema)],
-  idempotencyKey: ['idempotency_key', optional(string())],
-  fieldsToClear: ['fields_to_clear', optional(array(string()))],
+  idempotencyKey: ['idempotency_key', optional(nullable(string()))],
+  fieldsToClear: ['fields_to_clear', optional(nullable(array(string())))],
 });

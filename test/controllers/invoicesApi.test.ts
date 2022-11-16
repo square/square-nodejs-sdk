@@ -94,6 +94,15 @@ describe('Invoices API', () => {
       dueDate: (new Date()).toISOString().slice(0, 10)
     }
 
+    // Accepted Payment Methods are optional on the request, but all methods of payments are returned
+    // in the response, therefore, we ensure that at least the payment methods we specified are returned 
+    // accordingly in the response.
+    const acceptedPaymentMethods = {
+      card: true,
+      bankAccount: true,
+      squareGiftCard: false
+    }
+
     let invoice: Invoice = {
       title: 'Brand New Invoice',
       description: 'A Blank Invoice',
@@ -102,11 +111,7 @@ describe('Invoices API', () => {
       paymentRequests: [paymentRequest],
       invoiceNumber: createInvoiceNumber(),
       deliveryMethod: 'SHARE_MANUALLY',
-      acceptedPaymentMethods: {
-        card: true,
-        bankAccount: true,
-        squareGiftCard: false,
-      },
+      acceptedPaymentMethods: acceptedPaymentMethods,
       primaryRecipient:{
         customerId: newCustomerId
       }
@@ -121,6 +126,7 @@ describe('Invoices API', () => {
     expect(statusCode).toBe(200);
     expect(result.invoice).toEqual(expect.objectContaining({
       ...invoice,
+      acceptedPaymentMethods: expect.objectContaining(acceptedPaymentMethods),
       paymentRequests: [expect.objectContaining(paymentRequest)],
       primaryRecipient: expect.objectContaining({
         customerId: newCustomerId

@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   number,
   object,
   optional,
@@ -33,20 +34,20 @@ export interface Booking {
   /** The RFC 3339 timestamp specifying the most recent update time of this booking. */
   updatedAt?: string;
   /** The RFC 3339 timestamp specifying the starting time of this booking. */
-  startAt?: string;
+  startAt?: string | null;
   /** The ID of the [Location]($m/Location) object representing the location where the booked service is provided. Once set when the booking is created, its value cannot be changed. */
-  locationId?: string;
+  locationId?: string | null;
   /** The ID of the [Customer]($m/Customer) object representing the customer receiving the booked service. */
-  customerId?: string;
+  customerId?: string | null;
   /** The free-text field for the customer to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a relevant [CatalogObject]($m/CatalogObject) instance. */
-  customerNote?: string;
+  customerNote?: string | null;
   /**
    * The free-text field for the seller to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a specific [CatalogObject]($m/CatalogObject) instance.
    * This field should not be visible to customers.
    */
-  sellerNote?: string;
+  sellerNote?: string | null;
   /** A list of appointment segments for this booking. */
-  appointmentSegments?: AppointmentSegment[];
+  appointmentSegments?: AppointmentSegment[] | null;
   /**
    * Additional time at the end of a booking.
    * Applications should not make this field visible to customers of a seller.
@@ -68,14 +69,14 @@ export const bookingSchema: Schema<Booking> = object({
   status: ['status', optional(string())],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
-  startAt: ['start_at', optional(string())],
-  locationId: ['location_id', optional(string())],
-  customerId: ['customer_id', optional(string())],
-  customerNote: ['customer_note', optional(string())],
-  sellerNote: ['seller_note', optional(string())],
+  startAt: ['start_at', optional(nullable(string()))],
+  locationId: ['location_id', optional(nullable(string()))],
+  customerId: ['customer_id', optional(nullable(string()))],
+  customerNote: ['customer_note', optional(nullable(string()))],
+  sellerNote: ['seller_note', optional(nullable(string()))],
   appointmentSegments: [
     'appointment_segments',
-    optional(array(lazy(() => appointmentSegmentSchema))),
+    optional(nullable(array(lazy(() => appointmentSegmentSchema)))),
   ],
   transitionTimeMinutes: ['transition_time_minutes', optional(number())],
   allDay: ['all_day', optional(boolean())],

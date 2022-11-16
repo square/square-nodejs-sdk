@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -17,20 +18,20 @@ import { ShippingFee, shippingFeeSchema } from './shippingFee';
 
 export interface CheckoutOptions {
   /** Indicates whether the payment allows tipping. */
-  allowTipping?: boolean;
+  allowTipping?: boolean | null;
   /** The custom fields requesting information from the buyer. */
-  customFields?: CustomField[];
+  customFields?: CustomField[] | null;
   /**
    * The ID of the subscription plan for the buyer to pay and subscribe.
    * For more information, see [Subscription Plan Checkout](https://developer.squareup.com/docs/checkout-api/subscription-plan-checkout).
    */
-  subscriptionPlanId?: string;
+  subscriptionPlanId?: string | null;
   /** The confirmation page URL to redirect the buyer to after Square processes the payment. */
-  redirectUrl?: string;
+  redirectUrl?: string | null;
   /** The email address that buyers can use to contact the seller. */
-  merchantSupportEmail?: string;
+  merchantSupportEmail?: string | null;
   /** Indicates whether to include the address fields in the payment form. */
-  askForShippingAddress?: boolean;
+  askForShippingAddress?: boolean | null;
   acceptedPaymentMethods?: AcceptedPaymentMethods;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -45,15 +46,21 @@ export interface CheckoutOptions {
 }
 
 export const checkoutOptionsSchema: Schema<CheckoutOptions> = object({
-  allowTipping: ['allow_tipping', optional(boolean())],
+  allowTipping: ['allow_tipping', optional(nullable(boolean()))],
   customFields: [
     'custom_fields',
-    optional(array(lazy(() => customFieldSchema))),
+    optional(nullable(array(lazy(() => customFieldSchema)))),
   ],
-  subscriptionPlanId: ['subscription_plan_id', optional(string())],
-  redirectUrl: ['redirect_url', optional(string())],
-  merchantSupportEmail: ['merchant_support_email', optional(string())],
-  askForShippingAddress: ['ask_for_shipping_address', optional(boolean())],
+  subscriptionPlanId: ['subscription_plan_id', optional(nullable(string()))],
+  redirectUrl: ['redirect_url', optional(nullable(string()))],
+  merchantSupportEmail: [
+    'merchant_support_email',
+    optional(nullable(string())),
+  ],
+  askForShippingAddress: [
+    'ask_for_shipping_address',
+    optional(nullable(boolean())),
+  ],
   acceptedPaymentMethods: [
     'accepted_payment_methods',
     optional(lazy(() => acceptedPaymentMethodsSchema)),

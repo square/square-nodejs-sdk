@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -28,16 +29,16 @@ export interface PaymentRefund {
    * - `REJECTED` - The refund was rejected.
    * - `FAILED` - An error occurred.
    */
-  status?: string;
+  status?: string | null;
   /** The location ID associated with the payment this refund is attached to. */
-  locationId?: string;
+  locationId?: string | null;
   /** Flag indicating whether or not the refund is linked to an existing payment in Square. */
   unlinked?: boolean;
   /**
    * The destination type for this refund.
    * Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `CASH`, or `EXTERNAL`.
    */
-  destinationType?: string;
+  destinationType?: string | null;
   /** Details about a refund's destination. */
   destinationDetails?: DestinationDetails;
   /**
@@ -59,13 +60,13 @@ export interface PaymentRefund {
    */
   appFeeMoney?: Money;
   /** Processing fees and fee adjustments assessed by Square for this refund. */
-  processingFee?: ProcessingFee[];
+  processingFee?: ProcessingFee[] | null;
   /** The ID of the payment associated with this refund. */
-  paymentId?: string;
+  paymentId?: string | null;
   /** The ID of the order associated with the refund. */
-  orderId?: string;
+  orderId?: string | null;
   /** The reason for the refund. */
-  reason?: string;
+  reason?: string | null;
   /** The timestamp of when the refund was created, in RFC 3339 format. */
   createdAt?: string;
   /** The timestamp of when the refund was last updated, in RFC 3339 format. */
@@ -76,10 +77,10 @@ export interface PaymentRefund {
 
 export const paymentRefundSchema: Schema<PaymentRefund> = object({
   id: ['id', string()],
-  status: ['status', optional(string())],
-  locationId: ['location_id', optional(string())],
+  status: ['status', optional(nullable(string()))],
+  locationId: ['location_id', optional(nullable(string()))],
   unlinked: ['unlinked', optional(boolean())],
-  destinationType: ['destination_type', optional(string())],
+  destinationType: ['destination_type', optional(nullable(string()))],
   destinationDetails: [
     'destination_details',
     optional(lazy(() => destinationDetailsSchema)),
@@ -88,11 +89,11 @@ export const paymentRefundSchema: Schema<PaymentRefund> = object({
   appFeeMoney: ['app_fee_money', optional(lazy(() => moneySchema))],
   processingFee: [
     'processing_fee',
-    optional(array(lazy(() => processingFeeSchema))),
+    optional(nullable(array(lazy(() => processingFeeSchema)))),
   ],
-  paymentId: ['payment_id', optional(string())],
-  orderId: ['order_id', optional(string())],
-  reason: ['reason', optional(string())],
+  paymentId: ['payment_id', optional(nullable(string()))],
+  orderId: ['order_id', optional(nullable(string()))],
+  reason: ['reason', optional(nullable(string()))],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
   teamMemberId: ['team_member_id', optional(string())],

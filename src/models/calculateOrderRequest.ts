@@ -1,4 +1,4 @@
-import { array, lazy, object, optional, Schema } from '../schema';
+import { array, lazy, nullable, object, optional, Schema } from '../schema';
 import { Order, orderSchema } from './order';
 import { OrderReward, orderRewardSchema } from './orderReward';
 
@@ -18,7 +18,7 @@ export interface CalculateOrderRequest {
    * redemptions; that is, no `reward`s are created. Therefore, the reward `id`s are
    * random strings used only to reference the reward tier.
    */
-  proposedRewards?: OrderReward[];
+  proposedRewards?: OrderReward[] | null;
 }
 
 export const calculateOrderRequestSchema: Schema<CalculateOrderRequest> = object(
@@ -26,7 +26,7 @@ export const calculateOrderRequestSchema: Schema<CalculateOrderRequest> = object
     order: ['order', lazy(() => orderSchema)],
     proposedRewards: [
       'proposed_rewards',
-      optional(array(lazy(() => orderRewardSchema))),
+      optional(nullable(array(lazy(() => orderRewardSchema)))),
     ],
   }
 );

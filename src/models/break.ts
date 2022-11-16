@@ -1,4 +1,4 @@
-import { boolean, object, optional, Schema, string } from '../schema';
+import { boolean, nullable, object, optional, Schema, string } from '../schema';
 
 /** A record of an employee's break during a shift. */
 export interface Break {
@@ -13,7 +13,7 @@ export interface Break {
    * RFC 3339; follows the same timezone information as `Shift`. Precision up to
    * the minute is respected; seconds are truncated.
    */
-  endAt?: string;
+  endAt?: string | null;
   /** The `BreakType` that this `Break` was templated on. */
   breakTypeId: string;
   /** A human-readable name. */
@@ -33,7 +33,7 @@ export interface Break {
 export const breakSchema: Schema<Break> = object({
   id: ['id', optional(string())],
   startAt: ['start_at', string()],
-  endAt: ['end_at', optional(string())],
+  endAt: ['end_at', optional(nullable(string()))],
   breakTypeId: ['break_type_id', string()],
   name: ['name', string()],
   expectedDuration: ['expected_duration', string()],

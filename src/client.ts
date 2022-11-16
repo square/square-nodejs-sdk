@@ -1,5 +1,6 @@
 import { ApplePayApi } from './api/applePayApi';
 import { BankAccountsApi } from './api/bankAccountsApi';
+import { BookingCustomAttributesApi } from './api/bookingCustomAttributesApi';
 import { BookingsApi } from './api/bookingsApi';
 import { CardsApi } from './api/cardsApi';
 import { CashDrawersApi } from './api/cashDrawersApi';
@@ -22,6 +23,7 @@ import { LoyaltyApi } from './api/loyaltyApi';
 import { MerchantsApi } from './api/merchantsApi';
 import { MobileAuthorizationApi } from './api/mobileAuthorizationApi';
 import { OAuthApi } from './api/oAuthApi';
+import { OrderCustomAttributesApi } from './api/orderCustomAttributesApi';
 import { OrdersApi } from './api/ordersApi';
 import { PaymentsApi } from './api/paymentsApi';
 import { PayoutsApi } from './api/payoutsApi';
@@ -64,7 +66,7 @@ import {
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '23.0.0';
+export const SDK_VERSION = '24.0.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -74,6 +76,7 @@ export class Client implements ClientInterface {
 
   public readonly applePayApi: ApplePayApi;
   public readonly bankAccountsApi: BankAccountsApi;
+  public readonly bookingCustomAttributesApi: BookingCustomAttributesApi;
   public readonly bookingsApi: BookingsApi;
   public readonly cardsApi: CardsApi;
   public readonly cashDrawersApi: CashDrawersApi;
@@ -96,6 +99,7 @@ export class Client implements ClientInterface {
   public readonly merchantsApi: MerchantsApi;
   public readonly mobileAuthorizationApi: MobileAuthorizationApi;
   public readonly oAuthApi: OAuthApi;
+  public readonly orderCustomAttributesApi: OrderCustomAttributesApi;
   public readonly ordersApi: OrdersApi;
   public readonly paymentsApi: PaymentsApi;
   public readonly payoutsApi: PayoutsApi;
@@ -124,7 +128,7 @@ export class Client implements ClientInterface {
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/23.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/24.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail
     );
@@ -150,6 +154,7 @@ export class Client implements ClientInterface {
 
     this.applePayApi = new ApplePayApi(this);
     this.bankAccountsApi = new BankAccountsApi(this);
+    this.bookingCustomAttributesApi = new BookingCustomAttributesApi(this);
     this.bookingsApi = new BookingsApi(this);
     this.cardsApi = new CardsApi(this);
     this.cashDrawersApi = new CashDrawersApi(this);
@@ -172,6 +177,7 @@ export class Client implements ClientInterface {
     this.merchantsApi = new MerchantsApi(this);
     this.mobileAuthorizationApi = new MobileAuthorizationApi(this);
     this.oAuthApi = new OAuthApi(this);
+    this.orderCustomAttributesApi = new OrderCustomAttributesApi(this);
     this.ordersApi = new OrdersApi(this);
     this.paymentsApi = new PaymentsApi(this);
     this.payoutsApi = new PayoutsApi(this);

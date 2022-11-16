@@ -1,4 +1,4 @@
-import { boolean, object, optional, Schema, string } from '../schema';
+import { boolean, nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * Retrieves details for a specific Card. Accessible via
@@ -10,27 +10,27 @@ export interface ListCardsRequest {
    * Provide this to retrieve the next set of results for your original query.
    * See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
    */
-  cursor?: string;
+  cursor?: string | null;
   /**
    * Limit results to cards associated with the customer supplied.
    * By default, all cards owned by the merchant are returned.
    */
-  customerId?: string;
+  customerId?: string | null;
   /**
    * Includes disabled cards.
    * By default, all enabled cards owned by the merchant are returned.
    */
-  includeDisabled?: boolean;
+  includeDisabled?: boolean | null;
   /** Limit results to cards associated with the reference_id supplied. */
-  referenceId?: string;
+  referenceId?: string | null;
   /** The order (e.g., chronological or alphabetical) in which results from a request are returned. */
   sortOrder?: string;
 }
 
 export const listCardsRequestSchema: Schema<ListCardsRequest> = object({
-  cursor: ['cursor', optional(string())],
-  customerId: ['customer_id', optional(string())],
-  includeDisabled: ['include_disabled', optional(boolean())],
-  referenceId: ['reference_id', optional(string())],
+  cursor: ['cursor', optional(nullable(string()))],
+  customerId: ['customer_id', optional(nullable(string()))],
+  includeDisabled: ['include_disabled', optional(nullable(boolean()))],
+  referenceId: ['reference_id', optional(nullable(string()))],
   sortOrder: ['sort_order', optional(string())],
 });

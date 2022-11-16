@@ -1,4 +1,4 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { nullable, number, object, optional, Schema, string } from '../schema';
 
 /**
  * Describes a payment request reminder (automatic notification) that Square sends
@@ -16,9 +16,9 @@ export interface InvoicePaymentReminder {
    * the payment request `due_date` when the reminder is sent. For example, -3 indicates that
    * the reminder should be sent 3 days before the payment request `due_date`.
    */
-  relativeScheduledDays?: number;
+  relativeScheduledDays?: number | null;
   /** The reminder message. */
-  message?: string;
+  message?: string | null;
   /** The status of a payment request reminder. */
   status?: string;
   /** If sent, the timestamp when the reminder was sent, in RFC 3339 format. */
@@ -28,8 +28,11 @@ export interface InvoicePaymentReminder {
 export const invoicePaymentReminderSchema: Schema<InvoicePaymentReminder> = object(
   {
     uid: ['uid', optional(string())],
-    relativeScheduledDays: ['relative_scheduled_days', optional(number())],
-    message: ['message', optional(string())],
+    relativeScheduledDays: [
+      'relative_scheduled_days',
+      optional(nullable(number())),
+    ],
+    message: ['message', optional(nullable(string()))],
     status: ['status', optional(string())],
     sentAt: ['sent_at', optional(string())],
   }

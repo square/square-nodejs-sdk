@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import {
   DisputeEvidenceCreatedWebhookData,
   disputeEvidenceCreatedWebhookDataSchema,
@@ -11,13 +11,13 @@ import {
  */
 export interface DisputeEvidenceCreatedWebhook {
   /** The ID of the target merchant associated with the event. */
-  merchantId?: string;
+  merchantId?: string | null;
   /** The ID of the target location associated with the event. */
-  locationId?: string;
+  locationId?: string | null;
   /** The type of event this represents. */
-  type?: string;
+  type?: string | null;
   /** A unique ID for the webhook event. */
-  eventId?: string;
+  eventId?: string | null;
   /** Timestamp of when the webhook event was created, in RFC 3339 format. */
   createdAt?: string;
   data?: DisputeEvidenceCreatedWebhookData;
@@ -25,10 +25,10 @@ export interface DisputeEvidenceCreatedWebhook {
 
 export const disputeEvidenceCreatedWebhookSchema: Schema<DisputeEvidenceCreatedWebhook> = object(
   {
-    merchantId: ['merchant_id', optional(string())],
-    locationId: ['location_id', optional(string())],
-    type: ['type', optional(string())],
-    eventId: ['event_id', optional(string())],
+    merchantId: ['merchant_id', optional(nullable(string()))],
+    locationId: ['location_id', optional(nullable(string()))],
+    type: ['type', optional(nullable(string()))],
+    eventId: ['event_id', optional(nullable(string()))],
     createdAt: ['created_at', optional(string())],
     data: [
       'data',

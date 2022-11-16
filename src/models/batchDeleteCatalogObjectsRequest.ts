@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, nullable, object, optional, Schema, string } from '../schema';
 
 export interface BatchDeleteCatalogObjectsRequest {
   /**
@@ -6,9 +6,9 @@ export interface BatchDeleteCatalogObjectsRequest {
    * in the graph that depend on that object will be deleted as well (for example, deleting a
    * CatalogItem will delete its CatalogItemVariation.
    */
-  objectIds?: string[];
+  objectIds?: string[] | null;
 }
 
 export const batchDeleteCatalogObjectsRequestSchema: Schema<BatchDeleteCatalogObjectsRequest> = object(
-  { objectIds: ['object_ids', optional(array(string()))] }
+  { objectIds: ['object_ids', optional(nullable(array(string())))] }
 );

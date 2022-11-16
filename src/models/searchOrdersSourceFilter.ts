@@ -1,4 +1,4 @@
-import { array, object, optional, Schema, string } from '../schema';
+import { array, nullable, object, optional, Schema, string } from '../schema';
 
 /** A filter based on order `source` information. */
 export interface SearchOrdersSourceFilter {
@@ -7,9 +7,9 @@ export interface SearchOrdersSourceFilter {
    * with a `source.name` that matches any of the listed source names.
    * Max: 10 source names.
    */
-  sourceNames?: string[];
+  sourceNames?: string[] | null;
 }
 
 export const searchOrdersSourceFilterSchema: Schema<SearchOrdersSourceFilter> = object(
-  { sourceNames: ['source_names', optional(array(string()))] }
+  { sourceNames: ['source_names', optional(nullable(array(string())))] }
 );

@@ -1,4 +1,4 @@
-import { bigint, object, optional, Schema, string } from '../schema';
+import { bigint, nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -15,7 +15,7 @@ export interface Money {
    * in cents. Monetary amounts can be positive or negative. See the specific
    * field description to determine the meaning of the sign in a particular case.
    */
-  amount?: bigint;
+  amount?: bigint | null;
   /**
    * Indicates the associated currency for an amount of money. Values correspond
    * to [ISO 4217](https://wikipedia.org/wiki/ISO_4217).
@@ -24,6 +24,6 @@ export interface Money {
 }
 
 export const moneySchema: Schema<Money> = object({
-  amount: ['amount', optional(bigint())],
+  amount: ['amount', optional(nullable(bigint()))],
   currency: ['currency', optional(string())],
 });

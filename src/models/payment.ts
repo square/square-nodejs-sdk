@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Address, addressSchema } from './address';
 import {
   ApplicationDetails,
@@ -116,7 +124,7 @@ export interface Payment {
    * The action to be applied to the payment when the `delay_duration` has elapsed.
    * Current values include `CANCEL` and `COMPLETE`.
    */
-  delayAction?: string;
+  delayAction?: string | null;
   /**
    * The read-only timestamp of when the `delay_action` is automatically applied,
    * in RFC 3339 format.
@@ -242,7 +250,7 @@ export interface Payment {
    * Used for optimistic concurrency. This opaque token identifies a specific version of the
    * `Payment` object.
    */
-  versionToken?: string;
+  versionToken?: string | null;
 }
 
 export const paymentSchema: Schema<Payment> = object({
@@ -261,7 +269,7 @@ export const paymentSchema: Schema<Payment> = object({
   refundedMoney: ['refunded_money', optional(lazy(() => moneySchema))],
   status: ['status', optional(string())],
   delayDuration: ['delay_duration', optional(string())],
-  delayAction: ['delay_action', optional(string())],
+  delayAction: ['delay_action', optional(nullable(string()))],
   delayedUntil: ['delayed_until', optional(string())],
   sourceType: ['source_type', optional(string())],
   cardDetails: ['card_details', optional(lazy(() => cardPaymentDetailsSchema))],
@@ -309,5 +317,5 @@ export const paymentSchema: Schema<Payment> = object({
     'application_details',
     optional(lazy(() => applicationDetailsSchema)),
   ],
-  versionToken: ['version_token', optional(string())],
+  versionToken: ['version_token', optional(nullable(string()))],
 });

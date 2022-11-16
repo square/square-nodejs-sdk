@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import {
   LoyaltyProgramAccrualRule,
   loyaltyProgramAccrualRuleSchema,
@@ -26,9 +34,9 @@ export interface LoyaltyProgram {
    * The Square-assigned ID of the loyalty program. Updates to
    * the loyalty program do not modify the identifier.
    */
-  id: string;
+  id?: string;
   /** Indicates whether the program is currently active. */
-  status: string;
+  status?: string;
   /** The list of rewards for buyers, sorted by ascending points. */
   rewardTiers: LoyaltyProgramRewardTier[];
   /** Describes when the loyalty program expires. */
@@ -36,11 +44,11 @@ export interface LoyaltyProgram {
   /** Represents the naming used for loyalty points. */
   terminology: LoyaltyProgramTerminology;
   /** The [locations]($m/Location) at which the program is active. */
-  locationIds?: string[];
+  locationIds?: string[] | null;
   /** The timestamp when the program was created, in RFC 3339 format. */
-  createdAt: string;
+  createdAt?: string;
   /** The timestamp when the reward was last updated, in RFC 3339 format. */
-  updatedAt: string;
+  updatedAt?: string;
   /**
    * Defines how buyers can earn loyalty points from the base loyalty program.
    * To check for associated [loyalty promotions]($m/LoyaltyPromotion) that enable
@@ -50,8 +58,8 @@ export interface LoyaltyProgram {
 }
 
 export const loyaltyProgramSchema: Schema<LoyaltyProgram> = object({
-  id: ['id', string()],
-  status: ['status', string()],
+  id: ['id', optional(string())],
+  status: ['status', optional(string())],
   rewardTiers: [
     'reward_tiers',
     array(lazy(() => loyaltyProgramRewardTierSchema)),
@@ -61,9 +69,9 @@ export const loyaltyProgramSchema: Schema<LoyaltyProgram> = object({
     optional(lazy(() => loyaltyProgramExpirationPolicySchema)),
   ],
   terminology: ['terminology', lazy(() => loyaltyProgramTerminologySchema)],
-  locationIds: ['location_ids', optional(array(string()))],
-  createdAt: ['created_at', string()],
-  updatedAt: ['updated_at', string()],
+  locationIds: ['location_ids', optional(nullable(array(string())))],
+  createdAt: ['created_at', optional(string())],
+  updatedAt: ['updated_at', optional(string())],
   accrualRules: [
     'accrual_rules',
     array(lazy(() => loyaltyProgramAccrualRuleSchema)),

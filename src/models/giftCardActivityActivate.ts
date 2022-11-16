@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Represents details about an `ACTIVATE` [gift card activity type]($m/GiftCardActivityType). */
@@ -17,19 +25,19 @@ export interface GiftCardActivityActivate {
    * Applications that use the Square Orders API to process orders must specify the order ID
    * [CreateGiftCardActivity]($e/GiftCardActivities/CreateGiftCardActivity) request.
    */
-  orderId?: string;
+  orderId?: string | null;
   /**
    * The UID of the `GIFT_CARD` line item in the order that represents the gift card purchase.
    * Applications that use the Square Orders API to process orders must specify the line item UID
    * in the [CreateGiftCardActivity]($e/GiftCardActivities/CreateGiftCardActivity) request.
    */
-  lineItemUid?: string;
+  lineItemUid?: string | null;
   /**
    * A client-specified ID that associates the gift card activity with an entity in another system.
    * Applications that use a custom order processing system can use this field to track information
    * related to an order or payment.
    */
-  referenceId?: string;
+  referenceId?: string | null;
   /**
    * The payment instrument IDs used to process the gift card purchase, such as a credit card ID
    * or bank account ID.
@@ -39,18 +47,18 @@ export interface GiftCardActivityActivate {
    * For applications that use the Square Orders API to process payments, Square has the necessary
    * instrument IDs to perform compliance checks.
    */
-  buyerPaymentInstrumentIds?: string[];
+  buyerPaymentInstrumentIds?: string[] | null;
 }
 
 export const giftCardActivityActivateSchema: Schema<GiftCardActivityActivate> = object(
   {
     amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
-    orderId: ['order_id', optional(string())],
-    lineItemUid: ['line_item_uid', optional(string())],
-    referenceId: ['reference_id', optional(string())],
+    orderId: ['order_id', optional(nullable(string()))],
+    lineItemUid: ['line_item_uid', optional(nullable(string()))],
+    referenceId: ['reference_id', optional(nullable(string()))],
     buyerPaymentInstrumentIds: [
       'buyer_payment_instrument_ids',
-      optional(array(string())),
+      optional(nullable(array(string()))),
     ],
   }
 );

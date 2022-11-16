@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -44,14 +45,14 @@ export interface V1Payment {
   /** The payment's unique identifier. */
   id?: string;
   /** The unique identifier of the merchant that took the payment. */
-  merchantId?: string;
+  merchantId?: string | null;
   /** The time when the payment was created, in ISO 8601 format. Reflects the time of the first payment if the object represents an incomplete partial payment, and the time of the last or complete payment otherwise. */
   createdAt?: string;
   /** The unique identifier of the Square account that took the payment. */
-  creatorId?: string;
+  creatorId?: string | null;
   device?: Device;
   /** The URL of the payment's detail page in the merchant dashboard. The merchant must be signed in to the merchant dashboard to view this page. */
-  paymentUrl?: string;
+  paymentUrl?: string | null;
   /**
    * The URL of the receipt for the payment. Note that for split tender
    * payments, this URL corresponds to the receipt for the first tender
@@ -59,7 +60,7 @@ export interface V1Payment {
    * receipt_url field you can use to get the other receipts associated with
    * a split tender payment.
    */
-  receiptUrl?: string;
+  receiptUrl?: string | null;
   inclusiveTaxMoney?: V1Money;
   additiveTaxMoney?: V1Money;
   taxMoney?: V1Money;
@@ -73,34 +74,34 @@ export interface V1Payment {
   grossSalesMoney?: V1Money;
   netSalesMoney?: V1Money;
   /** All of the inclusive taxes associated with the payment. */
-  inclusiveTax?: V1PaymentTax[];
+  inclusiveTax?: V1PaymentTax[] | null;
   /** All of the additive taxes associated with the payment. */
-  additiveTax?: V1PaymentTax[];
+  additiveTax?: V1PaymentTax[] | null;
   /** All of the tenders associated with the payment. */
-  tender?: V1Tender[];
+  tender?: V1Tender[] | null;
   /** All of the refunds applied to the payment. Note that the value of all refunds on a payment can exceed the value of all tenders if a merchant chooses to refund money to a tender after previously accepting returned goods as part of an exchange. */
-  refunds?: V1Refund[];
+  refunds?: V1Refund[] | null;
   /** The items purchased in the payment. */
-  itemizations?: V1PaymentItemization[];
+  itemizations?: V1PaymentItemization[] | null;
   surchargeMoney?: V1Money;
   /** A list of all surcharges associated with the payment. */
-  surcharges?: V1PaymentSurcharge[];
+  surcharges?: V1PaymentSurcharge[] | null;
   /**
    * Indicates whether or not the payment is only partially paid for.
    * If true, this payment will have the tenders collected so far, but the
    * itemizations will be empty until the payment is completed.
    */
-  isPartial?: boolean;
+  isPartial?: boolean | null;
 }
 
 export const v1PaymentSchema: Schema<V1Payment> = object({
   id: ['id', optional(string())],
-  merchantId: ['merchant_id', optional(string())],
+  merchantId: ['merchant_id', optional(nullable(string()))],
   createdAt: ['created_at', optional(string())],
-  creatorId: ['creator_id', optional(string())],
+  creatorId: ['creator_id', optional(nullable(string()))],
   device: ['device', optional(lazy(() => deviceSchema))],
-  paymentUrl: ['payment_url', optional(string())],
-  receiptUrl: ['receipt_url', optional(string())],
+  paymentUrl: ['payment_url', optional(nullable(string()))],
+  receiptUrl: ['receipt_url', optional(nullable(string()))],
   inclusiveTaxMoney: [
     'inclusive_tax_money',
     optional(lazy(() => v1MoneySchema)),
@@ -127,22 +128,22 @@ export const v1PaymentSchema: Schema<V1Payment> = object({
   netSalesMoney: ['net_sales_money', optional(lazy(() => v1MoneySchema))],
   inclusiveTax: [
     'inclusive_tax',
-    optional(array(lazy(() => v1PaymentTaxSchema))),
+    optional(nullable(array(lazy(() => v1PaymentTaxSchema)))),
   ],
   additiveTax: [
     'additive_tax',
-    optional(array(lazy(() => v1PaymentTaxSchema))),
+    optional(nullable(array(lazy(() => v1PaymentTaxSchema)))),
   ],
-  tender: ['tender', optional(array(lazy(() => v1TenderSchema)))],
-  refunds: ['refunds', optional(array(lazy(() => v1RefundSchema)))],
+  tender: ['tender', optional(nullable(array(lazy(() => v1TenderSchema))))],
+  refunds: ['refunds', optional(nullable(array(lazy(() => v1RefundSchema))))],
   itemizations: [
     'itemizations',
-    optional(array(lazy(() => v1PaymentItemizationSchema))),
+    optional(nullable(array(lazy(() => v1PaymentItemizationSchema)))),
   ],
   surchargeMoney: ['surcharge_money', optional(lazy(() => v1MoneySchema))],
   surcharges: [
     'surcharges',
-    optional(array(lazy(() => v1PaymentSurchargeSchema))),
+    optional(nullable(array(lazy(() => v1PaymentSurchargeSchema)))),
   ],
-  isPartial: ['is_partial', optional(boolean())],
+  isPartial: ['is_partial', optional(nullable(boolean()))],
 });

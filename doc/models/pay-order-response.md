@@ -43,6 +43,10 @@ Defines the fields that are included in the response body of a request to the
           "amount": 500,
           "currency": "USD"
         },
+        "total_service_charge_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
         "total_tax_money": {
           "amount": 0,
           "currency": "USD"
@@ -66,6 +70,10 @@ Defines the fields that are included in the response body of a request to the
         },
         "total_money": {
           "amount": 1500,
+          "currency": "USD"
+        },
+        "total_service_charge_money": {
+          "amount": 0,
           "currency": "USD"
         },
         "total_tax_money": {

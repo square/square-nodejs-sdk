@@ -35,7 +35,14 @@ Either `loyalty_promotion` or `errors` is present in the response.
       "type": "POINTS_MULTIPLIER"
     },
     "loyalty_program_id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
+    "minimum_spend_amount_money": {
+      "amount": 2000,
+      "currency": "USD"
+    },
     "name": "Tuesday Happy Hour Promo",
+    "qualifying_category_ids": [
+      "XTQPYLR3IIU9C44VRCB3XD12"
+    ],
     "status": "ACTIVE",
     "trigger_limit": {
       "interval": "DAY",

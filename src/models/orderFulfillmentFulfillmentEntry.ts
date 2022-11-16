@@ -1,4 +1,4 @@
-import { dict, object, optional, Schema, string } from '../schema';
+import { dict, nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * Links an order line item to a fulfillment. Each entry must reference
@@ -7,7 +7,7 @@ import { dict, object, optional, Schema, string } from '../schema';
  */
 export interface OrderFulfillmentFulfillmentEntry {
   /** A unique ID that identifies the fulfillment entry only within this order. */
-  uid?: string;
+  uid?: string | null;
   /** The `uid` from the order line item. */
   lineItemUid: string;
   /**
@@ -32,14 +32,14 @@ export interface OrderFulfillmentFulfillmentEntry {
    * application.
    * For more information, see [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
    */
-  metadata?: Record<string, string>;
+  metadata?: Record<string, string> | null;
 }
 
 export const orderFulfillmentFulfillmentEntrySchema: Schema<OrderFulfillmentFulfillmentEntry> = object(
   {
-    uid: ['uid', optional(string())],
+    uid: ['uid', optional(nullable(string()))],
     lineItemUid: ['line_item_uid', string()],
     quantity: ['quantity', string()],
-    metadata: ['metadata', optional(dict(string()))],
+    metadata: ['metadata', optional(nullable(dict(string())))],
   }
 );

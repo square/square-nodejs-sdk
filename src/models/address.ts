@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * Represents a postal address in a country.
@@ -12,69 +12,69 @@ export interface Address {
    * provide less specific details like city, state/province, or country (these
    * details are provided in other fields).
    */
-  addressLine1?: string;
+  addressLine1?: string | null;
   /** The second line of the address, if any. */
-  addressLine2?: string;
+  addressLine2?: string | null;
   /** The third line of the address, if any. */
-  addressLine3?: string;
+  addressLine3?: string | null;
   /** The city or town of the address. For a full list of field meanings by country, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses). */
-  locality?: string;
+  locality?: string | null;
   /** A civil region within the address's `locality`, if any. */
-  sublocality?: string;
+  sublocality?: string | null;
   /** A civil region within the address's `sublocality`, if any. */
-  sublocality2?: string;
+  sublocality2?: string | null;
   /** A civil region within the address's `sublocality_2`, if any. */
-  sublocality3?: string;
+  sublocality3?: string | null;
   /**
    * A civil entity within the address's country. In the US, this
    * is the state. For a full list of field meanings by country, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
    */
-  administrativeDistrictLevel1?: string;
+  administrativeDistrictLevel1?: string | null;
   /**
    * A civil entity within the address's `administrative_district_level_1`.
    * In the US, this is the county.
    */
-  administrativeDistrictLevel2?: string;
+  administrativeDistrictLevel2?: string | null;
   /**
    * A civil entity within the address's `administrative_district_level_2`,
    * if any.
    */
-  administrativeDistrictLevel3?: string;
+  administrativeDistrictLevel3?: string | null;
   /** The address's postal code. For a full list of field meanings by country, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses). */
-  postalCode?: string;
+  postalCode?: string | null;
   /**
    * Indicates the country associated with another entity, such as a business.
    * Values are in [ISO 3166-1-alpha-2 format](http://www.iso.org/iso/home/standards/country_codes.htm).
    */
   country?: string;
   /** Optional first name when it's representing recipient. */
-  firstName?: string;
+  firstName?: string | null;
   /** Optional last name when it's representing recipient. */
-  lastName?: string;
+  lastName?: string | null;
 }
 
 export const addressSchema: Schema<Address> = object({
-  addressLine1: ['address_line_1', optional(string())],
-  addressLine2: ['address_line_2', optional(string())],
-  addressLine3: ['address_line_3', optional(string())],
-  locality: ['locality', optional(string())],
-  sublocality: ['sublocality', optional(string())],
-  sublocality2: ['sublocality_2', optional(string())],
-  sublocality3: ['sublocality_3', optional(string())],
+  addressLine1: ['address_line_1', optional(nullable(string()))],
+  addressLine2: ['address_line_2', optional(nullable(string()))],
+  addressLine3: ['address_line_3', optional(nullable(string()))],
+  locality: ['locality', optional(nullable(string()))],
+  sublocality: ['sublocality', optional(nullable(string()))],
+  sublocality2: ['sublocality_2', optional(nullable(string()))],
+  sublocality3: ['sublocality_3', optional(nullable(string()))],
   administrativeDistrictLevel1: [
     'administrative_district_level_1',
-    optional(string()),
+    optional(nullable(string())),
   ],
   administrativeDistrictLevel2: [
     'administrative_district_level_2',
-    optional(string()),
+    optional(nullable(string())),
   ],
   administrativeDistrictLevel3: [
     'administrative_district_level_3',
-    optional(string()),
+    optional(nullable(string())),
   ],
-  postalCode: ['postal_code', optional(string())],
+  postalCode: ['postal_code', optional(nullable(string()))],
   country: ['country', optional(string())],
-  firstName: ['first_name', optional(string())],
-  lastName: ['last_name', optional(string())],
+  firstName: ['first_name', optional(nullable(string()))],
+  lastName: ['last_name', optional(nullable(string()))],
 });

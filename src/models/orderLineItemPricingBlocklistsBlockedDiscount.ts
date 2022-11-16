@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * A discount to block from applying to a line item. The discount must be
@@ -6,24 +6,27 @@ import { object, optional, Schema, string } from '../schema';
  */
 export interface OrderLineItemPricingBlocklistsBlockedDiscount {
   /** A unique ID of the `BlockedDiscount` within the order. */
-  uid?: string;
+  uid?: string | null;
   /**
    * The `uid` of the discount that should be blocked. Use this field to block
    * ad hoc discounts. For catalog discounts, use the `discount_catalog_object_id` field.
    */
-  discountUid?: string;
+  discountUid?: string | null;
   /**
    * The `catalog_object_id` of the discount that should be blocked.
    * Use this field to block catalog discounts. For ad hoc discounts, use the
    * `discount_uid` field.
    */
-  discountCatalogObjectId?: string;
+  discountCatalogObjectId?: string | null;
 }
 
 export const orderLineItemPricingBlocklistsBlockedDiscountSchema: Schema<OrderLineItemPricingBlocklistsBlockedDiscount> = object(
   {
-    uid: ['uid', optional(string())],
-    discountUid: ['discount_uid', optional(string())],
-    discountCatalogObjectId: ['discount_catalog_object_id', optional(string())],
+    uid: ['uid', optional(nullable(string()))],
+    discountUid: ['discount_uid', optional(nullable(string()))],
+    discountCatalogObjectId: [
+      'discount_catalog_object_id',
+      optional(nullable(string())),
+    ],
   }
 );

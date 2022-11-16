@@ -1,5 +1,5 @@
 {
-  "version": "23.0.0",
+  "version": "24.0.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/index.js",
@@ -27,7 +27,11 @@
   },
   "name": "square",
   "description": "Use Square APIs to manage and run business including payment, customer, product, inventory, and employee management.",
-  "author": "Square Developer Platform",
+  "author": {
+    "name": "Square Developer Platform",
+    "email": "developers@squareup.com",
+    "url": "https://squareup.com/developers"
+  },
   "devDependencies": {
     "@types/uuid": "^8.3.0",
     "stream-equal": "^2.0.1",
@@ -42,11 +46,8 @@
     "@apimatic/schema": "^0.6.0",
     "@types/node": "^14.14.30"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/square/square-nodejs-sdk.git"
-  },
   "bugs": {
+    "url": "https://squareup.com/developers",
     "email": "developers@squareup.com"
   }
 }

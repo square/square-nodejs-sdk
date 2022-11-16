@@ -1,4 +1,4 @@
-import { number, object, optional, Schema, string } from '../schema';
+import { nullable, number, object, optional, Schema, string } from '../schema';
 
 /**
  * Describes a request to list refunds using
@@ -10,35 +10,35 @@ export interface ListPaymentRefundsRequest {
    * The timestamp for the beginning of the requested reporting period, in RFC 3339 format.
    * Default: The current time minus one year.
    */
-  beginTime?: string;
+  beginTime?: string | null;
   /**
    * The timestamp for the end of the requested reporting period, in RFC 3339 format.
    * Default: The current time.
    */
-  endTime?: string;
+  endTime?: string | null;
   /**
    * The order in which results are listed:
    * - `ASC` - Oldest to newest.
    * - `DESC` - Newest to oldest (default).
    */
-  sortOrder?: string;
+  sortOrder?: string | null;
   /**
    * A pagination cursor returned by a previous call to this endpoint.
    * Provide this cursor to retrieve the next set of results for the original query.
    * For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
    */
-  cursor?: string;
+  cursor?: string | null;
   /**
    * Limit results to the location supplied. By default, results are returned
    * for all locations associated with the seller.
    */
-  locationId?: string;
+  locationId?: string | null;
   /**
    * If provided, only refunds with the given status are returned.
    * For a list of refund status values, see [PaymentRefund]($m/PaymentRefund).
    * Default: If omitted, refunds are returned regardless of their status.
    */
-  status?: string;
+  status?: string | null;
   /**
    * If provided, only returns refunds whose payments have the indicated source type.
    * Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `CASH`, and `EXTERNAL`.
@@ -46,25 +46,25 @@ export interface ListPaymentRefundsRequest {
    * [Take Payments](https://developer.squareup.com/docs/payments-api/take-payments).
    * Default: If omitted, refunds are returned regardless of the source type.
    */
-  sourceType?: string;
+  sourceType?: string | null;
   /**
    * The maximum number of results to be returned in a single page.
    * It is possible to receive fewer results than the specified limit on a given page.
    * If the supplied value is greater than 100, no more than 100 results are returned.
    * Default: 100
    */
-  limit?: number;
+  limit?: number | null;
 }
 
 export const listPaymentRefundsRequestSchema: Schema<ListPaymentRefundsRequest> = object(
   {
-    beginTime: ['begin_time', optional(string())],
-    endTime: ['end_time', optional(string())],
-    sortOrder: ['sort_order', optional(string())],
-    cursor: ['cursor', optional(string())],
-    locationId: ['location_id', optional(string())],
-    status: ['status', optional(string())],
-    sourceType: ['source_type', optional(string())],
-    limit: ['limit', optional(number())],
+    beginTime: ['begin_time', optional(nullable(string()))],
+    endTime: ['end_time', optional(nullable(string()))],
+    sortOrder: ['sort_order', optional(nullable(string()))],
+    cursor: ['cursor', optional(nullable(string()))],
+    locationId: ['location_id', optional(nullable(string()))],
+    status: ['status', optional(nullable(string()))],
+    sourceType: ['source_type', optional(nullable(string()))],
+    limit: ['limit', optional(nullable(number()))],
   }
 );

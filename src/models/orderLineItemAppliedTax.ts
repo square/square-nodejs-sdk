@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -10,7 +10,7 @@ import { Money, moneySchema } from './money';
  */
 export interface OrderLineItemAppliedTax {
   /** A unique ID that identifies the applied tax only within this order. */
-  uid?: string;
+  uid?: string | null;
   /**
    * The `uid` of the tax for which this applied tax represents. It must reference
    * a tax present in the `order.taxes` field.
@@ -31,7 +31,7 @@ export interface OrderLineItemAppliedTax {
 
 export const orderLineItemAppliedTaxSchema: Schema<OrderLineItemAppliedTax> = object(
   {
-    uid: ['uid', optional(string())],
+    uid: ['uid', optional(nullable(string()))],
     taxUid: ['tax_uid', string()],
     appliedMoney: ['applied_money', optional(lazy(() => moneySchema))],
   }

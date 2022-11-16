@@ -225,7 +225,16 @@ async updateSubscription(
 ```ts
 const subscriptionId = 'subscription_id0';
 const contentType = null;
+const bodySubscriptionPriceOverrideMoney: Money = {};
+bodySubscriptionPriceOverrideMoney.amount = BigInt(2000);
+bodySubscriptionPriceOverrideMoney.currency = 'USD';
+
+const bodySubscription: Subscription = {};
+bodySubscription.priceOverrideMoney = bodySubscriptionPriceOverrideMoney;
+bodySubscription.version = BigInt(1594155459464);
+
 const body: UpdateSubscriptionRequest = {};
+body.subscription = bodySubscription;
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.updateSubscription(subscriptionId, body);

@@ -2,6 +2,7 @@ import {
   array,
   bigint,
   boolean,
+  nullable,
   object,
   optional,
   Schema,
@@ -25,23 +26,29 @@ export interface BatchRetrieveCatalogObjectsRequest {
    * the response.
    * Default value: `false`
    */
-  includeRelatedObjects?: boolean;
+  includeRelatedObjects?: boolean | null;
   /**
    * The specific version of the catalog objects to be included in the response.
    * This allows you to retrieve historical versions of objects. The specified version value is matched against
    * the [CatalogObject]($m/CatalogObject)s' `version` attribute. If not included, results will
    * be from the current version of the catalog.
    */
-  catalogVersion?: bigint;
+  catalogVersion?: bigint | null;
   /** Indicates whether to include (`true`) or not (`false`) in the response deleted objects, namely, those with the `is_deleted` attribute set to `true`. */
-  includeDeletedObjects?: boolean;
+  includeDeletedObjects?: boolean | null;
 }
 
 export const batchRetrieveCatalogObjectsRequestSchema: Schema<BatchRetrieveCatalogObjectsRequest> = object(
   {
     objectIds: ['object_ids', array(string())],
-    includeRelatedObjects: ['include_related_objects', optional(boolean())],
-    catalogVersion: ['catalog_version', optional(bigint())],
-    includeDeletedObjects: ['include_deleted_objects', optional(boolean())],
+    includeRelatedObjects: [
+      'include_related_objects',
+      optional(nullable(boolean())),
+    ],
+    catalogVersion: ['catalog_version', optional(nullable(bigint()))],
+    includeDeletedObjects: [
+      'include_deleted_objects',
+      optional(nullable(boolean())),
+    ],
   }
 );

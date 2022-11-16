@@ -109,6 +109,10 @@ a request to the [CloneOrder](../../doc/api/orders.md#clone-order) endpoint.
           "amount": 1648,
           "currency": "USD"
         },
+        "total_service_charge_money": {
+          "amount": 0,
+          "currency": "USD"
+        },
         "total_tax_money": {
           "amount": 136,
           "currency": "USD"
@@ -188,6 +192,10 @@ a request to the [CloneOrder](../../doc/api/orders.md#clone-order) endpoint.
         },
         "total_money": {
           "amount": 4528,
+          "currency": "USD"
+        },
+        "total_service_charge_money": {
+          "amount": 0,
           "currency": "USD"
         },
         "total_tax_money": {

@@ -1,4 +1,4 @@
-import { object, optional, Schema, string } from '../schema';
+import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * Represents the mapping that associates a loyalty account with a buyer.
@@ -11,13 +11,13 @@ export interface LoyaltyAccountMapping {
   /** The timestamp when the mapping was created, in RFC 3339 format. */
   createdAt?: string;
   /** The phone number of the buyer, in E.164 format. For example, "+14155551111". */
-  phoneNumber?: string;
+  phoneNumber?: string | null;
 }
 
 export const loyaltyAccountMappingSchema: Schema<LoyaltyAccountMapping> = object(
   {
     id: ['id', optional(string())],
     createdAt: ['created_at', optional(string())],
-    phoneNumber: ['phone_number', optional(string())],
+    phoneNumber: ['phone_number', optional(nullable(string()))],
   }
 );

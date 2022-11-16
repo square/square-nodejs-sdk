@@ -2,6 +2,7 @@ import {
   array,
   boolean,
   lazy,
+  nullable,
   object,
   optional,
   Schema,
@@ -22,7 +23,7 @@ import { Money, moneySchema } from './money';
  */
 export interface InvoicePaymentRequest {
   /** The Square-generated ID of the payment request in an [invoice]($m/Invoice). */
-  uid?: string;
+  uid?: string | null;
   /**
    * Specifies the action for Square to take for processing the invoice. For example,
    * email the invoice, charge a customer's card on file, or do nothing. DEPRECATED at
@@ -43,7 +44,7 @@ export interface InvoicePaymentRequest {
    * of America/Los\_Angeles becomes overdue at midnight on March 9 in America/Los\_Angeles (which equals a UTC
    * timestamp of 2021-03-10T08:00:00Z).
    */
-  dueDate?: string;
+  dueDate?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -62,23 +63,23 @@ export interface InvoicePaymentRequest {
    * You cannot specify this when the payment `request_type` is `BALANCE` or when the
    * payment request specifies the `fixed_amount_requested_money` field.
    */
-  percentageRequested?: string;
+  percentageRequested?: string | null;
   /**
    * If set to true, the Square-hosted invoice page (the `public_url` field of the invoice)
    * provides a place for the customer to pay a tip.
    * This field is allowed only on the final payment request
    * and the payment `request_type` must be `BALANCE` or `INSTALLMENT`.
    */
-  tippingEnabled?: boolean;
+  tippingEnabled?: boolean | null;
   /** Indicates the automatic payment method for an [invoice payment request]($m/InvoicePaymentRequest). */
   automaticPaymentSource?: string;
   /**
    * The ID of the credit or debit card on file to charge for the payment request. To get the cards on file for a customer,
    * call [ListCards]($e/Cards/ListCards) and include the `customer_id` of the invoice recipient.
    */
-  cardId?: string;
+  cardId?: string | null;
   /** A list of one or more reminders to send for the payment request. */
-  reminders?: InvoicePaymentReminder[];
+  reminders?: InvoicePaymentReminder[] | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -110,21 +111,21 @@ export interface InvoicePaymentRequest {
 
 export const invoicePaymentRequestSchema: Schema<InvoicePaymentRequest> = object(
   {
-    uid: ['uid', optional(string())],
+    uid: ['uid', optional(nullable(string()))],
     requestMethod: ['request_method', optional(string())],
     requestType: ['request_type', optional(string())],
-    dueDate: ['due_date', optional(string())],
+    dueDate: ['due_date', optional(nullable(string()))],
     fixedAmountRequestedMoney: [
       'fixed_amount_requested_money',
       optional(lazy(() => moneySchema)),
     ],
-    percentageRequested: ['percentage_requested', optional(string())],
-    tippingEnabled: ['tipping_enabled', optional(boolean())],
+    percentageRequested: ['percentage_requested', optional(nullable(string()))],
+    tippingEnabled: ['tipping_enabled', optional(nullable(boolean()))],
     automaticPaymentSource: ['automatic_payment_source', optional(string())],
-    cardId: ['card_id', optional(string())],
+    cardId: ['card_id', optional(nullable(string()))],
     reminders: [
       'reminders',
-      optional(array(lazy(() => invoicePaymentReminderSchema))),
+      optional(nullable(array(lazy(() => invoicePaymentReminderSchema)))),
     ],
     computedAmountMoney: [
       'computed_amount_money',
