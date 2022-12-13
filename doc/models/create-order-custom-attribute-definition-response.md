@@ -19,12 +19,12 @@ Represents a response from creating an order custom attribute definition.
 ```json
 {
   "custom_attribute_definition": {
-    "created_at": "2022-11-10T18:04:57.039Z",
-    "description": "wayne test",
-    "key": "wayne-test-16",
-    "name": "wayne-test",
+    "created_at": "2022-10-06T16:53:23.141Z",
+    "description": "The number of people seated at a table",
+    "key": "cover-count",
+    "name": "Cover count",
     "schema": null,
-    "updated_at": "2022-11-10T18:04:57.039Z",
+    "updated_at": "2022-10-06T16:53:23.141Z",
     "version": 1,
     "visibility": "VISIBILITY_READ_WRITE_VALUES"
   }

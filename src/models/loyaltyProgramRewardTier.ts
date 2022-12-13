@@ -29,7 +29,7 @@ export interface LoyaltyProgramRewardTier {
    * used as an entry point into a graph of catalog objects, where the objects exist
    * at a specific version.
    */
-  pricingRuleReference?: CatalogObjectReference;
+  pricingRuleReference: CatalogObjectReference;
 }
 
 export const loyaltyProgramRewardTierSchema: Schema<LoyaltyProgramRewardTier> = object(
@@ -44,7 +44,7 @@ export const loyaltyProgramRewardTierSchema: Schema<LoyaltyProgramRewardTier> = 
     createdAt: ['created_at', optional(string())],
     pricingRuleReference: [
       'pricing_rule_reference',
-      optional(lazy(() => catalogObjectReferenceSchema)),
+      lazy(() => catalogObjectReferenceSchema),
     ],
   }
 );

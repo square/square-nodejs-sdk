@@ -1,6 +1,9 @@
 import { object, optional, Schema, string } from '../schema';
 
-/** Specifies how searched customers profiles are sorted, including the sort key and sort order. */
+/**
+ * Represents the sorting criteria in a [search query]($m/CustomerQuery) that defines how to sort
+ * customer profiles returned in [SearchCustomers]($e/Customers/SearchCustomers) results.
+ */
 export interface CustomerSort {
   /** Specifies customer attributes as the sort key to customer profiles returned from a search. */
   field?: string;

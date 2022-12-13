@@ -19,14 +19,14 @@ Represents a response from updating an order custom attribute definition.
 ```json
 {
   "custom_attribute_definition": {
-    "created_at": "2022-11-09T21:25:28.693Z",
-    "description": "updated",
-    "key": "wayne-test-15",
-    "name": "wayne-test-15",
+    "created_at": "2022-11-16T16:53:23.141Z",
+    "description": "The number of people seated at a table",
+    "key": "cover-count",
+    "name": "Cover count",
     "schema": null,
-    "updated_at": "2022-11-10T18:00:02.929Z",
-    "version": 3,
-    "visibility": "VISIBILITY_READ_WRITE_VALUES"
+    "updated_at": "2022-11-16T17:44:11.436Z",
+    "version": 2,
+    "visibility": "VISIBILITY_READ_ONLY"
   }
 }
 ```

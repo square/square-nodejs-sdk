@@ -18,17 +18,13 @@ Represents a bulk delete request for one or more order custom attributes.
 ```json
 {
   "values": {
-    "entry-1": {
-      "key": "wayne-test-15",
-      "order_id": "VilxhxZHuWEqDC6GQNgiLNshRMYZY"
+    "cover-count": {
+      "key": "cover-count",
+      "order_id": "7BbXGEIWNldxAzrtGf9GPVZTwZ4F"
     },
-    "entry-2": {
-      "key": "wayne-test-13",
-      "order_id": "XNWR6zjcEXWQy6kbsIsQRTxS0wOZY"
-    },
-    "entry-3": {
-      "key": "ca-key5",
-      "order_id": "9QC9RohBVxfsaSOtYjY7KhmjqrLZY"
+    "table-number": {
+      "key": "table-number",
+      "order_id": "7BbXGEIWNldxAzrtGf9GPVZTwZ4F"
     }
   }
 }
