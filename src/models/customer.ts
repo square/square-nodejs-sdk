@@ -68,9 +68,9 @@ export interface Customer {
   preferences?: CustomerPreferences;
   /** Indicates the method used to create the customer profile. */
   creationSource?: string;
-  /** The IDs of customer groups the customer belongs to. */
+  /** The IDs of [customer groups]($m/CustomerGroup) the customer belongs to. */
   groupIds?: string[] | null;
-  /** The IDs of segments the customer belongs to. */
+  /** The IDs of [customer segments]($m/CustomerSegment) the customer belongs to. */
   segmentIds?: string[] | null;
   /** The Square-assigned version number of the customer profile. The version number is incremented each time an update is committed to the customer profile, except for changes to customer segment membership and cards on file. */
   version?: bigint;

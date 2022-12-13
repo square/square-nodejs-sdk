@@ -27,8 +27,8 @@ Represents a Square customer profile in the Customer Directory of a Square selle
 | `note` | `string \| undefined` | Optional | A custom note associated with the customer profile. |
 | `preferences` | [`CustomerPreferences \| undefined`](../../doc/models/customer-preferences.md) | Optional | Represents communication preferences for the customer profile. |
 | `creationSource` | [`string \| undefined`](../../doc/models/customer-creation-source.md) | Optional | Indicates the method used to create the customer profile. |
-| `groupIds` | `string[] \| undefined` | Optional | The IDs of customer groups the customer belongs to. |
-| `segmentIds` | `string[] \| undefined` | Optional | The IDs of segments the customer belongs to. |
+| `groupIds` | `string[] \| undefined` | Optional | The IDs of [customer groups](../../doc/models/customer-group.md) the customer belongs to. |
+| `segmentIds` | `string[] \| undefined` | Optional | The IDs of [customer segments](../../doc/models/customer-segment.md) the customer belongs to. |
 | `version` | `bigint \| undefined` | Optional | The Square-assigned version number of the customer profile. The version number is incremented each time an update is committed to the customer profile, except for changes to customer segment membership and cards on file. |
 | `taxIds` | [`CustomerTaxIds \| undefined`](../../doc/models/customer-tax-ids.md) | Optional | Represents the tax ID associated with a [customer profile](../../doc/models/customer.md). The corresponding `tax_ids` field is available only for customers of sellers in EU countries or the United Kingdom.<br>For more information, see [Customer tax IDs](https://developer.squareup.com/docs/customers-api/what-it-does#customer-tax-ids). |
 

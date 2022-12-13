@@ -10,7 +10,7 @@ import { Error, errorSchema } from './error';
 export interface ListCustomersResponse {
   /** Any errors that occurred during the request. */
   errors?: Error[];
-  /** An array of `Customer` objects that match the provided query. */
+  /** The customer profiles associated with the Square account or an empty object (`{}`) if none are found. */
   customers?: Customer[];
   /**
    * A pagination cursor to retrieve the next set of results for the

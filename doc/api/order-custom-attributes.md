@@ -101,10 +101,15 @@ async createOrderCustomAttributeDefinition(
 ```ts
 const contentType = null;
 const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
+bodyCustomAttributeDefinition.key = 'cover-count';
+bodyCustomAttributeDefinition.name = 'Cover count';
+bodyCustomAttributeDefinition.description = 'The number of people seated at a table';
+bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_WRITE_VALUES';
 
 const body: CreateOrderCustomAttributeDefinitionRequest = {
   customAttributeDefinition: bodyCustomAttributeDefinition,
 };
+body.idempotencyKey = 'IDEMPOTENCY_KEY';
 
 try {
   const { result, ...httpResponse } = await orderCustomAttributesApi.createOrderCustomAttributeDefinition(body);
@@ -237,15 +242,14 @@ async updateOrderCustomAttributeDefinition(
 const key = 'key0';
 const contentType = null;
 const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
-bodyCustomAttributeDefinition.key = 'wayne-test-15';
-bodyCustomAttributeDefinition.name = 'wayne-test-15';
-bodyCustomAttributeDefinition.description = 'updated';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_WRITE_VALUES';
-bodyCustomAttributeDefinition.version = 2;
+bodyCustomAttributeDefinition.key = 'cover-count';
+bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_ONLY';
+bodyCustomAttributeDefinition.version = 1;
 
 const body: UpdateOrderCustomAttributeDefinitionRequest = {
   customAttributeDefinition: bodyCustomAttributeDefinition,
 };
+body.idempotencyKey = 'IDEMPOTENCY_KEY';
 
 try {
   const { result, ...httpResponse } = await orderCustomAttributesApi.updateOrderCustomAttributeDefinition(key, body);

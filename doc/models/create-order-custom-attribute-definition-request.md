@@ -19,14 +19,13 @@ Represents a create request for an order custom attribute definition.
 ```json
 {
   "custom_attribute_definition": {
-    "key": null,
+    "description": "The number of people seated at a table",
+    "key": "cover-count",
+    "name": "Cover count",
     "schema": null,
-    "name": null,
-    "description": null,
-    "visibility": null,
-    "version": null
+    "visibility": "VISIBILITY_READ_WRITE_VALUES"
   },
-  "idempotency_key": null
+  "idempotency_key": "IDEMPOTENCY_KEY"
 }
 ```
 

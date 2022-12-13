@@ -66,6 +66,8 @@ Square API.
 | `CUSTOMER_MISSING_EMAIL` | The provided customer does not have a recorded email. |
 | `INVALID_PAUSE_LENGTH` | The subscription cannot be paused longer than the duration of the current phase. |
 | `INVALID_DATE` | The subscription cannot be paused/resumed on the given date. |
+| `UNSUPPORTED_COUNTRY` | The API request references an unsupported country. |
+| `UNSUPPORTED_CURRENCY` | The API request references an unsupported currency. |
 | `CARD_EXPIRED` | The card issuer declined the request because the card is expired. |
 | `INVALID_EXPIRATION` | The expiration date for the payment card is invalid. For example,<br>it indicates a date in the past. |
 | `INVALID_EXPIRATION_YEAR` | The expiration year for the payment card is invalid. For example,<br>it indicates a year in the past or contains invalid characters. |
@@ -85,7 +87,7 @@ Square API.
 | `CARDHOLDER_INSUFFICIENT_PERMISSIONS` | The card issuer has declined the transaction due to restrictions on where the card can be used.<br>For example, a gift card is limited to a single merchant. |
 | `INVALID_LOCATION` | The Square account cannot take payments in the specified region.<br>A Square account can take payments only from the region where the account was created. |
 | `TRANSACTION_LIMIT` | The card issuer has determined the payment amount is either too high or too low.<br>The API returns the error code mostly for credit cards (for example, the card reached<br>the credit limit). However, sometimes the issuer bank can indicate the error for debit<br>or prepaid cards (for example, card has insufficient funds). |
-| `VOICE_FAILURE` | The card issuer declined the request because the issuer requires voice authorization from the cardholder. |
+| `VOICE_FAILURE` | The card issuer declined the request because the issuer requires voice authorization from the cardholder. The seller should ask the customer to contact the card issuing bank to authorize the payment. |
 | `PAN_FAILURE` | The specified card number is invalid. For example, it is of<br>incorrect length or is incorrectly formatted. |
 | `EXPIRATION_FAILURE` | The card expiration date is either invalid or indicates that the<br>card is expired. |
 | `CARD_NOT_SUPPORTED` | The card is not supported either in the geographic region or by<br>the [merchant category code](https://developer.squareup.com/docs/locations-api#initialize-a-merchant-category-code) (MCC). |
@@ -106,7 +108,7 @@ Square API.
 | `CARD_TOKEN_EXPIRED` | The provided card token (nonce) has expired. |
 | `CARD_TOKEN_USED` | The provided card token (nonce) was already used to process the payment or refund. |
 | `AMOUNT_TOO_HIGH` | The requested payment amount is too high for the provided payment source. |
-| `UNSUPPORTED_INSTRUMENT_TYPE` | The API request references an unsupported instrument type/ |
+| `UNSUPPORTED_INSTRUMENT_TYPE` | The API request references an unsupported instrument type. |
 | `REFUND_AMOUNT_INVALID` | The requested refund amount exceeds the amount available to refund. |
 | `REFUND_ALREADY_PENDING` | The payment already has a pending refund. |
 | `PAYMENT_NOT_REFUNDABLE` | The payment is not refundable. For example, the payment has been disputed and is no longer eligible for<br>refunds. |
@@ -126,6 +128,9 @@ Square API.
 | `BAD_CERTIFICATE` | Bad certificate. |
 | `INVALID_SQUARE_VERSION_FORMAT` | The provided Square-Version is incorrectly formatted. |
 | `API_VERSION_INCOMPATIBLE` | The provided Square-Version is incompatible with the requested action. |
+| `CARD_PRESENCE_REQUIRED` | The transaction requires that a card be present. |
+| `UNSUPPORTED_SOURCE_TYPE` | The API request references an unsupported source type. |
+| `CARD_MISMATCH` | The provided card does not match what is expected. |
 | `CARD_DECLINED` | The card was declined. |
 | `VERIFY_CVV_FAILURE` | The CVV could not be verified. |
 | `VERIFY_AVS_FAILURE` | The AVS could not be verified. |
