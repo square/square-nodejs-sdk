@@ -18,10 +18,7 @@ export interface SearchCustomersRequest {
    * For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
    */
   limit?: bigint;
-  /**
-   * Represents a query (including filtering criteria, sorting criteria, or both) used to search
-   * for customer profiles.
-   */
+  /** Represents filtering and sorting criteria for a [SearchCustomers]($e/Customers/SearchCustomers) request. */
   query?: CustomerQuery;
 }
 

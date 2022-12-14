@@ -15,7 +15,7 @@ Either `errors` or `customers` is present in a given response (never both).
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `customers` | [`Customer[] \| undefined`](../../doc/models/customer.md) | Optional | An array of `Customer` objects that match the provided query. |
+| `customers` | [`Customer[] \| undefined`](../../doc/models/customer.md) | Optional | The customer profiles associated with the Square account or an empty object (`{}`) if none are found. |
 | `cursor` | `string \| undefined` | Optional | A pagination cursor to retrieve the next set of results for the<br>original query. A cursor is only present if the request succeeded and additional results<br>are available.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
 
 ## Example (as JSON)

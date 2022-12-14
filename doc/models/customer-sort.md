@@ -1,7 +1,8 @@
 
 # Customer Sort
 
-Specifies how searched customers profiles are sorted, including the sort key and sort order.
+Represents the sorting criteria in a [search query](../../doc/models/customer-query.md) that defines how to sort
+customer profiles returned in [SearchCustomers](../../doc/api/customers.md#search-customers) results.
 
 ## Structure
 

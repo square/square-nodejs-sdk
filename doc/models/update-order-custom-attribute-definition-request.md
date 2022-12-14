@@ -19,13 +19,11 @@ Represents an update request for an order custom attribute definition.
 ```json
 {
   "custom_attribute_definition": {
-    "description": "updated",
-    "key": "wayne-test-15",
-    "name": "wayne-test-15",
-    "schema": null,
-    "version": 2,
-    "visibility": "VISIBILITY_READ_WRITE_VALUES"
-  }
+    "key": "cover-count",
+    "version": 1,
+    "visibility": "VISIBILITY_READ_ONLY"
+  },
+  "idempotency_key": "IDEMPOTENCY_KEY"
 }
 ```
 

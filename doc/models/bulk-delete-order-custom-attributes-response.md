@@ -19,9 +19,8 @@ Represents a response from deleting one or more order custom attributes.
 ```json
 {
   "values": {
-    "entry-1": {},
-    "entry-2": {},
-    "entry-3": {}
+    "cover-count": {},
+    "table-number": {}
   }
 }
 ```

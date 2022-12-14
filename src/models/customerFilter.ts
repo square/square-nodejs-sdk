@@ -15,8 +15,8 @@ import { FilterValue, filterValueSchema } from './filterValue';
 import { TimeRange, timeRangeSchema } from './timeRange';
 
 /**
- * Represents a set of `CustomerQuery` filters used to limit the set of
- * customers returned by the [SearchCustomers]($e/Customers/SearchCustomers) endpoint.
+ * Represents the filtering criteria in a [search query]($m/CustomerQuery) that defines how to filter
+ * customer profiles returned in [SearchCustomers]($e/Customers/SearchCustomers) results.
  */
 export interface CustomerFilter {
   /**
@@ -72,6 +72,13 @@ export interface CustomerFilter {
    * [Search by custom attribute](https://developer.squareup.com/docs/customers-api/use-the-api/search-customers#search-by-custom-attribute).
    */
   customAttribute?: CustomerCustomAttributeFilters;
+  /**
+   * A filter to select resources based on an exact field value. For any given
+   * value, the value can only be in one property. Depending on the field, either
+   * all properties can be set or only a subset will be available.
+   * Refer to the documentation of the field.
+   */
+  segmentIds?: FilterValue;
 }
 
 export const customerFilterSchema: Schema<CustomerFilter> = object({
@@ -92,4 +99,5 @@ export const customerFilterSchema: Schema<CustomerFilter> = object({
     'custom_attribute',
     optional(lazy(() => customerCustomAttributeFiltersSchema)),
   ],
+  segmentIds: ['segment_ids', optional(lazy(() => filterValueSchema))],
 });

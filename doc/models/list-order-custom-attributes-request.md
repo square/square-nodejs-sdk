@@ -19,6 +19,11 @@ Represents a list request for order custom attributes.
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "visibility_filter": null,
+  "cursor": null,
+  "limit": null,
+  "with_definitions": null
+}
 ```
 

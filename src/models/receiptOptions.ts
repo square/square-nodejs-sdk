@@ -6,6 +6,7 @@ export interface ReceiptOptions {
   paymentId: string;
   /**
    * Instructs the device to print the receipt without displaying the receipt selection screen.
+   * Requires `printer_enabled` set to true.
    * Defaults to false.
    */
   printOnly?: boolean | null;

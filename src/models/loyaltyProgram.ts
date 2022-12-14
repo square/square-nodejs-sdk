@@ -38,11 +38,11 @@ export interface LoyaltyProgram {
   /** Indicates whether the program is currently active. */
   status?: string;
   /** The list of rewards for buyers, sorted by ascending points. */
-  rewardTiers: LoyaltyProgramRewardTier[];
+  rewardTiers?: LoyaltyProgramRewardTier[] | null;
   /** Describes when the loyalty program expires. */
   expirationPolicy?: LoyaltyProgramExpirationPolicy;
   /** Represents the naming used for loyalty points. */
-  terminology: LoyaltyProgramTerminology;
+  terminology?: LoyaltyProgramTerminology;
   /** The [locations]($m/Location) at which the program is active. */
   locationIds?: string[] | null;
   /** The timestamp when the program was created, in RFC 3339 format. */
@@ -54,7 +54,7 @@ export interface LoyaltyProgram {
    * To check for associated [loyalty promotions]($m/LoyaltyPromotion) that enable
    * buyers to earn extra points, call [ListLoyaltyPromotions]($e/Loyalty/ListLoyaltyPromotions).
    */
-  accrualRules: LoyaltyProgramAccrualRule[];
+  accrualRules?: LoyaltyProgramAccrualRule[] | null;
 }
 
 export const loyaltyProgramSchema: Schema<LoyaltyProgram> = object({
@@ -62,18 +62,21 @@ export const loyaltyProgramSchema: Schema<LoyaltyProgram> = object({
   status: ['status', optional(string())],
   rewardTiers: [
     'reward_tiers',
-    array(lazy(() => loyaltyProgramRewardTierSchema)),
+    optional(nullable(array(lazy(() => loyaltyProgramRewardTierSchema)))),
   ],
   expirationPolicy: [
     'expiration_policy',
     optional(lazy(() => loyaltyProgramExpirationPolicySchema)),
   ],
-  terminology: ['terminology', lazy(() => loyaltyProgramTerminologySchema)],
+  terminology: [
+    'terminology',
+    optional(lazy(() => loyaltyProgramTerminologySchema)),
+  ],
   locationIds: ['location_ids', optional(nullable(array(string())))],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
   accrualRules: [
     'accrual_rules',
-    array(lazy(() => loyaltyProgramAccrualRuleSchema)),
+    optional(nullable(array(lazy(() => loyaltyProgramAccrualRuleSchema)))),
   ],
 });

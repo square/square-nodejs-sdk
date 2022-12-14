@@ -10,7 +10,7 @@ import { Error, errorSchema } from './error';
 export interface SearchCustomersResponse {
   /** Any errors that occurred during the request. */
   errors?: Error[];
-  /** An array of `Customer` objects that match a query. */
+  /** The customer profiles that match the search query. If any search condition is not met, the result is an empty object (`{}`). */
   customers?: Customer[];
   /**
    * A pagination cursor that can be used during subsequent calls

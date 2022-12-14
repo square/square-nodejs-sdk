@@ -16,6 +16,10 @@ import {
   renewTokenResponseSchema,
 } from '../models/renewTokenResponse';
 import {
+  RetrieveTokenStatusResponse,
+  retrieveTokenStatusResponseSchema,
+} from '../models/retrieveTokenStatusResponse';
+import {
   RevokeTokenRequest,
   revokeTokenRequestSchema,
 } from '../models/revokeTokenRequest';
@@ -151,5 +155,42 @@ export class OAuthApi extends BaseApi {
     req.json(mapped.body);
     req.authenticate(false);
     return req.callAsJson(obtainTokenResponseSchema, requestOptions);
+  }
+
+  /**
+   * Returns information about an [OAuth access token](https://developer.squareup.com/docs/build-
+   * basics/access-tokens#get-an-oauth-access-token) or an application’s [personal access token](https:
+   * //developer.squareup.com/docs/build-basics/access-tokens#get-a-personal-access-token).
+   *
+   * Add the access token to the Authorization header of the request.
+   *
+   * __Important:__ The `Authorization` header you provide to this endpoint must have the following
+   * format:
+   *
+   * ```
+   * Authorization: Bearer ACCESS_TOKEN
+   * ```
+   *
+   * where `ACCESS_TOKEN` is a
+   * [valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-
+   * tokens).
+   *
+   * If the access token is expired or not a valid access token, the endpoint returns an `UNAUTHORIZED`
+   * error.
+   *
+   * @param authorization Client APPLICATION_SECRET
+   * @return Response from the API call
+   */
+  async retrieveTokenStatus(
+    authorization: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<RetrieveTokenStatusResponse>> {
+    const req = this.createRequest('POST', '/oauth2/token/status');
+    const mapped = req.prepareArgs({
+      authorization: [authorization, string()],
+    });
+    req.header('Authorization', mapped.authorization);
+    req.authenticate(false);
+    return req.callAsJson(retrieveTokenStatusResponseSchema, requestOptions);
   }
 }
