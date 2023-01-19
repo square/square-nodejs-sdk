@@ -18,6 +18,7 @@ import { GiftCardsApi } from './api/giftCardsApi';
 import { InventoryApi } from './api/inventoryApi';
 import { InvoicesApi } from './api/invoicesApi';
 import { LaborApi } from './api/laborApi';
+import { LocationCustomAttributesApi } from './api/locationCustomAttributesApi';
 import { LocationsApi } from './api/locationsApi';
 import { LoyaltyApi } from './api/loyaltyApi';
 import { MerchantsApi } from './api/merchantsApi';
@@ -66,7 +67,7 @@ import {
 import { XmlSerialization } from './http/xmlSerialization';
 
 /** Current SDK version */
-export const SDK_VERSION = '25.0.0';
+export const SDK_VERSION = '25.1.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -94,6 +95,7 @@ export class Client implements ClientInterface {
   public readonly inventoryApi: InventoryApi;
   public readonly invoicesApi: InvoicesApi;
   public readonly laborApi: LaborApi;
+  public readonly locationCustomAttributesApi: LocationCustomAttributesApi;
   public readonly locationsApi: LocationsApi;
   public readonly loyaltyApi: LoyaltyApi;
   public readonly merchantsApi: MerchantsApi;
@@ -128,7 +130,7 @@ export class Client implements ClientInterface {
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/25.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/25.1.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail
     );
@@ -172,6 +174,7 @@ export class Client implements ClientInterface {
     this.inventoryApi = new InventoryApi(this);
     this.invoicesApi = new InvoicesApi(this);
     this.laborApi = new LaborApi(this);
+    this.locationCustomAttributesApi = new LocationCustomAttributesApi(this);
     this.locationsApi = new LocationsApi(this);
     this.loyaltyApi = new LoyaltyApi(this);
     this.merchantsApi = new MerchantsApi(this);
