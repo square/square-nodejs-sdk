@@ -44,6 +44,14 @@ import {
   giftCardActivityRefundSchema,
 } from './giftCardActivityRefund';
 import {
+  GiftCardActivityTransferBalanceFrom,
+  giftCardActivityTransferBalanceFromSchema,
+} from './giftCardActivityTransferBalanceFrom';
+import {
+  GiftCardActivityTransferBalanceTo,
+  giftCardActivityTransferBalanceToSchema,
+} from './giftCardActivityTransferBalanceTo';
+import {
   GiftCardActivityUnblock,
   giftCardActivityUnblockSchema,
 } from './giftCardActivityUnblock';
@@ -116,6 +124,10 @@ export interface GiftCardActivity {
   unblockActivityDetails?: GiftCardActivityUnblock;
   /** Represents details about an `IMPORT_REVERSAL` [gift card activity type]($m/GiftCardActivityType). */
   importReversalActivityDetails?: GiftCardActivityImportReversal;
+  /** Represents details about a `TRANSFER_BALANCE_TO` [gift card activity type]($m/GiftCardActivityType). */
+  transferBalanceToActivityDetails?: GiftCardActivityTransferBalanceTo;
+  /** Represents details about a `TRANSFER_BALANCE_FROM` [gift card activity type]($m/GiftCardActivityType). */
+  transferBalanceFromActivityDetails?: GiftCardActivityTransferBalanceFrom;
 }
 
 export const giftCardActivitySchema: Schema<GiftCardActivity> = object({
@@ -180,5 +192,13 @@ export const giftCardActivitySchema: Schema<GiftCardActivity> = object({
   importReversalActivityDetails: [
     'import_reversal_activity_details',
     optional(lazy(() => giftCardActivityImportReversalSchema)),
+  ],
+  transferBalanceToActivityDetails: [
+    'transfer_balance_to_activity_details',
+    optional(lazy(() => giftCardActivityTransferBalanceToSchema)),
+  ],
+  transferBalanceFromActivityDetails: [
+    'transfer_balance_from_activity_details',
+    optional(lazy(() => giftCardActivityTransferBalanceFromSchema)),
   ],
 });

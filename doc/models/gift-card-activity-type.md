@@ -24,4 +24,6 @@ Indicates the type of [gift card activity](../../doc/models/gift-card-activity.m
 | `BLOCK` | Temporarily blocked a gift card from balance-changing activities. `BLOCK` activities<br>are managed by Square and cannot be created using the Gift Card Activities API. |
 | `UNBLOCK` | Unblocked a gift card, which enables it to resume balance-changing activities. `UNBLOCK`<br>activities are managed by Square and cannot be created using the Gift Card Activities API. |
 | `IMPORT_REVERSAL` | Reversed the import of a third-party gift card, which sets the gift card state to<br>`PENDING` and clears the balance. `IMPORT_REVERSAL` activities are managed by Square and<br>cannot be created using the Gift Card Activities API. |
+| `TRANSFER_BALANCE_FROM` | Deducted money from a gift card as the result of a transfer to the balance of another gift card.<br>`TRANSFER_BALANCE_FROM` activities are managed by Square and cannot be created using the Gift Card Activities API. |
+| `TRANSFER_BALANCE_TO` | Added money to a gift card as the result of a transfer from the balance of another gift card.<br>`TRANSFER_BALANCE_TO` activities are managed by Square and cannot be created using the Gift Card Activities API. |
 
