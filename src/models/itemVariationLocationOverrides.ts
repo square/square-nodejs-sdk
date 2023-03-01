@@ -1,4 +1,5 @@
 import {
+  array,
   bigint,
   boolean,
   lazy,
@@ -50,6 +51,11 @@ export interface ItemVariationLocationOverrides {
    * When the current time is later than this attribute value, the affected item variation is no longer sold out.
    */
   soldOutValidUntil?: string;
+  /**
+   * Tokens of resources that are attached to the service represented by this variation. Only valid for
+   * variations of type `APPOINTMENTS_SERVICE`.
+   */
+  resourceTokens?: string[] | null;
 }
 
 export const itemVariationLocationOverridesSchema: Schema<ItemVariationLocationOverrides> = object(
@@ -65,5 +71,6 @@ export const itemVariationLocationOverridesSchema: Schema<ItemVariationLocationO
     ],
     soldOut: ['sold_out', optional(boolean())],
     soldOutValidUntil: ['sold_out_valid_until', optional(string())],
+    resourceTokens: ['resource_tokens', optional(nullable(array(string())))],
   }
 );

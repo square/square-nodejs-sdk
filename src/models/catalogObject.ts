@@ -65,6 +65,7 @@ import {
   catalogTimePeriodSchema,
 } from './catalogTimePeriod';
 import { CatalogV1Id, catalogV1IdSchema } from './catalogV1Id';
+import { CatalogResource, catalogResourceSchema } from './catalogResource';
 
 /**
  * The wrapper object for the catalog entries of a given object type.
@@ -225,6 +226,8 @@ export interface CatalogObject {
   customAttributeDefinitionData?: CatalogCustomAttributeDefinition;
   /** A parent Catalog Object model represents a set of Quick Amounts and the settings control the amounts. */
   quickAmountsSettingsData?: CatalogQuickAmountsSettings;
+  /** Information related to a Resource, which represents a bookable room or finite appointment slot */
+  resourceData?: CatalogResource;
 }
 
 export const catalogObjectSchema: Schema<CatalogObject> = object({
@@ -303,4 +306,8 @@ export const catalogObjectSchema: Schema<CatalogObject> = object({
     'quick_amounts_settings_data',
     optional(lazy(() => catalogQuickAmountsSettingsSchema)),
   ],
+  resourceData: [
+    'resource_data',
+    optional(lazy(() => catalogResourceSchema)),
+  ]
 });
