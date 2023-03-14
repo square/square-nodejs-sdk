@@ -20,7 +20,8 @@ Additional details about `WALLET` type payments with the `brand` of `CASH_APP`.
 ```json
 {
   "buyer_full_name": null,
-  "buyer_country_code": null
+  "buyer_country_code": null,
+  "buyer_cashtag": null
 }
 ```
 

@@ -27,6 +27,8 @@ Represents a supplier to a seller.
 ```json
 {
   "id": null,
+  "created_at": null,
+  "updated_at": null,
   "name": null,
   "address": null,
   "contacts": null,

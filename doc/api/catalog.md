@@ -548,15 +548,10 @@ bodyObjectItemDatavariations0.itemVariationData = bodyObjectItemDatavariations0I
 
 bodyObjectItemDataVariations[0] = bodyObjectItemDatavariations0;
 
-const bodyObjectItemDatavariations1ItemVariationDataPriceMoney: Money = {};
-bodyObjectItemDatavariations1ItemVariationDataPriceMoney.amount = BigInt(400);
-bodyObjectItemDatavariations1ItemVariationDataPriceMoney.currency = 'USD';
-
 const bodyObjectItemDatavariations1ItemVariationData: CatalogItemVariation = {};
 bodyObjectItemDatavariations1ItemVariationData.itemId = '#Cocoa';
 bodyObjectItemDatavariations1ItemVariationData.name = 'Large';
 bodyObjectItemDatavariations1ItemVariationData.pricingType = 'FIXED_PRICING';
-bodyObjectItemDatavariations1ItemVariationData.priceMoney = bodyObjectItemDatavariations1ItemVariationDataPriceMoney;
 
 const bodyObjectItemDatavariations1: CatalogObject = {
   type: 'ITEM_VARIATION',

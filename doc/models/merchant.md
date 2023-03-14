@@ -30,7 +30,8 @@ Represents a business that sells with Square.
   "language_code": null,
   "currency": null,
   "status": null,
-  "main_location_id": null
+  "main_location_id": null,
+  "created_at": null
 }
 ```
 

@@ -18,7 +18,6 @@ Describes a `GetInvoice` response.
 
 ```json
 {
-  "errors": [],
   "invoice": {
     "accepted_payment_methods": {
       "bank_account": false,

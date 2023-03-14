@@ -27,11 +27,14 @@ For more information, see [Loyalty Program Overview](https://developer.squareup.
 
 ```json
 {
+  "id": null,
   "status": null,
   "reward_tiers": null,
   "expiration_policy": null,
   "terminology": null,
   "location_ids": null,
+  "created_at": null,
+  "updated_at": null,
   "accrual_rules": null
 }
 ```

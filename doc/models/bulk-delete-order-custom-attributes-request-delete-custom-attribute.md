@@ -18,6 +18,7 @@ Represents one delete within the bulk operation.
 
 ```json
 {
+  "key": null,
   "order_id": "order_id6"
 }
 ```

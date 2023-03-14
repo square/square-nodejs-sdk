@@ -23,6 +23,7 @@
 ```json
 {
   "seller_id": null,
+  "created_at": null,
   "booking_enabled": null,
   "customer_timezone_choice": null,
   "booking_policy": null,

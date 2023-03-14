@@ -24,7 +24,9 @@ Represents a [CreateBookingCustomAttributeDefinition](../../doc/api/booking-cust
     "name": null,
     "description": null,
     "visibility": null,
-    "version": null
+    "version": null,
+    "updated_at": null,
+    "created_at": null
   },
   "idempotency_key": null
 }

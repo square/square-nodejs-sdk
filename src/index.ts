@@ -749,6 +749,8 @@ export { Site } from './models/site';
 export { Snippet } from './models/snippet';
 export { SnippetResponse } from './models/snippetResponse';
 export { SourceApplication } from './models/sourceApplication';
+export { SquareEvent } from './models/squareEvent';
+export { SquareEventData } from './models/squareEventData';
 export { StandardUnitDescription } from './models/standardUnitDescription';
 export { StandardUnitDescriptionGroup } from './models/standardUnitDescriptionGroup';
 export { SubmitEvidenceResponse } from './models/submitEvidenceResponse';

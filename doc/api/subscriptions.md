@@ -57,8 +57,6 @@ const bodyPriceOverrideMoney: Money = {};
 bodyPriceOverrideMoney.amount = BigInt(100);
 bodyPriceOverrideMoney.currency = 'USD';
 
-const bodySource: SubscriptionSource = {};
-
 const body: CreateSubscriptionRequest = {
   locationId: 'S8GWD5R9QB376',
   planId: '6JHXF3B2CW3YKHDV4XEM674H',
@@ -70,7 +68,6 @@ body.taxPercentage = '5';
 body.priceOverrideMoney = bodyPriceOverrideMoney;
 body.cardId = 'ccof:qy5x8hHGYsgLrp4Q4GB';
 body.timezone = 'America/Los_Angeles';
-body.source = bodySource;
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.createSubscription(body);

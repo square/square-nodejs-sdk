@@ -41,6 +41,8 @@ Represents a [dispute](https://developer.squareup.com/docs/disputes-api/overview
   "disputed_payment": null,
   "evidence_ids": null,
   "card_brand": null,
+  "created_at": null,
+  "updated_at": null,
   "brand_dispute_id": null,
   "reported_date": null,
   "reported_at": null,

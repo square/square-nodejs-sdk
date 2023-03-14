@@ -43,10 +43,14 @@ Represents one of a business' [locations](https://developer.squareup.com/docs/lo
 
 ```json
 {
+  "id": null,
   "name": null,
   "address": null,
   "timezone": null,
+  "capabilities": null,
   "status": null,
+  "created_at": null,
+  "merchant_id": null,
   "country": null,
   "language_code": null,
   "currency": null,
@@ -61,7 +65,10 @@ Represents one of a business' [locations](https://developer.squareup.com/docs/lo
   "instagram_username": null,
   "facebook_url": null,
   "coordinates": null,
+  "logo_url": null,
+  "pos_background_url": null,
   "mcc": null,
+  "full_format_logo_url": null,
   "tax_ids": null
 }
 ```

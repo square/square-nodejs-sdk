@@ -22,8 +22,11 @@ Represents a reward tier in a loyalty program. A reward tier defines how buyers 
 
 ```json
 {
+  "id": null,
   "points": 236,
+  "name": null,
   "definition": null,
+  "created_at": null,
   "pricing_rule_reference": {
     "object_id": null,
     "catalog_version": null

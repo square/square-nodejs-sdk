@@ -31,12 +31,16 @@ For more information, see [Search for Balance-Changing Loyalty Events](https://d
 
 ```json
 {
+  "id": "id0",
   "type": "OTHER",
+  "created_at": "created_at2",
   "accumulate_points": null,
   "create_reward": null,
   "redeem_reward": null,
   "delete_reward": null,
   "adjust_points": null,
+  "loyalty_account_id": "loyalty_account_id0",
+  "location_id": null,
   "source": "SQUARE",
   "expire_points": null,
   "other_event": null,

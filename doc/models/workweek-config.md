@@ -26,7 +26,9 @@ workweek. This is used to calculate overtime pay.
   "id": null,
   "start_of_week": "MON",
   "start_of_day_local_time": "start_of_day_local_time6",
-  "version": null
+  "version": null,
+  "created_at": null,
+  "updated_at": null
 }
 ```
 

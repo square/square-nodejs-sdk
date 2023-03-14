@@ -22,6 +22,8 @@ Represents an input to a call to [BulkUpdateVendors](../../doc/api/vendors.md#bu
       "idempotency_key": null,
       "vendor": {
         "id": null,
+        "created_at": null,
+        "updated_at": null,
         "name": null,
         "address": null,
         "contacts": null,
@@ -35,6 +37,8 @@ Represents an input to a call to [BulkUpdateVendors](../../doc/api/vendors.md#bu
       "idempotency_key": null,
       "vendor": {
         "id": null,
+        "created_at": null,
+        "updated_at": null,
         "name": null,
         "address": null,
         "contacts": null,
@@ -48,6 +52,8 @@ Represents an input to a call to [BulkUpdateVendors](../../doc/api/vendors.md#bu
       "idempotency_key": null,
       "vendor": {
         "id": null,
+        "created_at": null,
+        "updated_at": null,
         "name": null,
         "address": null,
         "contacts": null,

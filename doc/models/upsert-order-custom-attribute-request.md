@@ -23,7 +23,9 @@ Represents an upsert request for an order custom attribute.
     "value": null,
     "version": null,
     "visibility": null,
-    "definition": null
+    "definition": null,
+    "updated_at": null,
+    "created_at": null
   },
   "idempotency_key": null
 }

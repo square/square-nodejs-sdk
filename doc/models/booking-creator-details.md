@@ -19,7 +19,9 @@ Information about a booking creator.
 
 ```json
 {
-  "creator_type": null
+  "creator_type": null,
+  "team_member_id": null,
+  "customer_id": null
 }
 ```
 

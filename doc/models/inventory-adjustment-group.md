@@ -18,6 +18,8 @@
 
 ```json
 {
+  "id": null,
+  "root_adjustment_id": null,
   "from_state": null,
   "to_state": null
 }

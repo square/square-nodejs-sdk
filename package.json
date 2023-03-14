@@ -1,10 +1,10 @@
 {
-  "version": "25.1.0",
+  "version": "25.2.0",
   "license": "MIT",
   "sideEffects": false,
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "module": "dist/square.esm.js",
+  "main": "dist/cjs/index.js",
+  "typings": "dist/types/index.d.ts",
+  "module": "dist/esm/index.js",
   "files": [
     "dist",
     "src"
@@ -13,10 +13,10 @@
     "node": ">=10.4.0"
   },
   "scripts": {
-    "build": "tsdx build",
-    "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint src",
-    "prepare": "tsdx build"
+    "build": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
+    "test": "jest --coverage --passWithNoTests",
+    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "prepare": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json"
   },
   "peerDependencies": {},
   "prettier": {
@@ -33,15 +33,21 @@
     "url": "https://squareup.com/developers"
   },
   "devDependencies": {
+    "@types/jest": "^29.4.0",
     "@types/uuid": "^8.3.0",
-    "stream-equal": "^2.0.1",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.1.0",
-    "typescript": "^3.9.7",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "eslint": "^8.34.0",
+    "jest": "^29.4.3",
+    "ts-jest": "^29.0.5",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5",
     "uuid": "^8.3.0"
   },
   "dependencies": {
-    "@apimatic/core": "^0.7.9",
+    "@apimatic/authentication-adapters": "^0.1.0",
+    "@apimatic/axios-client-adapter": "^0.1.0",
+    "@apimatic/core": "^0.9.0",
     "@apimatic/json-bigint": "^1.2.0",
     "@apimatic/schema": "^0.6.0",
     "@types/node": "^14.14.30"

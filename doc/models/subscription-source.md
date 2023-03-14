@@ -16,6 +16,8 @@ The origination details of the subscription.
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "name": null
+}
 ```
 

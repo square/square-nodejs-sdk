@@ -54,6 +54,7 @@ For a more detailed discussion of the Catalog data model, please see the
 {
   "type": "ITEM_VARIATION",
   "id": "id0",
+  "updated_at": null,
   "version": null,
   "is_deleted": null,
   "custom_attribute_values": null,

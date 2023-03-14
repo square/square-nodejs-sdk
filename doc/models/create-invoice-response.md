@@ -18,7 +18,6 @@ The response returned by the `CreateInvoice` request.
 
 ```json
 {
-  "errors": [],
   "invoice": {
     "accepted_payment_methods": {
       "bank_account": false,
