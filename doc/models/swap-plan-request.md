@@ -17,6 +17,8 @@ Defines input parameters in a call to the
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "new_plan_id": "new_plan_id4"
+}
 ```
 

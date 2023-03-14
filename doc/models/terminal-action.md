@@ -28,9 +28,14 @@ Represents an action processed by the Square Terminal.
 
 ```json
 {
+  "id": null,
   "device_id": null,
   "deadline_duration": null,
+  "status": null,
   "cancel_reason": null,
+  "created_at": null,
+  "updated_at": null,
+  "app_id": null,
   "type": null,
   "save_card_options": null,
   "receipt_options": null,

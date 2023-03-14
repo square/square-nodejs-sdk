@@ -54,15 +54,10 @@ async createOrder(
 const contentType = null;
 const bodyOrderLineItems: OrderLineItem[] = [];
 
-const bodyOrderlineItems0BasePriceMoney: Money = {};
-bodyOrderlineItems0BasePriceMoney.amount = BigInt(1599);
-bodyOrderlineItems0BasePriceMoney.currency = 'USD';
-
 const bodyOrderlineItems0: OrderLineItem = {
   quantity: '1',
 };
 bodyOrderlineItems0.name = 'New York Strip Steak';
-bodyOrderlineItems0.basePriceMoney = bodyOrderlineItems0BasePriceMoney;
 
 bodyOrderLineItems[0] = bodyOrderlineItems0;
 
@@ -117,14 +112,9 @@ bodyOrderdiscounts1.scope = 'ORDER';
 
 bodyOrderDiscounts[1] = bodyOrderdiscounts1;
 
-const bodyOrderdiscounts2AmountMoney: Money = {};
-bodyOrderdiscounts2AmountMoney.amount = BigInt(100);
-bodyOrderdiscounts2AmountMoney.currency = 'USD';
-
 const bodyOrderdiscounts2: OrderLineItemDiscount = {};
 bodyOrderdiscounts2.uid = 'one-dollar-off';
 bodyOrderdiscounts2.name = 'Sale - $1.00 off';
-bodyOrderdiscounts2.amountMoney = bodyOrderdiscounts2AmountMoney;
 bodyOrderdiscounts2.scope = 'LINE_ITEM';
 
 bodyOrderDiscounts[2] = bodyOrderdiscounts2;
@@ -229,27 +219,17 @@ async calculateOrder(
 const contentType = null;
 const bodyOrderLineItems: OrderLineItem[] = [];
 
-const bodyOrderlineItems0BasePriceMoney: Money = {};
-bodyOrderlineItems0BasePriceMoney.amount = BigInt(500);
-bodyOrderlineItems0BasePriceMoney.currency = 'USD';
-
 const bodyOrderlineItems0: OrderLineItem = {
   quantity: '1',
 };
 bodyOrderlineItems0.name = 'Item 1';
-bodyOrderlineItems0.basePriceMoney = bodyOrderlineItems0BasePriceMoney;
 
 bodyOrderLineItems[0] = bodyOrderlineItems0;
-
-const bodyOrderlineItems1BasePriceMoney: Money = {};
-bodyOrderlineItems1BasePriceMoney.amount = BigInt(300);
-bodyOrderlineItems1BasePriceMoney.currency = 'USD';
 
 const bodyOrderlineItems1: OrderLineItem = {
   quantity: '2',
 };
 bodyOrderlineItems1.name = 'Item 2';
-bodyOrderlineItems1.basePriceMoney = bodyOrderlineItems1BasePriceMoney;
 
 bodyOrderLineItems[1] = bodyOrderlineItems1;
 

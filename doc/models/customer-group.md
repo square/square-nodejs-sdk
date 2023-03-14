@@ -23,7 +23,10 @@ the Customers API or within the Customer Directory in the Square Seller Dashboar
 
 ```json
 {
-  "name": "name0"
+  "id": null,
+  "name": "name0",
+  "created_at": null,
+  "updated_at": null
 }
 ```
 

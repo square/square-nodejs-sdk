@@ -20,6 +20,8 @@ Represents an input to a call to [BulkCreateVendors](../../doc/api/vendors.md#bu
   "vendors": {
     "key0": {
       "id": null,
+      "created_at": null,
+      "updated_at": null,
       "name": null,
       "address": null,
       "contacts": null,
@@ -30,6 +32,8 @@ Represents an input to a call to [BulkCreateVendors](../../doc/api/vendors.md#bu
     },
     "key1": {
       "id": null,
+      "created_at": null,
+      "updated_at": null,
       "name": null,
       "address": null,
       "contacts": null,
@@ -40,6 +44,8 @@ Represents an input to a call to [BulkCreateVendors](../../doc/api/vendors.md#bu
     },
     "key2": {
       "id": null,
+      "created_at": null,
+      "updated_at": null,
       "name": null,
       "address": null,
       "contacts": null,

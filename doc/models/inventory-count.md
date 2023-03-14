@@ -29,7 +29,9 @@ inventory adjustments.
   "catalog_object_type": null,
   "state": null,
   "location_id": null,
-  "quantity": null
+  "quantity": null,
+  "calculated_at": null,
+  "is_estimated": null
 }
 ```
 

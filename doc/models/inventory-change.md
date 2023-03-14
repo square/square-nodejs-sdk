@@ -28,7 +28,8 @@ that is part of the history of inventory changes for a particular
   "physical_count": null,
   "adjustment": null,
   "transfer": null,
-  "measurement_unit": null
+  "measurement_unit": null,
+  "measurement_unit_id": null
 }
 ```
 

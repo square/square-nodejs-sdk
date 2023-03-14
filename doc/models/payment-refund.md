@@ -16,7 +16,7 @@ the original payment and the amount of money refunded.
 | `status` | `string \| undefined` | Optional | The refund's status:<br><br>- `PENDING` - Awaiting approval.<br>- `COMPLETED` - Successfully completed.<br>- `REJECTED` - The refund was rejected.<br>- `FAILED` - An error occurred.<br>**Constraints**: *Maximum Length*: `50` |
 | `locationId` | `string \| undefined` | Optional | The location ID associated with the payment this refund is attached to.<br>**Constraints**: *Maximum Length*: `50` |
 | `unlinked` | `boolean \| undefined` | Optional | Flag indicating whether or not the refund is linked to an existing payment in Square. |
-| `destinationType` | `string \| undefined` | Optional | The destination type for this refund.<br><br>Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `CASH`, or `EXTERNAL`.<br>**Constraints**: *Maximum Length*: `50` |
+| `destinationType` | `string \| undefined` | Optional | The destination type for this refund.<br><br>Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `BUY_NOW_PAY_LATER`, `CASH`, and<br>`EXTERNAL`.<br>**Constraints**: *Maximum Length*: `50` |
 | `destinationDetails` | [`DestinationDetails \| undefined`](../../doc/models/destination-details.md) | Optional | Details about a refund's destination. |
 | `amountMoney` | [`Money`](../../doc/models/money.md) | Required | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `appFeeMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
@@ -35,6 +35,7 @@ the original payment and the amount of money refunded.
   "id": "id0",
   "status": null,
   "location_id": null,
+  "unlinked": null,
   "destination_type": null,
   "destination_details": null,
   "amount_money": {
@@ -45,7 +46,10 @@ the original payment and the amount of money refunded.
   "processing_fee": null,
   "payment_id": null,
   "order_id": null,
-  "reason": null
+  "reason": null,
+  "created_at": null,
+  "updated_at": null,
+  "team_member_id": null
 }
 ```
 

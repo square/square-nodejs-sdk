@@ -22,7 +22,8 @@ Represents details about a `REFUND` [gift card activity type](../../doc/models/g
 {
   "redeem_activity_id": null,
   "amount_money": null,
-  "reference_id": null
+  "reference_id": null,
+  "payment_id": null
 }
 ```
 

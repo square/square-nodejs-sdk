@@ -52,6 +52,7 @@ itemization data.
 
 ```json
 {
+  "id": null,
   "location_id": "location_id4",
   "reference_id": null,
   "source": null,
@@ -61,10 +62,16 @@ itemization data.
   "discounts": null,
   "service_charges": null,
   "fulfillments": null,
+  "returns": null,
   "return_amounts": null,
   "net_amounts": null,
   "rounding_adjustment": null,
+  "tenders": null,
+  "refunds": null,
   "metadata": null,
+  "created_at": null,
+  "updated_at": null,
+  "closed_at": null,
   "state": null,
   "version": null,
   "total_money": null,
@@ -74,6 +81,7 @@ itemization data.
   "total_service_charge_money": null,
   "ticket_name": null,
   "pricing_options": null,
+  "rewards": null,
   "net_amount_due_money": null
 }
 ```

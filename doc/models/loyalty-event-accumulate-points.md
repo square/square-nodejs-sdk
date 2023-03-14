@@ -19,6 +19,7 @@ Provides metadata when the event `type` is `ACCUMULATE_POINTS`.
 
 ```json
 {
+  "loyalty_program_id": null,
   "points": null,
   "order_id": null
 }

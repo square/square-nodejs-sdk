@@ -24,10 +24,13 @@
 
 ```json
 {
+  "id": null,
   "version": 172,
   "description": null,
+  "order_id": null,
   "checkout_options": null,
   "pre_populated_data": null,
+  "url": null,
   "created_at": null,
   "updated_at": null,
   "payment_note": null

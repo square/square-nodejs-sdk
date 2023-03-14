@@ -18,7 +18,6 @@ The response returned by the `CancelInvoice` request.
 
 ```json
 {
-  "errors": [],
   "invoice": {
     "accepted_payment_methods": {
       "bank_account": false,

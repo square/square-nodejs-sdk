@@ -22,7 +22,8 @@
   "order_id": null,
   "version": null,
   "location_id": null,
-  "state": null
+  "state": null,
+  "created_at": null
 }
 ```
 

@@ -27,7 +27,9 @@ and an optional idempotency key.
     "value": null,
     "version": null,
     "visibility": null,
-    "definition": null
+    "definition": null,
+    "updated_at": null,
+    "created_at": null
   },
   "idempotency_key": null
 }

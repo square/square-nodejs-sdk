@@ -18,7 +18,7 @@ export interface BankAccountPaymentDetails {
   transferType?: string | null;
   /**
    * The ownership type of the bank account performing the transfer.
-   * The type can be `INDIVIDUAL`, `COMPANY`, or `UNKNOWN`.
+   * The type can be `INDIVIDUAL`, `COMPANY`, or `ACCOUNT_TYPE_UNKNOWN`.
    */
   accountOwnershipType?: string | null;
   /**

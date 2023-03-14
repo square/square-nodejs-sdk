@@ -24,7 +24,9 @@ Represents a bulk upsert request for one or more order custom attributes.
         "value": null,
         "version": null,
         "visibility": null,
-        "definition": null
+        "definition": null,
+        "updated_at": null,
+        "created_at": null
       },
       "idempotency_key": null,
       "order_id": "order_id4"
@@ -35,7 +37,9 @@ Represents a bulk upsert request for one or more order custom attributes.
         "value": null,
         "version": null,
         "visibility": null,
-        "definition": null
+        "definition": null,
+        "updated_at": null,
+        "created_at": null
       },
       "idempotency_key": null,
       "order_id": "order_id5"
@@ -46,7 +50,9 @@ Represents a bulk upsert request for one or more order custom attributes.
         "value": null,
         "version": null,
         "visibility": null,
-        "definition": null
+        "definition": null,
+        "updated_at": null,
+        "created_at": null
       },
       "idempotency_key": null,
       "order_id": "order_id6"

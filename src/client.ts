@@ -57,17 +57,16 @@ import { pathTemplate, SkipEncode } from './core';
 import { setHeader } from './core';
 import { updateUserAgent } from './core';
 import {
+  AbortError,
   AuthenticatorInterface,
   createRequestBuilderFactory,
-  HttpClient,
   HttpClientInterface,
   RetryConfiguration,
-  XmlSerializerInterface,
 } from './core';
-import { XmlSerialization } from './http/xmlSerialization';
+ import { HttpClient } from './clientAdapter';
 
 /** Current SDK version */
-export const SDK_VERSION = '25.1.0';
+export const SDK_VERSION = '25.2.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -130,14 +129,14 @@ export class Client implements ClientInterface {
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/25.1.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/25.2.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail
     );
     this._requestBuilderFactory = createRequestHandlerFactory(
       server => getBaseUri(server, this._config),
       accessTokenAuthenticationProvider(this._config),
-      new HttpClient({
+      new HttpClient(AbortError, {
         timeout: this._timeout,
         clientConfigOverrides: this._config.unstable_httpClientOptions,
         httpAgent: this._config.httpClientOptions?.httpAgent,
@@ -150,7 +149,6 @@ export class Client implements ClientInterface {
         withAuthenticationByDefault,
         withSquareVersion(this._config),
       ],
-      new XmlSerialization(),
       this._retryConfig
     );
 
@@ -238,7 +236,6 @@ function createRequestHandlerFactory(
   authProvider: AuthenticatorInterface<AuthParams>,
   httpClient: HttpClient,
   addons: ((rb: SdkRequestBuilder) => void)[],
-  xmlSerializer: XmlSerializerInterface,
   retryConfig: RetryConfiguration
 ): SdkRequestBuilderFactory {
   const requestBuilderFactory = createRequestBuilderFactory(
@@ -246,7 +243,6 @@ function createRequestHandlerFactory(
     baseUrlProvider,
     ApiError,
     authProvider,
-    xmlSerializer,
     retryConfig
   );
 

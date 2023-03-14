@@ -24,6 +24,7 @@
   "employee_id": null,
   "event_type": null,
   "event_money": null,
+  "created_at": null,
   "description": null
 }
 ```

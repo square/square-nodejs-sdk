@@ -18,6 +18,8 @@ and optional key of the associated custom attribute definition.
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "key": null
+}
 ```
 

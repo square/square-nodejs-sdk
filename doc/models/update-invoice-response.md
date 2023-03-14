@@ -18,7 +18,6 @@ Describes a `UpdateInvoice` response.
 
 ```json
 {
-  "errors": [],
   "invoice": {
     "accepted_payment_methods": {
       "bank_account": false,
@@ -57,7 +56,6 @@ Describes a `UpdateInvoice` response.
           "currency": "USD"
         },
         "due_date": "2030-01-24",
-        "reminders": [],
         "request_type": "BALANCE",
         "tipping_enabled": false,
         "total_completed_amount_money": {

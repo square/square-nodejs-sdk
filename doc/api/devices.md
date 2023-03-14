@@ -87,7 +87,7 @@ async createDeviceCode(
 ```ts
 const contentType = null;
 const bodyDeviceCode: DeviceCode = {
-  productType: null,
+  productType: 'TERMINAL_API',
 };
 bodyDeviceCode.name = 'Counter 1';
 bodyDeviceCode.locationId = 'B5E4484SHHNYH';

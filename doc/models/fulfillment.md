@@ -31,6 +31,7 @@ However, orders returned by the Orders API might contain multiple fulfillments b
   "type": null,
   "state": null,
   "line_item_application": null,
+  "entries": null,
   "metadata": null,
   "pickup_details": null,
   "shipment_details": null,

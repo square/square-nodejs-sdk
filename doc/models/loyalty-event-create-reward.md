@@ -18,6 +18,10 @@ Provides metadata when the event `type` is `CREATE_REWARD`.
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "loyalty_program_id": "loyalty_program_id0",
+  "reward_id": null,
+  "points": 236
+}
 ```
 

@@ -40,6 +40,7 @@ invoices. For more information, see [Invoices API Overview](https://developer.sq
 
 ```json
 {
+  "id": null,
   "version": null,
   "location_id": null,
   "order_id": null,
@@ -50,10 +51,15 @@ invoices. For more information, see [Invoices API Overview](https://developer.sq
   "title": null,
   "description": null,
   "scheduled_at": null,
+  "public_url": null,
   "next_payment_amount_money": null,
   "status": null,
+  "timezone": null,
+  "created_at": null,
+  "updated_at": null,
   "accepted_payment_methods": null,
   "custom_fields": null,
+  "subscription_id": null,
   "sale_or_service_date": null,
   "payment_conditions": null,
   "store_payment_method_enabled": null

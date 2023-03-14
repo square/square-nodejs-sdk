@@ -21,6 +21,7 @@ A lightweight description of an [order](../../doc/models/order.md) that is retur
 ```json
 {
   "order_id": null,
+  "version": null,
   "location_id": null
 }
 ```

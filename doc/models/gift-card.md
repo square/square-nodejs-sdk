@@ -24,11 +24,14 @@ Represents a Square gift card.
 
 ```json
 {
+  "id": null,
   "type": "PHYSICAL",
   "gan_source": null,
   "state": null,
   "balance_money": null,
-  "gan": null
+  "gan": null,
+  "created_at": null,
+  "customer_ids": null
 }
 ```
 

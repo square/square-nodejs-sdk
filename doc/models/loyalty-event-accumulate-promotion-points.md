@@ -19,6 +19,11 @@ Provides metadata when the event `type` is `ACCUMULATE_PROMOTION_POINTS`.
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "loyalty_program_id": null,
+  "loyalty_promotion_id": null,
+  "points": 236,
+  "order_id": "order_id6"
+}
 ```
 
