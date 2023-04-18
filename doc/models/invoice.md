@@ -15,7 +15,7 @@ invoices. For more information, see [Invoices API Overview](https://developer.sq
 | `id` | `string \| undefined` | Optional | The Square-assigned ID of the invoice. |
 | `version` | `number \| undefined` | Optional | The Square-assigned version number, which is incremented each time an update is committed to the invoice. |
 | `locationId` | `string \| undefined` | Optional | The ID of the location that this invoice is associated with.<br><br>If specified in a `CreateInvoice` request, the value must match the `location_id` of the associated order.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255` |
-| `orderId` | `string \| undefined` | Optional | The ID of the [order](../../doc/models/order.md) for which the invoice is created.<br>This field is required when creating an invoice, and the order must be in the `OPEN` state.<br><br>To view the line items and other information for the associated order, call the<br>[RetrieveOrder](../../doc/api/orders.md#retrieve-order) endpoint using the order ID.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255` |
+| `orderId` | `string \| undefined` | Optional | The ID of the [order](entity:Order) for which the invoice is created.<br>This field is required when creating an invoice, and the order must be in the `OPEN` state.<br><br>To view the line items and other information for the associated order, call the<br>[RetrieveOrder](api-endpoint:Orders-RetrieveOrder) endpoint using the order ID.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255` |
 | `primaryRecipient` | [`InvoiceRecipient \| undefined`](../../doc/models/invoice-recipient.md) | Optional | Represents a snapshot of customer data. This object stores customer data that is displayed on the invoice<br>and that Square uses to deliver the invoice.<br><br>When you provide a customer ID for a draft invoice, Square retrieves the associated customer profile and populates<br>the remaining `InvoiceRecipient` fields. You cannot update these fields after the invoice is published.<br>Square updates the customer ID in response to a merge operation, but does not update other fields. |
 | `paymentRequests` | [`InvoicePaymentRequest[] \| undefined`](../../doc/models/invoice-payment-request.md) | Optional | The payment schedule for the invoice, represented by one or more payment requests that<br>define payment settings, such as amount due and due date. An invoice supports the following payment request combinations:<br><br>- One balance<br>- One deposit with one balance<br>- 2–12 installments<br>- One deposit with 2–12 installments<br><br>This field is required when creating an invoice. It must contain at least one payment request.<br>All payment requests for the invoice must equal the total order amount. For more information, see<br>[Configuring payment requests](https://developer.squareup.com/docs/invoices-api/create-publish-invoices#payment-requests).<br><br>Adding `INSTALLMENT` payment requests to an invoice requires an<br>[Invoices Plus subscription](https://developer.squareup.com/docs/invoices-api/overview#invoices-plus-subscription). |
 | `deliveryMethod` | [`string \| undefined`](../../doc/models/invoice-delivery-method.md) | Optional | Indicates how Square delivers the [invoice](../../doc/models/invoice.md) to the customer. |
@@ -31,7 +31,7 @@ invoices. For more information, see [Invoices API Overview](https://developer.sq
 | `updatedAt` | `string \| undefined` | Optional | The timestamp when the invoice was last updated, in RFC 3339 format. |
 | `acceptedPaymentMethods` | [`InvoiceAcceptedPaymentMethods \| undefined`](../../doc/models/invoice-accepted-payment-methods.md) | Optional | The payment methods that customers can use to pay an [invoice](../../doc/models/invoice.md) on the Square-hosted invoice payment page. |
 | `customFields` | [`InvoiceCustomField[] \| undefined`](../../doc/models/invoice-custom-field.md) | Optional | Additional seller-defined fields that are displayed on the invoice. For more information, see<br>[Custom fields](https://developer.squareup.com/docs/invoices-api/overview#custom-fields).<br><br>Adding custom fields to an invoice requires an<br>[Invoices Plus subscription](https://developer.squareup.com/docs/invoices-api/overview#invoices-plus-subscription).<br><br>Max: 2 custom fields |
-| `subscriptionId` | `string \| undefined` | Optional | The ID of the [subscription](../../doc/models/subscription.md) associated with the invoice.<br>This field is present only on subscription billing invoices. |
+| `subscriptionId` | `string \| undefined` | Optional | The ID of the [subscription](entity:Subscription) associated with the invoice.<br>This field is present only on subscription billing invoices. |
 | `saleOrServiceDate` | `string \| undefined` | Optional | The date of the sale or the date that the service is rendered, in `YYYY-MM-DD` format.<br>This field can be used to specify a past or future date which is displayed on the invoice. |
 | `paymentConditions` | `string \| undefined` | Optional | **France only.** The payment terms and conditions that are displayed on the invoice. For more information,<br>see [Payment conditions](https://developer.squareup.com/docs/invoices-api/overview#payment-conditions).<br><br>For countries other than France, Square returns an `INVALID_REQUEST_ERROR` with a `BAD_REQUEST` code and<br>"Payment conditions are not supported for this location's country" detail if this field is included in `CreateInvoice` or `UpdateInvoice` requests.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2000` |
 | `storePaymentMethodEnabled` | `boolean \| undefined` | Optional | Indicates whether to allow a customer to save a credit or debit card as a card on file or a bank transfer as a<br>bank account on file. If `true`, Square displays a __Save my card on file__ or __Save my bank on file__ checkbox on the<br>invoice payment page. Stored payment information can be used for future automatic payments. The default value is `false`. |
@@ -40,29 +40,123 @@ invoices. For more information, see [Invoices API Overview](https://developer.sq
 
 ```json
 {
-  "id": null,
-  "version": null,
-  "location_id": null,
-  "order_id": null,
-  "primary_recipient": null,
-  "payment_requests": null,
-  "delivery_method": null,
-  "invoice_number": null,
-  "title": null,
-  "description": null,
-  "scheduled_at": null,
-  "public_url": null,
-  "next_payment_amount_money": null,
-  "status": null,
-  "timezone": null,
-  "created_at": null,
-  "updated_at": null,
-  "accepted_payment_methods": null,
-  "custom_fields": null,
-  "subscription_id": null,
-  "sale_or_service_date": null,
-  "payment_conditions": null,
-  "store_payment_method_enabled": null
+  "id": "id0",
+  "version": 172,
+  "location_id": "location_id4",
+  "order_id": "order_id6",
+  "primary_recipient": {
+    "customer_id": "customer_id2",
+    "given_name": "given_name6",
+    "family_name": "family_name8",
+    "email_address": "email_address2",
+    "address": {
+      "address_line_1": "address_line_10",
+      "address_line_2": "address_line_20",
+      "address_line_3": "address_line_36",
+      "locality": "locality0",
+      "sublocality": "sublocality0",
+      "sublocality_2": "sublocality_28",
+      "sublocality_3": "sublocality_30",
+      "administrative_district_level_1": "administrative_district_level_14",
+      "administrative_district_level_2": "administrative_district_level_26",
+      "administrative_district_level_3": "administrative_district_level_38",
+      "postal_code": "postal_code2",
+      "country": "TO",
+      "first_name": "first_name0",
+      "last_name": "last_name8"
+    },
+    "phone_number": "phone_number2",
+    "company_name": "company_name0",
+    "tax_ids": {
+      "eu_vat": "eu_vat2"
+    }
+  },
+  "payment_requests": [
+    {
+      "uid": "uid4",
+      "request_method": "SMS",
+      "request_type": "BALANCE",
+      "due_date": "due_date2",
+      "fixed_amount_requested_money": {
+        "amount": 6,
+        "currency": "MZN"
+      },
+      "percentage_requested": "percentage_requested8",
+      "tipping_enabled": false,
+      "automatic_payment_source": "CARD_ON_FILE",
+      "card_id": "card_id0",
+      "reminders": [
+        {
+          "uid": "uid2",
+          "relative_scheduled_days": 242,
+          "message": "message8",
+          "status": "NOT_APPLICABLE",
+          "sent_at": "sent_at2"
+        },
+        {
+          "uid": "uid3",
+          "relative_scheduled_days": 243,
+          "message": "message7",
+          "status": "PENDING",
+          "sent_at": "sent_at3"
+        },
+        {
+          "uid": "uid4",
+          "relative_scheduled_days": 244,
+          "message": "message6",
+          "status": "SENT",
+          "sent_at": "sent_at4"
+        }
+      ],
+      "computed_amount_money": {
+        "amount": 132,
+        "currency": "AWG"
+      },
+      "total_completed_amount_money": {},
+      "rounding_adjustment_included_money": {}
+    }
+  ],
+  "delivery_method": "SHARE_MANUALLY",
+  "invoice_number": "invoice_number4",
+  "title": "title4",
+  "description": "description0",
+  "scheduled_at": "scheduled_at6",
+  "public_url": "public_url8",
+  "next_payment_amount_money": {
+    "amount": 236,
+    "currency": "PAB"
+  },
+  "status": "FAILED",
+  "timezone": "timezone0",
+  "created_at": "created_at2",
+  "updated_at": "updated_at4",
+  "accepted_payment_methods": {
+    "card": false,
+    "square_gift_card": false,
+    "bank_account": false,
+    "buy_now_pay_later": false
+  },
+  "custom_fields": [
+    {
+      "label": "label3",
+      "value": "value5",
+      "placement": "BELOW_LINE_ITEMS"
+    },
+    {
+      "label": "label4",
+      "value": "value6",
+      "placement": "ABOVE_LINE_ITEMS"
+    },
+    {
+      "label": "label5",
+      "value": "value7",
+      "placement": "BELOW_LINE_ITEMS"
+    }
+  ],
+  "subscription_id": "subscription_id0",
+  "sale_or_service_date": "sale_or_service_date6",
+  "payment_conditions": "payment_conditions4",
+  "store_payment_method_enabled": false
 }
 ```
 

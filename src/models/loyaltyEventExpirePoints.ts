@@ -2,7 +2,7 @@ import { number, object, Schema, string } from '../schema';
 
 /** Provides metadata when the event `type` is `EXPIRE_POINTS`. */
 export interface LoyaltyEventExpirePoints {
-  /** The Square-assigned ID of the [loyalty program]($m/LoyaltyProgram). */
+  /** The Square-assigned ID of the [loyalty program](entity:LoyaltyProgram). */
   loyaltyProgramId: string;
   /** The number of points expired. */
   points: number;

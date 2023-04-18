@@ -48,33 +48,96 @@ The total amount of the payout will equal the sum of the payout entries for a ba
 {
   "id": "id0",
   "payout_id": "payout_id6",
-  "effective_at": null,
-  "type": null,
-  "gross_amount_money": null,
-  "fee_amount_money": null,
-  "net_amount_money": null,
-  "type_app_fee_revenue_details": null,
-  "type_app_fee_refund_details": null,
-  "type_automatic_savings_details": null,
-  "type_automatic_savings_reversed_details": null,
-  "type_charge_details": null,
-  "type_deposit_fee_details": null,
-  "type_dispute_details": null,
-  "type_fee_details": null,
-  "type_free_processing_details": null,
-  "type_hold_adjustment_details": null,
-  "type_open_dispute_details": null,
-  "type_other_details": null,
-  "type_other_adjustment_details": null,
-  "type_refund_details": null,
-  "type_release_adjustment_details": null,
-  "type_reserve_hold_details": null,
-  "type_reserve_release_details": null,
-  "type_square_capital_payment_details": null,
-  "type_square_capital_reversed_payment_details": null,
-  "type_tax_on_fee_details": null,
-  "type_third_party_fee_details": null,
-  "type_third_party_fee_refund_details": null
+  "effective_at": "effective_at6",
+  "type": "CHARGE",
+  "gross_amount_money": {
+    "amount": 186,
+    "currency": "SVC"
+  },
+  "fee_amount_money": {
+    "amount": 126,
+    "currency": "ANG"
+  },
+  "net_amount_money": {
+    "amount": 6,
+    "currency": "AOA"
+  },
+  "type_app_fee_revenue_details": {
+    "payment_id": "payment_id0",
+    "location_id": "location_id4"
+  },
+  "type_app_fee_refund_details": {
+    "payment_id": "payment_id6",
+    "refund_id": "refund_id0",
+    "location_id": "location_id0"
+  },
+  "type_automatic_savings_details": {
+    "payment_id": "payment_id4",
+    "payout_id": "payout_id0"
+  },
+  "type_automatic_savings_reversed_details": {
+    "payment_id": "payment_id8",
+    "payout_id": "payout_id4"
+  },
+  "type_charge_details": {
+    "payment_id": "payment_id4"
+  },
+  "type_deposit_fee_details": {
+    "payout_id": "payout_id8"
+  },
+  "type_dispute_details": {
+    "payment_id": "payment_id4",
+    "dispute_id": "dispute_id6"
+  },
+  "type_fee_details": {
+    "payment_id": "payment_id8"
+  },
+  "type_free_processing_details": {
+    "payment_id": "payment_id4"
+  },
+  "type_hold_adjustment_details": {
+    "payment_id": "payment_id8"
+  },
+  "type_open_dispute_details": {
+    "payment_id": "payment_id6",
+    "dispute_id": "dispute_id8"
+  },
+  "type_other_details": {
+    "payment_id": "payment_id8"
+  },
+  "type_other_adjustment_details": {
+    "payment_id": "payment_id6"
+  },
+  "type_refund_details": {
+    "payment_id": "payment_id8",
+    "refund_id": "refund_id2"
+  },
+  "type_release_adjustment_details": {
+    "payment_id": "payment_id4"
+  },
+  "type_reserve_hold_details": {
+    "payment_id": "payment_id4"
+  },
+  "type_reserve_release_details": {
+    "payment_id": "payment_id6"
+  },
+  "type_square_capital_payment_details": {
+    "payment_id": "payment_id2"
+  },
+  "type_square_capital_reversed_payment_details": {
+    "payment_id": "payment_id6"
+  },
+  "type_tax_on_fee_details": {
+    "payment_id": "payment_id4",
+    "tax_rate_description": "tax_rate_description2"
+  },
+  "type_third_party_fee_details": {
+    "payment_id": "payment_id2"
+  },
+  "type_third_party_fee_refund_details": {
+    "payment_id": "payment_id8",
+    "refund_id": "refund_id2"
+  }
 }
 ```
 

@@ -20,8 +20,8 @@ Represents details about a `TRANSFER_BALANCE_TO` [gift card activity type](../..
 {
   "transfer_from_gift_card_id": "transfer_from_gift_card_id0",
   "amount_money": {
-    "amount": null,
-    "currency": null
+    "amount": 186,
+    "currency": "NGN"
   }
 }
 ```

@@ -20,9 +20,12 @@ when the minimum unit of the account is smaller than the lowest physical denomin
 
 ```json
 {
-  "uid": null,
-  "name": null,
-  "amount_money": null
+  "uid": "uid0",
+  "name": "name0",
+  "amount_money": {
+    "amount": 186,
+    "currency": "NGN"
+  }
 }
 ```
 

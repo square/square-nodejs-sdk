@@ -17,7 +17,7 @@ Represents a get request for an order custom attribute definition.
 
 ```json
 {
-  "version": null
+  "version": 172
 }
 ```
 

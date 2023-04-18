@@ -30,7 +30,7 @@ export interface SearchOrdersRequest {
   /**
    * A pagination cursor returned by a previous call to this endpoint.
    * Provide this cursor to retrieve the next set of results for your original query.
-   * For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
+   * For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
    */
   cursor?: string;
   /** Contains query criteria for the search. */
@@ -43,7 +43,7 @@ export interface SearchOrdersRequest {
   limit?: number;
   /**
    * A Boolean that controls the format of the search results. If `true`,
-   * `SearchOrders` returns [OrderEntry]($m/OrderEntry) objects. If `false`, `SearchOrders`
+   * `SearchOrders` returns [OrderEntry](entity:OrderEntry) objects. If `false`, `SearchOrders`
    * returns complete order objects.
    * Default: `false`.
    */

@@ -37,24 +37,50 @@ event types.
 
 ```json
 {
-  "id": null,
-  "state": null,
-  "opened_at": null,
-  "ended_at": null,
-  "closed_at": null,
-  "employee_ids": null,
-  "opening_employee_id": null,
-  "ending_employee_id": null,
-  "closing_employee_id": null,
-  "description": null,
-  "opened_cash_money": null,
-  "cash_payment_money": null,
-  "cash_refunds_money": null,
-  "cash_paid_in_money": null,
-  "cash_paid_out_money": null,
-  "expected_cash_money": null,
-  "closed_cash_money": null,
-  "device": null
+  "id": "id0",
+  "state": "CLOSED",
+  "opened_at": "opened_at8",
+  "ended_at": "ended_at2",
+  "closed_at": "closed_at2",
+  "employee_ids": [
+    "employee_ids5"
+  ],
+  "opening_employee_id": "opening_employee_id2",
+  "ending_employee_id": "ending_employee_id8",
+  "closing_employee_id": "closing_employee_id4",
+  "description": "description0",
+  "opened_cash_money": {
+    "amount": 158,
+    "currency": "SBD"
+  },
+  "cash_payment_money": {
+    "amount": 92,
+    "currency": "CLF"
+  },
+  "cash_refunds_money": {
+    "amount": 8,
+    "currency": "LAK"
+  },
+  "cash_paid_in_money": {
+    "amount": 122,
+    "currency": "USS"
+  },
+  "cash_paid_out_money": {
+    "amount": 128,
+    "currency": "COP"
+  },
+  "expected_cash_money": {
+    "amount": 68,
+    "currency": "CHF"
+  },
+  "closed_cash_money": {
+    "amount": 12,
+    "currency": "MRO"
+  },
+  "device": {
+    "id": "id6",
+    "name": "name6"
+  }
 }
 ```
 

@@ -20,11 +20,11 @@ Represents details about an `UNLINKED_ACTIVITY_REFUND` [gift card activity type]
 ```json
 {
   "amount_money": {
-    "amount": null,
-    "currency": null
+    "amount": 186,
+    "currency": "NGN"
   },
-  "reference_id": null,
-  "payment_id": null
+  "reference_id": "reference_id2",
+  "payment_id": "payment_id0"
 }
 ```
 

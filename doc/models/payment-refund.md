@@ -33,23 +33,89 @@ the original payment and the amount of money refunded.
 ```json
 {
   "id": "id0",
-  "status": null,
-  "location_id": null,
-  "unlinked": null,
-  "destination_type": null,
-  "destination_details": null,
-  "amount_money": {
-    "amount": null,
-    "currency": null
+  "status": "status8",
+  "location_id": "location_id4",
+  "unlinked": false,
+  "destination_type": "destination_type4",
+  "destination_details": {
+    "card_details": {
+      "card": {
+        "id": "id0",
+        "card_brand": "FELICA",
+        "last_4": "last_42",
+        "exp_month": 2,
+        "exp_year": 38,
+        "cardholder_name": "cardholder_name4",
+        "billing_address": {
+          "address_line_1": "address_line_18",
+          "address_line_2": "address_line_22",
+          "address_line_3": "address_line_38",
+          "locality": "locality8",
+          "sublocality": "sublocality2",
+          "sublocality_2": "sublocality_20",
+          "sublocality_3": "sublocality_38",
+          "administrative_district_level_1": "administrative_district_level_16",
+          "administrative_district_level_2": "administrative_district_level_22",
+          "administrative_district_level_3": "administrative_district_level_30",
+          "postal_code": "postal_code4",
+          "country": "CZ",
+          "first_name": "first_name2",
+          "last_name": "last_name0"
+        },
+        "fingerprint": "fingerprint6",
+        "customer_id": "customer_id8",
+        "merchant_id": "merchant_id0",
+        "reference_id": "reference_id2",
+        "enabled": false,
+        "card_type": "UNKNOWN_CARD_TYPE",
+        "prepaid_type": "PREPAID",
+        "bin": "bin0",
+        "version": 124,
+        "card_co_brand": "AFTERPAY"
+      },
+      "entry_method": "entry_method2"
+    }
   },
-  "app_fee_money": null,
-  "processing_fee": null,
-  "payment_id": null,
-  "order_id": null,
-  "reason": null,
-  "created_at": null,
-  "updated_at": null,
-  "team_member_id": null
+  "amount_money": {
+    "amount": 186,
+    "currency": "NGN"
+  },
+  "app_fee_money": {
+    "amount": 106,
+    "currency": "GBP"
+  },
+  "processing_fee": [
+    {
+      "effective_at": "effective_at6",
+      "type": "type8",
+      "amount_money": {
+        "amount": 214,
+        "currency": "BWP"
+      }
+    },
+    {
+      "effective_at": "effective_at7",
+      "type": "type7",
+      "amount_money": {
+        "amount": 215,
+        "currency": "BYR"
+      }
+    },
+    {
+      "effective_at": "effective_at8",
+      "type": "type6",
+      "amount_money": {
+        "amount": 216,
+        "currency": "BZD"
+      }
+    }
+  ],
+  "payment_id": "payment_id0",
+  "order_id": "order_id6",
+  "reason": "reason4",
+  "created_at": "created_at2",
+  "updated_at": "updated_at4",
+  "team_member_id": "team_member_id0"
 }
 ```
 

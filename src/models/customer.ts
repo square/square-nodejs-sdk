@@ -20,8 +20,8 @@ import { CustomerTaxIds, customerTaxIdsSchema } from './customerTaxIds';
 export interface Customer {
   /**
    * A unique Square-assigned ID for the customer profile.
-   * If you need this ID for an API request, use the ID returned when you created the customer profile or call the [SearchCustomers]($e/Customers/SearchCustomers)
-   * or [ListCustomers]($e/Customers/ListCustomers) endpoint.
+   * If you need this ID for an API request, use the ID returned when you created the customer profile or call the [SearchCustomers](api-endpoint:Customers-SearchCustomers)
+   * or [ListCustomers](api-endpoint:Customers-ListCustomers) endpoint.
    */
   id?: string;
   /** The timestamp when the customer profile was created, in RFC 3339 format. */
@@ -30,8 +30,8 @@ export interface Customer {
   updatedAt?: string;
   /**
    * Payment details of the credit, debit, and gift cards stored on file for the customer profile.
-   * DEPRECATED at version 2021-06-16. Replaced by calling [ListCards]($e/Cards/ListCards) (for credit and debit cards on file)
-   * or [ListGiftCards]($e/GiftCards/ListGiftCards) (for gift cards on file) and including the `customer_id` query parameter.
+   * DEPRECATED at version 2021-06-16. Replaced by calling [ListCards](api-endpoint:Cards-ListCards) (for credit and debit cards on file)
+   * or [ListGiftCards](api-endpoint:GiftCards-ListGiftCards) (for gift cards on file) and including the `customer_id` query parameter.
    * For more information, see [Migration notes](https://developer.squareup.com/docs/customers-api/what-it-does#migrate-customer-cards).
    */
   cards?: Card[] | null;
@@ -68,9 +68,9 @@ export interface Customer {
   preferences?: CustomerPreferences;
   /** Indicates the method used to create the customer profile. */
   creationSource?: string;
-  /** The IDs of [customer groups]($m/CustomerGroup) the customer belongs to. */
+  /** The IDs of [customer groups](entity:CustomerGroup) the customer belongs to. */
   groupIds?: string[] | null;
-  /** The IDs of [customer segments]($m/CustomerSegment) the customer belongs to. */
+  /** The IDs of [customer segments](entity:CustomerSegment) the customer belongs to. */
   segmentIds?: string[] | null;
   /** The Square-assigned version number of the customer profile. The version number is incremented each time an update is committed to the customer profile, except for changes to customer segment membership and cards on file. */
   version?: bigint;

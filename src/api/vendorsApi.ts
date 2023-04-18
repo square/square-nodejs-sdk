@@ -158,7 +158,7 @@ export class VendorsApi extends BaseApi {
   /**
    * Retrieves the vendor of a specified [Vendor]($m/Vendor) ID.
    *
-   * @param vendorId  ID of the [Vendor]($m/Vendor) to retrieve.
+   * @param vendorId  ID of the [Vendor](entity:Vendor) to retrieve.
    * @return Response from the API call
    */
   async retrieveVendor(

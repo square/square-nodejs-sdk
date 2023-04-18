@@ -8,11 +8,11 @@ import { boolean, nullable, object, optional, Schema, string } from '../schema';
 export interface InventoryCount {
   /**
    * The Square-generated ID of the
-   * [CatalogObject]($m/CatalogObject) being tracked.
+   * [CatalogObject](entity:CatalogObject) being tracked.
    */
   catalogObjectId?: string | null;
   /**
-   * The [type]($m/CatalogObjectType) of the [CatalogObject]($m/CatalogObject) being tracked.
+   * The [type](entity:CatalogObjectType) of the [CatalogObject](entity:CatalogObject) being tracked.
    * The Inventory API supports setting and reading the `"catalog_object_type": "ITEM_VARIATION"` field value.
    * In addition, it can also read the `"catalog_object_type": "ITEM"` field value that is set by the Square Restaurants app.
    */
@@ -20,7 +20,7 @@ export interface InventoryCount {
   /** Indicates the state of a tracked item quantity in the lifecycle of goods. */
   state?: string;
   /**
-   * The Square-generated ID of the [Location]($m/Location) where the related
+   * The Square-generated ID of the [Location](entity:Location) where the related
    * quantity of items is being tracked.
    */
   locationId?: string | null;

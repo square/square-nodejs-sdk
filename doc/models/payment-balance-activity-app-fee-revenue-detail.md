@@ -16,8 +16,8 @@
 
 ```json
 {
-  "payment_id": null,
-  "location_id": null
+  "payment_id": "payment_id0",
+  "location_id": "location_id4"
 }
 ```
 

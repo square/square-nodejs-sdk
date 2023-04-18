@@ -30,19 +30,30 @@ during the active time period.
 
 ```json
 {
-  "name": null,
-  "time_period_ids": null,
-  "discount_id": null,
-  "match_products_id": null,
-  "apply_products_id": null,
-  "exclude_products_id": null,
-  "valid_from_date": null,
-  "valid_from_local_time": null,
-  "valid_until_date": null,
-  "valid_until_local_time": null,
-  "exclude_strategy": null,
-  "minimum_order_subtotal_money": null,
-  "customer_group_ids_any": null
+  "name": "name0",
+  "time_period_ids": [
+    "time_period_ids2",
+    "time_period_ids3",
+    "time_period_ids4"
+  ],
+  "discount_id": "discount_id8",
+  "match_products_id": "match_products_id2",
+  "apply_products_id": "apply_products_id6",
+  "exclude_products_id": "exclude_products_id6",
+  "valid_from_date": "valid_from_date2",
+  "valid_from_local_time": "valid_from_local_time0",
+  "valid_until_date": "valid_until_date4",
+  "valid_until_local_time": "valid_until_local_time4",
+  "exclude_strategy": "LEAST_EXPENSIVE",
+  "minimum_order_subtotal_money": {
+    "amount": 248,
+    "currency": "BIF"
+  },
+  "customer_group_ids_any": [
+    "customer_group_ids_any9",
+    "customer_group_ids_any0",
+    "customer_group_ids_any1"
+  ]
 }
 ```
 

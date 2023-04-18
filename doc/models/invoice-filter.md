@@ -21,7 +21,10 @@ Describes query filters to apply.
   "location_ids": [
     "location_ids0"
   ],
-  "customer_ids": null
+  "customer_ids": [
+    "customer_ids1",
+    "customer_ids2"
+  ]
 }
 ```
 

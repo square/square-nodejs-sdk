@@ -2,7 +2,7 @@ import { nullable, object, optional, Schema, string } from '../schema';
 
 export interface RetrieveInventoryCountRequest {
   /**
-   * The [Location]($m/Location) IDs to look up as a comma-separated
+   * The [Location](entity:Location) IDs to look up as a comma-separated
    * list. An empty list queries all locations.
    */
   locationIds?: string | null;

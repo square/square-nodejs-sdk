@@ -22,7 +22,7 @@ import { Money, moneySchema } from './money';
  * [Invoices Plus subscription](https://developer.squareup.com/docs/invoices-api/overview#invoices-plus-subscription).
  */
 export interface InvoicePaymentRequest {
-  /** The Square-generated ID of the payment request in an [invoice]($m/Invoice). */
+  /** The Square-generated ID of the payment request in an [invoice](entity:Invoice). */
   uid?: string | null;
   /**
    * Specifies the action for Square to take for processing the invoice. For example,
@@ -75,7 +75,7 @@ export interface InvoicePaymentRequest {
   automaticPaymentSource?: string;
   /**
    * The ID of the credit or debit card on file to charge for the payment request. To get the cards on file for a customer,
-   * call [ListCards]($e/Cards/ListCards) and include the `customer_id` of the invoice recipient.
+   * call [ListCards](api-endpoint:Cards-ListCards) and include the `customer_id` of the invoice recipient.
    */
   cardId?: string | null;
   /** A list of one or more reminders to send for the payment request. */

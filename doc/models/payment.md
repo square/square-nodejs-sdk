@@ -37,7 +37,7 @@ Represents a payment processed by the Square API.
 | `referenceId` | `string \| undefined` | Optional | An optional ID that associates the payment with an entity in<br>another system.<br>**Constraints**: *Maximum Length*: `40` |
 | `customerId` | `string \| undefined` | Optional | The ID of the customer associated with the payment. If the ID is<br>not provided in the `CreatePayment` request that was used to create the `Payment`,<br>Square may use information in the request<br>(such as the billing and shipping address, email address, and payment source)<br>to identify a matching customer profile in the Customer Directory.<br>If found, the profile ID is used. If a profile is not found, the<br>API attempts to create an<br>[instant profile](https://developer.squareup.com/docs/customers-api/what-it-does#instant-profiles).<br>If the API cannot create an<br>instant profile (either because the seller has disabled it or the<br>seller's region prevents creating it), this field remains unset. Note that<br>this process is asynchronous and it may take some time before a<br>customer ID is added to the payment.<br>**Constraints**: *Maximum Length*: `191` |
 | `employeeId` | `string \| undefined` | Optional | __Deprecated__: Use `Payment.team_member_id` instead.<br><br>An optional ID of the employee associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` |
-| `teamMemberId` | `string \| undefined` | Optional | An optional ID of the [TeamMember](../../doc/models/team-member.md) associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` |
+| `teamMemberId` | `string \| undefined` | Optional | An optional ID of the [TeamMember](entity:TeamMember) associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` |
 | `refundIds` | `string[] \| undefined` | Optional | A list of `refund_id`s identifying refunds for the payment. |
 | `riskEvaluation` | [`RiskEvaluation \| undefined`](../../doc/models/risk-evaluation.md) | Optional | Represents fraud risk information for the associated payment.<br><br>When you take a payment through Square's Payments API (using the `CreatePayment`<br>endpoint), Square evaluates it and assigns a risk level to the payment. Sellers<br>can use this information to determine the course of action (for example,<br>provide the goods/services or refund the payment). |
 | `buyerEmailAddress` | `string \| undefined` | Optional | The buyer's email address.<br>**Constraints**: *Maximum Length*: `255` |
@@ -56,46 +56,257 @@ Represents a payment processed by the Square API.
 
 ```json
 {
-  "id": null,
-  "created_at": null,
-  "updated_at": null,
-  "amount_money": null,
-  "tip_money": null,
-  "total_money": null,
-  "app_fee_money": null,
-  "approved_money": null,
-  "processing_fee": null,
-  "refunded_money": null,
-  "status": null,
-  "delay_duration": null,
-  "delay_action": null,
-  "delayed_until": null,
-  "source_type": null,
-  "card_details": null,
-  "cash_details": null,
-  "bank_account_details": null,
-  "external_details": null,
-  "wallet_details": null,
-  "buy_now_pay_later_details": null,
-  "location_id": null,
-  "order_id": null,
-  "reference_id": null,
-  "customer_id": null,
-  "employee_id": null,
-  "team_member_id": null,
-  "refund_ids": null,
-  "risk_evaluation": null,
-  "buyer_email_address": null,
-  "billing_address": null,
-  "shipping_address": null,
-  "note": null,
-  "statement_description_identifier": null,
-  "capabilities": null,
-  "receipt_number": null,
-  "receipt_url": null,
-  "device_details": null,
-  "application_details": null,
-  "version_token": null
+  "id": "id0",
+  "created_at": "created_at2",
+  "updated_at": "updated_at4",
+  "amount_money": {
+    "amount": 186,
+    "currency": "NGN"
+  },
+  "tip_money": {
+    "amount": 190,
+    "currency": "CHE"
+  },
+  "total_money": {
+    "amount": 250,
+    "currency": "UNKNOWN_CURRENCY"
+  },
+  "app_fee_money": {
+    "amount": 106,
+    "currency": "GBP"
+  },
+  "approved_money": {
+    "amount": 138,
+    "currency": "GIP"
+  },
+  "processing_fee": [
+    {
+      "effective_at": "effective_at6",
+      "type": "type8",
+      "amount_money": {
+        "amount": 214,
+        "currency": "BWP"
+      }
+    },
+    {
+      "effective_at": "effective_at7",
+      "type": "type7",
+      "amount_money": {
+        "amount": 215,
+        "currency": "BYR"
+      }
+    },
+    {
+      "effective_at": "effective_at8",
+      "type": "type6",
+      "amount_money": {
+        "amount": 216,
+        "currency": "BZD"
+      }
+    }
+  ],
+  "refunded_money": {
+    "amount": 214,
+    "currency": "GYD"
+  },
+  "status": "status8",
+  "delay_duration": "delay_duration2",
+  "delay_action": "delay_action0",
+  "delayed_until": "delayed_until2",
+  "source_type": "source_type0",
+  "card_details": {
+    "status": "status4",
+    "card": {
+      "id": "id6",
+      "card_brand": "JCB",
+      "last_4": "last_48",
+      "exp_month": 4,
+      "exp_year": 36,
+      "cardholder_name": "cardholder_name8",
+      "billing_address": {
+        "address_line_1": "address_line_12",
+        "address_line_2": "address_line_28",
+        "address_line_3": "address_line_34",
+        "locality": "locality2",
+        "sublocality": "sublocality8",
+        "sublocality_2": "sublocality_26",
+        "sublocality_3": "sublocality_32",
+        "administrative_district_level_1": "administrative_district_level_12",
+        "administrative_district_level_2": "administrative_district_level_26",
+        "administrative_district_level_3": "administrative_district_level_36",
+        "postal_code": "postal_code0",
+        "country": "RW",
+        "first_name": "first_name8",
+        "last_name": "last_name6"
+      },
+      "fingerprint": "fingerprint2",
+      "customer_id": "customer_id4",
+      "merchant_id": "merchant_id6",
+      "reference_id": "reference_id4",
+      "enabled": false,
+      "card_type": "UNKNOWN_CARD_TYPE",
+      "prepaid_type": "PREPAID",
+      "bin": "bin6",
+      "version": 122,
+      "card_co_brand": "AFTERPAY"
+    },
+    "entry_method": "entry_method8",
+    "cvv_status": "cvv_status4",
+    "avs_status": "avs_status6",
+    "auth_result_code": "auth_result_code0",
+    "application_identifier": "application_identifier4",
+    "application_name": "application_name6",
+    "application_cryptogram": "application_cryptogram6",
+    "verification_method": "verification_method2",
+    "verification_results": "verification_results4",
+    "statement_description": "statement_description6",
+    "device_details": {
+      "device_id": "device_id2",
+      "device_installation_id": "device_installation_id4",
+      "device_name": "device_name6"
+    },
+    "card_payment_timeline": {
+      "authorized_at": "authorized_at8",
+      "captured_at": "captured_at8",
+      "voided_at": "voided_at2"
+    },
+    "refund_requires_card_presence": false,
+    "errors": [
+      {
+        "category": "INVALID_REQUEST_ERROR",
+        "code": "INVALID_EMAIL_ADDRESS",
+        "detail": "detail3",
+        "field": "field1"
+      }
+    ]
+  },
+  "cash_details": {
+    "buyer_supplied_money": {
+      "amount": 140,
+      "currency": "MYR"
+    },
+    "change_back_money": {
+      "amount": 112,
+      "currency": "BHD"
+    }
+  },
+  "bank_account_details": {
+    "bank_name": "bank_name4",
+    "transfer_type": "transfer_type8",
+    "account_ownership_type": "account_ownership_type8",
+    "fingerprint": "fingerprint6",
+    "country": "country4",
+    "statement_description": "statement_description4",
+    "ach_details": {
+      "routing_number": "routing_number0",
+      "account_number_suffix": "account_number_suffix8",
+      "account_type": "account_type2"
+    },
+    "errors": [
+      {
+        "category": "API_ERROR",
+        "code": "V1_APPLICATION",
+        "detail": "detail1",
+        "field": "field9"
+      },
+      {
+        "category": "AUTHENTICATION_ERROR",
+        "code": "V1_ACCESS_TOKEN",
+        "detail": "detail2",
+        "field": "field0"
+      }
+    ]
+  },
+  "external_details": {
+    "type": "type6",
+    "source": "source0",
+    "source_id": "source_id8",
+    "source_fee_money": {
+      "amount": 234,
+      "currency": "NZD"
+    }
+  },
+  "wallet_details": {
+    "status": "status2",
+    "brand": "brand0",
+    "cash_app_details": {
+      "buyer_full_name": "buyer_full_name4",
+      "buyer_country_code": "buyer_country_code4",
+      "buyer_cashtag": "buyer_cashtag2"
+    }
+  },
+  "buy_now_pay_later_details": {
+    "brand": "brand4",
+    "afterpay_details": {
+      "email_address": "email_address2"
+    },
+    "clearpay_details": {
+      "email_address": "email_address4"
+    }
+  },
+  "location_id": "location_id4",
+  "order_id": "order_id6",
+  "reference_id": "reference_id2",
+  "customer_id": "customer_id8",
+  "employee_id": "employee_id0",
+  "team_member_id": "team_member_id0",
+  "refund_ids": [
+    "refund_ids9"
+  ],
+  "risk_evaluation": {
+    "created_at": "created_at0",
+    "risk_level": "PENDING"
+  },
+  "buyer_email_address": "buyer_email_address8",
+  "billing_address": {
+    "address_line_1": "address_line_12",
+    "address_line_2": "address_line_28",
+    "address_line_3": "address_line_34",
+    "locality": "locality8",
+    "sublocality": "sublocality8",
+    "sublocality_2": "sublocality_26",
+    "sublocality_3": "sublocality_38",
+    "administrative_district_level_1": "administrative_district_level_12",
+    "administrative_district_level_2": "administrative_district_level_26",
+    "administrative_district_level_3": "administrative_district_level_36",
+    "postal_code": "postal_code0",
+    "country": "MG",
+    "first_name": "first_name8",
+    "last_name": "last_name6"
+  },
+  "shipping_address": {
+    "address_line_1": "address_line_10",
+    "address_line_2": "address_line_20",
+    "address_line_3": "address_line_36",
+    "locality": "locality0",
+    "sublocality": "sublocality0",
+    "sublocality_2": "sublocality_28",
+    "sublocality_3": "sublocality_30",
+    "administrative_district_level_1": "administrative_district_level_14",
+    "administrative_district_level_2": "administrative_district_level_26",
+    "administrative_district_level_3": "administrative_district_level_38",
+    "postal_code": "postal_code2",
+    "country": "PT",
+    "first_name": "first_name0",
+    "last_name": "last_name8"
+  },
+  "note": "note4",
+  "statement_description_identifier": "statement_description_identifier4",
+  "capabilities": [
+    "capabilities7"
+  ],
+  "receipt_number": "receipt_number4",
+  "receipt_url": "receipt_url8",
+  "device_details": {
+    "device_id": "device_id2",
+    "device_installation_id": "device_installation_id4",
+    "device_name": "device_name6"
+  },
+  "application_details": {
+    "square_product": "RETAIL",
+    "application_id": "application_id6"
+  },
+  "version_token": "version_token4"
 }
 ```
 

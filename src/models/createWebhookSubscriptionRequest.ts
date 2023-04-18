@@ -6,7 +6,7 @@ import {
 
 /** Creates a [Subscription]($m/WebhookSubscription). */
 export interface CreateWebhookSubscriptionRequest {
-  /** A unique string that identifies the [CreateWebhookSubscription]($e/WebhookSubscriptions/CreateWebhookSubscription) request. */
+  /** A unique string that identifies the [CreateWebhookSubscription](api-endpoint:WebhookSubscriptions-CreateWebhookSubscription) request. */
   idempotencyKey?: string;
   /**
    * Represents the details of a webhook subscription, including notification URL,

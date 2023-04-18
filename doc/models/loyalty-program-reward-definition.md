@@ -26,10 +26,20 @@ are now defined using a catalog pricing rule and other catalog objects. For more
 {
   "scope": "CATEGORY",
   "discount_type": "FIXED_AMOUNT",
-  "percentage_discount": null,
-  "catalog_object_ids": null,
-  "fixed_discount_money": null,
-  "max_discount_money": null
+  "percentage_discount": "percentage_discount8",
+  "catalog_object_ids": [
+    "catalog_object_ids2",
+    "catalog_object_ids3",
+    "catalog_object_ids4"
+  ],
+  "fixed_discount_money": {
+    "amount": 36,
+    "currency": "WST"
+  },
+  "max_discount_money": {
+    "amount": 84,
+    "currency": "JOD"
+  }
 }
 ```
 

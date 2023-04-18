@@ -20,12 +20,20 @@
 
 ```json
 {
-  "merchant_id": null,
-  "location_id": null,
-  "type": null,
-  "event_id": null,
-  "created_at": null,
-  "data": null
+  "merchant_id": "merchant_id0",
+  "location_id": "location_id4",
+  "type": "type0",
+  "event_id": "event_id6",
+  "created_at": "created_at2",
+  "data": {
+    "type": "type0",
+    "id": "id0",
+    "deleted": false,
+    "object": {
+      "key1": "val1",
+      "key2": "val2"
+    }
+  }
 }
 ```
 

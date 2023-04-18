@@ -19,7 +19,7 @@ and optional key of the associated custom attribute definition.
 
 ```json
 {
-  "key": null
+  "key": "key0"
 }
 ```
 

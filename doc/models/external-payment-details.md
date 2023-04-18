@@ -24,8 +24,11 @@ For more information, see
 {
   "type": "type0",
   "source": "source4",
-  "source_id": null,
-  "source_fee_money": null
+  "source_id": "source_id6",
+  "source_fee_money": {
+    "amount": 130,
+    "currency": "JMD"
+  }
 }
 ```
 

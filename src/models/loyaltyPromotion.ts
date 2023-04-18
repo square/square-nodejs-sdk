@@ -57,7 +57,7 @@ export interface LoyaltyPromotion {
   canceledAt?: string;
   /** The timestamp when the promotion was last updated, in RFC 3339 format. */
   updatedAt?: string;
-  /** The ID of the [loyalty program]($m/LoyaltyProgram) associated with the promotion. */
+  /** The ID of the [loyalty program](entity:LoyaltyProgram) associated with the promotion. */
   loyaltyProgramId?: string;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -69,7 +69,7 @@ export interface LoyaltyPromotion {
    */
   minimumSpendAmountMoney?: Money;
   /**
-   * The IDs of any qualifying `ITEM_VARIATION` [catalog objects]($m/CatalogObject). If specified,
+   * The IDs of any qualifying `ITEM_VARIATION` [catalog objects](entity:CatalogObject). If specified,
    * the purchase must include at least one of these items to qualify for the promotion.
    * This option is valid only if the base loyalty program uses a `VISIT` or `SPEND` accrual rule.
    * With `SPEND` accrual rules, make sure that qualifying promotional items are not excluded.
@@ -77,7 +77,7 @@ export interface LoyaltyPromotion {
    */
   qualifyingItemVariationIds?: string[] | null;
   /**
-   * The IDs of any qualifying `CATEGORY` [catalog objects]($m/CatalogObject). If specified,
+   * The IDs of any qualifying `CATEGORY` [catalog objects](entity:CatalogObject). If specified,
    * the purchase must include at least one item from one of these categories to qualify for the promotion.
    * This option is valid only if the base loyalty program uses a `VISIT` or `SPEND` accrual rule.
    * With `SPEND` accrual rules, make sure that qualifying promotional items are not excluded.

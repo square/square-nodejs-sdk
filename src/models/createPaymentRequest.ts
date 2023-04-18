@@ -41,7 +41,7 @@ export interface CreatePaymentRequest {
    * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
    * for more information.
    */
-  amountMoney: Money;
+  amountMoney?: Money;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -91,7 +91,7 @@ export interface CreatePaymentRequest {
   /** Associates a previously created order with this payment. */
   orderId?: string;
   /**
-   * The [Customer]($m/Customer) ID of the customer associated with the payment.
+   * The [Customer](entity:Customer) ID of the customer associated with the payment.
    * This is required if the `source_id` refers to a card on file created using the Cards API.
    */
   customerId?: string;
@@ -101,7 +101,7 @@ export interface CreatePaymentRequest {
    */
   locationId?: string;
   /**
-   * An optional [TeamMember]($m/TeamMember) ID to associate with
+   * An optional [TeamMember](entity:TeamMember) ID to associate with
    * this payment.
    */
   teamMemberId?: string;
@@ -168,7 +168,7 @@ export interface CreatePaymentRequest {
 export const createPaymentRequestSchema: Schema<CreatePaymentRequest> = object({
   sourceId: ['source_id', string()],
   idempotencyKey: ['idempotency_key', string()],
-  amountMoney: ['amount_money', lazy(() => moneySchema)],
+  amountMoney: ['amount_money', optional(lazy(() => moneySchema))],
   tipMoney: ['tip_money', optional(lazy(() => moneySchema))],
   appFeeMoney: ['app_fee_money', optional(lazy(() => moneySchema))],
   delayDuration: ['delay_duration', optional(string())],

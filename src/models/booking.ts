@@ -35,14 +35,14 @@ export interface Booking {
   updatedAt?: string;
   /** The RFC 3339 timestamp specifying the starting time of this booking. */
   startAt?: string | null;
-  /** The ID of the [Location]($m/Location) object representing the location where the booked service is provided. Once set when the booking is created, its value cannot be changed. */
+  /** The ID of the [Location](entity:Location) object representing the location where the booked service is provided. Once set when the booking is created, its value cannot be changed. */
   locationId?: string | null;
-  /** The ID of the [Customer]($m/Customer) object representing the customer receiving the booked service. */
+  /** The ID of the [Customer](entity:Customer) object representing the customer receiving the booked service. */
   customerId?: string | null;
-  /** The free-text field for the customer to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a relevant [CatalogObject]($m/CatalogObject) instance. */
+  /** The free-text field for the customer to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a relevant [CatalogObject](entity:CatalogObject) instance. */
   customerNote?: string | null;
   /**
-   * The free-text field for the seller to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a specific [CatalogObject]($m/CatalogObject) instance.
+   * The free-text field for the seller to supply notes about the booking. For example, the note can be preferences that cannot be expressed by supported attributes of a specific [CatalogObject](entity:CatalogObject) instance.
    * This field should not be visible to customers.
    */
   sellerNote?: string | null;

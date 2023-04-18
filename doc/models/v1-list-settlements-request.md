@@ -20,12 +20,12 @@
 
 ```json
 {
-  "order": null,
-  "begin_time": null,
-  "end_time": null,
-  "limit": null,
-  "status": null,
-  "batch_token": null
+  "order": "DESC",
+  "begin_time": "begin_time2",
+  "end_time": "end_time2",
+  "limit": 172,
+  "status": "SENT",
+  "batch_token": "batch_token2"
 }
 ```
 

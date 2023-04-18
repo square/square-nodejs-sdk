@@ -21,8 +21,12 @@ or excluded from, the result if they match at least one of the filter criteria.
 
 ```json
 {
-  "values": null,
-  "rule": null
+  "values": [
+    "INSTANT_PROFILE",
+    "TERMINAL",
+    "THIRD_PARTY"
+  ],
+  "rule": "INCLUDE"
 }
 ```
 

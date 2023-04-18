@@ -23,8 +23,8 @@ Support is currently limited to USD, CAD and GBP currencies
   "location_id": "location_id4",
   "description": "description0",
   "amount_money": {
-    "amount": null,
-    "currency": null
+    "amount": 186,
+    "currency": "NGN"
   }
 }
 ```

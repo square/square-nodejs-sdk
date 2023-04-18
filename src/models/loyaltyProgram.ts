@@ -43,7 +43,7 @@ export interface LoyaltyProgram {
   expirationPolicy?: LoyaltyProgramExpirationPolicy;
   /** Represents the naming used for loyalty points. */
   terminology?: LoyaltyProgramTerminology;
-  /** The [locations]($m/Location) at which the program is active. */
+  /** The [locations](entity:Location) at which the program is active. */
   locationIds?: string[] | null;
   /** The timestamp when the program was created, in RFC 3339 format. */
   createdAt?: string;
@@ -51,8 +51,8 @@ export interface LoyaltyProgram {
   updatedAt?: string;
   /**
    * Defines how buyers can earn loyalty points from the base loyalty program.
-   * To check for associated [loyalty promotions]($m/LoyaltyPromotion) that enable
-   * buyers to earn extra points, call [ListLoyaltyPromotions]($e/Loyalty/ListLoyaltyPromotions).
+   * To check for associated [loyalty promotions](entity:LoyaltyPromotion) that enable
+   * buyers to earn extra points, call [ListLoyaltyPromotions](api-endpoint:Loyalty-ListLoyaltyPromotions).
    */
   accrualRules?: LoyaltyProgramAccrualRule[] | null;
 }

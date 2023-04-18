@@ -45,20 +45,137 @@ price of items might have changed since the payment was processed.
 
 ```json
 {
-  "name": null,
-  "quantity": null,
-  "itemization_type": null,
-  "item_detail": null,
-  "notes": null,
-  "item_variation_name": null,
-  "total_money": null,
-  "single_quantity_money": null,
-  "gross_sales_money": null,
-  "discount_money": null,
-  "net_sales_money": null,
-  "taxes": null,
-  "discounts": null,
-  "modifiers": null
+  "name": "name0",
+  "quantity": 149.16,
+  "itemization_type": "GIFT_CARD_UNKNOWN",
+  "item_detail": {
+    "category_name": "category_name0",
+    "sku": "sku6",
+    "item_id": "item_id2",
+    "item_variation_id": "item_variation_id2"
+  },
+  "notes": "notes0",
+  "item_variation_name": "item_variation_name2",
+  "total_money": {
+    "amount": 250,
+    "currency_code": "USS"
+  },
+  "single_quantity_money": {
+    "amount": 184,
+    "currency_code": "TZS"
+  },
+  "gross_sales_money": {
+    "amount": 198,
+    "currency_code": "HKD"
+  },
+  "discount_money": {
+    "amount": 92,
+    "currency_code": "DJF"
+  },
+  "net_sales_money": {
+    "amount": 110,
+    "currency_code": "UZS"
+  },
+  "taxes": [
+    {
+      "errors": [
+        {
+          "category": "RATE_LIMIT_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_SHORT",
+          "detail": "detail6",
+          "field": "field4"
+        },
+        {
+          "category": "PAYMENT_METHOD_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail7",
+          "field": "field5"
+        }
+      ],
+      "name": "name5",
+      "applied_money": {
+        "amount": 109,
+        "currency_code": "USN"
+      },
+      "rate": "rate5",
+      "inclusion_type": "INCLUSIVE",
+      "fee_id": "fee_id3"
+    },
+    {
+      "errors": [
+        {
+          "category": "PAYMENT_METHOD_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail7",
+          "field": "field5"
+        },
+        {
+          "category": "REFUND_ERROR",
+          "code": "CUSTOMER_MISSING_NAME",
+          "detail": "detail8",
+          "field": "field6"
+        },
+        {
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "CUSTOMER_MISSING_EMAIL",
+          "detail": "detail9",
+          "field": "field7"
+        }
+      ],
+      "name": "name6",
+      "applied_money": {
+        "amount": 108,
+        "currency_code": "USD"
+      },
+      "rate": "rate4",
+      "inclusion_type": "ADDITIVE",
+      "fee_id": "fee_id4"
+    }
+  ],
+  "discounts": [
+    {
+      "name": "name1",
+      "applied_money": {
+        "amount": 97,
+        "currency_code": "STD"
+      },
+      "discount_id": "discount_id9"
+    },
+    {
+      "name": "name2",
+      "applied_money": {
+        "amount": 96,
+        "currency_code": "SSP"
+      },
+      "discount_id": "discount_id0"
+    },
+    {
+      "name": "name3",
+      "applied_money": {
+        "amount": 95,
+        "currency_code": "SRD"
+      },
+      "discount_id": "discount_id1"
+    }
+  ],
+  "modifiers": [
+    {
+      "name": "name1",
+      "applied_money": {
+        "amount": 135,
+        "currency_code": "MZN"
+      },
+      "modifier_option_id": "modifier_option_id7"
+    },
+    {
+      "name": "name2",
+      "applied_money": {
+        "amount": 134,
+        "currency_code": "MYR"
+      },
+      "modifier_option_id": "modifier_option_id8"
+    }
+  ]
 }
 ```
 

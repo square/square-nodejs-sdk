@@ -24,8 +24,8 @@ See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-
 {
   "category": "RATE_LIMIT_ERROR",
   "code": "UNEXPECTED_VALUE",
-  "detail": null,
-  "field": null
+  "detail": "detail6",
+  "field": "field6"
 }
 ```
 

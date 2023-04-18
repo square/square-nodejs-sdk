@@ -17,8 +17,8 @@ export interface ListWebhookSubscriptionsRequest {
    */
   cursor?: string | null;
   /**
-   * Includes disabled [Subscription]($m/WebhookSubscription)s.
-   * By default, all enabled [Subscription]($m/WebhookSubscription)s are returned.
+   * Includes disabled [Subscription](entity:WebhookSubscription)s.
+   * By default, all enabled [Subscription](entity:WebhookSubscription)s are returned.
    */
   includeDisabled?: boolean | null;
   /** The order (e.g., chronological or alphabetical) in which results from a request are returned. */

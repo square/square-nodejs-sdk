@@ -2,7 +2,7 @@ import { object, Schema, string } from '../schema';
 
 /** Filter events by loyalty account. */
 export interface LoyaltyEventLoyaltyAccountFilter {
-  /** The ID of the [loyalty account]($m/LoyaltyAccount) associated with loyalty events. */
+  /** The ID of the [loyalty account](entity:LoyaltyAccount) associated with loyalty events. */
   loyaltyAccountId: string;
 }
 

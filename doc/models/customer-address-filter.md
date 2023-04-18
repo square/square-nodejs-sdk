@@ -19,8 +19,11 @@ searching by an `Address`-type custom attribute.
 
 ```json
 {
-  "postal_code": null,
-  "country": null
+  "postal_code": {
+    "exact": "exact2",
+    "fuzzy": "fuzzy2"
+  },
+  "country": "FO"
 }
 ```
 

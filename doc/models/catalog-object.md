@@ -25,7 +25,7 @@ For a more detailed discussion of the Catalog data model, please see the
 | `updatedAt` | `string \| undefined` | Optional | Last modification [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) in RFC 3339 format, e.g., `"2016-08-15T23:59:33.123Z"`<br>would indicate the UTC time (denoted by `Z`) of August 15, 2016 at 23:59:33 and 123 milliseconds. |
 | `version` | `bigint \| undefined` | Optional | The version of the object. When updating an object, the version supplied<br>must match the version in the database, otherwise the write will be rejected as conflicting. |
 | `isDeleted` | `boolean \| undefined` | Optional | If `true`, the object has been deleted from the database. Must be `false` for new objects<br>being inserted. When deleted, the `updated_at` field will equal the deletion time. |
-| `customAttributeValues` | [`Record<string, CatalogCustomAttributeValue> \| undefined`](../../doc/models/catalog-custom-attribute-value.md) | Optional | A map (key-value pairs) of application-defined custom attribute values. The value of a key-value pair<br>is a [CatalogCustomAttributeValue](../../doc/models/catalog-custom-attribute-value.md) object. The key is the `key` attribute<br>value defined in the associated [CatalogCustomAttributeDefinition](../../doc/models/catalog-custom-attribute-definition.md)<br>object defined by the application making the request.<br><br>If the `CatalogCustomAttributeDefinition` object is<br>defined by another application, the `CatalogCustomAttributeDefinition`'s key attribute value is prefixed by<br>the defining application ID. For example, if the `CatalogCustomAttributeDefinition` has a `key` attribute of<br>`"cocoa_brand"` and the defining application ID is `"abcd1234"`, the key in the map is `"abcd1234:cocoa_brand"`<br>if the application making the request is different from the application defining the custom attribute definition.<br>Otherwise, the key used in the map is simply `"cocoa_brand"`.<br><br>Application-defined custom attributes are set at a global (location-independent) level.<br>Custom attribute values are intended to store additional information about a catalog object<br>or associations with an entity in another system. Do not use custom attributes<br>to store any sensitive information (personally identifiable information, card details, etc.). |
+| `customAttributeValues` | [`Record<string, CatalogCustomAttributeValue> \| undefined`](../../doc/models/catalog-custom-attribute-value.md) | Optional | A map (key-value pairs) of application-defined custom attribute values. The value of a key-value pair<br>is a [CatalogCustomAttributeValue](entity:CatalogCustomAttributeValue) object. The key is the `key` attribute<br>value defined in the associated [CatalogCustomAttributeDefinition](entity:CatalogCustomAttributeDefinition)<br>object defined by the application making the request.<br><br>If the `CatalogCustomAttributeDefinition` object is<br>defined by another application, the `CatalogCustomAttributeDefinition`'s key attribute value is prefixed by<br>the defining application ID. For example, if the `CatalogCustomAttributeDefinition` has a `key` attribute of<br>`"cocoa_brand"` and the defining application ID is `"abcd1234"`, the key in the map is `"abcd1234:cocoa_brand"`<br>if the application making the request is different from the application defining the custom attribute definition.<br>Otherwise, the key used in the map is simply `"cocoa_brand"`.<br><br>Application-defined custom attributes are set at a global (location-independent) level.<br>Custom attribute values are intended to store additional information about a catalog object<br>or associations with an entity in another system. Do not use custom attributes<br>to store any sensitive information (personally identifiable information, card details, etc.). |
 | `catalogV1Ids` | [`CatalogV1Id[] \| undefined`](../../doc/models/catalog-v1-id.md) | Optional | The Connect v1 IDs for this object at each location where it is present, where they<br>differ from the object's Connect V2 ID. The field will only be present for objects that<br>have been created or modified by legacy APIs. |
 | `presentAtAllLocations` | `boolean \| undefined` | Optional | If `true`, this object is present at all locations (including future locations), except where specified in<br>the `absent_at_location_ids` field. If `false`, this object is not present at any locations (including future locations),<br>except where specified in the `present_at_location_ids` field. If not specified, defaults to `true`. |
 | `presentAtLocationIds` | `string[] \| undefined` | Optional | A list of locations where the object is present, even if `present_at_all_locations` is `false`.<br>This can include locations that are deactivated. |
@@ -52,33 +52,118 @@ For a more detailed discussion of the Catalog data model, please see the
 
 ```json
 {
-  "type": "ITEM_VARIATION",
-  "id": "id0",
-  "updated_at": null,
-  "version": null,
-  "is_deleted": null,
-  "custom_attribute_values": null,
-  "catalog_v1_ids": null,
-  "present_at_all_locations": null,
-  "present_at_location_ids": null,
-  "absent_at_location_ids": null,
-  "item_data": null,
-  "category_data": null,
-  "item_variation_data": null,
-  "tax_data": null,
-  "discount_data": null,
-  "modifier_list_data": null,
-  "modifier_data": null,
-  "time_period_data": null,
-  "product_set_data": null,
-  "pricing_rule_data": null,
-  "image_data": null,
-  "measurement_unit_data": null,
-  "subscription_plan_data": null,
-  "item_option_data": null,
-  "item_option_value_data": null,
-  "custom_attribute_definition_data": null,
-  "quick_amounts_settings_data": null
+  "type": null,
+  "id": null,
+  "item_data": {
+    "object": {
+      "id": "#Cocoa",
+      "item_data": {
+        "abbreviation": "Ch",
+        "description": "Hot chocolate",
+        "name": "Cocoa",
+        "visibility": "PRIVATE"
+      },
+      "present_at_all_locations": true,
+      "type": "ITEM"
+    }
+  },
+  "category_data": {
+    "object": {
+      "category_data": {
+        "name": "Beverages"
+      },
+      "id": "#Beverages",
+      "present_at_all_locations": true,
+      "type": "CATEGORY"
+    }
+  },
+  "tax_data": {
+    "object": {
+      "id": "#SalesTax",
+      "present_at_all_locations": true,
+      "tax_data": {
+        "calculation_phase": "TAX_SUBTOTAL_PHASE",
+        "enabled": true,
+        "fee_applies_to_custom_amounts": true,
+        "inclusion_type": "ADDITIVE",
+        "name": "Sales Tax",
+        "percentage": "5.0"
+      },
+      "type": "TAX"
+    }
+  },
+  "discount_data": {
+    "object": {
+      "discount_data": {
+        "discount_type": "FIXED_PERCENTAGE",
+        "label_color": "red",
+        "name": "Welcome to the Dark(Roast) Side!",
+        "percentage": "5.4",
+        "pin_required": false
+      },
+      "id": "#Maythe4th",
+      "present_at_all_locations": true,
+      "type": "DISCOUNT"
+    }
+  },
+  "modifier_list_data": {
+    "id": "#MilkType",
+    "modifier_list_data": {
+      "allow_quantities": false,
+      "modifiers": [
+        {
+          "modifier_data": {
+            "name": "Whole Milk",
+            "price_money": {
+              "amount": 0,
+              "currency": "USD"
+            }
+          },
+          "present_at_all_locations": true,
+          "type": "MODIFIER"
+        },
+        {
+          "modifier_data": {
+            "name": "Almond Milk",
+            "price_money": {
+              "amount": 250,
+              "currency": "USD"
+            }
+          },
+          "present_at_all_locations": true,
+          "type": "MODIFIER"
+        },
+        {
+          "modifier_data": {
+            "name": "Soy Milk",
+            "price_money": {
+              "amount": 250,
+              "currency": "USD"
+            }
+          },
+          "present_at_all_locations": true,
+          "type": "MODIFIER"
+        }
+      ],
+      "name": "Milk Type",
+      "selection_type": "SINGLE"
+    },
+    "present_at_all_locations": true,
+    "type": "MODIFIER_LIST"
+  },
+  "modifier_data": {
+    "object": {
+      "modifier_data": {
+        "name": "Almond Milk",
+        "price_money": {
+          "amount": 250,
+          "currency": "USD"
+        }
+      },
+      "present_at_all_locations": true,
+      "type": "MODIFIER"
+    }
+  }
 }
 ```
 

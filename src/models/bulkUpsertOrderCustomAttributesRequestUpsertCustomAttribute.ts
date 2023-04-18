@@ -13,7 +13,7 @@ export interface BulkUpsertOrderCustomAttributesRequestUpsertCustomAttribute {
    * For more information, see [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency).
    */
   idempotencyKey?: string | null;
-  /** The ID of the target [order]($m/Order). */
+  /** The ID of the target [order](entity:Order). */
   orderId: string;
 }
 

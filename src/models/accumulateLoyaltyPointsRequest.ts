@@ -13,7 +13,7 @@ export interface AccumulateLoyaltyPointsRequest {
    * Keys can be any valid string but must be unique for every request.
    */
   idempotencyKey: string;
-  /** The [location]($m/Location) where the purchase was made. */
+  /** The [location](entity:Location) where the purchase was made. */
   locationId: string;
 }
 

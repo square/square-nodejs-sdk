@@ -23,9 +23,9 @@ Adding custom fields to an invoice requires an
 
 ```json
 {
-  "label": null,
-  "value": null,
-  "placement": null
+  "label": "label0",
+  "value": "value2",
+  "placement": "ABOVE_LINE_ITEMS"
 }
 ```
 

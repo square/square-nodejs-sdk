@@ -18,8 +18,8 @@ Represents details about an `IMPORT_REVERSAL` [gift card activity type](../../do
 ```json
 {
   "amount_money": {
-    "amount": null,
-    "currency": null
+    "amount": 186,
+    "currency": "NGN"
   }
 }
 ```

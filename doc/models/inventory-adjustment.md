@@ -16,18 +16,18 @@ particular time and location.
 | `referenceId` | `string \| undefined` | Optional | An optional ID provided by the application to tie the<br>`InventoryAdjustment` to an external<br>system.<br>**Constraints**: *Maximum Length*: `255` |
 | `fromState` | [`string \| undefined`](../../doc/models/inventory-state.md) | Optional | Indicates the state of a tracked item quantity in the lifecycle of goods. |
 | `toState` | [`string \| undefined`](../../doc/models/inventory-state.md) | Optional | Indicates the state of a tracked item quantity in the lifecycle of goods. |
-| `locationId` | `string \| undefined` | Optional | The Square-generated ID of the [Location](../../doc/models/location.md) where the related<br>quantity of items is being tracked.<br>**Constraints**: *Maximum Length*: `100` |
-| `catalogObjectId` | `string \| undefined` | Optional | The Square-generated ID of the<br>[CatalogObject](../../doc/models/catalog-object.md) being tracked.<br>**Constraints**: *Maximum Length*: `100` |
-| `catalogObjectType` | `string \| undefined` | Optional | The [type](../../doc/models/catalog-object-type.md) of the [CatalogObject](../../doc/models/catalog-object.md) being tracked.<br><br>The Inventory API supports setting and reading the `"catalog_object_type": "ITEM_VARIATION"` field value.<br>In addition, it can also read the `"catalog_object_type": "ITEM"` field value that is set by the Square Restaurants app.<br>**Constraints**: *Maximum Length*: `14` |
+| `locationId` | `string \| undefined` | Optional | The Square-generated ID of the [Location](entity:Location) where the related<br>quantity of items is being tracked.<br>**Constraints**: *Maximum Length*: `100` |
+| `catalogObjectId` | `string \| undefined` | Optional | The Square-generated ID of the<br>[CatalogObject](entity:CatalogObject) being tracked.<br>**Constraints**: *Maximum Length*: `100` |
+| `catalogObjectType` | `string \| undefined` | Optional | The [type](entity:CatalogObjectType) of the [CatalogObject](entity:CatalogObject) being tracked.<br><br>The Inventory API supports setting and reading the `"catalog_object_type": "ITEM_VARIATION"` field value.<br>In addition, it can also read the `"catalog_object_type": "ITEM"` field value that is set by the Square Restaurants app.<br>**Constraints**: *Maximum Length*: `14` |
 | `quantity` | `string \| undefined` | Optional | The number of items affected by the adjustment as a decimal string.<br>Can support up to 5 digits after the decimal point.<br>**Constraints**: *Maximum Length*: `26` |
 | `totalPriceMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `occurredAt` | `string \| undefined` | Optional | A client-generated RFC 3339-formatted timestamp that indicates when<br>the inventory adjustment took place. For inventory adjustment updates, the `occurred_at`<br>timestamp cannot be older than 24 hours or in the future relative to the<br>time of the request.<br>**Constraints**: *Maximum Length*: `34` |
 | `createdAt` | `string \| undefined` | Optional | An RFC 3339-formatted timestamp that indicates when the inventory adjustment is received.<br>**Constraints**: *Maximum Length*: `34` |
 | `source` | [`SourceApplication \| undefined`](../../doc/models/source-application.md) | Optional | Represents information about the application used to generate a change. |
-| `employeeId` | `string \| undefined` | Optional | The Square-generated ID of the [Employee](../../doc/models/employee.md) responsible for the<br>inventory adjustment.<br>**Constraints**: *Maximum Length*: `100` |
-| `teamMemberId` | `string \| undefined` | Optional | The Square-generated ID of the [Team Member](../../doc/models/team-member.md) responsible for the<br>inventory adjustment.<br>**Constraints**: *Maximum Length*: `100` |
-| `transactionId` | `string \| undefined` | Optional | The Square-generated ID of the [Transaction](../../doc/models/transaction.md) that<br>caused the adjustment. Only relevant for payment-related state<br>transitions.<br>**Constraints**: *Maximum Length*: `255` |
-| `refundId` | `string \| undefined` | Optional | The Square-generated ID of the [Refund](../../doc/models/refund.md) that<br>caused the adjustment. Only relevant for refund-related state<br>transitions.<br>**Constraints**: *Maximum Length*: `255` |
+| `employeeId` | `string \| undefined` | Optional | The Square-generated ID of the [Employee](entity:Employee) responsible for the<br>inventory adjustment.<br>**Constraints**: *Maximum Length*: `100` |
+| `teamMemberId` | `string \| undefined` | Optional | The Square-generated ID of the [Team Member](entity:TeamMember) responsible for the<br>inventory adjustment.<br>**Constraints**: *Maximum Length*: `100` |
+| `transactionId` | `string \| undefined` | Optional | The Square-generated ID of the [Transaction](entity:Transaction) that<br>caused the adjustment. Only relevant for payment-related state<br>transitions.<br>**Constraints**: *Maximum Length*: `255` |
+| `refundId` | `string \| undefined` | Optional | The Square-generated ID of the [Refund](entity:Refund) that<br>caused the adjustment. Only relevant for refund-related state<br>transitions.<br>**Constraints**: *Maximum Length*: `255` |
 | `purchaseOrderId` | `string \| undefined` | Optional | The Square-generated ID of the purchase order that caused the<br>adjustment. Only relevant for state transitions from the Square for Retail<br>app.<br>**Constraints**: *Maximum Length*: `100` |
 | `goodsReceiptId` | `string \| undefined` | Optional | The Square-generated ID of the goods receipt that caused the<br>adjustment. Only relevant for state transitions from the Square for Retail<br>app.<br>**Constraints**: *Maximum Length*: `100` |
 | `adjustmentGroup` | [`InventoryAdjustmentGroup \| undefined`](../../doc/models/inventory-adjustment-group.md) | Optional | - |
@@ -36,25 +36,37 @@ particular time and location.
 
 ```json
 {
-  "id": null,
-  "reference_id": null,
-  "from_state": null,
-  "to_state": null,
-  "location_id": null,
-  "catalog_object_id": null,
-  "catalog_object_type": null,
-  "quantity": null,
-  "total_price_money": null,
-  "occurred_at": null,
-  "created_at": null,
-  "source": null,
-  "employee_id": null,
-  "team_member_id": null,
-  "transaction_id": null,
-  "refund_id": null,
-  "purchase_order_id": null,
-  "goods_receipt_id": null,
-  "adjustment_group": null
+  "id": "id0",
+  "reference_id": "reference_id2",
+  "from_state": "UNLINKED_RETURN",
+  "to_state": "SUPPORTED_BY_NEWER_VERSION",
+  "location_id": "location_id4",
+  "catalog_object_id": "catalog_object_id6",
+  "catalog_object_type": "catalog_object_type6",
+  "quantity": "quantity6",
+  "total_price_money": {
+    "amount": 52,
+    "currency": "MYR"
+  },
+  "occurred_at": "occurred_at4",
+  "created_at": "created_at2",
+  "source": {
+    "product": "PAYROLL",
+    "application_id": "application_id0",
+    "name": "name4"
+  },
+  "employee_id": "employee_id0",
+  "team_member_id": "team_member_id0",
+  "transaction_id": "transaction_id8",
+  "refund_id": "refund_id4",
+  "purchase_order_id": "purchase_order_id0",
+  "goods_receipt_id": "goods_receipt_id8",
+  "adjustment_group": {
+    "id": "id2",
+    "root_adjustment_id": "root_adjustment_id2",
+    "from_state": "IN_TRANSIT_TO",
+    "to_state": "UNLINKED_RETURN"
+  }
 }
 ```
 

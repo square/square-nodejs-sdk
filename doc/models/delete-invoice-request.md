@@ -11,13 +11,13 @@ Describes a `DeleteInvoice` request.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `version` | `number \| undefined` | Optional | The version of the [invoice](../../doc/models/invoice.md) to delete.<br>If you do not know the version, you can call [GetInvoice](../../doc/api/invoices.md#get-invoice) or<br>[ListInvoices](../../doc/api/invoices.md#list-invoices). |
+| `version` | `number \| undefined` | Optional | The version of the [invoice](entity:Invoice) to delete.<br>If you do not know the version, you can call [GetInvoice](api-endpoint:Invoices-GetInvoice) or<br>[ListInvoices](api-endpoint:Invoices-ListInvoices). |
 
 ## Example (as JSON)
 
 ```json
 {
-  "version": null
+  "version": 172
 }
 ```
 

@@ -19,9 +19,13 @@ Additional details about a Buy Now Pay Later payment type.
 
 ```json
 {
-  "brand": null,
-  "afterpay_details": null,
-  "clearpay_details": null
+  "brand": "brand4",
+  "afterpay_details": {
+    "email_address": "email_address4"
+  },
+  "clearpay_details": {
+    "email_address": "email_address4"
+  }
 }
 ```
 

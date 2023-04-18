@@ -12,7 +12,7 @@ Represents an output from a call to [BulkUpdateVendors](../../doc/api/vendors.md
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Errors encountered when the request fails. |
-| `responses` | [`Record<string, UpdateVendorResponse> \| undefined`](../../doc/models/update-vendor-response.md) | Optional | A set of [UpdateVendorResponse](../../doc/models/update-vendor-response.md) objects encapsulating successfully created [Vendor](../../doc/models/vendor.md)<br>objects or error responses for failed attempts. The set is represented by a collection of `Vendor`-ID/`UpdateVendorResponse`-object or<br>`Vendor`-ID/error-object pairs. |
+| `responses` | [`Record<string, UpdateVendorResponse> \| undefined`](../../doc/models/update-vendor-response.md) | Optional | A set of [UpdateVendorResponse](entity:UpdateVendorResponse) objects encapsulating successfully created [Vendor](entity:Vendor)<br>objects or error responses for failed attempts. The set is represented by a collection of `Vendor`-ID/`UpdateVendorResponse`-object or<br>`Vendor`-ID/error-object pairs. |
 
 ## Example (as JSON)
 

@@ -22,11 +22,43 @@ are ANDed together.
 
 ```json
 {
-  "state_filter": null,
-  "date_time_filter": null,
-  "fulfillment_filter": null,
-  "source_filter": null,
-  "customer_filter": null
+  "state_filter": {
+    "states": [
+      "CANCELED",
+      "DRAFT"
+    ]
+  },
+  "date_time_filter": {
+    "created_at": {
+      "start_at": "start_at0",
+      "end_at": "end_at2"
+    },
+    "updated_at": {
+      "start_at": "start_at8",
+      "end_at": "end_at4"
+    },
+    "closed_at": {}
+  },
+  "fulfillment_filter": {
+    "fulfillment_types": [
+      "DELIVERY"
+    ],
+    "fulfillment_states": [
+      "CANCELED",
+      "FAILED"
+    ]
+  },
+  "source_filter": {
+    "source_names": [
+      "source_names6"
+    ]
+  },
+  "customer_filter": {
+    "customer_ids": [
+      "customer_ids3",
+      "customer_ids4"
+    ]
+  }
 }
 ```
 

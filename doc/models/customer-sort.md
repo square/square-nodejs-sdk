@@ -19,8 +19,8 @@ customer profiles returned in [SearchCustomers](../../doc/api/customers.md#searc
 
 ```json
 {
-  "field": null,
-  "order": null
+  "field": "DEFAULT",
+  "order": "DESC"
 }
 ```
 

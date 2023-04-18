@@ -29,8 +29,10 @@ export interface PaymentLink {
    * see [Optional Checkout Configurations](https://developer.squareup.com/docs/checkout-api/optional-checkout-configurations).
    */
   prePopulatedData?: PrePopulatedData;
-  /** The URL of the payment link. */
+  /** The shortened URL of the payment link. */
   url?: string;
+  /** The long URL of the payment link. */
+  longUrl?: string;
   /** The timestamp when the payment link was created, in RFC 3339 format. */
   createdAt?: string;
   /** The timestamp when the payment link was last updated, in RFC 3339 format. */
@@ -56,6 +58,7 @@ export const paymentLinkSchema: Schema<PaymentLink> = object({
     optional(lazy(() => prePopulatedDataSchema)),
   ],
   url: ['url', optional(string())],
+  longUrl: ['long_url', optional(string())],
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
   paymentNote: ['payment_note', optional(nullable(string()))],

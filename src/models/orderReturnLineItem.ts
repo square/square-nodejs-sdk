@@ -14,6 +14,10 @@ import {
   orderLineItemAppliedDiscountSchema,
 } from './orderLineItemAppliedDiscount';
 import {
+  OrderLineItemAppliedServiceCharge,
+  orderLineItemAppliedServiceChargeSchema,
+} from './orderLineItemAppliedServiceCharge';
+import {
   OrderLineItemAppliedTax,
   orderLineItemAppliedTaxSchema,
 } from './orderLineItemAppliedTax';
@@ -48,7 +52,7 @@ export interface OrderReturnLineItem {
   quantityUnit?: OrderQuantityUnit;
   /** The note of the return line item. */
   note?: string | null;
-  /** The [CatalogItemVariation]($m/CatalogItemVariation) ID applied to this return line item. */
+  /** The [CatalogItemVariation](entity:CatalogItemVariation) ID applied to this return line item. */
   catalogObjectId?: string | null;
   /** The version of the catalog object that this line item references. */
   catalogVersion?: bigint | null;
@@ -56,7 +60,7 @@ export interface OrderReturnLineItem {
   variationName?: string | null;
   /** Represents the line item type. */
   itemType?: string;
-  /** The [CatalogModifier]($m/CatalogModifier)s applied to this line item. */
+  /** The [CatalogModifier](entity:CatalogModifier)s applied to this line item. */
   returnModifiers?: OrderReturnLineItemModifier[] | null;
   /**
    * The list of references to `OrderReturnTax` entities applied to the return line item. Each
@@ -126,6 +130,22 @@ export interface OrderReturnLineItem {
    * for more information.
    */
   totalMoney?: Money;
+  /**
+   * The list of references to `OrderReturnServiceCharge` entities applied to the return
+   * line item. Each `OrderLineItemAppliedServiceCharge` has a `service_charge_uid` that
+   * references the `uid` of a top-level `OrderReturnServiceCharge` applied to the return line
+   * item. On reads, the applied amount is populated.
+   */
+  appliedServiceCharges?: OrderLineItemAppliedServiceCharge[] | null;
+  /**
+   * Represents an amount of money. `Money` fields can be signed or unsigned.
+   * Fields that do not explicitly define whether they are signed or unsigned are
+   * considered unsigned and can only hold positive amounts. For signed fields, the
+   * sign of the value indicates the purpose of the money transfer. See
+   * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
+   * for more information.
+   */
+  totalServiceChargeMoney?: Money;
 }
 
 export const orderReturnLineItemSchema: Schema<OrderReturnLineItem> = object({
@@ -166,4 +186,14 @@ export const orderReturnLineItemSchema: Schema<OrderReturnLineItem> = object({
     optional(lazy(() => moneySchema)),
   ],
   totalMoney: ['total_money', optional(lazy(() => moneySchema))],
+  appliedServiceCharges: [
+    'applied_service_charges',
+    optional(
+      nullable(array(lazy(() => orderLineItemAppliedServiceChargeSchema)))
+    ),
+  ],
+  totalServiceChargeMoney: [
+    'total_service_charge_money',
+    optional(lazy(() => moneySchema)),
+  ],
 });

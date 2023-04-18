@@ -22,11 +22,11 @@ Represents a Quick Amount in the Catalog.
 {
   "type": "QUICK_AMOUNT_TYPE_MANUAL",
   "amount": {
-    "amount": null,
-    "currency": null
+    "amount": 0,
+    "currency": "NOK"
   },
-  "score": null,
-  "ordinal": null
+  "score": 148,
+  "ordinal": 80
 }
 ```
 

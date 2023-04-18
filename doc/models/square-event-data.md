@@ -18,10 +18,13 @@
 
 ```json
 {
-  "type": null,
-  "id": null,
-  "deleted": null,
-  "object": null
+  "type": "type0",
+  "id": "id0",
+  "deleted": false,
+  "object": {
+    "key1": "val1",
+    "key2": "val2"
+  }
 }
 ```
 

@@ -23,15 +23,39 @@
 
 ```json
 {
-  "allow_tipping": null,
-  "custom_fields": null,
-  "subscription_plan_id": null,
-  "redirect_url": null,
-  "merchant_support_email": null,
-  "ask_for_shipping_address": null,
-  "accepted_payment_methods": null,
-  "app_fee_money": null,
-  "shipping_fee": null
+  "allow_tipping": false,
+  "custom_fields": [
+    {
+      "title": "title9"
+    },
+    {
+      "title": "title0"
+    },
+    {
+      "title": "title1"
+    }
+  ],
+  "subscription_plan_id": "subscription_plan_id2",
+  "redirect_url": "redirect_url2",
+  "merchant_support_email": "merchant_support_email8",
+  "ask_for_shipping_address": false,
+  "accepted_payment_methods": {
+    "apple_pay": false,
+    "google_pay": false,
+    "cash_app_pay": false,
+    "afterpay_clearpay": false
+  },
+  "app_fee_money": {
+    "amount": 106,
+    "currency": "GBP"
+  },
+  "shipping_fee": {
+    "name": "name2",
+    "charge": {
+      "amount": 176,
+      "currency": "PYG"
+    }
+  }
 }
 ```
 

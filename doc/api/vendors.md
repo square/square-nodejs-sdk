@@ -249,7 +249,7 @@ async retrieveVendor(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `vendorId` | `string` | Template, Required | ID of the [Vendor](../../doc/models/vendor.md) to retrieve. |
+| `vendorId` | `string` | Template, Required | ID of the [Vendor](entity:Vendor) to retrieve. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type

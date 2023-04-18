@@ -20,8 +20,8 @@ Describes a `ListInvoice` request.
 ```json
 {
   "location_id": "location_id4",
-  "cursor": null,
-  "limit": null
+  "cursor": "cursor6",
+  "limit": 172
 }
 ```
 

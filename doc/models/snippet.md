@@ -21,11 +21,11 @@ Represents the snippet that is added to a Square Online site. The snippet code i
 
 ```json
 {
-  "id": null,
-  "site_id": null,
+  "id": "id0",
+  "site_id": "site_id6",
   "content": "content4",
-  "created_at": null,
-  "updated_at": null
+  "created_at": "created_at2",
+  "updated_at": "updated_at4"
 }
 ```
 

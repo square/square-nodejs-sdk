@@ -18,10 +18,13 @@
 
 ```json
 {
-  "device_id": null,
-  "created_at": null,
-  "status": null,
-  "type": null
+  "device_id": "device_id6",
+  "created_at": {
+    "start_at": "start_at4",
+    "end_at": "end_at8"
+  },
+  "status": "status8",
+  "type": "RECEIPT"
 }
 ```
 

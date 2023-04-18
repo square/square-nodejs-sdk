@@ -20,7 +20,7 @@ export interface CatalogSubscriptionPlan {
   /** The name of the plan. */
   name: string;
   /**
-   * A list of SubscriptionPhase containing the [SubscriptionPhase]($m/SubscriptionPhase) for this plan.
+   * A list of SubscriptionPhase containing the [SubscriptionPhase](entity:SubscriptionPhase) for this plan.
    * This field it required. Not including this field will throw a REQUIRED_FIELD_MISSING error
    */
   phases?: SubscriptionPhase[] | null;

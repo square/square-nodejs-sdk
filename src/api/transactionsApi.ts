@@ -93,7 +93,7 @@ export class TransactionsApi extends BaseApi {
   }
 
   /**
-   * Captures a transaction that was created with the [Charge]($e/Transactions/Charge)
+   * Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
    * endpoint with a `delay_capture` value of `true`.
    *
    *
@@ -122,7 +122,7 @@ export class TransactionsApi extends BaseApi {
   }
 
   /**
-   * Cancels a transaction that was created with the [Charge]($e/Transactions/Charge)
+   * Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
    * endpoint with a `delay_capture` value of `true`.
    *
    *

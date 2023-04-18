@@ -328,7 +328,7 @@ export class OrderCustomAttributesApi extends BaseApi {
    * visible to the requesting application, including those that are owned by other applications
    * and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
    *
-   * @param orderId           The ID of the target [order]($m/Order).
+   * @param orderId           The ID of the target [order](entity:Order).
    * @param visibilityFilter  Requests that all of the custom attributes be returned, or only those that
    *                                     are read-only or read-write.
    * @param cursor            The cursor returned in the paged response from the previous call to this
@@ -340,11 +340,11 @@ export class OrderCustomAttributesApi extends BaseApi {
    *                                     minimum value is 1 and the maximum value is 100.  The default value is 20. For
    *                                     more information, see [Pagination](https://developer.squareup.com/docs/working-
    *                                     with-apis/pagination).
-   * @param withDefinitions   Indicates whether to return the [custom attribute
-   *                                     definition]($m/CustomAttributeDefinition) in the `definition` field of each
-   *                                     custom attribute. Set this parameter to `true` to get the name and description
-   *                                     of each custom attribute,  information about the data type, or other
-   *                                     definition details. The default value is `false`.
+   * @param withDefinitions   Indicates whether to return the [custom attribute definition](entity:
+   *                                     CustomAttributeDefinition) in the `definition` field of each custom attribute.
+   *                                     Set this parameter to `true` to get the name and description of each custom
+   *                                     attribute,  information about the data type, or other definition details. The
+   *                                     default value is `false`.
    * @return Response from the API call
    */
   async listOrderCustomAttributes(
@@ -381,7 +381,7 @@ export class OrderCustomAttributesApi extends BaseApi {
    * `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
    * (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
    *
-   * @param orderId              The ID of the target [order]($m/Order).
+   * @param orderId              The ID of the target [order](entity:Order).
    * @param customAttributeKey   The key of the custom attribute to delete.  This key must match the key of
    *                                       an existing custom attribute definition.
    * @return Response from the API call
@@ -414,18 +414,18 @@ export class OrderCustomAttributesApi extends BaseApi {
    * attributes
    * also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
    *
-   * @param orderId              The ID of the target [order]($m/Order).
+   * @param orderId              The ID of the target [order](entity:Order).
    * @param customAttributeKey   The key of the custom attribute to retrieve.  This key must match the key
    *                                        of an existing custom attribute definition.
    * @param version              To enable [optimistic concurrency](https://developer.squareup.
    *                                        com/docs/build-basics/common-api-patterns/optimistic-concurrency) control,
    *                                        include this optional field and specify the current version of the custom
    *                                        attribute.
-   * @param withDefinition       Indicates whether to return the [custom attribute
-   *                                        definition]($m/CustomAttributeDefinition) in the `definition` field of each
-   *                                        custom attribute. Set this parameter to `true` to get the name and
-   *                                        description of each custom attribute,  information about the data type, or
-   *                                        other definition details. The default value is `false`.
+   * @param withDefinition       Indicates whether to return the [custom attribute definition](entity:
+   *                                        CustomAttributeDefinition) in the `definition` field of each  custom
+   *                                        attribute. Set this parameter to `true` to get the name and description of
+   *                                        each custom attribute,  information about the data type, or other
+   *                                        definition details. The default value is `false`.
    * @return Response from the API call
    */
   async retrieveOrderCustomAttribute(
@@ -465,7 +465,8 @@ export class OrderCustomAttributesApi extends BaseApi {
    * must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
    * (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
    *
-   * @param orderId              The ID of the target [order]($m/Order).
+   * @param orderId              The ID of the target [order](entity:
+   *                                                                         Order).
    * @param customAttributeKey   The key of the custom attribute to create
    *                                                                         or update.  This key must match the key
    *                                                                         of an existing custom attribute definition.

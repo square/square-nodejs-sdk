@@ -2,8 +2,8 @@ import { nullable, object, optional, Schema, string } from '../schema';
 
 /**
  * Defines the query parameters that can be included in
- * a request to the [ListTransactions]($e/Transactions/ListTransactions) endpoint.
- * Deprecated - recommend using [SearchOrders]($e/Orders/SearchOrders)
+ * a request to the [ListTransactions](api-endpoint:Transactions-ListTransactions) endpoint.
+ * Deprecated - recommend using [SearchOrders](api-endpoint:Orders-SearchOrders)
  */
 export interface ListTransactionsRequest {
   /**

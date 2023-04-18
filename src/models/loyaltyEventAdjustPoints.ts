@@ -2,7 +2,7 @@ import { nullable, number, object, optional, Schema, string } from '../schema';
 
 /** Provides metadata when the event `type` is `ADJUST_POINTS`. */
 export interface LoyaltyEventAdjustPoints {
-  /** The Square-assigned ID of the [loyalty program]($m/LoyaltyProgram). */
+  /** The Square-assigned ID of the [loyalty program](entity:LoyaltyProgram). */
   loyaltyProgramId?: string;
   /** The number of points added or removed. */
   points: number;

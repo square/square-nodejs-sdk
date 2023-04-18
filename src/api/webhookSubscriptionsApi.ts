@@ -77,10 +77,10 @@ export class WebhookSubscriptionsApi extends BaseApi {
    *                                    to retrieve the next set of results for your original query.  For more
    *                                    information, see [Pagination](https://developer.squareup.
    *                                    com/docs/basics/api101/pagination).
-   * @param includeDisabled  Includes disabled [Subscription]($m/WebhookSubscription)s. By default, all
-   *                                    enabled [Subscription]($m/WebhookSubscription)s are returned.
-   * @param sortOrder        Sorts the returned list by when the [Subscription]($m/WebhookSubscription) was
-   *                                    created with the specified order. This field defaults to ASC.
+   * @param includeDisabled  Includes disabled [Subscription](entity:WebhookSubscription)s. By default, all
+   *                                    enabled [Subscription](entity:WebhookSubscription)s are returned.
+   * @param sortOrder        Sorts the returned list by when the [Subscription](entity:WebhookSubscription)
+   *                                    was created with the specified order. This field defaults to ASC.
    * @param limit            The maximum number of results to be returned in a single page. It is possible
    *                                    to receive fewer results than the specified limit on a given page. The default
    *                                    value of 100 is also the maximum allowed value.  Default: 100
@@ -137,7 +137,7 @@ export class WebhookSubscriptionsApi extends BaseApi {
   /**
    * Deletes a webhook subscription.
    *
-   * @param subscriptionId  [REQUIRED] The ID of the [Subscription]($m/WebhookSubscription) to delete.
+   * @param subscriptionId  [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to delete.
    * @return Response from the API call
    */
   async deleteWebhookSubscription(
@@ -158,7 +158,7 @@ export class WebhookSubscriptionsApi extends BaseApi {
   /**
    * Retrieves a webhook subscription identified by its ID.
    *
-   * @param subscriptionId  [REQUIRED] The ID of the [Subscription]($m/WebhookSubscription) to retrieve.
+   * @param subscriptionId  [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to retrieve.
    * @return Response from the API call
    */
   async retrieveWebhookSubscription(
@@ -179,8 +179,8 @@ export class WebhookSubscriptionsApi extends BaseApi {
   /**
    * Updates a webhook subscription.
    *
-   * @param subscriptionId  [REQUIRED] The ID of the
-   *                                                                   [Subscription]($m/WebhookSubscription) to update.
+   * @param subscriptionId  [REQUIRED] The ID of the [Subscription](entity:
+   *                                                                   WebhookSubscription) to update.
    * @param body            An object containing the fields to POST for the
    *                                                                   request.  See the corresponding object
    *                                                                   definition for field details.
@@ -209,8 +209,8 @@ export class WebhookSubscriptionsApi extends BaseApi {
    * Updates a webhook subscription by replacing the existing signature key with a new one.
    *
    * @param subscriptionId  [REQUIRED] The ID of the
-   *                                                                               [Subscription]($m/WebhookSubscriptio
-   *                                                                               n) to update.
+   *                                                                               [Subscription](entity:
+   *                                                                               WebhookSubscription) to update.
    * @param body            An object containing the fields to
    *                                                                               POST for the request.  See the
    *                                                                               corresponding object definition for
@@ -239,8 +239,8 @@ export class WebhookSubscriptionsApi extends BaseApi {
   /**
    * Tests a webhook subscription by sending a test event to the notification URL.
    *
-   * @param subscriptionId  [REQUIRED] The ID of the
-   *                                                                 [Subscription]($m/WebhookSubscription) to test.
+   * @param subscriptionId  [REQUIRED] The ID of the [Subscription](entity:
+   *                                                                 WebhookSubscription) to test.
    * @param body            An object containing the fields to POST for the
    *                                                                 request.  See the corresponding object definition
    *                                                                 for field details.

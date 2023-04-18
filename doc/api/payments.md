@@ -47,10 +47,10 @@ async listPayments(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `beginTime` | `string \| undefined` | Query, Optional | The timestamp for the beginning of the reporting period, in RFC 3339 format.<br>Inclusive. Default: The current time minus one year. |
-| `endTime` | `string \| undefined` | Query, Optional | The timestamp for the end of the reporting period, in RFC 3339 format.<br><br>Default: The current time. |
-| `sortOrder` | `string \| undefined` | Query, Optional | The order in which results are listed:<br><br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default). |
-| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). |
+| `beginTime` | `string \| undefined` | Query, Optional | Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  <br>The range is determined using the `created_at` field for each Payment.<br>Inclusive. Default: The current time minus one year. |
+| `endTime` | `string \| undefined` | Query, Optional | Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The<br>range is determined using the `created_at` field for each Payment.<br><br>Default: The current time. |
+| `sortOrder` | `string \| undefined` | Query, Optional | The order in which results are listed by `Payment.created_at`:<br><br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default). |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
 | `locationId` | `string \| undefined` | Query, Optional | Limit results to the location supplied. By default, results are returned<br>for the default (main) location associated with the seller. |
 | `total` | `bigint \| undefined` | Query, Optional | The exact amount in the `total_money` for a payment. |
 | `last4` | `string \| undefined` | Query, Optional | The last four digits of a payment card. |
@@ -122,8 +122,8 @@ bodyAppFeeMoney.currency = 'USD';
 const body: CreatePaymentRequest = {
   sourceId: 'ccof:GaJGNaZa8x4OgDJn4GB',
   idempotencyKey: '7b0f3ec5-086a-4871-8f13-3c81b3875218',
-  amountMoney: bodyAmountMoney,
 };
+body.amountMoney = bodyAmountMoney;
 body.appFeeMoney = bodyAppFeeMoney;
 body.autocomplete = true;
 body.customerId = 'W92WH6P11H4Z77CTET0RNTGFW8';

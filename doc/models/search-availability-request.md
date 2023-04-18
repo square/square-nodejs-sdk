@@ -18,12 +18,28 @@
   "query": {
     "filter": {
       "start_at_range": {
-        "start_at": null,
-        "end_at": null
+        "start_at": "start_at0",
+        "end_at": "end_at2"
       },
-      "location_id": null,
-      "segment_filters": null,
-      "booking_id": null
+      "location_id": "location_id8",
+      "segment_filters": [
+        {
+          "service_variation_id": "service_variation_id0",
+          "team_member_id_filter": {
+            "all": [
+              "all9"
+            ],
+            "any": [
+              "any8",
+              "any9"
+            ],
+            "none": [
+              "none3"
+            ]
+          }
+        }
+      ],
+      "booking_id": "booking_id8"
     }
   }
 }

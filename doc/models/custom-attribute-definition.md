@@ -25,14 +25,17 @@ specifies the key, visibility, schema, and other properties for a custom attribu
 
 ```json
 {
-  "key": null,
-  "schema": null,
-  "name": null,
-  "description": null,
-  "visibility": null,
-  "version": null,
-  "updated_at": null,
-  "created_at": null
+  "key": "key0",
+  "schema": {
+    "key1": "val1",
+    "key2": "val2"
+  },
+  "name": "name0",
+  "description": "description0",
+  "visibility": "VISIBILITY_READ_WRITE_VALUES",
+  "version": 172,
+  "updated_at": "updated_at4",
+  "created_at": "created_at2"
 }
 ```
 

@@ -22,8 +22,12 @@ of points to the points earned from the base program.
 ```json
 {
   "type": "POINTS_MULTIPLIER",
-  "points_multiplier_data": null,
-  "points_addition_data": null
+  "points_multiplier_data": {
+    "points_multiplier": 134
+  },
+  "points_addition_data": {
+    "points_addition": 218
+  }
 }
 ```
 

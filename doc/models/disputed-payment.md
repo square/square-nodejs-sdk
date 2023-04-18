@@ -17,7 +17,7 @@ The payment the cardholder disputed.
 
 ```json
 {
-  "payment_id": null
+  "payment_id": "payment_id0"
 }
 ```
 

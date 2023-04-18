@@ -154,7 +154,7 @@ async retrieveLoyaltyAccount(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `accountId` | `string` | Template, Required | The ID of the [loyalty account](../../doc/models/loyalty-account.md) to retrieve. |
+| `accountId` | `string` | Template, Required | The ID of the [loyalty account](entity:LoyaltyAccount) to retrieve. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -207,7 +207,7 @@ async accumulateLoyaltyPoints(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `accountId` | `string` | Template, Required | The ID of the target [loyalty account](../../doc/models/loyalty-account.md). |
+| `accountId` | `string` | Template, Required | The ID of the target [loyalty account](entity:LoyaltyAccount). |
 | `body` | [`AccumulateLoyaltyPointsRequest`](../../doc/models/accumulate-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -262,7 +262,7 @@ async adjustLoyaltyPoints(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `accountId` | `string` | Template, Required | The ID of the target [loyalty account](../../doc/models/loyalty-account.md). |
+| `accountId` | `string` | Template, Required | The ID of the target [loyalty account](entity:LoyaltyAccount). |
 | `body` | [`AdjustLoyaltyPointsRequest`](../../doc/models/adjust-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -365,7 +365,7 @@ try {
 Returns a list of loyalty programs in the seller's account.
 Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
 
-Replaced with [RetrieveLoyaltyProgram](../../doc/api/loyalty.md#retrieve-loyalty-program) when used with the keyword `main`.
+Replaced with [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) when used with the keyword `main`.
 
 ```ts
 async listLoyaltyPrograms(
@@ -470,7 +470,7 @@ async calculateLoyaltyPoints(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `programId` | `string` | Template, Required | The ID of the [loyalty program](../../doc/models/loyalty-program.md), which defines the rules for accruing points. |
+| `programId` | `string` | Template, Required | The ID of the [loyalty program](entity:LoyaltyProgram), which defines the rules for accruing points. |
 | `body` | [`CalculateLoyaltyPointsRequest`](../../doc/models/calculate-loyalty-points-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -519,7 +519,7 @@ async listLoyaltyPromotions(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `programId` | `string` | Template, Required | The ID of the base [loyalty program](../../doc/models/loyalty-program.md). To get the program ID,<br>call [RetrieveLoyaltyProgram](../../doc/api/loyalty.md#retrieve-loyalty-program) using the `main` keyword. |
+| `programId` | `string` | Template, Required | The ID of the base [loyalty program](entity:LoyaltyProgram). To get the program ID,<br>call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) using the `main` keyword. |
 | `status` | [`string \| undefined`](../../doc/models/loyalty-promotion-status.md) | Query, Optional | The status to filter the results by. If a status is provided, only loyalty promotions<br>with the specified status are returned. Otherwise, all loyalty promotions associated with<br>the loyalty program are returned. |
 | `cursor` | `string \| undefined` | Query, Optional | The cursor returned in the paged response from the previous call to this endpoint.<br>Provide this cursor to retrieve the next page of results for your original request.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
 | `limit` | `number \| undefined` | Query, Optional | The maximum number of results to return in a single paged response.<br>The minimum value is 1 and the maximum value is 30. The default value is 30.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
@@ -567,7 +567,7 @@ async createLoyaltyPromotion(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `programId` | `string` | Template, Required | The ID of the [loyalty program](../../doc/models/loyalty-program.md) to associate with the promotion.<br>To get the program ID, call [RetrieveLoyaltyProgram](../../doc/api/loyalty.md#retrieve-loyalty-program)<br>using the `main` keyword. |
+| `programId` | `string` | Template, Required | The ID of the [loyalty program](entity:LoyaltyProgram) to associate with the promotion.<br>To get the program ID, call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram)<br>using the `main` keyword. |
 | `body` | [`CreateLoyaltyPromotionRequest`](../../doc/models/create-loyalty-promotion-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -647,8 +647,8 @@ async retrieveLoyaltyPromotion(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `promotionId` | `string` | Template, Required | The ID of the [loyalty promotion](../../doc/models/loyalty-promotion.md) to retrieve. |
-| `programId` | `string` | Template, Required | The ID of the base [loyalty program](../../doc/models/loyalty-program.md). To get the program ID,<br>call [RetrieveLoyaltyProgram](../../doc/api/loyalty.md#retrieve-loyalty-program) using the `main` keyword. |
+| `promotionId` | `string` | Template, Required | The ID of the [loyalty promotion](entity:LoyaltyPromotion) to retrieve. |
+| `programId` | `string` | Template, Required | The ID of the base [loyalty program](entity:LoyaltyProgram). To get the program ID,<br>call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) using the `main` keyword. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -694,8 +694,8 @@ async cancelLoyaltyPromotion(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `promotionId` | `string` | Template, Required | The ID of the [loyalty promotion](../../doc/models/loyalty-promotion.md) to cancel. You can cancel a<br>promotion that has an `ACTIVE` or `SCHEDULED` status. |
-| `programId` | `string` | Template, Required | The ID of the base [loyalty program](../../doc/models/loyalty-program.md). |
+| `promotionId` | `string` | Template, Required | The ID of the [loyalty promotion](entity:LoyaltyPromotion) to cancel. You can cancel a<br>promotion that has an `ACTIVE` or `SCHEDULED` status. |
+| `programId` | `string` | Template, Required | The ID of the base [loyalty program](entity:LoyaltyProgram). |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -853,7 +853,7 @@ async deleteLoyaltyReward(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](../../doc/models/loyalty-reward.md) to delete. |
+| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](entity:LoyaltyReward) to delete. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -892,7 +892,7 @@ async retrieveLoyaltyReward(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](../../doc/models/loyalty-reward.md) to retrieve. |
+| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](entity:LoyaltyReward) to retrieve. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -942,7 +942,7 @@ async redeemLoyaltyReward(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](../../doc/models/loyalty-reward.md) to redeem. |
+| `rewardId` | `string` | Template, Required | The ID of the [loyalty reward](entity:LoyaltyReward) to redeem. |
 | `body` | [`RedeemLoyaltyRewardRequest`](../../doc/models/redeem-loyalty-reward-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 

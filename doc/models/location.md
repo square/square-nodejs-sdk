@@ -15,7 +15,7 @@ Represents one of a business' [locations](https://developer.squareup.com/docs/lo
 | `name` | `string \| undefined` | Optional | The name of the location.<br>This information appears in the Seller Dashboard as the nickname.<br>A location name must be unique within a seller account.<br>**Constraints**: *Maximum Length*: `255` |
 | `address` | [`Address \| undefined`](../../doc/models/address.md) | Optional | Represents a postal address in a country.<br>For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses). |
 | `timezone` | `string \| undefined` | Optional | The [IANA time zone](https://www.iana.org/time-zones) identifier for<br>the time zone of the location. For example, `America/Los_Angeles`.<br>**Constraints**: *Maximum Length*: `30` |
-| `capabilities` | [`string[] \| undefined`](../../doc/models/location-capability.md) | Optional | The Square features that are enabled for the location.<br>See [LocationCapability](../../doc/models/location-capability.md) for possible values.<br>See [LocationCapability](#type-locationcapability) for possible values |
+| `capabilities` | [`string[] \| undefined`](../../doc/models/location-capability.md) | Optional | The Square features that are enabled for the location.<br>See [LocationCapability](entity:LocationCapability) for possible values.<br>See [LocationCapability](#type-locationcapability) for possible values |
 | `status` | [`string \| undefined`](../../doc/models/location-status.md) | Optional | A location's status. |
 | `createdAt` | `string \| undefined` | Optional | The time when the location was created, in RFC 3339 format.<br>For more information, see [Working with Dates](https://developer.squareup.com/docs/build-basics/working-with-dates).<br>**Constraints**: *Minimum Length*: `20`, *Maximum Length*: `25` |
 | `merchantId` | `string \| undefined` | Optional | The ID of the merchant that owns the location.<br>**Constraints**: *Maximum Length*: `32` |
@@ -43,33 +43,76 @@ Represents one of a business' [locations](https://developer.squareup.com/docs/lo
 
 ```json
 {
-  "id": null,
-  "name": null,
-  "address": null,
-  "timezone": null,
-  "capabilities": null,
-  "status": null,
-  "created_at": null,
-  "merchant_id": null,
-  "country": null,
-  "language_code": null,
-  "currency": null,
-  "phone_number": null,
-  "business_name": null,
-  "type": null,
-  "website_url": null,
-  "business_hours": null,
-  "business_email": null,
-  "description": null,
-  "twitter_username": null,
-  "instagram_username": null,
-  "facebook_url": null,
-  "coordinates": null,
-  "logo_url": null,
-  "pos_background_url": null,
-  "mcc": null,
-  "full_format_logo_url": null,
-  "tax_ids": null
+  "id": "id0",
+  "name": "name0",
+  "address": {
+    "address_line_1": "address_line_16",
+    "address_line_2": "address_line_26",
+    "address_line_3": "address_line_32",
+    "locality": "locality6",
+    "sublocality": "sublocality6",
+    "sublocality_2": "sublocality_24",
+    "sublocality_3": "sublocality_36",
+    "administrative_district_level_1": "administrative_district_level_10",
+    "administrative_district_level_2": "administrative_district_level_28",
+    "administrative_district_level_3": "administrative_district_level_34",
+    "postal_code": "postal_code8",
+    "country": "BE",
+    "first_name": "first_name6",
+    "last_name": "last_name4"
+  },
+  "timezone": "timezone0",
+  "capabilities": [
+    "CREDIT_CARD_PROCESSING"
+  ],
+  "status": "ACTIVE",
+  "created_at": "created_at2",
+  "merchant_id": "merchant_id0",
+  "country": "FO",
+  "language_code": "language_code8",
+  "currency": "YER",
+  "phone_number": "phone_number2",
+  "business_name": "business_name4",
+  "type": "PHYSICAL",
+  "website_url": "website_url8",
+  "business_hours": {
+    "periods": [
+      {
+        "day_of_week": "SUN",
+        "start_local_time": "start_local_time3",
+        "end_local_time": "end_local_time5"
+      },
+      {
+        "day_of_week": "SAT",
+        "start_local_time": "start_local_time4",
+        "end_local_time": "end_local_time6"
+      },
+      {
+        "day_of_week": "FRI",
+        "start_local_time": "start_local_time5",
+        "end_local_time": "end_local_time7"
+      }
+    ]
+  },
+  "business_email": "business_email4",
+  "description": "description0",
+  "twitter_username": "twitter_username2",
+  "instagram_username": "instagram_username4",
+  "facebook_url": "facebook_url2",
+  "coordinates": {
+    "latitude": 39.14,
+    "longitude": 36.94
+  },
+  "logo_url": "logo_url0",
+  "pos_background_url": "pos_background_url2",
+  "mcc": "mcc0",
+  "full_format_logo_url": "full_format_logo_url4",
+  "tax_ids": {
+    "eu_vat": "eu_vat2",
+    "fr_siret": "fr_siret4",
+    "fr_naf": "fr_naf4",
+    "es_nif": "es_nif8"
+  }
 }
 ```
 

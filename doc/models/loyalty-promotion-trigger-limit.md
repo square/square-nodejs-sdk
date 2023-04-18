@@ -23,7 +23,7 @@ A purchase that is disqualified from earning points because of this limit might 
 ```json
 {
   "times": 28,
-  "interval": null
+  "interval": "ALL_TIME"
 }
 ```
 

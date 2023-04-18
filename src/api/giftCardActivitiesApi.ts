@@ -24,9 +24,9 @@ export class GiftCardActivitiesApi extends BaseApi {
    * @param giftCardId   If a gift card ID is provided, the endpoint returns activities related  to the
    *                               specified gift card. Otherwise, the endpoint returns all gift card activities for
    *                               the seller.
-   * @param type         If a [type]($m/GiftCardActivityType) is provided, the endpoint returns gift card
-   *                               activities of the specified type.  Otherwise, the endpoint returns all types of gift
-   *                               card activities.
+   * @param type         If a [type](entity:GiftCardActivityType) is provided, the endpoint returns gift
+   *                               card activities of the specified type.  Otherwise, the endpoint returns all types of
+   *                               gift card activities.
    * @param locationId   If a location ID is provided, the endpoint returns gift card activities for the
    *                               specified location.  Otherwise, the endpoint returns gift card activities for all
    *                               locations.

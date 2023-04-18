@@ -17,7 +17,13 @@ Represents the parameters in a search for `TeamMember` objects.
 
 ```json
 {
-  "filter": null
+  "filter": {
+    "location_ids": [
+      "location_ids4"
+    ],
+    "status": "ACTIVE",
+    "is_owner": false
+  }
 }
 ```
 

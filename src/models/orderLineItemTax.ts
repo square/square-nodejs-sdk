@@ -20,7 +20,7 @@ import { Money, moneySchema } from './money';
 export interface OrderLineItemTax {
   /** A unique ID that identifies the tax only within this order. */
   uid?: string | null;
-  /** The catalog object ID referencing [CatalogTax]($m/CatalogTax). */
+  /** The catalog object ID referencing [CatalogTax](entity:CatalogTax). */
   catalogObjectId?: string | null;
   /** The version of the catalog object that this tax references. */
   catalogVersion?: bigint | null;

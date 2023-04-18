@@ -30,7 +30,7 @@ export interface OrderQuantityUnit {
   precision?: number | null;
   /**
    * The catalog object ID referencing the
-   * [CatalogMeasurementUnit]($m/CatalogMeasurementUnit).
+   * [CatalogMeasurementUnit](entity:CatalogMeasurementUnit).
    * This field is set when this is a catalog-backed measurement unit.
    */
   catalogObjectId?: string | null;

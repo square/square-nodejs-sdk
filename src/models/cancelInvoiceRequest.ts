@@ -3,9 +3,9 @@ import { number, object, Schema } from '../schema';
 /** Describes a `CancelInvoice` request. */
 export interface CancelInvoiceRequest {
   /**
-   * The version of the [invoice]($m/Invoice) to cancel.
+   * The version of the [invoice](entity:Invoice) to cancel.
    * If you do not know the version, you can call
-   * [GetInvoice]($e/Invoices/GetInvoice) or [ListInvoices]($e/Invoices/ListInvoices).
+   * [GetInvoice](api-endpoint:Invoices-GetInvoice) or [ListInvoices](api-endpoint:Invoices-ListInvoices).
    */
   version: number;
 }

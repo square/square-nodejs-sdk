@@ -5,7 +5,7 @@ import { object, Schema, string } from '../schema';
  * request. An individual request contains a booking ID, the custom attribute to delete, and an optional idempotency key.
  */
 export interface BookingCustomAttributeDeleteRequest {
-  /** The ID of the target [booking]($m/Booking). */
+  /** The ID of the target [booking](entity:Booking). */
   bookingId: string;
   /**
    * The key of the custom attribute to delete. This key must match the `key` of a

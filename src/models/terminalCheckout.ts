@@ -68,6 +68,8 @@ export interface TerminalCheckout {
   /** The location of the device where the `TerminalCheckout` was directed. */
   locationId?: string;
   paymentType?: string;
+  /** An optional ID of the team member associated with creating the checkout. */
+  teamMemberId?: string | null;
   /** An optional ID of the customer associated with the checkout. */
   customerId?: string | null;
   /**
@@ -79,6 +81,21 @@ export interface TerminalCheckout {
    * for more information.
    */
   appFeeMoney?: Money;
+  /**
+   * Optional additional payment information to include on the customer's card statement as
+   * part of the statement description. This can be, for example, an invoice number, ticket number,
+   * or short description that uniquely identifies the purchase. Supported only in the US.
+   */
+  statementDescriptionIdentifier?: string | null;
+  /**
+   * Represents an amount of money. `Money` fields can be signed or unsigned.
+   * Fields that do not explicitly define whether they are signed or unsigned are
+   * considered unsigned and can only hold positive amounts. For signed fields, the
+   * sign of the value indicates the purpose of the money transfer. See
+   * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
+   * for more information.
+   */
+  tipMoney?: Money;
 }
 
 export const terminalCheckoutSchema: Schema<TerminalCheckout> = object({
@@ -101,6 +118,12 @@ export const terminalCheckoutSchema: Schema<TerminalCheckout> = object({
   appId: ['app_id', optional(string())],
   locationId: ['location_id', optional(string())],
   paymentType: ['payment_type', optional(string())],
+  teamMemberId: ['team_member_id', optional(nullable(string()))],
   customerId: ['customer_id', optional(nullable(string()))],
   appFeeMoney: ['app_fee_money', optional(lazy(() => moneySchema))],
+  statementDescriptionIdentifier: [
+    'statement_description_identifier',
+    optional(nullable(string())),
+  ],
+  tipMoney: ['tip_money', optional(lazy(() => moneySchema))],
 });

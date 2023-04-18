@@ -144,9 +144,9 @@ export class InvoicesApi extends BaseApi {
    * invoice (you cannot delete a published invoice, including one that is scheduled for processing).
    *
    * @param invoiceId  The ID of the invoice to delete.
-   * @param version    The version of the [invoice]($m/Invoice) to delete. If you do not know the version,
-   *                             you can call [GetInvoice]($e/Invoices/GetInvoice) or
-   *                             [ListInvoices]($e/Invoices/ListInvoices).
+   * @param version    The version of the [invoice](entity:Invoice) to delete. If you do not know the
+   *                             version, you can call [GetInvoice](api-endpoint:Invoices-GetInvoice) or
+   *                             [ListInvoices](api-endpoint:Invoices-ListInvoices).
    * @return Response from the API call
    */
   async deleteInvoice(
@@ -218,7 +218,7 @@ export class InvoicesApi extends BaseApi {
    * You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`, `REFUNDED`,
    * `CANCELED`, or `FAILED`.
    *
-   * @param invoiceId    The ID of the [invoice]($m/Invoice) to cancel.
+   * @param invoiceId    The ID of the [invoice](entity:Invoice) to cancel.
    * @param body         An object containing the fields to POST for the request.  See
    *                                                    the corresponding object definition for field details.
    * @return Response from the API call

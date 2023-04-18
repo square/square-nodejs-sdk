@@ -24,14 +24,37 @@ Additional details about BANK_ACCOUNT type payments.
 
 ```json
 {
-  "bank_name": null,
-  "transfer_type": null,
-  "account_ownership_type": null,
-  "fingerprint": null,
-  "country": null,
-  "statement_description": null,
-  "ach_details": null,
-  "errors": null
+  "bank_name": "bank_name4",
+  "transfer_type": "transfer_type8",
+  "account_ownership_type": "account_ownership_type8",
+  "fingerprint": "fingerprint6",
+  "country": "country4",
+  "statement_description": "statement_description4",
+  "ach_details": {
+    "routing_number": "routing_number0",
+    "account_number_suffix": "account_number_suffix2",
+    "account_type": "account_type2"
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

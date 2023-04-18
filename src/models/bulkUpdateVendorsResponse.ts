@@ -10,7 +10,7 @@ export interface BulkUpdateVendorsResponse {
   /** Errors encountered when the request fails. */
   errors?: Error[];
   /**
-   * A set of [UpdateVendorResponse]($m/UpdateVendorResponse) objects encapsulating successfully created [Vendor]($m/Vendor)
+   * A set of [UpdateVendorResponse](entity:UpdateVendorResponse) objects encapsulating successfully created [Vendor](entity:Vendor)
    * objects or error responses for failed attempts. The set is represented by a collection of `Vendor`-ID/`UpdateVendorResponse`-object or
    * `Vendor`-ID/error-object pairs.
    */

@@ -118,7 +118,7 @@ try {
 
 **This endpoint is deprecated.**
 
-Captures a transaction that was created with the [Charge]($e/Transactions/Charge)
+Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
 endpoint with a `delay_capture` value of `true`.
 
 See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
@@ -166,7 +166,7 @@ try {
 
 **This endpoint is deprecated.**
 
-Cancels a transaction that was created with the [Charge]($e/Transactions/Charge)
+Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
 endpoint with a `delay_capture` value of `true`.
 
 See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)

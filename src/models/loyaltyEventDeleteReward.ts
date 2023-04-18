@@ -2,10 +2,10 @@ import { number, object, optional, Schema, string } from '../schema';
 
 /** Provides metadata when the event `type` is `DELETE_REWARD`. */
 export interface LoyaltyEventDeleteReward {
-  /** The ID of the [loyalty program]($m/LoyaltyProgram). */
+  /** The ID of the [loyalty program](entity:LoyaltyProgram). */
   loyaltyProgramId: string;
   /**
-   * The ID of the deleted [loyalty reward]($m/LoyaltyReward).
+   * The ID of the deleted [loyalty reward](entity:LoyaltyReward).
    * This field is returned only if the event source is `LOYALTY_API`.
    */
   rewardId?: string;

@@ -2,7 +2,7 @@ import { lazy, object, optional, Schema, string } from '../schema';
 import { Card, cardSchema } from './card';
 
 /**
- * Creates a card from the source (nonce, payment id, etc). Accessible via
+ * Creates a card from the source (payment token or payment id). Accessible via
  * HTTP requests at POST https://connect.squareup.com/v2/cards
  */
 export interface CreateCardRequest {
@@ -10,7 +10,7 @@ export interface CreateCardRequest {
    * A unique string that identifies this CreateCard request. Keys can be
    * any valid string and must be unique for every request.
    * Max: 45 characters
-   * See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.
+   * See [Idempotency keys](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency) for more information.
    */
   idempotencyKey: string;
   /** The ID of the source which represents the card information to be stored. This can be a card nonce or a payment id. */

@@ -48,11 +48,11 @@ import { BaseApi } from './baseApi';
 
 export class InventoryApi extends BaseApi {
   /**
-   * Deprecated version of [RetrieveInventoryAdjustment]($e/Inventory/RetrieveInventoryAdjustment) after
-   * the endpoint URL
+   * Deprecated version of [RetrieveInventoryAdjustment](api-endpoint:Inventory-
+   * RetrieveInventoryAdjustment) after the endpoint URL
    * is updated to conform to the standard convention.
    *
-   * @param adjustmentId  ID of the [InventoryAdjustment]($m/InventoryAdjustment) to retrieve.
+   * @param adjustmentId  ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve.
    * @return Response from the API call
    * @deprecated
    */
@@ -74,7 +74,7 @@ export class InventoryApi extends BaseApi {
    * Returns the [InventoryAdjustment]($m/InventoryAdjustment) object
    * with the provided `adjustment_id`.
    *
-   * @param adjustmentId  ID of the [InventoryAdjustment]($m/InventoryAdjustment) to retrieve.
+   * @param adjustmentId  ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve.
    * @return Response from the API call
    */
   async retrieveInventoryAdjustment(
@@ -91,8 +91,8 @@ export class InventoryApi extends BaseApi {
   }
 
   /**
-   * Deprecated version of [BatchChangeInventory]($e/Inventory/BatchChangeInventory) after the endpoint
-   * URL
+   * Deprecated version of [BatchChangeInventory](api-endpoint:Inventory-BatchChangeInventory) after the
+   * endpoint URL
    * is updated to conform to the standard convention.
    *
    * @param body         An object containing the fields to POST for the request.
@@ -116,8 +116,8 @@ export class InventoryApi extends BaseApi {
   }
 
   /**
-   * Deprecated version of [BatchRetrieveInventoryChanges]($e/Inventory/BatchRetrieveInventoryChanges)
-   * after the endpoint URL
+   * Deprecated version of [BatchRetrieveInventoryChanges](api-endpoint:Inventory-
+   * BatchRetrieveInventoryChanges) after the endpoint URL
    * is updated to conform to the standard convention.
    *
    * @param body         An object containing the fields to POST for
@@ -147,8 +147,8 @@ export class InventoryApi extends BaseApi {
   }
 
   /**
-   * Deprecated version of [BatchRetrieveInventoryCounts]($e/Inventory/BatchRetrieveInventoryCounts)
-   * after the endpoint URL
+   * Deprecated version of [BatchRetrieveInventoryCounts](api-endpoint:Inventory-
+   * BatchRetrieveInventoryCounts) after the endpoint URL
    * is updated to conform to the standard convention.
    *
    * @param body         An object containing the fields to POST for the
@@ -277,11 +277,11 @@ export class InventoryApi extends BaseApi {
   }
 
   /**
-   * Deprecated version of [RetrieveInventoryPhysicalCount]($e/Inventory/RetrieveInventoryPhysicalCount)
-   * after the endpoint URL
+   * Deprecated version of [RetrieveInventoryPhysicalCount](api-endpoint:Inventory-
+   * RetrieveInventoryPhysicalCount) after the endpoint URL
    * is updated to conform to the standard convention.
    *
-   * @param physicalCountId   ID of the [InventoryPhysicalCount]($m/InventoryPhysicalCount) to retrieve.
+   * @param physicalCountId   ID of the [InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve.
    * @return Response from the API call
    * @deprecated
    */
@@ -305,7 +305,7 @@ export class InventoryApi extends BaseApi {
    * Returns the [InventoryPhysicalCount]($m/InventoryPhysicalCount)
    * object with the provided `physical_count_id`.
    *
-   * @param physicalCountId   ID of the [InventoryPhysicalCount]($m/InventoryPhysicalCount) to retrieve.
+   * @param physicalCountId   ID of the [InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve.
    * @return Response from the API call
    */
   async retrieveInventoryPhysicalCount(
@@ -327,7 +327,7 @@ export class InventoryApi extends BaseApi {
    * Returns the [InventoryTransfer]($m/InventoryTransfer) object
    * with the provided `transfer_id`.
    *
-   * @param transferId  ID of the [InventoryTransfer]($m/InventoryTransfer) to retrieve.
+   * @param transferId  ID of the [InventoryTransfer](entity:InventoryTransfer) to retrieve.
    * @return Response from the API call
    */
   async retrieveInventoryTransfer(
@@ -349,9 +349,9 @@ export class InventoryApi extends BaseApi {
    * [Location]($m/Location)s. Responses are paginated and unsorted.
    * For more sophisticated queries, use a batch endpoint.
    *
-   * @param catalogObjectId   ID of the [CatalogObject]($m/CatalogObject) to retrieve.
-   * @param locationIds       The [Location]($m/Location) IDs to look up as a comma-separated list. An empty
-   *                                    list queries all locations.
+   * @param catalogObjectId   ID of the [CatalogObject](entity:CatalogObject) to retrieve.
+   * @param locationIds       The [Location](entity:Location) IDs to look up as a comma-separated list. An
+   *                                    empty list queries all locations.
    * @param cursor            A pagination cursor returned by a previous call to this endpoint. Provide this
    *                                    to retrieve the next set of results for the original query.  See the
    *                                    [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)
@@ -378,11 +378,11 @@ export class InventoryApi extends BaseApi {
 
   /**
    * Returns a set of physical counts and inventory adjustments for the
-   * provided [CatalogObject]($m/CatalogObject) at the requested
-   * [Location]($m/Location)s.
+   * provided [CatalogObject](entity:CatalogObject) at the requested
+   * [Location](entity:Location)s.
    *
-   * You can achieve the same result by calling
-   * [BatchRetrieveInventoryChanges]($e/Inventory/BatchRetrieveInventoryChanges)
+   * You can achieve the same result by calling [BatchRetrieveInventoryChanges](api-endpoint:Inventory-
+   * BatchRetrieveInventoryChanges)
    * and having the `catalog_object_ids` list contain a single element of the `CatalogObject` ID.
    *
    * Results are paginated and sorted in descending order according to their
@@ -392,9 +392,9 @@ export class InventoryApi extends BaseApi {
    * used to display recent changes for a specific item. For more
    * sophisticated queries, use a batch endpoint.
    *
-   * @param catalogObjectId   ID of the [CatalogObject]($m/CatalogObject) to retrieve.
-   * @param locationIds       The [Location]($m/Location) IDs to look up as a comma-separated list. An empty
-   *                                    list queries all locations.
+   * @param catalogObjectId   ID of the [CatalogObject](entity:CatalogObject) to retrieve.
+   * @param locationIds       The [Location](entity:Location) IDs to look up as a comma-separated list. An
+   *                                    empty list queries all locations.
    * @param cursor            A pagination cursor returned by a previous call to this endpoint. Provide this
    *                                    to retrieve the next set of results for the original query.  See the
    *                                    [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)

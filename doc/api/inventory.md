@@ -29,7 +29,7 @@ const inventoryApi = client.inventoryApi;
 
 **This endpoint is deprecated.**
 
-Deprecated version of [RetrieveInventoryAdjustment](../../doc/api/inventory.md#retrieve-inventory-adjustment) after the endpoint URL
+Deprecated version of [RetrieveInventoryAdjustment](api-endpoint:Inventory-RetrieveInventoryAdjustment) after the endpoint URL
 is updated to conform to the standard convention.
 
 ```ts
@@ -43,7 +43,7 @@ async deprecatedRetrieveInventoryAdjustment(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `adjustmentId` | `string` | Template, Required | ID of the [InventoryAdjustment](../../doc/models/inventory-adjustment.md) to retrieve. |
+| `adjustmentId` | `string` | Template, Required | ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -83,7 +83,7 @@ async retrieveInventoryAdjustment(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `adjustmentId` | `string` | Template, Required | ID of the [InventoryAdjustment](../../doc/models/inventory-adjustment.md) to retrieve. |
+| `adjustmentId` | `string` | Template, Required | ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -111,7 +111,7 @@ try {
 
 **This endpoint is deprecated.**
 
-Deprecated version of [BatchChangeInventory](../../doc/api/inventory.md#batch-change-inventory) after the endpoint URL
+Deprecated version of [BatchChangeInventory](api-endpoint:Inventory-BatchChangeInventory) after the endpoint URL
 is updated to conform to the standard convention.
 
 ```ts
@@ -176,7 +176,7 @@ try {
 
 **This endpoint is deprecated.**
 
-Deprecated version of [BatchRetrieveInventoryChanges](../../doc/api/inventory.md#batch-retrieve-inventory-changes) after the endpoint URL
+Deprecated version of [BatchRetrieveInventoryChanges](api-endpoint:Inventory-BatchRetrieveInventoryChanges) after the endpoint URL
 is updated to conform to the standard convention.
 
 ```ts
@@ -230,7 +230,7 @@ try {
 
 **This endpoint is deprecated.**
 
-Deprecated version of [BatchRetrieveInventoryCounts](../../doc/api/inventory.md#batch-retrieve-inventory-counts) after the endpoint URL
+Deprecated version of [BatchRetrieveInventoryCounts](api-endpoint:Inventory-BatchRetrieveInventoryCounts) after the endpoint URL
 is updated to conform to the standard convention.
 
 ```ts
@@ -459,7 +459,7 @@ try {
 
 **This endpoint is deprecated.**
 
-Deprecated version of [RetrieveInventoryPhysicalCount](../../doc/api/inventory.md#retrieve-inventory-physical-count) after the endpoint URL
+Deprecated version of [RetrieveInventoryPhysicalCount](api-endpoint:Inventory-RetrieveInventoryPhysicalCount) after the endpoint URL
 is updated to conform to the standard convention.
 
 ```ts
@@ -473,7 +473,7 @@ async deprecatedRetrieveInventoryPhysicalCount(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `physicalCountId` | `string` | Template, Required | ID of the<br>[InventoryPhysicalCount](../../doc/models/inventory-physical-count.md) to retrieve. |
+| `physicalCountId` | `string` | Template, Required | ID of the<br>[InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -513,7 +513,7 @@ async retrieveInventoryPhysicalCount(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `physicalCountId` | `string` | Template, Required | ID of the<br>[InventoryPhysicalCount](../../doc/models/inventory-physical-count.md) to retrieve. |
+| `physicalCountId` | `string` | Template, Required | ID of the<br>[InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -553,7 +553,7 @@ async retrieveInventoryTransfer(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `transferId` | `string` | Template, Required | ID of the [InventoryTransfer](../../doc/models/inventory-transfer.md) to retrieve. |
+| `transferId` | `string` | Template, Required | ID of the [InventoryTransfer](entity:InventoryTransfer) to retrieve. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -597,8 +597,8 @@ async retrieveInventoryCount(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `catalogObjectId` | `string` | Template, Required | ID of the [CatalogObject](../../doc/models/catalog-object.md) to retrieve. |
-| `locationIds` | `string \| undefined` | Query, Optional | The [Location](../../doc/models/location.md) IDs to look up as a comma-separated<br>list. An empty list queries all locations. |
+| `catalogObjectId` | `string` | Template, Required | ID of the [CatalogObject](entity:CatalogObject) to retrieve. |
+| `locationIds` | `string \| undefined` | Query, Optional | The [Location](entity:Location) IDs to look up as a comma-separated<br>list. An empty list queries all locations. |
 | `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -628,10 +628,10 @@ try {
 **This endpoint is deprecated.**
 
 Returns a set of physical counts and inventory adjustments for the
-provided [CatalogObject](../../doc/models/catalog-object.md) at the requested
-[Location](../../doc/models/location.md)s.
+provided [CatalogObject](entity:CatalogObject) at the requested
+[Location](entity:Location)s.
 
-You can achieve the same result by calling [BatchRetrieveInventoryChanges](../../doc/api/inventory.md#batch-retrieve-inventory-changes)
+You can achieve the same result by calling [BatchRetrieveInventoryChanges](api-endpoint:Inventory-BatchRetrieveInventoryChanges)
 and having the `catalog_object_ids` list contain a single element of the `CatalogObject` ID.
 
 Results are paginated and sorted in descending order according to their
@@ -654,8 +654,8 @@ async retrieveInventoryChanges(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `catalogObjectId` | `string` | Template, Required | ID of the [CatalogObject](../../doc/models/catalog-object.md) to retrieve. |
-| `locationIds` | `string \| undefined` | Query, Optional | The [Location](../../doc/models/location.md) IDs to look up as a comma-separated<br>list. An empty list queries all locations. |
+| `catalogObjectId` | `string` | Template, Required | ID of the [CatalogObject](entity:CatalogObject) to retrieve. |
+| `locationIds` | `string \| undefined` | Query, Optional | The [Location](entity:Location) IDs to look up as a comma-separated<br>list. An empty list queries all locations. |
 | `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this to retrieve the next set of results for the original query.<br><br>See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 

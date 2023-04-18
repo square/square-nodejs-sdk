@@ -23,8 +23,8 @@ for more information.
 
 ```json
 {
-  "amount": null,
-  "currency": null
+  "amount": 46,
+  "currency": "YER"
 }
 ```
 

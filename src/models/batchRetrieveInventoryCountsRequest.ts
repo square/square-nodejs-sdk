@@ -37,7 +37,7 @@ export interface BatchRetrieveInventoryCountsRequest {
    * The default is null.
    */
   states?: string[] | null;
-  /** The number of [records]($m/InventoryCount) to return. */
+  /** The number of [records](entity:InventoryCount) to return. */
   limit?: number | null;
 }
 
