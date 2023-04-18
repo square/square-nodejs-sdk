@@ -27,40 +27,69 @@ Represents a checkout processed by the Square Terminal.
 | `appId` | `string \| undefined` | Optional | The ID of the application that created the checkout. |
 | `locationId` | `string \| undefined` | Optional | The location of the device where the `TerminalCheckout` was directed. |
 | `paymentType` | [`string \| undefined`](../../doc/models/checkout-options-payment-type.md) | Optional | - |
+| `teamMemberId` | `string \| undefined` | Optional | An optional ID of the team member associated with creating the checkout. |
 | `customerId` | `string \| undefined` | Optional | An optional ID of the customer associated with the checkout. |
 | `appFeeMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
+| `statementDescriptionIdentifier` | `string \| undefined` | Optional | Optional additional payment information to include on the customer's card statement as<br>part of the statement description. This can be, for example, an invoice number, ticket number,<br>or short description that uniquely identifies the purchase. Supported only in the US.<br>**Constraints**: *Maximum Length*: `20` |
+| `tipMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 
 ## Example (as JSON)
 
 ```json
 {
-  "id": null,
+  "id": "id0",
   "amount_money": {
-    "amount": null,
-    "currency": null
+    "amount": 186,
+    "currency": "NGN"
   },
-  "reference_id": null,
-  "note": null,
-  "order_id": null,
-  "payment_options": null,
+  "reference_id": "reference_id2",
+  "note": "note4",
+  "order_id": "order_id6",
+  "payment_options": {
+    "autocomplete": false,
+    "delay_duration": "delay_duration2",
+    "accept_partial_authorization": false,
+    "delay_action": "CANCEL"
+  },
   "device_options": {
     "device_id": "device_id6",
-    "skip_receipt_screen": null,
-    "collect_signature": null,
-    "tip_settings": null,
-    "show_itemized_cart": null
+    "skip_receipt_screen": false,
+    "collect_signature": false,
+    "tip_settings": {
+      "allow_tipping": false,
+      "separate_tip_screen": false,
+      "custom_tip_field": false,
+      "tip_percentages": [
+        154
+      ],
+      "smart_tipping": false
+    },
+    "show_itemized_cart": false
   },
-  "deadline_duration": null,
-  "status": null,
-  "cancel_reason": null,
-  "payment_ids": null,
-  "created_at": null,
-  "updated_at": null,
-  "app_id": null,
-  "location_id": null,
-  "payment_type": null,
-  "customer_id": null,
-  "app_fee_money": null
+  "deadline_duration": "deadline_duration8",
+  "status": "status8",
+  "cancel_reason": "SELLER_CANCELED",
+  "payment_ids": [
+    "payment_ids6",
+    "payment_ids7",
+    "payment_ids8"
+  ],
+  "created_at": "created_at2",
+  "updated_at": "updated_at4",
+  "app_id": "app_id6",
+  "location_id": "location_id4",
+  "payment_type": "FELICA_QUICPAY",
+  "team_member_id": "team_member_id0",
+  "customer_id": "customer_id8",
+  "app_fee_money": {
+    "amount": 106,
+    "currency": "GBP"
+  },
+  "statement_description_identifier": "statement_description_identifier4",
+  "tip_money": {
+    "amount": 190,
+    "currency": "CHE"
+  }
 }
 ```
 

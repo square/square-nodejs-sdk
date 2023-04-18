@@ -24,7 +24,7 @@ import {
 export interface LoyaltyAccount {
   /** The Square-assigned ID of the loyalty account. */
   id?: string;
-  /** The Square-assigned ID of the [loyalty program]($m/LoyaltyProgram) to which the account belongs. */
+  /** The Square-assigned ID of the [loyalty program](entity:LoyaltyProgram) to which the account belongs. */
   programId: string;
   /**
    * The available point balance in the loyalty account. If points are scheduled to expire, they are listed in the `expiring_point_deadlines` field.
@@ -33,7 +33,7 @@ export interface LoyaltyAccount {
   balance?: number;
   /** The total points accrued during the lifetime of the account. */
   lifetimePoints?: number;
-  /** The Square-assigned ID of the [customer]($m/Customer) that is associated with the account. */
+  /** The Square-assigned ID of the [customer](entity:Customer) that is associated with the account. */
   customerId?: string | null;
   /**
    * The timestamp when the buyer joined the loyalty program, in RFC 3339 format. This field is used to display the **Enrolled On** or **Member Since** date in first-party Square products.

@@ -21,10 +21,13 @@ specified by the `title` property of this object.
 
 ```json
 {
-  "id": null,
-  "team_member_id": null,
-  "title": null,
-  "hourly_rate": null
+  "id": "id0",
+  "team_member_id": "team_member_id0",
+  "title": "title4",
+  "hourly_rate": {
+    "amount": 172,
+    "currency": "TJS"
+  }
 }
 ```
 

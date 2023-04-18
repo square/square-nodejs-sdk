@@ -14,7 +14,7 @@ import { Money, moneySchema } from './money';
 export interface OrderLineItemModifier {
   /** A unique ID that identifies the modifier only within this order. */
   uid?: string | null;
-  /** The catalog object ID referencing [CatalogModifier]($m/CatalogModifier). */
+  /** The catalog object ID referencing [CatalogModifier](entity:CatalogModifier). */
   catalogObjectId?: string | null;
   /** The version of the catalog object that this modifier references. */
   catalogVersion?: bigint | null;

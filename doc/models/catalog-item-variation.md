@@ -41,32 +41,103 @@ decreases by 2, and the stockable count automatically decreases by 0.4 bottle ac
 | `imageIds` | `string[] \| undefined` | Optional | The IDs of images associated with this `CatalogItemVariation` instance.<br>These images will be shown to customers in Square Online Store. |
 | `teamMemberIds` | `string[] \| undefined` | Optional | Tokens of employees that can perform the service represented by this variation. Only valid for<br>variations of type `APPOINTMENTS_SERVICE`. |
 | `stockableConversion` | [`CatalogStockConversion \| undefined`](../../doc/models/catalog-stock-conversion.md) | Optional | Represents the rule of conversion between a stockable [CatalogItemVariation](../../doc/models/catalog-item-variation.md)<br>and a non-stockable sell-by or receive-by `CatalogItemVariation` that<br>share the same underlying stock. |
+| `itemVariationVendorInfoIds` | `string[] \| undefined` | Optional | A list of ids of [CatalogItemVariationVendorInfo](entity:CatalogItemVariationVendorInfo) objects that<br>reference this ItemVariation. (Deprecated in favor of item_variation_vendor_infos) |
 
 ## Example (as JSON)
 
 ```json
 {
-  "item_id": null,
-  "name": null,
-  "sku": null,
-  "upc": null,
-  "ordinal": null,
-  "pricing_type": null,
-  "price_money": null,
-  "location_overrides": null,
-  "track_inventory": null,
-  "inventory_alert_type": null,
-  "inventory_alert_threshold": null,
-  "user_data": null,
-  "service_duration": null,
-  "available_for_booking": null,
-  "item_option_values": null,
-  "measurement_unit_id": null,
-  "sellable": null,
-  "stockable": null,
-  "image_ids": null,
-  "team_member_ids": null,
-  "stockable_conversion": null
+  "item_id": "item_id0",
+  "name": "name0",
+  "sku": "sku4",
+  "upc": "upc2",
+  "ordinal": 80,
+  "pricing_type": "FIXED_PRICING",
+  "price_money": {
+    "amount": 202,
+    "currency": "BBD"
+  },
+  "location_overrides": [
+    {
+      "location_id": "location_id5",
+      "price_money": {
+        "amount": 155,
+        "currency": "GYD"
+      },
+      "pricing_type": "VARIABLE_PRICING",
+      "track_inventory": true,
+      "inventory_alert_type": "LOW_QUANTITY",
+      "inventory_alert_threshold": 19,
+      "sold_out": true,
+      "sold_out_valid_until": "sold_out_valid_until9"
+    },
+    {
+      "location_id": "location_id6",
+      "price_money": {
+        "amount": 156,
+        "currency": "HKD"
+      },
+      "pricing_type": "FIXED_PRICING",
+      "track_inventory": false,
+      "inventory_alert_type": "NONE",
+      "inventory_alert_threshold": 20,
+      "sold_out": false,
+      "sold_out_valid_until": "sold_out_valid_until0"
+    },
+    {
+      "location_id": "location_id7",
+      "price_money": {
+        "amount": 157,
+        "currency": "HNL"
+      },
+      "pricing_type": "VARIABLE_PRICING",
+      "track_inventory": true,
+      "inventory_alert_type": "LOW_QUANTITY",
+      "inventory_alert_threshold": 21,
+      "sold_out": true,
+      "sold_out_valid_until": "sold_out_valid_until1"
+    }
+  ],
+  "track_inventory": false,
+  "inventory_alert_type": "NONE",
+  "inventory_alert_threshold": 174,
+  "user_data": "user_data6",
+  "service_duration": 86,
+  "available_for_booking": false,
+  "item_option_values": [
+    {
+      "item_option_id": "item_option_id1",
+      "item_option_value_id": "item_option_value_id1"
+    },
+    {
+      "item_option_id": "item_option_id2",
+      "item_option_value_id": "item_option_value_id0"
+    },
+    {
+      "item_option_id": "item_option_id3",
+      "item_option_value_id": "item_option_value_id9"
+    }
+  ],
+  "measurement_unit_id": "measurement_unit_id0",
+  "sellable": false,
+  "stockable": false,
+  "image_ids": [
+    "image_ids5",
+    "image_ids6",
+    "image_ids7"
+  ],
+  "team_member_ids": [
+    "team_member_ids7",
+    "team_member_ids8"
+  ],
+  "stockable_conversion": {
+    "stockable_item_variation_id": "stockable_item_variation_id2",
+    "stockable_quantity": "stockable_quantity0",
+    "nonstockable_quantity": "nonstockable_quantity2"
+  },
+  "item_variation_vendor_info_ids": [
+    "item_variation_vendor_info_ids9"
+  ]
 }
 ```
 

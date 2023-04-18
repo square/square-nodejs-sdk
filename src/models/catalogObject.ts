@@ -106,8 +106,8 @@ export interface CatalogObject {
   isDeleted?: boolean | null;
   /**
    * A map (key-value pairs) of application-defined custom attribute values. The value of a key-value pair
-   * is a [CatalogCustomAttributeValue]($m/CatalogCustomAttributeValue) object. The key is the `key` attribute
-   * value defined in the associated [CatalogCustomAttributeDefinition]($m/CatalogCustomAttributeDefinition)
+   * is a [CatalogCustomAttributeValue](entity:CatalogCustomAttributeValue) object. The key is the `key` attribute
+   * value defined in the associated [CatalogCustomAttributeDefinition](entity:CatalogCustomAttributeDefinition)
    * object defined by the application making the request.
    * If the `CatalogCustomAttributeDefinition` object is
    * defined by another application, the `CatalogCustomAttributeDefinition`'s key attribute value is prefixed by

@@ -26,7 +26,7 @@ export interface CreateSubscriptionRequest {
    * [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
    */
   planId: string;
-  /** The ID of the [customer]($m/Customer) subscribing to the subscription plan. */
+  /** The ID of the [customer](entity:Customer) subscribing to the subscription plan. */
   customerId: string;
   /**
    * The `YYYY-MM-DD`-formatted date to start the subscription.
@@ -60,7 +60,7 @@ export interface CreateSubscriptionRequest {
    */
   priceOverrideMoney?: Money;
   /**
-   * The ID of the [subscriber's]($m/Customer) [card]($m/Card) to charge.
+   * The ID of the [subscriber's](entity:Customer) [card](entity:Card) to charge.
    * If it is not specified, the subscriber receives an invoice via email. For an example to
    * create a customer profile for a subscriber and add a card on file, see [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
    */

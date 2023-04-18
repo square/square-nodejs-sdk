@@ -17,7 +17,18 @@ Represents a query, consisting of specified query expressions, used to search fo
 
 ```json
 {
-  "filter": null
+  "filter": {
+    "customer_ids": [
+      "customer_ids3",
+      "customer_ids2"
+    ],
+    "location_ids": [
+      "location_ids4"
+    ],
+    "source_names": [
+      "source_names2"
+    ]
+  }
 }
 ```
 

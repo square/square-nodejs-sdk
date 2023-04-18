@@ -26,15 +26,205 @@ customer profiles returned in [SearchCustomers](../../doc/api/customers.md#searc
 
 ```json
 {
-  "creation_source": null,
-  "created_at": null,
-  "updated_at": null,
-  "email_address": null,
-  "phone_number": null,
-  "reference_id": null,
-  "group_ids": null,
-  "custom_attribute": null,
-  "segment_ids": null
+  "creation_source": {
+    "values": [
+      "THIRD_PARTY_IMPORT",
+      "THIRD_PARTY",
+      "TERMINAL"
+    ],
+    "rule": "INCLUDE"
+  },
+  "created_at": {
+    "start_at": "start_at4",
+    "end_at": "end_at8"
+  },
+  "updated_at": {
+    "start_at": "start_at6",
+    "end_at": "end_at6"
+  },
+  "email_address": {
+    "exact": "exact2",
+    "fuzzy": "fuzzy8"
+  },
+  "phone_number": {
+    "exact": "exact2",
+    "fuzzy": "fuzzy8"
+  },
+  "reference_id": {
+    "exact": "exact2",
+    "fuzzy": "fuzzy8"
+  },
+  "group_ids": {
+    "all": [
+      "all5",
+      "all4",
+      "all3"
+    ],
+    "any": [
+      "any2",
+      "any3",
+      "any4"
+    ],
+    "none": [
+      "none7",
+      "none8"
+    ]
+  },
+  "custom_attribute": {
+    "filters": [
+      {
+        "key": "key8",
+        "filter": {
+          "email": {
+            "exact": "exact0",
+            "fuzzy": "fuzzy6"
+          },
+          "phone": {
+            "exact": "exact4",
+            "fuzzy": "fuzzy0"
+          },
+          "text": {},
+          "selection": {
+            "all": [
+              "all5",
+              "all4"
+            ],
+            "any": [
+              "any4",
+              "any5",
+              "any6"
+            ],
+            "none": [
+              "none9",
+              "none0"
+            ]
+          },
+          "date": {
+            "start_at": "start_at0",
+            "end_at": "end_at2"
+          },
+          "number": {
+            "start_at": "start_at8",
+            "end_at": "end_at4"
+          },
+          "boolean": false,
+          "address": {
+            "postal_code": {},
+            "country": "VA"
+          }
+        },
+        "updated_at": {
+          "start_at": "start_at8",
+          "end_at": "end_at4"
+        }
+      },
+      {
+        "key": "key9",
+        "filter": {
+          "email": {
+            "exact": "exact1",
+            "fuzzy": "fuzzy7"
+          },
+          "phone": {
+            "exact": "exact5",
+            "fuzzy": "fuzzy1"
+          },
+          "text": {},
+          "selection": {
+            "all": [
+              "all6"
+            ],
+            "any": [
+              "any3",
+              "any4"
+            ],
+            "none": [
+              "none8"
+            ]
+          },
+          "date": {
+            "start_at": "start_at1",
+            "end_at": "end_at1"
+          },
+          "number": {
+            "start_at": "start_at9",
+            "end_at": "end_at3"
+          },
+          "boolean": true,
+          "address": {
+            "postal_code": {},
+            "country": "UZ"
+          }
+        },
+        "updated_at": {
+          "start_at": "start_at7",
+          "end_at": "end_at5"
+        }
+      },
+      {
+        "key": "key0",
+        "filter": {
+          "email": {
+            "exact": "exact2",
+            "fuzzy": "fuzzy8"
+          },
+          "phone": {
+            "exact": "exact6",
+            "fuzzy": "fuzzy2"
+          },
+          "text": {},
+          "selection": {
+            "all": [
+              "all7",
+              "all6",
+              "all5"
+            ],
+            "any": [
+              "any2"
+            ],
+            "none": [
+              "none7",
+              "none8",
+              "none9"
+            ]
+          },
+          "date": {
+            "start_at": "start_at2",
+            "end_at": "end_at0"
+          },
+          "number": {
+            "start_at": "start_at0",
+            "end_at": "end_at2"
+          },
+          "boolean": false,
+          "address": {
+            "postal_code": {},
+            "country": "UY"
+          }
+        },
+        "updated_at": {
+          "start_at": "start_at6",
+          "end_at": "end_at6"
+        }
+      }
+    ]
+  },
+  "segment_ids": {
+    "all": [
+      "all9",
+      "all8",
+      "all7"
+    ],
+    "any": [
+      "any6",
+      "any7",
+      "any8"
+    ],
+    "none": [
+      "none1",
+      "none2"
+    ]
+  }
 }
 ```
 

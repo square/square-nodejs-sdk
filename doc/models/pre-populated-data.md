@@ -21,9 +21,24 @@ see [Optional Checkout Configurations](https://developer.squareup.com/docs/check
 
 ```json
 {
-  "buyer_email": null,
-  "buyer_phone_number": null,
-  "buyer_address": null
+  "buyer_email": "buyer_email8",
+  "buyer_phone_number": "buyer_phone_number0",
+  "buyer_address": {
+    "address_line_1": "address_line_12",
+    "address_line_2": "address_line_22",
+    "address_line_3": "address_line_38",
+    "locality": "locality2",
+    "sublocality": "sublocality2",
+    "sublocality_2": "sublocality_20",
+    "sublocality_3": "sublocality_32",
+    "administrative_district_level_1": "administrative_district_level_16",
+    "administrative_district_level_2": "administrative_district_level_28",
+    "administrative_district_level_3": "administrative_district_level_30",
+    "postal_code": "postal_code4",
+    "country": "IO",
+    "first_name": "first_name2",
+    "last_name": "last_name0"
+  }
 }
 ```
 

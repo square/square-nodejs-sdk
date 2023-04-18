@@ -25,17 +25,17 @@
 
 ```json
 {
-  "batch_upsert_max_objects_per_batch": null,
-  "batch_upsert_max_total_objects": null,
-  "batch_retrieve_max_object_ids": null,
-  "search_max_page_limit": null,
-  "batch_delete_max_object_ids": null,
-  "update_item_taxes_max_item_ids": null,
-  "update_item_taxes_max_taxes_to_enable": null,
-  "update_item_taxes_max_taxes_to_disable": null,
-  "update_item_modifier_lists_max_item_ids": null,
-  "update_item_modifier_lists_max_modifier_lists_to_enable": null,
-  "update_item_modifier_lists_max_modifier_lists_to_disable": null
+  "batch_upsert_max_objects_per_batch": 126,
+  "batch_upsert_max_total_objects": 214,
+  "batch_retrieve_max_object_ids": 230,
+  "search_max_page_limit": 192,
+  "batch_delete_max_object_ids": 216,
+  "update_item_taxes_max_item_ids": 80,
+  "update_item_taxes_max_taxes_to_enable": 34,
+  "update_item_taxes_max_taxes_to_disable": 116,
+  "update_item_modifier_lists_max_item_ids": 160,
+  "update_item_modifier_lists_max_modifier_lists_to_enable": 106,
+  "update_item_modifier_lists_max_modifier_lists_to_disable": 92
 }
 ```
 

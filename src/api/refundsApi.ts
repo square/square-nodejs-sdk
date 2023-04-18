@@ -27,21 +27,23 @@ export class RefundsApi extends BaseApi {
    *
    * The maximum results per page is 100.
    *
-   * @param beginTime   The timestamp for the beginning of the requested reporting period, in RFC 3339
-   *                              format.  Default: The current time minus one year.
-   * @param endTime     The timestamp for the end of the requested reporting period, in RFC 3339 format.
-   *                              Default: The current time.
-   * @param sortOrder   The order in which results are listed: - `ASC` - Oldest to newest. - `DESC` - Newest
-   *                              to oldest (default).
+   * @param beginTime   Indicates the start of the time range to retrieve each PaymentRefund` for, in RFC
+   *                              3339  format.  The range is determined using the `created_at` field for each
+   *                              `PaymentRefund`.   Default: The current time minus one year.
+   * @param endTime     Indicates the end of the time range to retrieve each `PaymentRefund` for, in RFC
+   *                              3339  format.  The range is determined using the `created_at` field for each
+   *                              `PaymentRefund`.  Default: The current time.
+   * @param sortOrder   The order in which results are listed by `PaymentRefund.created_at`: - `ASC` -
+   *                              Oldest to newest. - `DESC` - Newest to oldest (default).
    * @param cursor      A pagination cursor returned by a previous call to this endpoint. Provide this
    *                              cursor to retrieve the next set of results for the original query.  For more
-   *                              information, see [Pagination](https://developer.squareup.
-   *                              com/docs/basics/api101/pagination).
+   *                              information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-
+   *                              api-patterns/pagination).
    * @param locationId  Limit results to the location supplied. By default, results are returned for all
    *                              locations associated with the seller.
    * @param status      If provided, only refunds with the given status are returned. For a list of refund
-   *                              status values, see [PaymentRefund]($m/PaymentRefund).  Default: If omitted, refunds
-   *                              are returned regardless of their status.
+   *                              status values, see [PaymentRefund](entity:PaymentRefund).  Default: If omitted,
+   *                              refunds are returned regardless of their status.
    * @param sourceType  If provided, only returns refunds whose payments have the indicated source type.
    *                              Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `CASH`, and `EXTERNAL`. For
    *                              information about these payment source types, see [Take Payments](https://developer.

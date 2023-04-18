@@ -2,9 +2,9 @@
 # List Refunds Request
 
 Defines the query parameters that can be included in
-a request to the [ListRefunds]($e/Transactions/ListRefunds) endpoint.
+a request to the [ListRefunds](api-endpoint:Transactions-ListRefunds) endpoint.
 
-Deprecated - recommend using [SearchOrders](../../doc/api/orders.md#search-orders)
+Deprecated - recommend using [SearchOrders](api-endpoint:Orders-SearchOrders)
 
 ## Structure
 
@@ -23,10 +23,10 @@ Deprecated - recommend using [SearchOrders](../../doc/api/orders.md#search-order
 
 ```json
 {
-  "begin_time": null,
-  "end_time": null,
-  "sort_order": null,
-  "cursor": null
+  "begin_time": "begin_time2",
+  "end_time": "end_time2",
+  "sort_order": "DESC",
+  "cursor": "cursor6"
 }
 ```
 

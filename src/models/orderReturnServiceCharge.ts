@@ -27,7 +27,7 @@ export interface OrderReturnServiceCharge {
   sourceServiceChargeUid?: string | null;
   /** The name of the service charge. */
   name?: string | null;
-  /** The catalog object ID of the associated [OrderServiceCharge]($m/OrderServiceCharge). */
+  /** The catalog object ID of the associated [OrderServiceCharge](entity:OrderServiceCharge). */
   catalogObjectId?: string | null;
   /** The version of the catalog object that this service charge references. */
   catalogVersion?: bigint | null;
@@ -93,6 +93,16 @@ export interface OrderReturnServiceCharge {
    * populated.
    */
   appliedTaxes?: OrderLineItemAppliedTax[] | null;
+  /**
+   * Indicates whether the service charge will be treated as a value-holding line item or
+   * apportioned toward a line item.
+   */
+  treatmentType?: string;
+  /**
+   * Indicates whether this is a line-item or order-level apportioned
+   * service charge.
+   */
+  scope?: string;
 }
 
 export const orderReturnServiceChargeSchema: Schema<OrderReturnServiceCharge> = object(
@@ -116,5 +126,7 @@ export const orderReturnServiceChargeSchema: Schema<OrderReturnServiceCharge> = 
       'applied_taxes',
       optional(nullable(array(lazy(() => orderLineItemAppliedTaxSchema)))),
     ],
+    treatmentType: ['treatment_type', optional(string())],
+    scope: ['scope', optional(string())],
   }
 );

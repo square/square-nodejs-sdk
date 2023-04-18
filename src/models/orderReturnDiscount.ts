@@ -21,7 +21,7 @@ export interface OrderReturnDiscount {
   uid?: string | null;
   /** The discount `uid` from the order that contains the original application of this discount. */
   sourceDiscountUid?: string | null;
-  /** The catalog object ID referencing [CatalogDiscount]($m/CatalogDiscount). */
+  /** The catalog object ID referencing [CatalogDiscount](entity:CatalogDiscount). */
   catalogObjectId?: string | null;
   /** The version of the catalog object that this discount references. */
   catalogVersion?: bigint | null;

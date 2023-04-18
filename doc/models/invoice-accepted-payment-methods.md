@@ -20,10 +20,10 @@ The payment methods that customers can use to pay an [invoice](../../doc/models/
 
 ```json
 {
-  "card": null,
-  "square_gift_card": null,
-  "bank_account": null,
-  "buy_now_pay_later": null
+  "card": false,
+  "square_gift_card": false,
+  "bank_account": false,
+  "buy_now_pay_later": false
 }
 ```
 

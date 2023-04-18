@@ -189,7 +189,7 @@ export interface Payment {
    * An optional ID of the employee associated with taking the payment.
    */
   employeeId?: string;
-  /** An optional ID of the [TeamMember]($m/TeamMember) associated with taking the payment. */
+  /** An optional ID of the [TeamMember](entity:TeamMember) associated with taking the payment. */
   teamMemberId?: string;
   /** A list of `refund_id`s identifying refunds for the payment. */
   refundIds?: string[];

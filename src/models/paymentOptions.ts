@@ -9,7 +9,7 @@ export interface PaymentOptions {
   /**
    * The duration of time after the payment's creation when Square automatically cancels the
    * payment. This automatic cancellation applies only to payments that do not reach a terminal state
-   * (COMPLETED, CANCELED, or FAILED) before the `delay_duration` time period.
+   * (COMPLETED or CANCELED) before the `delay_duration` time period.
    * This parameter should be specified as a time duration, in RFC 3339 format, with a minimum value
    * of 1 minute.
    * Note: This feature is only supported for card payments. This parameter can only be set for a delayed
@@ -32,6 +32,11 @@ export interface PaymentOptions {
    * Default: false
    */
   acceptPartialAuthorization?: boolean | null;
+  /**
+   * Describes the action to be applied to a delayed capture payment when the delay_duration
+   * has elapsed.
+   */
+  delayAction?: string;
 }
 
 export const paymentOptionsSchema: Schema<PaymentOptions> = object({
@@ -41,4 +46,5 @@ export const paymentOptionsSchema: Schema<PaymentOptions> = object({
     'accept_partial_authorization',
     optional(nullable(boolean())),
   ],
+  delayAction: ['delay_action', optional(string())],
 });

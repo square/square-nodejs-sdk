@@ -9,7 +9,7 @@ import { Error, errorSchema } from './error';
  * present.
  */
 export interface CreateCardResponse {
-  /** Information on errors encountered during the request. */
+  /** Errors resulting from the request. */
   errors?: Error[];
   /**
    * Represents the payment details of a card to be used for payments. These

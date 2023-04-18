@@ -26,18 +26,18 @@
 
 ```json
 {
-  "battery_percentage": null,
-  "charging_state": null,
-  "location_id": null,
-  "merchant_id": null,
-  "network_connection_type": null,
-  "payment_region": null,
-  "serial_number": null,
-  "os_version": null,
-  "app_version": null,
-  "wifi_network_name": null,
-  "wifi_network_strength": null,
-  "ip_address": null
+  "battery_percentage": "battery_percentage6",
+  "charging_state": "charging_state2",
+  "location_id": "location_id4",
+  "merchant_id": "merchant_id0",
+  "network_connection_type": "network_connection_type0",
+  "payment_region": "payment_region8",
+  "serial_number": "serial_number6",
+  "os_version": "os_version8",
+  "app_version": "app_version0",
+  "wifi_network_name": "wifi_network_name4",
+  "wifi_network_strength": "wifi_network_strength0",
+  "ip_address": "ip_address0"
 }
 ```
 

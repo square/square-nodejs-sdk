@@ -20,10 +20,18 @@
 ```json
 {
   "device_id": "device_id6",
-  "skip_receipt_screen": null,
-  "collect_signature": null,
-  "tip_settings": null,
-  "show_itemized_cart": null
+  "skip_receipt_screen": false,
+  "collect_signature": false,
+  "tip_settings": {
+    "allow_tipping": false,
+    "separate_tip_screen": false,
+    "custom_tip_field": false,
+    "tip_percentages": [
+      48
+    ],
+    "smart_tipping": false
+  },
+  "show_itemized_cart": false
 }
 ```
 

@@ -22,8 +22,8 @@ how time ranges are handled.
 
 ```json
 {
-  "start_at": null,
-  "end_at": null
+  "start_at": "start_at2",
+  "end_at": "end_at0"
 }
 ```
 

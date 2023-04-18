@@ -21,7 +21,7 @@ import { Money, moneySchema } from './money';
 export interface OrderLineItemDiscount {
   /** A unique ID that identifies the discount only within this order. */
   uid?: string | null;
-  /** The catalog object ID referencing [CatalogDiscount]($m/CatalogDiscount). */
+  /** The catalog object ID referencing [CatalogDiscount](entity:CatalogDiscount). */
   catalogObjectId?: string | null;
   /** The version of the catalog object that this discount references. */
   catalogVersion?: bigint | null;
@@ -80,7 +80,7 @@ export interface OrderLineItemDiscount {
    */
   rewardIds?: string[];
   /**
-   * The object ID of a [pricing rule]($m/CatalogPricingRule) to be applied
+   * The object ID of a [pricing rule](entity:CatalogPricingRule) to be applied
    * automatically to this discount. The specification and application of the discounts, to
    * which a `pricing_rule_id` is assigned, are completely controlled by the corresponding
    * pricing rule.

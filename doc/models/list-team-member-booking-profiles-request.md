@@ -18,10 +18,10 @@
 
 ```json
 {
-  "bookable_only": null,
-  "limit": null,
-  "cursor": null,
-  "location_id": null
+  "bookable_only": false,
+  "limit": 172,
+  "cursor": "cursor6",
+  "location_id": "location_id4"
 }
 ```
 

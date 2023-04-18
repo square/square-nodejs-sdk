@@ -22,6 +22,7 @@
     },
     "created_at": "2022-04-26T00:15:15Z",
     "id": "TY4BWEDJ6AI5MBIV",
+    "long_url": "https://checkout.square.site/EXAMPLE",
     "order_id": "Qqc8ypQGvxVwc46Cch4zHTaJqc4F",
     "payment_note": "test",
     "updated_at": "2022-04-26T00:18:24Z",

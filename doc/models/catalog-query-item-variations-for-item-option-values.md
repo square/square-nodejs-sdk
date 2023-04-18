@@ -17,7 +17,10 @@ The query filter to return the item variations containing the specified item opt
 
 ```json
 {
-  "item_option_value_ids": null
+  "item_option_value_ids": [
+    "item_option_value_ids0",
+    "item_option_value_ids1"
+  ]
 }
 ```
 

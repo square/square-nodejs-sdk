@@ -13,7 +13,7 @@ export interface BatchUpsertCatalogObjectsRequest {
    * If you're unsure whether a particular request was successful,
    * you can reattempt it with the same idempotency key without
    * worrying about creating duplicate objects.
-   * See [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency) for more information.
+   * See [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency) for more information.
    */
   idempotencyKey: string;
   /**

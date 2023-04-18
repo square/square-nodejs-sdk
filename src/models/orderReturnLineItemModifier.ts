@@ -18,7 +18,7 @@ export interface OrderReturnLineItemModifier {
    * original sale of this line item modifier.
    */
   sourceModifierUid?: string | null;
-  /** The catalog object ID referencing [CatalogModifier]($m/CatalogModifier). */
+  /** The catalog object ID referencing [CatalogModifier](entity:CatalogModifier). */
   catalogObjectId?: string | null;
   /** The version of the catalog object that this line item modifier references. */
   catalogVersion?: bigint | null;
@@ -42,6 +42,16 @@ export interface OrderReturnLineItemModifier {
    * for more information.
    */
   totalPriceMoney?: Money;
+  /**
+   * The quantity of the line item modifier. The modifier quantity can be 0 or more.
+   * For example, suppose a restaurant offers a cheeseburger on the menu. When a buyer orders
+   * this item, the restaurant records the purchase by creating an `Order` object with a line item
+   * for a burger. The line item includes a line item modifier: the name is cheese and the quantity
+   * is 1. The buyer has the option to order extra cheese (or no cheese). If the buyer chooses
+   * the extra cheese option, the modifier quantity increases to 2. If the buyer does not want
+   * any cheese, the modifier quantity is set to 0.
+   */
+  quantity?: string | null;
 }
 
 export const orderReturnLineItemModifierSchema: Schema<OrderReturnLineItemModifier> = object(
@@ -53,5 +63,6 @@ export const orderReturnLineItemModifierSchema: Schema<OrderReturnLineItemModifi
     name: ['name', optional(nullable(string()))],
     basePriceMoney: ['base_price_money', optional(lazy(() => moneySchema))],
     totalPriceMoney: ['total_price_money', optional(lazy(() => moneySchema))],
+    quantity: ['quantity', optional(nullable(string()))],
   }
 );

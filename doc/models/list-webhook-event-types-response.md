@@ -17,7 +17,7 @@ present.
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information on errors encountered during the request. |
 | `eventTypes` | `string[] \| undefined` | Optional | The list of event types. |
-| `metadata` | [`EventTypeMetadata[] \| undefined`](../../doc/models/event-type-metadata.md) | Optional | Contains the metadata of a webhook event type. For more information, see [EventTypeMetadata](../../doc/models/event-type-metadata.md). |
+| `metadata` | [`EventTypeMetadata[] \| undefined`](../../doc/models/event-type-metadata.md) | Optional | Contains the metadata of a webhook event type. For more information, see [EventTypeMetadata](entity:EventTypeMetadata). |
 
 ## Example (as JSON)
 

@@ -24,14 +24,14 @@ Represents a business that sells with Square.
 
 ```json
 {
-  "id": null,
-  "business_name": null,
+  "id": "id0",
+  "business_name": "business_name4",
   "country": "FO",
-  "language_code": null,
-  "currency": null,
-  "status": null,
-  "main_location_id": null,
-  "created_at": null
+  "language_code": "language_code8",
+  "currency": "YER",
+  "status": "ACTIVE",
+  "main_location_id": "main_location_id0",
+  "created_at": "created_at2"
 }
 ```
 

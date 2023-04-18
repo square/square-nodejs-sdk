@@ -7,7 +7,7 @@ import { CustomAttribute, customAttributeSchema } from './customAttribute';
  * and an optional idempotency key.
  */
 export interface BookingCustomAttributeUpsertRequest {
-  /** The ID of the target [booking]($m/Booking). */
+  /** The ID of the target [booking](entity:Booking). */
   bookingId: string;
   /**
    * A custom attribute value. Each custom attribute value has a corresponding

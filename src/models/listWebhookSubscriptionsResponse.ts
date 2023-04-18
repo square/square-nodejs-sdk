@@ -14,7 +14,7 @@ import {
 export interface ListWebhookSubscriptionsResponse {
   /** Information on errors encountered during the request. */
   errors?: Error[];
-  /** The requested list of [Subscription]($m/WebhookSubscription)s. */
+  /** The requested list of [Subscription](entity:WebhookSubscription)s. */
   subscriptions?: WebhookSubscription[];
   /**
    * The pagination cursor to be used in a subsequent request. If empty,

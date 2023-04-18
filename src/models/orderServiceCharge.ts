@@ -22,7 +22,7 @@ export interface OrderServiceCharge {
   uid?: string | null;
   /** The name of the service charge. */
   name?: string | null;
-  /** The catalog object ID referencing the service charge [CatalogObject]($m/CatalogObject). */
+  /** The catalog object ID referencing the service charge [CatalogObject](entity:CatalogObject). */
   catalogObjectId?: string | null;
   /** The version of the catalog object that this service charge references. */
   catalogVersion?: bigint | null;
@@ -110,6 +110,16 @@ export interface OrderServiceCharge {
    */
   metadata?: Record<string, string> | null;
   type?: string;
+  /**
+   * Indicates whether the service charge will be treated as a value-holding line item or
+   * apportioned toward a line item.
+   */
+  treatmentType?: string;
+  /**
+   * Indicates whether this is a line-item or order-level apportioned
+   * service charge.
+   */
+  scope?: string;
 }
 
 export const orderServiceChargeSchema: Schema<OrderServiceCharge> = object({
@@ -130,4 +140,6 @@ export const orderServiceChargeSchema: Schema<OrderServiceCharge> = object({
   ],
   metadata: ['metadata', optional(nullable(dict(string())))],
   type: ['type', optional(string())],
+  treatmentType: ['treatment_type', optional(string())],
+  scope: ['scope', optional(string())],
 });

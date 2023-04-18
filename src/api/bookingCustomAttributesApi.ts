@@ -318,7 +318,7 @@ export class BookingCustomAttributesApi extends BaseApi {
    * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and
    * `APPOINTMENTS_READ` for the OAuth scope.
    *
-   * @param bookingId        The ID of the target [booking]($m/Booking).
+   * @param bookingId        The ID of the target [booking](entity:Booking).
    * @param limit            The maximum number of results to return in a single paged response. This limit
    *                                    is advisory. The response might contain more or fewer results. The minimum
    *                                    value is 1 and the maximum value is 100. The default value is 20. For more
@@ -328,11 +328,11 @@ export class BookingCustomAttributesApi extends BaseApi {
    *                                    endpoint. Provide this cursor to retrieve the next page of results for your
    *                                    original request. For more information, see [Pagination](https://developer.
    *                                    squareup.com/docs/build-basics/common-api-patterns/pagination).
-   * @param withDefinitions  Indicates whether to return the [custom attribute
-   *                                    definition]($m/CustomAttributeDefinition) in the `definition` field of each
-   *                                    custom attribute. Set this parameter to `true` to get the name and description
-   *                                    of each custom attribute, information about the data type, or other definition
-   *                                    details. The default value is `false`.
+   * @param withDefinitions  Indicates whether to return the [custom attribute definition](entity:
+   *                                    CustomAttributeDefinition) in the `definition` field of each custom attribute.
+   *                                    Set this parameter to `true` to get the name and description of each custom
+   *                                    attribute, information about the data type, or other definition details. The
+   *                                    default value is `false`.
    * @return Response from the API call
    */
   async listBookingCustomAttributes(
@@ -370,7 +370,7 @@ export class BookingCustomAttributesApi extends BaseApi {
    * to *Appointments Plus*
    * or *Appointments Premium*.
    *
-   * @param bookingId  The ID of the target [booking]($m/Booking).
+   * @param bookingId  The ID of the target [booking](entity:Booking).
    * @param key        The key of the custom attribute to delete. This key must match the `key` of a custom
    *                             attribute definition in the Square seller account. If the requesting application is
    *                             not the definition owner, you must use the qualified key.
@@ -400,15 +400,15 @@ export class BookingCustomAttributesApi extends BaseApi {
    * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and
    * `APPOINTMENTS_READ` for the OAuth scope.
    *
-   * @param bookingId       The ID of the target [booking]($m/Booking).
+   * @param bookingId       The ID of the target [booking](entity:Booking).
    * @param key             The key of the custom attribute to retrieve. This key must match the `key` of a
    *                                   custom attribute definition in the Square seller account. If the requesting
    *                                   application is not the definition owner, you must use the qualified key.
-   * @param withDefinition  Indicates whether to return the [custom attribute
-   *                                   definition]($m/CustomAttributeDefinition) in the `definition` field of the
-   *                                   custom attribute. Set this parameter to `true` to get the name and description
-   *                                   of the custom attribute, information about the data type, or other definition
-   *                                   details. The default value is `false`.
+   * @param withDefinition  Indicates whether to return the [custom attribute definition](entity:
+   *                                   CustomAttributeDefinition) in the `definition` field of the custom attribute.
+   *                                   Set this parameter to `true` to get the name and description of the custom
+   *                                   attribute, information about the data type, or other definition details. The
+   *                                   default value is `false`.
    * @param version         The current version of the custom attribute, which is used for strongly
    *                                   consistent reads to guarantee that you receive the most up-to-date data. When
    *                                   included in the request, Square returns the specified version or a higher
@@ -450,7 +450,7 @@ export class BookingCustomAttributesApi extends BaseApi {
    * to *Appointments Plus*
    * or *Appointments Premium*.
    *
-   * @param bookingId    The ID of the target [booking]($m/Booking).
+   * @param bookingId    The ID of the target [booking](entity:Booking).
    * @param key          The key of the custom attribute to create or
    *                                                                   update. This key must match the `key` of a
    *                                                                   custom attribute definition in the Square seller

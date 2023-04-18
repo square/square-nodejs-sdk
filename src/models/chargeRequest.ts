@@ -17,8 +17,8 @@ import { Money, moneySchema } from './money';
 
 /**
  * Defines the parameters that can be included in the body of
- * a request to the [Charge]($e/Transactions/Charge) endpoint.
- * Deprecated - recommend using [CreatePayment]($e/Payments/CreatePayment)
+ * a request to the [Charge](api-endpoint:Transactions-Charge) endpoint.
+ * Deprecated - recommend using [CreatePayment](api-endpoint:Payments-CreatePayment)
  */
 export interface ChargeRequest {
   /**
@@ -59,8 +59,8 @@ export interface ChargeRequest {
   /**
    * If `true`, the request will only perform an Auth on the provided
    * card. You can then later perform either a Capture (with the
-   * [CaptureTransaction]($e/Transactions/CaptureTransaction) endpoint) or a Void
-   * (with the [VoidTransaction]($e/Transactions/VoidTransaction) endpoint).
+   * [CaptureTransaction](api-endpoint:Transactions-CaptureTransaction) endpoint) or a Void
+   * (with the [VoidTransaction](api-endpoint:Transactions-VoidTransaction) endpoint).
    * Default value: `false`
    */
   delayCapture?: boolean | null;

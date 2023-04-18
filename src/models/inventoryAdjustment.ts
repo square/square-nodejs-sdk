@@ -30,17 +30,17 @@ export interface InventoryAdjustment {
   /** Indicates the state of a tracked item quantity in the lifecycle of goods. */
   toState?: string;
   /**
-   * The Square-generated ID of the [Location]($m/Location) where the related
+   * The Square-generated ID of the [Location](entity:Location) where the related
    * quantity of items is being tracked.
    */
   locationId?: string | null;
   /**
    * The Square-generated ID of the
-   * [CatalogObject]($m/CatalogObject) being tracked.
+   * [CatalogObject](entity:CatalogObject) being tracked.
    */
   catalogObjectId?: string | null;
   /**
-   * The [type]($m/CatalogObjectType) of the [CatalogObject]($m/CatalogObject) being tracked.
+   * The [type](entity:CatalogObjectType) of the [CatalogObject](entity:CatalogObject) being tracked.
    * The Inventory API supports setting and reading the `"catalog_object_type": "ITEM_VARIATION"` field value.
    * In addition, it can also read the `"catalog_object_type": "ITEM"` field value that is set by the Square Restaurants app.
    */
@@ -71,23 +71,23 @@ export interface InventoryAdjustment {
   /** Represents information about the application used to generate a change. */
   source?: SourceApplication;
   /**
-   * The Square-generated ID of the [Employee]($m/Employee) responsible for the
+   * The Square-generated ID of the [Employee](entity:Employee) responsible for the
    * inventory adjustment.
    */
   employeeId?: string | null;
   /**
-   * The Square-generated ID of the [Team Member]($m/TeamMember) responsible for the
+   * The Square-generated ID of the [Team Member](entity:TeamMember) responsible for the
    * inventory adjustment.
    */
   teamMemberId?: string | null;
   /**
-   * The Square-generated ID of the [Transaction]($m/Transaction) that
+   * The Square-generated ID of the [Transaction](entity:Transaction) that
    * caused the adjustment. Only relevant for payment-related state
    * transitions.
    */
   transactionId?: string;
   /**
-   * The Square-generated ID of the [Refund]($m/Refund) that
+   * The Square-generated ID of the [Refund](entity:Refund) that
    * caused the adjustment. Only relevant for refund-related state
    * transitions.
    */

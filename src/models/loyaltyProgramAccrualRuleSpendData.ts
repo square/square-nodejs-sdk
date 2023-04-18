@@ -22,13 +22,13 @@ export interface LoyaltyProgramAccrualRuleSpendData {
   amountMoney: Money;
   /**
    * The IDs of any `CATEGORY` catalog objects that are excluded from points accrual.
-   * You can use the [BatchRetrieveCatalogObjects]($e/Catalog/BatchRetrieveCatalogObjects)
+   * You can use the [BatchRetrieveCatalogObjects](api-endpoint:Catalog-BatchRetrieveCatalogObjects)
    * endpoint to retrieve information about the excluded categories.
    */
   excludedCategoryIds?: string[] | null;
   /**
    * The IDs of any `ITEM_VARIATION` catalog objects that are excluded from points accrual.
-   * You can use the [BatchRetrieveCatalogObjects]($e/Catalog/BatchRetrieveCatalogObjects)
+   * You can use the [BatchRetrieveCatalogObjects](api-endpoint:Catalog-BatchRetrieveCatalogObjects)
    * endpoint to retrieve information about the excluded item variations.
    */
   excludedItemVariationIds?: string[] | null;

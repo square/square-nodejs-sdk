@@ -7,7 +7,7 @@ export interface BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute {
    * of an existing custom attribute definition.
    */
   key?: string;
-  /** The ID of the target [order]($m/Order). */
+  /** The ID of the target [order](entity:Order). */
   orderId: string;
 }
 

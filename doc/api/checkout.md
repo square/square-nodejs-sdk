@@ -28,7 +28,7 @@ payment processing workflow hosted on connect.squareup.com.
 
 NOTE: The Checkout API has been updated with new features.
 For more information, see [Checkout API highlights](https://developer.squareup.com/docs/checkout-api#checkout-api-highlights).
-We recommend that you use the new [CreatePaymentLink](../../doc/api/checkout.md#create-payment-link) 
+We recommend that you use the new [CreatePaymentLink](api-endpoint:Checkout-CreatePaymentLink) 
 endpoint in place of this previously released endpoint.
 
 ```ts
@@ -74,26 +74,35 @@ const bodyOrderOrderlineItems0appliedDiscounts0: OrderLineItemAppliedDiscount = 
 
 bodyOrderOrderlineItems0AppliedDiscounts[0] = bodyOrderOrderlineItems0appliedDiscounts0;
 
+const bodyOrderOrderlineItems0BasePriceMoney: Money = {};
+
 const bodyOrderOrderlineItems0: OrderLineItem = {
   quantity: '2',
 };
 bodyOrderOrderlineItems0.name = 'Printed T Shirt';
 bodyOrderOrderlineItems0.appliedTaxes = bodyOrderOrderlineItems0AppliedTaxes;
 bodyOrderOrderlineItems0.appliedDiscounts = bodyOrderOrderlineItems0AppliedDiscounts;
+bodyOrderOrderlineItems0.basePriceMoney = bodyOrderOrderlineItems0BasePriceMoney;
 
 bodyOrderOrderLineItems[0] = bodyOrderOrderlineItems0;
+
+const bodyOrderOrderlineItems1BasePriceMoney: Money = {};
 
 const bodyOrderOrderlineItems1: OrderLineItem = {
   quantity: '1',
 };
 bodyOrderOrderlineItems1.name = 'Slim Jeans';
+bodyOrderOrderlineItems1.basePriceMoney = bodyOrderOrderlineItems1BasePriceMoney;
 
 bodyOrderOrderLineItems[1] = bodyOrderOrderlineItems1;
+
+const bodyOrderOrderlineItems2BasePriceMoney: Money = {};
 
 const bodyOrderOrderlineItems2: OrderLineItem = {
   quantity: '3',
 };
 bodyOrderOrderlineItems2.name = 'Woven Sweater';
+bodyOrderOrderlineItems2.basePriceMoney = bodyOrderOrderlineItems2BasePriceMoney;
 
 bodyOrderOrderLineItems[2] = bodyOrderOrderlineItems2;
 
@@ -109,9 +118,12 @@ bodyOrderOrderTaxes[0] = bodyOrderOrdertaxes0;
 
 const bodyOrderOrderDiscounts: OrderLineItemDiscount[] = [];
 
+const bodyOrderOrderdiscounts0AmountMoney: Money = {};
+
 const bodyOrderOrderdiscounts0: OrderLineItemDiscount = {};
 bodyOrderOrderdiscounts0.uid = '56ae1696-z1e3-9328-af6d-f1e04d947gd4';
 bodyOrderOrderdiscounts0.type = 'FIXED_AMOUNT';
+bodyOrderOrderdiscounts0.amountMoney = bodyOrderOrderdiscounts0AmountMoney;
 bodyOrderOrderdiscounts0.scope = 'LINE_ITEM';
 
 bodyOrderOrderDiscounts[0] = bodyOrderOrderdiscounts0;

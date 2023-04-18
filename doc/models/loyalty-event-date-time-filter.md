@@ -18,8 +18,8 @@ Filter events by date time range.
 ```json
 {
   "created_at": {
-    "start_at": null,
-    "end_at": null
+    "start_at": "start_at4",
+    "end_at": "end_at8"
   }
 }
 ```

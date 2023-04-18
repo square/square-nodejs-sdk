@@ -15,6 +15,10 @@ import {
   orderLineItemAppliedDiscountSchema,
 } from './orderLineItemAppliedDiscount';
 import {
+  OrderLineItemAppliedServiceCharge,
+  orderLineItemAppliedServiceChargeSchema,
+} from './orderLineItemAppliedServiceCharge';
+import {
   OrderLineItemAppliedTax,
   orderLineItemAppliedTaxSchema,
 } from './orderLineItemAppliedTax';
@@ -56,7 +60,7 @@ export interface OrderLineItem {
   quantityUnit?: OrderQuantityUnit;
   /** The note of the line item. */
   note?: string | null;
-  /** The [CatalogItemVariation]($m/CatalogItemVariation) ID applied to this line item. */
+  /** The [CatalogItemVariation](entity:CatalogItemVariation) ID applied to this line item. */
   catalogObjectId?: string | null;
   /** The version of the catalog object that this line item references. */
   catalogVersion?: bigint | null;
@@ -80,7 +84,7 @@ export interface OrderLineItem {
    * For more information, see [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
    */
   metadata?: Record<string, string> | null;
-  /** The [CatalogModifier]($m/CatalogModifier)s applied to this line item. */
+  /** The [CatalogModifier](entity:CatalogModifier)s applied to this line item. */
   modifiers?: OrderLineItemModifier[] | null;
   /**
    * The list of references to taxes applied to this line item. Each
@@ -106,6 +110,14 @@ export interface OrderLineItem {
    * To change the amount of a discount, modify the referenced top-level discount.
    */
   appliedDiscounts?: OrderLineItemAppliedDiscount[] | null;
+  /**
+   * The list of references to service charges applied to this line item. Each
+   * `OrderLineItemAppliedServiceCharge` has a `service_charge_id` that references the `uid` of a
+   * top-level `OrderServiceCharge` applied to the line item. On reads, the amount applied is
+   * populated.
+   * To change the amount of a service charge, modify the referenced top-level service charge.
+   */
+  appliedServiceCharges?: OrderLineItemAppliedServiceCharge[] | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
    * Fields that do not explicitly define whether they are signed or unsigned are
@@ -166,6 +178,15 @@ export interface OrderLineItem {
    * [Apply Taxes and Discounts](https://developer.squareup.com/docs/orders-api/apply-taxes-and-discounts).
    */
   pricingBlocklists?: OrderLineItemPricingBlocklists;
+  /**
+   * Represents an amount of money. `Money` fields can be signed or unsigned.
+   * Fields that do not explicitly define whether they are signed or unsigned are
+   * considered unsigned and can only hold positive amounts. For signed fields, the
+   * sign of the value indicates the purpose of the money transfer. See
+   * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
+   * for more information.
+   */
+  totalServiceChargeMoney?: Money;
 }
 
 export const orderLineItemSchema: Schema<OrderLineItem> = object({
@@ -194,6 +215,12 @@ export const orderLineItemSchema: Schema<OrderLineItem> = object({
     'applied_discounts',
     optional(nullable(array(lazy(() => orderLineItemAppliedDiscountSchema)))),
   ],
+  appliedServiceCharges: [
+    'applied_service_charges',
+    optional(
+      nullable(array(lazy(() => orderLineItemAppliedServiceChargeSchema)))
+    ),
+  ],
   basePriceMoney: ['base_price_money', optional(lazy(() => moneySchema))],
   variationTotalPriceMoney: [
     'variation_total_price_money',
@@ -209,5 +236,9 @@ export const orderLineItemSchema: Schema<OrderLineItem> = object({
   pricingBlocklists: [
     'pricing_blocklists',
     optional(lazy(() => orderLineItemPricingBlocklistsSchema)),
+  ],
+  totalServiceChargeMoney: [
+    'total_service_charge_money',
+    optional(lazy(() => moneySchema)),
   ],
 });

@@ -16,7 +16,7 @@ export interface ListWebhookEventTypesResponse {
   errors?: Error[];
   /** The list of event types. */
   eventTypes?: string[];
-  /** Contains the metadata of a webhook event type. For more information, see [EventTypeMetadata]($m/EventTypeMetadata). */
+  /** Contains the metadata of a webhook event type. For more information, see [EventTypeMetadata](entity:EventTypeMetadata). */
   metadata?: EventTypeMetadata[];
 }
 

@@ -28,9 +28,9 @@ export interface Subscription {
   id?: string;
   /** The ID of the location associated with the subscription. */
   locationId?: string;
-  /** The ID of the subscribed-to [subscription plan]($m/CatalogSubscriptionPlan). */
+  /** The ID of the subscribed-to [subscription plan](entity:CatalogSubscriptionPlan). */
   planId?: string;
-  /** The ID of the subscribing [customer]($m/Customer) profile. */
+  /** The ID of the subscribing [customer](entity:Customer) profile. */
   customerId?: string;
   /** The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) to start the subscription. */
   startDate?: string;
@@ -62,7 +62,7 @@ export interface Subscription {
    */
   taxPercentage?: string | null;
   /**
-   * The IDs of the [invoices]($m/Invoice) created for the
+   * The IDs of the [invoices](entity:Invoice) created for the
    * subscription, listed in order when the invoices were created
    * (newest invoices appear first).
    */
@@ -85,7 +85,7 @@ export interface Subscription {
   /** The timestamp when the subscription was created, in RFC 3339 format. */
   createdAt?: string;
   /**
-   * The ID of the [subscriber's]($m/Customer) [card]($m/Card)
+   * The ID of the [subscriber's](entity:Customer) [card](entity:Card)
    * used to charge for the subscription.
    */
   cardId?: string | null;

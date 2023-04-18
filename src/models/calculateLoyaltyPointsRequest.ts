@@ -4,7 +4,7 @@ import { Money, moneySchema } from './money';
 /** Represents a [CalculateLoyaltyPoints]($e/Loyalty/CalculateLoyaltyPoints) request. */
 export interface CalculateLoyaltyPointsRequest {
   /**
-   * The [order]($m/Order) ID for which to calculate the points.
+   * The [order](entity:Order) ID for which to calculate the points.
    * Specify this field if your application uses the Orders API to process orders.
    * Otherwise, specify the `transaction_amount_money`.
    */
@@ -19,7 +19,7 @@ export interface CalculateLoyaltyPointsRequest {
    */
   transactionAmountMoney?: Money;
   /**
-   * The ID of the target [loyalty account]($m/LoyaltyAccount). Optionally specify this field
+   * The ID of the target [loyalty account](entity:LoyaltyAccount). Optionally specify this field
    * if your application uses the Orders API to process orders.
    * If specified, the `promotion_points` field in the response shows the number of points the buyer would
    * earn from the purchase. In this case, Square uses the account ID to determine whether the promotion's

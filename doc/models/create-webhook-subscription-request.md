@@ -11,7 +11,7 @@ Creates a [Subscription](../../doc/models/webhook-subscription.md).
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `idempotencyKey` | `string \| undefined` | Optional | A unique string that identifies the [CreateWebhookSubscription](../../doc/api/webhook-subscriptions.md#create-webhook-subscription) request.<br>**Constraints**: *Maximum Length*: `45` |
+| `idempotencyKey` | `string \| undefined` | Optional | A unique string that identifies the [CreateWebhookSubscription](api-endpoint:WebhookSubscriptions-CreateWebhookSubscription) request.<br>**Constraints**: *Maximum Length*: `45` |
 | `subscription` | [`WebhookSubscription`](../../doc/models/webhook-subscription.md) | Required | Represents the details of a webhook subscription, including notification URL,<br>event types, and signature key. |
 
 ## Example (as JSON)

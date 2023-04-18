@@ -48,7 +48,7 @@ export interface BatchRetrieveInventoryChangesRequest {
    * See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information.
    */
   cursor?: string | null;
-  /** The number of [records]($m/InventoryChange) to return. */
+  /** The number of [records](entity:InventoryChange) to return. */
   limit?: number | null;
 }
 

@@ -13,7 +13,7 @@ import { CatalogQuery, catalogQuerySchema } from './catalogQuery';
 export interface SearchCatalogObjectsRequest {
   /**
    * The pagination cursor returned in the previous response. Leave unset for an initial request.
-   * See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
+   * See [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination) for more information.
    */
   cursor?: string;
   /**
@@ -25,6 +25,9 @@ export interface SearchCatalogObjectsRequest {
    * ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST,
    * PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,
    * SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION, QUICK_AMOUNT_SETTINGS.
+   * Note that if you wish for the query to return objects belonging to nested types (i.e., COMPONENT, IMAGE,
+   * ITEM_OPTION_VAL, ITEM_VARIATION, or MODIFIER), you must explicitly include all the types of interest
+   * in this field.
    */
   objectTypes?: string[];
   /**

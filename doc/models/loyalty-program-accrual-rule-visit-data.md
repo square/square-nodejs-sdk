@@ -18,7 +18,10 @@ Represents additional data for rules with the `VISIT` accrual type.
 
 ```json
 {
-  "minimum_amount_money": null,
+  "minimum_amount_money": {
+    "amount": 146,
+    "currency": "UYI"
+  },
   "tax_mode": "BEFORE_TAX"
 }
 ```

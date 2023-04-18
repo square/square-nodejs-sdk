@@ -23,7 +23,7 @@ export interface PayOrderRequest {
   /** The version of the order being paid. If not supplied, the latest version will be paid. */
   orderVersion?: number | null;
   /**
-   * The IDs of the [payments]($m/Payment) to collect.
+   * The IDs of the [payments](entity:Payment) to collect.
    * The payment total must match the order total.
    */
   paymentIds?: string[] | null;

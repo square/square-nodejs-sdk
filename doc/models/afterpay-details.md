@@ -17,7 +17,7 @@ Additional details about Afterpay payments.
 
 ```json
 {
-  "email_address": null
+  "email_address": "email_address2"
 }
 ```
 

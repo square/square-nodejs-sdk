@@ -28,17 +28,48 @@ Represents a refund processed for a Square transaction.
 {
   "id": "id0",
   "location_id": "location_id4",
-  "transaction_id": null,
+  "transaction_id": "transaction_id8",
   "tender_id": "tender_id8",
-  "created_at": null,
+  "created_at": "created_at2",
   "reason": "reason4",
   "amount_money": {
-    "amount": null,
-    "currency": null
+    "amount": 186,
+    "currency": "NGN"
   },
   "status": "PENDING",
-  "processing_fee_money": null,
-  "additional_recipients": null
+  "processing_fee_money": {
+    "amount": 112,
+    "currency": "XBB"
+  },
+  "additional_recipients": [
+    {
+      "location_id": "location_id3",
+      "description": "description9",
+      "amount_money": {
+        "amount": 83,
+        "currency": "ALL"
+      },
+      "receivable_id": "receivable_id9"
+    },
+    {
+      "location_id": "location_id4",
+      "description": "description0",
+      "amount_money": {
+        "amount": 84,
+        "currency": "AMD"
+      },
+      "receivable_id": "receivable_id0"
+    },
+    {
+      "location_id": "location_id5",
+      "description": "description1",
+      "amount_money": {
+        "amount": 85,
+        "currency": "ANG"
+      },
+      "receivable_id": "receivable_id1"
+    }
+  ]
 }
 ```
 

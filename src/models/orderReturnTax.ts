@@ -20,7 +20,7 @@ export interface OrderReturnTax {
   uid?: string | null;
   /** The tax `uid` from the order that contains the original tax charge. */
   sourceTaxUid?: string | null;
-  /** The catalog object ID referencing [CatalogTax]($m/CatalogTax). */
+  /** The catalog object ID referencing [CatalogTax](entity:CatalogTax). */
   catalogObjectId?: string | null;
   /** The version of the catalog object that this tax references. */
   catalogVersion?: bigint | null;

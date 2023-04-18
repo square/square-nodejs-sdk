@@ -22,11 +22,11 @@ event types, and signature key.
 
 ```json
 {
-  "id": null,
-  "status_code": null,
-  "payload": null,
-  "created_at": null,
-  "updated_at": null
+  "id": "id0",
+  "status_code": 122,
+  "payload": "payload6",
+  "created_at": "created_at2",
+  "updated_at": "updated_at4"
 }
 ```
 

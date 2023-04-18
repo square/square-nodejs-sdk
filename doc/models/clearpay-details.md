@@ -17,7 +17,7 @@ Additional details about Clearpay payments.
 
 ```json
 {
-  "email_address": null
+  "email_address": "email_address2"
 }
 ```
 

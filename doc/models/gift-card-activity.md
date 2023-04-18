@@ -15,7 +15,7 @@ includes a `redeem_activity_details` field that contains information about the r
 |  --- | --- | --- | --- |
 | `id` | `string \| undefined` | Optional | The Square-assigned ID of the gift card activity. |
 | `type` | [`string`](../../doc/models/gift-card-activity-type.md) | Required | Indicates the type of [gift card activity](../../doc/models/gift-card-activity.md). |
-| `locationId` | `string` | Required | The ID of the [business location](../../doc/models/location.md) where the activity occurred. |
+| `locationId` | `string` | Required | The ID of the [business location](entity:Location) where the activity occurred. |
 | `createdAt` | `string \| undefined` | Optional | The timestamp when the gift card activity was created, in RFC 3339 format. |
 | `giftCardId` | `string \| undefined` | Optional | The gift card ID. When creating a gift card activity, `gift_card_id` is not required if<br>`gift_card_gan` is specified. |
 | `giftCardGan` | `string \| undefined` | Optional | The gift card account number (GAN). When creating a gift card activity, `gift_card_gan`<br>is not required if `gift_card_id` is specified. |
@@ -40,28 +40,120 @@ includes a `redeem_activity_details` field that contains information about the r
 
 ```json
 {
-  "id": null,
+  "id": "id0",
   "type": "ADJUST_INCREMENT",
   "location_id": "location_id4",
-  "created_at": null,
-  "gift_card_id": null,
-  "gift_card_gan": null,
-  "gift_card_balance_money": null,
-  "load_activity_details": null,
-  "activate_activity_details": null,
-  "redeem_activity_details": null,
-  "clear_balance_activity_details": null,
-  "deactivate_activity_details": null,
-  "adjust_increment_activity_details": null,
-  "adjust_decrement_activity_details": null,
-  "refund_activity_details": null,
-  "unlinked_activity_refund_activity_details": null,
-  "import_activity_details": null,
-  "block_activity_details": null,
-  "unblock_activity_details": null,
-  "import_reversal_activity_details": null,
-  "transfer_balance_to_activity_details": null,
-  "transfer_balance_from_activity_details": null
+  "created_at": "created_at2",
+  "gift_card_id": "gift_card_id8",
+  "gift_card_gan": "gift_card_gan6",
+  "gift_card_balance_money": {
+    "amount": 82,
+    "currency": "LSL"
+  },
+  "load_activity_details": {
+    "amount_money": {
+      "amount": 244,
+      "currency": "BRL"
+    },
+    "order_id": "order_id4",
+    "line_item_uid": "line_item_uid0",
+    "reference_id": "reference_id8",
+    "buyer_payment_instrument_ids": [
+      "buyer_payment_instrument_ids6",
+      "buyer_payment_instrument_ids7"
+    ]
+  },
+  "activate_activity_details": {
+    "amount_money": {
+      "amount": 16,
+      "currency": "AMD"
+    },
+    "order_id": "order_id4",
+    "line_item_uid": "line_item_uid0",
+    "reference_id": "reference_id8",
+    "buyer_payment_instrument_ids": [
+      "buyer_payment_instrument_ids6",
+      "buyer_payment_instrument_ids7"
+    ]
+  },
+  "redeem_activity_details": {
+    "amount_money": {
+      "amount": 128,
+      "currency": "MNT"
+    },
+    "payment_id": "payment_id4",
+    "reference_id": "reference_id8",
+    "status": "COMPLETED"
+  },
+  "clear_balance_activity_details": {
+    "reason": "REUSE_GIFTCARD"
+  },
+  "deactivate_activity_details": {
+    "reason": "CHARGEBACK_DEACTIVATE"
+  },
+  "adjust_increment_activity_details": {
+    "amount_money": {
+      "amount": 240,
+      "currency": "PGK"
+    },
+    "reason": "TRANSACTION_VOIDED"
+  },
+  "adjust_decrement_activity_details": {
+    "amount_money": {
+      "amount": 92,
+      "currency": "QAR"
+    },
+    "reason": "SUPPORT_ISSUE"
+  },
+  "refund_activity_details": {
+    "redeem_activity_id": "redeem_activity_id0",
+    "amount_money": {
+      "amount": 90,
+      "currency": "BTC"
+    },
+    "reference_id": "reference_id8",
+    "payment_id": "payment_id0"
+  },
+  "unlinked_activity_refund_activity_details": {
+    "amount_money": {
+      "amount": 46,
+      "currency": "DKK"
+    },
+    "reference_id": "reference_id0",
+    "payment_id": "payment_id2"
+  },
+  "import_activity_details": {
+    "amount_money": {
+      "amount": 170,
+      "currency": "LBP"
+    }
+  },
+  "block_activity_details": {
+    "reason": "reason2"
+  },
+  "unblock_activity_details": {
+    "reason": "reason0"
+  },
+  "import_reversal_activity_details": {
+    "amount_money": {
+      "amount": 106,
+      "currency": "BHD"
+    }
+  },
+  "transfer_balance_to_activity_details": {
+    "transfer_from_gift_card_id": "transfer_from_gift_card_id4",
+    "amount_money": {
+      "amount": 224,
+      "currency": "DJF"
+    }
+  },
+  "transfer_balance_from_activity_details": {
+    "transfer_to_gift_card_id": "transfer_to_gift_card_id6",
+    "amount_money": {
+      "amount": 42,
+      "currency": "MAD"
+    }
+  }
 }
 ```
 

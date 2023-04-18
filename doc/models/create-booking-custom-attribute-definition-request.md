@@ -19,16 +19,19 @@ Represents a [CreateBookingCustomAttributeDefinition](../../doc/api/booking-cust
 ```json
 {
   "custom_attribute_definition": {
-    "key": null,
-    "schema": null,
-    "name": null,
-    "description": null,
-    "visibility": null,
-    "version": null,
-    "updated_at": null,
-    "created_at": null
+    "key": "key2",
+    "schema": {
+      "key1": "val1",
+      "key2": "val2"
+    },
+    "name": "name2",
+    "description": "description8",
+    "visibility": "VISIBILITY_HIDDEN",
+    "version": 20,
+    "updated_at": "updated_at2",
+    "created_at": "created_at0"
   },
-  "idempotency_key": null
+  "idempotency_key": "idempotency_key6"
 }
 ```
 

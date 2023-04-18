@@ -106,8 +106,8 @@ export class BookingsApi extends BaseApi {
    * Creates a booking.
    *
    * The required input must include the following:
-   * - `Booking.location_id`,
-   * - `Booking.start_at`,
+   * - `Booking.location_id`
+   * - `Booking.start_at`
    * - `Booking.team_member_id`
    * - `Booking.AppointmentSegment.service_variation_id`
    * - `Booking.AppointmentSegment.service_variation_version`
@@ -244,7 +244,8 @@ export class BookingsApi extends BaseApi {
    * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and
    * `APPOINTMENTS_READ` for the OAuth scope.
    *
-   * @param bookingId  The ID of the [Booking]($m/Booking) object representing the to-be-retrieved booking.
+   * @param bookingId  The ID of the [Booking](entity:Booking) object representing the to-be-retrieved
+   *                             booking.
    * @return Response from the API call
    */
   async retrieveBooking(
@@ -268,8 +269,8 @@ export class BookingsApi extends BaseApi {
    * to *Appointments Plus*
    * or *Appointments Premium*.
    *
-   * @param bookingId    The ID of the [Booking]($m/Booking) object representing the to-
-   *                                                    be-updated booking.
+   * @param bookingId    The ID of the [Booking](entity:Booking) object representing
+   *                                                    the to-be-updated booking.
    * @param body         An object containing the fields to POST for the request.  See
    *                                                    the corresponding object definition for field details.
    * @return Response from the API call
@@ -301,8 +302,8 @@ export class BookingsApi extends BaseApi {
    * to *Appointments Plus*
    * or *Appointments Premium*.
    *
-   * @param bookingId    The ID of the [Booking]($m/Booking) object representing the to-
-   *                                                    be-cancelled booking.
+   * @param bookingId    The ID of the [Booking](entity:Booking) object representing
+   *                                                    the to-be-cancelled booking.
    * @param body         An object containing the fields to POST for the request.  See
    *                                                    the corresponding object definition for field details.
    * @return Response from the API call

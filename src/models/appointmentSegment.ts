@@ -14,9 +14,9 @@ import {
 export interface AppointmentSegment {
   /** The time span in minutes of an appointment segment. */
   durationMinutes?: number | null;
-  /** The ID of the [CatalogItemVariation]($m/CatalogItemVariation) object representing the service booked in this segment. */
+  /** The ID of the [CatalogItemVariation](entity:CatalogItemVariation) object representing the service booked in this segment. */
   serviceVariationId?: string | null;
-  /** The ID of the [TeamMember]($m/TeamMember) object representing the team member booked in this segment. */
+  /** The ID of the [TeamMember](entity:TeamMember) object representing the team member booked in this segment. */
   teamMemberId: string;
   /** The current version of the item variation representing the service booked in this segment. */
   serviceVariationVersion?: bigint | null;

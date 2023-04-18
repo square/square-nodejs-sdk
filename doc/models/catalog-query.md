@@ -52,16 +52,62 @@ the `"name"`, `"description"`, or `"abbreviation"` attribute in an applicable qu
 
 ```json
 {
-  "sorted_attribute_query": null,
-  "exact_query": null,
-  "set_query": null,
-  "prefix_query": null,
-  "range_query": null,
-  "text_query": null,
-  "items_for_tax_query": null,
-  "items_for_modifier_list_query": null,
-  "items_for_item_options_query": null,
-  "item_variations_for_item_option_values_query": null
+  "sorted_attribute_query": {
+    "attribute_name": "attribute_name0",
+    "initial_attribute_value": "initial_attribute_value8",
+    "sort_order": "DESC"
+  },
+  "exact_query": {
+    "attribute_name": "attribute_name4",
+    "attribute_value": "attribute_value6"
+  },
+  "set_query": {
+    "attribute_name": "attribute_name2",
+    "attribute_values": [
+      "attribute_values6"
+    ]
+  },
+  "prefix_query": {
+    "attribute_name": "attribute_name6",
+    "attribute_prefix": "attribute_prefix8"
+  },
+  "range_query": {
+    "attribute_name": "attribute_name0",
+    "attribute_min_value": 208,
+    "attribute_max_value": 138
+  },
+  "text_query": {
+    "keywords": [
+      "keywords3",
+      "keywords4",
+      "keywords5"
+    ]
+  },
+  "items_for_tax_query": {
+    "tax_ids": [
+      "tax_ids3"
+    ]
+  },
+  "items_for_modifier_list_query": {
+    "modifier_list_ids": [
+      "modifier_list_ids6",
+      "modifier_list_ids7",
+      "modifier_list_ids8"
+    ]
+  },
+  "items_for_item_options_query": {
+    "item_option_ids": [
+      "item_option_ids9",
+      "item_option_ids0"
+    ]
+  },
+  "item_variations_for_item_option_values_query": {
+    "item_option_value_ids": [
+      "item_option_value_ids8",
+      "item_option_value_ids9",
+      "item_option_value_ids0"
+    ]
+  }
 }
 ```
 

@@ -9,23 +9,23 @@ import { OrderEntry, orderEntrySchema } from './orderEntry';
  */
 export interface SearchOrdersResponse {
   /**
-   * A list of [OrderEntries]($m/OrderEntry) that fit the query
+   * A list of [OrderEntries](entity:OrderEntry) that fit the query
    * conditions. The list is populated only if `return_entries` is set to `true` in the request.
    */
   orderEntries?: OrderEntry[];
   /**
    * A list of
-   * [Order]($m/Order) objects that match the query conditions. The list is populated only if
+   * [Order](entity:Order) objects that match the query conditions. The list is populated only if
    * `return_entries` is set to `false` in the request.
    */
   orders?: Order[];
   /**
    * The pagination cursor to be used in a subsequent request. If unset,
    * this is the final response.
-   * For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
+   * For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
    */
   cursor?: string;
-  /** [Errors]($m/Error) encountered during the search. */
+  /** [Errors](entity:Error) encountered during the search. */
   errors?: Error[];
 }
 

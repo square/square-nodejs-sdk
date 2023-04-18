@@ -4,7 +4,7 @@ import { array, nullable, object, optional, Schema, string } from '../schema';
 export interface TeamMemberAssignedLocations {
   /** Enumerates the possible assignment types that the team member can have. */
   assignmentType?: string;
-  /** The locations that the team member is assigned to. */
+  /** The explicit locations that the team member is assigned to. */
   locationIds?: string[] | null;
 }
 

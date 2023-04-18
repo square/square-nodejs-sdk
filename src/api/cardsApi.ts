@@ -29,8 +29,8 @@ export class CardsApi extends BaseApi {
    *
    * @param cursor           A pagination cursor returned by a previous call to this endpoint. Provide this
    *                                    to retrieve the next set of results for your original query.  See
-   *                                    [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for
-   *                                    more information.
+   *                                    [Pagination](https://developer.squareup.com/docs/build-basics/common-api-
+   *                                    patterns/pagination) for more information.
    * @param customerId       Limit results to cards associated with the customer supplied. By default, all
    *                                    cards owned by the merchant are returned.
    * @param includeDisabled  Includes disabled cards. By default, all enabled cards owned by the merchant

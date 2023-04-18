@@ -12,7 +12,7 @@ export interface ListGiftCardActivitiesRequest {
    */
   giftCardId?: string | null;
   /**
-   * If a [type]($m/GiftCardActivityType) is provided, the endpoint returns gift card activities of the specified type.
+   * If a [type](entity:GiftCardActivityType) is provided, the endpoint returns gift card activities of the specified type.
    * Otherwise, the endpoint returns all types of gift card activities.
    */
   type?: string | null;

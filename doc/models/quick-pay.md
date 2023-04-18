@@ -23,8 +23,8 @@ see [Quick Pay Checkout](https://developer.squareup.com/docs/checkout-api/quick-
 {
   "name": "name0",
   "price_money": {
-    "amount": null,
-    "currency": null
+    "amount": 202,
+    "currency": "BBD"
   },
   "location_id": "location_id4"
 }

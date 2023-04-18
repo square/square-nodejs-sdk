@@ -53,22 +53,34 @@ associated payment.
 
 ```json
 {
-  "id": null,
-  "type": null,
-  "name": null,
-  "employee_id": null,
-  "receipt_url": null,
-  "card_brand": null,
-  "pan_suffix": null,
-  "entry_method": null,
-  "payment_note": null,
-  "total_money": null,
-  "tendered_money": null,
-  "tendered_at": null,
-  "settled_at": null,
-  "change_back_money": null,
-  "refunded_money": null,
-  "is_exchange": null
+  "id": "id0",
+  "type": "UNKNOWN",
+  "name": "name0",
+  "employee_id": "employee_id0",
+  "receipt_url": "receipt_url8",
+  "card_brand": "OTHER_BRAND",
+  "pan_suffix": "pan_suffix0",
+  "entry_method": "OTHER",
+  "payment_note": "payment_note8",
+  "total_money": {
+    "amount": 250,
+    "currency_code": "USS"
+  },
+  "tendered_money": {
+    "amount": 102,
+    "currency_code": "UNKNOWN_CURRENCY"
+  },
+  "tendered_at": "tendered_at6",
+  "settled_at": "settled_at4",
+  "change_back_money": {
+    "amount": 78,
+    "currency_code": "JMD"
+  },
+  "refunded_money": {
+    "amount": 214,
+    "currency_code": "CHW"
+  },
+  "is_exchange": false
 }
 ```
 

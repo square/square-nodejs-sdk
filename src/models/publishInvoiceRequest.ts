@@ -3,7 +3,7 @@ import { nullable, number, object, optional, Schema, string } from '../schema';
 /** Describes a `PublishInvoice` request. */
 export interface PublishInvoiceRequest {
   /**
-   * The version of the [invoice]($m/Invoice) to publish.
+   * The version of the [invoice](entity:Invoice) to publish.
    * This must match the current version of the invoice; otherwise, the request is rejected.
    */
   version: number;

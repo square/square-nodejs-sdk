@@ -7,7 +7,7 @@ export interface RedeemLoyaltyRewardRequest {
    * Keys can be any valid string, but must be unique for every request.
    */
   idempotencyKey: string;
-  /** The ID of the [location]($m/Location) where the reward is redeemed. */
+  /** The ID of the [location](entity:Location) where the reward is redeemed. */
   locationId: string;
 }
 

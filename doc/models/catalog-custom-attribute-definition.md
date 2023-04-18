@@ -19,7 +19,7 @@ to store any sensitive information (personally identifiable information, card de
 | `name` | `string` | Required | The name of this definition for API and seller-facing UI purposes.<br>The name must be unique within the (merchant, application) pair. Required.<br>May not be empty and may not exceed 255 characters. Can be modified after creation.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255` |
 | `description` | `string \| undefined` | Optional | Seller-oriented description of the meaning of this Custom Attribute,<br>any constraints that the seller should observe, etc. May be displayed as a tooltip in Square UIs.<br>**Constraints**: *Maximum Length*: `255` |
 | `sourceApplication` | [`SourceApplication \| undefined`](../../doc/models/source-application.md) | Optional | Represents information about the application used to generate a change. |
-| `allowedObjectTypes` | [`string[]`](../../doc/models/catalog-object-type.md) | Required | The set of Catalog Object Types that this Custom Attribute may be applied to.<br>Currently, only `ITEM` and `ITEM_VARIATION` are allowed. At least one type must be included.<br>See [CatalogObjectType](#type-catalogobjecttype) for possible values |
+| `allowedObjectTypes` | [`string[]`](../../doc/models/catalog-object-type.md) | Required | The set of `CatalogObject` types that this custom atttribute may be applied to.<br>Currently, only `ITEM`, `ITEM_VARIATION`, and `MODIFIER` are allowed. At least one type must be included.<br>See [CatalogObjectType](#type-catalogobjecttype) for possible values |
 | `sellerVisibility` | [`string \| undefined`](../../doc/models/catalog-custom-attribute-definition-seller-visibility.md) | Optional | Defines the visibility of a custom attribute to sellers in Square<br>client applications, Square APIs or in Square UIs (including Square Point<br>of Sale applications and Square Dashboard). |
 | `appVisibility` | [`string \| undefined`](../../doc/models/catalog-custom-attribute-definition-app-visibility.md) | Optional | Defines the visibility of a custom attribute to applications other than their<br>creating application. |
 | `stringConfig` | [`CatalogCustomAttributeDefinitionStringConfig \| undefined`](../../doc/models/catalog-custom-attribute-definition-string-config.md) | Optional | Configuration associated with Custom Attribute Definitions of type `STRING`. |
@@ -34,20 +34,40 @@ to store any sensitive information (personally identifiable information, card de
 {
   "type": "NUMBER",
   "name": "name0",
-  "description": null,
-  "source_application": null,
+  "description": "description0",
+  "source_application": {
+    "product": "BILLING",
+    "application_id": "application_id8",
+    "name": "name2"
+  },
   "allowed_object_types": [
     "PRICING_RULE",
     "PRODUCT_SET",
     "TIME_PERIOD"
   ],
-  "seller_visibility": null,
-  "app_visibility": null,
-  "string_config": null,
-  "number_config": null,
-  "selection_config": null,
-  "custom_attribute_usage_count": null,
-  "key": null
+  "seller_visibility": "SELLER_VISIBILITY_HIDDEN",
+  "app_visibility": "APP_VISIBILITY_HIDDEN",
+  "string_config": {
+    "enforce_uniqueness": false
+  },
+  "number_config": {
+    "precision": 12
+  },
+  "selection_config": {
+    "max_allowed_selections": 44,
+    "allowed_selections": [
+      {
+        "uid": "uid1",
+        "name": "name1"
+      },
+      {
+        "uid": "uid2",
+        "name": "name2"
+      }
+    ]
+  },
+  "custom_attribute_usage_count": 220,
+  "key": "key0"
 }
 ```
 

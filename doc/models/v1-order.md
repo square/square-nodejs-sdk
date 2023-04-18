@@ -41,31 +41,108 @@ V1Order
 
 ```json
 {
-  "errors": null,
-  "id": null,
-  "buyer_email": null,
-  "recipient_name": null,
-  "recipient_phone_number": null,
-  "state": null,
-  "shipping_address": null,
-  "subtotal_money": null,
-  "total_shipping_money": null,
-  "total_tax_money": null,
-  "total_price_money": null,
-  "total_discount_money": null,
-  "created_at": null,
-  "updated_at": null,
-  "expires_at": null,
-  "payment_id": null,
-  "buyer_note": null,
-  "completed_note": null,
-  "refunded_note": null,
-  "canceled_note": null,
-  "tender": null,
-  "order_history": null,
-  "promo_code": null,
-  "btc_receive_address": null,
-  "btc_price_satoshi": null
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "id": "id0",
+  "buyer_email": "buyer_email8",
+  "recipient_name": "recipient_name8",
+  "recipient_phone_number": "recipient_phone_number4",
+  "state": "COMPLETED",
+  "shipping_address": {
+    "address_line_1": "address_line_10",
+    "address_line_2": "address_line_20",
+    "address_line_3": "address_line_36",
+    "locality": "locality0",
+    "sublocality": "sublocality0",
+    "sublocality_2": "sublocality_28",
+    "sublocality_3": "sublocality_30",
+    "administrative_district_level_1": "administrative_district_level_14",
+    "administrative_district_level_2": "administrative_district_level_26",
+    "administrative_district_level_3": "administrative_district_level_38",
+    "postal_code": "postal_code2",
+    "country": "PT",
+    "first_name": "first_name0",
+    "last_name": "last_name8"
+  },
+  "subtotal_money": {
+    "amount": 116,
+    "currency_code": "JOD"
+  },
+  "total_shipping_money": {
+    "amount": 118,
+    "currency_code": "BOB"
+  },
+  "total_tax_money": {
+    "amount": 58,
+    "currency_code": "MVR"
+  },
+  "total_price_money": {
+    "amount": 52,
+    "currency_code": "KHR"
+  },
+  "total_discount_money": {
+    "amount": 132,
+    "currency_code": "PKR"
+  },
+  "created_at": "created_at2",
+  "updated_at": "updated_at4",
+  "expires_at": "expires_at6",
+  "payment_id": "payment_id0",
+  "buyer_note": "buyer_note2",
+  "completed_note": "completed_note0",
+  "refunded_note": "refunded_note4",
+  "canceled_note": "canceled_note0",
+  "tender": {
+    "id": "id6",
+    "type": "THIRD_PARTY_CARD",
+    "name": "name6",
+    "employee_id": "employee_id6",
+    "receipt_url": "receipt_url2",
+    "card_brand": "OTHER_BRAND",
+    "pan_suffix": "pan_suffix6",
+    "entry_method": "SWIPED",
+    "payment_note": "payment_note4",
+    "total_money": {
+      "amount": 14,
+      "currency_code": "SRD"
+    },
+    "tendered_money": {
+      "amount": 122,
+      "currency_code": "XAG"
+    },
+    "tendered_at": "tendered_at0",
+    "settled_at": "settled_at8",
+    "change_back_money": {},
+    "refunded_money": {},
+    "is_exchange": false
+  },
+  "order_history": [
+    {
+      "action": "PAYMENT_RECEIVED",
+      "created_at": "created_at5"
+    }
+  ],
+  "promo_code": "promo_code2",
+  "btc_receive_address": "btc_receive_address2",
+  "btc_price_satoshi": 144.84
 }
 ```
 

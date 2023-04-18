@@ -27,15 +27,155 @@ However, orders returned by the Orders API might contain multiple fulfillments b
 
 ```json
 {
-  "uid": null,
-  "type": null,
-  "state": null,
-  "line_item_application": null,
-  "entries": null,
-  "metadata": null,
-  "pickup_details": null,
-  "shipment_details": null,
-  "delivery_details": null
+  "uid": "uid0",
+  "type": "DELIVERY",
+  "state": "PREPARED",
+  "line_item_application": "ALL",
+  "entries": [
+    {
+      "uid": "uid5",
+      "line_item_uid": "line_item_uid5",
+      "quantity": "quantity1",
+      "metadata": {
+        "key0": "metadata8",
+        "key1": "metadata9",
+        "key2": "metadata0"
+      }
+    }
+  ],
+  "metadata": {
+    "key0": "metadata3",
+    "key1": "metadata4",
+    "key2": "metadata5"
+  },
+  "pickup_details": {
+    "recipient": {
+      "customer_id": "customer_id8",
+      "display_name": "display_name0",
+      "email_address": "email_address8",
+      "phone_number": "phone_number8",
+      "address": {
+        "address_line_1": "address_line_16",
+        "address_line_2": "address_line_26",
+        "address_line_3": "address_line_32",
+        "locality": "locality6",
+        "sublocality": "sublocality6",
+        "sublocality_2": "sublocality_24",
+        "sublocality_3": "sublocality_36",
+        "administrative_district_level_1": "administrative_district_level_10",
+        "administrative_district_level_2": "administrative_district_level_22",
+        "administrative_district_level_3": "administrative_district_level_34",
+        "postal_code": "postal_code8",
+        "country": "TK",
+        "first_name": "first_name6",
+        "last_name": "last_name4"
+      }
+    },
+    "expires_at": "expires_at2",
+    "auto_complete_duration": "auto_complete_duration2",
+    "schedule_type": "SCHEDULED",
+    "pickup_at": "pickup_at6",
+    "pickup_window_duration": "pickup_window_duration8",
+    "prep_time_duration": "prep_time_duration0",
+    "note": "note4",
+    "placed_at": "placed_at2",
+    "accepted_at": "accepted_at2",
+    "rejected_at": "rejected_at0",
+    "ready_at": "ready_at8",
+    "expired_at": "expired_at8",
+    "picked_up_at": "picked_up_at8",
+    "canceled_at": "canceled_at4",
+    "cancel_reason": "cancel_reason4",
+    "is_curbside_pickup": false,
+    "curbside_pickup_details": {
+      "curbside_details": "curbside_details0",
+      "buyer_arrived_at": "buyer_arrived_at6"
+    }
+  },
+  "shipment_details": {
+    "recipient": {
+      "customer_id": "customer_id8",
+      "display_name": "display_name0",
+      "email_address": "email_address2",
+      "phone_number": "phone_number2",
+      "address": {
+        "address_line_1": "address_line_16",
+        "address_line_2": "address_line_26",
+        "address_line_3": "address_line_32",
+        "locality": "locality6",
+        "sublocality": "sublocality6",
+        "sublocality_2": "sublocality_24",
+        "sublocality_3": "sublocality_36",
+        "administrative_district_level_1": "administrative_district_level_10",
+        "administrative_district_level_2": "administrative_district_level_22",
+        "administrative_district_level_3": "administrative_district_level_34",
+        "postal_code": "postal_code8",
+        "country": "UA",
+        "first_name": "first_name6",
+        "last_name": "last_name4"
+      }
+    },
+    "carrier": "carrier0",
+    "shipping_note": "shipping_note4",
+    "shipping_type": "shipping_type8",
+    "tracking_number": "tracking_number6",
+    "tracking_url": "tracking_url2",
+    "placed_at": "placed_at2",
+    "in_progress_at": "in_progress_at6",
+    "packaged_at": "packaged_at2",
+    "expected_shipped_at": "expected_shipped_at2",
+    "shipped_at": "shipped_at6",
+    "canceled_at": "canceled_at4",
+    "cancel_reason": "cancel_reason6",
+    "failed_at": "failed_at2",
+    "failure_reason": "failure_reason2"
+  },
+  "delivery_details": {
+    "recipient": {
+      "customer_id": "customer_id6",
+      "display_name": "display_name8",
+      "email_address": "email_address6",
+      "phone_number": "phone_number6",
+      "address": {
+        "address_line_1": "address_line_14",
+        "address_line_2": "address_line_24",
+        "address_line_3": "address_line_30",
+        "locality": "locality4",
+        "sublocality": "sublocality4",
+        "sublocality_2": "sublocality_22",
+        "sublocality_3": "sublocality_34",
+        "administrative_district_level_1": "administrative_district_level_18",
+        "administrative_district_level_2": "administrative_district_level_20",
+        "administrative_district_level_3": "administrative_district_level_32",
+        "postal_code": "postal_code6",
+        "country": "AO",
+        "first_name": "first_name4",
+        "last_name": "last_name2"
+      }
+    },
+    "schedule_type": "SCHEDULED",
+    "placed_at": "placed_at4",
+    "deliver_at": "deliver_at4",
+    "prep_time_duration": "prep_time_duration8",
+    "delivery_window_duration": "delivery_window_duration0",
+    "note": "note2",
+    "completed_at": "completed_at8",
+    "in_progress_at": "in_progress_at8",
+    "rejected_at": "rejected_at8",
+    "ready_at": "ready_at6",
+    "delivered_at": "delivered_at4",
+    "canceled_at": "canceled_at2",
+    "cancel_reason": "cancel_reason2",
+    "courier_pickup_at": "courier_pickup_at2",
+    "courier_pickup_window_duration": "courier_pickup_window_duration0",
+    "is_no_contact_delivery": false,
+    "dropoff_notes": "dropoff_notes0",
+    "courier_provider_name": "courier_provider_name6",
+    "courier_support_phone_number": "courier_support_phone_number2",
+    "square_delivery_id": "square_delivery_id6",
+    "external_delivery_id": "external_delivery_id0",
+    "managed_delivery": false
+  }
 }
 ```
 

@@ -77,7 +77,7 @@ export interface Tender {
    */
   additionalRecipients?: AdditionalRecipient[] | null;
   /**
-   * The ID of the [Payment]($m/Payment) that corresponds to this tender.
+   * The ID of the [Payment](entity:Payment) that corresponds to this tender.
    * This value is only present for payments created with the v2 Payments API.
    */
   paymentId?: string | null;

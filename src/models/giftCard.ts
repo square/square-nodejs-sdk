@@ -44,7 +44,7 @@ export interface GiftCard {
    * seller at the time of activation.
    */
   createdAt?: string;
-  /** The IDs of the [customer profiles]($m/Customer) to whom this gift card is linked. */
+  /** The IDs of the [customer profiles](entity:Customer) to whom this gift card is linked. */
   customerIds?: string[];
 }
 

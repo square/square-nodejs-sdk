@@ -25,14 +25,46 @@ of a customer-related [custom attribute](../../doc/models/custom-attribute.md).
 
 ```json
 {
-  "email": null,
-  "phone": null,
-  "text": null,
-  "selection": null,
-  "date": null,
-  "number": null,
-  "boolean": null,
-  "address": null
+  "email": {
+    "exact": "exact6",
+    "fuzzy": "fuzzy2"
+  },
+  "phone": {
+    "exact": "exact0",
+    "fuzzy": "fuzzy6"
+  },
+  "text": {
+    "exact": "exact0",
+    "fuzzy": "fuzzy6"
+  },
+  "selection": {
+    "all": [
+      "all1"
+    ],
+    "any": [
+      "any8",
+      "any9"
+    ],
+    "none": [
+      "none3"
+    ]
+  },
+  "date": {
+    "start_at": "start_at6",
+    "end_at": "end_at6"
+  },
+  "number": {
+    "start_at": "start_at4",
+    "end_at": "end_at8"
+  },
+  "boolean": false,
+  "address": {
+    "postal_code": {
+      "exact": "exact8",
+      "fuzzy": "fuzzy4"
+    },
+    "country": "BE"
+  }
 }
 ```
 

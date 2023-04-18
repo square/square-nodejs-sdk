@@ -22,14 +22,35 @@
 
 ```json
 {
-  "seller_id": null,
-  "created_at": null,
-  "booking_enabled": null,
-  "customer_timezone_choice": null,
-  "booking_policy": null,
-  "allow_user_cancel": null,
-  "business_appointment_settings": null,
-  "support_seller_level_writes": null
+  "seller_id": "seller_id8",
+  "created_at": "created_at2",
+  "booking_enabled": false,
+  "customer_timezone_choice": "BUSINESS_LOCATION_TIMEZONE",
+  "booking_policy": "ACCEPT_ALL",
+  "allow_user_cancel": false,
+  "business_appointment_settings": {
+    "location_types": [
+      "CUSTOMER_LOCATION",
+      "PHONE",
+      "BUSINESS_LOCATION"
+    ],
+    "alignment_time": "SERVICE_DURATION",
+    "min_booking_lead_time_seconds": 68,
+    "max_booking_lead_time_seconds": 78,
+    "any_team_member_booking_enabled": false,
+    "multiple_service_booking_enabled": false,
+    "max_appointments_per_day_limit_type": "PER_TEAM_MEMBER",
+    "max_appointments_per_day_limit": 108,
+    "cancellation_window_seconds": 102,
+    "cancellation_fee_money": {
+      "amount": 102,
+      "currency": "QAR"
+    },
+    "cancellation_policy": "CANCELLATION_TREATED_AS_NO_SHOW",
+    "cancellation_policy_text": "cancellation_policy_text2",
+    "skip_booking_flow_staff_selection": false
+  },
+  "support_seller_level_writes": false
 }
 ```
 

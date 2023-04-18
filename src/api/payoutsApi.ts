@@ -21,7 +21,7 @@ export class PayoutsApi extends BaseApi {
    * order.
    * To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
    *
-   * @param locationId  The ID of the location for which to list the payouts.  By default, payouts are
+   * @param locationId  The ID of the location for which to list the payouts. By default, payouts are
    *                              returned for the default (main) location associated with the seller.
    * @param status      If provided, only payouts with the given status are returned.
    * @param beginTime   The timestamp for the beginning of the payout creation time, in RFC 3339 format.
@@ -31,9 +31,9 @@ export class PayoutsApi extends BaseApi {
    * @param sortOrder   The order in which payouts are listed.
    * @param cursor      A pagination cursor returned by a previous call to this endpoint. Provide this
    *                              cursor to retrieve the next set of results for the original query. For more
-   *                              information, see [Pagination](https://developer.squareup.
-   *                              com/docs/basics/api101/pagination). If request parameters change between requests,
-   *                              subsequent results may contain duplicates or missing records.
+   *                              information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-
+   *                              api-patterns/pagination). If request parameters change between requests, subsequent
+   *                              results may contain duplicates or missing records.
    * @param limit       The maximum number of results to be returned in a single page. It is possible to
    *                              receive fewer results than the specified limit on a given page. The default value of
    *                              100 is also the maximum allowed value. If the provided value is greater than 100, it
@@ -95,9 +95,9 @@ export class PayoutsApi extends BaseApi {
    * @param sortOrder  The order in which payout entries are listed.
    * @param cursor     A pagination cursor returned by a previous call to this endpoint. Provide this cursor
    *                             to retrieve the next set of results for the original query. For more information, see
-   *                             [Pagination](https://developer.squareup.com/docs/basics/api101/pagination). If request
-   *                             parameters change between requests, subsequent results may contain duplicates or
-   *                             missing records.
+   *                             [Pagination](https://developer.squareup.com/docs/build-basics/common-api-
+   *                             patterns/pagination). If request parameters change between requests, subsequent
+   *                             results may contain duplicates or missing records.
    * @param limit      The maximum number of results to be returned in a single page. It is possible to
    *                             receive fewer results than the specified limit on a given page. The default value of
    *                             100 is also the maximum allowed value. If the provided value is greater than 100, it

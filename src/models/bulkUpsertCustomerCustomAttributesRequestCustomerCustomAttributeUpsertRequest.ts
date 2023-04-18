@@ -7,7 +7,7 @@ import { CustomAttribute, customAttributeSchema } from './customAttribute';
  * and an optional idempotency key.
  */
 export interface BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest {
-  /** The ID of the target [customer profile]($m/Customer). */
+  /** The ID of the target [customer profile](entity:Customer). */
   customerId: string;
   /**
    * A custom attribute value. Each custom attribute value has a corresponding

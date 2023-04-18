@@ -23,10 +23,10 @@ Square Seller Dashboard or Point of Sale.
 
 ```json
 {
-  "id": null,
+  "id": "id0",
   "name": "name0",
-  "created_at": null,
-  "updated_at": null
+  "created_at": "created_at2",
+  "updated_at": "updated_at4"
 }
 ```
 

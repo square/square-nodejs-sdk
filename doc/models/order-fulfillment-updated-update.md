@@ -19,9 +19,9 @@ Information about fulfillment updates.
 
 ```json
 {
-  "fulfillment_uid": null,
-  "old_state": null,
-  "new_state": null
+  "fulfillment_uid": "fulfillment_uid4",
+  "old_state": "PREPARED",
+  "new_state": "PREPARED"
 }
 ```
 

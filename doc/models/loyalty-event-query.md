@@ -17,7 +17,34 @@ Represents a query used to search for loyalty events.
 
 ```json
 {
-  "filter": null
+  "filter": {
+    "loyalty_account_filter": {
+      "loyalty_account_id": "loyalty_account_id4"
+    },
+    "type_filter": {
+      "types": [
+        "DELETE_REWARD",
+        "ADJUST_POINTS",
+        "EXPIRE_POINTS"
+      ]
+    },
+    "date_time_filter": {
+      "created_at": {
+        "start_at": "start_at6",
+        "end_at": "end_at6"
+      }
+    },
+    "location_filter": {
+      "location_ids": [
+        "location_ids4",
+        "location_ids5",
+        "location_ids6"
+      ]
+    },
+    "order_filter": {
+      "order_id": "order_id6"
+    }
+  }
 }
 ```
 

@@ -12,7 +12,7 @@ A [CatalogModifier](../../doc/models/catalog-modifier.md).
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `uid` | `string \| undefined` | Optional | A unique ID that identifies the modifier only within this order.<br>**Constraints**: *Maximum Length*: `60` |
-| `catalogObjectId` | `string \| undefined` | Optional | The catalog object ID referencing [CatalogModifier](../../doc/models/catalog-modifier.md).<br>**Constraints**: *Maximum Length*: `192` |
+| `catalogObjectId` | `string \| undefined` | Optional | The catalog object ID referencing [CatalogModifier](entity:CatalogModifier).<br>**Constraints**: *Maximum Length*: `192` |
 | `catalogVersion` | `bigint \| undefined` | Optional | The version of the catalog object that this modifier references. |
 | `name` | `string \| undefined` | Optional | The name of the item modifier.<br>**Constraints**: *Maximum Length*: `255` |
 | `quantity` | `string \| undefined` | Optional | The quantity of the line item modifier. The modifier quantity can be 0 or more.<br>For example, suppose a restaurant offers a cheeseburger on the menu. When a buyer orders<br>this item, the restaurant records the purchase by creating an `Order` object with a line item<br>for a burger. The line item includes a line item modifier: the name is cheese and the quantity<br>is 1. The buyer has the option to order extra cheese (or no cheese). If the buyer chooses<br>the extra cheese option, the modifier quantity increases to 2. If the buyer does not want<br>any cheese, the modifier quantity is set to 0. |
@@ -24,14 +24,24 @@ A [CatalogModifier](../../doc/models/catalog-modifier.md).
 
 ```json
 {
-  "uid": null,
-  "catalog_object_id": null,
-  "catalog_version": null,
-  "name": null,
-  "quantity": null,
-  "base_price_money": null,
-  "total_price_money": null,
-  "metadata": null
+  "uid": "uid0",
+  "catalog_object_id": "catalog_object_id6",
+  "catalog_version": 126,
+  "name": "name0",
+  "quantity": "quantity6",
+  "base_price_money": {
+    "amount": 114,
+    "currency": "ALL"
+  },
+  "total_price_money": {
+    "amount": 52,
+    "currency": "MYR"
+  },
+  "metadata": {
+    "key0": "metadata3",
+    "key1": "metadata4",
+    "key2": "metadata5"
+  }
 }
 ```
 

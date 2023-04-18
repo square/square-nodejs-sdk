@@ -19,8 +19,8 @@ Represents details about an `ADJUST_INCREMENT` [gift card activity type](../../d
 ```json
 {
   "amount_money": {
-    "amount": null,
-    "currency": null
+    "amount": 186,
+    "currency": "NGN"
   },
   "reason": "SUPPORT_ISSUE"
 }

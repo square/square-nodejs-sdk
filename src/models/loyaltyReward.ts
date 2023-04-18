@@ -9,13 +9,13 @@ export interface LoyaltyReward {
   id?: string;
   /** The status of the loyalty reward. */
   status?: string;
-  /** The Square-assigned ID of the [loyalty account]($m/LoyaltyAccount) to which the reward belongs. */
+  /** The Square-assigned ID of the [loyalty account](entity:LoyaltyAccount) to which the reward belongs. */
   loyaltyAccountId: string;
-  /** The Square-assigned ID of the [reward tier]($m/LoyaltyProgramRewardTier) used to create the reward. */
+  /** The Square-assigned ID of the [reward tier](entity:LoyaltyProgramRewardTier) used to create the reward. */
   rewardTierId: string;
   /** The number of loyalty points used for the reward. */
   points?: number;
-  /** The Square-assigned ID of the [order]($m/Order) to which the reward is attached. */
+  /** The Square-assigned ID of the [order](entity:Order) to which the reward is attached. */
   orderId?: string | null;
   /** The timestamp when the reward was created, in RFC 3339 format. */
   createdAt?: string;

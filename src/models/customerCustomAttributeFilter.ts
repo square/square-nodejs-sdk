@@ -11,8 +11,8 @@ import { TimeRange, timeRangeSchema } from './timeRange';
  */
 export interface CustomerCustomAttributeFilter {
   /**
-   * The `key` of the [custom attribute]($m/CustomAttribute) to filter by. The key is the identifier of the custom attribute
-   * (and the corresponding custom attribute definition) and can be retrieved using the [Customer Custom Attributes API]($e/CustomerCustomAttributes).
+   * The `key` of the [custom attribute](entity:CustomAttribute) to filter by. The key is the identifier of the custom attribute
+   * (and the corresponding custom attribute definition) and can be retrieved using the [Customer Custom Attributes API](api:CustomerCustomAttributes).
    */
   key: string;
   /**

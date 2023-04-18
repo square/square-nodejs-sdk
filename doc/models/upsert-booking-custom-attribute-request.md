@@ -19,15 +19,30 @@ Represents an [UpsertBookingCustomAttribute](../../doc/api/booking-custom-attrib
 ```json
 {
   "custom_attribute": {
-    "key": null,
-    "value": null,
-    "version": null,
-    "visibility": null,
-    "definition": null,
-    "updated_at": null,
-    "created_at": null
+    "key": "key2",
+    "value": {
+      "key1": "val1",
+      "key2": "val2"
+    },
+    "version": 102,
+    "visibility": "VISIBILITY_READ_ONLY",
+    "definition": {
+      "key": "key2",
+      "schema": {
+        "key1": "val1",
+        "key2": "val2"
+      },
+      "name": "name2",
+      "description": "description2",
+      "visibility": "VISIBILITY_READ_ONLY",
+      "version": 198,
+      "updated_at": "updated_at8",
+      "created_at": "created_at0"
+    },
+    "updated_at": "updated_at2",
+    "created_at": "created_at0"
   },
-  "idempotency_key": null
+  "idempotency_key": "idempotency_key6"
 }
 ```
 

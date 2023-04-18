@@ -2,9 +2,9 @@
 # Charge Request
 
 Defines the parameters that can be included in the body of
-a request to the [Charge]($e/Transactions/Charge) endpoint.
+a request to the [Charge](api-endpoint:Transactions-Charge) endpoint.
 
-Deprecated - recommend using [CreatePayment](../../doc/api/payments.md#create-payment)
+Deprecated - recommend using [CreatePayment](api-endpoint:Payments-CreatePayment)
 
 ## Structure
 
@@ -18,7 +18,7 @@ Deprecated - recommend using [CreatePayment](../../doc/api/payments.md#create-pa
 | `amountMoney` | [`Money`](../../doc/models/money.md) | Required | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `cardNonce` | `string \| undefined` | Optional | A payment token generated from the [Card.tokenize()](https://developer.squareup.com/reference/sdks/web/payments/objects/Card#Card.tokenize) that represents the card<br>to charge.<br><br>The application that provides a payment token to this endpoint must be the<br>_same application_ that generated the payment token with the Web Payments SDK.<br>Otherwise, the nonce is invalid.<br><br>Do not provide a value for this field if you provide a value for<br>`customer_card_id`.<br>**Constraints**: *Maximum Length*: `192` |
 | `customerCardId` | `string \| undefined` | Optional | The ID of the customer card on file to charge. Do<br>not provide a value for this field if you provide a value for `card_nonce`.<br><br>If you provide this value, you _must_ also provide a value for<br>`customer_id`.<br>**Constraints**: *Maximum Length*: `192` |
-| `delayCapture` | `boolean \| undefined` | Optional | If `true`, the request will only perform an Auth on the provided<br>card. You can then later perform either a Capture (with the<br>[CaptureTransaction](../../doc/api/transactions.md#capture-transaction) endpoint) or a Void<br>(with the [VoidTransaction](../../doc/api/transactions.md#void-transaction) endpoint).<br><br>Default value: `false` |
+| `delayCapture` | `boolean \| undefined` | Optional | If `true`, the request will only perform an Auth on the provided<br>card. You can then later perform either a Capture (with the<br>[CaptureTransaction](api-endpoint:Transactions-CaptureTransaction) endpoint) or a Void<br>(with the [VoidTransaction](api-endpoint:Transactions-VoidTransaction) endpoint).<br><br>Default value: `false` |
 | `referenceId` | `string \| undefined` | Optional | An optional ID you can associate with the transaction for your own<br>purposes (such as to associate the transaction with an entity ID in your<br>own database).<br><br>This value cannot exceed 40 characters.<br>**Constraints**: *Maximum Length*: `40` |
 | `note` | `string \| undefined` | Optional | An optional note to associate with the transaction.<br><br>This value cannot exceed 60 characters.<br>**Constraints**: *Maximum Length*: `60` |
 | `customerId` | `string \| undefined` | Optional | The ID of the customer to associate this transaction with. This field<br>is required if you provide a value for `customer_card_id`, and optional<br>otherwise.<br>**Constraints**: *Maximum Length*: `50` |

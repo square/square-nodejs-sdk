@@ -2,7 +2,7 @@
 # List Refunds Response
 
 Defines the fields that are included in the response body of
-a request to the [ListRefunds]($e/Transactions/ListRefunds) endpoint.
+a request to the [ListRefunds](api-endpoint:Transactions-ListRefunds) endpoint.
 
 One of `errors` or `refunds` is present in a given response (never both).
 

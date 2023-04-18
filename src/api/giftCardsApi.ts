@@ -55,10 +55,10 @@ export class GiftCardsApi extends BaseApi {
    * Lists all gift cards. You can specify optional filters to retrieve
    * a subset of the gift cards. Results are sorted by `created_at` in ascending order.
    *
-   * @param type        If a [type]($m/GiftCardType) is provided, the endpoint returns gift cards of the
+   * @param type        If a [type](entity:GiftCardType) is provided, the endpoint returns gift cards of the
    *                              specified type. Otherwise, the endpoint returns gift cards of all types.
-   * @param state       If a [state]($m/GiftCardStatus) is provided, the endpoint returns the gift cards in
-   *                              the specified state. Otherwise, the endpoint returns the gift cards of all states.
+   * @param state       If a [state](entity:GiftCardStatus) is provided, the endpoint returns the gift cards
+   *                              in the specified state. Otherwise, the endpoint returns the gift cards of all states.
    * @param limit       If a limit is provided, the endpoint returns only the specified number of results
    *                              per page. The maximum value is 50. The default value is 30. For more information, see
    *                              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).

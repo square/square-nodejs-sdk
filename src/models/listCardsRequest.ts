@@ -8,7 +8,7 @@ export interface ListCardsRequest {
   /**
    * A pagination cursor returned by a previous call to this endpoint.
    * Provide this to retrieve the next set of results for your original query.
-   * See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information.
+   * See [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination) for more information.
    */
   cursor?: string | null;
   /**

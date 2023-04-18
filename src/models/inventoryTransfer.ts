@@ -22,22 +22,22 @@ export interface InventoryTransfer {
   /** Indicates the state of a tracked item quantity in the lifecycle of goods. */
   state?: string;
   /**
-   * The Square-generated ID of the [Location]($m/Location) where the related
+   * The Square-generated ID of the [Location](entity:Location) where the related
    * quantity of items was tracked before the transfer.
    */
   fromLocationId?: string | null;
   /**
-   * The Square-generated ID of the [Location]($m/Location) where the related
+   * The Square-generated ID of the [Location](entity:Location) where the related
    * quantity of items was tracked after the transfer.
    */
   toLocationId?: string | null;
   /**
    * The Square-generated ID of the
-   * [CatalogObject]($m/CatalogObject) being tracked.
+   * [CatalogObject](entity:CatalogObject) being tracked.
    */
   catalogObjectId?: string | null;
   /**
-   * The [type]($m/CatalogObjectType) of the [CatalogObject]($m/CatalogObject) being tracked.
+   * The [type](entity:CatalogObjectType) of the [CatalogObject](entity:CatalogObject) being tracked.
    * The Inventory API supports setting and reading the `"catalog_object_type": "ITEM_VARIATION"` field value.
    * In addition, it can also read the `"catalog_object_type": "ITEM"` field value that is set by the Square Restaurants app.
    */
@@ -62,12 +62,12 @@ export interface InventoryTransfer {
   /** Represents information about the application used to generate a change. */
   source?: SourceApplication;
   /**
-   * The Square-generated ID of the [Employee]($m/Employee) responsible for the
+   * The Square-generated ID of the [Employee](entity:Employee) responsible for the
    * inventory transfer.
    */
   employeeId?: string | null;
   /**
-   * The Square-generated ID of the [Team Member]($m/TeamMember) responsible for the
+   * The Square-generated ID of the [Team Member](entity:TeamMember) responsible for the
    * inventory transfer.
    */
   teamMemberId?: string | null;

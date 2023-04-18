@@ -22,12 +22,34 @@ V1PaymentTax
 
 ```json
 {
-  "errors": null,
-  "name": null,
-  "applied_money": null,
-  "rate": null,
-  "inclusion_type": null,
-  "fee_id": null
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "name": "name0",
+  "applied_money": {
+    "amount": 196,
+    "currency_code": "LYD"
+  },
+  "rate": "rate0",
+  "inclusion_type": "ADDITIVE",
+  "fee_id": "fee_id8"
 }
 ```
 

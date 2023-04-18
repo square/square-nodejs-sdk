@@ -20,12 +20,12 @@
 
 ```json
 {
-  "order_id": null,
-  "version": null,
-  "location_id": null,
-  "state": null,
-  "created_at": null,
-  "updated_at": null
+  "order_id": "order_id6",
+  "version": 172,
+  "location_id": "location_id4",
+  "state": "OPEN",
+  "created_at": "created_at2",
+  "updated_at": "updated_at4"
 }
 ```
 

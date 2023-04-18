@@ -19,9 +19,9 @@ Contains the metadata of a webhook event type.
 
 ```json
 {
-  "event_type": null,
-  "api_version_introduced": null,
-  "release_status": null
+  "event_type": "event_type0",
+  "api_version_introduced": "api_version_introduced0",
+  "release_status": "release_status4"
 }
 ```
 

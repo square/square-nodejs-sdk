@@ -5,7 +5,7 @@ import { Money, moneySchema } from './money';
 export interface GiftCardActivityRefund {
   /**
    * The ID of the refunded `REDEEM` gift card activity. Square populates this field if the
-   * `payment_id` in the corresponding [RefundPayment]($e/Refunds/RefundPayment) request
+   * `payment_id` in the corresponding [RefundPayment](api-endpoint:Refunds-RefundPayment) request
    * represents a redemption made by the same gift card. Note that you must use `RefundPayment`
    * to refund a gift card payment to the same gift card if the payment was processed by Square.
    * For applications that use a custom payment processing system, this field is required when creating

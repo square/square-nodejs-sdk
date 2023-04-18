@@ -18,10 +18,10 @@
 
 ```json
 {
-  "location_id": null,
-  "status": null,
-  "limit": null,
-  "cursor": null
+  "location_id": "location_id4",
+  "status": "ACTIVE",
+  "limit": 172,
+  "cursor": "cursor6"
 }
 ```
 

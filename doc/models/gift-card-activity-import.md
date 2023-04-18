@@ -20,8 +20,8 @@ This activity type is used when Square imports a third-party gift card, in which
 ```json
 {
   "amount_money": {
-    "amount": null,
-    "currency": null
+    "amount": 186,
+    "currency": "NGN"
   }
 }
 ```

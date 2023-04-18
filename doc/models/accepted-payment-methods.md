@@ -18,10 +18,10 @@
 
 ```json
 {
-  "apple_pay": null,
-  "google_pay": null,
-  "cash_app_pay": null,
-  "afterpay_clearpay": null
+  "apple_pay": false,
+  "google_pay": false,
+  "cash_app_pay": false,
+  "afterpay_clearpay": false
 }
 ```
 

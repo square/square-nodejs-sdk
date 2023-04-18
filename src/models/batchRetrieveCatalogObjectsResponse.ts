@@ -5,9 +5,9 @@ import { Error, errorSchema } from './error';
 export interface BatchRetrieveCatalogObjectsResponse {
   /** Any errors that occurred during the request. */
   errors?: Error[];
-  /** A list of [CatalogObject]($m/CatalogObject)s returned. */
+  /** A list of [CatalogObject](entity:CatalogObject)s returned. */
   objects?: CatalogObject[];
-  /** A list of [CatalogObject]($m/CatalogObject)s referenced by the object in the `objects` field. */
+  /** A list of [CatalogObject](entity:CatalogObject)s referenced by the object in the `objects` field. */
   relatedObjects?: CatalogObject[];
 }
 

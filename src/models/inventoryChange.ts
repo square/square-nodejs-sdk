@@ -46,7 +46,7 @@ export interface InventoryChange {
    * specifies the precision for decimal quantities.
    */
   measurementUnit?: CatalogMeasurementUnit;
-  /** The ID of the [CatalogMeasurementUnit]($m/CatalogMeasurementUnit) object representing the catalog measurement unit associated with the inventory change. */
+  /** The ID of the [CatalogMeasurementUnit](entity:CatalogMeasurementUnit) object representing the catalog measurement unit associated with the inventory change. */
   measurementUnitId?: string;
 }
 

@@ -7,7 +7,7 @@ import { CustomAttribute, customAttributeSchema } from './customAttribute';
  * and an optional idempotency key.
  */
 export interface BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest {
-  /** The ID of the target [location]($m/Location). */
+  /** The ID of the target [location](entity:Location). */
   locationId: string;
   /**
    * A custom attribute value. Each custom attribute value has a corresponding

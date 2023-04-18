@@ -22,10 +22,14 @@ fulfill.
 
 ```json
 {
-  "uid": null,
+  "uid": "uid0",
   "line_item_uid": "line_item_uid0",
   "quantity": "quantity6",
-  "metadata": null
+  "metadata": {
+    "key0": "metadata3",
+    "key1": "metadata4",
+    "key2": "metadata5"
+  }
 }
 ```
 

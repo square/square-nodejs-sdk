@@ -71,7 +71,7 @@ export interface GiftCardActivity {
   id?: string;
   /** Indicates the type of [gift card activity]($m/GiftCardActivity). */
   type: string;
-  /** The ID of the [business location]($m/Location) where the activity occurred. */
+  /** The ID of the [business location](entity:Location) where the activity occurred. */
   locationId: string;
   /** The timestamp when the gift card activity was created, in RFC 3339 format. */
   createdAt?: string;

@@ -6,7 +6,7 @@ import { Vendor, vendorSchema } from './vendor';
 export interface SearchVendorsResponse {
   /** Errors encountered when the request fails. */
   errors?: Error[];
-  /** The [Vendor]($m/Vendor) objects matching the specified search filter. */
+  /** The [Vendor](entity:Vendor) objects matching the specified search filter. */
   vendors?: Vendor[];
   /**
    * The pagination cursor to be used in a subsequent request. If unset,

@@ -16,8 +16,33 @@
 
 ```json
 {
-  "errors": null,
-  "snippet": null
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "snippet": {
+    "id": "id0",
+    "site_id": "site_id6",
+    "content": "content4",
+    "created_at": "created_at8",
+    "updated_at": "updated_at4"
+  }
 }
 ```
 
