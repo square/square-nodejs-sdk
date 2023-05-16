@@ -35,11 +35,44 @@ results.
         "closed_at": {
           "end_at": "2019-03-04T21:54:45+00:00",
           "start_at": "2018-03-03T20:00:00+00:00"
+        },
+        "created_at": {
+          "start_at": "start_at6",
+          "end_at": "end_at6"
+        },
+        "updated_at": {
+          "start_at": "start_at4",
+          "end_at": "end_at8"
         }
       },
       "state_filter": {
         "states": [
           "COMPLETED"
+        ]
+      },
+      "fulfillment_filter": {
+        "fulfillment_types": [
+          "SHIPMENT",
+          "DELIVERY",
+          "PICKUP"
+        ],
+        "fulfillment_states": [
+          "PREPARED",
+          "COMPLETED",
+          "CANCELED"
+        ]
+      },
+      "source_filter": {
+        "source_names": [
+          "source_names0",
+          "source_names1"
+        ]
+      },
+      "customer_filter": {
+        "customer_ids": [
+          "customer_ids7",
+          "customer_ids8",
+          "customer_ids9"
         ]
       }
     },
@@ -48,7 +81,8 @@ results.
       "sort_order": "DESC"
     }
   },
-  "return_entries": true
+  "return_entries": true,
+  "cursor": "cursor6"
 }
 ```
 

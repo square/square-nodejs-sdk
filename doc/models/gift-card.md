@@ -32,12 +32,7 @@ Represents a Square gift card.
     "amount": 146,
     "currency": "ARS"
   },
-  "gan": "gan6",
-  "created_at": "created_at2",
-  "customer_ids": [
-    "customer_ids1",
-    "customer_ids2"
-  ]
+  "gan": "gan6"
 }
 ```
 

@@ -29,21 +29,7 @@ V1Settlement
     "currency_code": "USS"
   },
   "initiated_at": "initiated_at2",
-  "bank_account_id": "bank_account_id0",
-  "entries": [
-    {
-      "payment_id": "payment_id5",
-      "type": "PAID_SERVICE_FEE",
-      "amount_money": {
-        "amount": 91,
-        "currency_code": "PEN"
-      },
-      "fee_money": {
-        "amount": 203,
-        "currency_code": "RON"
-      }
-    }
-  ]
+  "bank_account_id": "bank_account_id0"
 }
 ```
 

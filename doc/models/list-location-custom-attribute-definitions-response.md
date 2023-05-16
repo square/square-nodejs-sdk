@@ -28,7 +28,10 @@ If additional results are available, the `cursor` field is also present along wi
       "description": "Location's phone number",
       "key": "phone-number",
       "name": "phone number",
-      "schema": null,
+      "schema": {
+        "key1": "val1",
+        "key2": "val2"
+      },
       "updated_at": "2022-12-02T19:50:21.832Z",
       "version": 1,
       "visibility": "VISIBILITY_READ_ONLY"
@@ -38,10 +41,33 @@ If additional results are available, the `cursor` field is also present along wi
       "description": "Bestselling item at location",
       "key": "bestseller",
       "name": "Bestseller",
-      "schema": null,
+      "schema": {
+        "key1": "val1",
+        "key2": "val2"
+      },
       "updated_at": "2022-12-03T10:17:52.341Z",
       "version": 4,
       "visibility": "VISIBILITY_READ_WRITE_VALUES"
+    }
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

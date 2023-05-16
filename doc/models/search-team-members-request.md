@@ -25,9 +25,11 @@ Represents a search request for a filtered list of `TeamMember` objects.
       "location_ids": [
         "0G5P3VGACMMQZ"
       ],
-      "status": "ACTIVE"
+      "status": "ACTIVE",
+      "is_owner": false
     }
-  }
+  },
+  "cursor": "cursor6"
 }
 ```
 

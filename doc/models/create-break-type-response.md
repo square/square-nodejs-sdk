@@ -29,7 +29,27 @@ the request resulted in errors.
     "location_id": "CGJN03P1D08GF",
     "updated_at": "2019-02-26T22:42:54Z",
     "version": 1
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

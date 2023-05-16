@@ -32,20 +32,7 @@ Describes a loyalty account in a [loyalty program](../../doc/models/loyalty-prog
   "balance": 64,
   "lifetime_points": 88,
   "customer_id": "customer_id8",
-  "enrolled_at": "enrolled_at0",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "mapping": {
-    "id": "id4",
-    "created_at": "created_at2",
-    "phone_number": "phone_number2"
-  },
-  "expiring_point_deadlines": [
-    {
-      "points": 209,
-      "expires_at": "expires_at3"
-    }
-  ]
+  "enrolled_at": "enrolled_at0"
 }
 ```
 

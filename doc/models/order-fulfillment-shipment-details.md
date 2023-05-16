@@ -41,32 +41,13 @@ Contains the details necessary to fulfill a shipment order.
       "address_line_2": "address_line_24",
       "address_line_3": "address_line_30",
       "locality": "locality4",
-      "sublocality": "sublocality4",
-      "sublocality_2": "sublocality_22",
-      "sublocality_3": "sublocality_34",
-      "administrative_district_level_1": "administrative_district_level_18",
-      "administrative_district_level_2": "administrative_district_level_20",
-      "administrative_district_level_3": "administrative_district_level_32",
-      "postal_code": "postal_code6",
-      "country": "PK",
-      "first_name": "first_name4",
-      "last_name": "last_name2"
+      "sublocality": "sublocality4"
     }
   },
   "carrier": "carrier2",
   "shipping_note": "shipping_note6",
   "shipping_type": "shipping_type6",
-  "tracking_number": "tracking_number8",
-  "tracking_url": "tracking_url0",
-  "placed_at": "placed_at0",
-  "in_progress_at": "in_progress_at4",
-  "packaged_at": "packaged_at4",
-  "expected_shipped_at": "expected_shipped_at4",
-  "shipped_at": "shipped_at8",
-  "canceled_at": "canceled_at4",
-  "cancel_reason": "cancel_reason4",
-  "failed_at": "failed_at4",
-  "failure_reason": "failure_reason0"
+  "tracking_number": "tracking_number8"
 }
 ```
 

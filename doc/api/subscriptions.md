@@ -58,6 +58,7 @@ bodyPriceOverrideMoney.amount = BigInt(100);
 bodyPriceOverrideMoney.currency = 'USD';
 
 const bodySource: SubscriptionSource = {};
+bodySource.name = 'My App';
 
 const body: CreateSubscriptionRequest = {
   locationId: 'S8GWD5R9QB376',
@@ -225,13 +226,7 @@ async updateSubscription(
 ```ts
 const subscriptionId = 'subscription_id0';
 const contentType = null;
-const bodySubscriptionPriceOverrideMoney: Money = {};
-bodySubscriptionPriceOverrideMoney.amount = BigInt(2000);
-bodySubscriptionPriceOverrideMoney.currency = 'USD';
-
 const bodySubscription: Subscription = {};
-bodySubscription.priceOverrideMoney = bodySubscriptionPriceOverrideMoney;
-bodySubscription.version = BigInt(1594155459464);
 
 const body: UpdateSubscriptionRequest = {};
 body.subscription = bodySubscription;

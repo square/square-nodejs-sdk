@@ -21,9 +21,11 @@ Represents an [AdjustLoyaltyPoints](../../doc/api/loyalty.md#adjust-loyalty-poin
 {
   "adjust_points": {
     "points": 10,
-    "reason": "Complimentary points"
+    "reason": "Complimentary points",
+    "loyalty_program_id": "loyalty_program_id2"
   },
-  "idempotency_key": "bc29a517-3dc9-450e-aa76-fae39ee849d1"
+  "idempotency_key": "bc29a517-3dc9-450e-aa76-fae39ee849d1",
+  "allow_negative_balance": false
 }
 ```
 

@@ -20,7 +20,7 @@
 {
   "id": "id0",
   "root_adjustment_id": "root_adjustment_id0",
-  "from_state": "UNLINKED_RETURN",
+  "from_state": "RESERVED_FOR_SALE",
   "to_state": "SUPPORTED_BY_NEWER_VERSION"
 }
 ```

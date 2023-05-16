@@ -28,7 +28,10 @@ If additional results are available, the `cursor` field is also present along wi
       "description": "Update the description as desired.",
       "key": "favoritemovie",
       "name": "Favorite Movie",
-      "schema": null,
+      "schema": {
+        "key1": "val1",
+        "key2": "val2"
+      },
       "updated_at": "2022-04-26T15:39:38Z",
       "version": 3,
       "visibility": "VISIBILITY_READ_ONLY"
@@ -38,10 +41,33 @@ If additional results are available, the `cursor` field is also present along wi
       "description": "Customer owns movie.",
       "key": "ownsmovie",
       "name": "Owns Movie",
-      "schema": null,
+      "schema": {
+        "key1": "val1",
+        "key2": "val2"
+      },
       "updated_at": "2022-04-26T15:49:05Z",
       "version": 1,
       "visibility": "VISIBILITY_HIDDEN"
+    }
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

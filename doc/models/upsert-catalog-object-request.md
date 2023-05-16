@@ -48,7 +48,32 @@
         }
       ]
     },
-    "type": "ITEM"
+    "type": "ITEM",
+    "updated_at": "updated_at8",
+    "version": 4,
+    "is_deleted": false,
+    "custom_attribute_values": {
+      "key0": {
+        "name": "name3",
+        "string_value": "string_value7",
+        "custom_attribute_definition_id": "custom_attribute_definition_id9",
+        "type": "SELECTION",
+        "number_value": "number_value3"
+      },
+      "key1": {
+        "name": "name2",
+        "string_value": "string_value6",
+        "custom_attribute_definition_id": "custom_attribute_definition_id0",
+        "type": "STRING",
+        "number_value": "number_value2"
+      }
+    },
+    "catalog_v1_ids": [
+      {
+        "catalog_v1_id": "catalog_v1_id6",
+        "location_id": "location_id6"
+      }
+    ]
   }
 }
 ```

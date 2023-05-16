@@ -23,7 +23,7 @@ Represents one of a business' [locations](https://developer.squareup.com/docs/lo
 | `languageCode` | `string \| undefined` | Optional | The language associated with the location, in<br>[BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A).<br>For more information, see [Language Preferences](https://developer.squareup.com/docs/build-basics/general-considerations/language-preferences).<br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `5` |
 | `currency` | [`string \| undefined`](../../doc/models/currency.md) | Optional | Indicates the associated currency for an amount of money. Values correspond<br>to [ISO 4217](https://wikipedia.org/wiki/ISO_4217). |
 | `phoneNumber` | `string \| undefined` | Optional | The phone number of the location. For example, `+1 855-700-6000`.<br>**Constraints**: *Maximum Length*: `17` |
-| `businessName` | `string \| undefined` | Optional | The name of the location's overall business. This name is present on receipts and other customer-facing branding.<br>**Constraints**: *Maximum Length*: `255` |
+| `businessName` | `string \| undefined` | Optional | The name of the location's overall business. This name is present on receipts and other customer-facing branding, and can be changed no more than three times in a twelve-month period.<br>**Constraints**: *Maximum Length*: `255` |
 | `type` | [`string \| undefined`](../../doc/models/location-type.md) | Optional | A location's type. |
 | `websiteUrl` | `string \| undefined` | Optional | The website URL of the location.  For example, `https://squareup.com`.<br>**Constraints**: *Maximum Length*: `255` |
 | `businessHours` | [`BusinessHours \| undefined`](../../doc/models/business-hours.md) | Optional | The hours of operation for a location. |
@@ -50,69 +50,12 @@ Represents one of a business' [locations](https://developer.squareup.com/docs/lo
     "address_line_2": "address_line_26",
     "address_line_3": "address_line_32",
     "locality": "locality6",
-    "sublocality": "sublocality6",
-    "sublocality_2": "sublocality_24",
-    "sublocality_3": "sublocality_36",
-    "administrative_district_level_1": "administrative_district_level_10",
-    "administrative_district_level_2": "administrative_district_level_28",
-    "administrative_district_level_3": "administrative_district_level_34",
-    "postal_code": "postal_code8",
-    "country": "BE",
-    "first_name": "first_name6",
-    "last_name": "last_name4"
+    "sublocality": "sublocality6"
   },
   "timezone": "timezone0",
   "capabilities": [
     "CREDIT_CARD_PROCESSING"
-  ],
-  "status": "ACTIVE",
-  "created_at": "created_at2",
-  "merchant_id": "merchant_id0",
-  "country": "FO",
-  "language_code": "language_code8",
-  "currency": "YER",
-  "phone_number": "phone_number2",
-  "business_name": "business_name4",
-  "type": "PHYSICAL",
-  "website_url": "website_url8",
-  "business_hours": {
-    "periods": [
-      {
-        "day_of_week": "SUN",
-        "start_local_time": "start_local_time3",
-        "end_local_time": "end_local_time5"
-      },
-      {
-        "day_of_week": "SAT",
-        "start_local_time": "start_local_time4",
-        "end_local_time": "end_local_time6"
-      },
-      {
-        "day_of_week": "FRI",
-        "start_local_time": "start_local_time5",
-        "end_local_time": "end_local_time7"
-      }
-    ]
-  },
-  "business_email": "business_email4",
-  "description": "description0",
-  "twitter_username": "twitter_username2",
-  "instagram_username": "instagram_username4",
-  "facebook_url": "facebook_url2",
-  "coordinates": {
-    "latitude": 39.14,
-    "longitude": 36.94
-  },
-  "logo_url": "logo_url0",
-  "pos_background_url": "pos_background_url2",
-  "mcc": "mcc0",
-  "full_format_logo_url": "full_format_logo_url4",
-  "tax_ids": {
-    "eu_vat": "eu_vat2",
-    "fr_siret": "fr_siret4",
-    "fr_naf": "fr_naf4",
-    "es_nif": "es_nif8"
-  }
+  ]
 }
 ```
 

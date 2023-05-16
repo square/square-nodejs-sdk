@@ -22,9 +22,13 @@ Represents a [CreateCustomerCustomAttributeDefinition](../../doc/api/customer-cu
     "description": "The favorite movie of the customer.",
     "key": "favoritemovie",
     "name": "Favorite Movie",
-    "schema": null,
+    "schema": {
+      "key1": "val1",
+      "key2": "val2"
+    },
     "visibility": "VISIBILITY_HIDDEN"
-  }
+  },
+  "idempotency_key": "idempotency_key6"
 }
 ```
 

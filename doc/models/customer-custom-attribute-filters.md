@@ -31,7 +31,10 @@ to search based on [custom attributes](../../doc/models/custom-attribute.md) tha
           "exact": "exact6",
           "fuzzy": "fuzzy2"
         },
-        "text": {},
+        "text": {
+          "exact": "exact6",
+          "fuzzy": "fuzzy2"
+        },
         "selection": {
           "all": [
             "all5"
@@ -47,15 +50,6 @@ to search based on [custom attributes](../../doc/models/custom-attribute.md) tha
         "date": {
           "start_at": "start_at2",
           "end_at": "end_at0"
-        },
-        "number": {
-          "start_at": "start_at0",
-          "end_at": "end_at2"
-        },
-        "boolean": false,
-        "address": {
-          "postal_code": {},
-          "country": "WS"
         }
       },
       "updated_at": {

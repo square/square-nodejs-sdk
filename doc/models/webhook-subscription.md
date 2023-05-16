@@ -33,11 +33,7 @@ event types, and signature key.
     "event_types8",
     "event_types9"
   ],
-  "notification_url": "notification_url4",
-  "api_version": "api_version8",
-  "signature_key": "signature_key0",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4"
+  "notification_url": "notification_url4"
 }
 ```
 

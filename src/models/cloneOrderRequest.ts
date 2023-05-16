@@ -19,7 +19,7 @@ export interface CloneOrderRequest {
    * you can reattempt the call with the same idempotency key without
    * worrying about creating duplicate cloned orders.
    * The originally cloned order is returned.
-   * For more information, see [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency).
+   * For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
    */
   idempotencyKey?: string | null;
 }

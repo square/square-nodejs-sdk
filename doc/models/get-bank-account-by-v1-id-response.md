@@ -31,8 +31,32 @@ Response object returned by GetBankAccountByV1Id.
     "location_id": "S8GWD5example",
     "primary_bank_identification_number": "112200303",
     "status": "VERIFICATION_IN_PROGRESS",
-    "version": 5
-  }
+    "version": 5,
+    "secondary_bank_identification_number": "secondary_bank_identification_number4",
+    "debit_mandate_reference_id": "debit_mandate_reference_id0",
+    "reference_id": "reference_id2",
+    "fingerprint": "fingerprint0"
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

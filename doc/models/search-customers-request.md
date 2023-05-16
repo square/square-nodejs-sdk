@@ -34,19 +34,29 @@ Defines the fields that are included in the request body of a request to the
         ]
       },
       "email_address": {
-        "fuzzy": "example.com"
+        "fuzzy": "example.com",
+        "exact": "exact8"
       },
       "group_ids": {
         "all": [
           "545AXB44B4XXWMVQ4W8SBT3HHF"
         ]
+      },
+      "updated_at": {
+        "start_at": "start_at2",
+        "end_at": "end_at0"
+      },
+      "phone_number": {
+        "exact": "exact8",
+        "fuzzy": "fuzzy4"
       }
     },
     "sort": {
       "field": "CREATED_AT",
       "order": "ASC"
     }
-  }
+  },
+  "cursor": "cursor6"
 }
 ```
 

@@ -51,7 +51,20 @@ A response that contains the loyalty program.
         "definition": {
           "discount_type": "FIXED_PERCENTAGE",
           "percentage_discount": "10",
-          "scope": "ORDER"
+          "scope": "ORDER",
+          "catalog_object_ids": [
+            "catalog_object_ids3",
+            "catalog_object_ids2",
+            "catalog_object_ids1"
+          ],
+          "fixed_discount_money": {
+            "amount": 63,
+            "currency": "DZD"
+          },
+          "max_discount_money": {
+            "amount": 107,
+            "currency": "AMD"
+          }
         },
         "id": "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
         "name": "10% off entire sale",
@@ -67,8 +80,31 @@ A response that contains the loyalty program.
       "one": "Point",
       "other": "Points"
     },
-    "updated_at": "2020-05-01T02:00:02Z"
-  }
+    "updated_at": "2020-05-01T02:00:02Z",
+    "expiration_policy": {
+      "expiration_duration": "expiration_duration8"
+    }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

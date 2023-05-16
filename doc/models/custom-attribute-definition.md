@@ -32,10 +32,7 @@ specifies the key, visibility, schema, and other properties for a custom attribu
   },
   "name": "name0",
   "description": "description0",
-  "visibility": "VISIBILITY_READ_WRITE_VALUES",
-  "version": 172,
-  "updated_at": "updated_at4",
-  "created_at": "created_at2"
+  "visibility": "VISIBILITY_READ_WRITE_VALUES"
 }
 ```
 

@@ -28,9 +28,7 @@
     "filename": "filename8",
     "filetype": "filetype8"
   },
-  "evidence_text": "evidence_text6",
-  "uploaded_at": "uploaded_at4",
-  "evidence_type": "RECEIPT"
+  "evidence_text": "evidence_text6"
 }
 ```
 

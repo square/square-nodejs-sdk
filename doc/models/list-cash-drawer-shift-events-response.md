@@ -9,15 +9,15 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `events` | [`CashDrawerShiftEvent[] \| undefined`](../../doc/models/cash-drawer-shift-event.md) | Optional | All of the events (payments, refunds, etc.) for a cash drawer during<br>the shift. |
 | `cursor` | `string \| undefined` | Optional | Opaque cursor for fetching the next page. Cursor is not present in<br>the last page of results. |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `cashDrawerShiftEvents` | [`CashDrawerShiftEvent[] \| undefined`](../../doc/models/cash-drawer-shift-event.md) | Optional | All of the events (payments, refunds, etc.) for a cash drawer during<br>the shift. |
 
 ## Example (as JSON)
 
 ```json
 {
-  "events": [
+  "cash_drawer_shift_events": [
     {
       "created_at": "2019-11-22T00:43:02.000Z",
       "description": "",
@@ -26,7 +26,8 @@
         "currency": "USD"
       },
       "event_type": "CASH_TENDER_PAYMENT",
-      "id": "9F07DB01-D85A-4B77-88C3-D5C64CEB5155"
+      "id": "9F07DB01-D85A-4B77-88C3-D5C64CEB5155",
+      "team_member_id": ""
     },
     {
       "created_at": "2019-11-22T00:43:12.000Z",
@@ -36,7 +37,8 @@
         "currency": "USD"
       },
       "event_type": "CASH_TENDER_PAYMENT",
-      "id": "B2854CEA-A781-49B3-8F31-C64558231F48"
+      "id": "B2854CEA-A781-49B3-8F31-C64558231F48",
+      "team_member_id": ""
     },
     {
       "created_at": "2019-11-22T00:43:23.000Z",
@@ -46,7 +48,8 @@
         "currency": "USD"
       },
       "event_type": "CASH_TENDER_CANCELLED_PAYMENT",
-      "id": "B5FB7F72-95CD-44A3-974D-26C41064D042"
+      "id": "B5FB7F72-95CD-44A3-974D-26C41064D042",
+      "team_member_id": ""
     },
     {
       "created_at": "2019-11-22T00:43:46.000Z",
@@ -56,7 +59,8 @@
         "currency": "USD"
       },
       "event_type": "CASH_TENDER_REFUND",
-      "id": "0B425480-8504-40B4-A867-37B23543931B"
+      "id": "0B425480-8504-40B4-A867-37B23543931B",
+      "team_member_id": ""
     },
     {
       "created_at": "2019-11-22T00:44:18.000Z",
@@ -66,7 +70,8 @@
         "currency": "USD"
       },
       "event_type": "PAID_IN",
-      "id": "8C66E60E-FDCF-4EEF-A98D-3B14B7ED5CBE"
+      "id": "8C66E60E-FDCF-4EEF-A98D-3B14B7ED5CBE",
+      "team_member_id": ""
     },
     {
       "created_at": "2019-11-22T00:44:29.000Z",
@@ -76,7 +81,29 @@
         "currency": "USD"
       },
       "event_type": "PAID_OUT",
-      "id": "D5ACA7FE-C64D-4ADA-8BC8-82118A2DAE4F"
+      "id": "D5ACA7FE-C64D-4ADA-8BC8-82118A2DAE4F",
+      "team_member_id": ""
+    }
+  ],
+  "cursor": "cursor6",
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

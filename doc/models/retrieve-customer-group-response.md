@@ -26,7 +26,27 @@ Either `errors` or `group` is present in a given response (never both).
     "id": "2TAT3CMH4Q0A9M87XJZED0WMR3",
     "name": "Loyal Customers",
     "updated_at": "2020-04-13T21:54:58Z"
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

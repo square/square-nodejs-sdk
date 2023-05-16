@@ -41,45 +41,6 @@ Adding `INSTALLMENT` payment requests to an invoice requires an
   "fixed_amount_requested_money": {
     "amount": 162,
     "currency": "TOP"
-  },
-  "percentage_requested": "percentage_requested2",
-  "tipping_enabled": false,
-  "automatic_payment_source": "CARD_ON_FILE",
-  "card_id": "card_id4",
-  "reminders": [
-    {
-      "uid": "uid6",
-      "relative_scheduled_days": 86,
-      "message": "message6",
-      "status": "NOT_APPLICABLE",
-      "sent_at": "sent_at6"
-    },
-    {
-      "uid": "uid7",
-      "relative_scheduled_days": 87,
-      "message": "message7",
-      "status": "PENDING",
-      "sent_at": "sent_at7"
-    },
-    {
-      "uid": "uid8",
-      "relative_scheduled_days": 88,
-      "message": "message8",
-      "status": "SENT",
-      "sent_at": "sent_at8"
-    }
-  ],
-  "computed_amount_money": {
-    "amount": 32,
-    "currency": "ETB"
-  },
-  "total_completed_amount_money": {
-    "amount": 168,
-    "currency": "BIF"
-  },
-  "rounding_adjustment_included_money": {
-    "amount": 232,
-    "currency": "SEK"
   }
 }
 ```

@@ -38,35 +38,9 @@ particular time and location.
 {
   "id": "id0",
   "reference_id": "reference_id2",
-  "from_state": "UNLINKED_RETURN",
+  "from_state": "RESERVED_FOR_SALE",
   "to_state": "SUPPORTED_BY_NEWER_VERSION",
-  "location_id": "location_id4",
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_object_type": "catalog_object_type6",
-  "quantity": "quantity6",
-  "total_price_money": {
-    "amount": 52,
-    "currency": "MYR"
-  },
-  "occurred_at": "occurred_at4",
-  "created_at": "created_at2",
-  "source": {
-    "product": "PAYROLL",
-    "application_id": "application_id0",
-    "name": "name4"
-  },
-  "employee_id": "employee_id0",
-  "team_member_id": "team_member_id0",
-  "transaction_id": "transaction_id8",
-  "refund_id": "refund_id4",
-  "purchase_order_id": "purchase_order_id0",
-  "goods_receipt_id": "goods_receipt_id8",
-  "adjustment_group": {
-    "id": "id2",
-    "root_adjustment_id": "root_adjustment_id2",
-    "from_state": "IN_TRANSIT_TO",
-    "to_state": "UNLINKED_RETURN"
-  }
+  "location_id": "location_id4"
 }
 ```
 

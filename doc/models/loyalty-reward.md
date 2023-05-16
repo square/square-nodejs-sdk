@@ -32,9 +32,7 @@ For more information, see [Manage loyalty rewards](https://developer.squareup.co
   "reward_tier_id": "reward_tier_id6",
   "points": 236,
   "order_id": "order_id6",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "redeemed_at": "redeemed_at2"
+  "created_at": "created_at2"
 }
 ```
 

@@ -20,6 +20,8 @@ export interface CatalogTax {
   appliesToCustomAmounts?: boolean | null;
   /** A Boolean flag to indicate whether the tax is displayed as enabled (`true`) in the Square Point of Sale app or not (`false`). */
   enabled?: boolean | null;
+  /** The ID of a `CatalogProductSet` object. If set, the tax is applicable to all products in the product set. */
+  appliesToProductSetId?: string | null;
 }
 
 export const catalogTaxSchema: Schema<CatalogTax> = object({
@@ -32,4 +34,8 @@ export const catalogTaxSchema: Schema<CatalogTax> = object({
     optional(nullable(boolean())),
   ],
   enabled: ['enabled', optional(nullable(boolean()))],
+  appliesToProductSetId: [
+    'applies_to_product_set_id',
+    optional(nullable(string())),
+  ],
 });

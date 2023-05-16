@@ -35,7 +35,28 @@ Either `errors` or `groups` is present in a given response (never both).
       "name": "Super Loyal Customers",
       "updated_at": "2020-04-13T21:55:19Z"
     }
-  ]
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "cursor": "cursor6"
 }
 ```
 

@@ -32,7 +32,25 @@
           "currency": "USD"
         },
         "name": "Item 1",
-        "quantity": "1"
+        "quantity": "1",
+        "uid": "uid1",
+        "quantity_unit": {
+          "measurement_unit": {
+            "custom_unit": {
+              "name": "name9",
+              "abbreviation": "abbreviation1"
+            },
+            "area_unit": "METRIC_SQUARE_CENTIMETER",
+            "length_unit": "IMPERIAL_MILE",
+            "volume_unit": "GENERIC_FLUID_OUNCE",
+            "weight_unit": "METRIC_KILOGRAM"
+          },
+          "precision": 201,
+          "catalog_object_id": "catalog_object_id1",
+          "catalog_version": 135
+        },
+        "note": "note3",
+        "catalog_object_id": "catalog_object_id5"
       },
       {
         "base_price_money": {
@@ -40,11 +58,45 @@
           "currency": "USD"
         },
         "name": "Item 2",
-        "quantity": "2"
+        "quantity": "2",
+        "uid": "uid0",
+        "quantity_unit": {
+          "measurement_unit": {
+            "custom_unit": {
+              "name": "name8",
+              "abbreviation": "abbreviation0"
+            },
+            "area_unit": "IMPERIAL_SQUARE_MILE",
+            "length_unit": "METRIC_MILLIMETER",
+            "volume_unit": "METRIC_LITER",
+            "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
+          },
+          "precision": 200,
+          "catalog_object_id": "catalog_object_id0",
+          "catalog_version": 134
+        },
+        "note": "note4",
+        "catalog_object_id": "catalog_object_id6"
       }
     ],
-    "location_id": "D7AVYMEAPJ3A3"
-  }
+    "location_id": "D7AVYMEAPJ3A3",
+    "id": "id6",
+    "reference_id": "reference_id4",
+    "source": {
+      "name": "name2"
+    },
+    "customer_id": "customer_id4"
+  },
+  "proposed_rewards": [
+    {
+      "id": "id0",
+      "reward_tier_id": "reward_tier_id6"
+    },
+    {
+      "id": "id1",
+      "reward_tier_id": "reward_tier_id7"
+    }
+  ]
 }
 ```
 

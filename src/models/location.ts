@@ -65,7 +65,7 @@ export interface Location {
   currency?: string;
   /** The phone number of the location. For example, `+1 855-700-6000`. */
   phoneNumber?: string | null;
-  /** The name of the location's overall business. This name is present on receipts and other customer-facing branding. */
+  /** The name of the location's overall business. This name is present on receipts and other customer-facing branding, and can be changed no more than three times in a twelve-month period. */
   businessName?: string | null;
   /** A location's type. */
   type?: string;

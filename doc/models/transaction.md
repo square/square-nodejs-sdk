@@ -40,80 +40,7 @@ the transaction.
       "transaction_id": "transaction_id0",
       "created_at": "created_at0",
       "note": "note8",
-      "amount_money": {
-        "amount": 214,
-        "currency": "TJS"
-      },
-      "tip_money": {
-        "amount": 218,
-        "currency": "HTG"
-      },
-      "processing_fee_money": {},
-      "customer_id": "customer_id0",
-      "type": "OTHER",
-      "card_details": {
-        "status": "AUTHORIZED",
-        "card": {
-          "id": "id6",
-          "card_brand": "INTERAC",
-          "last_4": "last_48",
-          "exp_month": 148,
-          "exp_year": 148,
-          "cardholder_name": "cardholder_name8",
-          "billing_address": {
-            "address_line_1": "address_line_18",
-            "address_line_2": "address_line_22",
-            "address_line_3": "address_line_38",
-            "locality": "locality8",
-            "sublocality": "sublocality2",
-            "sublocality_2": "sublocality_20",
-            "sublocality_3": "sublocality_38",
-            "administrative_district_level_1": "administrative_district_level_16",
-            "administrative_district_level_2": "administrative_district_level_22",
-            "administrative_district_level_3": "administrative_district_level_30",
-            "postal_code": "postal_code4",
-            "country": "PY",
-            "first_name": "first_name2",
-            "last_name": "last_name0"
-          },
-          "fingerprint": "fingerprint2",
-          "customer_id": "customer_id4",
-          "merchant_id": "merchant_id6",
-          "reference_id": "reference_id6",
-          "enabled": false,
-          "card_type": "DEBIT",
-          "prepaid_type": "UNKNOWN_PREPAID_TYPE",
-          "bin": "bin6",
-          "version": 234,
-          "card_co_brand": "UNKNOWN"
-        },
-        "entry_method": "KEYED"
-      },
-      "cash_details": {
-        "buyer_tendered_money": {},
-        "change_back_money": {}
-      },
-      "additional_recipients": [
-        {
-          "location_id": "location_id5",
-          "description": "description1",
-          "amount_money": {},
-          "receivable_id": "receivable_id1"
-        },
-        {
-          "location_id": "location_id6",
-          "description": "description2",
-          "amount_money": {},
-          "receivable_id": "receivable_id2"
-        },
-        {
-          "location_id": "location_id7",
-          "description": "description3",
-          "amount_money": {},
-          "receivable_id": "receivable_id3"
-        }
-      ],
-      "payment_id": "payment_id2"
+      "type": "OTHER"
     },
     {
       "id": "id3",
@@ -121,68 +48,7 @@ the transaction.
       "transaction_id": "transaction_id1",
       "created_at": "created_at1",
       "note": "note9",
-      "amount_money": {
-        "amount": 215,
-        "currency": "TMT"
-      },
-      "tip_money": {
-        "amount": 219,
-        "currency": "HUF"
-      },
-      "processing_fee_money": {},
-      "customer_id": "customer_id1",
-      "type": "CARD",
-      "card_details": {
-        "status": "FAILED",
-        "card": {
-          "id": "id5",
-          "card_brand": "EFTPOS",
-          "last_4": "last_47",
-          "exp_month": 149,
-          "exp_year": 147,
-          "cardholder_name": "cardholder_name9",
-          "billing_address": {
-            "address_line_1": "address_line_17",
-            "address_line_2": "address_line_23",
-            "address_line_3": "address_line_39",
-            "locality": "locality7",
-            "sublocality": "sublocality3",
-            "sublocality_2": "sublocality_21",
-            "sublocality_3": "sublocality_37",
-            "administrative_district_level_1": "administrative_district_level_17",
-            "administrative_district_level_2": "administrative_district_level_21",
-            "administrative_district_level_3": "administrative_district_level_31",
-            "postal_code": "postal_code5",
-            "country": "QA",
-            "first_name": "first_name3",
-            "last_name": "last_name1"
-          },
-          "fingerprint": "fingerprint1",
-          "customer_id": "customer_id3",
-          "merchant_id": "merchant_id5",
-          "reference_id": "reference_id7",
-          "enabled": true,
-          "card_type": "UNKNOWN_CARD_TYPE",
-          "prepaid_type": "PREPAID",
-          "bin": "bin5",
-          "version": 233,
-          "card_co_brand": "AFTERPAY"
-        },
-        "entry_method": "EMV"
-      },
-      "cash_details": {
-        "buyer_tendered_money": {},
-        "change_back_money": {}
-      },
-      "additional_recipients": [
-        {
-          "location_id": "location_id6",
-          "description": "description2",
-          "amount_money": {},
-          "receivable_id": "receivable_id2"
-        }
-      ],
-      "payment_id": "payment_id3"
+      "type": "CARD"
     },
     {
       "id": "id4",
@@ -190,74 +56,7 @@ the transaction.
       "transaction_id": "transaction_id2",
       "created_at": "created_at2",
       "note": "note0",
-      "amount_money": {
-        "amount": 216,
-        "currency": "TND"
-      },
-      "tip_money": {
-        "amount": 220,
-        "currency": "IDR"
-      },
-      "processing_fee_money": {},
-      "customer_id": "customer_id2",
-      "type": "CASH",
-      "card_details": {
-        "status": "VOIDED",
-        "card": {
-          "id": "id4",
-          "card_brand": "FELICA",
-          "last_4": "last_46",
-          "exp_month": 150,
-          "exp_year": 146,
-          "cardholder_name": "cardholder_name0",
-          "billing_address": {
-            "address_line_1": "address_line_16",
-            "address_line_2": "address_line_24",
-            "address_line_3": "address_line_30",
-            "locality": "locality6",
-            "sublocality": "sublocality4",
-            "sublocality_2": "sublocality_22",
-            "sublocality_3": "sublocality_36",
-            "administrative_district_level_1": "administrative_district_level_18",
-            "administrative_district_level_2": "administrative_district_level_20",
-            "administrative_district_level_3": "administrative_district_level_32",
-            "postal_code": "postal_code6",
-            "country": "RE",
-            "first_name": "first_name4",
-            "last_name": "last_name2"
-          },
-          "fingerprint": "fingerprint0",
-          "customer_id": "customer_id2",
-          "merchant_id": "merchant_id4",
-          "reference_id": "reference_id8",
-          "enabled": false,
-          "card_type": "CREDIT",
-          "prepaid_type": "NOT_PREPAID",
-          "bin": "bin4",
-          "version": 232,
-          "card_co_brand": "CLEARPAY"
-        },
-        "entry_method": "ON_FILE"
-      },
-      "cash_details": {
-        "buyer_tendered_money": {},
-        "change_back_money": {}
-      },
-      "additional_recipients": [
-        {
-          "location_id": "location_id7",
-          "description": "description3",
-          "amount_money": {},
-          "receivable_id": "receivable_id3"
-        },
-        {
-          "location_id": "location_id8",
-          "description": "description4",
-          "amount_money": {},
-          "receivable_id": "receivable_id4"
-        }
-      ],
-      "payment_id": "payment_id4"
+      "type": "CASH"
     }
   ],
   "refunds": [
@@ -281,7 +80,10 @@ the transaction.
         {
           "location_id": "location_id7",
           "description": "description3",
-          "amount_money": {},
+          "amount_money": {
+            "amount": 83,
+            "currency": "JOD"
+          },
           "receivable_id": "receivable_id3"
         }
       ]
@@ -306,13 +108,19 @@ the transaction.
         {
           "location_id": "location_id8",
           "description": "description4",
-          "amount_money": {},
+          "amount_money": {
+            "amount": 84,
+            "currency": "JPY"
+          },
           "receivable_id": "receivable_id4"
         },
         {
           "location_id": "location_id9",
           "description": "description5",
-          "amount_money": {},
+          "amount_money": {
+            "amount": 85,
+            "currency": "KES"
+          },
           "receivable_id": "receivable_id5"
         }
       ]
@@ -337,44 +145,33 @@ the transaction.
         {
           "location_id": "location_id9",
           "description": "description5",
-          "amount_money": {},
+          "amount_money": {
+            "amount": 85,
+            "currency": "KES"
+          },
           "receivable_id": "receivable_id5"
         },
         {
           "location_id": "location_id0",
           "description": "description6",
-          "amount_money": {},
+          "amount_money": {
+            "amount": 86,
+            "currency": "KGS"
+          },
           "receivable_id": "receivable_id6"
         },
         {
           "location_id": "location_id1",
           "description": "description7",
-          "amount_money": {},
+          "amount_money": {
+            "amount": 87,
+            "currency": "KHR"
+          },
           "receivable_id": "receivable_id7"
         }
       ]
     }
-  ],
-  "reference_id": "reference_id2",
-  "product": "PAYROLL",
-  "client_id": "client_id8",
-  "shipping_address": {
-    "address_line_1": "address_line_10",
-    "address_line_2": "address_line_20",
-    "address_line_3": "address_line_36",
-    "locality": "locality0",
-    "sublocality": "sublocality0",
-    "sublocality_2": "sublocality_28",
-    "sublocality_3": "sublocality_30",
-    "administrative_district_level_1": "administrative_district_level_14",
-    "administrative_district_level_2": "administrative_district_level_26",
-    "administrative_district_level_3": "administrative_district_level_38",
-    "postal_code": "postal_code2",
-    "country": "PT",
-    "first_name": "first_name0",
-    "last_name": "last_name8"
-  },
-  "order_id": "order_id6"
+  ]
 }
 ```
 

@@ -36,7 +36,7 @@ For a more detailed discussion of the Catalog data model, please see the
 | `taxData` | [`CatalogTax \| undefined`](../../doc/models/catalog-tax.md) | Optional | A tax applicable to an item. |
 | `discountData` | [`CatalogDiscount \| undefined`](../../doc/models/catalog-discount.md) | Optional | A discount applicable to items. |
 | `modifierListData` | [`CatalogModifierList \| undefined`](../../doc/models/catalog-modifier-list.md) | Optional | A list of modifiers applicable to items at the time of sale.<br><br>For example, a "Condiments" modifier list applicable to a "Hot Dog" item<br>may contain "Ketchup", "Mustard", and "Relish" modifiers.<br>Use the `selection_type` field to specify whether or not multiple selections from<br>the modifier list are allowed. |
-| `modifierData` | [`CatalogModifier \| undefined`](../../doc/models/catalog-modifier.md) | Optional | A modifier applicable to items at the time of sale. |
+| `modifierData` | [`CatalogModifier \| undefined`](../../doc/models/catalog-modifier.md) | Optional | A modifier applicable to items at the time of sale. An example of a modifier is a Cheese add-on to a Burger item. |
 | `timePeriodData` | [`CatalogTimePeriod \| undefined`](../../doc/models/catalog-time-period.md) | Optional | Represents a time period - either a single period or a repeating period. |
 | `productSetData` | [`CatalogProductSet \| undefined`](../../doc/models/catalog-product-set.md) | Optional | Represents a collection of catalog objects for the purpose of applying a<br>`PricingRule`. Including a catalog object will include all of its subtypes.<br>For example, including a category in a product set will include all of its<br>items and associated item variations in the product set. Including an item in<br>a product set will also include its item variations. |
 | `pricingRuleData` | [`CatalogPricingRule \| undefined`](../../doc/models/catalog-pricing-rule.md) | Optional | Defines how discounts are automatically applied to a set of items that match the pricing rule<br>during the active time period. |
@@ -52,8 +52,8 @@ For a more detailed discussion of the Catalog data model, please see the
 
 ```json
 {
-  "type": null,
-  "id": null,
+  "type": "ITEM_VARIATION",
+  "id": "id0",
   "item_data": {
     "object": {
       "id": "#Cocoa",
@@ -163,7 +163,29 @@ For a more detailed discussion of the Catalog data model, please see the
       "present_at_all_locations": true,
       "type": "MODIFIER"
     }
-  }
+  },
+  "updated_at": "updated_at4",
+  "version": 172,
+  "is_deleted": false,
+  "custom_attribute_values": {
+    "key0": {
+      "name": "name9",
+      "string_value": "string_value3",
+      "custom_attribute_definition_id": "custom_attribute_definition_id3",
+      "type": "BOOLEAN",
+      "number_value": "number_value9"
+    }
+  },
+  "catalog_v1_ids": [
+    {
+      "catalog_v1_id": "catalog_v1_id4",
+      "location_id": "location_id4"
+    },
+    {
+      "catalog_v1_id": "catalog_v1_id5",
+      "location_id": "location_id5"
+    }
+  ]
 }
 ```
 

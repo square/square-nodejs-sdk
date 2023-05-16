@@ -24,7 +24,12 @@ Defines input parameters in a request to the
       "currency": "USD"
     },
     "tax_percentage": null,
-    "version": 1594155459464
+    "version": 1594155459464,
+    "id": "id4",
+    "location_id": "location_id8",
+    "plan_id": "plan_id6",
+    "customer_id": "customer_id2",
+    "start_date": "start_date8"
   }
 }
 ```

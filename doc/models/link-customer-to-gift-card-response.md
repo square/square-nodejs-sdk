@@ -33,7 +33,27 @@ the response contains a set of `Error` objects.
     "id": "gftc:71ea002277a34f8a945e284b04822edb",
     "state": "ACTIVE",
     "type": "DIGITAL"
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

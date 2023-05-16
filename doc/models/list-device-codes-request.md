@@ -17,6 +17,15 @@
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "cursor": "cursor6",
+  "location_id": "location_id4",
+  "product_type": "TERMINAL_API",
+  "status": [
+    "PAIRED",
+    "EXPIRED",
+    "UNKNOWN"
+  ]
+}
 ```
 

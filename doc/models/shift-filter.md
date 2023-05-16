@@ -38,19 +38,7 @@ used by Square's servers to apply each filter property specified.
   "end": {
     "start_at": "start_at0",
     "end_at": "end_at2"
-  },
-  "workday": {
-    "date_range": {
-      "start_date": "start_date0",
-      "end_date": "end_date6"
-    },
-    "match_shifts_by": "START_AT",
-    "default_timezone": "default_timezone0"
-  },
-  "team_member_ids": [
-    "team_member_ids7",
-    "team_member_ids8"
-  ]
+  }
 }
 ```
 

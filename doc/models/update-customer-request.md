@@ -32,7 +32,11 @@ Defines the body parameters that can be included in a request to the
   "email_address": "New.Amelia.Earhart@example.com",
   "note": "updated customer note",
   "phone_number": "",
-  "version": 2
+  "version": 2,
+  "given_name": "given_name2",
+  "family_name": "family_name6",
+  "company_name": "company_name6",
+  "nickname": "nickname6"
 }
 ```
 

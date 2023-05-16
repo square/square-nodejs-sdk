@@ -36,51 +36,7 @@ Represents a service charge applied to an order.
   "name": "name0",
   "catalog_object_id": "catalog_object_id6",
   "catalog_version": 126,
-  "percentage": "percentage8",
-  "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
-  },
-  "applied_money": {
-    "amount": 196,
-    "currency": "PLN"
-  },
-  "total_money": {
-    "amount": 250,
-    "currency": "UNKNOWN_CURRENCY"
-  },
-  "total_tax_money": {
-    "amount": 58,
-    "currency": "SDG"
-  },
-  "calculation_phase": "APPORTIONED_PERCENTAGE_PHASE",
-  "taxable": false,
-  "applied_taxes": [
-    {
-      "uid": "uid0",
-      "tax_uid": "tax_uid4",
-      "applied_money": {
-        "amount": 190,
-        "currency": "XAF"
-      }
-    },
-    {
-      "uid": "uid1",
-      "tax_uid": "tax_uid3",
-      "applied_money": {
-        "amount": 189,
-        "currency": "WST"
-      }
-    }
-  ],
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
-  },
-  "type": "AUTO_GRATUITY",
-  "treatment_type": "LINE_ITEM_TREATMENT",
-  "scope": "ORDER"
+  "percentage": "percentage8"
 }
 ```
 

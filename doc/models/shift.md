@@ -36,48 +36,7 @@ taken during the shift.
   "location_id": "location_id4",
   "timezone": "timezone0",
   "start_at": "start_at2",
-  "end_at": "end_at0",
-  "wage": {
-    "title": "title8",
-    "hourly_rate": {
-      "amount": 2,
-      "currency": "BND"
-    }
-  },
-  "breaks": [
-    {
-      "id": "id8",
-      "start_at": "start_at0",
-      "end_at": "end_at2",
-      "break_type_id": "break_type_id4",
-      "name": "name8",
-      "expected_duration": "expected_duration6",
-      "is_paid": false
-    },
-    {
-      "id": "id9",
-      "start_at": "start_at1",
-      "end_at": "end_at1",
-      "break_type_id": "break_type_id5",
-      "name": "name9",
-      "expected_duration": "expected_duration5",
-      "is_paid": true
-    },
-    {
-      "id": "id0",
-      "start_at": "start_at2",
-      "end_at": "end_at0",
-      "break_type_id": "break_type_id6",
-      "name": "name0",
-      "expected_duration": "expected_duration4",
-      "is_paid": false
-    }
-  ],
-  "status": "OPEN",
-  "version": 172,
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "team_member_id": "team_member_id0"
+  "end_at": "end_at0"
 }
 ```
 

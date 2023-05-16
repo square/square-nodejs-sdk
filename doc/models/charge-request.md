@@ -66,7 +66,8 @@ Deprecated - recommend using [CreatePayment](api-endpoint:Payments-CreatePayment
     "country": "US",
     "locality": "San Francisco",
     "postal_code": "94114"
-  }
+  },
+  "customer_card_id": "customer_card_id2"
 }
 ```
 

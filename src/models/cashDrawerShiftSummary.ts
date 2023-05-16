@@ -47,6 +47,12 @@ export interface CashDrawerShiftSummary {
    * for more information.
    */
   closedCashMoney?: Money;
+  /** The shift start time in RFC 3339 format. */
+  createdAt?: string;
+  /** The shift updated at time in RFC 3339 format. */
+  updatedAt?: string;
+  /** The ID of the location the cash drawer shift belongs to. */
+  locationId?: string;
 }
 
 export const cashDrawerShiftSummarySchema: Schema<CashDrawerShiftSummary> = object(
@@ -63,5 +69,8 @@ export const cashDrawerShiftSummarySchema: Schema<CashDrawerShiftSummary> = obje
       optional(lazy(() => moneySchema)),
     ],
     closedCashMoney: ['closed_cash_money', optional(lazy(() => moneySchema))],
+    createdAt: ['created_at', optional(string())],
+    updatedAt: ['updated_at', optional(string())],
+    locationId: ['location_id', optional(string())],
   }
 );

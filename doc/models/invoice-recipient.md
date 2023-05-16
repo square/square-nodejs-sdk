@@ -38,21 +38,7 @@ Square updates the customer ID in response to a merge operation, but does not up
     "address_line_2": "address_line_26",
     "address_line_3": "address_line_32",
     "locality": "locality6",
-    "sublocality": "sublocality6",
-    "sublocality_2": "sublocality_24",
-    "sublocality_3": "sublocality_36",
-    "administrative_district_level_1": "administrative_district_level_10",
-    "administrative_district_level_2": "administrative_district_level_28",
-    "administrative_district_level_3": "administrative_district_level_34",
-    "postal_code": "postal_code8",
-    "country": "BE",
-    "first_name": "first_name6",
-    "last_name": "last_name4"
-  },
-  "phone_number": "phone_number2",
-  "company_name": "company_name6",
-  "tax_ids": {
-    "eu_vat": "eu_vat2"
+    "sublocality": "sublocality6"
   }
 }
 ```

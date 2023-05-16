@@ -5,7 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2023-04-19'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2023-05-17'` |
 | `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
@@ -40,7 +40,7 @@ The API client can be initialized as follows:
 
 ```ts
 const client = new Client({
-  squareVersion: '2023-04-19',
+  squareVersion: '2023-05-17',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
@@ -55,7 +55,7 @@ const client = new Client({
 import { ApiError, Client } from 'square';
 
 const client = new Client({
-  squareVersion: '2023-04-19',
+  squareVersion: '2023-05-17',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
@@ -110,6 +110,7 @@ The gateway for the SDK. This class acts as a factory for the Apis and also hold
 | transactions | Gets TransactionsApi |
 | loyalty | Gets LoyaltyApi |
 | merchants | Gets MerchantsApi |
+| merchantCustomAttributes | Gets MerchantCustomAttributesApi |
 | orders | Gets OrdersApi |
 | orderCustomAttributes | Gets OrderCustomAttributesApi |
 | payments | Gets PaymentsApi |

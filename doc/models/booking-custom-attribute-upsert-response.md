@@ -36,13 +36,8 @@ Represents a response for an individual upsert request in a [BulkUpsertBookingCu
       },
       "name": "name2",
       "description": "description2",
-      "visibility": "VISIBILITY_READ_ONLY",
-      "version": 198,
-      "updated_at": "updated_at8",
-      "created_at": "created_at0"
-    },
-    "updated_at": "updated_at2",
-    "created_at": "created_at0"
+      "visibility": "VISIBILITY_READ_ONLY"
+    }
   },
   "errors": [
     {

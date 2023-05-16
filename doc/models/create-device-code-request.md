@@ -19,7 +19,10 @@
   "device_code": {
     "location_id": "B5E4484SHHNYH",
     "name": "Counter 1",
-    "product_type": "TERMINAL_API"
+    "product_type": "TERMINAL_API",
+    "id": "id4",
+    "code": "code2",
+    "device_id": "device_id0"
   },
   "idempotency_key": "01bb00a6-0c86-4770-94ed-f5fca973cd56"
 }

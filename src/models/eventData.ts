@@ -9,7 +9,7 @@ import {
   unknown,
 } from '../schema';
 
-export interface SquareEventData {
+export interface EventData {
   /** Name of the affected object’s type. */
   type?: string | null;
   /** ID of the affected object. */
@@ -20,7 +20,7 @@ export interface SquareEventData {
   object?: Record<string, unknown> | null;
 }
 
-export const squareEventDataSchema: Schema<SquareEventData> = object({
+export const eventDataSchema: Schema<EventData> = object({
   type: ['type', optional(nullable(string()))],
   id: ['id', optional(string())],
   deleted: ['deleted', optional(nullable(boolean()))],

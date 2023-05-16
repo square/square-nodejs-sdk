@@ -33,10 +33,7 @@ or inches. Exactly one of the following fields are required: `custom_unit`,
   "area_unit": "IMPERIAL_SQUARE_MILE",
   "length_unit": "METRIC_MILLIMETER",
   "volume_unit": "GENERIC_CUP",
-  "weight_unit": "IMPERIAL_STONE",
-  "generic_unit": "UNIT",
-  "time_unit": "GENERIC_MINUTE",
-  "type": "TYPE_LENGTH"
+  "weight_unit": "IMPERIAL_STONE"
 }
 ```
 

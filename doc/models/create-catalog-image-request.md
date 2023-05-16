@@ -24,9 +24,43 @@
     "image_data": {
       "caption": "A picture of a cup of coffee"
     },
-    "type": "IMAGE"
+    "type": "IMAGE",
+    "updated_at": "updated_at2",
+    "version": 100,
+    "is_deleted": false,
+    "custom_attribute_values": {
+      "key0": {
+        "name": "name9",
+        "string_value": "string_value3",
+        "custom_attribute_definition_id": "custom_attribute_definition_id3",
+        "type": "BOOLEAN",
+        "number_value": "number_value9"
+      },
+      "key1": {
+        "name": "name0",
+        "string_value": "string_value4",
+        "custom_attribute_definition_id": "custom_attribute_definition_id2",
+        "type": "STRING",
+        "number_value": "number_value0"
+      }
+    },
+    "catalog_v1_ids": [
+      {
+        "catalog_v1_id": "catalog_v1_id0",
+        "location_id": "location_id0"
+      },
+      {
+        "catalog_v1_id": "catalog_v1_id1",
+        "location_id": "location_id1"
+      },
+      {
+        "catalog_v1_id": "catalog_v1_id2",
+        "location_id": "location_id2"
+      }
+    ]
   },
-  "object_id": "ND6EA5AAJEO5WL3JNNIAQA32"
+  "object_id": "ND6EA5AAJEO5WL3JNNIAQA32",
+  "is_primary": false
 }
 ```
 

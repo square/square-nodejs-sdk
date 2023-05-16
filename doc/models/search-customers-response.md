@@ -51,7 +51,23 @@ Either `errors` or `customers` is present in a given response (never both).
         "1KB9JE5EGJXCW.REACHABLE"
       ],
       "updated_at": "2020-04-20T10:02:43.083Z",
-      "version": 7
+      "version": 7,
+      "cards": [
+        {
+          "id": "id0",
+          "card_brand": "DISCOVER",
+          "last_4": "last_42",
+          "exp_month": 146,
+          "exp_year": 186
+        },
+        {
+          "id": "id1",
+          "card_brand": "DISCOVER_DINERS",
+          "last_4": "last_43",
+          "exp_month": 147,
+          "exp_year": 187
+        }
+      ]
     },
     {
       "address": {
@@ -81,7 +97,50 @@ Either `errors` or `customers` is present in a given response (never both).
         "1KB9JE5EGJXCW.REACHABLE"
       ],
       "updated_at": "2018-03-08T18:25:21.342Z",
-      "version": 1
+      "version": 1,
+      "cards": [
+        {
+          "id": "id1",
+          "card_brand": "DISCOVER_DINERS",
+          "last_4": "last_43",
+          "exp_month": 147,
+          "exp_year": 187
+        },
+        {
+          "id": "id2",
+          "card_brand": "JCB",
+          "last_4": "last_44",
+          "exp_month": 148,
+          "exp_year": 188
+        },
+        {
+          "id": "id3",
+          "card_brand": "CHINA_UNIONPAY",
+          "last_4": "last_45",
+          "exp_month": 149,
+          "exp_year": 189
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

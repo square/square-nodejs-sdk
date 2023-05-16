@@ -26,8 +26,29 @@ A response that includes the loyalty reward.
     "redeemed_at": "2020-05-08T21:56:00Z",
     "reward_tier_id": "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
     "status": "REDEEMED",
-    "updated_at": "2020-05-08T21:56:00Z"
-  }
+    "updated_at": "2020-05-08T21:56:00Z",
+    "order_id": "order_id4"
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

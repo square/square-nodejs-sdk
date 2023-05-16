@@ -85,7 +85,27 @@ Defines the response returned by
     },
     "updated_at": "2021-10-13T20:26:44.364Z",
     "version_token": "rDrXnqiS7fJgexccgdpzmwqTiXui1aIKCp9EchZ7trE6o"
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

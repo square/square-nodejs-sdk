@@ -22,7 +22,11 @@ A request to create a loyalty reward.
   "reward": {
     "loyalty_account_id": "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd",
     "order_id": "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
-    "reward_tier_id": "e1b39225-9da5-43d1-a5db-782cdd8ad94f"
+    "reward_tier_id": "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
+    "id": "id0",
+    "status": "ISSUED",
+    "points": 222,
+    "created_at": "created_at8"
   }
 }
 ```

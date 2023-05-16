@@ -20,8 +20,15 @@ Represents an [UpdateLocationCustomAttributeDefinition](../../doc/api/location-c
 {
   "custom_attribute_definition": {
     "description": "Update the description as desired.",
-    "visibility": "VISIBILITY_READ_ONLY"
-  }
+    "visibility": "VISIBILITY_READ_ONLY",
+    "key": "key2",
+    "schema": {
+      "key1": "val1",
+      "key2": "val2"
+    },
+    "name": "name2"
+  },
+  "idempotency_key": "idempotency_key6"
 }
 ```
 

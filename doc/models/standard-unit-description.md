@@ -27,10 +27,7 @@ Contains the name and abbreviation for standard measurement unit.
     "area_unit": "IMPERIAL_ACRE",
     "length_unit": "IMPERIAL_INCH",
     "volume_unit": "METRIC_MILLILITER",
-    "weight_unit": "IMPERIAL_STONE",
-    "generic_unit": "UNIT",
-    "time_unit": "GENERIC_DAY",
-    "type": "TYPE_LENGTH"
+    "weight_unit": "IMPERIAL_STONE"
   },
   "name": "name0",
   "abbreviation": "abbreviation2"

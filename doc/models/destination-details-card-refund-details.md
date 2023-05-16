@@ -21,34 +21,7 @@
     "card_brand": "OTHER_BRAND",
     "last_4": "last_48",
     "exp_month": 228,
-    "exp_year": 68,
-    "cardholder_name": "cardholder_name8",
-    "billing_address": {
-      "address_line_1": "address_line_12",
-      "address_line_2": "address_line_28",
-      "address_line_3": "address_line_34",
-      "locality": "locality2",
-      "sublocality": "sublocality8",
-      "sublocality_2": "sublocality_26",
-      "sublocality_3": "sublocality_32",
-      "administrative_district_level_1": "administrative_district_level_12",
-      "administrative_district_level_2": "administrative_district_level_26",
-      "administrative_district_level_3": "administrative_district_level_36",
-      "postal_code": "postal_code0",
-      "country": "KR",
-      "first_name": "first_name8",
-      "last_name": "last_name6"
-    },
-    "fingerprint": "fingerprint2",
-    "customer_id": "customer_id4",
-    "merchant_id": "merchant_id6",
-    "reference_id": "reference_id6",
-    "enabled": false,
-    "card_type": "UNKNOWN_CARD_TYPE",
-    "prepaid_type": "PREPAID",
-    "bin": "bin6",
-    "version": 154,
-    "card_co_brand": "AFTERPAY"
+    "exp_year": 68
   },
   "entry_method": "entry_method6"
 }

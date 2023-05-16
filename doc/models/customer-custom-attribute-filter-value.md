@@ -52,18 +52,6 @@ of a customer-related [custom attribute](../../doc/models/custom-attribute.md).
   "date": {
     "start_at": "start_at6",
     "end_at": "end_at6"
-  },
-  "number": {
-    "start_at": "start_at4",
-    "end_at": "end_at8"
-  },
-  "boolean": false,
-  "address": {
-    "postal_code": {
-      "exact": "exact8",
-      "fuzzy": "fuzzy4"
-    },
-    "country": "BE"
   }
 }
 ```

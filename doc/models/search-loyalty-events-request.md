@@ -24,9 +24,29 @@ A request to search for loyalty events.
     "filter": {
       "order_filter": {
         "order_id": "PyATxhYLfsMqpVkcKJITPydgEYfZY"
+      },
+      "loyalty_account_filter": {
+        "loyalty_account_id": "loyalty_account_id4"
+      },
+      "type_filter": {
+        "types": [
+          "EXPIRE_POINTS"
+        ]
+      },
+      "date_time_filter": {
+        "created_at": {
+          "start_at": "start_at6",
+          "end_at": "end_at6"
+        }
+      },
+      "location_filter": {
+        "location_ids": [
+          "location_ids4"
+        ]
       }
     }
-  }
+  },
+  "cursor": "cursor6"
 }
 ```
 

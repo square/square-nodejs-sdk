@@ -22,10 +22,18 @@ The request object for the [CreateLocation](../../doc/api/locations.md#create-lo
       "address_line_1": "1234 Peachtree St. NE",
       "administrative_district_level_1": "GA",
       "locality": "Atlanta",
-      "postal_code": "30309"
+      "postal_code": "30309",
+      "address_line_2": "address_line_20",
+      "address_line_3": "address_line_36",
+      "sublocality": "sublocality0"
     },
     "description": "Midtown Atlanta store",
-    "name": "Midtown"
+    "name": "Midtown",
+    "id": "id4",
+    "timezone": "timezone6",
+    "capabilities": [
+      "CREDIT_CARD_PROCESSING"
+    ]
   }
 }
 ```

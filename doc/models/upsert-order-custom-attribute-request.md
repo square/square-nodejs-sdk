@@ -12,7 +12,7 @@ Represents an upsert request for an order custom attribute.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customAttribute` | [`CustomAttribute`](../../doc/models/custom-attribute.md) | Required | A custom attribute value. Each custom attribute value has a corresponding<br>`CustomAttributeDefinition` object. |
-| `idempotencyKey` | `string \| undefined` | Optional | A unique identifier for this request, used to ensure idempotency.<br>For more information, see [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency).<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `45` |
+| `idempotencyKey` | `string \| undefined` | Optional | A unique identifier for this request, used to ensure idempotency.<br>For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `45` |
 
 ## Example (as JSON)
 
@@ -34,13 +34,8 @@ Represents an upsert request for an order custom attribute.
       },
       "name": "name2",
       "description": "description2",
-      "visibility": "VISIBILITY_READ_ONLY",
-      "version": 198,
-      "updated_at": "updated_at8",
-      "created_at": "created_at0"
-    },
-    "updated_at": "updated_at2",
-    "created_at": "created_at0"
+      "visibility": "VISIBILITY_READ_ONLY"
+    }
   },
   "idempotency_key": "idempotency_key6"
 }

@@ -33,7 +33,11 @@ Response object returned by ListBankAccounts.
       "location_id": "S8GWD5example",
       "primary_bank_identification_number": "112200303",
       "status": "VERIFICATION_IN_PROGRESS",
-      "version": 5
+      "version": 5,
+      "secondary_bank_identification_number": "secondary_bank_identification_number5",
+      "debit_mandate_reference_id": "debit_mandate_reference_id9",
+      "reference_id": "reference_id3",
+      "fingerprint": "fingerprint1"
     },
     {
       "account_number_suffix": "972",
@@ -48,9 +52,34 @@ Response object returned by ListBankAccounts.
       "location_id": "S8GWD5example",
       "primary_bank_identification_number": "112200303",
       "status": "VERIFICATION_IN_PROGRESS",
-      "version": 5
+      "version": 5,
+      "secondary_bank_identification_number": "secondary_bank_identification_number6",
+      "debit_mandate_reference_id": "debit_mandate_reference_id8",
+      "reference_id": "reference_id4",
+      "fingerprint": "fingerprint2"
     }
-  ]
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "cursor": "cursor6"
 }
 ```
 

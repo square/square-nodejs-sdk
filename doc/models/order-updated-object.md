@@ -20,8 +20,7 @@
     "version": 176,
     "location_id": "location_id4",
     "state": "OPEN",
-    "created_at": "created_at2",
-    "updated_at": "updated_at4"
+    "created_at": "created_at2"
   }
 }
 ```

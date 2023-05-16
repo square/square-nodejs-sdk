@@ -12,7 +12,7 @@ Describes a `CreateInvoice` request.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `invoice` | [`Invoice`](../../doc/models/invoice.md) | Required | Stores information about an invoice. You use the Invoices API to create and manage<br>invoices. For more information, see [Invoices API Overview](https://developer.squareup.com/docs/invoices-api/overview). |
-| `idempotencyKey` | `string \| undefined` | Optional | A unique string that identifies the `CreateInvoice` request. If you do not<br>provide `idempotency_key` (or provide an empty string as the value), the endpoint<br>treats each request as independent.<br><br>For more information, see [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).<br>**Constraints**: *Maximum Length*: `128` |
+| `idempotencyKey` | `string \| undefined` | Optional | A unique string that identifies the `CreateInvoice` request. If you do not<br>provide `idempotency_key` (or provide an empty string as the value), the endpoint<br>treats each request as independent.<br><br>For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).<br>**Constraints**: *Maximum Length*: `128` |
 
 ## Example (as JSON)
 
@@ -58,12 +58,24 @@ Describes a `CreateInvoice` request.
       }
     ],
     "primary_recipient": {
-      "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4"
+      "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+      "given_name": "given_name2",
+      "family_name": "family_name4",
+      "email_address": "email_address8",
+      "address": {
+        "address_line_1": "address_line_16",
+        "address_line_2": "address_line_26",
+        "address_line_3": "address_line_32",
+        "locality": "locality6",
+        "sublocality": "sublocality6"
+      }
     },
     "sale_or_service_date": "2030-01-24",
     "scheduled_at": "2030-01-13T10:00:00Z",
     "store_payment_method_enabled": false,
-    "title": "Event Planning Services"
+    "title": "Event Planning Services",
+    "id": "id6",
+    "version": 118
   }
 }
 ```

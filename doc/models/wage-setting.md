@@ -66,8 +66,7 @@ An object representing a team member's wage information.
   ],
   "is_overtime_exempt": false,
   "version": 172,
-  "created_at": "created_at2",
-  "updated_at": "updated_at4"
+  "created_at": "created_at2"
 }
 ```
 

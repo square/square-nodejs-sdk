@@ -48,8 +48,7 @@ V1PaymentTax
     "currency_code": "LYD"
   },
   "rate": "rate0",
-  "inclusion_type": "ADDITIVE",
-  "fee_id": "fee_id8"
+  "inclusion_type": "ADDITIVE"
 }
 ```
 

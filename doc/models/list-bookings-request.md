@@ -24,8 +24,7 @@
   "cursor": "cursor6",
   "team_member_id": "team_member_id0",
   "location_id": "location_id4",
-  "start_at_min": "start_at_min8",
-  "start_at_max": "start_at_max8"
+  "start_at_min": "start_at_min8"
 }
 ```
 

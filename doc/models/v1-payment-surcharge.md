@@ -34,65 +34,7 @@ V1PaymentSurcharge
     "amount": 186,
     "currency_code": "KRW"
   },
-  "type": "CUSTOM",
-  "taxable": false,
-  "taxes": [
-    {
-      "errors": [
-        {
-          "category": "RATE_LIMIT_ERROR",
-          "code": "MAP_KEY_LENGTH_TOO_SHORT",
-          "detail": "detail6",
-          "field": "field4"
-        },
-        {
-          "category": "PAYMENT_METHOD_ERROR",
-          "code": "MAP_KEY_LENGTH_TOO_LONG",
-          "detail": "detail7",
-          "field": "field5"
-        }
-      ],
-      "name": "name5",
-      "applied_money": {
-        "amount": 109,
-        "currency_code": "USN"
-      },
-      "rate": "rate5",
-      "inclusion_type": "INCLUSIVE",
-      "fee_id": "fee_id3"
-    },
-    {
-      "errors": [
-        {
-          "category": "PAYMENT_METHOD_ERROR",
-          "code": "MAP_KEY_LENGTH_TOO_LONG",
-          "detail": "detail7",
-          "field": "field5"
-        },
-        {
-          "category": "REFUND_ERROR",
-          "code": "CUSTOMER_MISSING_NAME",
-          "detail": "detail8",
-          "field": "field6"
-        },
-        {
-          "category": "MERCHANT_SUBSCRIPTION_ERROR",
-          "code": "CUSTOMER_MISSING_EMAIL",
-          "detail": "detail9",
-          "field": "field7"
-        }
-      ],
-      "name": "name6",
-      "applied_money": {
-        "amount": 108,
-        "currency_code": "USD"
-      },
-      "rate": "rate4",
-      "inclusion_type": "ADDITIVE",
-      "fee_id": "fee_id4"
-    }
-  ],
-  "surcharge_id": "surcharge_id4"
+  "type": "CUSTOM"
 }
 ```
 

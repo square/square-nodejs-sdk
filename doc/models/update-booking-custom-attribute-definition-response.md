@@ -24,7 +24,10 @@ Either `custom_attribute_definition` or `errors` is present in the response.
     "description": "Update the description as desired.",
     "key": "favoriteShampoo",
     "name": "Favorite shampoo",
-    "schema": null,
+    "schema": {
+      "key1": "val1",
+      "key2": "val2"
+    },
     "updated_at": "2022-11-16T15:39:38Z",
     "version": 2,
     "visibility": "VISIBILITY_READ_ONLY"

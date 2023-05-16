@@ -51,9 +51,46 @@ Either `errors` or `customers` is present in a given response (never both).
         "1KB9JE5EGJXCW.REACHABLE"
       ],
       "updated_at": "2016-03-23T20:21:55Z",
-      "version": 1
+      "version": 1,
+      "cards": [
+        {
+          "id": "id0",
+          "card_brand": "DISCOVER",
+          "last_4": "last_42",
+          "exp_month": 146,
+          "exp_year": 186
+        },
+        {
+          "id": "id1",
+          "card_brand": "DISCOVER_DINERS",
+          "last_4": "last_43",
+          "exp_month": 147,
+          "exp_year": 187
+        }
+      ]
     }
-  ]
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "cursor": "cursor6"
 }
 ```
 

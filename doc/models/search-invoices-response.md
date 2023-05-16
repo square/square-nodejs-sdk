@@ -12,7 +12,7 @@ Describes a `SearchInvoices` response.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `invoices` | [`Invoice[] \| undefined`](../../doc/models/invoice.md) | Optional | The list of invoices returned by the search. |
-| `cursor` | `string \| undefined` | Optional | When a response is truncated, it includes a cursor that you can use in a<br>subsequent request to fetch the next set of invoices. If empty, this is the final<br>response.<br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `cursor` | `string \| undefined` | Optional | When a response is truncated, it includes a cursor that you can use in a<br>subsequent request to fetch the next set of invoices. If empty, this is the final<br>response.<br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Information about errors encountered during the request. |
 
 ## Example (as JSON)
@@ -77,7 +77,14 @@ Describes a `SearchInvoices` response.
         "email_address": "Amelia.Earhart@example.com",
         "family_name": "Earhart",
         "given_name": "Amelia",
-        "phone_number": "1-212-555-4240"
+        "phone_number": "1-212-555-4240",
+        "address": {
+          "address_line_1": "address_line_18",
+          "address_line_2": "address_line_28",
+          "address_line_3": "address_line_34",
+          "locality": "locality8",
+          "sublocality": "sublocality8"
+        }
       },
       "sale_or_service_date": "2030-01-24",
       "scheduled_at": "2030-01-13T10:00:00Z",
@@ -145,7 +152,14 @@ Describes a `SearchInvoices` response.
         "email_address": "Amelia.Earhart@example.com",
         "family_name": "Earhart",
         "given_name": "Amelia",
-        "phone_number": "1-212-555-4240"
+        "phone_number": "1-212-555-4240",
+        "address": {
+          "address_line_1": "address_line_19",
+          "address_line_2": "address_line_29",
+          "address_line_3": "address_line_35",
+          "locality": "locality9",
+          "sublocality": "sublocality9"
+        }
       },
       "public_url": "https://squareup.com/pay-invoice/h9sfsfTGTSnYEhISUDBhEQ",
       "sale_or_service_date": "2030-01-24",
@@ -154,6 +168,26 @@ Describes a `SearchInvoices` response.
       "timezone": "America/Los_Angeles",
       "updated_at": "2021-01-23T15:29:56Z",
       "version": 3
+    }
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

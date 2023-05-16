@@ -30,7 +30,9 @@ Represents an update request for a `TeamMember` object.
     "given_name": "Joe",
     "phone_number": "+14159283333",
     "reference_id": "reference_id_1",
-    "status": "ACTIVE"
+    "status": "ACTIVE",
+    "id": "id6",
+    "is_owner": false
   }
 }
 ```

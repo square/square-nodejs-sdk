@@ -35,18 +35,7 @@ hand or from syncing with an external system.
   "reference_id": "reference_id2",
   "catalog_object_id": "catalog_object_id6",
   "catalog_object_type": "catalog_object_type6",
-  "state": "SUPPORTED_BY_NEWER_VERSION",
-  "location_id": "location_id4",
-  "quantity": "quantity6",
-  "source": {
-    "product": "PAYROLL",
-    "application_id": "application_id0",
-    "name": "name4"
-  },
-  "employee_id": "employee_id0",
-  "team_member_id": "team_member_id0",
-  "occurred_at": "occurred_at4",
-  "created_at": "created_at2"
+  "state": "RESERVED_FOR_SALE"
 }
 ```
 

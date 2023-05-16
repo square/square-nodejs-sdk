@@ -28,20 +28,7 @@ A [CatalogModifier](../../doc/models/catalog-modifier.md).
   "catalog_object_id": "catalog_object_id6",
   "catalog_version": 126,
   "name": "name0",
-  "quantity": "quantity6",
-  "base_price_money": {
-    "amount": 114,
-    "currency": "ALL"
-  },
-  "total_price_money": {
-    "amount": 52,
-    "currency": "MYR"
-  },
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
-  }
+  "quantity": "quantity6"
 }
 ```
 

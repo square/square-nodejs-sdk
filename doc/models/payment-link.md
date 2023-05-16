@@ -41,25 +41,7 @@
     ],
     "subscription_plan_id": "subscription_plan_id8",
     "redirect_url": "redirect_url2",
-    "merchant_support_email": "merchant_support_email8",
-    "ask_for_shipping_address": false,
-    "accepted_payment_methods": {
-      "apple_pay": false,
-      "google_pay": false,
-      "cash_app_pay": false,
-      "afterpay_clearpay": false
-    },
-    "app_fee_money": {
-      "amount": 194,
-      "currency": "XBA"
-    },
-    "shipping_fee": {
-      "name": "name2",
-      "charge": {
-        "amount": 8,
-        "currency": "FJD"
-      }
-    }
+    "merchant_support_email": "merchant_support_email8"
   },
   "pre_populated_data": {
     "buyer_email": "buyer_email8",
@@ -69,23 +51,9 @@
       "address_line_2": "address_line_22",
       "address_line_3": "address_line_38",
       "locality": "locality2",
-      "sublocality": "sublocality2",
-      "sublocality_2": "sublocality_20",
-      "sublocality_3": "sublocality_32",
-      "administrative_district_level_1": "administrative_district_level_16",
-      "administrative_district_level_2": "administrative_district_level_28",
-      "administrative_district_level_3": "administrative_district_level_30",
-      "postal_code": "postal_code4",
-      "country": "IO",
-      "first_name": "first_name2",
-      "last_name": "last_name0"
+      "sublocality": "sublocality2"
     }
-  },
-  "url": "url4",
-  "long_url": "long_url0",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "payment_note": "payment_note8"
+  }
 }
 ```
 

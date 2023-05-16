@@ -20,7 +20,9 @@
   "team_member_booking_profile": {
     "display_name": "Sandbox Staff",
     "is_bookable": true,
-    "team_member_id": "TMaJcbiRqPIGZuS9"
+    "team_member_id": "TMaJcbiRqPIGZuS9",
+    "description": "description2",
+    "profile_image_url": "profile_image_url8"
   }
 }
 ```

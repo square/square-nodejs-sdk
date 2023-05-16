@@ -25,7 +25,14 @@ A request to create a gift card activity.
     },
     "gift_card_id": "gftc:6d55a72470d940c6ba09c0ab8ad08d20",
     "location_id": "81FN9BNFZTKS4",
-    "type": "ACTIVATE"
+    "type": "ACTIVATE",
+    "id": "id6",
+    "created_at": "created_at6",
+    "gift_card_gan": "gift_card_gan2",
+    "gift_card_balance_money": {
+      "amount": 172,
+      "currency": "XXX"
+    }
   },
   "idempotency_key": "U16kfr-kA70er-q4Rsym-7U7NnY"
 }

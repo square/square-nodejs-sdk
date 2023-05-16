@@ -23,14 +23,7 @@
       "first_name": "first_name6",
       "last_name": "last_name4",
       "email": "email0",
-      "phone_number": "phone_number4",
-      "location_ids": [
-        "location_ids6"
-      ],
-      "status": "ACTIVE",
-      "is_owner": false,
-      "created_at": "created_at4",
-      "updated_at": "updated_at2"
+      "phone_number": "phone_number4"
     }
   ],
   "cursor": "cursor6",

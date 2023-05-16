@@ -74,7 +74,14 @@ Describes a `PublishInvoice` response.
       "email_address": "Amelia.Earhart@example.com",
       "family_name": "Earhart",
       "given_name": "Amelia",
-      "phone_number": "1-212-555-4240"
+      "phone_number": "1-212-555-4240",
+      "address": {
+        "address_line_1": "address_line_16",
+        "address_line_2": "address_line_26",
+        "address_line_3": "address_line_32",
+        "locality": "locality6",
+        "sublocality": "sublocality6"
+      }
     },
     "public_url": "https://squareup.com/pay-invoice/inv:0-ChCHu2mZEabLeeHahQnXDjZQECY",
     "sale_or_service_date": "2030-01-24",
@@ -85,7 +92,27 @@ Describes a `PublishInvoice` response.
     "title": "Event Planning Services",
     "updated_at": "2020-06-18T18:23:11Z",
     "version": 1
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

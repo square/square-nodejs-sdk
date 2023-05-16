@@ -18,6 +18,9 @@ Defines the query parameters that can be included in a request to the
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "cursor": "cursor6",
+  "limit": 172
+}
 ```
 

@@ -27,11 +27,9 @@ inventory adjustments.
 {
   "catalog_object_id": "catalog_object_id6",
   "catalog_object_type": "catalog_object_type6",
-  "state": "SUPPORTED_BY_NEWER_VERSION",
+  "state": "RESERVED_FOR_SALE",
   "location_id": "location_id4",
-  "quantity": "quantity6",
-  "calculated_at": "calculated_at2",
-  "is_estimated": false
+  "quantity": "quantity6"
 }
 ```
 

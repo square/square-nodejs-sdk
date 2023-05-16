@@ -28,16 +28,7 @@ see [Optional Checkout Configurations](https://developer.squareup.com/docs/check
     "address_line_2": "address_line_22",
     "address_line_3": "address_line_38",
     "locality": "locality2",
-    "sublocality": "sublocality2",
-    "sublocality_2": "sublocality_20",
-    "sublocality_3": "sublocality_32",
-    "administrative_district_level_1": "administrative_district_level_16",
-    "administrative_district_level_2": "administrative_district_level_28",
-    "administrative_district_level_3": "administrative_district_level_30",
-    "postal_code": "postal_code4",
-    "country": "IO",
-    "first_name": "first_name2",
-    "last_name": "last_name0"
+    "sublocality": "sublocality2"
   }
 }
 ```

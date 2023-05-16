@@ -50,136 +50,13 @@ The line item being returned in an order.
       "area_unit": "IMPERIAL_SQUARE_FOOT",
       "length_unit": "METRIC_METER",
       "volume_unit": "GENERIC_CUP",
-      "weight_unit": "IMPERIAL_WEIGHT_OUNCE",
-      "generic_unit": "UNIT",
-      "time_unit": "GENERIC_SECOND",
-      "type": "TYPE_CUSTOM"
+      "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
     },
     "precision": 54,
     "catalog_object_id": "catalog_object_id0",
     "catalog_version": 12
   },
-  "note": "note4",
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_version": 126,
-  "variation_name": "variation_name0",
-  "item_type": "ITEM",
-  "return_modifiers": [
-    {
-      "uid": "uid1",
-      "source_modifier_uid": "source_modifier_uid5",
-      "catalog_object_id": "catalog_object_id5",
-      "catalog_version": 73,
-      "name": "name1",
-      "base_price_money": {
-        "amount": 167,
-        "currency": "MWK"
-      },
-      "total_price_money": {
-        "amount": 91,
-        "currency": "ZAR"
-      },
-      "quantity": "quantity7"
-    }
-  ],
-  "applied_taxes": [
-    {
-      "uid": "uid0",
-      "tax_uid": "tax_uid4",
-      "applied_money": {
-        "amount": 190,
-        "currency": "XAF"
-      }
-    },
-    {
-      "uid": "uid1",
-      "tax_uid": "tax_uid3",
-      "applied_money": {
-        "amount": 189,
-        "currency": "WST"
-      }
-    }
-  ],
-  "applied_discounts": [
-    {
-      "uid": "uid4",
-      "discount_uid": "discount_uid0",
-      "applied_money": {
-        "amount": 42,
-        "currency": "BHD"
-      }
-    },
-    {
-      "uid": "uid5",
-      "discount_uid": "discount_uid9",
-      "applied_money": {
-        "amount": 41,
-        "currency": "BGN"
-      }
-    },
-    {
-      "uid": "uid6",
-      "discount_uid": "discount_uid8",
-      "applied_money": {
-        "amount": 40,
-        "currency": "BDT"
-      }
-    }
-  ],
-  "base_price_money": {
-    "amount": 114,
-    "currency": "ALL"
-  },
-  "variation_total_price_money": {
-    "amount": 98,
-    "currency": "SGD"
-  },
-  "gross_return_money": {
-    "amount": 218,
-    "currency": "KYD"
-  },
-  "total_tax_money": {
-    "amount": 58,
-    "currency": "SDG"
-  },
-  "total_discount_money": {
-    "amount": 132,
-    "currency": "TRY"
-  },
-  "total_money": {
-    "amount": 250,
-    "currency": "UNKNOWN_CURRENCY"
-  },
-  "applied_service_charges": [
-    {
-      "uid": "uid1",
-      "service_charge_uid": "service_charge_uid1",
-      "applied_money": {
-        "amount": 141,
-        "currency": "KPW"
-      }
-    },
-    {
-      "uid": "uid2",
-      "service_charge_uid": "service_charge_uid2",
-      "applied_money": {
-        "amount": 140,
-        "currency": "KMF"
-      }
-    },
-    {
-      "uid": "uid3",
-      "service_charge_uid": "service_charge_uid3",
-      "applied_money": {
-        "amount": 139,
-        "currency": "KHR"
-      }
-    }
-  ],
-  "total_service_charge_money": {
-    "amount": 62,
-    "currency": "NZD"
-  }
+  "note": "note4"
 }
 ```
 

@@ -24,7 +24,10 @@ Either `custom_attribute_definition` or `errors` is present in the response.
     "description": "The favorite shampoo of the customer.",
     "key": "favoriteShampoo",
     "name": "Favorite Shampoo",
-    "schema": null,
+    "schema": {
+      "key1": "val1",
+      "key2": "val2"
+    },
     "updated_at": "2022-11-16T15:27:30Z",
     "version": 1,
     "visibility": "VISIBILITY_HIDDEN"

@@ -24,7 +24,12 @@
     },
     "device_id": "f72dfb8e-4d65-4e56-aade-ec3fb8d33291",
     "payment_id": "5O5OvgkcNUhl7JBuINflcjKqUzXZY",
-    "reason": "Returning items"
+    "reason": "Returning items",
+    "id": "id8",
+    "refund_id": "refund_id2",
+    "order_id": "order_id2",
+    "deadline_duration": "deadline_duration0",
+    "status": "status0"
   }
 }
 ```

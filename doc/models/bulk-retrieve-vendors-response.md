@@ -48,6 +48,43 @@ Represents an output from a call to [BulkRetrieveVendors](../../doc/api/vendors.
         "version": 1
       }
     }
+  },
+  "responses": {
+    "key0": {
+      "errors": [
+        {
+          "category": "AUTHENTICATION_ERROR",
+          "code": "INVALID_EMAIL_ADDRESS",
+          "detail": "detail8",
+          "field": "field6"
+        },
+        {
+          "category": "INVALID_REQUEST_ERROR",
+          "code": "INVALID_PHONE_NUMBER",
+          "detail": "detail9",
+          "field": "field7"
+        },
+        {
+          "category": "RATE_LIMIT_ERROR",
+          "code": "CHECKOUT_EXPIRED",
+          "detail": "detail0",
+          "field": "field8"
+        }
+      ],
+      "vendor": {
+        "id": "id3",
+        "created_at": "created_at1",
+        "updated_at": "updated_at9",
+        "name": "name3",
+        "address": {
+          "address_line_1": "address_line_19",
+          "address_line_2": "address_line_29",
+          "address_line_3": "address_line_35",
+          "locality": "locality9",
+          "sublocality": "sublocality9"
+        }
+      }
+    }
   }
 }
 ```

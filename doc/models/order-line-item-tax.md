@@ -34,19 +34,7 @@ contributes to the order subtotal.
   "catalog_object_id": "catalog_object_id6",
   "catalog_version": 126,
   "name": "name0",
-  "type": "INCLUSIVE",
-  "percentage": "percentage8",
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
-  },
-  "applied_money": {
-    "amount": 196,
-    "currency": "PLN"
-  },
-  "scope": "ORDER",
-  "auto_applied": false
+  "type": "INCLUSIVE"
 }
 ```
 

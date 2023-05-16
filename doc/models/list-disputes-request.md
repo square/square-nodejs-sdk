@@ -18,6 +18,13 @@ Defines the request parameters for the `ListDisputes` endpoint.
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "cursor": "cursor6",
+  "states": [
+    "PROCESSING",
+    "WON"
+  ],
+  "location_id": "location_id4"
+}
 ```
 

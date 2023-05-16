@@ -55,6 +55,8 @@ const contentType = null;
 const bodyOrderLineItems: OrderLineItem[] = [];
 
 const bodyOrderlineItems0BasePriceMoney: Money = {};
+bodyOrderlineItems0BasePriceMoney.amount = BigInt(1599);
+bodyOrderlineItems0BasePriceMoney.currency = 'USD';
 
 const bodyOrderlineItems0: OrderLineItem = {
   quantity: '1',
@@ -116,6 +118,8 @@ bodyOrderdiscounts1.scope = 'ORDER';
 bodyOrderDiscounts[1] = bodyOrderdiscounts1;
 
 const bodyOrderdiscounts2AmountMoney: Money = {};
+bodyOrderdiscounts2AmountMoney.amount = BigInt(100);
+bodyOrderdiscounts2AmountMoney.currency = 'USD';
 
 const bodyOrderdiscounts2: OrderLineItemDiscount = {};
 bodyOrderdiscounts2.uid = 'one-dollar-off';
@@ -226,6 +230,8 @@ const contentType = null;
 const bodyOrderLineItems: OrderLineItem[] = [];
 
 const bodyOrderlineItems0BasePriceMoney: Money = {};
+bodyOrderlineItems0BasePriceMoney.amount = BigInt(500);
+bodyOrderlineItems0BasePriceMoney.currency = 'USD';
 
 const bodyOrderlineItems0: OrderLineItem = {
   quantity: '1',
@@ -236,6 +242,8 @@ bodyOrderlineItems0.basePriceMoney = bodyOrderlineItems0BasePriceMoney;
 bodyOrderLineItems[0] = bodyOrderlineItems0;
 
 const bodyOrderlineItems1BasePriceMoney: Money = {};
+bodyOrderlineItems1BasePriceMoney.amount = BigInt(300);
+bodyOrderlineItems1BasePriceMoney.currency = 'USD';
 
 const bodyOrderlineItems1: OrderLineItem = {
   quantity: '2',
@@ -372,6 +380,8 @@ const bodyQueryFilterStateFilter: SearchOrdersStateFilter = {
 };
 
 const bodyQueryFilterDateTimeFilterClosedAt: TimeRange = {};
+bodyQueryFilterDateTimeFilterClosedAt.startAt = '2018-03-03T20:00:00+00:00';
+bodyQueryFilterDateTimeFilterClosedAt.endAt = '2019-03-04T21:54:45+00:00';
 
 const bodyQueryFilterDateTimeFilter: SearchOrdersDateTimeFilter = {};
 bodyQueryFilterDateTimeFilter.closedAt = bodyQueryFilterDateTimeFilterClosedAt;

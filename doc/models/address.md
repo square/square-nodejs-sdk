@@ -35,16 +35,7 @@ For more information, see [Working with Addresses](https://developer.squareup.co
   "address_line_2": "address_line_20",
   "address_line_3": "address_line_36",
   "locality": "locality0",
-  "sublocality": "sublocality0",
-  "sublocality_2": "sublocality_28",
-  "sublocality_3": "sublocality_30",
-  "administrative_district_level_1": "administrative_district_level_14",
-  "administrative_district_level_2": "administrative_district_level_24",
-  "administrative_district_level_3": "administrative_district_level_38",
-  "postal_code": "postal_code2",
-  "country": "FO",
-  "first_name": "first_name0",
-  "last_name": "last_name8"
+  "sublocality": "sublocality0"
 }
 ```
 

@@ -22,7 +22,9 @@
   "object_ids": [
     "W62UWFY35CWMYGVWK6TWJDNI",
     "AA27W3M2GGTF3H6AVPNB77CK"
-  ]
+  ],
+  "catalog_version": 126,
+  "include_deleted_objects": false
 }
 ```
 

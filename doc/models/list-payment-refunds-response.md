@@ -45,7 +45,41 @@ Either `errors` or `refunds` is present in a given response (never both).
       ],
       "reason": "Example Refund",
       "status": "COMPLETED",
-      "updated_at": "2021-10-13T20:00:03.497Z"
+      "updated_at": "2021-10-13T20:00:03.497Z",
+      "unlinked": false,
+      "destination_type": "destination_type8",
+      "destination_details": {
+        "card_details": {
+          "card": {
+            "id": "id2",
+            "card_brand": "JCB",
+            "last_4": "last_44",
+            "exp_month": 142,
+            "exp_year": 154
+          },
+          "entry_method": "entry_method4"
+        }
+      }
+    }
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

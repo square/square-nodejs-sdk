@@ -29,7 +29,8 @@ Represents a bulk update request for `TeamMember` objects.
         "is_owner": false,
         "phone_number": "+14159223334",
         "reference_id": "reference_id_2",
-        "status": "ACTIVE"
+        "status": "ACTIVE",
+        "id": "id3"
       }
     },
     "fpgteZNMaf0qOK-a4t6P": {
@@ -47,7 +48,8 @@ Represents a bulk update request for `TeamMember` objects.
         "is_owner": false,
         "phone_number": "+14159283333",
         "reference_id": "reference_id_1",
-        "status": "ACTIVE"
+        "status": "ACTIVE",
+        "id": "id4"
       }
     }
   }

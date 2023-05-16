@@ -20,7 +20,9 @@ Represents an [AccumulateLoyaltyPoints](../../doc/api/loyalty.md#accumulate-loya
 ```json
 {
   "accumulate_points": {
-    "order_id": "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY"
+    "order_id": "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
+    "loyalty_program_id": "loyalty_program_id8",
+    "points": 118
   },
   "idempotency_key": "58b90739-c3e8-4b11-85f7-e636d48d72cb",
   "location_id": "P034NEENMD09F"

@@ -56,22 +56,7 @@ A loyalty program can have a maximum of 10 loyalty promotions with an `ACTIVE` o
   },
   "status": "ACTIVE",
   "created_at": "created_at2",
-  "canceled_at": "canceled_at4",
-  "updated_at": "updated_at4",
-  "loyalty_program_id": "loyalty_program_id0",
-  "minimum_spend_amount_money": {
-    "amount": 228,
-    "currency": "ZMW"
-  },
-  "qualifying_item_variation_ids": [
-    "qualifying_item_variation_ids5",
-    "qualifying_item_variation_ids6"
-  ],
-  "qualifying_category_ids": [
-    "qualifying_category_ids2",
-    "qualifying_category_ids3",
-    "qualifying_category_ids4"
-  ]
+  "canceled_at": "canceled_at4"
 }
 ```
 

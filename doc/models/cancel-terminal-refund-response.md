@@ -41,8 +41,29 @@
     "payment_id": "5O5OvgkcNUhl7JBuINflcjKqUzXZY",
     "reason": "reason",
     "status": "CANCELED",
-    "updated_at": "2020-10-21T22:47:30.096Z"
-  }
+    "updated_at": "2020-10-21T22:47:30.096Z",
+    "refund_id": "refund_id2"
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

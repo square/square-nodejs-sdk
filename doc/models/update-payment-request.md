@@ -29,7 +29,10 @@ Describes a request to update a payment using
       "amount": 100,
       "currency": "USD"
     },
-    "version_token": "ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o"
+    "version_token": "ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o",
+    "id": "id6",
+    "created_at": "created_at4",
+    "updated_at": "updated_at2"
   }
 }
 ```

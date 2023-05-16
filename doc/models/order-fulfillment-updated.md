@@ -25,25 +25,7 @@
   "version": 172,
   "location_id": "location_id4",
   "state": "OPEN",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "fulfillment_update": [
-    {
-      "fulfillment_uid": "fulfillment_uid6",
-      "old_state": "CANCELED",
-      "new_state": "PREPARED"
-    },
-    {
-      "fulfillment_uid": "fulfillment_uid7",
-      "old_state": "FAILED",
-      "new_state": "COMPLETED"
-    },
-    {
-      "fulfillment_uid": "fulfillment_uid8",
-      "old_state": "PROPOSED",
-      "new_state": "CANCELED"
-    }
-  ]
+  "created_at": "created_at2"
 }
 ```
 

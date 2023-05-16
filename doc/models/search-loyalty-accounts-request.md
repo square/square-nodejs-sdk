@@ -23,10 +23,18 @@ A request to search for loyalty accounts.
   "query": {
     "mappings": [
       {
-        "phone_number": "+14155551234"
+        "phone_number": "+14155551234",
+        "id": "id6",
+        "created_at": "created_at6"
       }
+    ],
+    "customer_ids": [
+      "customer_ids1",
+      "customer_ids2",
+      "customer_ids3"
     ]
-  }
+  },
+  "cursor": "cursor6"
 }
 ```
 

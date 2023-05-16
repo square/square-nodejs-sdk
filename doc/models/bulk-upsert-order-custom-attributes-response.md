@@ -56,13 +56,8 @@ Represents a response from a bulk upsert of order custom attributes.
           },
           "name": "name8",
           "description": "description8",
-          "visibility": "VISIBILITY_HIDDEN",
-          "version": 178,
-          "updated_at": "updated_at4",
-          "created_at": "created_at6"
-        },
-        "updated_at": "updated_at6",
-        "created_at": "created_at4"
+          "visibility": "VISIBILITY_HIDDEN"
+        }
       },
       "errors": [
         {
@@ -90,13 +85,8 @@ Represents a response from a bulk upsert of order custom attributes.
           },
           "name": "name9",
           "description": "description9",
-          "visibility": "VISIBILITY_READ_ONLY",
-          "version": 179,
-          "updated_at": "updated_at5",
-          "created_at": "created_at7"
-        },
-        "updated_at": "updated_at5",
-        "created_at": "created_at3"
+          "visibility": "VISIBILITY_READ_ONLY"
+        }
       },
       "errors": [
         {
@@ -130,13 +120,8 @@ Represents a response from a bulk upsert of order custom attributes.
           },
           "name": "name0",
           "description": "description0",
-          "visibility": "VISIBILITY_READ_WRITE_VALUES",
-          "version": 180,
-          "updated_at": "updated_at6",
-          "created_at": "created_at8"
-        },
-        "updated_at": "updated_at4",
-        "created_at": "created_at2"
+          "visibility": "VISIBILITY_READ_WRITE_VALUES"
+        }
       },
       "errors": [
         {

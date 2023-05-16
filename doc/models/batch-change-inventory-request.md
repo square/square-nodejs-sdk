@@ -26,9 +26,38 @@
         "quantity": "53",
         "reference_id": "1536bfbf-efed-48bf-b17d-a197141b2a92",
         "state": "IN_STOCK",
-        "team_member_id": "LRK57NSQ5X7PUD05"
+        "team_member_id": "LRK57NSQ5X7PUD05",
+        "id": "id6",
+        "catalog_object_type": "catalog_object_type0"
       },
-      "type": "PHYSICAL_COUNT"
+      "type": "PHYSICAL_COUNT",
+      "adjustment": {
+        "id": "id0",
+        "reference_id": "reference_id8",
+        "from_state": "SOLD",
+        "to_state": "COMPOSED",
+        "location_id": "location_id4"
+      },
+      "transfer": {
+        "id": "id4",
+        "reference_id": "reference_id8",
+        "state": "SUPPORTED_BY_NEWER_VERSION",
+        "from_location_id": "from_location_id6",
+        "to_location_id": "to_location_id4"
+      },
+      "measurement_unit": {
+        "measurement_unit": {
+          "custom_unit": {
+            "name": "name6",
+            "abbreviation": "abbreviation8"
+          },
+          "area_unit": "IMPERIAL_SQUARE_FOOT",
+          "length_unit": "METRIC_METER",
+          "volume_unit": "IMPERIAL_CUBIC_INCH",
+          "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
+        },
+        "precision": 118
+      }
     }
   ],
   "idempotency_key": "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",

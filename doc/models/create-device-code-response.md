@@ -25,8 +25,29 @@
     "pair_by": "2020-02-06T18:49:33.000Z",
     "product_type": "TERMINAL_API",
     "status": "UNPAIRED",
-    "status_changed_at": "2020-02-06T18:44:33.000Z"
-  }
+    "status_changed_at": "2020-02-06T18:44:33.000Z",
+    "device_id": "device_id0"
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

@@ -28,16 +28,7 @@ A line item modifier being returned.
   "source_modifier_uid": "source_modifier_uid6",
   "catalog_object_id": "catalog_object_id6",
   "catalog_version": 126,
-  "name": "name0",
-  "base_price_money": {
-    "amount": 114,
-    "currency": "ALL"
-  },
-  "total_price_money": {
-    "amount": 52,
-    "currency": "MYR"
-  },
-  "quantity": "quantity6"
+  "name": "name0"
 }
 ```
 

@@ -21,6 +21,7 @@ import { LaborApi } from './api/laborApi';
 import { LocationCustomAttributesApi } from './api/locationCustomAttributesApi';
 import { LocationsApi } from './api/locationsApi';
 import { LoyaltyApi } from './api/loyaltyApi';
+import { MerchantCustomAttributesApi } from './api/merchantCustomAttributesApi';
 import { MerchantsApi } from './api/merchantsApi';
 import { MobileAuthorizationApi } from './api/mobileAuthorizationApi';
 import { OAuthApi } from './api/oAuthApi';
@@ -66,7 +67,7 @@ import {
  import { HttpClient } from './clientAdapter';
 
 /** Current SDK version */
-export const SDK_VERSION = '26.0.0';
+export const SDK_VERSION = '27.0.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -97,6 +98,7 @@ export class Client implements ClientInterface {
   public readonly locationCustomAttributesApi: LocationCustomAttributesApi;
   public readonly locationsApi: LocationsApi;
   public readonly loyaltyApi: LoyaltyApi;
+  public readonly merchantCustomAttributesApi: MerchantCustomAttributesApi;
   public readonly merchantsApi: MerchantsApi;
   public readonly mobileAuthorizationApi: MobileAuthorizationApi;
   public readonly oAuthApi: OAuthApi;
@@ -129,7 +131,7 @@ export class Client implements ClientInterface {
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/26.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/27.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail
     );
@@ -175,6 +177,7 @@ export class Client implements ClientInterface {
     this.locationCustomAttributesApi = new LocationCustomAttributesApi(this);
     this.locationsApi = new LocationsApi(this);
     this.loyaltyApi = new LoyaltyApi(this);
+    this.merchantCustomAttributesApi = new MerchantCustomAttributesApi(this);
     this.merchantsApi = new MerchantsApi(this);
     this.mobileAuthorizationApi = new MobileAuthorizationApi(this);
     this.oAuthApi = new OAuthApi(this);

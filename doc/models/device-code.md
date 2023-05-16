@@ -25,7 +25,12 @@
 
 ```json
 {
-  "product_type": "TERMINAL_API"
+  "product_type": "TERMINAL_API",
+  "id": "id0",
+  "name": "name0",
+  "code": "code8",
+  "device_id": "device_id6",
+  "location_id": "location_id4"
 }
 ```
 

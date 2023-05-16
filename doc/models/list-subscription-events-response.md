@@ -25,7 +25,11 @@ Defines output parameters in a response from the
       "effective_date": "2020-04-24",
       "id": "06809161-3867-4598-8269-8aea5be4f9de",
       "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
-      "subscription_event_type": "START_SUBSCRIPTION"
+      "subscription_event_type": "START_SUBSCRIPTION",
+      "info": {
+        "detail": "detail2",
+        "code": "CUSTOMER_NO_NAME"
+      }
     },
     {
       "effective_date": "2020-05-01",
@@ -41,27 +45,64 @@ Defines output parameters in a response from the
       "effective_date": "2022-05-01",
       "id": "b426fc85-6859-450b-b0d0-fe3a5d1b565f",
       "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
-      "subscription_event_type": "RESUME_SUBSCRIPTION"
+      "subscription_event_type": "RESUME_SUBSCRIPTION",
+      "info": {
+        "detail": "detail4",
+        "code": "LOCATION_NOT_ACTIVE"
+      }
     },
     {
       "effective_date": "2022-05-02",
       "id": "09f14de1-2f53-4dae-9091-49aa53f83d01",
       "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
-      "subscription_event_type": "PAUSE_SUBSCRIPTION"
+      "subscription_event_type": "PAUSE_SUBSCRIPTION",
+      "info": {
+        "detail": "detail5",
+        "code": "LOCATION_CANNOT_ACCEPT_PAYMENT"
+      }
     },
     {
       "effective_date": "2020-05-02",
       "id": "f28a73ac-1a1b-4b0f-8eeb-709a72945776",
       "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
-      "subscription_event_type": "RESUME_SUBSCRIPTION"
+      "subscription_event_type": "RESUME_SUBSCRIPTION",
+      "info": {
+        "detail": "detail6",
+        "code": "CUSTOMER_DELETED"
+      }
     },
     {
       "effective_date": "2020-05-06",
       "id": "a0c08083-5db0-4800-85c7-d398de4fbb6e",
       "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
-      "subscription_event_type": "STOP_SUBSCRIPTION"
+      "subscription_event_type": "STOP_SUBSCRIPTION",
+      "info": {
+        "detail": "detail7",
+        "code": "CUSTOMER_NO_EMAIL"
+      }
     }
-  ]
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "cursor": "cursor6"
 }
 ```
 

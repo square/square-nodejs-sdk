@@ -51,7 +51,29 @@
     "present_at_all_locations": true,
     "type": "ITEM",
     "updated_at": "2016-11-16T22:25:24.878Z",
-    "version": 1479335124878
+    "version": 1479335124878,
+    "custom_attribute_values": {
+      "key0": {
+        "name": "name3",
+        "string_value": "string_value7",
+        "custom_attribute_definition_id": "custom_attribute_definition_id9",
+        "type": "SELECTION",
+        "number_value": "number_value3"
+      },
+      "key1": {
+        "name": "name2",
+        "string_value": "string_value6",
+        "custom_attribute_definition_id": "custom_attribute_definition_id0",
+        "type": "STRING",
+        "number_value": "number_value2"
+      }
+    },
+    "catalog_v1_ids": [
+      {
+        "catalog_v1_id": "catalog_v1_id6",
+        "location_id": "location_id6"
+      }
+    ]
   },
   "related_objects": [
     {
@@ -63,7 +85,26 @@
       "present_at_all_locations": true,
       "type": "CATEGORY",
       "updated_at": "2016-11-16T22:25:24.878Z",
-      "version": 1479335124878
+      "version": 1479335124878,
+      "custom_attribute_values": {
+        "key0": {
+          "name": "name1",
+          "string_value": "string_value5",
+          "custom_attribute_definition_id": "custom_attribute_definition_id1",
+          "type": "SELECTION",
+          "number_value": "number_value1"
+        }
+      },
+      "catalog_v1_ids": [
+        {
+          "catalog_v1_id": "catalog_v1_id2",
+          "location_id": "location_id2"
+        },
+        {
+          "catalog_v1_id": "catalog_v1_id3",
+          "location_id": "location_id3"
+        }
+      ]
     },
     {
       "id": "HURXQOOAIC4IZSI2BEXQRYFY",
@@ -78,7 +119,64 @@
       },
       "type": "TAX",
       "updated_at": "2016-11-16T22:25:24.878Z",
-      "version": 1479335124878
+      "version": 1479335124878,
+      "custom_attribute_values": {
+        "key0": {
+          "name": "name0",
+          "string_value": "string_value4",
+          "custom_attribute_definition_id": "custom_attribute_definition_id2",
+          "type": "STRING",
+          "number_value": "number_value0"
+        },
+        "key1": {
+          "name": "name1",
+          "string_value": "string_value5",
+          "custom_attribute_definition_id": "custom_attribute_definition_id1",
+          "type": "SELECTION",
+          "number_value": "number_value1"
+        },
+        "key2": {
+          "name": "name2",
+          "string_value": "string_value6",
+          "custom_attribute_definition_id": "custom_attribute_definition_id0",
+          "type": "NUMBER",
+          "number_value": "number_value2"
+        }
+      },
+      "catalog_v1_ids": [
+        {
+          "catalog_v1_id": "catalog_v1_id3",
+          "location_id": "location_id3"
+        },
+        {
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
+        },
+        {
+          "catalog_v1_id": "catalog_v1_id5",
+          "location_id": "location_id5"
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

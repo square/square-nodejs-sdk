@@ -28,11 +28,7 @@ Defines an appointment segment of a booking.
   "team_member_id": "team_member_id0",
   "service_variation_version": 56,
   "intermission_minutes": 62,
-  "any_team_member": false,
-  "resource_ids": [
-    "resource_ids0",
-    "resource_ids1"
-  ]
+  "any_team_member": false
 }
 ```
 

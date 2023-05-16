@@ -20,6 +20,8 @@ To complete payments manually, set `autocomplete` to `false`.
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "version_token": "version_token4"
+}
 ```
 

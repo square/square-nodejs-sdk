@@ -82,8 +82,32 @@ Defines the response returned by[CompletePayment](../../doc/api/payments.md#comp
       "currency": "USD"
     },
     "updated_at": "2021-10-13T19:34:34.339Z",
-    "version_token": "56pRkL3slrzet2iQrTp9n0bdJVYTB9YEWdTNjQfZOPV6o"
-  }
+    "version_token": "56pRkL3slrzet2iQrTp9n0bdJVYTB9YEWdTNjQfZOPV6o",
+    "tip_money": {
+      "amount": 174,
+      "currency": "PAB"
+    }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

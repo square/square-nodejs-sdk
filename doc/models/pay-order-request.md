@@ -24,7 +24,8 @@ Defines the fields that are included in requests to the
   "payment_ids": [
     "EnZdNAlWCmfh6Mt5FMNST1o7taB",
     "0LRiVlbXVwe8ozu4KbZxd12mvaB"
-  ]
+  ],
+  "order_version": 90
 }
 ```
 
