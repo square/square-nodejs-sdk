@@ -35,7 +35,15 @@ A discount applicable to items.
     "id": "#Maythe4th",
     "present_at_all_locations": true,
     "type": "DISCOUNT"
-  }
+  },
+  "name": "name0",
+  "discount_type": "VARIABLE_PERCENTAGE",
+  "percentage": "percentage8",
+  "amount_money": {
+    "amount": 186,
+    "currency": "NGN"
+  },
+  "pin_required": false
 }
 ```
 

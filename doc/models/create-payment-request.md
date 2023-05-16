@@ -53,7 +53,13 @@ Describes a request to create a payment using
   "location_id": "L88917AVBK2S5",
   "note": "Brief description",
   "reference_id": "123456",
-  "source_id": "ccof:GaJGNaZa8x4OgDJn4GB"
+  "source_id": "ccof:GaJGNaZa8x4OgDJn4GB",
+  "tip_money": {
+    "amount": 190,
+    "currency": "CHE"
+  },
+  "delay_duration": "delay_duration2",
+  "delay_action": "delay_action0"
 }
 ```
 

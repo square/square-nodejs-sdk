@@ -38,76 +38,11 @@ Reflects the current status of a card payment. Contains only non-confidential in
     "card_brand": "OTHER_BRAND",
     "last_4": "last_48",
     "exp_month": 228,
-    "exp_year": 68,
-    "cardholder_name": "cardholder_name8",
-    "billing_address": {
-      "address_line_1": "address_line_12",
-      "address_line_2": "address_line_28",
-      "address_line_3": "address_line_34",
-      "locality": "locality2",
-      "sublocality": "sublocality8",
-      "sublocality_2": "sublocality_26",
-      "sublocality_3": "sublocality_32",
-      "administrative_district_level_1": "administrative_district_level_12",
-      "administrative_district_level_2": "administrative_district_level_26",
-      "administrative_district_level_3": "administrative_district_level_36",
-      "postal_code": "postal_code0",
-      "country": "KR",
-      "first_name": "first_name8",
-      "last_name": "last_name6"
-    },
-    "fingerprint": "fingerprint2",
-    "customer_id": "customer_id4",
-    "merchant_id": "merchant_id6",
-    "reference_id": "reference_id6",
-    "enabled": false,
-    "card_type": "UNKNOWN_CARD_TYPE",
-    "prepaid_type": "PREPAID",
-    "bin": "bin6",
-    "version": 154,
-    "card_co_brand": "AFTERPAY"
+    "exp_year": 68
   },
   "entry_method": "entry_method6",
   "cvv_status": "cvv_status8",
-  "avs_status": "avs_status4",
-  "auth_result_code": "auth_result_code8",
-  "application_identifier": "application_identifier2",
-  "application_name": "application_name4",
-  "application_cryptogram": "application_cryptogram4",
-  "verification_method": "verification_method0",
-  "verification_results": "verification_results8",
-  "statement_description": "statement_description4",
-  "device_details": {
-    "device_id": "device_id2",
-    "device_installation_id": "device_installation_id4",
-    "device_name": "device_name6"
-  },
-  "card_payment_timeline": {
-    "authorized_at": "authorized_at6",
-    "captured_at": "captured_at6",
-    "voided_at": "voided_at0"
-  },
-  "refund_requires_card_presence": false,
-  "errors": [
-    {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "REFUND_ALREADY_PENDING",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "PAYMENT_NOT_REFUNDABLE",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "REFUND_DECLINED",
-      "detail": "detail3",
-      "field": "field1"
-    }
-  ]
+  "avs_status": "avs_status4"
 }
 ```
 

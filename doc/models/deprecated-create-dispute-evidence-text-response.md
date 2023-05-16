@@ -23,8 +23,33 @@ Defines the fields in a `DeprecatedCreateDisputeEvidenceText` response.
     "evidence_text": "The customer purchased the item twice, on April 11 and April 28.",
     "evidence_type": "REBUTTAL_EXPLANATION",
     "id": "TOomLInj6iWmP3N8qfCXrB",
-    "uploaded_at": "2022-05-18T16:01:10.000Z"
-  }
+    "uploaded_at": "2022-05-18T16:01:10.000Z",
+    "evidence_id": "evidence_id0",
+    "evidence_file": {
+      "filename": "filename0",
+      "filetype": "filetype0"
+    }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

@@ -29,9 +29,7 @@ Represents a business that sells with Square.
   "country": "FO",
   "language_code": "language_code8",
   "currency": "YER",
-  "status": "ACTIVE",
-  "main_location_id": "main_location_id0",
-  "created_at": "created_at2"
+  "status": "ACTIVE"
 }
 ```
 

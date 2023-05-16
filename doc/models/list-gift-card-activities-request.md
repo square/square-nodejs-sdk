@@ -24,6 +24,12 @@ subset of activites.
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "gift_card_id": "gift_card_id8",
+  "type": "type0",
+  "location_id": "location_id4",
+  "begin_time": "begin_time2",
+  "end_time": "end_time2"
+}
 ```
 

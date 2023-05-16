@@ -23,7 +23,10 @@
       "customer_id": "{{CUSTOMER_ID}}",
       "reference_id": "user-id-1"
     },
-    "type": "SAVE_CARD"
+    "type": "SAVE_CARD",
+    "id": "id2",
+    "status": "status4",
+    "cancel_reason": "TIMED_OUT"
   },
   "idempotency_key": "thahn-70e75c10-47f7-4ab6-88cc-aaa4076d065e"
 }

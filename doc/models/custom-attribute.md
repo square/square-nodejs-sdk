@@ -39,13 +39,8 @@ A custom attribute value. Each custom attribute value has a corresponding
     },
     "name": "name0",
     "description": "description0",
-    "visibility": "VISIBILITY_HIDDEN",
-    "version": 180,
-    "updated_at": "updated_at6",
-    "created_at": "created_at8"
-  },
-  "updated_at": "updated_at4",
-  "created_at": "created_at2"
+    "visibility": "VISIBILITY_HIDDEN"
+  }
 }
 ```
 

@@ -38,7 +38,8 @@ One of `errors` or `transactions` is present in a given response (never both).
                 "currency": "USD"
               },
               "description": "Application fees",
-              "location_id": "057P5VYJ4A5X1"
+              "location_id": "057P5VYJ4A5X1",
+              "receivable_id": "receivable_id4"
             }
           ],
           "amount_money": {
@@ -95,7 +96,28 @@ One of `errors` or `transactions` is present in a given response (never both).
         }
       ]
     }
-  ]
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "cursor": "cursor6"
 }
 ```
 

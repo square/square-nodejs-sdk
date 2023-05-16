@@ -1,7 +1,7 @@
 import { lazy, nullable, object, optional, Schema, string } from '../schema';
-import { SquareEventData, squareEventDataSchema } from './squareEventData';
+import { EventData, eventDataSchema } from './eventData';
 
-export interface SquareEvent {
+export interface Event {
   /** The ID of the target merchant associated with the event. */
   merchantId?: string | null;
   /** The ID of the location associated with the event. */
@@ -12,14 +12,14 @@ export interface SquareEvent {
   eventId?: string | null;
   /** Timestamp of when the event was created, in RFC 3339 format. */
   createdAt?: string;
-  data?: SquareEventData;
+  data?: EventData;
 }
 
-export const squareEventSchema: Schema<SquareEvent> = object({
+export const eventSchema: Schema<Event> = object({
   merchantId: ['merchant_id', optional(nullable(string()))],
   locationId: ['location_id', optional(nullable(string()))],
   type: ['type', optional(nullable(string()))],
   eventId: ['event_id', optional(nullable(string()))],
   createdAt: ['created_at', optional(string())],
-  data: ['data', optional(lazy(() => squareEventDataSchema))],
+  data: ['data', optional(lazy(() => eventDataSchema))],
 });

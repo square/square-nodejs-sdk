@@ -36,8 +36,29 @@ Defines the fields in an `AcceptDispute` response.
     "reported_at": "2022-06-29T00:00:00.000Z",
     "state": "ACCEPTED",
     "updated_at": "2022-07-07T19:14:42.650Z",
-    "version": 2
-  }
+    "version": 2,
+    "dispute_id": "dispute_id8"
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

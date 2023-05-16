@@ -31,10 +31,7 @@ Price and inventory alerting overrides for a `CatalogItemVariation` at a specifi
   },
   "pricing_type": "FIXED_PRICING",
   "track_inventory": false,
-  "inventory_alert_type": "NONE",
-  "inventory_alert_threshold": 174,
-  "sold_out": false,
-  "sold_out_valid_until": "sold_out_valid_until8"
+  "inventory_alert_type": "NONE"
 }
 ```
 

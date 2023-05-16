@@ -38,13 +38,8 @@ results are available, the `cursor` field is also present along with `custom_att
         },
         "name": "name2",
         "description": "description2",
-        "visibility": "VISIBILITY_HIDDEN",
-        "version": 68,
-        "updated_at": "updated_at8",
-        "created_at": "created_at0"
-      },
-      "updated_at": "updated_at8",
-      "created_at": "created_at0"
+        "visibility": "VISIBILITY_HIDDEN"
+      }
     },
     {
       "key": "key3",
@@ -62,13 +57,8 @@ results are available, the `cursor` field is also present along with `custom_att
         },
         "name": "name3",
         "description": "description3",
-        "visibility": "VISIBILITY_READ_ONLY",
-        "version": 69,
-        "updated_at": "updated_at9",
-        "created_at": "created_at1"
-      },
-      "updated_at": "updated_at9",
-      "created_at": "created_at1"
+        "visibility": "VISIBILITY_READ_ONLY"
+      }
     },
     {
       "key": "key4",
@@ -86,13 +76,8 @@ results are available, the `cursor` field is also present along with `custom_att
         },
         "name": "name4",
         "description": "description4",
-        "visibility": "VISIBILITY_READ_WRITE_VALUES",
-        "version": 70,
-        "updated_at": "updated_at0",
-        "created_at": "created_at2"
-      },
-      "updated_at": "updated_at0",
-      "created_at": "created_at2"
+        "visibility": "VISIBILITY_READ_WRITE_VALUES"
+      }
     }
   ],
   "cursor": "cursor6",

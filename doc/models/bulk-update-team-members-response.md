@@ -34,7 +34,27 @@ Represents a response from a bulk update request containing the updated `TeamMem
         "reference_id": "reference_id_2",
         "status": "ACTIVE",
         "updated_at": "2020-03-24T18:18:00Z"
-      }
+      },
+      "errors": [
+        {
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "GENERIC_DECLINE",
+          "detail": "detail8",
+          "field": "field6"
+        },
+        {
+          "category": "API_ERROR",
+          "code": "CVV_FAILURE",
+          "detail": "detail9",
+          "field": "field7"
+        },
+        {
+          "category": "AUTHENTICATION_ERROR",
+          "code": "ADDRESS_VERIFICATION_FAILURE",
+          "detail": "detail0",
+          "field": "field8"
+        }
+      ]
     },
     "fpgteZNMaf0qOK-a4t6P": {
       "team_member": {
@@ -55,9 +75,37 @@ Represents a response from a bulk update request containing the updated `TeamMem
         "reference_id": "reference_id_1",
         "status": "ACTIVE",
         "updated_at": "2020-03-24T18:18:00Z"
-      }
+      },
+      "errors": [
+        {
+          "category": "API_ERROR",
+          "code": "CVV_FAILURE",
+          "detail": "detail9",
+          "field": "field7"
+        }
+      ]
     }
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

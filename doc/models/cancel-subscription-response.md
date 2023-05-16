@@ -36,7 +36,47 @@ Defines output parameters in a response from the
     "status": "ACTIVE",
     "timezone": "America/Los_Angeles",
     "version": 1594311617331
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "actions": [
+    {
+      "id": "id9",
+      "type": "PAUSE",
+      "effective_date": "effective_date1",
+      "new_plan_id": "new_plan_id5"
+    },
+    {
+      "id": "id0",
+      "type": "CANCEL",
+      "effective_date": "effective_date0",
+      "new_plan_id": "new_plan_id6"
+    },
+    {
+      "id": "id1",
+      "type": "SWAP_PLAN",
+      "effective_date": "effective_date9",
+      "new_plan_id": "new_plan_id7"
+    }
+  ]
 }
 ```
 

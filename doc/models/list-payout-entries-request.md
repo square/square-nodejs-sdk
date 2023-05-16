@@ -16,6 +16,10 @@
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "sort_order": "DESC",
+  "cursor": "cursor6",
+  "limit": 172
+}
 ```
 

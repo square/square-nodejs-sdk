@@ -65,30 +65,6 @@ Represents a checkout processed by the Square Terminal.
       "smart_tipping": false
     },
     "show_itemized_cart": false
-  },
-  "deadline_duration": "deadline_duration8",
-  "status": "status8",
-  "cancel_reason": "SELLER_CANCELED",
-  "payment_ids": [
-    "payment_ids6",
-    "payment_ids7",
-    "payment_ids8"
-  ],
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "app_id": "app_id6",
-  "location_id": "location_id4",
-  "payment_type": "FELICA_QUICPAY",
-  "team_member_id": "team_member_id0",
-  "customer_id": "customer_id8",
-  "app_fee_money": {
-    "amount": 106,
-    "currency": "GBP"
-  },
-  "statement_description_identifier": "statement_description_identifier4",
-  "tip_money": {
-    "amount": 190,
-    "currency": "CHE"
   }
 }
 ```

@@ -40,7 +40,10 @@ A request to update a `Shift` object.
         "currency": "USD"
       },
       "title": "Bartender"
-    }
+    },
+    "id": "id4",
+    "employee_id": "employee_id4",
+    "timezone": "timezone4"
   }
 }
 ```

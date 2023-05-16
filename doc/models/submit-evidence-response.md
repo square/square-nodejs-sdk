@@ -36,8 +36,29 @@ Defines the fields in a `SubmitEvidence` response.
     "reported_at": "2022-05-18T00:00:00.000Z",
     "state": "PROCESSING",
     "updated_at": "2022-05-18T16:02:15.313Z",
-    "version": 4
-  }
+    "version": 4,
+    "dispute_id": "dispute_id8"
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

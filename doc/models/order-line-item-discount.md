@@ -37,26 +37,7 @@ amount contributed by the item to the order subtotal.
   "catalog_object_id": "catalog_object_id6",
   "catalog_version": 126,
   "name": "name0",
-  "type": "UNKNOWN_DISCOUNT",
-  "percentage": "percentage8",
-  "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
-  },
-  "applied_money": {
-    "amount": 196,
-    "currency": "PLN"
-  },
-  "metadata": {
-    "key0": "metadata3",
-    "key1": "metadata4",
-    "key2": "metadata5"
-  },
-  "scope": "ORDER",
-  "reward_ids": [
-    "reward_ids7"
-  ],
-  "pricing_rule_id": "pricing_rule_id8"
+  "type": "UNKNOWN_DISCOUNT"
 }
 ```
 

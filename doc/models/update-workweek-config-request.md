@@ -20,7 +20,10 @@ A request to update a `WorkweekConfig` object.
   "workweek_config": {
     "start_of_day_local_time": "10:00",
     "start_of_week": "MON",
-    "version": 10
+    "version": 10,
+    "id": "id0",
+    "created_at": "created_at8",
+    "updated_at": "updated_at6"
   }
 }
 ```

@@ -30,8 +30,18 @@
         "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
         "skip_receipt_screen": false,
         "tip_settings": {
-          "allow_tipping": false
-        }
+          "allow_tipping": false,
+          "separate_tip_screen": true,
+          "custom_tip_field": true,
+          "tip_percentages": [
+            97,
+            98,
+            99
+          ],
+          "smart_tipping": true
+        },
+        "collect_signature": true,
+        "show_itemized_cart": true
       },
       "id": "tsQPvzwBpMqqO",
       "note": "A brief note",
@@ -40,7 +50,14 @@
       ],
       "reference_id": "id14467",
       "status": "COMPLETED",
-      "updated_at": "2020-03-31T18:13:52.725Z"
+      "updated_at": "2020-03-31T18:13:52.725Z",
+      "order_id": "order_id1",
+      "payment_options": {
+        "autocomplete": true,
+        "delay_duration": "delay_duration9",
+        "accept_partial_authorization": true,
+        "delay_action": "COMPLETE"
+      }
     },
     {
       "amount_money": {
@@ -54,8 +71,17 @@
         "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
         "skip_receipt_screen": true,
         "tip_settings": {
-          "allow_tipping": false
-        }
+          "allow_tipping": false,
+          "separate_tip_screen": false,
+          "custom_tip_field": false,
+          "tip_percentages": [
+            96,
+            97
+          ],
+          "smart_tipping": false
+        },
+        "collect_signature": false,
+        "show_itemized_cart": false
       },
       "id": "XlOPTgcEhrbqO",
       "note": "A brief note",
@@ -64,10 +90,37 @@
       ],
       "reference_id": "id41623",
       "status": "COMPLETED",
-      "updated_at": "2020-03-31T18:08:41.635Z"
+      "updated_at": "2020-03-31T18:08:41.635Z",
+      "order_id": "order_id2",
+      "payment_options": {
+        "autocomplete": false,
+        "delay_duration": "delay_duration0",
+        "accept_partial_authorization": false,
+        "delay_action": "CANCEL"
+      }
     }
   ],
-  "cursor": "RiTJqBoTuXlbLmmrPvEkX9iG7XnQ4W4RjGnH"
+  "cursor": "RiTJqBoTuXlbLmmrPvEkX9iG7XnQ4W4RjGnH",
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

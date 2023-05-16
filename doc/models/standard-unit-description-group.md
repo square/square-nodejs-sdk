@@ -28,10 +28,7 @@ Group of standard measurement units.
         "area_unit": "IMPERIAL_SQUARE_INCH",
         "length_unit": "IMPERIAL_FOOT",
         "volume_unit": "GENERIC_QUART",
-        "weight_unit": "IMPERIAL_POUND",
-        "generic_unit": "UNIT",
-        "time_unit": "GENERIC_MINUTE",
-        "type": "TYPE_AREA"
+        "weight_unit": "IMPERIAL_POUND"
       },
       "name": "name1",
       "abbreviation": "abbreviation3"
@@ -45,10 +42,7 @@ Group of standard measurement units.
         "area_unit": "IMPERIAL_SQUARE_FOOT",
         "length_unit": "IMPERIAL_YARD",
         "volume_unit": "GENERIC_GALLON",
-        "weight_unit": "IMPERIAL_STONE",
-        "generic_unit": "UNIT",
-        "time_unit": "GENERIC_HOUR",
-        "type": "TYPE_LENGTH"
+        "weight_unit": "IMPERIAL_STONE"
       },
       "name": "name2",
       "abbreviation": "abbreviation4"
@@ -62,10 +56,7 @@ Group of standard measurement units.
         "area_unit": "IMPERIAL_SQUARE_YARD",
         "length_unit": "IMPERIAL_MILE",
         "volume_unit": "IMPERIAL_CUBIC_INCH",
-        "weight_unit": "METRIC_MILLIGRAM",
-        "generic_unit": "UNIT",
-        "time_unit": "GENERIC_DAY",
-        "type": "TYPE_VOLUME"
+        "weight_unit": "METRIC_MILLIGRAM"
       },
       "name": "name3",
       "abbreviation": "abbreviation5"

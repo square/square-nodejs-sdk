@@ -20,9 +20,18 @@
   "limit": 2,
   "query": {
     "filter": {
-      "status": "COMPLETED"
+      "status": "COMPLETED",
+      "device_id": "device_id0",
+      "created_at": {
+        "start_at": "start_at4",
+        "end_at": "end_at8"
+      }
+    },
+    "sort": {
+      "sort_order": "DESC"
     }
-  }
+  },
+  "cursor": "cursor6"
 }
 ```
 

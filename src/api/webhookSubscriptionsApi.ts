@@ -75,8 +75,8 @@ export class WebhookSubscriptionsApi extends BaseApi {
    *
    * @param cursor           A pagination cursor returned by a previous call to this endpoint. Provide this
    *                                    to retrieve the next set of results for your original query.  For more
-   *                                    information, see [Pagination](https://developer.squareup.
-   *                                    com/docs/basics/api101/pagination).
+   *                                    information, see [Pagination](https://developer.squareup.com/docs/build-
+   *                                    basics/common-api-patterns/pagination).
    * @param includeDisabled  Includes disabled [Subscription](entity:WebhookSubscription)s. By default, all
    *                                    enabled [Subscription](entity:WebhookSubscription)s are returned.
    * @param sortOrder        Sorts the returned list by when the [Subscription](entity:WebhookSubscription)

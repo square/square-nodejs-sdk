@@ -49,25 +49,7 @@ to store any sensitive information (personally identifiable information, card de
   "app_visibility": "APP_VISIBILITY_HIDDEN",
   "string_config": {
     "enforce_uniqueness": false
-  },
-  "number_config": {
-    "precision": 12
-  },
-  "selection_config": {
-    "max_allowed_selections": 44,
-    "allowed_selections": [
-      {
-        "uid": "uid1",
-        "name": "name1"
-      },
-      {
-        "uid": "uid2",
-        "name": "name2"
-      }
-    ]
-  },
-  "custom_attribute_usage_count": 220,
-  "key": "key0"
+  }
 }
 ```
 

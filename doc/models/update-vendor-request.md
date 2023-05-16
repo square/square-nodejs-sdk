@@ -23,7 +23,16 @@ Represents an input to a call to [UpdateVendor](../../doc/api/vendors.md#update-
     "id": "INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4",
     "name": "Jack's Chicken Shack",
     "status": "ACTIVE",
-    "version": 1
+    "version": 1,
+    "created_at": "created_at4",
+    "updated_at": "updated_at2",
+    "address": {
+      "address_line_1": "address_line_12",
+      "address_line_2": "address_line_22",
+      "address_line_3": "address_line_38",
+      "locality": "locality2",
+      "sublocality": "sublocality2"
+    }
   }
 }
 ```

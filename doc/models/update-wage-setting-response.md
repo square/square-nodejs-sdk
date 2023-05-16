@@ -42,13 +42,38 @@ or error messages.
           "currency": "USD"
         },
         "job_title": "Cashier",
-        "pay_type": "HOURLY"
+        "pay_type": "HOURLY",
+        "annual_rate": {
+          "amount": 66,
+          "currency": "EGP"
+        },
+        "weekly_hours": 234
       }
     ],
     "team_member_id": "-3oZQKPKVk6gUXU_V5Qa",
     "updated_at": "2020-06-11T23:12:04+00:00",
     "version": 1
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

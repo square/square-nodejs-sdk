@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Square Developer Forums
+    url: https://developer.squareup.com/forums
+    about: Public discussion threads for technical support, feature requests, api discussion, and all things related to square development.
+  - name: BuildWithSquare Slack Channel
+    url: https://squ.re/slack
+    about: Community slack channel for real time support and conversations about building with square.
+  - name: Developer Support
+    url: https://squareup.com/help/us/en/contact?panel=BF53A9C8EF68
+    about: Private support directly with Square Developer Success Engineers.

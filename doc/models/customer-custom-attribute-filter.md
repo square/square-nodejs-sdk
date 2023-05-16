@@ -30,7 +30,10 @@ based on the value or last updated date of a customer-related [custom attribute]
       "exact": "exact6",
       "fuzzy": "fuzzy2"
     },
-    "text": {},
+    "text": {
+      "exact": "exact6",
+      "fuzzy": "fuzzy8"
+    },
     "selection": {
       "all": [
         "all7"
@@ -46,15 +49,6 @@ based on the value or last updated date of a customer-related [custom attribute]
     "date": {
       "start_at": "start_at2",
       "end_at": "end_at0"
-    },
-    "number": {
-      "start_at": "start_at0",
-      "end_at": "end_at2"
-    },
-    "boolean": false,
-    "address": {
-      "postal_code": {},
-      "country": "FO"
     }
   },
   "updated_at": {

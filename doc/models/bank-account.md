@@ -49,9 +49,7 @@ linking a bank account to a Square account, see
   "status": "DISABLED",
   "creditable": false,
   "debitable": false,
-  "fingerprint": "fingerprint6",
-  "version": 172,
-  "bank_name": "bank_name4"
+  "fingerprint": "fingerprint6"
 }
 ```
 

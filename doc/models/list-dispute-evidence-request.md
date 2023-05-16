@@ -16,6 +16,8 @@ Defines the parameters for a `ListDisputeEvidence` request.
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "cursor": "cursor6"
+}
 ```
 

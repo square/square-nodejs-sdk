@@ -35,18 +35,7 @@ order subtotal.
   "source_discount_uid": "source_discount_uid0",
   "catalog_object_id": "catalog_object_id6",
   "catalog_version": 126,
-  "name": "name0",
-  "type": "UNKNOWN_DISCOUNT",
-  "percentage": "percentage8",
-  "amount_money": {
-    "amount": 186,
-    "currency": "NGN"
-  },
-  "applied_money": {
-    "amount": 196,
-    "currency": "PLN"
-  },
-  "scope": "ORDER"
+  "name": "name0"
 }
 ```
 

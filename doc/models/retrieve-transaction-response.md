@@ -62,8 +62,141 @@ One of `errors` or `transaction` is present in a given response (never both).
         "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
         "type": "CARD"
       }
+    ],
+    "refunds": [
+      {
+        "id": "id6",
+        "location_id": "location_id0",
+        "transaction_id": "transaction_id4",
+        "tender_id": "tender_id4",
+        "created_at": "created_at6",
+        "reason": "reason8",
+        "amount_money": {
+          "amount": 162,
+          "currency": "AOA"
+        },
+        "status": "PENDING",
+        "processing_fee_money": {
+          "amount": 88,
+          "currency": "HUF"
+        },
+        "additional_recipients": [
+          {
+            "location_id": "location_id9",
+            "description": "description5",
+            "amount_money": {
+              "amount": 59,
+              "currency": "LAK"
+            },
+            "receivable_id": "receivable_id5"
+          }
+        ]
+      },
+      {
+        "id": "id7",
+        "location_id": "location_id1",
+        "transaction_id": "transaction_id5",
+        "tender_id": "tender_id5",
+        "created_at": "created_at5",
+        "reason": "reason7",
+        "amount_money": {
+          "amount": 163,
+          "currency": "ARS"
+        },
+        "status": "FAILED",
+        "processing_fee_money": {
+          "amount": 89,
+          "currency": "IDR"
+        },
+        "additional_recipients": [
+          {
+            "location_id": "location_id0",
+            "description": "description6",
+            "amount_money": {
+              "amount": 60,
+              "currency": "LBP"
+            },
+            "receivable_id": "receivable_id6"
+          },
+          {
+            "location_id": "location_id1",
+            "description": "description7",
+            "amount_money": {
+              "amount": 61,
+              "currency": "LKR"
+            },
+            "receivable_id": "receivable_id7"
+          }
+        ]
+      },
+      {
+        "id": "id8",
+        "location_id": "location_id2",
+        "transaction_id": "transaction_id6",
+        "tender_id": "tender_id6",
+        "created_at": "created_at4",
+        "reason": "reason6",
+        "amount_money": {
+          "amount": 164,
+          "currency": "AUD"
+        },
+        "status": "REJECTED",
+        "processing_fee_money": {
+          "amount": 90,
+          "currency": "ILS"
+        },
+        "additional_recipients": [
+          {
+            "location_id": "location_id1",
+            "description": "description7",
+            "amount_money": {
+              "amount": 61,
+              "currency": "LKR"
+            },
+            "receivable_id": "receivable_id7"
+          },
+          {
+            "location_id": "location_id2",
+            "description": "description8",
+            "amount_money": {
+              "amount": 62,
+              "currency": "LRD"
+            },
+            "receivable_id": "receivable_id8"
+          },
+          {
+            "location_id": "location_id3",
+            "description": "description9",
+            "amount_money": {
+              "amount": 63,
+              "currency": "LSL"
+            },
+            "receivable_id": "receivable_id9"
+          }
+        ]
+      }
     ]
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

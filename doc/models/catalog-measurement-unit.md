@@ -27,10 +27,7 @@ specifies the precision for decimal quantities.
     "area_unit": "IMPERIAL_ACRE",
     "length_unit": "IMPERIAL_INCH",
     "volume_unit": "METRIC_LITER",
-    "weight_unit": "IMPERIAL_WEIGHT_OUNCE",
-    "generic_unit": "UNIT",
-    "time_unit": "GENERIC_MINUTE",
-    "type": "TYPE_CUSTOM"
+    "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
   },
   "precision": 196
 }

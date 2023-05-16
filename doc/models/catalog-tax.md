@@ -17,6 +17,7 @@ A tax applicable to an item.
 | `percentage` | `string \| undefined` | Optional | The percentage of the tax in decimal form, using a `'.'` as the decimal separator and without a `'%'` sign.<br>A value of `7.5` corresponds to 7.5%. For a location-specific tax rate, contact the tax authority of the location or a tax consultant. |
 | `appliesToCustomAmounts` | `boolean \| undefined` | Optional | If `true`, the fee applies to custom amounts entered into the Square Point of Sale<br>app that are not associated with a particular `CatalogItem`. |
 | `enabled` | `boolean \| undefined` | Optional | A Boolean flag to indicate whether the tax is displayed as enabled (`true`) in the Square Point of Sale app or not (`false`). |
+| `appliesToProductSetId` | `string \| undefined` | Optional | The ID of a `CatalogProductSet` object. If set, the tax is applicable to all products in the product set. |
 
 ## Example (as JSON)
 
@@ -34,7 +35,12 @@ A tax applicable to an item.
       "percentage": "5.0"
     },
     "type": "TAX"
-  }
+  },
+  "name": "name0",
+  "calculation_phase": "TAX_SUBTOTAL_PHASE",
+  "inclusion_type": "ADDITIVE",
+  "percentage": "percentage8",
+  "applies_to_custom_amounts": false
 }
 ```
 

@@ -27,7 +27,9 @@ Represents an output from a call to [UpdateVendor](../../doc/api/vendors.md#upda
       "administrative_district_level_1": "NY",
       "country": "US",
       "locality": "New York",
-      "postal_code": "10003"
+      "postal_code": "10003",
+      "address_line_3": "address_line_38",
+      "sublocality": "sublocality2"
     },
     "contacts": [
       {

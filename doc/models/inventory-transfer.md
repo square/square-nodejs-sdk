@@ -32,21 +32,9 @@ particular time from one location to another.
 {
   "id": "id0",
   "reference_id": "reference_id2",
-  "state": "SUPPORTED_BY_NEWER_VERSION",
+  "state": "RESERVED_FOR_SALE",
   "from_location_id": "from_location_id2",
-  "to_location_id": "to_location_id8",
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_object_type": "catalog_object_type6",
-  "quantity": "quantity6",
-  "occurred_at": "occurred_at4",
-  "created_at": "created_at2",
-  "source": {
-    "product": "PAYROLL",
-    "application_id": "application_id0",
-    "name": "name4"
-  },
-  "employee_id": "employee_id0",
-  "team_member_id": "team_member_id0"
+  "to_location_id": "to_location_id8"
 }
 ```
 

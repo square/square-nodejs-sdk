@@ -49,40 +49,13 @@ Describes delivery details of an order fulfillment.
       "address_line_2": "address_line_24",
       "address_line_3": "address_line_30",
       "locality": "locality4",
-      "sublocality": "sublocality4",
-      "sublocality_2": "sublocality_22",
-      "sublocality_3": "sublocality_34",
-      "administrative_district_level_1": "administrative_district_level_18",
-      "administrative_district_level_2": "administrative_district_level_20",
-      "administrative_district_level_3": "administrative_district_level_32",
-      "postal_code": "postal_code6",
-      "country": "PK",
-      "first_name": "first_name4",
-      "last_name": "last_name2"
+      "sublocality": "sublocality4"
     }
   },
   "schedule_type": "SCHEDULED",
   "placed_at": "placed_at0",
   "deliver_at": "deliver_at8",
-  "prep_time_duration": "prep_time_duration2",
-  "delivery_window_duration": "delivery_window_duration4",
-  "note": "note4",
-  "completed_at": "completed_at2",
-  "in_progress_at": "in_progress_at4",
-  "rejected_at": "rejected_at8",
-  "ready_at": "ready_at0",
-  "delivered_at": "delivered_at8",
-  "canceled_at": "canceled_at4",
-  "cancel_reason": "cancel_reason4",
-  "courier_pickup_at": "courier_pickup_at8",
-  "courier_pickup_window_duration": "courier_pickup_window_duration6",
-  "is_no_contact_delivery": false,
-  "dropoff_notes": "dropoff_notes6",
-  "courier_provider_name": "courier_provider_name2",
-  "courier_support_phone_number": "courier_support_phone_number4",
-  "square_delivery_id": "square_delivery_id0",
-  "external_delivery_id": "external_delivery_id6",
-  "managed_delivery": false
+  "prep_time_duration": "prep_time_duration2"
 }
 ```
 

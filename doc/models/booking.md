@@ -37,35 +37,7 @@ at a given location to a requesting customer in one or more appointment segments
   "version": 172,
   "status": "CANCELLED_BY_SELLER",
   "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "start_at": "start_at2",
-  "location_id": "location_id4",
-  "customer_id": "customer_id8",
-  "customer_note": "customer_note2",
-  "seller_note": "seller_note8",
-  "appointment_segments": [
-    {
-      "duration_minutes": 4,
-      "service_variation_id": "service_variation_id4",
-      "team_member_id": "team_member_id0",
-      "service_variation_version": 172,
-      "intermission_minutes": 178,
-      "any_team_member": false,
-      "resource_ids": [
-        "resource_ids0",
-        "resource_ids1"
-      ]
-    }
-  ],
-  "transition_time_minutes": 248,
-  "all_day": false,
-  "location_type": "BUSINESS_LOCATION",
-  "creator_details": {
-    "creator_type": "TEAM_MEMBER",
-    "team_member_id": "team_member_id4",
-    "customer_id": "customer_id2"
-  },
-  "source": "FIRST_PARTY_MERCHANT"
+  "updated_at": "updated_at4"
 }
 ```
 

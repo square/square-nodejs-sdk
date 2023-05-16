@@ -26,7 +26,12 @@
   "location_ids": [
     "59TNP9SA8VGDA"
   ],
-  "updated_after": "2016-11-16T00:00:00.000Z"
+  "updated_after": "2016-11-16T00:00:00.000Z",
+  "cursor": "cursor6",
+  "states": [
+    "COMPOSED",
+    "DECOMPOSED"
+  ]
 }
 ```
 

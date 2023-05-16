@@ -123,7 +123,24 @@ Either `errors` or `order` is present in a given response, but never both.
         "variation_total_price_money": {
           "amount": 1599,
           "currency": "USD"
-        }
+        },
+        "quantity_unit": {
+          "measurement_unit": {
+            "custom_unit": {
+              "name": "name9",
+              "abbreviation": "abbreviation1"
+            },
+            "area_unit": "METRIC_SQUARE_CENTIMETER",
+            "length_unit": "IMPERIAL_MILE",
+            "volume_unit": "GENERIC_FLUID_OUNCE",
+            "weight_unit": "METRIC_KILOGRAM"
+          },
+          "precision": 201,
+          "catalog_object_id": "catalog_object_id1",
+          "catalog_version": 135
+        },
+        "note": "note3",
+        "catalog_object_id": "catalog_object_id5"
       },
       {
         "applied_discounts": [
@@ -209,7 +226,23 @@ Either `errors` or `order` is present in a given response, but never both.
         "variation_total_price_money": {
           "amount": 4400,
           "currency": "USD"
-        }
+        },
+        "quantity_unit": {
+          "measurement_unit": {
+            "custom_unit": {
+              "name": "name8",
+              "abbreviation": "abbreviation0"
+            },
+            "area_unit": "IMPERIAL_SQUARE_MILE",
+            "length_unit": "METRIC_MILLIMETER",
+            "volume_unit": "METRIC_LITER",
+            "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
+          },
+          "precision": 200,
+          "catalog_object_id": "catalog_object_id0",
+          "catalog_version": 134
+        },
+        "note": "note4"
       }
     ],
     "location_id": "057P5VYJ4A5X1",
@@ -274,8 +307,29 @@ Either `errors` or `order` is present in a given response, but never both.
       "currency": "USD"
     },
     "updated_at": "2020-01-17T20:47:53.293Z",
-    "version": 1
-  }
+    "version": 1,
+    "customer_id": "customer_id4"
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

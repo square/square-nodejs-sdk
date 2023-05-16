@@ -37,7 +37,20 @@ The request object for the [UpdateLocation](../../doc/api/locations.md#update-lo
         }
       ]
     },
-    "description": "Midtown Atlanta store - Open weekends"
+    "description": "Midtown Atlanta store - Open weekends",
+    "id": "id4",
+    "name": "name4",
+    "address": {
+      "address_line_1": "address_line_10",
+      "address_line_2": "address_line_20",
+      "address_line_3": "address_line_36",
+      "locality": "locality0",
+      "sublocality": "sublocality0"
+    },
+    "timezone": "timezone6",
+    "capabilities": [
+      "CREDIT_CARD_PROCESSING"
+    ]
   }
 }
 ```

@@ -20,7 +20,15 @@ Represents a [CreateGiftCard](../../doc/api/gift-cards.md#create-gift-card) requ
 ```json
 {
   "gift_card": {
-    "type": "DIGITAL"
+    "type": "DIGITAL",
+    "id": "id0",
+    "gan_source": "SQUARE",
+    "state": "ACTIVE",
+    "balance_money": {
+      "amount": 250,
+      "currency": "DKK"
+    },
+    "gan": "gan6"
   },
   "idempotency_key": "NC9Tm69EjbjtConu",
   "location_id": "81FN9BNFZTKS4"

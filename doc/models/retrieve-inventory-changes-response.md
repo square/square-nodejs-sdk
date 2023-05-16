@@ -42,10 +42,38 @@
         },
         "transaction_id": "5APV6JYK1SNCZD11AND2RX1Z"
       },
-      "type": "ADJUSTMENT"
+      "type": "ADJUSTMENT",
+      "physical_count": {
+        "id": "id6",
+        "reference_id": "reference_id4",
+        "catalog_object_id": "catalog_object_id0",
+        "catalog_object_type": "catalog_object_type0",
+        "state": "RESERVED_FOR_SALE"
+      },
+      "transfer": {
+        "id": "id4",
+        "reference_id": "reference_id8",
+        "state": "SUPPORTED_BY_NEWER_VERSION",
+        "from_location_id": "from_location_id6",
+        "to_location_id": "to_location_id4"
+      },
+      "measurement_unit": {
+        "measurement_unit": {
+          "custom_unit": {
+            "name": "name6",
+            "abbreviation": "abbreviation8"
+          },
+          "area_unit": "IMPERIAL_SQUARE_FOOT",
+          "length_unit": "METRIC_METER",
+          "volume_unit": "IMPERIAL_CUBIC_INCH",
+          "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
+        },
+        "precision": 118
+      }
     }
   ],
-  "errors": []
+  "errors": [],
+  "cursor": "cursor6"
 }
 ```
 

@@ -37,9 +37,7 @@ a product set will also include its item variations.
     "product_ids_all0"
   ],
   "quantity_exact": 90,
-  "quantity_min": 44,
-  "quantity_max": 238,
-  "all_products": false
+  "quantity_min": 44
 }
 ```
 

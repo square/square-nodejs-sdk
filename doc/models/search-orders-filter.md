@@ -37,7 +37,10 @@ are ANDed together.
       "start_at": "start_at8",
       "end_at": "end_at4"
     },
-    "closed_at": {}
+    "closed_at": {
+      "start_at": "start_at4",
+      "end_at": "end_at2"
+    }
   },
   "fulfillment_filter": {
     "fulfillment_types": [

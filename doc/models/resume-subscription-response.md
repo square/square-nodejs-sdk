@@ -24,7 +24,8 @@ Defines output parameters in a response from the
     {
       "effective_date": "2022-01-01",
       "id": "18ff74f4-3da4-30c5-929f-7d6fca84f115",
-      "type": "RESUME"
+      "type": "RESUME",
+      "new_plan_id": "new_plan_id5"
     }
   ],
   "subscription": {
@@ -42,8 +43,29 @@ Defines output parameters in a response from the
     },
     "status": "ACTIVE",
     "timezone": "America/Los_Angeles",
-    "version": 1594311617331
-  }
+    "version": 1594311617331,
+    "start_date": "start_date8"
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

@@ -39,23 +39,7 @@ Represents a [dispute](https://developer.squareup.com/docs/disputes-api/overview
     "currency": "NGN"
   },
   "reason": "NOT_AS_DESCRIBED",
-  "state": "PROCESSING",
-  "due_at": "due_at2",
-  "disputed_payment": {
-    "payment_id": "payment_id8"
-  },
-  "evidence_ids": [
-    "evidence_ids3",
-    "evidence_ids4"
-  ],
-  "card_brand": "OTHER_BRAND",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "brand_dispute_id": "brand_dispute_id0",
-  "reported_date": "reported_date8",
-  "reported_at": "reported_at2",
-  "version": 172,
-  "location_id": "location_id4"
+  "state": "PROCESSING"
 }
 ```
 

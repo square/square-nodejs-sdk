@@ -23,7 +23,12 @@ A request to create a new loyalty account.
     "mapping": {
       "phone_number": "+14155551234"
     },
-    "program_id": "d619f755-2d17-41f3-990d-c04ecedd64dd"
+    "program_id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
+    "id": "id6",
+    "balance": 6,
+    "lifetime_points": 30,
+    "customer_id": "customer_id4",
+    "enrolled_at": "enrolled_at6"
   }
 }
 ```

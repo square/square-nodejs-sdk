@@ -21,7 +21,13 @@ a request to the `CreateMobileAuthorizationCode` endpoint.
 ```json
 {
   "authorization_code": "YOUR_MOBILE_AUTHORIZATION_CODE",
-  "expires_at": "2019-01-10T19:42:08Z"
+  "expires_at": "2019-01-10T19:42:08Z",
+  "error": {
+    "category": "API_ERROR",
+    "code": "ADDRESS_VERIFICATION_FAILURE",
+    "detail": "detail0",
+    "field": "field8"
+  }
 }
 ```
 

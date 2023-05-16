@@ -44,38 +44,13 @@ Contains details necessary to fulfill a pickup order.
       "address_line_2": "address_line_24",
       "address_line_3": "address_line_30",
       "locality": "locality4",
-      "sublocality": "sublocality4",
-      "sublocality_2": "sublocality_22",
-      "sublocality_3": "sublocality_34",
-      "administrative_district_level_1": "administrative_district_level_18",
-      "administrative_district_level_2": "administrative_district_level_20",
-      "administrative_district_level_3": "administrative_district_level_32",
-      "postal_code": "postal_code6",
-      "country": "PK",
-      "first_name": "first_name4",
-      "last_name": "last_name2"
+      "sublocality": "sublocality4"
     }
   },
   "expires_at": "expires_at6",
   "auto_complete_duration": "auto_complete_duration4",
   "schedule_type": "SCHEDULED",
-  "pickup_at": "pickup_at4",
-  "pickup_window_duration": "pickup_window_duration0",
-  "prep_time_duration": "prep_time_duration2",
-  "note": "note4",
-  "placed_at": "placed_at0",
-  "accepted_at": "accepted_at6",
-  "rejected_at": "rejected_at8",
-  "ready_at": "ready_at0",
-  "expired_at": "expired_at0",
-  "picked_up_at": "picked_up_at0",
-  "canceled_at": "canceled_at4",
-  "cancel_reason": "cancel_reason4",
-  "is_curbside_pickup": false,
-  "curbside_pickup_details": {
-    "curbside_details": "curbside_details2",
-    "buyer_arrived_at": "buyer_arrived_at8"
-  }
+  "pickup_at": "pickup_at4"
 }
 ```
 

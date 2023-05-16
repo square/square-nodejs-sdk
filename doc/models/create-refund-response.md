@@ -43,8 +43,32 @@ One of `errors` or `refund` is present in a given response (never both).
     "reason": "some reason",
     "status": "PENDING",
     "tender_id": "MtZRYYdDrYNQbOvV7nbuBvMF",
-    "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF"
-  }
+    "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
+    "processing_fee_money": {
+      "amount": 46,
+      "currency": "ILS"
+    }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

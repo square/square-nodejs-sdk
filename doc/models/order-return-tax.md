@@ -33,14 +33,7 @@ order subtotal.
   "source_tax_uid": "source_tax_uid2",
   "catalog_object_id": "catalog_object_id6",
   "catalog_version": 126,
-  "name": "name0",
-  "type": "INCLUSIVE",
-  "percentage": "percentage8",
-  "applied_money": {
-    "amount": 196,
-    "currency": "PLN"
-  },
-  "scope": "ORDER"
+  "name": "name0"
 }
 ```
 

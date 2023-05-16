@@ -22,7 +22,11 @@ A request to create a new `BreakType`.
     "break_name": "Lunch Break",
     "expected_duration": "PT30M",
     "is_paid": true,
-    "location_id": "CGJN03P1D08GF"
+    "location_id": "CGJN03P1D08GF",
+    "id": "id8",
+    "version": 132,
+    "created_at": "created_at6",
+    "updated_at": "updated_at4"
   },
   "idempotency_key": "PAD3NG5KSN2GL"
 }

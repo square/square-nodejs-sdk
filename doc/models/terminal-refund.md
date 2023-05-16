@@ -41,12 +41,7 @@ Represents a payment refund processed by the Square Terminal. Only supports Inte
   "reason": "reason4",
   "device_id": "device_id6",
   "deadline_duration": "deadline_duration8",
-  "status": "status8",
-  "cancel_reason": "SELLER_CANCELED",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
-  "app_id": "app_id6",
-  "location_id": "location_id4"
+  "status": "status8"
 }
 ```
 

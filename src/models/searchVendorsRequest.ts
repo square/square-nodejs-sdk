@@ -1,4 +1,4 @@
-import { bigint, lazy, object, optional, Schema, string } from '../schema';
+import { lazy, object, optional, Schema, string } from '../schema';
 import {
   SearchVendorsRequestFilter,
   searchVendorsRequestFilterSchema,
@@ -20,13 +20,10 @@ export interface SearchVendorsRequest {
    * See the [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination) guide for more information.
    */
   cursor?: string;
-  /** Limit on how many vendors will be returned by the search. */
-  limit?: bigint;
 }
 
 export const searchVendorsRequestSchema: Schema<SearchVendorsRequest> = object({
   filter: ['filter', optional(lazy(() => searchVendorsRequestFilterSchema))],
   sort: ['sort', optional(lazy(() => searchVendorsRequestSortSchema))],
   cursor: ['cursor', optional(string())],
-  limit: ['limit', optional(bigint())],
 });

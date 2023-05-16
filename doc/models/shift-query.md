@@ -33,19 +33,7 @@ The parameters of a `Shift` search query, which includes filter and sort options
     "end": {
       "start_at": "start_at4",
       "end_at": "end_at8"
-    },
-    "workday": {
-      "date_range": {
-        "start_date": "start_date4",
-        "end_date": "end_date8"
-      },
-      "match_shifts_by": "START_AT",
-      "default_timezone": "default_timezone4"
-    },
-    "team_member_ids": [
-      "team_member_ids1",
-      "team_member_ids2"
-    ]
+    }
   },
   "sort": {
     "field": "START_AT",

@@ -21,13 +21,18 @@
   "query": {
     "filter": {
       "created_at": {
-        "start_at": "2022-04-01T00:00:00.000Z"
-      }
+        "start_at": "2022-04-01T00:00:00.000Z",
+        "end_at": "end_at8"
+      },
+      "device_id": "device_id0",
+      "status": "status4",
+      "type": "SAVE_CARD"
     },
     "sort": {
       "sort_order": "DESC"
     }
-  }
+  },
+  "cursor": "cursor6"
 }
 ```
 

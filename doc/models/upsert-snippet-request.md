@@ -18,7 +18,11 @@ Represents an `UpsertSnippet` request.
 ```json
 {
   "snippet": {
-    "content": "<script>var js = 1;</script>"
+    "content": "<script>var js = 1;</script>",
+    "id": "id0",
+    "site_id": "site_id6",
+    "created_at": "created_at8",
+    "updated_at": "updated_at4"
   }
 }
 ```

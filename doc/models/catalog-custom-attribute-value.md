@@ -30,12 +30,7 @@ added to `ITEM` and `ITEM_VARIATION` type catalog objects.
   "string_value": "string_value4",
   "custom_attribute_definition_id": "custom_attribute_definition_id2",
   "type": "NUMBER",
-  "number_value": "number_value0",
-  "boolean_value": false,
-  "selection_uid_values": [
-    "selection_uid_values7"
-  ],
-  "key": "key0"
+  "number_value": "number_value0"
 }
 ```
 

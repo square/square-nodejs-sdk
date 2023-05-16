@@ -26,7 +26,9 @@ Creates a [Subscription](../../doc/models/webhook-subscription.md).
       "payment.updated"
     ],
     "name": "Example Webhook Subscription",
-    "notification_url": "https://example-webhook-url.com"
+    "notification_url": "https://example-webhook-url.com",
+    "id": "id4",
+    "enabled": false
   }
 }
 ```

@@ -27,7 +27,8 @@
       "state": "IN_STOCK"
     }
   ],
-  "errors": []
+  "errors": [],
+  "cursor": "cursor6"
 }
 ```
 

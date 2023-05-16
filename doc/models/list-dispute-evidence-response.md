@@ -28,9 +28,7 @@ Defines the fields in a `ListDisputeEvidence` response.
         "filename": "filename4",
         "filetype": "filetype4"
       },
-      "evidence_text": "evidence_text0",
-      "uploaded_at": "uploaded_at0",
-      "evidence_type": "REBUTTAL_EXPLANATION"
+      "evidence_text": "evidence_text0"
     },
     {
       "evidence_id": "evidence_id5",
@@ -40,9 +38,7 @@ Defines the fields in a `ListDisputeEvidence` response.
         "filename": "filename5",
         "filetype": "filetype5"
       },
-      "evidence_text": "evidence_text1",
-      "uploaded_at": "uploaded_at1",
-      "evidence_type": "RELATED_TRANSACTION_DOCUMENTATION"
+      "evidence_text": "evidence_text1"
     }
   ],
   "errors": [

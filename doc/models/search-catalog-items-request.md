@@ -61,7 +61,8 @@ Defines the request body for the [SearchCatalogItems](../../doc/api/catalog.md#s
     "OUT",
     "LOW"
   ],
-  "text_filter": "red"
+  "text_filter": "red",
+  "cursor": "cursor6"
 }
 ```
 

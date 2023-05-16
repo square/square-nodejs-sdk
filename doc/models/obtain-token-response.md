@@ -29,7 +29,8 @@
   "expires_at": "2006-01-02T15:04:05Z",
   "merchant_id": "MERCHANT_ID",
   "refresh_token": "REFRESH_TOKEN",
-  "token_type": "bearer"
+  "token_type": "bearer",
+  "subscription_id": "subscription_id0"
 }
 ```
 

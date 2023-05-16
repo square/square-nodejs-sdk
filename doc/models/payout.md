@@ -40,36 +40,7 @@ external bank account or to the Square balance.
   "destination": {
     "type": "BANK_ACCOUNT",
     "id": "id4"
-  },
-  "version": 172,
-  "type": "BATCH",
-  "payout_fee": [
-    {
-      "amount_money": {
-        "amount": 84,
-        "currency": "MZN"
-      },
-      "effective_at": "effective_at0",
-      "type": "TRANSFER_FEE"
-    },
-    {
-      "amount_money": {
-        "amount": 85,
-        "currency": "NAD"
-      },
-      "effective_at": "effective_at1",
-      "type": "TAX_ON_TRANSFER_FEE"
-    },
-    {
-      "amount_money": {
-        "amount": 86,
-        "currency": "NGN"
-      },
-      "effective_at": "effective_at2",
-      "type": "TRANSFER_FEE"
-    }
-  ],
-  "arrival_date": "arrival_date0"
+  }
 }
 ```
 

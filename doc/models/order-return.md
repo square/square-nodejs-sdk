@@ -41,113 +41,13 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
           "area_unit": "METRIC_SQUARE_CENTIMETER",
           "length_unit": "IMPERIAL_MILE",
           "volume_unit": "IMPERIAL_CUBIC_FOOT",
-          "weight_unit": "METRIC_KILOGRAM",
-          "generic_unit": "UNIT",
-          "time_unit": "GENERIC_SECOND",
-          "type": "TYPE_GENERIC"
+          "weight_unit": "METRIC_KILOGRAM"
         },
         "precision": 73,
         "catalog_object_id": "catalog_object_id5",
         "catalog_version": 249
       },
-      "note": "note9",
-      "catalog_object_id": "catalog_object_id1",
-      "catalog_version": 107,
-      "variation_name": "variation_name5",
-      "item_type": "CUSTOM_AMOUNT",
-      "return_modifiers": [
-        {
-          "uid": "uid6",
-          "source_modifier_uid": "source_modifier_uid0",
-          "catalog_object_id": "catalog_object_id0",
-          "catalog_version": 92,
-          "name": "name6",
-          "base_price_money": {
-            "amount": 148,
-            "currency": "STD"
-          },
-          "total_price_money": {
-            "amount": 238,
-            "currency": "CHE"
-          },
-          "quantity": "quantity2"
-        },
-        {
-          "uid": "uid7",
-          "source_modifier_uid": "source_modifier_uid9",
-          "catalog_object_id": "catalog_object_id9",
-          "catalog_version": 91,
-          "name": "name7",
-          "base_price_money": {
-            "amount": 149,
-            "currency": "SVC"
-          },
-          "total_price_money": {
-            "amount": 239,
-            "currency": "CHF"
-          },
-          "quantity": "quantity3"
-        },
-        {
-          "uid": "uid8",
-          "source_modifier_uid": "source_modifier_uid8",
-          "catalog_object_id": "catalog_object_id8",
-          "catalog_version": 90,
-          "name": "name8",
-          "base_price_money": {
-            "amount": 150,
-            "currency": "SYP"
-          },
-          "total_price_money": {
-            "amount": 240,
-            "currency": "CHW"
-          },
-          "quantity": "quantity4"
-        }
-      ],
-      "applied_taxes": [
-        {
-          "uid": "uid5",
-          "tax_uid": "tax_uid9",
-          "applied_money": {}
-        },
-        {
-          "uid": "uid6",
-          "tax_uid": "tax_uid8",
-          "applied_money": {}
-        },
-        {
-          "uid": "uid7",
-          "tax_uid": "tax_uid7",
-          "applied_money": {}
-        }
-      ],
-      "applied_discounts": [
-        {
-          "uid": "uid9",
-          "discount_uid": "discount_uid5",
-          "applied_money": {}
-        }
-      ],
-      "base_price_money": {},
-      "variation_total_price_money": {},
-      "gross_return_money": {},
-      "total_tax_money": {},
-      "total_discount_money": {},
-      "total_money": {},
-      "applied_service_charges": [
-        {
-          "uid": "uid6",
-          "service_charge_uid": "service_charge_uid6",
-          "applied_money": {}
-        },
-        {
-          "uid": "uid7",
-          "service_charge_uid": "service_charge_uid7",
-          "applied_money": {}
-        }
-      ],
-      "total_service_charge_money": {}
+      "note": "note9"
     },
     {
       "uid": "uid6",
@@ -163,87 +63,13 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
           "area_unit": "METRIC_SQUARE_METER",
           "length_unit": "IMPERIAL_YARD",
           "volume_unit": "IMPERIAL_CUBIC_YARD",
-          "weight_unit": "METRIC_GRAM",
-          "generic_unit": "UNIT",
-          "time_unit": "GENERIC_MILLISECOND",
-          "type": "TYPE_WEIGHT"
+          "weight_unit": "METRIC_GRAM"
         },
         "precision": 74,
         "catalog_object_id": "catalog_object_id4",
         "catalog_version": 248
       },
-      "note": "note8",
-      "catalog_object_id": "catalog_object_id0",
-      "catalog_version": 106,
-      "variation_name": "variation_name6",
-      "item_type": "GIFT_CARD",
-      "return_modifiers": [
-        {
-          "uid": "uid5",
-          "source_modifier_uid": "source_modifier_uid1",
-          "catalog_object_id": "catalog_object_id1",
-          "catalog_version": 93,
-          "name": "name5",
-          "base_price_money": {
-            "amount": 147,
-            "currency": "SSP"
-          },
-          "total_price_money": {
-            "amount": 237,
-            "currency": "CDF"
-          },
-          "quantity": "quantity1"
-        },
-        {
-          "uid": "uid6",
-          "source_modifier_uid": "source_modifier_uid0",
-          "catalog_object_id": "catalog_object_id0",
-          "catalog_version": 92,
-          "name": "name6",
-          "base_price_money": {
-            "amount": 148,
-            "currency": "STD"
-          },
-          "total_price_money": {
-            "amount": 238,
-            "currency": "CHE"
-          },
-          "quantity": "quantity2"
-        }
-      ],
-      "applied_taxes": [
-        {
-          "uid": "uid6",
-          "tax_uid": "tax_uid8",
-          "applied_money": {}
-        }
-      ],
-      "applied_discounts": [
-        {
-          "uid": "uid0",
-          "discount_uid": "discount_uid4",
-          "applied_money": {}
-        },
-        {
-          "uid": "uid1",
-          "discount_uid": "discount_uid3",
-          "applied_money": {}
-        }
-      ],
-      "base_price_money": {},
-      "variation_total_price_money": {},
-      "gross_return_money": {},
-      "total_tax_money": {},
-      "total_discount_money": {},
-      "total_money": {},
-      "applied_service_charges": [
-        {
-          "uid": "uid5",
-          "service_charge_uid": "service_charge_uid5",
-          "applied_money": {}
-        }
-      ],
-      "total_service_charge_money": {}
+      "note": "note8"
     },
     {
       "uid": "uid7",
@@ -259,91 +85,13 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
           "area_unit": "METRIC_SQUARE_KILOMETER",
           "length_unit": "IMPERIAL_FOOT",
           "volume_unit": "METRIC_MILLILITER",
-          "weight_unit": "METRIC_MILLIGRAM",
-          "generic_unit": "UNIT",
-          "time_unit": "GENERIC_DAY",
-          "type": "TYPE_VOLUME"
+          "weight_unit": "METRIC_MILLIGRAM"
         },
         "precision": 75,
         "catalog_object_id": "catalog_object_id3",
         "catalog_version": 247
       },
-      "note": "note7",
-      "catalog_object_id": "catalog_object_id9",
-      "catalog_version": 105,
-      "variation_name": "variation_name7",
-      "item_type": "ITEM",
-      "return_modifiers": [
-        {
-          "uid": "uid4",
-          "source_modifier_uid": "source_modifier_uid2",
-          "catalog_object_id": "catalog_object_id2",
-          "catalog_version": 94,
-          "name": "name4",
-          "base_price_money": {
-            "amount": 146,
-            "currency": "SRD"
-          },
-          "total_price_money": {
-            "amount": 236,
-            "currency": "CAD"
-          },
-          "quantity": "quantity0"
-        }
-      ],
-      "applied_taxes": [
-        {
-          "uid": "uid7",
-          "tax_uid": "tax_uid7",
-          "applied_money": {}
-        },
-        {
-          "uid": "uid8",
-          "tax_uid": "tax_uid6",
-          "applied_money": {}
-        }
-      ],
-      "applied_discounts": [
-        {
-          "uid": "uid1",
-          "discount_uid": "discount_uid3",
-          "applied_money": {}
-        },
-        {
-          "uid": "uid2",
-          "discount_uid": "discount_uid2",
-          "applied_money": {}
-        },
-        {
-          "uid": "uid3",
-          "discount_uid": "discount_uid1",
-          "applied_money": {}
-        }
-      ],
-      "base_price_money": {},
-      "variation_total_price_money": {},
-      "gross_return_money": {},
-      "total_tax_money": {},
-      "total_discount_money": {},
-      "total_money": {},
-      "applied_service_charges": [
-        {
-          "uid": "uid4",
-          "service_charge_uid": "service_charge_uid4",
-          "applied_money": {}
-        },
-        {
-          "uid": "uid5",
-          "service_charge_uid": "service_charge_uid5",
-          "applied_money": {}
-        },
-        {
-          "uid": "uid6",
-          "service_charge_uid": "service_charge_uid6",
-          "applied_money": {}
-        }
-      ],
-      "total_service_charge_money": {}
+      "note": "note7"
     }
   ],
   "return_service_charges": [
@@ -352,63 +100,14 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
       "source_service_charge_uid": "source_service_charge_uid3",
       "name": "name3",
       "catalog_object_id": "catalog_object_id3",
-      "catalog_version": 197,
-      "percentage": "percentage1",
-      "amount_money": {
-        "amount": 115,
-        "currency": "BDT"
-      },
-      "applied_money": {
-        "amount": 11,
-        "currency": "CHW"
-      },
-      "total_money": {},
-      "total_tax_money": {},
-      "calculation_phase": "APPORTIONED_AMOUNT_PHASE",
-      "taxable": true,
-      "applied_taxes": [
-        {
-          "uid": "uid3",
-          "tax_uid": "tax_uid1",
-          "applied_money": {}
-        }
-      ],
-      "treatment_type": "APPORTIONED_TREATMENT",
-      "scope": "OTHER_SERVICE_CHARGE_SCOPE"
+      "catalog_version": 197
     },
     {
       "uid": "uid4",
       "source_service_charge_uid": "source_service_charge_uid2",
       "name": "name4",
       "catalog_object_id": "catalog_object_id2",
-      "catalog_version": 196,
-      "percentage": "percentage2",
-      "amount_money": {
-        "amount": 116,
-        "currency": "BGN"
-      },
-      "applied_money": {
-        "amount": 10,
-        "currency": "CHF"
-      },
-      "total_money": {},
-      "total_tax_money": {},
-      "calculation_phase": "SUBTOTAL_PHASE",
-      "taxable": false,
-      "applied_taxes": [
-        {
-          "uid": "uid4",
-          "tax_uid": "tax_uid0",
-          "applied_money": {}
-        },
-        {
-          "uid": "uid5",
-          "tax_uid": "tax_uid9",
-          "applied_money": {}
-        }
-      ],
-      "treatment_type": "LINE_ITEM_TREATMENT",
-      "scope": "ORDER"
+      "catalog_version": 196
     }
   ],
   "return_taxes": [
@@ -417,75 +116,9 @@ The set of line items, service charges, taxes, discounts, tips, and other items 
       "source_tax_uid": "source_tax_uid4",
       "catalog_object_id": "catalog_object_id0",
       "catalog_version": 116,
-      "name": "name6",
-      "type": "INCLUSIVE",
-      "percentage": "percentage4",
-      "applied_money": {
-        "amount": 186,
-        "currency": "UAH"
-      },
-      "scope": "ORDER"
+      "name": "name6"
     }
-  ],
-  "return_discounts": [
-    {
-      "uid": "uid6",
-      "source_discount_uid": "source_discount_uid6",
-      "catalog_object_id": "catalog_object_id0",
-      "catalog_version": 58,
-      "name": "name6",
-      "type": "VARIABLE_AMOUNT",
-      "percentage": "percentage4",
-      "amount_money": {
-        "amount": 254,
-        "currency": "GBP"
-      },
-      "applied_money": {
-        "amount": 128,
-        "currency": "XPT"
-      },
-      "scope": "OTHER_DISCOUNT_SCOPE"
-    },
-    {
-      "uid": "uid7",
-      "source_discount_uid": "source_discount_uid7",
-      "catalog_object_id": "catalog_object_id9",
-      "catalog_version": 57,
-      "name": "name7",
-      "type": "VARIABLE_PERCENTAGE",
-      "percentage": "percentage5",
-      "amount_money": {
-        "amount": 255,
-        "currency": "GEL"
-      },
-      "applied_money": {
-        "amount": 127,
-        "currency": "XPF"
-      },
-      "scope": "ORDER"
-    }
-  ],
-  "rounding_adjustment": {
-    "uid": "uid2",
-    "name": "name2",
-    "amount_money": {
-      "amount": 142,
-      "currency": "TJS"
-    }
-  },
-  "return_amounts": {
-    "total_money": {
-      "amount": 196,
-      "currency": "NIO"
-    },
-    "tax_money": {
-      "amount": 4,
-      "currency": "AWG"
-    },
-    "discount_money": {},
-    "tip_money": {},
-    "service_charge_money": {}
-  }
+  ]
 }
 ```
 

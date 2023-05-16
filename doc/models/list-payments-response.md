@@ -84,9 +84,34 @@ Defines the response returned by [ListPayments](../../doc/api/payments.md#list-p
         "currency": "USD"
       },
       "updated_at": "2021-10-13T19:34:37.261Z",
-      "version_token": "vguW2km0KpVCdAXZcNTZ438qg5LlVPTP4HO5OpiHNfa6o"
+      "version_token": "vguW2km0KpVCdAXZcNTZ438qg5LlVPTP4HO5OpiHNfa6o",
+      "tip_money": {
+        "amount": 58,
+        "currency": "DZD"
+      }
     }
-  ]
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "cursor": "cursor6"
 }
 ```
 

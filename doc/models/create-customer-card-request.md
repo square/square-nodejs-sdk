@@ -27,10 +27,13 @@ to the `CreateCustomerCard` endpoint.
     "administrative_district_level_1": "NY",
     "country": "US",
     "locality": "New York",
-    "postal_code": "10003"
+    "postal_code": "10003",
+    "address_line_3": "address_line_34",
+    "sublocality": "sublocality8"
   },
   "card_nonce": "YOUR_CARD_NONCE",
-  "cardholder_name": "Amelia Earhart"
+  "cardholder_name": "Amelia Earhart",
+  "verification_token": "verification_token6"
 }
 ```
 

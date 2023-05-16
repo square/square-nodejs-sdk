@@ -34,7 +34,10 @@ Contains query criteria for the search.
         "start_at": "start_at0",
         "end_at": "end_at2"
       },
-      "closed_at": {}
+      "closed_at": {
+        "start_at": "start_at0",
+        "end_at": "end_at2"
+      }
     },
     "fulfillment_filter": {
       "fulfillment_types": [

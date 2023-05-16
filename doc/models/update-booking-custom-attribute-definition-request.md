@@ -26,10 +26,7 @@ Represents an [UpdateBookingCustomAttributeDefinition](../../doc/api/booking-cus
     },
     "name": "name2",
     "description": "description8",
-    "visibility": "VISIBILITY_HIDDEN",
-    "version": 20,
-    "updated_at": "updated_at2",
-    "created_at": "created_at0"
+    "visibility": "VISIBILITY_HIDDEN"
   },
   "idempotency_key": "idempotency_key6"
 }

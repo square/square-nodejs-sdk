@@ -24,8 +24,7 @@
   "begin_time": "begin_time2",
   "end_time": "end_time2",
   "limit": 172,
-  "batch_token": "batch_token2",
-  "include_partial": false
+  "batch_token": "batch_token2"
 }
 ```
 

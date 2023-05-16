@@ -171,7 +171,7 @@ export interface CatalogObject {
    * the modifier list are allowed.
    */
   modifierListData?: CatalogModifierList;
-  /** A modifier applicable to items at the time of sale. */
+  /** A modifier applicable to items at the time of sale. An example of a modifier is a Cheese add-on to a Burger item. */
   modifierData?: CatalogModifier;
   /** Represents a time period - either a single period or a repeating period. */
   timePeriodData?: CatalogTimePeriod;

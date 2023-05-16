@@ -35,39 +35,8 @@ Represents a supplier to a seller.
     "address_line_2": "address_line_26",
     "address_line_3": "address_line_32",
     "locality": "locality6",
-    "sublocality": "sublocality6",
-    "sublocality_2": "sublocality_24",
-    "sublocality_3": "sublocality_36",
-    "administrative_district_level_1": "administrative_district_level_10",
-    "administrative_district_level_2": "administrative_district_level_28",
-    "administrative_district_level_3": "administrative_district_level_34",
-    "postal_code": "postal_code8",
-    "country": "BE",
-    "first_name": "first_name6",
-    "last_name": "last_name4"
-  },
-  "contacts": [
-    {
-      "id": "id7",
-      "name": "name7",
-      "email_address": "email_address5",
-      "phone_number": "phone_number5",
-      "removed": true,
-      "ordinal": 19
-    },
-    {
-      "id": "id8",
-      "name": "name8",
-      "email_address": "email_address6",
-      "phone_number": "phone_number6",
-      "removed": false,
-      "ordinal": 20
-    }
-  ],
-  "account_number": "account_number0",
-  "note": "note4",
-  "version": 172,
-  "status": "ACTIVE"
+    "sublocality": "sublocality6"
+  }
 }
 ```
 

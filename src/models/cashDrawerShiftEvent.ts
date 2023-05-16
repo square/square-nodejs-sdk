@@ -4,8 +4,6 @@ import { Money, moneySchema } from './money';
 export interface CashDrawerShiftEvent {
   /** The unique ID of the event. */
   id?: string;
-  /** The ID of the employee that created the event. */
-  employeeId?: string | null;
   /**
    * The types of events on a CashDrawerShift.
    * Each event type represents an employee action on the actual cash drawer
@@ -21,20 +19,22 @@ export interface CashDrawerShiftEvent {
    * for more information.
    */
   eventMoney?: Money;
-  /** The event time in ISO 8601 format. */
+  /** The event time in RFC 3339 format. */
   createdAt?: string;
   /**
    * An optional description of the event, entered by the employee that
    * created the event.
    */
   description?: string | null;
+  /** The ID of the team member that created the event. */
+  teamMemberId?: string;
 }
 
 export const cashDrawerShiftEventSchema: Schema<CashDrawerShiftEvent> = object({
   id: ['id', optional(string())],
-  employeeId: ['employee_id', optional(nullable(string()))],
   eventType: ['event_type', optional(string())],
   eventMoney: ['event_money', optional(lazy(() => moneySchema))],
   createdAt: ['created_at', optional(string())],
   description: ['description', optional(nullable(string()))],
+  teamMemberId: ['team_member_id', optional(string())],
 });

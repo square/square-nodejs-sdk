@@ -40,7 +40,10 @@ Represents a request to create a `Shift`.
         "currency": "USD"
       },
       "title": "Barista"
-    }
+    },
+    "id": "id4",
+    "employee_id": "employee_id4",
+    "timezone": "timezone4"
   }
 }
 ```

@@ -60,22 +60,7 @@ For more information, see [Search for Balance-Changing Loyalty Events](https://d
     "reason": "reason2"
   },
   "loyalty_account_id": "loyalty_account_id0",
-  "location_id": "location_id4",
-  "source": "SQUARE",
-  "expire_points": {
-    "loyalty_program_id": "loyalty_program_id2",
-    "points": 38
-  },
-  "other_event": {
-    "loyalty_program_id": "loyalty_program_id2",
-    "points": 70
-  },
-  "accumulate_promotion_points": {
-    "loyalty_program_id": "loyalty_program_id0",
-    "loyalty_promotion_id": "loyalty_promotion_id8",
-    "points": 62,
-    "order_id": "order_id4"
-  }
+  "source": "SQUARE"
 }
 ```
 

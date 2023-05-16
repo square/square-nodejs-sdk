@@ -30,14 +30,7 @@ An employee object that is used by the external API.
   "first_name": "first_name0",
   "last_name": "last_name8",
   "email": "email6",
-  "phone_number": "phone_number2",
-  "location_ids": [
-    "location_ids0"
-  ],
-  "status": "ACTIVE",
-  "is_owner": false,
-  "created_at": "created_at2",
-  "updated_at": "updated_at4"
+  "phone_number": "phone_number2"
 }
 ```
 

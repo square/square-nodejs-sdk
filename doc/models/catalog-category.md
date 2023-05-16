@@ -25,7 +25,13 @@ A category to which a `CatalogItem` instance belongs.
     "id": "#Beverages",
     "present_at_all_locations": true,
     "type": "CATEGORY"
-  }
+  },
+  "name": "name0",
+  "image_ids": [
+    "image_ids5",
+    "image_ids6",
+    "image_ids7"
+  ]
 }
 ```
 

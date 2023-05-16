@@ -37,25 +37,7 @@
   ],
   "subscription_plan_id": "subscription_plan_id2",
   "redirect_url": "redirect_url2",
-  "merchant_support_email": "merchant_support_email8",
-  "ask_for_shipping_address": false,
-  "accepted_payment_methods": {
-    "apple_pay": false,
-    "google_pay": false,
-    "cash_app_pay": false,
-    "afterpay_clearpay": false
-  },
-  "app_fee_money": {
-    "amount": 106,
-    "currency": "GBP"
-  },
-  "shipping_fee": {
-    "name": "name2",
-    "charge": {
-      "amount": 176,
-      "currency": "PYG"
-    }
-  }
+  "merchant_support_email": "merchant_support_email8"
 }
 ```
 

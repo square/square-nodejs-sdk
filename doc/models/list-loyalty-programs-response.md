@@ -52,7 +52,18 @@ A response that contains all loyalty programs.
           "definition": {
             "discount_type": "FIXED_PERCENTAGE",
             "percentage_discount": "10",
-            "scope": "ORDER"
+            "scope": "ORDER",
+            "catalog_object_ids": [
+              "catalog_object_ids0"
+            ],
+            "fixed_discount_money": {
+              "amount": 100,
+              "currency": "INR"
+            },
+            "max_discount_money": {
+              "amount": 144,
+              "currency": "BZD"
+            }
           },
           "id": "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
           "name": "10% off entire sale",
@@ -68,7 +79,30 @@ A response that contains all loyalty programs.
         "one": "Point",
         "other": "Points"
       },
-      "updated_at": "2020-05-01T02:00:02Z"
+      "updated_at": "2020-05-01T02:00:02Z",
+      "expiration_policy": {
+        "expiration_duration": "expiration_duration1"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

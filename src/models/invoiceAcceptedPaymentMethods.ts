@@ -6,10 +6,7 @@ export interface InvoiceAcceptedPaymentMethods {
   card?: boolean | null;
   /** Indicates whether Square gift card payments are accepted. The default value is `false`. */
   squareGiftCard?: boolean | null;
-  /**
-   * Indicates whether bank transfer payments are accepted. The default value is `false`.
-   * This option is allowed only for invoices that have a single payment request of the `BALANCE` type.
-   */
+  /** Indicates whether ACH bank transfer payments are accepted. The default value is `false`. */
   bankAccount?: boolean | null;
   /**
    * Indicates whether Afterpay (also known as Clearpay) payments are accepted. The default value is `false`.

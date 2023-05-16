@@ -75,6 +75,8 @@ const bodyOrderOrderlineItems0appliedDiscounts0: OrderLineItemAppliedDiscount = 
 bodyOrderOrderlineItems0AppliedDiscounts[0] = bodyOrderOrderlineItems0appliedDiscounts0;
 
 const bodyOrderOrderlineItems0BasePriceMoney: Money = {};
+bodyOrderOrderlineItems0BasePriceMoney.amount = BigInt(1500);
+bodyOrderOrderlineItems0BasePriceMoney.currency = 'USD';
 
 const bodyOrderOrderlineItems0: OrderLineItem = {
   quantity: '2',
@@ -87,6 +89,8 @@ bodyOrderOrderlineItems0.basePriceMoney = bodyOrderOrderlineItems0BasePriceMoney
 bodyOrderOrderLineItems[0] = bodyOrderOrderlineItems0;
 
 const bodyOrderOrderlineItems1BasePriceMoney: Money = {};
+bodyOrderOrderlineItems1BasePriceMoney.amount = BigInt(2500);
+bodyOrderOrderlineItems1BasePriceMoney.currency = 'USD';
 
 const bodyOrderOrderlineItems1: OrderLineItem = {
   quantity: '1',
@@ -97,6 +101,8 @@ bodyOrderOrderlineItems1.basePriceMoney = bodyOrderOrderlineItems1BasePriceMoney
 bodyOrderOrderLineItems[1] = bodyOrderOrderlineItems1;
 
 const bodyOrderOrderlineItems2BasePriceMoney: Money = {};
+bodyOrderOrderlineItems2BasePriceMoney.amount = BigInt(3500);
+bodyOrderOrderlineItems2BasePriceMoney.currency = 'USD';
 
 const bodyOrderOrderlineItems2: OrderLineItem = {
   quantity: '3',
@@ -119,6 +125,8 @@ bodyOrderOrderTaxes[0] = bodyOrderOrdertaxes0;
 const bodyOrderOrderDiscounts: OrderLineItemDiscount[] = [];
 
 const bodyOrderOrderdiscounts0AmountMoney: Money = {};
+bodyOrderOrderdiscounts0AmountMoney.amount = BigInt(100);
+bodyOrderOrderdiscounts0AmountMoney.currency = 'USD';
 
 const bodyOrderOrderdiscounts0: OrderLineItemDiscount = {};
 bodyOrderOrderdiscounts0.uid = '56ae1696-z1e3-9328-af6d-f1e04d947gd4';

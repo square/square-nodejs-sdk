@@ -23,7 +23,10 @@ The response object returned by the [CreateLocation](../../doc/api/locations.md#
       "address_line_1": "1234 Peachtree St. NE",
       "administrative_district_level_1": "GA",
       "locality": "Atlanta",
-      "postal_code": "30309"
+      "postal_code": "30309",
+      "address_line_2": "address_line_20",
+      "address_line_3": "address_line_36",
+      "sublocality": "sublocality0"
     },
     "business_name": "Jet Fuel Coffee",
     "capabilities": [
@@ -45,7 +48,27 @@ The response object returned by the [CreateLocation](../../doc/api/locations.md#
     "status": "ACTIVE",
     "timezone": "America/New_York",
     "type": "PHYSICAL"
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

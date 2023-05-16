@@ -31,7 +31,8 @@ One of `errors` or `refunds` is present in a given response (never both).
             "currency": "USD"
           },
           "description": "Application fees",
-          "location_id": "057P5VYJ4A5X1"
+          "location_id": "057P5VYJ4A5X1",
+          "receivable_id": "receivable_id3"
         }
       ],
       "amount_money": {
@@ -44,9 +45,34 @@ One of `errors` or `refunds` is present in a given response (never both).
       "reason": "some reason",
       "status": "APPROVED",
       "tender_id": "MtZRYYdDrYNQbOvV7nbuBvMF",
-      "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF"
+      "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
+      "processing_fee_money": {
+        "amount": 112,
+        "currency": "GEL"
+      }
     }
-  ]
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ],
+  "cursor": "cursor6"
 }
 ```
 

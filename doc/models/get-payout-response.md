@@ -19,7 +19,8 @@
   "payout": {
     "amount_money": {
       "amount": -103,
-      "currency_code": "USD"
+      "currency_code": "USD",
+      "currency": "HKD"
     },
     "arrival_date": "2022-03-24",
     "created_at": "2022-03-24T03:07:09Z",
@@ -33,7 +34,27 @@
     "type": "BATCH",
     "updated_at": "2022-03-24T03:07:09Z",
     "version": 1
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

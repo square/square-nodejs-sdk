@@ -9,15 +9,15 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `items` | [`CashDrawerShiftSummary[] \| undefined`](../../doc/models/cash-drawer-shift-summary.md) | Optional | A collection of CashDrawerShiftSummary objects for shifts that match<br>the query. |
 | `cursor` | `string \| undefined` | Optional | Opaque cursor for fetching the next page of results. Cursor is not<br>present in the last page of results. |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
+| `cashDrawerShifts` | [`CashDrawerShiftSummary[] \| undefined`](../../doc/models/cash-drawer-shift-summary.md) | Optional | A collection of CashDrawerShiftSummary objects for shifts that match<br>the query. |
 
 ## Example (as JSON)
 
 ```json
 {
-  "items": [
+  "cash_drawer_shifts": [
     {
       "closed_at": "2019-11-22T00:44:49.000Z",
       "closed_cash_money": {
@@ -37,6 +37,27 @@
         "currency": "USD"
       },
       "state": "CLOSED"
+    }
+  ],
+  "cursor": "cursor6",
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

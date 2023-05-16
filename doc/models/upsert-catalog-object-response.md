@@ -67,7 +67,44 @@
     "present_at_all_locations": true,
     "type": "ITEM",
     "updated_at": "2021-06-14T15:51:39.021Z",
-    "version": 1623685899021
+    "version": 1623685899021,
+    "custom_attribute_values": {
+      "key0": {
+        "name": "name9",
+        "string_value": "string_value3",
+        "custom_attribute_definition_id": "custom_attribute_definition_id3",
+        "type": "BOOLEAN",
+        "number_value": "number_value9"
+      },
+      "key1": {
+        "name": "name0",
+        "string_value": "string_value4",
+        "custom_attribute_definition_id": "custom_attribute_definition_id2",
+        "type": "STRING",
+        "number_value": "number_value0"
+      },
+      "key2": {
+        "name": "name1",
+        "string_value": "string_value5",
+        "custom_attribute_definition_id": "custom_attribute_definition_id1",
+        "type": "SELECTION",
+        "number_value": "number_value1"
+      }
+    },
+    "catalog_v1_ids": [
+      {
+        "catalog_v1_id": "catalog_v1_id4",
+        "location_id": "location_id4"
+      },
+      {
+        "catalog_v1_id": "catalog_v1_id5",
+        "location_id": "location_id5"
+      },
+      {
+        "catalog_v1_id": "catalog_v1_id6",
+        "location_id": "location_id6"
+      }
+    ]
   },
   "id_mappings": [
     {
@@ -81,6 +118,26 @@
     {
       "client_object_id": "#Large",
       "object_id": "NS77DKEIQ3AEQTCP727DSA7U"
+    }
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

@@ -34,8 +34,7 @@ endpoint to search for items or item variations.
   "selection_uids_filter": [
     "selection_uids_filter4",
     "selection_uids_filter5"
-  ],
-  "bool_filter": false
+  ]
 }
 ```
 

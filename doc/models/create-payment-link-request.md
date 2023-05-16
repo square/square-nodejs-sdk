@@ -29,6 +29,54 @@
       "amount": 10000,
       "currency": "USD"
     }
+  },
+  "description": "description0",
+  "order": {
+    "id": "id6",
+    "location_id": "location_id0",
+    "reference_id": "reference_id4",
+    "source": {
+      "name": "name2"
+    },
+    "customer_id": "customer_id4",
+    "line_items": [
+      {
+        "uid": "uid1",
+        "name": "name1",
+        "quantity": "quantity7",
+        "quantity_unit": {
+          "measurement_unit": {
+            "custom_unit": {
+              "name": "name9",
+              "abbreviation": "abbreviation1"
+            },
+            "area_unit": "METRIC_SQUARE_CENTIMETER",
+            "length_unit": "IMPERIAL_MILE",
+            "volume_unit": "GENERIC_FLUID_OUNCE",
+            "weight_unit": "METRIC_KILOGRAM"
+          },
+          "precision": 201,
+          "catalog_object_id": "catalog_object_id1",
+          "catalog_version": 135
+        },
+        "note": "note3",
+        "catalog_object_id": "catalog_object_id5"
+      }
+    ]
+  },
+  "checkout_options": {
+    "allow_tipping": false,
+    "custom_fields": [
+      {
+        "title": "title9"
+      },
+      {
+        "title": "title0"
+      }
+    ],
+    "subscription_plan_id": "subscription_plan_id8",
+    "redirect_url": "redirect_url2",
+    "merchant_support_email": "merchant_support_email8"
   }
 }
 ```

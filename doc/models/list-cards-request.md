@@ -21,6 +21,12 @@ HTTP requests at GET https://connect.squareup.com/v2/cards
 ## Example (as JSON)
 
 ```json
-{}
+{
+  "cursor": "cursor6",
+  "customer_id": "customer_id8",
+  "include_disabled": false,
+  "reference_id": "reference_id2",
+  "sort_order": "DESC"
+}
 ```
 

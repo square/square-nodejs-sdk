@@ -40,47 +40,7 @@ For an overview of the `Subscription` type, see
   "location_id": "location_id4",
   "plan_id": "plan_id8",
   "customer_id": "customer_id8",
-  "start_date": "start_date6",
-  "canceled_date": "canceled_date6",
-  "charged_through_date": "charged_through_date4",
-  "status": "DEACTIVATED",
-  "tax_percentage": "tax_percentage6",
-  "invoice_ids": [
-    "invoice_ids1",
-    "invoice_ids2",
-    "invoice_ids3"
-  ],
-  "price_override_money": {
-    "amount": 42,
-    "currency": "WST"
-  },
-  "version": 172,
-  "created_at": "created_at2",
-  "card_id": "card_id4",
-  "timezone": "timezone0",
-  "source": {
-    "name": "name4"
-  },
-  "actions": [
-    {
-      "id": "id9",
-      "type": "PAUSE",
-      "effective_date": "effective_date1",
-      "new_plan_id": "new_plan_id5"
-    },
-    {
-      "id": "id0",
-      "type": "CANCEL",
-      "effective_date": "effective_date0",
-      "new_plan_id": "new_plan_id6"
-    },
-    {
-      "id": "id1",
-      "type": "SWAP_PLAN",
-      "effective_date": "effective_date9",
-      "new_plan_id": "new_plan_id7"
-    }
-  ]
+  "start_date": "start_date6"
 }
 ```
 

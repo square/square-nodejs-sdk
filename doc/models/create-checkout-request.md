@@ -71,7 +71,25 @@ a request to the `CreateCheckout` endpoint.
             "currency": "USD"
           },
           "name": "Printed T Shirt",
-          "quantity": "2"
+          "quantity": "2",
+          "uid": "uid9",
+          "quantity_unit": {
+            "measurement_unit": {
+              "custom_unit": {
+                "name": "name7",
+                "abbreviation": "abbreviation9"
+              },
+              "area_unit": "IMPERIAL_SQUARE_YARD",
+              "length_unit": "METRIC_CENTIMETER",
+              "volume_unit": "GENERIC_PINT",
+              "weight_unit": "METRIC_KILOGRAM"
+            },
+            "precision": 199,
+            "catalog_object_id": "catalog_object_id9",
+            "catalog_version": 133
+          },
+          "note": "note5",
+          "catalog_object_id": "catalog_object_id7"
         },
         {
           "base_price_money": {
@@ -79,7 +97,25 @@ a request to the `CreateCheckout` endpoint.
             "currency": "USD"
           },
           "name": "Slim Jeans",
-          "quantity": "1"
+          "quantity": "1",
+          "uid": "uid0",
+          "quantity_unit": {
+            "measurement_unit": {
+              "custom_unit": {
+                "name": "name8",
+                "abbreviation": "abbreviation0"
+              },
+              "area_unit": "IMPERIAL_SQUARE_MILE",
+              "length_unit": "METRIC_MILLIMETER",
+              "volume_unit": "GENERIC_QUART",
+              "weight_unit": "METRIC_GRAM"
+            },
+            "precision": 200,
+            "catalog_object_id": "catalog_object_id0",
+            "catalog_version": 134
+          },
+          "note": "note6",
+          "catalog_object_id": "catalog_object_id6"
         },
         {
           "base_price_money": {
@@ -87,7 +123,25 @@ a request to the `CreateCheckout` endpoint.
             "currency": "USD"
           },
           "name": "Woven Sweater",
-          "quantity": "3"
+          "quantity": "3",
+          "uid": "uid1",
+          "quantity_unit": {
+            "measurement_unit": {
+              "custom_unit": {
+                "name": "name9",
+                "abbreviation": "abbreviation1"
+              },
+              "area_unit": "METRIC_SQUARE_CENTIMETER",
+              "length_unit": "IMPERIAL_MILE",
+              "volume_unit": "GENERIC_GALLON",
+              "weight_unit": "METRIC_MILLIGRAM"
+            },
+            "precision": 201,
+            "catalog_object_id": "catalog_object_id1",
+            "catalog_version": 135
+          },
+          "note": "note7",
+          "catalog_object_id": "catalog_object_id5"
         }
       ],
       "location_id": "location_id",
@@ -99,7 +153,11 @@ a request to the `CreateCheckout` endpoint.
           "type": "INCLUSIVE",
           "uid": "38ze1696-z1e3-5628-af6d-f1e04d947fg3"
         }
-      ]
+      ],
+      "id": "id0",
+      "source": {
+        "name": "name4"
+      }
     }
   },
   "pre_populate_buyer_email": "example@email.com",
@@ -111,7 +169,9 @@ a request to the `CreateCheckout` endpoint.
     "first_name": "Jane",
     "last_name": "Doe",
     "locality": "San Francisco",
-    "postal_code": "94103"
+    "postal_code": "94103",
+    "address_line_3": "address_line_32",
+    "sublocality": "sublocality6"
   },
   "redirect_url": "https://merchant.website.com/order-confirm"
 }

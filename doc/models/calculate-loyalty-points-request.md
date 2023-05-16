@@ -20,7 +20,11 @@ Represents a [CalculateLoyaltyPoints](../../doc/api/loyalty.md#calculate-loyalty
 ```json
 {
   "loyalty_account_id": "79b807d2-d786-46a9-933b-918028d7a8c5",
-  "order_id": "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY"
+  "order_id": "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
+  "transaction_amount_money": {
+    "amount": 64,
+    "currency": "UYU"
+  }
 }
 ```
 

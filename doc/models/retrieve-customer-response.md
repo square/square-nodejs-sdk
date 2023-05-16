@@ -49,8 +49,37 @@ Either `errors` or `customer` is present in a given response (never both).
       "1KB9JE5EGJXCW.REACHABLE"
     ],
     "updated_at": "2016-03-23T20:21:54.859Z",
-    "version": 1
-  }
+    "version": 1,
+    "cards": [
+      {
+        "id": "id7",
+        "card_brand": "AMERICAN_EXPRESS",
+        "last_4": "last_49",
+        "exp_month": 113,
+        "exp_year": 183
+      }
+    ]
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

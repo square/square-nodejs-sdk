@@ -38,13 +38,13 @@
       "amount": 9970,
       "currency": "USD"
     },
-    "closing_employee_id": "",
+    "closing_team_member_id": "",
     "description": "Misplaced some change",
     "device": {
       "name": "My iPad"
     },
     "ended_at": "2019-11-22T00:44:49.000Z",
-    "ending_employee_id": "",
+    "ending_team_member_id": "",
     "expected_cash_money": {
       "amount": 10000,
       "currency": "USD"
@@ -55,9 +55,29 @@
       "amount": 10000,
       "currency": "USD"
     },
-    "opening_employee_id": "",
+    "opening_team_member_id": "",
     "state": "CLOSED"
-  }
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

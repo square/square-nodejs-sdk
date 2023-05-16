@@ -30,14 +30,7 @@
   "charging_state": "charging_state2",
   "location_id": "location_id4",
   "merchant_id": "merchant_id0",
-  "network_connection_type": "network_connection_type0",
-  "payment_region": "payment_region8",
-  "serial_number": "serial_number6",
-  "os_version": "os_version8",
-  "app_version": "app_version0",
-  "wifi_network_name": "wifi_network_name4",
-  "wifi_network_strength": "wifi_network_strength0",
-  "ip_address": "ip_address0"
+  "network_connection_type": "network_connection_type0"
 }
 ```
 

@@ -42,7 +42,8 @@ Defines input parameters in a request to the
   },
   "start_date": "2021-10-20",
   "tax_percentage": "5",
-  "timezone": "America/Los_Angeles"
+  "timezone": "America/Los_Angeles",
+  "canceled_date": "canceled_date6"
 }
 ```
 

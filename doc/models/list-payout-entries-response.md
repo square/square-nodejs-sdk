@@ -25,16 +25,19 @@ The response to retrieve payout records entries.
       "effective_at": "2021-12-14T23:31:49Z",
       "fee_amount_money": {
         "amount": -2,
-        "currency_code": "USD"
+        "currency_code": "USD",
+        "currency": "TMT"
       },
       "gross_amount_money": {
         "amount": -50,
-        "currency_code": "USD"
+        "currency_code": "USD",
+        "currency": "MGA"
       },
       "id": "poe_ZQWcw41d0SGJS6IWd4cSi8mKHk",
       "net_amount_money": {
         "amount": -48,
-        "currency_code": "USD"
+        "currency_code": "USD",
+        "currency": "TND"
       },
       "payout_id": "po_4d28e6c4-7dd5-4de4-8ec9-a059277646a6",
       "type": "REFUND",
@@ -47,22 +50,45 @@ The response to retrieve payout records entries.
       "effective_at": "2021-12-14T23:31:49Z",
       "fee_amount_money": {
         "amount": 19,
-        "currency_code": "USD"
+        "currency_code": "USD",
+        "currency": "TND"
       },
       "gross_amount_money": {
         "amount": 100,
-        "currency_code": "USD"
+        "currency_code": "USD",
+        "currency": "MKD"
       },
       "id": "poe_EibbY9Ob1d0SGJS6IWd4cSiSi6wkaPk",
       "net_amount_money": {
         "amount": 81,
-        "currency_code": "USD"
+        "currency_code": "USD",
+        "currency": "TOP"
       },
       "payout_id": "po_4d28e6c4-7dd5-4de4-8ec9-a059277646a6",
       "type": "CHARGE",
       "type_charge_details": {
         "payment_id": "HVdG62H5K3291d0SGJS6IWd4cSi8YY"
       }
+    }
+  ],
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
     }
   ]
 }

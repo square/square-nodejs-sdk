@@ -26,8 +26,30 @@ Defines the fields in a `DeprecatedCreateDisputeEvidenceFile` response.
     },
     "evidence_id": "TOomLInj6iWmP3N8qfCXrB",
     "evidence_type": "GENERIC_EVIDENCE",
-    "uploaded_at": "2018-10-18T16:01:10.000Z"
-  }
+    "uploaded_at": "2018-10-18T16:01:10.000Z",
+    "id": "id2",
+    "evidence_text": "evidence_text6"
+  },
+  "errors": [
+    {
+      "category": "AUTHENTICATION_ERROR",
+      "code": "REFUND_ALREADY_PENDING",
+      "detail": "detail1",
+      "field": "field9"
+    },
+    {
+      "category": "INVALID_REQUEST_ERROR",
+      "code": "PAYMENT_NOT_REFUNDABLE",
+      "detail": "detail2",
+      "field": "field0"
+    },
+    {
+      "category": "RATE_LIMIT_ERROR",
+      "code": "REFUND_DECLINED",
+      "detail": "detail3",
+      "field": "field1"
+    }
+  ]
 }
 ```
 

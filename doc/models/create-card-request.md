@@ -32,10 +32,16 @@ HTTP requests at POST https://connect.squareup.com/v2/cards
     },
     "cardholder_name": "Amelia Earhart",
     "customer_id": "VDKXEEKPJN48QDG3BGGFAK05P8",
-    "reference_id": "user-id-1"
+    "reference_id": "user-id-1",
+    "id": "id6",
+    "card_brand": "OTHER_BRAND",
+    "last_4": "last_48",
+    "exp_month": 228,
+    "exp_year": 68
   },
   "idempotency_key": "4935a656-a929-4792-b97c-8848be85c27c",
-  "source_id": "cnon:uIbfJXhXETSP197M3GB"
+  "source_id": "cnon:uIbfJXhXETSP197M3GB",
+  "verification_token": "verification_token6"
 }
 ```
 

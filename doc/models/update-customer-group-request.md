@@ -19,7 +19,10 @@ Defines the body parameters that can be included in a request to the
 ```json
 {
   "group": {
-    "name": "Loyal Customers"
+    "name": "Loyal Customers",
+    "id": "id8",
+    "created_at": "created_at4",
+    "updated_at": "updated_at6"
   }
 }
 ```

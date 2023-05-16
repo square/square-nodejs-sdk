@@ -1,9 +1,9 @@
 
-# Square Event
+# Event
 
 ## Structure
 
-`SquareEvent`
+`Event`
 
 ## Fields
 
@@ -14,7 +14,7 @@
 | `type` | `string \| undefined` | Optional | The type of event this represents. |
 | `eventId` | `string \| undefined` | Optional | A unique ID for the event. |
 | `createdAt` | `string \| undefined` | Optional | Timestamp of when the event was created, in RFC 3339 format. |
-| `data` | [`SquareEventData \| undefined`](../../doc/models/square-event-data.md) | Optional | - |
+| `data` | [`EventData \| undefined`](../../doc/models/event-data.md) | Optional | - |
 
 ## Example (as JSON)
 
@@ -24,16 +24,7 @@
   "location_id": "location_id4",
   "type": "type0",
   "event_id": "event_id6",
-  "created_at": "created_at2",
-  "data": {
-    "type": "type0",
-    "id": "id0",
-    "deleted": false,
-    "object": {
-      "key1": "val1",
-      "key2": "val2"
-    }
-  }
+  "created_at": "created_at2"
 }
 ```
 
