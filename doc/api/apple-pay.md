@@ -44,7 +44,6 @@ async registerDomain(
 ## Example Usage
 
 ```ts
-const contentType = null;
 const body: RegisterDomainRequest = {
   domainName: 'example.com',
 };
@@ -53,7 +52,7 @@ try {
   const { result, ...httpResponse } = await applePayApi.registerDomain(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

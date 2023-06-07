@@ -57,7 +57,7 @@ try {
   const { result, ...httpResponse } = await bookingCustomAttributesApi.listBookingCustomAttributeDefinitions();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -97,18 +97,15 @@ async createBookingCustomAttributeDefinition(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
-
 const body: CreateBookingCustomAttributeDefinitionRequest = {
-  customAttributeDefinition: bodyCustomAttributeDefinition,
+  customAttributeDefinition: {},
 };
 
 try {
   const { result, ...httpResponse } = await bookingCustomAttributesApi.createBookingCustomAttributeDefinition(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -149,11 +146,12 @@ async deleteBookingCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
+
 try {
   const { result, ...httpResponse } = await bookingCustomAttributesApi.deleteBookingCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -193,11 +191,12 @@ async retrieveBookingCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
+
 try {
   const { result, ...httpResponse } = await bookingCustomAttributesApi.retrieveBookingCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -240,18 +239,19 @@ async updateBookingCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
-const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
 
 const body: UpdateBookingCustomAttributeDefinitionRequest = {
-  customAttributeDefinition: bodyCustomAttributeDefinition,
+  customAttributeDefinition: {},
 };
 
 try {
-  const { result, ...httpResponse } = await bookingCustomAttributesApi.updateBookingCustomAttributeDefinition(key, body);
+  const { result, ...httpResponse } = await bookingCustomAttributesApi.updateBookingCustomAttributeDefinition(
+    key,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -291,17 +291,24 @@ async bulkDeleteBookingCustomAttributes(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyValues: Record<string, BookingCustomAttributeDeleteRequest> = {};
 const body: BulkDeleteBookingCustomAttributesRequest = {
-  values: bodyValues,
+  values: {
+    'key0': {
+      bookingId: 'booking_id8',
+      key: 'key4',
+    },
+    'key1': {
+      bookingId: 'booking_id9',
+      key: 'key5',
+    }
+  },
 };
 
 try {
   const { result, ...httpResponse } = await bookingCustomAttributesApi.bulkDeleteBookingCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -341,17 +348,24 @@ async bulkUpsertBookingCustomAttributes(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyValues: Record<string, BookingCustomAttributeUpsertRequest> = {};
 const body: BulkUpsertBookingCustomAttributesRequest = {
-  values: bodyValues,
+  values: {
+    'key0': {
+      bookingId: 'booking_id8',
+      customAttribute: {},
+    },
+    'key1': {
+      bookingId: 'booking_id9',
+      customAttribute: {},
+    }
+  },
 };
 
 try {
   const { result, ...httpResponse } = await bookingCustomAttributesApi.bulkUpsertBookingCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -395,12 +409,17 @@ async listBookingCustomAttributes(
 
 ```ts
 const bookingId = 'booking_id4';
+
 const withDefinitions = false;
+
 try {
-  const { result, ...httpResponse } = await bookingCustomAttributesApi.listBookingCustomAttributes(bookingId, None, None, withDefinitions);
+  const { result, ...httpResponse } = await bookingCustomAttributesApi.listBookingCustomAttributes(
+    bookingId,
+    withDefinitions
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -443,12 +462,17 @@ async deleteBookingCustomAttribute(
 
 ```ts
 const bookingId = 'booking_id4';
+
 const key = 'key0';
+
 try {
-  const { result, ...httpResponse } = await bookingCustomAttributesApi.deleteBookingCustomAttribute(bookingId, key);
+  const { result, ...httpResponse } = await bookingCustomAttributesApi.deleteBookingCustomAttribute(
+    bookingId,
+    key
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -492,13 +516,20 @@ async retrieveBookingCustomAttribute(
 
 ```ts
 const bookingId = 'booking_id4';
+
 const key = 'key0';
+
 const withDefinition = false;
+
 try {
-  const { result, ...httpResponse } = await bookingCustomAttributesApi.retrieveBookingCustomAttribute(bookingId, key, withDefinition);
+  const { result, ...httpResponse } = await bookingCustomAttributesApi.retrieveBookingCustomAttribute(
+    bookingId,
+    key,
+    withDefinition
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -543,19 +574,22 @@ async upsertBookingCustomAttribute(
 
 ```ts
 const bookingId = 'booking_id4';
+
 const key = 'key0';
-const contentType = null;
-const bodyCustomAttribute: CustomAttribute = {};
 
 const body: UpsertBookingCustomAttributeRequest = {
-  customAttribute: bodyCustomAttribute,
+  customAttribute: {},
 };
 
 try {
-  const { result, ...httpResponse } = await bookingCustomAttributesApi.upsertBookingCustomAttribute(bookingId, key, body);
+  const { result, ...httpResponse } = await bookingCustomAttributesApi.upsertBookingCustomAttribute(
+    bookingId,
+    key,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

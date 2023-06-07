@@ -24,7 +24,7 @@
     "app_id": "APP_ID",
     "cancel_reason": "SELLER_CANCELED",
     "created_at": "2020-03-16T15:31:19.934Z",
-    "deadline_duration": "PT10M",
+    "deadline_duration": "PT5M",
     "device_options": {
       "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
       "skip_receipt_screen": true,

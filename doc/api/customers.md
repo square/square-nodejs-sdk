@@ -61,7 +61,7 @@ try {
   const { result, ...httpResponse } = await customersApi.listCustomers();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -104,29 +104,28 @@ async createCustomer(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyAddress: Address = {};
-bodyAddress.addressLine1 = '500 Electric Ave';
-bodyAddress.addressLine2 = 'Suite 600';
-bodyAddress.locality = 'New York';
-bodyAddress.administrativeDistrictLevel1 = 'NY';
-bodyAddress.postalCode = '10003';
-bodyAddress.country = 'US';
-
-const body: CreateCustomerRequest = {};
-body.givenName = 'Amelia';
-body.familyName = 'Earhart';
-body.emailAddress = 'Amelia.Earhart@example.com';
-body.address = bodyAddress;
-body.phoneNumber = '+1-212-555-4240';
-body.referenceId = 'YOUR_REFERENCE_ID';
-body.note = 'a customer';
+const body: CreateCustomerRequest = {
+  givenName: 'Amelia',
+  familyName: 'Earhart',
+  emailAddress: 'Amelia.Earhart@example.com',
+  address: {
+    addressLine1: '500 Electric Ave',
+    addressLine2: 'Suite 600',
+    locality: 'New York',
+    administrativeDistrictLevel1: 'NY',
+    postalCode: '10003',
+    country: 'US',
+  },
+  phoneNumber: '+1-212-555-4240',
+  referenceId: 'YOUR_REFERENCE_ID',
+  note: 'a customer',
+};
 
 try {
   const { result, ...httpResponse } = await customersApi.createCustomer(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -168,46 +167,41 @@ async searchCustomers(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryFilterCreationSourceValues: string[] = ['THIRD_PARTY'];
-const bodyQueryFilterCreationSource: CustomerCreationSourceFilter = {};
-bodyQueryFilterCreationSource.values = bodyQueryFilterCreationSourceValues;
-bodyQueryFilterCreationSource.rule = 'INCLUDE';
-
-const bodyQueryFilterCreatedAt: TimeRange = {};
-bodyQueryFilterCreatedAt.startAt = '2018-01-01T00:00:00+00:00';
-bodyQueryFilterCreatedAt.endAt = '2018-02-01T00:00:00+00:00';
-
-const bodyQueryFilterEmailAddress: CustomerTextFilter = {};
-bodyQueryFilterEmailAddress.fuzzy = 'example.com';
-
-const bodyQueryFilterGroupIdsAll: string[] = ['545AXB44B4XXWMVQ4W8SBT3HHF'];
-const bodyQueryFilterGroupIds: FilterValue = {};
-bodyQueryFilterGroupIds.all = bodyQueryFilterGroupIdsAll;
-
-const bodyQueryFilter: CustomerFilter = {};
-bodyQueryFilter.creationSource = bodyQueryFilterCreationSource;
-bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;
-bodyQueryFilter.emailAddress = bodyQueryFilterEmailAddress;
-bodyQueryFilter.groupIds = bodyQueryFilterGroupIds;
-
-const bodyQuerySort: CustomerSort = {};
-bodyQuerySort.field = 'CREATED_AT';
-bodyQuerySort.order = 'ASC';
-
-const bodyQuery: CustomerQuery = {};
-bodyQuery.filter = bodyQueryFilter;
-bodyQuery.sort = bodyQuerySort;
-
-const body: SearchCustomersRequest = {};
-body.limit = BigInt(2);
-body.query = bodyQuery;
+const body: SearchCustomersRequest = {
+  limit: BigInt(2),
+  query: {
+    filter: {
+      creationSource: {
+        values: [
+          'THIRD_PARTY'
+        ],
+        rule: 'INCLUDE',
+      },
+      createdAt: {
+        startAt: '2018-01-01T00:00:00+00:00',
+        endAt: '2018-02-01T00:00:00+00:00',
+      },
+      emailAddress: {
+        fuzzy: 'example.com',
+      },
+      groupIds: {
+        all: [
+          '545AXB44B4XXWMVQ4W8SBT3HHF'
+        ],
+      },
+    },
+    sort: {
+      field: 'CREATED_AT',
+      order: 'ASC',
+    },
+  },
+};
 
 try {
   const { result, ...httpResponse } = await customersApi.searchCustomers(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -249,11 +243,12 @@ async deleteCustomer(
 
 ```ts
 const customerId = 'customer_id8';
+
 try {
   const { result, ...httpResponse } = await customersApi.deleteCustomer(customerId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -288,11 +283,12 @@ async retrieveCustomer(
 
 ```ts
 const customerId = 'customer_id8';
+
 try {
   const { result, ...httpResponse } = await customersApi.retrieveCustomer(customerId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -338,18 +334,22 @@ async updateCustomer(
 
 ```ts
 const customerId = 'customer_id8';
-const contentType = null;
-const body: UpdateCustomerRequest = {};
-body.emailAddress = 'New.Amelia.Earhart@example.com';
-body.phoneNumber = '';
-body.note = 'updated customer note';
-body.version = BigInt(2);
+
+const body: UpdateCustomerRequest = {
+  emailAddress: 'New.Amelia.Earhart@example.com',
+  phoneNumber: '',
+  note: 'updated customer note',
+  version: BigInt(2),
+};
 
 try {
-  const { result, ...httpResponse } = await customersApi.updateCustomer(customerId, body);
+  const { result, ...httpResponse } = await customersApi.updateCustomer(
+    customerId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -392,26 +392,28 @@ async createCustomerCard(
 
 ```ts
 const customerId = 'customer_id8';
-const contentType = null;
-const bodyBillingAddress: Address = {};
-bodyBillingAddress.addressLine1 = '500 Electric Ave';
-bodyBillingAddress.addressLine2 = 'Suite 600';
-bodyBillingAddress.locality = 'New York';
-bodyBillingAddress.administrativeDistrictLevel1 = 'NY';
-bodyBillingAddress.postalCode = '10003';
-bodyBillingAddress.country = 'US';
 
 const body: CreateCustomerCardRequest = {
   cardNonce: 'YOUR_CARD_NONCE',
+  billingAddress: {
+    addressLine1: '500 Electric Ave',
+    addressLine2: 'Suite 600',
+    locality: 'New York',
+    administrativeDistrictLevel1: 'NY',
+    postalCode: '10003',
+    country: 'US',
+  },
+  cardholderName: 'Amelia Earhart',
 };
-body.billingAddress = bodyBillingAddress;
-body.cardholderName = 'Amelia Earhart';
 
 try {
-  const { result, ...httpResponse } = await customersApi.createCustomerCard(customerId, body);
+  const { result, ...httpResponse } = await customersApi.createCustomerCard(
+    customerId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -450,12 +452,17 @@ async deleteCustomerCard(
 
 ```ts
 const customerId = 'customer_id8';
+
 const cardId = 'card_id4';
+
 try {
-  const { result, ...httpResponse } = await customersApi.deleteCustomerCard(customerId, cardId);
+  const { result, ...httpResponse } = await customersApi.deleteCustomerCard(
+    customerId,
+    cardId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -495,12 +502,17 @@ async removeGroupFromCustomer(
 
 ```ts
 const customerId = 'customer_id8';
+
 const groupId = 'group_id0';
+
 try {
-  const { result, ...httpResponse } = await customersApi.removeGroupFromCustomer(customerId, groupId);
+  const { result, ...httpResponse } = await customersApi.removeGroupFromCustomer(
+    customerId,
+    groupId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -540,12 +552,17 @@ async addGroupToCustomer(
 
 ```ts
 const customerId = 'customer_id8';
+
 const groupId = 'group_id0';
+
 try {
-  const { result, ...httpResponse } = await customersApi.addGroupToCustomer(customerId, groupId);
+  const { result, ...httpResponse } = await customersApi.addGroupToCustomer(
+    customerId,
+    groupId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

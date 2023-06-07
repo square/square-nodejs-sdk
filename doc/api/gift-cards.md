@@ -57,7 +57,7 @@ try {
   const { result, ...httpResponse } = await giftCardsApi.listGiftCards();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -93,22 +93,19 @@ async createGiftCard(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyGiftCard: GiftCard = {
-  type: 'DIGITAL',
-};
-
 const body: CreateGiftCardRequest = {
   idempotencyKey: 'NC9Tm69EjbjtConu',
   locationId: '81FN9BNFZTKS4',
-  giftCard: bodyGiftCard,
+  giftCard: {
+    type: 'DIGITAL',
+  },
 };
 
 try {
   const { result, ...httpResponse } = await giftCardsApi.createGiftCard(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -142,7 +139,6 @@ async retrieveGiftCardFromGAN(
 ## Example Usage
 
 ```ts
-const contentType = null;
 const body: RetrieveGiftCardFromGANRequest = {
   gan: '7783320001001635',
 };
@@ -151,7 +147,7 @@ try {
   const { result, ...httpResponse } = await giftCardsApi.retrieveGiftCardFromGAN(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -185,7 +181,6 @@ async retrieveGiftCardFromNonce(
 ## Example Usage
 
 ```ts
-const contentType = null;
 const body: RetrieveGiftCardFromNonceRequest = {
   nonce: 'cnon:7783322135245171',
 };
@@ -194,7 +189,7 @@ try {
   const { result, ...httpResponse } = await giftCardsApi.retrieveGiftCardFromNonce(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -231,16 +226,19 @@ async linkCustomerToGiftCard(
 
 ```ts
 const giftCardId = 'gift_card_id8';
-const contentType = null;
+
 const body: LinkCustomerToGiftCardRequest = {
   customerId: 'GKY0FZ3V717AH8Q2D821PNT2ZW',
 };
 
 try {
-  const { result, ...httpResponse } = await giftCardsApi.linkCustomerToGiftCard(giftCardId, body);
+  const { result, ...httpResponse } = await giftCardsApi.linkCustomerToGiftCard(
+    giftCardId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -277,16 +275,19 @@ async unlinkCustomerFromGiftCard(
 
 ```ts
 const giftCardId = 'gift_card_id8';
-const contentType = null;
+
 const body: UnlinkCustomerFromGiftCardRequest = {
   customerId: 'GKY0FZ3V717AH8Q2D821PNT2ZW',
 };
 
 try {
-  const { result, ...httpResponse } = await giftCardsApi.unlinkCustomerFromGiftCard(giftCardId, body);
+  const { result, ...httpResponse } = await giftCardsApi.unlinkCustomerFromGiftCard(
+    giftCardId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -321,11 +322,12 @@ async retrieveGiftCard(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await giftCardsApi.retrieveGiftCard(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

@@ -1,9 +1,6 @@
 import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
-import {
-  InventoryTransfer,
-  inventoryTransferSchema,
-} from './inventoryTransfer';
+import { InventoryTransfer, inventoryTransferSchema } from './inventoryTransfer';
 
 export interface RetrieveInventoryTransferResponse {
   /** Any errors that occurred during the request. */

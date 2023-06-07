@@ -22,10 +22,7 @@ import {
 import { CatalogDiscount, catalogDiscountSchema } from './catalogDiscount';
 import { CatalogImage, catalogImageSchema } from './catalogImage';
 import { CatalogItem, catalogItemSchema } from './catalogItem';
-import {
-  CatalogItemOption,
-  catalogItemOptionSchema,
-} from './catalogItemOption';
+import { CatalogItemOption, catalogItemOptionSchema } from './catalogItemOption';
 import {
   CatalogItemOptionValue,
   catalogItemOptionValueSchema,
@@ -47,10 +44,7 @@ import {
   CatalogPricingRule,
   catalogPricingRuleSchema,
 } from './catalogPricingRule';
-import {
-  CatalogProductSet,
-  catalogProductSetSchema,
-} from './catalogProductSet';
+import { CatalogProductSet, catalogProductSetSchema } from './catalogProductSet';
 import {
   CatalogQuickAmountsSettings,
   catalogQuickAmountsSettingsSchema,
@@ -60,10 +54,7 @@ import {
   catalogSubscriptionPlanSchema,
 } from './catalogSubscriptionPlan';
 import { CatalogTax, catalogTaxSchema } from './catalogTax';
-import {
-  CatalogTimePeriod,
-  catalogTimePeriodSchema,
-} from './catalogTimePeriod';
+import { CatalogTimePeriod, catalogTimePeriodSchema } from './catalogTimePeriod';
 import { CatalogV1Id, catalogV1IdSchema } from './catalogV1Id';
 
 /**
@@ -203,8 +194,8 @@ export interface CatalogObject {
    */
   measurementUnitData?: CatalogMeasurementUnit;
   /**
-   * Describes a subscription plan. For more information, see
-   * [Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan).
+   * Describes a subscription plan. A subscription plan represents what you want to sell in a subscription model, and includes references to each of the associated subscription plan variations.
+   * For more information, see [Subscription Plans and Variations](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations).
    */
   subscriptionPlanData?: CatalogSubscriptionPlan;
   /** A group of variations for a `CatalogItem`. */

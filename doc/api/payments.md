@@ -69,7 +69,7 @@ try {
   const { result, ...httpResponse } = await paymentsApi.listPayments();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -110,32 +110,29 @@ async createPayment(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyAmountMoney: Money = {};
-bodyAmountMoney.amount = BigInt(1000);
-bodyAmountMoney.currency = 'USD';
-
-const bodyAppFeeMoney: Money = {};
-bodyAppFeeMoney.amount = BigInt(10);
-bodyAppFeeMoney.currency = 'USD';
-
 const body: CreatePaymentRequest = {
   sourceId: 'ccof:GaJGNaZa8x4OgDJn4GB',
   idempotencyKey: '7b0f3ec5-086a-4871-8f13-3c81b3875218',
+  amountMoney: {
+    amount: BigInt(1000),
+    currency: 'USD',
+  },
+  appFeeMoney: {
+    amount: BigInt(10),
+    currency: 'USD',
+  },
+  autocomplete: true,
+  customerId: 'W92WH6P11H4Z77CTET0RNTGFW8',
+  locationId: 'L88917AVBK2S5',
+  referenceId: '123456',
+  note: 'Brief description',
 };
-body.amountMoney = bodyAmountMoney;
-body.appFeeMoney = bodyAppFeeMoney;
-body.autocomplete = true;
-body.customerId = 'W92WH6P11H4Z77CTET0RNTGFW8';
-body.locationId = 'L88917AVBK2S5';
-body.referenceId = '123456';
-body.note = 'Brief description';
 
 try {
   const { result, ...httpResponse } = await paymentsApi.createPayment(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -179,7 +176,6 @@ async cancelPaymentByIdempotencyKey(
 ## Example Usage
 
 ```ts
-const contentType = null;
 const body: CancelPaymentByIdempotencyKeyRequest = {
   idempotencyKey: 'a7e36d40-d24b-11e8-b568-0800200c9a66',
 };
@@ -188,7 +184,7 @@ try {
   const { result, ...httpResponse } = await paymentsApi.cancelPaymentByIdempotencyKey(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -223,11 +219,12 @@ async getPayment(
 
 ```ts
 const paymentId = 'payment_id0';
+
 try {
   const { result, ...httpResponse } = await paymentsApi.getPayment(paymentId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -265,30 +262,30 @@ async updatePayment(
 
 ```ts
 const paymentId = 'payment_id0';
-const contentType = null;
-const bodyPaymentAmountMoney: Money = {};
-bodyPaymentAmountMoney.amount = BigInt(1000);
-bodyPaymentAmountMoney.currency = 'USD';
-
-const bodyPaymentTipMoney: Money = {};
-bodyPaymentTipMoney.amount = BigInt(100);
-bodyPaymentTipMoney.currency = 'USD';
-
-const bodyPayment: Payment = {};
-bodyPayment.amountMoney = bodyPaymentAmountMoney;
-bodyPayment.tipMoney = bodyPaymentTipMoney;
-bodyPayment.versionToken = 'ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o';
 
 const body: UpdatePaymentRequest = {
   idempotencyKey: '956f8b13-e4ec-45d6-85e8-d1d95ef0c5de',
+  payment: {
+    amountMoney: {
+      amount: BigInt(1000),
+      currency: 'USD',
+    },
+    tipMoney: {
+      amount: BigInt(100),
+      currency: 'USD',
+    },
+    versionToken: 'ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o',
+  },
 };
-body.payment = bodyPayment;
 
 try {
-  const { result, ...httpResponse } = await paymentsApi.updatePayment(paymentId, body);
+  const { result, ...httpResponse } = await paymentsApi.updatePayment(
+    paymentId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -324,11 +321,12 @@ async cancelPayment(
 
 ```ts
 const paymentId = 'payment_id0';
+
 try {
   const { result, ...httpResponse } = await paymentsApi.cancelPayment(paymentId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -368,14 +366,17 @@ async completePayment(
 
 ```ts
 const paymentId = 'payment_id0';
-const contentType = null;
+
 const body: CompletePaymentRequest = {};
 
 try {
-  const { result, ...httpResponse } = await paymentsApi.completePayment(paymentId, body);
+  const { result, ...httpResponse } = await paymentsApi.completePayment(
+    paymentId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

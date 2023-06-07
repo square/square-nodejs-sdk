@@ -51,11 +51,14 @@ async listCards(
 
 ```ts
 const includeDisabled = false;
+
 try {
-  const { result, ...httpResponse } = await cardsApi.listCards(None, None, includeDisabled);
+  const { result, ...httpResponse } = await cardsApi.listCards(
+    includeDisabled
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -89,32 +92,29 @@ async createCard(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCardBillingAddress: Address = {};
-bodyCardBillingAddress.addressLine1 = '500 Electric Ave';
-bodyCardBillingAddress.addressLine2 = 'Suite 600';
-bodyCardBillingAddress.locality = 'New York';
-bodyCardBillingAddress.administrativeDistrictLevel1 = 'NY';
-bodyCardBillingAddress.postalCode = '10003';
-bodyCardBillingAddress.country = 'US';
-
-const bodyCard: Card = {};
-bodyCard.cardholderName = 'Amelia Earhart';
-bodyCard.billingAddress = bodyCardBillingAddress;
-bodyCard.customerId = 'VDKXEEKPJN48QDG3BGGFAK05P8';
-bodyCard.referenceId = 'user-id-1';
-
 const body: CreateCardRequest = {
   idempotencyKey: '4935a656-a929-4792-b97c-8848be85c27c',
   sourceId: 'cnon:uIbfJXhXETSP197M3GB',
-  card: bodyCard,
+  card: {
+    cardholderName: 'Amelia Earhart',
+    billingAddress: {
+      addressLine1: '500 Electric Ave',
+      addressLine2: 'Suite 600',
+      locality: 'New York',
+      administrativeDistrictLevel1: 'NY',
+      postalCode: '10003',
+      country: 'US',
+    },
+    customerId: 'VDKXEEKPJN48QDG3BGGFAK05P8',
+    referenceId: 'user-id-1',
+  },
 };
 
 try {
   const { result, ...httpResponse } = await cardsApi.createCard(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -149,11 +149,12 @@ async retrieveCard(
 
 ```ts
 const cardId = 'card_id4';
+
 try {
   const { result, ...httpResponse } = await cardsApi.retrieveCard(cardId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -189,11 +190,12 @@ async disableCard(
 
 ```ts
 const cardId = 'card_id4';
+
 try {
   const { result, ...httpResponse } = await cardsApi.disableCard(cardId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

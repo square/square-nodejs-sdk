@@ -54,7 +54,7 @@ try {
   const { result, ...httpResponse } = await disputesApi.listDisputes();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -89,11 +89,12 @@ async retrieveDispute(
 
 ```ts
 const disputeId = 'dispute_id2';
+
 try {
   const { result, ...httpResponse } = await disputesApi.retrieveDispute(disputeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -132,11 +133,12 @@ async acceptDispute(
 
 ```ts
 const disputeId = 'dispute_id2';
+
 try {
   const { result, ...httpResponse } = await disputesApi.acceptDispute(disputeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -173,11 +175,12 @@ async listDisputeEvidence(
 
 ```ts
 const disputeId = 'dispute_id2';
+
 try {
   const { result, ...httpResponse } = await disputesApi.listDisputeEvidence(disputeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -217,11 +220,12 @@ async createDisputeEvidenceFile(
 
 ```ts
 const disputeId = 'dispute_id2';
+
 try {
   const { result, ...httpResponse } = await disputesApi.createDisputeEvidenceFile(disputeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -258,18 +262,21 @@ async createDisputeEvidenceText(
 
 ```ts
 const disputeId = 'dispute_id2';
-const contentType = null;
+
 const body: CreateDisputeEvidenceTextRequest = {
   idempotencyKey: 'ed3ee3933d946f1514d505d173c82648',
   evidenceText: '1Z8888888888888888',
+  evidenceType: 'TRACKING_NUMBER',
 };
-body.evidenceType = 'TRACKING_NUMBER';
 
 try {
-  const { result, ...httpResponse } = await disputesApi.createDisputeEvidenceText(disputeId, body);
+  const { result, ...httpResponse } = await disputesApi.createDisputeEvidenceText(
+    disputeId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -307,12 +314,17 @@ async deleteDisputeEvidence(
 
 ```ts
 const disputeId = 'dispute_id2';
+
 const evidenceId = 'evidence_id2';
+
 try {
-  const { result, ...httpResponse } = await disputesApi.deleteDisputeEvidence(disputeId, evidenceId);
+  const { result, ...httpResponse } = await disputesApi.deleteDisputeEvidence(
+    disputeId,
+    evidenceId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -351,12 +363,17 @@ async retrieveDisputeEvidence(
 
 ```ts
 const disputeId = 'dispute_id2';
+
 const evidenceId = 'evidence_id2';
+
 try {
-  const { result, ...httpResponse } = await disputesApi.retrieveDisputeEvidence(disputeId, evidenceId);
+  const { result, ...httpResponse } = await disputesApi.retrieveDisputeEvidence(
+    disputeId,
+    evidenceId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -397,11 +414,12 @@ async submitEvidence(
 
 ```ts
 const disputeId = 'dispute_id2';
+
 try {
   const { result, ...httpResponse } = await disputesApi.submitEvidence(disputeId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

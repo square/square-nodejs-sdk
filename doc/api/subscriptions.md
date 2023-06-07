@@ -24,12 +24,14 @@ const subscriptionsApi = client.subscriptionsApi;
 
 # Create Subscription
 
-Creates a subscription to a subscription plan by a customer.
+Enrolls a customer in a subscription.
 
 If you provide a card on file in the request, Square charges the card for
-the subscription. Otherwise, Square bills an invoice to the customer's email
+the subscription. Otherwise, Square sends an invoice to the customer's email
 address. The subscription starts immediately, unless the request includes
 the optional `start_date`. Each individual subscription is associated with a particular location.
+
+For more information, see [Create a subscription](https://developer.squareup.com/docs/subscriptions-api/manage-subscriptions#create-a-subscription).
 
 ```ts
 async createSubscription(
@@ -52,32 +54,29 @@ async createSubscription(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyPriceOverrideMoney: Money = {};
-bodyPriceOverrideMoney.amount = BigInt(100);
-bodyPriceOverrideMoney.currency = 'USD';
-
-const bodySource: SubscriptionSource = {};
-bodySource.name = 'My App';
-
 const body: CreateSubscriptionRequest = {
   locationId: 'S8GWD5R9QB376',
-  planId: '6JHXF3B2CW3YKHDV4XEM674H',
   customerId: 'CHFGVKYY8RSV93M5KCYTG4PN0G',
+  idempotencyKey: '8193148c-9586-11e6-99f9-28cfe92138cf',
+  planId: '6JHXF3B2CW3YKHDV4XEM674H',
+  startDate: '2021-10-20',
+  taxPercentage: '5',
+  priceOverrideMoney: {
+    amount: BigInt(100),
+    currency: 'USD',
+  },
+  cardId: 'ccof:qy5x8hHGYsgLrp4Q4GB',
+  timezone: 'America/Los_Angeles',
+  source: {
+    name: 'My App',
+  },
 };
-body.idempotencyKey = '8193148c-9586-11e6-99f9-28cfe92138cf';
-body.startDate = '2021-10-20';
-body.taxPercentage = '5';
-body.priceOverrideMoney = bodyPriceOverrideMoney;
-body.cardId = 'ccof:qy5x8hHGYsgLrp4Q4GB';
-body.timezone = 'America/Los_Angeles';
-body.source = bodySource;
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.createSubscription(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -103,9 +102,6 @@ If the request specifies customer IDs, the endpoint orders results
 first by location, within location by customer ID, and within
 customer by subscription creation date.
 
-For more information, see
-[Retrieve subscriptions](https://developer.squareup.com/docs/subscriptions-api/overview#retrieve-subscriptions).
-
 ```ts
 async searchSubscriptions(
   body: SearchSubscriptionsRequest,
@@ -127,26 +123,27 @@ async searchSubscriptions(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryFilterCustomerIds: string[] = ['CHFGVKYY8RSV93M5KCYTG4PN0G'];
-const bodyQueryFilterLocationIds: string[] = ['S8GWD5R9QB376'];
-const bodyQueryFilterSourceNames: string[] = ['My App'];
-const bodyQueryFilter: SearchSubscriptionsFilter = {};
-bodyQueryFilter.customerIds = bodyQueryFilterCustomerIds;
-bodyQueryFilter.locationIds = bodyQueryFilterLocationIds;
-bodyQueryFilter.sourceNames = bodyQueryFilterSourceNames;
-
-const bodyQuery: SearchSubscriptionsQuery = {};
-bodyQuery.filter = bodyQueryFilter;
-
-const body: SearchSubscriptionsRequest = {};
-body.query = bodyQuery;
+const body: SearchSubscriptionsRequest = {
+  query: {
+    filter: {
+      customerIds: [
+        'CHFGVKYY8RSV93M5KCYTG4PN0G'
+      ],
+      locationIds: [
+        'S8GWD5R9QB376'
+      ],
+      sourceNames: [
+        'My App'
+      ],
+    },
+  },
+};
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.searchSubscriptions(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -157,7 +154,7 @@ try {
 
 # Retrieve Subscription
 
-Retrieves a subscription.
+Retrieves a specific subscription.
 
 ```ts
 async retrieveSubscription(
@@ -183,11 +180,12 @@ async retrieveSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
+
 try {
   const { result, ...httpResponse } = await subscriptionsApi.retrieveSubscription(subscriptionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -198,8 +196,8 @@ try {
 
 # Update Subscription
 
-Updates a subscription. You can set, modify, and clear the
-`subscription` field values.
+Updates a subscription by modifying or clearing `subscription` field values.
+To clear a field, set its value to `null`.
 
 ```ts
 async updateSubscription(
@@ -225,17 +223,19 @@ async updateSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
-const contentType = null;
-const bodySubscription: Subscription = {};
 
-const body: UpdateSubscriptionRequest = {};
-body.subscription = bodySubscription;
+const body: UpdateSubscriptionRequest = {
+  subscription: {},
+};
 
 try {
-  const { result, ...httpResponse } = await subscriptionsApi.updateSubscription(subscriptionId, body);
+  const { result, ...httpResponse } = await subscriptionsApi.updateSubscription(
+    subscriptionId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -272,12 +272,17 @@ async deleteSubscriptionAction(
 
 ```ts
 const subscriptionId = 'subscription_id0';
+
 const actionId = 'action_id6';
+
 try {
-  const { result, ...httpResponse } = await subscriptionsApi.deleteSubscriptionAction(subscriptionId, actionId);
+  const { result, ...httpResponse } = await subscriptionsApi.deleteSubscriptionAction(
+    subscriptionId,
+    actionId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -288,9 +293,9 @@ try {
 
 # Cancel Subscription
 
-Schedules a `CANCEL` action to cancel an active subscription
-by setting the `canceled_date` field to the end of the active billing period
-and changing the subscription status from ACTIVE to CANCELED after this date.
+Schedules a `CANCEL` action to cancel an active subscription. This
+sets the `canceled_date` field to the end of the active billing period. After this date,
+the subscription status changes from ACTIVE to CANCELED.
 
 ```ts
 async cancelSubscription(
@@ -314,11 +319,12 @@ async cancelSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
+
 try {
   const { result, ...httpResponse } = await subscriptionsApi.cancelSubscription(subscriptionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -329,7 +335,7 @@ try {
 
 # List Subscription Events
 
-Lists all events for a specific subscription.
+Lists all [events](https://developer.squareup.com/docs/subscriptions-api/actions-events) for a specific subscription.
 
 ```ts
 async listSubscriptionEvents(
@@ -345,7 +351,7 @@ async listSubscriptionEvents(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscriptionId` | `string` | Template, Required | The ID of the subscription to retrieve the events for. |
-| `cursor` | `string \| undefined` | Query, Optional | When the total number of resulting subscription events exceeds the limit of a paged response,<br>specify the cursor returned from a preceding response here to fetch the next set of results.<br>If the cursor is unset, the response contains the last page of the results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `cursor` | `string \| undefined` | Query, Optional | When the total number of resulting subscription events exceeds the limit of a paged response,<br>specify the cursor returned from a preceding response here to fetch the next set of results.<br>If the cursor is unset, the response contains the last page of the results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
 | `limit` | `number \| undefined` | Query, Optional | The upper limit on the number of subscription events to return<br>in a paged response. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
@@ -357,11 +363,12 @@ async listSubscriptionEvents(
 
 ```ts
 const subscriptionId = 'subscription_id0';
+
 try {
   const { result, ...httpResponse } = await subscriptionsApi.listSubscriptionEvents(subscriptionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -398,14 +405,17 @@ async pauseSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
-const contentType = null;
+
 const body: PauseSubscriptionRequest = {};
 
 try {
-  const { result, ...httpResponse } = await subscriptionsApi.pauseSubscription(subscriptionId, body);
+  const { result, ...httpResponse } = await subscriptionsApi.pauseSubscription(
+    subscriptionId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -442,14 +452,17 @@ async resumeSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
-const contentType = null;
+
 const body: ResumeSubscriptionRequest = {};
 
 try {
-  const { result, ...httpResponse } = await subscriptionsApi.resumeSubscription(subscriptionId, body);
+  const { result, ...httpResponse } = await subscriptionsApi.resumeSubscription(
+    subscriptionId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -460,7 +473,8 @@ try {
 
 # Swap Plan
 
-Schedules a `SWAP_PLAN` action to swap a subscription plan in an existing subscription.
+Schedules a `SWAP_PLAN` action to swap a subscription plan variation in an existing subscription.
+For more information, see [Swap Subscription Plan Variations](https://developer.squareup.com/docs/subscriptions-api/swap-plan-variations).
 
 ```ts
 async swapPlan(
@@ -486,16 +500,17 @@ async swapPlan(
 
 ```ts
 const subscriptionId = 'subscription_id0';
-const contentType = null;
-const body: SwapPlanRequest = {
-  newPlanId: null,
-};
+
+const body: SwapPlanRequest = {};
 
 try {
-  const { result, ...httpResponse } = await subscriptionsApi.swapPlan(subscriptionId, body);
+  const { result, ...httpResponse } = await subscriptionsApi.swapPlan(
+    subscriptionId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

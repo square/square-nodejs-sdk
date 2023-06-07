@@ -55,11 +55,12 @@ async v1ListOrders(
 
 ```ts
 const locationId = 'location_id4';
+
 try {
   const { result, ...httpResponse } = await v1TransactionsApi.v1ListOrders(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -98,12 +99,17 @@ async v1RetrieveOrder(
 
 ```ts
 const locationId = 'location_id4';
+
 const orderId = 'order_id6';
+
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.v1RetrieveOrder(locationId, orderId);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1RetrieveOrder(
+    locationId,
+    orderId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -144,17 +150,22 @@ async v1UpdateOrder(
 
 ```ts
 const locationId = 'location_id4';
+
 const orderId = 'order_id6';
-const contentType = null;
+
 const body: V1UpdateOrderRequest = {
   action: 'REFUND',
 };
 
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.v1UpdateOrder(locationId, orderId, body);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1UpdateOrder(
+    locationId,
+    orderId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -213,12 +224,17 @@ async v1ListPayments(
 
 ```ts
 const locationId = 'location_id4';
+
 const includePartial = false;
+
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.v1ListPayments(locationId, None, None, None, None, None, includePartial);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1ListPayments(
+    locationId,
+    includePartial
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -257,12 +273,17 @@ async v1RetrievePayment(
 
 ```ts
 const locationId = 'location_id4';
+
 const paymentId = 'payment_id0';
+
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.v1RetrievePayment(locationId, paymentId);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1RetrievePayment(
+    locationId,
+    paymentId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -309,11 +330,12 @@ async v1ListRefunds(
 
 ```ts
 const locationId = 'location_id4';
+
 try {
   const { result, ...httpResponse } = await v1TransactionsApi.v1ListRefunds(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -363,7 +385,7 @@ async v1CreateRefund(
 
 ```ts
 const locationId = 'location_id4';
-const contentType = null;
+
 const body: V1CreateRefundRequest = {
   paymentId: 'payment_id6',
   type: 'FULL',
@@ -371,10 +393,13 @@ const body: V1CreateRefundRequest = {
 };
 
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.v1CreateRefund(locationId, body);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1CreateRefund(
+    locationId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -428,11 +453,12 @@ async v1ListSettlements(
 
 ```ts
 const locationId = 'location_id4';
+
 try {
   const { result, ...httpResponse } = await v1TransactionsApi.v1ListSettlements(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -487,12 +513,17 @@ async v1RetrieveSettlement(
 
 ```ts
 const locationId = 'location_id4';
+
 const settlementId = 'settlement_id0';
+
 try {
-  const { result, ...httpResponse } = await v1TransactionsApi.v1RetrieveSettlement(locationId, settlementId);
+  const { result, ...httpResponse } = await v1TransactionsApi.v1RetrieveSettlement(
+    locationId,
+    settlementId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

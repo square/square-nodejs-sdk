@@ -51,101 +51,73 @@ async createOrder(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyOrderLineItems: OrderLineItem[] = [];
-
-const bodyOrderlineItems0BasePriceMoney: Money = {};
-bodyOrderlineItems0BasePriceMoney.amount = BigInt(1599);
-bodyOrderlineItems0BasePriceMoney.currency = 'USD';
-
-const bodyOrderlineItems0: OrderLineItem = {
-  quantity: '1',
+const body: CreateOrderRequest = {
+  order: {
+    locationId: '057P5VYJ4A5X1',
+    referenceId: 'my-order-001',
+    lineItems: [
+      {
+        quantity: '1',
+        name: 'New York Strip Steak',
+        basePriceMoney: {
+          amount: BigInt(1599),
+          currency: 'USD',
+        },
+      },
+      {
+        quantity: '2',
+        catalogObjectId: 'BEMYCSMIJL46OCDV4KYIKXIB',
+        modifiers: [
+          {
+            catalogObjectId: 'CHQX7Y4KY6N5KINJKZCFURPZ',
+          }
+        ],
+        appliedDiscounts: [
+          {
+            discountUid: 'one-dollar-off',
+          }
+        ],
+      }
+    ],
+    taxes: [
+      {
+        uid: 'state-sales-tax',
+        name: 'State Sales Tax',
+        percentage: '9',
+        scope: 'ORDER',
+      }
+    ],
+    discounts: [
+      {
+        uid: 'labor-day-sale',
+        name: 'Labor Day Sale',
+        percentage: '5',
+        scope: 'ORDER',
+      },
+      {
+        uid: 'membership-discount',
+        catalogObjectId: 'DB7L55ZH2BGWI4H23ULIWOQ7',
+        scope: 'ORDER',
+      },
+      {
+        uid: 'one-dollar-off',
+        name: 'Sale - $1.00 off',
+        amountMoney: {
+          amount: BigInt(100),
+          currency: 'USD',
+        },
+        scope: 'LINE_ITEM',
+      }
+    ],
+  },
+  idempotencyKey: '8193148c-9586-11e6-99f9-28cfe92138cf',
 };
-bodyOrderlineItems0.name = 'New York Strip Steak';
-bodyOrderlineItems0.basePriceMoney = bodyOrderlineItems0BasePriceMoney;
-
-bodyOrderLineItems[0] = bodyOrderlineItems0;
-
-const bodyOrderlineItems1Modifiers: OrderLineItemModifier[] = [];
-
-const bodyOrderlineItems1modifiers0: OrderLineItemModifier = {};
-bodyOrderlineItems1modifiers0.catalogObjectId = 'CHQX7Y4KY6N5KINJKZCFURPZ';
-
-bodyOrderlineItems1Modifiers[0] = bodyOrderlineItems1modifiers0;
-
-const bodyOrderlineItems1AppliedDiscounts: OrderLineItemAppliedDiscount[] = [];
-
-const bodyOrderlineItems1appliedDiscounts0: OrderLineItemAppliedDiscount = {
-  discountUid: 'one-dollar-off',
-};
-
-bodyOrderlineItems1AppliedDiscounts[0] = bodyOrderlineItems1appliedDiscounts0;
-
-const bodyOrderlineItems1: OrderLineItem = {
-  quantity: '2',
-};
-bodyOrderlineItems1.catalogObjectId = 'BEMYCSMIJL46OCDV4KYIKXIB';
-bodyOrderlineItems1.modifiers = bodyOrderlineItems1Modifiers;
-bodyOrderlineItems1.appliedDiscounts = bodyOrderlineItems1AppliedDiscounts;
-
-bodyOrderLineItems[1] = bodyOrderlineItems1;
-
-const bodyOrderTaxes: OrderLineItemTax[] = [];
-
-const bodyOrdertaxes0: OrderLineItemTax = {};
-bodyOrdertaxes0.uid = 'state-sales-tax';
-bodyOrdertaxes0.name = 'State Sales Tax';
-bodyOrdertaxes0.percentage = '9';
-bodyOrdertaxes0.scope = 'ORDER';
-
-bodyOrderTaxes[0] = bodyOrdertaxes0;
-
-const bodyOrderDiscounts: OrderLineItemDiscount[] = [];
-
-const bodyOrderdiscounts0: OrderLineItemDiscount = {};
-bodyOrderdiscounts0.uid = 'labor-day-sale';
-bodyOrderdiscounts0.name = 'Labor Day Sale';
-bodyOrderdiscounts0.percentage = '5';
-bodyOrderdiscounts0.scope = 'ORDER';
-
-bodyOrderDiscounts[0] = bodyOrderdiscounts0;
-
-const bodyOrderdiscounts1: OrderLineItemDiscount = {};
-bodyOrderdiscounts1.uid = 'membership-discount';
-bodyOrderdiscounts1.catalogObjectId = 'DB7L55ZH2BGWI4H23ULIWOQ7';
-bodyOrderdiscounts1.scope = 'ORDER';
-
-bodyOrderDiscounts[1] = bodyOrderdiscounts1;
-
-const bodyOrderdiscounts2AmountMoney: Money = {};
-bodyOrderdiscounts2AmountMoney.amount = BigInt(100);
-bodyOrderdiscounts2AmountMoney.currency = 'USD';
-
-const bodyOrderdiscounts2: OrderLineItemDiscount = {};
-bodyOrderdiscounts2.uid = 'one-dollar-off';
-bodyOrderdiscounts2.name = 'Sale - $1.00 off';
-bodyOrderdiscounts2.amountMoney = bodyOrderdiscounts2AmountMoney;
-bodyOrderdiscounts2.scope = 'LINE_ITEM';
-
-bodyOrderDiscounts[2] = bodyOrderdiscounts2;
-
-const bodyOrder: Order = {
-  locationId: '057P5VYJ4A5X1',
-};
-bodyOrder.referenceId = 'my-order-001';
-bodyOrder.lineItems = bodyOrderLineItems;
-bodyOrder.taxes = bodyOrderTaxes;
-bodyOrder.discounts = bodyOrderDiscounts;
-
-const body: CreateOrderRequest = {};
-body.order = bodyOrder;
-body.idempotencyKey = '8193148c-9586-11e6-99f9-28cfe92138cf';
 
 try {
   const { result, ...httpResponse } = await ordersApi.createOrder(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -181,18 +153,19 @@ async batchRetrieveOrders(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyOrderIds: string[] = ['CAISEM82RcpmcFBM0TfOyiHV3es', 'CAISENgvlJ6jLWAzERDzjyHVybY'];
 const body: BatchRetrieveOrdersRequest = {
-  orderIds: bodyOrderIds,
+  orderIds: [
+    'CAISEM82RcpmcFBM0TfOyiHV3es',
+    'CAISENgvlJ6jLWAzERDzjyHVybY'
+  ],
+  locationId: '057P5VYJ4A5X1',
 };
-body.locationId = '057P5VYJ4A5X1';
 
 try {
   const { result, ...httpResponse } = await ordersApi.batchRetrieveOrders(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -226,57 +199,42 @@ async calculateOrder(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyOrderLineItems: OrderLineItem[] = [];
-
-const bodyOrderlineItems0BasePriceMoney: Money = {};
-bodyOrderlineItems0BasePriceMoney.amount = BigInt(500);
-bodyOrderlineItems0BasePriceMoney.currency = 'USD';
-
-const bodyOrderlineItems0: OrderLineItem = {
-  quantity: '1',
-};
-bodyOrderlineItems0.name = 'Item 1';
-bodyOrderlineItems0.basePriceMoney = bodyOrderlineItems0BasePriceMoney;
-
-bodyOrderLineItems[0] = bodyOrderlineItems0;
-
-const bodyOrderlineItems1BasePriceMoney: Money = {};
-bodyOrderlineItems1BasePriceMoney.amount = BigInt(300);
-bodyOrderlineItems1BasePriceMoney.currency = 'USD';
-
-const bodyOrderlineItems1: OrderLineItem = {
-  quantity: '2',
-};
-bodyOrderlineItems1.name = 'Item 2';
-bodyOrderlineItems1.basePriceMoney = bodyOrderlineItems1BasePriceMoney;
-
-bodyOrderLineItems[1] = bodyOrderlineItems1;
-
-const bodyOrderDiscounts: OrderLineItemDiscount[] = [];
-
-const bodyOrderdiscounts0: OrderLineItemDiscount = {};
-bodyOrderdiscounts0.name = '50% Off';
-bodyOrderdiscounts0.percentage = '50';
-bodyOrderdiscounts0.scope = 'ORDER';
-
-bodyOrderDiscounts[0] = bodyOrderdiscounts0;
-
-const bodyOrder: Order = {
-  locationId: 'D7AVYMEAPJ3A3',
-};
-bodyOrder.lineItems = bodyOrderLineItems;
-bodyOrder.discounts = bodyOrderDiscounts;
-
 const body: CalculateOrderRequest = {
-  order: bodyOrder,
+  order: {
+    locationId: 'D7AVYMEAPJ3A3',
+    lineItems: [
+      {
+        quantity: '1',
+        name: 'Item 1',
+        basePriceMoney: {
+          amount: BigInt(500),
+          currency: 'USD',
+        },
+      },
+      {
+        quantity: '2',
+        name: 'Item 2',
+        basePriceMoney: {
+          amount: BigInt(300),
+          currency: 'USD',
+        },
+      }
+    ],
+    discounts: [
+      {
+        name: '50% Off',
+        percentage: '50',
+        scope: 'ORDER',
+      }
+    ],
+  },
 };
 
 try {
   const { result, ...httpResponse } = await ordersApi.calculateOrder(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -311,18 +269,17 @@ async cloneOrder(
 ## Example Usage
 
 ```ts
-const contentType = null;
 const body: CloneOrderRequest = {
   orderId: 'ZAISEM52YcpmcWAzERDOyiWS123',
+  version: 3,
+  idempotencyKey: 'UNIQUE_STRING',
 };
-body.version = 3;
-body.idempotencyKey = 'UNIQUE_STRING';
 
 try {
   const { result, ...httpResponse } = await ordersApi.cloneOrder(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -372,44 +329,39 @@ async searchOrders(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyLocationIds: string[] = ['057P5VYJ4A5X1', '18YC4JDH91E1H'];
-const bodyQueryFilterStateFilterStates: string[] = ['COMPLETED'];
-const bodyQueryFilterStateFilter: SearchOrdersStateFilter = {
-  states: bodyQueryFilterStateFilterStates,
+const body: SearchOrdersRequest = {
+  locationIds: [
+    '057P5VYJ4A5X1',
+    '18YC4JDH91E1H'
+  ],
+  query: {
+    filter: {
+      stateFilter: {
+        states: [
+          'COMPLETED'
+        ],
+      },
+      dateTimeFilter: {
+        closedAt: {
+          startAt: '2018-03-03T20:00:00+00:00',
+          endAt: '2019-03-04T21:54:45+00:00',
+        },
+      },
+    },
+    sort: {
+      sortField: 'CLOSED_AT',
+      sortOrder: 'DESC',
+    },
+  },
+  limit: 3,
+  returnEntries: true,
 };
-
-const bodyQueryFilterDateTimeFilterClosedAt: TimeRange = {};
-bodyQueryFilterDateTimeFilterClosedAt.startAt = '2018-03-03T20:00:00+00:00';
-bodyQueryFilterDateTimeFilterClosedAt.endAt = '2019-03-04T21:54:45+00:00';
-
-const bodyQueryFilterDateTimeFilter: SearchOrdersDateTimeFilter = {};
-bodyQueryFilterDateTimeFilter.closedAt = bodyQueryFilterDateTimeFilterClosedAt;
-
-const bodyQueryFilter: SearchOrdersFilter = {};
-bodyQueryFilter.stateFilter = bodyQueryFilterStateFilter;
-bodyQueryFilter.dateTimeFilter = bodyQueryFilterDateTimeFilter;
-
-const bodyQuerySort: SearchOrdersSort = {
-  sortField: 'CLOSED_AT',
-};
-bodyQuerySort.sortOrder = 'DESC';
-
-const bodyQuery: SearchOrdersQuery = {};
-bodyQuery.filter = bodyQueryFilter;
-bodyQuery.sort = bodyQuerySort;
-
-const body: SearchOrdersRequest = {};
-body.locationIds = bodyLocationIds;
-body.query = bodyQuery;
-body.limit = 3;
-body.returnEntries = true;
 
 try {
   const { result, ...httpResponse } = await ordersApi.searchOrders(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -444,11 +396,12 @@ async retrieveOrder(
 
 ```ts
 const orderId = 'order_id6';
+
 try {
   const { result, ...httpResponse } = await ordersApi.retrieveOrder(orderId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -499,14 +452,17 @@ async updateOrder(
 
 ```ts
 const orderId = 'order_id6';
-const contentType = null;
+
 const body: UpdateOrderRequest = {};
 
 try {
-  const { result, ...httpResponse } = await ordersApi.updateOrder(orderId, body);
+  const { result, ...httpResponse } = await ordersApi.updateOrder(
+    orderId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -556,18 +512,23 @@ async payOrder(
 
 ```ts
 const orderId = 'order_id6';
-const contentType = null;
-const bodyPaymentIds: string[] = ['EnZdNAlWCmfh6Mt5FMNST1o7taB', '0LRiVlbXVwe8ozu4KbZxd12mvaB'];
+
 const body: PayOrderRequest = {
   idempotencyKey: 'c043a359-7ad9-4136-82a9-c3f1d66dcbff',
+  paymentIds: [
+    'EnZdNAlWCmfh6Mt5FMNST1o7taB',
+    '0LRiVlbXVwe8ozu4KbZxd12mvaB'
+  ],
 };
-body.paymentIds = bodyPaymentIds;
 
 try {
-  const { result, ...httpResponse } = await ordersApi.payOrder(orderId, body);
+  const { result, ...httpResponse } = await ordersApi.payOrder(
+    orderId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

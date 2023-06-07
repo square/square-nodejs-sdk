@@ -32,7 +32,7 @@
       "end_at": "end_at8"
     },
     "status": "status6",
-    "type": "RECEIPT"
+    "type": "SAVE_CARD"
   },
   "sort": {
     "sort_order": "DESC"

@@ -1,4 +1,4 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Error, errorSchema } from './error';
 
 /**
@@ -16,17 +16,14 @@ export interface CreateMobileAuthorizationCodeResponse {
    * [RFC 3339](https://tools.ietf.org/html/rfc3339) format (for example, "2016-09-04T23:59:33.123Z").
    */
   expiresAt?: string;
-  /**
-   * Represents an error encountered during a request to the Connect API.
-   * See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-errors) for more information.
-   */
-  error?: Error;
+  /** Any errors that occurred during the request. */
+  errors?: Error[];
 }
 
 export const createMobileAuthorizationCodeResponseSchema: Schema<CreateMobileAuthorizationCodeResponse> = object(
   {
     authorizationCode: ['authorization_code', optional(string())],
     expiresAt: ['expires_at', optional(string())],
-    error: ['error', optional(lazy(() => errorSchema))],
+    errors: ['errors', optional(array(lazy(() => errorSchema)))],
   }
 );

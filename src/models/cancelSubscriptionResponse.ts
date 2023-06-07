@@ -14,9 +14,9 @@ export interface CancelSubscriptionResponse {
   /** Errors encountered during the request. */
   errors?: Error[];
   /**
-   * Represents a subscription to a subscription plan by a subscriber.
-   * For an overview of the `Subscription` type, see
-   * [Subscription object](https://developer.squareup.com/docs/subscriptions-api/overview#subscription-object-overview).
+   * Represents a subscription purchased by a customer.
+   * For more information, see
+   * [Manage Subscriptions](https://developer.squareup.com/docs/subscriptions-api/manage-subscriptions).
    */
   subscription?: Subscription;
   /** A list of a single `CANCEL` action scheduled for the subscription. */

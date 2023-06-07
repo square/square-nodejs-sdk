@@ -48,7 +48,7 @@ try {
   const { result, ...httpResponse } = await customerGroupsApi.listCustomerGroups();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -84,20 +84,17 @@ async createCustomerGroup(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyGroup: CustomerGroup = {
-  name: 'Loyal Customers',
-};
-
 const body: CreateCustomerGroupRequest = {
-  group: bodyGroup,
+  group: {
+    name: 'Loyal Customers',
+  },
 };
 
 try {
   const { result, ...httpResponse } = await customerGroupsApi.createCustomerGroup(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -132,11 +129,12 @@ async deleteCustomerGroup(
 
 ```ts
 const groupId = 'group_id0';
+
 try {
   const { result, ...httpResponse } = await customerGroupsApi.deleteCustomerGroup(groupId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -171,11 +169,12 @@ async retrieveCustomerGroup(
 
 ```ts
 const groupId = 'group_id0';
+
 try {
   const { result, ...httpResponse } = await customerGroupsApi.retrieveCustomerGroup(groupId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -212,20 +211,21 @@ async updateCustomerGroup(
 
 ```ts
 const groupId = 'group_id0';
-const contentType = null;
-const bodyGroup: CustomerGroup = {
-  name: 'Loyal Customers',
-};
 
 const body: UpdateCustomerGroupRequest = {
-  group: bodyGroup,
+  group: {
+    name: 'Loyal Customers',
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await customerGroupsApi.updateCustomerGroup(groupId, body);
+  const { result, ...httpResponse } = await customerGroupsApi.updateCustomerGroup(
+    groupId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

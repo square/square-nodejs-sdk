@@ -57,11 +57,12 @@ async listTransactions(
 
 ```ts
 const locationId = 'location_id4';
+
 try {
   const { result, ...httpResponse } = await transactionsApi.listTransactions(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -100,12 +101,17 @@ async retrieveTransaction(
 
 ```ts
 const locationId = 'location_id4';
+
 const transactionId = 'transaction_id8';
+
 try {
-  const { result, ...httpResponse } = await transactionsApi.retrieveTransaction(locationId, transactionId);
+  const { result, ...httpResponse } = await transactionsApi.retrieveTransaction(
+    locationId,
+    transactionId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -148,12 +154,17 @@ async captureTransaction(
 
 ```ts
 const locationId = 'location_id4';
+
 const transactionId = 'transaction_id8';
+
 try {
-  const { result, ...httpResponse } = await transactionsApi.captureTransaction(locationId, transactionId);
+  const { result, ...httpResponse } = await transactionsApi.captureTransaction(
+    locationId,
+    transactionId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -196,12 +207,17 @@ async voidTransaction(
 
 ```ts
 const locationId = 'location_id4';
+
 const transactionId = 'transaction_id8';
+
 try {
-  const { result, ...httpResponse } = await transactionsApi.voidTransaction(locationId, transactionId);
+  const { result, ...httpResponse } = await transactionsApi.voidTransaction(
+    locationId,
+    transactionId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

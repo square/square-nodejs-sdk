@@ -20,10 +20,7 @@ import {
   CatalogCustomAttributeDefinitionStringConfig,
   catalogCustomAttributeDefinitionStringConfigSchema,
 } from './catalogCustomAttributeDefinitionStringConfig';
-import {
-  SourceApplication,
-  sourceApplicationSchema,
-} from './sourceApplication';
+import { SourceApplication, sourceApplicationSchema } from './sourceApplication';
 
 /**
  * Contains information defining a custom attribute. Custom attributes are

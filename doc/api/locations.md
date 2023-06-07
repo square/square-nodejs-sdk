@@ -44,7 +44,7 @@ try {
   const { result, ...httpResponse } = await locationsApi.listLocations();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -84,26 +84,24 @@ async createLocation(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyLocationAddress: Address = {};
-bodyLocationAddress.addressLine1 = '1234 Peachtree St. NE';
-bodyLocationAddress.locality = 'Atlanta';
-bodyLocationAddress.administrativeDistrictLevel1 = 'GA';
-bodyLocationAddress.postalCode = '30309';
-
-const bodyLocation: Location = {};
-bodyLocation.name = 'Midtown';
-bodyLocation.address = bodyLocationAddress;
-bodyLocation.description = 'Midtown Atlanta store';
-
-const body: CreateLocationRequest = {};
-body.location = bodyLocation;
+const body: CreateLocationRequest = {
+  location: {
+    name: 'Midtown',
+    address: {
+      addressLine1: '1234 Peachtree St. NE',
+      locality: 'Atlanta',
+      administrativeDistrictLevel1: 'GA',
+      postalCode: '30309',
+    },
+    description: 'Midtown Atlanta store',
+  },
+};
 
 try {
   const { result, ...httpResponse } = await locationsApi.createLocation(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -139,11 +137,12 @@ async retrieveLocation(
 
 ```ts
 const locationId = 'location_id4';
+
 try {
   const { result, ...httpResponse } = await locationsApi.retrieveLocation(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -180,45 +179,40 @@ async updateLocation(
 
 ```ts
 const locationId = 'location_id4';
-const contentType = null;
-const bodyLocationBusinessHoursPeriods: BusinessHoursPeriod[] = [];
 
-const bodyLocationBusinessHoursperiods0: BusinessHoursPeriod = {};
-bodyLocationBusinessHoursperiods0.dayOfWeek = 'FRI';
-bodyLocationBusinessHoursperiods0.startLocalTime = '07:00';
-bodyLocationBusinessHoursperiods0.endLocalTime = '18:00';
-
-bodyLocationBusinessHoursPeriods[0] = bodyLocationBusinessHoursperiods0;
-
-const bodyLocationBusinessHoursperiods1: BusinessHoursPeriod = {};
-bodyLocationBusinessHoursperiods1.dayOfWeek = 'SAT';
-bodyLocationBusinessHoursperiods1.startLocalTime = '07:00';
-bodyLocationBusinessHoursperiods1.endLocalTime = '18:00';
-
-bodyLocationBusinessHoursPeriods[1] = bodyLocationBusinessHoursperiods1;
-
-const bodyLocationBusinessHoursperiods2: BusinessHoursPeriod = {};
-bodyLocationBusinessHoursperiods2.dayOfWeek = 'SUN';
-bodyLocationBusinessHoursperiods2.startLocalTime = '09:00';
-bodyLocationBusinessHoursperiods2.endLocalTime = '15:00';
-
-bodyLocationBusinessHoursPeriods[2] = bodyLocationBusinessHoursperiods2;
-
-const bodyLocationBusinessHours: BusinessHours = {};
-bodyLocationBusinessHours.periods = bodyLocationBusinessHoursPeriods;
-
-const bodyLocation: Location = {};
-bodyLocation.businessHours = bodyLocationBusinessHours;
-bodyLocation.description = 'Midtown Atlanta store - Open weekends';
-
-const body: UpdateLocationRequest = {};
-body.location = bodyLocation;
+const body: UpdateLocationRequest = {
+  location: {
+    businessHours: {
+      periods: [
+        {
+          dayOfWeek: 'FRI',
+          startLocalTime: '07:00',
+          endLocalTime: '18:00',
+        },
+        {
+          dayOfWeek: 'SAT',
+          startLocalTime: '07:00',
+          endLocalTime: '18:00',
+        },
+        {
+          dayOfWeek: 'SUN',
+          startLocalTime: '09:00',
+          endLocalTime: '15:00',
+        }
+      ],
+    },
+    description: 'Midtown Atlanta store - Open weekends',
+  },
+};
 
 try {
-  const { result, ...httpResponse } = await locationsApi.updateLocation(locationId, body);
+  const { result, ...httpResponse } = await locationsApi.updateLocation(
+    locationId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

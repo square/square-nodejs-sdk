@@ -51,7 +51,7 @@ try {
   const { result, ...httpResponse } = await employeesApi.listEmployees();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -88,11 +88,12 @@ async retrieveEmployee(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await employeesApi.retrieveEmployee(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

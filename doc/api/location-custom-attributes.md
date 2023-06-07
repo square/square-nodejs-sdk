@@ -59,7 +59,7 @@ try {
   const { result, ...httpResponse } = await locationCustomAttributesApi.listLocationCustomAttributeDefinitions();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -99,22 +99,20 @@ async createLocationCustomAttributeDefinition(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
-bodyCustomAttributeDefinition.key = 'bestseller';
-bodyCustomAttributeDefinition.name = 'Bestseller';
-bodyCustomAttributeDefinition.description = 'Bestselling item at location';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_WRITE_VALUES';
-
 const body: CreateLocationCustomAttributeDefinitionRequest = {
-  customAttributeDefinition: bodyCustomAttributeDefinition,
+  customAttributeDefinition: {
+    key: 'bestseller',
+    name: 'Bestseller',
+    description: 'Bestselling item at location',
+    visibility: 'VISIBILITY_READ_WRITE_VALUES',
+  },
 };
 
 try {
   const { result, ...httpResponse } = await locationCustomAttributesApi.createLocationCustomAttributeDefinition(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -152,11 +150,12 @@ async deleteLocationCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
+
 try {
   const { result, ...httpResponse } = await locationCustomAttributesApi.deleteLocationCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -195,11 +194,12 @@ async retrieveLocationCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
+
 try {
   const { result, ...httpResponse } = await locationCustomAttributesApi.retrieveLocationCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -239,20 +239,22 @@ async updateLocationCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
-const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
-bodyCustomAttributeDefinition.description = 'Update the description as desired.';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_ONLY';
 
 const body: UpdateLocationCustomAttributeDefinitionRequest = {
-  customAttributeDefinition: bodyCustomAttributeDefinition,
+  customAttributeDefinition: {
+    description: 'Update the description as desired.',
+    visibility: 'VISIBILITY_READ_ONLY',
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await locationCustomAttributesApi.updateLocationCustomAttributeDefinition(key, body);
+  const { result, ...httpResponse } = await locationCustomAttributesApi.updateLocationCustomAttributeDefinition(
+    key,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -288,17 +290,19 @@ async bulkDeleteLocationCustomAttributes(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyValues: Record<string, BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest> = {};
 const body: BulkDeleteLocationCustomAttributesRequest = {
-  values: bodyValues,
+  values: {
+    'id1': {},
+    'id2': {},
+    'id3': {}
+  },
 };
 
 try {
   const { result, ...httpResponse } = await locationCustomAttributesApi.bulkDeleteLocationCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -341,17 +345,24 @@ async bulkUpsertLocationCustomAttributes(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyValues: Record<string, BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest> = {};
 const body: BulkUpsertLocationCustomAttributesRequest = {
-  values: bodyValues,
+  values: {
+    'key0': {
+      locationId: 'location_id8',
+      customAttribute: {},
+    },
+    'key1': {
+      locationId: 'location_id9',
+      customAttribute: {},
+    }
+  },
 };
 
 try {
   const { result, ...httpResponse } = await locationCustomAttributesApi.bulkUpsertLocationCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -399,12 +410,17 @@ async listLocationCustomAttributes(
 
 ```ts
 const locationId = 'location_id4';
+
 const withDefinitions = false;
+
 try {
-  const { result, ...httpResponse } = await locationCustomAttributesApi.listLocationCustomAttributes(locationId, None, None, None, withDefinitions);
+  const { result, ...httpResponse } = await locationCustomAttributesApi.listLocationCustomAttributes(
+    locationId,
+    withDefinitions
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -443,12 +459,17 @@ async deleteLocationCustomAttribute(
 
 ```ts
 const locationId = 'location_id4';
+
 const key = 'key0';
+
 try {
-  const { result, ...httpResponse } = await locationCustomAttributesApi.deleteLocationCustomAttribute(locationId, key);
+  const { result, ...httpResponse } = await locationCustomAttributesApi.deleteLocationCustomAttribute(
+    locationId,
+    key
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -493,13 +514,20 @@ async retrieveLocationCustomAttribute(
 
 ```ts
 const locationId = 'location_id4';
+
 const key = 'key0';
+
 const withDefinition = false;
+
 try {
-  const { result, ...httpResponse } = await locationCustomAttributesApi.retrieveLocationCustomAttribute(locationId, key, withDefinition);
+  const { result, ...httpResponse } = await locationCustomAttributesApi.retrieveLocationCustomAttribute(
+    locationId,
+    key,
+    withDefinition
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -543,19 +571,22 @@ async upsertLocationCustomAttribute(
 
 ```ts
 const locationId = 'location_id4';
+
 const key = 'key0';
-const contentType = null;
-const bodyCustomAttribute: CustomAttribute = {};
 
 const body: UpsertLocationCustomAttributeRequest = {
-  customAttribute: bodyCustomAttribute,
+  customAttribute: {},
 };
 
 try {
-  const { result, ...httpResponse } = await locationCustomAttributesApi.upsertLocationCustomAttribute(locationId, key, body);
+  const { result, ...httpResponse } = await locationCustomAttributesApi.upsertLocationCustomAttribute(
+    locationId,
+    key,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

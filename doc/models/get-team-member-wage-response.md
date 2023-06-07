@@ -27,7 +27,8 @@ the request resulted in errors.
     },
     "id": "pXS3qCv7BERPnEGedM4S8mhm",
     "team_member_id": "33fJchumvVdJwxV0H6L9",
-    "title": "Manager"
+    "title": "Manager",
+    "job_id": "job_id4"
   },
   "errors": [
     {

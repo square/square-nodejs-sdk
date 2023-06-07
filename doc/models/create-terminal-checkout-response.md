@@ -23,7 +23,7 @@
     },
     "app_id": "APP_ID",
     "created_at": "2020-04-06T16:39:32.545Z",
-    "deadline_duration": "PT10M",
+    "deadline_duration": "PT5M",
     "device_options": {
       "device_id": "dbb5d83a-7838-11ea-bc55-0242ac130003",
       "skip_receipt_screen": false,

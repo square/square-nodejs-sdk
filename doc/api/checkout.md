@@ -55,140 +55,106 @@ async createCheckout(
 
 ```ts
 const locationId = 'location_id4';
-const contentType = null;
-const bodyOrderOrderLineItems: OrderLineItem[] = [];
-
-const bodyOrderOrderlineItems0AppliedTaxes: OrderLineItemAppliedTax[] = [];
-
-const bodyOrderOrderlineItems0appliedTaxes0: OrderLineItemAppliedTax = {
-  taxUid: '38ze1696-z1e3-5628-af6d-f1e04d947fg3',
-};
-
-bodyOrderOrderlineItems0AppliedTaxes[0] = bodyOrderOrderlineItems0appliedTaxes0;
-
-const bodyOrderOrderlineItems0AppliedDiscounts: OrderLineItemAppliedDiscount[] = [];
-
-const bodyOrderOrderlineItems0appliedDiscounts0: OrderLineItemAppliedDiscount = {
-  discountUid: '56ae1696-z1e3-9328-af6d-f1e04d947gd4',
-};
-
-bodyOrderOrderlineItems0AppliedDiscounts[0] = bodyOrderOrderlineItems0appliedDiscounts0;
-
-const bodyOrderOrderlineItems0BasePriceMoney: Money = {};
-bodyOrderOrderlineItems0BasePriceMoney.amount = BigInt(1500);
-bodyOrderOrderlineItems0BasePriceMoney.currency = 'USD';
-
-const bodyOrderOrderlineItems0: OrderLineItem = {
-  quantity: '2',
-};
-bodyOrderOrderlineItems0.name = 'Printed T Shirt';
-bodyOrderOrderlineItems0.appliedTaxes = bodyOrderOrderlineItems0AppliedTaxes;
-bodyOrderOrderlineItems0.appliedDiscounts = bodyOrderOrderlineItems0AppliedDiscounts;
-bodyOrderOrderlineItems0.basePriceMoney = bodyOrderOrderlineItems0BasePriceMoney;
-
-bodyOrderOrderLineItems[0] = bodyOrderOrderlineItems0;
-
-const bodyOrderOrderlineItems1BasePriceMoney: Money = {};
-bodyOrderOrderlineItems1BasePriceMoney.amount = BigInt(2500);
-bodyOrderOrderlineItems1BasePriceMoney.currency = 'USD';
-
-const bodyOrderOrderlineItems1: OrderLineItem = {
-  quantity: '1',
-};
-bodyOrderOrderlineItems1.name = 'Slim Jeans';
-bodyOrderOrderlineItems1.basePriceMoney = bodyOrderOrderlineItems1BasePriceMoney;
-
-bodyOrderOrderLineItems[1] = bodyOrderOrderlineItems1;
-
-const bodyOrderOrderlineItems2BasePriceMoney: Money = {};
-bodyOrderOrderlineItems2BasePriceMoney.amount = BigInt(3500);
-bodyOrderOrderlineItems2BasePriceMoney.currency = 'USD';
-
-const bodyOrderOrderlineItems2: OrderLineItem = {
-  quantity: '3',
-};
-bodyOrderOrderlineItems2.name = 'Woven Sweater';
-bodyOrderOrderlineItems2.basePriceMoney = bodyOrderOrderlineItems2BasePriceMoney;
-
-bodyOrderOrderLineItems[2] = bodyOrderOrderlineItems2;
-
-const bodyOrderOrderTaxes: OrderLineItemTax[] = [];
-
-const bodyOrderOrdertaxes0: OrderLineItemTax = {};
-bodyOrderOrdertaxes0.uid = '38ze1696-z1e3-5628-af6d-f1e04d947fg3';
-bodyOrderOrdertaxes0.type = 'INCLUSIVE';
-bodyOrderOrdertaxes0.percentage = '7.75';
-bodyOrderOrdertaxes0.scope = 'LINE_ITEM';
-
-bodyOrderOrderTaxes[0] = bodyOrderOrdertaxes0;
-
-const bodyOrderOrderDiscounts: OrderLineItemDiscount[] = [];
-
-const bodyOrderOrderdiscounts0AmountMoney: Money = {};
-bodyOrderOrderdiscounts0AmountMoney.amount = BigInt(100);
-bodyOrderOrderdiscounts0AmountMoney.currency = 'USD';
-
-const bodyOrderOrderdiscounts0: OrderLineItemDiscount = {};
-bodyOrderOrderdiscounts0.uid = '56ae1696-z1e3-9328-af6d-f1e04d947gd4';
-bodyOrderOrderdiscounts0.type = 'FIXED_AMOUNT';
-bodyOrderOrderdiscounts0.amountMoney = bodyOrderOrderdiscounts0AmountMoney;
-bodyOrderOrderdiscounts0.scope = 'LINE_ITEM';
-
-bodyOrderOrderDiscounts[0] = bodyOrderOrderdiscounts0;
-
-const bodyOrderOrder: Order = {
-  locationId: 'location_id',
-};
-bodyOrderOrder.referenceId = 'reference_id';
-bodyOrderOrder.customerId = 'customer_id';
-bodyOrderOrder.lineItems = bodyOrderOrderLineItems;
-bodyOrderOrder.taxes = bodyOrderOrderTaxes;
-bodyOrderOrder.discounts = bodyOrderOrderDiscounts;
-
-const bodyOrder: CreateOrderRequest = {};
-bodyOrder.order = bodyOrderOrder;
-bodyOrder.idempotencyKey = '12ae1696-z1e3-4328-af6d-f1e04d947gd4';
-
-const bodyPrePopulateShippingAddress: Address = {};
-bodyPrePopulateShippingAddress.addressLine1 = '1455 Market St.';
-bodyPrePopulateShippingAddress.addressLine2 = 'Suite 600';
-bodyPrePopulateShippingAddress.locality = 'San Francisco';
-bodyPrePopulateShippingAddress.administrativeDistrictLevel1 = 'CA';
-bodyPrePopulateShippingAddress.postalCode = '94103';
-bodyPrePopulateShippingAddress.country = 'US';
-bodyPrePopulateShippingAddress.firstName = 'Jane';
-bodyPrePopulateShippingAddress.lastName = 'Doe';
-
-const bodyAdditionalRecipients: ChargeRequestAdditionalRecipient[] = [];
-
-const bodyadditionalRecipients0AmountMoney: Money = {};
-bodyadditionalRecipients0AmountMoney.amount = BigInt(60);
-bodyadditionalRecipients0AmountMoney.currency = 'USD';
-
-const bodyadditionalRecipients0: ChargeRequestAdditionalRecipient = {
-  locationId: '057P5VYJ4A5X1',
-  description: 'Application fees',
-  amountMoney: bodyadditionalRecipients0AmountMoney,
-};
-
-bodyAdditionalRecipients[0] = bodyadditionalRecipients0;
 
 const body: CreateCheckoutRequest = {
   idempotencyKey: '86ae1696-b1e3-4328-af6d-f1e04d947ad6',
-  order: bodyOrder,
+  order: {
+    order: {
+      locationId: 'location_id',
+      referenceId: 'reference_id',
+      customerId: 'customer_id',
+      lineItems: [
+        {
+          quantity: '2',
+          name: 'Printed T Shirt',
+          appliedTaxes: [
+            {
+              taxUid: '38ze1696-z1e3-5628-af6d-f1e04d947fg3',
+            }
+          ],
+          appliedDiscounts: [
+            {
+              discountUid: '56ae1696-z1e3-9328-af6d-f1e04d947gd4',
+            }
+          ],
+          basePriceMoney: {
+            amount: BigInt(1500),
+            currency: 'USD',
+          },
+        },
+        {
+          quantity: '1',
+          name: 'Slim Jeans',
+          basePriceMoney: {
+            amount: BigInt(2500),
+            currency: 'USD',
+          },
+        },
+        {
+          quantity: '3',
+          name: 'Woven Sweater',
+          basePriceMoney: {
+            amount: BigInt(3500),
+            currency: 'USD',
+          },
+        }
+      ],
+      taxes: [
+        {
+          uid: '38ze1696-z1e3-5628-af6d-f1e04d947fg3',
+          type: 'INCLUSIVE',
+          percentage: '7.75',
+          scope: 'LINE_ITEM',
+        }
+      ],
+      discounts: [
+        {
+          uid: '56ae1696-z1e3-9328-af6d-f1e04d947gd4',
+          type: 'FIXED_AMOUNT',
+          amountMoney: {
+            amount: BigInt(100),
+            currency: 'USD',
+          },
+          scope: 'LINE_ITEM',
+        }
+      ],
+    },
+    idempotencyKey: '12ae1696-z1e3-4328-af6d-f1e04d947gd4',
+  },
+  askForShippingAddress: true,
+  merchantSupportEmail: 'merchant+support@website.com',
+  prePopulateBuyerEmail: 'example@email.com',
+  prePopulateShippingAddress: {
+    addressLine1: '1455 Market St.',
+    addressLine2: 'Suite 600',
+    locality: 'San Francisco',
+    administrativeDistrictLevel1: 'CA',
+    postalCode: '94103',
+    country: 'US',
+    firstName: 'Jane',
+    lastName: 'Doe',
+  },
+  redirectUrl: 'https://merchant.website.com/order-confirm',
+  additionalRecipients: [
+    {
+      locationId: '057P5VYJ4A5X1',
+      description: 'Application fees',
+      amountMoney: {
+        amount: BigInt(60),
+        currency: 'USD',
+      },
+    }
+  ],
 };
-body.askForShippingAddress = true;
-body.merchantSupportEmail = 'merchant+support@website.com';
-body.prePopulateBuyerEmail = 'example@email.com';
-body.prePopulateShippingAddress = bodyPrePopulateShippingAddress;
-body.redirectUrl = 'https://merchant.website.com/order-confirm';
-body.additionalRecipients = bodyAdditionalRecipients;
 
 try {
-  const { result, ...httpResponse } = await checkoutApi.createCheckout(locationId, body);
+  const { result, ...httpResponse } = await checkoutApi.createCheckout(
+    locationId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -228,7 +194,7 @@ try {
   const { result, ...httpResponse } = await checkoutApi.listPaymentLinks();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -262,26 +228,23 @@ async createPaymentLink(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQuickPayPriceMoney: Money = {};
-bodyQuickPayPriceMoney.amount = BigInt(10000);
-bodyQuickPayPriceMoney.currency = 'USD';
-
-const bodyQuickPay: QuickPay = {
-  name: 'Auto Detailing',
-  priceMoney: bodyQuickPayPriceMoney,
-  locationId: 'A9Y43N9ABXZBP',
+const body: CreatePaymentLinkRequest = {
+  idempotencyKey: 'cd9e25dc-d9f2-4430-aedb-61605070e95f',
+  quickPay: {
+    name: 'Auto Detailing',
+    priceMoney: {
+      amount: BigInt(10000),
+      currency: 'USD',
+    },
+    locationId: 'A9Y43N9ABXZBP',
+  },
 };
-
-const body: CreatePaymentLinkRequest = {};
-body.idempotencyKey = 'cd9e25dc-d9f2-4430-aedb-61605070e95f';
-body.quickPay = bodyQuickPay;
 
 try {
   const { result, ...httpResponse } = await checkoutApi.createPaymentLink(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -316,11 +279,12 @@ async deletePaymentLink(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await checkoutApi.deletePaymentLink(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -355,11 +319,12 @@ async retrievePaymentLink(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await checkoutApi.retrievePaymentLink(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -398,24 +363,24 @@ async updatePaymentLink(
 
 ```ts
 const id = 'id0';
-const contentType = null;
-const bodyPaymentLinkCheckoutOptions: CheckoutOptions = {};
-bodyPaymentLinkCheckoutOptions.askForShippingAddress = true;
-
-const bodyPaymentLink: PaymentLink = {
-  version: 1,
-};
-bodyPaymentLink.checkoutOptions = bodyPaymentLinkCheckoutOptions;
 
 const body: UpdatePaymentLinkRequest = {
-  paymentLink: bodyPaymentLink,
+  paymentLink: {
+    version: 1,
+    checkoutOptions: {
+      askForShippingAddress: true,
+    },
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await checkoutApi.updatePaymentLink(id, body);
+  const { result, ...httpResponse } = await checkoutApi.updatePaymentLink(
+    id,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

@@ -63,7 +63,7 @@ try {
   const { result, ...httpResponse } = await bookingsApi.listBookings();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -111,18 +111,15 @@ async createBooking(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyBooking: Booking = {};
-
 const body: CreateBookingRequest = {
-  booking: bodyBooking,
+  booking: {},
 };
 
 try {
   const { result, ...httpResponse } = await bookingsApi.createBooking(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -159,26 +156,19 @@ async searchAvailability(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryFilterStartAtRange: TimeRange = {};
-
-const bodyQueryFilter: SearchAvailabilityFilter = {
-  startAtRange: bodyQueryFilterStartAtRange,
-};
-
-const bodyQuery: SearchAvailabilityQuery = {
-  filter: bodyQueryFilter,
-};
-
 const body: SearchAvailabilityRequest = {
-  query: bodyQuery,
+  query: {
+    filter: {
+      startAtRange: {},
+    },
+  },
 };
 
 try {
   const { result, ...httpResponse } = await bookingsApi.searchAvailability(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -214,7 +204,7 @@ try {
   const { result, ...httpResponse } = await bookingsApi.retrieveBusinessBookingProfile();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -255,11 +245,14 @@ async listTeamMemberBookingProfiles(
 
 ```ts
 const bookableOnly = false;
+
 try {
-  const { result, ...httpResponse } = await bookingsApi.listTeamMemberBookingProfiles(bookableOnly);
+  const { result, ...httpResponse } = await bookingsApi.listTeamMemberBookingProfiles(
+    bookableOnly
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -294,11 +287,12 @@ async retrieveTeamMemberBookingProfile(
 
 ```ts
 const teamMemberId = 'team_member_id0';
+
 try {
   const { result, ...httpResponse } = await bookingsApi.retrieveTeamMemberBookingProfile(teamMemberId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -336,11 +330,12 @@ async retrieveBooking(
 
 ```ts
 const bookingId = 'booking_id4';
+
 try {
   const { result, ...httpResponse } = await bookingsApi.retrieveBooking(bookingId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -383,18 +378,19 @@ async updateBooking(
 
 ```ts
 const bookingId = 'booking_id4';
-const contentType = null;
-const bodyBooking: Booking = {};
 
 const body: UpdateBookingRequest = {
-  booking: bodyBooking,
+  booking: {},
 };
 
 try {
-  const { result, ...httpResponse } = await bookingsApi.updateBooking(bookingId, body);
+  const { result, ...httpResponse } = await bookingsApi.updateBooking(
+    bookingId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -437,14 +433,17 @@ async cancelBooking(
 
 ```ts
 const bookingId = 'booking_id4';
-const contentType = null;
+
 const body: CancelBookingRequest = {};
 
 try {
-  const { result, ...httpResponse } = await bookingsApi.cancelBooking(bookingId, body);
+  const { result, ...httpResponse } = await bookingsApi.cancelBooking(
+    bookingId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

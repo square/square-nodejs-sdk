@@ -1,8 +1,5 @@
 import { lazy, object, optional, Schema } from '../schema';
-import {
-  CatalogQueryExact,
-  catalogQueryExactSchema,
-} from './catalogQueryExact';
+import { CatalogQueryExact, catalogQueryExactSchema } from './catalogQueryExact';
 import {
   CatalogQueryItemsForItemOptions,
   catalogQueryItemsForItemOptionsSchema,
@@ -23,10 +20,7 @@ import {
   CatalogQueryPrefix,
   catalogQueryPrefixSchema,
 } from './catalogQueryPrefix';
-import {
-  CatalogQueryRange,
-  catalogQueryRangeSchema,
-} from './catalogQueryRange';
+import { CatalogQueryRange, catalogQueryRangeSchema } from './catalogQueryRange';
 import { CatalogQuerySet, catalogQuerySetSchema } from './catalogQuerySet';
 import {
   CatalogQuerySortedAttribute,

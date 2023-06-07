@@ -48,7 +48,7 @@ try {
   const { result, ...httpResponse } = await bankAccountsApi.listBankAccounts();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -83,11 +83,12 @@ async getBankAccountByV1Id(
 
 ```ts
 const v1BankAccountId = 'v1_bank_account_id8';
+
 try {
   const { result, ...httpResponse } = await bankAccountsApi.getBankAccountByV1Id(v1BankAccountId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -123,11 +124,12 @@ async getBankAccount(
 
 ```ts
 const bankAccountId = 'bank_account_id0';
+
 try {
   const { result, ...httpResponse } = await bankAccountsApi.getBankAccount(bankAccountId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

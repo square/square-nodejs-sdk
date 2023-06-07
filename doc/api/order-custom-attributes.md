@@ -61,7 +61,7 @@ try {
   const { result, ...httpResponse } = await orderCustomAttributesApi.listOrderCustomAttributeDefinitions();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -99,23 +99,21 @@ async createOrderCustomAttributeDefinition(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
-bodyCustomAttributeDefinition.key = 'cover-count';
-bodyCustomAttributeDefinition.name = 'Cover count';
-bodyCustomAttributeDefinition.description = 'The number of people seated at a table';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_WRITE_VALUES';
-
 const body: CreateOrderCustomAttributeDefinitionRequest = {
-  customAttributeDefinition: bodyCustomAttributeDefinition,
+  customAttributeDefinition: {
+    key: 'cover-count',
+    name: 'Cover count',
+    description: 'The number of people seated at a table',
+    visibility: 'VISIBILITY_READ_WRITE_VALUES',
+  },
+  idempotencyKey: 'IDEMPOTENCY_KEY',
 };
-body.idempotencyKey = 'IDEMPOTENCY_KEY';
 
 try {
   const { result, ...httpResponse } = await orderCustomAttributesApi.createOrderCustomAttributeDefinition(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -152,11 +150,12 @@ async deleteOrderCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
+
 try {
   const { result, ...httpResponse } = await orderCustomAttributesApi.deleteOrderCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -197,11 +196,12 @@ async retrieveOrderCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
+
 try {
   const { result, ...httpResponse } = await orderCustomAttributesApi.retrieveOrderCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -240,22 +240,24 @@ async updateOrderCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
-const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
-bodyCustomAttributeDefinition.key = 'cover-count';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_ONLY';
-bodyCustomAttributeDefinition.version = 1;
 
 const body: UpdateOrderCustomAttributeDefinitionRequest = {
-  customAttributeDefinition: bodyCustomAttributeDefinition,
+  customAttributeDefinition: {
+    key: 'cover-count',
+    visibility: 'VISIBILITY_READ_ONLY',
+    version: 1,
+  },
+  idempotencyKey: 'IDEMPOTENCY_KEY',
 };
-body.idempotencyKey = 'IDEMPOTENCY_KEY';
 
 try {
-  const { result, ...httpResponse } = await orderCustomAttributesApi.updateOrderCustomAttributeDefinition(key, body);
+  const { result, ...httpResponse } = await orderCustomAttributesApi.updateOrderCustomAttributeDefinition(
+    key,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -302,17 +304,24 @@ async bulkDeleteOrderCustomAttributes(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyValues: Record<string, BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute> = {};
 const body: BulkDeleteOrderCustomAttributesRequest = {
-  values: bodyValues,
+  values: {
+    'cover-count': {
+      orderId: '7BbXGEIWNldxAzrtGf9GPVZTwZ4F',
+      key: 'cover-count',
+    },
+    'table-number': {
+      orderId: '7BbXGEIWNldxAzrtGf9GPVZTwZ4F',
+      key: 'table-number',
+    }
+  },
 };
 
 try {
   const { result, ...httpResponse } = await orderCustomAttributesApi.bulkDeleteOrderCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -359,17 +368,24 @@ async bulkUpsertOrderCustomAttributes(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyValues: Record<string, BulkUpsertOrderCustomAttributesRequestUpsertCustomAttribute> = {};
 const body: BulkUpsertOrderCustomAttributesRequest = {
-  values: bodyValues,
+  values: {
+    'key0': {
+      customAttribute: {},
+      orderId: 'order_id2',
+    },
+    'key1': {
+      customAttribute: {},
+      orderId: 'order_id1',
+    }
+  },
 };
 
 try {
   const { result, ...httpResponse } = await orderCustomAttributesApi.bulkUpsertOrderCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -419,12 +435,17 @@ async listOrderCustomAttributes(
 
 ```ts
 const orderId = 'order_id6';
+
 const withDefinitions = false;
+
 try {
-  const { result, ...httpResponse } = await orderCustomAttributesApi.listOrderCustomAttributes(orderId, None, None, None, withDefinitions);
+  const { result, ...httpResponse } = await orderCustomAttributesApi.listOrderCustomAttributes(
+    orderId,
+    withDefinitions
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -465,12 +486,17 @@ async deleteOrderCustomAttribute(
 
 ```ts
 const orderId = 'order_id6';
+
 const customAttributeKey = 'custom_attribute_key2';
+
 try {
-  const { result, ...httpResponse } = await orderCustomAttributesApi.deleteOrderCustomAttribute(orderId, customAttributeKey);
+  const { result, ...httpResponse } = await orderCustomAttributesApi.deleteOrderCustomAttribute(
+    orderId,
+    customAttributeKey
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -518,13 +544,20 @@ async retrieveOrderCustomAttribute(
 
 ```ts
 const orderId = 'order_id6';
+
 const customAttributeKey = 'custom_attribute_key2';
+
 const withDefinition = false;
+
 try {
-  const { result, ...httpResponse } = await orderCustomAttributesApi.retrieveOrderCustomAttribute(orderId, customAttributeKey, None, withDefinition);
+  const { result, ...httpResponse } = await orderCustomAttributesApi.retrieveOrderCustomAttribute(
+    orderId,
+    customAttributeKey,
+    withDefinition
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -571,19 +604,22 @@ async upsertOrderCustomAttribute(
 
 ```ts
 const orderId = 'order_id6';
+
 const customAttributeKey = 'custom_attribute_key2';
-const contentType = null;
-const bodyCustomAttribute: CustomAttribute = {};
 
 const body: UpsertOrderCustomAttributeRequest = {
-  customAttribute: bodyCustomAttribute,
+  customAttribute: {},
 };
 
 try {
-  const { result, ...httpResponse } = await orderCustomAttributesApi.upsertOrderCustomAttribute(orderId, customAttributeKey, body);
+  const { result, ...httpResponse } = await orderCustomAttributesApi.upsertOrderCustomAttribute(
+    orderId,
+    customAttributeKey,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

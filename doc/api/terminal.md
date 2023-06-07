@@ -14,6 +14,7 @@ const terminalApi = client.terminalApi;
 * [Search Terminal Actions](../../doc/api/terminal.md#search-terminal-actions)
 * [Get Terminal Action](../../doc/api/terminal.md#get-terminal-action)
 * [Cancel Terminal Action](../../doc/api/terminal.md#cancel-terminal-action)
+* [Dismiss Terminal Action](../../doc/api/terminal.md#dismiss-terminal-action)
 * [Create Terminal Checkout](../../doc/api/terminal.md#create-terminal-checkout)
 * [Search Terminal Checkouts](../../doc/api/terminal.md#search-terminal-checkouts)
 * [Get Terminal Checkout](../../doc/api/terminal.md#get-terminal-checkout)
@@ -49,28 +50,24 @@ async createTerminalAction(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyActionSaveCardOptions: SaveCardOptions = {
-  customerId: '{{CUSTOMER_ID}}',
-};
-bodyActionSaveCardOptions.referenceId = 'user-id-1';
-
-const bodyAction: TerminalAction = {};
-bodyAction.deviceId = '{{DEVICE_ID}}';
-bodyAction.deadlineDuration = 'PT5M';
-bodyAction.type = 'SAVE_CARD';
-bodyAction.saveCardOptions = bodyActionSaveCardOptions;
-
 const body: CreateTerminalActionRequest = {
   idempotencyKey: 'thahn-70e75c10-47f7-4ab6-88cc-aaa4076d065e',
-  action: bodyAction,
+  action: {
+    deviceId: '{{DEVICE_ID}}',
+    deadlineDuration: 'PT5M',
+    type: 'SAVE_CARD',
+    saveCardOptions: {
+      customerId: '{{CUSTOMER_ID}}',
+      referenceId: 'user-id-1',
+    },
+  },
 };
 
 try {
   const { result, ...httpResponse } = await terminalApi.createTerminalAction(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -104,29 +101,25 @@ async searchTerminalActions(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryFilterCreatedAt: TimeRange = {};
-bodyQueryFilterCreatedAt.startAt = '2022-04-01T00:00:00Z';
-
-const bodyQueryFilter: TerminalActionQueryFilter = {};
-bodyQueryFilter.createdAt = bodyQueryFilterCreatedAt;
-
-const bodyQuerySort: TerminalActionQuerySort = {};
-bodyQuerySort.sortOrder = 'DESC';
-
-const bodyQuery: TerminalActionQuery = {};
-bodyQuery.filter = bodyQueryFilter;
-bodyQuery.sort = bodyQuerySort;
-
-const body: SearchTerminalActionsRequest = {};
-body.query = bodyQuery;
-body.limit = 2;
+const body: SearchTerminalActionsRequest = {
+  query: {
+    filter: {
+      createdAt: {
+        startAt: '2022-04-01T00:00:00Z',
+      },
+    },
+    sort: {
+      sortOrder: 'DESC',
+    },
+  },
+  limit: 2,
+};
 
 try {
   const { result, ...httpResponse } = await terminalApi.searchTerminalActions(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -150,7 +143,7 @@ async getTerminalAction(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `actionId` | `string` | Template, Required | Unique ID for the desired `TerminalAction` |
+| `actionId` | `string` | Template, Required | Unique ID for the desired `TerminalAction`. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -161,11 +154,12 @@ async getTerminalAction(
 
 ```ts
 const actionId = 'action_id6';
+
 try {
   const { result, ...httpResponse } = await terminalApi.getTerminalAction(actionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -189,7 +183,7 @@ async cancelTerminalAction(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `actionId` | `string` | Template, Required | Unique ID for the desired `TerminalAction` |
+| `actionId` | `string` | Template, Required | Unique ID for the desired `TerminalAction`. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -200,11 +194,54 @@ async cancelTerminalAction(
 
 ```ts
 const actionId = 'action_id6';
+
 try {
   const { result, ...httpResponse } = await terminalApi.cancelTerminalAction(actionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Dismiss Terminal Action
+
+Dismisses a Terminal action request if the status and type of the request permits it.
+
+See [Link and Dismiss Actions](https://developer.squareup.com/docs/terminal-api/advanced-features/custom-workflows/link-and-dismiss-actions) for more details.
+
+```ts
+async dismissTerminalAction(
+  actionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DismissTerminalActionResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `actionId` | `string` | Template, Required | Unique ID for the `TerminalAction` associated with the waiting dialog to be dismissed. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`DismissTerminalActionResponse`](../../doc/models/dismiss-terminal-action-response.md)
+
+## Example Usage
+
+```ts
+const actionId = 'action_id6';
+
+try {
+  const { result, ...httpResponse } = await terminalApi.dismissTerminalAction(actionId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -239,32 +276,26 @@ async createTerminalCheckout(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCheckoutAmountMoney: Money = {};
-bodyCheckoutAmountMoney.amount = BigInt(2610);
-bodyCheckoutAmountMoney.currency = 'USD';
-
-const bodyCheckoutDeviceOptions: DeviceCheckoutOptions = {
-  deviceId: 'dbb5d83a-7838-11ea-bc55-0242ac130003',
-};
-
-const bodyCheckout: TerminalCheckout = {
-  amountMoney: bodyCheckoutAmountMoney,
-  deviceOptions: bodyCheckoutDeviceOptions,
-};
-bodyCheckout.referenceId = 'id11572';
-bodyCheckout.note = 'A brief note';
-
 const body: CreateTerminalCheckoutRequest = {
   idempotencyKey: '28a0c3bc-7839-11ea-bc55-0242ac130003',
-  checkout: bodyCheckout,
+  checkout: {
+    amountMoney: {
+      amount: BigInt(2610),
+      currency: 'USD',
+    },
+    deviceOptions: {
+      deviceId: 'dbb5d83a-7838-11ea-bc55-0242ac130003',
+    },
+    referenceId: 'id11572',
+    note: 'A brief note',
+  },
 };
 
 try {
   const { result, ...httpResponse } = await terminalApi.createTerminalCheckout(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -298,22 +329,20 @@ async searchTerminalCheckouts(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryFilter: TerminalCheckoutQueryFilter = {};
-bodyQueryFilter.status = 'COMPLETED';
-
-const bodyQuery: TerminalCheckoutQuery = {};
-bodyQuery.filter = bodyQueryFilter;
-
-const body: SearchTerminalCheckoutsRequest = {};
-body.query = bodyQuery;
-body.limit = 2;
+const body: SearchTerminalCheckoutsRequest = {
+  query: {
+    filter: {
+      status: 'COMPLETED',
+    },
+  },
+  limit: 2,
+};
 
 try {
   const { result, ...httpResponse } = await terminalApi.searchTerminalCheckouts(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -348,11 +377,12 @@ async getTerminalCheckout(
 
 ```ts
 const checkoutId = 'checkout_id8';
+
 try {
   const { result, ...httpResponse } = await terminalApi.getTerminalCheckout(checkoutId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -387,11 +417,12 @@ async cancelTerminalCheckout(
 
 ```ts
 const checkoutId = 'checkout_id8';
+
 try {
   const { result, ...httpResponse } = await terminalApi.cancelTerminalCheckout(checkoutId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -425,28 +456,24 @@ async createTerminalRefund(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyRefundAmountMoney: Money = {};
-bodyRefundAmountMoney.amount = BigInt(111);
-bodyRefundAmountMoney.currency = 'CAD';
-
-const bodyRefund: TerminalRefund = {
-  paymentId: '5O5OvgkcNUhl7JBuINflcjKqUzXZY',
-  amountMoney: bodyRefundAmountMoney,
-  reason: 'Returning items',
-  deviceId: 'f72dfb8e-4d65-4e56-aade-ec3fb8d33291',
-};
-
 const body: CreateTerminalRefundRequest = {
   idempotencyKey: '402a640b-b26f-401f-b406-46f839590c04',
+  refund: {
+    paymentId: '5O5OvgkcNUhl7JBuINflcjKqUzXZY',
+    amountMoney: {
+      amount: BigInt(111),
+      currency: 'CAD',
+    },
+    reason: 'Returning items',
+    deviceId: 'f72dfb8e-4d65-4e56-aade-ec3fb8d33291',
+  },
 };
-body.refund = bodyRefund;
 
 try {
   const { result, ...httpResponse } = await terminalApi.createTerminalRefund(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -480,22 +507,20 @@ async searchTerminalRefunds(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryFilter: TerminalRefundQueryFilter = {};
-bodyQueryFilter.status = 'COMPLETED';
-
-const bodyQuery: TerminalRefundQuery = {};
-bodyQuery.filter = bodyQueryFilter;
-
-const body: SearchTerminalRefundsRequest = {};
-body.query = bodyQuery;
-body.limit = 1;
+const body: SearchTerminalRefundsRequest = {
+  query: {
+    filter: {
+      status: 'COMPLETED',
+    },
+  },
+  limit: 1,
+};
 
 try {
   const { result, ...httpResponse } = await terminalApi.searchTerminalRefunds(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -530,11 +555,12 @@ async getTerminalRefund(
 
 ```ts
 const terminalRefundId = 'terminal_refund_id0';
+
 try {
   const { result, ...httpResponse } = await terminalApi.getTerminalRefund(terminalRefundId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -569,11 +595,12 @@ async cancelTerminalRefund(
 
 ```ts
 const terminalRefundId = 'terminal_refund_id0';
+
 try {
   const { result, ...httpResponse } = await terminalApi.cancelTerminalRefund(terminalRefundId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

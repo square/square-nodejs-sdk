@@ -41,9 +41,9 @@ to store any sensitive information (personally identifiable information, card de
     "name": "name2"
   },
   "allowed_object_types": [
-    "PRICING_RULE",
-    "PRODUCT_SET",
-    "TIME_PERIOD"
+    "TIME_PERIOD",
+    "MEASUREMENT_UNIT",
+    "SUBSCRIPTION_PLAN_VARIATION"
   ],
   "seller_visibility": "SELLER_VISIBILITY_HIDDEN",
   "app_visibility": "APP_VISIBILITY_HIDDEN",

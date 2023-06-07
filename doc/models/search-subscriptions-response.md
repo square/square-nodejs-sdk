@@ -14,7 +14,7 @@ Defines output parameters in a response from the
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Errors encountered during the request. |
 | `subscriptions` | [`Subscription[] \| undefined`](../../doc/models/subscription.md) | Optional | The subscriptions matching the specified query expressions. |
-| `cursor` | `string \| undefined` | Optional | When the total number of resulting subscription exceeds the limit of a paged response,<br>the response includes a cursor for you to use in a subsequent request to fetch the next set of results.<br>If the cursor is unset, the response contains the last page of the results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination). |
+| `cursor` | `string \| undefined` | Optional | When the total number of resulting subscription exceeds the limit of a paged response,<br>the response includes a cursor for you to use in a subsequent request to fetch the next set of results.<br>If the cursor is unset, the response contains the last page of the results.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
 
 ## Example (as JSON)
 
@@ -36,7 +36,8 @@ Defines output parameters in a response from the
       },
       "start_date": "2021-10-20",
       "status": "CANCELED",
-      "timezone": "UTC"
+      "timezone": "UTC",
+      "plan_variation_id": "plan_variation_id3"
     },
     {
       "created_at": "2021-10-20T21:53:10Z",
@@ -55,7 +56,8 @@ Defines output parameters in a response from the
       "status": "PENDING",
       "tax_percentage": "5",
       "timezone": "America/Los_Angeles",
-      "version": 1594155459464
+      "version": 1594155459464,
+      "plan_variation_id": "plan_variation_id4"
     },
     {
       "charged_through_date": "2021-11-20",
@@ -78,7 +80,8 @@ Defines output parameters in a response from the
       },
       "start_date": "2021-10-20",
       "status": "ACTIVE",
-      "timezone": "America/Los_Angeles"
+      "timezone": "America/Los_Angeles",
+      "plan_variation_id": "plan_variation_id5"
     }
   ],
   "errors": [

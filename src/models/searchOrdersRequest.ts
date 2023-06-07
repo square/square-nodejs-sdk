@@ -8,10 +8,7 @@ import {
   Schema,
   string,
 } from '../schema';
-import {
-  SearchOrdersQuery,
-  searchOrdersQuerySchema,
-} from './searchOrdersQuery';
+import { SearchOrdersQuery, searchOrdersQuerySchema } from './searchOrdersQuery';
 
 /**
  * The request does not have any required fields. When given no query criteria,

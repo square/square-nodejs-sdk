@@ -50,7 +50,7 @@ try {
   const { result, ...httpResponse } = await devicesApi.listDeviceCodes();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -85,23 +85,20 @@ async createDeviceCode(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyDeviceCode: DeviceCode = {
-  productType: 'TERMINAL_API',
-};
-bodyDeviceCode.name = 'Counter 1';
-bodyDeviceCode.locationId = 'B5E4484SHHNYH';
-
 const body: CreateDeviceCodeRequest = {
   idempotencyKey: '01bb00a6-0c86-4770-94ed-f5fca973cd56',
-  deviceCode: bodyDeviceCode,
+  deviceCode: {
+    productType: 'TERMINAL_API',
+    name: 'Counter 1',
+    locationId: 'B5E4484SHHNYH',
+  },
 };
 
 try {
   const { result, ...httpResponse } = await devicesApi.createDeviceCode(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -136,11 +133,12 @@ async getDeviceCode(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await devicesApi.getDeviceCode(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

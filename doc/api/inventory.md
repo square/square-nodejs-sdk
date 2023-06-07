@@ -54,11 +54,12 @@ async deprecatedRetrieveInventoryAdjustment(
 
 ```ts
 const adjustmentId = 'adjustment_id0';
+
 try {
   const { result, ...httpResponse } = await inventoryApi.deprecatedRetrieveInventoryAdjustment(adjustmentId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -94,11 +95,12 @@ async retrieveInventoryAdjustment(
 
 ```ts
 const adjustmentId = 'adjustment_id0';
+
 try {
   const { result, ...httpResponse } = await inventoryApi.retrieveInventoryAdjustment(adjustmentId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -135,35 +137,30 @@ async deprecatedBatchChangeInventory(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyChanges: InventoryChange[] = [];
-
-const bodychanges0PhysicalCount: InventoryPhysicalCount = {};
-bodychanges0PhysicalCount.referenceId = '1536bfbf-efed-48bf-b17d-a197141b2a92';
-bodychanges0PhysicalCount.catalogObjectId = 'W62UWFY35CWMYGVWK6TWJDNI';
-bodychanges0PhysicalCount.state = 'IN_STOCK';
-bodychanges0PhysicalCount.locationId = 'C6W5YS5QM06F5';
-bodychanges0PhysicalCount.quantity = '53';
-bodychanges0PhysicalCount.teamMemberId = 'LRK57NSQ5X7PUD05';
-bodychanges0PhysicalCount.occurredAt = '2016-11-16T22:25:24.878Z';
-
-const bodychanges0: InventoryChange = {};
-bodychanges0.type = 'PHYSICAL_COUNT';
-bodychanges0.physicalCount = bodychanges0PhysicalCount;
-
-bodyChanges[0] = bodychanges0;
-
 const body: BatchChangeInventoryRequest = {
   idempotencyKey: '8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe',
+  changes: [
+    {
+      type: 'PHYSICAL_COUNT',
+      physicalCount: {
+        referenceId: '1536bfbf-efed-48bf-b17d-a197141b2a92',
+        catalogObjectId: 'W62UWFY35CWMYGVWK6TWJDNI',
+        state: 'IN_STOCK',
+        locationId: 'C6W5YS5QM06F5',
+        quantity: '53',
+        teamMemberId: 'LRK57NSQ5X7PUD05',
+        occurredAt: '2016-11-16T22:25:24.878Z',
+      },
+    }
+  ],
+  ignoreUnchangedCounts: true,
 };
-body.changes = bodyChanges;
-body.ignoreUnchangedCounts = true;
 
 try {
   const { result, ...httpResponse } = await inventoryApi.deprecatedBatchChangeInventory(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -200,24 +197,28 @@ async deprecatedBatchRetrieveInventoryChanges(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
-const bodyLocationIds: string[] = ['C6W5YS5QM06F5'];
-const bodyTypes: string[] = ['PHYSICAL_COUNT'];
-const bodyStates: string[] = ['IN_STOCK'];
-const body: BatchRetrieveInventoryChangesRequest = {};
-body.catalogObjectIds = bodyCatalogObjectIds;
-body.locationIds = bodyLocationIds;
-body.types = bodyTypes;
-body.states = bodyStates;
-body.updatedAfter = '2016-11-01T00:00:00Z';
-body.updatedBefore = '2016-12-01T00:00:00Z';
+const body: BatchRetrieveInventoryChangesRequest = {
+  catalogObjectIds: [
+    'W62UWFY35CWMYGVWK6TWJDNI'
+  ],
+  locationIds: [
+    'C6W5YS5QM06F5'
+  ],
+  types: [
+    'PHYSICAL_COUNT'
+  ],
+  states: [
+    'IN_STOCK'
+  ],
+  updatedAfter: '2016-11-01T00:00:00Z',
+  updatedBefore: '2016-12-01T00:00:00Z',
+};
 
 try {
   const { result, ...httpResponse } = await inventoryApi.deprecatedBatchRetrieveInventoryChanges(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -254,19 +255,21 @@ async deprecatedBatchRetrieveInventoryCounts(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
-const bodyLocationIds: string[] = ['59TNP9SA8VGDA'];
-const body: BatchRetrieveInventoryCountsRequest = {};
-body.catalogObjectIds = bodyCatalogObjectIds;
-body.locationIds = bodyLocationIds;
-body.updatedAfter = '2016-11-16T00:00:00Z';
+const body: BatchRetrieveInventoryCountsRequest = {
+  catalogObjectIds: [
+    'W62UWFY35CWMYGVWK6TWJDNI'
+  ],
+  locationIds: [
+    '59TNP9SA8VGDA'
+  ],
+  updatedAfter: '2016-11-16T00:00:00Z',
+};
 
 try {
   const { result, ...httpResponse } = await inventoryApi.deprecatedBatchRetrieveInventoryCounts(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -304,35 +307,30 @@ async batchChangeInventory(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyChanges: InventoryChange[] = [];
-
-const bodychanges0PhysicalCount: InventoryPhysicalCount = {};
-bodychanges0PhysicalCount.referenceId = '1536bfbf-efed-48bf-b17d-a197141b2a92';
-bodychanges0PhysicalCount.catalogObjectId = 'W62UWFY35CWMYGVWK6TWJDNI';
-bodychanges0PhysicalCount.state = 'IN_STOCK';
-bodychanges0PhysicalCount.locationId = 'C6W5YS5QM06F5';
-bodychanges0PhysicalCount.quantity = '53';
-bodychanges0PhysicalCount.teamMemberId = 'LRK57NSQ5X7PUD05';
-bodychanges0PhysicalCount.occurredAt = '2016-11-16T22:25:24.878Z';
-
-const bodychanges0: InventoryChange = {};
-bodychanges0.type = 'PHYSICAL_COUNT';
-bodychanges0.physicalCount = bodychanges0PhysicalCount;
-
-bodyChanges[0] = bodychanges0;
-
 const body: BatchChangeInventoryRequest = {
   idempotencyKey: '8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe',
+  changes: [
+    {
+      type: 'PHYSICAL_COUNT',
+      physicalCount: {
+        referenceId: '1536bfbf-efed-48bf-b17d-a197141b2a92',
+        catalogObjectId: 'W62UWFY35CWMYGVWK6TWJDNI',
+        state: 'IN_STOCK',
+        locationId: 'C6W5YS5QM06F5',
+        quantity: '53',
+        teamMemberId: 'LRK57NSQ5X7PUD05',
+        occurredAt: '2016-11-16T22:25:24.878Z',
+      },
+    }
+  ],
+  ignoreUnchangedCounts: true,
 };
-body.changes = bodyChanges;
-body.ignoreUnchangedCounts = true;
 
 try {
   const { result, ...httpResponse } = await inventoryApi.batchChangeInventory(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -373,24 +371,28 @@ async batchRetrieveInventoryChanges(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
-const bodyLocationIds: string[] = ['C6W5YS5QM06F5'];
-const bodyTypes: string[] = ['PHYSICAL_COUNT'];
-const bodyStates: string[] = ['IN_STOCK'];
-const body: BatchRetrieveInventoryChangesRequest = {};
-body.catalogObjectIds = bodyCatalogObjectIds;
-body.locationIds = bodyLocationIds;
-body.types = bodyTypes;
-body.states = bodyStates;
-body.updatedAfter = '2016-11-01T00:00:00Z';
-body.updatedBefore = '2016-12-01T00:00:00Z';
+const body: BatchRetrieveInventoryChangesRequest = {
+  catalogObjectIds: [
+    'W62UWFY35CWMYGVWK6TWJDNI'
+  ],
+  locationIds: [
+    'C6W5YS5QM06F5'
+  ],
+  types: [
+    'PHYSICAL_COUNT'
+  ],
+  states: [
+    'IN_STOCK'
+  ],
+  updatedAfter: '2016-11-01T00:00:00Z',
+  updatedBefore: '2016-12-01T00:00:00Z',
+};
 
 try {
   const { result, ...httpResponse } = await inventoryApi.batchRetrieveInventoryChanges(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -434,19 +436,21 @@ async batchRetrieveInventoryCounts(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCatalogObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI'];
-const bodyLocationIds: string[] = ['59TNP9SA8VGDA'];
-const body: BatchRetrieveInventoryCountsRequest = {};
-body.catalogObjectIds = bodyCatalogObjectIds;
-body.locationIds = bodyLocationIds;
-body.updatedAfter = '2016-11-16T00:00:00Z';
+const body: BatchRetrieveInventoryCountsRequest = {
+  catalogObjectIds: [
+    'W62UWFY35CWMYGVWK6TWJDNI'
+  ],
+  locationIds: [
+    '59TNP9SA8VGDA'
+  ],
+  updatedAfter: '2016-11-16T00:00:00Z',
+};
 
 try {
   const { result, ...httpResponse } = await inventoryApi.batchRetrieveInventoryCounts(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -484,11 +488,12 @@ async deprecatedRetrieveInventoryPhysicalCount(
 
 ```ts
 const physicalCountId = 'physical_count_id2';
+
 try {
   const { result, ...httpResponse } = await inventoryApi.deprecatedRetrieveInventoryPhysicalCount(physicalCountId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -524,11 +529,12 @@ async retrieveInventoryPhysicalCount(
 
 ```ts
 const physicalCountId = 'physical_count_id2';
+
 try {
   const { result, ...httpResponse } = await inventoryApi.retrieveInventoryPhysicalCount(physicalCountId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -564,11 +570,12 @@ async retrieveInventoryTransfer(
 
 ```ts
 const transferId = 'transfer_id6';
+
 try {
   const { result, ...httpResponse } = await inventoryApi.retrieveInventoryTransfer(transferId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -610,11 +617,12 @@ async retrieveInventoryCount(
 
 ```ts
 const catalogObjectId = 'catalog_object_id6';
+
 try {
   const { result, ...httpResponse } = await inventoryApi.retrieveInventoryCount(catalogObjectId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -667,11 +675,12 @@ async retrieveInventoryChanges(
 
 ```ts
 const catalogObjectId = 'catalog_object_id6';
+
 try {
   const { result, ...httpResponse } = await inventoryApi.retrieveInventoryChanges(catalogObjectId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

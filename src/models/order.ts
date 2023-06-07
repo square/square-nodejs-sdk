@@ -17,10 +17,7 @@ import {
   orderLineItemDiscountSchema,
 } from './orderLineItemDiscount';
 import { OrderLineItemTax, orderLineItemTaxSchema } from './orderLineItemTax';
-import {
-  OrderMoneyAmounts,
-  orderMoneyAmountsSchema,
-} from './orderMoneyAmounts';
+import { OrderMoneyAmounts, orderMoneyAmountsSchema } from './orderMoneyAmounts';
 import {
   OrderPricingOptions,
   orderPricingOptionsSchema,

@@ -60,7 +60,7 @@ try {
   const { result, ...httpResponse } = await giftCardActivitiesApi.listGiftCardActivities();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -96,28 +96,24 @@ async createGiftCardActivity(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyGiftCardActivityActivateActivityDetails: GiftCardActivityActivate = {};
-bodyGiftCardActivityActivateActivityDetails.orderId = 'jJNGHm4gLI6XkFbwtiSLqK72KkAZY';
-bodyGiftCardActivityActivateActivityDetails.lineItemUid = 'eIWl7X0nMuO9Ewbh0ChIx';
-
-const bodyGiftCardActivity: GiftCardActivity = {
-  type: 'ACTIVATE',
-  locationId: '81FN9BNFZTKS4',
-};
-bodyGiftCardActivity.giftCardId = 'gftc:6d55a72470d940c6ba09c0ab8ad08d20';
-bodyGiftCardActivity.activateActivityDetails = bodyGiftCardActivityActivateActivityDetails;
-
 const body: CreateGiftCardActivityRequest = {
   idempotencyKey: 'U16kfr-kA70er-q4Rsym-7U7NnY',
-  giftCardActivity: bodyGiftCardActivity,
+  giftCardActivity: {
+    type: 'ACTIVATE',
+    locationId: '81FN9BNFZTKS4',
+    giftCardId: 'gftc:6d55a72470d940c6ba09c0ab8ad08d20',
+    activateActivityDetails: {
+      orderId: 'jJNGHm4gLI6XkFbwtiSLqK72KkAZY',
+      lineItemUid: 'eIWl7X0nMuO9Ewbh0ChIx',
+    },
+  },
 };
 
 try {
   const { result, ...httpResponse } = await giftCardActivitiesApi.createGiftCardActivity(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

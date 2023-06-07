@@ -179,7 +179,7 @@
   "cursor": "cursor6",
   "related_objects": [
     {
-      "type": "CATEGORY",
+      "type": "PRICING_RULE",
       "id": "id8",
       "updated_at": "updated_at6",
       "version": 170,
@@ -205,7 +205,7 @@
       ]
     },
     {
-      "type": "IMAGE",
+      "type": "MODIFIER",
       "id": "id9",
       "updated_at": "updated_at5",
       "version": 169,
@@ -249,7 +249,7 @@
       ]
     },
     {
-      "type": "ITEM",
+      "type": "MODIFIER_LIST",
       "id": "id0",
       "updated_at": "updated_at4",
       "version": 168,

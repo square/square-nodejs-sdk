@@ -1,5 +1,6 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
+import { Phase, phaseSchema } from './phase';
 import {
   SubscriptionSource,
   subscriptionSourceSchema,
@@ -14,19 +15,22 @@ export interface CreateSubscriptionRequest {
    * A unique string that identifies this `CreateSubscription` request.
    * If you do not provide a unique string (or provide an empty string as the value),
    * the endpoint treats each request as independent.
-   * For more information, see [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency).
+   * For more information, see [Idempotency keys](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
    */
   idempotencyKey?: string;
   /** The ID of the location the subscription is associated with. */
   locationId: string;
   /**
-   * The ID of the subscription plan created using the Catalog API.
+   * The ID of the [subscription plan](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations) created using the Catalog API.
+   * Deprecated in favour of `plan_variation_id`.
    * For more information, see
    * [Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan) and
    * [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
    */
-  planId: string;
-  /** The ID of the [customer](entity:Customer) subscribing to the subscription plan. */
+  planId?: string;
+  /** The ID of the [subscription plan variation](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations#plan-variations) created using the Catalog API. */
+  planVariationId?: string;
+  /** The ID of the [customer](entity:Customer) subscribing to the subscription plan variation. */
   customerId: string;
   /**
    * The `YYYY-MM-DD`-formatted date to start the subscription.
@@ -35,7 +39,7 @@ export interface CreateSubscriptionRequest {
   startDate?: string;
   /**
    * The `YYYY-MM-DD`-formatted date when the newly created subscription is scheduled for cancellation.
-   * This date overrides the cancellation date set in the plan configuration.
+   * This date overrides the cancellation date set in the plan variation configuration.
    * If the cancellation date is earlier than the end date of a subscription cycle, the subscription stops
    * at the canceled date and the subscriber is sent a prorated invoice at the beginning of the canceled cycle.
    * When the subscription plan of the newly created subscription has a fixed number of cycles and the `canceled_date`
@@ -61,8 +65,7 @@ export interface CreateSubscriptionRequest {
   priceOverrideMoney?: Money;
   /**
    * The ID of the [subscriber's](entity:Customer) [card](entity:Card) to charge.
-   * If it is not specified, the subscriber receives an invoice via email. For an example to
-   * create a customer profile for a subscriber and add a card on file, see [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
+   * If it is not specified, the subscriber receives an invoice via email with a link to pay for their subscription.
    */
   cardId?: string;
   /**
@@ -74,13 +77,16 @@ export interface CreateSubscriptionRequest {
   timezone?: string;
   /** The origination details of the subscription. */
   source?: SubscriptionSource;
+  /** array of phases for this subscription */
+  phases?: Phase[];
 }
 
 export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> = object(
   {
     idempotencyKey: ['idempotency_key', optional(string())],
     locationId: ['location_id', string()],
-    planId: ['plan_id', string()],
+    planId: ['plan_id', optional(string())],
+    planVariationId: ['plan_variation_id', optional(string())],
     customerId: ['customer_id', string()],
     startDate: ['start_date', optional(string())],
     canceledDate: ['canceled_date', optional(string())],
@@ -92,5 +98,6 @@ export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> 
     cardId: ['card_id', optional(string())],
     timezone: ['timezone', optional(string())],
     source: ['source', optional(lazy(() => subscriptionSourceSchema))],
+    phases: ['phases', optional(array(lazy(() => phaseSchema)))],
   }
 );

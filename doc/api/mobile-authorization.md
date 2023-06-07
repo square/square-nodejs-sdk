@@ -45,15 +45,15 @@ async createMobileAuthorizationCode(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const body: CreateMobileAuthorizationCodeRequest = {};
-body.locationId = 'YOUR_LOCATION_ID';
+const body: CreateMobileAuthorizationCodeRequest = {
+  locationId: 'YOUR_LOCATION_ID',
+};
 
 try {
   const { result, ...httpResponse } = await mobileAuthorizationApi.createMobileAuthorizationCode(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

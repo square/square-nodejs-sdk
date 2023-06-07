@@ -74,7 +74,7 @@ the modifier list are allowed.
   "selection_type": "SINGLE",
   "modifiers": [
     {
-      "type": "CATEGORY",
+      "type": "DISCOUNT",
       "id": "id1",
       "updated_at": "updated_at7",
       "version": 145,
@@ -100,7 +100,7 @@ the modifier list are allowed.
       ]
     },
     {
-      "type": "IMAGE",
+      "type": "TAX",
       "id": "id2",
       "updated_at": "updated_at8",
       "version": 146,

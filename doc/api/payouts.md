@@ -58,7 +58,7 @@ try {
   const { result, ...httpResponse } = await payoutsApi.listPayouts();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -94,11 +94,12 @@ async getPayout(
 
 ```ts
 const payoutId = 'payout_id6';
+
 try {
   const { result, ...httpResponse } = await payoutsApi.getPayout(payoutId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -140,11 +141,12 @@ async listPayoutEntries(
 
 ```ts
 const payoutId = 'payout_id6';
+
 try {
   const { result, ...httpResponse } = await payoutsApi.listPayoutEntries(payoutId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
