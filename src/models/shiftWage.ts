@@ -3,10 +3,7 @@ import { Money, moneySchema } from './money';
 
 /** The hourly wage rate used to compensate an employee for this shift. */
 export interface ShiftWage {
-  /**
-   * The name of the job performed during this shift. Square
-   * labor-reporting UIs might group shifts together by title.
-   */
+  /** The name of the job performed during this shift. */
   title?: string | null;
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.
@@ -17,9 +14,15 @@ export interface ShiftWage {
    * for more information.
    */
   hourlyRate?: Money;
+  /**
+   * The id of the job performed during this shift. Square
+   * labor-reporting UIs might group shifts together by id. This cannot be used to retrieve the job.
+   */
+  jobId?: string;
 }
 
 export const shiftWageSchema: Schema<ShiftWage> = object({
   title: ['title', optional(nullable(string()))],
   hourlyRate: ['hourly_rate', optional(lazy(() => moneySchema))],
+  jobId: ['job_id', optional(string())],
 });

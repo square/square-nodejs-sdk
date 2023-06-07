@@ -59,7 +59,7 @@ try {
   const { result, ...httpResponse } = await merchantCustomAttributesApi.listMerchantCustomAttributeDefinitions();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -99,22 +99,20 @@ async createMerchantCustomAttributeDefinition(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
-bodyCustomAttributeDefinition.key = 'alternative_seller_name';
-bodyCustomAttributeDefinition.name = 'Alternative Merchant Name';
-bodyCustomAttributeDefinition.description = 'This is the other name this merchant goes by.';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_ONLY';
-
 const body: CreateMerchantCustomAttributeDefinitionRequest = {
-  customAttributeDefinition: bodyCustomAttributeDefinition,
+  customAttributeDefinition: {
+    key: 'alternative_seller_name',
+    name: 'Alternative Merchant Name',
+    description: 'This is the other name this merchant goes by.',
+    visibility: 'VISIBILITY_READ_ONLY',
+  },
 };
 
 try {
   const { result, ...httpResponse } = await merchantCustomAttributesApi.createMerchantCustomAttributeDefinition(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -152,11 +150,12 @@ async deleteMerchantCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
+
 try {
   const { result, ...httpResponse } = await merchantCustomAttributesApi.deleteMerchantCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -195,11 +194,12 @@ async retrieveMerchantCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
+
 try {
   const { result, ...httpResponse } = await merchantCustomAttributesApi.retrieveMerchantCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -239,20 +239,22 @@ async updateMerchantCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
-const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
-bodyCustomAttributeDefinition.description = 'Update the description as desired.';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_ONLY';
 
 const body: UpdateMerchantCustomAttributeDefinitionRequest = {
-  customAttributeDefinition: bodyCustomAttributeDefinition,
+  customAttributeDefinition: {
+    description: 'Update the description as desired.',
+    visibility: 'VISIBILITY_READ_ONLY',
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await merchantCustomAttributesApi.updateMerchantCustomAttributeDefinition(key, body);
+  const { result, ...httpResponse } = await merchantCustomAttributesApi.updateMerchantCustomAttributeDefinition(
+    key,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -288,17 +290,18 @@ async bulkDeleteMerchantCustomAttributes(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyValues: Record<string, BulkDeleteMerchantCustomAttributesRequestMerchantCustomAttributeDeleteRequest> = {};
 const body: BulkDeleteMerchantCustomAttributesRequest = {
-  values: bodyValues,
+  values: {
+    'id1': {},
+    'id2': {}
+  },
 };
 
 try {
   const { result, ...httpResponse } = await merchantCustomAttributesApi.bulkDeleteMerchantCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -341,17 +344,24 @@ async bulkUpsertMerchantCustomAttributes(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyValues: Record<string, BulkUpsertMerchantCustomAttributesRequestMerchantCustomAttributeUpsertRequest> = {};
 const body: BulkUpsertMerchantCustomAttributesRequest = {
-  values: bodyValues,
+  values: {
+    'key0': {
+      merchantId: 'merchant_id4',
+      customAttribute: {},
+    },
+    'key1': {
+      merchantId: 'merchant_id5',
+      customAttribute: {},
+    }
+  },
 };
 
 try {
   const { result, ...httpResponse } = await merchantCustomAttributesApi.bulkUpsertMerchantCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -399,12 +409,17 @@ async listMerchantCustomAttributes(
 
 ```ts
 const merchantId = 'merchant_id0';
+
 const withDefinitions = false;
+
 try {
-  const { result, ...httpResponse } = await merchantCustomAttributesApi.listMerchantCustomAttributes(merchantId, None, None, None, withDefinitions);
+  const { result, ...httpResponse } = await merchantCustomAttributesApi.listMerchantCustomAttributes(
+    merchantId,
+    withDefinitions
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -443,12 +458,17 @@ async deleteMerchantCustomAttribute(
 
 ```ts
 const merchantId = 'merchant_id0';
+
 const key = 'key0';
+
 try {
-  const { result, ...httpResponse } = await merchantCustomAttributesApi.deleteMerchantCustomAttribute(merchantId, key);
+  const { result, ...httpResponse } = await merchantCustomAttributesApi.deleteMerchantCustomAttribute(
+    merchantId,
+    key
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -493,13 +513,20 @@ async retrieveMerchantCustomAttribute(
 
 ```ts
 const merchantId = 'merchant_id0';
+
 const key = 'key0';
+
 const withDefinition = false;
+
 try {
-  const { result, ...httpResponse } = await merchantCustomAttributesApi.retrieveMerchantCustomAttribute(merchantId, key, withDefinition);
+  const { result, ...httpResponse } = await merchantCustomAttributesApi.retrieveMerchantCustomAttribute(
+    merchantId,
+    key,
+    withDefinition
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -543,19 +570,22 @@ async upsertMerchantCustomAttribute(
 
 ```ts
 const merchantId = 'merchant_id0';
+
 const key = 'key0';
-const contentType = null;
-const bodyCustomAttribute: CustomAttribute = {};
 
 const body: UpsertMerchantCustomAttributeRequest = {
-  customAttribute: bodyCustomAttribute,
+  customAttribute: {},
 };
 
 try {
-  const { result, ...httpResponse } = await merchantCustomAttributesApi.upsertMerchantCustomAttribute(merchantId, key, body);
+  const { result, ...httpResponse } = await merchantCustomAttributesApi.upsertMerchantCustomAttribute(
+    merchantId,
+    key,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

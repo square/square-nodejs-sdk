@@ -19,7 +19,7 @@ A batch of catalog objects.
 {
   "objects": [
     {
-      "type": "CUSTOM_ATTRIBUTE_DEFINITION",
+      "type": "MODIFIER_LIST",
       "id": "id8",
       "item_data": {
         "object": {

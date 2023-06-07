@@ -52,7 +52,7 @@ try {
   const { result, ...httpResponse } = await merchantsApi.listMerchants();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -87,11 +87,12 @@ async retrieveMerchant(
 
 ```ts
 const merchantId = 'merchant_id0';
+
 try {
   const { result, ...httpResponse } = await merchantsApi.retrieveMerchant(merchantId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

@@ -51,30 +51,30 @@ async createTeamMember(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyTeamMemberAssignedLocationsLocationIds: string[] = ['YSGH2WBKG94QZ', 'GA2Y9HSJ8KRYT'];
-const bodyTeamMemberAssignedLocations: TeamMemberAssignedLocations = {};
-bodyTeamMemberAssignedLocations.assignmentType = 'EXPLICIT_LOCATIONS';
-bodyTeamMemberAssignedLocations.locationIds = bodyTeamMemberAssignedLocationsLocationIds;
-
-const bodyTeamMember: TeamMember = {};
-bodyTeamMember.referenceId = 'reference_id_1';
-bodyTeamMember.status = 'ACTIVE';
-bodyTeamMember.givenName = 'Joe';
-bodyTeamMember.familyName = 'Doe';
-bodyTeamMember.emailAddress = 'joe_doe@gmail.com';
-bodyTeamMember.phoneNumber = '+14159283333';
-bodyTeamMember.assignedLocations = bodyTeamMemberAssignedLocations;
-
-const body: CreateTeamMemberRequest = {};
-body.idempotencyKey = 'idempotency-key-0';
-body.teamMember = bodyTeamMember;
+const body: CreateTeamMemberRequest = {
+  idempotencyKey: 'idempotency-key-0',
+  teamMember: {
+    referenceId: 'reference_id_1',
+    status: 'ACTIVE',
+    givenName: 'Joe',
+    familyName: 'Doe',
+    emailAddress: 'joe_doe@gmail.com',
+    phoneNumber: '+14159283333',
+    assignedLocations: {
+      assignmentType: 'EXPLICIT_LOCATIONS',
+      locationIds: [
+        'YSGH2WBKG94QZ',
+        'GA2Y9HSJ8KRYT'
+      ],
+    },
+  },
+};
 
 try {
   const { result, ...httpResponse } = await teamApi.createTeamMember(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -113,17 +113,44 @@ async bulkCreateTeamMembers(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyTeamMembers: Record<string, CreateTeamMemberRequest> = {};
 const body: BulkCreateTeamMembersRequest = {
-  teamMembers: bodyTeamMembers,
+  teamMembers: {
+    'idempotency-key-1': {
+      teamMember: {
+        referenceId: 'reference_id_1',
+        givenName: 'Joe',
+        familyName: 'Doe',
+        emailAddress: 'joe_doe@gmail.com',
+        phoneNumber: '+14159283333',
+        assignedLocations: {
+          assignmentType: 'EXPLICIT_LOCATIONS',
+          locationIds: [
+            'YSGH2WBKG94QZ',
+            'GA2Y9HSJ8KRYT'
+          ],
+        },
+      },
+    },
+    'idempotency-key-2': {
+      teamMember: {
+        referenceId: 'reference_id_2',
+        givenName: 'Jane',
+        familyName: 'Smith',
+        emailAddress: 'jane_smith@gmail.com',
+        phoneNumber: '+14159223334',
+        assignedLocations: {
+          assignmentType: 'ALL_CURRENT_AND_FUTURE_LOCATIONS',
+        },
+      },
+    }
+  },
 };
 
 try {
   const { result, ...httpResponse } = await teamApi.bulkCreateTeamMembers(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -161,17 +188,48 @@ async bulkUpdateTeamMembers(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyTeamMembers: Record<string, UpdateTeamMemberRequest> = {};
 const body: BulkUpdateTeamMembersRequest = {
-  teamMembers: bodyTeamMembers,
+  teamMembers: {
+    'AFMwA08kR-MIF-3Vs0OE': {
+      teamMember: {
+        referenceId: 'reference_id_2',
+        isOwner: false,
+        status: 'ACTIVE',
+        givenName: 'Jane',
+        familyName: 'Smith',
+        emailAddress: 'jane_smith@gmail.com',
+        phoneNumber: '+14159223334',
+        assignedLocations: {
+          assignmentType: 'ALL_CURRENT_AND_FUTURE_LOCATIONS',
+        },
+      },
+    },
+    'fpgteZNMaf0qOK-a4t6P': {
+      teamMember: {
+        referenceId: 'reference_id_1',
+        isOwner: false,
+        status: 'ACTIVE',
+        givenName: 'Joe',
+        familyName: 'Doe',
+        emailAddress: 'joe_doe@gmail.com',
+        phoneNumber: '+14159283333',
+        assignedLocations: {
+          assignmentType: 'EXPLICIT_LOCATIONS',
+          locationIds: [
+            'YSGH2WBKG94QZ',
+            'GA2Y9HSJ8KRYT'
+          ],
+        },
+      },
+    }
+  },
 };
 
 try {
   const { result, ...httpResponse } = await teamApi.bulkUpdateTeamMembers(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -209,24 +267,23 @@ async searchTeamMembers(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryFilterLocationIds: string[] = ['0G5P3VGACMMQZ'];
-const bodyQueryFilter: SearchTeamMembersFilter = {};
-bodyQueryFilter.locationIds = bodyQueryFilterLocationIds;
-bodyQueryFilter.status = 'ACTIVE';
-
-const bodyQuery: SearchTeamMembersQuery = {};
-bodyQuery.filter = bodyQueryFilter;
-
-const body: SearchTeamMembersRequest = {};
-body.query = bodyQuery;
-body.limit = 10;
+const body: SearchTeamMembersRequest = {
+  query: {
+    filter: {
+      locationIds: [
+        '0G5P3VGACMMQZ'
+      ],
+      status: 'ACTIVE',
+    },
+  },
+  limit: 10,
+};
 
 try {
   const { result, ...httpResponse } = await teamApi.searchTeamMembers(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -262,11 +319,12 @@ async retrieveTeamMember(
 
 ```ts
 const teamMemberId = 'team_member_id0';
+
 try {
   const { result, ...httpResponse } = await teamApi.retrieveTeamMember(teamMemberId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -304,29 +362,33 @@ async updateTeamMember(
 
 ```ts
 const teamMemberId = 'team_member_id0';
-const contentType = null;
-const bodyTeamMemberAssignedLocationsLocationIds: string[] = ['YSGH2WBKG94QZ', 'GA2Y9HSJ8KRYT'];
-const bodyTeamMemberAssignedLocations: TeamMemberAssignedLocations = {};
-bodyTeamMemberAssignedLocations.assignmentType = 'EXPLICIT_LOCATIONS';
-bodyTeamMemberAssignedLocations.locationIds = bodyTeamMemberAssignedLocationsLocationIds;
 
-const bodyTeamMember: TeamMember = {};
-bodyTeamMember.referenceId = 'reference_id_1';
-bodyTeamMember.status = 'ACTIVE';
-bodyTeamMember.givenName = 'Joe';
-bodyTeamMember.familyName = 'Doe';
-bodyTeamMember.emailAddress = 'joe_doe@gmail.com';
-bodyTeamMember.phoneNumber = '+14159283333';
-bodyTeamMember.assignedLocations = bodyTeamMemberAssignedLocations;
-
-const body: UpdateTeamMemberRequest = {};
-body.teamMember = bodyTeamMember;
+const body: UpdateTeamMemberRequest = {
+  teamMember: {
+    referenceId: 'reference_id_1',
+    status: 'ACTIVE',
+    givenName: 'Joe',
+    familyName: 'Doe',
+    emailAddress: 'joe_doe@gmail.com',
+    phoneNumber: '+14159283333',
+    assignedLocations: {
+      assignmentType: 'EXPLICIT_LOCATIONS',
+      locationIds: [
+        'YSGH2WBKG94QZ',
+        'GA2Y9HSJ8KRYT'
+      ],
+    },
+  },
+};
 
 try {
-  const { result, ...httpResponse } = await teamApi.updateTeamMember(teamMemberId, body);
+  const { result, ...httpResponse } = await teamApi.updateTeamMember(
+    teamMemberId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -363,11 +425,12 @@ async retrieveWageSetting(
 
 ```ts
 const teamMemberId = 'team_member_id0';
+
 try {
   const { result, ...httpResponse } = await teamApi.retrieveWageSetting(teamMemberId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -408,47 +471,40 @@ async updateWageSetting(
 
 ```ts
 const teamMemberId = 'team_member_id0';
-const contentType = null;
-const bodyWageSettingJobAssignments: JobAssignment[] = [];
-
-const bodyWageSettingjobAssignments0AnnualRate: Money = {};
-bodyWageSettingjobAssignments0AnnualRate.amount = BigInt(3000000);
-bodyWageSettingjobAssignments0AnnualRate.currency = 'USD';
-
-const bodyWageSettingjobAssignments0: JobAssignment = {
-  jobTitle: 'Manager',
-  payType: 'SALARY',
-};
-bodyWageSettingjobAssignments0.annualRate = bodyWageSettingjobAssignments0AnnualRate;
-bodyWageSettingjobAssignments0.weeklyHours = 40;
-
-bodyWageSettingJobAssignments[0] = bodyWageSettingjobAssignments0;
-
-const bodyWageSettingjobAssignments1HourlyRate: Money = {};
-bodyWageSettingjobAssignments1HourlyRate.amount = BigInt(1200);
-bodyWageSettingjobAssignments1HourlyRate.currency = 'USD';
-
-const bodyWageSettingjobAssignments1: JobAssignment = {
-  jobTitle: 'Cashier',
-  payType: 'HOURLY',
-};
-bodyWageSettingjobAssignments1.hourlyRate = bodyWageSettingjobAssignments1HourlyRate;
-
-bodyWageSettingJobAssignments[1] = bodyWageSettingjobAssignments1;
-
-const bodyWageSetting: WageSetting = {};
-bodyWageSetting.jobAssignments = bodyWageSettingJobAssignments;
-bodyWageSetting.isOvertimeExempt = true;
 
 const body: UpdateWageSettingRequest = {
-  wageSetting: bodyWageSetting,
+  wageSetting: {
+    jobAssignments: [
+      {
+        jobTitle: 'Manager',
+        payType: 'SALARY',
+        annualRate: {
+          amount: BigInt(3000000),
+          currency: 'USD',
+        },
+        weeklyHours: 40,
+      },
+      {
+        jobTitle: 'Cashier',
+        payType: 'HOURLY',
+        hourlyRate: {
+          amount: BigInt(1200),
+          currency: 'USD',
+        },
+      }
+    ],
+    isOvertimeExempt: true,
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await teamApi.updateWageSetting(teamMemberId, body);
+  const { result, ...httpResponse } = await teamApi.updateWageSetting(
+    teamMemberId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

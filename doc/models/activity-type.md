@@ -44,4 +44,8 @@
 | `THIRD_PARTY_FEE` | Fees collected by a third-party platform. |
 | `THIRD_PARTY_FEE_REFUND` | Refunded fees from a third-party platform. |
 | `PAYOUT` | Balance change due to money transfer. |
+| `AUTOMATIC_BITCOIN_CONVERSIONS` | Indicates the withholding of a portion of each payment by Square that has been<br>automatically converted into bitcoin using Cash App. The seller manages their bitcoin in<br>their Cash App account. |
+| `AUTOMATIC_BITCOIN_CONVERSIONS_REVERSED` | Indicates a return of the payment withholding that had been scheduled to be converted<br>into bitcoin using Cash App to the Square payments balance. |
+| `CREDIT_CARD_REPAYMENT` | The repayment made toward the outstanding balance on the seller's Square credit card. |
+| `CREDIT_CARD_REPAYMENT_REVERSED` | The reversal of the repayment made toward the outstanding balance on the seller's<br>Square credit card. |
 

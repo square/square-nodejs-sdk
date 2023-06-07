@@ -130,7 +130,7 @@
   ],
   "subscription_plans": [
     {
-      "type": "QUICK_AMOUNTS_SETTINGS",
+      "type": "ITEM_OPTION_VAL",
       "id": "id6",
       "updated_at": "updated_at2",
       "version": 126,
@@ -156,7 +156,7 @@
       ]
     },
     {
-      "type": "CUSTOM_ATTRIBUTE_DEFINITION",
+      "type": "ITEM_OPTION",
       "id": "id7",
       "updated_at": "updated_at3",
       "version": 127,

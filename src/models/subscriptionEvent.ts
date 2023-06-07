@@ -1,4 +1,13 @@
-import { lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
+import { Phase, phaseSchema } from './phase';
 import {
   SubscriptionEventInfo,
   subscriptionEventInfoSchema,
@@ -12,16 +21,19 @@ export interface SubscriptionEvent {
   subscriptionEventType: string;
   /** The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) when the subscription event occurred. */
   effectiveDate: string;
-  /** The ID of the subscription plan associated with the subscription. */
-  planId: string;
   /** Provides information about the subscription event. */
   info?: SubscriptionEventInfo;
+  /** A list of Phases, to pass phase-specific information used in the swap. */
+  phases?: Phase[] | null;
+  /** The ID of the subscription plan variation associated with the subscription. */
+  planVariationId: string;
 }
 
 export const subscriptionEventSchema: Schema<SubscriptionEvent> = object({
   id: ['id', string()],
   subscriptionEventType: ['subscription_event_type', string()],
   effectiveDate: ['effective_date', string()],
-  planId: ['plan_id', string()],
   info: ['info', optional(lazy(() => subscriptionEventInfoSchema))],
+  phases: ['phases', optional(nullable(array(lazy(() => phaseSchema))))],
+  planVariationId: ['plan_variation_id', string()],
 });

@@ -37,7 +37,7 @@ following format:
 Authorization: Client APPLICATION_SECRET
 ```
 
-Replace `APPLICATION_SECRET` with the application secret on the Credentials
+Replace `APPLICATION_SECRET` with the application secret on the **Credentials**
 page in the [Developer Dashboard](https://developer.squareup.com/apps).
 
 :information_source: **Note** This endpoint does not require authentication.
@@ -55,7 +55,7 @@ async renewToken(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `clientId` | `string` | Template, Required | Your application ID, which is available in the OAuth page in the [Developer Dashboard](https://developer.squareup.com/apps). |
+| `clientId` | `string` | Template, Required | Your application ID, which is available on the **OAuth** page in the [Developer Dashboard](https://developer.squareup.com/apps). |
 | `body` | [`RenewTokenRequest`](../../doc/models/renew-token-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
 | `authorization` | `string` | Header, Required | Client APPLICATION_SECRET |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
@@ -68,16 +68,22 @@ async renewToken(
 
 ```ts
 const clientId = 'client_id8';
-const contentType = null;
-const body: RenewTokenRequest = {};
-body.accessToken = 'ACCESS_TOKEN';
+
+const body: RenewTokenRequest = {
+  accessToken: 'ACCESS_TOKEN',
+};
 
 const authorization = 'Client CLIENT_SECRET';
+
 try {
-  const { result, ...httpResponse } = await oAuthApi.renewToken(clientId, body, authorization);
+  const { result, ...httpResponse } = await oAuthApi.renewToken(
+    clientId,
+    body,
+    authorization
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -102,8 +108,8 @@ following format:
 Authorization: Client APPLICATION_SECRET
 ```
 
-Replace `APPLICATION_SECRET` with the application secret on the OAuth
-page for your application on the Developer Dashboard.
+Replace `APPLICATION_SECRET` with the application secret on the **OAuth**
+page for your application in the Developer Dashboard.
 
 :information_source: **Note** This endpoint does not require authentication.
 
@@ -130,17 +136,21 @@ async revokeToken(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const body: RevokeTokenRequest = {};
-body.clientId = 'CLIENT_ID';
-body.accessToken = 'ACCESS_TOKEN';
+const body: RevokeTokenRequest = {
+  clientId: 'CLIENT_ID',
+  accessToken: 'ACCESS_TOKEN',
+};
 
 const authorization = 'Client CLIENT_SECRET';
+
 try {
-  const { result, ...httpResponse } = await oAuthApi.revokeToken(body, authorization);
+  const { result, ...httpResponse } = await oAuthApi.revokeToken(
+    body,
+    authorization
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -158,7 +168,7 @@ returns only an access token.
 The `grant_type` parameter specifies the type of OAuth request. If
 `grant_type` is `authorization_code`, you must include the authorization
 code you received when a seller granted you authorization. If `grant_type`
-is `refresh_token`, you must provide a valid refresh token. If you are using
+is `refresh_token`, you must provide a valid refresh token. If you're using
 an old version of the Square APIs (prior to March 13, 2019), `grant_type`
 can be `migration_token` and you must provide a valid migration token.
 
@@ -192,19 +202,18 @@ async obtainToken(
 ## Example Usage
 
 ```ts
-const contentType = null;
 const body: ObtainTokenRequest = {
   clientId: 'APPLICATION_ID',
   grantType: 'authorization_code',
+  clientSecret: 'APPLICATION_SECRET',
+  code: 'CODE_FROM_AUTHORIZE',
 };
-body.clientSecret = 'APPLICATION_SECRET';
-body.code = 'CODE_FROM_AUTHORIZE';
 
 try {
   const { result, ...httpResponse } = await oAuthApi.obtainToken(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -254,11 +263,12 @@ async retrieveTokenStatus(
 
 ```ts
 const authorization = 'Client CLIENT_SECRET';
+
 try {
   const { result, ...httpResponse } = await oAuthApi.retrieveTokenStatus(authorization);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

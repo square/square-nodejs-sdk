@@ -5,7 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2023-05-17'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2023-06-08'` |
 | `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
@@ -40,7 +40,7 @@ The API client can be initialized as follows:
 
 ```ts
 const client = new Client({
-  squareVersion: '2023-05-17',
+  squareVersion: '2023-06-08',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
@@ -55,18 +55,20 @@ const client = new Client({
 import { ApiError, Client } from 'square';
 
 const client = new Client({
-  squareVersion: '2023-05-17',
+  squareVersion: '2023-06-08',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
   accessToken: 'AccessToken',
 });
+
 const locationsApi = client.locationsApi;
+
 try {
   const { result, ...httpResponse } = await locationsApi.listLocations();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

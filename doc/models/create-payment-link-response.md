@@ -128,7 +128,7 @@
     ],
     "subscription_plans": [
       {
-        "type": "TAX",
+        "type": "PRICING_RULE",
         "id": "id0",
         "updated_at": "updated_at6",
         "version": 172,
@@ -165,7 +165,7 @@
         ]
       },
       {
-        "type": "DISCOUNT",
+        "type": "PRODUCT_SET",
         "id": "id1",
         "updated_at": "updated_at7",
         "version": 173,
@@ -201,7 +201,7 @@
         ]
       },
       {
-        "type": "MODIFIER_LIST",
+        "type": "TIME_PERIOD",
         "id": "id2",
         "updated_at": "updated_at8",
         "version": 174,

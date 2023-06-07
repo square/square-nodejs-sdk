@@ -1,10 +1,10 @@
 
 # Subscription
 
-Represents a subscription to a subscription plan by a subscriber.
+Represents a subscription purchased by a customer.
 
-For an overview of the `Subscription` type, see
-[Subscription object](https://developer.squareup.com/docs/subscriptions-api/overview#subscription-object-overview).
+For more information, see
+[Manage Subscriptions](https://developer.squareup.com/docs/subscriptions-api/manage-subscriptions).
 
 ## Structure
 
@@ -16,7 +16,7 @@ For an overview of the `Subscription` type, see
 |  --- | --- | --- | --- |
 | `id` | `string \| undefined` | Optional | The Square-assigned ID of the subscription.<br>**Constraints**: *Maximum Length*: `255` |
 | `locationId` | `string \| undefined` | Optional | The ID of the location associated with the subscription. |
-| `planId` | `string \| undefined` | Optional | The ID of the subscribed-to [subscription plan](entity:CatalogSubscriptionPlan). |
+| `planVariationId` | `string \| undefined` | Optional | The ID of the subscribed-to [subscription plan variation](entity:CatalogSubscriptionPlanVariation). |
 | `customerId` | `string \| undefined` | Optional | The ID of the subscribing [customer](entity:Customer) profile. |
 | `startDate` | `string \| undefined` | Optional | The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) to start the subscription. |
 | `canceledDate` | `string \| undefined` | Optional | The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) to cancel the subscription,<br>when the subscription status changes to `CANCELED` and the subscription billing stops.<br><br>If this field is not set, the subscription ends according its subscription plan.<br><br>This field cannot be updated, other than being cleared. |
@@ -31,6 +31,7 @@ For an overview of the `Subscription` type, see
 | `timezone` | `string \| undefined` | Optional | Timezone that will be used in date calculations for the subscription.<br>Defaults to the timezone of the location based on `location_id`.<br>Format: the IANA Timezone Database identifier for the location timezone (for example, `America/Los_Angeles`). |
 | `source` | [`SubscriptionSource \| undefined`](../../doc/models/subscription-source.md) | Optional | The origination details of the subscription. |
 | `actions` | [`SubscriptionAction[] \| undefined`](../../doc/models/subscription-action.md) | Optional | The list of scheduled actions on this subscription. It is set only in the response from  <br>[RetrieveSubscription](../../doc/api/subscriptions.md#retrieve-subscription) with the query parameter<br>of `include=actions` or from<br>[SearchSubscriptions](../../doc/api/subscriptions.md#search-subscriptions) with the input parameter<br>of `include:["actions"]`. |
+| `phases` | [`Phase[] \| undefined`](../../doc/models/phase.md) | Optional | array of phases for this subscription |
 
 ## Example (as JSON)
 
@@ -38,7 +39,7 @@ For an overview of the `Subscription` type, see
 {
   "id": "id0",
   "location_id": "location_id4",
-  "plan_id": "plan_id8",
+  "plan_variation_id": "plan_variation_id4",
   "customer_id": "customer_id8",
   "start_date": "start_date6"
 }

@@ -1,8 +1,5 @@
 import { lazy, nullable, object, optional, Schema, string } from '../schema';
-import {
-  SourceApplication,
-  sourceApplicationSchema,
-} from './sourceApplication';
+import { SourceApplication, sourceApplicationSchema } from './sourceApplication';
 
 /**
  * Represents the quantity of an item variation that is physically present

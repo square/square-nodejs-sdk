@@ -55,17 +55,13 @@ async createLoyaltyAccount(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyLoyaltyAccountMapping: LoyaltyAccountMapping = {};
-bodyLoyaltyAccountMapping.phoneNumber = '+14155551234';
-
-const bodyLoyaltyAccount: LoyaltyAccount = {
-  programId: 'd619f755-2d17-41f3-990d-c04ecedd64dd',
-};
-bodyLoyaltyAccount.mapping = bodyLoyaltyAccountMapping;
-
 const body: CreateLoyaltyAccountRequest = {
-  loyaltyAccount: bodyLoyaltyAccount,
+  loyaltyAccount: {
+    programId: 'd619f755-2d17-41f3-990d-c04ecedd64dd',
+    mapping: {
+      phoneNumber: '+14155551234',
+    },
+  },
   idempotencyKey: 'ec78c477-b1c3-4899-a209-a4e71337c996',
 };
 
@@ -73,7 +69,7 @@ try {
   const { result, ...httpResponse } = await loyaltyApi.createLoyaltyAccount(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -111,26 +107,22 @@ async searchLoyaltyAccounts(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryMappings: LoyaltyAccountMapping[] = [];
-
-const bodyQuerymappings0: LoyaltyAccountMapping = {};
-bodyQuerymappings0.phoneNumber = '+14155551234';
-
-bodyQueryMappings[0] = bodyQuerymappings0;
-
-const bodyQuery: SearchLoyaltyAccountsRequestLoyaltyAccountQuery = {};
-bodyQuery.mappings = bodyQueryMappings;
-
-const body: SearchLoyaltyAccountsRequest = {};
-body.query = bodyQuery;
-body.limit = 10;
+const body: SearchLoyaltyAccountsRequest = {
+  query: {
+    mappings: [
+      {
+        phoneNumber: '+14155551234',
+      }
+    ],
+  },
+  limit: 10,
+};
 
 try {
   const { result, ...httpResponse } = await loyaltyApi.searchLoyaltyAccounts(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -165,11 +157,12 @@ async retrieveLoyaltyAccount(
 
 ```ts
 const accountId = 'account_id2';
+
 try {
   const { result, ...httpResponse } = await loyaltyApi.retrieveLoyaltyAccount(accountId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -219,21 +212,23 @@ async accumulateLoyaltyPoints(
 
 ```ts
 const accountId = 'account_id2';
-const contentType = null;
-const bodyAccumulatePoints: LoyaltyEventAccumulatePoints = {};
-bodyAccumulatePoints.orderId = 'RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY';
 
 const body: AccumulateLoyaltyPointsRequest = {
-  accumulatePoints: bodyAccumulatePoints,
+  accumulatePoints: {
+    orderId: 'RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY',
+  },
   idempotencyKey: '58b90739-c3e8-4b11-85f7-e636d48d72cb',
   locationId: 'P034NEENMD09F',
 };
 
 try {
-  const { result, ...httpResponse } = await loyaltyApi.accumulateLoyaltyPoints(accountId, body);
+  const { result, ...httpResponse } = await loyaltyApi.accumulateLoyaltyPoints(
+    accountId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -274,22 +269,23 @@ async adjustLoyaltyPoints(
 
 ```ts
 const accountId = 'account_id2';
-const contentType = null;
-const bodyAdjustPoints: LoyaltyEventAdjustPoints = {
-  points: 10,
-};
-bodyAdjustPoints.reason = 'Complimentary points';
 
 const body: AdjustLoyaltyPointsRequest = {
   idempotencyKey: 'bc29a517-3dc9-450e-aa76-fae39ee849d1',
-  adjustPoints: bodyAdjustPoints,
+  adjustPoints: {
+    points: 10,
+    reason: 'Complimentary points',
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await loyaltyApi.adjustLoyaltyPoints(accountId, body);
+  const { result, ...httpResponse } = await loyaltyApi.adjustLoyaltyPoints(
+    accountId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -330,26 +326,22 @@ async searchLoyaltyEvents(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryFilterOrderFilter: LoyaltyEventOrderFilter = {
-  orderId: 'PyATxhYLfsMqpVkcKJITPydgEYfZY',
+const body: SearchLoyaltyEventsRequest = {
+  query: {
+    filter: {
+      orderFilter: {
+        orderId: 'PyATxhYLfsMqpVkcKJITPydgEYfZY',
+      },
+    },
+  },
+  limit: 30,
 };
-
-const bodyQueryFilter: LoyaltyEventFilter = {};
-bodyQueryFilter.orderFilter = bodyQueryFilterOrderFilter;
-
-const bodyQuery: LoyaltyEventQuery = {};
-bodyQuery.filter = bodyQueryFilter;
-
-const body: SearchLoyaltyEventsRequest = {};
-body.query = bodyQuery;
-body.limit = 30;
 
 try {
   const { result, ...httpResponse } = await loyaltyApi.searchLoyaltyEvents(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -390,7 +382,7 @@ try {
   const { result, ...httpResponse } = await loyaltyApi.listLoyaltyPrograms();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -427,11 +419,12 @@ async retrieveLoyaltyProgram(
 
 ```ts
 const programId = 'program_id0';
+
 try {
   const { result, ...httpResponse } = await loyaltyApi.retrieveLoyaltyProgram(programId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -482,16 +475,20 @@ async calculateLoyaltyPoints(
 
 ```ts
 const programId = 'program_id0';
-const contentType = null;
-const body: CalculateLoyaltyPointsRequest = {};
-body.orderId = 'RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY';
-body.loyaltyAccountId = '79b807d2-d786-46a9-933b-918028d7a8c5';
+
+const body: CalculateLoyaltyPointsRequest = {
+  orderId: 'RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY',
+  loyaltyAccountId: '79b807d2-d786-46a9-933b-918028d7a8c5',
+};
 
 try {
-  const { result, ...httpResponse } = await loyaltyApi.calculateLoyaltyPoints(programId, body);
+  const { result, ...httpResponse } = await loyaltyApi.calculateLoyaltyPoints(
+    programId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -533,11 +530,12 @@ async listLoyaltyPromotions(
 
 ```ts
 const programId = 'program_id0';
+
 try {
   const { result, ...httpResponse } = await loyaltyApi.listLoyaltyPromotions(programId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -579,50 +577,44 @@ async createLoyaltyPromotion(
 
 ```ts
 const programId = 'program_id0';
-const contentType = null;
-const bodyLoyaltyPromotionIncentivePointsMultiplierData: LoyaltyPromotionIncentivePointsMultiplierData = {
-  pointsMultiplier: 3,
-};
-
-const bodyLoyaltyPromotionIncentive: LoyaltyPromotionIncentive = {
-  type: 'POINTS_MULTIPLIER',
-};
-bodyLoyaltyPromotionIncentive.pointsMultiplierData = bodyLoyaltyPromotionIncentivePointsMultiplierData;
-
-const bodyLoyaltyPromotionAvailableTimeTimePeriods: string[] = ['BEGIN:VEVENT\nDTSTART:20220816T160000\nDURATION:PT2H\nRRULE:FREQ=WEEKLY;BYDAY=TU\nEND:VEVENT'];
-const bodyLoyaltyPromotionAvailableTime: LoyaltyPromotionAvailableTimeData = {
-  timePeriods: bodyLoyaltyPromotionAvailableTimeTimePeriods,
-};
-
-const bodyLoyaltyPromotionTriggerLimit: LoyaltyPromotionTriggerLimit = {
-  times: 1,
-};
-bodyLoyaltyPromotionTriggerLimit.interval = 'DAY';
-
-const bodyLoyaltyPromotionMinimumSpendAmountMoney: Money = {};
-bodyLoyaltyPromotionMinimumSpendAmountMoney.amount = BigInt(2000);
-bodyLoyaltyPromotionMinimumSpendAmountMoney.currency = 'USD';
-
-const bodyLoyaltyPromotionQualifyingCategoryIds: string[] = ['XTQPYLR3IIU9C44VRCB3XD12'];
-const bodyLoyaltyPromotion: LoyaltyPromotion = {
-  name: 'Tuesday Happy Hour Promo',
-  incentive: bodyLoyaltyPromotionIncentive,
-  availableTime: bodyLoyaltyPromotionAvailableTime,
-};
-bodyLoyaltyPromotion.triggerLimit = bodyLoyaltyPromotionTriggerLimit;
-bodyLoyaltyPromotion.minimumSpendAmountMoney = bodyLoyaltyPromotionMinimumSpendAmountMoney;
-bodyLoyaltyPromotion.qualifyingCategoryIds = bodyLoyaltyPromotionQualifyingCategoryIds;
 
 const body: CreateLoyaltyPromotionRequest = {
-  loyaltyPromotion: bodyLoyaltyPromotion,
+  loyaltyPromotion: {
+    name: 'Tuesday Happy Hour Promo',
+    incentive: {
+      type: 'POINTS_MULTIPLIER',
+      pointsMultiplierData: {
+        pointsMultiplier: 3,
+      },
+    },
+    availableTime: {
+      timePeriods: [
+        'BEGIN:VEVENT\nDTSTART:20220816T160000\nDURATION:PT2H\nRRULE:FREQ=WEEKLY;BYDAY=TU\nEND:VEVENT'
+      ],
+    },
+    triggerLimit: {
+      times: 1,
+      interval: 'DAY',
+    },
+    minimumSpendAmountMoney: {
+      amount: BigInt(2000),
+      currency: 'USD',
+    },
+    qualifyingCategoryIds: [
+      'XTQPYLR3IIU9C44VRCB3XD12'
+    ],
+  },
   idempotencyKey: 'ec78c477-b1c3-4899-a209-a4e71337c996',
 };
 
 try {
-  const { result, ...httpResponse } = await loyaltyApi.createLoyaltyPromotion(programId, body);
+  const { result, ...httpResponse } = await loyaltyApi.createLoyaltyPromotion(
+    programId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -659,12 +651,17 @@ async retrieveLoyaltyPromotion(
 
 ```ts
 const promotionId = 'promotion_id0';
+
 const programId = 'program_id0';
+
 try {
-  const { result, ...httpResponse } = await loyaltyApi.retrieveLoyaltyPromotion(promotionId, programId);
+  const { result, ...httpResponse } = await loyaltyApi.retrieveLoyaltyPromotion(
+    promotionId,
+    programId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -706,12 +703,17 @@ async cancelLoyaltyPromotion(
 
 ```ts
 const promotionId = 'promotion_id0';
+
 const programId = 'program_id0';
+
 try {
-  const { result, ...httpResponse } = await loyaltyApi.cancelLoyaltyPromotion(promotionId, programId);
+  const { result, ...httpResponse } = await loyaltyApi.cancelLoyaltyPromotion(
+    promotionId,
+    programId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -752,15 +754,12 @@ async createLoyaltyReward(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyReward: LoyaltyReward = {
-  loyaltyAccountId: '5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd',
-  rewardTierId: 'e1b39225-9da5-43d1-a5db-782cdd8ad94f',
-};
-bodyReward.orderId = 'RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY';
-
 const body: CreateLoyaltyRewardRequest = {
-  reward: bodyReward,
+  reward: {
+    loyaltyAccountId: '5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd',
+    rewardTierId: 'e1b39225-9da5-43d1-a5db-782cdd8ad94f',
+    orderId: 'RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY',
+  },
   idempotencyKey: '18c2e5ea-a620-4b1f-ad60-7b167285e451',
 };
 
@@ -768,7 +767,7 @@ try {
   const { result, ...httpResponse } = await loyaltyApi.createLoyaltyReward(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -808,20 +807,18 @@ async searchLoyaltyRewards(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQuery: SearchLoyaltyRewardsRequestLoyaltyRewardQuery = {
-  loyaltyAccountId: '5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd',
+const body: SearchLoyaltyRewardsRequest = {
+  query: {
+    loyaltyAccountId: '5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd',
+  },
+  limit: 10,
 };
-
-const body: SearchLoyaltyRewardsRequest = {};
-body.query = bodyQuery;
-body.limit = 10;
 
 try {
   const { result, ...httpResponse } = await loyaltyApi.searchLoyaltyRewards(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -864,11 +861,12 @@ async deleteLoyaltyReward(
 
 ```ts
 const rewardId = 'reward_id4';
+
 try {
   const { result, ...httpResponse } = await loyaltyApi.deleteLoyaltyReward(rewardId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -903,11 +901,12 @@ async retrieveLoyaltyReward(
 
 ```ts
 const rewardId = 'reward_id4';
+
 try {
   const { result, ...httpResponse } = await loyaltyApi.retrieveLoyaltyReward(rewardId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -954,17 +953,20 @@ async redeemLoyaltyReward(
 
 ```ts
 const rewardId = 'reward_id4';
-const contentType = null;
+
 const body: RedeemLoyaltyRewardRequest = {
   idempotencyKey: '98adc7f7-6963-473b-b29c-f3c9cdd7d994',
   locationId: 'P034NEENMD09F',
 };
 
 try {
-  const { result, ...httpResponse } = await loyaltyApi.redeemLoyaltyReward(rewardId, body);
+  const { result, ...httpResponse } = await loyaltyApi.redeemLoyaltyReward(
+    rewardId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

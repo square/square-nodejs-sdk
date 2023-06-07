@@ -54,6 +54,8 @@ export interface Payout {
   payoutFee?: PayoutFee[] | null;
   /** The calendar date, in ISO 8601 format (YYYY-MM-DD), when the payout is due to arrive in the seller’s banking destination. */
   arrivalDate?: string | null;
+  /** A unique ID for each `Payout` object that might also appear on the seller’s bank statement. You can use this ID to automate the process of reconciling each payout with the corresponding line item on the bank statement. */
+  endToEndId?: string | null;
 }
 
 export const payoutSchema: Schema<Payout> = object({
@@ -71,4 +73,5 @@ export const payoutSchema: Schema<Payout> = object({
     optional(nullable(array(lazy(() => payoutFeeSchema)))),
   ],
   arrivalDate: ['arrival_date', optional(nullable(string()))],
+  endToEndId: ['end_to_end_id', optional(nullable(string()))],
 });

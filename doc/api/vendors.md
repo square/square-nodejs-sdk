@@ -44,17 +44,18 @@ async bulkCreateVendors(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyVendors: Record<string, Vendor> = {};
 const body: BulkCreateVendorsRequest = {
-  vendors: bodyVendors,
+  vendors: {
+    'key0': {},
+    'key1': {}
+  },
 };
 
 try {
   const { result, ...httpResponse } = await vendorsApi.bulkCreateVendors(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -88,16 +89,17 @@ async bulkRetrieveVendors(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyVendorIds: string[] = ['INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4'];
-const body: BulkRetrieveVendorsRequest = {};
-body.vendorIds = bodyVendorIds;
+const body: BulkRetrieveVendorsRequest = {
+  vendorIds: [
+    'INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4'
+  ],
+};
 
 try {
   const { result, ...httpResponse } = await vendorsApi.bulkRetrieveVendors(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -131,17 +133,22 @@ async bulkUpdateVendors(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyVendors: Record<string, UpdateVendorRequest> = {};
 const body: BulkUpdateVendorsRequest = {
-  vendors: bodyVendors,
+  vendors: {
+    'key0': {
+      vendor: {},
+    },
+    'key1': {
+      vendor: {},
+    }
+  },
 };
 
 try {
   const { result, ...httpResponse } = await vendorsApi.bulkUpdateVendors(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -175,7 +182,6 @@ async createVendor(
 ## Example Usage
 
 ```ts
-const contentType = null;
 const body: CreateVendorRequest = {
   idempotencyKey: 'idempotency_key2',
 };
@@ -184,7 +190,7 @@ try {
   const { result, ...httpResponse } = await vendorsApi.createVendor(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -218,14 +224,13 @@ async searchVendors(
 ## Example Usage
 
 ```ts
-const contentType = null;
 const body: SearchVendorsRequest = {};
 
 try {
   const { result, ...httpResponse } = await vendorsApi.searchVendors(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -260,11 +265,12 @@ async retrieveVendor(
 
 ```ts
 const vendorId = 'vendor_id8';
+
 try {
   const { result, ...httpResponse } = await vendorsApi.retrieveVendor(vendorId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -300,24 +306,26 @@ async updateVendor(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyVendor: Vendor = {};
-bodyVendor.id = 'INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4';
-bodyVendor.name = 'Jack\'s Chicken Shack';
-bodyVendor.version = 1;
-bodyVendor.status = 'ACTIVE';
-
 const body: UpdateVendorRequest = {
-  vendor: bodyVendor,
+  vendor: {
+    id: 'INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4',
+    name: 'Jack\'s Chicken Shack',
+    version: 1,
+    status: 'ACTIVE',
+  },
+  idempotencyKey: '8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe',
 };
-body.idempotencyKey = '8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe';
 
 const vendorId = 'vendor_id8';
+
 try {
-  const { result, ...httpResponse } = await vendorsApi.updateVendor(body, vendorId);
+  const { result, ...httpResponse } = await vendorsApi.updateVendor(
+    body,
+    vendorId
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

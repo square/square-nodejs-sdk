@@ -42,7 +42,7 @@ Defines the response body returned from the [SearchCatalogItems](../../doc/api/c
   ],
   "items": [
     {
-      "type": "PRODUCT_SET",
+      "type": "DISCOUNT",
       "id": "id7",
       "updated_at": "updated_at7",
       "version": 143,
@@ -68,7 +68,7 @@ Defines the response body returned from the [SearchCatalogItems](../../doc/api/c
       ]
     },
     {
-      "type": "PRICING_RULE",
+      "type": "TAX",
       "id": "id8",
       "updated_at": "updated_at6",
       "version": 144,

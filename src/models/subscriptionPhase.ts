@@ -9,11 +9,12 @@ import {
   string,
 } from '../schema';
 import { Money, moneySchema } from './money';
+import {
+  SubscriptionPricing,
+  subscriptionPricingSchema,
+} from './subscriptionPricing';
 
-/**
- * Describes a phase in a subscription plan. For more information, see
- * [Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan).
- */
+/** Describes a phase in a subscription plan variation. For more information, see [Subscription Plans and Variations](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations). */
 export interface SubscriptionPhase {
   /** The Square-assigned ID of the subscription phase. This field cannot be changed after a `SubscriptionPhase` is created. */
   uid?: string | null;
@@ -32,6 +33,8 @@ export interface SubscriptionPhase {
   recurringPriceMoney?: Money;
   /** The position this phase appears in the sequence of phases defined for the plan, indexed from 0. This field cannot be changed after a `SubscriptionPhase` is created. */
   ordinal?: bigint | null;
+  /** Describes the pricing for the subscription. */
+  pricing?: SubscriptionPricing;
 }
 
 export const subscriptionPhaseSchema: Schema<SubscriptionPhase> = object({
@@ -43,4 +46,5 @@ export const subscriptionPhaseSchema: Schema<SubscriptionPhase> = object({
     optional(lazy(() => moneySchema)),
   ],
   ordinal: ['ordinal', optional(nullable(bigint()))],
+  pricing: ['pricing', optional(lazy(() => subscriptionPricingSchema))],
 });

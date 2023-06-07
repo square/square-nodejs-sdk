@@ -27,7 +27,7 @@ A group of variations for a `CatalogItem`.
   "show_colors": false,
   "values": [
     {
-      "type": "MODIFIER",
+      "type": "TAX",
       "id": "id0",
       "updated_at": "updated_at6",
       "version": 100,
@@ -71,7 +71,7 @@ A group of variations for a `CatalogItem`.
       ]
     },
     {
-      "type": "MODIFIER_LIST",
+      "type": "ITEM_VARIATION",
       "id": "id1",
       "updated_at": "updated_at7",
       "version": 101,
@@ -100,7 +100,7 @@ A group of variations for a `CatalogItem`.
       ]
     },
     {
-      "type": "DISCOUNT",
+      "type": "CATEGORY",
       "id": "id2",
       "updated_at": "updated_at8",
       "version": 102,

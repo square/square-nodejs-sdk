@@ -50,11 +50,11 @@ export class OAuthApi extends BaseApi {
    * Authorization: Client APPLICATION_SECRET
    * ```
    *
-   * Replace `APPLICATION_SECRET` with the application secret on the Credentials
+   * Replace `APPLICATION_SECRET` with the application secret on the **Credentials**
    * page in the [Developer Dashboard](https://developer.squareup.com/apps).
    *
-   * @param clientId      Your application ID, which is available in the OAuth page in the
-   *                                                  [Developer Dashboard](https://developer.squareup.com/apps).
+   * @param clientId      Your application ID, which is available on the **OAuth** page in
+   *                                                  the [Developer Dashboard](https://developer.squareup.com/apps).
    * @param body          An object containing the fields to POST for the request.  See
    *                                                  the corresponding object definition for field details.
    * @param authorization Client APPLICATION_SECRET
@@ -97,8 +97,8 @@ export class OAuthApi extends BaseApi {
    * Authorization: Client APPLICATION_SECRET
    * ```
    *
-   * Replace `APPLICATION_SECRET` with the application secret on the OAuth
-   * page for your application on the Developer Dashboard.
+   * Replace `APPLICATION_SECRET` with the application secret on the **OAuth**
+   * page for your application in the Developer Dashboard.
    *
    * @param body          An object containing the fields to POST for the request.  See
    *                                                   the corresponding object definition for field details.
@@ -130,7 +130,7 @@ export class OAuthApi extends BaseApi {
    * The `grant_type` parameter specifies the type of OAuth request. If
    * `grant_type` is `authorization_code`, you must include the authorization
    * code you received when a seller granted you authorization. If `grant_type`
-   * is `refresh_token`, you must provide a valid refresh token. If you are using
+   * is `refresh_token`, you must provide a valid refresh token. If you're using
    * an old version of the Square APIs (prior to March 13, 2019), `grant_type`
    * can be `migration_token` and you must provide a valid migration token.
    *

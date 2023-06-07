@@ -43,6 +43,10 @@ export interface CheckoutOptions {
    */
   appFeeMoney?: Money;
   shippingFee?: ShippingFee;
+  /** Indicates whether to include the `Add coupon` section for the buyer to provide a Square marketing coupon in the payment form. */
+  enableCoupon?: boolean | null;
+  /** Indicates whether to include the `REWARDS` section for the buyer to opt in to loyalty, redeem rewards in the payment form, or both. */
+  enableLoyalty?: boolean | null;
 }
 
 export const checkoutOptionsSchema: Schema<CheckoutOptions> = object({
@@ -67,4 +71,6 @@ export const checkoutOptionsSchema: Schema<CheckoutOptions> = object({
   ],
   appFeeMoney: ['app_fee_money', optional(lazy(() => moneySchema))],
   shippingFee: ['shipping_fee', optional(lazy(() => shippingFeeSchema))],
+  enableCoupon: ['enable_coupon', optional(nullable(boolean()))],
+  enableLoyalty: ['enable_loyalty', optional(nullable(boolean()))],
 });

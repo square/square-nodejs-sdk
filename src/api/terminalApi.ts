@@ -36,6 +36,10 @@ import {
   createTerminalRefundResponseSchema,
 } from '../models/createTerminalRefundResponse';
 import {
+  DismissTerminalActionResponse,
+  dismissTerminalActionResponseSchema,
+} from '../models/dismissTerminalActionResponse';
+import {
   GetTerminalActionResponse,
   getTerminalActionResponseSchema,
 } from '../models/getTerminalActionResponse';
@@ -122,7 +126,7 @@ export class TerminalApi extends BaseApi {
    * Retrieves a Terminal action request by `action_id`. Terminal action requests are available for 30
    * days.
    *
-   * @param actionId  Unique ID for the desired `TerminalAction`
+   * @param actionId  Unique ID for the desired `TerminalAction`.
    * @return Response from the API call
    */
   async getTerminalAction(
@@ -138,7 +142,7 @@ export class TerminalApi extends BaseApi {
   /**
    * Cancels a Terminal action request if the status of the request permits it.
    *
-   * @param actionId  Unique ID for the desired `TerminalAction`
+   * @param actionId  Unique ID for the desired `TerminalAction`.
    * @return Response from the API call
    */
   async cancelTerminalAction(
@@ -149,6 +153,25 @@ export class TerminalApi extends BaseApi {
     const mapped = req.prepareArgs({ actionId: [actionId, string()] });
     req.appendTemplatePath`/v2/terminals/actions/${mapped.actionId}/cancel`;
     return req.callAsJson(cancelTerminalActionResponseSchema, requestOptions);
+  }
+
+  /**
+   * Dismisses a Terminal action request if the status and type of the request permits it.
+   *
+   * See [Link and Dismiss Actions](https://developer.squareup.com/docs/terminal-api/advanced-
+   * features/custom-workflows/link-and-dismiss-actions) for more details.
+   *
+   * @param actionId  Unique ID for the `TerminalAction` associated with the waiting dialog to be dismissed.
+   * @return Response from the API call
+   */
+  async dismissTerminalAction(
+    actionId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<DismissTerminalActionResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({ actionId: [actionId, string()] });
+    req.appendTemplatePath`/v2/terminals/actions/${mapped.actionId}/dismiss`;
+    return req.callAsJson(dismissTerminalActionResponseSchema, requestOptions);
   }
 
   /**

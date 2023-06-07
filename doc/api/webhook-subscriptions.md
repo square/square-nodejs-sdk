@@ -49,7 +49,7 @@ try {
   const { result, ...httpResponse } = await webhookSubscriptionsApi.listWebhookEventTypes();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -90,11 +90,14 @@ async listWebhookSubscriptions(
 
 ```ts
 const includeDisabled = false;
+
 try {
-  const { result, ...httpResponse } = await webhookSubscriptionsApi.listWebhookSubscriptions(None, includeDisabled);
+  const { result, ...httpResponse } = await webhookSubscriptionsApi.listWebhookSubscriptions(
+    includeDisabled
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -128,24 +131,24 @@ async createWebhookSubscription(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodySubscriptionEventTypes: string[] = ['payment.created', 'payment.updated'];
-const bodySubscription: WebhookSubscription = {};
-bodySubscription.name = 'Example Webhook Subscription';
-bodySubscription.eventTypes = bodySubscriptionEventTypes;
-bodySubscription.notificationUrl = 'https://example-webhook-url.com';
-bodySubscription.apiVersion = '2021-12-15';
-
 const body: CreateWebhookSubscriptionRequest = {
-  subscription: bodySubscription,
+  subscription: {
+    name: 'Example Webhook Subscription',
+    eventTypes: [
+      'payment.created',
+      'payment.updated'
+    ],
+    notificationUrl: 'https://example-webhook-url.com',
+    apiVersion: '2021-12-15',
+  },
+  idempotencyKey: '63f84c6c-2200-4c99-846c-2670a1311fbf',
 };
-body.idempotencyKey = '63f84c6c-2200-4c99-846c-2670a1311fbf';
 
 try {
   const { result, ...httpResponse } = await webhookSubscriptionsApi.createWebhookSubscription(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -180,11 +183,12 @@ async deleteWebhookSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
+
 try {
   const { result, ...httpResponse } = await webhookSubscriptionsApi.deleteWebhookSubscription(subscriptionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -219,11 +223,12 @@ async retrieveWebhookSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
+
 try {
   const { result, ...httpResponse } = await webhookSubscriptionsApi.retrieveWebhookSubscription(subscriptionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -260,19 +265,22 @@ async updateWebhookSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
-const contentType = null;
-const bodySubscription: WebhookSubscription = {};
-bodySubscription.name = 'Updated Example Webhook Subscription';
-bodySubscription.enabled = false;
 
-const body: UpdateWebhookSubscriptionRequest = {};
-body.subscription = bodySubscription;
+const body: UpdateWebhookSubscriptionRequest = {
+  subscription: {
+    name: 'Updated Example Webhook Subscription',
+    enabled: false,
+  },
+};
 
 try {
-  const { result, ...httpResponse } = await webhookSubscriptionsApi.updateWebhookSubscription(subscriptionId, body);
+  const { result, ...httpResponse } = await webhookSubscriptionsApi.updateWebhookSubscription(
+    subscriptionId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -309,15 +317,19 @@ async updateWebhookSubscriptionSignatureKey(
 
 ```ts
 const subscriptionId = 'subscription_id0';
-const contentType = null;
-const body: UpdateWebhookSubscriptionSignatureKeyRequest = {};
-body.idempotencyKey = 'ed80ae6b-0654-473b-bbab-a39aee89a60d';
+
+const body: UpdateWebhookSubscriptionSignatureKeyRequest = {
+  idempotencyKey: 'ed80ae6b-0654-473b-bbab-a39aee89a60d',
+};
 
 try {
-  const { result, ...httpResponse } = await webhookSubscriptionsApi.updateWebhookSubscriptionSignatureKey(subscriptionId, body);
+  const { result, ...httpResponse } = await webhookSubscriptionsApi.updateWebhookSubscriptionSignatureKey(
+    subscriptionId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -354,15 +366,19 @@ async testWebhookSubscription(
 
 ```ts
 const subscriptionId = 'subscription_id0';
-const contentType = null;
-const body: TestWebhookSubscriptionRequest = {};
-body.eventType = 'payment.created';
+
+const body: TestWebhookSubscriptionRequest = {
+  eventType: 'payment.created',
+};
 
 try {
-  const { result, ...httpResponse } = await webhookSubscriptionsApi.testWebhookSubscription(subscriptionId, body);
+  const { result, ...httpResponse } = await webhookSubscriptionsApi.testWebhookSubscription(
+    subscriptionId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

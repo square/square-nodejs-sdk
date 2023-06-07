@@ -1,9 +1,6 @@
 import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Error, errorSchema } from './error';
-import {
-  SubscriptionEvent,
-  subscriptionEventSchema,
-} from './subscriptionEvent';
+import { SubscriptionEvent, subscriptionEventSchema } from './subscriptionEvent';
 
 /**
  * Defines output parameters in a response from the
@@ -18,7 +15,7 @@ export interface ListSubscriptionEventsResponse {
    * When the total number of resulting subscription events exceeds the limit of a paged response,
    * the response includes a cursor for you to use in a subsequent request to fetch the next set of events.
    * If the cursor is unset, the response contains the last page of the results.
-   * For more information, see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+   * For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
    */
   cursor?: string;
 }

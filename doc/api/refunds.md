@@ -63,7 +63,7 @@ try {
   const { result, ...httpResponse } = await refundsApi.listPaymentRefunds();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -100,28 +100,25 @@ async refundPayment(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyAmountMoney: Money = {};
-bodyAmountMoney.amount = BigInt(1000);
-bodyAmountMoney.currency = 'USD';
-
-const bodyAppFeeMoney: Money = {};
-bodyAppFeeMoney.amount = BigInt(10);
-bodyAppFeeMoney.currency = 'USD';
-
 const body: RefundPaymentRequest = {
   idempotencyKey: '9b7f2dcf-49da-4411-b23e-a2d6af21333a',
-  amountMoney: bodyAmountMoney,
+  amountMoney: {
+    amount: BigInt(1000),
+    currency: 'USD',
+  },
+  appFeeMoney: {
+    amount: BigInt(10),
+    currency: 'USD',
+  },
+  paymentId: 'R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY',
+  reason: 'Example',
 };
-body.appFeeMoney = bodyAppFeeMoney;
-body.paymentId = 'R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY';
-body.reason = 'Example';
 
 try {
   const { result, ...httpResponse } = await refundsApi.refundPayment(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -156,11 +153,12 @@ async getPaymentRefund(
 
 ```ts
 const refundId = 'refund_id4';
+
 try {
   const { result, ...httpResponse } = await refundsApi.getPaymentRefund(refundId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

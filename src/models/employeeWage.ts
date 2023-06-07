@@ -1,10 +1,7 @@
 import { lazy, nullable, object, optional, Schema, string } from '../schema';
 import { Money, moneySchema } from './money';
 
-/**
- * The hourly wage rate that an employee earns on a `Shift` for doing the job
- * specified by the `title` property of this object. Deprecated at version 2020-08-26. Use `TeamMemberWage` instead.
- */
+/** The hourly wage rate that an employee earns on a `Shift` for doing the job specified by the `title` property of this object. Deprecated at version 2020-08-26. Use [TeamMemberWage](entity:TeamMemberWage). */
 export interface EmployeeWage {
   /** The UUID for this object. */
   id?: string;

@@ -23,10 +23,7 @@ import {
   LoyaltyEventExpirePoints,
   loyaltyEventExpirePointsSchema,
 } from './loyaltyEventExpirePoints';
-import {
-  LoyaltyEventOther,
-  loyaltyEventOtherSchema,
-} from './loyaltyEventOther';
+import { LoyaltyEventOther, loyaltyEventOtherSchema } from './loyaltyEventOther';
 import {
   LoyaltyEventRedeemReward,
   loyaltyEventRedeemRewardSchema,

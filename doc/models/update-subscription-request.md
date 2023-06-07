@@ -12,7 +12,7 @@ Defines input parameters in a request to the
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `subscription` | [`Subscription \| undefined`](../../doc/models/subscription.md) | Optional | Represents a subscription to a subscription plan by a subscriber.<br><br>For an overview of the `Subscription` type, see<br>[Subscription object](https://developer.squareup.com/docs/subscriptions-api/overview#subscription-object-overview). |
+| `subscription` | [`Subscription \| undefined`](../../doc/models/subscription.md) | Optional | Represents a subscription purchased by a customer.<br><br>For more information, see<br>[Manage Subscriptions](https://developer.squareup.com/docs/subscriptions-api/manage-subscriptions). |
 
 ## Example (as JSON)
 
@@ -27,7 +27,7 @@ Defines input parameters in a request to the
     "version": 1594155459464,
     "id": "id4",
     "location_id": "location_id8",
-    "plan_id": "plan_id6",
+    "plan_variation_id": "plan_variation_id8",
     "customer_id": "customer_id2",
     "start_date": "start_date8"
   }

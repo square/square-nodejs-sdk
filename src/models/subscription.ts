@@ -9,6 +9,7 @@ import {
   string,
 } from '../schema';
 import { Money, moneySchema } from './money';
+import { Phase, phaseSchema } from './phase';
 import {
   SubscriptionAction,
   subscriptionActionSchema,
@@ -19,17 +20,17 @@ import {
 } from './subscriptionSource';
 
 /**
- * Represents a subscription to a subscription plan by a subscriber.
- * For an overview of the `Subscription` type, see
- * [Subscription object](https://developer.squareup.com/docs/subscriptions-api/overview#subscription-object-overview).
+ * Represents a subscription purchased by a customer.
+ * For more information, see
+ * [Manage Subscriptions](https://developer.squareup.com/docs/subscriptions-api/manage-subscriptions).
  */
 export interface Subscription {
   /** The Square-assigned ID of the subscription. */
   id?: string;
   /** The ID of the location associated with the subscription. */
   locationId?: string;
-  /** The ID of the subscribed-to [subscription plan](entity:CatalogSubscriptionPlan). */
-  planId?: string;
+  /** The ID of the subscribed-to [subscription plan variation](entity:CatalogSubscriptionPlanVariation). */
+  planVariationId?: string;
   /** The ID of the subscribing [customer](entity:Customer) profile. */
   customerId?: string;
   /** The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) to start the subscription. */
@@ -105,12 +106,14 @@ export interface Subscription {
    * of `include:["actions"]`.
    */
   actions?: SubscriptionAction[] | null;
+  /** array of phases for this subscription */
+  phases?: Phase[];
 }
 
 export const subscriptionSchema: Schema<Subscription> = object({
   id: ['id', optional(string())],
   locationId: ['location_id', optional(string())],
-  planId: ['plan_id', optional(string())],
+  planVariationId: ['plan_variation_id', optional(string())],
   customerId: ['customer_id', optional(string())],
   startDate: ['start_date', optional(string())],
   canceledDate: ['canceled_date', optional(nullable(string()))],
@@ -131,4 +134,5 @@ export const subscriptionSchema: Schema<Subscription> = object({
     'actions',
     optional(nullable(array(lazy(() => subscriptionActionSchema)))),
   ],
+  phases: ['phases', optional(array(lazy(() => phaseSchema)))],
 });

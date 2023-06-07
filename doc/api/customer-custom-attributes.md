@@ -58,7 +58,7 @@ try {
   const { result, ...httpResponse } = await customerCustomAttributesApi.listCustomerCustomAttributeDefinitions();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -102,22 +102,20 @@ async createCustomerCustomAttributeDefinition(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
-bodyCustomAttributeDefinition.key = 'favoritemovie';
-bodyCustomAttributeDefinition.name = 'Favorite Movie';
-bodyCustomAttributeDefinition.description = 'The favorite movie of the customer.';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_HIDDEN';
-
 const body: CreateCustomerCustomAttributeDefinitionRequest = {
-  customAttributeDefinition: bodyCustomAttributeDefinition,
+  customAttributeDefinition: {
+    key: 'favoritemovie',
+    name: 'Favorite Movie',
+    description: 'The favorite movie of the customer.',
+    visibility: 'VISIBILITY_HIDDEN',
+  },
 };
 
 try {
   const { result, ...httpResponse } = await customerCustomAttributesApi.createCustomerCustomAttributeDefinition(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -157,11 +155,12 @@ async deleteCustomerCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
+
 try {
   const { result, ...httpResponse } = await customerCustomAttributesApi.deleteCustomerCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -202,11 +201,12 @@ async retrieveCustomerCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
+
 try {
   const { result, ...httpResponse } = await customerCustomAttributesApi.retrieveCustomerCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -249,20 +249,22 @@ async updateCustomerCustomAttributeDefinition(
 
 ```ts
 const key = 'key0';
-const contentType = null;
-const bodyCustomAttributeDefinition: CustomAttributeDefinition = {};
-bodyCustomAttributeDefinition.description = 'Update the description as desired.';
-bodyCustomAttributeDefinition.visibility = 'VISIBILITY_READ_ONLY';
 
 const body: UpdateCustomerCustomAttributeDefinitionRequest = {
-  customAttributeDefinition: bodyCustomAttributeDefinition,
+  customAttributeDefinition: {
+    description: 'Update the description as desired.',
+    visibility: 'VISIBILITY_READ_ONLY',
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await customerCustomAttributesApi.updateCustomerCustomAttributeDefinition(key, body);
+  const { result, ...httpResponse } = await customerCustomAttributesApi.updateCustomerCustomAttributeDefinition(
+    key,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -309,17 +311,24 @@ async bulkUpsertCustomerCustomAttributes(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyValues: Record<string, BulkUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest> = {};
 const body: BulkUpsertCustomerCustomAttributesRequest = {
-  values: bodyValues,
+  values: {
+    'key0': {
+      customerId: 'customer_id2',
+      customAttribute: {},
+    },
+    'key1': {
+      customerId: 'customer_id3',
+      customAttribute: {},
+    }
+  },
 };
 
 try {
   const { result, ...httpResponse } = await customerCustomAttributesApi.bulkUpsertCustomerCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -367,12 +376,17 @@ async listCustomerCustomAttributes(
 
 ```ts
 const customerId = 'customer_id8';
+
 const withDefinitions = false;
+
 try {
-  const { result, ...httpResponse } = await customerCustomAttributesApi.listCustomerCustomAttributes(customerId, None, None, withDefinitions);
+  const { result, ...httpResponse } = await customerCustomAttributesApi.listCustomerCustomAttributes(
+    customerId,
+    withDefinitions
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -413,12 +427,17 @@ async deleteCustomerCustomAttribute(
 
 ```ts
 const customerId = 'customer_id8';
+
 const key = 'key0';
+
 try {
-  const { result, ...httpResponse } = await customerCustomAttributesApi.deleteCustomerCustomAttribute(customerId, key);
+  const { result, ...httpResponse } = await customerCustomAttributesApi.deleteCustomerCustomAttribute(
+    customerId,
+    key
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -466,13 +485,20 @@ async retrieveCustomerCustomAttribute(
 
 ```ts
 const customerId = 'customer_id8';
+
 const key = 'key0';
+
 const withDefinition = false;
+
 try {
-  const { result, ...httpResponse } = await customerCustomAttributesApi.retrieveCustomerCustomAttribute(customerId, key, withDefinition);
+  const { result, ...httpResponse } = await customerCustomAttributesApi.retrieveCustomerCustomAttribute(
+    customerId,
+    key,
+    withDefinition
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -519,19 +545,22 @@ async upsertCustomerCustomAttribute(
 
 ```ts
 const customerId = 'customer_id8';
+
 const key = 'key0';
-const contentType = null;
-const bodyCustomAttribute: CustomAttribute = {};
 
 const body: UpsertCustomerCustomAttributeRequest = {
-  customAttribute: bodyCustomAttribute,
+  customAttribute: {},
 };
 
 try {
-  const { result, ...httpResponse } = await customerCustomAttributesApi.upsertCustomerCustomAttribute(customerId, key, body);
+  const { result, ...httpResponse } = await customerCustomAttributesApi.upsertCustomerCustomAttribute(
+    customerId,
+    key,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

@@ -26,7 +26,7 @@
       },
       "device_id": "device_id0",
       "status": "status4",
-      "type": "SAVE_CARD"
+      "type": "QR_CODE"
     },
     "sort": {
       "sort_order": "DESC"

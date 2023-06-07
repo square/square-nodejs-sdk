@@ -61,7 +61,7 @@ try {
   const { result, ...httpResponse } = await laborApi.listBreakTypes();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -108,24 +108,21 @@ async createBreakType(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyBreakType: BreakType = {
-  locationId: 'CGJN03P1D08GF',
-  breakName: 'Lunch Break',
-  expectedDuration: 'PT30M',
-  isPaid: true,
-};
-
 const body: CreateBreakTypeRequest = {
-  breakType: bodyBreakType,
+  breakType: {
+    locationId: 'CGJN03P1D08GF',
+    breakName: 'Lunch Break',
+    expectedDuration: 'PT30M',
+    isPaid: true,
+  },
+  idempotencyKey: 'PAD3NG5KSN2GL',
 };
-body.idempotencyKey = 'PAD3NG5KSN2GL';
 
 try {
   const { result, ...httpResponse } = await laborApi.createBreakType(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -162,11 +159,12 @@ async deleteBreakType(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await laborApi.deleteBreakType(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -201,11 +199,12 @@ async getBreakType(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await laborApi.getBreakType(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -242,24 +241,25 @@ async updateBreakType(
 
 ```ts
 const id = 'id0';
-const contentType = null;
-const bodyBreakType: BreakType = {
-  locationId: '26M7H24AZ9N6R',
-  breakName: 'Lunch',
-  expectedDuration: 'PT50M',
-  isPaid: true,
-};
-bodyBreakType.version = 1;
 
 const body: UpdateBreakTypeRequest = {
-  breakType: bodyBreakType,
+  breakType: {
+    locationId: '26M7H24AZ9N6R',
+    breakName: 'Lunch',
+    expectedDuration: 'PT50M',
+    isPaid: true,
+    version: 1,
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await laborApi.updateBreakType(id, body);
+  const { result, ...httpResponse } = await laborApi.updateBreakType(
+    id,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -303,7 +303,7 @@ try {
   const { result, ...httpResponse } = await laborApi.listEmployeeWages();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -340,11 +340,12 @@ async getEmployeeWage(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await laborApi.getEmployeeWage(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -396,47 +397,38 @@ async createShift(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyShiftWageHourlyRate: Money = {};
-bodyShiftWageHourlyRate.amount = BigInt(1100);
-bodyShiftWageHourlyRate.currency = 'USD';
-
-const bodyShiftWage: ShiftWage = {};
-bodyShiftWage.title = 'Barista';
-bodyShiftWage.hourlyRate = bodyShiftWageHourlyRate;
-
-const bodyShiftBreaks: Break[] = [];
-
-const bodyShiftbreaks0: Break = {
-  startAt: '2019-01-25T11:11:00+00:00',
-  breakTypeId: 'REGS1EQR1TPZ5',
-  name: 'Tea Break',
-  expectedDuration: 'PT5M',
-  isPaid: true,
-};
-bodyShiftbreaks0.endAt = '2019-01-25T11:16:00+00:00';
-
-bodyShiftBreaks[0] = bodyShiftbreaks0;
-
-const bodyShift: Shift = {
-  startAt: '2019-01-25T08:11:00+00:00',
-};
-bodyShift.locationId = 'PAA1RJZZKXBFG';
-bodyShift.endAt = '2019-01-25T18:11:00+00:00';
-bodyShift.wage = bodyShiftWage;
-bodyShift.breaks = bodyShiftBreaks;
-bodyShift.teamMemberId = 'ormj0jJJZ5OZIzxrZYJI';
-
 const body: CreateShiftRequest = {
-  shift: bodyShift,
+  shift: {
+    startAt: '2019-01-25T08:11:00+00:00',
+    locationId: 'PAA1RJZZKXBFG',
+    endAt: '2019-01-25T18:11:00+00:00',
+    wage: {
+      title: 'Barista',
+      hourlyRate: {
+        amount: BigInt(1100),
+        currency: 'USD',
+      },
+    },
+    breaks: [
+      {
+        startAt: '2019-01-25T11:11:00+00:00',
+        breakTypeId: 'REGS1EQR1TPZ5',
+        name: 'Tea Break',
+        expectedDuration: 'PT5M',
+        isPaid: true,
+        endAt: '2019-01-25T11:16:00+00:00',
+      }
+    ],
+    teamMemberId: 'ormj0jJJZ5OZIzxrZYJI',
+  },
+  idempotencyKey: 'HIDSNG5KS478L',
 };
-body.idempotencyKey = 'HIDSNG5KS478L';
 
 try {
   const { result, ...httpResponse } = await laborApi.createShift(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -485,31 +477,27 @@ async searchShifts(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryFilterWorkdayDateRange: DateRange = {};
-bodyQueryFilterWorkdayDateRange.startDate = '2019-01-20';
-bodyQueryFilterWorkdayDateRange.endDate = '2019-02-03';
-
-const bodyQueryFilterWorkday: ShiftWorkday = {};
-bodyQueryFilterWorkday.dateRange = bodyQueryFilterWorkdayDateRange;
-bodyQueryFilterWorkday.matchShiftsBy = 'START_AT';
-bodyQueryFilterWorkday.defaultTimezone = 'America/Los_Angeles';
-
-const bodyQueryFilter: ShiftFilter = {};
-bodyQueryFilter.workday = bodyQueryFilterWorkday;
-
-const bodyQuery: ShiftQuery = {};
-bodyQuery.filter = bodyQueryFilter;
-
-const body: SearchShiftsRequest = {};
-body.query = bodyQuery;
-body.limit = 100;
+const body: SearchShiftsRequest = {
+  query: {
+    filter: {
+      workday: {
+        dateRange: {
+          startDate: '2019-01-20',
+          endDate: '2019-02-03',
+        },
+        matchShiftsBy: 'START_AT',
+        defaultTimezone: 'America/Los_Angeles',
+      },
+    },
+  },
+  limit: 100,
+};
 
 try {
   const { result, ...httpResponse } = await laborApi.searchShifts(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -544,11 +532,12 @@ async deleteShift(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await laborApi.deleteShift(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -583,11 +572,12 @@ async getShift(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await laborApi.getShift(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -630,48 +620,43 @@ async updateShift(
 
 ```ts
 const id = 'id0';
-const contentType = null;
-const bodyShiftWageHourlyRate: Money = {};
-bodyShiftWageHourlyRate.amount = BigInt(1500);
-bodyShiftWageHourlyRate.currency = 'USD';
-
-const bodyShiftWage: ShiftWage = {};
-bodyShiftWage.title = 'Bartender';
-bodyShiftWage.hourlyRate = bodyShiftWageHourlyRate;
-
-const bodyShiftBreaks: Break[] = [];
-
-const bodyShiftbreaks0: Break = {
-  startAt: '2019-01-25T11:11:00+00:00',
-  breakTypeId: 'REGS1EQR1TPZ5',
-  name: 'Tea Break',
-  expectedDuration: 'PT5M',
-  isPaid: true,
-};
-bodyShiftbreaks0.id = 'X7GAQYVVRRG6P';
-bodyShiftbreaks0.endAt = '2019-01-25T11:16:00+00:00';
-
-bodyShiftBreaks[0] = bodyShiftbreaks0;
-
-const bodyShift: Shift = {
-  startAt: '2019-01-25T08:11:00+00:00',
-};
-bodyShift.locationId = 'PAA1RJZZKXBFG';
-bodyShift.endAt = '2019-01-25T18:11:00+00:00';
-bodyShift.wage = bodyShiftWage;
-bodyShift.breaks = bodyShiftBreaks;
-bodyShift.version = 1;
-bodyShift.teamMemberId = 'ormj0jJJZ5OZIzxrZYJI';
 
 const body: UpdateShiftRequest = {
-  shift: bodyShift,
+  shift: {
+    startAt: '2019-01-25T08:11:00+00:00',
+    locationId: 'PAA1RJZZKXBFG',
+    endAt: '2019-01-25T18:11:00+00:00',
+    wage: {
+      title: 'Bartender',
+      hourlyRate: {
+        amount: BigInt(1500),
+        currency: 'USD',
+      },
+    },
+    breaks: [
+      {
+        startAt: '2019-01-25T11:11:00+00:00',
+        breakTypeId: 'REGS1EQR1TPZ5',
+        name: 'Tea Break',
+        expectedDuration: 'PT5M',
+        isPaid: true,
+        id: 'X7GAQYVVRRG6P',
+        endAt: '2019-01-25T11:16:00+00:00',
+      }
+    ],
+    version: 1,
+    teamMemberId: 'ormj0jJJZ5OZIzxrZYJI',
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await laborApi.updateShift(id, body);
+  const { result, ...httpResponse } = await laborApi.updateShift(
+    id,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -713,7 +698,7 @@ try {
   const { result, ...httpResponse } = await laborApi.listTeamMemberWages();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -748,11 +733,12 @@ async getTeamMemberWage(
 
 ```ts
 const id = 'id0';
+
 try {
   const { result, ...httpResponse } = await laborApi.getTeamMemberWage(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -792,7 +778,7 @@ try {
   const { result, ...httpResponse } = await laborApi.listWorkweekConfigs();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -829,22 +815,23 @@ async updateWorkweekConfig(
 
 ```ts
 const id = 'id0';
-const contentType = null;
-const bodyWorkweekConfig: WorkweekConfig = {
-  startOfWeek: 'MON',
-  startOfDayLocalTime: '10:00',
-};
-bodyWorkweekConfig.version = 10;
 
 const body: UpdateWorkweekConfigRequest = {
-  workweekConfig: bodyWorkweekConfig,
+  workweekConfig: {
+    startOfWeek: 'MON',
+    startOfDayLocalTime: '10:00',
+    version: 10,
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await laborApi.updateWorkweekConfig(id, body);
+  const { result, ...httpResponse } = await laborApi.updateWorkweekConfig(
+    id,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

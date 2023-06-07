@@ -13,7 +13,7 @@ Defines output parameters in a response from the
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Errors encountered during the request. |
-| `subscription` | [`Subscription \| undefined`](../../doc/models/subscription.md) | Optional | Represents a subscription to a subscription plan by a subscriber.<br><br>For an overview of the `Subscription` type, see<br>[Subscription object](https://developer.squareup.com/docs/subscriptions-api/overview#subscription-object-overview). |
+| `subscription` | [`Subscription \| undefined`](../../doc/models/subscription.md) | Optional | Represents a subscription purchased by a customer.<br><br>For more information, see<br>[Manage Subscriptions](https://developer.squareup.com/docs/subscriptions-api/manage-subscriptions). |
 | `actions` | [`SubscriptionAction[] \| undefined`](../../doc/models/subscription-action.md) | Optional | A list of a single `CANCEL` action scheduled for the subscription. |
 
 ## Example (as JSON)
@@ -35,7 +35,8 @@ Defines output parameters in a response from the
     "start_date": "2021-10-20",
     "status": "ACTIVE",
     "timezone": "America/Los_Angeles",
-    "version": 1594311617331
+    "version": 1594311617331,
+    "plan_variation_id": "plan_variation_id8"
   },
   "errors": [
     {
@@ -62,19 +63,61 @@ Defines output parameters in a response from the
       "id": "id9",
       "type": "PAUSE",
       "effective_date": "effective_date1",
-      "new_plan_id": "new_plan_id5"
+      "phases": [
+        {
+          "uid": "uid6",
+          "ordinal": 186,
+          "order_template_id": "order_template_id8",
+          "plan_phase_uid": "plan_phase_uid2"
+        }
+      ],
+      "new_plan_variation_id": "new_plan_variation_id9"
     },
     {
       "id": "id0",
       "type": "CANCEL",
       "effective_date": "effective_date0",
-      "new_plan_id": "new_plan_id6"
+      "phases": [
+        {
+          "uid": "uid5",
+          "ordinal": 185,
+          "order_template_id": "order_template_id7",
+          "plan_phase_uid": "plan_phase_uid1"
+        },
+        {
+          "uid": "uid6",
+          "ordinal": 186,
+          "order_template_id": "order_template_id8",
+          "plan_phase_uid": "plan_phase_uid2"
+        },
+        {
+          "uid": "uid7",
+          "ordinal": 187,
+          "order_template_id": "order_template_id9",
+          "plan_phase_uid": "plan_phase_uid3"
+        }
+      ],
+      "new_plan_variation_id": "new_plan_variation_id0"
     },
     {
       "id": "id1",
       "type": "SWAP_PLAN",
       "effective_date": "effective_date9",
-      "new_plan_id": "new_plan_id7"
+      "phases": [
+        {
+          "uid": "uid4",
+          "ordinal": 184,
+          "order_template_id": "order_template_id6",
+          "plan_phase_uid": "plan_phase_uid0"
+        },
+        {
+          "uid": "uid5",
+          "ordinal": 185,
+          "order_template_id": "order_template_id7",
+          "plan_phase_uid": "plan_phase_uid1"
+        }
+      ],
+      "new_plan_variation_id": "new_plan_variation_id1"
     }
   ]
 }

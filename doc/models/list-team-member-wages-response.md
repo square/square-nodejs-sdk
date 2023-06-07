@@ -29,7 +29,8 @@ a set of `TeamMemberWage` objects.
       },
       "id": "pXS3qCv7BERPnEGedM4S8mhm",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
-      "title": "Manager"
+      "title": "Manager",
+      "job_id": "job_id9"
     },
     {
       "hourly_rate": {
@@ -38,7 +39,8 @@ a set of `TeamMemberWage` objects.
       },
       "id": "rZduCkzYDUVL3ovh1sQgbue6",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
-      "title": "Cook"
+      "title": "Cook",
+      "job_id": "job_id8"
     },
     {
       "hourly_rate": {
@@ -47,7 +49,8 @@ a set of `TeamMemberWage` objects.
       },
       "id": "FxLbs5KpPUHa8wyt5ctjubDX",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
-      "title": "Barista"
+      "title": "Barista",
+      "job_id": "job_id7"
     },
     {
       "hourly_rate": {
@@ -56,7 +59,8 @@ a set of `TeamMemberWage` objects.
       },
       "id": "vD1wCgijMDR3cX5TPnu7VXto",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
-      "title": "Cashier"
+      "title": "Cashier",
+      "job_id": "job_id6"
     }
   ],
   "errors": [

@@ -42,7 +42,7 @@ For a more detailed discussion of the Catalog data model, please see the
 | `pricingRuleData` | [`CatalogPricingRule \| undefined`](../../doc/models/catalog-pricing-rule.md) | Optional | Defines how discounts are automatically applied to a set of items that match the pricing rule<br>during the active time period. |
 | `imageData` | [`CatalogImage \| undefined`](../../doc/models/catalog-image.md) | Optional | An image file to use in Square catalogs. It can be associated with<br>`CatalogItem`, `CatalogItemVariation`, `CatalogCategory`, and `CatalogModifierList` objects.<br>Only the images on items and item variations are exposed in Dashboard.<br>Only the first image on an item is displayed in Square Point of Sale (SPOS).<br>Images on items and variations are displayed through Square Online Store.<br>Images on other object types are for use by 3rd party application developers. |
 | `measurementUnitData` | [`CatalogMeasurementUnit \| undefined`](../../doc/models/catalog-measurement-unit.md) | Optional | Represents the unit used to measure a `CatalogItemVariation` and<br>specifies the precision for decimal quantities. |
-| `subscriptionPlanData` | [`CatalogSubscriptionPlan \| undefined`](../../doc/models/catalog-subscription-plan.md) | Optional | Describes a subscription plan. For more information, see<br>[Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan). |
+| `subscriptionPlanData` | [`CatalogSubscriptionPlan \| undefined`](../../doc/models/catalog-subscription-plan.md) | Optional | Describes a subscription plan. A subscription plan represents what you want to sell in a subscription model, and includes references to each of the associated subscription plan variations.<br>For more information, see [Subscription Plans and Variations](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations). |
 | `itemOptionData` | [`CatalogItemOption \| undefined`](../../doc/models/catalog-item-option.md) | Optional | A group of variations for a `CatalogItem`. |
 | `itemOptionValueData` | [`CatalogItemOptionValue \| undefined`](../../doc/models/catalog-item-option-value.md) | Optional | An enumerated value that can link a<br>`CatalogItemVariation` to an item option as one of<br>its item option values. |
 | `customAttributeDefinitionData` | [`CatalogCustomAttributeDefinition \| undefined`](../../doc/models/catalog-custom-attribute-definition.md) | Optional | Contains information defining a custom attribute. Custom attributes are<br>intended to store additional information about a catalog object or to associate a<br>catalog object with an entity in another system. Do not use custom attributes<br>to store any sensitive information (personally identifiable information, card details, etc.).<br>[Read more about custom attributes](https://developer.squareup.com/docs/catalog-api/add-custom-attributes) |
@@ -52,7 +52,7 @@ For a more detailed discussion of the Catalog data model, please see the
 
 ```json
 {
-  "type": "ITEM_VARIATION",
+  "type": "CATEGORY",
   "id": "id0",
   "item_data": {
     "object": {

@@ -12,14 +12,8 @@ import {
   additionalRecipientSchema,
 } from './additionalRecipient';
 import { Money, moneySchema } from './money';
-import {
-  TenderCardDetails,
-  tenderCardDetailsSchema,
-} from './tenderCardDetails';
-import {
-  TenderCashDetails,
-  tenderCashDetailsSchema,
-} from './tenderCashDetails';
+import { TenderCardDetails, tenderCardDetailsSchema } from './tenderCardDetails';
+import { TenderCashDetails, tenderCashDetailsSchema } from './tenderCashDetails';
 
 /** Represents a tender (i.e., a method of payment) used in a Square transaction. */
 export interface Tender {

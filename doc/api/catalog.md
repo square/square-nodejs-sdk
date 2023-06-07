@@ -64,16 +64,18 @@ async batchDeleteCatalogObjects(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI', 'AA27W3M2GGTF3H6AVPNB77CK'];
-const body: BatchDeleteCatalogObjectsRequest = {};
-body.objectIds = bodyObjectIds;
+const body: BatchDeleteCatalogObjectsRequest = {
+  objectIds: [
+    'W62UWFY35CWMYGVWK6TWJDNI',
+    'AA27W3M2GGTF3H6AVPNB77CK'
+  ],
+};
 
 try {
   const { result, ...httpResponse } = await catalogApi.batchDeleteCatalogObjects(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -112,18 +114,19 @@ async batchRetrieveCatalogObjects(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyObjectIds: string[] = ['W62UWFY35CWMYGVWK6TWJDNI', 'AA27W3M2GGTF3H6AVPNB77CK'];
 const body: BatchRetrieveCatalogObjectsRequest = {
-  objectIds: bodyObjectIds,
+  objectIds: [
+    'W62UWFY35CWMYGVWK6TWJDNI',
+    'AA27W3M2GGTF3H6AVPNB77CK'
+  ],
+  includeRelatedObjects: true,
 };
-body.includeRelatedObjects = true;
 
 try {
   const { result, ...httpResponse } = await catalogApi.batchRetrieveCatalogObjects(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -169,136 +172,114 @@ async batchUpsertCatalogObjects(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyBatches: CatalogObjectBatch[] = [];
-
-const bodybatches0Objects: CatalogObject[] = [];
-
-const bodybatches0objects0ItemDataTaxIds: string[] = ['#SalesTax'];
-const bodybatches0objects0ItemDataVariations: CatalogObject[] = [];
-
-const bodybatches0objects0ItemDatavariations0ItemVariationData: CatalogItemVariation = {};
-bodybatches0objects0ItemDatavariations0ItemVariationData.itemId = '#Tea';
-bodybatches0objects0ItemDatavariations0ItemVariationData.name = 'Mug';
-bodybatches0objects0ItemDatavariations0ItemVariationData.pricingType = 'FIXED_PRICING';
-
-const bodybatches0objects0ItemDatavariations0: CatalogObject = {
-  type: 'ITEM_VARIATION',
-  id: '#Tea_Mug',
-};
-bodybatches0objects0ItemDatavariations0.presentAtAllLocations = true;
-bodybatches0objects0ItemDatavariations0.itemVariationData = bodybatches0objects0ItemDatavariations0ItemVariationData;
-
-bodybatches0objects0ItemDataVariations[0] = bodybatches0objects0ItemDatavariations0;
-
-const bodybatches0objects0ItemData: CatalogItem = {};
-bodybatches0objects0ItemData.name = 'Tea';
-bodybatches0objects0ItemData.categoryId = '#Beverages';
-bodybatches0objects0ItemData.taxIds = bodybatches0objects0ItemDataTaxIds;
-bodybatches0objects0ItemData.variations = bodybatches0objects0ItemDataVariations;
-bodybatches0objects0ItemData.descriptionHtml = '<p><strong>Hot</strong> Leaf Juice</p>';
-
-const bodybatches0objects0: CatalogObject = {
-  type: 'ITEM',
-  id: '#Tea',
-};
-bodybatches0objects0.presentAtAllLocations = true;
-bodybatches0objects0.itemData = bodybatches0objects0ItemData;
-
-bodybatches0Objects[0] = bodybatches0objects0;
-
-const bodybatches0objects1ItemDataTaxIds: string[] = ['#SalesTax'];
-const bodybatches0objects1ItemDataVariations: CatalogObject[] = [];
-
-const bodybatches0objects1ItemDatavariations0ItemVariationData: CatalogItemVariation = {};
-bodybatches0objects1ItemDatavariations0ItemVariationData.itemId = '#Coffee';
-bodybatches0objects1ItemDatavariations0ItemVariationData.name = 'Regular';
-bodybatches0objects1ItemDatavariations0ItemVariationData.pricingType = 'FIXED_PRICING';
-
-const bodybatches0objects1ItemDatavariations0: CatalogObject = {
-  type: 'ITEM_VARIATION',
-  id: '#Coffee_Regular',
-};
-bodybatches0objects1ItemDatavariations0.presentAtAllLocations = true;
-bodybatches0objects1ItemDatavariations0.itemVariationData = bodybatches0objects1ItemDatavariations0ItemVariationData;
-
-bodybatches0objects1ItemDataVariations[0] = bodybatches0objects1ItemDatavariations0;
-
-const bodybatches0objects1ItemDatavariations1ItemVariationData: CatalogItemVariation = {};
-bodybatches0objects1ItemDatavariations1ItemVariationData.itemId = '#Coffee';
-bodybatches0objects1ItemDatavariations1ItemVariationData.name = 'Large';
-bodybatches0objects1ItemDatavariations1ItemVariationData.pricingType = 'FIXED_PRICING';
-
-const bodybatches0objects1ItemDatavariations1: CatalogObject = {
-  type: 'ITEM_VARIATION',
-  id: '#Coffee_Large',
-};
-bodybatches0objects1ItemDatavariations1.presentAtAllLocations = true;
-bodybatches0objects1ItemDatavariations1.itemVariationData = bodybatches0objects1ItemDatavariations1ItemVariationData;
-
-bodybatches0objects1ItemDataVariations[1] = bodybatches0objects1ItemDatavariations1;
-
-const bodybatches0objects1ItemData: CatalogItem = {};
-bodybatches0objects1ItemData.name = 'Coffee';
-bodybatches0objects1ItemData.categoryId = '#Beverages';
-bodybatches0objects1ItemData.taxIds = bodybatches0objects1ItemDataTaxIds;
-bodybatches0objects1ItemData.variations = bodybatches0objects1ItemDataVariations;
-bodybatches0objects1ItemData.descriptionHtml = '<p>Hot <em>Bean Juice</em></p>';
-
-const bodybatches0objects1: CatalogObject = {
-  type: 'ITEM',
-  id: '#Coffee',
-};
-bodybatches0objects1.presentAtAllLocations = true;
-bodybatches0objects1.itemData = bodybatches0objects1ItemData;
-
-bodybatches0Objects[1] = bodybatches0objects1;
-
-const bodybatches0objects2CategoryData: CatalogCategory = {};
-bodybatches0objects2CategoryData.name = 'Beverages';
-
-const bodybatches0objects2: CatalogObject = {
-  type: 'CATEGORY',
-  id: '#Beverages',
-};
-bodybatches0objects2.presentAtAllLocations = true;
-bodybatches0objects2.categoryData = bodybatches0objects2CategoryData;
-
-bodybatches0Objects[2] = bodybatches0objects2;
-
-const bodybatches0objects3TaxData: CatalogTax = {};
-bodybatches0objects3TaxData.name = 'Sales Tax';
-bodybatches0objects3TaxData.calculationPhase = 'TAX_SUBTOTAL_PHASE';
-bodybatches0objects3TaxData.inclusionType = 'ADDITIVE';
-bodybatches0objects3TaxData.percentage = '5.0';
-bodybatches0objects3TaxData.appliesToCustomAmounts = true;
-bodybatches0objects3TaxData.enabled = true;
-
-const bodybatches0objects3: CatalogObject = {
-  type: 'TAX',
-  id: '#SalesTax',
-};
-bodybatches0objects3.presentAtAllLocations = true;
-bodybatches0objects3.taxData = bodybatches0objects3TaxData;
-
-bodybatches0Objects[3] = bodybatches0objects3;
-
-const bodybatches0: CatalogObjectBatch = {
-  objects: bodybatches0Objects,
-};
-
-bodyBatches[0] = bodybatches0;
-
 const body: BatchUpsertCatalogObjectsRequest = {
   idempotencyKey: '789ff020-f723-43a9-b4b5-43b5dc1fa3dc',
-  batches: bodyBatches,
+  batches: [
+    {
+      objects: [
+        {
+          type: 'ITEM',
+          id: '#Tea',
+          presentAtAllLocations: true,
+          itemData: {
+            name: 'Tea',
+            categoryId: '#Beverages',
+            taxIds: [
+              '#SalesTax'
+            ],
+            variations: [
+              {
+                type: 'ITEM_VARIATION',
+                id: '#Tea_Mug',
+                presentAtAllLocations: true,
+                itemVariationData: {
+                  itemId: '#Tea',
+                  name: 'Mug',
+                  pricingType: 'FIXED_PRICING',
+                  priceMoney: {
+                    amount: BigInt(150),
+                    currency: 'USD',
+                  },
+                },
+              }
+            ],
+            descriptionHtml: '<p><strong>Hot</strong> Leaf Juice</p>',
+          },
+        },
+        {
+          type: 'ITEM',
+          id: '#Coffee',
+          presentAtAllLocations: true,
+          itemData: {
+            name: 'Coffee',
+            categoryId: '#Beverages',
+            taxIds: [
+              '#SalesTax'
+            ],
+            variations: [
+              {
+                type: 'ITEM_VARIATION',
+                id: '#Coffee_Regular',
+                presentAtAllLocations: true,
+                itemVariationData: {
+                  itemId: '#Coffee',
+                  name: 'Regular',
+                  pricingType: 'FIXED_PRICING',
+                  priceMoney: {
+                    amount: BigInt(250),
+                    currency: 'USD',
+                  },
+                },
+              },
+              {
+                type: 'ITEM_VARIATION',
+                id: '#Coffee_Large',
+                presentAtAllLocations: true,
+                itemVariationData: {
+                  itemId: '#Coffee',
+                  name: 'Large',
+                  pricingType: 'FIXED_PRICING',
+                  priceMoney: {
+                    amount: BigInt(350),
+                    currency: 'USD',
+                  },
+                },
+              }
+            ],
+            descriptionHtml: '<p>Hot <em>Bean Juice</em></p>',
+          },
+        },
+        {
+          type: 'CATEGORY',
+          id: '#Beverages',
+          presentAtAllLocations: true,
+          categoryData: {
+            name: 'Beverages',
+          },
+        },
+        {
+          type: 'TAX',
+          id: '#SalesTax',
+          presentAtAllLocations: true,
+          taxData: {
+            name: 'Sales Tax',
+            calculationPhase: 'TAX_SUBTOTAL_PHASE',
+            inclusionType: 'ADDITIVE',
+            percentage: '5.0',
+            appliesToCustomAmounts: true,
+            enabled: true,
+          },
+        }
+      ],
+    }
+  ],
 };
 
 try {
   const { result, ...httpResponse } = await catalogApi.batchUpsertCatalogObjects(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -339,26 +320,25 @@ async createCatalogImage(
 ## Example Usage
 
 ```ts
-const requestImageImageData: CatalogImage = {};
-requestImageImageData.caption = 'A picture of a cup of coffee';
-
-const requestImage: CatalogObject = {
-  type: 'IMAGE',
-  id: '#TEMP_ID',
-};
-requestImage.imageData = requestImageImageData;
-
 const request: CreateCatalogImageRequest = {
   idempotencyKey: '528dea59-7bfb-43c1-bd48-4a6bba7dd61f86',
-  image: requestImage,
+  image: {
+    type: 'IMAGE',
+    id: '#TEMP_ID',
+    imageData: {
+      caption: 'A picture of a cup of coffee',
+    },
+  },
+  objectId: 'ND6EA5AAJEO5WL3JNNIAQA32',
 };
-request.objectId = 'ND6EA5AAJEO5WL3JNNIAQA32';
 
 try {
-  const { result, ...httpResponse } = await catalogApi.createCatalogImage(request);
+  const { result, ...httpResponse } = await catalogApi.createCatalogImage(
+    request
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -400,15 +380,19 @@ async updateCatalogImage(
 
 ```ts
 const imageId = 'image_id4';
+
 const request: UpdateCatalogImageRequest = {
   idempotencyKey: '528dea59-7bfb-43c1-bd48-4a6bba7dd61f86',
 };
 
 try {
-  const { result, ...httpResponse } = await catalogApi.updateCatalogImage(imageId, request);
+  const { result, ...httpResponse } = await catalogApi.updateCatalogImage(
+    imageId,
+    request
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -445,7 +429,7 @@ try {
   const { result, ...httpResponse } = await catalogApi.catalogInfo();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -494,7 +478,7 @@ try {
   const { result, ...httpResponse } = await catalogApi.listCatalog();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -532,62 +516,48 @@ async upsertCatalogObject(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyObjectItemDataVariations: CatalogObject[] = [];
-
-const bodyObjectItemDatavariations0ItemVariationData: CatalogItemVariation = {};
-bodyObjectItemDatavariations0ItemVariationData.itemId = '#Cocoa';
-bodyObjectItemDatavariations0ItemVariationData.name = 'Small';
-bodyObjectItemDatavariations0ItemVariationData.pricingType = 'VARIABLE_PRICING';
-
-const bodyObjectItemDatavariations0: CatalogObject = {
-  type: 'ITEM_VARIATION',
-  id: '#Small',
-};
-bodyObjectItemDatavariations0.itemVariationData = bodyObjectItemDatavariations0ItemVariationData;
-
-bodyObjectItemDataVariations[0] = bodyObjectItemDatavariations0;
-
-const bodyObjectItemDatavariations1ItemVariationDataPriceMoney: Money = {};
-bodyObjectItemDatavariations1ItemVariationDataPriceMoney.amount = BigInt(400);
-bodyObjectItemDatavariations1ItemVariationDataPriceMoney.currency = 'USD';
-
-const bodyObjectItemDatavariations1ItemVariationData: CatalogItemVariation = {};
-bodyObjectItemDatavariations1ItemVariationData.itemId = '#Cocoa';
-bodyObjectItemDatavariations1ItemVariationData.name = 'Large';
-bodyObjectItemDatavariations1ItemVariationData.pricingType = 'FIXED_PRICING';
-bodyObjectItemDatavariations1ItemVariationData.priceMoney = bodyObjectItemDatavariations1ItemVariationDataPriceMoney;
-
-const bodyObjectItemDatavariations1: CatalogObject = {
-  type: 'ITEM_VARIATION',
-  id: '#Large',
-};
-bodyObjectItemDatavariations1.itemVariationData = bodyObjectItemDatavariations1ItemVariationData;
-
-bodyObjectItemDataVariations[1] = bodyObjectItemDatavariations1;
-
-const bodyObjectItemData: CatalogItem = {};
-bodyObjectItemData.name = 'Cocoa';
-bodyObjectItemData.abbreviation = 'Ch';
-bodyObjectItemData.variations = bodyObjectItemDataVariations;
-bodyObjectItemData.descriptionHtml = '<p><strong>Hot</strong> Chocolate</p>';
-
-const bodyObject: CatalogObject = {
-  type: 'ITEM',
-  id: '#Cocoa',
-};
-bodyObject.itemData = bodyObjectItemData;
-
 const body: UpsertCatalogObjectRequest = {
   idempotencyKey: 'af3d1afc-7212-4300-b463-0bfc5314a5ae',
-  object: bodyObject,
+  object: {
+    type: 'ITEM',
+    id: '#Cocoa',
+    itemData: {
+      name: 'Cocoa',
+      abbreviation: 'Ch',
+      variations: [
+        {
+          type: 'ITEM_VARIATION',
+          id: '#Small',
+          itemVariationData: {
+            itemId: '#Cocoa',
+            name: 'Small',
+            pricingType: 'VARIABLE_PRICING',
+          },
+        },
+        {
+          type: 'ITEM_VARIATION',
+          id: '#Large',
+          itemVariationData: {
+            itemId: '#Cocoa',
+            name: 'Large',
+            pricingType: 'FIXED_PRICING',
+            priceMoney: {
+              amount: BigInt(400),
+              currency: 'USD',
+            },
+          },
+        }
+      ],
+      descriptionHtml: '<p><strong>Hot</strong> Chocolate</p>',
+    },
+  },
 };
 
 try {
   const { result, ...httpResponse } = await catalogApi.upsertCatalogObject(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -631,11 +601,12 @@ async deleteCatalogObject(
 
 ```ts
 const objectId = 'object_id8';
+
 try {
   const { result, ...httpResponse } = await catalogApi.deleteCatalogObject(objectId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -680,12 +651,17 @@ async retrieveCatalogObject(
 
 ```ts
 const objectId = 'object_id8';
+
 const includeRelatedObjects = false;
+
 try {
-  const { result, ...httpResponse } = await catalogApi.retrieveCatalogObject(objectId, includeRelatedObjects);
+  const { result, ...httpResponse } = await catalogApi.retrieveCatalogObject(
+    objectId,
+    includeRelatedObjects
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -728,26 +704,24 @@ async searchCatalogObjects(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyObjectTypes: string[] = ['ITEM'];
-const bodyQueryPrefixQuery: CatalogQueryPrefix = {
-  attributeName: 'name',
-  attributePrefix: 'tea',
+const body: SearchCatalogObjectsRequest = {
+  objectTypes: [
+    'ITEM'
+  ],
+  query: {
+    prefixQuery: {
+      attributeName: 'name',
+      attributePrefix: 'tea',
+    },
+  },
+  limit: 100,
 };
-
-const bodyQuery: CatalogQuery = {};
-bodyQuery.prefixQuery = bodyQueryPrefixQuery;
-
-const body: SearchCatalogObjectsRequest = {};
-body.objectTypes = bodyObjectTypes;
-body.query = bodyQuery;
-body.limit = 100;
 
 try {
   const { result, ...httpResponse } = await catalogApi.searchCatalogObjects(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -790,55 +764,50 @@ async searchCatalogItems(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyCategoryIds: string[] = ['WINE_CATEGORY_ID'];
-const bodyStockLevels: string[] = ['OUT', 'LOW'];
-const bodyEnabledLocationIds: string[] = ['ATL_LOCATION_ID'];
-const bodyProductTypes: string[] = ['REGULAR'];
-const bodyCustomAttributeFilters: CustomAttributeFilter[] = [];
-
-const bodycustomAttributeFilters0: CustomAttributeFilter = {};
-bodycustomAttributeFilters0.customAttributeDefinitionId = 'VEGAN_DEFINITION_ID';
-bodycustomAttributeFilters0.boolFilter = true;
-
-bodyCustomAttributeFilters[0] = bodycustomAttributeFilters0;
-
-const bodycustomAttributeFilters1: CustomAttributeFilter = {};
-bodycustomAttributeFilters1.customAttributeDefinitionId = 'BRAND_DEFINITION_ID';
-bodycustomAttributeFilters1.stringFilter = 'Dark Horse';
-
-bodyCustomAttributeFilters[1] = bodycustomAttributeFilters1;
-
-const bodycustomAttributeFilters2NumberFilter: Range = {};
-bodycustomAttributeFilters2NumberFilter.min = '2017';
-bodycustomAttributeFilters2NumberFilter.max = '2018';
-
-const bodycustomAttributeFilters2: CustomAttributeFilter = {};
-bodycustomAttributeFilters2.key = 'VINTAGE';
-bodycustomAttributeFilters2.numberFilter = bodycustomAttributeFilters2NumberFilter;
-
-bodyCustomAttributeFilters[2] = bodycustomAttributeFilters2;
-
-const bodycustomAttributeFilters3: CustomAttributeFilter = {};
-bodycustomAttributeFilters3.customAttributeDefinitionId = 'VARIETAL_DEFINITION_ID';
-
-bodyCustomAttributeFilters[3] = bodycustomAttributeFilters3;
-
-const body: SearchCatalogItemsRequest = {};
-body.textFilter = 'red';
-body.categoryIds = bodyCategoryIds;
-body.stockLevels = bodyStockLevels;
-body.enabledLocationIds = bodyEnabledLocationIds;
-body.limit = 100;
-body.sortOrder = 'ASC';
-body.productTypes = bodyProductTypes;
-body.customAttributeFilters = bodyCustomAttributeFilters;
+const body: SearchCatalogItemsRequest = {
+  textFilter: 'red',
+  categoryIds: [
+    'WINE_CATEGORY_ID'
+  ],
+  stockLevels: [
+    'OUT',
+    'LOW'
+  ],
+  enabledLocationIds: [
+    'ATL_LOCATION_ID'
+  ],
+  limit: 100,
+  sortOrder: 'ASC',
+  productTypes: [
+    'REGULAR'
+  ],
+  customAttributeFilters: [
+    {
+      customAttributeDefinitionId: 'VEGAN_DEFINITION_ID',
+      boolFilter: true,
+    },
+    {
+      customAttributeDefinitionId: 'BRAND_DEFINITION_ID',
+      stringFilter: 'Dark Horse',
+    },
+    {
+      key: 'VINTAGE',
+      numberFilter: {
+        min: '2017',
+        max: '2018',
+      },
+    },
+    {
+      customAttributeDefinitionId: 'VARIETAL_DEFINITION_ID',
+    }
+  ],
+};
 
 try {
   const { result, ...httpResponse } = await catalogApi.searchCatalogItems(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -874,21 +843,25 @@ async updateItemModifierLists(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyItemIds: string[] = ['H42BRLUJ5KTZTTMPVSLFAACQ', '2JXOBJIHCWBQ4NZ3RIXQGJA6'];
-const bodyModifierListsToEnable: string[] = ['H42BRLUJ5KTZTTMPVSLFAACQ', '2JXOBJIHCWBQ4NZ3RIXQGJA6'];
-const bodyModifierListsToDisable: string[] = ['7WRC16CJZDVLSNDQ35PP6YAD'];
 const body: UpdateItemModifierListsRequest = {
-  itemIds: bodyItemIds,
+  itemIds: [
+    'H42BRLUJ5KTZTTMPVSLFAACQ',
+    '2JXOBJIHCWBQ4NZ3RIXQGJA6'
+  ],
+  modifierListsToEnable: [
+    'H42BRLUJ5KTZTTMPVSLFAACQ',
+    '2JXOBJIHCWBQ4NZ3RIXQGJA6'
+  ],
+  modifierListsToDisable: [
+    '7WRC16CJZDVLSNDQ35PP6YAD'
+  ],
 };
-body.modifierListsToEnable = bodyModifierListsToEnable;
-body.modifierListsToDisable = bodyModifierListsToDisable;
 
 try {
   const { result, ...httpResponse } = await catalogApi.updateItemModifierLists(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -924,21 +897,24 @@ async updateItemTaxes(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyItemIds: string[] = ['H42BRLUJ5KTZTTMPVSLFAACQ', '2JXOBJIHCWBQ4NZ3RIXQGJA6'];
-const bodyTaxesToEnable: string[] = ['4WRCNHCJZDVLSNDQ35PP6YAD'];
-const bodyTaxesToDisable: string[] = ['AQCEGCEBBQONINDOHRGZISEX'];
 const body: UpdateItemTaxesRequest = {
-  itemIds: bodyItemIds,
+  itemIds: [
+    'H42BRLUJ5KTZTTMPVSLFAACQ',
+    '2JXOBJIHCWBQ4NZ3RIXQGJA6'
+  ],
+  taxesToEnable: [
+    '4WRCNHCJZDVLSNDQ35PP6YAD'
+  ],
+  taxesToDisable: [
+    'AQCEGCEBBQONINDOHRGZISEX'
+  ],
 };
-body.taxesToEnable = bodyTaxesToEnable;
-body.taxesToDisable = bodyTaxesToDisable;
 
 try {
   const { result, ...httpResponse } = await catalogApi.updateItemTaxes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

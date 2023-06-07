@@ -9,18 +9,12 @@ import {
   string,
 } from '../schema';
 import { V1Money, v1MoneySchema } from './v1Money';
-import {
-  V1PaymentDiscount,
-  v1PaymentDiscountSchema,
-} from './v1PaymentDiscount';
+import { V1PaymentDiscount, v1PaymentDiscountSchema } from './v1PaymentDiscount';
 import {
   V1PaymentItemDetail,
   v1PaymentItemDetailSchema,
 } from './v1PaymentItemDetail';
-import {
-  V1PaymentModifier,
-  v1PaymentModifierSchema,
-} from './v1PaymentModifier';
+import { V1PaymentModifier, v1PaymentModifierSchema } from './v1PaymentModifier';
 import { V1PaymentTax, v1PaymentTaxSchema } from './v1PaymentTax';
 
 /**

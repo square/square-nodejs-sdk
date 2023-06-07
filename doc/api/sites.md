@@ -38,7 +38,7 @@ try {
   const { result, ...httpResponse } = await sitesApi.listSites();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

@@ -33,6 +33,7 @@ The response to retrieve payout records entries.
         "id": "ccof:ZPp3oedR3AeEUNd3z7",
         "type": "CARD"
       },
+      "end_to_end_id": "L2100000005",
       "id": "po_b345d2c7-90b3-4f0b-a2aa-df1def7f8afc",
       "location_id": "L88917AVBK2S5",
       "payout_fee": [
@@ -62,6 +63,7 @@ The response to retrieve payout records entries.
         "id": "bact:ZPp3oedR3AeEUNd3z7",
         "type": "BANK_ACCOUNT"
       },
+      "end_to_end_id": "L2100000006",
       "id": "po_f3c0fb38-a5ce-427d-b858-52b925b72e45",
       "location_id": "L88917AVBK2S5",
       "status": "PAID",

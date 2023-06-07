@@ -24,7 +24,7 @@
     "end_at": "end_at8"
   },
   "status": "status8",
-  "type": "RECEIPT"
+  "type": "DATA_COLLECTION"
 }
 ```
 

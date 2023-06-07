@@ -21,6 +21,11 @@ export interface TeamMemberWage {
    * for more information.
    */
   hourlyRate?: Money;
+  /**
+   * An identifier for the job that this wage relates to. This cannot be
+   * used to retrieve the job.
+   */
+  jobId?: string | null;
 }
 
 export const teamMemberWageSchema: Schema<TeamMemberWage> = object({
@@ -28,4 +33,5 @@ export const teamMemberWageSchema: Schema<TeamMemberWage> = object({
   teamMemberId: ['team_member_id', optional(nullable(string()))],
   title: ['title', optional(nullable(string()))],
   hourlyRate: ['hourly_rate', optional(lazy(() => moneySchema))],
+  jobId: ['job_id', optional(nullable(string()))],
 });

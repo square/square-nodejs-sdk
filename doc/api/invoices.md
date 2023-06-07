@@ -52,11 +52,12 @@ async listInvoices(
 
 ```ts
 const locationId = 'location_id4';
+
 try {
   const { result, ...httpResponse } = await invoicesApi.listInvoices(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -94,76 +95,61 @@ async createInvoice(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyInvoicePrimaryRecipient: InvoiceRecipient = {};
-bodyInvoicePrimaryRecipient.customerId = 'JDKYHBWT1D4F8MFH63DBMEN8Y4';
-
-const bodyInvoicePaymentRequests: InvoicePaymentRequest[] = [];
-
-const bodyInvoicepaymentRequests0Reminders: InvoicePaymentReminder[] = [];
-
-const bodyInvoicepaymentRequests0reminders0: InvoicePaymentReminder = {};
-bodyInvoicepaymentRequests0reminders0.relativeScheduledDays = -1;
-bodyInvoicepaymentRequests0reminders0.message = 'Your invoice is due tomorrow';
-
-bodyInvoicepaymentRequests0Reminders[0] = bodyInvoicepaymentRequests0reminders0;
-
-const bodyInvoicepaymentRequests0: InvoicePaymentRequest = {};
-bodyInvoicepaymentRequests0.requestType = 'BALANCE';
-bodyInvoicepaymentRequests0.dueDate = '2030-01-24';
-bodyInvoicepaymentRequests0.tippingEnabled = true;
-bodyInvoicepaymentRequests0.automaticPaymentSource = 'NONE';
-bodyInvoicepaymentRequests0.reminders = bodyInvoicepaymentRequests0Reminders;
-
-bodyInvoicePaymentRequests[0] = bodyInvoicepaymentRequests0;
-
-const bodyInvoiceAcceptedPaymentMethods: InvoiceAcceptedPaymentMethods = {};
-bodyInvoiceAcceptedPaymentMethods.card = true;
-bodyInvoiceAcceptedPaymentMethods.squareGiftCard = false;
-bodyInvoiceAcceptedPaymentMethods.bankAccount = false;
-bodyInvoiceAcceptedPaymentMethods.buyNowPayLater = false;
-
-const bodyInvoiceCustomFields: InvoiceCustomField[] = [];
-
-const bodyInvoicecustomFields0: InvoiceCustomField = {};
-bodyInvoicecustomFields0.label = 'Event Reference Number';
-bodyInvoicecustomFields0.value = 'Ref. #1234';
-bodyInvoicecustomFields0.placement = 'ABOVE_LINE_ITEMS';
-
-bodyInvoiceCustomFields[0] = bodyInvoicecustomFields0;
-
-const bodyInvoicecustomFields1: InvoiceCustomField = {};
-bodyInvoicecustomFields1.label = 'Terms of Service';
-bodyInvoicecustomFields1.value = 'The terms of service are...';
-bodyInvoicecustomFields1.placement = 'BELOW_LINE_ITEMS';
-
-bodyInvoiceCustomFields[1] = bodyInvoicecustomFields1;
-
-const bodyInvoice: Invoice = {};
-bodyInvoice.locationId = 'ES0RJRZYEC39A';
-bodyInvoice.orderId = 'CAISENgvlJ6jLWAzERDzjyHVybY';
-bodyInvoice.primaryRecipient = bodyInvoicePrimaryRecipient;
-bodyInvoice.paymentRequests = bodyInvoicePaymentRequests;
-bodyInvoice.deliveryMethod = 'EMAIL';
-bodyInvoice.invoiceNumber = 'inv-100';
-bodyInvoice.title = 'Event Planning Services';
-bodyInvoice.description = 'We appreciate your business!';
-bodyInvoice.scheduledAt = '2030-01-13T10:00:00Z';
-bodyInvoice.acceptedPaymentMethods = bodyInvoiceAcceptedPaymentMethods;
-bodyInvoice.customFields = bodyInvoiceCustomFields;
-bodyInvoice.saleOrServiceDate = '2030-01-24';
-bodyInvoice.storePaymentMethodEnabled = false;
-
 const body: CreateInvoiceRequest = {
-  invoice: bodyInvoice,
+  invoice: {
+    locationId: 'ES0RJRZYEC39A',
+    orderId: 'CAISENgvlJ6jLWAzERDzjyHVybY',
+    primaryRecipient: {
+      customerId: 'JDKYHBWT1D4F8MFH63DBMEN8Y4',
+    },
+    paymentRequests: [
+      {
+        requestType: 'BALANCE',
+        dueDate: '2030-01-24',
+        tippingEnabled: true,
+        automaticPaymentSource: 'NONE',
+        reminders: [
+          {
+            relativeScheduledDays: -1,
+            message: 'Your invoice is due tomorrow',
+          }
+        ],
+      }
+    ],
+    deliveryMethod: 'EMAIL',
+    invoiceNumber: 'inv-100',
+    title: 'Event Planning Services',
+    description: 'We appreciate your business!',
+    scheduledAt: '2030-01-13T10:00:00Z',
+    acceptedPaymentMethods: {
+      card: true,
+      squareGiftCard: false,
+      bankAccount: false,
+      buyNowPayLater: false,
+    },
+    customFields: [
+      {
+        label: 'Event Reference Number',
+        value: 'Ref. #1234',
+        placement: 'ABOVE_LINE_ITEMS',
+      },
+      {
+        label: 'Terms of Service',
+        value: 'The terms of service are...',
+        placement: 'BELOW_LINE_ITEMS',
+      }
+    ],
+    saleOrServiceDate: '2030-01-24',
+    storePaymentMethodEnabled: false,
+  },
+  idempotencyKey: 'ce3748f9-5fc1-4762-aa12-aae5e843f1f4',
 };
-body.idempotencyKey = 'ce3748f9-5fc1-4762-aa12-aae5e843f1f4';
 
 try {
   const { result, ...httpResponse } = await invoicesApi.createInvoice(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -203,33 +189,28 @@ async searchInvoices(
 ## Example Usage
 
 ```ts
-const contentType = null;
-const bodyQueryFilterLocationIds: string[] = ['ES0RJRZYEC39A'];
-const bodyQueryFilterCustomerIds: string[] = ['JDKYHBWT1D4F8MFH63DBMEN8Y4'];
-const bodyQueryFilter: InvoiceFilter = {
-  locationIds: bodyQueryFilterLocationIds,
-};
-bodyQueryFilter.customerIds = bodyQueryFilterCustomerIds;
-
-const bodyQuerySort: InvoiceSort = {
-  field: 'INVOICE_SORT_DATE',
-};
-bodyQuerySort.order = 'DESC';
-
-const bodyQuery: InvoiceQuery = {
-  filter: bodyQueryFilter,
-};
-bodyQuery.sort = bodyQuerySort;
-
 const body: SearchInvoicesRequest = {
-  query: bodyQuery,
+  query: {
+    filter: {
+      locationIds: [
+        'ES0RJRZYEC39A'
+      ],
+      customerIds: [
+        'JDKYHBWT1D4F8MFH63DBMEN8Y4'
+      ],
+    },
+    sort: {
+      field: 'INVOICE_SORT_DATE',
+      order: 'DESC',
+    },
+  },
 };
 
 try {
   const { result, ...httpResponse } = await invoicesApi.searchInvoices(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -268,11 +249,12 @@ async deleteInvoice(
 
 ```ts
 const invoiceId = 'invoice_id0';
+
 try {
   const { result, ...httpResponse } = await invoicesApi.deleteInvoice(invoiceId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -307,11 +289,12 @@ async getInvoice(
 
 ```ts
 const invoiceId = 'invoice_id0';
+
 try {
   const { result, ...httpResponse } = await invoicesApi.getInvoice(invoiceId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -351,31 +334,31 @@ async updateInvoice(
 
 ```ts
 const invoiceId = 'invoice_id0';
-const contentType = null;
-const bodyInvoicePaymentRequests: InvoicePaymentRequest[] = [];
 
-const bodyInvoicepaymentRequests0: InvoicePaymentRequest = {};
-bodyInvoicepaymentRequests0.uid = '2da7964f-f3d2-4f43-81e8-5aa220bf3355';
-bodyInvoicepaymentRequests0.tippingEnabled = false;
-
-bodyInvoicePaymentRequests[0] = bodyInvoicepaymentRequests0;
-
-const bodyInvoice: Invoice = {};
-bodyInvoice.version = 1;
-bodyInvoice.paymentRequests = bodyInvoicePaymentRequests;
-
-const bodyFieldsToClear: string[] = ['payments_requests[2da7964f-f3d2-4f43-81e8-5aa220bf3355].reminders'];
 const body: UpdateInvoiceRequest = {
-  invoice: bodyInvoice,
+  invoice: {
+    version: 1,
+    paymentRequests: [
+      {
+        uid: '2da7964f-f3d2-4f43-81e8-5aa220bf3355',
+        tippingEnabled: false,
+      }
+    ],
+  },
+  idempotencyKey: '4ee82288-0910-499e-ab4c-5d0071dad1be',
+  fieldsToClear: [
+    'payments_requests[2da7964f-f3d2-4f43-81e8-5aa220bf3355].reminders'
+  ],
 };
-body.idempotencyKey = '4ee82288-0910-499e-ab4c-5d0071dad1be';
-body.fieldsToClear = bodyFieldsToClear;
 
 try {
-  const { result, ...httpResponse } = await invoicesApi.updateInvoice(invoiceId, body);
+  const { result, ...httpResponse } = await invoicesApi.updateInvoice(
+    invoiceId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -415,16 +398,19 @@ async cancelInvoice(
 
 ```ts
 const invoiceId = 'invoice_id0';
-const contentType = null;
+
 const body: CancelInvoiceRequest = {
   version: 0,
 };
 
 try {
-  const { result, ...httpResponse } = await invoicesApi.cancelInvoice(invoiceId, body);
+  const { result, ...httpResponse } = await invoicesApi.cancelInvoice(
+    invoiceId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -471,17 +457,20 @@ async publishInvoice(
 
 ```ts
 const invoiceId = 'invoice_id0';
-const contentType = null;
+
 const body: PublishInvoiceRequest = {
   version: 1,
+  idempotencyKey: '32da42d0-1997-41b0-826b-f09464fc2c2e',
 };
-body.idempotencyKey = '32da42d0-1997-41b0-826b-f09464fc2c2e';
 
 try {
-  const { result, ...httpResponse } = await invoicesApi.publishInvoice(invoiceId, body);
+  const { result, ...httpResponse } = await invoicesApi.publishInvoice(
+    invoiceId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

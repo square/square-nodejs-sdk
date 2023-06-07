@@ -45,11 +45,12 @@ async deleteSnippet(
 
 ```ts
 const siteId = 'site_id6';
+
 try {
   const { result, ...httpResponse } = await snippetsApi.deleteSnippet(siteId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -88,11 +89,12 @@ async retrieveSnippet(
 
 ```ts
 const siteId = 'site_id6';
+
 try {
   const { result, ...httpResponse } = await snippetsApi.retrieveSnippet(siteId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;
@@ -134,20 +136,21 @@ async upsertSnippet(
 
 ```ts
 const siteId = 'site_id6';
-const contentType = null;
-const bodySnippet: Snippet = {
-  content: '<script>var js = 1;</script>',
-};
 
 const body: UpsertSnippetRequest = {
-  snippet: bodySnippet,
+  snippet: {
+    content: '<script>var js = 1;</script>',
+  },
 };
 
 try {
-  const { result, ...httpResponse } = await snippetsApi.upsertSnippet(siteId, body);
+  const { result, ...httpResponse } = await snippetsApi.upsertSnippet(
+    siteId,
+    body
+  );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
-} catch(error) {
+} catch (error) {
   if (error instanceof ApiError) {
     const errors = error.result;
     // const { statusCode, headers } = error;

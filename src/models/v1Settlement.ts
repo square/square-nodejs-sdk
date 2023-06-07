@@ -8,10 +8,7 @@ import {
   string,
 } from '../schema';
 import { V1Money, v1MoneySchema } from './v1Money';
-import {
-  V1SettlementEntry,
-  v1SettlementEntrySchema,
-} from './v1SettlementEntry';
+import { V1SettlementEntry, v1SettlementEntrySchema } from './v1SettlementEntry';
 
 /** V1Settlement */
 export interface V1Settlement {

@@ -20,9 +20,16 @@ Represents an action processed by the Square Terminal.
 | `updatedAt` | `string \| undefined` | Optional | The time when the `TerminalAction` was last updated as an RFC 3339 timestamp. |
 | `appId` | `string \| undefined` | Optional | The ID of the application that created the action. |
 | `type` | [`string \| undefined`](../../doc/models/terminal-action-action-type.md) | Optional | Describes the type of this unit and indicates which field contains the unit information. This is an ‘open’ enum. |
+| `qrCodeOptions` | [`QrCodeOptions \| undefined`](../../doc/models/qr-code-options.md) | Optional | Fields to describe the action that displays QR-Codes. |
 | `saveCardOptions` | [`SaveCardOptions \| undefined`](../../doc/models/save-card-options.md) | Optional | Describes save-card action fields. |
+| `signatureOptions` | [`SignatureOptions \| undefined`](../../doc/models/signature-options.md) | Optional | - |
+| `confirmationOptions` | [`ConfirmationOptions \| undefined`](../../doc/models/confirmation-options.md) | Optional | - |
 | `receiptOptions` | [`ReceiptOptions \| undefined`](../../doc/models/receipt-options.md) | Optional | Describes receipt action fields. |
+| `dataCollectionOptions` | [`DataCollectionOptions \| undefined`](../../doc/models/data-collection-options.md) | Optional | - |
+| `selectOptions` | [`SelectOptions \| undefined`](../../doc/models/select-options.md) | Optional | - |
 | `deviceMetadata` | [`DeviceMetadata \| undefined`](../../doc/models/device-metadata.md) | Optional | - |
+| `awaitNextAction` | `boolean \| undefined` | Optional | Indicates the action will be linked to another action and requires a waiting dialog to be<br>displayed instead of returning to the idle screen on completion of the action.<br><br>Only supported on SIGNATURE, CONFIRMATION, DATA_COLLECTION, and SELECT types. |
+| `awaitNextActionDuration` | `string \| undefined` | Optional | The timeout duration of the waiting dialog as an RFC 3339 duration, after which the<br>waiting dialog will no longer be displayed and the Terminal will return to the idle screen.<br><br>Default: 5 minutes from when the waiting dialog is displayed<br><br>Maximum: 5 minutes |
 
 ## Example (as JSON)
 

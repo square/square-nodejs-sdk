@@ -1,9 +1,6 @@
 import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Error, errorSchema } from './error';
-import {
-  EventTypeMetadata,
-  eventTypeMetadataSchema,
-} from './eventTypeMetadata';
+import { EventTypeMetadata, eventTypeMetadataSchema } from './eventTypeMetadata';
 
 /**
  * Defines the fields that are included in the response body of
