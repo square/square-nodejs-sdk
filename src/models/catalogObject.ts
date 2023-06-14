@@ -53,6 +53,10 @@ import {
   CatalogSubscriptionPlan,
   catalogSubscriptionPlanSchema,
 } from './catalogSubscriptionPlan';
+import {
+  CatalogSubscriptionPlanVariation,
+  catalogSubscriptionPlanVariationSchema,
+} from './catalogSubscriptionPlanVariation';
 import { CatalogTax, catalogTaxSchema } from './catalogTax';
 import { CatalogTimePeriod, catalogTimePeriodSchema } from './catalogTimePeriod';
 import { CatalogV1Id, catalogV1IdSchema } from './catalogV1Id';
@@ -216,6 +220,11 @@ export interface CatalogObject {
   customAttributeDefinitionData?: CatalogCustomAttributeDefinition;
   /** A parent Catalog Object model represents a set of Quick Amounts and the settings control the amounts. */
   quickAmountsSettingsData?: CatalogQuickAmountsSettings;
+  /**
+   * Describes a subscription plan variation. A subscription plan variation represents how the subscription for a product or service is sold.
+   * For more information, see [Subscription Plans and Variations](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations).
+   */
+  subscriptionPlanVariationData?: CatalogSubscriptionPlanVariation;
 }
 
 export const catalogObjectSchema: Schema<CatalogObject> = object({
@@ -293,5 +302,9 @@ export const catalogObjectSchema: Schema<CatalogObject> = object({
   quickAmountsSettingsData: [
     'quick_amounts_settings_data',
     optional(lazy(() => catalogQuickAmountsSettingsSchema)),
+  ],
+  subscriptionPlanVariationData: [
+    'subscription_plan_variation_data',
+    optional(lazy(() => catalogSubscriptionPlanVariationSchema)),
   ],
 });
