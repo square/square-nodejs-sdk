@@ -68,6 +68,7 @@ Square API.
 | `INVALID_DATE` | The subscription cannot be paused/resumed on the given date. |
 | `UNSUPPORTED_COUNTRY` | The API request references an unsupported country. |
 | `UNSUPPORTED_CURRENCY` | The API request references an unsupported currency. |
+| `APPLE_TTP_PIN_TOKEN` | The payment was declined by the card issuer during an Apple Tap to Pay (TTP)<br>transaction with a request for the card's PIN. This code will be returned alongside<br>`CARD_DECLINED_VERIFICATION_REQUIRED` as a supplemental error, and will include an<br>issuer-provided token in the `details` field that is needed to initiate the PIN<br>collection flow on the iOS device. |
 | `CARD_EXPIRED` | The card issuer declined the request because the card is expired. |
 | `INVALID_EXPIRATION` | The expiration date for the payment card is invalid. For example,<br>it indicates a date in the past. |
 | `INVALID_EXPIRATION_YEAR` | The expiration year for the payment card is invalid. For example,<br>it indicates a year in the past or contains invalid characters. |
@@ -131,6 +132,9 @@ Square API.
 | `CARD_PRESENCE_REQUIRED` | The transaction requires that a card be present. |
 | `UNSUPPORTED_SOURCE_TYPE` | The API request references an unsupported source type. |
 | `CARD_MISMATCH` | The provided card does not match what is expected. |
+| `PLAID_ERROR` | Generic plaid error |
+| `PLAID_ERROR_ITEM_LOGIN_REQUIRED` | Plaid error - ITEM_LOGIN_REQUIRED |
+| `PLAID_ERROR_RATE_LIMIT` | Plaid error - RATE_LIMIT |
 | `CARD_DECLINED` | The card was declined. |
 | `VERIFY_CVV_FAILURE` | The CVV could not be verified. |
 | `VERIFY_AVS_FAILURE` | The AVS could not be verified. |

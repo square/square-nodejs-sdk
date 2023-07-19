@@ -22,8 +22,8 @@ See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-
 
 ```json
 {
-  "category": "RATE_LIMIT_ERROR",
-  "code": "UNEXPECTED_VALUE",
+  "category": "API_ERROR",
+  "code": "VERIFY_AVS_FAILURE",
   "detail": "detail6",
   "field": "field6"
 }

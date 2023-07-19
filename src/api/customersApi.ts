@@ -55,7 +55,7 @@ import {
   UpdateCustomerResponse,
   updateCustomerResponseSchema,
 } from '../models/updateCustomerResponse';
-import { bigint, number, optional, string } from '../schema';
+import { bigint, boolean, number, optional, string } from '../schema';
 import { BaseApi } from './baseApi';
 
 export class CustomersApi extends BaseApi {
@@ -66,18 +66,20 @@ export class CustomersApi extends BaseApi {
    * for the listing operation in well under 30 seconds. Occasionally, propagation of the new or updated
    * profiles can take closer to one minute or longer, especially during network incidents and outages.
    *
-   * @param cursor     A pagination cursor returned by a previous call to this endpoint. Provide this cursor
-   *                             to retrieve the next set of results for your original query.  For more information,
-   *                             see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-
-   *                             patterns/pagination).
-   * @param limit      The maximum number of results to return in a single page. This limit is advisory. The
-   *                             response might contain more or fewer results. If the specified limit is less than 1 or
-   *                             greater than 100, Square returns a `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error.
-   *                             The default value is 100.  For more information, see [Pagination](https://developer.
-   *                             squareup.com/docs/build-basics/common-api-patterns/pagination).
+   * @param cursor     A pagination cursor returned by a previous call to this endpoint. Provide this
+   *                              cursor to retrieve the next set of results for your original query.  For more
+   *                              information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-
+   *                              api-patterns/pagination).
+   * @param limit      The maximum number of results to return in a single page. This limit is advisory.
+   *                              The response might contain more or fewer results. If the specified limit is less than
+   *                              1 or greater than 100, Square returns a `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH`
+   *                              error. The default value is 100.  For more information, see [Pagination](https:
+   *                              //developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
    * @param sortField  Indicates how customers should be sorted.  The default value is `DEFAULT`.
    * @param sortOrder  Indicates whether customers should be sorted in ascending (`ASC`) or descending
-   *                             (`DESC`) order.  The default value is `ASC`.
+   *                              (`DESC`) order.  The default value is `ASC`.
+   * @param count      Indicates whether to return the total count of customers in the `count` field of the
+   *                              response.  The default value is `false`.
    * @return Response from the API call
    */
   async listCustomers(
@@ -85,6 +87,7 @@ export class CustomersApi extends BaseApi {
     limit?: number,
     sortField?: string,
     sortOrder?: string,
+    count?: boolean,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ListCustomersResponse>> {
     const req = this.createRequest('GET', '/v2/customers');
@@ -93,11 +96,13 @@ export class CustomersApi extends BaseApi {
       limit: [limit, optional(number())],
       sortField: [sortField, optional(string())],
       sortOrder: [sortOrder, optional(string())],
+      count: [count, optional(boolean())],
     });
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
     req.query('sort_field', mapped.sortField);
     req.query('sort_order', mapped.sortOrder);
+    req.query('count', mapped.count);
     return req.callAsJson(listCustomersResponseSchema, requestOptions);
   }
 

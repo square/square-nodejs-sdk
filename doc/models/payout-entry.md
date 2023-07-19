@@ -52,15 +52,15 @@ The total amount of the payout will equal the sum of the payout entries for a ba
   "type": "CHARGE",
   "gross_amount_money": {
     "amount": 186,
-    "currency": "SVC"
+    "currency": "BWP"
   },
   "fee_amount_money": {
     "amount": 126,
-    "currency": "ANG"
+    "currency": "NIO"
   },
   "net_amount_money": {
     "amount": 6,
-    "currency": "AOA"
+    "currency": "LTL"
   }
 }
 ```

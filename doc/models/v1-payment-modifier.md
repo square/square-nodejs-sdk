@@ -22,7 +22,7 @@ V1PaymentModifier
   "name": "name0",
   "applied_money": {
     "amount": 196,
-    "currency_code": "LYD"
+    "currency_code": "IQD"
   },
   "modifier_option_id": "modifier_option_id6"
 }

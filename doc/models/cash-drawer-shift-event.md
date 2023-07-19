@@ -24,7 +24,7 @@
   "event_type": "OTHER_TENDER_CANCELLED_PAYMENT",
   "event_money": {
     "amount": 148,
-    "currency": "HTG"
+    "currency": "AMD"
   },
   "created_at": "created_at2",
   "description": "description0"

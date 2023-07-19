@@ -1,4 +1,12 @@
-import { bigint, lazy, object, optional, Schema, string } from '../schema';
+import {
+  bigint,
+  boolean,
+  lazy,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { CustomerQuery, customerQuerySchema } from './customerQuery';
 
 /**
@@ -20,6 +28,11 @@ export interface SearchCustomersRequest {
   limit?: bigint;
   /** Represents filtering and sorting criteria for a [SearchCustomers]($e/Customers/SearchCustomers) request. */
   query?: CustomerQuery;
+  /**
+   * Indicates whether to return the total count of matching customers in the `count` field of the response.
+   * The default value is `false`.
+   */
+  count?: boolean;
 }
 
 export const searchCustomersRequestSchema: Schema<SearchCustomersRequest> = object(
@@ -27,5 +40,6 @@ export const searchCustomersRequestSchema: Schema<SearchCustomersRequest> = obje
     cursor: ['cursor', optional(string())],
     limit: ['limit', optional(bigint())],
     query: ['query', optional(lazy(() => customerQuerySchema))],
+    count: ['count', optional(boolean())],
   }
 );

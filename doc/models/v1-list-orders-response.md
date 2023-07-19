@@ -19,20 +19,20 @@
     {
       "errors": [
         {
-          "category": "MERCHANT_SUBSCRIPTION_ERROR",
-          "code": "GENERIC_DECLINE",
+          "category": "API_ERROR",
+          "code": "REFUND_ALREADY_PENDING",
           "detail": "detail8",
           "field": "field6"
         },
         {
-          "category": "API_ERROR",
-          "code": "CVV_FAILURE",
+          "category": "AUTHENTICATION_ERROR",
+          "code": "PAYMENT_NOT_REFUNDABLE",
           "detail": "detail9",
           "field": "field7"
         },
         {
-          "category": "AUTHENTICATION_ERROR",
-          "code": "ADDRESS_VERIFICATION_FAILURE",
+          "category": "INVALID_REQUEST_ERROR",
+          "code": "REFUND_DECLINED",
           "detail": "detail0",
           "field": "field8"
         }
@@ -45,8 +45,8 @@
     {
       "errors": [
         {
-          "category": "API_ERROR",
-          "code": "CVV_FAILURE",
+          "category": "AUTHENTICATION_ERROR",
+          "code": "PAYMENT_NOT_REFUNDABLE",
           "detail": "detail9",
           "field": "field7"
         }

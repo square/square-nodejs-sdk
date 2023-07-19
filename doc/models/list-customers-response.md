@@ -15,8 +15,9 @@ Either `errors` or `customers` is present in a given response (never both).
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | Any errors that occurred during the request. |
-| `customers` | [`Customer[] \| undefined`](../../doc/models/customer.md) | Optional | The customer profiles associated with the Square account or an empty object (`{}`) if none are found. |
+| `customers` | [`Customer[] \| undefined`](../../doc/models/customer.md) | Optional | The customer profiles associated with the Square account or an empty object (`{}`) if none are found.<br>Only customer profiles with public information (`given_name`, `family_name`, `company_name`, `email_address`, or<br>`phone_number`) are included in the response. |
 | `cursor` | `string \| undefined` | Optional | A pagination cursor to retrieve the next set of results for the<br>original query. A cursor is only present if the request succeeded and additional results<br>are available.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
+| `count` | `bigint \| undefined` | Optional | The total count of customers associated with the Square account. Only customer profiles with public information<br>(`given_name`, `family_name`, `company_name`, `email_address`, or `phone_number`) are counted. This field is present<br>only if `count` is set to `true` in the request. |
 
 ## Example (as JSON)
 
@@ -72,25 +73,26 @@ Either `errors` or `customers` is present in a given response (never both).
   ],
   "errors": [
     {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "REFUND_ALREADY_PENDING",
+      "category": "REFUND_ERROR",
+      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
       "detail": "detail1",
       "field": "field9"
     },
     {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "PAYMENT_NOT_REFUNDABLE",
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "BAD_REQUEST",
       "detail": "detail2",
       "field": "field0"
     },
     {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "REFUND_DECLINED",
+      "category": "EXTERNAL_VENDOR_ERROR",
+      "code": "MISSING_REQUIRED_PARAMETER",
       "detail": "detail3",
       "field": "field1"
     }
   ],
-  "cursor": "cursor6"
+  "cursor": "cursor6",
+  "count": 60
 }
 ```
 

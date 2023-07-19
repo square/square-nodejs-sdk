@@ -21,7 +21,7 @@
       "status": "SENT",
       "total_money": {
         "amount": 53,
-        "currency_code": "PGK"
+        "currency_code": "MWK"
       },
       "initiated_at": "initiated_at9",
       "bank_account_id": "bank_account_id7"
@@ -31,7 +31,7 @@
       "status": "FAILED",
       "total_money": {
         "amount": 54,
-        "currency_code": "PHP"
+        "currency_code": "MXN"
       },
       "initiated_at": "initiated_at0",
       "bank_account_id": "bank_account_id8"

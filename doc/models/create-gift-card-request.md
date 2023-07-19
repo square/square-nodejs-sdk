@@ -26,7 +26,7 @@ Represents a [CreateGiftCard](../../doc/api/gift-cards.md#create-gift-card) requ
     "state": "ACTIVE",
     "balance_money": {
       "amount": 250,
-      "currency": "DKK"
+      "currency": "CHF"
     },
     "gan": "gan6"
   },

@@ -58,18 +58,19 @@ const body: CreateSubscriptionRequest = {
   locationId: 'S8GWD5R9QB376',
   customerId: 'CHFGVKYY8RSV93M5KCYTG4PN0G',
   idempotencyKey: '8193148c-9586-11e6-99f9-28cfe92138cf',
-  planId: '6JHXF3B2CW3YKHDV4XEM674H',
-  startDate: '2021-10-20',
-  taxPercentage: '5',
-  priceOverrideMoney: {
-    amount: BigInt(100),
-    currency: 'USD',
-  },
+  planVariationId: '6JHXF3B2CW3YKHDV4XEM674H',
+  startDate: '2023-06-20',
   cardId: 'ccof:qy5x8hHGYsgLrp4Q4GB',
   timezone: 'America/Los_Angeles',
   source: {
-    name: 'My App',
+    name: 'My Application',
   },
+  phases: [
+    {
+      ordinal: 0,
+      orderTemplateId: 'U2NaowWxzXwpsZU697x7ZHOAnCNZY',
+    }
+  ],
 };
 
 try {
@@ -501,7 +502,15 @@ async swapPlan(
 ```ts
 const subscriptionId = 'subscription_id0';
 
-const body: SwapPlanRequest = {};
+const body: SwapPlanRequest = {
+  newPlanVariationId: 'FQ7CDXXWSLUJRPM3GFJSJGZ7',
+  phases: [
+    {
+      ordinal: 0,
+      orderTemplateId: 'uhhnjH9osVv3shUADwaC0b3hNxQZY',
+    }
+  ],
+};
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.swapPlan(

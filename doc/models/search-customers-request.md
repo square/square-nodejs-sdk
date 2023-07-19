@@ -15,6 +15,7 @@ Defines the fields that are included in the request body of a request to the
 | `cursor` | `string \| undefined` | Optional | Include the pagination cursor in subsequent calls to this endpoint to retrieve<br>the next set of results associated with the original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
 | `limit` | `bigint \| undefined` | Optional | The maximum number of results to return in a single page. This limit is advisory. The response might contain more or fewer results.<br>If the specified limit is invalid, Square returns a `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error. The default value is 100.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).<br>**Constraints**: `>= 1`, `<= 100` |
 | `query` | [`CustomerQuery \| undefined`](../../doc/models/customer-query.md) | Optional | Represents filtering and sorting criteria for a [SearchCustomers](../../doc/api/customers.md#search-customers) request. |
+| `count` | `boolean \| undefined` | Optional | Indicates whether to return the total count of matching customers in the `count` field of the response.<br><br>The default value is `false`. |
 
 ## Example (as JSON)
 
@@ -56,7 +57,8 @@ Defines the fields that are included in the request body of a request to the
       "order": "ASC"
     }
   },
-  "cursor": "cursor6"
+  "cursor": "cursor6",
+  "count": false
 }
 ```
 

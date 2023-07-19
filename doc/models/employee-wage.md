@@ -25,7 +25,7 @@ The hourly wage rate that an employee earns on a `Shift` for doing the job speci
   "title": "title4",
   "hourly_rate": {
     "amount": 172,
-    "currency": "TJS"
+    "currency": "OMR"
   }
 }
 ```

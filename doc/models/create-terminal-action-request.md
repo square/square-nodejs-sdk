@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `idempotencyKey` | `string` | Required | A unique string that identifies this `CreateAction` request. Keys can be any valid string<br>but must be unique for every `CreateAction` request.<br><br>See [Idempotency keys](https://developer.squareup.com/docs/basics/api101/idempotency) for more<br>information.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `64` |
+| `idempotencyKey` | `string` | Required | A unique string that identifies this `CreateAction` request. Keys can be any valid string<br>but must be unique for every `CreateAction` request.<br><br>See [Idempotency keys](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency) for more<br>information.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `64` |
 | `action` | [`TerminalAction`](../../doc/models/terminal-action.md) | Required | Represents an action processed by the Square Terminal. |
 
 ## Example (as JSON)

@@ -24,11 +24,11 @@ V1SettlementEntry
   "type": "PAID_SERVICE_FEE",
   "amount_money": {
     "amount": 186,
-    "currency_code": "KRW"
+    "currency_code": "UZS"
   },
   "fee_money": {
     "amount": 108,
-    "currency_code": "UZS"
+    "currency_code": "ILS"
   }
 }
 ```

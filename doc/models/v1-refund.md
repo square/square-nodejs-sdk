@@ -38,15 +38,15 @@ V1Refund
   "reason": "reason4",
   "refunded_money": {
     "amount": 214,
-    "currency_code": "CHW"
+    "currency_code": "SRD"
   },
   "refunded_processing_fee_money": {
     "amount": 0,
-    "currency_code": "LBP"
+    "currency_code": "BGN"
   },
   "refunded_tax_money": {
     "amount": 148,
-    "currency_code": "BAM"
+    "currency_code": "SRD"
   }
 }
 ```

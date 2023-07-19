@@ -31,7 +31,7 @@ For more information, see [Subscription Plans and Variations](https://developer.
       "periods": 241,
       "recurring_price_money": {
         "amount": 193,
-        "currency": "MOP"
+        "currency": "CHE"
       },
       "ordinal": 207,
       "pricing": {
@@ -43,7 +43,7 @@ For more information, see [Subscription Plans and Variations](https://developer.
         ],
         "price_money": {
           "amount": 251,
-          "currency": "SLL"
+          "currency": "NZD"
         }
       }
     },
@@ -53,7 +53,7 @@ For more information, see [Subscription Plans and Variations](https://developer.
       "periods": 242,
       "recurring_price_money": {
         "amount": 194,
-        "currency": "MRO"
+        "currency": "CHF"
       },
       "ordinal": 208,
       "pricing": {
@@ -64,7 +64,7 @@ For more information, see [Subscription Plans and Variations](https://developer.
         ],
         "price_money": {
           "amount": 252,
-          "currency": "SOS"
+          "currency": "OMR"
         }
       }
     }

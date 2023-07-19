@@ -20,14 +20,6 @@ export interface CreateSubscriptionRequest {
   idempotencyKey?: string;
   /** The ID of the location the subscription is associated with. */
   locationId: string;
-  /**
-   * The ID of the [subscription plan](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations) created using the Catalog API.
-   * Deprecated in favour of `plan_variation_id`.
-   * For more information, see
-   * [Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan) and
-   * [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
-   */
-  planId?: string;
   /** The ID of the [subscription plan variation](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations#plan-variations) created using the Catalog API. */
   planVariationId?: string;
   /** The ID of the [customer](entity:Customer) subscribing to the subscription plan variation. */
@@ -85,7 +77,6 @@ export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> 
   {
     idempotencyKey: ['idempotency_key', optional(string())],
     locationId: ['location_id', string()],
-    planId: ['plan_id', optional(string())],
     planVariationId: ['plan_variation_id', optional(string())],
     customerId: ['customer_id', string()],
     startDate: ['start_date', optional(string())],

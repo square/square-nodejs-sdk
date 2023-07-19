@@ -1,4 +1,12 @@
-import { nullable, number, object, optional, Schema, string } from '../schema';
+import {
+  boolean,
+  nullable,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 
 /**
  * Defines the query parameters that can be included in a request to the
@@ -21,6 +29,11 @@ export interface ListCustomersRequest {
   sortField?: string;
   /** The order (e.g., chronological or alphabetical) in which results from a request are returned. */
   sortOrder?: string;
+  /**
+   * Indicates whether to return the total count of customers in the `count` field of the response.
+   * The default value is `false`.
+   */
+  count?: boolean | null;
 }
 
 export const listCustomersRequestSchema: Schema<ListCustomersRequest> = object({
@@ -28,4 +41,5 @@ export const listCustomersRequestSchema: Schema<ListCustomersRequest> = object({
   limit: ['limit', optional(nullable(number()))],
   sortField: ['sort_field', optional(string())],
   sortOrder: ['sort_order', optional(string())],
+  count: ['count', optional(nullable(boolean()))],
 });

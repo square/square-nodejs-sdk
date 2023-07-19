@@ -19,7 +19,7 @@
   "name": "name0",
   "charge": {
     "amount": 80,
-    "currency": "CUC"
+    "currency": "UNKNOWN_CURRENCY"
   }
 }
 ```

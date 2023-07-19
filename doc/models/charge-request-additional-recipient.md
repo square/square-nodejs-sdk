@@ -24,7 +24,7 @@ Support is currently limited to USD, CAD and GBP currencies
   "description": "description0",
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   }
 }
 ```

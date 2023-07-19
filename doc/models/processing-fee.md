@@ -23,7 +23,7 @@ Represents the Square processing fee.
   "type": "type0",
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   }
 }
 ```

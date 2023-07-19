@@ -22,7 +22,7 @@ V1PaymentDiscount
   "name": "name0",
   "applied_money": {
     "amount": 196,
-    "currency_code": "LYD"
+    "currency_code": "IQD"
   },
   "discount_id": "discount_id8"
 }

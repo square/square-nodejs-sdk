@@ -37,20 +37,20 @@ Represents a response from a bulk update request containing the updated `TeamMem
       },
       "errors": [
         {
-          "category": "MERCHANT_SUBSCRIPTION_ERROR",
-          "code": "GENERIC_DECLINE",
+          "category": "PAYMENT_METHOD_ERROR",
+          "code": "REQUEST_TIMEOUT",
           "detail": "detail8",
           "field": "field6"
         },
         {
-          "category": "API_ERROR",
-          "code": "CVV_FAILURE",
+          "category": "REFUND_ERROR",
+          "code": "CONFLICT",
           "detail": "detail9",
           "field": "field7"
         },
         {
-          "category": "AUTHENTICATION_ERROR",
-          "code": "ADDRESS_VERIFICATION_FAILURE",
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "GONE",
           "detail": "detail0",
           "field": "field8"
         }
@@ -78,8 +78,8 @@ Represents a response from a bulk update request containing the updated `TeamMem
       },
       "errors": [
         {
-          "category": "API_ERROR",
-          "code": "CVV_FAILURE",
+          "category": "REFUND_ERROR",
+          "code": "CONFLICT",
           "detail": "detail9",
           "field": "field7"
         }
@@ -88,20 +88,20 @@ Represents a response from a bulk update request containing the updated `TeamMem
   },
   "errors": [
     {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "REFUND_ALREADY_PENDING",
+      "category": "REFUND_ERROR",
+      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
       "detail": "detail1",
       "field": "field9"
     },
     {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "PAYMENT_NOT_REFUNDABLE",
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "BAD_REQUEST",
       "detail": "detail2",
       "field": "field0"
     },
     {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "REFUND_DECLINED",
+      "category": "EXTERNAL_VENDOR_ERROR",
+      "code": "MISSING_REQUIRED_PARAMETER",
       "detail": "detail3",
       "field": "field1"
     }

@@ -25,11 +25,11 @@ An object describing a job that a team member is assigned to.
   "pay_type": "NONE",
   "hourly_rate": {
     "amount": 172,
-    "currency": "TJS"
+    "currency": "OMR"
   },
   "annual_rate": {
     "amount": 232,
-    "currency": "TOP"
+    "currency": "SBD"
   },
   "weekly_hours": 156
 }

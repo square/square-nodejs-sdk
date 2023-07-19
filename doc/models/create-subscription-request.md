@@ -14,7 +14,6 @@ Defines input parameters in a request to the
 |  --- | --- | --- | --- |
 | `idempotencyKey` | `string \| undefined` | Optional | A unique string that identifies this `CreateSubscription` request.<br>If you do not provide a unique string (or provide an empty string as the value),<br>the endpoint treats each request as independent.<br><br>For more information, see [Idempotency keys](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency). |
 | `locationId` | `string` | Required | The ID of the location the subscription is associated with.<br>**Constraints**: *Minimum Length*: `1` |
-| `planId` | `string \| undefined` | Optional | The ID of the [subscription plan](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations) created using the Catalog API.<br><br>Deprecated in favour of `plan_variation_id`.<br><br>For more information, see<br>[Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan) and<br>[Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough). |
 | `planVariationId` | `string \| undefined` | Optional | The ID of the [subscription plan variation](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations#plan-variations) created using the Catalog API. |
 | `customerId` | `string` | Required | The ID of the [customer](entity:Customer) subscribing to the subscription plan variation.<br>**Constraints**: *Minimum Length*: `1` |
 | `startDate` | `string \| undefined` | Optional | The `YYYY-MM-DD`-formatted date to start the subscription.<br>If it is unspecified, the subscription starts immediately. |
@@ -34,19 +33,20 @@ Defines input parameters in a request to the
   "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
   "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
   "location_id": "S8GWD5R9QB376",
-  "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
-  "price_override_money": {
-    "amount": 100,
-    "currency": "USD"
-  },
+  "phases": [
+    {
+      "order_template_id": "U2NaowWxzXwpsZU697x7ZHOAnCNZY",
+      "ordinal": 0
+    }
+  ],
+  "plan_variation_id": "6JHXF3B2CW3YKHDV4XEM674H",
   "source": {
-    "name": "My App"
+    "name": "My Application"
   },
-  "start_date": "2021-10-20",
-  "tax_percentage": "5",
+  "start_date": "2023-06-20",
   "timezone": "America/Los_Angeles",
-  "plan_variation_id": "plan_variation_id4",
-  "canceled_date": "canceled_date6"
+  "canceled_date": "canceled_date6",
+  "tax_percentage": "tax_percentage6"
 }
 ```
 

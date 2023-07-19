@@ -28,9 +28,9 @@ a set of `TeamMemberWage` objects.
         "currency": "USD"
       },
       "id": "pXS3qCv7BERPnEGedM4S8mhm",
+      "job_id": "jxJNN6eCJsLrhg5UFJrDWDGE",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
-      "title": "Manager",
-      "job_id": "job_id9"
+      "title": "Manager"
     },
     {
       "hourly_rate": {
@@ -38,9 +38,9 @@ a set of `TeamMemberWage` objects.
         "currency": "USD"
       },
       "id": "rZduCkzYDUVL3ovh1sQgbue6",
+      "job_id": "gcbz15vKGnMKmaWJJ152kjim",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
-      "title": "Cook",
-      "job_id": "job_id8"
+      "title": "Cook"
     },
     {
       "hourly_rate": {
@@ -48,9 +48,9 @@ a set of `TeamMemberWage` objects.
         "currency": "USD"
       },
       "id": "FxLbs5KpPUHa8wyt5ctjubDX",
+      "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
-      "title": "Barista",
-      "job_id": "job_id7"
+      "title": "Barista"
     },
     {
       "hourly_rate": {
@@ -58,27 +58,27 @@ a set of `TeamMemberWage` objects.
         "currency": "USD"
       },
       "id": "vD1wCgijMDR3cX5TPnu7VXto",
+      "job_id": "N4YKVLzFj3oGtNocqoYHYpW3",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
-      "title": "Cashier",
-      "job_id": "job_id6"
+      "title": "Cashier"
     }
   ],
   "errors": [
     {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "REFUND_ALREADY_PENDING",
+      "category": "REFUND_ERROR",
+      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
       "detail": "detail1",
       "field": "field9"
     },
     {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "PAYMENT_NOT_REFUNDABLE",
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "BAD_REQUEST",
       "detail": "detail2",
       "field": "field0"
     },
     {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "REFUND_DECLINED",
+      "category": "EXTERNAL_VENDOR_ERROR",
+      "code": "MISSING_REQUIRED_PARAMETER",
       "detail": "detail3",
       "field": "field1"
     }

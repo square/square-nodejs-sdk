@@ -51,6 +51,8 @@ export interface TerminalAction {
   updatedAt?: string;
   /** The ID of the application that created the action. */
   appId?: string;
+  /** The location id the action is attached to, if a link can be made. */
+  locationId?: string;
   /** Describes the type of this unit and indicates which field contains the unit information. This is an ‘open’ enum. */
   type?: string;
   /** Fields to describe the action that displays QR-Codes. */
@@ -88,6 +90,7 @@ export const terminalActionSchema: Schema<TerminalAction> = object({
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
   appId: ['app_id', optional(string())],
+  locationId: ['location_id', optional(string())],
   type: ['type', optional(string())],
   qrCodeOptions: ['qr_code_options', optional(lazy(() => qrCodeOptionsSchema))],
   saveCardOptions: [

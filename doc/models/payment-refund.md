@@ -51,7 +51,7 @@ the original payment and the amount of money refunded.
   },
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   }
 }
 ```

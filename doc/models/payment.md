@@ -61,11 +61,11 @@ Represents a payment processed by the Square API.
   "updated_at": "updated_at4",
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   },
   "tip_money": {
     "amount": 190,
-    "currency": "CHE"
+    "currency": "ZMK"
   }
 }
 ```

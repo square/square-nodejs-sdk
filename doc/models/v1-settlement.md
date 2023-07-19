@@ -26,7 +26,7 @@ V1Settlement
   "status": "FAILED",
   "total_money": {
     "amount": 250,
-    "currency_code": "USS"
+    "currency_code": "KZT"
   },
   "initiated_at": "initiated_at2",
   "bank_account_id": "bank_account_id0"

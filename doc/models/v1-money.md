@@ -17,7 +17,7 @@
 ```json
 {
   "amount": 46,
-  "currency_code": "BTN"
+  "currency_code": "RWF"
 }
 ```
 

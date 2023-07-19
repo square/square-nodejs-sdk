@@ -24,7 +24,7 @@ Represents an additional recipient (other than the merchant) receiving a portion
   "description": "description0",
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   },
   "receivable_id": "receivable_id0"
 }

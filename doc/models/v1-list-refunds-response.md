@@ -21,15 +21,15 @@
       "reason": "reason7",
       "refunded_money": {
         "amount": 17,
-        "currency_code": "XTS"
+        "currency_code": "USS"
       },
       "refunded_processing_fee_money": {
         "amount": 59,
-        "currency_code": "GYD"
+        "currency_code": "ANG"
       },
       "refunded_tax_money": {
         "amount": 115,
-        "currency_code": "NIO"
+        "currency_code": "LSL"
       }
     },
     {
@@ -37,15 +37,15 @@
       "reason": "reason6",
       "refunded_money": {
         "amount": 18,
-        "currency_code": "XXX"
+        "currency_code": "UYI"
       },
       "refunded_processing_fee_money": {
         "amount": 60,
-        "currency_code": "HKD"
+        "currency_code": "AOA"
       },
       "refunded_tax_money": {
         "amount": 116,
-        "currency_code": "NOK"
+        "currency_code": "LTL"
       }
     }
   ]
