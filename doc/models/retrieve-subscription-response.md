@@ -20,45 +20,45 @@ Defines output parameters in a response from the
 ```json
 {
   "subscription": {
-    "charged_through_date": "2021-11-20",
-    "created_at": "2021-10-20T21:53:10Z",
-    "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+    "card_id": "ccof:IkWfpLj4tNHMyFii3GB",
+    "charged_through_date": "2023-11-20",
+    "created_at": "2022-07-27T21:53:10Z",
+    "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
     "id": "8151fc89-da15-4eb9-a685-1a70883cebfc",
     "invoice_ids": [
-      "grebK0Q_l8H4fqoMMVvt-Q",
-      "rcX_i3sNmHTGKhI4W2mceA"
+      "inv:0-ChCHu2mZEabLeeHahQnXDjZQECY",
+      "inv:0-ChrcX_i3sNmfsHTGKhI4Wg2mceA"
     ],
     "location_id": "S8GWD5R9QB376",
-    "paid_until_date": "2021-11-20",
-    "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+    "paid_until_date": "2024-08-01",
+    "plan_variation_id": "6JHXF3B2CW3YKHDV4XEM674H",
     "price_override_money": {
-      "amount": 1000,
+      "amount": 25000,
       "currency": "USD"
     },
     "source": {
-      "name": "My App"
+      "name": "My Application"
     },
-    "start_date": "2021-10-20",
+    "start_date": "2022-07-27",
     "status": "ACTIVE",
-    "timezone": "America/Los_Angeles",
-    "plan_variation_id": "plan_variation_id8"
+    "timezone": "America/Los_Angeles"
   },
   "errors": [
     {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "REFUND_ALREADY_PENDING",
+      "category": "REFUND_ERROR",
+      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
       "detail": "detail1",
       "field": "field9"
     },
     {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "PAYMENT_NOT_REFUNDABLE",
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "BAD_REQUEST",
       "detail": "detail2",
       "field": "field0"
     },
     {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "REFUND_DECLINED",
+      "category": "EXTERNAL_VENDOR_ERROR",
+      "code": "MISSING_REQUIRED_PARAMETER",
       "detail": "detail3",
       "field": "field1"
     }

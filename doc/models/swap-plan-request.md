@@ -19,15 +19,11 @@ Defines input parameters in a call to the
 
 ```json
 {
-  "new_plan_variation_id": "new_plan_variation_id0",
+  "new_plan_variation_id": "FQ7CDXXWSLUJRPM3GFJSJGZ7",
   "phases": [
     {
-      "ordinal": 207,
-      "order_template_id": "order_template_id7"
-    },
-    {
-      "ordinal": 208,
-      "order_template_id": "order_template_id8"
+      "order_template_id": "uhhnjH9osVv3shUADwaC0b3hNxQZY",
+      "ordinal": 0
     }
   ]
 }

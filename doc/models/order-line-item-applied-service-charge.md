@@ -21,7 +21,7 @@
   "service_charge_uid": "service_charge_uid0",
   "applied_money": {
     "amount": 196,
-    "currency": "PLN"
+    "currency": "HKD"
   }
 }
 ```

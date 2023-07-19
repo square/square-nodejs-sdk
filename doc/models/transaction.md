@@ -69,12 +69,12 @@ the transaction.
       "reason": "reason0",
       "amount_money": {
         "amount": 186,
-        "currency": "YER"
+        "currency": "DJF"
       },
       "status": "PENDING",
       "processing_fee_money": {
         "amount": 112,
-        "currency": "GEL"
+        "currency": "LTL"
       },
       "additional_recipients": [
         {
@@ -82,7 +82,7 @@ the transaction.
           "description": "description3",
           "amount_money": {
             "amount": 83,
-            "currency": "JOD"
+            "currency": "JMD"
           },
           "receivable_id": "receivable_id3"
         }
@@ -97,12 +97,12 @@ the transaction.
       "reason": "reason9",
       "amount_money": {
         "amount": 187,
-        "currency": "ZAR"
+        "currency": "DKK"
       },
       "status": "APPROVED",
       "processing_fee_money": {
         "amount": 113,
-        "currency": "GHS"
+        "currency": "LVL"
       },
       "additional_recipients": [
         {
@@ -110,7 +110,7 @@ the transaction.
           "description": "description4",
           "amount_money": {
             "amount": 84,
-            "currency": "JPY"
+            "currency": "JOD"
           },
           "receivable_id": "receivable_id4"
         },
@@ -119,7 +119,7 @@ the transaction.
           "description": "description5",
           "amount_money": {
             "amount": 85,
-            "currency": "KES"
+            "currency": "JPY"
           },
           "receivable_id": "receivable_id5"
         }
@@ -134,12 +134,12 @@ the transaction.
       "reason": "reason8",
       "amount_money": {
         "amount": 188,
-        "currency": "ZMK"
+        "currency": "DOP"
       },
       "status": "REJECTED",
       "processing_fee_money": {
         "amount": 114,
-        "currency": "GIP"
+        "currency": "LYD"
       },
       "additional_recipients": [
         {
@@ -147,7 +147,7 @@ the transaction.
           "description": "description5",
           "amount_money": {
             "amount": 85,
-            "currency": "KES"
+            "currency": "JPY"
           },
           "receivable_id": "receivable_id5"
         },
@@ -156,7 +156,7 @@ the transaction.
           "description": "description6",
           "amount_money": {
             "amount": 86,
-            "currency": "KGS"
+            "currency": "KES"
           },
           "receivable_id": "receivable_id6"
         },
@@ -165,7 +165,7 @@ the transaction.
           "description": "description7",
           "amount_money": {
             "amount": 87,
-            "currency": "KHR"
+            "currency": "KGS"
           },
           "receivable_id": "receivable_id7"
         }

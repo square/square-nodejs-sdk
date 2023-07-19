@@ -14,7 +14,7 @@ The maximum results per page is 100.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `beginTime` | `string \| undefined` | Optional | Indicates the start of the time range to retrieve each PaymentRefund`for, in RFC 3339 format. The range is determined using the`created_at`field for each`PaymentRefund`.<br><br>Default: The current time minus one year. |
+| `beginTime` | `string \| undefined` | Optional | Indicates the start of the time range to retrieve each `PaymentRefund` for, in RFC 3339<br>format.  The range is determined using the `created_at` field for each `PaymentRefund`.<br><br>Default: The current time minus one year. |
 | `endTime` | `string \| undefined` | Optional | Indicates the end of the time range to retrieve each `PaymentRefund` for, in RFC 3339<br>format.  The range is determined using the `created_at` field for each `PaymentRefund`.<br><br>Default: The current time. |
 | `sortOrder` | `string \| undefined` | Optional | The order in which results are listed by `PaymentRefund.created_at`:<br><br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default). |
 | `cursor` | `string \| undefined` | Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |

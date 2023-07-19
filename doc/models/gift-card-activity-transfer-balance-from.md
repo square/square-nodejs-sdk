@@ -21,7 +21,7 @@ Represents details about a `TRANSFER_BALANCE_FROM` [gift card activity type](../
   "transfer_to_gift_card_id": "transfer_to_gift_card_id6",
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   }
 }
 ```

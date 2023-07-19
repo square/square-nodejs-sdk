@@ -27,7 +27,7 @@ export class RefundsApi extends BaseApi {
    *
    * The maximum results per page is 100.
    *
-   * @param beginTime   Indicates the start of the time range to retrieve each PaymentRefund` for, in RFC
+   * @param beginTime   Indicates the start of the time range to retrieve each `PaymentRefund` for, in RFC
    *                              3339  format.  The range is determined using the `created_at` field for each
    *                              `PaymentRefund`.   Default: The current time minus one year.
    * @param endTime     Indicates the end of the time range to retrieve each `PaymentRefund` for, in RFC

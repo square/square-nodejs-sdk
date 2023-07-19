@@ -48,7 +48,7 @@ export class ApiError<T = {}> extends Error
           }
         }
       } catch (error) {
-        if (__DEV__) {
+        if (process.env.NODE_ENV !== 'production') {
           if (console) {
             console.warn(
               `Unexpected error: Could not parse HTTP response body as JSON. ${error.message}`

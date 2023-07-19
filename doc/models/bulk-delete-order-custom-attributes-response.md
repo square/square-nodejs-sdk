@@ -22,8 +22,8 @@ Represents a response from deleting one or more order custom attributes.
     "cover-count": {
       "errors": [
         {
-          "category": "API_ERROR",
-          "code": "INVALID_FEES",
+          "category": "REFUND_ERROR",
+          "code": "INVALID_ENUM_VALUE",
           "detail": "detail1",
           "field": "field9"
         }
@@ -32,14 +32,14 @@ Represents a response from deleting one or more order custom attributes.
     "table-number": {
       "errors": [
         {
-          "category": "AUTHENTICATION_ERROR",
-          "code": "MANUALLY_ENTERED_PAYMENT_NOT_SUPPORTED",
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "INVALID_CONTENT_TYPE",
           "detail": "detail2",
           "field": "field0"
         },
         {
-          "category": "INVALID_REQUEST_ERROR",
-          "code": "PAYMENT_LIMIT_EXCEEDED",
+          "category": "EXTERNAL_VENDOR_ERROR",
+          "code": "INVALID_FORM_VALUE",
           "detail": "detail3",
           "field": "field1"
         }
@@ -48,20 +48,20 @@ Represents a response from deleting one or more order custom attributes.
   },
   "errors": [
     {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "REFUND_ALREADY_PENDING",
+      "category": "REFUND_ERROR",
+      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
       "detail": "detail1",
       "field": "field9"
     },
     {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "PAYMENT_NOT_REFUNDABLE",
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "BAD_REQUEST",
       "detail": "detail2",
       "field": "field0"
     },
     {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "REFUND_DECLINED",
+      "category": "EXTERNAL_VENDOR_ERROR",
+      "code": "MISSING_REQUIRED_PARAMETER",
       "detail": "detail3",
       "field": "field1"
     }

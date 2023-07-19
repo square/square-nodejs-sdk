@@ -21,11 +21,11 @@ Stores details about a cash payment. Contains only non-confidential information.
 {
   "buyer_supplied_money": {
     "amount": 114,
-    "currency": "UNKNOWN_CURRENCY"
+    "currency": "ZMK"
   },
   "change_back_money": {
     "amount": 78,
-    "currency": "MUR"
+    "currency": "DJF"
   }
 }
 ```

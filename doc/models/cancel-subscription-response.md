@@ -21,39 +21,42 @@ Defines output parameters in a response from the
 ```json
 {
   "subscription": {
-    "canceled_date": "2021-10-20",
+    "canceled_date": "2023-06-05",
     "card_id": "ccof:qy5x8hHGYsgLrp4Q4GB",
-    "created_at": "2021-10-20T21:53:10Z",
+    "created_at": "2022-01-19T21:53:10Z",
     "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
-    "id": "910afd30-464a-4e00-a8d8-2296eEXAMPLE",
+    "id": "910afd30-464a-4e00-a8d8-2296e",
+    "invoice_ids": [
+      "inv:0-ChCHu2mZEabLeeHahQnXDjZQECY",
+      "inv:0-ChrcX_i3sNmfsHTGKhI4Wg2mceA"
+    ],
     "location_id": "S8GWD5R9QB376",
-    "paid_until_date": "2021-11-20",
-    "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+    "paid_until_date": "2023-12-31",
+    "plan_variation_id": "6JHXF3B2CW3YKHDV4XEM674H",
     "source": {
-      "name": "My App"
+      "name": "My Application"
     },
-    "start_date": "2021-10-20",
+    "start_date": "2022-01-19",
     "status": "ACTIVE",
     "timezone": "America/Los_Angeles",
-    "version": 1594311617331,
-    "plan_variation_id": "plan_variation_id8"
+    "version": 3
   },
   "errors": [
     {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "REFUND_ALREADY_PENDING",
+      "category": "REFUND_ERROR",
+      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
       "detail": "detail1",
       "field": "field9"
     },
     {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "PAYMENT_NOT_REFUNDABLE",
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "BAD_REQUEST",
       "detail": "detail2",
       "field": "field0"
     },
     {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "REFUND_DECLINED",
+      "category": "EXTERNAL_VENDOR_ERROR",
+      "code": "MISSING_REQUIRED_PARAMETER",
       "detail": "detail3",
       "field": "field1"
     }

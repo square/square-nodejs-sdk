@@ -45,11 +45,11 @@ For more information, see [Loyalty Program Overview](https://developer.squareup.
         ],
         "fixed_discount_money": {
           "amount": 119,
-          "currency": "CUC"
+          "currency": "SEK"
         },
         "max_discount_money": {
           "amount": 163,
-          "currency": "ZMK"
+          "currency": "SEK"
         }
       },
       "created_at": "created_at7",
@@ -71,11 +71,11 @@ For more information, see [Loyalty Program Overview](https://developer.squareup.
         ],
         "fixed_discount_money": {
           "amount": 120,
-          "currency": "CUP"
+          "currency": "SGD"
         },
         "max_discount_money": {
           "amount": 164,
-          "currency": "ZMW"
+          "currency": "SGD"
         }
       },
       "created_at": "created_at8",

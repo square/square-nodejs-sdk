@@ -20,9 +20,9 @@ export interface BusinessAppointmentSettings {
   locationTypes?: string[] | null;
   /** Time units of a service duration for bookings. */
   alignmentTime?: string;
-  /** The minimum lead time in seconds before a service can be booked. Bookings must be created at least this far ahead of the booking's starting time. */
+  /** The minimum lead time in seconds before a service can be booked. A booking must be created at least this amount of time before its starting time. */
   minBookingLeadTimeSeconds?: number | null;
-  /** The maximum lead time in seconds before a service can be booked. Bookings must be created at most this far ahead of the booking's starting time. */
+  /** The maximum lead time in seconds before a service can be booked. A booking must be created at most this amount of time before its starting time. */
   maxBookingLeadTimeSeconds?: number | null;
   /**
    * Indicates whether a customer can choose from all available time slots and have a staff member assigned

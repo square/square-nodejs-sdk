@@ -36,7 +36,7 @@ Represents a [dispute](https://developer.squareup.com/docs/disputes-api/overview
   "id": "id0",
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   },
   "reason": "NOT_AS_DESCRIBED",
   "state": "PROCESSING"

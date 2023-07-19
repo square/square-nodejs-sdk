@@ -30,7 +30,7 @@ Represents a Square gift card.
   "state": "ACTIVE",
   "balance_money": {
     "amount": 146,
-    "currency": "ARS"
+    "currency": "MVR"
   },
   "gan": "gan6"
 }

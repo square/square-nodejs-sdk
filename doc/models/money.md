@@ -24,7 +24,7 @@ for more information.
 ```json
 {
   "amount": 46,
-  "currency": "YER"
+  "currency": "SLL"
 }
 ```
 

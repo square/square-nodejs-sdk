@@ -27,12 +27,12 @@ V1PaymentSurcharge
   "name": "name0",
   "applied_money": {
     "amount": 196,
-    "currency_code": "LYD"
+    "currency_code": "IQD"
   },
   "rate": "rate0",
   "amount_money": {
     "amount": 186,
-    "currency_code": "KRW"
+    "currency_code": "UZS"
   },
   "type": "CUSTOM"
 }

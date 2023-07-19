@@ -126,6 +126,7 @@ const body: CreateInvoiceRequest = {
       squareGiftCard: false,
       bankAccount: false,
       buyNowPayLater: false,
+      cashAppPay: false,
     },
     customFields: [
       {

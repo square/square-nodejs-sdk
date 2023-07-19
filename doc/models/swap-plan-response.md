@@ -22,9 +22,9 @@ Defines output parameters in a response of the
 {
   "actions": [
     {
-      "effective_date": "2021-11-17",
+      "effective_date": "2023-11-17",
       "id": "f0a1dfdc-675b-3a14-a640-99f7ac1cee83",
-      "new_plan_id": "FQ7CDXXWSLUJRPM3GFJSJGZ7",
+      "new_plan_variation_id": "FQ7CDXXWSLUJRPM3GFJSJGZ7",
       "phases": [
         {
           "order_template_id": "uhhnjH9osVv3shUADwaC0b3hNxQZY",
@@ -33,12 +33,11 @@ Defines output parameters in a response of the
           "plan_phase_uid": "plan_phase_uid2"
         }
       ],
-      "type": "SWAP_PLAN",
-      "new_plan_variation_id": "new_plan_variation_id9"
+      "type": "SWAP_PLAN"
     }
   ],
   "subscription": {
-    "created_at": "2021-10-20T21:53:10Z",
+    "created_at": "2023-06-20T21:53:10Z",
     "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
     "id": "9ba40961-995a-4a3d-8c53-048c40cafc13",
     "location_id": "S8GWD5R9QB376",
@@ -50,36 +49,35 @@ Defines output parameters in a response of the
         "uid": "98d6f53b-40e1-4714-8827-032fd923be25"
       }
     ],
-    "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+    "plan_variation_id": "FQ7CDXXWSLUJRPM3GFJSJGZ7",
     "price_override_money": {
       "amount": 2000,
       "currency": "USD"
     },
     "source": {
-      "name": "My App"
+      "name": "My Application"
     },
     "status": "ACTIVE",
     "timezone": "America/Los_Angeles",
-    "version": 1594311617331,
-    "plan_variation_id": "plan_variation_id8",
+    "version": 3,
     "start_date": "start_date8"
   },
   "errors": [
     {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "REFUND_ALREADY_PENDING",
+      "category": "REFUND_ERROR",
+      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
       "detail": "detail1",
       "field": "field9"
     },
     {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "PAYMENT_NOT_REFUNDABLE",
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "BAD_REQUEST",
       "detail": "detail2",
       "field": "field0"
     },
     {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "REFUND_DECLINED",
+      "category": "EXTERNAL_VENDOR_ERROR",
+      "code": "MISSING_REQUIRED_PARAMETER",
       "detail": "detail3",
       "field": "field1"
     }

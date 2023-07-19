@@ -36,7 +36,7 @@ A modifier applicable to items at the time of sale. An example of a modifier is 
   "name": "name0",
   "price_money": {
     "amount": 202,
-    "currency": "BBD"
+    "currency": "CNY"
   },
   "ordinal": 80,
   "modifier_list_id": "modifier_list_id6",
@@ -45,21 +45,21 @@ A modifier applicable to items at the time of sale. An example of a modifier is 
       "location_id": "location_id5",
       "price_money": {
         "amount": 155,
-        "currency": "GYD"
+        "currency": "XPT"
       }
     },
     {
       "location_id": "location_id6",
       "price_money": {
         "amount": 156,
-        "currency": "HKD"
+        "currency": "XTS"
       }
     },
     {
       "location_id": "location_id7",
       "price_money": {
         "amount": 157,
-        "currency": "HNL"
+        "currency": "XXX"
       }
     }
   ]

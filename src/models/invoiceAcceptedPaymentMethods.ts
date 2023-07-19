@@ -17,6 +17,11 @@ export interface InvoiceAcceptedPaymentMethods {
    * [Buy Now Pay Later payments with Afterpay](https://developer.squareup.com/docs/invoices-api/overview#buy-now-pay-later).
    */
   buyNowPayLater?: boolean | null;
+  /**
+   * Indicates whether Cash App payments are accepted. The default value is `false`.
+   * This payment method is supported only for seller [locations](entity:Location) in the United States.
+   */
+  cashAppPay?: boolean | null;
 }
 
 export const invoiceAcceptedPaymentMethodsSchema: Schema<InvoiceAcceptedPaymentMethods> = object(
@@ -25,5 +30,6 @@ export const invoiceAcceptedPaymentMethodsSchema: Schema<InvoiceAcceptedPaymentM
     squareGiftCard: ['square_gift_card', optional(nullable(boolean()))],
     bankAccount: ['bank_account', optional(nullable(boolean()))],
     buyNowPayLater: ['buy_now_pay_later', optional(nullable(boolean()))],
+    cashAppPay: ['cash_app_pay', optional(nullable(boolean()))],
   }
 );

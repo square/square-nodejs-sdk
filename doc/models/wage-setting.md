@@ -29,11 +29,11 @@ An object representing a team member's wage information.
       "pay_type": "NONE",
       "hourly_rate": {
         "amount": 79,
-        "currency": "QAR"
+        "currency": "GNF"
       },
       "annual_rate": {
         "amount": 19,
-        "currency": "PKR"
+        "currency": "DKK"
       },
       "weekly_hours": 187
     },
@@ -42,11 +42,11 @@ An object representing a team member's wage information.
       "pay_type": "HOURLY",
       "hourly_rate": {
         "amount": 80,
-        "currency": "RON"
+        "currency": "GTQ"
       },
       "annual_rate": {
         "amount": 20,
-        "currency": "PLN"
+        "currency": "DOP"
       },
       "weekly_hours": 188
     },
@@ -55,11 +55,11 @@ An object representing a team member's wage information.
       "pay_type": "SALARY",
       "hourly_rate": {
         "amount": 81,
-        "currency": "RSD"
+        "currency": "GYD"
       },
       "annual_rate": {
         "amount": 21,
-        "currency": "PYG"
+        "currency": "DZD"
       },
       "weekly_hours": 189
     }

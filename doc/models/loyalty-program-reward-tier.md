@@ -34,11 +34,11 @@ Represents a reward tier in a loyalty program. A reward tier defines how buyers 
     ],
     "fixed_discount_money": {
       "amount": 132,
-      "currency": "TRY"
+      "currency": "CUC"
     },
     "max_discount_money": {
       "amount": 176,
-      "currency": "MYR"
+      "currency": "CUC"
     }
   },
   "created_at": "created_at2",

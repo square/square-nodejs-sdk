@@ -23,23 +23,23 @@ A collection of various money amounts.
 {
   "total_money": {
     "amount": 250,
-    "currency": "UNKNOWN_CURRENCY"
+    "currency": "KES"
   },
   "tax_money": {
     "amount": 58,
-    "currency": "KZT"
+    "currency": "XBC"
   },
   "discount_money": {
     "amount": 92,
-    "currency": "XBD"
+    "currency": "THB"
   },
   "tip_money": {
     "amount": 190,
-    "currency": "CHE"
+    "currency": "ZMK"
   },
   "service_charge_money": {
     "amount": 160,
-    "currency": "BZD"
+    "currency": "AOA"
   }
 }
 ```

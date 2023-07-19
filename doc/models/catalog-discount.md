@@ -41,7 +41,7 @@ A discount applicable to items.
   "percentage": "percentage8",
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   },
   "pin_required": false
 }

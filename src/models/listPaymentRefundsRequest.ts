@@ -7,7 +7,7 @@ import { nullable, number, object, optional, Schema, string } from '../schema';
  */
 export interface ListPaymentRefundsRequest {
   /**
-   * Indicates the start of the time range to retrieve each PaymentRefund` for, in RFC 3339
+   * Indicates the start of the time range to retrieve each `PaymentRefund` for, in RFC 3339
    * format.  The range is determined using the `created_at` field for each `PaymentRefund`.
    * Default: The current time minus one year.
    */

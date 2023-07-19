@@ -26,7 +26,7 @@ V1CreateRefundRequest
   "reason": "reason4",
   "refunded_money": {
     "amount": 214,
-    "currency_code": "CHW"
+    "currency_code": "SRD"
   },
   "request_idempotence_key": "request_idempotence_key8"
 }

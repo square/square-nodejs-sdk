@@ -19,12 +19,8 @@ Defines input parameters in a request to the
 ```json
 {
   "subscription": {
-    "price_override_money": {
-      "amount": 2000,
-      "currency": "USD"
-    },
-    "tax_percentage": null,
-    "version": 1594155459464,
+    "canceled_date": null,
+    "card_id": "{NEW CARD ID}",
     "id": "id4",
     "location_id": "location_id8",
     "plan_variation_id": "plan_variation_id8",

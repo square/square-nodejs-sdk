@@ -28,7 +28,7 @@ set of participating line items.
   "tax_uid": "tax_uid4",
   "applied_money": {
     "amount": 196,
-    "currency": "PLN"
+    "currency": "HKD"
   }
 }
 ```

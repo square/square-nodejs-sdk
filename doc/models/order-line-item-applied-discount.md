@@ -28,7 +28,7 @@ line items.
   "discount_uid": "discount_uid4",
   "applied_money": {
     "amount": 196,
-    "currency": "PLN"
+    "currency": "HKD"
   }
 }
 ```

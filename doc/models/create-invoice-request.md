@@ -24,6 +24,7 @@ Describes a `CreateInvoice` request.
       "bank_account": false,
       "buy_now_pay_later": false,
       "card": true,
+      "cash_app_pay": false,
       "square_gift_card": false
     },
     "custom_fields": [

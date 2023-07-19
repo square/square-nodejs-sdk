@@ -193,4 +193,5 @@ to [ISO 4217](https://wikipedia.org/wiki/ISO_4217).
 | `ZMK` | Zambian kwacha |
 | `ZMW` | Zambian kwacha |
 | `BTC` | Bitcoin |
+| `XUS` | USD Coin |
 

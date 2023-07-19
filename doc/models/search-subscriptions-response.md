@@ -22,7 +22,7 @@ Defines output parameters in a response from the
 {
   "subscriptions": [
     {
-      "canceled_date": "2021-10-20",
+      "canceled_date": "2021-10-30",
       "card_id": "ccof:mueUsvgajChmjEbp4GB",
       "charged_through_date": "2021-11-20",
       "created_at": "2021-10-20T21:53:10Z",
@@ -30,47 +30,25 @@ Defines output parameters in a response from the
       "id": "de86fc96-8664-474b-af1a-abbe59cacf0e",
       "location_id": "S8GWD5R9QB376",
       "paid_until_date": "2021-11-20",
-      "plan_id": "L3TJVDHVBEQEGQDEZL2JJM7R",
+      "plan_variation_id": "L3TJVDHVBEQEGQDEZL2JJM7R",
       "source": {
         "name": "My Application"
       },
       "start_date": "2021-10-20",
       "status": "CANCELED",
-      "timezone": "UTC",
-      "plan_variation_id": "plan_variation_id3"
+      "timezone": "UTC"
     },
     {
-      "created_at": "2021-10-20T21:53:10Z",
+      "charged_through_date": "2022-08-19",
+      "created_at": "2022-01-19T21:53:10Z",
       "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
       "id": "56214fb2-cc85-47a1-93bc-44f3766bb56f",
-      "location_id": "S8GWD5R9QB376",
-      "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
-      "price_override_money": {
-        "amount": 100,
-        "currency": "USD"
-      },
-      "source": {
-        "name": "My Application"
-      },
-      "start_date": "2021-10-20",
-      "status": "PENDING",
-      "tax_percentage": "5",
-      "timezone": "America/Los_Angeles",
-      "version": 1594155459464,
-      "plan_variation_id": "plan_variation_id4"
-    },
-    {
-      "charged_through_date": "2021-11-20",
-      "created_at": "2021-10-20T21:53:10Z",
-      "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
-      "id": "8151fc89-da15-4eb9-a685-1a70883cebfc",
       "invoice_ids": [
         "grebK0Q_l8H4fqoMMVvt-Q",
         "rcX_i3sNmHTGKhI4W2mceA"
       ],
       "location_id": "S8GWD5R9QB376",
-      "paid_until_date": "2021-11-20",
-      "plan_id": "6JHXF3B2CW3YKHDV4XEM674H",
+      "plan_variation_id": "6JHXF3B2CW3YKHDV4XEM674H",
       "price_override_money": {
         "amount": 1000,
         "currency": "USD"
@@ -78,28 +56,52 @@ Defines output parameters in a response from the
       "source": {
         "name": "My Application"
       },
-      "start_date": "2021-10-20",
+      "start_date": "2022-01-19",
+      "status": "PAUSED",
+      "tax_percentage": "5",
+      "timezone": "America/Los_Angeles",
+      "version": 2
+    },
+    {
+      "card_id": "ccof:qy5x8hHGYsgLrp4Q4GB",
+      "created_at": "2023-06-20T21:53:10Z",
+      "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+      "id": "56214fb2-cc85-47a1-93bc-44f3766bb56f",
+      "location_id": "S8GWD5R9QB376",
+      "phases": [
+        {
+          "order_template_id": "U2NaowWxzXwpsZU697x7ZHOAnCNZY",
+          "ordinal": 0,
+          "plan_phase_uid": "X2Q2AONPB3RB64Y27S25QCZP",
+          "uid": "873451e0-745b-4e87-ab0b-c574933fe616"
+        }
+      ],
+      "plan_variation_id": "6JHXF3B2CW3YKHDV4XEM674H",
+      "source": {
+        "name": "My Application"
+      },
+      "start_date": "2023-06-20",
       "status": "ACTIVE",
       "timezone": "America/Los_Angeles",
-      "plan_variation_id": "plan_variation_id5"
+      "version": 1
     }
   ],
   "errors": [
     {
-      "category": "AUTHENTICATION_ERROR",
-      "code": "REFUND_ALREADY_PENDING",
+      "category": "REFUND_ERROR",
+      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
       "detail": "detail1",
       "field": "field9"
     },
     {
-      "category": "INVALID_REQUEST_ERROR",
-      "code": "PAYMENT_NOT_REFUNDABLE",
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "BAD_REQUEST",
       "detail": "detail2",
       "field": "field0"
     },
     {
-      "category": "RATE_LIMIT_ERROR",
-      "code": "REFUND_DECLINED",
+      "category": "EXTERNAL_VENDOR_ERROR",
+      "code": "MISSING_REQUIRED_PARAMETER",
       "detail": "detail3",
       "field": "field1"
     }

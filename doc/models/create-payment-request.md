@@ -56,7 +56,7 @@ Describes a request to create a payment using
   "source_id": "ccof:GaJGNaZa8x4OgDJn4GB",
   "tip_money": {
     "amount": 190,
-    "currency": "CHE"
+    "currency": "ZMK"
   },
   "delay_duration": "delay_duration2",
   "delay_action": "delay_action0"

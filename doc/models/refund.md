@@ -34,12 +34,12 @@ Represents a refund processed for a Square transaction.
   "reason": "reason4",
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   },
   "status": "PENDING",
   "processing_fee_money": {
     "amount": 112,
-    "currency": "XBB"
+    "currency": "BBD"
   },
   "additional_recipients": [
     {
@@ -47,7 +47,7 @@ Represents a refund processed for a Square transaction.
       "description": "description9",
       "amount_money": {
         "amount": 83,
-        "currency": "ALL"
+        "currency": "ZAR"
       },
       "receivable_id": "receivable_id9"
     },
@@ -56,7 +56,7 @@ Represents a refund processed for a Square transaction.
       "description": "description0",
       "amount_money": {
         "amount": 84,
-        "currency": "AMD"
+        "currency": "ZMK"
       },
       "receivable_id": "receivable_id0"
     },
@@ -65,7 +65,7 @@ Represents a refund processed for a Square transaction.
       "description": "description1",
       "amount_money": {
         "amount": 85,
-        "currency": "ANG"
+        "currency": "ZMW"
       },
       "receivable_id": "receivable_id1"
     }

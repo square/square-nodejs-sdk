@@ -13,8 +13,8 @@ The service appointment settings, including where and how the service is provide
 |  --- | --- | --- | --- |
 | `locationTypes` | [`string[] \| undefined`](../../doc/models/business-appointment-settings-booking-location-type.md) | Optional | Types of the location allowed for bookings.<br>See [BusinessAppointmentSettingsBookingLocationType](#type-businessappointmentsettingsbookinglocationtype) for possible values |
 | `alignmentTime` | [`string \| undefined`](../../doc/models/business-appointment-settings-alignment-time.md) | Optional | Time units of a service duration for bookings. |
-| `minBookingLeadTimeSeconds` | `number \| undefined` | Optional | The minimum lead time in seconds before a service can be booked. Bookings must be created at least this far ahead of the booking's starting time. |
-| `maxBookingLeadTimeSeconds` | `number \| undefined` | Optional | The maximum lead time in seconds before a service can be booked. Bookings must be created at most this far ahead of the booking's starting time. |
+| `minBookingLeadTimeSeconds` | `number \| undefined` | Optional | The minimum lead time in seconds before a service can be booked. A booking must be created at least this amount of time before its starting time. |
+| `maxBookingLeadTimeSeconds` | `number \| undefined` | Optional | The maximum lead time in seconds before a service can be booked. A booking must be created at most this amount of time before its starting time. |
 | `anyTeamMemberBookingEnabled` | `boolean \| undefined` | Optional | Indicates whether a customer can choose from all available time slots and have a staff member assigned<br>automatically (`true`) or not (`false`). |
 | `multipleServiceBookingEnabled` | `boolean \| undefined` | Optional | Indicates whether a customer can book multiple services in a single online booking. |
 | `maxAppointmentsPerDayLimitType` | [`string \| undefined`](../../doc/models/business-appointment-settings-max-appointments-per-day-limit-type.md) | Optional | Types of daily appointment limits. |

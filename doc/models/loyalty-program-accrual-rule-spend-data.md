@@ -22,7 +22,7 @@ Represents additional data for rules with the `SPEND` accrual type.
 {
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   },
   "excluded_category_ids": [
     "excluded_category_ids8",

@@ -23,7 +23,7 @@ Represents details about a `REFUND` [gift card activity type](../../doc/models/g
   "redeem_activity_id": "redeem_activity_id0",
   "amount_money": {
     "amount": 186,
-    "currency": "NGN"
+    "currency": "TZS"
   },
   "reference_id": "reference_id2",
   "payment_id": "payment_id0"
