@@ -16,7 +16,7 @@ Square updates the customer ID in response to a merge operation, but does not up
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customerId` | `string \| undefined` | Optional | The ID of the customer. This is the customer profile ID that<br>you provide when creating a draft invoice.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255` |
+| `customerId` | `string \| null \| undefined` | Optional | The ID of the customer. This is the customer profile ID that<br>you provide when creating a draft invoice.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255` |
 | `givenName` | `string \| undefined` | Optional | The recipient's given (that is, first) name. |
 | `familyName` | `string \| undefined` | Optional | The recipient's family (that is, last) name. |
 | `emailAddress` | `string \| undefined` | Optional | The recipient's email address. |

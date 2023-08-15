@@ -11,10 +11,10 @@ Represents a phase, which can override subscription phases as defined by plan_id
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `uid` | `string \| undefined` | Optional | id of subscription phase |
-| `ordinal` | `number \| undefined` | Optional | index of phase in total subscription plan |
-| `orderTemplateId` | `string \| undefined` | Optional | id of order to be used in billing |
-| `planPhaseUid` | `string \| undefined` | Optional | the uid from the plan's phase in catalog |
+| `uid` | `string \| null \| undefined` | Optional | id of subscription phase |
+| `ordinal` | `number \| null \| undefined` | Optional | index of phase in total subscription plan |
+| `orderTemplateId` | `string \| null \| undefined` | Optional | id of order to be used in billing |
+| `planPhaseUid` | `string \| null \| undefined` | Optional | the uid from the plan's phase in catalog |
 
 ## Example (as JSON)
 

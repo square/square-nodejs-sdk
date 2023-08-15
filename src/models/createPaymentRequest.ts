@@ -4,6 +4,7 @@ import {
   CashPaymentDetails,
   cashPaymentDetailsSchema,
 } from './cashPaymentDetails';
+import { CustomerDetails, customerDetailsSchema } from './customerDetails';
 import {
   ExternalPaymentDetails,
   externalPaymentDetailsSchema,
@@ -163,6 +164,8 @@ export interface CreatePaymentRequest {
    * [Take External Payments](https://developer.squareup.com/docs/payments-api/take-payments/external-payments).
    */
   externalDetails?: ExternalPaymentDetails;
+  /** Details about the customer making the payment. */
+  customerDetails?: CustomerDetails;
 }
 
 export const createPaymentRequestSchema: Schema<CreatePaymentRequest> = object({
@@ -196,5 +199,9 @@ export const createPaymentRequestSchema: Schema<CreatePaymentRequest> = object({
   externalDetails: [
     'external_details',
     optional(lazy(() => externalPaymentDetailsSchema)),
+  ],
+  customerDetails: [
+    'customer_details',
+    optional(lazy(() => customerDetailsSchema)),
   ],
 });

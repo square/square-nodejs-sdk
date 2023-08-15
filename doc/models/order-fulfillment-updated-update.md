@@ -11,7 +11,7 @@ Information about fulfillment updates.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `fulfillmentUid` | `string \| undefined` | Optional | A unique ID that identifies the fulfillment only within this order. |
+| `fulfillmentUid` | `string \| null \| undefined` | Optional | A unique ID that identifies the fulfillment only within this order. |
 | `oldState` | [`string \| undefined`](../../doc/models/fulfillment-state.md) | Optional | The current state of this fulfillment. |
 | `newState` | [`string \| undefined`](../../doc/models/fulfillment-state.md) | Optional | The current state of this fulfillment. |
 

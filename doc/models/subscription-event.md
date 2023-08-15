@@ -15,7 +15,7 @@ Describes changes to a subscription and the subscription status.
 | `subscriptionEventType` | [`string`](../../doc/models/subscription-event-subscription-event-type.md) | Required | Supported types of an event occurred to a subscription. |
 | `effectiveDate` | `string` | Required | The `YYYY-MM-DD`-formatted date (for example, 2013-01-15) when the subscription event occurred. |
 | `info` | [`SubscriptionEventInfo \| undefined`](../../doc/models/subscription-event-info.md) | Optional | Provides information about the subscription event. |
-| `phases` | [`Phase[] \| undefined`](../../doc/models/phase.md) | Optional | A list of Phases, to pass phase-specific information used in the swap. |
+| `phases` | [`Phase[] \| null \| undefined`](../../doc/models/phase.md) | Optional | A list of Phases, to pass phase-specific information used in the swap. |
 | `planVariationId` | `string` | Required | The ID of the subscription plan variation associated with the subscription. |
 
 ## Example (as JSON)

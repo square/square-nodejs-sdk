@@ -40,6 +40,10 @@ import {
 import { Money, moneySchema } from './money';
 import { ProcessingFee, processingFeeSchema } from './processingFee';
 import { RiskEvaluation, riskEvaluationSchema } from './riskEvaluation';
+import {
+  SquareAccountDetails,
+  squareAccountDetailsSchema,
+} from './squareAccountDetails';
 
 /** Represents a payment processed by the Square API. */
 export interface Payment {
@@ -135,8 +139,8 @@ export interface Payment {
   delayedUntil?: string;
   /**
    * The source type for this payment.
-   * Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `BUY_NOW_PAY_LATER`, `CASH`
-   * and `EXTERNAL`. For information about these payment source types,
+   * Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `BUY_NOW_PAY_LATER`, `SQUARE_ACCOUNT`,
+   * `CASH` and `EXTERNAL`. For information about these payment source types,
    * see [Take Payments](https://developer.squareup.com/docs/payments-api/take-payments).
    */
   sourceType?: string;
@@ -159,6 +163,8 @@ export interface Payment {
   walletDetails?: DigitalWalletDetails;
   /** Additional details about a Buy Now Pay Later payment type. */
   buyNowPayLaterDetails?: BuyNowPayLaterDetails;
+  /** Additional details about Square Account payments. */
+  squareAccountDetails?: SquareAccountDetails;
   /** The ID of the location associated with the payment. */
   locationId?: string;
   /** The ID of the order associated with the payment. */
@@ -289,6 +295,10 @@ export const paymentSchema: Schema<Payment> = object({
   buyNowPayLaterDetails: [
     'buy_now_pay_later_details',
     optional(lazy(() => buyNowPayLaterDetailsSchema)),
+  ],
+  squareAccountDetails: [
+    'square_account_details',
+    optional(lazy(() => squareAccountDetailsSchema)),
   ],
   locationId: ['location_id', optional(string())],
   orderId: ['order_id', optional(string())],

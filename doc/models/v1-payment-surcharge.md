@@ -11,14 +11,14 @@ V1PaymentSurcharge
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `string \| undefined` | Optional | The name of the surcharge. |
+| `name` | `string \| null \| undefined` | Optional | The name of the surcharge. |
 | `appliedMoney` | [`V1Money \| undefined`](../../doc/models/v1-money.md) | Optional | - |
-| `rate` | `string \| undefined` | Optional | The amount of the surcharge as a percentage. The percentage is provided as a string representing the decimal equivalent of the percentage. For example, "0.7" corresponds to a 7% surcharge. Exactly one of rate or amount_money should be set. |
+| `rate` | `string \| null \| undefined` | Optional | The amount of the surcharge as a percentage. The percentage is provided as a string representing the decimal equivalent of the percentage. For example, "0.7" corresponds to a 7% surcharge. Exactly one of rate or amount_money should be set. |
 | `amountMoney` | [`V1Money \| undefined`](../../doc/models/v1-money.md) | Optional | - |
 | `type` | [`string \| undefined`](../../doc/models/v1-payment-surcharge-type.md) | Optional | - |
-| `taxable` | `boolean \| undefined` | Optional | Indicates whether the surcharge is taxable. |
-| `taxes` | [`V1PaymentTax[] \| undefined`](../../doc/models/v1-payment-tax.md) | Optional | The list of taxes that should be applied to the surcharge. |
-| `surchargeId` | `string \| undefined` | Optional | A Square-issued unique identifier associated with the surcharge. |
+| `taxable` | `boolean \| null \| undefined` | Optional | Indicates whether the surcharge is taxable. |
+| `taxes` | [`V1PaymentTax[] \| null \| undefined`](../../doc/models/v1-payment-tax.md) | Optional | The list of taxes that should be applied to the surcharge. |
+| `surchargeId` | `string \| null \| undefined` | Optional | A Square-issued unique identifier associated with the surcharge. |
 
 ## Example (as JSON)
 

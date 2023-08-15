@@ -132,11 +132,6 @@ export interface CatalogItemVariation {
    * share the same underlying stock.
    */
   stockableConversion?: CatalogStockConversion;
-  /**
-   * A list of ids of [CatalogItemVariationVendorInfo](entity:CatalogItemVariationVendorInfo) objects that
-   * reference this ItemVariation. (Deprecated in favor of item_variation_vendor_infos)
-   */
-  itemVariationVendorInfoIds?: string[] | null;
 }
 
 export const catalogItemVariationSchema: Schema<CatalogItemVariation> = object({
@@ -174,9 +169,5 @@ export const catalogItemVariationSchema: Schema<CatalogItemVariation> = object({
   stockableConversion: [
     'stockable_conversion',
     optional(lazy(() => catalogStockConversionSchema)),
-  ],
-  itemVariationVendorInfoIds: [
-    'item_variation_vendor_info_ids',
-    optional(nullable(array(string()))),
   ],
 });

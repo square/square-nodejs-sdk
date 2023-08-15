@@ -11,7 +11,7 @@ Tests a [Subscription](../../doc/models/webhook-subscription.md) by sending a te
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `eventType` | `string \| undefined` | Optional | The event type that will be used to test the [Subscription](entity:WebhookSubscription). The event type must be<br>contained in the list of event types in the [Subscription](entity:WebhookSubscription). |
+| `eventType` | `string \| null \| undefined` | Optional | The event type that will be used to test the [Subscription](entity:WebhookSubscription). The event type must be<br>contained in the list of event types in the [Subscription](entity:WebhookSubscription). |
 
 ## Example (as JSON)
 

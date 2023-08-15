@@ -107,6 +107,8 @@ export type { BulkDeleteMerchantCustomAttributesResponseMerchantCustomAttributeD
 export type { BulkDeleteOrderCustomAttributesRequest } from './models/bulkDeleteOrderCustomAttributesRequest';
 export type { BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute } from './models/bulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute';
 export type { BulkDeleteOrderCustomAttributesResponse } from './models/bulkDeleteOrderCustomAttributesResponse';
+export type { BulkRetrieveBookingsRequest } from './models/bulkRetrieveBookingsRequest';
+export type { BulkRetrieveBookingsResponse } from './models/bulkRetrieveBookingsResponse';
 export type { BulkRetrieveVendorsRequest } from './models/bulkRetrieveVendorsRequest';
 export type { BulkRetrieveVendorsResponse } from './models/bulkRetrieveVendorsResponse';
 export type { BulkUpdateTeamMembersRequest } from './models/bulkUpdateTeamMembersRequest';
@@ -303,6 +305,7 @@ export type { CustomerCreationSourceFilter } from './models/customerCreationSour
 export type { CustomerCustomAttributeFilter } from './models/customerCustomAttributeFilter';
 export type { CustomerCustomAttributeFilters } from './models/customerCustomAttributeFilters';
 export type { CustomerCustomAttributeFilterValue } from './models/customerCustomAttributeFilterValue';
+export type { CustomerDetails } from './models/customerDetails';
 export type { CustomerFilter } from './models/customerFilter';
 export type { CustomerGroup } from './models/customerGroup';
 export type { CustomerPreferences } from './models/customerPreferences';
@@ -787,6 +790,7 @@ export type { Site } from './models/site';
 export type { Snippet } from './models/snippet';
 export type { SnippetResponse } from './models/snippetResponse';
 export type { SourceApplication } from './models/sourceApplication';
+export type { SquareAccountDetails } from './models/squareAccountDetails';
 export type { StandardUnitDescription } from './models/standardUnitDescription';
 export type { StandardUnitDescriptionGroup } from './models/standardUnitDescriptionGroup';
 export type { SubmitEvidenceResponse } from './models/submitEvidenceResponse';
@@ -806,8 +810,11 @@ export type { TeamMemberAssignedLocations } from './models/teamMemberAssignedLoc
 export type { TeamMemberBookingProfile } from './models/teamMemberBookingProfile';
 export type { TeamMemberWage } from './models/teamMemberWage';
 export type { Tender } from './models/tender';
+export type { TenderBankAccountDetails } from './models/tenderBankAccountDetails';
+export type { TenderBuyNowPayLaterDetails } from './models/tenderBuyNowPayLaterDetails';
 export type { TenderCardDetails } from './models/tenderCardDetails';
 export type { TenderCashDetails } from './models/tenderCashDetails';
+export type { TenderSquareAccountDetails } from './models/tenderSquareAccountDetails';
 export type { TerminalAction } from './models/terminalAction';
 export type { TerminalActionQuery } from './models/terminalActionQuery';
 export type { TerminalActionQueryFilter } from './models/terminalActionQueryFilter';

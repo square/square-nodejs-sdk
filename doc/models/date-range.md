@@ -12,8 +12,8 @@ objects that have date properties.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `startDate` | `string \| undefined` | Optional | A string in `YYYY-MM-DD` format, such as `2017-10-31`, per the ISO 8601<br>extended format for calendar dates.<br>The beginning of a date range (inclusive). |
-| `endDate` | `string \| undefined` | Optional | A string in `YYYY-MM-DD` format, such as `2017-10-31`, per the ISO 8601<br>extended format for calendar dates.<br>The end of a date range (inclusive). |
+| `startDate` | `string \| null \| undefined` | Optional | A string in `YYYY-MM-DD` format, such as `2017-10-31`, per the ISO 8601<br>extended format for calendar dates.<br>The beginning of a date range (inclusive). |
+| `endDate` | `string \| null \| undefined` | Optional | A string in `YYYY-MM-DD` format, such as `2017-10-31`, per the ISO 8601<br>extended format for calendar dates.<br>The end of a date range (inclusive). |
 
 ## Example (as JSON)
 

@@ -13,8 +13,8 @@ at a specific version.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `objectId` | `string \| undefined` | Optional | The ID of the referenced object. |
-| `catalogVersion` | `bigint \| undefined` | Optional | The version of the object. |
+| `objectId` | `string \| null \| undefined` | Optional | The ID of the referenced object. |
+| `catalogVersion` | `bigint \| null \| undefined` | Optional | The version of the object. |
 
 ## Example (as JSON)
 

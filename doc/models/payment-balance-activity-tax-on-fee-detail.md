@@ -9,8 +9,8 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `paymentId` | `string \| undefined` | Optional | The ID of the payment associated with this activity. |
-| `taxRateDescription` | `string \| undefined` | Optional | The description of the tax rate being applied. For example: "GST", "HST". |
+| `paymentId` | `string \| null \| undefined` | Optional | The ID of the payment associated with this activity. |
+| `taxRateDescription` | `string \| null \| undefined` | Optional | The description of the tax rate being applied. For example: "GST", "HST". |
 
 ## Example (as JSON)
 

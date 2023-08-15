@@ -11,7 +11,7 @@ The query filter to return the item variations containing the specified item opt
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `itemOptionValueIds` | `string[] \| undefined` | Optional | A set of `CatalogItemOptionValue` IDs to be used to find associated<br>`CatalogItemVariation`s. All ItemVariations that contain all of the given<br>Item Option Values (in any order) will be returned. |
+| `itemOptionValueIds` | `string[] \| null \| undefined` | Optional | A set of `CatalogItemOptionValue` IDs to be used to find associated<br>`CatalogItemVariation`s. All ItemVariations that contain all of the given<br>Item Option Values (in any order) will be returned. |
 
 ## Example (as JSON)
 

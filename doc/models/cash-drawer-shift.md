@@ -16,10 +16,10 @@ event types.
 |  --- | --- | --- | --- |
 | `id` | `string \| undefined` | Optional | The shift unique ID. |
 | `state` | [`string \| undefined`](../../doc/models/cash-drawer-shift-state.md) | Optional | The current state of a cash drawer shift. |
-| `openedAt` | `string \| undefined` | Optional | The time when the shift began, in ISO 8601 format. |
-| `endedAt` | `string \| undefined` | Optional | The time when the shift ended, in ISO 8601 format. |
-| `closedAt` | `string \| undefined` | Optional | The time when the shift was closed, in ISO 8601 format. |
-| `description` | `string \| undefined` | Optional | The free-form text description of a cash drawer by an employee. |
+| `openedAt` | `string \| null \| undefined` | Optional | The time when the shift began, in ISO 8601 format. |
+| `endedAt` | `string \| null \| undefined` | Optional | The time when the shift ended, in ISO 8601 format. |
+| `closedAt` | `string \| null \| undefined` | Optional | The time when the shift was closed, in ISO 8601 format. |
+| `description` | `string \| null \| undefined` | Optional | The free-form text description of a cash drawer by an employee. |
 | `openedCashMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `cashPaymentMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `cashRefundsMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |

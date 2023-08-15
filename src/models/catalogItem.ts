@@ -119,6 +119,8 @@ export interface CatalogItem {
   descriptionHtml?: string | null;
   /** A server-generated plaintext version of the `description_html` field, without formatting tags. */
   descriptionPlaintext?: string;
+  /** Indicates whether this item is archived (`true`) or not (`false`). */
+  isArchived?: boolean | null;
 }
 
 export const catalogItemSchema: Schema<CatalogItem> = object({
@@ -152,4 +154,5 @@ export const catalogItemSchema: Schema<CatalogItem> = object({
   sortName: ['sort_name', optional(nullable(string()))],
   descriptionHtml: ['description_html', optional(nullable(string()))],
   descriptionPlaintext: ['description_plaintext', optional(string())],
+  isArchived: ['is_archived', optional(nullable(boolean()))],
 });

@@ -14,7 +14,7 @@ For more information, see [Subscription Plans and Variations](https://developer.
 |  --- | --- | --- | --- |
 | `name` | `string` | Required | The name of the plan variation. |
 | `phases` | [`SubscriptionPhase[]`](../../doc/models/subscription-phase.md) | Required | A list containing each [SubscriptionPhase](entity:SubscriptionPhase) for this plan variation. |
-| `subscriptionPlanId` | `string \| undefined` | Optional | The id of the subscription plan, if there is one. |
+| `subscriptionPlanId` | `string \| null \| undefined` | Optional | The id of the subscription plan, if there is one. |
 
 ## Example (as JSON)
 

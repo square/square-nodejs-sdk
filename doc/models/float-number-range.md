@@ -11,8 +11,8 @@ Specifies a decimal number range.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `startAt` | `string \| undefined` | Optional | A decimal value indicating where the range starts. |
-| `endAt` | `string \| undefined` | Optional | A decimal value indicating where the range ends. |
+| `startAt` | `string \| null \| undefined` | Optional | A decimal value indicating where the range starts. |
+| `endAt` | `string \| null \| undefined` | Optional | A decimal value indicating where the range ends. |
 
 ## Example (as JSON)
 

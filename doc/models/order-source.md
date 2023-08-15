@@ -11,7 +11,7 @@ Represents the origination details of an order.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `name` | `string \| undefined` | Optional | The name used to identify the place (physical or digital) that an order originates.<br>If unset, the name defaults to the name of the application that created the order. |
+| `name` | `string \| null \| undefined` | Optional | The name used to identify the place (physical or digital) that an order originates.<br>If unset, the name defaults to the name of the application that created the order. |
 
 ## Example (as JSON)
 

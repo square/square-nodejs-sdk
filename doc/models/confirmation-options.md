@@ -12,7 +12,7 @@
 | `title` | `string` | Required | The title text to display in the confirmation screen flow on the Terminal.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `250` |
 | `body` | `string` | Required | The agreement details to display in the confirmation flow on the Terminal.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `10000` |
 | `agreeButtonText` | `string` | Required | The button text to display indicating the customer agrees to the displayed terms.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `250` |
-| `disagreeButtonText` | `string \| undefined` | Optional | The button text to display indicating the customer does not agree to the displayed terms.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `250` |
+| `disagreeButtonText` | `string \| null \| undefined` | Optional | The button text to display indicating the customer does not agree to the displayed terms.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `250` |
 | `decision` | [`ConfirmationDecision \| undefined`](../../doc/models/confirmation-decision.md) | Optional | - |
 
 ## Example (as JSON)

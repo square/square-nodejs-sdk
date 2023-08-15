@@ -79,6 +79,7 @@ npm test
 
 ### Orders
 * [Orders]
+* [Order Custom Attributes]
 
 ### Subscriptions
 * [Subscriptions]
@@ -104,10 +105,13 @@ npm test
 
 ### Bookings
 * [Bookings]
+* [Booking Custom Attributes]
 
 ### Business
 * [Merchants]
+* [Merchant Custom Attributes]
 * [Locations]
+* [Location Custom Attributes]
 * [Devices]
 * [Cash Drawers]
 
@@ -161,9 +165,13 @@ The following Square APIs are [deprecated](https://developer.squareup.com/docs/b
 [Labor]: doc/api/labor.md
 [Loyalty]: doc/api/loyalty.md
 [Bookings]: doc/api/bookings.md
+[Booking Custom Attributes]: doc/api/booking-custom-attributes.md
 [Locations]: doc/api/locations.md
+[Location Custom Attributes]: doc/api/location-custom-attributes.md
 [Merchants]: doc/api/merchants.md
+[Merchant Custom Attributes]: doc/api/merchant-custom-attributes.md
 [Orders]: doc/api/orders.md
+[Order Custom Attributes]: doc/api/order-custom-attributes.md
 [Invoices]: doc/api/invoices.md
 [Apple Pay]: doc/api/apple-pay.md
 [Refunds]: doc/api/refunds.md

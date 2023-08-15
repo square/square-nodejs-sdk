@@ -24,6 +24,11 @@ export interface TaxIds {
    * If it is present, it has been validated. For example, `73628495A`.
    */
   esNif?: string | null;
+  /**
+   * The QII (Qualified Invoice Issuer) number is a 14-character tax identifier used in Japan.
+   * If it is present, it has been validated. For example, `T1234567890123`.
+   */
+  jpQii?: string;
 }
 
 export const taxIdsSchema: Schema<TaxIds> = object({
@@ -31,4 +36,5 @@ export const taxIdsSchema: Schema<TaxIds> = object({
   frSiret: ['fr_siret', optional(nullable(string()))],
   frNaf: ['fr_naf', optional(nullable(string()))],
   esNif: ['es_nif', optional(nullable(string()))],
+  jpQii: ['jp_qii', optional(string())],
 });

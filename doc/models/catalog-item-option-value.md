@@ -13,11 +13,11 @@ its item option values.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `itemOptionId` | `string \| undefined` | Optional | Unique ID of the associated item option. |
-| `name` | `string \| undefined` | Optional | Name of this item option value. This is a searchable attribute for use in applicable query filters. |
-| `description` | `string \| undefined` | Optional | A human-readable description for the option value. This is a searchable attribute for use in applicable query filters. |
-| `color` | `string \| undefined` | Optional | The HTML-supported hex color for the item option (e.g., "#ff8d4e85").<br>Only displayed if `show_colors` is enabled on the parent `ItemOption`. When<br>left unset, `color` defaults to white ("#ffffff") when `show_colors` is<br>enabled on the parent `ItemOption`. |
-| `ordinal` | `number \| undefined` | Optional | Determines where this option value appears in a list of option values. |
+| `itemOptionId` | `string \| null \| undefined` | Optional | Unique ID of the associated item option. |
+| `name` | `string \| null \| undefined` | Optional | Name of this item option value. This is a searchable attribute for use in applicable query filters. |
+| `description` | `string \| null \| undefined` | Optional | A human-readable description for the option value. This is a searchable attribute for use in applicable query filters. |
+| `color` | `string \| null \| undefined` | Optional | The HTML-supported hex color for the item option (e.g., "#ff8d4e85").<br>Only displayed if `show_colors` is enabled on the parent `ItemOption`. When<br>left unset, `color` defaults to white ("#ffffff") when `show_colors` is<br>enabled on the parent `ItemOption`. |
+| `ordinal` | `number \| null \| undefined` | Optional | Determines where this option value appears in a list of option values. |
 
 ## Example (as JSON)
 

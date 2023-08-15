@@ -31,6 +31,7 @@ Either `loyalty_promotion` or `errors` is present in the response.
     "id": "loypromo_f0f9b849-725e-378d-b810-511237e07b67",
     "incentive": {
       "points_multiplier_data": {
+        "multiplier": "3.000",
         "points_multiplier": 3
       },
       "type": "POINTS_MULTIPLIER",

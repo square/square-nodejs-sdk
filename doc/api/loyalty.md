@@ -584,7 +584,7 @@ const body: CreateLoyaltyPromotionRequest = {
     incentive: {
       type: 'POINTS_MULTIPLIER',
       pointsMultiplierData: {
-        pointsMultiplier: 3,
+        multiplier: '3.0',
       },
     },
     availableTime: {

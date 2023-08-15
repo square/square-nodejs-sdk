@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string \| undefined` | Optional | The device's Square-issued ID. |
-| `name` | `string \| undefined` | Optional | The device's merchant-specified name. |
+| `name` | `string \| null \| undefined` | Optional | The device's merchant-specified name. |
 
 ## Example (as JSON)
 

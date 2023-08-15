@@ -11,7 +11,7 @@ Represents an input to a call to [BulkRetrieveVendors](../../doc/api/vendors.md#
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `vendorIds` | `string[] \| undefined` | Optional | IDs of the [Vendor](entity:Vendor) objects to retrieve. |
+| `vendorIds` | `string[] \| null \| undefined` | Optional | IDs of the [Vendor](entity:Vendor) objects to retrieve. |
 
 ## Example (as JSON)
 

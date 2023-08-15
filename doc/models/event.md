@@ -9,10 +9,10 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `merchantId` | `string \| undefined` | Optional | The ID of the target merchant associated with the event. |
-| `locationId` | `string \| undefined` | Optional | The ID of the location associated with the event. |
-| `type` | `string \| undefined` | Optional | The type of event this represents. |
-| `eventId` | `string \| undefined` | Optional | A unique ID for the event. |
+| `merchantId` | `string \| null \| undefined` | Optional | The ID of the target merchant associated with the event. |
+| `locationId` | `string \| null \| undefined` | Optional | The ID of the location associated with the event. |
+| `type` | `string \| null \| undefined` | Optional | The type of event this represents. |
+| `eventId` | `string \| null \| undefined` | Optional | A unique ID for the event. |
 | `createdAt` | `string \| undefined` | Optional | Timestamp of when the event was created, in RFC 3339 format. |
 | `data` | [`EventData \| undefined`](../../doc/models/event-data.md) | Optional | - |
 
