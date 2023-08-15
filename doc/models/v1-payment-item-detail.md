@@ -11,10 +11,10 @@ V1PaymentItemDetail
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `categoryName` | `string \| undefined` | Optional | The name of the item's merchant-defined category, if any. |
-| `sku` | `string \| undefined` | Optional | The item's merchant-defined SKU, if any. |
-| `itemId` | `string \| undefined` | Optional | The unique ID of the item purchased, if any. |
-| `itemVariationId` | `string \| undefined` | Optional | The unique ID of the item variation purchased, if any. |
+| `categoryName` | `string \| null \| undefined` | Optional | The name of the item's merchant-defined category, if any. |
+| `sku` | `string \| null \| undefined` | Optional | The item's merchant-defined SKU, if any. |
+| `itemId` | `string \| null \| undefined` | Optional | The unique ID of the item purchased, if any. |
+| `itemVariationId` | `string \| null \| undefined` | Optional | The unique ID of the item variation purchased, if any. |
 
 ## Example (as JSON)
 

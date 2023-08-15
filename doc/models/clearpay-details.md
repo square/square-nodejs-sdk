@@ -11,7 +11,7 @@ Additional details about Clearpay payments.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `emailAddress` | `string \| undefined` | Optional | Email address on the buyer's Clearpay account.<br>**Constraints**: *Maximum Length*: `255` |
+| `emailAddress` | `string \| null \| undefined` | Optional | Email address on the buyer's Clearpay account.<br>**Constraints**: *Maximum Length*: `255` |
 
 ## Example (as JSON)
 

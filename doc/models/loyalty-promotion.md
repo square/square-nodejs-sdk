@@ -25,8 +25,8 @@ A loyalty program can have a maximum of 10 loyalty promotions with an `ACTIVE` o
 | `updatedAt` | `string \| undefined` | Optional | The timestamp when the promotion was last updated, in RFC 3339 format. |
 | `loyaltyProgramId` | `string \| undefined` | Optional | The ID of the [loyalty program](entity:LoyaltyProgram) associated with the promotion. |
 | `minimumSpendAmountMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
-| `qualifyingItemVariationIds` | `string[] \| undefined` | Optional | The IDs of any qualifying `ITEM_VARIATION` [catalog objects](entity:CatalogObject). If specified,<br>the purchase must include at least one of these items to qualify for the promotion.<br><br>This option is valid only if the base loyalty program uses a `VISIT` or `SPEND` accrual rule.<br>With `SPEND` accrual rules, make sure that qualifying promotional items are not excluded.<br><br>You can specify `qualifying_item_variation_ids` or `qualifying_category_ids` for a given promotion, but not both. |
-| `qualifyingCategoryIds` | `string[] \| undefined` | Optional | The IDs of any qualifying `CATEGORY` [catalog objects](entity:CatalogObject). If specified,<br>the purchase must include at least one item from one of these categories to qualify for the promotion.<br><br>This option is valid only if the base loyalty program uses a `VISIT` or `SPEND` accrual rule.<br>With `SPEND` accrual rules, make sure that qualifying promotional items are not excluded.<br><br>You can specify `qualifying_category_ids` or `qualifying_item_variation_ids` for a promotion, but not both. |
+| `qualifyingItemVariationIds` | `string[] \| null \| undefined` | Optional | The IDs of any qualifying `ITEM_VARIATION` [catalog objects](entity:CatalogObject). If specified,<br>the purchase must include at least one of these items to qualify for the promotion.<br><br>This option is valid only if the base loyalty program uses a `VISIT` or `SPEND` accrual rule.<br>With `SPEND` accrual rules, make sure that qualifying promotional items are not excluded.<br><br>You can specify `qualifying_item_variation_ids` or `qualifying_category_ids` for a given promotion, but not both. |
+| `qualifyingCategoryIds` | `string[] \| null \| undefined` | Optional | The IDs of any qualifying `CATEGORY` [catalog objects](entity:CatalogObject). If specified,<br>the purchase must include at least one item from one of these categories to qualify for the promotion.<br><br>This option is valid only if the base loyalty program uses a `VISIT` or `SPEND` accrual rule.<br>With `SPEND` accrual rules, make sure that qualifying promotional items are not excluded.<br><br>You can specify `qualifying_category_ids` or `qualifying_item_variation_ids` for a promotion, but not both. |
 
 ## Example (as JSON)
 
@@ -37,7 +37,8 @@ A loyalty program can have a maximum of 10 loyalty promotions with an `ACTIVE` o
   "incentive": {
     "type": "POINTS_MULTIPLIER",
     "points_multiplier_data": {
-      "points_multiplier": 16
+      "points_multiplier": 16,
+      "multiplier": "multiplier8"
     },
     "points_addition_data": {
       "points_addition": 16

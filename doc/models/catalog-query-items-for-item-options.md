@@ -11,7 +11,7 @@ The query filter to return the items containing the specified item option IDs.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `itemOptionIds` | `string[] \| undefined` | Optional | A set of `CatalogItemOption` IDs to be used to find associated<br>`CatalogItem`s. All Items that contain all of the given Item Options (in any order)<br>will be returned. |
+| `itemOptionIds` | `string[] \| null \| undefined` | Optional | A set of `CatalogItemOption` IDs to be used to find associated<br>`CatalogItem`s. All Items that contain all of the given Item Options (in any order)<br>will be returned. |
 
 ## Example (as JSON)
 

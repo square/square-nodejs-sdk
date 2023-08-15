@@ -23,7 +23,8 @@ of points to the points earned from the base program.
 {
   "type": "POINTS_MULTIPLIER",
   "points_multiplier_data": {
-    "points_multiplier": 134
+    "points_multiplier": 134,
+    "multiplier": "multiplier4"
   },
   "points_addition_data": {
     "points_addition": 218

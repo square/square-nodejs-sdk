@@ -13,8 +13,8 @@ the filter can be case-sensitive. This filter can be exact or fuzzy, but it cann
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `exact` | `string \| undefined` | Optional | Use the exact filter to select customers whose attributes match exactly the specified query. |
-| `fuzzy` | `string \| undefined` | Optional | Use the fuzzy filter to select customers whose attributes match the specified query<br>in a fuzzy manner. When the fuzzy option is used, search queries are tokenized, and then<br>each query token must be matched somewhere in the searched attribute. For single token queries,<br>this is effectively the same behavior as a partial match operation. |
+| `exact` | `string \| null \| undefined` | Optional | Use the exact filter to select customers whose attributes match exactly the specified query. |
+| `fuzzy` | `string \| null \| undefined` | Optional | Use the fuzzy filter to select customers whose attributes match the specified query<br>in a fuzzy manner. When the fuzzy option is used, search queries are tokenized, and then<br>each query token must be matched somewhere in the searched attribute. For single token queries,<br>this is effectively the same behavior as a partial match operation. |
 
 ## Example (as JSON)
 

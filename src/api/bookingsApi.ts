@@ -1,5 +1,13 @@
 import { ApiResponse, RequestOptions } from '../core';
 import {
+  BulkRetrieveBookingsRequest,
+  bulkRetrieveBookingsRequestSchema,
+} from '../models/bulkRetrieveBookingsRequest';
+import {
+  BulkRetrieveBookingsResponse,
+  bulkRetrieveBookingsResponseSchema,
+} from '../models/bulkRetrieveBookingsResponse';
+import {
   CancelBookingRequest,
   cancelBookingRequestSchema,
 } from '../models/cancelBookingRequest';
@@ -65,6 +73,8 @@ export class BookingsApi extends BaseApi {
    * @param limit          The maximum number of results per page to return in a paged response.
    * @param cursor         The pagination cursor from the preceding response to return the next page of the
    *                                 results. Do not set this when retrieving the first page of the results.
+   * @param customerId     The [customer](entity:Customer) for whom to retrieve bookings. If this is not set,
+   *                                 bookings for all customers are retrieved.
    * @param teamMemberId   The team member for whom to retrieve bookings. If this is not set, bookings of
    *                                 all members are retrieved.
    * @param locationId     The location for which to retrieve bookings. If this is not set, all locations'
@@ -78,6 +88,7 @@ export class BookingsApi extends BaseApi {
   async listBookings(
     limit?: number,
     cursor?: string,
+    customerId?: string,
     teamMemberId?: string,
     locationId?: string,
     startAtMin?: string,
@@ -88,6 +99,7 @@ export class BookingsApi extends BaseApi {
     const mapped = req.prepareArgs({
       limit: [limit, optional(number())],
       cursor: [cursor, optional(string())],
+      customerId: [customerId, optional(string())],
       teamMemberId: [teamMemberId, optional(string())],
       locationId: [locationId, optional(string())],
       startAtMin: [startAtMin, optional(string())],
@@ -95,6 +107,7 @@ export class BookingsApi extends BaseApi {
     });
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
+    req.query('customer_id', mapped.customerId);
     req.query('team_member_id', mapped.teamMemberId);
     req.query('location_id', mapped.locationId);
     req.query('start_at_min', mapped.startAtMin);
@@ -159,6 +172,31 @@ export class BookingsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(searchAvailabilityResponseSchema, requestOptions);
+  }
+
+  /**
+   * Bulk-Retrieves a list of bookings by booking IDs.
+   *
+   * To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
+   * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and
+   * `APPOINTMENTS_READ` for the OAuth scope.
+   *
+   * @param body         An object containing the fields to POST for the request.
+   *                                                           See the corresponding object definition for field
+   *                                                           details.
+   * @return Response from the API call
+   */
+  async bulkRetrieveBookings(
+    body: BulkRetrieveBookingsRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<BulkRetrieveBookingsResponse>> {
+    const req = this.createRequest('POST', '/v2/bookings/bulk-retrieve');
+    const mapped = req.prepareArgs({
+      body: [body, bulkRetrieveBookingsRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    return req.callAsJson(bulkRetrieveBookingsResponseSchema, requestOptions);
   }
 
   /**

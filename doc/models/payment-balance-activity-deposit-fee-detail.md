@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `payoutId` | `string \| undefined` | Optional | The ID of the payout that triggered this deposit fee activity. |
+| `payoutId` | `string \| null \| undefined` | Optional | The ID of the payout that triggered this deposit fee activity. |
 
 ## Example (as JSON)
 

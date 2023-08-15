@@ -15,8 +15,8 @@ Adding custom fields to an invoice requires an
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `label` | `string \| undefined` | Optional | The label or title of the custom field. This field is required for a custom field.<br>**Constraints**: *Maximum Length*: `30` |
-| `value` | `string \| undefined` | Optional | The text of the custom field. If omitted, only the label is rendered.<br>**Constraints**: *Maximum Length*: `2000` |
+| `label` | `string \| null \| undefined` | Optional | The label or title of the custom field. This field is required for a custom field.<br>**Constraints**: *Maximum Length*: `30` |
+| `value` | `string \| null \| undefined` | Optional | The text of the custom field. If omitted, only the label is rendered.<br>**Constraints**: *Maximum Length*: `2000` |
 | `placement` | [`string \| undefined`](../../doc/models/invoice-custom-field-placement.md) | Optional | Indicates where to render a custom field on the Square-hosted invoice page and in emailed or PDF<br>copies of the invoice. |
 
 ## Example (as JSON)

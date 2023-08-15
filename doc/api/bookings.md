@@ -13,6 +13,7 @@ const bookingsApi = client.bookingsApi;
 * [List Bookings](../../doc/api/bookings.md#list-bookings)
 * [Create Booking](../../doc/api/bookings.md#create-booking)
 * [Search Availability](../../doc/api/bookings.md#search-availability)
+* [Bulk Retrieve Bookings](../../doc/api/bookings.md#bulk-retrieve-bookings)
 * [Retrieve Business Booking Profile](../../doc/api/bookings.md#retrieve-business-booking-profile)
 * [List Team Member Booking Profiles](../../doc/api/bookings.md#list-team-member-booking-profiles)
 * [Retrieve Team Member Booking Profile](../../doc/api/bookings.md#retrieve-team-member-booking-profile)
@@ -32,6 +33,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 async listBookings(
   limit?: number,
   cursor?: string,
+  customerId?: string,
   teamMemberId?: string,
   locationId?: string,
   startAtMin?: string,
@@ -46,6 +48,7 @@ async listBookings(
 |  --- | --- | --- | --- |
 | `limit` | `number \| undefined` | Query, Optional | The maximum number of results per page to return in a paged response. |
 | `cursor` | `string \| undefined` | Query, Optional | The pagination cursor from the preceding response to return the next page of the results. Do not set this when retrieving the first page of the results. |
+| `customerId` | `string \| undefined` | Query, Optional | The [customer](entity:Customer) for whom to retrieve bookings. If this is not set, bookings for all customers are retrieved. |
 | `teamMemberId` | `string \| undefined` | Query, Optional | The team member for whom to retrieve bookings. If this is not set, bookings of all members are retrieved. |
 | `locationId` | `string \| undefined` | Query, Optional | The location for which to retrieve bookings. If this is not set, all locations' bookings are retrieved. |
 | `startAtMin` | `string \| undefined` | Query, Optional | The RFC 3339 timestamp specifying the earliest of the start time. If this is not set, the current time is used. |
@@ -166,6 +169,55 @@ const body: SearchAvailabilityRequest = {
 
 try {
   const { result, ...httpResponse } = await bookingsApi.searchAvailability(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Bulk Retrieve Bookings
+
+Bulk-Retrieves a list of bookings by booking IDs.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
+
+```ts
+async bulkRetrieveBookings(
+  body: BulkRetrieveBookingsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkRetrieveBookingsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`BulkRetrieveBookingsRequest`](../../doc/models/bulk-retrieve-bookings-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`BulkRetrieveBookingsResponse`](../../doc/models/bulk-retrieve-bookings-response.md)
+
+## Example Usage
+
+```ts
+const body: BulkRetrieveBookingsRequest = {
+  bookingIds: [
+    'booking_ids8',
+    'booking_ids9',
+    'booking_ids0'
+  ],
+};
+
+try {
+  const { result, ...httpResponse } = await bookingsApi.bulkRetrieveBookings(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

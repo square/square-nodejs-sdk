@@ -12,8 +12,20 @@ import {
   additionalRecipientSchema,
 } from './additionalRecipient';
 import { Money, moneySchema } from './money';
+import {
+  TenderBankAccountDetails,
+  tenderBankAccountDetailsSchema,
+} from './tenderBankAccountDetails';
+import {
+  TenderBuyNowPayLaterDetails,
+  tenderBuyNowPayLaterDetailsSchema,
+} from './tenderBuyNowPayLaterDetails';
 import { TenderCardDetails, tenderCardDetailsSchema } from './tenderCardDetails';
 import { TenderCashDetails, tenderCashDetailsSchema } from './tenderCashDetails';
+import {
+  TenderSquareAccountDetails,
+  tenderSquareAccountDetailsSchema,
+} from './tenderSquareAccountDetails';
 
 /** Represents a tender (i.e., a method of payment) used in a Square transaction. */
 export interface Tender {
@@ -66,6 +78,16 @@ export interface Tender {
   /** Represents the details of a tender with `type` `CASH`. */
   cashDetails?: TenderCashDetails;
   /**
+   * Represents the details of a tender with `type` `BANK_ACCOUNT`.
+   * See [BankAccountPaymentDetails]($m/BankAccountPaymentDetails)
+   * for more exposed details of a bank account payment.
+   */
+  bankAccountDetails?: TenderBankAccountDetails;
+  /** Represents the details of a tender with `type` `BUY_NOW_PAY_LATER`. */
+  buyNowPayLaterDetails?: TenderBuyNowPayLaterDetails;
+  /** Represents the details of a tender with `type` `SQUARE_ACCOUNT`. */
+  squareAccountDetails?: TenderSquareAccountDetails;
+  /**
    * Additional recipients (other than the merchant) receiving a portion of this tender.
    * For example, fees assessed on the purchase by a third party integration.
    */
@@ -93,6 +115,18 @@ export const tenderSchema: Schema<Tender> = object({
   type: ['type', string()],
   cardDetails: ['card_details', optional(lazy(() => tenderCardDetailsSchema))],
   cashDetails: ['cash_details', optional(lazy(() => tenderCashDetailsSchema))],
+  bankAccountDetails: [
+    'bank_account_details',
+    optional(lazy(() => tenderBankAccountDetailsSchema)),
+  ],
+  buyNowPayLaterDetails: [
+    'buy_now_pay_later_details',
+    optional(lazy(() => tenderBuyNowPayLaterDetailsSchema)),
+  ],
+  squareAccountDetails: [
+    'square_account_details',
+    optional(lazy(() => tenderSquareAccountDetailsSchema)),
+  ],
   additionalRecipients: [
     'additional_recipients',
     optional(nullable(array(lazy(() => additionalRecipientSchema)))),

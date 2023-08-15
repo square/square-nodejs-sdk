@@ -15,7 +15,7 @@ V1CreateRefundRequest
 | `type` | [`string`](../../doc/models/v1-create-refund-request-type.md) | Required | - |
 | `reason` | `string` | Required | The reason for the refund. |
 | `refundedMoney` | [`V1Money \| undefined`](../../doc/models/v1-money.md) | Optional | - |
-| `requestIdempotenceKey` | `string \| undefined` | Optional | An optional key to ensure idempotence if you issue the same PARTIAL refund request more than once. |
+| `requestIdempotenceKey` | `string \| null \| undefined` | Optional | An optional key to ensure idempotence if you issue the same PARTIAL refund request more than once. |
 
 ## Example (as JSON)
 

@@ -17,7 +17,7 @@ For more information, see [Manage loyalty rewards](https://developer.squareup.co
 | `loyaltyAccountId` | `string` | Required | The Square-assigned ID of the [loyalty account](entity:LoyaltyAccount) to which the reward belongs.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
 | `rewardTierId` | `string` | Required | The Square-assigned ID of the [reward tier](entity:LoyaltyProgramRewardTier) used to create the reward.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
 | `points` | `number \| undefined` | Optional | The number of loyalty points used for the reward.<br>**Constraints**: `>= 1` |
-| `orderId` | `string \| undefined` | Optional | The Square-assigned ID of the [order](entity:Order) to which the reward is attached. |
+| `orderId` | `string \| null \| undefined` | Optional | The Square-assigned ID of the [order](entity:Order) to which the reward is attached. |
 | `createdAt` | `string \| undefined` | Optional | The timestamp when the reward was created, in RFC 3339 format. |
 | `updatedAt` | `string \| undefined` | Optional | The timestamp when the reward was last updated, in RFC 3339 format. |
 | `redeemedAt` | `string \| undefined` | Optional | The timestamp when the reward was redeemed, in RFC 3339 format. |

@@ -11,8 +11,8 @@ The range of a number value between the specified lower and upper bounds.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `min` | `string \| undefined` | Optional | The lower bound of the number range. At least one of `min` or `max` must be specified.<br>If unspecified, the results will have no minimum value. |
-| `max` | `string \| undefined` | Optional | The upper bound of the number range. At least one of `min` or `max` must be specified.<br>If unspecified, the results will have no maximum value. |
+| `min` | `string \| null \| undefined` | Optional | The lower bound of the number range. At least one of `min` or `max` must be specified.<br>If unspecified, the results will have no minimum value. |
+| `max` | `string \| null \| undefined` | Optional | The upper bound of the number range. At least one of `min` or `max` must be specified.<br>If unspecified, the results will have no maximum value. |
 
 ## Example (as JSON)
 

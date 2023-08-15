@@ -72,7 +72,7 @@ import { CatalogV1Id, catalogV1IdSchema } from './catalogV1Id';
 export interface CatalogObject {
   /**
    * Possible types of CatalogObjects returned from the catalog, each
-   * containing type-specific properties in the `*_data` field corresponding to the specfied object type.
+   * containing type-specific properties in the `*_data` field corresponding to the specified object type.
    */
   type: string;
   /**

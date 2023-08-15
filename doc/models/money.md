@@ -16,7 +16,7 @@ for more information.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `amount` | `bigint \| undefined` | Optional | The amount of money, in the smallest denomination of the currency<br>indicated by `currency`. For example, when `currency` is `USD`, `amount` is<br>in cents. Monetary amounts can be positive or negative. See the specific<br>field description to determine the meaning of the sign in a particular case. |
+| `amount` | `bigint \| null \| undefined` | Optional | The amount of money, in the smallest denomination of the currency<br>indicated by `currency`. For example, when `currency` is `USD`, `amount` is<br>in cents. Monetary amounts can be positive or negative. See the specific<br>field description to determine the meaning of the sign in a particular case. |
 | `currency` | [`string \| undefined`](../../doc/models/currency.md) | Optional | Indicates the associated currency for an amount of money. Values correspond<br>to [ISO 4217](https://wikipedia.org/wiki/ISO_4217). |
 
 ## Example (as JSON)

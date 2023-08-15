@@ -13,9 +13,9 @@ Represents an action as a pending change to a subscription.
 |  --- | --- | --- | --- |
 | `id` | `string \| undefined` | Optional | The ID of an action scoped to a subscription. |
 | `type` | [`string \| undefined`](../../doc/models/subscription-action-type.md) | Optional | Supported types of an action as a pending change to a subscription. |
-| `effectiveDate` | `string \| undefined` | Optional | The `YYYY-MM-DD`-formatted date when the action occurs on the subscription. |
-| `phases` | [`Phase[] \| undefined`](../../doc/models/phase.md) | Optional | A list of Phases, to pass phase-specific information used in the swap. |
-| `newPlanVariationId` | `string \| undefined` | Optional | The target subscription plan variation that a subscription switches to, for a `SWAP_PLAN` action. |
+| `effectiveDate` | `string \| null \| undefined` | Optional | The `YYYY-MM-DD`-formatted date when the action occurs on the subscription. |
+| `phases` | [`Phase[] \| null \| undefined`](../../doc/models/phase.md) | Optional | A list of Phases, to pass phase-specific information used in the swap. |
+| `newPlanVariationId` | `string \| null \| undefined` | Optional | The target subscription plan variation that a subscription switches to, for a `SWAP_PLAN` action. |
 
 ## Example (as JSON)
 

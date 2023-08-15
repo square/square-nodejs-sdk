@@ -34,6 +34,7 @@ If additional results are available, the `cursor` field is also present along wi
       "id": "loypromo_f0f9b849-725e-378d-b810-511237e07b67",
       "incentive": {
         "points_multiplier_data": {
+          "multiplier": "3.000",
           "points_multiplier": 3
         },
         "type": "POINTS_MULTIPLIER",
@@ -71,6 +72,7 @@ If additional results are available, the `cursor` field is also present along wi
       "id": "loypromo_e696f057-2286-35ff-8108-132241328106",
       "incentive": {
         "points_multiplier_data": {
+          "multiplier": "2.000",
           "points_multiplier": 2
         },
         "type": "POINTS_MULTIPLIER",

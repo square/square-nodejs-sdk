@@ -11,7 +11,7 @@ A filter based on order `source` information.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `sourceNames` | `string[] \| undefined` | Optional | Filters by the [Source](entity:OrderSource) `name`. The filter returns any orders<br>with a `source.name` that matches any of the listed source names.<br><br>Max: 10 source names. |
+| `sourceNames` | `string[] \| null \| undefined` | Optional | Filters by the [Source](entity:OrderSource) `name`. The filter returns any orders<br>with a `source.name` that matches any of the listed source names.<br><br>Max: 10 source names. |
 
 ## Example (as JSON)
 

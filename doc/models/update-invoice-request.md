@@ -12,8 +12,8 @@ Describes a `UpdateInvoice` request.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `invoice` | [`Invoice`](../../doc/models/invoice.md) | Required | Stores information about an invoice. You use the Invoices API to create and manage<br>invoices. For more information, see [Invoices API Overview](https://developer.squareup.com/docs/invoices-api/overview). |
-| `idempotencyKey` | `string \| undefined` | Optional | A unique string that identifies the `UpdateInvoice` request. If you do not<br>provide `idempotency_key` (or provide an empty string as the value), the endpoint<br>treats each request as independent.<br><br>For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).<br>**Constraints**: *Maximum Length*: `128` |
-| `fieldsToClear` | `string[] \| undefined` | Optional | The list of fields to clear.<br>For examples, see [Update an Invoice](https://developer.squareup.com/docs/invoices-api/update-invoices). |
+| `idempotencyKey` | `string \| null \| undefined` | Optional | A unique string that identifies the `UpdateInvoice` request. If you do not<br>provide `idempotency_key` (or provide an empty string as the value), the endpoint<br>treats each request as independent.<br><br>For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).<br>**Constraints**: *Maximum Length*: `128` |
+| `fieldsToClear` | `string[] \| null \| undefined` | Optional | The list of fields to clear.<br>For examples, see [Update an Invoice](https://developer.squareup.com/docs/invoices-api/update-invoices). |
 
 ## Example (as JSON)
 

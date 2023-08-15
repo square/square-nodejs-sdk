@@ -9,9 +9,9 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `paymentId` | `string \| undefined` | Optional | The ID of the payment associated with this activity. |
-| `refundId` | `string \| undefined` | Optional | The ID of the refund associated with this activity. |
-| `locationId` | `string \| undefined` | Optional | The ID of the location of the merchant associated with the payment refund activity |
+| `paymentId` | `string \| null \| undefined` | Optional | The ID of the payment associated with this activity. |
+| `refundId` | `string \| null \| undefined` | Optional | The ID of the refund associated with this activity. |
+| `locationId` | `string \| null \| undefined` | Optional | The ID of the location of the merchant associated with the payment refund activity |
 
 ## Example (as JSON)
 

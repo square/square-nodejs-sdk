@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `order` | [`Order`](../../doc/models/order.md) | Required | Contains all information related to a single order to process with Square,<br>including line items that specify the products to purchase. `Order` objects also<br>include information about any associated tenders, refunds, and returns.<br><br>All Connect V2 Transactions have all been converted to Orders including all associated<br>itemization data. |
-| `proposedRewards` | [`OrderReward[] \| undefined`](../../doc/models/order-reward.md) | Optional | Identifies one or more loyalty reward tiers to apply during the order calculation.<br>The discounts defined by the reward tiers are added to the order only to preview the<br>effect of applying the specified rewards. The rewards do not correspond to actual<br>redemptions; that is, no `reward`s are created. Therefore, the reward `id`s are<br>random strings used only to reference the reward tier. |
+| `proposedRewards` | [`OrderReward[] \| null \| undefined`](../../doc/models/order-reward.md) | Optional | Identifies one or more loyalty reward tiers to apply during the order calculation.<br>The discounts defined by the reward tiers are added to the order only to preview the<br>effect of applying the specified rewards. The rewards do not correspond to actual<br>redemptions; that is, no `reward`s are created. Therefore, the reward `id`s are<br>random strings used only to reference the reward tier. |
 
 ## Example (as JSON)
 

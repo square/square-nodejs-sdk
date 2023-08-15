@@ -13,11 +13,11 @@ For more information, see [Subscription Plans and Variations](https://developer.
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `name` | `string` | Required | The name of the plan. |
-| `phases` | [`SubscriptionPhase[] \| undefined`](../../doc/models/subscription-phase.md) | Optional | A list of SubscriptionPhase containing the [SubscriptionPhase](entity:SubscriptionPhase) for this plan.<br>This field it required. Not including this field will throw a REQUIRED_FIELD_MISSING error |
-| `subscriptionPlanVariations` | [`CatalogObject[] \| undefined`](../../doc/models/catalog-object.md) | Optional | The list of subscription plan variations available for this product |
-| `eligibleItemIds` | `string[] \| undefined` | Optional | The list of IDs of `CatalogItems` that are eligible for subscription by this SubscriptionPlan's variations. |
-| `eligibleCategoryIds` | `string[] \| undefined` | Optional | The list of IDs of `CatalogCategory` that are eligible for subscription by this SubscriptionPlan's variations. |
-| `allItems` | `boolean \| undefined` | Optional | If true, all items in the merchant's catalog are subscribable by this SubscriptionPlan. |
+| `phases` | [`SubscriptionPhase[] \| null \| undefined`](../../doc/models/subscription-phase.md) | Optional | A list of SubscriptionPhase containing the [SubscriptionPhase](entity:SubscriptionPhase) for this plan.<br>This field it required. Not including this field will throw a REQUIRED_FIELD_MISSING error |
+| `subscriptionPlanVariations` | [`CatalogObject[] \| null \| undefined`](../../doc/models/catalog-object.md) | Optional | The list of subscription plan variations available for this product |
+| `eligibleItemIds` | `string[] \| null \| undefined` | Optional | The list of IDs of `CatalogItems` that are eligible for subscription by this SubscriptionPlan's variations. |
+| `eligibleCategoryIds` | `string[] \| null \| undefined` | Optional | The list of IDs of `CatalogCategory` that are eligible for subscription by this SubscriptionPlan's variations. |
+| `allItems` | `boolean \| null \| undefined` | Optional | If true, all items in the merchant's catalog are subscribable by this SubscriptionPlan. |
 
 ## Example (as JSON)
 

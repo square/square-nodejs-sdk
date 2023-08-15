@@ -60,8 +60,8 @@ export class GiftCardsApi extends BaseApi {
    * @param state       If a [state](entity:GiftCardStatus) is provided, the endpoint returns the gift cards
    *                              in the specified state. Otherwise, the endpoint returns the gift cards of all states.
    * @param limit       If a limit is provided, the endpoint returns only the specified number of results
-   *                              per page. The maximum value is 50. The default value is 30. For more information, see
-   *                              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+   *                              per page. The maximum value is 200. The default value is 30. For more information,
+   *                              see [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
    * @param cursor      A pagination cursor returned by a previous call to this endpoint. Provide this
    *                              cursor to retrieve the next set of results for the original query. If a cursor is not
    *                              provided, the endpoint returns the first page of the results.  For more information,

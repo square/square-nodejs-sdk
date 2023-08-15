@@ -13,8 +13,8 @@ They can be used, for example, to apply automatic price adjustments that are bas
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `autoApplyDiscounts` | `boolean \| undefined` | Optional | The option to determine whether pricing rule-based<br>discounts are automatically applied to an order. |
-| `autoApplyTaxes` | `boolean \| undefined` | Optional | The option to determine whether rule-based taxes are automatically<br>applied to an order when the criteria of the corresponding rules are met. |
+| `autoApplyDiscounts` | `boolean \| null \| undefined` | Optional | The option to determine whether pricing rule-based<br>discounts are automatically applied to an order. |
+| `autoApplyTaxes` | `boolean \| null \| undefined` | Optional | The option to determine whether rule-based taxes are automatically<br>applied to an order when the criteria of the corresponding rules are met. |
 
 ## Example (as JSON)
 

@@ -43,6 +43,12 @@ export interface SearchCatalogItemsRequest {
    * a single call to the [SearchCatalogItems](api-endpoint:Catalog-SearchCatalogItems) endpoint.
    */
   customAttributeFilters?: CustomAttributeFilter[];
+  /**
+   * Defines the values for the `archived_state` query expression
+   * used in [SearchCatalogItems]($e/Catalog/SearchCatalogItems)
+   * to return the archived, not archived or either type of catalog items.
+   */
+  archivedState?: string;
 }
 
 export const searchCatalogItemsRequestSchema: Schema<SearchCatalogItemsRequest> = object(
@@ -59,5 +65,6 @@ export const searchCatalogItemsRequestSchema: Schema<SearchCatalogItemsRequest> 
       'custom_attribute_filters',
       optional(array(lazy(() => customAttributeFilterSchema))),
     ],
+    archivedState: ['archived_state', optional(string())],
   }
 );

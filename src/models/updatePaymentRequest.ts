@@ -11,7 +11,7 @@ export interface UpdatePaymentRequest {
   /**
    * A unique string that identifies this `UpdatePayment` request. Keys can be any valid string
    * but must be unique for every `UpdatePayment` request.
-   * For more information, see [Idempotency](https://developer.squareup.com/docs/basics/api101/idempotency).
+   * For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
    */
   idempotencyKey: string;
 }
