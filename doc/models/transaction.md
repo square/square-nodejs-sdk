@@ -30,144 +30,144 @@ the transaction.
 
 ```json
 {
-  "id": "id0",
-  "location_id": "location_id4",
-  "created_at": "created_at2",
+  "id": "id4",
+  "location_id": "location_id8",
+  "created_at": "created_at8",
   "tenders": [
     {
-      "id": "id2",
-      "location_id": "location_id6",
-      "transaction_id": "transaction_id0",
-      "created_at": "created_at0",
-      "note": "note8",
+      "id": "id8",
+      "location_id": "location_id2",
+      "transaction_id": "transaction_id6",
+      "created_at": "created_at6",
+      "note": "note4",
       "type": "THIRD_PARTY_CARD"
     },
     {
-      "id": "id3",
-      "location_id": "location_id7",
-      "transaction_id": "transaction_id1",
-      "created_at": "created_at1",
-      "note": "note9",
-      "type": "SQUARE_GIFT_CARD"
+      "id": "id8",
+      "location_id": "location_id2",
+      "transaction_id": "transaction_id6",
+      "created_at": "created_at6",
+      "note": "note4",
+      "type": "THIRD_PARTY_CARD"
     },
     {
-      "id": "id4",
-      "location_id": "location_id8",
-      "transaction_id": "transaction_id2",
-      "created_at": "created_at2",
-      "note": "note0",
-      "type": "NO_SALE"
+      "id": "id8",
+      "location_id": "location_id2",
+      "transaction_id": "transaction_id6",
+      "created_at": "created_at6",
+      "note": "note4",
+      "type": "THIRD_PARTY_CARD"
     }
   ],
   "refunds": [
     {
-      "id": "id4",
-      "location_id": "location_id8",
-      "transaction_id": "transaction_id2",
-      "tender_id": "tender_id2",
-      "created_at": "created_at2",
-      "reason": "reason0",
+      "id": "id8",
+      "location_id": "location_id2",
+      "transaction_id": "transaction_id6",
+      "tender_id": "tender_id6",
+      "created_at": "created_at6",
+      "reason": "reason4",
       "amount_money": {
         "amount": 186,
-        "currency": "DJF"
+        "currency": "TZS"
       },
       "status": "PENDING",
       "processing_fee_money": {
         "amount": 112,
-        "currency": "LTL"
+        "currency": "BBD"
       },
       "additional_recipients": [
         {
-          "location_id": "location_id7",
-          "description": "description3",
+          "location_id": "location_id0",
+          "description": "description6",
           "amount_money": {
-            "amount": 83,
-            "currency": "JMD"
+            "amount": 186,
+            "currency": "TZS"
           },
-          "receivable_id": "receivable_id3"
-        }
-      ]
-    },
-    {
-      "id": "id5",
-      "location_id": "location_id9",
-      "transaction_id": "transaction_id3",
-      "tender_id": "tender_id3",
-      "created_at": "created_at3",
-      "reason": "reason9",
-      "amount_money": {
-        "amount": 187,
-        "currency": "DKK"
-      },
-      "status": "APPROVED",
-      "processing_fee_money": {
-        "amount": 113,
-        "currency": "LVL"
-      },
-      "additional_recipients": [
-        {
-          "location_id": "location_id8",
-          "description": "description4",
-          "amount_money": {
-            "amount": 84,
-            "currency": "JOD"
-          },
-          "receivable_id": "receivable_id4"
-        },
-        {
-          "location_id": "location_id9",
-          "description": "description5",
-          "amount_money": {
-            "amount": 85,
-            "currency": "JPY"
-          },
-          "receivable_id": "receivable_id5"
-        }
-      ]
-    },
-    {
-      "id": "id6",
-      "location_id": "location_id0",
-      "transaction_id": "transaction_id4",
-      "tender_id": "tender_id4",
-      "created_at": "created_at4",
-      "reason": "reason8",
-      "amount_money": {
-        "amount": 188,
-        "currency": "DOP"
-      },
-      "status": "REJECTED",
-      "processing_fee_money": {
-        "amount": 114,
-        "currency": "LYD"
-      },
-      "additional_recipients": [
-        {
-          "location_id": "location_id9",
-          "description": "description5",
-          "amount_money": {
-            "amount": 85,
-            "currency": "JPY"
-          },
-          "receivable_id": "receivable_id5"
+          "receivable_id": "receivable_id6"
         },
         {
           "location_id": "location_id0",
           "description": "description6",
           "amount_money": {
-            "amount": 86,
-            "currency": "KES"
+            "amount": 186,
+            "currency": "TZS"
+          },
+          "receivable_id": "receivable_id6"
+        }
+      ]
+    },
+    {
+      "id": "id8",
+      "location_id": "location_id2",
+      "transaction_id": "transaction_id6",
+      "tender_id": "tender_id6",
+      "created_at": "created_at6",
+      "reason": "reason4",
+      "amount_money": {
+        "amount": 186,
+        "currency": "TZS"
+      },
+      "status": "PENDING",
+      "processing_fee_money": {
+        "amount": 112,
+        "currency": "BBD"
+      },
+      "additional_recipients": [
+        {
+          "location_id": "location_id0",
+          "description": "description6",
+          "amount_money": {
+            "amount": 186,
+            "currency": "TZS"
           },
           "receivable_id": "receivable_id6"
         },
         {
-          "location_id": "location_id1",
-          "description": "description7",
+          "location_id": "location_id0",
+          "description": "description6",
           "amount_money": {
-            "amount": 87,
-            "currency": "KGS"
+            "amount": 186,
+            "currency": "TZS"
           },
-          "receivable_id": "receivable_id7"
+          "receivable_id": "receivable_id6"
+        }
+      ]
+    },
+    {
+      "id": "id8",
+      "location_id": "location_id2",
+      "transaction_id": "transaction_id6",
+      "tender_id": "tender_id6",
+      "created_at": "created_at6",
+      "reason": "reason4",
+      "amount_money": {
+        "amount": 186,
+        "currency": "TZS"
+      },
+      "status": "PENDING",
+      "processing_fee_money": {
+        "amount": 112,
+        "currency": "BBD"
+      },
+      "additional_recipients": [
+        {
+          "location_id": "location_id0",
+          "description": "description6",
+          "amount_money": {
+            "amount": 186,
+            "currency": "TZS"
+          },
+          "receivable_id": "receivable_id6"
+        },
+        {
+          "location_id": "location_id0",
+          "description": "description6",
+          "amount_money": {
+            "amount": 186,
+            "currency": "TZS"
+          },
+          "receivable_id": "receivable_id6"
         }
       ]
     }

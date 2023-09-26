@@ -17,7 +17,7 @@
 ```json
 {
   "payment_id": "payment_id0",
-  "tax_rate_description": "tax_rate_description2"
+  "tax_rate_description": "tax_rate_description8"
 }
 ```
 

@@ -24,37 +24,37 @@ to search based on [custom attributes](../../doc/models/custom-attribute.md) tha
       "key": "key0",
       "filter": {
         "email": {
-          "exact": "exact2",
-          "fuzzy": "fuzzy8"
+          "exact": "exact6",
+          "fuzzy": "fuzzy2"
         },
         "phone": {
-          "exact": "exact6",
-          "fuzzy": "fuzzy2"
+          "exact": "exact0",
+          "fuzzy": "fuzzy6"
         },
         "text": {
-          "exact": "exact6",
-          "fuzzy": "fuzzy2"
+          "exact": "exact0",
+          "fuzzy": "fuzzy6"
         },
         "selection": {
           "all": [
-            "all5"
+            "all1"
           ],
           "any": [
-            "any2",
-            "any3"
+            "any8",
+            "any9"
           ],
           "none": [
-            "none7"
+            "none3"
           ]
         },
         "date": {
-          "start_at": "start_at2",
-          "end_at": "end_at0"
+          "start_at": "start_at6",
+          "end_at": "end_at6"
         }
       },
       "updated_at": {
-        "start_at": "start_at8",
-        "end_at": "end_at4"
+        "start_at": "start_at6",
+        "end_at": "end_at6"
       }
     }
   ]

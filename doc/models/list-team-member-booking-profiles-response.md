@@ -23,18 +23,18 @@
       "display_name": "Sandbox Seller",
       "is_bookable": true,
       "team_member_id": "TMXUrsBWWcHTt79t",
-      "description": "description7",
-      "profile_image_url": "profile_image_url9"
+      "description": "description4",
+      "profile_image_url": "profile_image_url2"
     },
     {
       "display_name": "Sandbox Staff",
       "is_bookable": true,
       "team_member_id": "TMaJcbiRqPIGZuS9",
-      "description": "description6",
-      "profile_image_url": "profile_image_url0"
+      "description": "description4",
+      "profile_image_url": "profile_image_url2"
     }
   ],
-  "cursor": "cursor6"
+  "cursor": "cursor0"
 }
 ```
 

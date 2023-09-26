@@ -30,15 +30,13 @@ during the active time period.
 
 ```json
 {
-  "name": "name0",
+  "name": "name6",
   "time_period_ids": [
-    "time_period_ids2",
-    "time_period_ids3",
-    "time_period_ids4"
+    "time_period_ids8"
   ],
-  "discount_id": "discount_id8",
-  "match_products_id": "match_products_id2",
-  "apply_products_id": "apply_products_id6"
+  "discount_id": "discount_id4",
+  "match_products_id": "match_products_id4",
+  "apply_products_id": "apply_products_id0"
 }
 ```
 

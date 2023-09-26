@@ -22,44 +22,41 @@ Contains query criteria for the search.
     "state_filter": {
       "states": [
         "CANCELED",
-        "COMPLETED"
+        "DRAFT"
       ]
     },
     "date_time_filter": {
       "created_at": {
+        "start_at": "start_at4",
+        "end_at": "end_at8"
+      },
+      "updated_at": {
         "start_at": "start_at6",
         "end_at": "end_at6"
       },
-      "updated_at": {
-        "start_at": "start_at0",
-        "end_at": "end_at2"
-      },
       "closed_at": {
-        "start_at": "start_at0",
-        "end_at": "end_at2"
+        "start_at": "start_at4",
+        "end_at": "end_at8"
       }
     },
     "fulfillment_filter": {
       "fulfillment_types": [
-        "SHIPMENT",
-        "DELIVERY",
-        "PICKUP"
+        "DELIVERY"
       ],
       "fulfillment_states": [
-        "PREPARED",
-        "COMPLETED",
-        "CANCELED"
+        "CANCELED",
+        "FAILED"
       ]
     },
     "source_filter": {
       "source_names": [
-        "source_names0"
+        "source_names6"
       ]
     },
     "customer_filter": {
       "customer_ids": [
-        "customer_ids7",
-        "customer_ids8"
+        "customer_ids3",
+        "customer_ids4"
       ]
     }
   },

@@ -21,29 +21,29 @@
       "allow_tipping": false,
       "custom_fields": [
         {
-          "title": "title1"
+          "title": "title8"
         },
         {
-          "title": "title2"
+          "title": "title8"
         }
       ],
-      "subscription_plan_id": "subscription_plan_id0",
-      "redirect_url": "redirect_url4",
-      "merchant_support_email": "merchant_support_email0"
+      "subscription_plan_id": "subscription_plan_id8",
+      "redirect_url": "redirect_url2",
+      "merchant_support_email": "merchant_support_email8"
     },
     "version": 1,
     "id": "id2",
     "description": "description2",
     "order_id": "order_id6",
     "pre_populated_data": {
-      "buyer_email": "buyer_email6",
-      "buyer_phone_number": "buyer_phone_number8",
+      "buyer_email": "buyer_email8",
+      "buyer_phone_number": "buyer_phone_number0",
       "buyer_address": {
-        "address_line_1": "address_line_14",
-        "address_line_2": "address_line_24",
-        "address_line_3": "address_line_30",
-        "locality": "locality4",
-        "sublocality": "sublocality4"
+        "address_line_1": "address_line_12",
+        "address_line_2": "address_line_22",
+        "address_line_3": "address_line_38",
+        "locality": "locality2",
+        "sublocality": "sublocality2"
       }
     }
   }

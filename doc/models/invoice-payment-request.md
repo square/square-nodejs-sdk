@@ -35,8 +35,8 @@ Adding `INSTALLMENT` payment requests to an invoice requires an
 ```json
 {
   "uid": "uid0",
-  "request_method": "CHARGE_CARD_ON_FILE",
-  "request_type": "BALANCE",
+  "request_method": "SHARE_MANUALLY",
+  "request_type": "DEPOSIT",
   "due_date": "due_date8",
   "fixed_amount_requested_money": {
     "amount": 162,

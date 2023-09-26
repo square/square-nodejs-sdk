@@ -54,24 +54,24 @@
     "is_deleted": false,
     "custom_attribute_values": {
       "key0": {
-        "name": "name3",
-        "string_value": "string_value7",
-        "custom_attribute_definition_id": "custom_attribute_definition_id9",
-        "type": "SELECTION",
-        "number_value": "number_value3"
+        "name": "name8",
+        "string_value": "string_value2",
+        "custom_attribute_definition_id": "custom_attribute_definition_id4",
+        "type": "STRING",
+        "number_value": "number_value8"
       },
       "key1": {
-        "name": "name2",
-        "string_value": "string_value6",
-        "custom_attribute_definition_id": "custom_attribute_definition_id0",
+        "name": "name8",
+        "string_value": "string_value2",
+        "custom_attribute_definition_id": "custom_attribute_definition_id4",
         "type": "STRING",
-        "number_value": "number_value2"
+        "number_value": "number_value8"
       }
     },
     "catalog_v1_ids": [
       {
-        "catalog_v1_id": "catalog_v1_id6",
-        "location_id": "location_id6"
+        "catalog_v1_id": "catalog_v1_id4",
+        "location_id": "location_id4"
       }
     ]
   }

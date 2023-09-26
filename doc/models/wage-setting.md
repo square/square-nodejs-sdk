@@ -22,51 +22,51 @@ An object representing a team member's wage information.
 
 ```json
 {
-  "team_member_id": "team_member_id0",
+  "team_member_id": "team_member_id2",
   "job_assignments": [
     {
-      "job_title": "job_title1",
-      "pay_type": "NONE",
-      "hourly_rate": {
-        "amount": 79,
-        "currency": "GNF"
-      },
-      "annual_rate": {
-        "amount": 19,
-        "currency": "DKK"
-      },
-      "weekly_hours": 187
-    },
-    {
-      "job_title": "job_title2",
-      "pay_type": "HOURLY",
-      "hourly_rate": {
-        "amount": 80,
-        "currency": "GTQ"
-      },
-      "annual_rate": {
-        "amount": 20,
-        "currency": "DOP"
-      },
-      "weekly_hours": 188
-    },
-    {
-      "job_title": "job_title3",
+      "job_title": "job_title6",
       "pay_type": "SALARY",
       "hourly_rate": {
-        "amount": 81,
-        "currency": "GYD"
+        "amount": 172,
+        "currency": "OMR"
       },
       "annual_rate": {
-        "amount": 21,
-        "currency": "DZD"
+        "amount": 232,
+        "currency": "SBD"
       },
-      "weekly_hours": 189
+      "weekly_hours": 98
+    },
+    {
+      "job_title": "job_title6",
+      "pay_type": "SALARY",
+      "hourly_rate": {
+        "amount": 172,
+        "currency": "OMR"
+      },
+      "annual_rate": {
+        "amount": 232,
+        "currency": "SBD"
+      },
+      "weekly_hours": 98
+    },
+    {
+      "job_title": "job_title6",
+      "pay_type": "SALARY",
+      "hourly_rate": {
+        "amount": 172,
+        "currency": "OMR"
+      },
+      "annual_rate": {
+        "amount": 232,
+        "currency": "SBD"
+      },
+      "weekly_hours": 98
     }
   ],
   "is_overtime_exempt": false,
-  "version": 172,
-  "created_at": "created_at2"
+  "version": 140,
+  "created_at": "created_at0"
 }
 ```
 

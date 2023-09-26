@@ -18,12 +18,12 @@
 
 ```json
 {
-  "device_id": "device_id6",
+  "device_id": "device_id4",
   "created_at": {
     "start_at": "start_at4",
     "end_at": "end_at8"
   },
-  "status": "status8",
+  "status": "status0",
   "type": "DATA_COLLECTION"
 }
 ```

@@ -19,12 +19,13 @@ Defines the request parameters for the `ListDisputes` endpoint.
 
 ```json
 {
-  "cursor": "cursor6",
+  "cursor": "cursor2",
   "states": [
-    "PROCESSING",
-    "WON"
+    "INQUIRY_EVIDENCE_REQUIRED",
+    "INQUIRY_PROCESSING",
+    "INQUIRY_CLOSED"
   ],
-  "location_id": "location_id4"
+  "location_id": "location_id8"
 }
 ```
 

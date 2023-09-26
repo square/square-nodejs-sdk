@@ -28,7 +28,7 @@ Represents an [UpdateMerchantCustomAttributeDefinition](../../doc/api/merchant-c
     },
     "name": "name2"
   },
-  "idempotency_key": "idempotency_key6"
+  "idempotency_key": "idempotency_key4"
 }
 ```
 

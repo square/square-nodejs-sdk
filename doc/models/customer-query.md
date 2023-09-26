@@ -21,9 +21,9 @@ Represents filtering and sorting criteria for a [SearchCustomers](../../doc/api/
   "filter": {
     "creation_source": {
       "values": [
-        "INVOICES",
-        "LOYALTY",
-        "MARKETING"
+        "THIRD_PARTY_IMPORT",
+        "THIRD_PARTY",
+        "TERMINAL"
       ],
       "rule": "INCLUDE"
     },
@@ -32,16 +32,16 @@ Represents filtering and sorting criteria for a [SearchCustomers](../../doc/api/
       "end_at": "end_at8"
     },
     "updated_at": {
-      "start_at": "start_at2",
-      "end_at": "end_at0"
+      "start_at": "start_at6",
+      "end_at": "end_at6"
     },
     "email_address": {
       "exact": "exact2",
-      "fuzzy": "fuzzy2"
+      "fuzzy": "fuzzy8"
     },
     "phone_number": {
-      "exact": "exact8",
-      "fuzzy": "fuzzy6"
+      "exact": "exact2",
+      "fuzzy": "fuzzy8"
     }
   },
   "sort": {

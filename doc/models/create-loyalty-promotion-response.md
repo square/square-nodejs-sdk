@@ -25,7 +25,7 @@ Either `loyalty_promotion` or `errors` is present in the response.
       "time_periods": [
         "BEGIN:VEVENT\nDTSTART:20220816T160000\nDURATION:PT2H\nRRULE:FREQ=WEEKLY;BYDAY=TU\nEND:VEVENT"
       ],
-      "end_date": "end_date2"
+      "end_date": "end_date8"
     },
     "created_at": "2022-08-16T08:38:54Z",
     "id": "loypromo_f0f9b849-725e-378d-b810-511237e07b67",
@@ -36,7 +36,7 @@ Either `loyalty_promotion` or `errors` is present in the response.
       },
       "type": "POINTS_MULTIPLIER",
       "points_addition_data": {
-        "points_addition": 192
+        "points_addition": 218
       }
     },
     "loyalty_program_id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
@@ -58,22 +58,16 @@ Either `loyalty_promotion` or `errors` is present in the response.
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

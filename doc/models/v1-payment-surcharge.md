@@ -24,17 +24,17 @@ V1PaymentSurcharge
 
 ```json
 {
-  "name": "name0",
+  "name": "name6",
   "applied_money": {
     "amount": 196,
     "currency_code": "IQD"
   },
-  "rate": "rate0",
+  "rate": "rate4",
   "amount_money": {
     "amount": 186,
     "currency_code": "UZS"
   },
-  "type": "CUSTOM"
+  "type": "AUTO_GRATUITY"
 }
 ```
 

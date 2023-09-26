@@ -38,20 +38,20 @@ a request to the `BatchRetrieveOrders` endpoint.
           "quantity_unit": {
             "measurement_unit": {
               "custom_unit": {
-                "name": "name1",
-                "abbreviation": "abbreviation3"
+                "name": "name2",
+                "abbreviation": "abbreviation4"
               },
-              "area_unit": "METRIC_SQUARE_CENTIMETER",
-              "length_unit": "IMPERIAL_MILE",
-              "volume_unit": "METRIC_MILLILITER",
-              "weight_unit": "IMPERIAL_POUND"
+              "area_unit": "IMPERIAL_ACRE",
+              "length_unit": "IMPERIAL_INCH",
+              "volume_unit": "METRIC_LITER",
+              "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
             },
-            "precision": 217,
-            "catalog_object_id": "catalog_object_id7",
-            "catalog_version": 105
+            "precision": 54,
+            "catalog_object_id": "catalog_object_id0",
+            "catalog_version": 12
           },
-          "note": "note1",
-          "catalog_object_id": "catalog_object_id3"
+          "note": "note4",
+          "catalog_object_id": "catalog_object_id2"
         },
         {
           "base_price_money": {
@@ -71,16 +71,16 @@ a request to the `BatchRetrieveOrders` endpoint.
                 "name": "name2",
                 "abbreviation": "abbreviation4"
               },
-              "area_unit": "METRIC_SQUARE_METER",
-              "length_unit": "IMPERIAL_YARD",
+              "area_unit": "IMPERIAL_ACRE",
+              "length_unit": "IMPERIAL_INCH",
               "volume_unit": "METRIC_LITER",
               "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
             },
-            "precision": 218,
-            "catalog_object_id": "catalog_object_id6",
-            "catalog_version": 104
+            "precision": 54,
+            "catalog_object_id": "catalog_object_id0",
+            "catalog_version": 12
           },
-          "note": "note0",
+          "note": "note4",
           "catalog_object_id": "catalog_object_id2"
         }
       ],
@@ -91,29 +91,29 @@ a request to the `BatchRetrieveOrders` endpoint.
         "currency": "USD"
       },
       "source": {
-        "name": "name8"
+        "name": "name4"
       },
-      "customer_id": "customer_id4"
+      "customer_id": "customer_id0"
     }
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

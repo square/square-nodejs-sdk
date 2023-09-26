@@ -32,7 +32,7 @@ to store any sensitive information (personally identifiable information, card de
 
 ```json
 {
-  "type": "NUMBER",
+  "type": "STRING",
   "name": "name0",
   "description": "description0",
   "source_application": {
@@ -41,9 +41,8 @@ to store any sensitive information (personally identifiable information, card de
     "name": "name2"
   },
   "allowed_object_types": [
-    "TIME_PERIOD",
-    "MEASUREMENT_UNIT",
-    "SUBSCRIPTION_PLAN_VARIATION"
+    "ITEM",
+    "SUBSCRIPTION_PLAN"
   ],
   "seller_visibility": "SELLER_VISIBILITY_HIDDEN",
   "app_visibility": "APP_VISIBILITY_HIDDEN",

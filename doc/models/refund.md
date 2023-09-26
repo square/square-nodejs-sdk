@@ -26,12 +26,12 @@ Represents a refund processed for a Square transaction.
 
 ```json
 {
-  "id": "id0",
-  "location_id": "location_id4",
-  "transaction_id": "transaction_id8",
-  "tender_id": "tender_id8",
-  "created_at": "created_at2",
-  "reason": "reason4",
+  "id": "id6",
+  "location_id": "location_id0",
+  "transaction_id": "transaction_id4",
+  "tender_id": "tender_id4",
+  "created_at": "created_at6",
+  "reason": "reason8",
   "amount_money": {
     "amount": 186,
     "currency": "TZS"
@@ -43,31 +43,31 @@ Represents a refund processed for a Square transaction.
   },
   "additional_recipients": [
     {
-      "location_id": "location_id3",
-      "description": "description9",
+      "location_id": "location_id0",
+      "description": "description6",
       "amount_money": {
-        "amount": 83,
-        "currency": "ZAR"
+        "amount": 186,
+        "currency": "TZS"
       },
-      "receivable_id": "receivable_id9"
+      "receivable_id": "receivable_id6"
     },
     {
-      "location_id": "location_id4",
-      "description": "description0",
+      "location_id": "location_id0",
+      "description": "description6",
       "amount_money": {
-        "amount": 84,
-        "currency": "ZMK"
+        "amount": 186,
+        "currency": "TZS"
       },
-      "receivable_id": "receivable_id0"
+      "receivable_id": "receivable_id6"
     },
     {
-      "location_id": "location_id5",
-      "description": "description1",
+      "location_id": "location_id0",
+      "description": "description6",
       "amount_money": {
-        "amount": 85,
-        "currency": "ZMW"
+        "amount": 186,
+        "currency": "TZS"
       },
-      "receivable_id": "receivable_id1"
+      "receivable_id": "receivable_id6"
     }
   ]
 }

@@ -23,10 +23,10 @@ Deprecated - recommend using [SearchOrders](api-endpoint:Orders-SearchOrders)
 
 ```json
 {
-  "begin_time": "begin_time2",
-  "end_time": "end_time2",
+  "begin_time": "begin_time6",
+  "end_time": "end_time0",
   "sort_order": "DESC",
-  "cursor": "cursor6"
+  "cursor": "cursor8"
 }
 ```
 

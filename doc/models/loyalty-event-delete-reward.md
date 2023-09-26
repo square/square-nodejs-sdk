@@ -19,9 +19,9 @@ Provides metadata when the event `type` is `DELETE_REWARD`.
 
 ```json
 {
-  "loyalty_program_id": "loyalty_program_id0",
-  "reward_id": "reward_id4",
-  "points": 236
+  "loyalty_program_id": "loyalty_program_id2",
+  "reward_id": "reward_id6",
+  "points": 84
 }
 ```
 

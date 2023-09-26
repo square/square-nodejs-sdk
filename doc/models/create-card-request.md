@@ -41,7 +41,7 @@ HTTP requests at POST https://connect.squareup.com/v2/cards
   },
   "idempotency_key": "4935a656-a929-4792-b97c-8848be85c27c",
   "source_id": "cnon:uIbfJXhXETSP197M3GB",
-  "verification_token": "verification_token6"
+  "verification_token": "verification_token4"
 }
 ```
 

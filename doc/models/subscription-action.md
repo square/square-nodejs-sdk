@@ -21,24 +21,24 @@ Represents an action as a pending change to a subscription.
 
 ```json
 {
-  "id": "id0",
-  "type": "RESUME",
-  "effective_date": "effective_date0",
+  "id": "id2",
+  "type": "CANCEL",
+  "effective_date": "effective_date2",
   "phases": [
     {
-      "uid": "uid5",
-      "ordinal": 207,
-      "order_template_id": "order_template_id7",
-      "plan_phase_uid": "plan_phase_uid1"
+      "uid": "uid0",
+      "ordinal": 78,
+      "order_template_id": "order_template_id2",
+      "plan_phase_uid": "plan_phase_uid6"
     },
     {
-      "uid": "uid6",
-      "ordinal": 208,
-      "order_template_id": "order_template_id8",
-      "plan_phase_uid": "plan_phase_uid2"
+      "uid": "uid0",
+      "ordinal": 78,
+      "order_template_id": "order_template_id2",
+      "plan_phase_uid": "plan_phase_uid6"
     }
   ],
-  "new_plan_variation_id": "new_plan_variation_id0"
+  "new_plan_variation_id": "new_plan_variation_id2"
 }
 ```
 

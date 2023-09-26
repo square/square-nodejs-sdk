@@ -60,7 +60,7 @@ Represents a response from a search request containing a filtered list of `TeamM
       "is_owner": false,
       "status": "ACTIVE",
       "updated_at": "2020-03-24T01:11:25Z",
-      "reference_id": "reference_id3"
+      "reference_id": "reference_id4"
     },
     {
       "assigned_locations": {
@@ -73,7 +73,7 @@ Represents a response from a search request containing a filtered list of `TeamM
       "is_owner": false,
       "status": "ACTIVE",
       "updated_at": "2020-03-24T01:15:23Z",
-      "reference_id": "reference_id2"
+      "reference_id": "reference_id4"
     },
     {
       "assigned_locations": {
@@ -86,7 +86,7 @@ Represents a response from a search request containing a filtered list of `TeamM
       "is_owner": false,
       "status": "ACTIVE",
       "updated_at": "2020-03-24T01:19:23Z",
-      "reference_id": "reference_id1"
+      "reference_id": "reference_id4"
     },
     {
       "assigned_locations": {
@@ -100,7 +100,7 @@ Represents a response from a search request containing a filtered list of `TeamM
       "phone_number": "+14155552671",
       "status": "ACTIVE",
       "updated_at": "2020-03-24T18:18:03Z",
-      "reference_id": "reference_id0"
+      "reference_id": "reference_id4"
     },
     {
       "assigned_locations": {
@@ -113,7 +113,7 @@ Represents a response from a search request containing a filtered list of `TeamM
       "is_owner": false,
       "status": "ACTIVE",
       "updated_at": "2020-03-24T01:09:25Z",
-      "reference_id": "reference_id9"
+      "reference_id": "reference_id4"
     },
     {
       "assigned_locations": {
@@ -128,7 +128,7 @@ Represents a response from a search request containing a filtered list of `TeamM
       "phone_number": "+14155552671",
       "status": "ACTIVE",
       "updated_at": "2020-03-24T18:14:02Z",
-      "reference_id": "reference_id8"
+      "reference_id": "reference_id4"
     },
     {
       "assigned_locations": {
@@ -143,7 +143,7 @@ Represents a response from a search request containing a filtered list of `TeamM
       "phone_number": "+14155552671",
       "status": "ACTIVE",
       "updated_at": "2020-03-24T18:14:00Z",
-      "reference_id": "reference_id7"
+      "reference_id": "reference_id4"
     },
     {
       "assigned_locations": {
@@ -158,27 +158,21 @@ Represents a response from a search request containing a filtered list of `TeamM
       "phone_number": "+14155552671",
       "status": "ACTIVE",
       "updated_at": "2020-03-24T18:18:00Z",
-      "reference_id": "reference_id6"
+      "reference_id": "reference_id4"
     }
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

@@ -23,12 +23,12 @@ A record of an employee's break during a shift.
 
 ```json
 {
-  "id": "id0",
-  "start_at": "start_at2",
-  "end_at": "end_at0",
-  "break_type_id": "break_type_id6",
-  "name": "name0",
-  "expected_duration": "expected_duration4",
+  "id": "id6",
+  "start_at": "start_at8",
+  "end_at": "end_at4",
+  "break_type_id": "break_type_id2",
+  "name": "name6",
+  "expected_duration": "expected_duration8",
   "is_paid": false
 }
 ```

@@ -24,44 +24,48 @@ A query filter to search for buyer-accessible availabilities by.
     "start_at": "start_at6",
     "end_at": "end_at6"
   },
-  "location_id": "location_id4",
+  "location_id": "location_id8",
   "segment_filters": [
     {
-      "service_variation_id": "service_variation_id6",
+      "service_variation_id": "service_variation_id4",
       "team_member_id_filter": {
         "all": [
-          "all5"
+          "all5",
+          "all6",
+          "all7"
         ],
         "any": [
           "any2",
-          "any3"
+          "any3",
+          "any4"
         ],
         "none": [
-          "none7"
+          "none7",
+          "none8"
         ]
       }
     },
     {
-      "service_variation_id": "service_variation_id5",
+      "service_variation_id": "service_variation_id4",
       "team_member_id_filter": {
         "all": [
-          "all4",
           "all5",
-          "all6"
+          "all6",
+          "all7"
         ],
         "any": [
+          "any2",
           "any3",
-          "any4",
-          "any5"
+          "any4"
         ],
         "none": [
-          "none8",
-          "none9"
+          "none7",
+          "none8"
         ]
       }
     }
   ],
-  "booking_id": "booking_id4"
+  "booking_id": "booking_id8"
 }
 ```
 

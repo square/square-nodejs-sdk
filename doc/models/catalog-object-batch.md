@@ -19,8 +19,8 @@ A batch of catalog objects.
 {
   "objects": [
     {
-      "type": "MODIFIER_LIST",
-      "id": "id8",
+      "type": "PRICING_RULE",
+      "id": "id6",
       "item_data": {
         "object": {
           "id": "#Cocoa",
@@ -131,16 +131,16 @@ A batch of catalog objects.
           "type": "MODIFIER"
         }
       },
-      "updated_at": "updated_at4",
-      "version": 252,
+      "updated_at": "updated_at2",
+      "version": 164,
       "is_deleted": false,
       "custom_attribute_values": {
         "key0": {
-          "name": "name9",
-          "string_value": "string_value3",
-          "custom_attribute_definition_id": "custom_attribute_definition_id3",
-          "type": "SELECTION",
-          "number_value": "number_value9"
+          "name": "name8",
+          "string_value": "string_value2",
+          "custom_attribute_definition_id": "custom_attribute_definition_id4",
+          "type": "STRING",
+          "number_value": "number_value8"
         },
         "key1": {
           "name": "name8",
@@ -152,8 +152,16 @@ A batch of catalog objects.
       },
       "catalog_v1_ids": [
         {
-          "catalog_v1_id": "catalog_v1_id2",
-          "location_id": "location_id2"
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
+        },
+        {
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
+        },
+        {
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
         }
       ]
     }

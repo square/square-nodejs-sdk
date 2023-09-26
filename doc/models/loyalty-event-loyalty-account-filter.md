@@ -17,7 +17,7 @@ Filter events by loyalty account.
 
 ```json
 {
-  "loyalty_account_id": "loyalty_account_id0"
+  "loyalty_account_id": "loyalty_account_id2"
 }
 ```
 

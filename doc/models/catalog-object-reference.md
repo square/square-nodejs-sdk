@@ -20,8 +20,8 @@ at a specific version.
 
 ```json
 {
-  "object_id": "object_id8",
-  "catalog_version": 126
+  "object_id": "object_id0",
+  "catalog_version": 84
 }
 ```
 

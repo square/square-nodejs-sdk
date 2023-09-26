@@ -18,8 +18,8 @@ Defines the valid parameters for requests to the `ListCustomerSegments` endpoint
 
 ```json
 {
-  "cursor": "cursor6",
-  "limit": 172
+  "cursor": "cursor4",
+  "limit": 4
 }
 ```
 

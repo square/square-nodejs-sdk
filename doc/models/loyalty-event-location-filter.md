@@ -18,7 +18,9 @@ Filter events by location.
 ```json
 {
   "location_ids": [
-    "location_ids0"
+    "location_ids6",
+    "location_ids7",
+    "location_ids8"
   ]
 }
 ```

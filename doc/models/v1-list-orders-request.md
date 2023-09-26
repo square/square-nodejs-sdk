@@ -18,8 +18,8 @@
 ```json
 {
   "order": "DESC",
-  "limit": 172,
-  "batch_token": "batch_token2"
+  "limit": 24,
+  "batch_token": "batch_token4"
 }
 ```
 

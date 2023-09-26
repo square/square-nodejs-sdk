@@ -33,30 +33,24 @@ A response that includes loyalty accounts that satisfy the search criteria.
       },
       "program_id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
       "updated_at": "2020-05-08T21:44:32Z",
-      "enrolled_at": "enrolled_at1"
+      "enrolled_at": "enrolled_at4"
     }
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ],
-  "cursor": "cursor6"
+  "cursor": "cursor8"
 }
 ```
 

@@ -25,13 +25,11 @@ Represents additional data for rules with the `SPEND` accrual type.
     "currency": "TZS"
   },
   "excluded_category_ids": [
-    "excluded_category_ids8",
-    "excluded_category_ids9"
+    "excluded_category_ids4"
   ],
   "excluded_item_variation_ids": [
-    "excluded_item_variation_ids1",
-    "excluded_item_variation_ids2",
-    "excluded_item_variation_ids3"
+    "excluded_item_variation_ids7",
+    "excluded_item_variation_ids6"
   ],
   "tax_mode": "BEFORE_TAX"
 }

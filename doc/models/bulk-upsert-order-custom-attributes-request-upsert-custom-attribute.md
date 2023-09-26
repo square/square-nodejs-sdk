@@ -28,18 +28,18 @@ Represents one upsert within the bulk operation.
     "version": 102,
     "visibility": "VISIBILITY_READ_ONLY",
     "definition": {
-      "key": "key2",
+      "key": "key0",
       "schema": {
         "key1": "val1",
         "key2": "val2"
       },
-      "name": "name2",
-      "description": "description2",
-      "visibility": "VISIBILITY_READ_ONLY"
+      "name": "name0",
+      "description": "description0",
+      "visibility": "VISIBILITY_HIDDEN"
     }
   },
-  "idempotency_key": "idempotency_key6",
-  "order_id": "order_id6"
+  "idempotency_key": "idempotency_key4",
+  "order_id": "order_id2"
 }
 ```
 

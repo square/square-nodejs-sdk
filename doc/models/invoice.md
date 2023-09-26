@@ -41,20 +41,20 @@ invoices. For more information, see [Invoices API Overview](https://developer.sq
 ```json
 {
   "id": "id0",
-  "version": 172,
+  "version": 224,
   "location_id": "location_id4",
-  "order_id": "order_id6",
+  "order_id": "order_id4",
   "primary_recipient": {
     "customer_id": "customer_id2",
     "given_name": "given_name6",
     "family_name": "family_name8",
     "email_address": "email_address2",
     "address": {
-      "address_line_1": "address_line_10",
-      "address_line_2": "address_line_20",
-      "address_line_3": "address_line_36",
-      "locality": "locality0",
-      "sublocality": "sublocality0"
+      "address_line_1": "address_line_16",
+      "address_line_2": "address_line_26",
+      "address_line_3": "address_line_32",
+      "locality": "locality6",
+      "sublocality": "sublocality6"
     }
   }
 }

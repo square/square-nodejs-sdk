@@ -17,7 +17,7 @@ Represents additional data for rules with the `CATEGORY` accrual type.
 
 ```json
 {
-  "category_id": "category_id8"
+  "category_id": "category_id6"
 }
 ```
 

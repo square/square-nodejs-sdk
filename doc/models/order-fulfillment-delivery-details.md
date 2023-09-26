@@ -45,17 +45,17 @@ Describes delivery details of an order fulfillment.
     "email_address": "email_address4",
     "phone_number": "phone_number4",
     "address": {
-      "address_line_1": "address_line_14",
-      "address_line_2": "address_line_24",
-      "address_line_3": "address_line_30",
-      "locality": "locality4",
-      "sublocality": "sublocality4"
+      "address_line_1": "address_line_16",
+      "address_line_2": "address_line_26",
+      "address_line_3": "address_line_32",
+      "locality": "locality6",
+      "sublocality": "sublocality6"
     }
   },
   "schedule_type": "SCHEDULED",
-  "placed_at": "placed_at0",
-  "deliver_at": "deliver_at8",
-  "prep_time_duration": "prep_time_duration2"
+  "placed_at": "placed_at6",
+  "deliver_at": "deliver_at2",
+  "prep_time_duration": "prep_time_duration6"
 }
 ```
 

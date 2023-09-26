@@ -18,8 +18,8 @@ The information needed to define a custom unit, provided by the seller.
 
 ```json
 {
-  "name": "name0",
-  "abbreviation": "abbreviation2"
+  "name": "name8",
+  "abbreviation": "abbreviation0"
 }
 ```
 

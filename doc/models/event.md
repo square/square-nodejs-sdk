@@ -20,11 +20,11 @@
 
 ```json
 {
-  "merchant_id": "merchant_id0",
-  "location_id": "location_id4",
-  "type": "type0",
-  "event_id": "event_id6",
-  "created_at": "created_at2"
+  "merchant_id": "merchant_id2",
+  "location_id": "location_id6",
+  "type": "type8",
+  "event_id": "event_id8",
+  "created_at": "created_at0"
 }
 ```
 

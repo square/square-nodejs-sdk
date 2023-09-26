@@ -19,8 +19,8 @@ Information about fulfillment updates.
 
 ```json
 {
-  "fulfillment_uid": "fulfillment_uid4",
-  "old_state": "PREPARED",
+  "fulfillment_uid": "fulfillment_uid6",
+  "old_state": "CANCELED",
   "new_state": "PREPARED"
 }
 ```

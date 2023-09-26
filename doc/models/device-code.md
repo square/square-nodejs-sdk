@@ -26,11 +26,11 @@
 ```json
 {
   "product_type": "TERMINAL_API",
-  "id": "id0",
-  "name": "name0",
-  "code": "code8",
-  "device_id": "device_id6",
-  "location_id": "location_id4"
+  "id": "id4",
+  "name": "name4",
+  "code": "code2",
+  "device_id": "device_id0",
+  "location_id": "location_id8"
 }
 ```
 

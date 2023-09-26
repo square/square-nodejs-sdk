@@ -23,9 +23,9 @@ The request object for the [CreateLocation](../../doc/api/locations.md#create-lo
       "administrative_district_level_1": "GA",
       "locality": "Atlanta",
       "postal_code": "30309",
-      "address_line_2": "address_line_20",
-      "address_line_3": "address_line_36",
-      "sublocality": "sublocality0"
+      "address_line_2": "address_line_26",
+      "address_line_3": "address_line_32",
+      "sublocality": "sublocality6"
     },
     "description": "Midtown Atlanta store",
     "name": "Midtown",

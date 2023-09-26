@@ -21,10 +21,10 @@ Information about the fulfillment recipient.
 
 ```json
 {
-  "customer_id": "customer_id8",
-  "display_name": "display_name0",
-  "email_address": "email_address2",
-  "phone_number": "phone_number2",
+  "customer_id": "customer_id0",
+  "display_name": "display_name2",
+  "email_address": "email_address0",
+  "phone_number": "phone_number0",
   "address": {
     "address_line_1": "address_line_16",
     "address_line_2": "address_line_26",

@@ -34,8 +34,8 @@ Describes a `SearchInvoices` request.
       "order": "DESC"
     }
   },
-  "limit": 172,
-  "cursor": "cursor6"
+  "limit": 26,
+  "cursor": "cursor4"
 }
 ```
 

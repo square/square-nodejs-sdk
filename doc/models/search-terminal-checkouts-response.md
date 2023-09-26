@@ -31,17 +31,15 @@
         "skip_receipt_screen": false,
         "tip_settings": {
           "allow_tipping": false,
-          "separate_tip_screen": true,
-          "custom_tip_field": true,
+          "separate_tip_screen": false,
+          "custom_tip_field": false,
           "tip_percentages": [
-            97,
-            98,
-            99
+            48
           ],
-          "smart_tipping": true
+          "smart_tipping": false
         },
-        "collect_signature": true,
-        "show_itemized_cart": true
+        "collect_signature": false,
+        "show_itemized_cart": false
       },
       "id": "tsQPvzwBpMqqO",
       "note": "A brief note",
@@ -51,12 +49,12 @@
       "reference_id": "id14467",
       "status": "COMPLETED",
       "updated_at": "2020-03-31T18:13:52.725Z",
-      "order_id": "order_id1",
+      "order_id": "order_id2",
       "payment_options": {
-        "autocomplete": true,
-        "delay_duration": "delay_duration9",
-        "accept_partial_authorization": true,
-        "delay_action": "COMPLETE"
+        "autocomplete": false,
+        "delay_duration": "delay_duration2",
+        "accept_partial_authorization": false,
+        "delay_action": "CANCEL"
       }
     },
     {
@@ -75,8 +73,7 @@
           "separate_tip_screen": false,
           "custom_tip_field": false,
           "tip_percentages": [
-            96,
-            97
+            48
           ],
           "smart_tipping": false
         },
@@ -94,7 +91,7 @@
       "order_id": "order_id2",
       "payment_options": {
         "autocomplete": false,
-        "delay_duration": "delay_duration0",
+        "delay_duration": "delay_duration2",
         "accept_partial_authorization": false,
         "delay_action": "CANCEL"
       }
@@ -103,22 +100,22 @@
   "cursor": "RiTJqBoTuXlbLmmrPvEkX9iG7XnQ4W4RjGnH",
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

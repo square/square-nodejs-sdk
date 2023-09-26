@@ -20,8 +20,8 @@ Represents a [ListLocationCustomAttributeDefinitions](../../doc/api/location-cus
 ```json
 {
   "visibility_filter": "ALL",
-  "limit": 172,
-  "cursor": "cursor6"
+  "limit": 242,
+  "cursor": "cursor8"
 }
 ```
 

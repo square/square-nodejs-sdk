@@ -28,7 +28,7 @@ returns only active team members assigned to either location "A" or "B".
 ```json
 {
   "location_ids": [
-    "location_ids0"
+    "location_ids6"
   ],
   "status": "ACTIVE",
   "is_owner": false

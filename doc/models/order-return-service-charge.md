@@ -34,8 +34,8 @@ Represents the service charge applied to the original order.
   "uid": "uid0",
   "source_service_charge_uid": "source_service_charge_uid6",
   "name": "name0",
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_version": 126
+  "catalog_object_id": "catalog_object_id4",
+  "catalog_version": 18
 }
 ```
 

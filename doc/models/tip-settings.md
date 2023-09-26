@@ -23,8 +23,9 @@
   "separate_tip_screen": false,
   "custom_tip_field": false,
   "tip_percentages": [
-    156,
-    157
+    66,
+    67,
+    68
   ],
   "smart_tipping": false
 }

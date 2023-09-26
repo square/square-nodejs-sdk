@@ -29,8 +29,8 @@ Defines output parameters in a response of the
         {
           "order_template_id": "uhhnjH9osVv3shUADwaC0b3hNxQZY",
           "ordinal": 0,
-          "uid": "uid6",
-          "plan_phase_uid": "plan_phase_uid2"
+          "uid": "uid0",
+          "plan_phase_uid": "plan_phase_uid6"
         }
       ],
       "type": "SWAP_PLAN"
@@ -64,22 +64,22 @@ Defines output parameters in a response of the
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

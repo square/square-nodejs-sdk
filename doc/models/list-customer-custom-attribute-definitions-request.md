@@ -18,8 +18,8 @@ Represents a [ListCustomerCustomAttributeDefinitions](../../doc/api/customer-cus
 
 ```json
 {
-  "limit": 172,
-  "cursor": "cursor6"
+  "limit": 198,
+  "cursor": "cursor8"
 }
 ```
 

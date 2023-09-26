@@ -28,7 +28,7 @@ If additional results are available, the `cursor` field is also present along wi
         "time_periods": [
           "BEGIN:VEVENT\nDTSTART:20220816T160000\nDURATION:PT2H\nRRULE:FREQ=WEEKLY;BYDAY=TU\nEND:VEVENT"
         ],
-        "end_date": "end_date4"
+        "end_date": "end_date8"
       },
       "created_at": "2022-08-16T08:38:54Z",
       "id": "loypromo_f0f9b849-725e-378d-b810-511237e07b67",
@@ -39,7 +39,7 @@ If additional results are available, the `cursor` field is also present along wi
         },
         "type": "POINTS_MULTIPLIER",
         "points_addition_data": {
-          "points_addition": 104
+          "points_addition": 218
         }
       },
       "loyalty_program_id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
@@ -54,7 +54,7 @@ If additional results are available, the `cursor` field is also present along wi
         "times": 1
       },
       "updated_at": "2022-08-16T08:38:54Z",
-      "canceled_at": "canceled_at2"
+      "canceled_at": "canceled_at0"
     },
     {
       "available_time": {
@@ -77,7 +77,7 @@ If additional results are available, the `cursor` field is also present along wi
         },
         "type": "POINTS_MULTIPLIER",
         "points_addition_data": {
-          "points_addition": 105
+          "points_addition": 218
         }
       },
       "loyalty_program_id": "d619f755-2d17-41f3-990d-c04ecedd64dd",
@@ -95,30 +95,30 @@ If additional results are available, the `cursor` field is also present along wi
         "times": 5
       },
       "updated_at": "2022-06-27T15:37:38Z",
-      "canceled_at": "canceled_at3"
+      "canceled_at": "canceled_at0"
     }
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ],
-  "cursor": "cursor6"
+  "cursor": "cursor8"
 }
 ```
 

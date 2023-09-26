@@ -25,8 +25,8 @@ Represents a Quick Amount in the Catalog.
     "amount": 0,
     "currency": "MNT"
   },
-  "score": 148,
-  "ordinal": 80
+  "score": 12,
+  "ordinal": 200
 }
 ```
 

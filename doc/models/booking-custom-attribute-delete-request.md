@@ -19,8 +19,8 @@ request. An individual request contains a booking ID, the custom attribute to de
 
 ```json
 {
-  "booking_id": "booking_id4",
-  "key": "key0"
+  "booking_id": "booking_id0",
+  "key": "key6"
 }
 ```
 

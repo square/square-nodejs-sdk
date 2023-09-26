@@ -20,8 +20,8 @@ Information about a booking creator.
 ```json
 {
   "creator_type": "TEAM_MEMBER",
-  "team_member_id": "team_member_id0",
-  "customer_id": "customer_id8"
+  "team_member_id": "team_member_id4",
+  "customer_id": "customer_id2"
 }
 ```
 

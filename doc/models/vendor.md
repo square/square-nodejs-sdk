@@ -26,10 +26,10 @@ Represents a supplier to a seller.
 
 ```json
 {
-  "id": "id0",
-  "created_at": "created_at2",
+  "id": "id8",
+  "created_at": "created_at6",
   "updated_at": "updated_at4",
-  "name": "name0",
+  "name": "name8",
   "address": {
     "address_line_1": "address_line_16",
     "address_line_2": "address_line_26",

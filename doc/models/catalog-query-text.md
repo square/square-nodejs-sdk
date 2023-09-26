@@ -18,8 +18,7 @@ The query filter to return the search result whose searchable attribute values c
 ```json
 {
   "keywords": [
-    "keywords3",
-    "keywords4"
+    "keywords1"
   ]
 }
 ```

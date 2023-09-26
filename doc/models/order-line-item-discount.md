@@ -33,11 +33,11 @@ amount contributed by the item to the order subtotal.
 
 ```json
 {
-  "uid": "uid0",
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_version": 126,
-  "name": "name0",
-  "type": "UNKNOWN_DISCOUNT"
+  "uid": "uid4",
+  "catalog_object_id": "catalog_object_id8",
+  "catalog_version": 54,
+  "name": "name4",
+  "type": "FIXED_PERCENTAGE"
 }
 ```
 

@@ -28,18 +28,18 @@
   "allow_tipping": false,
   "custom_fields": [
     {
-      "title": "title9"
+      "title": "title8"
     },
     {
-      "title": "title0"
+      "title": "title8"
     },
     {
-      "title": "title1"
+      "title": "title8"
     }
   ],
-  "subscription_plan_id": "subscription_plan_id2",
-  "redirect_url": "redirect_url2",
-  "merchant_support_email": "merchant_support_email8"
+  "subscription_plan_id": "subscription_plan_id0",
+  "redirect_url": "redirect_url4",
+  "merchant_support_email": "merchant_support_email0"
 }
 ```
 

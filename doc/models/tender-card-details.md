@@ -19,7 +19,7 @@ Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CAR
 
 ```json
 {
-  "status": "AUTHORIZED",
+  "status": "VOIDED",
   "card": {
     "id": "id6",
     "card_brand": "OTHER_BRAND",
@@ -27,7 +27,7 @@ Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CAR
     "exp_month": 228,
     "exp_year": 68
   },
-  "entry_method": "KEYED"
+  "entry_method": "CONTACTLESS"
 }
 ```
 

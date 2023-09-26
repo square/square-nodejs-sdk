@@ -19,9 +19,9 @@ Defines supported query expressions to search for vendors by.
 ```json
 {
   "name": [
-    "name0",
-    "name1",
-    "name2"
+    "name4",
+    "name5",
+    "name6"
   ],
   "status": [
     "ACTIVE",

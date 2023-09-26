@@ -24,7 +24,7 @@ Price and inventory alerting overrides for a `CatalogItemVariation` at a specifi
 
 ```json
 {
-  "location_id": "location_id4",
+  "location_id": "location_id6",
   "price_money": {
     "amount": 202,
     "currency": "CNY"

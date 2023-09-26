@@ -32,7 +32,7 @@ Reflects the current status of a card payment. Contains only non-confidential in
 
 ```json
 {
-  "status": "status8",
+  "status": "status6",
   "card": {
     "id": "id6",
     "card_brand": "OTHER_BRAND",
@@ -40,9 +40,9 @@ Reflects the current status of a card payment. Contains only non-confidential in
     "exp_month": 228,
     "exp_year": 68
   },
-  "entry_method": "entry_method6",
-  "cvv_status": "cvv_status8",
-  "avs_status": "avs_status4"
+  "entry_method": "entry_method8",
+  "cvv_status": "cvv_status4",
+  "avs_status": "avs_status6"
 }
 ```
 

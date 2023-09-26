@@ -22,10 +22,10 @@ V1UpdateOrderRequest
 ```json
 {
   "action": "COMPLETE",
-  "shipped_tracking_number": "shipped_tracking_number0",
-  "completed_note": "completed_note0",
-  "refunded_note": "refunded_note4",
-  "canceled_note": "canceled_note0"
+  "shipped_tracking_number": "shipped_tracking_number4",
+  "completed_note": "completed_note4",
+  "refunded_note": "refunded_note8",
+  "canceled_note": "canceled_note6"
 }
 ```
 

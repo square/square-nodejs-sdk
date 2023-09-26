@@ -56,11 +56,15 @@ async listMerchantCustomAttributeDefinitions(
 
 ```ts
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.listMerchantCustomAttributeDefinitions();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -109,11 +113,15 @@ const body: CreateMerchantCustomAttributeDefinitionRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.createMerchantCustomAttributeDefinition(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -152,11 +160,15 @@ async deleteMerchantCustomAttributeDefinition(
 const key = 'key0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.deleteMerchantCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -196,11 +208,15 @@ async retrieveMerchantCustomAttributeDefinition(
 const key = 'key0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.retrieveMerchantCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -248,14 +264,18 @@ const body: UpdateMerchantCustomAttributeDefinitionRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.updateMerchantCustomAttributeDefinition(
-    key,
-    body
-  );
+  key,
+  body
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -292,17 +312,25 @@ async bulkDeleteMerchantCustomAttributes(
 ```ts
 const body: BulkDeleteMerchantCustomAttributesRequest = {
   values: {
-    'id1': {},
-    'id2': {}
+    'id1': {
+      key: 'alternative_seller_name',
+    },
+    'id2': {
+      key: 'has_seen_tutorial',
+    }
   },
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.bulkDeleteMerchantCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -347,22 +375,26 @@ async bulkUpsertMerchantCustomAttributes(
 const body: BulkUpsertMerchantCustomAttributesRequest = {
   values: {
     'key0': {
-      merchantId: 'merchant_id4',
+      merchantId: 'merchant_id0',
       customAttribute: {},
     },
     'key1': {
-      merchantId: 'merchant_id5',
+      merchantId: 'merchant_id0',
       customAttribute: {},
     }
   },
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.bulkUpsertMerchantCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -413,14 +445,21 @@ const merchantId = 'merchant_id0';
 const withDefinitions = false;
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.listMerchantCustomAttributes(
-    merchantId,
-    withDefinitions
-  );
+  merchantId,
+  undefined,
+  undefined,
+  undefined,
+  withDefinitions
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -462,14 +501,18 @@ const merchantId = 'merchant_id0';
 const key = 'key0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.deleteMerchantCustomAttribute(
-    merchantId,
-    key
-  );
+  merchantId,
+  key
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -519,15 +562,19 @@ const key = 'key0';
 const withDefinition = false;
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.retrieveMerchantCustomAttribute(
-    merchantId,
-    key,
-    withDefinition
-  );
+  merchantId,
+  key,
+  withDefinition
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -578,15 +625,19 @@ const body: UpsertMerchantCustomAttributeRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await merchantCustomAttributesApi.upsertMerchantCustomAttribute(
-    merchantId,
-    key,
-    body
-  );
+  merchantId,
+  key,
+  body
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

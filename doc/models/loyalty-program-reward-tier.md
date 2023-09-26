@@ -22,9 +22,9 @@ Represents a reward tier in a loyalty program. A reward tier defines how buyers 
 
 ```json
 {
-  "id": "id0",
-  "points": 236,
-  "name": "name0",
+  "id": "id2",
+  "points": 94,
+  "name": "name2",
   "definition": {
     "scope": "ORDER",
     "discount_type": "FIXED_AMOUNT",
@@ -33,15 +33,15 @@ Represents a reward tier in a loyalty program. A reward tier defines how buyers 
       "catalog_object_ids6"
     ],
     "fixed_discount_money": {
-      "amount": 132,
-      "currency": "CUC"
+      "amount": 36,
+      "currency": "TTD"
     },
     "max_discount_money": {
-      "amount": 176,
-      "currency": "CUC"
+      "amount": 84,
+      "currency": "STD"
     }
   },
-  "created_at": "created_at2",
+  "created_at": "created_at0",
   "pricing_rule_reference": {
     "object_id": "object_id0",
     "catalog_version": 218

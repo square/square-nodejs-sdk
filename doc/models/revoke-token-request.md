@@ -20,7 +20,7 @@
 {
   "access_token": "ACCESS_TOKEN",
   "client_id": "CLIENT_ID",
-  "merchant_id": "merchant_id0",
+  "merchant_id": "merchant_id8",
   "revoke_only_access_token": false
 }
 ```

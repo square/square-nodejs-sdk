@@ -37,22 +37,16 @@ Represents a response from a bulk update request containing the updated `TeamMem
       },
       "errors": [
         {
-          "category": "PAYMENT_METHOD_ERROR",
-          "code": "REQUEST_TIMEOUT",
-          "detail": "detail8",
-          "field": "field6"
-        },
-        {
-          "category": "REFUND_ERROR",
-          "code": "CONFLICT",
-          "detail": "detail9",
-          "field": "field7"
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
         },
         {
           "category": "MERCHANT_SUBSCRIPTION_ERROR",
-          "code": "GONE",
-          "detail": "detail0",
-          "field": "field8"
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
         }
       ]
     },
@@ -78,32 +72,26 @@ Represents a response from a bulk update request containing the updated `TeamMem
       },
       "errors": [
         {
-          "category": "REFUND_ERROR",
-          "code": "CONFLICT",
-          "detail": "detail9",
-          "field": "field7"
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
+        },
+        {
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
         }
       ]
     }
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

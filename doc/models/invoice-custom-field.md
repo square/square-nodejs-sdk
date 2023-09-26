@@ -23,8 +23,8 @@ Adding custom fields to an invoice requires an
 
 ```json
 {
-  "label": "label0",
-  "value": "value2",
+  "label": "label6",
+  "value": "value8",
   "placement": "ABOVE_LINE_ITEMS"
 }
 ```

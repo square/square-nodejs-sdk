@@ -32,7 +32,7 @@ For more information, see [Search for Balance-Changing Loyalty Events](https://d
 ```json
 {
   "id": "id0",
-  "type": "OTHER",
+  "type": "ACCUMULATE_POINTS",
   "created_at": "created_at2",
   "accumulate_points": {
     "loyalty_program_id": "loyalty_program_id8",

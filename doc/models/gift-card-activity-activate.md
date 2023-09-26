@@ -25,11 +25,11 @@ Represents details about an `ACTIVATE` [gift card activity type](../../doc/model
     "amount": 186,
     "currency": "TZS"
   },
-  "order_id": "order_id6",
-  "line_item_uid": "line_item_uid0",
-  "reference_id": "reference_id2",
+  "order_id": "order_id2",
+  "line_item_uid": "line_item_uid4",
+  "reference_id": "reference_id8",
   "buyer_payment_instrument_ids": [
-    "buyer_payment_instrument_ids6"
+    "buyer_payment_instrument_ids0"
   ]
 }
 ```

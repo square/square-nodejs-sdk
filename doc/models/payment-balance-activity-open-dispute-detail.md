@@ -16,8 +16,8 @@
 
 ```json
 {
-  "payment_id": "payment_id0",
-  "dispute_id": "dispute_id2"
+  "payment_id": "payment_id6",
+  "dispute_id": "dispute_id8"
 }
 ```
 

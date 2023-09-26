@@ -18,23 +18,65 @@
   "query": {
     "filter": {
       "start_at_range": {
-        "start_at": "start_at0",
-        "end_at": "end_at2"
+        "start_at": "start_at6",
+        "end_at": "end_at6"
       },
       "location_id": "location_id8",
       "segment_filters": [
         {
-          "service_variation_id": "service_variation_id0",
+          "service_variation_id": "service_variation_id4",
           "team_member_id_filter": {
             "all": [
-              "all9"
+              "all5",
+              "all6",
+              "all7"
             ],
             "any": [
-              "any8",
-              "any9"
+              "any2",
+              "any3",
+              "any4"
             ],
             "none": [
-              "none3"
+              "none7",
+              "none8"
+            ]
+          }
+        },
+        {
+          "service_variation_id": "service_variation_id4",
+          "team_member_id_filter": {
+            "all": [
+              "all5",
+              "all6",
+              "all7"
+            ],
+            "any": [
+              "any2",
+              "any3",
+              "any4"
+            ],
+            "none": [
+              "none7",
+              "none8"
+            ]
+          }
+        },
+        {
+          "service_variation_id": "service_variation_id4",
+          "team_member_id_filter": {
+            "all": [
+              "all5",
+              "all6",
+              "all7"
+            ],
+            "any": [
+              "any2",
+              "any3",
+              "any4"
+            ],
+            "none": [
+              "none7",
+              "none8"
             ]
           }
         }

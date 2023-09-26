@@ -19,7 +19,7 @@ Additional details about a Buy Now Pay Later payment type.
 
 ```json
 {
-  "brand": "brand4",
+  "brand": "brand6",
   "afterpay_details": {
     "email_address": "email_address4"
   },

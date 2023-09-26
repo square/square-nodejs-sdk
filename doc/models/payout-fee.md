@@ -23,7 +23,7 @@ Represents a payout fee that can incur as part of a payout.
     "amount": 186,
     "currency": "TZS"
   },
-  "effective_at": "effective_at6",
+  "effective_at": "effective_at0",
   "type": "TRANSFER_FEE"
 }
 ```

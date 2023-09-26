@@ -18,8 +18,8 @@ Represents the metadata for a `POINTS_MULTIPLIER` type of [loyalty promotion inc
 
 ```json
 {
-  "points_multiplier": 8,
-  "multiplier": "multiplier4"
+  "points_multiplier": 116,
+  "multiplier": "multiplier2"
 }
 ```
 

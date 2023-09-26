@@ -26,27 +26,31 @@ A request to search for loyalty events.
         "order_id": "PyATxhYLfsMqpVkcKJITPydgEYfZY"
       },
       "loyalty_account_filter": {
-        "loyalty_account_id": "loyalty_account_id4"
+        "loyalty_account_id": "loyalty_account_id8"
       },
       "type_filter": {
         "types": [
-          "EXPIRE_POINTS"
+          "ACCUMULATE_PROMOTION_POINTS",
+          "ACCUMULATE_POINTS",
+          "CREATE_REWARD"
         ]
       },
       "date_time_filter": {
         "created_at": {
-          "start_at": "start_at6",
-          "end_at": "end_at6"
+          "start_at": "start_at4",
+          "end_at": "end_at8"
         }
       },
       "location_filter": {
         "location_ids": [
-          "location_ids4"
+          "location_ids0",
+          "location_ids1",
+          "location_ids2"
         ]
       }
     }
   },
-  "cursor": "cursor6"
+  "cursor": "cursor8"
 }
 ```
 

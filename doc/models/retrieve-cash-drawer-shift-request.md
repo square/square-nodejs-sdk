@@ -15,7 +15,7 @@
 
 ```json
 {
-  "location_id": "location_id4"
+  "location_id": "location_id6"
 }
 ```
 

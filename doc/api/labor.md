@@ -58,11 +58,15 @@ async listBreakTypes(
 
 ```ts
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.listBreakTypes();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -119,11 +123,15 @@ const body: CreateBreakTypeRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.createBreakType(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -161,11 +169,15 @@ async deleteBreakType(
 const id = 'id0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.deleteBreakType(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -201,11 +213,15 @@ async getBreakType(
 const id = 'id0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.getBreakType(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -253,14 +269,18 @@ const body: UpdateBreakTypeRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.updateBreakType(
-    id,
-    body
-  );
+  id,
+  body
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -300,11 +320,15 @@ async listEmployeeWages(
 
 ```ts
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.listEmployeeWages();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -342,11 +366,15 @@ async getEmployeeWage(
 const id = 'id0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.getEmployeeWage(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -399,9 +427,9 @@ async createShift(
 ```ts
 const body: CreateShiftRequest = {
   shift: {
-    startAt: '2019-01-25T08:11:00+00:00',
+    startAt: '2019-01-25T03:11:00-05:00',
     locationId: 'PAA1RJZZKXBFG',
-    endAt: '2019-01-25T18:11:00+00:00',
+    endAt: '2019-01-25T13:11:00-05:00',
     wage: {
       title: 'Barista',
       hourlyRate: {
@@ -411,12 +439,12 @@ const body: CreateShiftRequest = {
     },
     breaks: [
       {
-        startAt: '2019-01-25T11:11:00+00:00',
+        startAt: '2019-01-25T06:11:00-05:00',
         breakTypeId: 'REGS1EQR1TPZ5',
         name: 'Tea Break',
         expectedDuration: 'PT5M',
         isPaid: true,
-        endAt: '2019-01-25T11:16:00+00:00',
+        endAt: '2019-01-25T06:16:00-05:00',
       }
     ],
     teamMemberId: 'ormj0jJJZ5OZIzxrZYJI',
@@ -425,11 +453,15 @@ const body: CreateShiftRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.createShift(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -494,11 +526,15 @@ const body: SearchShiftsRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.searchShifts(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -534,11 +570,15 @@ async deleteShift(
 const id = 'id0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.deleteShift(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -574,11 +614,15 @@ async getShift(
 const id = 'id0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.getShift(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -623,9 +667,9 @@ const id = 'id0';
 
 const body: UpdateShiftRequest = {
   shift: {
-    startAt: '2019-01-25T08:11:00+00:00',
+    startAt: '2019-01-25T03:11:00-05:00',
     locationId: 'PAA1RJZZKXBFG',
-    endAt: '2019-01-25T18:11:00+00:00',
+    endAt: '2019-01-25T13:11:00-05:00',
     wage: {
       title: 'Bartender',
       hourlyRate: {
@@ -635,13 +679,13 @@ const body: UpdateShiftRequest = {
     },
     breaks: [
       {
-        startAt: '2019-01-25T11:11:00+00:00',
+        startAt: '2019-01-25T06:11:00-05:00',
         breakTypeId: 'REGS1EQR1TPZ5',
         name: 'Tea Break',
         expectedDuration: 'PT5M',
         isPaid: true,
         id: 'X7GAQYVVRRG6P',
-        endAt: '2019-01-25T11:16:00+00:00',
+        endAt: '2019-01-25T06:16:00-05:00',
       }
     ],
     version: 1,
@@ -650,14 +694,18 @@ const body: UpdateShiftRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.updateShift(
-    id,
-    body
-  );
+  id,
+  body
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -695,11 +743,15 @@ async listTeamMemberWages(
 
 ```ts
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.listTeamMemberWages();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -735,11 +787,15 @@ async getTeamMemberWage(
 const id = 'id0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.getTeamMemberWage(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -775,11 +831,15 @@ async listWorkweekConfigs(
 
 ```ts
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.listWorkweekConfigs();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -825,14 +885,18 @@ const body: UpdateWorkweekConfigRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await laborApi.updateWorkweekConfig(
-    id,
-    body
-  );
+  id,
+  body
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

@@ -53,8 +53,8 @@ For a more detailed discussion of the Catalog data model, please see the
 
 ```json
 {
-  "type": "CATEGORY",
-  "id": "id0",
+  "type": "TAX",
+  "id": "id4",
   "item_data": {
     "object": {
       "id": "#Cocoa",
@@ -165,16 +165,30 @@ For a more detailed discussion of the Catalog data model, please see the
       "type": "MODIFIER"
     }
   },
-  "updated_at": "updated_at4",
-  "version": 172,
+  "updated_at": "updated_at0",
+  "version": 186,
   "is_deleted": false,
   "custom_attribute_values": {
     "key0": {
-      "name": "name9",
-      "string_value": "string_value3",
-      "custom_attribute_definition_id": "custom_attribute_definition_id3",
-      "type": "BOOLEAN",
-      "number_value": "number_value9"
+      "name": "name8",
+      "string_value": "string_value2",
+      "custom_attribute_definition_id": "custom_attribute_definition_id4",
+      "type": "STRING",
+      "number_value": "number_value8"
+    },
+    "key1": {
+      "name": "name8",
+      "string_value": "string_value2",
+      "custom_attribute_definition_id": "custom_attribute_definition_id4",
+      "type": "STRING",
+      "number_value": "number_value8"
+    },
+    "key2": {
+      "name": "name8",
+      "string_value": "string_value2",
+      "custom_attribute_definition_id": "custom_attribute_definition_id4",
+      "type": "STRING",
+      "number_value": "number_value8"
     }
   },
   "catalog_v1_ids": [
@@ -183,8 +197,12 @@ For a more detailed discussion of the Catalog data model, please see the
       "location_id": "location_id4"
     },
     {
-      "catalog_v1_id": "catalog_v1_id5",
-      "location_id": "location_id5"
+      "catalog_v1_id": "catalog_v1_id4",
+      "location_id": "location_id4"
+    },
+    {
+      "catalog_v1_id": "catalog_v1_id4",
+      "location_id": "location_id4"
     }
   ]
 }

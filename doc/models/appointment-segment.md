@@ -23,11 +23,11 @@ Defines an appointment segment of a booking.
 
 ```json
 {
-  "duration_minutes": 144,
-  "service_variation_id": "service_variation_id6",
+  "duration_minutes": 36,
+  "service_variation_id": "service_variation_id4",
   "team_member_id": "team_member_id0",
-  "service_variation_version": 56,
-  "intermission_minutes": 62,
+  "service_variation_version": 204,
+  "intermission_minutes": 210,
   "any_team_member": false
 }
 ```

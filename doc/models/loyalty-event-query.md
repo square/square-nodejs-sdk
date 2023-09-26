@@ -19,30 +19,30 @@ Represents a query used to search for loyalty events.
 {
   "filter": {
     "loyalty_account_filter": {
-      "loyalty_account_id": "loyalty_account_id4"
+      "loyalty_account_id": "loyalty_account_id8"
     },
     "type_filter": {
       "types": [
-        "DELETE_REWARD",
-        "ADJUST_POINTS",
-        "EXPIRE_POINTS"
+        "ACCUMULATE_PROMOTION_POINTS",
+        "ACCUMULATE_POINTS",
+        "CREATE_REWARD"
       ]
     },
     "date_time_filter": {
       "created_at": {
-        "start_at": "start_at6",
-        "end_at": "end_at6"
+        "start_at": "start_at4",
+        "end_at": "end_at8"
       }
     },
     "location_filter": {
       "location_ids": [
-        "location_ids4",
-        "location_ids5",
-        "location_ids6"
+        "location_ids0",
+        "location_ids1",
+        "location_ids2"
       ]
     },
     "order_filter": {
-      "order_id": "order_id6"
+      "order_id": "order_id2"
     }
   }
 }

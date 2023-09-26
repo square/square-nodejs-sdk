@@ -19,9 +19,9 @@ ACH-specific details about `BANK_ACCOUNT` type payments with the `transfer_type`
 
 ```json
 {
-  "routing_number": "routing_number4",
-  "account_number_suffix": "account_number_suffix8",
-  "account_type": "account_type4"
+  "routing_number": "routing_number6",
+  "account_number_suffix": "account_number_suffix6",
+  "account_type": "account_type8"
 }
 ```
 

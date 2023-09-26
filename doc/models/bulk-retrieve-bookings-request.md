@@ -18,7 +18,9 @@ Request payload for bulk retrieval of bookings.
 ```json
 {
   "booking_ids": [
-    "booking_ids4"
+    "booking_ids8",
+    "booking_ids9",
+    "booking_ids0"
   ]
 }
 ```

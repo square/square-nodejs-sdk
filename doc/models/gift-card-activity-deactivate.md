@@ -17,7 +17,7 @@ Represents details about a `DEACTIVATE` [gift card activity type](../../doc/mode
 
 ```json
 {
-  "reason": "UNKNOWN_REASON"
+  "reason": "CHARGEBACK_DEACTIVATE"
 }
 ```
 

@@ -8,6 +8,14 @@ import {
   bulkRetrieveBookingsResponseSchema,
 } from '../models/bulkRetrieveBookingsResponse';
 import {
+  BulkRetrieveTeamMemberBookingProfilesRequest,
+  bulkRetrieveTeamMemberBookingProfilesRequestSchema,
+} from '../models/bulkRetrieveTeamMemberBookingProfilesRequest';
+import {
+  BulkRetrieveTeamMemberBookingProfilesResponse,
+  bulkRetrieveTeamMemberBookingProfilesResponseSchema,
+} from '../models/bulkRetrieveTeamMemberBookingProfilesResponse';
+import {
   CancelBookingRequest,
   cancelBookingRequestSchema,
 } from '../models/cancelBookingRequest';
@@ -252,6 +260,34 @@ export class BookingsApi extends BaseApi {
     req.query('location_id', mapped.locationId);
     return req.callAsJson(
       listTeamMemberBookingProfilesResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Retrieves one or more team members' booking profiles.
+   *
+   * @param body         An object containing the fields to
+   *                                                                            POST for the request.  See the
+   *                                                                            corresponding object definition for
+   *                                                                            field details.
+   * @return Response from the API call
+   */
+  async bulkRetrieveTeamMemberBookingProfiles(
+    body: BulkRetrieveTeamMemberBookingProfilesRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<BulkRetrieveTeamMemberBookingProfilesResponse>> {
+    const req = this.createRequest(
+      'POST',
+      '/v2/bookings/team-member-booking-profiles/bulk-retrieve'
+    );
+    const mapped = req.prepareArgs({
+      body: [body, bulkRetrieveTeamMemberBookingProfilesRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    return req.callAsJson(
+      bulkRetrieveTeamMemberBookingProfilesResponseSchema,
       requestOptions
     );
   }

@@ -40,7 +40,7 @@ A response that includes the loyalty rewards satisfying the search criteria.
       "reward_tier_id": "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
       "status": "REDEEMED",
       "updated_at": "2020-05-08T21:56:00Z",
-      "order_id": "order_id0"
+      "order_id": "order_id4"
     },
     {
       "created_at": "2020-05-01T21:49:54Z",
@@ -65,25 +65,25 @@ A response that includes the loyalty rewards satisfying the search criteria.
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ],
-  "cursor": "cursor6"
+  "cursor": "cursor4"
 }
 ```
 

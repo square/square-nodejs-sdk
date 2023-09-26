@@ -70,25 +70,25 @@
     "version": 1623685899021,
     "custom_attribute_values": {
       "key0": {
-        "name": "name9",
-        "string_value": "string_value3",
-        "custom_attribute_definition_id": "custom_attribute_definition_id3",
-        "type": "BOOLEAN",
-        "number_value": "number_value9"
+        "name": "name8",
+        "string_value": "string_value2",
+        "custom_attribute_definition_id": "custom_attribute_definition_id4",
+        "type": "STRING",
+        "number_value": "number_value8"
       },
       "key1": {
-        "name": "name0",
-        "string_value": "string_value4",
-        "custom_attribute_definition_id": "custom_attribute_definition_id2",
+        "name": "name8",
+        "string_value": "string_value2",
+        "custom_attribute_definition_id": "custom_attribute_definition_id4",
         "type": "STRING",
-        "number_value": "number_value0"
+        "number_value": "number_value8"
       },
       "key2": {
-        "name": "name1",
-        "string_value": "string_value5",
-        "custom_attribute_definition_id": "custom_attribute_definition_id1",
-        "type": "SELECTION",
-        "number_value": "number_value1"
+        "name": "name8",
+        "string_value": "string_value2",
+        "custom_attribute_definition_id": "custom_attribute_definition_id4",
+        "type": "STRING",
+        "number_value": "number_value8"
       }
     },
     "catalog_v1_ids": [
@@ -97,12 +97,12 @@
         "location_id": "location_id4"
       },
       {
-        "catalog_v1_id": "catalog_v1_id5",
-        "location_id": "location_id5"
+        "catalog_v1_id": "catalog_v1_id4",
+        "location_id": "location_id4"
       },
       {
-        "catalog_v1_id": "catalog_v1_id6",
-        "location_id": "location_id6"
+        "catalog_v1_id": "catalog_v1_id4",
+        "location_id": "location_id4"
       }
     ]
   },
@@ -122,22 +122,16 @@
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

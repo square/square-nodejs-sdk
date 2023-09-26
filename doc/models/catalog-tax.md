@@ -36,10 +36,10 @@ A tax applicable to an item.
     },
     "type": "TAX"
   },
-  "name": "name0",
+  "name": "name2",
   "calculation_phase": "TAX_SUBTOTAL_PHASE",
   "inclusion_type": "ADDITIVE",
-  "percentage": "percentage8",
+  "percentage": "percentage0",
   "applies_to_custom_amounts": false
 }
 ```

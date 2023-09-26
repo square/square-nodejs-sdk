@@ -33,10 +33,10 @@ Defines the body parameters that can be included in a request to the
   "note": "updated customer note",
   "phone_number": "",
   "version": 2,
-  "given_name": "given_name2",
-  "family_name": "family_name6",
-  "company_name": "company_name6",
-  "nickname": "nickname6"
+  "given_name": "given_name0",
+  "family_name": "family_name8",
+  "company_name": "company_name4",
+  "nickname": "nickname4"
 }
 ```
 

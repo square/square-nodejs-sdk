@@ -19,7 +19,7 @@
 ```json
 {
   "title": "title4",
-  "body": "body6",
+  "body": "body4",
   "input_type": "EMAIL",
   "collected_data": {
     "input_text": "input_text0"

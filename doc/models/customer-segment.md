@@ -25,8 +25,8 @@ Square Seller Dashboard or Point of Sale.
 {
   "id": "id0",
   "name": "name0",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4"
+  "created_at": "created_at8",
+  "updated_at": "updated_at6"
 }
 ```
 

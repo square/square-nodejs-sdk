@@ -22,7 +22,7 @@ Represents details about an `ADJUST_INCREMENT` [gift card activity type](../../d
     "amount": 186,
     "currency": "TZS"
   },
-  "reason": "SUPPORT_ISSUE"
+  "reason": "COMPLIMENTARY"
 }
 ```
 

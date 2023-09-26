@@ -18,8 +18,8 @@ Represents the naming used for loyalty points.
 
 ```json
 {
-  "one": "one6",
-  "other": "other2"
+  "one": "one4",
+  "other": "other0"
 }
 ```
 

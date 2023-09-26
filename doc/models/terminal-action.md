@@ -36,11 +36,11 @@ Represents an action processed by the Square Terminal.
 
 ```json
 {
-  "id": "id0",
-  "device_id": "device_id6",
-  "deadline_duration": "deadline_duration8",
-  "status": "status8",
-  "cancel_reason": "SELLER_CANCELED"
+  "id": "id8",
+  "device_id": "device_id4",
+  "deadline_duration": "deadline_duration0",
+  "status": "status0",
+  "cancel_reason": "TIMED_OUT"
 }
 ```
 

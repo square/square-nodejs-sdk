@@ -30,16 +30,16 @@ are ANDed together.
   },
   "date_time_filter": {
     "created_at": {
-      "start_at": "start_at0",
-      "end_at": "end_at2"
+      "start_at": "start_at4",
+      "end_at": "end_at8"
     },
     "updated_at": {
-      "start_at": "start_at8",
-      "end_at": "end_at4"
+      "start_at": "start_at6",
+      "end_at": "end_at6"
     },
     "closed_at": {
       "start_at": "start_at4",
-      "end_at": "end_at2"
+      "end_at": "end_at8"
     }
   },
   "fulfillment_filter": {

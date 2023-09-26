@@ -33,12 +33,12 @@ Represents a tender (i.e., a method of payment) used in a Square transaction.
 
 ```json
 {
-  "id": "id0",
-  "location_id": "location_id4",
-  "transaction_id": "transaction_id8",
-  "created_at": "created_at2",
+  "id": "id8",
+  "location_id": "location_id2",
+  "transaction_id": "transaction_id6",
+  "created_at": "created_at6",
   "note": "note4",
-  "type": "CARD"
+  "type": "SQUARE_ACCOUNT"
 }
 ```
 

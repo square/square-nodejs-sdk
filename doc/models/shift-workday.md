@@ -24,8 +24,8 @@ a `Shift` must start or end in before passing the filter condition.
     "start_date": "start_date6",
     "end_date": "end_date2"
   },
-  "match_shifts_by": "INTERSECTION",
-  "default_timezone": "default_timezone6"
+  "match_shifts_by": "END_AT",
+  "default_timezone": "default_timezone2"
 }
 ```
 

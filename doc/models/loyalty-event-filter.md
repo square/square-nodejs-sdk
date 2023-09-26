@@ -34,8 +34,8 @@ the endpoint uses a logical AND to evaluate them.
   },
   "date_time_filter": {
     "created_at": {
-      "start_at": "start_at0",
-      "end_at": "end_at2"
+      "start_at": "start_at4",
+      "end_at": "end_at8"
     }
   },
   "location_filter": {

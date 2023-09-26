@@ -55,18 +55,18 @@ Either `errors` or `customers` is present in a given response (never both).
       "version": 7,
       "cards": [
         {
-          "id": "id0",
+          "id": "id8",
           "card_brand": "DISCOVER",
-          "last_4": "last_42",
-          "exp_month": 146,
-          "exp_year": 186
+          "last_4": "last_40",
+          "exp_month": 152,
+          "exp_year": 144
         },
         {
-          "id": "id1",
-          "card_brand": "DISCOVER_DINERS",
-          "last_4": "last_43",
-          "exp_month": 147,
-          "exp_year": 187
+          "id": "id8",
+          "card_brand": "DISCOVER",
+          "last_4": "last_40",
+          "exp_month": 152,
+          "exp_year": 144
         }
       ]
     },
@@ -101,50 +101,31 @@ Either `errors` or `customers` is present in a given response (never both).
       "version": 1,
       "cards": [
         {
-          "id": "id1",
-          "card_brand": "DISCOVER_DINERS",
-          "last_4": "last_43",
-          "exp_month": 147,
-          "exp_year": 187
+          "id": "id8",
+          "card_brand": "DISCOVER",
+          "last_4": "last_40",
+          "exp_month": 152,
+          "exp_year": 144
         },
         {
-          "id": "id2",
-          "card_brand": "JCB",
-          "last_4": "last_44",
-          "exp_month": 148,
-          "exp_year": 188
-        },
-        {
-          "id": "id3",
-          "card_brand": "CHINA_UNIONPAY",
-          "last_4": "last_45",
-          "exp_month": 149,
-          "exp_year": 189
+          "id": "id8",
+          "card_brand": "DISCOVER",
+          "last_4": "last_40",
+          "exp_month": 152,
+          "exp_year": 144
         }
       ]
     }
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ],
-  "count": 60
+  "count": 90
 }
 ```
 

@@ -22,7 +22,7 @@ The hourly wage rate that an employee earns on a `Shift` for doing the job speci
 {
   "id": "id0",
   "employee_id": "employee_id0",
-  "title": "title4",
+  "title": "title6",
   "hourly_rate": {
     "amount": 172,
     "currency": "OMR"

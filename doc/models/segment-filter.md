@@ -18,7 +18,7 @@ A query filter to search for buyer-accessible appointment segments by.
 
 ```json
 {
-  "service_variation_id": "service_variation_id6",
+  "service_variation_id": "service_variation_id0",
   "team_member_id_filter": {
     "all": [
       "all5",

@@ -27,19 +27,39 @@ However, orders returned by the Orders API might contain multiple fulfillments b
 
 ```json
 {
-  "uid": "uid0",
-  "type": "DELIVERY",
-  "state": "PREPARED",
+  "uid": "uid8",
+  "type": "PICKUP",
+  "state": "PROPOSED",
   "line_item_application": "ALL",
   "entries": [
     {
-      "uid": "uid5",
-      "line_item_uid": "line_item_uid5",
-      "quantity": "quantity1",
+      "uid": "uid0",
+      "line_item_uid": "line_item_uid0",
+      "quantity": "quantity6",
       "metadata": {
-        "key0": "metadata8",
-        "key1": "metadata9",
-        "key2": "metadata0"
+        "key0": "metadata3",
+        "key1": "metadata4",
+        "key2": "metadata5"
+      }
+    },
+    {
+      "uid": "uid0",
+      "line_item_uid": "line_item_uid0",
+      "quantity": "quantity6",
+      "metadata": {
+        "key0": "metadata3",
+        "key1": "metadata4",
+        "key2": "metadata5"
+      }
+    },
+    {
+      "uid": "uid0",
+      "line_item_uid": "line_item_uid0",
+      "quantity": "quantity6",
+      "metadata": {
+        "key0": "metadata3",
+        "key1": "metadata4",
+        "key2": "metadata5"
       }
     }
   ]

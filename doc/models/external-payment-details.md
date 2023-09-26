@@ -22,8 +22,8 @@ For more information, see
 
 ```json
 {
-  "type": "type0",
-  "source": "source4",
+  "type": "type8",
+  "source": "source8",
   "source_id": "source_id6",
   "source_fee_money": {
     "amount": 130,

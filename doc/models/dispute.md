@@ -39,7 +39,7 @@ Represents a [dispute](https://developer.squareup.com/docs/disputes-api/overview
     "currency": "TZS"
   },
   "reason": "NOT_AS_DESCRIBED",
-  "state": "PROCESSING"
+  "state": "LOST"
 }
 ```
 

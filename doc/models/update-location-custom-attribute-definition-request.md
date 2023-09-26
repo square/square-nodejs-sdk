@@ -28,7 +28,7 @@ Represents an [UpdateLocationCustomAttributeDefinition](../../doc/api/location-c
     },
     "name": "name2"
   },
-  "idempotency_key": "idempotency_key6"
+  "idempotency_key": "idempotency_key2"
 }
 ```
 

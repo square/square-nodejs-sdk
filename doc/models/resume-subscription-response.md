@@ -27,13 +27,25 @@ Defines output parameters in a response from the
       "type": "RESUME",
       "phases": [
         {
-          "uid": "uid6",
-          "ordinal": 186,
-          "order_template_id": "order_template_id8",
-          "plan_phase_uid": "plan_phase_uid2"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
+        },
+        {
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
+        },
+        {
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         }
       ],
-      "new_plan_variation_id": "new_plan_variation_id9"
+      "new_plan_variation_id": "new_plan_variation_id8"
     }
   ],
   "subscription": {
@@ -61,22 +73,10 @@ Defines output parameters in a response from the
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

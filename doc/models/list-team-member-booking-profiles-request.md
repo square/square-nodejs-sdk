@@ -19,9 +19,9 @@
 ```json
 {
   "bookable_only": false,
-  "limit": 172,
-  "cursor": "cursor6",
-  "location_id": "location_id4"
+  "limit": 112,
+  "cursor": "cursor2",
+  "location_id": "location_id8"
 }
 ```
 

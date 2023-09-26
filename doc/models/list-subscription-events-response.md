@@ -27,27 +27,15 @@ Defines output parameters in a response from the
       "plan_variation_id": "6JHXF3B2CW3YKHDV4XEM674H",
       "subscription_event_type": "START_SUBSCRIPTION",
       "info": {
-        "detail": "detail2",
-        "code": "CUSTOMER_NO_NAME"
+        "detail": "detail6",
+        "code": "CUSTOMER_DELETED"
       },
       "phases": [
         {
-          "uid": "uid1",
-          "ordinal": 17,
-          "order_template_id": "order_template_id3",
-          "plan_phase_uid": "plan_phase_uid7"
-        },
-        {
           "uid": "uid0",
-          "ordinal": 16,
+          "ordinal": 78,
           "order_template_id": "order_template_id2",
           "plan_phase_uid": "plan_phase_uid6"
-        },
-        {
-          "uid": "uid9",
-          "ordinal": 15,
-          "order_template_id": "order_template_id1",
-          "plan_phase_uid": "plan_phase_uid5"
         }
       ]
     },
@@ -62,16 +50,10 @@ Defines output parameters in a response from the
       "subscription_event_type": "DEACTIVATE_SUBSCRIPTION",
       "phases": [
         {
-          "uid": "uid2",
-          "ordinal": 18,
-          "order_template_id": "order_template_id4",
-          "plan_phase_uid": "plan_phase_uid8"
-        },
-        {
-          "uid": "uid1",
-          "ordinal": 17,
-          "order_template_id": "order_template_id3",
-          "plan_phase_uid": "plan_phase_uid7"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         }
       ]
     },
@@ -81,15 +63,15 @@ Defines output parameters in a response from the
       "plan_variation_id": "6JHXF3B2CW3YKHDV4XEM674H",
       "subscription_event_type": "RESUME_SUBSCRIPTION",
       "info": {
-        "detail": "detail4",
-        "code": "LOCATION_NOT_ACTIVE"
+        "detail": "detail6",
+        "code": "CUSTOMER_DELETED"
       },
       "phases": [
         {
-          "uid": "uid3",
-          "ordinal": 19,
-          "order_template_id": "order_template_id5",
-          "plan_phase_uid": "plan_phase_uid9"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         }
       ]
     },
@@ -99,27 +81,15 @@ Defines output parameters in a response from the
       "plan_variation_id": "6JHXF3B2CW3YKHDV4XEM674H",
       "subscription_event_type": "PAUSE_SUBSCRIPTION",
       "info": {
-        "detail": "detail5",
-        "code": "LOCATION_CANNOT_ACCEPT_PAYMENT"
+        "detail": "detail6",
+        "code": "CUSTOMER_DELETED"
       },
       "phases": [
         {
-          "uid": "uid4",
-          "ordinal": 20,
-          "order_template_id": "order_template_id6",
-          "plan_phase_uid": "plan_phase_uid0"
-        },
-        {
-          "uid": "uid3",
-          "ordinal": 19,
-          "order_template_id": "order_template_id5",
-          "plan_phase_uid": "plan_phase_uid9"
-        },
-        {
-          "uid": "uid2",
-          "ordinal": 18,
-          "order_template_id": "order_template_id4",
-          "plan_phase_uid": "plan_phase_uid8"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         }
       ]
     },
@@ -134,16 +104,10 @@ Defines output parameters in a response from the
       },
       "phases": [
         {
-          "uid": "uid5",
-          "ordinal": 21,
-          "order_template_id": "order_template_id7",
-          "plan_phase_uid": "plan_phase_uid1"
-        },
-        {
-          "uid": "uid4",
-          "ordinal": 20,
-          "order_template_id": "order_template_id6",
-          "plan_phase_uid": "plan_phase_uid0"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         }
       ]
     },
@@ -153,15 +117,15 @@ Defines output parameters in a response from the
       "plan_variation_id": "02CD53CFA4d1498AFAD42",
       "subscription_event_type": "PLAN_CHANGE",
       "info": {
-        "detail": "detail7",
-        "code": "CUSTOMER_NO_EMAIL"
+        "detail": "detail6",
+        "code": "CUSTOMER_DELETED"
       },
       "phases": [
         {
-          "uid": "uid6",
-          "ordinal": 22,
-          "order_template_id": "order_template_id8",
-          "plan_phase_uid": "plan_phase_uid2"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         }
       ]
     },
@@ -171,52 +135,28 @@ Defines output parameters in a response from the
       "plan_variation_id": "6JHXF3B2CW3YKHDV4XEM674H",
       "subscription_event_type": "STOP_SUBSCRIPTION",
       "info": {
-        "detail": "detail8",
-        "code": "CUSTOMER_NO_NAME"
+        "detail": "detail6",
+        "code": "CUSTOMER_DELETED"
       },
       "phases": [
         {
-          "uid": "uid7",
-          "ordinal": 23,
-          "order_template_id": "order_template_id9",
-          "plan_phase_uid": "plan_phase_uid3"
-        },
-        {
-          "uid": "uid6",
-          "ordinal": 22,
-          "order_template_id": "order_template_id8",
-          "plan_phase_uid": "plan_phase_uid2"
-        },
-        {
-          "uid": "uid5",
-          "ordinal": 21,
-          "order_template_id": "order_template_id7",
-          "plan_phase_uid": "plan_phase_uid1"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         }
       ]
     }
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ],
-  "cursor": "cursor6"
+  "cursor": "cursor4"
 }
 ```
 

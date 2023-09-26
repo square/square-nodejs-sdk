@@ -17,7 +17,7 @@ Represents details about a `CLEAR_BALANCE` [gift card activity type](../../doc/m
 
 ```json
 {
-  "reason": "REUSE_GIFTCARD"
+  "reason": "SUSPICIOUS_ACTIVITY"
 }
 ```
 

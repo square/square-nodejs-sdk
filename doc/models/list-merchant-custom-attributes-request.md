@@ -20,8 +20,8 @@ Represents a [ListMerchantCustomAttributes](../../doc/api/merchant-custom-attrib
 
 ```json
 {
-  "visibility_filter": "ALL",
-  "limit": 172,
+  "visibility_filter": "READ_WRITE",
+  "limit": 132,
   "cursor": "cursor6",
   "with_definitions": false
 }

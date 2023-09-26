@@ -17,21 +17,31 @@
 {
   "items": [
     {
-      "id": "id7",
-      "status": "SENT",
+      "id": "id8",
+      "status": "FAILED",
       "total_money": {
-        "amount": 53,
-        "currency_code": "MWK"
+        "amount": 250,
+        "currency_code": "KZT"
       },
-      "initiated_at": "initiated_at9",
-      "bank_account_id": "bank_account_id7"
+      "initiated_at": "initiated_at0",
+      "bank_account_id": "bank_account_id8"
     },
     {
       "id": "id8",
       "status": "FAILED",
       "total_money": {
-        "amount": 54,
-        "currency_code": "MXN"
+        "amount": 250,
+        "currency_code": "KZT"
+      },
+      "initiated_at": "initiated_at0",
+      "bank_account_id": "bank_account_id8"
+    },
+    {
+      "id": "id8",
+      "status": "FAILED",
+      "total_money": {
+        "amount": 250,
+        "currency_code": "KZT"
       },
       "initiated_at": "initiated_at0",
       "bank_account_id": "bank_account_id8"

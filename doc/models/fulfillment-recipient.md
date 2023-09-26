@@ -21,8 +21,8 @@ Information about the fulfillment recipient.
 
 ```json
 {
-  "customer_id": "customer_id8",
-  "display_name": "display_name0",
+  "customer_id": "customer_id2",
+  "display_name": "display_name4",
   "email_address": "email_address2",
   "phone_number": "phone_number2",
   "address": {

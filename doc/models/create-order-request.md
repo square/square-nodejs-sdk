@@ -48,24 +48,24 @@
         },
         "name": "New York Strip Steak",
         "quantity": "1",
-        "uid": "uid1",
+        "uid": "uid8",
         "quantity_unit": {
           "measurement_unit": {
             "custom_unit": {
-              "name": "name9",
-              "abbreviation": "abbreviation1"
+              "name": "name2",
+              "abbreviation": "abbreviation4"
             },
-            "area_unit": "METRIC_SQUARE_CENTIMETER",
-            "length_unit": "IMPERIAL_MILE",
-            "volume_unit": "GENERIC_FLUID_OUNCE",
-            "weight_unit": "METRIC_KILOGRAM"
+            "area_unit": "IMPERIAL_ACRE",
+            "length_unit": "IMPERIAL_INCH",
+            "volume_unit": "METRIC_LITER",
+            "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
           },
-          "precision": 201,
-          "catalog_object_id": "catalog_object_id1",
-          "catalog_version": 135
+          "precision": 54,
+          "catalog_object_id": "catalog_object_id0",
+          "catalog_version": 12
         },
-        "note": "note3",
-        "catalog_object_id": "catalog_object_id5"
+        "note": "note4",
+        "catalog_object_id": "catalog_object_id2"
       },
       {
         "applied_discounts": [
@@ -80,22 +80,22 @@
           }
         ],
         "quantity": "2",
-        "uid": "uid0",
-        "name": "name0",
+        "uid": "uid8",
+        "name": "name8",
         "quantity_unit": {
           "measurement_unit": {
             "custom_unit": {
-              "name": "name8",
-              "abbreviation": "abbreviation0"
+              "name": "name2",
+              "abbreviation": "abbreviation4"
             },
-            "area_unit": "IMPERIAL_SQUARE_MILE",
-            "length_unit": "METRIC_MILLIMETER",
+            "area_unit": "IMPERIAL_ACRE",
+            "length_unit": "IMPERIAL_INCH",
             "volume_unit": "METRIC_LITER",
             "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
           },
-          "precision": 200,
+          "precision": 54,
           "catalog_object_id": "catalog_object_id0",
-          "catalog_version": 134
+          "catalog_version": 12
         },
         "note": "note4"
       }
@@ -112,7 +112,7 @@
     ],
     "id": "id6",
     "source": {
-      "name": "name2"
+      "name": "name4"
     },
     "customer_id": "customer_id4"
   }

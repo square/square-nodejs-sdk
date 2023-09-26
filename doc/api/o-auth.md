@@ -76,15 +76,19 @@ const body: RenewTokenRequest = {
 const authorization = 'Client CLIENT_SECRET';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await oAuthApi.renewToken(
-    clientId,
-    body,
-    authorization
-  );
+  clientId,
+  body,
+  authorization
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -97,9 +101,7 @@ try {
 Revokes an access token generated with the OAuth flow.
 
 If an account has more than one OAuth access token for your application, this
-endpoint revokes all of them, regardless of which token you specify. When an
-OAuth access token is revoked, all of the active subscriptions associated
-with that OAuth token are canceled immediately.
+endpoint revokes all of them, regardless of which token you specify.
 
 __Important:__ The `Authorization` header for this endpoint must have the
 following format:
@@ -144,14 +146,18 @@ const body: RevokeTokenRequest = {
 const authorization = 'Client CLIENT_SECRET';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await oAuthApi.revokeToken(
-    body,
-    authorization
-  );
+  body,
+  authorization
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -210,11 +216,15 @@ const body: ObtainTokenRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await oAuthApi.obtainToken(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -265,11 +275,15 @@ async retrieveTokenStatus(
 const authorization = 'Client CLIENT_SECRET';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await oAuthApi.retrieveTokenStatus(authorization);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

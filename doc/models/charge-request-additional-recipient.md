@@ -20,8 +20,8 @@ Support is currently limited to USD, CAD and GBP currencies
 
 ```json
 {
-  "location_id": "location_id4",
-  "description": "description0",
+  "location_id": "location_id6",
+  "description": "description2",
   "amount_money": {
     "amount": 186,
     "currency": "TZS"

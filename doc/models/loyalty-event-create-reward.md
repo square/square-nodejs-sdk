@@ -19,9 +19,9 @@ Provides metadata when the event `type` is `CREATE_REWARD`.
 
 ```json
 {
-  "loyalty_program_id": "loyalty_program_id0",
-  "reward_id": "reward_id4",
-  "points": 236
+  "loyalty_program_id": "loyalty_program_id4",
+  "reward_id": "reward_id8",
+  "points": 198
 }
 ```
 

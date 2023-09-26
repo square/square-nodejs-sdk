@@ -36,26 +36,19 @@ Represents a Square customer profile in the Customer Directory of a Square selle
 
 ```json
 {
-  "id": "id0",
-  "created_at": "created_at2",
-  "updated_at": "updated_at4",
+  "id": "id8",
+  "created_at": "created_at6",
+  "updated_at": "updated_at6",
   "cards": [
     {
-      "id": "id7",
-      "card_brand": "EBT",
-      "last_4": "last_49",
-      "exp_month": 79,
-      "exp_year": 217
-    },
-    {
       "id": "id8",
-      "card_brand": "FELICA",
+      "card_brand": "DISCOVER",
       "last_4": "last_40",
-      "exp_month": 78,
-      "exp_year": 218
+      "exp_month": 152,
+      "exp_year": 144
     }
   ],
-  "given_name": "given_name2"
+  "given_name": "given_name0"
 }
 ```
 

@@ -40,17 +40,17 @@ Contains details necessary to fulfill a pickup order.
     "email_address": "email_address4",
     "phone_number": "phone_number4",
     "address": {
-      "address_line_1": "address_line_14",
-      "address_line_2": "address_line_24",
-      "address_line_3": "address_line_30",
-      "locality": "locality4",
-      "sublocality": "sublocality4"
+      "address_line_1": "address_line_16",
+      "address_line_2": "address_line_26",
+      "address_line_3": "address_line_32",
+      "locality": "locality6",
+      "sublocality": "sublocality6"
     }
   },
-  "expires_at": "expires_at6",
-  "auto_complete_duration": "auto_complete_duration4",
+  "expires_at": "expires_at0",
+  "auto_complete_duration": "auto_complete_duration0",
   "schedule_type": "SCHEDULED",
-  "pickup_at": "pickup_at4"
+  "pickup_at": "pickup_at8"
 }
 ```
 

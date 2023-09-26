@@ -18,7 +18,8 @@ The query filter to return the items containing the specified tax IDs.
 ```json
 {
   "tax_ids": [
-    "tax_ids7"
+    "tax_ids9",
+    "tax_ids8"
   ]
 }
 ```

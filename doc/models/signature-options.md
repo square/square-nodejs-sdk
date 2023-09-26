@@ -17,12 +17,20 @@
 
 ```json
 {
-  "title": "title4",
-  "body": "body6",
+  "title": "title2",
+  "body": "body8",
   "signature": [
     {
-      "image_type": "image_type8",
-      "data": "data2"
+      "image_type": "image_type4",
+      "data": "data8"
+    },
+    {
+      "image_type": "image_type4",
+      "data": "data8"
+    },
+    {
+      "image_type": "image_type4",
+      "data": "data8"
     }
   ]
 }

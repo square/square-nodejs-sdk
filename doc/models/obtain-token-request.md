@@ -28,9 +28,9 @@
   "client_secret": "APPLICATION_SECRET",
   "code": "CODE_FROM_AUTHORIZE",
   "grant_type": "authorization_code",
-  "redirect_uri": "redirect_uri8",
-  "refresh_token": "refresh_token0",
-  "migration_token": "migration_token8"
+  "redirect_uri": "redirect_uri6",
+  "refresh_token": "refresh_token8",
+  "migration_token": "migration_token6"
 }
 ```
 

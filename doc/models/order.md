@@ -52,79 +52,35 @@ itemization data.
 
 ```json
 {
-  "id": "id0",
-  "location_id": "location_id4",
-  "reference_id": "reference_id2",
+  "id": "id2",
+  "location_id": "location_id6",
+  "reference_id": "reference_id0",
   "source": {
     "name": "name4"
   },
-  "customer_id": "customer_id8",
+  "customer_id": "customer_id0",
   "line_items": [
     {
-      "uid": "uid9",
-      "name": "name9",
-      "quantity": "quantity5",
+      "uid": "uid8",
+      "name": "name8",
+      "quantity": "quantity4",
       "quantity_unit": {
         "measurement_unit": {
           "custom_unit": {
-            "name": "name7",
-            "abbreviation": "abbreviation9"
+            "name": "name2",
+            "abbreviation": "abbreviation4"
           },
-          "area_unit": "IMPERIAL_SQUARE_YARD",
-          "length_unit": "METRIC_CENTIMETER",
-          "volume_unit": "GENERIC_PINT",
-          "weight_unit": "METRIC_KILOGRAM"
+          "area_unit": "IMPERIAL_ACRE",
+          "length_unit": "IMPERIAL_INCH",
+          "volume_unit": "METRIC_LITER",
+          "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
         },
-        "precision": 199,
-        "catalog_object_id": "catalog_object_id9",
-        "catalog_version": 133
-      },
-      "note": "note5",
-      "catalog_object_id": "catalog_object_id7"
-    },
-    {
-      "uid": "uid0",
-      "name": "name0",
-      "quantity": "quantity6",
-      "quantity_unit": {
-        "measurement_unit": {
-          "custom_unit": {
-            "name": "name8",
-            "abbreviation": "abbreviation0"
-          },
-          "area_unit": "IMPERIAL_SQUARE_MILE",
-          "length_unit": "METRIC_MILLIMETER",
-          "volume_unit": "GENERIC_QUART",
-          "weight_unit": "METRIC_GRAM"
-        },
-        "precision": 200,
+        "precision": 54,
         "catalog_object_id": "catalog_object_id0",
-        "catalog_version": 134
+        "catalog_version": 12
       },
-      "note": "note6",
-      "catalog_object_id": "catalog_object_id6"
-    },
-    {
-      "uid": "uid1",
-      "name": "name1",
-      "quantity": "quantity7",
-      "quantity_unit": {
-        "measurement_unit": {
-          "custom_unit": {
-            "name": "name9",
-            "abbreviation": "abbreviation1"
-          },
-          "area_unit": "METRIC_SQUARE_CENTIMETER",
-          "length_unit": "IMPERIAL_MILE",
-          "volume_unit": "GENERIC_GALLON",
-          "weight_unit": "METRIC_MILLIGRAM"
-        },
-        "precision": 201,
-        "catalog_object_id": "catalog_object_id1",
-        "catalog_version": 135
-      },
-      "note": "note7",
-      "catalog_object_id": "catalog_object_id5"
+      "note": "note4",
+      "catalog_object_id": "catalog_object_id2"
     }
   ]
 }

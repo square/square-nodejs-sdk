@@ -21,8 +21,8 @@ Describes the pricing for the subscription.
 {
   "type": "STATIC",
   "discount_ids": [
-    "discount_ids1",
-    "discount_ids2"
+    "discount_ids9",
+    "discount_ids0"
   ],
   "price_money": {
     "amount": 202,

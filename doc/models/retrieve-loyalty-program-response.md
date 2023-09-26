@@ -53,17 +53,15 @@ A response that contains the loyalty program.
           "percentage_discount": "10",
           "scope": "ORDER",
           "catalog_object_ids": [
-            "catalog_object_ids3",
-            "catalog_object_ids2",
-            "catalog_object_ids1"
+            "catalog_object_ids6"
           ],
           "fixed_discount_money": {
-            "amount": 63,
-            "currency": "PKR"
+            "amount": 36,
+            "currency": "TTD"
           },
           "max_discount_money": {
-            "amount": 107,
-            "currency": "PKR"
+            "amount": 84,
+            "currency": "STD"
           }
         },
         "id": "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
@@ -82,27 +80,15 @@ A response that contains the loyalty program.
     },
     "updated_at": "2020-05-01T02:00:02Z",
     "expiration_policy": {
-      "expiration_duration": "expiration_duration8"
+      "expiration_duration": "expiration_duration0"
     }
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

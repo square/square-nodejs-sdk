@@ -22,9 +22,9 @@ or excluded from, the result if they match at least one of the filter criteria.
 ```json
 {
   "values": [
-    "INSTANT_PROFILE",
-    "TERMINAL",
-    "THIRD_PARTY"
+    "EGIFTING",
+    "EMAIL_COLLECTION",
+    "FEEDBACK"
   ],
   "rule": "INCLUDE"
 }

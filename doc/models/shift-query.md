@@ -27,12 +27,12 @@ The parameters of a `Shift` search query, which includes filter and sort options
     ],
     "status": "OPEN",
     "start": {
-      "start_at": "start_at0",
-      "end_at": "end_at2"
+      "start_at": "start_at6",
+      "end_at": "end_at6"
     },
     "end": {
-      "start_at": "start_at4",
-      "end_at": "end_at8"
+      "start_at": "start_at0",
+      "end_at": "end_at2"
     }
   },
   "sort": {

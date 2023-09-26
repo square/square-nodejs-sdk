@@ -16,8 +16,8 @@
 
 ```json
 {
-  "amount": 46,
-  "currency_code": "RWF"
+  "amount": 24,
+  "currency_code": "UZS"
 }
 ```
 

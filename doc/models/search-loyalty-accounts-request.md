@@ -24,7 +24,7 @@ A request to search for loyalty accounts.
     "mappings": [
       {
         "phone_number": "+14155551234",
-        "id": "id6",
+        "id": "id8",
         "created_at": "created_at6"
       }
     ],
@@ -34,7 +34,7 @@ A request to search for loyalty accounts.
       "customer_ids3"
     ]
   },
-  "cursor": "cursor6"
+  "cursor": "cursor0"
 }
 ```
 

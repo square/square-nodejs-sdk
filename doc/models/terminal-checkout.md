@@ -37,14 +37,14 @@ Represents a checkout processed by the Square Terminal.
 
 ```json
 {
-  "id": "id0",
+  "id": "id6",
   "amount_money": {
     "amount": 186,
     "currency": "TZS"
   },
-  "reference_id": "reference_id2",
-  "note": "note4",
-  "order_id": "order_id6",
+  "reference_id": "reference_id6",
+  "note": "note8",
+  "order_id": "order_id0",
   "payment_options": {
     "autocomplete": false,
     "delay_duration": "delay_duration2",
@@ -60,7 +60,7 @@ Represents a checkout processed by the Square Terminal.
       "separate_tip_screen": false,
       "custom_tip_field": false,
       "tip_percentages": [
-        154
+        48
       ],
       "smart_tipping": false
     },

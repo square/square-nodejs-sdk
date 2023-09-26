@@ -18,6 +18,8 @@ The query filter to return the items containing the specified modifier list IDs.
 ```json
 {
   "modifier_list_ids": [
+    "modifier_list_ids8",
+    "modifier_list_ids9",
     "modifier_list_ids0"
   ]
 }
