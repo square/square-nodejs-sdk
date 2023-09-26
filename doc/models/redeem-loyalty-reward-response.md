@@ -31,44 +31,38 @@ A response that includes the `LoyaltyEvent` published for redeeming the reward.
     "source": "LOYALTY_API",
     "type": "REDEEM_REWARD",
     "accumulate_points": {
-      "loyalty_program_id": "loyalty_program_id2",
-      "points": 224,
-      "order_id": "order_id4"
+      "loyalty_program_id": "loyalty_program_id8",
+      "points": 118,
+      "order_id": "order_id8"
     },
     "create_reward": {
       "loyalty_program_id": "loyalty_program_id2",
       "reward_id": "reward_id6",
-      "points": 220
+      "points": 90
     },
     "delete_reward": {
       "loyalty_program_id": "loyalty_program_id4",
       "reward_id": "reward_id8",
-      "points": 26
+      "points": 104
     },
     "adjust_points": {
-      "loyalty_program_id": "loyalty_program_id8",
-      "points": 246,
-      "reason": "reason6"
+      "loyalty_program_id": "loyalty_program_id2",
+      "points": 96,
+      "reason": "reason2"
     }
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

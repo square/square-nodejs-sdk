@@ -23,7 +23,7 @@ Represents details about an `UNLINKED_ACTIVITY_REFUND` [gift card activity type]
     "amount": 186,
     "currency": "TZS"
   },
-  "reference_id": "reference_id2",
+  "reference_id": "reference_id8",
   "payment_id": "payment_id0"
 }
 ```

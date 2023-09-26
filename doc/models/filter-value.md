@@ -24,16 +24,18 @@ Refer to the documentation of the field.
 ```json
 {
   "all": [
-    "all1",
-    "all2"
+    "all9",
+    "all0",
+    "all1"
   ],
   "any": [
-    "any6"
+    "any8",
+    "any9",
+    "any0"
   ],
   "none": [
-    "none1",
-    "none2",
-    "none3"
+    "none3",
+    "none4"
   ]
 }
 ```

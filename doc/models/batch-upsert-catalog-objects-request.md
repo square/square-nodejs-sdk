@@ -47,44 +47,37 @@
           },
           "present_at_all_locations": true,
           "type": "ITEM",
-          "updated_at": "updated_at0",
-          "version": 244,
+          "updated_at": "updated_at2",
+          "version": 164,
           "is_deleted": false,
           "custom_attribute_values": {
             "key0": {
-              "name": "name5",
-              "string_value": "string_value9",
-              "custom_attribute_definition_id": "custom_attribute_definition_id7",
-              "type": "BOOLEAN",
-              "number_value": "number_value5"
+              "name": "name8",
+              "string_value": "string_value2",
+              "custom_attribute_definition_id": "custom_attribute_definition_id4",
+              "type": "STRING",
+              "number_value": "number_value8"
             },
             "key1": {
-              "name": "name6",
-              "string_value": "string_value0",
-              "custom_attribute_definition_id": "custom_attribute_definition_id6",
+              "name": "name8",
+              "string_value": "string_value2",
+              "custom_attribute_definition_id": "custom_attribute_definition_id4",
               "type": "STRING",
-              "number_value": "number_value6"
-            },
-            "key2": {
-              "name": "name7",
-              "string_value": "string_value1",
-              "custom_attribute_definition_id": "custom_attribute_definition_id5",
-              "type": "SELECTION",
-              "number_value": "number_value7"
+              "number_value": "number_value8"
             }
           },
           "catalog_v1_ids": [
             {
-              "catalog_v1_id": "catalog_v1_id8",
-              "location_id": "location_id8"
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
             },
             {
-              "catalog_v1_id": "catalog_v1_id9",
-              "location_id": "location_id9"
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
             },
             {
-              "catalog_v1_id": "catalog_v1_id0",
-              "location_id": "location_id0"
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
             }
           ]
         },
@@ -130,29 +123,37 @@
           },
           "present_at_all_locations": true,
           "type": "ITEM",
-          "updated_at": "updated_at9",
-          "version": 245,
-          "is_deleted": true,
+          "updated_at": "updated_at2",
+          "version": 164,
+          "is_deleted": false,
           "custom_attribute_values": {
             "key0": {
-              "name": "name4",
-              "string_value": "string_value8",
-              "custom_attribute_definition_id": "custom_attribute_definition_id8",
-              "type": "NUMBER",
-              "number_value": "number_value4"
+              "name": "name8",
+              "string_value": "string_value2",
+              "custom_attribute_definition_id": "custom_attribute_definition_id4",
+              "type": "STRING",
+              "number_value": "number_value8"
             },
             "key1": {
-              "name": "name5",
-              "string_value": "string_value9",
-              "custom_attribute_definition_id": "custom_attribute_definition_id7",
-              "type": "BOOLEAN",
-              "number_value": "number_value5"
+              "name": "name8",
+              "string_value": "string_value2",
+              "custom_attribute_definition_id": "custom_attribute_definition_id4",
+              "type": "STRING",
+              "number_value": "number_value8"
             }
           },
           "catalog_v1_ids": [
             {
-              "catalog_v1_id": "catalog_v1_id9",
-              "location_id": "location_id9"
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
+            },
+            {
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
+            },
+            {
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
             }
           ]
         },
@@ -163,26 +164,37 @@
           "id": "#Beverages",
           "present_at_all_locations": true,
           "type": "CATEGORY",
-          "updated_at": "updated_at8",
-          "version": 246,
+          "updated_at": "updated_at2",
+          "version": 164,
           "is_deleted": false,
           "custom_attribute_values": {
             "key0": {
-              "name": "name3",
-              "string_value": "string_value7",
-              "custom_attribute_definition_id": "custom_attribute_definition_id9",
-              "type": "SELECTION",
-              "number_value": "number_value3"
+              "name": "name8",
+              "string_value": "string_value2",
+              "custom_attribute_definition_id": "custom_attribute_definition_id4",
+              "type": "STRING",
+              "number_value": "number_value8"
+            },
+            "key1": {
+              "name": "name8",
+              "string_value": "string_value2",
+              "custom_attribute_definition_id": "custom_attribute_definition_id4",
+              "type": "STRING",
+              "number_value": "number_value8"
             }
           },
           "catalog_v1_ids": [
             {
-              "catalog_v1_id": "catalog_v1_id0",
-              "location_id": "location_id0"
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
             },
             {
-              "catalog_v1_id": "catalog_v1_id1",
-              "location_id": "location_id1"
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
+            },
+            {
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
             }
           ]
         },
@@ -198,44 +210,37 @@
             "percentage": "5.0"
           },
           "type": "TAX",
-          "updated_at": "updated_at7",
-          "version": 247,
-          "is_deleted": true,
+          "updated_at": "updated_at2",
+          "version": 164,
+          "is_deleted": false,
           "custom_attribute_values": {
             "key0": {
-              "name": "name2",
-              "string_value": "string_value6",
-              "custom_attribute_definition_id": "custom_attribute_definition_id0",
+              "name": "name8",
+              "string_value": "string_value2",
+              "custom_attribute_definition_id": "custom_attribute_definition_id4",
               "type": "STRING",
-              "number_value": "number_value2"
+              "number_value": "number_value8"
             },
             "key1": {
-              "name": "name3",
-              "string_value": "string_value7",
-              "custom_attribute_definition_id": "custom_attribute_definition_id9",
-              "type": "SELECTION",
-              "number_value": "number_value3"
-            },
-            "key2": {
-              "name": "name4",
-              "string_value": "string_value8",
-              "custom_attribute_definition_id": "custom_attribute_definition_id8",
-              "type": "NUMBER",
-              "number_value": "number_value4"
+              "name": "name8",
+              "string_value": "string_value2",
+              "custom_attribute_definition_id": "custom_attribute_definition_id4",
+              "type": "STRING",
+              "number_value": "number_value8"
             }
           },
           "catalog_v1_ids": [
             {
-              "catalog_v1_id": "catalog_v1_id1",
-              "location_id": "location_id1"
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
             },
             {
-              "catalog_v1_id": "catalog_v1_id2",
-              "location_id": "location_id2"
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
             },
             {
-              "catalog_v1_id": "catalog_v1_id3",
-              "location_id": "location_id3"
+              "catalog_v1_id": "catalog_v1_id4",
+              "location_id": "location_id4"
             }
           ]
         }

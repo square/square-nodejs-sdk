@@ -19,7 +19,7 @@
 ```json
 {
   "autocomplete": false,
-  "delay_duration": "delay_duration2",
+  "delay_duration": "delay_duration8",
   "accept_partial_authorization": false,
   "delay_action": "CANCEL"
 }

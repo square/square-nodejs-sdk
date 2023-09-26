@@ -33,9 +33,7 @@
         "separate_tip_screen": false,
         "custom_tip_field": false,
         "tip_percentages": [
-          196,
-          195,
-          194
+          48
         ],
         "smart_tipping": false
       },
@@ -51,29 +49,29 @@
     "order_id": "order_id6",
     "payment_options": {
       "autocomplete": false,
-      "delay_duration": "delay_duration0",
+      "delay_duration": "delay_duration2",
       "accept_partial_authorization": false,
       "delay_action": "CANCEL"
     }
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

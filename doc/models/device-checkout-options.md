@@ -19,7 +19,7 @@
 
 ```json
 {
-  "device_id": "device_id6",
+  "device_id": "device_id4",
   "skip_receipt_screen": false,
   "collect_signature": false,
   "tip_settings": {

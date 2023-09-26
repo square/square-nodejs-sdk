@@ -22,11 +22,11 @@ Defines input parameters in a request to the
 
 ```json
 {
-  "pause_effective_date": "pause_effective_date0",
-  "pause_cycle_duration": 86,
-  "resume_effective_date": "resume_effective_date2",
+  "pause_effective_date": "pause_effective_date2",
+  "pause_cycle_duration": 98,
+  "resume_effective_date": "resume_effective_date0",
   "resume_change_timing": "IMMEDIATE",
-  "pause_reason": "pause_reason8"
+  "pause_reason": "pause_reason6"
 }
 ```
 

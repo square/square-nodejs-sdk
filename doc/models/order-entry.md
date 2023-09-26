@@ -20,9 +20,9 @@ A lightweight description of an [order](../../doc/models/order.md) that is retur
 
 ```json
 {
-  "order_id": "order_id6",
-  "version": 172,
-  "location_id": "location_id4"
+  "order_id": "order_id0",
+  "version": 72,
+  "location_id": "location_id0"
 }
 ```
 

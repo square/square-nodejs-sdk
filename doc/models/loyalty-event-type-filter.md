@@ -18,9 +18,9 @@ Filter events by event type.
 ```json
 {
   "types": [
-    "DELETE_REWARD",
-    "ADJUST_POINTS",
-    "EXPIRE_POINTS"
+    "EXPIRE_POINTS",
+    "OTHER",
+    "ACCUMULATE_PROMOTION_POINTS"
   ]
 }
 ```

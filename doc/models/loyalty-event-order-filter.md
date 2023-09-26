@@ -17,7 +17,7 @@ Filter events by the order associated with the event.
 
 ```json
 {
-  "order_id": "order_id6"
+  "order_id": "order_id4"
 }
 ```
 

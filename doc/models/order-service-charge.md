@@ -32,11 +32,11 @@ Represents a service charge applied to an order.
 
 ```json
 {
-  "uid": "uid0",
-  "name": "name0",
+  "uid": "uid2",
+  "name": "name2",
   "catalog_object_id": "catalog_object_id6",
-  "catalog_version": 126,
-  "percentage": "percentage8"
+  "catalog_version": 104,
+  "percentage": "percentage0"
 }
 ```
 

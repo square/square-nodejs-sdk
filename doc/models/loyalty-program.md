@@ -27,61 +27,59 @@ For more information, see [Loyalty Program Overview](https://developer.squareup.
 
 ```json
 {
-  "id": "id0",
+  "id": "id2",
   "status": "INACTIVE",
   "reward_tiers": [
     {
-      "id": "id9",
-      "points": 249,
-      "name": "name9",
-      "definition": {
-        "scope": "CATEGORY",
-        "discount_type": "FIXED_PERCENTAGE",
-        "percentage_discount": "percentage_discount1",
-        "catalog_object_ids": [
-          "catalog_object_ids3",
-          "catalog_object_ids4",
-          "catalog_object_ids5"
-        ],
-        "fixed_discount_money": {
-          "amount": 119,
-          "currency": "SEK"
-        },
-        "max_discount_money": {
-          "amount": 163,
-          "currency": "SEK"
-        }
-      },
-      "created_at": "created_at7",
-      "pricing_rule_reference": {
-        "object_id": "object_id9",
-        "catalog_version": 205
-      }
-    },
-    {
-      "id": "id0",
-      "points": 248,
-      "name": "name0",
+      "id": "id8",
+      "points": 250,
+      "name": "name8",
       "definition": {
         "scope": "ORDER",
         "discount_type": "FIXED_AMOUNT",
         "percentage_discount": "percentage_discount2",
         "catalog_object_ids": [
-          "catalog_object_ids4"
+          "catalog_object_ids6"
         ],
         "fixed_discount_money": {
-          "amount": 120,
-          "currency": "SGD"
+          "amount": 36,
+          "currency": "TTD"
         },
         "max_discount_money": {
-          "amount": 164,
-          "currency": "SGD"
+          "amount": 84,
+          "currency": "STD"
         }
       },
-      "created_at": "created_at8",
+      "created_at": "created_at6",
       "pricing_rule_reference": {
         "object_id": "object_id0",
-        "catalog_version": 206
+        "catalog_version": 218
+      }
+    },
+    {
+      "id": "id8",
+      "points": 250,
+      "name": "name8",
+      "definition": {
+        "scope": "ORDER",
+        "discount_type": "FIXED_AMOUNT",
+        "percentage_discount": "percentage_discount2",
+        "catalog_object_ids": [
+          "catalog_object_ids6"
+        ],
+        "fixed_discount_money": {
+          "amount": 36,
+          "currency": "TTD"
+        },
+        "max_discount_money": {
+          "amount": 84,
+          "currency": "STD"
+        }
+      },
+      "created_at": "created_at6",
+      "pricing_rule_reference": {
+        "object_id": "object_id0",
+        "catalog_version": 218
       }
     }
   ],

@@ -18,8 +18,8 @@ Represents the arguments used to construct a new phase.
 
 ```json
 {
-  "ordinal": 80,
-  "order_template_id": "order_template_id2"
+  "ordinal": 234,
+  "order_template_id": "order_template_id4"
 }
 ```
 

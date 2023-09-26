@@ -31,7 +31,7 @@
       "sort_order": "DESC"
     }
   },
-  "cursor": "cursor6"
+  "cursor": "cursor4"
 }
 ```
 

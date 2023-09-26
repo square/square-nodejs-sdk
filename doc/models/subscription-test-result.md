@@ -23,9 +23,9 @@ event types, and signature key.
 ```json
 {
   "id": "id0",
-  "status_code": 122,
+  "status_code": 208,
   "payload": "payload6",
-  "created_at": "created_at2",
+  "created_at": "created_at8",
   "updated_at": "updated_at4"
 }
 ```

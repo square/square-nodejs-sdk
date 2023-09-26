@@ -24,7 +24,7 @@ that is part of the history of inventory changes for a particular
 
 ```json
 {
-  "type": "TRANSFER",
+  "type": "ADJUSTMENT",
   "physical_count": {
     "id": "id2",
     "reference_id": "reference_id0",
@@ -52,10 +52,10 @@ that is part of the history of inventory changes for a particular
         "name": "name2",
         "abbreviation": "abbreviation4"
       },
-      "area_unit": "IMPERIAL_SQUARE_MILE",
-      "length_unit": "METRIC_MILLIMETER",
-      "volume_unit": "GENERIC_CUP",
-      "weight_unit": "IMPERIAL_STONE"
+      "area_unit": "IMPERIAL_ACRE",
+      "length_unit": "IMPERIAL_INCH",
+      "volume_unit": "METRIC_LITER",
+      "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
     },
     "precision": 184
   }

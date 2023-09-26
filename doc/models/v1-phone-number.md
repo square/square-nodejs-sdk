@@ -18,8 +18,8 @@ Represents a phone number.
 
 ```json
 {
-  "calling_code": "calling_code4",
-  "number": "number2"
+  "calling_code": "calling_code0",
+  "number": "number4"
 }
 ```
 

@@ -20,11 +20,11 @@
 
 ```json
 {
-  "order_id": "order_id6",
-  "version": 172,
-  "location_id": "location_id4",
-  "state": "OPEN",
-  "created_at": "created_at2"
+  "order_id": "order_id2",
+  "version": 162,
+  "location_id": "location_id2",
+  "state": "CANCELED",
+  "created_at": "created_at6"
 }
 ```
 

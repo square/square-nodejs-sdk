@@ -23,113 +23,169 @@ For more information, see [Subscription Plans and Variations](https://developer.
 
 ```json
 {
-  "name": "name0",
+  "name": "name6",
   "phases": [
     {
-      "uid": "uid5",
-      "cadence": "EVERY_FOUR_MONTHS",
-      "periods": 241,
+      "uid": "uid0",
+      "cadence": "QUARTERLY",
+      "periods": 112,
       "recurring_price_money": {
-        "amount": 193,
-        "currency": "CHE"
+        "amount": 66,
+        "currency": "TMT"
       },
-      "ordinal": 207,
+      "ordinal": 78,
       "pricing": {
-        "type": "RELATIVE",
+        "type": "STATIC",
         "discount_ids": [
-          "discount_ids0",
-          "discount_ids1",
-          "discount_ids2"
+          "discount_ids5",
+          "discount_ids6"
         ],
         "price_money": {
-          "amount": 251,
-          "currency": "NZD"
+          "amount": 202,
+          "currency": "CNY"
         }
       }
     },
     {
-      "uid": "uid6",
+      "uid": "uid0",
       "cadence": "QUARTERLY",
-      "periods": 242,
+      "periods": 112,
       "recurring_price_money": {
-        "amount": 194,
-        "currency": "CHF"
+        "amount": 66,
+        "currency": "TMT"
       },
-      "ordinal": 208,
+      "ordinal": 78,
       "pricing": {
         "type": "STATIC",
         "discount_ids": [
-          "discount_ids9",
-          "discount_ids0"
+          "discount_ids5",
+          "discount_ids6"
         ],
         "price_money": {
-          "amount": 252,
-          "currency": "OMR"
+          "amount": 202,
+          "currency": "CNY"
+        }
+      }
+    },
+    {
+      "uid": "uid0",
+      "cadence": "QUARTERLY",
+      "periods": 112,
+      "recurring_price_money": {
+        "amount": 66,
+        "currency": "TMT"
+      },
+      "ordinal": 78,
+      "pricing": {
+        "type": "STATIC",
+        "discount_ids": [
+          "discount_ids5",
+          "discount_ids6"
+        ],
+        "price_money": {
+          "amount": 202,
+          "currency": "CNY"
         }
       }
     }
   ],
   "subscription_plan_variations": [
     {
-      "type": "MODIFIER_LIST",
-      "id": "id2",
-      "updated_at": "updated_at2",
-      "version": 18,
+      "type": "TIME_PERIOD",
+      "id": "id4",
+      "updated_at": "updated_at0",
+      "version": 208,
       "is_deleted": false,
       "custom_attribute_values": {
         "key0": {
-          "name": "name7",
-          "string_value": "string_value1",
-          "custom_attribute_definition_id": "custom_attribute_definition_id5",
-          "type": "SELECTION",
-          "number_value": "number_value7"
+          "name": "name8",
+          "string_value": "string_value2",
+          "custom_attribute_definition_id": "custom_attribute_definition_id4",
+          "type": "STRING",
+          "number_value": "number_value8"
         },
         "key1": {
           "name": "name8",
           "string_value": "string_value2",
           "custom_attribute_definition_id": "custom_attribute_definition_id4",
-          "type": "NUMBER",
+          "type": "STRING",
+          "number_value": "number_value8"
+        },
+        "key2": {
+          "name": "name8",
+          "string_value": "string_value2",
+          "custom_attribute_definition_id": "custom_attribute_definition_id4",
+          "type": "STRING",
           "number_value": "number_value8"
         }
       },
       "catalog_v1_ids": [
         {
-          "catalog_v1_id": "catalog_v1_id6",
-          "location_id": "location_id6"
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
+        },
+        {
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
+        },
+        {
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
         }
       ]
     },
     {
-      "type": "DISCOUNT",
-      "id": "id3",
-      "updated_at": "updated_at1",
-      "version": 19,
-      "is_deleted": true,
+      "type": "TIME_PERIOD",
+      "id": "id4",
+      "updated_at": "updated_at0",
+      "version": 208,
+      "is_deleted": false,
       "custom_attribute_values": {
         "key0": {
-          "name": "name6",
-          "string_value": "string_value0",
-          "custom_attribute_definition_id": "custom_attribute_definition_id6",
+          "name": "name8",
+          "string_value": "string_value2",
+          "custom_attribute_definition_id": "custom_attribute_definition_id4",
           "type": "STRING",
-          "number_value": "number_value6"
+          "number_value": "number_value8"
+        },
+        "key1": {
+          "name": "name8",
+          "string_value": "string_value2",
+          "custom_attribute_definition_id": "custom_attribute_definition_id4",
+          "type": "STRING",
+          "number_value": "number_value8"
+        },
+        "key2": {
+          "name": "name8",
+          "string_value": "string_value2",
+          "custom_attribute_definition_id": "custom_attribute_definition_id4",
+          "type": "STRING",
+          "number_value": "number_value8"
         }
       },
       "catalog_v1_ids": [
         {
-          "catalog_v1_id": "catalog_v1_id7",
-          "location_id": "location_id7"
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
         },
         {
-          "catalog_v1_id": "catalog_v1_id8",
-          "location_id": "location_id8"
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
+        },
+        {
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
         }
       ]
     }
   ],
   "eligible_item_ids": [
-    "eligible_item_ids8"
+    "eligible_item_ids8",
+    "eligible_item_ids7"
   ],
   "eligible_category_ids": [
+    "eligible_category_ids5",
+    "eligible_category_ids6",
     "eligible_category_ids7"
   ],
   "all_items": false

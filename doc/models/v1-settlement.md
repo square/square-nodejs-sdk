@@ -22,14 +22,14 @@ V1Settlement
 
 ```json
 {
-  "id": "id0",
+  "id": "id2",
   "status": "FAILED",
   "total_money": {
     "amount": 250,
     "currency_code": "KZT"
   },
-  "initiated_at": "initiated_at2",
-  "bank_account_id": "bank_account_id0"
+  "initiated_at": "initiated_at4",
+  "bank_account_id": "bank_account_id2"
 }
 ```
 

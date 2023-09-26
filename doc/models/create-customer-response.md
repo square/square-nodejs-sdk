@@ -46,32 +46,20 @@ Either `errors` or `customer` is present in a given response (never both).
     "version": 0,
     "cards": [
       {
-        "id": "id7",
-        "card_brand": "AMERICAN_EXPRESS",
-        "last_4": "last_49",
-        "exp_month": 113,
-        "exp_year": 183
+        "id": "id8",
+        "card_brand": "DISCOVER",
+        "last_4": "last_40",
+        "exp_month": 152,
+        "exp_year": 144
       }
     ]
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

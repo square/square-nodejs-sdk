@@ -23,79 +23,13 @@ which contains a map of responses that each corresponds to an individual upsert 
     "key0": {
       "merchant_id": "merchant_id0",
       "custom_attribute": {
-        "key": "key8",
+        "key": "key2",
         "value": {
           "key1": "val1",
           "key2": "val2"
         },
-        "version": 82,
-        "visibility": "VISIBILITY_READ_WRITE_VALUES",
-        "definition": {
-          "key": "key8",
-          "schema": {
-            "key1": "val1",
-            "key2": "val2"
-          },
-          "name": "name8",
-          "description": "description8",
-          "visibility": "VISIBILITY_HIDDEN"
-        }
-      },
-      "errors": [
-        {
-          "category": "REFUND_ERROR",
-          "code": "INVALID_ENUM_VALUE",
-          "detail": "detail1",
-          "field": "field9"
-        }
-      ]
-    },
-    "key1": {
-      "merchant_id": "merchant_id1",
-      "custom_attribute": {
-        "key": "key9",
-        "value": {
-          "key1": "val1",
-          "key2": "val2"
-        },
-        "version": 83,
+        "version": 102,
         "visibility": "VISIBILITY_READ_ONLY",
-        "definition": {
-          "key": "key9",
-          "schema": {
-            "key1": "val1",
-            "key2": "val2"
-          },
-          "name": "name9",
-          "description": "description9",
-          "visibility": "VISIBILITY_READ_ONLY"
-        }
-      },
-      "errors": [
-        {
-          "category": "MERCHANT_SUBSCRIPTION_ERROR",
-          "code": "INVALID_CONTENT_TYPE",
-          "detail": "detail2",
-          "field": "field0"
-        },
-        {
-          "category": "EXTERNAL_VENDOR_ERROR",
-          "code": "INVALID_FORM_VALUE",
-          "detail": "detail3",
-          "field": "field1"
-        }
-      ]
-    },
-    "key2": {
-      "merchant_id": "merchant_id2",
-      "custom_attribute": {
-        "key": "key0",
-        "value": {
-          "key1": "val1",
-          "key2": "val2"
-        },
-        "version": 84,
-        "visibility": "VISIBILITY_HIDDEN",
         "definition": {
           "key": "key0",
           "schema": {
@@ -104,49 +38,67 @@ which contains a map of responses that each corresponds to an individual upsert 
           },
           "name": "name0",
           "description": "description0",
-          "visibility": "VISIBILITY_READ_WRITE_VALUES"
+          "visibility": "VISIBILITY_HIDDEN"
         }
       },
       "errors": [
         {
-          "category": "EXTERNAL_VENDOR_ERROR",
-          "code": "INVALID_FORM_VALUE",
-          "detail": "detail3",
-          "field": "field1"
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
         },
         {
-          "category": "API_ERROR",
-          "code": "CUSTOMER_NOT_FOUND",
-          "detail": "detail4",
-          "field": "field2"
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
+        }
+      ]
+    },
+    "key1": {
+      "merchant_id": "merchant_id0",
+      "custom_attribute": {
+        "key": "key2",
+        "value": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "version": 102,
+        "visibility": "VISIBILITY_READ_ONLY",
+        "definition": {
+          "key": "key0",
+          "schema": {
+            "key1": "val1",
+            "key2": "val2"
+          },
+          "name": "name0",
+          "description": "description0",
+          "visibility": "VISIBILITY_HIDDEN"
+        }
+      },
+      "errors": [
+        {
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
         },
         {
-          "category": "AUTHENTICATION_ERROR",
-          "code": "ONE_INSTRUMENT_EXPECTED",
-          "detail": "detail5",
-          "field": "field3"
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
         }
       ]
     }
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

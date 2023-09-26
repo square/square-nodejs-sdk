@@ -17,35 +17,51 @@
 {
   "items": [
     {
-      "type": "PARTIAL",
-      "reason": "reason7",
+      "type": "FULL",
+      "reason": "reason6",
       "refunded_money": {
-        "amount": 17,
-        "currency_code": "USS"
+        "amount": 214,
+        "currency_code": "SRD"
       },
       "refunded_processing_fee_money": {
-        "amount": 59,
-        "currency_code": "ANG"
+        "amount": 0,
+        "currency_code": "BGN"
       },
       "refunded_tax_money": {
-        "amount": 115,
-        "currency_code": "LSL"
+        "amount": 148,
+        "currency_code": "SRD"
       }
     },
     {
       "type": "FULL",
       "reason": "reason6",
       "refunded_money": {
-        "amount": 18,
-        "currency_code": "UYI"
+        "amount": 214,
+        "currency_code": "SRD"
       },
       "refunded_processing_fee_money": {
-        "amount": 60,
-        "currency_code": "AOA"
+        "amount": 0,
+        "currency_code": "BGN"
       },
       "refunded_tax_money": {
-        "amount": 116,
-        "currency_code": "LTL"
+        "amount": 148,
+        "currency_code": "SRD"
+      }
+    },
+    {
+      "type": "FULL",
+      "reason": "reason6",
+      "refunded_money": {
+        "amount": 214,
+        "currency_code": "SRD"
+      },
+      "refunded_processing_fee_money": {
+        "amount": 0,
+        "currency_code": "BGN"
+      },
+      "refunded_tax_money": {
+        "amount": 148,
+        "currency_code": "SRD"
       }
     }
   ]

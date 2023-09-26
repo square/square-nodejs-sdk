@@ -37,17 +37,17 @@ Contains the details necessary to fulfill a shipment order.
     "email_address": "email_address4",
     "phone_number": "phone_number4",
     "address": {
-      "address_line_1": "address_line_14",
-      "address_line_2": "address_line_24",
-      "address_line_3": "address_line_30",
-      "locality": "locality4",
-      "sublocality": "sublocality4"
+      "address_line_1": "address_line_16",
+      "address_line_2": "address_line_26",
+      "address_line_3": "address_line_32",
+      "locality": "locality6",
+      "sublocality": "sublocality6"
     }
   },
-  "carrier": "carrier2",
-  "shipping_note": "shipping_note6",
-  "shipping_type": "shipping_type6",
-  "tracking_number": "tracking_number8"
+  "carrier": "carrier6",
+  "shipping_note": "shipping_note0",
+  "shipping_type": "shipping_type2",
+  "tracking_number": "tracking_number2"
 }
 ```
 

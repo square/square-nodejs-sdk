@@ -22,28 +22,28 @@ Describes changes to a subscription and the subscription status.
 
 ```json
 {
-  "id": "id0",
+  "id": "id6",
   "subscription_event_type": "RESUME_SUBSCRIPTION",
-  "effective_date": "effective_date0",
+  "effective_date": "effective_date4",
   "info": {
     "detail": "detail6",
     "code": "CUSTOMER_DELETED"
   },
   "phases": [
     {
-      "uid": "uid5",
-      "ordinal": 207,
-      "order_template_id": "order_template_id7",
-      "plan_phase_uid": "plan_phase_uid1"
+      "uid": "uid0",
+      "ordinal": 78,
+      "order_template_id": "order_template_id2",
+      "plan_phase_uid": "plan_phase_uid6"
     },
     {
-      "uid": "uid6",
-      "ordinal": 208,
-      "order_template_id": "order_template_id8",
-      "plan_phase_uid": "plan_phase_uid2"
+      "uid": "uid0",
+      "ordinal": 78,
+      "order_template_id": "order_template_id2",
+      "plan_phase_uid": "plan_phase_uid6"
     }
   ],
-  "plan_variation_id": "plan_variation_id4"
+  "plan_variation_id": "plan_variation_id0"
 }
 ```
 

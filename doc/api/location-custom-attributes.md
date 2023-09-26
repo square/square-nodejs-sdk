@@ -56,11 +56,15 @@ async listLocationCustomAttributeDefinitions(
 
 ```ts
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.listLocationCustomAttributeDefinitions();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -109,11 +113,15 @@ const body: CreateLocationCustomAttributeDefinitionRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.createLocationCustomAttributeDefinition(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -152,11 +160,15 @@ async deleteLocationCustomAttributeDefinition(
 const key = 'key0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.deleteLocationCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -196,11 +208,15 @@ async retrieveLocationCustomAttributeDefinition(
 const key = 'key0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.retrieveLocationCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -248,14 +264,18 @@ const body: UpdateLocationCustomAttributeDefinitionRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.updateLocationCustomAttributeDefinition(
-    key,
-    body
-  );
+  key,
+  body
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -292,18 +312,28 @@ async bulkDeleteLocationCustomAttributes(
 ```ts
 const body: BulkDeleteLocationCustomAttributesRequest = {
   values: {
-    'id1': {},
-    'id2': {},
-    'id3': {}
+    'id1': {
+      key: 'bestseller',
+    },
+    'id2': {
+      key: 'bestseller',
+    },
+    'id3': {
+      key: 'phone-number',
+    }
   },
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.bulkDeleteLocationCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -348,22 +378,26 @@ async bulkUpsertLocationCustomAttributes(
 const body: BulkUpsertLocationCustomAttributesRequest = {
   values: {
     'key0': {
-      locationId: 'location_id8',
+      locationId: 'location_id4',
       customAttribute: {},
     },
     'key1': {
-      locationId: 'location_id9',
+      locationId: 'location_id4',
       customAttribute: {},
     }
   },
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.bulkUpsertLocationCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -414,14 +448,21 @@ const locationId = 'location_id4';
 const withDefinitions = false;
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.listLocationCustomAttributes(
-    locationId,
-    withDefinitions
-  );
+  locationId,
+  undefined,
+  undefined,
+  undefined,
+  withDefinitions
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -463,14 +504,18 @@ const locationId = 'location_id4';
 const key = 'key0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.deleteLocationCustomAttribute(
-    locationId,
-    key
-  );
+  locationId,
+  key
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -520,15 +565,19 @@ const key = 'key0';
 const withDefinition = false;
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.retrieveLocationCustomAttribute(
-    locationId,
-    key,
-    withDefinition
-  );
+  locationId,
+  key,
+  withDefinition
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -579,15 +628,19 @@ const body: UpsertLocationCustomAttributeRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await locationCustomAttributesApi.upsertLocationCustomAttribute(
-    locationId,
-    key,
-    body
-  );
+  locationId,
+  key,
+  body
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

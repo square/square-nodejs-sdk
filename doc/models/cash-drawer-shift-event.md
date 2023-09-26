@@ -20,14 +20,14 @@
 
 ```json
 {
-  "id": "id0",
-  "event_type": "OTHER_TENDER_CANCELLED_PAYMENT",
+  "id": "id6",
+  "event_type": "OTHER_TENDER_PAYMENT",
   "event_money": {
     "amount": 148,
     "currency": "AMD"
   },
-  "created_at": "created_at2",
-  "description": "description0"
+  "created_at": "created_at4",
+  "description": "description6"
 }
 ```
 

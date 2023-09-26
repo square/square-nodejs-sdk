@@ -31,9 +31,9 @@ specifies the number of digits after the decimal point for decimal quantities.
     "volume_unit": "METRIC_LITER",
     "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
   },
-  "precision": 196,
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_version": 126
+  "precision": 144,
+  "catalog_object_id": "catalog_object_id0",
+  "catalog_version": 78
 }
 ```
 

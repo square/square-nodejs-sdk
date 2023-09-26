@@ -22,16 +22,31 @@ application to a line item. For more information, see
 {
   "blocked_discounts": [
     {
-      "uid": "uid5",
-      "discount_uid": "discount_uid1",
-      "discount_catalog_object_id": "discount_catalog_object_id7"
+      "uid": "uid0",
+      "discount_uid": "discount_uid6",
+      "discount_catalog_object_id": "discount_catalog_object_id2"
+    },
+    {
+      "uid": "uid0",
+      "discount_uid": "discount_uid6",
+      "discount_catalog_object_id": "discount_catalog_object_id2"
+    },
+    {
+      "uid": "uid0",
+      "discount_uid": "discount_uid6",
+      "discount_catalog_object_id": "discount_catalog_object_id2"
     }
   ],
   "blocked_taxes": [
     {
-      "uid": "uid7",
-      "tax_uid": "tax_uid3",
-      "tax_catalog_object_id": "tax_catalog_object_id1"
+      "uid": "uid4",
+      "tax_uid": "tax_uid0",
+      "tax_catalog_object_id": "tax_catalog_object_id8"
+    },
+    {
+      "uid": "uid4",
+      "tax_uid": "tax_uid0",
+      "tax_catalog_object_id": "tax_catalog_object_id8"
     }
   ]
 }

@@ -20,9 +20,9 @@ identified by either `tax_uid` or `tax_catalog_object_id`, but not both.
 
 ```json
 {
-  "uid": "uid0",
+  "uid": "uid8",
   "tax_uid": "tax_uid4",
-  "tax_catalog_object_id": "tax_catalog_object_id4"
+  "tax_catalog_object_id": "tax_catalog_object_id2"
 }
 ```
 

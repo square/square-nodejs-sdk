@@ -30,7 +30,7 @@
   "merchant_id": "MERCHANT_ID",
   "refresh_token": "REFRESH_TOKEN",
   "token_type": "bearer",
-  "subscription_id": "subscription_id0"
+  "subscription_id": "subscription_id8"
 }
 ```
 

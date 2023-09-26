@@ -25,11 +25,12 @@ Represents details about a `LOAD` [gift card activity type](../../doc/models/gif
     "amount": 186,
     "currency": "TZS"
   },
-  "order_id": "order_id6",
-  "line_item_uid": "line_item_uid0",
-  "reference_id": "reference_id2",
+  "order_id": "order_id2",
+  "line_item_uid": "line_item_uid8",
+  "reference_id": "reference_id6",
   "buyer_payment_instrument_ids": [
-    "buyer_payment_instrument_ids6"
+    "buyer_payment_instrument_ids4",
+    "buyer_payment_instrument_ids5"
   ]
 }
 ```

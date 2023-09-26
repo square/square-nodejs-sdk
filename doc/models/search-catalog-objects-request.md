@@ -31,7 +31,7 @@
       "attribute_prefix": "tea"
     }
   },
-  "cursor": "cursor6",
+  "cursor": "cursor2",
   "include_deleted_objects": false,
   "include_related_objects": false,
   "begin_time": "begin_time2"

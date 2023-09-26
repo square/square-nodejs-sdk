@@ -33,34 +33,37 @@ A modifier applicable to items at the time of sale. An example of a modifier is 
     "present_at_all_locations": true,
     "type": "MODIFIER"
   },
-  "name": "name0",
+  "name": "name6",
   "price_money": {
     "amount": 202,
     "currency": "CNY"
   },
-  "ordinal": 80,
-  "modifier_list_id": "modifier_list_id6",
+  "ordinal": 70,
+  "modifier_list_id": "modifier_list_id2",
   "location_overrides": [
     {
-      "location_id": "location_id5",
+      "location_id": "location_id8",
       "price_money": {
-        "amount": 155,
-        "currency": "XPT"
-      }
+        "amount": 202,
+        "currency": "CNY"
+      },
+      "sold_out": false
     },
     {
-      "location_id": "location_id6",
+      "location_id": "location_id8",
       "price_money": {
-        "amount": 156,
-        "currency": "XTS"
-      }
+        "amount": 202,
+        "currency": "CNY"
+      },
+      "sold_out": false
     },
     {
-      "location_id": "location_id7",
+      "location_id": "location_id8",
       "price_money": {
-        "amount": 157,
-        "currency": "XXX"
-      }
+        "amount": 202,
+        "currency": "CNY"
+      },
+      "sold_out": false
     }
   ]
 }

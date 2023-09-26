@@ -47,39 +47,33 @@ Either `errors` or `refunds` is present in a given response (never both).
       "status": "COMPLETED",
       "updated_at": "2021-10-13T20:00:03.497Z",
       "unlinked": false,
-      "destination_type": "destination_type8",
+      "destination_type": "destination_type2",
       "destination_details": {
         "card_details": {
           "card": {
-            "id": "id2",
-            "card_brand": "JCB",
-            "last_4": "last_44",
-            "exp_month": 142,
-            "exp_year": 154
+            "id": "id6",
+            "card_brand": "OTHER_BRAND",
+            "last_4": "last_48",
+            "exp_month": 228,
+            "exp_year": 68
           },
-          "entry_method": "entry_method4"
+          "entry_method": "entry_method8"
         }
       }
     }
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

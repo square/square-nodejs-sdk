@@ -23,7 +23,7 @@ share the same underlying stock.
 {
   "stockable_item_variation_id": "stockable_item_variation_id2",
   "stockable_quantity": "stockable_quantity0",
-  "nonstockable_quantity": "nonstockable_quantity8"
+  "nonstockable_quantity": "nonstockable_quantity2"
 }
 ```
 

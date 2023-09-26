@@ -31,11 +31,11 @@ For more information, see [Working with Addresses](https://developer.squareup.co
 
 ```json
 {
-  "address_line_1": "address_line_10",
-  "address_line_2": "address_line_20",
-  "address_line_3": "address_line_36",
-  "locality": "locality0",
-  "sublocality": "sublocality0"
+  "address_line_1": "address_line_18",
+  "address_line_2": "address_line_28",
+  "address_line_3": "address_line_34",
+  "locality": "locality8",
+  "sublocality": "sublocality8"
 }
 ```
 

@@ -16,7 +16,7 @@
 
 ```json
 {
-  "idempotency_key": "idempotency_key6",
+  "idempotency_key": "idempotency_key4",
   "booking": {
     "id": "id4",
     "version": 156,

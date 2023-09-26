@@ -19,7 +19,7 @@ Represents a [RetrieveBookingCustomAttribute](../../doc/api/booking-custom-attri
 ```json
 {
   "with_definition": false,
-  "version": 172
+  "version": 186
 }
 ```
 

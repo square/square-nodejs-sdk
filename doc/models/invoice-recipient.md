@@ -31,8 +31,8 @@ Square updates the customer ID in response to a merge operation, but does not up
 {
   "customer_id": "customer_id8",
   "given_name": "given_name2",
-  "family_name": "family_name6",
-  "email_address": "email_address2",
+  "family_name": "family_name4",
+  "email_address": "email_address8",
   "address": {
     "address_line_1": "address_line_16",
     "address_line_2": "address_line_26",

@@ -25,11 +25,11 @@
 
 ```json
 {
-  "batch_upsert_max_objects_per_batch": 126,
-  "batch_upsert_max_total_objects": 214,
-  "batch_retrieve_max_object_ids": 230,
-  "search_max_page_limit": 192,
-  "batch_delete_max_object_ids": 216
+  "batch_upsert_max_objects_per_batch": 206,
+  "batch_upsert_max_total_objects": 122,
+  "batch_retrieve_max_object_ids": 54,
+  "search_max_page_limit": 144,
+  "batch_delete_max_object_ids": 40
 }
 ```
 

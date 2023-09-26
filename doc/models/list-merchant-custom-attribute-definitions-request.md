@@ -20,7 +20,7 @@ Represents a [ListMerchantCustomAttributeDefinitions](../../doc/api/merchant-cus
 ```json
 {
   "visibility_filter": "ALL",
-  "limit": 172,
+  "limit": 48,
   "cursor": "cursor6"
 }
 ```

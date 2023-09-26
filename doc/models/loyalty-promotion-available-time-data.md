@@ -20,11 +20,12 @@ from a [loyalty promotion](../../doc/models/loyalty-promotion.md).
 
 ```json
 {
-  "start_date": "start_date6",
+  "start_date": "start_date4",
   "end_date": "end_date0",
   "time_periods": [
-    "time_periods1",
-    "time_periods2"
+    "time_periods7",
+    "time_periods8",
+    "time_periods9"
   ]
 }
 ```

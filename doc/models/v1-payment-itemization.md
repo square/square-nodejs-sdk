@@ -45,8 +45,8 @@ price of items might have changed since the payment was processed.
 
 ```json
 {
-  "name": "name0",
-  "quantity": 149.16,
+  "name": "name4",
+  "quantity": 253.5,
   "itemization_type": "GIFT_CARD_UNKNOWN",
   "item_detail": {
     "category_name": "category_name0",
@@ -54,7 +54,7 @@ price of items might have changed since the payment was processed.
     "item_id": "item_id2",
     "item_variation_id": "item_variation_id2"
   },
-  "notes": "notes0"
+  "notes": "notes4"
 }
 ```
 

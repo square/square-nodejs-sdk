@@ -19,7 +19,7 @@ Represents a response for an individual upsert request in a [BulkUpsertBookingCu
 
 ```json
 {
-  "booking_id": "booking_id4",
+  "booking_id": "booking_id6",
   "custom_attribute": {
     "key": "key2",
     "value": {
@@ -29,34 +29,34 @@ Represents a response for an individual upsert request in a [BulkUpsertBookingCu
     "version": 102,
     "visibility": "VISIBILITY_READ_ONLY",
     "definition": {
-      "key": "key2",
+      "key": "key0",
       "schema": {
         "key1": "val1",
         "key2": "val2"
       },
-      "name": "name2",
-      "description": "description2",
-      "visibility": "VISIBILITY_READ_ONLY"
+      "name": "name0",
+      "description": "description0",
+      "visibility": "VISIBILITY_HIDDEN"
     }
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

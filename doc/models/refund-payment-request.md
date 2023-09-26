@@ -38,9 +38,9 @@ Describes a request to refund a payment using [RefundPayment](../../doc/api/refu
   "idempotency_key": "9b7f2dcf-49da-4411-b23e-a2d6af21333a",
   "payment_id": "R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",
   "reason": "Example",
-  "destination_id": "destination_id0",
+  "destination_id": "destination_id6",
   "unlinked": false,
-  "location_id": "location_id4"
+  "location_id": "location_id8"
 }
 ```
 

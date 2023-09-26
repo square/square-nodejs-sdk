@@ -34,24 +34,24 @@ criteria, in order by the `created_at` date.
       "source": "LOYALTY_API",
       "type": "ACCUMULATE_POINTS",
       "create_reward": {
-        "loyalty_program_id": "loyalty_program_id8",
-        "reward_id": "reward_id2",
-        "points": 148
+        "loyalty_program_id": "loyalty_program_id2",
+        "reward_id": "reward_id6",
+        "points": 90
       },
       "redeem_reward": {
         "loyalty_program_id": "loyalty_program_id8",
         "reward_id": "reward_id2",
-        "order_id": "order_id2"
+        "order_id": "order_id8"
       },
       "delete_reward": {
         "loyalty_program_id": "loyalty_program_id4",
         "reward_id": "reward_id8",
-        "points": 130
+        "points": 104
       },
       "adjust_points": {
-        "loyalty_program_id": "loyalty_program_id8",
-        "points": 142,
-        "reason": "reason6"
+        "loyalty_program_id": "loyalty_program_id2",
+        "points": 96,
+        "reason": "reason2"
       }
     },
     {
@@ -67,24 +67,24 @@ criteria, in order by the `created_at` date.
       "source": "LOYALTY_API",
       "type": "REDEEM_REWARD",
       "accumulate_points": {
-        "loyalty_program_id": "loyalty_program_id3",
-        "points": 119,
-        "order_id": "order_id7"
+        "loyalty_program_id": "loyalty_program_id8",
+        "points": 118,
+        "order_id": "order_id8"
       },
       "create_reward": {
-        "loyalty_program_id": "loyalty_program_id9",
-        "reward_id": "reward_id3",
-        "points": 147
+        "loyalty_program_id": "loyalty_program_id2",
+        "reward_id": "reward_id6",
+        "points": 90
       },
       "delete_reward": {
-        "loyalty_program_id": "loyalty_program_id3",
-        "reward_id": "reward_id7",
-        "points": 131
+        "loyalty_program_id": "loyalty_program_id4",
+        "reward_id": "reward_id8",
+        "points": 104
       },
       "adjust_points": {
-        "loyalty_program_id": "loyalty_program_id9",
-        "points": 141,
-        "reason": "reason5"
+        "loyalty_program_id": "loyalty_program_id2",
+        "points": 96,
+        "reason": "reason2"
       }
     },
     {
@@ -99,48 +99,48 @@ criteria, in order by the `created_at` date.
       "source": "LOYALTY_API",
       "type": "CREATE_REWARD",
       "accumulate_points": {
-        "loyalty_program_id": "loyalty_program_id4",
+        "loyalty_program_id": "loyalty_program_id8",
         "points": 118,
         "order_id": "order_id8"
       },
       "redeem_reward": {
-        "loyalty_program_id": "loyalty_program_id0",
-        "reward_id": "reward_id4",
-        "order_id": "order_id4"
+        "loyalty_program_id": "loyalty_program_id8",
+        "reward_id": "reward_id2",
+        "order_id": "order_id8"
       },
       "delete_reward": {
-        "loyalty_program_id": "loyalty_program_id2",
-        "reward_id": "reward_id6",
-        "points": 132
+        "loyalty_program_id": "loyalty_program_id4",
+        "reward_id": "reward_id8",
+        "points": 104
       },
       "adjust_points": {
-        "loyalty_program_id": "loyalty_program_id0",
-        "points": 140,
-        "reason": "reason4"
+        "loyalty_program_id": "loyalty_program_id2",
+        "points": 96,
+        "reason": "reason2"
       }
     }
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ],
-  "cursor": "cursor6"
+  "cursor": "cursor4"
 }
 ```
 

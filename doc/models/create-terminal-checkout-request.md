@@ -30,9 +30,7 @@
         "separate_tip_screen": false,
         "custom_tip_field": false,
         "tip_percentages": [
-          196,
-          195,
-          194
+          48
         ],
         "smart_tipping": false
       },
@@ -44,7 +42,7 @@
     "order_id": "order_id6",
     "payment_options": {
       "autocomplete": false,
-      "delay_duration": "delay_duration0",
+      "delay_duration": "delay_duration2",
       "accept_partial_authorization": false,
       "delay_action": "CANCEL"
     }

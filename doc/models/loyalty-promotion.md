@@ -32,16 +32,16 @@ A loyalty program can have a maximum of 10 loyalty promotions with an `ACTIVE` o
 
 ```json
 {
-  "id": "id0",
-  "name": "name0",
+  "id": "id4",
+  "name": "name4",
   "incentive": {
     "type": "POINTS_MULTIPLIER",
     "points_multiplier_data": {
-      "points_multiplier": 16,
-      "multiplier": "multiplier8"
+      "points_multiplier": 134,
+      "multiplier": "multiplier4"
     },
     "points_addition_data": {
-      "points_addition": 16
+      "points_addition": 218
     }
   },
   "available_time": {
@@ -56,8 +56,8 @@ A loyalty program can have a maximum of 10 loyalty promotions with an `ACTIVE` o
     "interval": "ALL_TIME"
   },
   "status": "ACTIVE",
-  "created_at": "created_at2",
-  "canceled_at": "canceled_at4"
+  "created_at": "created_at8",
+  "canceled_at": "canceled_at0"
 }
 ```
 

@@ -17,7 +17,7 @@ Represents a [RetrieveBookingCustomAttributeDefinition](../../doc/api/booking-cu
 
 ```json
 {
-  "version": 172
+  "version": 70
 }
 ```
 

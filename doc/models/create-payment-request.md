@@ -59,8 +59,8 @@ Describes a request to create a payment using
     "amount": 190,
     "currency": "ZMK"
   },
-  "delay_duration": "delay_duration2",
-  "delay_action": "delay_action0"
+  "delay_duration": "delay_duration6",
+  "delay_action": "delay_action6"
 }
 ```
 

@@ -24,12 +24,16 @@ Options to control the properties of a `CatalogModifierList` applied to a `Catal
   "modifier_list_id": "modifier_list_id6",
   "modifier_overrides": [
     {
-      "modifier_id": "modifier_id1",
-      "on_by_default": true
+      "modifier_id": "modifier_id8",
+      "on_by_default": false
+    },
+    {
+      "modifier_id": "modifier_id8",
+      "on_by_default": false
     }
   ],
-  "min_selected_modifiers": 38,
-  "max_selected_modifiers": 198,
+  "min_selected_modifiers": 170,
+  "max_selected_modifiers": 66,
   "enabled": false
 }
 ```

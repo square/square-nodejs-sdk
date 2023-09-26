@@ -21,7 +21,7 @@ V1SettlementEntry
 ```json
 {
   "payment_id": "payment_id0",
-  "type": "PAID_SERVICE_FEE",
+  "type": "RETURNED_PAYOUT",
   "amount_money": {
     "amount": 186,
     "currency_code": "UZS"

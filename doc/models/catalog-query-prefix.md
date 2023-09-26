@@ -18,8 +18,8 @@ The query filter to return the search result whose named attribute values are pr
 
 ```json
 {
-  "attribute_name": "attribute_name4",
-  "attribute_prefix": "attribute_prefix0"
+  "attribute_name": "attribute_name8",
+  "attribute_prefix": "attribute_prefix6"
 }
 ```
 

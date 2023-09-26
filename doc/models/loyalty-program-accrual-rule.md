@@ -22,19 +22,19 @@ Represents an accrual rule, which defines how buyers can earn points from the ba
 
 ```json
 {
-  "accrual_type": "ITEM_VARIATION",
-  "points": 236,
+  "accrual_type": "VISIT",
+  "points": 86,
   "visit_data": {
     "minimum_amount_money": {
-      "amount": 24,
-      "currency": "UYI"
+      "amount": 146,
+      "currency": "MYR"
     },
     "tax_mode": "BEFORE_TAX"
   },
   "spend_data": {
     "amount_money": {
-      "amount": 248,
-      "currency": "BSD"
+      "amount": 186,
+      "currency": "TZS"
     },
     "excluded_category_ids": [
       "excluded_category_ids4"

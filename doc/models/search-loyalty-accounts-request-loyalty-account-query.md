@@ -20,14 +20,25 @@ The search criteria for the loyalty accounts.
 {
   "mappings": [
     {
-      "id": "id4",
-      "created_at": "created_at8",
-      "phone_number": "phone_number8"
+      "id": "id8",
+      "created_at": "created_at6",
+      "phone_number": "phone_number4"
+    },
+    {
+      "id": "id8",
+      "created_at": "created_at6",
+      "phone_number": "phone_number4"
+    },
+    {
+      "id": "id8",
+      "created_at": "created_at6",
+      "phone_number": "phone_number4"
     }
   ],
   "customer_ids": [
-    "customer_ids1",
-    "customer_ids2"
+    "customer_ids5",
+    "customer_ids4",
+    "customer_ids3"
   ]
 }
 ```

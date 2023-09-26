@@ -43,8 +43,8 @@ Represents one of a business' [locations](https://developer.squareup.com/docs/lo
 
 ```json
 {
-  "id": "id0",
-  "name": "name0",
+  "id": "id4",
+  "name": "name4",
   "address": {
     "address_line_1": "address_line_16",
     "address_line_2": "address_line_26",
@@ -52,7 +52,7 @@ Represents one of a business' [locations](https://developer.squareup.com/docs/lo
     "locality": "locality6",
     "sublocality": "sublocality6"
   },
-  "timezone": "timezone0",
+  "timezone": "timezone4",
   "capabilities": [
     "CREDIT_CARD_PROCESSING"
   ]

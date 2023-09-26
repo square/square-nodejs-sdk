@@ -39,26 +39,26 @@ product to purchase, with its own quantity and price details.
 
 ```json
 {
-  "uid": "uid0",
-  "name": "name0",
-  "quantity": "quantity6",
+  "uid": "uid4",
+  "name": "name4",
+  "quantity": "quantity0",
   "quantity_unit": {
     "measurement_unit": {
       "custom_unit": {
-        "name": "name8",
-        "abbreviation": "abbreviation0"
+        "name": "name2",
+        "abbreviation": "abbreviation4"
       },
-      "area_unit": "IMPERIAL_SQUARE_FOOT",
-      "length_unit": "METRIC_METER",
-      "volume_unit": "GENERIC_CUP",
+      "area_unit": "IMPERIAL_ACRE",
+      "length_unit": "IMPERIAL_INCH",
+      "volume_unit": "METRIC_LITER",
       "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
     },
     "precision": 54,
     "catalog_object_id": "catalog_object_id0",
     "catalog_version": 12
   },
-  "note": "note4",
-  "catalog_object_id": "catalog_object_id6"
+  "note": "note0",
+  "catalog_object_id": "catalog_object_id8"
 }
 ```
 

@@ -22,14 +22,14 @@ Describes a phase in a subscription plan variation. For more information, see [S
 
 ```json
 {
-  "uid": "uid0",
-  "cadence": "DAILY",
-  "periods": 142,
+  "uid": "uid2",
+  "cadence": "EVERY_SIX_MONTHS",
+  "periods": 36,
   "recurring_price_money": {
     "amount": 66,
     "currency": "TMT"
   },
-  "ordinal": 80,
+  "ordinal": 2,
   "pricing": {
     "type": "STATIC",
     "discount_ids": [
@@ -37,8 +37,8 @@ Describes a phase in a subscription plan variation. For more information, see [S
       "discount_ids6"
     ],
     "price_money": {
-      "amount": 40,
-      "currency": "RWF"
+      "amount": 202,
+      "currency": "CNY"
     }
   }
 }

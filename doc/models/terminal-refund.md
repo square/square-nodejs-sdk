@@ -30,18 +30,18 @@ Represents a payment refund processed by the Square Terminal. Only supports Inte
 
 ```json
 {
-  "id": "id0",
-  "refund_id": "refund_id4",
-  "payment_id": "payment_id0",
-  "order_id": "order_id6",
+  "id": "id8",
+  "refund_id": "refund_id2",
+  "payment_id": "payment_id8",
+  "order_id": "order_id2",
   "amount_money": {
     "amount": 186,
     "currency": "TZS"
   },
-  "reason": "reason4",
-  "device_id": "device_id6",
-  "deadline_duration": "deadline_duration8",
-  "status": "status8"
+  "reason": "reason6",
+  "device_id": "device_id4",
+  "deadline_duration": "deadline_duration0",
+  "status": "status0"
 }
 ```
 

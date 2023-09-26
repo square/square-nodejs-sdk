@@ -69,85 +69,57 @@ the modifier list are allowed.
   },
   "present_at_all_locations": true,
   "type": "MODIFIER_LIST",
-  "name": "name0",
-  "ordinal": 80,
+  "name": "name4",
+  "ordinal": 226,
   "selection_type": "SINGLE",
   "modifiers": [
     {
-      "type": "DISCOUNT",
-      "id": "id1",
-      "updated_at": "updated_at7",
-      "version": 145,
-      "is_deleted": true,
-      "custom_attribute_values": {
-        "key0": {
-          "name": "name2",
-          "string_value": "string_value6",
-          "custom_attribute_definition_id": "custom_attribute_definition_id0",
-          "type": "NUMBER",
-          "number_value": "number_value2"
-        }
-      },
-      "catalog_v1_ids": [
-        {
-          "catalog_v1_id": "catalog_v1_id5",
-          "location_id": "location_id5"
-        },
-        {
-          "catalog_v1_id": "catalog_v1_id6",
-          "location_id": "location_id6"
-        }
-      ]
-    },
-    {
-      "type": "TAX",
-      "id": "id2",
-      "updated_at": "updated_at8",
-      "version": 146,
+      "type": "QUICK_AMOUNTS_SETTINGS",
+      "id": "id4",
+      "updated_at": "updated_at0",
+      "version": 210,
       "is_deleted": false,
       "custom_attribute_values": {
         "key0": {
-          "name": "name3",
-          "string_value": "string_value7",
-          "custom_attribute_definition_id": "custom_attribute_definition_id9",
-          "type": "BOOLEAN",
-          "number_value": "number_value3"
+          "name": "name8",
+          "string_value": "string_value2",
+          "custom_attribute_definition_id": "custom_attribute_definition_id4",
+          "type": "STRING",
+          "number_value": "number_value8"
         },
         "key1": {
-          "name": "name2",
-          "string_value": "string_value6",
-          "custom_attribute_definition_id": "custom_attribute_definition_id0",
-          "type": "NUMBER",
-          "number_value": "number_value2"
+          "name": "name8",
+          "string_value": "string_value2",
+          "custom_attribute_definition_id": "custom_attribute_definition_id4",
+          "type": "STRING",
+          "number_value": "number_value8"
         },
         "key2": {
-          "name": "name1",
-          "string_value": "string_value5",
-          "custom_attribute_definition_id": "custom_attribute_definition_id1",
-          "type": "SELECTION",
-          "number_value": "number_value1"
+          "name": "name8",
+          "string_value": "string_value2",
+          "custom_attribute_definition_id": "custom_attribute_definition_id4",
+          "type": "STRING",
+          "number_value": "number_value8"
         }
       },
       "catalog_v1_ids": [
         {
-          "catalog_v1_id": "catalog_v1_id6",
-          "location_id": "location_id6"
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
         },
         {
-          "catalog_v1_id": "catalog_v1_id7",
-          "location_id": "location_id7"
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
         },
         {
-          "catalog_v1_id": "catalog_v1_id8",
-          "location_id": "location_id8"
+          "catalog_v1_id": "catalog_v1_id4",
+          "location_id": "location_id4"
         }
       ]
     }
   ],
   "image_ids": [
-    "image_ids5",
-    "image_ids6",
-    "image_ids7"
+    "image_ids9"
   ]
 }
 ```

@@ -53,11 +53,11 @@ associated payment.
 
 ```json
 {
-  "id": "id0",
-  "type": "UNKNOWN",
-  "name": "name0",
-  "employee_id": "employee_id0",
-  "receipt_url": "receipt_url8"
+  "id": "id6",
+  "type": "SQUARE_WALLET",
+  "name": "name6",
+  "employee_id": "employee_id4",
+  "receipt_url": "receipt_url2"
 }
 ```
 

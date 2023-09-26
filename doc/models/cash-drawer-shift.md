@@ -40,11 +40,11 @@ event types.
 
 ```json
 {
-  "id": "id0",
-  "state": "CLOSED",
-  "opened_at": "opened_at8",
-  "ended_at": "ended_at2",
-  "closed_at": "closed_at2"
+  "id": "id6",
+  "state": "OPEN",
+  "opened_at": "opened_at4",
+  "ended_at": "ended_at8",
+  "closed_at": "closed_at8"
 }
 ```
 

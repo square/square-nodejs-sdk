@@ -26,13 +26,13 @@ For more information, see [Manage loyalty rewards](https://developer.squareup.co
 
 ```json
 {
-  "id": "id0",
+  "id": "id6",
   "status": "DELETED",
-  "loyalty_account_id": "loyalty_account_id0",
-  "reward_tier_id": "reward_tier_id6",
-  "points": 236,
-  "order_id": "order_id6",
-  "created_at": "created_at2"
+  "loyalty_account_id": "loyalty_account_id4",
+  "reward_tier_id": "reward_tier_id2",
+  "points": 114,
+  "order_id": "order_id0",
+  "created_at": "created_at4"
 }
 ```
 

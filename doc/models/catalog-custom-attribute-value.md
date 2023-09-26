@@ -26,11 +26,11 @@ added to `ITEM` and `ITEM_VARIATION` type catalog objects.
 
 ```json
 {
-  "name": "name0",
-  "string_value": "string_value4",
-  "custom_attribute_definition_id": "custom_attribute_definition_id2",
+  "name": "name2",
+  "string_value": "string_value6",
+  "custom_attribute_definition_id": "custom_attribute_definition_id0",
   "type": "NUMBER",
-  "number_value": "number_value0"
+  "number_value": "number_value2"
 }
 ```
 

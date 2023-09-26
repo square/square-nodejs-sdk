@@ -20,13 +20,13 @@ Represents details about a `REFUND` [gift card activity type](../../doc/models/g
 
 ```json
 {
-  "redeem_activity_id": "redeem_activity_id0",
+  "redeem_activity_id": "redeem_activity_id4",
   "amount_money": {
     "amount": 186,
     "currency": "TZS"
   },
-  "reference_id": "reference_id2",
-  "payment_id": "payment_id0"
+  "reference_id": "reference_id8",
+  "payment_id": "payment_id4"
 }
 ```
 

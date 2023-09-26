@@ -20,10 +20,10 @@ Represents a phase, which can override subscription phases as defined by plan_id
 
 ```json
 {
-  "uid": "uid0",
-  "ordinal": 80,
-  "order_template_id": "order_template_id2",
-  "plan_phase_uid": "plan_phase_uid6"
+  "uid": "uid4",
+  "ordinal": 12,
+  "order_template_id": "order_template_id6",
+  "plan_phase_uid": "plan_phase_uid0"
 }
 ```
 

@@ -10,9 +10,60 @@ const devicesApi = client.devicesApi;
 
 ## Methods
 
+* [List Devices](../../doc/api/devices.md#list-devices)
 * [List Device Codes](../../doc/api/devices.md#list-device-codes)
 * [Create Device Code](../../doc/api/devices.md#create-device-code)
 * [Get Device Code](../../doc/api/devices.md#get-device-code)
+* [Get Device](../../doc/api/devices.md#get-device)
+
+
+# List Devices
+
+List devices associated with the merchant. Currently, only Terminal API
+devices are supported.
+
+```ts
+async listDevices(
+  cursor?: string,
+  sortOrder?: string,
+  limit?: number,
+  locationId?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListDevicesResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br>See [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination) for more information. |
+| `sortOrder` | [`string \| undefined`](../../doc/models/sort-order.md) | Query, Optional | The order in which results are listed.<br><br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default). |
+| `limit` | `number \| undefined` | Query, Optional | The number of results to return in a single page. |
+| `locationId` | `string \| undefined` | Query, Optional | If present, only returns devices at the target location. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListDevicesResponse`](../../doc/models/list-devices-response.md)
+
+## Example Usage
+
+```ts
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await devicesApi.listDevices();
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
 
 
 # List Device Codes
@@ -47,11 +98,15 @@ async listDeviceCodes(
 
 ```ts
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await devicesApi.listDeviceCodes();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -95,11 +150,15 @@ const body: CreateDeviceCodeRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await devicesApi.createDeviceCode(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -135,11 +194,59 @@ async getDeviceCode(
 const id = 'id0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await devicesApi.getDeviceCode(id);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Get Device
+
+Retrieves Device with the associated `device_id`.
+
+```ts
+async getDevice(
+  deviceId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetDeviceResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `deviceId` | `string` | Template, Required | The unique ID for the desired `Device`. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`GetDeviceResponse`](../../doc/models/get-device-response.md)
+
+## Example Usage
+
+```ts
+const deviceId = 'device_id6';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await devicesApi.getDevice(deviceId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

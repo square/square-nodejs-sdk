@@ -18,8 +18,8 @@ Specifies a decimal number range.
 
 ```json
 {
-  "start_at": "start_at2",
-  "end_at": "end_at0"
+  "start_at": "start_at0",
+  "end_at": "end_at2"
 }
 ```
 

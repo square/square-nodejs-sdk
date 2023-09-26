@@ -46,11 +46,11 @@ decreases by 2, and the stockable count automatically decreases by 0.4 bottle ac
 
 ```json
 {
-  "item_id": "item_id0",
-  "name": "name0",
-  "sku": "sku4",
+  "item_id": "item_id4",
+  "name": "name4",
+  "sku": "sku0",
   "upc": "upc2",
-  "ordinal": 80
+  "ordinal": 76
 }
 ```
 

@@ -16,8 +16,8 @@
 
 ```json
 {
-  "image_type": "image_type6",
-  "data": "data0"
+  "image_type": "image_type4",
+  "data": "data8"
 }
 ```
 

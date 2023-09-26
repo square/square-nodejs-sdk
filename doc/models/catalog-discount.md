@@ -36,9 +36,9 @@ A discount applicable to items.
     "present_at_all_locations": true,
     "type": "DISCOUNT"
   },
-  "name": "name0",
+  "name": "name8",
   "discount_type": "VARIABLE_PERCENTAGE",
-  "percentage": "percentage8",
+  "percentage": "percentage6",
   "amount_money": {
     "amount": 186,
     "currency": "TZS"

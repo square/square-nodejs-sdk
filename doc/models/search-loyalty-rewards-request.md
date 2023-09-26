@@ -24,7 +24,7 @@ A request to search for loyalty rewards.
     "loyalty_account_id": "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd",
     "status": "ISSUED"
   },
-  "cursor": "cursor6"
+  "cursor": "cursor4"
 }
 ```
 

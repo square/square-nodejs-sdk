@@ -25,16 +25,16 @@ Represents a [CreateLoyaltyPromotion](../../doc/api/loyalty.md#create-loyalty-pr
         "BEGIN:VEVENT\nDTSTART:20220816T160000\nDURATION:PT2H\nRRULE:FREQ=WEEKLY;BYDAY=TU\nEND:VEVENT"
       ],
       "start_date": "start_date4",
-      "end_date": "end_date2"
+      "end_date": "end_date8"
     },
     "incentive": {
       "points_multiplier_data": {
         "multiplier": "3.0",
-        "points_multiplier": 160
+        "points_multiplier": 134
       },
       "type": "POINTS_MULTIPLIER",
       "points_addition_data": {
-        "points_addition": 192
+        "points_addition": 218
       }
     },
     "minimum_spend_amount_money": {

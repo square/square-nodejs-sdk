@@ -21,7 +21,7 @@ An object describing a job that a team member is assigned to.
 
 ```json
 {
-  "job_title": "job_title4",
+  "job_title": "job_title6",
   "pay_type": "NONE",
   "hourly_rate": {
     "amount": 172,
@@ -31,7 +31,7 @@ An object describing a job that a team member is assigned to.
     "amount": 232,
     "currency": "SBD"
   },
-  "weekly_hours": 156
+  "weekly_hours": 120
 }
 ```
 

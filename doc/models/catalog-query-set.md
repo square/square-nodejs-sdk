@@ -19,11 +19,9 @@ the `attribute_values`.
 
 ```json
 {
-  "attribute_name": "attribute_name4",
+  "attribute_name": "attribute_name0",
   "attribute_values": [
-    "attribute_values2",
-    "attribute_values3",
-    "attribute_values4"
+    "attribute_values8"
   ]
 }
 ```

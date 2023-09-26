@@ -8,7 +8,10 @@ import {
   string,
 } from '../schema';
 
-/** An employee object that is used by the external API. */
+/**
+ * An employee object that is used by the external API.
+ * DEPRECATED at version 2020-08-26. Replaced by [TeamMember](entity:TeamMember).
+ */
 export interface Employee {
   /** UUID for this object. */
   id?: string;
@@ -22,7 +25,10 @@ export interface Employee {
   phoneNumber?: string | null;
   /** A list of location IDs where this employee has access to. */
   locationIds?: string[] | null;
-  /** The status of the Employee being retrieved. */
+  /**
+   * The status of the Employee being retrieved.
+   * DEPRECATED at version 2020-08-26. Replaced by [TeamMemberStatus](entity:TeamMemberStatus).
+   */
   status?: string;
   /**
    * Whether this employee is the owner of the merchant. Each merchant

@@ -46,10 +46,10 @@ A [CatalogObject](../../doc/models/catalog-object.md) instance of the `ITEM` typ
     "present_at_all_locations": true,
     "type": "ITEM"
   },
-  "name": "name0",
-  "description": "description0",
-  "abbreviation": "abbreviation2",
-  "label_color": "label_color2",
+  "name": "name6",
+  "description": "description6",
+  "abbreviation": "abbreviation8",
+  "label_color": "label_color8",
   "available_online": false
 }
 ```

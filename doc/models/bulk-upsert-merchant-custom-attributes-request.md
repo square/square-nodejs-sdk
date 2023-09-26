@@ -21,59 +21,13 @@ Represents a [BulkUpsertMerchantCustomAttributes](../../doc/api/merchant-custom-
     "key0": {
       "merchant_id": "merchant_id0",
       "custom_attribute": {
-        "key": "key8",
+        "key": "key2",
         "value": {
           "key1": "val1",
           "key2": "val2"
         },
-        "version": 82,
-        "visibility": "VISIBILITY_READ_WRITE_VALUES",
-        "definition": {
-          "key": "key8",
-          "schema": {
-            "key1": "val1",
-            "key2": "val2"
-          },
-          "name": "name8",
-          "description": "description8",
-          "visibility": "VISIBILITY_HIDDEN"
-        }
-      },
-      "idempotency_key": "idempotency_key6"
-    },
-    "key1": {
-      "merchant_id": "merchant_id1",
-      "custom_attribute": {
-        "key": "key9",
-        "value": {
-          "key1": "val1",
-          "key2": "val2"
-        },
-        "version": 83,
+        "version": 102,
         "visibility": "VISIBILITY_READ_ONLY",
-        "definition": {
-          "key": "key9",
-          "schema": {
-            "key1": "val1",
-            "key2": "val2"
-          },
-          "name": "name9",
-          "description": "description9",
-          "visibility": "VISIBILITY_READ_ONLY"
-        }
-      },
-      "idempotency_key": "idempotency_key7"
-    },
-    "key2": {
-      "merchant_id": "merchant_id2",
-      "custom_attribute": {
-        "key": "key0",
-        "value": {
-          "key1": "val1",
-          "key2": "val2"
-        },
-        "version": 84,
-        "visibility": "VISIBILITY_HIDDEN",
         "definition": {
           "key": "key0",
           "schema": {
@@ -82,10 +36,56 @@ Represents a [BulkUpsertMerchantCustomAttributes](../../doc/api/merchant-custom-
           },
           "name": "name0",
           "description": "description0",
-          "visibility": "VISIBILITY_READ_WRITE_VALUES"
+          "visibility": "VISIBILITY_HIDDEN"
         }
       },
-      "idempotency_key": "idempotency_key8"
+      "idempotency_key": "idempotency_key6"
+    },
+    "key1": {
+      "merchant_id": "merchant_id0",
+      "custom_attribute": {
+        "key": "key2",
+        "value": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "version": 102,
+        "visibility": "VISIBILITY_READ_ONLY",
+        "definition": {
+          "key": "key0",
+          "schema": {
+            "key1": "val1",
+            "key2": "val2"
+          },
+          "name": "name0",
+          "description": "description0",
+          "visibility": "VISIBILITY_HIDDEN"
+        }
+      },
+      "idempotency_key": "idempotency_key6"
+    },
+    "key2": {
+      "merchant_id": "merchant_id0",
+      "custom_attribute": {
+        "key": "key2",
+        "value": {
+          "key1": "val1",
+          "key2": "val2"
+        },
+        "version": 102,
+        "visibility": "VISIBILITY_READ_ONLY",
+        "definition": {
+          "key": "key0",
+          "schema": {
+            "key1": "val1",
+            "key2": "val2"
+          },
+          "name": "name0",
+          "description": "description0",
+          "visibility": "VISIBILITY_HIDDEN"
+        }
+      },
+      "idempotency_key": "idempotency_key6"
     }
   }
 }

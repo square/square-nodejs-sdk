@@ -31,29 +31,27 @@ A request for a filtered and sorted set of `Shift` objects.
         "match_shifts_by": "START_AT"
       },
       "location_ids": [
-        "location_ids4",
-        "location_ids5"
+        "location_ids4"
       ],
       "employee_ids": [
-        "employee_ids9",
-        "employee_ids0"
+        "employee_ids9"
       ],
       "status": "OPEN",
       "start": {
-        "start_at": "start_at0",
-        "end_at": "end_at2"
+        "start_at": "start_at6",
+        "end_at": "end_at6"
       },
       "end": {
-        "start_at": "start_at4",
-        "end_at": "end_at8"
+        "start_at": "start_at0",
+        "end_at": "end_at2"
       }
     },
     "sort": {
-      "field": "CREATED_AT",
+      "field": "START_AT",
       "order": "DESC"
     }
   },
-  "cursor": "cursor6"
+  "cursor": "cursor2"
 }
 ```
 

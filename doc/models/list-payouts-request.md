@@ -24,7 +24,7 @@ A request to retrieve payout records.
 ```json
 {
   "location_id": "location_id4",
-  "status": "PAID",
+  "status": "SENT",
   "begin_time": "begin_time2",
   "end_time": "end_time2",
   "sort_order": "DESC"

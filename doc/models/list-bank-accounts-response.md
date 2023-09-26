@@ -34,10 +34,10 @@ Response object returned by ListBankAccounts.
       "primary_bank_identification_number": "112200303",
       "status": "VERIFICATION_IN_PROGRESS",
       "version": 5,
-      "secondary_bank_identification_number": "secondary_bank_identification_number5",
-      "debit_mandate_reference_id": "debit_mandate_reference_id9",
-      "reference_id": "reference_id3",
-      "fingerprint": "fingerprint1"
+      "secondary_bank_identification_number": "secondary_bank_identification_number0",
+      "debit_mandate_reference_id": "debit_mandate_reference_id4",
+      "reference_id": "reference_id8",
+      "fingerprint": "fingerprint6"
     },
     {
       "account_number_suffix": "972",
@@ -53,33 +53,21 @@ Response object returned by ListBankAccounts.
       "primary_bank_identification_number": "112200303",
       "status": "VERIFICATION_IN_PROGRESS",
       "version": 5,
-      "secondary_bank_identification_number": "secondary_bank_identification_number6",
-      "debit_mandate_reference_id": "debit_mandate_reference_id8",
-      "reference_id": "reference_id4",
-      "fingerprint": "fingerprint2"
+      "secondary_bank_identification_number": "secondary_bank_identification_number0",
+      "debit_mandate_reference_id": "debit_mandate_reference_id4",
+      "reference_id": "reference_id8",
+      "fingerprint": "fingerprint6"
     }
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ],
-  "cursor": "cursor6"
+  "cursor": "cursor2"
 }
 ```
 

@@ -21,12 +21,12 @@ see [Quick Pay Checkout](https://developer.squareup.com/docs/checkout-api/quick-
 
 ```json
 {
-  "name": "name0",
+  "name": "name8",
   "price_money": {
     "amount": 202,
     "currency": "CNY"
   },
-  "location_id": "location_id4"
+  "location_id": "location_id2"
 }
 ```
 

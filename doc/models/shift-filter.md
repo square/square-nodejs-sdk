@@ -25,9 +25,13 @@ used by Square's servers to apply each filter property specified.
 ```json
 {
   "location_ids": [
+    "location_ids8",
+    "location_ids9",
     "location_ids0"
   ],
   "employee_ids": [
+    "employee_ids3",
+    "employee_ids4",
     "employee_ids5"
   ],
   "status": "OPEN",

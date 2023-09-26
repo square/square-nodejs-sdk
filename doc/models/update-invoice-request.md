@@ -35,10 +35,10 @@ Describes a `UpdateInvoice` request.
     "location_id": "location_id0",
     "order_id": "order_id0",
     "primary_recipient": {
-      "customer_id": "customer_id8",
-      "given_name": "given_name2",
-      "family_name": "family_name4",
-      "email_address": "email_address8",
+      "customer_id": "customer_id2",
+      "given_name": "given_name6",
+      "family_name": "family_name8",
+      "email_address": "email_address2",
       "address": {
         "address_line_1": "address_line_16",
         "address_line_2": "address_line_26",

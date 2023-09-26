@@ -33,11 +33,11 @@ at a given location to a requesting customer in one or more appointment segments
 
 ```json
 {
-  "id": "id0",
-  "version": 172,
-  "status": "CANCELLED_BY_SELLER",
+  "id": "id4",
+  "version": 92,
+  "status": "PENDING",
   "created_at": "created_at2",
-  "updated_at": "updated_at4"
+  "updated_at": "updated_at0"
 }
 ```
 

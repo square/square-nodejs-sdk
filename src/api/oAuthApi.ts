@@ -86,9 +86,7 @@ export class OAuthApi extends BaseApi {
    * Revokes an access token generated with the OAuth flow.
    *
    * If an account has more than one OAuth access token for your application, this
-   * endpoint revokes all of them, regardless of which token you specify. When an
-   * OAuth access token is revoked, all of the active subscriptions associated
-   * with that OAuth token are canceled immediately.
+   * endpoint revokes all of them, regardless of which token you specify.
    *
    * __Important:__ The `Authorization` header for this endpoint must have the
    * following format:

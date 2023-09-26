@@ -17,7 +17,7 @@ Represents the metadata for a `POINTS_ADDITION` type of [loyalty promotion incen
 
 ```json
 {
-  "points_addition": 176
+  "points_addition": 88
 }
 ```
 

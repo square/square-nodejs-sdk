@@ -57,8 +57,8 @@ Represents a payment processed by the Square API.
 
 ```json
 {
-  "id": "id0",
-  "created_at": "created_at2",
+  "id": "id8",
+  "created_at": "created_at6",
   "updated_at": "updated_at4",
   "amount_money": {
     "amount": 186,

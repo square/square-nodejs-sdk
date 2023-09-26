@@ -17,7 +17,7 @@ Lists all webhook event types that can be subscribed to.
 
 ```json
 {
-  "api_version": "api_version8"
+  "api_version": "api_version0"
 }
 ```
 

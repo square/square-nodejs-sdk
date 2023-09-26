@@ -24,9 +24,9 @@ Represents details about a `REDEEM` [gift card activity type](../../doc/models/g
     "amount": 186,
     "currency": "TZS"
   },
-  "payment_id": "payment_id0",
+  "payment_id": "payment_id4",
   "reference_id": "reference_id2",
-  "status": "CANCELED"
+  "status": "COMPLETED"
 }
 ```
 

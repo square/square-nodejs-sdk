@@ -19,8 +19,8 @@ Additional details about `WALLET` type payments. Contains only non-confidential 
 
 ```json
 {
-  "status": "status8",
-  "brand": "brand4",
+  "status": "status4",
+  "brand": "brand8",
   "cash_app_details": {
     "buyer_full_name": "buyer_full_name2",
     "buyer_country_code": "buyer_country_code8",

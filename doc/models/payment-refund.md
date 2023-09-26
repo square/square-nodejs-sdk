@@ -32,21 +32,21 @@ the original payment and the amount of money refunded.
 
 ```json
 {
-  "id": "id0",
-  "status": "status8",
-  "location_id": "location_id4",
+  "id": "id4",
+  "status": "status6",
+  "location_id": "location_id8",
   "unlinked": false,
-  "destination_type": "destination_type4",
+  "destination_type": "destination_type8",
   "destination_details": {
     "card_details": {
       "card": {
-        "id": "id0",
-        "card_brand": "FELICA",
-        "last_4": "last_42",
-        "exp_month": 2,
-        "exp_year": 38
+        "id": "id6",
+        "card_brand": "OTHER_BRAND",
+        "last_4": "last_48",
+        "exp_month": 228,
+        "exp_year": 68
       },
-      "entry_method": "entry_method2"
+      "entry_method": "entry_method8"
     }
   },
   "amount_money": {

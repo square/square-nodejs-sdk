@@ -17,7 +17,7 @@ Describes when the loyalty program expires.
 
 ```json
 {
-  "expiration_duration": "expiration_duration8"
+  "expiration_duration": "expiration_duration2"
 }
 ```
 

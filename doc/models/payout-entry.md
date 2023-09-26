@@ -46,10 +46,10 @@ The total amount of the payout will equal the sum of the payout entries for a ba
 
 ```json
 {
-  "id": "id0",
-  "payout_id": "payout_id6",
-  "effective_at": "effective_at6",
-  "type": "CHARGE",
+  "id": "id8",
+  "payout_id": "payout_id4",
+  "effective_at": "effective_at8",
+  "type": "DEPOSIT_FEE",
   "gross_amount_money": {
     "amount": 186,
     "currency": "BWP"

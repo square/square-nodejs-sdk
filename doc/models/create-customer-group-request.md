@@ -25,7 +25,7 @@ Defines the body parameters that can be included in a request to the
     "created_at": "created_at4",
     "updated_at": "updated_at6"
   },
-  "idempotency_key": "idempotency_key6"
+  "idempotency_key": "idempotency_key0"
 }
 ```
 

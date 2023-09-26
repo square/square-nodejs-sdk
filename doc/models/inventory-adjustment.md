@@ -36,11 +36,11 @@ particular time and location.
 
 ```json
 {
-  "id": "id0",
-  "reference_id": "reference_id2",
-  "from_state": "RESERVED_FOR_SALE",
-  "to_state": "SUPPORTED_BY_NEWER_VERSION",
-  "location_id": "location_id4"
+  "id": "id6",
+  "reference_id": "reference_id6",
+  "from_state": "WASTE",
+  "to_state": "RESERVED_FOR_SALE",
+  "location_id": "location_id0"
 }
 ```
 

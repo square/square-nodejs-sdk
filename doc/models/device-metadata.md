@@ -26,11 +26,11 @@
 
 ```json
 {
-  "battery_percentage": "battery_percentage6",
-  "charging_state": "charging_state2",
-  "location_id": "location_id4",
-  "merchant_id": "merchant_id0",
-  "network_connection_type": "network_connection_type0"
+  "battery_percentage": "battery_percentage4",
+  "charging_state": "charging_state6",
+  "location_id": "location_id2",
+  "merchant_id": "merchant_id8",
+  "network_connection_type": "network_connection_type8"
 }
 ```
 

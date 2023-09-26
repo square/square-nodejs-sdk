@@ -1,4 +1,12 @@
-import { lazy, nullable, object, optional, Schema, string } from '../schema';
+import {
+  boolean,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /** Location-specific overrides for specified properties of a `CatalogModifier` object. */
@@ -14,11 +22,17 @@ export interface ModifierLocationOverrides {
    * for more information.
    */
   priceMoney?: Money;
+  /**
+   * Indicates whether the modifier is sold out at the specified location or not. As an example, for cheese (modifier) burger (item), when the modifier is sold out, it is the cheese, but not the burger, that is sold out.
+   * The seller can manually set this sold out status. Attempts by an application to set this attribute are ignored.
+   */
+  soldOut?: boolean;
 }
 
 export const modifierLocationOverridesSchema: Schema<ModifierLocationOverrides> = object(
   {
     locationId: ['location_id', optional(nullable(string()))],
     priceMoney: ['price_money', optional(lazy(() => moneySchema))],
+    soldOut: ['sold_out', optional(boolean())],
   }
 );

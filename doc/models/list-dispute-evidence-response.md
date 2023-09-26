@@ -21,44 +21,22 @@ Defines the fields in a `ListDisputeEvidence` response.
 {
   "evidence": [
     {
-      "evidence_id": "evidence_id6",
-      "id": "id6",
-      "dispute_id": "dispute_id8",
+      "evidence_id": "evidence_id0",
+      "id": "id2",
+      "dispute_id": "dispute_id4",
       "evidence_file": {
-        "filename": "filename4",
-        "filetype": "filetype4"
+        "filename": "filename8",
+        "filetype": "filetype8"
       },
-      "evidence_text": "evidence_text0"
-    },
-    {
-      "evidence_id": "evidence_id5",
-      "id": "id7",
-      "dispute_id": "dispute_id9",
-      "evidence_file": {
-        "filename": "filename5",
-        "filetype": "filetype5"
-      },
-      "evidence_text": "evidence_text1"
+      "evidence_text": "evidence_text6"
     }
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ],
   "cursor": "cursor6"

@@ -53,35 +53,70 @@ Represents an output from a call to [BulkRetrieveVendors](../../doc/api/vendors.
     "key0": {
       "errors": [
         {
-          "category": "PAYMENT_METHOD_ERROR",
-          "code": "INVALID_CARD",
-          "detail": "detail8",
-          "field": "field6"
-        },
-        {
-          "category": "REFUND_ERROR",
-          "code": "PAYMENT_AMOUNT_MISMATCH",
-          "detail": "detail9",
-          "field": "field7"
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
         },
         {
           "category": "MERCHANT_SUBSCRIPTION_ERROR",
-          "code": "GENERIC_DECLINE",
-          "detail": "detail0",
-          "field": "field8"
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
+        },
+        {
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
         }
       ],
       "vendor": {
-        "id": "id3",
-        "created_at": "created_at1",
-        "updated_at": "updated_at9",
-        "name": "name3",
+        "id": "id6",
+        "created_at": "created_at4",
+        "updated_at": "updated_at2",
+        "name": "name6",
         "address": {
-          "address_line_1": "address_line_19",
-          "address_line_2": "address_line_29",
-          "address_line_3": "address_line_35",
-          "locality": "locality9",
-          "sublocality": "sublocality9"
+          "address_line_1": "address_line_16",
+          "address_line_2": "address_line_26",
+          "address_line_3": "address_line_32",
+          "locality": "locality6",
+          "sublocality": "sublocality6"
+        }
+      }
+    },
+    "key1": {
+      "errors": [
+        {
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
+        },
+        {
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
+        },
+        {
+          "category": "MERCHANT_SUBSCRIPTION_ERROR",
+          "code": "MAP_KEY_LENGTH_TOO_LONG",
+          "detail": "detail6",
+          "field": "field4"
+        }
+      ],
+      "vendor": {
+        "id": "id6",
+        "created_at": "created_at4",
+        "updated_at": "updated_at2",
+        "name": "name6",
+        "address": {
+          "address_line_1": "address_line_16",
+          "address_line_2": "address_line_26",
+          "address_line_3": "address_line_32",
+          "locality": "locality6",
+          "sublocality": "sublocality6"
         }
       }
     }

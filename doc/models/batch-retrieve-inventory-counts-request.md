@@ -27,10 +27,10 @@
     "59TNP9SA8VGDA"
   ],
   "updated_after": "2016-11-16T00:00:00.000Z",
-  "cursor": "cursor6",
+  "cursor": "cursor2",
   "states": [
-    "COMPOSED",
-    "DECOMPOSED"
+    "RESERVED_FOR_SALE",
+    "RETURNED_BY_CUSTOMER"
   ]
 }
 ```

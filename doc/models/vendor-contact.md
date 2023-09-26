@@ -24,10 +24,10 @@ Represents a contact of a [Vendor](../../doc/models/vendor.md).
 {
   "id": "id0",
   "name": "name0",
-  "email_address": "email_address2",
-  "phone_number": "phone_number2",
+  "email_address": "email_address8",
+  "phone_number": "phone_number8",
   "removed": false,
-  "ordinal": 80
+  "ordinal": 244
 }
 ```
 

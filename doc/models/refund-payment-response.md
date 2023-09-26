@@ -45,10 +45,10 @@ present, or it might be present with a status of `FAILED`.
       "card_details": {
         "card": {
           "id": "id6",
-          "card_brand": "SQUARE_GIFT_CARD",
+          "card_brand": "OTHER_BRAND",
           "last_4": "last_48",
-          "exp_month": 208,
-          "exp_year": 88
+          "exp_month": 228,
+          "exp_year": 68
         },
         "entry_method": "entry_method8"
       }
@@ -56,22 +56,16 @@ present, or it might be present with a status of `FAILED`.
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

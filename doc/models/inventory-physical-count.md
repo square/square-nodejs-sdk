@@ -32,10 +32,10 @@ hand or from syncing with an external system.
 ```json
 {
   "id": "id0",
-  "reference_id": "reference_id2",
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_object_type": "catalog_object_type6",
-  "state": "RESERVED_FOR_SALE"
+  "reference_id": "reference_id8",
+  "catalog_object_id": "catalog_object_id4",
+  "catalog_object_type": "catalog_object_type4",
+  "state": "COMPOSED"
 }
 ```
 

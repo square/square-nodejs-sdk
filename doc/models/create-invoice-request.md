@@ -60,9 +60,9 @@ Describes a `CreateInvoice` request.
     ],
     "primary_recipient": {
       "customer_id": "JDKYHBWT1D4F8MFH63DBMEN8Y4",
-      "given_name": "given_name2",
-      "family_name": "family_name4",
-      "email_address": "email_address8",
+      "given_name": "given_name6",
+      "family_name": "family_name8",
+      "email_address": "email_address2",
       "address": {
         "address_line_1": "address_line_16",
         "address_line_2": "address_line_26",

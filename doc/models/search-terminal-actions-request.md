@@ -25,14 +25,14 @@
         "end_at": "end_at8"
       },
       "device_id": "device_id0",
-      "status": "status4",
-      "type": "QR_CODE"
+      "status": "status6",
+      "type": "SAVE_CARD"
     },
     "sort": {
       "sort_order": "DESC"
     }
   },
-  "cursor": "cursor6"
+  "cursor": "cursor4"
 }
 ```
 

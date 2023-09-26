@@ -20,9 +20,9 @@ Represents a list request for order custom attributes.
 
 ```json
 {
-  "visibility_filter": "ALL",
-  "cursor": "cursor6",
-  "limit": 172,
+  "visibility_filter": "READ",
+  "cursor": "cursor2",
+  "limit": 158,
   "with_definitions": false
 }
 ```

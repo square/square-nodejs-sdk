@@ -20,10 +20,10 @@ Lists all [Subscription](../../doc/models/webhook-subscription.md)s owned by you
 
 ```json
 {
-  "cursor": "cursor6",
+  "cursor": "cursor2",
   "include_disabled": false,
   "sort_order": "DESC",
-  "limit": 172
+  "limit": 190
 }
 ```
 

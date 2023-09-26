@@ -43,84 +43,102 @@ Defines output parameters in a response from the
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ],
   "actions": [
     {
-      "id": "id9",
-      "type": "PAUSE",
-      "effective_date": "effective_date1",
-      "phases": [
-        {
-          "uid": "uid6",
-          "ordinal": 186,
-          "order_template_id": "order_template_id8",
-          "plan_phase_uid": "plan_phase_uid2"
-        }
-      ],
-      "new_plan_variation_id": "new_plan_variation_id9"
-    },
-    {
-      "id": "id0",
+      "id": "id8",
       "type": "CANCEL",
-      "effective_date": "effective_date0",
+      "effective_date": "effective_date8",
       "phases": [
         {
-          "uid": "uid5",
-          "ordinal": 185,
-          "order_template_id": "order_template_id7",
-          "plan_phase_uid": "plan_phase_uid1"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         },
         {
-          "uid": "uid6",
-          "ordinal": 186,
-          "order_template_id": "order_template_id8",
-          "plan_phase_uid": "plan_phase_uid2"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         },
         {
-          "uid": "uid7",
-          "ordinal": 187,
-          "order_template_id": "order_template_id9",
-          "plan_phase_uid": "plan_phase_uid3"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         }
       ],
-      "new_plan_variation_id": "new_plan_variation_id0"
+      "new_plan_variation_id": "new_plan_variation_id8"
     },
     {
-      "id": "id1",
-      "type": "SWAP_PLAN",
-      "effective_date": "effective_date9",
+      "id": "id8",
+      "type": "CANCEL",
+      "effective_date": "effective_date8",
       "phases": [
         {
-          "uid": "uid4",
-          "ordinal": 184,
-          "order_template_id": "order_template_id6",
-          "plan_phase_uid": "plan_phase_uid0"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         },
         {
-          "uid": "uid5",
-          "ordinal": 185,
-          "order_template_id": "order_template_id7",
-          "plan_phase_uid": "plan_phase_uid1"
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
+        },
+        {
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
         }
       ],
-      "new_plan_variation_id": "new_plan_variation_id1"
+      "new_plan_variation_id": "new_plan_variation_id8"
+    },
+    {
+      "id": "id8",
+      "type": "CANCEL",
+      "effective_date": "effective_date8",
+      "phases": [
+        {
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
+        },
+        {
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
+        },
+        {
+          "uid": "uid0",
+          "ordinal": 78,
+          "order_template_id": "order_template_id2",
+          "plan_phase_uid": "plan_phase_uid6"
+        }
+      ],
+      "new_plan_variation_id": "new_plan_variation_id8"
     }
   ]
 }

@@ -40,12 +40,12 @@ includes a `redeem_activity_details` field that contains information about the r
 
 ```json
 {
-  "id": "id0",
-  "type": "ADJUST_INCREMENT",
-  "location_id": "location_id4",
-  "created_at": "created_at2",
-  "gift_card_id": "gift_card_id8",
-  "gift_card_gan": "gift_card_gan6",
+  "id": "id8",
+  "type": "REDEEM",
+  "location_id": "location_id2",
+  "created_at": "created_at6",
+  "gift_card_id": "gift_card_id6",
+  "gift_card_gan": "gift_card_gan4",
   "gift_card_balance_money": {
     "amount": 82,
     "currency": "KPW"

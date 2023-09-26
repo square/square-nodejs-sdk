@@ -36,7 +36,7 @@ Defines the fields that are included in the request body of a request to the
       },
       "email_address": {
         "fuzzy": "example.com",
-        "exact": "exact8"
+        "exact": "exact2"
       },
       "group_ids": {
         "all": [
@@ -44,12 +44,12 @@ Defines the fields that are included in the request body of a request to the
         ]
       },
       "updated_at": {
-        "start_at": "start_at2",
-        "end_at": "end_at0"
+        "start_at": "start_at6",
+        "end_at": "end_at6"
       },
       "phone_number": {
-        "exact": "exact8",
-        "fuzzy": "fuzzy4"
+        "exact": "exact2",
+        "fuzzy": "fuzzy8"
       }
     },
     "sort": {
@@ -57,7 +57,7 @@ Defines the fields that are included in the request body of a request to the
       "order": "ASC"
     }
   },
-  "cursor": "cursor6",
+  "cursor": "cursor0",
   "count": false
 }
 ```

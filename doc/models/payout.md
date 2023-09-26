@@ -29,11 +29,11 @@ external bank account or to the Square balance.
 
 ```json
 {
-  "id": "id0",
-  "status": "PAID",
-  "location_id": "location_id4",
+  "id": "id4",
+  "status": "SENT",
+  "location_id": "location_id8",
   "created_at": "created_at2",
-  "updated_at": "updated_at4",
+  "updated_at": "updated_at0",
   "amount_money": {
     "amount": 186,
     "currency": "TZS"

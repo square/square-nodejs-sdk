@@ -24,13 +24,11 @@ are now defined using a catalog pricing rule and other catalog objects. For more
 
 ```json
 {
-  "scope": "CATEGORY",
+  "scope": "ORDER",
   "discount_type": "FIXED_AMOUNT",
-  "percentage_discount": "percentage_discount8",
+  "percentage_discount": "percentage_discount0",
   "catalog_object_ids": [
-    "catalog_object_ids2",
-    "catalog_object_ids3",
-    "catalog_object_ids4"
+    "catalog_object_ids8"
   ],
   "fixed_discount_money": {
     "amount": 36,

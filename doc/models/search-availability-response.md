@@ -24,7 +24,7 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMXUrsBWWcHTt79t",
-          "intermission_minutes": 46,
+          "intermission_minutes": 54,
           "any_team_member": false
         }
       ],
@@ -38,8 +38,8 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMXUrsBWWcHTt79t",
-          "intermission_minutes": 47,
-          "any_team_member": true
+          "intermission_minutes": 54,
+          "any_team_member": false
         }
       ],
       "location_id": "LEQHH0YY8B42M",
@@ -52,7 +52,7 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMaJcbiRqPIGZuS9",
-          "intermission_minutes": 48,
+          "intermission_minutes": 54,
           "any_team_member": false
         }
       ],
@@ -66,8 +66,8 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMaJcbiRqPIGZuS9",
-          "intermission_minutes": 49,
-          "any_team_member": true
+          "intermission_minutes": 54,
+          "any_team_member": false
         }
       ],
       "location_id": "LEQHH0YY8B42M",
@@ -80,7 +80,7 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMaJcbiRqPIGZuS9",
-          "intermission_minutes": 50,
+          "intermission_minutes": 54,
           "any_team_member": false
         }
       ],
@@ -94,8 +94,8 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMaJcbiRqPIGZuS9",
-          "intermission_minutes": 51,
-          "any_team_member": true
+          "intermission_minutes": 54,
+          "any_team_member": false
         }
       ],
       "location_id": "LEQHH0YY8B42M",
@@ -108,7 +108,7 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMaJcbiRqPIGZuS9",
-          "intermission_minutes": 52,
+          "intermission_minutes": 54,
           "any_team_member": false
         }
       ],
@@ -122,8 +122,8 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMXUrsBWWcHTt79t",
-          "intermission_minutes": 53,
-          "any_team_member": true
+          "intermission_minutes": 54,
+          "any_team_member": false
         }
       ],
       "location_id": "LEQHH0YY8B42M",
@@ -150,8 +150,8 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMXUrsBWWcHTt79t",
-          "intermission_minutes": 55,
-          "any_team_member": true
+          "intermission_minutes": 54,
+          "any_team_member": false
         }
       ],
       "location_id": "LEQHH0YY8B42M",
@@ -164,7 +164,7 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMXUrsBWWcHTt79t",
-          "intermission_minutes": 56,
+          "intermission_minutes": 54,
           "any_team_member": false
         }
       ],
@@ -178,8 +178,8 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMXUrsBWWcHTt79t",
-          "intermission_minutes": 57,
-          "any_team_member": true
+          "intermission_minutes": 54,
+          "any_team_member": false
         }
       ],
       "location_id": "LEQHH0YY8B42M",
@@ -192,7 +192,7 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMaJcbiRqPIGZuS9",
-          "intermission_minutes": 58,
+          "intermission_minutes": 54,
           "any_team_member": false
         }
       ],
@@ -206,8 +206,8 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMaJcbiRqPIGZuS9",
-          "intermission_minutes": 59,
-          "any_team_member": true
+          "intermission_minutes": 54,
+          "any_team_member": false
         }
       ],
       "location_id": "LEQHH0YY8B42M",
@@ -220,7 +220,7 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMaJcbiRqPIGZuS9",
-          "intermission_minutes": 60,
+          "intermission_minutes": 54,
           "any_team_member": false
         }
       ],
@@ -234,8 +234,8 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMXUrsBWWcHTt79t",
-          "intermission_minutes": 61,
-          "any_team_member": true
+          "intermission_minutes": 54,
+          "any_team_member": false
         }
       ],
       "location_id": "LEQHH0YY8B42M",
@@ -248,7 +248,7 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMXUrsBWWcHTt79t",
-          "intermission_minutes": 62,
+          "intermission_minutes": 54,
           "any_team_member": false
         }
       ],
@@ -262,8 +262,8 @@
           "service_variation_id": "RU3PBTZTK7DXZDQFCJHOK2MC",
           "service_variation_version": 1599775456731,
           "team_member_id": "TMaJcbiRqPIGZuS9",
-          "intermission_minutes": 63,
-          "any_team_member": true
+          "intermission_minutes": 54,
+          "any_team_member": false
         }
       ],
       "location_id": "LEQHH0YY8B42M",

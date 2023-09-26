@@ -21,14 +21,14 @@ V1CreateRefundRequest
 
 ```json
 {
-  "payment_id": "payment_id0",
+  "payment_id": "payment_id2",
   "type": "FULL",
-  "reason": "reason4",
+  "reason": "reason2",
   "refunded_money": {
     "amount": 214,
     "currency_code": "SRD"
   },
-  "request_idempotence_key": "request_idempotence_key8"
+  "request_idempotence_key": "request_idempotence_key6"
 }
 ```
 

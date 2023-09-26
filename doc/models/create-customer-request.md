@@ -43,9 +43,9 @@ Defines the body parameters that can be included in a request to the
   "note": "a customer",
   "phone_number": "+1-212-555-4240",
   "reference_id": "YOUR_REFERENCE_ID",
-  "idempotency_key": "idempotency_key6",
-  "company_name": "company_name6",
-  "nickname": "nickname6"
+  "idempotency_key": "idempotency_key4",
+  "company_name": "company_name4",
+  "nickname": "nickname4"
 }
 ```
 

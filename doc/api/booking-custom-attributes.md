@@ -54,11 +54,15 @@ async listBookingCustomAttributeDefinitions(
 
 ```ts
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.listBookingCustomAttributeDefinitions();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -102,11 +106,15 @@ const body: CreateBookingCustomAttributeDefinitionRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.createBookingCustomAttributeDefinition(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -148,11 +156,15 @@ async deleteBookingCustomAttributeDefinition(
 const key = 'key0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.deleteBookingCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -193,11 +205,15 @@ async retrieveBookingCustomAttributeDefinition(
 const key = 'key0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.retrieveBookingCustomAttributeDefinition(key);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -245,14 +261,18 @@ const body: UpdateBookingCustomAttributeDefinitionRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.updateBookingCustomAttributeDefinition(
-    key,
-    body
-  );
+  key,
+  body
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -294,22 +314,26 @@ async bulkDeleteBookingCustomAttributes(
 const body: BulkDeleteBookingCustomAttributesRequest = {
   values: {
     'key0': {
-      bookingId: 'booking_id8',
-      key: 'key4',
+      bookingId: 'booking_id4',
+      key: 'key0',
     },
     'key1': {
-      bookingId: 'booking_id9',
-      key: 'key5',
+      bookingId: 'booking_id4',
+      key: 'key0',
     }
   },
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.bulkDeleteBookingCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -351,22 +375,26 @@ async bulkUpsertBookingCustomAttributes(
 const body: BulkUpsertBookingCustomAttributesRequest = {
   values: {
     'key0': {
-      bookingId: 'booking_id8',
+      bookingId: 'booking_id4',
       customAttribute: {},
     },
     'key1': {
-      bookingId: 'booking_id9',
+      bookingId: 'booking_id4',
       customAttribute: {},
     }
   },
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.bulkUpsertBookingCustomAttributes(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -413,14 +441,20 @@ const bookingId = 'booking_id4';
 const withDefinitions = false;
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.listBookingCustomAttributes(
-    bookingId,
-    withDefinitions
-  );
+  bookingId,
+  undefined,
+  undefined,
+  withDefinitions
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -466,14 +500,18 @@ const bookingId = 'booking_id4';
 const key = 'key0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.deleteBookingCustomAttribute(
-    bookingId,
-    key
-  );
+  bookingId,
+  key
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -522,15 +560,19 @@ const key = 'key0';
 const withDefinition = false;
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.retrieveBookingCustomAttribute(
-    bookingId,
-    key,
-    withDefinition
-  );
+  bookingId,
+  key,
+  withDefinition
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -582,15 +624,19 @@ const body: UpsertBookingCustomAttributeRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingCustomAttributesApi.upsertBookingCustomAttribute(
-    bookingId,
-    key,
-    body
-  );
+  bookingId,
+  key,
+  body
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

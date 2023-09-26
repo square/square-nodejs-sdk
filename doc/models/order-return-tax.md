@@ -29,11 +29,11 @@ order subtotal.
 
 ```json
 {
-  "uid": "uid0",
+  "uid": "uid4",
   "source_tax_uid": "source_tax_uid2",
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_version": 126,
-  "name": "name0"
+  "catalog_object_id": "catalog_object_id8",
+  "catalog_version": 124,
+  "name": "name4"
 }
 ```
 

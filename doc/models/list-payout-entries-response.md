@@ -26,18 +26,18 @@ The response to retrieve payout records entries.
       "fee_amount_money": {
         "amount": -2,
         "currency_code": "USD",
-        "currency": "AZN"
+        "currency": "NIO"
       },
       "gross_amount_money": {
         "amount": -50,
         "currency_code": "USD",
-        "currency": "NIO"
+        "currency": "BWP"
       },
       "id": "poe_ZQWcw41d0SGJS6IWd4cSi8mKHk",
       "net_amount_money": {
         "amount": -48,
         "currency_code": "USD",
-        "currency": "XPF"
+        "currency": "LTL"
       },
       "payout_id": "po_4d28e6c4-7dd5-4de4-8ec9-a059277646a6",
       "type": "REFUND",
@@ -51,18 +51,18 @@ The response to retrieve payout records entries.
       "fee_amount_money": {
         "amount": 19,
         "currency_code": "USD",
-        "currency": "BAM"
+        "currency": "NIO"
       },
       "gross_amount_money": {
         "amount": 100,
         "currency_code": "USD",
-        "currency": "NOK"
+        "currency": "BWP"
       },
       "id": "poe_EibbY9Ob1d0SGJS6IWd4cSiSi6wkaPk",
       "net_amount_money": {
         "amount": 81,
         "currency_code": "USD",
-        "currency": "XPT"
+        "currency": "LTL"
       },
       "payout_id": "po_4d28e6c4-7dd5-4de4-8ec9-a059277646a6",
       "type": "CHARGE",
@@ -73,22 +73,10 @@ The response to retrieve payout records entries.
   ],
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
-    },
-    {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

@@ -18,8 +18,8 @@ Provides metadata when the event `type` is `OTHER`.
 
 ```json
 {
-  "loyalty_program_id": "loyalty_program_id0",
-  "points": 236
+  "loyalty_program_id": "loyalty_program_id4",
+  "points": 94
 }
 ```
 

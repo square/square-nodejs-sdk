@@ -56,11 +56,15 @@ async deprecatedRetrieveInventoryAdjustment(
 const adjustmentId = 'adjustment_id0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.deprecatedRetrieveInventoryAdjustment(adjustmentId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -97,11 +101,15 @@ async retrieveInventoryAdjustment(
 const adjustmentId = 'adjustment_id0';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.retrieveInventoryAdjustment(adjustmentId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -157,11 +165,15 @@ const body: BatchChangeInventoryRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.deprecatedBatchChangeInventory(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -210,16 +222,20 @@ const body: BatchRetrieveInventoryChangesRequest = {
   states: [
     'IN_STOCK'
   ],
-  updatedAfter: '2016-11-01T00:00:00Z',
-  updatedBefore: '2016-12-01T00:00:00Z',
+  updatedAfter: '2016-11-01T00:00:00.000Z',
+  updatedBefore: '2016-12-01T00:00:00.000Z',
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.deprecatedBatchRetrieveInventoryChanges(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -262,15 +278,19 @@ const body: BatchRetrieveInventoryCountsRequest = {
   locationIds: [
     '59TNP9SA8VGDA'
   ],
-  updatedAfter: '2016-11-16T00:00:00Z',
+  updatedAfter: '2016-11-16T00:00:00.000Z',
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.deprecatedBatchRetrieveInventoryCounts(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -327,11 +347,15 @@ const body: BatchChangeInventoryRequest = {
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.batchChangeInventory(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -384,16 +408,20 @@ const body: BatchRetrieveInventoryChangesRequest = {
   states: [
     'IN_STOCK'
   ],
-  updatedAfter: '2016-11-01T00:00:00Z',
-  updatedBefore: '2016-12-01T00:00:00Z',
+  updatedAfter: '2016-11-01T00:00:00.000Z',
+  updatedBefore: '2016-12-01T00:00:00.000Z',
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.batchRetrieveInventoryChanges(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -443,15 +471,19 @@ const body: BatchRetrieveInventoryCountsRequest = {
   locationIds: [
     '59TNP9SA8VGDA'
   ],
-  updatedAfter: '2016-11-16T00:00:00Z',
+  updatedAfter: '2016-11-16T00:00:00.000Z',
 };
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.batchRetrieveInventoryCounts(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -490,11 +522,15 @@ async deprecatedRetrieveInventoryPhysicalCount(
 const physicalCountId = 'physical_count_id2';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.deprecatedRetrieveInventoryPhysicalCount(physicalCountId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -531,11 +567,15 @@ async retrieveInventoryPhysicalCount(
 const physicalCountId = 'physical_count_id2';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.retrieveInventoryPhysicalCount(physicalCountId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -572,11 +612,15 @@ async retrieveInventoryTransfer(
 const transferId = 'transfer_id6';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.retrieveInventoryTransfer(transferId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -619,11 +663,15 @@ async retrieveInventoryCount(
 const catalogObjectId = 'catalog_object_id6';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.retrieveInventoryCount(catalogObjectId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -677,11 +725,15 @@ async retrieveInventoryChanges(
 const catalogObjectId = 'catalog_object_id6';
 
 try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await inventoryApi.retrieveInventoryChanges(catalogObjectId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

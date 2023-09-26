@@ -37,12 +37,12 @@ results.
           "start_at": "2018-03-03T20:00:00+00:00"
         },
         "created_at": {
-          "start_at": "start_at6",
-          "end_at": "end_at6"
-        },
-        "updated_at": {
           "start_at": "start_at4",
           "end_at": "end_at8"
+        },
+        "updated_at": {
+          "start_at": "start_at6",
+          "end_at": "end_at6"
         }
       },
       "state_filter": {
@@ -52,27 +52,22 @@ results.
       },
       "fulfillment_filter": {
         "fulfillment_types": [
-          "SHIPMENT",
-          "DELIVERY",
-          "PICKUP"
+          "DELIVERY"
         ],
         "fulfillment_states": [
-          "PREPARED",
-          "COMPLETED",
-          "CANCELED"
+          "CANCELED",
+          "FAILED"
         ]
       },
       "source_filter": {
         "source_names": [
-          "source_names0",
-          "source_names1"
+          "source_names6"
         ]
       },
       "customer_filter": {
         "customer_ids": [
-          "customer_ids7",
-          "customer_ids8",
-          "customer_ids9"
+          "customer_ids3",
+          "customer_ids4"
         ]
       }
     },
@@ -82,7 +77,7 @@ results.
     }
   },
   "return_entries": true,
-  "cursor": "cursor6"
+  "cursor": "cursor4"
 }
 ```
 

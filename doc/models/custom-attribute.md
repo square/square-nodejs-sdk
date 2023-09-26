@@ -29,8 +29,8 @@ A custom attribute value. Each custom attribute value has a corresponding
     "key1": "val1",
     "key2": "val2"
   },
-  "version": 172,
-  "visibility": "VISIBILITY_READ_WRITE_VALUES",
+  "version": 20,
+  "visibility": "VISIBILITY_HIDDEN",
   "definition": {
     "key": "key0",
     "schema": {

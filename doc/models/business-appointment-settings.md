@@ -30,12 +30,11 @@ The service appointment settings, including where and how the service is provide
 ```json
 {
   "location_types": [
-    "BUSINESS_LOCATION",
-    "CUSTOMER_LOCATION"
+    "PHONE"
   ],
-  "alignment_time": "HALF_HOURLY",
-  "min_booking_lead_time_seconds": 38,
-  "max_booking_lead_time_seconds": 48,
+  "alignment_time": "SERVICE_DURATION",
+  "min_booking_lead_time_seconds": 88,
+  "max_booking_lead_time_seconds": 98,
   "any_team_member_booking_enabled": false
 }
 ```

@@ -23,12 +23,12 @@ workweek. This is used to calculate overtime pay.
 
 ```json
 {
-  "id": "id0",
-  "start_of_week": "MON",
-  "start_of_day_local_time": "start_of_day_local_time6",
-  "version": 172,
+  "id": "id4",
+  "start_of_week": "SUN",
+  "start_of_day_local_time": "start_of_day_local_time0",
+  "version": 104,
   "created_at": "created_at2",
-  "updated_at": "updated_at4"
+  "updated_at": "updated_at0"
 }
 ```
 

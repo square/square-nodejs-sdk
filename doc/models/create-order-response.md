@@ -127,20 +127,20 @@ Either `errors` or `order` is present in a given response, but never both.
         "quantity_unit": {
           "measurement_unit": {
             "custom_unit": {
-              "name": "name9",
-              "abbreviation": "abbreviation1"
+              "name": "name2",
+              "abbreviation": "abbreviation4"
             },
-            "area_unit": "METRIC_SQUARE_CENTIMETER",
-            "length_unit": "IMPERIAL_MILE",
-            "volume_unit": "GENERIC_FLUID_OUNCE",
-            "weight_unit": "METRIC_KILOGRAM"
+            "area_unit": "IMPERIAL_ACRE",
+            "length_unit": "IMPERIAL_INCH",
+            "volume_unit": "METRIC_LITER",
+            "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
           },
-          "precision": 201,
-          "catalog_object_id": "catalog_object_id1",
-          "catalog_version": 135
+          "precision": 54,
+          "catalog_object_id": "catalog_object_id0",
+          "catalog_version": 12
         },
-        "note": "note3",
-        "catalog_object_id": "catalog_object_id5"
+        "note": "note4",
+        "catalog_object_id": "catalog_object_id2"
       },
       {
         "applied_discounts": [
@@ -230,17 +230,17 @@ Either `errors` or `order` is present in a given response, but never both.
         "quantity_unit": {
           "measurement_unit": {
             "custom_unit": {
-              "name": "name8",
-              "abbreviation": "abbreviation0"
+              "name": "name2",
+              "abbreviation": "abbreviation4"
             },
-            "area_unit": "IMPERIAL_SQUARE_MILE",
-            "length_unit": "METRIC_MILLIMETER",
+            "area_unit": "IMPERIAL_ACRE",
+            "length_unit": "IMPERIAL_INCH",
             "volume_unit": "METRIC_LITER",
             "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
           },
-          "precision": 200,
+          "precision": 54,
           "catalog_object_id": "catalog_object_id0",
-          "catalog_version": 134
+          "catalog_version": 12
         },
         "note": "note4"
       }
@@ -312,22 +312,16 @@ Either `errors` or `order` is present in a given response, but never both.
   },
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

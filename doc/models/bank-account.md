@@ -35,21 +35,21 @@ linking a bank account to a Square account, see
 
 ```json
 {
-  "id": "id0",
-  "account_number_suffix": "account_number_suffix8",
-  "country": "FO",
+  "id": "id2",
+  "account_number_suffix": "account_number_suffix6",
+  "country": "TT",
   "currency": "SLL",
-  "account_type": "BUSINESS_CHECKING",
-  "holder_name": "holder_name4",
-  "primary_bank_identification_number": "primary_bank_identification_number8",
-  "secondary_bank_identification_number": "secondary_bank_identification_number0",
-  "debit_mandate_reference_id": "debit_mandate_reference_id4",
-  "reference_id": "reference_id2",
-  "location_id": "location_id4",
-  "status": "DISABLED",
+  "account_type": "OTHER",
+  "holder_name": "holder_name8",
+  "primary_bank_identification_number": "primary_bank_identification_number0",
+  "secondary_bank_identification_number": "secondary_bank_identification_number2",
+  "debit_mandate_reference_id": "debit_mandate_reference_id2",
+  "reference_id": "reference_id0",
+  "location_id": "location_id6",
+  "status": "VERIFICATION_IN_PROGRESS",
   "creditable": false,
   "debitable": false,
-  "fingerprint": "fingerprint6"
+  "fingerprint": "fingerprint8"
 }
 ```
 

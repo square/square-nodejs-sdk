@@ -23,9 +23,9 @@ See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-
 ```json
 {
   "category": "API_ERROR",
-  "code": "VERIFY_AVS_FAILURE",
-  "detail": "detail6",
-  "field": "field6"
+  "code": "CARD_NOT_SUPPORTED",
+  "detail": "detail0",
+  "field": "field8"
 }
 ```
 

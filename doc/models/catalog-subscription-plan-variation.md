@@ -20,32 +20,31 @@ For more information, see [Subscription Plans and Variations](https://developer.
 
 ```json
 {
-  "name": "name0",
+  "name": "name2",
   "phases": [
     {
-      "uid": "uid5",
-      "cadence": "EVERY_FOUR_MONTHS",
-      "periods": 241,
+      "uid": "uid0",
+      "cadence": "QUARTERLY",
+      "periods": 112,
       "recurring_price_money": {
-        "amount": 193,
-        "currency": "CHE"
+        "amount": 66,
+        "currency": "TMT"
       },
-      "ordinal": 207,
+      "ordinal": 78,
       "pricing": {
-        "type": "RELATIVE",
+        "type": "STATIC",
         "discount_ids": [
-          "discount_ids0",
-          "discount_ids1",
-          "discount_ids2"
+          "discount_ids5",
+          "discount_ids6"
         ],
         "price_money": {
-          "amount": 251,
-          "currency": "NZD"
+          "amount": 202,
+          "currency": "CNY"
         }
       }
     }
   ],
-  "subscription_plan_id": "subscription_plan_id2"
+  "subscription_plan_id": "subscription_plan_id0"
 }
 ```
 

@@ -19,9 +19,9 @@ A request for a filtered set of `BreakType` objects.
 
 ```json
 {
-  "location_id": "location_id4",
-  "limit": 172,
-  "cursor": "cursor6"
+  "location_id": "location_id6",
+  "limit": 244,
+  "cursor": "cursor4"
 }
 ```
 

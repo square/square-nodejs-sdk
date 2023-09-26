@@ -21,7 +21,7 @@ To complete payments manually, set `autocomplete` to `false`.
 
 ```json
 {
-  "version_token": "version_token4"
+  "version_token": "version_token8"
 }
 ```
 

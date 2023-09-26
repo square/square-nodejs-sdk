@@ -72,24 +72,24 @@ a request to the `CreateCheckout` endpoint.
           },
           "name": "Printed T Shirt",
           "quantity": "2",
-          "uid": "uid9",
+          "uid": "uid8",
           "quantity_unit": {
             "measurement_unit": {
               "custom_unit": {
-                "name": "name7",
-                "abbreviation": "abbreviation9"
+                "name": "name2",
+                "abbreviation": "abbreviation4"
               },
-              "area_unit": "IMPERIAL_SQUARE_YARD",
-              "length_unit": "METRIC_CENTIMETER",
-              "volume_unit": "GENERIC_PINT",
-              "weight_unit": "METRIC_KILOGRAM"
+              "area_unit": "IMPERIAL_ACRE",
+              "length_unit": "IMPERIAL_INCH",
+              "volume_unit": "METRIC_LITER",
+              "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
             },
-            "precision": 199,
-            "catalog_object_id": "catalog_object_id9",
-            "catalog_version": 133
+            "precision": 54,
+            "catalog_object_id": "catalog_object_id0",
+            "catalog_version": 12
           },
-          "note": "note5",
-          "catalog_object_id": "catalog_object_id7"
+          "note": "note4",
+          "catalog_object_id": "catalog_object_id2"
         },
         {
           "base_price_money": {
@@ -98,24 +98,24 @@ a request to the `CreateCheckout` endpoint.
           },
           "name": "Slim Jeans",
           "quantity": "1",
-          "uid": "uid0",
+          "uid": "uid8",
           "quantity_unit": {
             "measurement_unit": {
               "custom_unit": {
-                "name": "name8",
-                "abbreviation": "abbreviation0"
+                "name": "name2",
+                "abbreviation": "abbreviation4"
               },
-              "area_unit": "IMPERIAL_SQUARE_MILE",
-              "length_unit": "METRIC_MILLIMETER",
-              "volume_unit": "GENERIC_QUART",
-              "weight_unit": "METRIC_GRAM"
+              "area_unit": "IMPERIAL_ACRE",
+              "length_unit": "IMPERIAL_INCH",
+              "volume_unit": "METRIC_LITER",
+              "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
             },
-            "precision": 200,
+            "precision": 54,
             "catalog_object_id": "catalog_object_id0",
-            "catalog_version": 134
+            "catalog_version": 12
           },
-          "note": "note6",
-          "catalog_object_id": "catalog_object_id6"
+          "note": "note4",
+          "catalog_object_id": "catalog_object_id2"
         },
         {
           "base_price_money": {
@@ -124,24 +124,24 @@ a request to the `CreateCheckout` endpoint.
           },
           "name": "Woven Sweater",
           "quantity": "3",
-          "uid": "uid1",
+          "uid": "uid8",
           "quantity_unit": {
             "measurement_unit": {
               "custom_unit": {
-                "name": "name9",
-                "abbreviation": "abbreviation1"
+                "name": "name2",
+                "abbreviation": "abbreviation4"
               },
-              "area_unit": "METRIC_SQUARE_CENTIMETER",
-              "length_unit": "IMPERIAL_MILE",
-              "volume_unit": "GENERIC_GALLON",
-              "weight_unit": "METRIC_MILLIGRAM"
+              "area_unit": "IMPERIAL_ACRE",
+              "length_unit": "IMPERIAL_INCH",
+              "volume_unit": "METRIC_LITER",
+              "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
             },
-            "precision": 201,
-            "catalog_object_id": "catalog_object_id1",
-            "catalog_version": 135
+            "precision": 54,
+            "catalog_object_id": "catalog_object_id0",
+            "catalog_version": 12
           },
-          "note": "note7",
-          "catalog_object_id": "catalog_object_id5"
+          "note": "note4",
+          "catalog_object_id": "catalog_object_id2"
         }
       ],
       "location_id": "location_id",
@@ -154,7 +154,7 @@ a request to the `CreateCheckout` endpoint.
           "uid": "38ze1696-z1e3-5628-af6d-f1e04d947fg3"
         }
       ],
-      "id": "id0",
+      "id": "id6",
       "source": {
         "name": "name4"
       }

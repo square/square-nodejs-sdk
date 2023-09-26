@@ -19,12 +19,12 @@ V1PaymentDiscount
 
 ```json
 {
-  "name": "name0",
+  "name": "name4",
   "applied_money": {
     "amount": 196,
     "currency_code": "IQD"
   },
-  "discount_id": "discount_id8"
+  "discount_id": "discount_id2"
 }
 ```
 

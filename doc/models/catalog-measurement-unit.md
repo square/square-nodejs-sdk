@@ -29,7 +29,7 @@ specifies the precision for decimal quantities.
     "volume_unit": "METRIC_LITER",
     "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
   },
-  "precision": 196
+  "precision": 78
 }
 ```
 

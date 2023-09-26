@@ -25,11 +25,11 @@ inventory adjustments.
 
 ```json
 {
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_object_type": "catalog_object_type6",
-  "state": "RESERVED_FOR_SALE",
-  "location_id": "location_id4",
-  "quantity": "quantity6"
+  "catalog_object_id": "catalog_object_id4",
+  "catalog_object_type": "catalog_object_type4",
+  "state": "SOLD",
+  "location_id": "location_id6",
+  "quantity": "quantity8"
 }
 ```
 

@@ -27,36 +27,36 @@
         "reference_id": "1536bfbf-efed-48bf-b17d-a197141b2a92",
         "state": "IN_STOCK",
         "team_member_id": "LRK57NSQ5X7PUD05",
-        "id": "id6",
-        "catalog_object_type": "catalog_object_type0"
+        "id": "id2",
+        "catalog_object_type": "catalog_object_type6"
       },
       "type": "PHYSICAL_COUNT",
       "adjustment": {
-        "id": "id0",
-        "reference_id": "reference_id8",
-        "from_state": "SOLD",
-        "to_state": "COMPOSED",
-        "location_id": "location_id4"
+        "id": "id4",
+        "reference_id": "reference_id2",
+        "from_state": "IN_TRANSIT_TO",
+        "to_state": "SOLD",
+        "location_id": "location_id8"
       },
       "transfer": {
-        "id": "id4",
-        "reference_id": "reference_id8",
-        "state": "SUPPORTED_BY_NEWER_VERSION",
-        "from_location_id": "from_location_id6",
-        "to_location_id": "to_location_id4"
+        "id": "id8",
+        "reference_id": "reference_id6",
+        "state": "RESERVED_FOR_SALE",
+        "from_location_id": "from_location_id0",
+        "to_location_id": "to_location_id0"
       },
       "measurement_unit": {
         "measurement_unit": {
           "custom_unit": {
-            "name": "name6",
-            "abbreviation": "abbreviation8"
+            "name": "name2",
+            "abbreviation": "abbreviation4"
           },
-          "area_unit": "IMPERIAL_SQUARE_FOOT",
-          "length_unit": "METRIC_METER",
-          "volume_unit": "IMPERIAL_CUBIC_INCH",
+          "area_unit": "IMPERIAL_ACRE",
+          "length_unit": "IMPERIAL_INCH",
+          "volume_unit": "METRIC_LITER",
           "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
         },
-        "precision": 118
+        "precision": 184
       }
     }
   ],

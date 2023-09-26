@@ -8,7 +8,7 @@ import {
   Schema,
   string,
 } from '../schema';
-import { Device, deviceSchema } from './device';
+import { V1Device, v1DeviceSchema } from './v1Device';
 import { V1Money, v1MoneySchema } from './v1Money';
 import {
   V1PaymentItemization,
@@ -50,7 +50,7 @@ export interface V1Payment {
   createdAt?: string;
   /** The unique identifier of the Square account that took the payment. */
   creatorId?: string | null;
-  device?: Device;
+  device?: V1Device;
   /** The URL of the payment's detail page in the merchant dashboard. The merchant must be signed in to the merchant dashboard to view this page. */
   paymentUrl?: string | null;
   /**
@@ -99,7 +99,7 @@ export const v1PaymentSchema: Schema<V1Payment> = object({
   merchantId: ['merchant_id', optional(nullable(string()))],
   createdAt: ['created_at', optional(string())],
   creatorId: ['creator_id', optional(nullable(string()))],
-  device: ['device', optional(lazy(() => deviceSchema))],
+  device: ['device', optional(lazy(() => v1DeviceSchema))],
   paymentUrl: ['payment_url', optional(nullable(string()))],
   receiptUrl: ['receipt_url', optional(nullable(string()))],
   inclusiveTaxMoney: [

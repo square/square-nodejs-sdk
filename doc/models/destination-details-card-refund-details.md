@@ -23,7 +23,7 @@
     "exp_month": 228,
     "exp_year": 68
   },
-  "entry_method": "entry_method6"
+  "entry_method": "entry_method4"
 }
 ```
 

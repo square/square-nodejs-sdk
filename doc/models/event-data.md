@@ -18,8 +18,8 @@
 
 ```json
 {
-  "type": "type0",
-  "id": "id0",
+  "type": "type2",
+  "id": "id8",
   "deleted": false,
   "object": {
     "key1": "val1",

@@ -3,6 +3,8 @@
 
 The status of the Employee being retrieved.
 
+DEPRECATED at version 2020-08-26. Replaced by [TeamMemberStatus](entity:TeamMemberStatus).
+
 ## Enumeration
 
 `EmployeeStatus`

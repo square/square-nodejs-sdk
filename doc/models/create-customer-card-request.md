@@ -33,7 +33,7 @@ to the `CreateCustomerCard` endpoint.
   },
   "card_nonce": "YOUR_CARD_NONCE",
   "cardholder_name": "Amelia Earhart",
-  "verification_token": "verification_token6"
+  "verification_token": "verification_token0"
 }
 ```
 

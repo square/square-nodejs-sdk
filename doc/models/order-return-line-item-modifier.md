@@ -24,11 +24,11 @@ A line item modifier being returned.
 
 ```json
 {
-  "uid": "uid0",
-  "source_modifier_uid": "source_modifier_uid6",
-  "catalog_object_id": "catalog_object_id6",
-  "catalog_version": 126,
-  "name": "name0"
+  "uid": "uid4",
+  "source_modifier_uid": "source_modifier_uid8",
+  "catalog_object_id": "catalog_object_id8",
+  "catalog_version": 46,
+  "name": "name4"
 }
 ```
 

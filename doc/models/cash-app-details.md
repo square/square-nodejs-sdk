@@ -19,9 +19,9 @@ Additional details about `WALLET` type payments with the `brand` of `CASH_APP`.
 
 ```json
 {
-  "buyer_full_name": "buyer_full_name4",
-  "buyer_country_code": "buyer_country_code4",
-  "buyer_cashtag": "buyer_cashtag6"
+  "buyer_full_name": "buyer_full_name0",
+  "buyer_country_code": "buyer_country_code0",
+  "buyer_cashtag": "buyer_cashtag2"
 }
 ```
 

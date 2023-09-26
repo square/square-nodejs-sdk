@@ -22,9 +22,9 @@
   "location_id": "location_id4",
   "product_type": "TERMINAL_API",
   "status": [
-    "PAIRED",
-    "EXPIRED",
-    "UNKNOWN"
+    "UNKNOWN",
+    "UNPAIRED",
+    "PAIRED"
   ]
 }
 ```

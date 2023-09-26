@@ -17,9 +17,9 @@
 
 ```json
 {
-  "payment_id": "payment_id0",
-  "refund_id": "refund_id4",
-  "location_id": "location_id4"
+  "payment_id": "payment_id4",
+  "refund_id": "refund_id8",
+  "location_id": "location_id8"
 }
 ```
 

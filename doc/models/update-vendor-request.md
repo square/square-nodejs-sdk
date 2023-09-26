@@ -27,11 +27,11 @@ Represents an input to a call to [UpdateVendor](../../doc/api/vendors.md#update-
     "created_at": "created_at4",
     "updated_at": "updated_at2",
     "address": {
-      "address_line_1": "address_line_12",
-      "address_line_2": "address_line_22",
-      "address_line_3": "address_line_38",
-      "locality": "locality2",
-      "sublocality": "sublocality2"
+      "address_line_1": "address_line_16",
+      "address_line_2": "address_line_26",
+      "address_line_3": "address_line_32",
+      "locality": "locality6",
+      "sublocality": "sublocality6"
     }
   }
 }

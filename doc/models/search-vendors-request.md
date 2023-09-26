@@ -49,7 +49,7 @@ Represents an input into a call to [SearchVendors](../../doc/api/vendors.md#sear
     "field": "NAME",
     "order": "DESC"
   },
-  "cursor": "cursor6"
+  "cursor": "cursor0"
 }
 ```
 

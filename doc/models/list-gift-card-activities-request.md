@@ -25,11 +25,11 @@ subset of activites.
 
 ```json
 {
-  "gift_card_id": "gift_card_id8",
-  "type": "type0",
-  "location_id": "location_id4",
-  "begin_time": "begin_time2",
-  "end_time": "end_time2"
+  "gift_card_id": "gift_card_id6",
+  "type": "type8",
+  "location_id": "location_id2",
+  "begin_time": "begin_time6",
+  "end_time": "end_time0"
 }
 ```
 

@@ -21,82 +21,57 @@ Represents a response from listing order custom attributes.
 {
   "custom_attributes": [
     {
-      "key": "key2",
+      "key": "key8",
       "value": {
         "key1": "val1",
         "key2": "val2"
       },
-      "version": 228,
-      "visibility": "VISIBILITY_READ_WRITE_VALUES",
+      "version": 180,
+      "visibility": "VISIBILITY_HIDDEN",
       "definition": {
-        "key": "key2",
+        "key": "key0",
         "schema": {
           "key1": "val1",
           "key2": "val2"
         },
-        "name": "name2",
-        "description": "description2",
+        "name": "name0",
+        "description": "description0",
         "visibility": "VISIBILITY_HIDDEN"
       }
     },
     {
-      "key": "key3",
+      "key": "key8",
       "value": {
         "key1": "val1",
         "key2": "val2"
       },
-      "version": 229,
-      "visibility": "VISIBILITY_READ_ONLY",
-      "definition": {
-        "key": "key3",
-        "schema": {
-          "key1": "val1",
-          "key2": "val2"
-        },
-        "name": "name3",
-        "description": "description3",
-        "visibility": "VISIBILITY_READ_ONLY"
-      }
-    },
-    {
-      "key": "key4",
-      "value": {
-        "key1": "val1",
-        "key2": "val2"
-      },
-      "version": 230,
+      "version": 180,
       "visibility": "VISIBILITY_HIDDEN",
       "definition": {
-        "key": "key4",
+        "key": "key0",
         "schema": {
           "key1": "val1",
           "key2": "val2"
         },
-        "name": "name4",
-        "description": "description4",
-        "visibility": "VISIBILITY_READ_WRITE_VALUES"
+        "name": "name0",
+        "description": "description0",
+        "visibility": "VISIBILITY_HIDDEN"
       }
     }
   ],
-  "cursor": "cursor6",
+  "cursor": "cursor4",
   "errors": [
     {
-      "category": "REFUND_ERROR",
-      "code": "MERCHANT_SUBSCRIPTION_NOT_FOUND",
-      "detail": "detail1",
-      "field": "field9"
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "BAD_REQUEST",
-      "detail": "detail2",
-      "field": "field0"
-    },
-    {
-      "category": "EXTERNAL_VENDOR_ERROR",
-      "code": "MISSING_REQUIRED_PARAMETER",
-      "detail": "detail3",
-      "field": "field1"
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

@@ -25,38 +25,40 @@ Defines the fields that are included in requests to the
     "location_id": "location_id0",
     "reference_id": "reference_id4",
     "source": {
-      "name": "name2"
+      "name": "name4"
     },
     "customer_id": "customer_id4",
     "line_items": [
       {
-        "uid": "uid1",
-        "name": "name1",
-        "quantity": "quantity7",
+        "uid": "uid8",
+        "name": "name8",
+        "quantity": "quantity4",
         "quantity_unit": {
           "measurement_unit": {
             "custom_unit": {
-              "name": "name9",
-              "abbreviation": "abbreviation1"
+              "name": "name2",
+              "abbreviation": "abbreviation4"
             },
-            "area_unit": "METRIC_SQUARE_CENTIMETER",
-            "length_unit": "IMPERIAL_MILE",
-            "volume_unit": "GENERIC_FLUID_OUNCE",
-            "weight_unit": "METRIC_KILOGRAM"
+            "area_unit": "IMPERIAL_ACRE",
+            "length_unit": "IMPERIAL_INCH",
+            "volume_unit": "METRIC_LITER",
+            "weight_unit": "IMPERIAL_WEIGHT_OUNCE"
           },
-          "precision": 201,
-          "catalog_object_id": "catalog_object_id1",
-          "catalog_version": 135
+          "precision": 54,
+          "catalog_object_id": "catalog_object_id0",
+          "catalog_version": 12
         },
-        "note": "note3",
-        "catalog_object_id": "catalog_object_id5"
+        "note": "note4",
+        "catalog_object_id": "catalog_object_id2"
       }
     ]
   },
   "fields_to_clear": [
-    "fields_to_clear1"
+    "fields_to_clear7",
+    "fields_to_clear8",
+    "fields_to_clear9"
   ],
-  "idempotency_key": "idempotency_key6"
+  "idempotency_key": "idempotency_key2"
 }
 ```
 

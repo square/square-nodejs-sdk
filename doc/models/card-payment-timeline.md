@@ -19,9 +19,9 @@ The timeline for card payments.
 
 ```json
 {
-  "authorized_at": "authorized_at4",
-  "captured_at": "captured_at4",
-  "voided_at": "voided_at8"
+  "authorized_at": "authorized_at2",
+  "captured_at": "captured_at2",
+  "voided_at": "voided_at6"
 }
 ```
 

@@ -468,7 +468,7 @@ export class LoyaltyApi extends BaseApi {
       promotionId: [promotionId, string()],
       programId: [programId, string()],
     });
-    req.appendTemplatePath`/v2/loyalty/programs/${mapped.promotionId}/promotions/${mapped.programId}`;
+    req.appendTemplatePath`/v2/loyalty/programs/${mapped.programId}/promotions/${mapped.promotionId}`;
     return req.callAsJson(
       retrieveLoyaltyPromotionResponseSchema,
       requestOptions
@@ -500,7 +500,7 @@ export class LoyaltyApi extends BaseApi {
       promotionId: [promotionId, string()],
       programId: [programId, string()],
     });
-    req.appendTemplatePath`/v2/loyalty/programs/${mapped.promotionId}/promotions/${mapped.programId}/cancel`;
+    req.appendTemplatePath`/v2/loyalty/programs/${mapped.programId}/promotions/${mapped.promotionId}/cancel`;
     return req.callAsJson(cancelLoyaltyPromotionResponseSchema, requestOptions);
   }
 

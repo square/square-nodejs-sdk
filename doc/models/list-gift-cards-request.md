@@ -23,9 +23,9 @@ gift cards.
 ```json
 {
   "type": "type0",
-  "state": "state4",
-  "limit": 172,
-  "cursor": "cursor6",
+  "state": "state6",
+  "limit": 162,
+  "cursor": "cursor4",
   "customer_id": "customer_id8"
 }
 ```

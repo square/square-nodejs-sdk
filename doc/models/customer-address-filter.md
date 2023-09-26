@@ -23,7 +23,7 @@ searching by an `Address`-type custom attribute.
     "exact": "exact2",
     "fuzzy": "fuzzy2"
   },
-  "country": "FO"
+  "country": "ZM"
 }
 ```
 

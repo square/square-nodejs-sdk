@@ -19,10 +19,10 @@
 
 ```json
 {
-  "title": "title4",
-  "body": "body6",
-  "agree_button_text": "agree_button_text4",
-  "disagree_button_text": "disagree_button_text4",
+  "title": "title0",
+  "body": "body0",
+  "agree_button_text": "agree_button_text8",
+  "disagree_button_text": "disagree_button_text8",
   "decision": {
     "has_agreed": false
   }

@@ -52,11 +52,11 @@ Response payload for bulk retrieval of bookings.
         }
       ],
       "booking": {
-        "id": "id8",
-        "version": 86,
+        "id": "id4",
+        "version": 156,
         "status": "CANCELLED_BY_SELLER",
-        "created_at": "created_at6",
-        "updated_at": "updated_at6"
+        "created_at": "created_at2",
+        "updated_at": "updated_at0"
       }
     },
     "tdegug1fqni3wh": {

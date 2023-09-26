@@ -19,8 +19,8 @@ Defines the parameters for a `CreateDisputeEvidenceFile` request.
 
 ```json
 {
-  "idempotency_key": "idempotency_key6",
-  "evidence_type": "RECEIPT",
+  "idempotency_key": "idempotency_key8",
+  "evidence_type": "REBUTTAL_EXPLANATION",
   "content_type": "content_type6"
 }
 ```

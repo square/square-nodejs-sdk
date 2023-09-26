@@ -32,11 +32,11 @@ Represents a bulk create request for `TeamMember` objects.
         "given_name": "Joe",
         "phone_number": "+14159283333",
         "reference_id": "reference_id_1",
-        "id": "id3",
-        "is_owner": true,
-        "status": "INACTIVE"
+        "id": "id6",
+        "is_owner": false,
+        "status": "ACTIVE"
       },
-      "idempotency_key": "idempotency_key3"
+      "idempotency_key": "idempotency_key4"
     },
     "idempotency-key-2": {
       "team_member": {
@@ -48,7 +48,7 @@ Represents a bulk create request for `TeamMember` objects.
         "given_name": "Jane",
         "phone_number": "+14159223334",
         "reference_id": "reference_id_2",
-        "id": "id4",
+        "id": "id6",
         "is_owner": false,
         "status": "ACTIVE"
       },

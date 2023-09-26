@@ -23,11 +23,11 @@ to the customer. You configure a reminder relative to the payment request
 
 ```json
 {
-  "uid": "uid0",
-  "relative_scheduled_days": 0,
-  "message": "message0",
+  "uid": "uid6",
+  "relative_scheduled_days": 198,
+  "message": "message4",
   "status": "SENT",
-  "sent_at": "sent_at0"
+  "sent_at": "sent_at6"
 }
 ```
 
