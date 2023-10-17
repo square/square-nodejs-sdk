@@ -17,4 +17,5 @@ Supported types of an event occurred to a subscription.
 | `DEACTIVATE_SUBSCRIPTION` | The subscription was deactivated |
 | `RESUME_SUBSCRIPTION` | The subscription was resumed. |
 | `PAUSE_SUBSCRIPTION` | The subscription was paused. |
+| `BILLING_ANCHOR_DATE_CHANGED` | The billing anchor date was changed. |
 

@@ -3,6 +3,7 @@ import {
   bigint,
   lazy,
   nullable,
+  number,
   object,
   optional,
   Schema,
@@ -106,6 +107,8 @@ export interface Subscription {
    * of `include:["actions"]`.
    */
   actions?: SubscriptionAction[] | null;
+  /** The day of the month on which the subscription will issue invoices and publish orders. */
+  monthlyBillingAnchorDate?: number;
   /** array of phases for this subscription */
   phases?: Phase[];
 }
@@ -134,5 +137,6 @@ export const subscriptionSchema: Schema<Subscription> = object({
     'actions',
     optional(nullable(array(lazy(() => subscriptionActionSchema)))),
   ],
+  monthlyBillingAnchorDate: ['monthly_billing_anchor_date', optional(number())],
   phases: ['phases', optional(array(lazy(() => phaseSchema)))],
 });

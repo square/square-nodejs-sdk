@@ -25,6 +25,7 @@ Defines output parameters in a response from the
       "effective_date": "2023-11-17",
       "id": "99b2439e-63f7-3ad5-95f7-ab2447a80673",
       "type": "PAUSE",
+      "monthly_billing_anchor_date": 186,
       "phases": [
         {
           "uid": "uid0",
@@ -44,8 +45,7 @@ Defines output parameters in a response from the
           "order_template_id": "order_template_id2",
           "plan_phase_uid": "plan_phase_uid6"
         }
-      ],
-      "new_plan_variation_id": "new_plan_variation_id8"
+      ]
     }
   ],
   "subscription": {

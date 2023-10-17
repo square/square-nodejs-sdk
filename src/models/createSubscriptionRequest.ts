@@ -1,4 +1,12 @@
-import { array, lazy, object, optional, Schema, string } from '../schema';
+import {
+  array,
+  lazy,
+  number,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 import { Phase, phaseSchema } from './phase';
 import {
@@ -69,6 +77,8 @@ export interface CreateSubscriptionRequest {
   timezone?: string;
   /** The origination details of the subscription. */
   source?: SubscriptionSource;
+  /** The day-of-the-month to change the billing date to. */
+  monthlyBillingAnchorDate?: number;
   /** array of phases for this subscription */
   phases?: Phase[];
 }
@@ -89,6 +99,10 @@ export const createSubscriptionRequestSchema: Schema<CreateSubscriptionRequest> 
     cardId: ['card_id', optional(string())],
     timezone: ['timezone', optional(string())],
     source: ['source', optional(lazy(() => subscriptionSourceSchema))],
+    monthlyBillingAnchorDate: [
+      'monthly_billing_anchor_date',
+      optional(number()),
+    ],
     phases: ['phases', optional(array(lazy(() => phaseSchema)))],
   }
 );

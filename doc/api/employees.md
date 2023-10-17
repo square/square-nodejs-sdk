@@ -18,8 +18,6 @@ const employeesApi = client.employeesApi;
 
 **This endpoint is deprecated.**
 
-ListEmployees
-
 ```ts
 async listEmployees(
   locationId?: string,
@@ -67,8 +65,6 @@ try {
 # Retrieve Employee
 
 **This endpoint is deprecated.**
-
-RetrieveEmployee
 
 ```ts
 async retrieveEmployee(

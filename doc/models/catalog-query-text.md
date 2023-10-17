@@ -11,7 +11,7 @@ The query filter to return the search result whose searchable attribute values c
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `keywords` | `string[]` | Required | A list of 1, 2, or 3 search keywords. Keywords with fewer than 3 characters are ignored. |
+| `keywords` | `string[]` | Required | A list of 1, 2, or 3 search keywords. Keywords with fewer than 3 alphanumeric characters are ignored. |
 
 ## Example (as JSON)
 

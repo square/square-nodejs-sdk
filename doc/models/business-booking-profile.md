@@ -1,6 +1,8 @@
 
 # Business Booking Profile
 
+A seller's business booking profile, including booking policy, appointment settings, etc.
+
 ## Structure
 
 `BusinessBookingProfile`

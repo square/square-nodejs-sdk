@@ -33,7 +33,8 @@ Defines output parameters in a response of the
           "plan_phase_uid": "plan_phase_uid6"
         }
       ],
-      "type": "SWAP_PLAN"
+      "type": "SWAP_PLAN",
+      "monthly_billing_anchor_date": 186
     }
   ],
   "subscription": {

@@ -1,8 +1,24 @@
 import { ApiResponse, RequestOptions } from '../core';
 import {
+  BulkSwapPlanRequest,
+  bulkSwapPlanRequestSchema,
+} from '../models/bulkSwapPlanRequest';
+import {
+  BulkSwapPlanResponse,
+  bulkSwapPlanResponseSchema,
+} from '../models/bulkSwapPlanResponse';
+import {
   CancelSubscriptionResponse,
   cancelSubscriptionResponseSchema,
 } from '../models/cancelSubscriptionResponse';
+import {
+  ChangeBillingAnchorDateRequest,
+  changeBillingAnchorDateRequestSchema,
+} from '../models/changeBillingAnchorDateRequest';
+import {
+  ChangeBillingAnchorDateResponse,
+  changeBillingAnchorDateResponseSchema,
+} from '../models/changeBillingAnchorDateResponse';
 import {
   CreateSubscriptionRequest,
   createSubscriptionRequestSchema,
@@ -93,6 +109,26 @@ export class SubscriptionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     return req.callAsJson(createSubscriptionResponseSchema, requestOptions);
+  }
+
+  /**
+   * Schedules a plan variation change for all active subscriptions under a given plan
+   * variation. For more information, see [Swap Subscription Plan Variations](https://developer.squareup.
+   * com/docs/subscriptions-api/swap-plan-variations).
+   *
+   * @param body         An object containing the fields to POST for the request.  See
+   *                                                   the corresponding object definition for field details.
+   * @return Response from the API call
+   */
+  async bulkSwapPlan(
+    body: BulkSwapPlanRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<BulkSwapPlanResponse>> {
+    const req = this.createRequest('POST', '/v2/subscriptions/bulk-swap-plan');
+    const mapped = req.prepareArgs({ body: [body, bulkSwapPlanRequestSchema] });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    return req.callAsJson(bulkSwapPlanResponseSchema, requestOptions);
   }
 
   /**
@@ -199,6 +235,37 @@ export class SubscriptionsApi extends BaseApi {
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/actions/${mapped.actionId}`;
     return req.callAsJson(
       deleteSubscriptionActionResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Changes the [billing anchor date](https://developer.squareup.com/docs/subscriptions-api/subscription-
+   * billing#billing-dates)
+   * for a subscription.
+   *
+   * @param subscriptionId  The ID of the subscription to update the billing
+   *                                                                 anchor date.
+   * @param body            An object containing the fields to POST for the
+   *                                                                 request.  See the corresponding object definition
+   *                                                                 for field details.
+   * @return Response from the API call
+   */
+  async changeBillingAnchorDate(
+    subscriptionId: string,
+    body: ChangeBillingAnchorDateRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ChangeBillingAnchorDateResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      subscriptionId: [subscriptionId, string()],
+      body: [body, changeBillingAnchorDateRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/billing-anchor`;
+    return req.callAsJson(
+      changeBillingAnchorDateResponseSchema,
       requestOptions
     );
   }

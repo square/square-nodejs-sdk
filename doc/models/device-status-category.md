@@ -11,4 +11,5 @@
 |  --- |
 | `AVAILABLE` |
 | `NEEDS_ATTENTION` |
+| `OFFLINE` |
 

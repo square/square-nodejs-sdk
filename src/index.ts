@@ -113,6 +113,8 @@ export type { BulkRetrieveTeamMemberBookingProfilesRequest } from './models/bulk
 export type { BulkRetrieveTeamMemberBookingProfilesResponse } from './models/bulkRetrieveTeamMemberBookingProfilesResponse';
 export type { BulkRetrieveVendorsRequest } from './models/bulkRetrieveVendorsRequest';
 export type { BulkRetrieveVendorsResponse } from './models/bulkRetrieveVendorsResponse';
+export type { BulkSwapPlanRequest } from './models/bulkSwapPlanRequest';
+export type { BulkSwapPlanResponse } from './models/bulkSwapPlanResponse';
 export type { BulkUpdateTeamMembersRequest } from './models/bulkUpdateTeamMembersRequest';
 export type { BulkUpdateTeamMembersResponse } from './models/bulkUpdateTeamMembersResponse';
 export type { BulkUpdateVendorsRequest } from './models/bulkUpdateVendorsRequest';
@@ -212,6 +214,8 @@ export type { CatalogSubscriptionPlanVariation } from './models/catalogSubscript
 export type { CatalogTax } from './models/catalogTax';
 export type { CatalogTimePeriod } from './models/catalogTimePeriod';
 export type { CatalogV1Id } from './models/catalogV1Id';
+export type { ChangeBillingAnchorDateRequest } from './models/changeBillingAnchorDateRequest';
+export type { ChangeBillingAnchorDateResponse } from './models/changeBillingAnchorDateResponse';
 export type { ChargeRequest } from './models/chargeRequest';
 export type { ChargeRequestAdditionalRecipient } from './models/chargeRequestAdditionalRecipient';
 export type { ChargeResponse } from './models/chargeResponse';
@@ -487,6 +491,8 @@ export type { ListGiftCardsRequest } from './models/listGiftCardsRequest';
 export type { ListGiftCardsResponse } from './models/listGiftCardsResponse';
 export type { ListInvoicesRequest } from './models/listInvoicesRequest';
 export type { ListInvoicesResponse } from './models/listInvoicesResponse';
+export type { ListLocationBookingProfilesRequest } from './models/listLocationBookingProfilesRequest';
+export type { ListLocationBookingProfilesResponse } from './models/listLocationBookingProfilesResponse';
 export type { ListLocationCustomAttributeDefinitionsRequest } from './models/listLocationCustomAttributeDefinitionsRequest';
 export type { ListLocationCustomAttributeDefinitionsResponse } from './models/listLocationCustomAttributeDefinitionsResponse';
 export type { ListLocationCustomAttributesRequest } from './models/listLocationCustomAttributesRequest';
@@ -533,6 +539,7 @@ export type { ListWebhookSubscriptionsResponse } from './models/listWebhookSubsc
 export type { ListWorkweekConfigsRequest } from './models/listWorkweekConfigsRequest';
 export type { ListWorkweekConfigsResponse } from './models/listWorkweekConfigsResponse';
 export type { Location } from './models/location';
+export type { LocationBookingProfile } from './models/locationBookingProfile';
 export type { LoyaltyAccount } from './models/loyaltyAccount';
 export type { LoyaltyAccountExpiringPointDeadline } from './models/loyaltyAccountExpiringPointDeadline';
 export type { LoyaltyAccountMapping } from './models/loyaltyAccountMapping';
@@ -706,6 +713,7 @@ export type { RetrieveInventoryCountRequest } from './models/retrieveInventoryCo
 export type { RetrieveInventoryCountResponse } from './models/retrieveInventoryCountResponse';
 export type { RetrieveInventoryPhysicalCountResponse } from './models/retrieveInventoryPhysicalCountResponse';
 export type { RetrieveInventoryTransferResponse } from './models/retrieveInventoryTransferResponse';
+export type { RetrieveLocationBookingProfileResponse } from './models/retrieveLocationBookingProfileResponse';
 export type { RetrieveLocationCustomAttributeDefinitionRequest } from './models/retrieveLocationCustomAttributeDefinitionRequest';
 export type { RetrieveLocationCustomAttributeDefinitionResponse } from './models/retrieveLocationCustomAttributeDefinitionResponse';
 export type { RetrieveLocationCustomAttributeRequest } from './models/retrieveLocationCustomAttributeRequest';
