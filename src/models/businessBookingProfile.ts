@@ -12,6 +12,7 @@ import {
   businessAppointmentSettingsSchema,
 } from './businessAppointmentSettings';
 
+/** A seller's business booking profile, including booking policy, appointment settings, etc. */
 export interface BusinessBookingProfile {
   /** The ID of the seller, obtainable using the Merchants API. */
   sellerId?: string | null;

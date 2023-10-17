@@ -11,10 +11,12 @@ const subscriptionsApi = client.subscriptionsApi;
 ## Methods
 
 * [Create Subscription](../../doc/api/subscriptions.md#create-subscription)
+* [Bulk Swap Plan](../../doc/api/subscriptions.md#bulk-swap-plan)
 * [Search Subscriptions](../../doc/api/subscriptions.md#search-subscriptions)
 * [Retrieve Subscription](../../doc/api/subscriptions.md#retrieve-subscription)
 * [Update Subscription](../../doc/api/subscriptions.md#update-subscription)
 * [Delete Subscription Action](../../doc/api/subscriptions.md#delete-subscription-action)
+* [Change Billing Anchor Date](../../doc/api/subscriptions.md#change-billing-anchor-date)
 * [Cancel Subscription](../../doc/api/subscriptions.md#cancel-subscription)
 * [List Subscription Events](../../doc/api/subscriptions.md#list-subscription-events)
 * [Pause Subscription](../../doc/api/subscriptions.md#pause-subscription)
@@ -67,7 +69,7 @@ const body: CreateSubscriptionRequest = {
   },
   phases: [
     {
-      ordinal: 0,
+      ordinal: BigInt(0),
       orderTemplateId: 'U2NaowWxzXwpsZU697x7ZHOAnCNZY',
     }
   ],
@@ -77,6 +79,55 @@ try {
   // @ts-expect-error: unused variables
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await subscriptionsApi.createSubscription(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Bulk Swap Plan
+
+Schedules a plan variation change for all active subscriptions under a given plan
+variation. For more information, see [Swap Subscription Plan Variations](https://developer.squareup.com/docs/subscriptions-api/swap-plan-variations).
+
+```ts
+async bulkSwapPlan(
+  body: BulkSwapPlanRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkSwapPlanResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`BulkSwapPlanRequest`](../../doc/models/bulk-swap-plan-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`BulkSwapPlanResponse`](../../doc/models/bulk-swap-plan-response.md)
+
+## Example Usage
+
+```ts
+const body: BulkSwapPlanRequest = {
+  newPlanVariationId: 'FQ7CDXXWSLUJRPM3GFJSJGZ7',
+  oldPlanVariationId: '6JHXF3B2CW3YKHDV4XEM674H',
+  locationId: 'S8GWD5R9QB376',
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await subscriptionsApi.bulkSwapPlan(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
@@ -301,6 +352,60 @@ try {
   const { result, ...httpResponse } = await subscriptionsApi.deleteSubscriptionAction(
   subscriptionId,
   actionId
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Change Billing Anchor Date
+
+Changes the [billing anchor date](https://developer.squareup.com/docs/subscriptions-api/subscription-billing#billing-dates)
+for a subscription.
+
+```ts
+async changeBillingAnchorDate(
+  subscriptionId: string,
+  body: ChangeBillingAnchorDateRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ChangeBillingAnchorDateResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `string` | Template, Required | The ID of the subscription to update the billing anchor date. |
+| `body` | [`ChangeBillingAnchorDateRequest`](../../doc/models/change-billing-anchor-date-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ChangeBillingAnchorDateResponse`](../../doc/models/change-billing-anchor-date-response.md)
+
+## Example Usage
+
+```ts
+const subscriptionId = 'subscription_id0';
+
+const body: ChangeBillingAnchorDateRequest = {
+  monthlyBillingAnchorDate: 1,
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await subscriptionsApi.changeBillingAnchorDate(
+  subscriptionId,
+  body
 );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
@@ -545,7 +650,7 @@ const body: SwapPlanRequest = {
   newPlanVariationId: 'FQ7CDXXWSLUJRPM3GFJSJGZ7',
   phases: [
     {
-      ordinal: 0,
+      ordinal: BigInt(0),
       orderTemplateId: 'uhhnjH9osVv3shUADwaC0b3hNxQZY',
     }
   ],

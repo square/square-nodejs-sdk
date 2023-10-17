@@ -36,6 +36,10 @@ import {
   listBookingsResponseSchema,
 } from '../models/listBookingsResponse';
 import {
+  ListLocationBookingProfilesResponse,
+  listLocationBookingProfilesResponseSchema,
+} from '../models/listLocationBookingProfilesResponse';
+import {
   ListTeamMemberBookingProfilesResponse,
   listTeamMemberBookingProfilesResponseSchema,
 } from '../models/listTeamMemberBookingProfilesResponse';
@@ -47,6 +51,10 @@ import {
   RetrieveBusinessBookingProfileResponse,
   retrieveBusinessBookingProfileResponseSchema,
 } from '../models/retrieveBusinessBookingProfileResponse';
+import {
+  RetrieveLocationBookingProfileResponse,
+  retrieveLocationBookingProfileResponseSchema,
+} from '../models/retrieveLocationBookingProfileResponse';
 import {
   RetrieveTeamMemberBookingProfileResponse,
   retrieveTeamMemberBookingProfileResponseSchema,
@@ -221,6 +229,54 @@ export class BookingsApi extends BaseApi {
     );
     return req.callAsJson(
       retrieveBusinessBookingProfileResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Lists location booking profiles of a seller.
+   *
+   * @param limit  The maximum number of results to return in a paged response.
+   * @param cursor The pagination cursor from the preceding response to return the next page of the results.
+   *                         Do not set this when retrieving the first page of the results.
+   * @return Response from the API call
+   */
+  async listLocationBookingProfiles(
+    limit?: number,
+    cursor?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListLocationBookingProfilesResponse>> {
+    const req = this.createRequest(
+      'GET',
+      '/v2/bookings/location-booking-profiles'
+    );
+    const mapped = req.prepareArgs({
+      limit: [limit, optional(number())],
+      cursor: [cursor, optional(string())],
+    });
+    req.query('limit', mapped.limit);
+    req.query('cursor', mapped.cursor);
+    return req.callAsJson(
+      listLocationBookingProfilesResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Retrieves a seller's location booking profile.
+   *
+   * @param locationId  The ID of the location to retrieve the booking profile.
+   * @return Response from the API call
+   */
+  async retrieveLocationBookingProfile(
+    locationId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<RetrieveLocationBookingProfileResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ locationId: [locationId, string()] });
+    req.appendTemplatePath`/v2/bookings/location-booking-profiles/${mapped.locationId}`;
+    return req.callAsJson(
+      retrieveLocationBookingProfileResponseSchema,
       requestOptions
     );
   }

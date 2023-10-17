@@ -15,6 +15,8 @@ const bookingsApi = client.bookingsApi;
 * [Search Availability](../../doc/api/bookings.md#search-availability)
 * [Bulk Retrieve Bookings](../../doc/api/bookings.md#bulk-retrieve-bookings)
 * [Retrieve Business Booking Profile](../../doc/api/bookings.md#retrieve-business-booking-profile)
+* [List Location Booking Profiles](../../doc/api/bookings.md#list-location-booking-profiles)
+* [Retrieve Location Booking Profile](../../doc/api/bookings.md#retrieve-location-booking-profile)
 * [List Team Member Booking Profiles](../../doc/api/bookings.md#list-team-member-booking-profiles)
 * [Bulk Retrieve Team Member Booking Profiles](../../doc/api/bookings.md#bulk-retrieve-team-member-booking-profiles)
 * [Retrieve Team Member Booking Profile](../../doc/api/bookings.md#retrieve-team-member-booking-profile)
@@ -273,6 +275,94 @@ try {
   // @ts-expect-error: unused variables
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bookingsApi.retrieveBusinessBookingProfile();
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# List Location Booking Profiles
+
+Lists location booking profiles of a seller.
+
+```ts
+async listLocationBookingProfiles(
+  limit?: number,
+  cursor?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListLocationBookingProfilesResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `limit` | `number \| undefined` | Query, Optional | The maximum number of results to return in a paged response. |
+| `cursor` | `string \| undefined` | Query, Optional | The pagination cursor from the preceding response to return the next page of the results. Do not set this when retrieving the first page of the results. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListLocationBookingProfilesResponse`](../../doc/models/list-location-booking-profiles-response.md)
+
+## Example Usage
+
+```ts
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await bookingsApi.listLocationBookingProfiles();
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Retrieve Location Booking Profile
+
+Retrieves a seller's location booking profile.
+
+```ts
+async retrieveLocationBookingProfile(
+  locationId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveLocationBookingProfileResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `locationId` | `string` | Template, Required | The ID of the location to retrieve the booking profile. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`RetrieveLocationBookingProfileResponse`](../../doc/models/retrieve-location-booking-profile-response.md)
+
+## Example Usage
+
+```ts
+const locationId = 'location_id4';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await bookingsApi.retrieveLocationBookingProfile(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

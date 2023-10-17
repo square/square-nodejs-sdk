@@ -15,7 +15,7 @@
 
 ```json
 {
-  "category": "AVAILABLE"
+  "category": "NEEDS_ATTENTION"
 }
 ```
 

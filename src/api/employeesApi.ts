@@ -12,8 +12,6 @@ import { BaseApi } from './baseApi';
 
 export class EmployeesApi extends BaseApi {
   /**
-   * ListEmployees
-   *
    * @param locationId
    * @param status      Specifies the EmployeeStatus to filter the employee by.
    * @param limit       The number of employees to be returned on each page.
@@ -44,8 +42,6 @@ export class EmployeesApi extends BaseApi {
   }
 
   /**
-   * RetrieveEmployee
-   *
    * @param id UUID for the employee that was requested.
    * @return Response from the API call
    * @deprecated

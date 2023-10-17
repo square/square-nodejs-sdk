@@ -25,6 +25,7 @@ Defines output parameters in a response from the
       "effective_date": "2023-09-01",
       "id": "18ff74f4-3da4-30c5-929f-7d6fca84f115",
       "type": "RESUME",
+      "monthly_billing_anchor_date": 186,
       "phases": [
         {
           "uid": "uid0",
@@ -44,8 +45,7 @@ Defines output parameters in a response from the
           "order_template_id": "order_template_id2",
           "plan_phase_uid": "plan_phase_uid6"
         }
-      ],
-      "new_plan_variation_id": "new_plan_variation_id8"
+      ]
     }
   ],
   "subscription": {

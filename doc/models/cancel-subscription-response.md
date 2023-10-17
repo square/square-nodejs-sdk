@@ -64,8 +64,9 @@ Defines output parameters in a response from the
   "actions": [
     {
       "id": "id8",
-      "type": "CANCEL",
+      "type": "RESUME",
       "effective_date": "effective_date8",
+      "monthly_billing_anchor_date": 186,
       "phases": [
         {
           "uid": "uid0",
@@ -85,13 +86,13 @@ Defines output parameters in a response from the
           "order_template_id": "order_template_id2",
           "plan_phase_uid": "plan_phase_uid6"
         }
-      ],
-      "new_plan_variation_id": "new_plan_variation_id8"
+      ]
     },
     {
       "id": "id8",
-      "type": "CANCEL",
+      "type": "RESUME",
       "effective_date": "effective_date8",
+      "monthly_billing_anchor_date": 186,
       "phases": [
         {
           "uid": "uid0",
@@ -111,13 +112,13 @@ Defines output parameters in a response from the
           "order_template_id": "order_template_id2",
           "plan_phase_uid": "plan_phase_uid6"
         }
-      ],
-      "new_plan_variation_id": "new_plan_variation_id8"
+      ]
     },
     {
       "id": "id8",
-      "type": "CANCEL",
+      "type": "RESUME",
       "effective_date": "effective_date8",
+      "monthly_billing_anchor_date": 186,
       "phases": [
         {
           "uid": "uid0",
@@ -137,8 +138,7 @@ Defines output parameters in a response from the
           "order_template_id": "order_template_id2",
           "plan_phase_uid": "plan_phase_uid6"
         }
-      ],
-      "new_plan_variation_id": "new_plan_variation_id8"
+      ]
     }
   ]
 }

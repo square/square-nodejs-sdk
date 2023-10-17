@@ -23,6 +23,7 @@ Defines input parameters in a request to the
 | `cardId` | `string \| undefined` | Optional | The ID of the [subscriber's](entity:Customer) [card](entity:Card) to charge.<br>If it is not specified, the subscriber receives an invoice via email with a link to pay for their subscription. |
 | `timezone` | `string \| undefined` | Optional | The timezone that is used in date calculations for the subscription. If unset, defaults to<br>the location timezone. If a timezone is not configured for the location, defaults to "America/New_York".<br>Format: the IANA Timezone Database identifier for the location timezone. For<br>a list of time zones, see [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). |
 | `source` | [`SubscriptionSource \| undefined`](../../doc/models/subscription-source.md) | Optional | The origination details of the subscription. |
+| `monthlyBillingAnchorDate` | `number \| undefined` | Optional | The day-of-the-month to change the billing date to.<br>**Constraints**: `>= 1`, `<= 31` |
 | `phases` | [`Phase[] \| undefined`](../../doc/models/phase.md) | Optional | array of phases for this subscription |
 
 ## Example (as JSON)
