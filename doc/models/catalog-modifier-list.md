@@ -26,49 +26,6 @@ the modifier list are allowed.
 
 ```json
 {
-  "id": "#MilkType",
-  "modifier_list_data": {
-    "allow_quantities": false,
-    "modifiers": [
-      {
-        "modifier_data": {
-          "name": "Whole Milk",
-          "price_money": {
-            "amount": 0,
-            "currency": "USD"
-          }
-        },
-        "present_at_all_locations": true,
-        "type": "MODIFIER"
-      },
-      {
-        "modifier_data": {
-          "name": "Almond Milk",
-          "price_money": {
-            "amount": 250,
-            "currency": "USD"
-          }
-        },
-        "present_at_all_locations": true,
-        "type": "MODIFIER"
-      },
-      {
-        "modifier_data": {
-          "name": "Soy Milk",
-          "price_money": {
-            "amount": 250,
-            "currency": "USD"
-          }
-        },
-        "present_at_all_locations": true,
-        "type": "MODIFIER"
-      }
-    ],
-    "name": "Milk Type",
-    "selection_type": "SINGLE"
-  },
-  "present_at_all_locations": true,
-  "type": "MODIFIER_LIST",
   "name": "name4",
   "ordinal": 226,
   "selection_type": "SINGLE",

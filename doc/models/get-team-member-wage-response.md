@@ -28,6 +28,7 @@ the request resulted in errors.
     "id": "pXS3qCv7BERPnEGedM4S8mhm",
     "job_id": "jxJNN6eCJsLrhg5UFJrDWDGE",
     "team_member_id": "33fJchumvVdJwxV0H6L9",
+    "tip_eligible": false,
     "title": "Manager"
   },
   "errors": [

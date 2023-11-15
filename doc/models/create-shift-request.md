@@ -30,6 +30,10 @@ Represents a request to create a `Shift`.
         "start_at": "2019-01-25T06:11:00-05:00"
       }
     ],
+    "declared_cash_tip_money": {
+      "amount": 500,
+      "currency": "USD"
+    },
     "end_at": "2019-01-25T13:11:00-05:00",
     "location_id": "PAA1RJZZKXBFG",
     "start_at": "2019-01-25T03:11:00-05:00",
@@ -39,7 +43,9 @@ Represents a request to create a `Shift`.
         "amount": 1100,
         "currency": "USD"
       },
-      "title": "Barista"
+      "tip_eligible": true,
+      "title": "Barista",
+      "job_id": "job_id0"
     },
     "id": "id4",
     "employee_id": "employee_id4",

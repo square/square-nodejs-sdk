@@ -55,19 +55,6 @@ For a more detailed discussion of the Catalog data model, please see the
 {
   "type": "TAX",
   "id": "id4",
-  "item_data": {
-    "object": {
-      "id": "#Cocoa",
-      "item_data": {
-        "abbreviation": "Ch",
-        "description": "Hot chocolate",
-        "name": "Cocoa",
-        "visibility": "PRIVATE"
-      },
-      "present_at_all_locations": true,
-      "type": "ITEM"
-    }
-  },
   "category_data": {
     "object": {
       "category_data": {
@@ -106,51 +93,6 @@ For a more detailed discussion of the Catalog data model, please see the
       "present_at_all_locations": true,
       "type": "DISCOUNT"
     }
-  },
-  "modifier_list_data": {
-    "id": "#MilkType",
-    "modifier_list_data": {
-      "allow_quantities": false,
-      "modifiers": [
-        {
-          "modifier_data": {
-            "name": "Whole Milk",
-            "price_money": {
-              "amount": 0,
-              "currency": "USD"
-            }
-          },
-          "present_at_all_locations": true,
-          "type": "MODIFIER"
-        },
-        {
-          "modifier_data": {
-            "name": "Almond Milk",
-            "price_money": {
-              "amount": 250,
-              "currency": "USD"
-            }
-          },
-          "present_at_all_locations": true,
-          "type": "MODIFIER"
-        },
-        {
-          "modifier_data": {
-            "name": "Soy Milk",
-            "price_money": {
-              "amount": 250,
-              "currency": "USD"
-            }
-          },
-          "present_at_all_locations": true,
-          "type": "MODIFIER"
-        }
-      ],
-      "name": "Milk Type",
-      "selection_type": "SINGLE"
-    },
-    "present_at_all_locations": true,
-    "type": "MODIFIER_LIST"
   },
   "modifier_data": {
     "object": {

@@ -29,6 +29,10 @@ A request to update a `Shift` object.
         "start_at": "2019-01-25T06:11:00-05:00"
       }
     ],
+    "declared_cash_tip_money": {
+      "amount": 500,
+      "currency": "USD"
+    },
     "end_at": "2019-01-25T13:11:00-05:00",
     "location_id": "PAA1RJZZKXBFG",
     "start_at": "2019-01-25T03:11:00-05:00",
@@ -39,7 +43,9 @@ A request to update a `Shift` object.
         "amount": 1500,
         "currency": "USD"
       },
-      "title": "Bartender"
+      "tip_eligible": true,
+      "title": "Bartender",
+      "job_id": "job_id0"
     },
     "id": "id4",
     "employee_id": "employee_id4",

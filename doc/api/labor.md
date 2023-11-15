@@ -427,8 +427,8 @@ async createShift(
 ```ts
 const body: CreateShiftRequest = {
   shift: {
-    startAt: '2019-01-25T03:11:00-05:00',
     locationId: 'PAA1RJZZKXBFG',
+    startAt: '2019-01-25T03:11:00-05:00',
     endAt: '2019-01-25T13:11:00-05:00',
     wage: {
       title: 'Barista',
@@ -436,6 +436,7 @@ const body: CreateShiftRequest = {
         amount: BigInt(1100),
         currency: 'USD',
       },
+      tipEligible: true,
     },
     breaks: [
       {
@@ -448,6 +449,10 @@ const body: CreateShiftRequest = {
       }
     ],
     teamMemberId: 'ormj0jJJZ5OZIzxrZYJI',
+    declaredCashTipMoney: {
+      amount: BigInt(500),
+      currency: 'USD',
+    },
   },
   idempotencyKey: 'HIDSNG5KS478L',
 };
@@ -667,8 +672,8 @@ const id = 'id0';
 
 const body: UpdateShiftRequest = {
   shift: {
-    startAt: '2019-01-25T03:11:00-05:00',
     locationId: 'PAA1RJZZKXBFG',
+    startAt: '2019-01-25T03:11:00-05:00',
     endAt: '2019-01-25T13:11:00-05:00',
     wage: {
       title: 'Bartender',
@@ -676,6 +681,7 @@ const body: UpdateShiftRequest = {
         amount: BigInt(1500),
         currency: 'USD',
       },
+      tipEligible: true,
     },
     breaks: [
       {
@@ -690,6 +696,10 @@ const body: UpdateShiftRequest = {
     ],
     version: 1,
     teamMemberId: 'ormj0jJJZ5OZIzxrZYJI',
+    declaredCashTipMoney: {
+      amount: BigInt(500),
+      currency: 'USD',
+    },
   },
 };
 

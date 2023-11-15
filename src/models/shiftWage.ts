@@ -1,4 +1,12 @@
-import { lazy, nullable, object, optional, Schema, string } from '../schema';
+import {
+  boolean,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /** The hourly wage rate used to compensate an employee for this shift. */
@@ -19,10 +27,13 @@ export interface ShiftWage {
    * labor-reporting UIs might group shifts together by id. This cannot be used to retrieve the job.
    */
   jobId?: string;
+  /** Whether team members are eligible for tips when working this job. */
+  tipEligible?: boolean | null;
 }
 
 export const shiftWageSchema: Schema<ShiftWage> = object({
   title: ['title', optional(nullable(string()))],
   hourlyRate: ['hourly_rate', optional(lazy(() => moneySchema))],
   jobId: ['job_id', optional(string())],
+  tipEligible: ['tip_eligible', optional(nullable(boolean()))],
 });

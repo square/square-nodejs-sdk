@@ -1,4 +1,12 @@
-import { lazy, nullable, object, optional, Schema, string } from '../schema';
+import {
+  boolean,
+  lazy,
+  nullable,
+  object,
+  optional,
+  Schema,
+  string,
+} from '../schema';
 import { Money, moneySchema } from './money';
 
 /**
@@ -26,6 +34,8 @@ export interface TeamMemberWage {
    * used to retrieve the job.
    */
   jobId?: string | null;
+  /** Whether team members are eligible for tips when working this job. */
+  tipEligible?: boolean | null;
 }
 
 export const teamMemberWageSchema: Schema<TeamMemberWage> = object({
@@ -34,4 +44,5 @@ export const teamMemberWageSchema: Schema<TeamMemberWage> = object({
   title: ['title', optional(nullable(string()))],
   hourlyRate: ['hourly_rate', optional(lazy(() => moneySchema))],
   jobId: ['job_id', optional(nullable(string()))],
+  tipEligible: ['tip_eligible', optional(nullable(boolean()))],
 });
