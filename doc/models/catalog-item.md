@@ -35,17 +35,6 @@ A [CatalogObject](../../doc/models/catalog-object.md) instance of the `ITEM` typ
 
 ```json
 {
-  "object": {
-    "id": "#Cocoa",
-    "item_data": {
-      "abbreviation": "Ch",
-      "description": "Hot chocolate",
-      "name": "Cocoa",
-      "visibility": "PRIVATE"
-    },
-    "present_at_all_locations": true,
-    "type": "ITEM"
-  },
   "name": "name6",
   "description": "description6",
   "abbreviation": "abbreviation8",

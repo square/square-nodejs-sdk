@@ -9,6 +9,7 @@ import {
   string,
 } from '../schema';
 import { Break, breakSchema } from './break';
+import { Money, moneySchema } from './money';
 import { ShiftWage, shiftWageSchema } from './shiftWage';
 
 /**
@@ -25,7 +26,7 @@ export interface Shift {
    * The ID of the location this shift occurred at. The location should be based on
    * where the employee clocked in.
    */
-  locationId?: string | null;
+  locationId: string;
   /**
    * The read-only convenience value that is calculated from the location based
    * on the `location_id`. Format: the IANA timezone database identifier for the
@@ -61,12 +62,21 @@ export interface Shift {
   updatedAt?: string;
   /** The ID of the team member this shift belongs to. Replaced `employee_id` at version "2020-08-26". */
   teamMemberId?: string | null;
+  /**
+   * Represents an amount of money. `Money` fields can be signed or unsigned.
+   * Fields that do not explicitly define whether they are signed or unsigned are
+   * considered unsigned and can only hold positive amounts. For signed fields, the
+   * sign of the value indicates the purpose of the money transfer. See
+   * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
+   * for more information.
+   */
+  declaredCashTipMoney?: Money;
 }
 
 export const shiftSchema: Schema<Shift> = object({
   id: ['id', optional(string())],
   employeeId: ['employee_id', optional(nullable(string()))],
-  locationId: ['location_id', optional(nullable(string()))],
+  locationId: ['location_id', string()],
   timezone: ['timezone', optional(nullable(string()))],
   startAt: ['start_at', string()],
   endAt: ['end_at', optional(nullable(string()))],
@@ -77,4 +87,8 @@ export const shiftSchema: Schema<Shift> = object({
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
   teamMemberId: ['team_member_id', optional(nullable(string()))],
+  declaredCashTipMoney: [
+    'declared_cash_tip_money',
+    optional(lazy(() => moneySchema)),
+  ],
 });

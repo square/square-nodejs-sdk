@@ -17,6 +17,7 @@ specified by the `title` property of this object.
 | `title` | `string \| null \| undefined` | Optional | The job title that this wage relates to. |
 | `hourlyRate` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 | `jobId` | `string \| null \| undefined` | Optional | An identifier for the job that this wage relates to. This cannot be<br>used to retrieve the job. |
+| `tipEligible` | `boolean \| null \| undefined` | Optional | Whether team members are eligible for tips when working this job. |
 
 ## Example (as JSON)
 

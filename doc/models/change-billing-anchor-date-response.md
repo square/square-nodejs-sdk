@@ -20,33 +20,12 @@ Defines output parameters in a request to the
 
 ```json
 {
-  "errors": [
-    {
-      "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
-      "detail": "detail6",
-      "field": "field4"
-    },
-    {
-      "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
-      "detail": "detail6",
-      "field": "field4"
-    }
-  ],
-  "subscription": {
-    "id": "id4",
-    "location_id": "location_id8",
-    "plan_variation_id": "plan_variation_id8",
-    "customer_id": "customer_id2",
-    "start_date": "start_date8"
-  },
   "actions": [
     {
-      "id": "id8",
-      "type": "RESUME",
-      "effective_date": "effective_date8",
-      "monthly_billing_anchor_date": 186,
+      "effective_date": "2023-11-01",
+      "id": "f0a1dfdc-675b-3a14-a640-99f7ac1cee83",
+      "monthly_billing_anchor_date": 1,
+      "type": "CHANGE_BILLING_ANCHOR_DATE",
       "phases": [
         {
           "uid": "uid0",
@@ -67,6 +46,47 @@ Defines output parameters in a request to the
           "plan_phase_uid": "plan_phase_uid6"
         }
       ]
+    }
+  ],
+  "subscription": {
+    "created_at": "2023-06-20T21:53:10Z",
+    "customer_id": "CHFGVKYY8RSV93M5KCYTG4PN0G",
+    "id": "9ba40961-995a-4a3d-8c53-048c40cafc13",
+    "location_id": "S8GWD5R9QB376",
+    "monthly_billing_anchor_date": 20,
+    "phases": [
+      {
+        "order_template_id": "E6oBY5WfQ2eN4pkYZwq4ka6n7KeZY",
+        "ordinal": 0,
+        "plan_phase_uid": "C66BKH3ASTDYGJJCEZXQQSS7",
+        "uid": "98d6f53b-40e1-4714-8827-032fd923be25"
+      }
+    ],
+    "plan_variation_id": "FQ7CDXXWSLUJRPM3GFJSJGZ7",
+    "price_override_money": {
+      "amount": 2000,
+      "currency": "USD"
+    },
+    "source": {
+      "name": "My Application"
+    },
+    "status": "ACTIVE",
+    "timezone": "America/Los_Angeles",
+    "version": 3,
+    "start_date": "start_date8"
+  },
+  "errors": [
+    {
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
+    },
+    {
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "detail": "detail6",
+      "field": "field4"
     }
   ]
 }

@@ -30,6 +30,7 @@ a set of `TeamMemberWage` objects.
       "id": "pXS3qCv7BERPnEGedM4S8mhm",
       "job_id": "jxJNN6eCJsLrhg5UFJrDWDGE",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
+      "tip_eligible": false,
       "title": "Manager"
     },
     {
@@ -40,6 +41,7 @@ a set of `TeamMemberWage` objects.
       "id": "rZduCkzYDUVL3ovh1sQgbue6",
       "job_id": "gcbz15vKGnMKmaWJJ152kjim",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
+      "tip_eligible": true,
       "title": "Cook"
     },
     {
@@ -50,6 +52,7 @@ a set of `TeamMemberWage` objects.
       "id": "FxLbs5KpPUHa8wyt5ctjubDX",
       "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
+      "tip_eligible": true,
       "title": "Barista"
     },
     {
@@ -60,6 +63,7 @@ a set of `TeamMemberWage` objects.
       "id": "vD1wCgijMDR3cX5TPnu7VXto",
       "job_id": "N4YKVLzFj3oGtNocqoYHYpW3",
       "team_member_id": "33fJchumvVdJwxV0H6L9",
+      "tip_eligible": true,
       "title": "Cashier"
     }
   ],

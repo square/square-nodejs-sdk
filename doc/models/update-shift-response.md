@@ -33,6 +33,10 @@ the request resulted in errors.
       }
     ],
     "created_at": "2019-02-28T00:39:02Z",
+    "declared_cash_tip_money": {
+      "amount": 500,
+      "currency": "USD"
+    },
     "employee_id": "ormj0jJJZ5OZIzxrZYJI",
     "end_at": "2019-01-25T13:11:00-05:00",
     "id": "K0YH4CV5462JB",
@@ -49,6 +53,7 @@ the request resulted in errors.
         "currency": "USD"
       },
       "job_id": "dZtrPh5GSDGugyXGByesVp51",
+      "tip_eligible": true,
       "title": "Bartender"
     }
   },
