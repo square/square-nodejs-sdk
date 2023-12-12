@@ -191,7 +191,6 @@ const body: BatchUpsertCatalogObjectsRequest = {
           presentAtAllLocations: true,
           itemData: {
             name: 'Tea',
-            categoryId: '#Beverages',
             taxIds: [
               '#SalesTax'
             ],
@@ -211,6 +210,11 @@ const body: BatchUpsertCatalogObjectsRequest = {
                 },
               }
             ],
+            categories: [
+              {
+                id: '#Beverages',
+              }
+            ],
             descriptionHtml: '<p><strong>Hot</strong> Leaf Juice</p>',
           },
         },
@@ -220,7 +224,6 @@ const body: BatchUpsertCatalogObjectsRequest = {
           presentAtAllLocations: true,
           itemData: {
             name: 'Coffee',
-            categoryId: '#Beverages',
             taxIds: [
               '#SalesTax'
             ],
@@ -252,6 +255,11 @@ const body: BatchUpsertCatalogObjectsRequest = {
                     currency: 'USD',
                   },
                 },
+              }
+            ],
+            categories: [
+              {
+                id: '#Beverages',
               }
             ],
             descriptionHtml: '<p>Hot <em>Bean Juice</em></p>',
@@ -664,6 +672,7 @@ async retrieveCatalogObject(
   objectId: string,
   includeRelatedObjects?: boolean,
   catalogVersion?: bigint,
+  includeCategoryPathToRoot?: boolean,
   requestOptions?: RequestOptions
 ): Promise<ApiResponse<RetrieveCatalogObjectResponse>>
 ```
@@ -675,6 +684,7 @@ async retrieveCatalogObject(
 | `objectId` | `string` | Template, Required | The object ID of any type of catalog objects to be retrieved. |
 | `includeRelatedObjects` | `boolean \| undefined` | Query, Optional | If `true`, the response will include additional objects that are related to the<br>requested objects. Related objects are defined as any objects referenced by ID by the results in the `objects` field<br>of the response. These objects are put in the `related_objects` field. Setting this to `true` is<br>helpful when the objects are needed for immediate display to a user.<br>This process only goes one level deep. Objects referenced by the related objects will not be included. For example,<br><br>if the `objects` field of the response contains a CatalogItem, its associated<br>CatalogCategory objects, CatalogTax objects, CatalogImage objects and<br>CatalogModifierLists will be returned in the `related_objects` field of the<br>response. If the `objects` field of the response contains a CatalogItemVariation,<br>its parent CatalogItem will be returned in the `related_objects` field of<br>the response.<br><br>Default value: `false`<br>**Default**: `false` |
 | `catalogVersion` | `bigint \| undefined` | Query, Optional | Requests objects as of a specific version of the catalog. This allows you to retrieve historical<br>versions of objects. The value to retrieve a specific version of an object can be found<br>in the version field of [CatalogObject](../../doc/models/catalog-object.md)s. If not included, results will<br>be from the current version of the catalog. |
+| `includeCategoryPathToRoot` | `boolean \| undefined` | Query, Optional | Specifies whether or not to include the `path_to_root` list for each returned category instance. The `path_to_root` list consists<br>of `CategoryPathToRootNode` objects and specifies the path that starts with the immediate parent category of the returned category<br>and ends with its root category. If the returned category is a top-level category, the `path_to_root` list is empty and is not returned<br>in the response payload.<br>**Default**: `false` |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -688,12 +698,16 @@ const objectId = 'object_id8';
 
 const includeRelatedObjects = false;
 
+const includeCategoryPathToRoot = false;
+
 try {
   // @ts-expect-error: unused variables
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await catalogApi.retrieveCatalogObject(
   objectId,
-  includeRelatedObjects
+  includeRelatedObjects,
+  undefined,
+  includeCategoryPathToRoot
 );
   // Get more response info...
   // const { statusCode, headers } = httpResponse;

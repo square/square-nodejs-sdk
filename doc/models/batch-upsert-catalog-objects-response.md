@@ -21,71 +21,83 @@
   "id_mappings": [
     {
       "client_object_id": "#Tea",
-      "object_id": "ZSDZN34NAXDLC6D5ZQMNSOUM"
+      "object_id": "67GA7XA2FWMRYY2VCONTYZJR"
     },
     {
       "client_object_id": "#Coffee",
-      "object_id": "PJMCEBHHUS3OKDB6PYUHLCPP"
+      "object_id": "MQ4TZKOG3SR2EQI3TWEK4AH7"
     },
     {
       "client_object_id": "#Beverages",
-      "object_id": "LYT72K3WGJFFCIMB63XARP3I"
+      "object_id": "XCS4SCGN4WQYE2VU4U3TKXEH"
     },
     {
       "client_object_id": "#SalesTax",
-      "object_id": "XHSHLHNWSI3HVI4BW5ZUZXI3"
+      "object_id": "HP5VNYPKZKTNCKZ2Z5NPUH6A"
     },
     {
       "client_object_id": "#Tea_Mug",
-      "object_id": "NAYHET5R52MIYCEF34ZMAHFM"
+      "object_id": "CAJBHUIQH7ONTSZI2KTVOUP6"
     },
     {
       "client_object_id": "#Coffee_Regular",
-      "object_id": "OTYDX45SPG7LJQUVCBZI4INH"
+      "object_id": "GY2GXJTVVPQAPW43GFRR3NG6"
     },
     {
       "client_object_id": "#Coffee_Large",
-      "object_id": "GZDA3JB37FYVOPI4AOEBOITI"
+      "object_id": "JE6VHPSRQL6IWSN26C36CJ7W"
     }
   ],
   "objects": [
     {
-      "id": "ZSDZN34NAXDLC6D5ZQMNSOUM",
+      "created_at": "2023-11-30T19:24:35.4Z",
+      "id": "67GA7XA2FWMRYY2VCONTYZJR",
       "is_deleted": false,
       "item_data": {
-        "category_id": "LYT72K3WGJFFCIMB63XARP3I",
+        "categories": [
+          {
+            "id": "XCS4SCGN4WQYE2VU4U3TKXEH",
+            "ordinal": -2251731094208512
+          }
+        ],
         "description": "Hot Leaf Juice",
         "description_html": "<p><strong>Hot</strong> Leaf Juice</p>",
         "description_plaintext": "Hot Leaf Juice",
+        "is_archived": false,
+        "is_taxable": true,
         "name": "Tea",
+        "product_type": "REGULAR",
         "tax_ids": [
-          "XHSHLHNWSI3HVI4BW5ZUZXI3"
+          "HP5VNYPKZKTNCKZ2Z5NPUH6A"
         ],
         "variations": [
           {
-            "id": "NAYHET5R52MIYCEF34ZMAHFM",
+            "created_at": "2023-11-30T19:24:35.4Z",
+            "id": "CAJBHUIQH7ONTSZI2KTVOUP6",
             "is_deleted": false,
             "item_variation_data": {
-              "item_id": "ZSDZN34NAXDLC6D5ZQMNSOUM",
+              "item_id": "67GA7XA2FWMRYY2VCONTYZJR",
               "name": "Mug",
               "ordinal": 0,
               "price_money": {
                 "amount": 150,
                 "currency": "USD"
               },
-              "pricing_type": "FIXED_PRICING"
+              "pricing_type": "FIXED_PRICING",
+              "sellable": true,
+              "stockable": true
             },
             "present_at_all_locations": true,
             "type": "ITEM_VARIATION",
-            "updated_at": "2017-05-10T18:48:39.798Z",
-            "version": 1494442119798
+            "updated_at": "2023-11-30T19:24:35.4Z",
+            "version": 1701372275400
           }
         ]
       },
       "present_at_all_locations": true,
       "type": "ITEM",
-      "updated_at": "2017-05-10T18:48:39.798Z",
-      "version": 1494442119798,
+      "updated_at": "2023-11-30T19:24:35.4Z",
+      "version": 1701372275400,
       "custom_attribute_values": {
         "key0": {
           "name": "name8",
@@ -118,60 +130,75 @@
       ]
     },
     {
-      "id": "PJMCEBHHUS3OKDB6PYUHLCPP",
+      "created_at": "2023-11-30T19:24:35.4Z",
+      "id": "MQ4TZKOG3SR2EQI3TWEK4AH7",
       "is_deleted": false,
       "item_data": {
-        "category_id": "LYT72K3WGJFFCIMB63XARP3I",
+        "categories": [
+          {
+            "id": "XCS4SCGN4WQYE2VU4U3TKXEH",
+            "ordinal": -2251662374731776
+          }
+        ],
         "description": "Hot Bean Juice",
         "description_html": "<p>Hot <em>Bean Juice</em></p>",
         "description_plaintext": "Hot Bean Juice",
+        "is_archived": false,
+        "is_taxable": true,
         "name": "Coffee",
+        "product_type": "REGULAR",
         "tax_ids": [
-          "XHSHLHNWSI3HVI4BW5ZUZXI3"
+          "HP5VNYPKZKTNCKZ2Z5NPUH6A"
         ],
         "variations": [
           {
-            "id": "OTYDX45SPG7LJQUVCBZI4INH",
+            "created_at": "2023-11-30T19:24:35.4Z",
+            "id": "GY2GXJTVVPQAPW43GFRR3NG6",
             "is_deleted": false,
             "item_variation_data": {
-              "item_id": "PJMCEBHHUS3OKDB6PYUHLCPP",
+              "item_id": "MQ4TZKOG3SR2EQI3TWEK4AH7",
               "name": "Regular",
               "ordinal": 0,
               "price_money": {
                 "amount": 250,
                 "currency": "USD"
               },
-              "pricing_type": "FIXED_PRICING"
+              "pricing_type": "FIXED_PRICING",
+              "sellable": true,
+              "stockable": true
             },
             "present_at_all_locations": true,
             "type": "ITEM_VARIATION",
-            "updated_at": "2017-05-10T18:48:39.798Z",
-            "version": 1494442119798
+            "updated_at": "2023-11-30T19:24:35.4Z",
+            "version": 1701372275400
           },
           {
-            "id": "GZDA3JB37FYVOPI4AOEBOITI",
+            "created_at": "2023-11-30T19:24:35.4Z",
+            "id": "JE6VHPSRQL6IWSN26C36CJ7W",
             "is_deleted": false,
             "item_variation_data": {
-              "item_id": "PJMCEBHHUS3OKDB6PYUHLCPP",
+              "item_id": "MQ4TZKOG3SR2EQI3TWEK4AH7",
               "name": "Large",
               "ordinal": 1,
               "price_money": {
                 "amount": 350,
                 "currency": "USD"
               },
-              "pricing_type": "FIXED_PRICING"
+              "pricing_type": "FIXED_PRICING",
+              "sellable": true,
+              "stockable": true
             },
             "present_at_all_locations": true,
             "type": "ITEM_VARIATION",
-            "updated_at": "2017-05-10T18:48:39.798Z",
-            "version": 1494442119798
+            "updated_at": "2023-11-30T19:24:35.4Z",
+            "version": 1701372275400
           }
         ]
       },
       "present_at_all_locations": true,
       "type": "ITEM",
-      "updated_at": "2017-05-10T18:48:39.798Z",
-      "version": 1494442119798,
+      "updated_at": "2023-11-30T19:24:35.4Z",
+      "version": 1701372275400,
       "custom_attribute_values": {
         "key0": {
           "name": "name8",
@@ -205,14 +232,21 @@
     },
     {
       "category_data": {
-        "name": "Beverages"
+        "category_type": "REGULAR_CATEGORY",
+        "is_top_level": true,
+        "name": "Beverages",
+        "online_visibility": true,
+        "parent_category": {
+          "ordinal": -2250837741010944
+        }
       },
-      "id": "LYT72K3WGJFFCIMB63XARP3I",
+      "created_at": "2023-11-30T19:24:35.4Z",
+      "id": "XCS4SCGN4WQYE2VU4U3TKXEH",
       "is_deleted": false,
       "present_at_all_locations": true,
       "type": "CATEGORY",
-      "updated_at": "2017-05-10T18:48:39.798Z",
-      "version": 1494442119798,
+      "updated_at": "2023-11-30T19:24:35.4Z",
+      "version": 1701372275400,
       "custom_attribute_values": {
         "key0": {
           "name": "name8",
@@ -245,7 +279,8 @@
       ]
     },
     {
-      "id": "XHSHLHNWSI3HVI4BW5ZUZXI3",
+      "created_at": "2023-11-30T19:24:35.4Z",
+      "id": "HP5VNYPKZKTNCKZ2Z5NPUH6A",
       "is_deleted": false,
       "present_at_all_locations": true,
       "tax_data": {
@@ -257,8 +292,8 @@
         "percentage": "5.0"
       },
       "type": "TAX",
-      "updated_at": "2017-05-10T18:48:39.798Z",
-      "version": 1494442119798,
+      "updated_at": "2023-11-30T19:24:35.4Z",
+      "version": 1701372275400,
       "custom_attribute_values": {
         "key0": {
           "name": "name8",

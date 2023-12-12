@@ -24,9 +24,33 @@ import {
   listPaymentLinksResponseSchema,
 } from '../models/listPaymentLinksResponse';
 import {
+  RetrieveLocationSettingsResponse,
+  retrieveLocationSettingsResponseSchema,
+} from '../models/retrieveLocationSettingsResponse';
+import {
+  RetrieveMerchantSettingsResponse,
+  retrieveMerchantSettingsResponseSchema,
+} from '../models/retrieveMerchantSettingsResponse';
+import {
   RetrievePaymentLinkResponse,
   retrievePaymentLinkResponseSchema,
 } from '../models/retrievePaymentLinkResponse';
+import {
+  UpdateLocationSettingsRequest,
+  updateLocationSettingsRequestSchema,
+} from '../models/updateLocationSettingsRequest';
+import {
+  UpdateLocationSettingsResponse,
+  updateLocationSettingsResponseSchema,
+} from '../models/updateLocationSettingsResponse';
+import {
+  UpdateMerchantSettingsRequest,
+  updateMerchantSettingsRequestSchema,
+} from '../models/updateMerchantSettingsRequest';
+import {
+  UpdateMerchantSettingsResponse,
+  updateMerchantSettingsResponseSchema,
+} from '../models/updateMerchantSettingsResponse';
 import {
   UpdatePaymentLinkRequest,
   updatePaymentLinkRequestSchema,
@@ -71,6 +95,92 @@ export class CheckoutApi extends BaseApi {
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/checkouts`;
     req.deprecated('CheckoutApi.createCheckout');
     return req.callAsJson(createCheckoutResponseSchema, requestOptions);
+  }
+
+  /**
+   * Retrieves the location-level settings for a Square-hosted checkout page.
+   *
+   * @param locationId  The ID of the location for which to retrieve settings.
+   * @return Response from the API call
+   */
+  async retrieveLocationSettings(
+    locationId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<RetrieveLocationSettingsResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ locationId: [locationId, string()] });
+    req.appendTemplatePath`/v2/online-checkout/location-settings/${mapped.locationId}`;
+    return req.callAsJson(
+      retrieveLocationSettingsResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Updates the location-level settings for a Square-hosted checkout page.
+   *
+   * @param locationId   The ID of the location for which to retrieve settings.
+   * @param body         An object containing the fields to POST for the
+   *                                                             request.  See the corresponding object definition for
+   *                                                             field details.
+   * @return Response from the API call
+   */
+  async updateLocationSettings(
+    locationId: string,
+    body: UpdateLocationSettingsRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<UpdateLocationSettingsResponse>> {
+    const req = this.createRequest('PUT');
+    const mapped = req.prepareArgs({
+      locationId: [locationId, string()],
+      body: [body, updateLocationSettingsRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    req.appendTemplatePath`/v2/online-checkout/location-settings/${mapped.locationId}`;
+    return req.callAsJson(updateLocationSettingsResponseSchema, requestOptions);
+  }
+
+  /**
+   * Retrieves the merchant-level settings for a Square-hosted checkout page.
+   *
+   * @return Response from the API call
+   */
+  async retrieveMerchantSettings(
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<RetrieveMerchantSettingsResponse>> {
+    const req = this.createRequest(
+      'GET',
+      '/v2/online-checkout/merchant-settings'
+    );
+    return req.callAsJson(
+      retrieveMerchantSettingsResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Updates the merchant-level settings for a Square-hosted checkout page.
+   *
+   * @param body         An object containing the fields to POST for the
+   *                                                             request.  See the corresponding object definition for
+   *                                                             field details.
+   * @return Response from the API call
+   */
+  async updateMerchantSettings(
+    body: UpdateMerchantSettingsRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<UpdateMerchantSettingsResponse>> {
+    const req = this.createRequest(
+      'PUT',
+      '/v2/online-checkout/merchant-settings'
+    );
+    const mapped = req.prepareArgs({
+      body: [body, updateMerchantSettingsRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    return req.callAsJson(updateMerchantSettingsResponseSchema, requestOptions);
   }
 
   /**

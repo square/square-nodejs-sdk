@@ -9,6 +9,10 @@ import {
   string,
 } from '../schema';
 import {
+  CatalogEcomSeoData,
+  catalogEcomSeoDataSchema,
+} from './catalogEcomSeoData';
+import {
   CatalogItemModifierListInfo,
   catalogItemModifierListInfoSchema,
 } from './catalogItemModifierListInfo';
@@ -17,6 +21,10 @@ import {
   catalogItemOptionForItemSchema,
 } from './catalogItemOptionForItem';
 import { CatalogObject, catalogObjectSchema } from './catalogObject';
+import {
+  CatalogObjectCategory,
+  catalogObjectCategorySchema,
+} from './catalogObjectCategory';
 
 /** A [CatalogObject]($m/CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog. */
 export interface CatalogItem {
@@ -44,7 +52,7 @@ export interface CatalogItem {
   availableForPickup?: boolean | null;
   /** If `true`, the item can be added to electronically fulfilled orders from the merchant's online store. */
   availableElectronically?: boolean | null;
-  /** The ID of the item's category, if any. */
+  /** The ID of the item's category, if any. Deprecated since 2023-12-13. Use `CatalogItem.categories`, instead. */
   categoryId?: string | null;
   /**
    * A set of IDs indicating the taxes enabled for
@@ -93,6 +101,8 @@ export interface CatalogItem {
    * It is currently supported for sellers of the Japanese locale only.
    */
   sortName?: string | null;
+  /** The list of categories. */
+  categories?: CatalogObjectCategory[] | null;
   /**
    * The item's description as expressed in valid HTML elements. The length of this field value, including those of HTML tags,
    * is of Unicode points. With application query filters, the text values of the HTML elements and attributes are searchable. Invalid or
@@ -119,8 +129,18 @@ export interface CatalogItem {
   descriptionHtml?: string | null;
   /** A server-generated plaintext version of the `description_html` field, without formatting tags. */
   descriptionPlaintext?: string;
+  /** A list of IDs representing channels, such as a Square Online site, where the item can be made visible or available. */
+  channels?: string[] | null;
   /** Indicates whether this item is archived (`true`) or not (`false`). */
   isArchived?: boolean | null;
+  /** SEO data for for a seller's Square Online store. */
+  ecomSeoData?: CatalogEcomSeoData;
+  /**
+   * A category that can be assigned to an item or a parent category that can be assigned
+   * to another category. For example, a clothing category can be assigned to a t-shirt item or
+   * be made as the parent category to the pants category.
+   */
+  reportingCategory?: CatalogObjectCategory;
 }
 
 export const catalogItemSchema: Schema<CatalogItem> = object({
@@ -152,7 +172,20 @@ export const catalogItemSchema: Schema<CatalogItem> = object({
   ],
   imageIds: ['image_ids', optional(nullable(array(string())))],
   sortName: ['sort_name', optional(nullable(string()))],
+  categories: [
+    'categories',
+    optional(nullable(array(lazy(() => catalogObjectCategorySchema)))),
+  ],
   descriptionHtml: ['description_html', optional(nullable(string()))],
   descriptionPlaintext: ['description_plaintext', optional(string())],
+  channels: ['channels', optional(nullable(array(string())))],
   isArchived: ['is_archived', optional(nullable(boolean()))],
+  ecomSeoData: [
+    'ecom_seo_data',
+    optional(lazy(() => catalogEcomSeoDataSchema)),
+  ],
+  reportingCategory: [
+    'reporting_category',
+    optional(lazy(() => catalogObjectCategorySchema)),
+  ],
 });

@@ -19,10 +19,12 @@ const terminalApi = client.terminalApi;
 * [Search Terminal Checkouts](../../doc/api/terminal.md#search-terminal-checkouts)
 * [Get Terminal Checkout](../../doc/api/terminal.md#get-terminal-checkout)
 * [Cancel Terminal Checkout](../../doc/api/terminal.md#cancel-terminal-checkout)
+* [Dismiss Terminal Checkout](../../doc/api/terminal.md#dismiss-terminal-checkout)
 * [Create Terminal Refund](../../doc/api/terminal.md#create-terminal-refund)
 * [Search Terminal Refunds](../../doc/api/terminal.md#search-terminal-refunds)
 * [Get Terminal Refund](../../doc/api/terminal.md#get-terminal-refund)
 * [Cancel Terminal Refund](../../doc/api/terminal.md#cancel-terminal-refund)
+* [Dismiss Terminal Refund](../../doc/api/terminal.md#dismiss-terminal-refund)
 
 
 # Create Terminal Action
@@ -241,7 +243,7 @@ async dismissTerminalAction(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `actionId` | `string` | Template, Required | Unique ID for the `TerminalAction` associated with the waiting dialog to be dismissed. |
+| `actionId` | `string` | Template, Required | Unique ID for the `TerminalAction` associated with the action to be dismissed. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -467,6 +469,50 @@ try {
 ```
 
 
+# Dismiss Terminal Checkout
+
+Dismisses a Terminal checkout request if the status and type of the request permits it.
+
+```ts
+async dismissTerminalCheckout(
+  checkoutId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DismissTerminalCheckoutResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `checkoutId` | `string` | Template, Required | Unique ID for the `TerminalCheckout` associated with the checkout to be dismissed. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`DismissTerminalCheckoutResponse`](../../doc/models/dismiss-terminal-checkout-response.md)
+
+## Example Usage
+
+```ts
+const checkoutId = 'checkout_id8';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await terminalApi.dismissTerminalCheckout(checkoutId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
 # Create Terminal Refund
 
 Creates a request to refund an Interac payment completed on a Square Terminal. Refunds for Interac payments on a Square Terminal are supported only for Interac debit cards in Canada. Other refunds for Terminal payments should use the Refunds API. For more information, see [Refunds API](../../doc/api/refunds.md).
@@ -648,6 +694,50 @@ try {
   // @ts-expect-error: unused variables
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await terminalApi.cancelTerminalRefund(terminalRefundId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Dismiss Terminal Refund
+
+Dismisses a Terminal refund request if the status and type of the request permits it.
+
+```ts
+async dismissTerminalRefund(
+  terminalRefundId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DismissTerminalRefundResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `terminalRefundId` | `string` | Template, Required | Unique ID for the `TerminalRefund` associated with the refund to be dismissed. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`DismissTerminalRefundResponse`](../../doc/models/dismiss-terminal-refund-response.md)
+
+## Example Usage
+
+```ts
+const terminalRefundId = 'terminal_refund_id0';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await terminalApi.dismissTerminalRefund(terminalRefundId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

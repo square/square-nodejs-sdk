@@ -24,7 +24,12 @@
       "id": "X5DZ5NWWAQ44CKBLKIFQGOWK",
       "is_deleted": false,
       "item_data": {
-        "category_id": "E7CLE5RZZ744BHWVQQEAHI2C",
+        "categories": [
+          {
+            "id": "E7CLE5RZZ744BHWVQQEAHI2C",
+            "ordinal": 0
+          }
+        ],
         "description": "A delicious blend of black tea.",
         "name": "Tea - Black",
         "product_type": "REGULAR",
@@ -110,7 +115,12 @@
       "id": "NNNEM3LA656Q46NXLWCNI7S5",
       "is_deleted": false,
       "item_data": {
-        "category_id": "E7CLE5RZZ744BHWVQQEAHI2C",
+        "categories": [
+          {
+            "id": "E7CLE5RZZ744BHWVQQEAHI2C",
+            "ordinal": 0
+          }
+        ],
         "description": "Relaxing green herbal tea.",
         "name": "Tea - Green",
         "product_type": "REGULAR",
