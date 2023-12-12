@@ -390,32 +390,41 @@ export class CatalogApi extends BaseApi {
    * [CatalogModifierList]($m/CatalogModifierList) objects, and the ids of
    * any [CatalogTax]($m/CatalogTax) objects that apply to it.
    *
-   * @param objectId                The object ID of any type of catalog objects to be retrieved.
-   * @param includeRelatedObjects   If `true`, the response will include additional objects that are
-   *                                           related to the requested objects. Related objects are defined as any
-   *                                           objects referenced by ID by the results in the `objects` field of the
-   *                                           response. These objects are put in the `related_objects` field. Setting
-   *                                           this to `true` is helpful when the objects are needed for immediate
-   *                                           display to a user. This process only goes one level deep. Objects
-   *                                           referenced by the related objects will not be included. For example,  if
-   *                                           the `objects` field of the response contains a CatalogItem, its
-   *                                           associated CatalogCategory objects, CatalogTax objects, CatalogImage
-   *                                           objects and CatalogModifierLists will be returned in the
-   *                                           `related_objects` field of the response. If the `objects` field of the
-   *                                           response contains a CatalogItemVariation, its parent CatalogItem will be
-   *                                           returned in the `related_objects` field of the response.  Default value:
-   *                                           `false`
-   * @param catalogVersion          Requests objects as of a specific version of the catalog. This allows
-   *                                           you to retrieve historical versions of objects. The value to retrieve a
-   *                                           specific version of an object can be found in the version field of
-   *                                           [CatalogObject]($m/CatalogObject)s. If not included, results will be
-   *                                           from the current version of the catalog.
+   * @param objectId                      The object ID of any type of catalog objects to be retrieved.
+   * @param includeRelatedObjects         If `true`, the response will include additional objects that are
+   *                                                 related to the requested objects. Related objects are defined as
+   *                                                 any objects referenced by ID by the results in the `objects` field
+   *                                                 of the response. These objects are put in the `related_objects`
+   *                                                 field. Setting this to `true` is helpful when the objects are
+   *                                                 needed for immediate display to a user. This process only goes one
+   *                                                 level deep. Objects referenced by the related objects will not be
+   *                                                 included. For example,  if the `objects` field of the response
+   *                                                 contains a CatalogItem, its associated CatalogCategory objects,
+   *                                                 CatalogTax objects, CatalogImage objects and CatalogModifierLists
+   *                                                 will be returned in the `related_objects` field of the response.
+   *                                                 If the `objects` field of the response contains a
+   *                                                 CatalogItemVariation, its parent CatalogItem will be returned in
+   *                                                 the `related_objects` field of the response.  Default value:
+   *                                                 `false`
+   * @param catalogVersion                Requests objects as of a specific version of the catalog. This
+   *                                                 allows you to retrieve historical versions of objects. The value
+   *                                                 to retrieve a specific version of an object can be found in the
+   *                                                 version field of [CatalogObject]($m/CatalogObject)s. If not
+   *                                                 included, results will be from the current version of the catalog.
+   * @param includeCategoryPathToRoot     Specifies whether or not to include the `path_to_root` list for
+   *                                                 each returned category instance. The `path_to_root` list consists
+   *                                                 of `CategoryPathToRootNode` objects and specifies the path that
+   *                                                 starts with the immediate parent category of the returned category
+   *                                                 and ends with its root category. If the returned category is a top-
+   *                                                 level category, the `path_to_root` list is empty and is not
+   *                                                 returned in the response payload.
    * @return Response from the API call
    */
   async retrieveCatalogObject(
     objectId: string,
     includeRelatedObjects?: boolean,
     catalogVersion?: bigint,
+    includeCategoryPathToRoot?: boolean,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<RetrieveCatalogObjectResponse>> {
     const req = this.createRequest('GET');
@@ -423,9 +432,14 @@ export class CatalogApi extends BaseApi {
       objectId: [objectId, string()],
       includeRelatedObjects: [includeRelatedObjects, optional(boolean())],
       catalogVersion: [catalogVersion, optional(bigint())],
+      includeCategoryPathToRoot: [
+        includeCategoryPathToRoot,
+        optional(boolean()),
+      ],
     });
     req.query('include_related_objects', mapped.includeRelatedObjects);
     req.query('catalog_version', mapped.catalogVersion);
+    req.query('include_category_path_to_root', mapped.includeCategoryPathToRoot);
     req.appendTemplatePath`/v2/catalog/object/${mapped.objectId}`;
     return req.callAsJson(retrieveCatalogObjectResponseSchema, requestOptions);
   }

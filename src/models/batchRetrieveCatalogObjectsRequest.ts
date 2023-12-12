@@ -36,6 +36,13 @@ export interface BatchRetrieveCatalogObjectsRequest {
   catalogVersion?: bigint | null;
   /** Indicates whether to include (`true`) or not (`false`) in the response deleted objects, namely, those with the `is_deleted` attribute set to `true`. */
   includeDeletedObjects?: boolean | null;
+  /**
+   * Specifies whether or not to include the `path_to_root` list for each returned category instance. The `path_to_root` list consists
+   * of `CategoryPathToRootNode` objects and specifies the path that starts with the immediate parent category of the returned category
+   * and ends with its root category. If the returned category is a top-level category, the `path_to_root` list is empty and is not returned
+   * in the response payload.
+   */
+  includeCategoryPathToRoot?: boolean | null;
 }
 
 export const batchRetrieveCatalogObjectsRequestSchema: Schema<BatchRetrieveCatalogObjectsRequest> = object(
@@ -48,6 +55,10 @@ export const batchRetrieveCatalogObjectsRequestSchema: Schema<BatchRetrieveCatal
     catalogVersion: ['catalog_version', optional(nullable(bigint()))],
     includeDeletedObjects: [
       'include_deleted_objects',
+      optional(nullable(boolean())),
+    ],
+    includeCategoryPathToRoot: [
+      'include_category_path_to_root',
       optional(nullable(boolean())),
     ],
   }

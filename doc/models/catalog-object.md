@@ -48,6 +48,7 @@ For a more detailed discussion of the Catalog data model, please see the
 | `customAttributeDefinitionData` | [`CatalogCustomAttributeDefinition \| undefined`](../../doc/models/catalog-custom-attribute-definition.md) | Optional | Contains information defining a custom attribute. Custom attributes are<br>intended to store additional information about a catalog object or to associate a<br>catalog object with an entity in another system. Do not use custom attributes<br>to store any sensitive information (personally identifiable information, card details, etc.).<br>[Read more about custom attributes](https://developer.squareup.com/docs/catalog-api/add-custom-attributes) |
 | `quickAmountsSettingsData` | [`CatalogQuickAmountsSettings \| undefined`](../../doc/models/catalog-quick-amounts-settings.md) | Optional | A parent Catalog Object model represents a set of Quick Amounts and the settings control the amounts. |
 | `subscriptionPlanVariationData` | [`CatalogSubscriptionPlanVariation \| undefined`](../../doc/models/catalog-subscription-plan-variation.md) | Optional | Describes a subscription plan variation. A subscription plan variation represents how the subscription for a product or service is sold.<br>For more information, see [Subscription Plans and Variations](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations). |
+| `availabilityPeriodData` | [`CatalogAvailabilityPeriod \| undefined`](../../doc/models/catalog-availability-period.md) | Optional | Represents a time period of availability. |
 
 ## Example (as JSON)
 

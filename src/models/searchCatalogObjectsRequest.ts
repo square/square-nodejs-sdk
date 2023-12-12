@@ -68,8 +68,8 @@ export interface SearchCatalogObjectsRequest {
    * All other query types cannot be combined with any others.
    * When a query filter is based on an attribute, the attribute must be searchable.
    * Searchable attributes are listed as follows, along their parent types that can be searched for with applicable query filters.
-   * * Searchable attribute and objects queryable by searchable attributes **
-   * - `name`:  `CatalogItem`, `CatalogItemVariation`, `CatalogCategory`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, 'CatalogModifierList`, `CatalogItemOption`, `CatalogItemOptionValue`
+   * Searchable attribute and objects queryable by searchable attributes:
+   * - `name`:  `CatalogItem`, `CatalogItemVariation`, `CatalogCategory`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, `CatalogModifierList`, `CatalogItemOption`, `CatalogItemOptionValue`
    * - `description`: `CatalogItem`, `CatalogItemOptionValue`
    * - `abbreviation`: `CatalogItem`
    * - `upc`: `CatalogItemVariation`
@@ -86,6 +86,13 @@ export interface SearchCatalogObjectsRequest {
    * is higher than the maximum limit of 1,000, it will be ignored.
    */
   limit?: number;
+  /**
+   * Specifies whether or not to include the `path_to_root` list for each returned category instance. The `path_to_root` list consists
+   * of `CategoryPathToRootNode` objects and specifies the path that starts with the immediate parent category of the returned category
+   * and ends with its root category. If the returned category is a top-level category, the `path_to_root` list is empty and is not returned
+   * in the response payload.
+   */
+  includeCategoryPathToRoot?: boolean;
 }
 
 export const searchCatalogObjectsRequestSchema: Schema<SearchCatalogObjectsRequest> = object(
@@ -97,5 +104,9 @@ export const searchCatalogObjectsRequestSchema: Schema<SearchCatalogObjectsReque
     beginTime: ['begin_time', optional(string())],
     query: ['query', optional(lazy(() => catalogQuerySchema))],
     limit: ['limit', optional(number())],
+    includeCategoryPathToRoot: [
+      'include_category_path_to_root',
+      optional(boolean()),
+    ],
   }
 );

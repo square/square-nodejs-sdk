@@ -11,14 +11,15 @@ Any combination of the following types may be used together:
 - [range_query](../../doc/models/catalog-query-range.md)
 - [sorted_attribute_query](../../doc/models/catalog-query-sorted-attribute.md)
 - [text_query](../../doc/models/catalog-query-text.md)
-  All other query types cannot be combined with any others.
+
+All other query types cannot be combined with any others.
 
 When a query filter is based on an attribute, the attribute must be searchable.
 Searchable attributes are listed as follows, along their parent types that can be searched for with applicable query filters.
 
-* Searchable attribute and objects queryable by searchable attributes **
+Searchable attribute and objects queryable by searchable attributes:
 
-- `name`:  `CatalogItem`, `CatalogItemVariation`, `CatalogCategory`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, 'CatalogModifierList`,`CatalogItemOption`,`CatalogItemOptionValue`
+- `name`:  `CatalogItem`, `CatalogItemVariation`, `CatalogCategory`, `CatalogTax`, `CatalogDiscount`, `CatalogModifier`, `CatalogModifierList`, `CatalogItemOption`, `CatalogItemOptionValue`
 - `description`: `CatalogItem`, `CatalogItemOptionValue`
 - `abbreviation`: `CatalogItem`
 - `upc`: `CatalogItemVariation`

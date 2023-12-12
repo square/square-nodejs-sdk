@@ -40,6 +40,14 @@ import {
   dismissTerminalActionResponseSchema,
 } from '../models/dismissTerminalActionResponse';
 import {
+  DismissTerminalCheckoutResponse,
+  dismissTerminalCheckoutResponseSchema,
+} from '../models/dismissTerminalCheckoutResponse';
+import {
+  DismissTerminalRefundResponse,
+  dismissTerminalRefundResponseSchema,
+} from '../models/dismissTerminalRefundResponse';
+import {
   GetTerminalActionResponse,
   getTerminalActionResponseSchema,
 } from '../models/getTerminalActionResponse';
@@ -161,7 +169,7 @@ export class TerminalApi extends BaseApi {
    * See [Link and Dismiss Actions](https://developer.squareup.com/docs/terminal-api/advanced-
    * features/custom-workflows/link-and-dismiss-actions) for more details.
    *
-   * @param actionId  Unique ID for the `TerminalAction` associated with the waiting dialog to be dismissed.
+   * @param actionId  Unique ID for the `TerminalAction` associated with the action to be dismissed.
    * @return Response from the API call
    */
   async dismissTerminalAction(
@@ -256,6 +264,25 @@ export class TerminalApi extends BaseApi {
   }
 
   /**
+   * Dismisses a Terminal checkout request if the status and type of the request permits it.
+   *
+   * @param checkoutId  Unique ID for the `TerminalCheckout` associated with the checkout to be dismissed.
+   * @return Response from the API call
+   */
+  async dismissTerminalCheckout(
+    checkoutId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<DismissTerminalCheckoutResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({ checkoutId: [checkoutId, string()] });
+    req.appendTemplatePath`/v2/terminals/checkouts/${mapped.checkoutId}/dismiss`;
+    return req.callAsJson(
+      dismissTerminalCheckoutResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
    * Creates a request to refund an Interac payment completed on a Square Terminal. Refunds for Interac
    * payments on a Square Terminal are supported only for Interac debit cards in Canada. Other refunds
    * for Terminal payments should use the Refunds API. For more information, see [Refunds
@@ -336,5 +363,23 @@ export class TerminalApi extends BaseApi {
     });
     req.appendTemplatePath`/v2/terminals/refunds/${mapped.terminalRefundId}/cancel`;
     return req.callAsJson(cancelTerminalRefundResponseSchema, requestOptions);
+  }
+
+  /**
+   * Dismisses a Terminal refund request if the status and type of the request permits it.
+   *
+   * @param terminalRefundId   Unique ID for the `TerminalRefund` associated with the refund to be dismissed.
+   * @return Response from the API call
+   */
+  async dismissTerminalRefund(
+    terminalRefundId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<DismissTerminalRefundResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      terminalRefundId: [terminalRefundId, string()],
+    });
+    req.appendTemplatePath`/v2/terminals/refunds/${mapped.terminalRefundId}/dismiss`;
+    return req.callAsJson(dismissTerminalRefundResponseSchema, requestOptions);
   }
 }

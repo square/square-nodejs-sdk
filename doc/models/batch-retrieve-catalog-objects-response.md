@@ -22,7 +22,12 @@
       "id": "W62UWFY35CWMYGVWK6TWJDNI",
       "is_deleted": false,
       "item_data": {
-        "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+        "categories": [
+          {
+            "id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+            "ordinal": 0
+          }
+        ],
         "description": "Hot Leaf Juice",
         "name": "Tea",
         "tax_ids": [
@@ -88,7 +93,12 @@
       "id": "AA27W3M2GGTF3H6AVPNB77CK",
       "is_deleted": false,
       "item_data": {
-        "category_id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+        "categories": [
+          {
+            "id": "BJNQCF2FJ6S6UIDT65ABHLRX",
+            "ordinal": 0
+          }
+        ],
         "description": "Hot Bean Juice",
         "name": "Coffee",
         "tax_ids": [

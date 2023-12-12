@@ -10,6 +10,10 @@ import {
   Schema,
   string,
 } from '../schema';
+import {
+  CatalogAvailabilityPeriod,
+  catalogAvailabilityPeriodSchema,
+} from './catalogAvailabilityPeriod';
 import { CatalogCategory, catalogCategorySchema } from './catalogCategory';
 import {
   CatalogCustomAttributeDefinition,
@@ -225,6 +229,8 @@ export interface CatalogObject {
    * For more information, see [Subscription Plans and Variations](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations).
    */
   subscriptionPlanVariationData?: CatalogSubscriptionPlanVariation;
+  /** Represents a time period of availability. */
+  availabilityPeriodData?: CatalogAvailabilityPeriod;
 }
 
 export const catalogObjectSchema: Schema<CatalogObject> = object({
@@ -306,5 +312,9 @@ export const catalogObjectSchema: Schema<CatalogObject> = object({
   subscriptionPlanVariationData: [
     'subscription_plan_variation_data',
     optional(lazy(() => catalogSubscriptionPlanVariationSchema)),
+  ],
+  availabilityPeriodData: [
+    'availability_period_data',
+    optional(lazy(() => catalogAvailabilityPeriodSchema)),
   ],
 });

@@ -11,6 +11,10 @@ const checkoutApi = client.checkoutApi;
 ## Methods
 
 * [Create Checkout](../../doc/api/checkout.md#create-checkout)
+* [Retrieve Location Settings](../../doc/api/checkout.md#retrieve-location-settings)
+* [Update Location Settings](../../doc/api/checkout.md#update-location-settings)
+* [Retrieve Merchant Settings](../../doc/api/checkout.md#retrieve-merchant-settings)
+* [Update Merchant Settings](../../doc/api/checkout.md#update-merchant-settings)
 * [List Payment Links](../../doc/api/checkout.md#list-payment-links)
 * [Create Payment Link](../../doc/api/checkout.md#create-payment-link)
 * [Delete Payment Link](../../doc/api/checkout.md#delete-payment-link)
@@ -152,6 +156,189 @@ try {
   locationId,
   body
 );
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Retrieve Location Settings
+
+Retrieves the location-level settings for a Square-hosted checkout page.
+
+```ts
+async retrieveLocationSettings(
+  locationId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveLocationSettingsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `locationId` | `string` | Template, Required | The ID of the location for which to retrieve settings. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`RetrieveLocationSettingsResponse`](../../doc/models/retrieve-location-settings-response.md)
+
+## Example Usage
+
+```ts
+const locationId = 'location_id4';
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await checkoutApi.retrieveLocationSettings(locationId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Location Settings
+
+Updates the location-level settings for a Square-hosted checkout page.
+
+```ts
+async updateLocationSettings(
+  locationId: string,
+  body: UpdateLocationSettingsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateLocationSettingsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `locationId` | `string` | Template, Required | The ID of the location for which to retrieve settings. |
+| `body` | [`UpdateLocationSettingsRequest`](../../doc/models/update-location-settings-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`UpdateLocationSettingsResponse`](../../doc/models/update-location-settings-response.md)
+
+## Example Usage
+
+```ts
+const locationId = 'location_id4';
+
+const body: UpdateLocationSettingsRequest = {
+  locationSettings: {},
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await checkoutApi.updateLocationSettings(
+  locationId,
+  body
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Retrieve Merchant Settings
+
+Retrieves the merchant-level settings for a Square-hosted checkout page.
+
+```ts
+async retrieveMerchantSettings(
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveMerchantSettingsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`RetrieveMerchantSettingsResponse`](../../doc/models/retrieve-merchant-settings-response.md)
+
+## Example Usage
+
+```ts
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await checkoutApi.retrieveMerchantSettings();
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Merchant Settings
+
+Updates the merchant-level settings for a Square-hosted checkout page.
+
+```ts
+async updateMerchantSettings(
+  body: UpdateMerchantSettingsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateMerchantSettingsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`UpdateMerchantSettingsRequest`](../../doc/models/update-merchant-settings-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`UpdateMerchantSettingsResponse`](../../doc/models/update-merchant-settings-response.md)
+
+## Example Usage
+
+```ts
+const body: UpdateMerchantSettingsRequest = {
+  merchantSettings: {},
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await checkoutApi.updateMerchantSettings(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

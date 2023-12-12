@@ -38,7 +38,12 @@ import { Money, moneySchema } from './money';
 export interface CatalogItemVariation {
   /** The ID of the `CatalogItem` associated with this item variation. */
   itemId?: string | null;
-  /** The item variation's name. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points. */
+  /**
+   * The item variation's name. This is a searchable attribute for use in applicable query filters.
+   * Its value has a maximum length of 255 Unicode code points. However, when the parent [item](entity:CatalogItem)
+   * uses [item options](entity:CatalogItemOption), this attribute is auto-generated, read-only, and can be
+   * longer than 255 Unicode code points.
+   */
   name?: string | null;
   /** The item variation's SKU, if any. This is a searchable attribute for use in applicable query filters. */
   sku?: string | null;

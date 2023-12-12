@@ -22,7 +22,11 @@
         {
           "id": "#Tea",
           "item_data": {
-            "category_id": "#Beverages",
+            "categories": [
+              {
+                "id": "#Beverages"
+              }
+            ],
             "description_html": "<p><strong>Hot</strong> Leaf Juice</p>",
             "name": "Tea",
             "tax_ids": [
@@ -84,7 +88,11 @@
         {
           "id": "#Coffee",
           "item_data": {
-            "category_id": "#Beverages",
+            "categories": [
+              {
+                "id": "#Beverages"
+              }
+            ],
             "description_html": "<p>Hot <em>Bean Juice</em></p>",
             "name": "Coffee",
             "tax_ids": [
