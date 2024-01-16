@@ -128,7 +128,7 @@
     ],
     "subscription_plans": [
       {
-        "type": "QUICK_AMOUNTS_SETTINGS",
+        "type": "ITEM_OPTION",
         "id": "id4",
         "updated_at": "updated_at0",
         "version": 112,
@@ -172,7 +172,7 @@
         ]
       },
       {
-        "type": "QUICK_AMOUNTS_SETTINGS",
+        "type": "ITEM_OPTION",
         "id": "id4",
         "updated_at": "updated_at0",
         "version": 112,
@@ -216,7 +216,7 @@
         ]
       },
       {
-        "type": "QUICK_AMOUNTS_SETTINGS",
+        "type": "ITEM_OPTION",
         "id": "id4",
         "updated_at": "updated_at0",
         "version": 112,

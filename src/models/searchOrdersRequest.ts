@@ -10,17 +10,10 @@ import {
 } from '../schema';
 import { SearchOrdersQuery, searchOrdersQuerySchema } from './searchOrdersQuery';
 
-/**
- * The request does not have any required fields. When given no query criteria,
- * `SearchOrders` returns all results for all of the seller's locations. When retrieving additional
- * pages using a `cursor`, the `query` must be equal to the `query` used to retrieve the first page of
- * results.
- */
 export interface SearchOrdersRequest {
   /**
    * The location IDs for the orders to query. All locations must belong to
    * the same merchant.
-   * Min: 1 location ID.
    * Max: 10 location IDs.
    */
   locationIds?: string[];
@@ -33,9 +26,9 @@ export interface SearchOrdersRequest {
   /** Contains query criteria for the search. */
   query?: SearchOrdersQuery;
   /**
-   * The maximum number of results to be returned in a single page. It is
-   * possible to receive fewer results than the specified limit on a given page.
+   * The maximum number of results to be returned in a single page.
    * Default: `500`
+   * Max: `1000`
    */
   limit?: number;
   /**

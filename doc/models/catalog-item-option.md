@@ -27,7 +27,7 @@ A group of variations for a `CatalogItem`.
   "show_colors": false,
   "values": [
     {
-      "type": "SUBSCRIPTION_PLAN_VARIATION",
+      "type": "IMAGE",
       "id": "id0",
       "updated_at": "updated_at6",
       "version": 116,
@@ -63,7 +63,7 @@ A group of variations for a `CatalogItem`.
       ]
     },
     {
-      "type": "SUBSCRIPTION_PLAN_VARIATION",
+      "type": "IMAGE",
       "id": "id0",
       "updated_at": "updated_at6",
       "version": 116,

@@ -91,7 +91,7 @@ For more information, see [Subscription Plans and Variations](https://developer.
   ],
   "subscription_plan_variations": [
     {
-      "type": "TIME_PERIOD",
+      "type": "MODIFIER",
       "id": "id4",
       "updated_at": "updated_at0",
       "version": 208,
@@ -135,7 +135,7 @@ For more information, see [Subscription Plans and Variations](https://developer.
       ]
     },
     {
-      "type": "TIME_PERIOD",
+      "type": "MODIFIER",
       "id": "id4",
       "updated_at": "updated_at0",
       "version": 208,

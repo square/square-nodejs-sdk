@@ -13,6 +13,7 @@ import {
   InvoiceAcceptedPaymentMethods,
   invoiceAcceptedPaymentMethodsSchema,
 } from './invoiceAcceptedPaymentMethods';
+import { InvoiceAttachment, invoiceAttachmentSchema } from './invoiceAttachment';
 import {
   InvoiceCustomField,
   invoiceCustomFieldSchema,
@@ -150,6 +151,11 @@ export interface Invoice {
    * invoice payment page. Stored payment information can be used for future automatic payments. The default value is `false`.
    */
   storePaymentMethodEnabled?: boolean | null;
+  /**
+   * Metadata about the attachments on the invoice. Invoice attachments are managed using the
+   * [CreateInvoiceAttachment](api-endpoint:Invoices-CreateInvoiceAttachment) and [DeleteInvoiceAttachment](api-endpoint:Invoices-DeleteInvoiceAttachment) endpoints.
+   */
+  attachments?: InvoiceAttachment[];
 }
 
 export const invoiceSchema: Schema<Invoice> = object({
@@ -193,5 +199,9 @@ export const invoiceSchema: Schema<Invoice> = object({
   storePaymentMethodEnabled: [
     'store_payment_method_enabled',
     optional(nullable(boolean())),
+  ],
+  attachments: [
+    'attachments',
+    optional(array(lazy(() => invoiceAttachmentSchema))),
   ],
 });

@@ -54,7 +54,7 @@ For a more detailed discussion of the Catalog data model, please see the
 
 ```json
 {
-  "type": "TAX",
+  "type": "TIME_PERIOD",
   "id": "id4",
   "category_data": {
     "object": {

@@ -13,6 +13,10 @@ import {
   catalogEcomSeoDataSchema,
 } from './catalogEcomSeoData';
 import {
+  CatalogItemFoodAndBeverageDetails,
+  catalogItemFoodAndBeverageDetailsSchema,
+} from './catalogItemFoodAndBeverageDetails';
+import {
   CatalogItemModifierListInfo,
   catalogItemModifierListInfoSchema,
 } from './catalogItemModifierListInfo';
@@ -135,6 +139,8 @@ export interface CatalogItem {
   isArchived?: boolean | null;
   /** SEO data for for a seller's Square Online store. */
   ecomSeoData?: CatalogEcomSeoData;
+  /** The food and beverage-specific details of a `FOOD_AND_BEV` item. */
+  foodAndBeverageDetails?: CatalogItemFoodAndBeverageDetails;
   /**
    * A category that can be assigned to an item or a parent category that can be assigned
    * to another category. For example, a clothing category can be assigned to a t-shirt item or
@@ -183,6 +189,10 @@ export const catalogItemSchema: Schema<CatalogItem> = object({
   ecomSeoData: [
     'ecom_seo_data',
     optional(lazy(() => catalogEcomSeoDataSchema)),
+  ],
+  foodAndBeverageDetails: [
+    'food_and_beverage_details',
+    optional(lazy(() => catalogItemFoodAndBeverageDetailsSchema)),
   ],
   reportingCategory: [
     'reporting_category',

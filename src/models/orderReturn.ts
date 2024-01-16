@@ -21,6 +21,7 @@ import {
   orderReturnServiceChargeSchema,
 } from './orderReturnServiceCharge';
 import { OrderReturnTax, orderReturnTaxSchema } from './orderReturnTax';
+import { OrderReturnTip, orderReturnTipSchema } from './orderReturnTip';
 import {
   OrderRoundingAdjustment,
   orderRoundingAdjustmentSchema,
@@ -38,19 +39,21 @@ export interface OrderReturn {
   /** A collection of line items that are being returned. */
   returnLineItems?: OrderReturnLineItem[] | null;
   /** A collection of service charges that are being returned. */
-  returnServiceCharges?: OrderReturnServiceCharge[];
+  returnServiceCharges?: OrderReturnServiceCharge[] | null;
   /**
    * A collection of references to taxes being returned for an order, including the total
    * applied tax amount to be returned. The taxes must reference a top-level tax ID from the source
    * order.
    */
-  returnTaxes?: OrderReturnTax[] | null;
+  returnTaxes?: OrderReturnTax[];
   /**
    * A collection of references to discounts being returned for an order, including the total
    * applied discount amount to be returned. The discounts must reference a top-level discount ID
    * from the source order.
    */
-  returnDiscounts?: OrderReturnDiscount[] | null;
+  returnDiscounts?: OrderReturnDiscount[];
+  /** A collection of references to tips being returned for an order. */
+  returnTips?: OrderReturnTip[] | null;
   /**
    * A rounding adjustment of the money being returned. Commonly used to apply cash rounding
    * when the minimum unit of the account is smaller than the lowest physical denomination of the currency.
@@ -69,15 +72,19 @@ export const orderReturnSchema: Schema<OrderReturn> = object({
   ],
   returnServiceCharges: [
     'return_service_charges',
-    optional(array(lazy(() => orderReturnServiceChargeSchema))),
+    optional(nullable(array(lazy(() => orderReturnServiceChargeSchema)))),
   ],
   returnTaxes: [
     'return_taxes',
-    optional(nullable(array(lazy(() => orderReturnTaxSchema)))),
+    optional(array(lazy(() => orderReturnTaxSchema))),
   ],
   returnDiscounts: [
     'return_discounts',
-    optional(nullable(array(lazy(() => orderReturnDiscountSchema)))),
+    optional(array(lazy(() => orderReturnDiscountSchema))),
+  ],
+  returnTips: [
+    'return_tips',
+    optional(nullable(array(lazy(() => orderReturnTipSchema)))),
   ],
   roundingAdjustment: [
     'rounding_adjustment',

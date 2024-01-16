@@ -31,7 +31,7 @@ the modifier list are allowed.
   "selection_type": "SINGLE",
   "modifiers": [
     {
-      "type": "QUICK_AMOUNTS_SETTINGS",
+      "type": "TAX",
       "id": "id4",
       "updated_at": "updated_at0",
       "version": 210,

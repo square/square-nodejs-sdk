@@ -36,7 +36,7 @@ Defines the response body returned from the [SearchCatalogItems](../../doc/api/c
   ],
   "items": [
     {
-      "type": "TIME_PERIOD",
+      "type": "SUBSCRIPTION_PLAN",
       "id": "id8",
       "updated_at": "updated_at6",
       "version": 38,

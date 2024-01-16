@@ -29,7 +29,18 @@ Describes a `ListInvoice` response.
         "cash_app_pay": false,
         "square_gift_card": false
       },
-      "created_at": "2020-06-18T17:45:13Z",
+      "attachments": [
+        {
+          "description": "Service contract",
+          "filename": "file.jpg",
+          "filesize": 102705,
+          "hash": "273ee02cb6f5f8a3a8ca23604930dd53",
+          "id": "inva:0-3bB9ZuDHiziThQhuC4fwWt",
+          "mime_type": "image/jpeg",
+          "uploaded_at": "2030-01-13T21:24:10Z"
+        }
+      ],
+      "created_at": "2030-01-13T17:45:13Z",
       "custom_fields": [
         {
           "label": "Event Reference Number",
@@ -93,8 +104,8 @@ Describes a `ListInvoice` response.
       "store_payment_method_enabled": false,
       "timezone": "America/Los_Angeles",
       "title": "Event Planning Services",
-      "updated_at": "2020-06-18T17:45:13Z",
-      "version": 0
+      "updated_at": "2030-01-13T21:24:10Z",
+      "version": 1
     },
     {
       "accepted_payment_methods": {
