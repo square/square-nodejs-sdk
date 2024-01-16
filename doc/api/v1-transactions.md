@@ -225,7 +225,7 @@ async v1ListPayments(
 | `endTime` | `string \| undefined` | Query, Optional | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. |
 | `limit` | `number \| undefined` | Query, Optional | The maximum number of payments to return in a single response. This value cannot exceed 200. |
 | `batchToken` | `string \| undefined` | Query, Optional | A pagination cursor to retrieve the next set of results for your<br>original query to the endpoint. |
-| `includePartial` | `boolean \| undefined` | Query, Optional | Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed.<br>**Default**: `false` |
+| `includePartial` | `boolean \| undefined` | Query, Optional | Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type

@@ -12,6 +12,10 @@ import {
 } from '../schema';
 import { Money, moneySchema } from './money';
 import {
+  OrderLineItemAppliedServiceCharge,
+  orderLineItemAppliedServiceChargeSchema,
+} from './orderLineItemAppliedServiceCharge';
+import {
   OrderLineItemAppliedTax,
   orderLineItemAppliedTaxSchema,
 } from './orderLineItemAppliedTax';
@@ -120,6 +124,22 @@ export interface OrderServiceCharge {
    * service charge.
    */
   scope?: string;
+  /**
+   * The list of references to service charges applied to this service charge. Each
+   * `OrderLineItemAppliedServiceCharge` has a `service_charge_id` that references the `uid` of a
+   * top-level `OrderServiceCharge`. On reads, the amount applied is populated.
+   * To change the amount of a service charge, modify the referenced top-level service charge.
+   */
+  appliedServiceCharges?: OrderLineItemAppliedServiceCharge[] | null;
+  /**
+   * Represents an amount of money. `Money` fields can be signed or unsigned.
+   * Fields that do not explicitly define whether they are signed or unsigned are
+   * considered unsigned and can only hold positive amounts. For signed fields, the
+   * sign of the value indicates the purpose of the money transfer. See
+   * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)
+   * for more information.
+   */
+  totalServiceChargeMoney?: Money;
 }
 
 export const orderServiceChargeSchema: Schema<OrderServiceCharge> = object({
@@ -142,4 +162,14 @@ export const orderServiceChargeSchema: Schema<OrderServiceCharge> = object({
   type: ['type', optional(string())],
   treatmentType: ['treatment_type', optional(string())],
   scope: ['scope', optional(string())],
+  appliedServiceCharges: [
+    'applied_service_charges',
+    optional(
+      nullable(array(lazy(() => orderLineItemAppliedServiceChargeSchema)))
+    ),
+  ],
+  totalServiceChargeMoney: [
+    'total_service_charge_money',
+    optional(lazy(() => moneySchema)),
+  ],
 });

@@ -19,7 +19,7 @@ A batch of catalog objects.
 {
   "objects": [
     {
-      "type": "PRICING_RULE",
+      "type": "PRODUCT_SET",
       "id": "id6",
       "category_data": {
         "object": {

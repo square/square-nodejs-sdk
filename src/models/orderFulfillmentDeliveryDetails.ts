@@ -39,15 +39,15 @@ export interface OrderFulfillmentDeliveryDetails {
   deliverAt?: string | null;
   /**
    * The duration of time it takes to prepare and deliver this fulfillment.
-   * The timestamp must be in RFC 3339 format (for example, "P1W3D").
+   * The duration must be in RFC 3339 format (for example, "P1W3D").
    */
   prepTimeDuration?: string | null;
   /**
-   * The time period after the `deliver_at` timestamp in which to deliver the order.
+   * The time period after `deliver_at` in which to deliver the order.
    * Applications can set this field when the fulfillment `state` is
    * `PROPOSED`, `RESERVED`, or `PREPARED` (any time before the terminal state
    * such as `COMPLETED`, `CANCELED`, and `FAILED`).
-   * The timestamp must be in RFC 3339 format (for example, "P1W3D").
+   * The duration must be in RFC 3339 format (for example, "P1W3D").
    */
   deliveryWindowDuration?: string | null;
   /**
@@ -106,9 +106,8 @@ export interface OrderFulfillmentDeliveryDetails {
    */
   courierPickupAt?: string | null;
   /**
-   * The period of time in which the order should be picked up by the courier after the
-   * `courier_pickup_at` timestamp.
-   * The time must be in RFC 3339 format (for example, "P1W3D").
+   * The time period after `courier_pickup_at` in which the courier should pick up the order.
+   * The duration must be in RFC 3339 format (for example, "P1W3D").
    */
   courierPickupWindowDuration?: string | null;
   /** Whether the delivery is preferred to be no contact. */

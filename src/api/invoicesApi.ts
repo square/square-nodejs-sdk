@@ -1,4 +1,4 @@
-import { ApiResponse, RequestOptions } from '../core';
+import { ApiResponse, FileWrapper, RequestOptions } from '../core';
 import {
   CancelInvoiceRequest,
   cancelInvoiceRequestSchema,
@@ -8,6 +8,14 @@ import {
   cancelInvoiceResponseSchema,
 } from '../models/cancelInvoiceResponse';
 import {
+  CreateInvoiceAttachmentRequest,
+  createInvoiceAttachmentRequestSchema,
+} from '../models/createInvoiceAttachmentRequest';
+import {
+  CreateInvoiceAttachmentResponse,
+  createInvoiceAttachmentResponseSchema,
+} from '../models/createInvoiceAttachmentResponse';
+import {
   CreateInvoiceRequest,
   createInvoiceRequestSchema,
 } from '../models/createInvoiceRequest';
@@ -15,6 +23,10 @@ import {
   CreateInvoiceResponse,
   createInvoiceResponseSchema,
 } from '../models/createInvoiceResponse';
+import {
+  DeleteInvoiceAttachmentResponse,
+  deleteInvoiceAttachmentResponseSchema,
+} from '../models/deleteInvoiceAttachmentResponse';
 import {
   DeleteInvoiceResponse,
   deleteInvoiceResponseSchema,
@@ -209,6 +221,73 @@ export class InvoicesApi extends BaseApi {
     req.json(mapped.body);
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}`;
     return req.callAsJson(updateInvoiceResponseSchema, requestOptions);
+  }
+
+  /**
+   * Uploads a file and attaches it to an invoice. This endpoint accepts HTTP multipart/form-data file
+   * uploads
+   * with a JSON `request` part and a `file` part. The `file` part must be a `readable stream` that
+   * contains a file
+   * in a supported format: GIF, JPEG, PNG, TIFF, BMP, or PDF.
+   *
+   * Invoices can have up to 10 attachments with a total file size of 25 MB. Attachments can be added
+   * only to invoices
+   * in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
+   *
+   * @param invoiceId  The ID of the [invoice](entity:Invoice) to attach the
+   *                                                            file to.
+   * @param request    Represents a
+   *                                                            [CreateInvoiceAttachment]($e/Invoices/CreateInvoiceAtta
+   *                                                            chment) request.
+   * @param imageFile
+   * @return Response from the API call
+   */
+  async createInvoiceAttachment(
+    invoiceId: string,
+    request?: CreateInvoiceAttachmentRequest,
+    imageFile?: FileWrapper,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<CreateInvoiceAttachmentResponse>> {
+    const req = this.createRequest('POST');
+    const mapped = req.prepareArgs({
+      invoiceId: [invoiceId, string()],
+      request: [request, optional(createInvoiceAttachmentRequestSchema)],
+    });
+    req.formData({
+      request: JSON.stringify(mapped.request),
+      image_file: imageFile,
+    });
+    req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}/attachments`;
+    return req.callAsJson(
+      createInvoiceAttachmentResponseSchema,
+      requestOptions
+    );
+  }
+
+  /**
+   * Removes an attachment from an invoice and permanently deletes the file. Attachments can be removed
+   * only
+   * from invoices in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
+   *
+   * @param invoiceId     The ID of the [invoice](entity:Invoice) to delete the attachment from.
+   * @param attachmentId  The ID of the [attachment](entity:InvoiceAttachment) to delete.
+   * @return Response from the API call
+   */
+  async deleteInvoiceAttachment(
+    invoiceId: string,
+    attachmentId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<DeleteInvoiceAttachmentResponse>> {
+    const req = this.createRequest('DELETE');
+    const mapped = req.prepareArgs({
+      invoiceId: [invoiceId, string()],
+      attachmentId: [attachmentId, string()],
+    });
+    req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}/attachments/${mapped.attachmentId}`;
+    return req.callAsJson(
+      deleteInvoiceAttachmentResponseSchema,
+      requestOptions
+    );
   }
 
   /**

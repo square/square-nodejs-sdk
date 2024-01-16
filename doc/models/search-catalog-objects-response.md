@@ -196,7 +196,7 @@
   "cursor": "cursor6",
   "related_objects": [
     {
-      "type": "MODIFIER_LIST",
+      "type": "SUBSCRIPTION_PLAN_VARIATION",
       "id": "id2",
       "updated_at": "updated_at2",
       "version": 0,

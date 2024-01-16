@@ -41,8 +41,8 @@ to store any sensitive information (personally identifiable information, card de
     "name": "name2"
   },
   "allowed_object_types": [
-    "ITEM",
-    "SUBSCRIPTION_PLAN"
+    "CATEGORY",
+    "IMAGE"
   ],
   "seller_visibility": "SELLER_VISIBILITY_HIDDEN",
   "app_visibility": "APP_VISIBILITY_HIDDEN",

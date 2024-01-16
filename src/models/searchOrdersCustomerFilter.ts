@@ -8,7 +8,7 @@ import { array, nullable, object, optional, Schema, string } from '../schema';
 export interface SearchOrdersCustomerFilter {
   /**
    * A list of customer IDs to filter by.
-   * Max: 10 customer IDs.
+   * Max: 10 customer ids.
    */
   customerIds?: string[] | null;
 }
