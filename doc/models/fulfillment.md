@@ -22,7 +22,6 @@ However, orders returned by the Orders API might contain multiple fulfillments b
 | `pickupDetails` | [`FulfillmentPickupDetails \| undefined`](../../doc/models/fulfillment-pickup-details.md) | Optional | Contains details necessary to fulfill a pickup order. |
 | `shipmentDetails` | [`FulfillmentShipmentDetails \| undefined`](../../doc/models/fulfillment-shipment-details.md) | Optional | Contains the details necessary to fulfill a shipment order. |
 | `deliveryDetails` | [`FulfillmentDeliveryDetails \| undefined`](../../doc/models/fulfillment-delivery-details.md) | Optional | Describes delivery details of an order fulfillment. |
-| `version` | `number \| undefined` | Optional | The version number attributed to the fulfillment and incremented every time there is a<br>fulfillment-related update. The fulfillment version is an internal field only for use<br>between Orders and the Fulfillment service. |
 
 ## Example (as JSON)
 

@@ -3,7 +3,6 @@ import {
   dict,
   lazy,
   nullable,
-  number,
   object,
   optional,
   Schema,
@@ -77,12 +76,6 @@ export interface Fulfillment {
   shipmentDetails?: FulfillmentShipmentDetails;
   /** Describes delivery details of an order fulfillment. */
   deliveryDetails?: FulfillmentDeliveryDetails;
-  /**
-   * The version number attributed to the fulfillment and incremented every time there is a
-   * fulfillment-related update. The fulfillment version is an internal field only for use
-   * between Orders and the Fulfillment service.
-   */
-  version?: number;
 }
 
 export const fulfillmentSchema: Schema<Fulfillment> = object({
@@ -107,5 +100,4 @@ export const fulfillmentSchema: Schema<Fulfillment> = object({
     'delivery_details',
     optional(lazy(() => fulfillmentDeliveryDetailsSchema)),
   ],
-  version: ['version', optional(number())],
 });
