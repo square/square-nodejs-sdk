@@ -27,8 +27,6 @@ Represents a service charge applied to an order.
 | `type` | [`string \| undefined`](../../doc/models/order-service-charge-type.md) | Optional | - |
 | `treatmentType` | [`string \| undefined`](../../doc/models/order-service-charge-treatment-type.md) | Optional | Indicates whether the service charge will be treated as a value-holding line item or<br>apportioned toward a line item. |
 | `scope` | [`string \| undefined`](../../doc/models/order-service-charge-scope.md) | Optional | Indicates whether this is a line-item or order-level apportioned<br>service charge. |
-| `appliedServiceCharges` | [`OrderLineItemAppliedServiceCharge[] \| null \| undefined`](../../doc/models/order-line-item-applied-service-charge.md) | Optional | The list of references to service charges applied to this service charge. Each<br>`OrderLineItemAppliedServiceCharge` has a `service_charge_id` that references the `uid` of a<br>top-level `OrderServiceCharge`. On reads, the amount applied is populated.<br><br>To change the amount of a service charge, modify the referenced top-level service charge. |
-| `totalServiceChargeMoney` | [`Money \| undefined`](../../doc/models/money.md) | Optional | Represents an amount of money. `Money` fields can be signed or unsigned.<br>Fields that do not explicitly define whether they are signed or unsigned are<br>considered unsigned and can only hold positive amounts. For signed fields, the<br>sign of the value indicates the purpose of the money transfer. See<br>[Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts)<br>for more information. |
 
 ## Example (as JSON)
 
