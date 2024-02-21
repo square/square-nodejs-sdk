@@ -77,6 +77,7 @@ export class GiftCardActivitiesApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
     req.query('sort_order', mapped.sortOrder);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listGiftCardActivitiesResponseSchema, requestOptions);
   }
 
@@ -100,6 +101,7 @@ export class GiftCardActivitiesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createGiftCardActivityResponseSchema, requestOptions);
   }
 }

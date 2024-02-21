@@ -4,7 +4,8 @@ import { Error, errorSchema } from './error';
 
 /**
  * Defines the fields that are included in the response body of
- * a request to the `CreateCustomer` endpoint.
+ * a request to the [CreateCustomer]($e/Customers/CreateCustomer) or
+ * [BulkCreateCustomers]($e/Customers/BulkCreateCustomers) endpoint.
  * Either `errors` or `customer` is present in a given response (never both).
  */
 export interface CreateCustomerResponse {

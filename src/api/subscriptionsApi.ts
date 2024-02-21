@@ -108,6 +108,7 @@ export class SubscriptionsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createSubscriptionResponseSchema, requestOptions);
   }
 
@@ -128,6 +129,7 @@ export class SubscriptionsApi extends BaseApi {
     const mapped = req.prepareArgs({ body: [body, bulkSwapPlanRequestSchema] });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(bulkSwapPlanResponseSchema, requestOptions);
   }
 
@@ -162,6 +164,7 @@ export class SubscriptionsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchSubscriptionsResponseSchema, requestOptions);
   }
 
@@ -186,6 +189,7 @@ export class SubscriptionsApi extends BaseApi {
     });
     req.query('include', mapped.include);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveSubscriptionResponseSchema, requestOptions);
   }
 
@@ -212,6 +216,7 @@ export class SubscriptionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateSubscriptionResponseSchema, requestOptions);
   }
 
@@ -233,6 +238,7 @@ export class SubscriptionsApi extends BaseApi {
       actionId: [actionId, string()],
     });
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/actions/${mapped.actionId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteSubscriptionActionResponseSchema,
       requestOptions
@@ -264,6 +270,7 @@ export class SubscriptionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/billing-anchor`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       changeBillingAnchorDateResponseSchema,
       requestOptions
@@ -287,6 +294,7 @@ export class SubscriptionsApi extends BaseApi {
       subscriptionId: [subscriptionId, string()],
     });
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/cancel`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(cancelSubscriptionResponseSchema, requestOptions);
   }
 
@@ -319,6 +327,7 @@ export class SubscriptionsApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/events`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listSubscriptionEventsResponseSchema, requestOptions);
   }
 
@@ -344,6 +353,7 @@ export class SubscriptionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/pause`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(pauseSubscriptionResponseSchema, requestOptions);
   }
 
@@ -369,6 +379,7 @@ export class SubscriptionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/resume`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(resumeSubscriptionResponseSchema, requestOptions);
   }
 
@@ -395,6 +406,7 @@ export class SubscriptionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/subscriptions/${mapped.subscriptionId}/swap-plan`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(swapPlanResponseSchema, requestOptions);
   }
 }

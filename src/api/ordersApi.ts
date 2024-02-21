@@ -84,6 +84,7 @@ export class OrdersApi extends BaseApi {
     const mapped = req.prepareArgs({ body: [body, createOrderRequestSchema] });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createOrderResponseSchema, requestOptions);
   }
 
@@ -107,6 +108,7 @@ export class OrdersApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(batchRetrieveOrdersResponseSchema, requestOptions);
   }
 
@@ -127,6 +129,7 @@ export class OrdersApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(calculateOrderResponseSchema, requestOptions);
   }
 
@@ -147,6 +150,7 @@ export class OrdersApi extends BaseApi {
     const mapped = req.prepareArgs({ body: [body, cloneOrderRequestSchema] });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(cloneOrderResponseSchema, requestOptions);
   }
 
@@ -181,6 +185,7 @@ export class OrdersApi extends BaseApi {
     const mapped = req.prepareArgs({ body: [body, searchOrdersRequestSchema] });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchOrdersResponseSchema, requestOptions);
   }
 
@@ -197,6 +202,7 @@ export class OrdersApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ orderId: [orderId, string()] });
     req.appendTemplatePath`/v2/orders/${mapped.orderId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveOrderResponseSchema, requestOptions);
   }
 
@@ -237,6 +243,7 @@ export class OrdersApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/orders/${mapped.orderId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateOrderResponseSchema, requestOptions);
   }
 
@@ -276,6 +283,7 @@ export class OrdersApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/orders/${mapped.orderId}/pay`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(payOrderResponseSchema, requestOptions);
   }
 }

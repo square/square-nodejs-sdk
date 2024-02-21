@@ -36,8 +36,8 @@ export interface PaymentRefund {
   unlinked?: boolean;
   /**
    * The destination type for this refund.
-   * Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `BUY_NOW_PAY_LATER`, `CASH`, and
-   * `EXTERNAL`.
+   * Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `BUY_NOW_PAY_LATER`, `CASH`,
+   * `EXTERNAL`, and `SQUARE_ACCOUNT`.
    */
   destinationType?: string | null;
   /** Details about a refund's destination. */

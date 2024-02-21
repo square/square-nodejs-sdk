@@ -75,6 +75,7 @@ export class DisputesApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.query('states', mapped.states);
     req.query('location_id', mapped.locationId);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listDisputesResponseSchema, requestOptions);
   }
 
@@ -91,6 +92,7 @@ export class DisputesApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ disputeId: [disputeId, string()] });
     req.appendTemplatePath`/v2/disputes/${mapped.disputeId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveDisputeResponseSchema, requestOptions);
   }
 
@@ -111,6 +113,7 @@ export class DisputesApi extends BaseApi {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({ disputeId: [disputeId, string()] });
     req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/accept`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(acceptDisputeResponseSchema, requestOptions);
   }
 
@@ -136,6 +139,7 @@ export class DisputesApi extends BaseApi {
     });
     req.query('cursor', mapped.cursor);
     req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listDisputeEvidenceResponseSchema, requestOptions);
   }
 
@@ -166,6 +170,7 @@ export class DisputesApi extends BaseApi {
       image_file: imageFile,
     });
     req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence-files`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       createDisputeEvidenceFileResponseSchema,
       requestOptions
@@ -195,6 +200,7 @@ export class DisputesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence-text`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       createDisputeEvidenceTextResponseSchema,
       requestOptions
@@ -220,6 +226,7 @@ export class DisputesApi extends BaseApi {
       evidenceId: [evidenceId, string()],
     });
     req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence/${mapped.evidenceId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deleteDisputeEvidenceResponseSchema, requestOptions);
   }
 
@@ -244,6 +251,7 @@ export class DisputesApi extends BaseApi {
       evidenceId: [evidenceId, string()],
     });
     req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/evidence/${mapped.evidenceId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveDisputeEvidenceResponseSchema,
       requestOptions
@@ -269,6 +277,7 @@ export class DisputesApi extends BaseApi {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({ disputeId: [disputeId, string()] });
     req.appendTemplatePath`/v2/disputes/${mapped.disputeId}/submit-evidence`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(submitEvidenceResponseSchema, requestOptions);
   }
 }

@@ -574,8 +574,11 @@ nothing. Square also makes the invoice available on a Square-hosted invoice page
 
 The invoice `status` also changes from `DRAFT` to a status
 based on the invoice configuration. For example, the status changes to `UNPAID` if
-Square emails the invoice or `PARTIALLY_PAID` if Square charge a card on file for a portion of the
+Square emails the invoice or `PARTIALLY_PAID` if Square charges a card on file for a portion of the
 invoice amount.
+
+In addition to the required `ORDERS_WRITE` and `INVOICES_WRITE` permissions, `CUSTOMERS_READ`
+and `PAYMENTS_WRITE` are required when publishing invoices configured for card-on-file payments.
 
 ```ts
 async publishInvoice(

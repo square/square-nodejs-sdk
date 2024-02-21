@@ -30,7 +30,7 @@ export class LocationsApi extends BaseApi {
   /**
    * Provides details about all of the seller's [locations](https://developer.squareup.com/docs/locations-
    * api),
-   * including those with an inactive status.
+   * including those with an inactive status. Locations are listed alphabetically by `name`.
    *
    * @return Response from the API call
    */
@@ -38,6 +38,7 @@ export class LocationsApi extends BaseApi {
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ListLocationsResponse>> {
     const req = this.createRequest('GET', '/v2/locations');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listLocationsResponseSchema, requestOptions);
   }
 
@@ -64,6 +65,7 @@ export class LocationsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createLocationResponseSchema, requestOptions);
   }
 
@@ -83,6 +85,7 @@ export class LocationsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ locationId: [locationId, string()] });
     req.appendTemplatePath`/v2/locations/${mapped.locationId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveLocationResponseSchema, requestOptions);
   }
 
@@ -107,6 +110,7 @@ export class LocationsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/locations/${mapped.locationId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateLocationResponseSchema, requestOptions);
   }
 }

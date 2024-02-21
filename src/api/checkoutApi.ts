@@ -94,6 +94,7 @@ export class CheckoutApi extends BaseApi {
     req.json(mapped.body);
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/checkouts`;
     req.deprecated('CheckoutApi.createCheckout');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createCheckoutResponseSchema, requestOptions);
   }
 
@@ -110,6 +111,7 @@ export class CheckoutApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ locationId: [locationId, string()] });
     req.appendTemplatePath`/v2/online-checkout/location-settings/${mapped.locationId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveLocationSettingsResponseSchema,
       requestOptions
@@ -138,6 +140,7 @@ export class CheckoutApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/online-checkout/location-settings/${mapped.locationId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateLocationSettingsResponseSchema, requestOptions);
   }
 
@@ -153,6 +156,7 @@ export class CheckoutApi extends BaseApi {
       'GET',
       '/v2/online-checkout/merchant-settings'
     );
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveMerchantSettingsResponseSchema,
       requestOptions
@@ -180,6 +184,7 @@ export class CheckoutApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateMerchantSettingsResponseSchema, requestOptions);
   }
 
@@ -189,7 +194,8 @@ export class CheckoutApi extends BaseApi {
    * @param cursor A pagination cursor returned by a previous call to this endpoint. Provide this cursor to
    *                         retrieve the next set of results for the original query. If a cursor is not provided, the
    *                         endpoint returns the first page of the results. For more  information, see
-   *                         [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
+   *                         [Pagination](https://developer.squareup.com/docs/build-basics/common-api-
+   *                         patterns/pagination).
    * @param limit  A limit on the number of results to return per page. The limit is advisory and the
    *                         implementation might return more or less results. If the supplied limit is negative, zero,
    *                         or greater than the maximum limit of 1000, it is ignored.  Default value: `100`
@@ -207,6 +213,7 @@ export class CheckoutApi extends BaseApi {
     });
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listPaymentLinksResponseSchema, requestOptions);
   }
 
@@ -228,6 +235,7 @@ export class CheckoutApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createPaymentLinkResponseSchema, requestOptions);
   }
 
@@ -244,6 +252,7 @@ export class CheckoutApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/online-checkout/payment-links/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deletePaymentLinkResponseSchema, requestOptions);
   }
 
@@ -260,6 +269,7 @@ export class CheckoutApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/online-checkout/payment-links/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrievePaymentLinkResponseSchema, requestOptions);
   }
 
@@ -286,6 +296,7 @@ export class CheckoutApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/online-checkout/payment-links/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updatePaymentLinkResponseSchema, requestOptions);
   }
 }

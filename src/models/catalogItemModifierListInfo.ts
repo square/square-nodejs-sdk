@@ -14,7 +14,10 @@ import {
   catalogModifierOverrideSchema,
 } from './catalogModifierOverride';
 
-/** Options to control the properties of a `CatalogModifierList` applied to a `CatalogItem` instance. */
+/**
+ * References a text-based modifier or a list of non text-based modifiers applied to a `CatalogItem` instance
+ * and specifies supported behaviors of the application.
+ */
 export interface CatalogItemModifierListInfo {
   /** The ID of the `CatalogModifierList` controlled by this `CatalogModifierListInfo`. */
   modifierListId: string;
@@ -26,6 +29,11 @@ export interface CatalogItemModifierListInfo {
   maxSelectedModifiers?: number | null;
   /** If `true`, enable this `CatalogModifierList`. The default value is `true`. */
   enabled?: boolean | null;
+  /**
+   * The position of this `CatalogItemModifierListInfo` object within the `modifier_list_info` list applied
+   * to a `CatalogItem` instance.
+   */
+  ordinal?: number | null;
 }
 
 export const catalogItemModifierListInfoSchema: Schema<CatalogItemModifierListInfo> = object(
@@ -44,5 +52,6 @@ export const catalogItemModifierListInfoSchema: Schema<CatalogItemModifierListIn
       optional(nullable(number())),
     ],
     enabled: ['enabled', optional(nullable(boolean()))],
+    ordinal: ['ordinal', optional(nullable(number()))],
   }
 );

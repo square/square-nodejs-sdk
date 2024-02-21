@@ -37,6 +37,7 @@ export class CustomerSegmentsApi extends BaseApi {
     });
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listCustomerSegmentsResponseSchema, requestOptions);
   }
 
@@ -53,6 +54,7 @@ export class CustomerSegmentsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ segmentId: [segmentId, string()] });
     req.appendTemplatePath`/v2/customers/segments/${mapped.segmentId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveCustomerSegmentResponseSchema,
       requestOptions

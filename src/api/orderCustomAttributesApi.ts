@@ -108,6 +108,7 @@ export class OrderCustomAttributesApi extends BaseApi {
     req.query('visibility_filter', mapped.visibilityFilter);
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listOrderCustomAttributeDefinitionsResponseSchema,
       requestOptions
@@ -139,6 +140,7 @@ export class OrderCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       createOrderCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -161,6 +163,7 @@ export class OrderCustomAttributesApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ key: [key, string()] });
     req.appendTemplatePath`/v2/orders/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteOrderCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -194,6 +197,7 @@ export class OrderCustomAttributesApi extends BaseApi {
     });
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/orders/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveOrderCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -226,6 +230,7 @@ export class OrderCustomAttributesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/orders/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       updateOrderCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -269,6 +274,7 @@ export class OrderCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       bulkDeleteOrderCustomAttributesResponseSchema,
       requestOptions
@@ -312,6 +318,7 @@ export class OrderCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       bulkUpsertOrderCustomAttributesResponseSchema,
       requestOptions
@@ -368,6 +375,7 @@ export class OrderCustomAttributesApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('with_definitions', mapped.withDefinitions);
     req.appendTemplatePath`/v2/orders/${mapped.orderId}/custom-attributes`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listOrderCustomAttributesResponseSchema,
       requestOptions
@@ -397,6 +405,7 @@ export class OrderCustomAttributesApi extends BaseApi {
       customAttributeKey: [customAttributeKey, string()],
     });
     req.appendTemplatePath`/v2/orders/${mapped.orderId}/custom-attributes/${mapped.customAttributeKey}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteOrderCustomAttributeResponseSchema,
       requestOptions
@@ -445,6 +454,7 @@ export class OrderCustomAttributesApi extends BaseApi {
     req.query('version', mapped.version);
     req.query('with_definition', mapped.withDefinition);
     req.appendTemplatePath`/v2/orders/${mapped.orderId}/custom-attributes/${mapped.customAttributeKey}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveOrderCustomAttributeResponseSchema,
       requestOptions
@@ -490,6 +500,7 @@ export class OrderCustomAttributesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/orders/${mapped.orderId}/custom-attributes/${mapped.customAttributeKey}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       upsertOrderCustomAttributeResponseSchema,
       requestOptions

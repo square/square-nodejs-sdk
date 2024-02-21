@@ -57,6 +57,7 @@ export class CustomerGroupsApi extends BaseApi {
     });
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listCustomerGroupsResponseSchema, requestOptions);
   }
 
@@ -80,6 +81,7 @@ export class CustomerGroupsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createCustomerGroupResponseSchema, requestOptions);
   }
 
@@ -96,6 +98,7 @@ export class CustomerGroupsApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ groupId: [groupId, string()] });
     req.appendTemplatePath`/v2/customers/groups/${mapped.groupId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deleteCustomerGroupResponseSchema, requestOptions);
   }
 
@@ -112,6 +115,7 @@ export class CustomerGroupsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ groupId: [groupId, string()] });
     req.appendTemplatePath`/v2/customers/groups/${mapped.groupId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveCustomerGroupResponseSchema, requestOptions);
   }
 
@@ -137,6 +141,7 @@ export class CustomerGroupsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/customers/groups/${mapped.groupId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateCustomerGroupResponseSchema, requestOptions);
   }
 }

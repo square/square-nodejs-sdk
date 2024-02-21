@@ -59,6 +59,7 @@ export class DevicesApi extends BaseApi {
     req.query('sort_order', mapped.sortOrder);
     req.query('limit', mapped.limit);
     req.query('location_id', mapped.locationId);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listDevicesResponseSchema, requestOptions);
   }
 
@@ -95,6 +96,7 @@ export class DevicesApi extends BaseApi {
     req.query('location_id', mapped.locationId);
     req.query('product_type', mapped.productType);
     req.query('status', mapped.status);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listDeviceCodesResponseSchema, requestOptions);
   }
 
@@ -116,6 +118,7 @@ export class DevicesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createDeviceCodeResponseSchema, requestOptions);
   }
 
@@ -132,6 +135,7 @@ export class DevicesApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/devices/codes/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getDeviceCodeResponseSchema, requestOptions);
   }
 
@@ -148,6 +152,7 @@ export class DevicesApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ deviceId: [deviceId, string()] });
     req.appendTemplatePath`/v2/devices/${mapped.deviceId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getDeviceResponseSchema, requestOptions);
   }
 }

@@ -95,6 +95,7 @@ export class CustomerCustomAttributesApi extends BaseApi {
     });
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listCustomerCustomAttributeDefinitionsResponseSchema,
       requestOptions
@@ -134,6 +135,7 @@ export class CustomerCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       createCustomerCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -159,6 +161,7 @@ export class CustomerCustomAttributesApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ key: [key, string()] });
     req.appendTemplatePath`/v2/customers/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteCustomerCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -195,6 +198,7 @@ export class CustomerCustomAttributesApi extends BaseApi {
     });
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/customers/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveCustomerCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -232,6 +236,7 @@ export class CustomerCustomAttributesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/customers/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       updateCustomerCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -275,6 +280,7 @@ export class CustomerCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       bulkUpsertCustomerCustomAttributesResponseSchema,
       requestOptions
@@ -326,6 +332,7 @@ export class CustomerCustomAttributesApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.query('with_definitions', mapped.withDefinitions);
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/custom-attributes`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listCustomerCustomAttributesResponseSchema,
       requestOptions
@@ -356,6 +363,7 @@ export class CustomerCustomAttributesApi extends BaseApi {
       key: [key, string()],
     });
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteCustomerCustomAttributeResponseSchema,
       requestOptions
@@ -406,6 +414,7 @@ export class CustomerCustomAttributesApi extends BaseApi {
     req.query('with_definition', mapped.withDefinition);
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveCustomerCustomAttributeResponseSchema,
       requestOptions
@@ -453,6 +462,7 @@ export class CustomerCustomAttributesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       upsertCustomerCustomAttributeResponseSchema,
       requestOptions

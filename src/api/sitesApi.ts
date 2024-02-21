@@ -21,6 +21,7 @@ export class SitesApi extends BaseApi {
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ListSitesResponse>> {
     const req = this.createRequest('GET', '/v2/sites');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listSitesResponseSchema, requestOptions);
   }
 }

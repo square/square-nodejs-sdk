@@ -130,6 +130,7 @@ export class CatalogApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       batchDeleteCatalogObjectsResponseSchema,
       requestOptions
@@ -159,6 +160,7 @@ export class CatalogApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       batchRetrieveCatalogObjectsResponseSchema,
       requestOptions
@@ -195,6 +197,7 @@ export class CatalogApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       batchUpsertCatalogObjectsResponseSchema,
       requestOptions
@@ -229,6 +232,7 @@ export class CatalogApi extends BaseApi {
       request: JSON.stringify(mapped.request),
       image_file: imageFile,
     });
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createCatalogImageResponseSchema, requestOptions);
   }
 
@@ -262,6 +266,7 @@ export class CatalogApi extends BaseApi {
       image_file: imageFile,
     });
     req.appendTemplatePath`/v2/catalog/images/${mapped.imageId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateCatalogImageResponseSchema, requestOptions);
   }
 
@@ -275,6 +280,7 @@ export class CatalogApi extends BaseApi {
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<CatalogInfoResponse>> {
     const req = this.createRequest('GET', '/v2/catalog/info');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(catalogInfoResponseSchema, requestOptions);
   }
 
@@ -326,6 +332,7 @@ export class CatalogApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.query('types', mapped.types);
     req.query('catalog_version', mapped.catalogVersion);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listCatalogResponseSchema, requestOptions);
   }
 
@@ -351,6 +358,7 @@ export class CatalogApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(upsertCatalogObjectResponseSchema, requestOptions);
   }
 
@@ -378,6 +386,7 @@ export class CatalogApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ objectId: [objectId, string()] });
     req.appendTemplatePath`/v2/catalog/object/${mapped.objectId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deleteCatalogObjectResponseSchema, requestOptions);
   }
 
@@ -441,6 +450,7 @@ export class CatalogApi extends BaseApi {
     req.query('catalog_version', mapped.catalogVersion);
     req.query('include_category_path_to_root', mapped.includeCategoryPathToRoot);
     req.appendTemplatePath`/v2/catalog/object/${mapped.objectId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveCatalogObjectResponseSchema, requestOptions);
   }
 
@@ -477,6 +487,7 @@ export class CatalogApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchCatalogObjectsResponseSchema, requestOptions);
   }
 
@@ -511,6 +522,7 @@ export class CatalogApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchCatalogItemsResponseSchema, requestOptions);
   }
 
@@ -537,6 +549,7 @@ export class CatalogApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       updateItemModifierListsResponseSchema,
       requestOptions
@@ -562,6 +575,7 @@ export class CatalogApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateItemTaxesResponseSchema, requestOptions);
   }
 }

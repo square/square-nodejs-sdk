@@ -104,6 +104,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
     req.query('visibility_filter', mapped.visibilityFilter);
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listMerchantCustomAttributeDefinitionsResponseSchema,
       requestOptions
@@ -140,6 +141,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       createMerchantCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -163,6 +165,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ key: [key, string()] });
     req.appendTemplatePath`/v2/merchants/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteMerchantCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -196,6 +199,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
     });
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/merchants/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveMerchantCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -230,6 +234,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/merchants/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       updateMerchantCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -259,6 +264,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       bulkDeleteMerchantCustomAttributesResponseSchema,
       requestOptions
@@ -297,6 +303,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       bulkUpsertMerchantCustomAttributesResponseSchema,
       requestOptions
@@ -350,6 +357,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.query('with_definitions', mapped.withDefinitions);
     req.appendTemplatePath`/v2/merchants/${mapped.merchantId}/custom-attributes`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listMerchantCustomAttributesResponseSchema,
       requestOptions
@@ -378,6 +386,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
       key: [key, string()],
     });
     req.appendTemplatePath`/v2/merchants/${mapped.merchantId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteMerchantCustomAttributeResponseSchema,
       requestOptions
@@ -424,6 +433,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
     req.query('with_definition', mapped.withDefinition);
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/merchants/${mapped.merchantId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveMerchantCustomAttributeResponseSchema,
       requestOptions
@@ -468,6 +478,7 @@ export class MerchantCustomAttributesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/merchants/${mapped.merchantId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       upsertMerchantCustomAttributeResponseSchema,
       requestOptions

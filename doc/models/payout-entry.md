@@ -49,7 +49,7 @@ The total amount of the payout will equal the sum of the payout entries for a ba
   "id": "id8",
   "payout_id": "payout_id4",
   "effective_at": "effective_at8",
-  "type": "DEPOSIT_FEE",
+  "type": "SQUARE_CAPITAL_REVERSED_PAYMENT",
   "gross_amount_money": {
     "amount": 186,
     "currency": "BWP"

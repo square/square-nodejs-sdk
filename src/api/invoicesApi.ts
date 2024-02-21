@@ -96,6 +96,7 @@ export class InvoicesApi extends BaseApi {
     req.query('location_id', mapped.locationId);
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listInvoicesResponseSchema, requestOptions);
   }
 
@@ -121,6 +122,7 @@ export class InvoicesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createInvoiceResponseSchema, requestOptions);
   }
 
@@ -147,6 +149,7 @@ export class InvoicesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchInvoicesResponseSchema, requestOptions);
   }
 
@@ -173,6 +176,7 @@ export class InvoicesApi extends BaseApi {
     });
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deleteInvoiceResponseSchema, requestOptions);
   }
 
@@ -189,6 +193,7 @@ export class InvoicesApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ invoiceId: [invoiceId, string()] });
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
   }
 
@@ -220,6 +225,7 @@ export class InvoicesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateInvoiceResponseSchema, requestOptions);
   }
 
@@ -258,6 +264,7 @@ export class InvoicesApi extends BaseApi {
       image_file: imageFile,
     });
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}/attachments`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       createInvoiceAttachmentResponseSchema,
       requestOptions
@@ -284,6 +291,7 @@ export class InvoicesApi extends BaseApi {
       attachmentId: [attachmentId, string()],
     });
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}/attachments/${mapped.attachmentId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteInvoiceAttachmentResponseSchema,
       requestOptions
@@ -315,6 +323,7 @@ export class InvoicesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}/cancel`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(cancelInvoiceResponseSchema, requestOptions);
   }
 
@@ -328,8 +337,11 @@ export class InvoicesApi extends BaseApi {
    *
    * The invoice `status` also changes from `DRAFT` to a status
    * based on the invoice configuration. For example, the status changes to `UNPAID` if
-   * Square emails the invoice or `PARTIALLY_PAID` if Square charge a card on file for a portion of the
+   * Square emails the invoice or `PARTIALLY_PAID` if Square charges a card on file for a portion of the
    * invoice amount.
+   *
+   * In addition to the required `ORDERS_WRITE` and `INVOICES_WRITE` permissions, `CUSTOMERS_READ`
+   * and `PAYMENTS_WRITE` are required when publishing invoices configured for card-on-file payments.
    *
    * @param invoiceId    The ID of the invoice to publish.
    * @param body         An object containing the fields to POST for the request.  See
@@ -349,6 +361,7 @@ export class InvoicesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/invoices/${mapped.invoiceId}/publish`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(publishInvoiceResponseSchema, requestOptions);
   }
 }

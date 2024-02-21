@@ -116,6 +116,7 @@ export class LaborApi extends BaseApi {
     req.query('location_id', mapped.locationId);
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listBreakTypesResponseSchema, requestOptions);
   }
 
@@ -149,6 +150,7 @@ export class LaborApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createBreakTypeResponseSchema, requestOptions);
   }
 
@@ -167,6 +169,7 @@ export class LaborApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/labor/break-types/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deleteBreakTypeResponseSchema, requestOptions);
   }
 
@@ -183,6 +186,7 @@ export class LaborApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/labor/break-types/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getBreakTypeResponseSchema, requestOptions);
   }
 
@@ -207,6 +211,7 @@ export class LaborApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/labor/break-types/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateBreakTypeResponseSchema, requestOptions);
   }
 
@@ -237,6 +242,7 @@ export class LaborApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
     req.deprecated('LaborApi.listEmployeeWages');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listEmployeeWagesResponseSchema, requestOptions);
   }
 
@@ -255,6 +261,7 @@ export class LaborApi extends BaseApi {
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/labor/employee-wages/${mapped.id}`;
     req.deprecated('LaborApi.getEmployeeWage');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getEmployeeWageResponseSchema, requestOptions);
   }
 
@@ -290,6 +297,7 @@ export class LaborApi extends BaseApi {
     const mapped = req.prepareArgs({ body: [body, createShiftRequestSchema] });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createShiftResponseSchema, requestOptions);
   }
 
@@ -321,6 +329,7 @@ export class LaborApi extends BaseApi {
     const mapped = req.prepareArgs({ body: [body, searchShiftsRequestSchema] });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchShiftsResponseSchema, requestOptions);
   }
 
@@ -337,6 +346,7 @@ export class LaborApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/labor/shifts/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deleteShiftResponseSchema, requestOptions);
   }
 
@@ -353,6 +363,7 @@ export class LaborApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/labor/shifts/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getShiftResponseSchema, requestOptions);
   }
 
@@ -383,6 +394,7 @@ export class LaborApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/labor/shifts/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateShiftResponseSchema, requestOptions);
   }
 
@@ -411,6 +423,7 @@ export class LaborApi extends BaseApi {
     req.query('team_member_id', mapped.teamMemberId);
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listTeamMemberWagesResponseSchema, requestOptions);
   }
 
@@ -427,6 +440,7 @@ export class LaborApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/labor/team-member-wages/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getTeamMemberWageResponseSchema, requestOptions);
   }
 
@@ -449,6 +463,7 @@ export class LaborApi extends BaseApi {
     });
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listWorkweekConfigsResponseSchema, requestOptions);
   }
 
@@ -474,6 +489,7 @@ export class LaborApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/labor/workweek-configs/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateWorkweekConfigResponseSchema, requestOptions);
   }
 }

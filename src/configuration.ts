@@ -8,7 +8,11 @@ export interface Configuration {
   userAgentDetail: string;
   environment: Environment;
   customUrl: string;
-  accessToken: string;
+  /** @deprecated use bearerAuthCredentials field instead */
+  accessToken?: string;
+  bearerAuthCredentials?: {
+    accessToken: string;
+  };
   httpClientOptions?: Partial<HttpClientOptions>;
   unstable_httpClientOptions?: any;
 }

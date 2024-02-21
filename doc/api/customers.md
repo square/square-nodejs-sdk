@@ -12,6 +12,10 @@ const customersApi = client.customersApi;
 
 * [List Customers](../../doc/api/customers.md#list-customers)
 * [Create Customer](../../doc/api/customers.md#create-customer)
+* [Bulk Create Customers](../../doc/api/customers.md#bulk-create-customers)
+* [Bulk Delete Customers](../../doc/api/customers.md#bulk-delete-customers)
+* [Bulk Retrieve Customers](../../doc/api/customers.md#bulk-retrieve-customers)
+* [Bulk Update Customers](../../doc/api/customers.md#bulk-update-customers)
 * [Search Customers](../../doc/api/customers.md#search-customers)
 * [Delete Customer](../../doc/api/customers.md#delete-customer)
 * [Retrieve Customer](../../doc/api/customers.md#retrieve-customer)
@@ -152,6 +156,261 @@ try {
 ```
 
 
+# Bulk Create Customers
+
+Creates multiple [customer profiles](../../doc/models/customer.md) for a business.
+
+This endpoint takes a map of individual create requests and returns a map of responses.
+
+You must provide at least one of the following values in each create request:
+
+- `given_name`
+- `family_name`
+- `company_name`
+- `email_address`
+- `phone_number`
+
+```ts
+async bulkCreateCustomers(
+  body: BulkCreateCustomersRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkCreateCustomersResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`BulkCreateCustomersRequest`](../../doc/models/bulk-create-customers-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`BulkCreateCustomersResponse`](../../doc/models/bulk-create-customers-response.md)
+
+## Example Usage
+
+```ts
+const body: BulkCreateCustomersRequest = {
+  customers: {
+    '8bb76c4f-e35d-4c5b-90de-1194cd9179f0': {
+      givenName: 'Amelia',
+      familyName: 'Earhart',
+      emailAddress: 'Amelia.Earhart@example.com',
+      address: {
+        addressLine1: '500 Electric Ave',
+        addressLine2: 'Suite 600',
+        locality: 'New York',
+        administrativeDistrictLevel1: 'NY',
+        postalCode: '10003',
+        country: 'US',
+      },
+      phoneNumber: '+1-212-555-4240',
+      referenceId: 'YOUR_REFERENCE_ID',
+      note: 'a customer',
+    },
+    'd1689f23-b25d-4932-b2f0-aed00f5e2029': {
+      givenName: 'Marie',
+      familyName: 'Curie',
+      emailAddress: 'Marie.Curie@example.com',
+      address: {
+        addressLine1: '500 Electric Ave',
+        addressLine2: 'Suite 601',
+        locality: 'New York',
+        administrativeDistrictLevel1: 'NY',
+        postalCode: '10003',
+        country: 'US',
+      },
+      phoneNumber: '+1-212-444-4240',
+      referenceId: 'YOUR_REFERENCE_ID',
+      note: 'another customer',
+    }
+  },
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersApi.bulkCreateCustomers(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Bulk Delete Customers
+
+Deletes multiple customer profiles.
+
+The endpoint takes a list of customer IDs and returns a map of responses.
+
+```ts
+async bulkDeleteCustomers(
+  body: BulkDeleteCustomersRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkDeleteCustomersResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`BulkDeleteCustomersRequest`](../../doc/models/bulk-delete-customers-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`BulkDeleteCustomersResponse`](../../doc/models/bulk-delete-customers-response.md)
+
+## Example Usage
+
+```ts
+const body: BulkDeleteCustomersRequest = {
+  customerIds: [
+    '8DDA5NZVBZFGAX0V3HPF81HHE0',
+    'N18CPRVXR5214XPBBA6BZQWF3C',
+    '2GYD7WNXF7BJZW1PMGNXZ3Y8M8'
+  ],
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersApi.bulkDeleteCustomers(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Bulk Retrieve Customers
+
+Retrieves multiple customer profiles.
+
+This endpoint takes a list of customer IDs and returns a map of responses.
+
+```ts
+async bulkRetrieveCustomers(
+  body: BulkRetrieveCustomersRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkRetrieveCustomersResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`BulkRetrieveCustomersRequest`](../../doc/models/bulk-retrieve-customers-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`BulkRetrieveCustomersResponse`](../../doc/models/bulk-retrieve-customers-response.md)
+
+## Example Usage
+
+```ts
+const body: BulkRetrieveCustomersRequest = {
+  customerIds: [
+    '8DDA5NZVBZFGAX0V3HPF81HHE0',
+    'N18CPRVXR5214XPBBA6BZQWF3C',
+    '2GYD7WNXF7BJZW1PMGNXZ3Y8M8'
+  ],
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersApi.bulkRetrieveCustomers(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Bulk Update Customers
+
+Updates multiple customer profiles.
+
+This endpoint takes a map of individual update requests and returns a map of responses.
+
+You cannot use this endpoint to change cards on file. To make changes, use the [Cards API](../../doc/api/cards.md) or [Gift Cards API](../../doc/api/gift-cards.md).
+
+```ts
+async bulkUpdateCustomers(
+  body: BulkUpdateCustomersRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkUpdateCustomersResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`BulkUpdateCustomersRequest`](../../doc/models/bulk-update-customers-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`BulkUpdateCustomersResponse`](../../doc/models/bulk-update-customers-response.md)
+
+## Example Usage
+
+```ts
+const body: BulkUpdateCustomersRequest = {
+  customers: {
+    '8DDA5NZVBZFGAX0V3HPF81HHE0': {
+      emailAddress: 'New.Amelia.Earhart@example.com',
+      phoneNumber: 'phone_number2',
+      note: 'updated customer note',
+      version: BigInt(2),
+    },
+    'N18CPRVXR5214XPBBA6BZQWF3C': {
+      givenName: 'Marie',
+      familyName: 'Curie',
+      version: BigInt(0),
+    }
+  },
+};
+
+try {
+  // @ts-expect-error: unused variables
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { result, ...httpResponse } = await customersApi.bulkUpdateCustomers(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    // @ts-expect-error: unused variables
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
 # Search Customers
 
 Searches the customer profiles associated with a Square account using one or more supported query filters.
@@ -235,9 +494,6 @@ try {
 # Delete Customer
 
 Deletes a customer profile from a business. This operation also unlinks any associated cards on file.
-
-As a best practice, include the `version` field in the request to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control.
-If included, the value must be set to the current version of the customer profile.
 
 To delete a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.
 
@@ -330,11 +586,7 @@ try {
 # Update Customer
 
 Updates a customer profile. This endpoint supports sparse updates, so only new or changed fields are required in the request.
-To add or update a field, specify the new value. To remove a field, specify `null`
-(recommended) or specify an empty string (string fields only).
-
-As a best practice, include the `version` field in the request to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control.
-If included, the value must be set to the current version of the customer profile.
+To add or update a field, specify the new value. To remove a field, specify `null`.
 
 To update a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.
 
@@ -367,7 +619,7 @@ const customerId = 'customer_id8';
 
 const body: UpdateCustomerRequest = {
   emailAddress: 'New.Amelia.Earhart@example.com',
-  phoneNumber: '',
+  phoneNumber: 'phone_number2',
   note: 'updated customer note',
   version: BigInt(2),
 };

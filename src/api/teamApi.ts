@@ -82,6 +82,7 @@ export class TeamApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createTeamMemberResponseSchema, requestOptions);
   }
 
@@ -112,6 +113,7 @@ export class TeamApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(bulkCreateTeamMembersResponseSchema, requestOptions);
   }
 
@@ -141,6 +143,7 @@ export class TeamApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(bulkUpdateTeamMembersResponseSchema, requestOptions);
   }
 
@@ -164,6 +167,7 @@ export class TeamApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchTeamMembersResponseSchema, requestOptions);
   }
 
@@ -182,6 +186,7 @@ export class TeamApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ teamMemberId: [teamMemberId, string()] });
     req.appendTemplatePath`/v2/team-members/${mapped.teamMemberId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveTeamMemberResponseSchema, requestOptions);
   }
 
@@ -208,6 +213,7 @@ export class TeamApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/team-members/${mapped.teamMemberId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateTeamMemberResponseSchema, requestOptions);
   }
 
@@ -227,6 +233,7 @@ export class TeamApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ teamMemberId: [teamMemberId, string()] });
     req.appendTemplatePath`/v2/team-members/${mapped.teamMemberId}/wage-setting`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveWageSettingResponseSchema, requestOptions);
   }
 
@@ -258,6 +265,7 @@ export class TeamApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/team-members/${mapped.teamMemberId}/wage-setting`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateWageSettingResponseSchema, requestOptions);
   }
 }

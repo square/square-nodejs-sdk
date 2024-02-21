@@ -4,6 +4,38 @@ import {
   addGroupToCustomerResponseSchema,
 } from '../models/addGroupToCustomerResponse';
 import {
+  BulkCreateCustomersRequest,
+  bulkCreateCustomersRequestSchema,
+} from '../models/bulkCreateCustomersRequest';
+import {
+  BulkCreateCustomersResponse,
+  bulkCreateCustomersResponseSchema,
+} from '../models/bulkCreateCustomersResponse';
+import {
+  BulkDeleteCustomersRequest,
+  bulkDeleteCustomersRequestSchema,
+} from '../models/bulkDeleteCustomersRequest';
+import {
+  BulkDeleteCustomersResponse,
+  bulkDeleteCustomersResponseSchema,
+} from '../models/bulkDeleteCustomersResponse';
+import {
+  BulkRetrieveCustomersRequest,
+  bulkRetrieveCustomersRequestSchema,
+} from '../models/bulkRetrieveCustomersRequest';
+import {
+  BulkRetrieveCustomersResponse,
+  bulkRetrieveCustomersResponseSchema,
+} from '../models/bulkRetrieveCustomersResponse';
+import {
+  BulkUpdateCustomersRequest,
+  bulkUpdateCustomersRequestSchema,
+} from '../models/bulkUpdateCustomersRequest';
+import {
+  BulkUpdateCustomersResponse,
+  bulkUpdateCustomersResponseSchema,
+} from '../models/bulkUpdateCustomersResponse';
+import {
   CreateCustomerCardRequest,
   createCustomerCardRequestSchema,
 } from '../models/createCustomerCardRequest';
@@ -103,6 +135,7 @@ export class CustomersApi extends BaseApi {
     req.query('sort_field', mapped.sortField);
     req.query('sort_order', mapped.sortOrder);
     req.query('count', mapped.count);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listCustomersResponseSchema, requestOptions);
   }
 
@@ -132,7 +165,115 @@ export class CustomersApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createCustomerResponseSchema, requestOptions);
+  }
+
+  /**
+   * Creates multiple [customer profiles]($m/Customer) for a business.
+   *
+   * This endpoint takes a map of individual create requests and returns a map of responses.
+   *
+   * You must provide at least one of the following values in each create request:
+   *
+   * - `given_name`
+   * - `family_name`
+   * - `company_name`
+   * - `email_address`
+   * - `phone_number`
+   *
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
+   * @return Response from the API call
+   */
+  async bulkCreateCustomers(
+    body: BulkCreateCustomersRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<BulkCreateCustomersResponse>> {
+    const req = this.createRequest('POST', '/v2/customers/bulk-create');
+    const mapped = req.prepareArgs({
+      body: [body, bulkCreateCustomersRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    req.authenticate([{ global: true }]);
+    return req.callAsJson(bulkCreateCustomersResponseSchema, requestOptions);
+  }
+
+  /**
+   * Deletes multiple customer profiles.
+   *
+   * The endpoint takes a list of customer IDs and returns a map of responses.
+   *
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
+   * @return Response from the API call
+   */
+  async bulkDeleteCustomers(
+    body: BulkDeleteCustomersRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<BulkDeleteCustomersResponse>> {
+    const req = this.createRequest('POST', '/v2/customers/bulk-delete');
+    const mapped = req.prepareArgs({
+      body: [body, bulkDeleteCustomersRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    req.authenticate([{ global: true }]);
+    return req.callAsJson(bulkDeleteCustomersResponseSchema, requestOptions);
+  }
+
+  /**
+   * Retrieves multiple customer profiles.
+   *
+   * This endpoint takes a list of customer IDs and returns a map of responses.
+   *
+   * @param body         An object containing the fields to POST for the
+   *                                                            request.  See the corresponding object definition for
+   *                                                            field details.
+   * @return Response from the API call
+   */
+  async bulkRetrieveCustomers(
+    body: BulkRetrieveCustomersRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<BulkRetrieveCustomersResponse>> {
+    const req = this.createRequest('POST', '/v2/customers/bulk-retrieve');
+    const mapped = req.prepareArgs({
+      body: [body, bulkRetrieveCustomersRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    req.authenticate([{ global: true }]);
+    return req.callAsJson(bulkRetrieveCustomersResponseSchema, requestOptions);
+  }
+
+  /**
+   * Updates multiple customer profiles.
+   *
+   * This endpoint takes a map of individual update requests and returns a map of responses.
+   *
+   * You cannot use this endpoint to change cards on file. To make changes, use the [Cards API]($e/Cards)
+   * or [Gift Cards API]($e/GiftCards).
+   *
+   * @param body         An object containing the fields to POST for the request.
+   *                                                          See the corresponding object definition for field
+   *                                                          details.
+   * @return Response from the API call
+   */
+  async bulkUpdateCustomers(
+    body: BulkUpdateCustomersRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<BulkUpdateCustomersResponse>> {
+    const req = this.createRequest('POST', '/v2/customers/bulk-update');
+    const mapped = req.prepareArgs({
+      body: [body, bulkUpdateCustomersRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    req.authenticate([{ global: true }]);
+    return req.callAsJson(bulkUpdateCustomersResponseSchema, requestOptions);
   }
 
   /**
@@ -161,16 +302,12 @@ export class CustomersApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchCustomersResponseSchema, requestOptions);
   }
 
   /**
    * Deletes a customer profile from a business. This operation also unlinks any associated cards on file.
-   *
-   * As a best practice, include the `version` field in the request to enable [optimistic
-   * concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-
-   * concurrency) control.
-   * If included, the value must be set to the current version of the customer profile.
    *
    * To delete a customer profile that was created by merging existing profiles, you must use the ID of
    * the newly created profile.
@@ -195,6 +332,7 @@ export class CustomersApi extends BaseApi {
     });
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/customers/${mapped.customerId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deleteCustomerResponseSchema, requestOptions);
   }
 
@@ -211,19 +349,14 @@ export class CustomersApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ customerId: [customerId, string()] });
     req.appendTemplatePath`/v2/customers/${mapped.customerId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveCustomerResponseSchema, requestOptions);
   }
 
   /**
    * Updates a customer profile. This endpoint supports sparse updates, so only new or changed fields are
    * required in the request.
-   * To add or update a field, specify the new value. To remove a field, specify `null`
-   * (recommended) or specify an empty string (string fields only).
-   *
-   * As a best practice, include the `version` field in the request to enable [optimistic
-   * concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-
-   * concurrency) control.
-   * If included, the value must be set to the current version of the customer profile.
+   * To add or update a field, specify the new value. To remove a field, specify `null`.
    *
    * To update a customer profile that was created by merging existing profiles, you must use the ID of
    * the newly created profile.
@@ -249,6 +382,7 @@ export class CustomersApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/customers/${mapped.customerId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateCustomerResponseSchema, requestOptions);
   }
 
@@ -280,6 +414,7 @@ export class CustomersApi extends BaseApi {
     req.json(mapped.body);
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/cards`;
     req.deprecated('CustomersApi.createCustomerCard');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createCustomerCardResponseSchema, requestOptions);
   }
 
@@ -303,6 +438,7 @@ export class CustomersApi extends BaseApi {
     });
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/cards/${mapped.cardId}`;
     req.deprecated('CustomersApi.deleteCustomerCard');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deleteCustomerCardResponseSchema, requestOptions);
   }
 
@@ -327,6 +463,7 @@ export class CustomersApi extends BaseApi {
       groupId: [groupId, string()],
     });
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/groups/${mapped.groupId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       removeGroupFromCustomerResponseSchema,
       requestOptions
@@ -354,6 +491,7 @@ export class CustomersApi extends BaseApi {
       groupId: [groupId, string()],
     });
     req.appendTemplatePath`/v2/customers/${mapped.customerId}/groups/${mapped.groupId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(addGroupToCustomerResponseSchema, requestOptions);
   }
 }

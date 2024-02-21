@@ -4,12 +4,11 @@ import { RetryConfiguration } from './core';
 /** Default values for the configuration parameters of the client. */
 export const DEFAULT_CONFIGURATION: Configuration = {
   timeout: 60000,
-  squareVersion: '2024-01-18',
+  squareVersion: '2024-02-22',
   additionalHeaders: {},
   userAgentDetail: '',
   environment: Environment.Production,
   customUrl: 'https://connect.squareup.com',
-  accessToken: '',
 };
 
 /** Default values for retry configuration parameters. */

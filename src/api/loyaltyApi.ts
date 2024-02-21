@@ -134,6 +134,7 @@ export class LoyaltyApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createLoyaltyAccountResponseSchema, requestOptions);
   }
 
@@ -160,6 +161,7 @@ export class LoyaltyApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchLoyaltyAccountsResponseSchema, requestOptions);
   }
 
@@ -176,6 +178,7 @@ export class LoyaltyApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ accountId: [accountId, string()] });
     req.appendTemplatePath`/v2/loyalty/accounts/${mapped.accountId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveLoyaltyAccountResponseSchema, requestOptions);
   }
 
@@ -220,6 +223,7 @@ export class LoyaltyApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/loyalty/accounts/${mapped.accountId}/accumulate`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       accumulateLoyaltyPointsResponseSchema,
       requestOptions
@@ -254,6 +258,7 @@ export class LoyaltyApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/loyalty/accounts/${mapped.accountId}/adjust`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(adjustLoyaltyPointsResponseSchema, requestOptions);
   }
 
@@ -282,6 +287,7 @@ export class LoyaltyApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchLoyaltyEventsResponseSchema, requestOptions);
   }
 
@@ -303,6 +309,7 @@ export class LoyaltyApi extends BaseApi {
   ): Promise<ApiResponse<ListLoyaltyProgramsResponse>> {
     const req = this.createRequest('GET', '/v2/loyalty/programs');
     req.deprecated('LoyaltyApi.listLoyaltyPrograms');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listLoyaltyProgramsResponseSchema, requestOptions);
   }
 
@@ -325,6 +332,7 @@ export class LoyaltyApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ programId: [programId, string()] });
     req.appendTemplatePath`/v2/loyalty/programs/${mapped.programId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveLoyaltyProgramResponseSchema, requestOptions);
   }
 
@@ -371,6 +379,7 @@ export class LoyaltyApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/loyalty/programs/${mapped.programId}/calculate`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(calculateLoyaltyPointsResponseSchema, requestOptions);
   }
 
@@ -412,6 +421,7 @@ export class LoyaltyApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
     req.appendTemplatePath`/v2/loyalty/programs/${mapped.programId}/promotions`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listLoyaltyPromotionsResponseSchema, requestOptions);
   }
 
@@ -446,6 +456,7 @@ export class LoyaltyApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/loyalty/programs/${mapped.programId}/promotions`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createLoyaltyPromotionResponseSchema, requestOptions);
   }
 
@@ -469,6 +480,7 @@ export class LoyaltyApi extends BaseApi {
       programId: [programId, string()],
     });
     req.appendTemplatePath`/v2/loyalty/programs/${mapped.programId}/promotions/${mapped.promotionId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveLoyaltyPromotionResponseSchema,
       requestOptions
@@ -501,6 +513,7 @@ export class LoyaltyApi extends BaseApi {
       programId: [programId, string()],
     });
     req.appendTemplatePath`/v2/loyalty/programs/${mapped.programId}/promotions/${mapped.promotionId}/cancel`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(cancelLoyaltyPromotionResponseSchema, requestOptions);
   }
 
@@ -529,6 +542,7 @@ export class LoyaltyApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createLoyaltyRewardResponseSchema, requestOptions);
   }
 
@@ -557,6 +571,7 @@ export class LoyaltyApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchLoyaltyRewardsResponseSchema, requestOptions);
   }
 
@@ -581,6 +596,7 @@ export class LoyaltyApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ rewardId: [rewardId, string()] });
     req.appendTemplatePath`/v2/loyalty/rewards/${mapped.rewardId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deleteLoyaltyRewardResponseSchema, requestOptions);
   }
 
@@ -597,6 +613,7 @@ export class LoyaltyApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ rewardId: [rewardId, string()] });
     req.appendTemplatePath`/v2/loyalty/rewards/${mapped.rewardId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveLoyaltyRewardResponseSchema, requestOptions);
   }
 
@@ -633,6 +650,7 @@ export class LoyaltyApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/loyalty/rewards/${mapped.rewardId}/redeem`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(redeemLoyaltyRewardResponseSchema, requestOptions);
   }
 }

@@ -20,7 +20,6 @@
     "merchant_id": "MERCHANT_ID",
     "payment_methods": {
       "afterpay_clearpay": {
-        "available": true,
         "enabled": true,
         "item_eligibility_range": {
           "max": {
@@ -44,15 +43,12 @@
         }
       },
       "apple_pay": {
-        "available": true,
         "enabled": false
       },
       "cash_app_pay": {
-        "available": true,
         "enabled": true
       },
       "google_pay": {
-        "available": true,
         "enabled": true
       },
       "cash_app": {
