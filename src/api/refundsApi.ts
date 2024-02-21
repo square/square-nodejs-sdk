@@ -84,6 +84,7 @@ export class RefundsApi extends BaseApi {
     req.query('status', mapped.status);
     req.query('source_type', mapped.sourceType);
     req.query('limit', mapped.limit);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listPaymentRefundsResponseSchema, requestOptions);
   }
 
@@ -107,6 +108,7 @@ export class RefundsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(refundPaymentResponseSchema, requestOptions);
   }
 
@@ -123,6 +125,7 @@ export class RefundsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ refundId: [refundId, string()] });
     req.appendTemplatePath`/v2/refunds/${mapped.refundId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getPaymentRefundResponseSchema, requestOptions);
   }
 }

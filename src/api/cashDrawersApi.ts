@@ -52,6 +52,7 @@ export class CashDrawersApi extends BaseApi {
     req.query('end_time', mapped.endTime);
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listCashDrawerShiftsResponseSchema, requestOptions);
   }
 
@@ -76,6 +77,7 @@ export class CashDrawersApi extends BaseApi {
     });
     req.query('location_id', mapped.locationId);
     req.appendTemplatePath`/v2/cash-drawers/shifts/${mapped.shiftId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveCashDrawerShiftResponseSchema,
       requestOptions
@@ -109,6 +111,7 @@ export class CashDrawersApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
     req.appendTemplatePath`/v2/cash-drawers/shifts/${mapped.shiftId}/events`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listCashDrawerShiftEventsResponseSchema,
       requestOptions

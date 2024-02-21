@@ -104,6 +104,7 @@ export class LocationCustomAttributesApi extends BaseApi {
     req.query('visibility_filter', mapped.visibilityFilter);
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listLocationCustomAttributeDefinitionsResponseSchema,
       requestOptions
@@ -139,6 +140,7 @@ export class LocationCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       createLocationCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -162,6 +164,7 @@ export class LocationCustomAttributesApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ key: [key, string()] });
     req.appendTemplatePath`/v2/locations/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteLocationCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -195,6 +198,7 @@ export class LocationCustomAttributesApi extends BaseApi {
     });
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/locations/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveLocationCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -229,6 +233,7 @@ export class LocationCustomAttributesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/locations/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       updateLocationCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -258,6 +263,7 @@ export class LocationCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       bulkDeleteLocationCustomAttributesResponseSchema,
       requestOptions
@@ -296,6 +302,7 @@ export class LocationCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       bulkUpsertLocationCustomAttributesResponseSchema,
       requestOptions
@@ -349,6 +356,7 @@ export class LocationCustomAttributesApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.query('with_definitions', mapped.withDefinitions);
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/custom-attributes`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listLocationCustomAttributesResponseSchema,
       requestOptions
@@ -377,6 +385,7 @@ export class LocationCustomAttributesApi extends BaseApi {
       key: [key, string()],
     });
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteLocationCustomAttributeResponseSchema,
       requestOptions
@@ -423,6 +432,7 @@ export class LocationCustomAttributesApi extends BaseApi {
     req.query('with_definition', mapped.withDefinition);
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveLocationCustomAttributeResponseSchema,
       requestOptions
@@ -467,6 +477,7 @@ export class LocationCustomAttributesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       upsertLocationCustomAttributeResponseSchema,
       requestOptions

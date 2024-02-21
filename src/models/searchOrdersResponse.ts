@@ -22,7 +22,7 @@ export interface SearchOrdersResponse {
   /**
    * The pagination cursor to be used in a subsequent request. If unset,
    * this is the final response.
-   * For more information, see [Pagination](https://developer.squareup.com/docs/basics/build-basics/common-api-patterns/pagination).
+   * For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
    */
   cursor?: string;
   /** [Errors](entity:Error) encountered during the search. */

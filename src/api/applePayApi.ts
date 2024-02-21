@@ -41,6 +41,7 @@ export class ApplePayApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(registerDomainResponseSchema, requestOptions);
   }
 }

@@ -39,6 +39,7 @@ export class SnippetsApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ siteId: [siteId, string()] });
     req.appendTemplatePath`/v2/sites/${mapped.siteId}/snippet`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(deleteSnippetResponseSchema, requestOptions);
   }
 
@@ -63,6 +64,7 @@ export class SnippetsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ siteId: [siteId, string()] });
     req.appendTemplatePath`/v2/sites/${mapped.siteId}/snippet`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveSnippetResponseSchema, requestOptions);
   }
 
@@ -96,6 +98,7 @@ export class SnippetsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/sites/${mapped.siteId}/snippet`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(upsertSnippetResponseSchema, requestOptions);
   }
 }

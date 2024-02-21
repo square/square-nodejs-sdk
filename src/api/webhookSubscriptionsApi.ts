@@ -67,6 +67,7 @@ export class WebhookSubscriptionsApi extends BaseApi {
       apiVersion: [apiVersion, optional(string())],
     });
     req.query('api_version', mapped.apiVersion);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listWebhookEventTypesResponseSchema, requestOptions);
   }
 
@@ -104,6 +105,7 @@ export class WebhookSubscriptionsApi extends BaseApi {
     req.query('include_disabled', mapped.includeDisabled);
     req.query('sort_order', mapped.sortOrder);
     req.query('limit', mapped.limit);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listWebhookSubscriptionsResponseSchema,
       requestOptions
@@ -128,6 +130,7 @@ export class WebhookSubscriptionsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       createWebhookSubscriptionResponseSchema,
       requestOptions
@@ -149,6 +152,7 @@ export class WebhookSubscriptionsApi extends BaseApi {
       subscriptionId: [subscriptionId, string()],
     });
     req.appendTemplatePath`/v2/webhooks/subscriptions/${mapped.subscriptionId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteWebhookSubscriptionResponseSchema,
       requestOptions
@@ -170,6 +174,7 @@ export class WebhookSubscriptionsApi extends BaseApi {
       subscriptionId: [subscriptionId, string()],
     });
     req.appendTemplatePath`/v2/webhooks/subscriptions/${mapped.subscriptionId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveWebhookSubscriptionResponseSchema,
       requestOptions
@@ -199,6 +204,7 @@ export class WebhookSubscriptionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/webhooks/subscriptions/${mapped.subscriptionId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       updateWebhookSubscriptionResponseSchema,
       requestOptions
@@ -230,6 +236,7 @@ export class WebhookSubscriptionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/webhooks/subscriptions/${mapped.subscriptionId}/signature-key`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       updateWebhookSubscriptionSignatureKeyResponseSchema,
       requestOptions
@@ -259,6 +266,7 @@ export class WebhookSubscriptionsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/webhooks/subscriptions/${mapped.subscriptionId}/test`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       testWebhookSubscriptionResponseSchema,
       requestOptions

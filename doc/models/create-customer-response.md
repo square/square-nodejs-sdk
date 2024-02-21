@@ -2,7 +2,8 @@
 # Create Customer Response
 
 Defines the fields that are included in the response body of
-a request to the `CreateCustomer` endpoint.
+a request to the [CreateCustomer](../../doc/api/customers.md#create-customer) or
+[BulkCreateCustomers](../../doc/api/customers.md#bulk-create-customers) endpoint.
 
 Either `errors` or `customer` is present in a given response (never both).
 

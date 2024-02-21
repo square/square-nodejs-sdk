@@ -67,6 +67,7 @@ export class PayoutsApi extends BaseApi {
     req.query('sort_order', mapped.sortOrder);
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listPayoutsResponseSchema, requestOptions);
   }
 
@@ -84,6 +85,7 @@ export class PayoutsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ payoutId: [payoutId, string()] });
     req.appendTemplatePath`/v2/payouts/${mapped.payoutId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getPayoutResponseSchema, requestOptions);
   }
 
@@ -122,6 +124,7 @@ export class PayoutsApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
     req.appendTemplatePath`/v2/payouts/${mapped.payoutId}/payout-entries`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listPayoutEntriesResponseSchema, requestOptions);
   }
 }

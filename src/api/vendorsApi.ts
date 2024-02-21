@@ -72,6 +72,7 @@ export class VendorsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(bulkCreateVendorsResponseSchema, requestOptions);
   }
 
@@ -93,6 +94,7 @@ export class VendorsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(bulkRetrieveVendorsResponseSchema, requestOptions);
   }
 
@@ -113,6 +115,7 @@ export class VendorsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(bulkUpdateVendorsResponseSchema, requestOptions);
   }
 
@@ -131,6 +134,7 @@ export class VendorsApi extends BaseApi {
     const mapped = req.prepareArgs({ body: [body, createVendorRequestSchema] });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createVendorResponseSchema, requestOptions);
   }
 
@@ -152,6 +156,7 @@ export class VendorsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchVendorsResponseSchema, requestOptions);
   }
 
@@ -168,6 +173,7 @@ export class VendorsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ vendorId: [vendorId, string()] });
     req.appendTemplatePath`/v2/vendors/${mapped.vendorId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveVendorResponseSchema, requestOptions);
   }
 
@@ -192,6 +198,7 @@ export class VendorsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/vendors/${mapped.vendorId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateVendorResponseSchema, requestOptions);
   }
 }

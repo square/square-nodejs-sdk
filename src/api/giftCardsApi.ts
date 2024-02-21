@@ -91,6 +91,7 @@ export class GiftCardsApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
     req.query('customer_id', mapped.customerId);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listGiftCardsResponseSchema, requestOptions);
   }
 
@@ -113,6 +114,7 @@ export class GiftCardsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createGiftCardResponseSchema, requestOptions);
   }
 
@@ -134,6 +136,7 @@ export class GiftCardsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveGiftCardFromGANResponseSchema,
       requestOptions
@@ -158,6 +161,7 @@ export class GiftCardsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveGiftCardFromNonceResponseSchema,
       requestOptions
@@ -186,6 +190,7 @@ export class GiftCardsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/gift-cards/${mapped.giftCardId}/link-customer`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(linkCustomerToGiftCardResponseSchema, requestOptions);
   }
 
@@ -211,6 +216,7 @@ export class GiftCardsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/gift-cards/${mapped.giftCardId}/unlink-customer`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       unlinkCustomerFromGiftCardResponseSchema,
       requestOptions
@@ -230,6 +236,7 @@ export class GiftCardsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/gift-cards/${mapped.id}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveGiftCardResponseSchema, requestOptions);
   }
 }

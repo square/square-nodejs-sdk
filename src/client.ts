@@ -39,7 +39,7 @@ import { TransactionsApi } from './api/transactionsApi';
 import { V1TransactionsApi } from './api/v1TransactionsApi';
 import { VendorsApi } from './api/vendorsApi';
 import { WebhookSubscriptionsApi } from './api/webhookSubscriptionsApi';
-import { accessTokenAuthenticationProvider } from './authentication';
+import { createAuthProviderFromConfig } from './authProvider';
 import {
   AuthParams,
   ClientInterface,
@@ -67,7 +67,7 @@ import {
  import { HttpClient } from './clientAdapter';
 
 /** Current SDK version */
-export const SDK_VERSION = '34.0.1';
+export const SDK_VERSION = '35.0.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -130,14 +130,21 @@ export class Client implements ClientInterface {
       typeof this._config.httpClientOptions?.timeout != 'undefined'
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
+    let clonedConfig = {
+      ...this._config,
+      bearerAuthCredentials: this._config.bearerAuthCredentials || {
+        accessToken: this._config.accessToken || '', 
+      }
+    }
+
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/34.0.1 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/35.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail
     );
     this._requestBuilderFactory = createRequestHandlerFactory(
       server => getBaseUri(server, this._config),
-      accessTokenAuthenticationProvider(this._config),
+      createAuthProviderFromConfig(clonedConfig),
       new HttpClient(AbortError, {
         timeout: this._timeout,
         clientConfigOverrides: this._config.unstable_httpClientOptions,
@@ -304,5 +311,5 @@ function withSquareVersion({ squareVersion }: { squareVersion: string }) {
 }
 
 function withAuthenticationByDefault(rb: SdkRequestBuilder) {
-  rb.authenticate(true);
+  rb.authenticate([]); 
 }

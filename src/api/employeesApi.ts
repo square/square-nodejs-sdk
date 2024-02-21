@@ -38,6 +38,7 @@ export class EmployeesApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
     req.deprecated('EmployeesApi.listEmployees');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listEmployeesResponseSchema, requestOptions);
   }
 
@@ -54,6 +55,7 @@ export class EmployeesApi extends BaseApi {
     const mapped = req.prepareArgs({ id: [id, string()] });
     req.appendTemplatePath`/v2/employees/${mapped.id}`;
     req.deprecated('EmployeesApi.retrieveEmployee');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveEmployeeResponseSchema, requestOptions);
   }
 }

@@ -100,6 +100,7 @@ export class BookingCustomAttributesApi extends BaseApi {
     });
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listBookingCustomAttributeDefinitionsResponseSchema,
       requestOptions
@@ -136,6 +137,7 @@ export class BookingCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       createBookingCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -163,6 +165,7 @@ export class BookingCustomAttributesApi extends BaseApi {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({ key: [key, string()] });
     req.appendTemplatePath`/v2/bookings/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteBookingCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -197,6 +200,7 @@ export class BookingCustomAttributesApi extends BaseApi {
     });
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/bookings/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveBookingCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -235,6 +239,7 @@ export class BookingCustomAttributesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/bookings/custom-attribute-definitions/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       updateBookingCustomAttributeDefinitionResponseSchema,
       requestOptions
@@ -270,6 +275,7 @@ export class BookingCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       bulkDeleteBookingCustomAttributesResponseSchema,
       requestOptions
@@ -305,6 +311,7 @@ export class BookingCustomAttributesApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       bulkUpsertBookingCustomAttributesResponseSchema,
       requestOptions
@@ -353,6 +360,7 @@ export class BookingCustomAttributesApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.query('with_definitions', mapped.withDefinitions);
     req.appendTemplatePath`/v2/bookings/${mapped.bookingId}/custom-attributes`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listBookingCustomAttributesResponseSchema,
       requestOptions
@@ -387,6 +395,7 @@ export class BookingCustomAttributesApi extends BaseApi {
       key: [key, string()],
     });
     req.appendTemplatePath`/v2/bookings/${mapped.bookingId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       deleteBookingCustomAttributeResponseSchema,
       requestOptions
@@ -433,6 +442,7 @@ export class BookingCustomAttributesApi extends BaseApi {
     req.query('with_definition', mapped.withDefinition);
     req.query('version', mapped.version);
     req.appendTemplatePath`/v2/bookings/${mapped.bookingId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveBookingCustomAttributeResponseSchema,
       requestOptions
@@ -477,6 +487,7 @@ export class BookingCustomAttributesApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/bookings/${mapped.bookingId}/custom-attributes/${mapped.key}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       upsertBookingCustomAttributeResponseSchema,
       requestOptions

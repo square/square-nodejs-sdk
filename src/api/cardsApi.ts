@@ -61,6 +61,7 @@ export class CardsApi extends BaseApi {
     req.query('include_disabled', mapped.includeDisabled);
     req.query('reference_id', mapped.referenceId);
     req.query('sort_order', mapped.sortOrder);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listCardsResponseSchema, requestOptions);
   }
 
@@ -79,6 +80,7 @@ export class CardsApi extends BaseApi {
     const mapped = req.prepareArgs({ body: [body, createCardRequestSchema] });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createCardResponseSchema, requestOptions);
   }
 
@@ -95,6 +97,7 @@ export class CardsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ cardId: [cardId, string()] });
     req.appendTemplatePath`/v2/cards/${mapped.cardId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveCardResponseSchema, requestOptions);
   }
 
@@ -112,6 +115,7 @@ export class CardsApi extends BaseApi {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({ cardId: [cardId, string()] });
     req.appendTemplatePath`/v2/cards/${mapped.cardId}/disable`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(disableCardResponseSchema, requestOptions);
   }
 }

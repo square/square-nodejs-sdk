@@ -44,6 +44,7 @@ export class BankAccountsApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.query('limit', mapped.limit);
     req.query('location_id', mapped.locationId);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listBankAccountsResponseSchema, requestOptions);
   }
 
@@ -65,6 +66,7 @@ export class BankAccountsApi extends BaseApi {
       v1BankAccountId: [v1BankAccountId, string()],
     });
     req.appendTemplatePath`/v2/bank-accounts/by-v1-id/${mapped.v1BankAccountId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getBankAccountByV1IdResponseSchema, requestOptions);
   }
 
@@ -84,6 +86,7 @@ export class BankAccountsApi extends BaseApi {
       bankAccountId: [bankAccountId, string()],
     });
     req.appendTemplatePath`/v2/bank-accounts/${mapped.bankAccountId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getBankAccountResponseSchema, requestOptions);
   }
 }

@@ -66,6 +66,7 @@ export class TransactionsApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/transactions`;
     req.deprecated('TransactionsApi.listTransactions');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listTransactionsResponseSchema, requestOptions);
   }
 
@@ -89,6 +90,7 @@ export class TransactionsApi extends BaseApi {
     });
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/transactions/${mapped.transactionId}`;
     req.deprecated('TransactionsApi.retrieveTransaction');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveTransactionResponseSchema, requestOptions);
   }
 
@@ -118,6 +120,7 @@ export class TransactionsApi extends BaseApi {
     });
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/transactions/${mapped.transactionId}/capture`;
     req.deprecated('TransactionsApi.captureTransaction');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(captureTransactionResponseSchema, requestOptions);
   }
 
@@ -147,6 +150,7 @@ export class TransactionsApi extends BaseApi {
     });
     req.appendTemplatePath`/v2/locations/${mapped.locationId}/transactions/${mapped.transactionId}/void`;
     req.deprecated('TransactionsApi.voidTransaction');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(voidTransactionResponseSchema, requestOptions);
   }
 }

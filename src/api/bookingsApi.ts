@@ -128,6 +128,7 @@ export class BookingsApi extends BaseApi {
     req.query('location_id', mapped.locationId);
     req.query('start_at_min', mapped.startAtMin);
     req.query('start_at_max', mapped.startAtMax);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listBookingsResponseSchema, requestOptions);
   }
 
@@ -163,6 +164,7 @@ export class BookingsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createBookingResponseSchema, requestOptions);
   }
 
@@ -187,6 +189,7 @@ export class BookingsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchAvailabilityResponseSchema, requestOptions);
   }
 
@@ -212,6 +215,7 @@ export class BookingsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(bulkRetrieveBookingsResponseSchema, requestOptions);
   }
 
@@ -227,6 +231,7 @@ export class BookingsApi extends BaseApi {
       'GET',
       '/v2/bookings/business-booking-profile'
     );
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveBusinessBookingProfileResponseSchema,
       requestOptions
@@ -256,6 +261,7 @@ export class BookingsApi extends BaseApi {
     });
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listLocationBookingProfilesResponseSchema,
       requestOptions
@@ -275,6 +281,7 @@ export class BookingsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ locationId: [locationId, string()] });
     req.appendTemplatePath`/v2/bookings/location-booking-profiles/${mapped.locationId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveLocationBookingProfileResponseSchema,
       requestOptions
@@ -314,6 +321,7 @@ export class BookingsApi extends BaseApi {
     req.query('limit', mapped.limit);
     req.query('cursor', mapped.cursor);
     req.query('location_id', mapped.locationId);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       listTeamMemberBookingProfilesResponseSchema,
       requestOptions
@@ -342,6 +350,7 @@ export class BookingsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       bulkRetrieveTeamMemberBookingProfilesResponseSchema,
       requestOptions
@@ -361,6 +370,7 @@ export class BookingsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ teamMemberId: [teamMemberId, string()] });
     req.appendTemplatePath`/v2/bookings/team-member-booking-profiles/${mapped.teamMemberId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveTeamMemberBookingProfileResponseSchema,
       requestOptions
@@ -385,6 +395,7 @@ export class BookingsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ bookingId: [bookingId, string()] });
     req.appendTemplatePath`/v2/bookings/${mapped.bookingId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveBookingResponseSchema, requestOptions);
   }
 
@@ -418,6 +429,7 @@ export class BookingsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/bookings/${mapped.bookingId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updateBookingResponseSchema, requestOptions);
   }
 
@@ -451,6 +463,7 @@ export class BookingsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/bookings/${mapped.bookingId}/cancel`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(cancelBookingResponseSchema, requestOptions);
   }
 }

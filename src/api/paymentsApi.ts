@@ -111,6 +111,7 @@ export class PaymentsApi extends BaseApi {
     req.query('last_4', mapped.last4);
     req.query('card_brand', mapped.cardBrand);
     req.query('limit', mapped.limit);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listPaymentsResponseSchema, requestOptions);
   }
 
@@ -138,6 +139,7 @@ export class PaymentsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createPaymentResponseSchema, requestOptions);
   }
 
@@ -172,6 +174,7 @@ export class PaymentsApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       cancelPaymentByIdempotencyKeyResponseSchema,
       requestOptions
@@ -191,6 +194,7 @@ export class PaymentsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ paymentId: [paymentId, string()] });
     req.appendTemplatePath`/v2/payments/${mapped.paymentId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getPaymentResponseSchema, requestOptions);
   }
 
@@ -216,6 +220,7 @@ export class PaymentsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/payments/${mapped.paymentId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(updatePaymentResponseSchema, requestOptions);
   }
 
@@ -233,6 +238,7 @@ export class PaymentsApi extends BaseApi {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({ paymentId: [paymentId, string()] });
     req.appendTemplatePath`/v2/payments/${mapped.paymentId}/cancel`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(cancelPaymentResponseSchema, requestOptions);
   }
 
@@ -260,6 +266,7 @@ export class PaymentsApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.appendTemplatePath`/v2/payments/${mapped.paymentId}/complete`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(completePaymentResponseSchema, requestOptions);
   }
 }

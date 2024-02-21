@@ -31,7 +31,7 @@ Defines the body parameters that can be included in a request to the
 {
   "email_address": "New.Amelia.Earhart@example.com",
   "note": "updated customer note",
-  "phone_number": "",
+  "phone_number": null,
   "version": 2,
   "given_name": "given_name0",
   "family_name": "family_name8",

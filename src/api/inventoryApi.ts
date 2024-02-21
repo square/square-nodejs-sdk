@@ -64,6 +64,7 @@ export class InventoryApi extends BaseApi {
     const mapped = req.prepareArgs({ adjustmentId: [adjustmentId, string()] });
     req.appendTemplatePath`/v2/inventory/adjustment/${mapped.adjustmentId}`;
     req.deprecated('InventoryApi.deprecatedRetrieveInventoryAdjustment');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveInventoryAdjustmentResponseSchema,
       requestOptions
@@ -84,6 +85,7 @@ export class InventoryApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ adjustmentId: [adjustmentId, string()] });
     req.appendTemplatePath`/v2/inventory/adjustments/${mapped.adjustmentId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveInventoryAdjustmentResponseSchema,
       requestOptions
@@ -112,6 +114,7 @@ export class InventoryApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.deprecated('InventoryApi.deprecatedBatchChangeInventory');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(batchChangeInventoryResponseSchema, requestOptions);
   }
 
@@ -140,6 +143,7 @@ export class InventoryApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.deprecated('InventoryApi.deprecatedBatchRetrieveInventoryChanges');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       batchRetrieveInventoryChangesResponseSchema,
       requestOptions
@@ -171,6 +175,7 @@ export class InventoryApi extends BaseApi {
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
     req.deprecated('InventoryApi.deprecatedBatchRetrieveInventoryCounts');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       batchRetrieveInventoryCountsResponseSchema,
       requestOptions
@@ -202,6 +207,7 @@ export class InventoryApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(batchChangeInventoryResponseSchema, requestOptions);
   }
 
@@ -233,6 +239,7 @@ export class InventoryApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       batchRetrieveInventoryChangesResponseSchema,
       requestOptions
@@ -270,6 +277,7 @@ export class InventoryApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       batchRetrieveInventoryCountsResponseSchema,
       requestOptions
@@ -295,6 +303,7 @@ export class InventoryApi extends BaseApi {
     });
     req.appendTemplatePath`/v2/inventory/physical-count/${mapped.physicalCountId}`;
     req.deprecated('InventoryApi.deprecatedRetrieveInventoryPhysicalCount');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveInventoryPhysicalCountResponseSchema,
       requestOptions
@@ -317,6 +326,7 @@ export class InventoryApi extends BaseApi {
       physicalCountId: [physicalCountId, string()],
     });
     req.appendTemplatePath`/v2/inventory/physical-counts/${mapped.physicalCountId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveInventoryPhysicalCountResponseSchema,
       requestOptions
@@ -337,6 +347,7 @@ export class InventoryApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ transferId: [transferId, string()] });
     req.appendTemplatePath`/v2/inventory/transfers/${mapped.transferId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveInventoryTransferResponseSchema,
       requestOptions
@@ -373,6 +384,7 @@ export class InventoryApi extends BaseApi {
     req.query('location_ids', mapped.locationIds);
     req.query('cursor', mapped.cursor);
     req.appendTemplatePath`/v2/inventory/${mapped.catalogObjectId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveInventoryCountResponseSchema, requestOptions);
   }
 
@@ -418,6 +430,7 @@ export class InventoryApi extends BaseApi {
     req.query('cursor', mapped.cursor);
     req.appendTemplatePath`/v2/inventory/${mapped.catalogObjectId}/changes`;
     req.deprecated('InventoryApi.retrieveInventoryChanges');
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       retrieveInventoryChangesResponseSchema,
       requestOptions

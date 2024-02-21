@@ -105,6 +105,7 @@ export class TerminalApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createTerminalActionResponseSchema, requestOptions);
   }
 
@@ -127,6 +128,7 @@ export class TerminalApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchTerminalActionsResponseSchema, requestOptions);
   }
 
@@ -144,6 +146,7 @@ export class TerminalApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ actionId: [actionId, string()] });
     req.appendTemplatePath`/v2/terminals/actions/${mapped.actionId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getTerminalActionResponseSchema, requestOptions);
   }
 
@@ -160,6 +163,7 @@ export class TerminalApi extends BaseApi {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({ actionId: [actionId, string()] });
     req.appendTemplatePath`/v2/terminals/actions/${mapped.actionId}/cancel`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(cancelTerminalActionResponseSchema, requestOptions);
   }
 
@@ -179,6 +183,7 @@ export class TerminalApi extends BaseApi {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({ actionId: [actionId, string()] });
     req.appendTemplatePath`/v2/terminals/actions/${mapped.actionId}/dismiss`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(dismissTerminalActionResponseSchema, requestOptions);
   }
 
@@ -201,6 +206,7 @@ export class TerminalApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createTerminalCheckoutResponseSchema, requestOptions);
   }
 
@@ -224,6 +230,7 @@ export class TerminalApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       searchTerminalCheckoutsResponseSchema,
       requestOptions
@@ -244,6 +251,7 @@ export class TerminalApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ checkoutId: [checkoutId, string()] });
     req.appendTemplatePath`/v2/terminals/checkouts/${mapped.checkoutId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getTerminalCheckoutResponseSchema, requestOptions);
   }
 
@@ -260,6 +268,7 @@ export class TerminalApi extends BaseApi {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({ checkoutId: [checkoutId, string()] });
     req.appendTemplatePath`/v2/terminals/checkouts/${mapped.checkoutId}/cancel`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(cancelTerminalCheckoutResponseSchema, requestOptions);
   }
 
@@ -276,6 +285,7 @@ export class TerminalApi extends BaseApi {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({ checkoutId: [checkoutId, string()] });
     req.appendTemplatePath`/v2/terminals/checkouts/${mapped.checkoutId}/dismiss`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(
       dismissTerminalCheckoutResponseSchema,
       requestOptions
@@ -303,6 +313,7 @@ export class TerminalApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(createTerminalRefundResponseSchema, requestOptions);
   }
 
@@ -325,6 +336,7 @@ export class TerminalApi extends BaseApi {
     });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(searchTerminalRefundsResponseSchema, requestOptions);
   }
 
@@ -343,6 +355,7 @@ export class TerminalApi extends BaseApi {
       terminalRefundId: [terminalRefundId, string()],
     });
     req.appendTemplatePath`/v2/terminals/refunds/${mapped.terminalRefundId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(getTerminalRefundResponseSchema, requestOptions);
   }
 
@@ -362,6 +375,7 @@ export class TerminalApi extends BaseApi {
       terminalRefundId: [terminalRefundId, string()],
     });
     req.appendTemplatePath`/v2/terminals/refunds/${mapped.terminalRefundId}/cancel`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(cancelTerminalRefundResponseSchema, requestOptions);
   }
 
@@ -380,6 +394,7 @@ export class TerminalApi extends BaseApi {
       terminalRefundId: [terminalRefundId, string()],
     });
     req.appendTemplatePath`/v2/terminals/refunds/${mapped.terminalRefundId}/dismiss`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(dismissTerminalRefundResponseSchema, requestOptions);
   }
 }

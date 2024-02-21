@@ -33,6 +33,7 @@ export class MerchantsApi extends BaseApi {
     const req = this.createRequest('GET', '/v2/merchants');
     const mapped = req.prepareArgs({ cursor: [cursor, optional(number())] });
     req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(listMerchantsResponseSchema, requestOptions);
   }
 
@@ -50,6 +51,7 @@ export class MerchantsApi extends BaseApi {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({ merchantId: [merchantId, string()] });
     req.appendTemplatePath`/v2/merchants/${mapped.merchantId}`;
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveMerchantResponseSchema, requestOptions);
   }
 }
