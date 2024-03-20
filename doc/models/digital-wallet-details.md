@@ -12,7 +12,7 @@ Additional details about `WALLET` type payments. Contains only non-confidential 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `status` | `string \| null \| undefined` | Optional | The status of the `WALLET` payment. The status can be `AUTHORIZED`, `CAPTURED`, `VOIDED`, or<br>`FAILED`.<br>**Constraints**: *Maximum Length*: `50` |
-| `brand` | `string \| null \| undefined` | Optional | The brand used for the `WALLET` payment. The brand can be `CASH_APP`, `PAYPAY` or `UNKNOWN`.<br>**Constraints**: *Maximum Length*: `50` |
+| `brand` | `string \| null \| undefined` | Optional | The brand used for the `WALLET` payment. The brand can be `CASH_APP`, `PAYPAY`, `ALIPAY`,<br>`RAKUTEN_PAY`, `AU_PAY`, `D_BARAI`, `MERPAY`, `WECHAT_PAY` or `UNKNOWN`.<br>**Constraints**: *Maximum Length*: `50` |
 | `cashAppDetails` | [`CashAppDetails \| undefined`](../../doc/models/cash-app-details.md) | Optional | Additional details about `WALLET` type payments with the `brand` of `CASH_APP`. |
 
 ## Example (as JSON)

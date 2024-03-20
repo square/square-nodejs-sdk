@@ -17,44 +17,20 @@
 
 ```json
 {
+  "errors": [],
   "location_booking_profiles": [
     {
-      "location_id": "location_id0",
-      "booking_site_url": "booking_site_url2",
-      "online_booking_enabled": false
+      "booking_site_url": "https://squareup.com/book/LY6WNBPVM6VGV/testbusiness",
+      "location_id": "LY6WNBPVM6VGV",
+      "online_booking_enabled": true
     },
     {
-      "location_id": "location_id0",
-      "booking_site_url": "booking_site_url2",
-      "online_booking_enabled": false
-    },
-    {
-      "location_id": "location_id0",
-      "booking_site_url": "booking_site_url2",
-      "online_booking_enabled": false
+      "location_id": "PYTRNBPVMJUPV",
+      "online_booking_enabled": false,
+      "booking_site_url": "booking_site_url2"
     }
   ],
-  "cursor": "cursor8",
-  "errors": [
-    {
-      "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
-      "detail": "detail6",
-      "field": "field4"
-    },
-    {
-      "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
-      "detail": "detail6",
-      "field": "field4"
-    },
-    {
-      "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
-      "detail": "detail6",
-      "field": "field4"
-    }
-  ]
+  "cursor": "cursor8"
 }
 ```
 
