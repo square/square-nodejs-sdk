@@ -46,15 +46,11 @@ async listWebhookEventTypes(
 
 ```ts
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await webhookSubscriptionsApi.listWebhookEventTypes();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -96,8 +92,6 @@ async listWebhookSubscriptions(
 const includeDisabled = false;
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await webhookSubscriptionsApi.listWebhookSubscriptions(
   undefined,
   includeDisabled
@@ -106,8 +100,6 @@ try {
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -154,15 +146,11 @@ const body: CreateWebhookSubscriptionRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await webhookSubscriptionsApi.createWebhookSubscription(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -198,15 +186,11 @@ async deleteWebhookSubscription(
 const subscriptionId = 'subscription_id0';
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await webhookSubscriptionsApi.deleteWebhookSubscription(subscriptionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -242,15 +226,11 @@ async retrieveWebhookSubscription(
 const subscriptionId = 'subscription_id0';
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await webhookSubscriptionsApi.retrieveWebhookSubscription(subscriptionId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -295,8 +275,6 @@ const body: UpdateWebhookSubscriptionRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await webhookSubscriptionsApi.updateWebhookSubscription(
   subscriptionId,
   body
@@ -305,8 +283,6 @@ try {
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -348,8 +324,6 @@ const body: UpdateWebhookSubscriptionSignatureKeyRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await webhookSubscriptionsApi.updateWebhookSubscriptionSignatureKey(
   subscriptionId,
   body
@@ -358,8 +332,6 @@ try {
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -401,8 +373,6 @@ const body: TestWebhookSubscriptionRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await webhookSubscriptionsApi.testWebhookSubscription(
   subscriptionId,
   body
@@ -411,8 +381,6 @@ try {
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

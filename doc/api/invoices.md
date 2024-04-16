@@ -56,15 +56,11 @@ async listInvoices(
 const locationId = 'location_id4';
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await invoicesApi.listInvoices(locationId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -153,15 +149,11 @@ const body: CreateInvoiceRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await invoicesApi.createInvoice(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -218,15 +210,11 @@ const body: SearchInvoicesRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await invoicesApi.searchInvoices(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -266,15 +254,11 @@ async deleteInvoice(
 const invoiceId = 'invoice_id0';
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await invoicesApi.deleteInvoice(invoiceId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -310,15 +294,11 @@ async getInvoice(
 const invoiceId = 'invoice_id0';
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await invoicesApi.getInvoice(invoiceId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -375,8 +355,6 @@ const body: UpdateInvoiceRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await invoicesApi.updateInvoice(
   invoiceId,
   body
@@ -385,8 +363,6 @@ try {
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -436,8 +412,6 @@ const request: CreateInvoiceAttachmentRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await invoicesApi.createInvoiceAttachment(
   invoiceId,
   request
@@ -446,8 +420,6 @@ try {
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -488,8 +460,6 @@ const invoiceId = 'invoice_id0';
 const attachmentId = 'attachment_id6';
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await invoicesApi.deleteInvoiceAttachment(
   invoiceId,
   attachmentId
@@ -498,8 +468,6 @@ try {
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -544,8 +512,6 @@ const body: CancelInvoiceRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await invoicesApi.cancelInvoice(
   invoiceId,
   body
@@ -554,8 +520,6 @@ try {
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -611,8 +575,6 @@ const body: PublishInvoiceRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await invoicesApi.publishInvoice(
   invoiceId,
   body
@@ -621,8 +583,6 @@ try {
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

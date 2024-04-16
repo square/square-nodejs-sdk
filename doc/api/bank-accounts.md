@@ -45,15 +45,11 @@ async listBankAccounts(
 
 ```ts
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bankAccountsApi.listBankAccounts();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -89,15 +85,11 @@ async getBankAccountByV1Id(
 const v1BankAccountId = 'v1_bank_account_id8';
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bankAccountsApi.getBankAccountByV1Id(v1BankAccountId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -134,15 +126,11 @@ async getBankAccount(
 const bankAccountId = 'bank_account_id0';
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await bankAccountsApi.getBankAccount(bankAccountId);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

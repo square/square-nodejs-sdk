@@ -10,90 +10,9 @@ const oAuthApi = client.oAuthApi;
 
 ## Methods
 
-* [Renew Token](../../doc/api/o-auth.md#renew-token)
 * [Revoke Token](../../doc/api/o-auth.md#revoke-token)
 * [Obtain Token](../../doc/api/o-auth.md#obtain-token)
 * [Retrieve Token Status](../../doc/api/o-auth.md#retrieve-token-status)
-
-
-# Renew Token
-
-**This endpoint is deprecated.**
-
-`RenewToken` is deprecated. For information about refreshing OAuth access tokens, see
-[Migrate from Renew to Refresh OAuth Tokens](https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens).
-
-Renews an OAuth access token before it expires.
-
-OAuth access tokens besides your application's personal access token expire after 30 days.
-You can also renew expired tokens within 15 days of their expiration.
-You cannot renew an access token that has been expired for more than 15 days.
-Instead, the associated user must recomplete the OAuth flow from the beginning.
-
-__Important:__ The `Authorization` header for this endpoint must have the
-following format:
-
-```
-Authorization: Client APPLICATION_SECRET
-```
-
-Replace `APPLICATION_SECRET` with the application secret on the **Credentials**
-page in the [Developer Dashboard](https://developer.squareup.com/apps).
-
-:information_source: **Note** This endpoint does not require authentication.
-
-```ts
-async renewToken(
-  clientId: string,
-  body: RenewTokenRequest,
-  authorization: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RenewTokenResponse>>
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `clientId` | `string` | Template, Required | Your application ID, which is available on the **OAuth** page in the [Developer Dashboard](https://developer.squareup.com/apps). |
-| `body` | [`RenewTokenRequest`](../../doc/models/renew-token-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
-| `authorization` | `string` | Header, Required | Client APPLICATION_SECRET |
-| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
-
-## Response Type
-
-[`RenewTokenResponse`](../../doc/models/renew-token-response.md)
-
-## Example Usage
-
-```ts
-const clientId = 'client_id8';
-
-const body: RenewTokenRequest = {
-  accessToken: 'ACCESS_TOKEN',
-};
-
-const authorization = 'Client CLIENT_SECRET';
-
-try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { result, ...httpResponse } = await oAuthApi.renewToken(
-  clientId,
-  body,
-  authorization
-);
-  // Get more response info...
-  // const { statusCode, headers } = httpResponse;
-} catch (error) {
-  if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const errors = error.result;
-    // const { statusCode, headers } = error;
-  }
-}
-```
 
 
 # Revoke Token
@@ -146,8 +65,6 @@ const body: RevokeTokenRequest = {
 const authorization = 'Client CLIENT_SECRET';
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await oAuthApi.revokeToken(
   body,
   authorization
@@ -156,8 +73,6 @@ try {
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -216,15 +131,11 @@ const body: ObtainTokenRequest = {
 };
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await oAuthApi.obtainToken(body);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }
@@ -275,15 +186,11 @@ async retrieveTokenStatus(
 const authorization = 'Client CLIENT_SECRET';
 
 try {
-  // @ts-expect-error: unused variables
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { result, ...httpResponse } = await oAuthApi.retrieveTokenStatus(authorization);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {
   if (error instanceof ApiError) {
-    // @ts-expect-error: unused variables
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const errors = error.result;
     // const { statusCode, headers } = error;
   }

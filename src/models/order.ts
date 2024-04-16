@@ -129,9 +129,9 @@ export interface Order {
    * For more information, see  [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
    */
   metadata?: Record<string, string> | null;
-  /** The timestamp for when the order was created, in RFC 3339 format (for example, "2016-09-04T23:59:33.123Z"). */
+  /** The timestamp for when the order was created, at server side, in RFC 3339 format (for example, "2016-09-04T23:59:33.123Z"). */
   createdAt?: string;
-  /** The timestamp for when the order was last updated, in RFC 3339 format (for example, "2016-09-04T23:59:33.123Z"). */
+  /** The timestamp for when the order was last updated, at server side, in RFC 3339 format (for example, "2016-09-04T23:59:33.123Z"). */
   updatedAt?: string;
   /** The timestamp for when the order reached a terminal [state](entity:OrderState), in RFC 3339 format (for example "2016-09-04T23:59:33.123Z"). */
   closedAt?: string;
