@@ -8,14 +8,6 @@ import {
   obtainTokenResponseSchema,
 } from '../models/obtainTokenResponse';
 import {
-  RenewTokenRequest,
-  renewTokenRequestSchema,
-} from '../models/renewTokenRequest';
-import {
-  RenewTokenResponse,
-  renewTokenResponseSchema,
-} from '../models/renewTokenResponse';
-import {
   RetrieveTokenStatusResponse,
   retrieveTokenStatusResponseSchema,
 } from '../models/retrieveTokenStatusResponse';
@@ -31,57 +23,6 @@ import { string } from '../schema';
 import { BaseApi } from './baseApi';
 
 export class OAuthApi extends BaseApi {
-  /**
-   * `RenewToken` is deprecated. For information about refreshing OAuth access tokens, see
-   * [Migrate from Renew to Refresh OAuth Tokens](https://developer.squareup.com/docs/oauth-api/migrate-
-   * to-refresh-tokens).
-   *
-   * Renews an OAuth access token before it expires.
-   *
-   * OAuth access tokens besides your application's personal access token expire after 30 days.
-   * You can also renew expired tokens within 15 days of their expiration.
-   * You cannot renew an access token that has been expired for more than 15 days.
-   * Instead, the associated user must recomplete the OAuth flow from the beginning.
-   *
-   * __Important:__ The `Authorization` header for this endpoint must have the
-   * following format:
-   *
-   * ```
-   * Authorization: Client APPLICATION_SECRET
-   * ```
-   *
-   * Replace `APPLICATION_SECRET` with the application secret on the **Credentials**
-   * page in the [Developer Dashboard](https://developer.squareup.com/apps).
-   *
-   * @param clientId      Your application ID, which is available on the **OAuth** page in
-   *                                                  the [Developer Dashboard](https://developer.squareup.com/apps).
-   * @param body          An object containing the fields to POST for the request.  See
-   *                                                  the corresponding object definition for field details.
-   * @param authorization Client APPLICATION_SECRET
-   * @return Response from the API call
-   * @deprecated
-   */
-  async renewToken(
-    clientId: string,
-    body: RenewTokenRequest,
-    authorization: string,
-    requestOptions?: RequestOptions
-  ): Promise<ApiResponse<RenewTokenResponse>> {
-    const req = this.createRequest('POST');
-    const mapped = req.prepareArgs({
-      clientId: [clientId, string()],
-      body: [body, renewTokenRequestSchema],
-      authorization: [authorization, string()],
-    });
-    req.header('Content-Type', 'application/json');
-    req.header('Authorization', mapped.authorization);
-    req.json(mapped.body);
-    req.appendTemplatePath`/oauth2/clients/${mapped.clientId}/access-token/renew`;
-    req.deprecated('OAuthApi.renewToken');
-    req.authenticate(false);
-    return req.callAsJson(renewTokenResponseSchema, requestOptions);
-  }
-
   /**
    * Revokes an access token generated with the OAuth flow.
    *

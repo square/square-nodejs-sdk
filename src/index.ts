@@ -710,8 +710,6 @@ export type { RefundPaymentResponse } from './models/refundPaymentResponse';
 export type { RegisterDomainRequest } from './models/registerDomainRequest';
 export type { RegisterDomainResponse } from './models/registerDomainResponse';
 export type { RemoveGroupFromCustomerResponse } from './models/removeGroupFromCustomerResponse';
-export type { RenewTokenRequest } from './models/renewTokenRequest';
-export type { RenewTokenResponse } from './models/renewTokenResponse';
 export type { ResumeSubscriptionRequest } from './models/resumeSubscriptionRequest';
 export type { ResumeSubscriptionResponse } from './models/resumeSubscriptionResponse';
 export type { RetrieveBookingCustomAttributeDefinitionRequest } from './models/retrieveBookingCustomAttributeDefinitionRequest';
