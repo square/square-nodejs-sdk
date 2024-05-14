@@ -50,6 +50,8 @@ export interface CatalogItem {
   abbreviation?: string | null;
   /** The color of the item's display label in the Square Point of Sale app. This must be a valid hex color code. */
   labelColor?: string | null;
+  /** Indicates whether the item is taxable (`true`) or non-taxable (`false`). Default is `true`. */
+  isTaxable?: boolean | null;
   /** If `true`, the item can be added to shipping orders from the merchant's online store. */
   availableOnline?: boolean | null;
   /** If `true`, the item can be added to pickup orders from the merchant's online store. */
@@ -154,6 +156,7 @@ export const catalogItemSchema: Schema<CatalogItem> = object({
   description: ['description', optional(nullable(string()))],
   abbreviation: ['abbreviation', optional(nullable(string()))],
   labelColor: ['label_color', optional(nullable(string()))],
+  isTaxable: ['is_taxable', optional(nullable(boolean()))],
   availableOnline: ['available_online', optional(nullable(boolean()))],
   availableForPickup: ['available_for_pickup', optional(nullable(boolean()))],
   availableElectronically: [

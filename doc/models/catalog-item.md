@@ -15,6 +15,7 @@ A [CatalogObject](../../doc/models/catalog-object.md) instance of the `ITEM` typ
 | `description` | `string \| null \| undefined` | Optional | The item's description. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points.<br><br>Deprecated at 2022-07-20, this field is planned to retire in 6 months. You should migrate to use `description_html` to set the description<br>of the [CatalogItem](entity:CatalogItem) instance.  The `description` and `description_html` field values are kept in sync. If you try to<br>set the both fields, the `description_html` text value overwrites the `description` value. Updates in one field are also reflected in the other,<br>except for when you use an early version before Square API 2022-07-20 and `description_html` is set to blank, setting the `description` value to null<br>does not nullify `description_html`.<br>**Constraints**: *Maximum Length*: `4096` |
 | `abbreviation` | `string \| null \| undefined` | Optional | The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used.<br>This attribute is searchable, and its value length is of Unicode code points.<br>**Constraints**: *Maximum Length*: `24` |
 | `labelColor` | `string \| null \| undefined` | Optional | The color of the item's display label in the Square Point of Sale app. This must be a valid hex color code. |
+| `isTaxable` | `boolean \| null \| undefined` | Optional | Indicates whether the item is taxable (`true`) or non-taxable (`false`). Default is `true`. |
 | `availableOnline` | `boolean \| null \| undefined` | Optional | If `true`, the item can be added to shipping orders from the merchant's online store. |
 | `availableForPickup` | `boolean \| null \| undefined` | Optional | If `true`, the item can be added to pickup orders from the merchant's online store. |
 | `availableElectronically` | `boolean \| null \| undefined` | Optional | If `true`, the item can be added to electronically fulfilled orders from the merchant's online store. |
@@ -44,7 +45,7 @@ A [CatalogObject](../../doc/models/catalog-object.md) instance of the `ITEM` typ
   "description": "description6",
   "abbreviation": "abbreviation8",
   "label_color": "label_color8",
-  "available_online": false
+  "is_taxable": false
 }
 ```
 
