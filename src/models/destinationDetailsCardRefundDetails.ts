@@ -12,11 +12,14 @@ export interface DestinationDetailsCardRefundDetails {
    * `KEYED`, `SWIPED`, `EMV`, `ON_FILE`, or `CONTACTLESS`.
    */
   entryMethod?: string | null;
+  /** The authorization code provided by the issuer when a refund is approved. */
+  authResultCode?: string | null;
 }
 
 export const destinationDetailsCardRefundDetailsSchema: Schema<DestinationDetailsCardRefundDetails> = object(
   {
     card: ['card', optional(lazy(() => cardSchema))],
     entryMethod: ['entry_method', optional(nullable(string()))],
+    authResultCode: ['auth_result_code', optional(nullable(string()))],
   }
 );

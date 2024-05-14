@@ -46,7 +46,8 @@ the original payment and the amount of money refunded.
         "exp_month": 228,
         "exp_year": 68
       },
-      "entry_method": "entry_method8"
+      "entry_method": "entry_method8",
+      "auth_result_code": "auth_result_code0"
     }
   },
   "amount_money": {

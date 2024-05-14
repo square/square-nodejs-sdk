@@ -1,5 +1,6 @@
 import {
   array,
+  boolean,
   lazy,
   nullable,
   object,
@@ -252,6 +253,8 @@ export interface Payment {
   deviceDetails?: DeviceDetails;
   /** Details about the application that took the payment. */
   applicationDetails?: ApplicationDetails;
+  /** Whether or not this payment was taken offline. */
+  isOfflinePayment?: boolean;
   /**
    * Used for optimistic concurrency. This opaque token identifies a specific version of the
    * `Payment` object.
@@ -327,5 +330,6 @@ export const paymentSchema: Schema<Payment> = object({
     'application_details',
     optional(lazy(() => applicationDetailsSchema)),
   ],
+  isOfflinePayment: ['is_offline_payment', optional(boolean())],
   versionToken: ['version_token', optional(nullable(string()))],
 });

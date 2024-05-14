@@ -5,7 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2024-04-17'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2024-05-15'` |
 | `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
@@ -43,7 +43,7 @@ const client = new Client({
   bearerAuthCredentials: {
     accessToken: 'AccessToken'
   },
-  squareVersion: '2024-04-17',
+  squareVersion: '2024-05-15',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
@@ -60,7 +60,7 @@ const client = new Client({
   bearerAuthCredentials: {
     accessToken: 'AccessToken'
   },
-  squareVersion: '2024-04-17',
+  squareVersion: '2024-05-15',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
