@@ -13,6 +13,7 @@ import { CustomerSegmentsApi } from './api/customerSegmentsApi';
 import { DevicesApi } from './api/devicesApi';
 import { DisputesApi } from './api/disputesApi';
 import { EmployeesApi } from './api/employeesApi';
+import { EventsApi } from './api/eventsApi';
 import { GiftCardActivitiesApi } from './api/giftCardActivitiesApi';
 import { GiftCardsApi } from './api/giftCardsApi';
 import { InventoryApi } from './api/inventoryApi';
@@ -67,7 +68,7 @@ import {
  import { HttpClient } from './clientAdapter';
 
 /** Current SDK version */
-export const SDK_VERSION = '37.0.0';
+export const SDK_VERSION = '37.1.0';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -90,6 +91,7 @@ export class Client implements ClientInterface {
   public readonly devicesApi: DevicesApi;
   public readonly disputesApi: DisputesApi;
   public readonly employeesApi: EmployeesApi;
+  public readonly eventsApi: EventsApi;
   public readonly giftCardActivitiesApi: GiftCardActivitiesApi;
   public readonly giftCardsApi: GiftCardsApi;
   public readonly inventoryApi: InventoryApi;
@@ -138,7 +140,7 @@ export class Client implements ClientInterface {
     }
 
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/37.0.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/37.1.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail
     );
@@ -176,6 +178,7 @@ export class Client implements ClientInterface {
     this.devicesApi = new DevicesApi(this);
     this.disputesApi = new DisputesApi(this);
     this.employeesApi = new EmployeesApi(this);
+    this.eventsApi = new EventsApi(this);
     this.giftCardActivitiesApi = new GiftCardActivitiesApi(this);
     this.giftCardsApi = new GiftCardsApi(this);
     this.inventoryApi = new InventoryApi(this);

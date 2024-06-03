@@ -10,7 +10,7 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `merchantId` | `string \| null \| undefined` | Optional | The ID of the target merchant associated with the event. |
-| `locationId` | `string \| null \| undefined` | Optional | The ID of the location associated with the event. |
+| `locationId` | `string \| null \| undefined` | Optional | The ID of the target location associated with the event. |
 | `type` | `string \| null \| undefined` | Optional | The type of event this represents. |
 | `eventId` | `string \| null \| undefined` | Optional | A unique ID for the event. |
 | `createdAt` | `string \| undefined` | Optional | Timestamp of when the event was created, in RFC 3339 format. |
