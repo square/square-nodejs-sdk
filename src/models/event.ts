@@ -4,7 +4,7 @@ import { EventData, eventDataSchema } from './eventData';
 export interface Event {
   /** The ID of the target merchant associated with the event. */
   merchantId?: string | null;
-  /** The ID of the location associated with the event. */
+  /** The ID of the target location associated with the event. */
   locationId?: string | null;
   /** The type of event this represents. */
   type?: string | null;

@@ -9,10 +9,10 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `type` | `string \| null \| undefined` | Optional | Name of the affected object’s type. |
-| `id` | `string \| undefined` | Optional | ID of the affected object. |
-| `deleted` | `boolean \| null \| undefined` | Optional | Is true if the affected object was deleted. Otherwise absent. |
-| `object` | `Record<string, unknown> \| null \| undefined` | Optional | An object containing fields and values relevant to the event. Is absent if affected object was deleted. |
+| `type` | `string \| null \| undefined` | Optional | The name of the affected object’s type. |
+| `id` | `string \| undefined` | Optional | The ID of the affected object. |
+| `deleted` | `boolean \| null \| undefined` | Optional | This is true if the affected object has been deleted; otherwise, it's absent. |
+| `object` | `Record<string, unknown> \| null \| undefined` | Optional | An object containing fields and values relevant to the event. It is absent if the affected object has been deleted. |
 
 ## Example (as JSON)
 
