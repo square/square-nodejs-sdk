@@ -33,10 +33,8 @@ Deprecated version of [RetrieveInventoryAdjustment](api-endpoint:Inventory-Retri
 is updated to conform to the standard convention.
 
 ```ts
-async deprecatedRetrieveInventoryAdjustment(
-  adjustmentId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveInventoryAdjustmentResponse>>
+async deprecatedRetrieveInventoryAdjustment(  adjustmentId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveInventoryAdjustmentResponse>>
 ```
 
 ## Parameters
@@ -74,10 +72,8 @@ Returns the [InventoryAdjustment](../../doc/models/inventory-adjustment.md) obje
 with the provided `adjustment_id`.
 
 ```ts
-async retrieveInventoryAdjustment(
-  adjustmentId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveInventoryAdjustmentResponse>>
+async retrieveInventoryAdjustment(  adjustmentId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveInventoryAdjustmentResponse>>
 ```
 
 ## Parameters
@@ -117,10 +113,8 @@ Deprecated version of [BatchChangeInventory](api-endpoint:Inventory-BatchChangeI
 is updated to conform to the standard convention.
 
 ```ts
-async deprecatedBatchChangeInventory(
-  body: BatchChangeInventoryRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BatchChangeInventoryResponse>>
+async deprecatedBatchChangeInventory(  body: BatchChangeInventoryRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BatchChangeInventoryResponse>>
 ```
 
 ## Parameters
@@ -177,10 +171,8 @@ Deprecated version of [BatchRetrieveInventoryChanges](api-endpoint:Inventory-Bat
 is updated to conform to the standard convention.
 
 ```ts
-async deprecatedBatchRetrieveInventoryChanges(
-  body: BatchRetrieveInventoryChangesRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BatchRetrieveInventoryChangesResponse>>
+async deprecatedBatchRetrieveInventoryChanges(  body: BatchRetrieveInventoryChangesRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BatchRetrieveInventoryChangesResponse>>
 ```
 
 ## Parameters
@@ -235,10 +227,8 @@ Deprecated version of [BatchRetrieveInventoryCounts](api-endpoint:Inventory-Batc
 is updated to conform to the standard convention.
 
 ```ts
-async deprecatedBatchRetrieveInventoryCounts(
-  body: BatchRetrieveInventoryCountsRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BatchRetrieveInventoryCountsResponse>>
+async deprecatedBatchRetrieveInventoryCounts(  body: BatchRetrieveInventoryCountsRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BatchRetrieveInventoryCountsResponse>>
 ```
 
 ## Parameters
@@ -287,10 +277,8 @@ referenced in the request.
 On failure: returns a list of related errors.
 
 ```ts
-async batchChangeInventory(
-  body: BatchChangeInventoryRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BatchChangeInventoryResponse>>
+async batchChangeInventory(  body: BatchChangeInventoryRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BatchChangeInventoryResponse>>
 ```
 
 ## Parameters
@@ -351,10 +339,8 @@ BatchRetrieveInventoryChanges is a catch-all query endpoint for queries
 that cannot be handled by other, simpler endpoints.
 
 ```ts
-async batchRetrieveInventoryChanges(
-  body: BatchRetrieveInventoryChangesRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BatchRetrieveInventoryChangesResponse>>
+async batchRetrieveInventoryChanges(  body: BatchRetrieveInventoryChangesRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BatchRetrieveInventoryChangesResponse>>
 ```
 
 ## Parameters
@@ -416,10 +402,8 @@ returned. This allows clients to perform a "sync" operation, for example
 in response to receiving a Webhook notification.
 
 ```ts
-async batchRetrieveInventoryCounts(
-  body: BatchRetrieveInventoryCountsRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BatchRetrieveInventoryCountsResponse>>
+async batchRetrieveInventoryCounts(  body: BatchRetrieveInventoryCountsRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BatchRetrieveInventoryCountsResponse>>
 ```
 
 ## Parameters
@@ -467,10 +451,8 @@ Deprecated version of [RetrieveInventoryPhysicalCount](api-endpoint:Inventory-Re
 is updated to conform to the standard convention.
 
 ```ts
-async deprecatedRetrieveInventoryPhysicalCount(
-  physicalCountId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveInventoryPhysicalCountResponse>>
+async deprecatedRetrieveInventoryPhysicalCount(  physicalCountId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveInventoryPhysicalCountResponse>>
 ```
 
 ## Parameters
@@ -508,10 +490,8 @@ Returns the [InventoryPhysicalCount](../../doc/models/inventory-physical-count.m
 object with the provided `physical_count_id`.
 
 ```ts
-async retrieveInventoryPhysicalCount(
-  physicalCountId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveInventoryPhysicalCountResponse>>
+async retrieveInventoryPhysicalCount(  physicalCountId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveInventoryPhysicalCountResponse>>
 ```
 
 ## Parameters
@@ -549,10 +529,8 @@ Returns the [InventoryTransfer](../../doc/models/inventory-transfer.md) object
 with the provided `transfer_id`.
 
 ```ts
-async retrieveInventoryTransfer(
-  transferId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveInventoryTransferResponse>>
+async retrieveInventoryTransfer(  transferId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveInventoryTransferResponse>>
 ```
 
 ## Parameters
@@ -592,12 +570,10 @@ Retrieves the current calculated stock count for a given
 For more sophisticated queries, use a batch endpoint.
 
 ```ts
-async retrieveInventoryCount(
-  catalogObjectId: string,
+async retrieveInventoryCount(  catalogObjectId: string,
   locationIds?: string,
   cursor?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveInventoryCountResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveInventoryCountResponse>>
 ```
 
 ## Parameters
@@ -650,12 +626,10 @@ used to display recent changes for a specific item. For more
 sophisticated queries, use a batch endpoint.
 
 ```ts
-async retrieveInventoryChanges(
-  catalogObjectId: string,
+async retrieveInventoryChanges(  catalogObjectId: string,
   locationIds?: string,
   cursor?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveInventoryChangesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveInventoryChangesResponse>>
 ```
 
 ## Parameters

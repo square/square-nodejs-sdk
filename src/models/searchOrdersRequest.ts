@@ -8,7 +8,10 @@ import {
   Schema,
   string,
 } from '../schema';
-import { SearchOrdersQuery, searchOrdersQuerySchema } from './searchOrdersQuery';
+import {
+  SearchOrdersQuery,
+  searchOrdersQuerySchema,
+} from './searchOrdersQuery';
 
 export interface SearchOrdersRequest {
   /**

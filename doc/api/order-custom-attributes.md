@@ -33,12 +33,10 @@ applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`
 seller-defined custom attributes (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async listOrderCustomAttributeDefinitions(
-  visibilityFilter?: string,
+async listOrderCustomAttributeDefinitions(  visibilityFilter?: string,
   cursor?: string,
   limit?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListOrderCustomAttributeDefinitionsResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListOrderCustomAttributeDefinitionsResponse>>
 ```
 
 ## Parameters
@@ -79,10 +77,8 @@ After creating a custom attribute definition, you can set the custom attribute f
 in the Square seller account.
 
 ```ts
-async createOrderCustomAttributeDefinition(
-  body: CreateOrderCustomAttributeDefinitionRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateOrderCustomAttributeDefinitionResponse>>
+async createOrderCustomAttributeDefinition(  body: CreateOrderCustomAttributeDefinitionRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateOrderCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -129,10 +125,8 @@ Deletes an order-related [custom attribute definition](../../doc/models/custom-a
 Only the definition owner can delete a custom attribute definition.
 
 ```ts
-async deleteOrderCustomAttributeDefinition(
-  key: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteOrderCustomAttributeDefinitionResponse>>
+async deleteOrderCustomAttributeDefinition(  key: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteOrderCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -173,11 +167,9 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note t
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async retrieveOrderCustomAttributeDefinition(
-  key: string,
+async retrieveOrderCustomAttributeDefinition(  key: string,
   version?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveOrderCustomAttributeDefinitionResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveOrderCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -217,11 +209,9 @@ Updates an order-related custom attribute definition for a Square seller account
 Only the definition owner can update a custom attribute definition. Note that sellers can view all custom attributes in exported customer data, including those set to `VISIBILITY_HIDDEN`.
 
 ```ts
-async updateOrderCustomAttributeDefinition(
-  key: string,
+async updateOrderCustomAttributeDefinition(  key: string,
   body: UpdateOrderCustomAttributeDefinitionRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateOrderCustomAttributeDefinitionResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateOrderCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -284,10 +274,8 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async bulkDeleteOrderCustomAttributes(
-  body: BulkDeleteOrderCustomAttributesRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkDeleteOrderCustomAttributesResponse>>
+async bulkDeleteOrderCustomAttributes(  body: BulkDeleteOrderCustomAttributesRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkDeleteOrderCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -348,10 +336,8 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async bulkUpsertOrderCustomAttributes(
-  body: BulkUpsertOrderCustomAttributesRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkUpsertOrderCustomAttributesResponse>>
+async bulkUpsertOrderCustomAttributes(  body: BulkUpsertOrderCustomAttributesRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkUpsertOrderCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -406,14 +392,12 @@ visible to the requesting application, including those that are owned by other a
 and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async listOrderCustomAttributes(
-  orderId: string,
+async listOrderCustomAttributes(  orderId: string,
   visibilityFilter?: string,
   cursor?: string,
   limit?: number,
   withDefinitions?: boolean,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListOrderCustomAttributesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListOrderCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -466,11 +450,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async deleteOrderCustomAttribute(
-  orderId: string,
+async deleteOrderCustomAttribute(  orderId: string,
   customAttributeKey: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteOrderCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteOrderCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -520,13 +502,11 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async retrieveOrderCustomAttribute(
-  orderId: string,
+async retrieveOrderCustomAttribute(  orderId: string,
   customAttributeKey: string,
   version?: number,
   withDefinition?: boolean,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveOrderCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveOrderCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -583,12 +563,10 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async upsertOrderCustomAttribute(
-  orderId: string,
+async upsertOrderCustomAttribute(  orderId: string,
   customAttributeKey: string,
   body: UpsertOrderCustomAttributeRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpsertOrderCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpsertOrderCustomAttributeResponse>>
 ```
 
 ## Parameters

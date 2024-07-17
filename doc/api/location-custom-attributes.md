@@ -31,12 +31,10 @@ that are visible to the requesting application, including those that are created
 applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async listLocationCustomAttributeDefinitions(
-  visibilityFilter?: string,
+async listLocationCustomAttributeDefinitions(  visibilityFilter?: string,
   limit?: number,
   cursor?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListLocationCustomAttributeDefinitionsResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListLocationCustomAttributeDefinitionsResponse>>
 ```
 
 ## Parameters
@@ -79,10 +77,8 @@ for a custom attribute. After the definition is created, you can call
 to set the custom attribute for locations.
 
 ```ts
-async createLocationCustomAttributeDefinition(
-  body: CreateLocationCustomAttributeDefinitionRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateLocationCustomAttributeDefinitionResponse>>
+async createLocationCustomAttributeDefinition(  body: CreateLocationCustomAttributeDefinitionRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateLocationCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -129,10 +125,8 @@ all locations.
 Only the definition owner can delete a custom attribute definition.
 
 ```ts
-async deleteLocationCustomAttributeDefinition(
-  key: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteLocationCustomAttributeDefinitionResponse>>
+async deleteLocationCustomAttributeDefinition(  key: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteLocationCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -171,11 +165,9 @@ To retrieve a custom attribute definition created by another application, the `v
 setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async retrieveLocationCustomAttributeDefinition(
-  key: string,
+async retrieveLocationCustomAttributeDefinition(  key: string,
   version?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveLocationCustomAttributeDefinitionResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveLocationCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -216,11 +208,9 @@ Use this endpoint to update the following fields: `name`, `description`, `visibi
 Only the definition owner can update a custom attribute definition.
 
 ```ts
-async updateLocationCustomAttributeDefinition(
-  key: string,
+async updateLocationCustomAttributeDefinition(  key: string,
   body: UpdateLocationCustomAttributeDefinitionRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateLocationCustomAttributeDefinitionResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateLocationCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -270,10 +260,8 @@ To delete a custom attribute owned by another application, the `visibility` sett
 `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async bulkDeleteLocationCustomAttributes(
-  body: BulkDeleteLocationCustomAttributesRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkDeleteLocationCustomAttributesResponse>>
+async bulkDeleteLocationCustomAttributes(  body: BulkDeleteLocationCustomAttributesRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkDeleteLocationCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -331,10 +319,8 @@ To create or update a custom attribute owned by another application, the `visibi
 must be `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async bulkUpsertLocationCustomAttributes(
-  body: BulkUpsertLocationCustomAttributesRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkUpsertLocationCustomAttributesResponse>>
+async bulkUpsertLocationCustomAttributes(  body: BulkUpsertLocationCustomAttributesRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkUpsertLocationCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -387,14 +373,12 @@ visible to the requesting application, including those that are owned by other a
 and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async listLocationCustomAttributes(
-  locationId: string,
+async listLocationCustomAttributes(  locationId: string,
   visibilityFilter?: string,
   limit?: number,
   cursor?: string,
   withDefinitions?: boolean,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListLocationCustomAttributesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListLocationCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -445,11 +429,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async deleteLocationCustomAttribute(
-  locationId: string,
+async deleteLocationCustomAttribute(  locationId: string,
   key: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteLocationCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteLocationCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -496,13 +478,11 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async retrieveLocationCustomAttribute(
-  locationId: string,
+async retrieveLocationCustomAttribute(  locationId: string,
   key: string,
   withDefinition?: boolean,
   version?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveLocationCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveLocationCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -555,12 +535,10 @@ To create or update a custom attribute owned by another application, the `visibi
 must be `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async upsertLocationCustomAttribute(
-  locationId: string,
+async upsertLocationCustomAttribute(  locationId: string,
   key: string,
   body: UpsertLocationCustomAttributeRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpsertLocationCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpsertLocationCustomAttributeResponse>>
 ```
 
 ## Parameters

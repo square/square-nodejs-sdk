@@ -35,14 +35,12 @@ for the listing operation in well under 30 seconds. Occasionally, propagation of
 profiles can take closer to one minute or longer, especially during network incidents and outages.
 
 ```ts
-async listCustomers(
-  cursor?: string,
+async listCustomers(  cursor?: string,
   limit?: number,
   sortField?: string,
   sortOrder?: string,
   count?: boolean,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListCustomersResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListCustomersResponse>>
 ```
 
 ## Parameters
@@ -98,10 +96,8 @@ endpoint:
 - `phone_number`
 
 ```ts
-async createCustomer(
-  body: CreateCustomerRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateCustomerResponse>>
+async createCustomer(  body: CreateCustomerRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateCustomerResponse>>
 ```
 
 ## Parameters
@@ -163,10 +159,8 @@ You must provide at least one of the following values in each create request:
 - `phone_number`
 
 ```ts
-async bulkCreateCustomers(
-  body: BulkCreateCustomersRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkCreateCustomersResponse>>
+async bulkCreateCustomers(  body: BulkCreateCustomersRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkCreateCustomersResponse>>
 ```
 
 ## Parameters
@@ -240,10 +234,8 @@ Deletes multiple customer profiles.
 The endpoint takes a list of customer IDs and returns a map of responses.
 
 ```ts
-async bulkDeleteCustomers(
-  body: BulkDeleteCustomersRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkDeleteCustomersResponse>>
+async bulkDeleteCustomers(  body: BulkDeleteCustomersRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkDeleteCustomersResponse>>
 ```
 
 ## Parameters
@@ -288,10 +280,8 @@ Retrieves multiple customer profiles.
 This endpoint takes a list of customer IDs and returns a map of responses.
 
 ```ts
-async bulkRetrieveCustomers(
-  body: BulkRetrieveCustomersRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkRetrieveCustomersResponse>>
+async bulkRetrieveCustomers(  body: BulkRetrieveCustomersRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkRetrieveCustomersResponse>>
 ```
 
 ## Parameters
@@ -338,10 +328,8 @@ This endpoint takes a map of individual update requests and returns a map of res
 You cannot use this endpoint to change cards on file. To make changes, use the [Cards API](../../doc/api/cards.md) or [Gift Cards API](../../doc/api/gift-cards.md).
 
 ```ts
-async bulkUpdateCustomers(
-  body: BulkUpdateCustomersRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkUpdateCustomersResponse>>
+async bulkUpdateCustomers(  body: BulkUpdateCustomersRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkUpdateCustomersResponse>>
 ```
 
 ## Parameters
@@ -400,10 +388,8 @@ for the search operation in well under 30 seconds. Occasionally, propagation of 
 profiles can take closer to one minute or longer, especially during network incidents and outages.
 
 ```ts
-async searchCustomers(
-  body: SearchCustomersRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<SearchCustomersResponse>>
+async searchCustomers(  body: SearchCustomersRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<SearchCustomersResponse>>
 ```
 
 ## Parameters
@@ -470,11 +456,9 @@ Deletes a customer profile from a business. This operation also unlinks any asso
 To delete a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.
 
 ```ts
-async deleteCustomer(
-  customerId: string,
+async deleteCustomer(  customerId: string,
   version?: bigint,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteCustomerResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteCustomerResponse>>
 ```
 
 ## Parameters
@@ -512,10 +496,8 @@ try {
 Returns details for a single customer.
 
 ```ts
-async retrieveCustomer(
-  customerId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveCustomerResponse>>
+async retrieveCustomer(  customerId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveCustomerResponse>>
 ```
 
 ## Parameters
@@ -557,11 +539,9 @@ To update a customer profile that was created by merging existing profiles, you 
 You cannot use this endpoint to change cards on file. To make changes, use the [Cards API](../../doc/api/cards.md) or [Gift Cards API](../../doc/api/gift-cards.md).
 
 ```ts
-async updateCustomer(
-  customerId: string,
+async updateCustomer(  customerId: string,
   body: UpdateCustomerRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateCustomerResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateCustomerResponse>>
 ```
 
 ## Parameters
@@ -615,11 +595,9 @@ calls with the same card nonce return the same card record that was created
 with the provided nonce during the _first_ call.
 
 ```ts
-async createCustomerCard(
-  customerId: string,
+async createCustomerCard(  customerId: string,
   body: CreateCustomerCardRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateCustomerCardResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateCustomerCardResponse>>
 ```
 
 ## Parameters
@@ -675,11 +653,9 @@ try {
 Removes a card on file from a customer.
 
 ```ts
-async deleteCustomerCard(
-  customerId: string,
+async deleteCustomerCard(  customerId: string,
   cardId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteCustomerCardResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteCustomerCardResponse>>
 ```
 
 ## Parameters
@@ -725,11 +701,9 @@ The customer is identified by the `customer_id` value
 and the customer group is identified by the `group_id` value.
 
 ```ts
-async removeGroupFromCustomer(
-  customerId: string,
+async removeGroupFromCustomer(  customerId: string,
   groupId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RemoveGroupFromCustomerResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RemoveGroupFromCustomerResponse>>
 ```
 
 ## Parameters
@@ -775,11 +749,9 @@ The customer is identified by the `customer_id` value
 and the customer group is identified by the `group_id` value.
 
 ```ts
-async addGroupToCustomer(
-  customerId: string,
+async addGroupToCustomer(  customerId: string,
   groupId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<AddGroupToCustomerResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<AddGroupToCustomerResponse>>
 ```
 
 ## Parameters

@@ -31,11 +31,9 @@ To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for 
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
-async listBookingCustomAttributeDefinitions(
-  limit?: number,
+async listBookingCustomAttributeDefinitions(  limit?: number,
   cursor?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListBookingCustomAttributeDefinitionsResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListBookingCustomAttributeDefinitionsResponse>>
 ```
 
 ## Parameters
@@ -77,10 +75,8 @@ For calls to this endpoint with seller-level permissions to succeed, the seller 
 or *Appointments Premium*.
 
 ```ts
-async createBookingCustomAttributeDefinition(
-  body: CreateBookingCustomAttributeDefinitionRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateBookingCustomAttributeDefinitionResponse>>
+async createBookingCustomAttributeDefinition(  body: CreateBookingCustomAttributeDefinitionRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateBookingCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -125,10 +121,8 @@ For calls to this endpoint with seller-level permissions to succeed, the seller 
 or *Appointments Premium*.
 
 ```ts
-async deleteBookingCustomAttributeDefinition(
-  key: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteBookingCustomAttributeDefinitionResponse>>
+async deleteBookingCustomAttributeDefinition(  key: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteBookingCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -168,11 +162,9 @@ To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for 
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
-async retrieveBookingCustomAttributeDefinition(
-  key: string,
+async retrieveBookingCustomAttributeDefinition(  key: string,
   version?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveBookingCustomAttributeDefinitionResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveBookingCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -216,11 +208,9 @@ For calls to this endpoint with seller-level permissions to succeed, the seller 
 or *Appointments Premium*.
 
 ```ts
-async updateBookingCustomAttributeDefinition(
-  key: string,
+async updateBookingCustomAttributeDefinition(  key: string,
   body: UpdateBookingCustomAttributeDefinitionRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateBookingCustomAttributeDefinitionResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateBookingCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -271,10 +261,8 @@ For calls to this endpoint with seller-level permissions to succeed, the seller 
 or *Appointments Premium*.
 
 ```ts
-async bulkDeleteBookingCustomAttributes(
-  body: BulkDeleteBookingCustomAttributesRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkDeleteBookingCustomAttributesResponse>>
+async bulkDeleteBookingCustomAttributes(  body: BulkDeleteBookingCustomAttributesRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkDeleteBookingCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -328,10 +316,8 @@ For calls to this endpoint with seller-level permissions to succeed, the seller 
 or *Appointments Premium*.
 
 ```ts
-async bulkUpsertBookingCustomAttributes(
-  body: BulkUpsertBookingCustomAttributesRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkUpsertBookingCustomAttributesResponse>>
+async bulkUpsertBookingCustomAttributes(  body: BulkUpsertBookingCustomAttributesRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkUpsertBookingCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -382,13 +368,11 @@ To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for 
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
-async listBookingCustomAttributes(
-  bookingId: string,
+async listBookingCustomAttributes(  bookingId: string,
   limit?: number,
   cursor?: string,
   withDefinitions?: boolean,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListBookingCustomAttributesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListBookingCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -441,11 +425,9 @@ For calls to this endpoint with seller-level permissions to succeed, the seller 
 or *Appointments Premium*.
 
 ```ts
-async deleteBookingCustomAttribute(
-  bookingId: string,
+async deleteBookingCustomAttribute(  bookingId: string,
   key: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteBookingCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteBookingCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -491,13 +473,11 @@ To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for 
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
-async retrieveBookingCustomAttribute(
-  bookingId: string,
+async retrieveBookingCustomAttribute(  bookingId: string,
   key: string,
   withDefinition?: boolean,
   version?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveBookingCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveBookingCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -551,12 +531,10 @@ For calls to this endpoint with seller-level permissions to succeed, the seller 
 or *Appointments Premium*.
 
 ```ts
-async upsertBookingCustomAttribute(
-  bookingId: string,
+async upsertBookingCustomAttribute(  bookingId: string,
   key: string,
   body: UpsertBookingCustomAttributeRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpsertBookingCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpsertBookingCustomAttributeResponse>>
 ```
 
 ## Parameters

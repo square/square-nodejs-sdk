@@ -9,7 +9,10 @@ import {
   string,
 } from '../schema';
 import { CatalogObject, catalogObjectSchema } from './catalogObject';
-import { SubscriptionPhase, subscriptionPhaseSchema } from './subscriptionPhase';
+import {
+  SubscriptionPhase,
+  subscriptionPhaseSchema,
+} from './subscriptionPhase';
 
 /**
  * Describes a subscription plan. A subscription plan represents what you want to sell in a subscription model, and includes references to each of the associated subscription plan variations.

@@ -1,6 +1,9 @@
 import { array, lazy, object, optional, Schema } from '../schema';
 import { Error, errorSchema } from './error';
-import { InvoiceAttachment, invoiceAttachmentSchema } from './invoiceAttachment';
+import {
+  InvoiceAttachment,
+  invoiceAttachmentSchema,
+} from './invoiceAttachment';
 
 /** Represents a [CreateInvoiceAttachment]($e/Invoices/CreateInvoiceAttachment) response. */
 export interface CreateInvoiceAttachmentResponse {

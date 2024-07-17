@@ -33,12 +33,10 @@ const laborApi = client.laborApi;
 Returns a paginated list of `BreakType` instances for a business.
 
 ```ts
-async listBreakTypes(
-  locationId?: string,
+async listBreakTypes(  locationId?: string,
   limit?: number,
   cursor?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListBreakTypesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListBreakTypesResponse>>
 ```
 
 ## Parameters
@@ -88,10 +86,8 @@ You can only have three `BreakType` instances per location. If you attempt to ad
 is returned.
 
 ```ts
-async createBreakType(
-  body: CreateBreakTypeRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateBreakTypeResponse>>
+async createBreakType(  body: CreateBreakTypeRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateBreakTypeResponse>>
 ```
 
 ## Parameters
@@ -138,10 +134,8 @@ Deletes an existing `BreakType`.
 A `BreakType` can be deleted even if it is referenced from a `Shift`.
 
 ```ts
-async deleteBreakType(
-  id: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteBreakTypeResponse>>
+async deleteBreakType(  id: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteBreakTypeResponse>>
 ```
 
 ## Parameters
@@ -178,10 +172,8 @@ try {
 Returns a single `BreakType` specified by `id`.
 
 ```ts
-async getBreakType(
-  id: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetBreakTypeResponse>>
+async getBreakType(  id: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetBreakTypeResponse>>
 ```
 
 ## Parameters
@@ -218,11 +210,9 @@ try {
 Updates an existing `BreakType`.
 
 ```ts
-async updateBreakType(
-  id: string,
+async updateBreakType(  id: string,
   body: UpdateBreakTypeRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateBreakTypeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateBreakTypeResponse>>
 ```
 
 ## Parameters
@@ -275,12 +265,10 @@ try {
 Returns a paginated list of `EmployeeWage` instances for a business.
 
 ```ts
-async listEmployeeWages(
-  employeeId?: string,
+async listEmployeeWages(  employeeId?: string,
   limit?: number,
   cursor?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListEmployeeWagesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListEmployeeWagesResponse>>
 ```
 
 ## Parameters
@@ -319,10 +307,8 @@ try {
 Returns a single `EmployeeWage` specified by `id`.
 
 ```ts
-async getEmployeeWage(
-  id: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetEmployeeWageResponse>>
+async getEmployeeWage(  id: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetEmployeeWageResponse>>
 ```
 
 ## Parameters
@@ -377,10 +363,8 @@ An attempt to create a new `Shift` can result in a `BAD_REQUEST` error when:
   the `Shift.end_at`, or both.
 
 ```ts
-async createShift(
-  body: CreateShiftRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateShiftResponse>>
+async createShift(  body: CreateShiftRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateShiftResponse>>
 ```
 
 ## Parameters
@@ -462,10 +446,8 @@ The list can be sorted by:
 - `UPDATED_AT`
 
 ```ts
-async searchShifts(
-  body: SearchShiftsRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<SearchShiftsResponse>>
+async searchShifts(  body: SearchShiftsRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<SearchShiftsResponse>>
 ```
 
 ## Parameters
@@ -516,10 +498,8 @@ try {
 Deletes a `Shift`.
 
 ```ts
-async deleteShift(
-  id: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteShiftResponse>>
+async deleteShift(  id: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteShiftResponse>>
 ```
 
 ## Parameters
@@ -556,10 +536,8 @@ try {
 Returns a single `Shift` specified by `id`.
 
 ```ts
-async getShift(
-  id: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetShiftResponse>>
+async getShift(  id: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetShiftResponse>>
 ```
 
 ## Parameters
@@ -602,11 +580,9 @@ When closing a `Shift`, all `Break` instances in the `Shift` must be complete wi
 set on each `Break`.
 
 ```ts
-async updateShift(
-  id: string,
+async updateShift(  id: string,
   body: UpdateShiftRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateShiftResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateShiftResponse>>
 ```
 
 ## Parameters
@@ -680,12 +656,10 @@ try {
 Returns a paginated list of `TeamMemberWage` instances for a business.
 
 ```ts
-async listTeamMemberWages(
-  teamMemberId?: string,
+async listTeamMemberWages(  teamMemberId?: string,
   limit?: number,
   cursor?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListTeamMemberWagesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListTeamMemberWagesResponse>>
 ```
 
 ## Parameters
@@ -722,10 +696,8 @@ try {
 Returns a single `TeamMemberWage` specified by `id`.
 
 ```ts
-async getTeamMemberWage(
-  id: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetTeamMemberWageResponse>>
+async getTeamMemberWage(  id: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetTeamMemberWageResponse>>
 ```
 
 ## Parameters
@@ -762,11 +734,9 @@ try {
 Returns a list of `WorkweekConfig` instances for a business.
 
 ```ts
-async listWorkweekConfigs(
-  limit?: number,
+async listWorkweekConfigs(  limit?: number,
   cursor?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListWorkweekConfigsResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListWorkweekConfigsResponse>>
 ```
 
 ## Parameters
@@ -802,11 +772,9 @@ try {
 Updates a `WorkweekConfig`.
 
 ```ts
-async updateWorkweekConfig(
-  id: string,
+async updateWorkweekConfig(  id: string,
   body: UpdateWorkweekConfigRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateWorkweekConfigResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateWorkweekConfigResponse>>
 ```
 
 ## Parameters

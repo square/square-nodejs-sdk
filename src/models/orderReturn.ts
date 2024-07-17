@@ -7,7 +7,10 @@ import {
   Schema,
   string,
 } from '../schema';
-import { OrderMoneyAmounts, orderMoneyAmountsSchema } from './orderMoneyAmounts';
+import {
+  OrderMoneyAmounts,
+  orderMoneyAmountsSchema,
+} from './orderMoneyAmounts';
 import {
   OrderReturnDiscount,
   orderReturnDiscountSchema,

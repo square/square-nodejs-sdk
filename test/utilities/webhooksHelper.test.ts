@@ -19,6 +19,36 @@ describe('Test webhooks signature validation', () => {
         expect(isValid).toBe(true);
     });
 
+    test('test signature unescaped chars validation pass', () => {
+        const url = "https://webhook.site/webhooks"
+        const sigKey = 'signature-key';
+        const specialCharacterBody = '{"data":{"type":"webhooks","id":"fake_id"}}';
+        const expectedSignatureHeader = 'W3FlCNk5IA3ZQ2LHTWoajvzfaDu/OwY2tNHIHC3IUOA=';
+
+        const isValid = WebhooksHelper.isValidWebhookEventSignature(
+            specialCharacterBody,
+            expectedSignatureHeader,
+            sigKey,
+            url
+        );
+        expect(isValid).toBe(true);
+    });
+
+    test('test signature with escaped characters', () => {
+        const url = "https://webhook.site/webhooks"
+        const sigKey = 'signature-key';
+        const specialCharacterBody = '{"data":{"type":"webhooks","id":">id<"}}';
+        const expectedSignatureHeader = 'Cxt7+aTi4rKgcA0bC4g9EHdVtLSDWdqccmL5MvihU4U=';
+
+        const isValid = WebhooksHelper.isValidWebhookEventSignature(
+            specialCharacterBody,
+            expectedSignatureHeader,
+            sigKey,
+            url
+        );
+        expect(isValid).toBe(true);
+    });
+
     test('test signature validation fails on notification url mismatch', () => {
         const isValid = WebhooksHelper.isValidWebhookEventSignature(
             requestBody,

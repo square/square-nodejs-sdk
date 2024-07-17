@@ -448,7 +448,10 @@ export class CatalogApi extends BaseApi {
     });
     req.query('include_related_objects', mapped.includeRelatedObjects);
     req.query('catalog_version', mapped.catalogVersion);
-    req.query('include_category_path_to_root', mapped.includeCategoryPathToRoot);
+    req.query(
+      'include_category_path_to_root',
+      mapped.includeCategoryPathToRoot
+    );
     req.appendTemplatePath`/v2/catalog/object/${mapped.objectId}`;
     req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveCatalogObjectResponseSchema, requestOptions);

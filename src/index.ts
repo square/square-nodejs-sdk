@@ -1,6 +1,6 @@
 export * from './client';
 export * from './configuration';
-export type { ApiResponse } from './core'
+export type { ApiResponse } from './core';
 export {
   AbortError,
   ArgumentsValidationError,

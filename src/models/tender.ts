@@ -20,8 +20,14 @@ import {
   TenderBuyNowPayLaterDetails,
   tenderBuyNowPayLaterDetailsSchema,
 } from './tenderBuyNowPayLaterDetails';
-import { TenderCardDetails, tenderCardDetailsSchema } from './tenderCardDetails';
-import { TenderCashDetails, tenderCashDetailsSchema } from './tenderCashDetails';
+import {
+  TenderCardDetails,
+  tenderCardDetailsSchema,
+} from './tenderCardDetails';
+import {
+  TenderCashDetails,
+  tenderCashDetailsSchema,
+} from './tenderCashDetails';
 import {
   TenderSquareAccountDetails,
   tenderSquareAccountDetailsSchema,

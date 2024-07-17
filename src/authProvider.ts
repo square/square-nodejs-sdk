@@ -8,14 +8,11 @@ export function createAuthProviderFromConfig(config: Partial<Configuration>) {
   const authConfig = {
     global:
       config.bearerAuthCredentials &&
-      accessTokenAuthenticationProvider (
-        config.bearerAuthCredentials
-    ),
+      accessTokenAuthenticationProvider(config.bearerAuthCredentials),
   };
 
-  return compositeAuthenticationProvider <
+  return compositeAuthenticationProvider<
     keyof typeof authConfig,
     typeof authConfig
-  > (authConfig);
+  >(authConfig);
 }
-

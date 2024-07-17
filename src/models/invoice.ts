@@ -13,7 +13,10 @@ import {
   InvoiceAcceptedPaymentMethods,
   invoiceAcceptedPaymentMethodsSchema,
 } from './invoiceAcceptedPaymentMethods';
-import { InvoiceAttachment, invoiceAttachmentSchema } from './invoiceAttachment';
+import {
+  InvoiceAttachment,
+  invoiceAttachmentSchema,
+} from './invoiceAttachment';
 import {
   InvoiceCustomField,
   invoiceCustomFieldSchema,

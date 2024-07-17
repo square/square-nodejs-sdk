@@ -14,7 +14,10 @@ export interface BulkDeleteLocationCustomAttributesResponse {
    * A map of responses that correspond to individual delete requests. Each response has the
    * same key as the corresponding request.
    */
-  values: Record<string, BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteResponse>;
+  values: Record<
+    string,
+    BulkDeleteLocationCustomAttributesResponseLocationCustomAttributeDeleteResponse
+  >;
   /** Any errors that occurred during the request. */
   errors?: Error[];
 }

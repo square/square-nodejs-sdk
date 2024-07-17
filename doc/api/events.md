@@ -21,10 +21,8 @@ const eventsApi = client.eventsApi;
 Search for Square API events that occur within a 28-day timeframe.
 
 ```ts
-async searchEvents(
-  body: SearchEventsRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<SearchEventsResponse>>
+async searchEvents(  body: SearchEventsRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<SearchEventsResponse>>
 ```
 
 ## Parameters
@@ -63,9 +61,7 @@ All events are disabled by default. You must enable events to make them searchab
 Disabling events for a specific time period prevents them from being searchable, even if you re-enable them later.
 
 ```ts
-async disableEvents(
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DisableEventsResponse>>
+async disableEvents(requestOptions?: RequestOptions): Promise<ApiResponse<DisableEventsResponse>>
 ```
 
 ## Parameters
@@ -99,9 +95,7 @@ try {
 Enables events to make them searchable. Only events that occur while in the enabled state are searchable.
 
 ```ts
-async enableEvents(
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<EnableEventsResponse>>
+async enableEvents(requestOptions?: RequestOptions): Promise<ApiResponse<EnableEventsResponse>>
 ```
 
 ## Parameters
@@ -135,10 +129,8 @@ try {
 Lists all event types that you can subscribe to as webhooks or query using the Events API.
 
 ```ts
-async listEventTypes(
-  apiVersion?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListEventTypesResponse>>
+async listEventTypes(  apiVersion?: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<ListEventTypesResponse>>
 ```
 
 ## Parameters

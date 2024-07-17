@@ -30,7 +30,10 @@ import {
   OrderLineItemPricingBlocklists,
   orderLineItemPricingBlocklistsSchema,
 } from './orderLineItemPricingBlocklists';
-import { OrderQuantityUnit, orderQuantityUnitSchema } from './orderQuantityUnit';
+import {
+  OrderQuantityUnit,
+  orderQuantityUnitSchema,
+} from './orderQuantityUnit';
 
 /**
  * Represents a line item in an order. Each line item describes a different

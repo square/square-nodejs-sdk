@@ -24,10 +24,8 @@ You can call [ListSites](../../doc/api/sites.md#list-sites) to get the IDs of th
 __Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 
 ```ts
-async deleteSnippet(
-  siteId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteSnippetResponse>>
+async deleteSnippet(  siteId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteSnippetResponse>>
 ```
 
 ## Parameters
@@ -68,10 +66,8 @@ You can call [ListSites](../../doc/api/sites.md#list-sites) to get the IDs of th
 __Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 
 ```ts
-async retrieveSnippet(
-  siteId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveSnippetResponse>>
+async retrieveSnippet(  siteId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveSnippetResponse>>
 ```
 
 ## Parameters
@@ -113,11 +109,9 @@ You can call [ListSites](../../doc/api/sites.md#list-sites) to get the IDs of th
 __Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 
 ```ts
-async upsertSnippet(
-  siteId: string,
+async upsertSnippet(  siteId: string,
   body: UpsertSnippetRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpsertSnippetResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpsertSnippetResponse>>
 ```
 
 ## Parameters

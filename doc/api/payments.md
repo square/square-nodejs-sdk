@@ -29,8 +29,7 @@ seconds to appear.
 The maximum results per page is 100.
 
 ```ts
-async listPayments(
-  beginTime?: string,
+async listPayments(  beginTime?: string,
   endTime?: string,
   sortOrder?: string,
   cursor?: string,
@@ -39,8 +38,7 @@ async listPayments(
   last4?: string,
   cardBrand?: string,
   limit?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListPaymentsResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListPaymentsResponse>>
 ```
 
 ## Parameters
@@ -90,10 +88,8 @@ The endpoint creates a
 `Payment` object and returns it in the response.
 
 ```ts
-async createPayment(
-  body: CreatePaymentRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreatePaymentResponse>>
+async createPayment(  body: CreatePaymentRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreatePaymentResponse>>
 ```
 
 ## Parameters
@@ -156,10 +152,8 @@ Note that if no payment with the specified idempotency key is found, no action i
 returns successfully.
 
 ```ts
-async cancelPaymentByIdempotencyKey(
-  body: CancelPaymentByIdempotencyKeyRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CancelPaymentByIdempotencyKeyResponse>>
+async cancelPaymentByIdempotencyKey(  body: CancelPaymentByIdempotencyKeyRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CancelPaymentByIdempotencyKeyResponse>>
 ```
 
 ## Parameters
@@ -198,10 +192,8 @@ try {
 Retrieves details for a specific payment.
 
 ```ts
-async getPayment(
-  paymentId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetPaymentResponse>>
+async getPayment(  paymentId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetPaymentResponse>>
 ```
 
 ## Parameters
@@ -239,11 +231,9 @@ Updates a payment with the APPROVED status.
 You can update the `amount_money` and `tip_money` using this endpoint.
 
 ```ts
-async updatePayment(
-  paymentId: string,
+async updatePayment(  paymentId: string,
   body: UpdatePaymentRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdatePaymentResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdatePaymentResponse>>
 ```
 
 ## Parameters
@@ -300,10 +290,8 @@ Cancels (voids) a payment. You can use this endpoint to cancel a payment with
 the APPROVED `status`.
 
 ```ts
-async cancelPayment(
-  paymentId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CancelPaymentResponse>>
+async cancelPayment(  paymentId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<CancelPaymentResponse>>
 ```
 
 ## Parameters
@@ -343,11 +331,9 @@ By default, payments are set to complete immediately after they are created.
 You can use this endpoint to complete a payment with the APPROVED `status`.
 
 ```ts
-async completePayment(
-  paymentId: string,
+async completePayment(  paymentId: string,
   body: CompletePaymentRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CompletePaymentResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<CompletePaymentResponse>>
 ```
 
 ## Parameters

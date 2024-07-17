@@ -65,10 +65,10 @@ import {
   HttpClientInterface,
   RetryConfiguration,
 } from './core';
- import { HttpClient } from './clientAdapter';
+import { HttpClient } from './clientAdapter';
 
 /** Current SDK version */
-export const SDK_VERSION = '37.1.0';
+export const SDK_VERSION = '37.1.1';
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
   private _timeout: number;
@@ -132,20 +132,20 @@ export class Client implements ClientInterface {
       typeof this._config.httpClientOptions?.timeout != 'undefined'
         ? this._config.httpClientOptions.timeout
         : this._config.timeout;
-    let clonedConfig = {
+    const clonedConfig = {
       ...this._config,
       bearerAuthCredentials: this._config.bearerAuthCredentials || {
-        accessToken: this._config.accessToken || '', 
-      }
-    }
+        accessToken: this._config.accessToken || '',
+      },
+    };
 
     this._userAgent = updateUserAgent(
-      'Square-TypeScript-SDK/37.1.0 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
+      'Square-TypeScript-SDK/37.1.1 ({api-version}) {engine}/{engine-version} ({os-info}) {detail}',
       this._config.squareVersion,
       this._config.userAgentDetail
     );
     this._requestBuilderFactory = createRequestHandlerFactory(
-      server => getBaseUri(server, this._config),
+      (server) => getBaseUri(server, this._config),
       createAuthProviderFromConfig(clonedConfig),
       new HttpClient(AbortError, {
         timeout: this._timeout,
@@ -268,7 +268,7 @@ function tap(
 ): SdkRequestBuilderFactory {
   return (...args) => {
     const requestBuilder = requestBuilderFactory(...args);
-    callback.forEach(c => c(requestBuilder));
+    callback.forEach((c) => c(requestBuilder));
     return requestBuilder;
   };
 }
@@ -285,7 +285,7 @@ function withAdditionalHeaders({
   const clone = { ...additionalHeaders };
   assertHeaders(clone);
   return (rb: SdkRequestBuilder) => {
-    rb.interceptRequest(request => {
+    rb.interceptRequest((request) => {
       const headers = request.headers ?? {};
       mergeHeaders(headers, clone);
       return { ...request, headers };
@@ -295,7 +295,7 @@ function withAdditionalHeaders({
 
 function withUserAgent(userAgent: string) {
   return (rb: SdkRequestBuilder) => {
-    rb.interceptRequest(request => {
+    rb.interceptRequest((request) => {
       const headers = request.headers ?? {};
       setHeader(headers, 'user-agent', userAgent);
       return { ...request, headers };
@@ -305,7 +305,7 @@ function withUserAgent(userAgent: string) {
 
 function withSquareVersion({ squareVersion }: { squareVersion: string }) {
   return (rb: SdkRequestBuilder) => {
-    rb.interceptRequest(request => {
+    rb.interceptRequest((request) => {
       const headers = request.headers ?? {};
       setHeader(headers, 'Square-Version', squareVersion);
       return { ...request, headers };
@@ -314,5 +314,5 @@ function withSquareVersion({ squareVersion }: { squareVersion: string }) {
 }
 
 function withAuthenticationByDefault(rb: SdkRequestBuilder) {
-  rb.authenticate([]); 
+  rb.authenticate([]);
 }

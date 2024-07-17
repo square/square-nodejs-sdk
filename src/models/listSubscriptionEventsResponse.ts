@@ -1,6 +1,9 @@
 import { array, lazy, object, optional, Schema, string } from '../schema';
 import { Error, errorSchema } from './error';
-import { SubscriptionEvent, subscriptionEventSchema } from './subscriptionEvent';
+import {
+  SubscriptionEvent,
+  subscriptionEventSchema,
+} from './subscriptionEvent';
 
 /**
  * Defines output parameters in a response from the

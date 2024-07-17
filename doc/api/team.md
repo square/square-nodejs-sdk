@@ -31,10 +31,8 @@ You must provide the following values in your request to this endpoint:
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#createteammember).
 
 ```ts
-async createTeamMember(
-  body: CreateTeamMemberRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateTeamMemberResponse>>
+async createTeamMember(  body: CreateTeamMemberRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateTeamMemberResponse>>
 ```
 
 ## Parameters
@@ -93,10 +91,8 @@ contains explicit error information for the failed create.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#bulk-create-team-members).
 
 ```ts
-async bulkCreateTeamMembers(
-  body: BulkCreateTeamMembersRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkCreateTeamMembersResponse>>
+async bulkCreateTeamMembers(  body: BulkCreateTeamMembersRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkCreateTeamMembersResponse>>
 ```
 
 ## Parameters
@@ -168,10 +164,8 @@ contains explicit error information for the failed update.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#bulk-update-team-members).
 
 ```ts
-async bulkUpdateTeamMembers(
-  body: BulkUpdateTeamMembersRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkUpdateTeamMembersResponse>>
+async bulkUpdateTeamMembers(  body: BulkUpdateTeamMembersRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkUpdateTeamMembersResponse>>
 ```
 
 ## Parameters
@@ -247,10 +241,8 @@ The list can be filtered by the following:
 - `status`
 
 ```ts
-async searchTeamMembers(
-  body: SearchTeamMembersRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<SearchTeamMembersResponse>>
+async searchTeamMembers(  body: SearchTeamMembersRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<SearchTeamMembersResponse>>
 ```
 
 ## Parameters
@@ -298,10 +290,8 @@ Retrieves a `TeamMember` object for the given `TeamMember.id`.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrieve-a-team-member).
 
 ```ts
-async retrieveTeamMember(
-  teamMemberId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveTeamMemberResponse>>
+async retrieveTeamMember(  teamMemberId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveTeamMemberResponse>>
 ```
 
 ## Parameters
@@ -339,11 +329,9 @@ Updates a single `TeamMember` object. The `TeamMember` object is returned on suc
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#update-a-team-member).
 
 ```ts
-async updateTeamMember(
-  teamMemberId: string,
+async updateTeamMember(  teamMemberId: string,
   body: UpdateTeamMemberRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateTeamMemberResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateTeamMemberResponse>>
 ```
 
 ## Parameters
@@ -404,10 +392,8 @@ by `TeamMember.id`.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).
 
 ```ts
-async retrieveWageSetting(
-  teamMemberId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveWageSettingResponse>>
+async retrieveWageSetting(  teamMemberId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveWageSettingResponse>>
 ```
 
 ## Parameters
@@ -448,11 +434,9 @@ The `WageSetting` is returned on a successful update.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).
 
 ```ts
-async updateWageSetting(
-  teamMemberId: string,
+async updateWageSetting(  teamMemberId: string,
   body: UpdateWageSettingRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateWageSettingResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateWageSettingResponse>>
 ```
 
 ## Parameters
