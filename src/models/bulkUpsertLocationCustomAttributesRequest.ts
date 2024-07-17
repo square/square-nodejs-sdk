@@ -11,7 +11,10 @@ export interface BulkUpsertLocationCustomAttributesRequest {
    * arbitrary ID that is unique for this `BulkUpsertLocationCustomAttributes` request and the
    * information needed to create or update a custom attribute.
    */
-  values: Record<string, BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest>;
+  values: Record<
+    string,
+    BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest
+  >;
 }
 
 export const bulkUpsertLocationCustomAttributesRequestSchema: Schema<BulkUpsertLocationCustomAttributesRequest> = object(

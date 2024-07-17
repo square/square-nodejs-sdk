@@ -22,13 +22,11 @@ const v1TransactionsApi = client.v1TransactionsApi;
 Provides summary information for a merchant's online store orders.
 
 ```ts
-async v1ListOrders(
-  locationId: string,
+async v1ListOrders(  locationId: string,
   order?: string,
   limit?: number,
   batchToken?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<V1Order[]>>
+requestOptions?: RequestOptions): Promise<ApiResponse<V1Order[]>>
 ```
 
 ## Parameters
@@ -70,11 +68,9 @@ try {
 Provides comprehensive information for a single online store order, including the order's history.
 
 ```ts
-async v1RetrieveOrder(
-  locationId: string,
+async v1RetrieveOrder(  locationId: string,
   orderId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<V1Order>>
+requestOptions?: RequestOptions): Promise<ApiResponse<V1Order>>
 ```
 
 ## Parameters
@@ -119,12 +115,10 @@ try {
 Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
 
 ```ts
-async v1UpdateOrder(
-  locationId: string,
+async v1UpdateOrder(  locationId: string,
   orderId: string,
   body: V1UpdateOrderRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<V1Order>>
+requestOptions?: RequestOptions): Promise<ApiResponse<V1Order>>
 ```
 
 ## Parameters

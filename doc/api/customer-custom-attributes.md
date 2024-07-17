@@ -32,11 +32,9 @@ applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`
 seller-defined custom attributes (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async listCustomerCustomAttributeDefinitions(
-  limit?: number,
+async listCustomerCustomAttributeDefinitions(  limit?: number,
   cursor?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListCustomerCustomAttributeDefinitionsResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListCustomerCustomAttributeDefinitionsResponse>>
 ```
 
 ## Parameters
@@ -82,10 +80,8 @@ Sellers can view all custom attributes in exported customer data, including thos
 `VISIBILITY_HIDDEN`.
 
 ```ts
-async createCustomerCustomAttributeDefinition(
-  body: CreateCustomerCustomAttributeDefinitionRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateCustomerCustomAttributeDefinitionResponse>>
+async createCustomerCustomAttributeDefinition(  body: CreateCustomerCustomAttributeDefinitionRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateCustomerCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -134,10 +130,8 @@ all customer profiles in the seller's Customer Directory.
 Only the definition owner can delete a custom attribute definition.
 
 ```ts
-async deleteCustomerCustomAttributeDefinition(
-  key: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteCustomerCustomAttributeDefinitionResponse>>
+async deleteCustomerCustomAttributeDefinition(  key: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteCustomerCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -178,11 +172,9 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note t
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async retrieveCustomerCustomAttributeDefinition(
-  key: string,
+async retrieveCustomerCustomAttributeDefinition(  key: string,
   version?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveCustomerCustomAttributeDefinitionResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveCustomerCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -226,11 +218,9 @@ Only the definition owner can update a custom attribute definition. Note that se
 all custom attributes in exported customer data, including those set to `VISIBILITY_HIDDEN`.
 
 ```ts
-async updateCustomerCustomAttributeDefinition(
-  key: string,
+async updateCustomerCustomAttributeDefinition(  key: string,
   body: UpdateCustomerCustomAttributeDefinitionRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateCustomerCustomAttributeDefinitionResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateCustomerCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -291,10 +281,8 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async bulkUpsertCustomerCustomAttributes(
-  body: BulkUpsertCustomerCustomAttributesRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkUpsertCustomerCustomAttributesResponse>>
+async bulkUpsertCustomerCustomAttributes(  body: BulkUpsertCustomerCustomAttributesRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkUpsertCustomerCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -349,13 +337,11 @@ visible to the requesting application, including those that are owned by other a
 and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async listCustomerCustomAttributes(
-  customerId: string,
+async listCustomerCustomAttributes(  customerId: string,
   limit?: number,
   cursor?: string,
   withDefinitions?: boolean,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListCustomerCustomAttributesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListCustomerCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -406,11 +392,9 @@ To delete a custom attribute owned by another application, the `visibility` sett
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async deleteCustomerCustomAttribute(
-  customerId: string,
+async deleteCustomerCustomAttribute(  customerId: string,
   key: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<DeleteCustomerCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<DeleteCustomerCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -460,13 +444,11 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async retrieveCustomerCustomAttribute(
-  customerId: string,
+async retrieveCustomerCustomAttribute(  customerId: string,
   key: string,
   withDefinition?: boolean,
   version?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveCustomerCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveCustomerCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -522,12 +504,10 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async upsertCustomerCustomAttribute(
-  customerId: string,
+async upsertCustomerCustomAttribute(  customerId: string,
   key: string,
   body: UpsertCustomerCustomAttributeRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpsertCustomerCustomAttributeResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpsertCustomerCustomAttributeResponse>>
 ```
 
 ## Parameters

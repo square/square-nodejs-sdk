@@ -7,7 +7,10 @@ import {
 /** Represents a bulk delete request for one or more order custom attributes. */
 export interface BulkDeleteOrderCustomAttributesRequest {
   /** A map of requests that correspond to individual delete operations for custom attributes. */
-  values: Record<string, BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute>;
+  values: Record<
+    string,
+    BulkDeleteOrderCustomAttributesRequestDeleteCustomAttribute
+  >;
 }
 
 export const bulkDeleteOrderCustomAttributesRequestSchema: Schema<BulkDeleteOrderCustomAttributesRequest> = object(

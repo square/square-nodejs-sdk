@@ -11,7 +11,10 @@ import {
   InventoryPhysicalCount,
   inventoryPhysicalCountSchema,
 } from './inventoryPhysicalCount';
-import { InventoryTransfer, inventoryTransferSchema } from './inventoryTransfer';
+import {
+  InventoryTransfer,
+  inventoryTransferSchema,
+} from './inventoryTransfer';
 
 /**
  * Represents a single physical count, inventory, adjustment, or transfer

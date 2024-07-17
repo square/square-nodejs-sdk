@@ -14,7 +14,10 @@ export interface BulkUpsertCustomerCustomAttributesResponse {
    * A map of responses that correspond to individual upsert requests. Each response has the
    * same ID as the corresponding request and contains either a `customer_id` and `custom_attribute` or an `errors` field.
    */
-  values?: Record<string, BulkUpsertCustomerCustomAttributesResponseCustomerCustomAttributeUpsertResponse>;
+  values?: Record<
+    string,
+    BulkUpsertCustomerCustomAttributesResponseCustomerCustomAttributeUpsertResponse
+  >;
   /** Any errors that occurred during the request. */
   errors?: Error[];
 }

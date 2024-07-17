@@ -9,7 +9,10 @@ import {
   Schema,
   string,
 } from '../schema';
-import { SubscriptionPhase, subscriptionPhaseSchema } from './subscriptionPhase';
+import {
+  SubscriptionPhase,
+  subscriptionPhaseSchema,
+} from './subscriptionPhase';
 
 /**
  * Describes a subscription plan variation. A subscription plan variation represents how the subscription for a product or service is sold.

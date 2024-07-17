@@ -33,16 +33,14 @@ To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for 
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
-async listBookings(
-  limit?: number,
+async listBookings(  limit?: number,
   cursor?: string,
   customerId?: string,
   teamMemberId?: string,
   locationId?: string,
   startAtMin?: string,
   startAtMax?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListBookingsResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListBookingsResponse>>
 ```
 
 ## Parameters
@@ -97,10 +95,8 @@ For calls to this endpoint with seller-level permissions to succeed, the seller 
 or *Appointments Premium*.
 
 ```ts
-async createBooking(
-  body: CreateBookingRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateBookingResponse>>
+async createBooking(  body: CreateBookingRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateBookingResponse>>
 ```
 
 ## Parameters
@@ -142,10 +138,8 @@ To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for 
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
-async searchAvailability(
-  body: SearchAvailabilityRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<SearchAvailabilityResponse>>
+async searchAvailability(  body: SearchAvailabilityRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<SearchAvailabilityResponse>>
 ```
 
 ## Parameters
@@ -191,10 +185,8 @@ To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for 
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
-async bulkRetrieveBookings(
-  body: BulkRetrieveBookingsRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkRetrieveBookingsResponse>>
+async bulkRetrieveBookings(  body: BulkRetrieveBookingsRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkRetrieveBookingsResponse>>
 ```
 
 ## Parameters
@@ -237,9 +229,7 @@ try {
 Retrieves a seller's booking profile.
 
 ```ts
-async retrieveBusinessBookingProfile(
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveBusinessBookingProfileResponse>>
+async retrieveBusinessBookingProfile(requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveBusinessBookingProfileResponse>>
 ```
 
 ## Parameters
@@ -273,11 +263,9 @@ try {
 Lists location booking profiles of a seller.
 
 ```ts
-async listLocationBookingProfiles(
-  limit?: number,
+async listLocationBookingProfiles(  limit?: number,
   cursor?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListLocationBookingProfilesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListLocationBookingProfilesResponse>>
 ```
 
 ## Parameters
@@ -313,10 +301,8 @@ try {
 Retrieves a seller's location booking profile.
 
 ```ts
-async retrieveLocationBookingProfile(
-  locationId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveLocationBookingProfileResponse>>
+async retrieveLocationBookingProfile(  locationId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveLocationBookingProfileResponse>>
 ```
 
 ## Parameters
@@ -353,13 +339,11 @@ try {
 Lists booking profiles for team members.
 
 ```ts
-async listTeamMemberBookingProfiles(
-  bookableOnly?: boolean,
+async listTeamMemberBookingProfiles(  bookableOnly?: boolean,
   limit?: number,
   cursor?: string,
   locationId?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListTeamMemberBookingProfilesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListTeamMemberBookingProfilesResponse>>
 ```
 
 ## Parameters
@@ -399,10 +383,8 @@ try {
 Retrieves one or more team members' booking profiles.
 
 ```ts
-async bulkRetrieveTeamMemberBookingProfiles(
-  body: BulkRetrieveTeamMemberBookingProfilesRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<BulkRetrieveTeamMemberBookingProfilesResponse>>
+async bulkRetrieveTeamMemberBookingProfiles(  body: BulkRetrieveTeamMemberBookingProfilesRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<BulkRetrieveTeamMemberBookingProfilesResponse>>
 ```
 
 ## Parameters
@@ -445,10 +427,8 @@ try {
 Retrieves a team member's booking profile.
 
 ```ts
-async retrieveTeamMemberBookingProfile(
-  teamMemberId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveTeamMemberBookingProfileResponse>>
+async retrieveTeamMemberBookingProfile(  teamMemberId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveTeamMemberBookingProfileResponse>>
 ```
 
 ## Parameters
@@ -488,10 +468,8 @@ To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for 
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
 
 ```ts
-async retrieveBooking(
-  bookingId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RetrieveBookingResponse>>
+async retrieveBooking(  bookingId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveBookingResponse>>
 ```
 
 ## Parameters
@@ -534,11 +512,9 @@ For calls to this endpoint with seller-level permissions to succeed, the seller 
 or *Appointments Premium*.
 
 ```ts
-async updateBooking(
-  bookingId: string,
+async updateBooking(  bookingId: string,
   body: UpdateBookingRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<UpdateBookingResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<UpdateBookingResponse>>
 ```
 
 ## Parameters
@@ -589,11 +565,9 @@ For calls to this endpoint with seller-level permissions to succeed, the seller 
 or *Appointments Premium*.
 
 ```ts
-async cancelBooking(
-  bookingId: string,
+async cancelBooking(  bookingId: string,
   body: CancelBookingRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CancelBookingResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<CancelBookingResponse>>
 ```
 
 ## Parameters

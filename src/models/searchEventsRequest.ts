@@ -1,5 +1,8 @@
 import { lazy, number, object, optional, Schema, string } from '../schema';
-import { SearchEventsQuery, searchEventsQuerySchema } from './searchEventsQuery';
+import {
+  SearchEventsQuery,
+  searchEventsQuerySchema,
+} from './searchEventsQuery';
 
 /** Searches [Event]($m/Event)s for your application. */
 export interface SearchEventsRequest {

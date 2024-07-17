@@ -23,13 +23,11 @@ List devices associated with the merchant. Currently, only Terminal API
 devices are supported.
 
 ```ts
-async listDevices(
-  cursor?: string,
+async listDevices(  cursor?: string,
   sortOrder?: string,
   limit?: number,
   locationId?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListDevicesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListDevicesResponse>>
 ```
 
 ## Parameters
@@ -67,13 +65,11 @@ try {
 Lists all DeviceCodes associated with the merchant.
 
 ```ts
-async listDeviceCodes(
-  cursor?: string,
+async listDeviceCodes(  cursor?: string,
   locationId?: string,
   productType?: string,
   status?: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListDeviceCodesResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListDeviceCodesResponse>>
 ```
 
 ## Parameters
@@ -112,10 +108,8 @@ Creates a DeviceCode that can be used to login to a Square Terminal device to en
 terminal mode.
 
 ```ts
-async createDeviceCode(
-  body: CreateDeviceCodeRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateDeviceCodeResponse>>
+async createDeviceCode(  body: CreateDeviceCodeRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateDeviceCodeResponse>>
 ```
 
 ## Parameters
@@ -159,10 +153,8 @@ try {
 Retrieves DeviceCode with the associated ID.
 
 ```ts
-async getDeviceCode(
-  id: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetDeviceCodeResponse>>
+async getDeviceCode(  id: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetDeviceCodeResponse>>
 ```
 
 ## Parameters
@@ -199,10 +191,8 @@ try {
 Retrieves Device with the associated `device_id`.
 
 ```ts
-async getDevice(
-  deviceId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetDeviceResponse>>
+async getDevice(  deviceId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetDeviceResponse>>
 ```
 
 ## Parameters

@@ -1,5 +1,8 @@
 import { lazy, number, object, optional, Schema, string } from '../schema';
-import { LoyaltyEventQuery, loyaltyEventQuerySchema } from './loyaltyEventQuery';
+import {
+  LoyaltyEventQuery,
+  loyaltyEventQuerySchema,
+} from './loyaltyEventQuery';
 
 /** A request to search for loyalty events. */
 export interface SearchLoyaltyEventsRequest {

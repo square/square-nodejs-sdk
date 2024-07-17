@@ -25,10 +25,8 @@ Replace `ACCESS_TOKEN` with a
 [valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-tokens).
 
 ```ts
-async createMobileAuthorizationCode(
-  body: CreateMobileAuthorizationCodeRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<CreateMobileAuthorizationCodeResponse>>
+async createMobileAuthorizationCode(  body: CreateMobileAuthorizationCodeRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<CreateMobileAuthorizationCodeResponse>>
 ```
 
 ## Parameters

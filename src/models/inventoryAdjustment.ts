@@ -4,7 +4,10 @@ import {
   inventoryAdjustmentGroupSchema,
 } from './inventoryAdjustmentGroup';
 import { Money, moneySchema } from './money';
-import { SourceApplication, sourceApplicationSchema } from './sourceApplication';
+import {
+  SourceApplication,
+  sourceApplicationSchema,
+} from './sourceApplication';
 
 /**
  * Represents a change in state or quantity of product inventory at a

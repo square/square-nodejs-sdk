@@ -4,7 +4,7 @@ import { RetryConfiguration } from './core';
 /** Default values for the configuration parameters of the client. */
 export const DEFAULT_CONFIGURATION: Configuration = {
   timeout: 60000,
-  squareVersion: '2024-06-04',
+  squareVersion: '2024-07-17',
   additionalHeaders: {},
   userAgentDetail: '',
   environment: Environment.Production,

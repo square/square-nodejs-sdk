@@ -25,8 +25,7 @@ seconds to appear.
 The maximum results per page is 100.
 
 ```ts
-async listPaymentRefunds(
-  beginTime?: string,
+async listPaymentRefunds(  beginTime?: string,
   endTime?: string,
   sortOrder?: string,
   cursor?: string,
@@ -34,8 +33,7 @@ async listPaymentRefunds(
   status?: string,
   sourceType?: string,
   limit?: number,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<ListPaymentRefundsResponse>>
+requestOptions?: RequestOptions): Promise<ApiResponse<ListPaymentRefundsResponse>>
 ```
 
 ## Parameters
@@ -80,10 +78,8 @@ refund of a cash or external payment. For more information, see
 [Refund Payment](https://developer.squareup.com/docs/payments-api/refund-payments).
 
 ```ts
-async refundPayment(
-  body: RefundPaymentRequest,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<RefundPaymentResponse>>
+async refundPayment(  body: RefundPaymentRequest,
+requestOptions?: RequestOptions): Promise<ApiResponse<RefundPaymentResponse>>
 ```
 
 ## Parameters
@@ -132,10 +128,8 @@ try {
 Retrieves a specific refund using the `refund_id`.
 
 ```ts
-async getPaymentRefund(
-  refundId: string,
-  requestOptions?: RequestOptions
-): Promise<ApiResponse<GetPaymentRefundResponse>>
+async getPaymentRefund(  refundId: string,
+requestOptions?: RequestOptions): Promise<ApiResponse<GetPaymentRefundResponse>>
 ```
 
 ## Parameters

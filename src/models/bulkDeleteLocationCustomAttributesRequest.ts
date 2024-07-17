@@ -10,7 +10,10 @@ export interface BulkDeleteLocationCustomAttributesRequest {
    * The data used to update the `CustomAttribute` objects.
    * The keys must be unique and are used to map to the corresponding response.
    */
-  values: Record<string, BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest>;
+  values: Record<
+    string,
+    BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest
+  >;
 }
 
 export const bulkDeleteLocationCustomAttributesRequestSchema: Schema<BulkDeleteLocationCustomAttributesRequest> = object(

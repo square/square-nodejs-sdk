@@ -21,7 +21,10 @@ import {
   OrderLineItemAppliedTax,
   orderLineItemAppliedTaxSchema,
 } from './orderLineItemAppliedTax';
-import { OrderQuantityUnit, orderQuantityUnitSchema } from './orderQuantityUnit';
+import {
+  OrderQuantityUnit,
+  orderQuantityUnitSchema,
+} from './orderQuantityUnit';
 import {
   OrderReturnLineItemModifier,
   orderReturnLineItemModifierSchema,

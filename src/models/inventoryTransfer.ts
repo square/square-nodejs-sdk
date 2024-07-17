@@ -1,5 +1,8 @@
 import { lazy, nullable, object, optional, Schema, string } from '../schema';
-import { SourceApplication, sourceApplicationSchema } from './sourceApplication';
+import {
+  SourceApplication,
+  sourceApplicationSchema,
+} from './sourceApplication';
 
 /**
  * Represents the transfer of a quantity of product inventory at a
