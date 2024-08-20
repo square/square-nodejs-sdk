@@ -39,7 +39,7 @@ children.
 IDs can be deleted. The response will only include IDs that were
 actually deleted.
 
-To ensure consistency, only one delete request is processed at a time per seller account.  
+To ensure consistency, only one delete request is processed at a time per seller account.
 While one (batch or non-batch) delete request is being processed, other (batched and non-batched)
 delete requests are rejected with the `429` error code.
 
@@ -143,7 +143,7 @@ batches will be processed in order as long as the total object count for the
 request (items, variations, modifier lists, discounts, and taxes) is no more
 than 10,000.
 
-To ensure consistency, only one update request is processed at a time per seller account.  
+To ensure consistency, only one update request is processed at a time per seller account.
 While one (batch or non-batch) update request is being processed, other (batched and non-batched)
 update requests are rejected with the `429` error code.
 
@@ -483,7 +483,7 @@ try {
 
 Creates a new or updates the specified [CatalogObject](../../doc/models/catalog-object.md).
 
-To ensure consistency, only one update request is processed at a time per seller account.  
+To ensure consistency, only one update request is processed at a time per seller account.
 While one (batch or non-batch) update request is being processed, other (batched and non-batched)
 update requests are rejected with the `429` error code.
 
@@ -565,7 +565,7 @@ are also deleted. For example, deleting a [CatalogItem](../../doc/models/catalog
 will also delete all of its
 [CatalogItemVariation](../../doc/models/catalog-item-variation.md) children.
 
-To ensure consistency, only one delete request is processed at a time per seller account.  
+To ensure consistency, only one delete request is processed at a time per seller account.
 While one (batch or non-batch) delete request is being processed, other (batched and non-batched)
 delete requests are rejected with the `429` error code.
 

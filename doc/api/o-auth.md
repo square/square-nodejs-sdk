@@ -156,18 +156,14 @@ where `ACCESS_TOKEN` is a
 
 If the access token is expired or not a valid access token, the endpoint returns an `UNAUTHORIZED` error.
 
-:information_source: **Note** This endpoint does not require authentication.
-
 ```ts
-async retrieveTokenStatus(  authorization: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveTokenStatusResponse>>
+async retrieveTokenStatus(requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveTokenStatusResponse>>
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `authorization` | `string` | Header, Required | Client APPLICATION_SECRET |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -177,10 +173,8 @@ requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveTokenStatusRespons
 ## Example Usage
 
 ```ts
-const authorization = 'Client CLIENT_SECRET';
-
 try {
-  const { result, ...httpResponse } = await oAuthApi.retrieveTokenStatus(authorization);
+  const { result, ...httpResponse } = await oAuthApi.retrieveTokenStatus();
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

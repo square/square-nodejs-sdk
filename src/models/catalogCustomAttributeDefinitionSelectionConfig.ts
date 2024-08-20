@@ -25,7 +25,9 @@ export interface CatalogCustomAttributeDefinitionSelectionConfig {
    * The set of valid `CatalogCustomAttributeSelections`. Up to a maximum of 100
    * selections can be defined. Can be modified.
    */
-  allowedSelections?: CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection[] | null;
+  allowedSelections?:
+    | CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection[]
+    | null;
 }
 
 export const catalogCustomAttributeDefinitionSelectionConfigSchema: Schema<CatalogCustomAttributeDefinitionSelectionConfig> = object(

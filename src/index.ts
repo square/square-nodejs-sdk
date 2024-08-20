@@ -622,6 +622,7 @@ export type { ModifierLocationOverrides } from './models/modifierLocationOverrid
 export type { Money } from './models/money';
 export type { ObtainTokenRequest } from './models/obtainTokenRequest';
 export type { ObtainTokenResponse } from './models/obtainTokenResponse';
+export type { OfflinePaymentDetails } from './models/offlinePaymentDetails';
 export type { Order } from './models/order';
 export type { OrderCreated } from './models/orderCreated';
 export type { OrderCreatedObject } from './models/orderCreatedObject';

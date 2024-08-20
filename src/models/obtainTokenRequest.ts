@@ -19,7 +19,7 @@ export interface ObtainTokenRequest {
    * in the [Developer Dashboard](https://developer.squareup.com/apps). This parameter is only required when
    * you're not using the [OAuth PKCE (Proof Key for Code Exchange) flow](https://developer.squareup.com/docs/oauth-api/overview#pkce-flow).
    * The PKCE flow requires a `code_verifier` instead of a `client_secret` when `grant_type` is set to `authorization_code`.
-   * If `grant_type` is set to `refresh_token` and the `refresh_token` is obtained uaing PKCE, the PKCE flow only requires `client_id`, 
+   * If `grant_type` is set to `refresh_token` and the `refresh_token` is obtained uaing PKCE, the PKCE flow only requires `client_id`,
    * `grant_type`, and `refresh_token`.
    */
   clientSecret?: string | null;

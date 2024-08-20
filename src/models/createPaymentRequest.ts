@@ -10,6 +10,10 @@ import {
   externalPaymentDetailsSchema,
 } from './externalPaymentDetails';
 import { Money, moneySchema } from './money';
+import {
+  OfflinePaymentDetails,
+  offlinePaymentDetailsSchema,
+} from './offlinePaymentDetails';
 
 /**
  * Describes a request to create a payment using
@@ -166,6 +170,8 @@ export interface CreatePaymentRequest {
   externalDetails?: ExternalPaymentDetails;
   /** Details about the customer making the payment. */
   customerDetails?: CustomerDetails;
+  /** Details specific to offline payments. */
+  offlinePaymentDetails?: OfflinePaymentDetails;
 }
 
 export const createPaymentRequestSchema: Schema<CreatePaymentRequest> = object({
@@ -203,5 +209,9 @@ export const createPaymentRequestSchema: Schema<CreatePaymentRequest> = object({
   customerDetails: [
     'customer_details',
     optional(lazy(() => customerDetailsSchema)),
+  ],
+  offlinePaymentDetails: [
+    'offline_payment_details',
+    optional(lazy(() => offlinePaymentDetailsSchema)),
   ],
 });
