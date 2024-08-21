@@ -117,19 +117,13 @@ export class OAuthApi extends BaseApi {
    * If the access token is expired or not a valid access token, the endpoint returns an `UNAUTHORIZED`
    * error.
    *
-   * @param authorization Client APPLICATION_SECRET
    * @return Response from the API call
    */
   async retrieveTokenStatus(
-    authorization: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<RetrieveTokenStatusResponse>> {
     const req = this.createRequest('POST', '/oauth2/token/status');
-    const mapped = req.prepareArgs({
-      authorization: [authorization, string()],
-    });
-    req.header('Authorization', mapped.authorization);
-    req.authenticate(false);
+    req.authenticate([{ global: true }]);
     return req.callAsJson(retrieveTokenStatusResponseSchema, requestOptions);
   }
 }

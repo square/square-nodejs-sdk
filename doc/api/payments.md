@@ -38,6 +38,9 @@ async listPayments(  beginTime?: string,
   last4?: string,
   cardBrand?: string,
   limit?: number,
+  isOfflinePayment?: boolean,
+  offlineBeginTime?: string,
+  offlineEndTime?: string,
 requestOptions?: RequestOptions): Promise<ApiResponse<ListPaymentsResponse>>
 ```
 
@@ -54,6 +57,9 @@ requestOptions?: RequestOptions): Promise<ApiResponse<ListPaymentsResponse>>
 | `last4` | `string \| undefined` | Query, Optional | The last four digits of a payment card. |
 | `cardBrand` | `string \| undefined` | Query, Optional | The brand of the payment card (for example, VISA). |
 | `limit` | `number \| undefined` | Query, Optional | The maximum number of results to be returned in a single page.<br>It is possible to receive fewer results than the specified limit on a given page.<br><br>The default value of 100 is also the maximum allowed value. If the provided value is<br>greater than 100, it is ignored and the default value is used instead.<br><br>Default: `100` |
+| `isOfflinePayment` | `boolean \| undefined` | Query, Optional | Whether the payment was taken offline or not. |
+| `offlineBeginTime` | `string \| undefined` | Query, Optional | Indicates the start of the time range for which to retrieve offline payments, in RFC 3339<br>format for timestamps. The range is determined using the<br>`offline_payment_details.client_created_at` field for each Payment. If set, payments without a<br>value set in `offline_payment_details.client_created_at` will not be returned.<br><br>Default: The current time. |
+| `offlineEndTime` | `string \| undefined` | Query, Optional | Indicates the end of the time range for which to retrieve offline payments, in RFC 3339<br>format for timestamps. The range is determined using the<br>`offline_payment_details.client_created_at` field for each Payment. If set, payments without a<br>value set in `offline_payment_details.client_created_at` will not be returned.<br><br>Default: The current time. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -63,8 +69,21 @@ requestOptions?: RequestOptions): Promise<ApiResponse<ListPaymentsResponse>>
 ## Example Usage
 
 ```ts
+const isOfflinePayment = false;
+
 try {
-  const { result, ...httpResponse } = await paymentsApi.listPayments();
+  const { result, ...httpResponse } = await paymentsApi.listPayments(
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  isOfflinePayment
+);
   // Get more response info...
   // const { statusCode, headers } = httpResponse;
 } catch (error) {

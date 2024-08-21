@@ -39,6 +39,10 @@ import {
   externalPaymentDetailsSchema,
 } from './externalPaymentDetails';
 import { Money, moneySchema } from './money';
+import {
+  OfflinePaymentDetails,
+  offlinePaymentDetailsSchema,
+} from './offlinePaymentDetails';
 import { ProcessingFee, processingFeeSchema } from './processingFee';
 import { RiskEvaluation, riskEvaluationSchema } from './riskEvaluation';
 import {
@@ -197,7 +201,7 @@ export interface Payment {
    */
   employeeId?: string;
   /** An optional ID of the [TeamMember](entity:TeamMember) associated with taking the payment. */
-  teamMemberId?: string;
+  teamMemberId?: string | null;
   /** A list of `refund_id`s identifying refunds for the payment. */
   refundIds?: string[];
   /**
@@ -255,6 +259,8 @@ export interface Payment {
   applicationDetails?: ApplicationDetails;
   /** Whether or not this payment was taken offline. */
   isOfflinePayment?: boolean;
+  /** Details specific to offline payments. */
+  offlinePaymentDetails?: OfflinePaymentDetails;
   /**
    * Used for optimistic concurrency. This opaque token identifies a specific version of the
    * `Payment` object.
@@ -308,7 +314,7 @@ export const paymentSchema: Schema<Payment> = object({
   referenceId: ['reference_id', optional(string())],
   customerId: ['customer_id', optional(string())],
   employeeId: ['employee_id', optional(string())],
-  teamMemberId: ['team_member_id', optional(string())],
+  teamMemberId: ['team_member_id', optional(nullable(string()))],
   refundIds: ['refund_ids', optional(array(string()))],
   riskEvaluation: [
     'risk_evaluation',
@@ -331,5 +337,9 @@ export const paymentSchema: Schema<Payment> = object({
     optional(lazy(() => applicationDetailsSchema)),
   ],
   isOfflinePayment: ['is_offline_payment', optional(boolean())],
+  offlinePaymentDetails: [
+    'offline_payment_details',
+    optional(lazy(() => offlinePaymentDetailsSchema)),
+  ],
   versionToken: ['version_token', optional(nullable(string()))],
 });

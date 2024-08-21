@@ -66,9 +66,11 @@ try {
 
 # Create Gift Card
 
-Creates a digital gift card or registers a physical (plastic) gift card. After the gift card
-is created, you must call [CreateGiftCardActivity](../../doc/api/gift-card-activities.md#create-gift-card-activity)
-to activate the card with an initial balance before it can be used for payment.
+Creates a digital gift card or registers a physical (plastic) gift card. The resulting gift card
+has a `PENDING` state. To activate a gift card so that it can be redeemed for purchases, call
+[CreateGiftCardActivity](../../doc/api/gift-card-activities.md#create-gift-card-activity) and create an `ACTIVATE`
+activity with the initial balance. Alternatively, you can use [RefundPayment](../../doc/api/refunds.md#refund-payment)
+to refund a payment to the new gift card.
 
 ```ts
 async createGiftCard(  body: CreateGiftCardRequest,

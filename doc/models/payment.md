@@ -38,7 +38,7 @@ Represents a payment processed by the Square API.
 | `referenceId` | `string \| undefined` | Optional | An optional ID that associates the payment with an entity in<br>another system.<br>**Constraints**: *Maximum Length*: `40` |
 | `customerId` | `string \| undefined` | Optional | The ID of the customer associated with the payment. If the ID is<br>not provided in the `CreatePayment` request that was used to create the `Payment`,<br>Square may use information in the request<br>(such as the billing and shipping address, email address, and payment source)<br>to identify a matching customer profile in the Customer Directory.<br>If found, the profile ID is used. If a profile is not found, the<br>API attempts to create an<br>[instant profile](https://developer.squareup.com/docs/customers-api/what-it-does#instant-profiles).<br>If the API cannot create an<br>instant profile (either because the seller has disabled it or the<br>seller's region prevents creating it), this field remains unset. Note that<br>this process is asynchronous and it may take some time before a<br>customer ID is added to the payment.<br>**Constraints**: *Maximum Length*: `191` |
 | `employeeId` | `string \| undefined` | Optional | __Deprecated__: Use `Payment.team_member_id` instead.<br><br>An optional ID of the employee associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` |
-| `teamMemberId` | `string \| undefined` | Optional | An optional ID of the [TeamMember](entity:TeamMember) associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` |
+| `teamMemberId` | `string \| null \| undefined` | Optional | An optional ID of the [TeamMember](entity:TeamMember) associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` |
 | `refundIds` | `string[] \| undefined` | Optional | A list of `refund_id`s identifying refunds for the payment. |
 | `riskEvaluation` | [`RiskEvaluation \| undefined`](../../doc/models/risk-evaluation.md) | Optional | Represents fraud risk information for the associated payment.<br><br>When you take a payment through Square's Payments API (using the `CreatePayment`<br>endpoint), Square evaluates it and assigns a risk level to the payment. Sellers<br>can use this information to determine the course of action (for example,<br>provide the goods/services or refund the payment). |
 | `buyerEmailAddress` | `string \| undefined` | Optional | The buyer's email address.<br>**Constraints**: *Maximum Length*: `255` |
@@ -52,6 +52,7 @@ Represents a payment processed by the Square API.
 | `deviceDetails` | [`DeviceDetails \| undefined`](../../doc/models/device-details.md) | Optional | Details about the device that took the payment. |
 | `applicationDetails` | [`ApplicationDetails \| undefined`](../../doc/models/application-details.md) | Optional | Details about the application that took the payment. |
 | `isOfflinePayment` | `boolean \| undefined` | Optional | Whether or not this payment was taken offline. |
+| `offlinePaymentDetails` | [`OfflinePaymentDetails \| undefined`](../../doc/models/offline-payment-details.md) | Optional | Details specific to offline payments. |
 | `versionToken` | `string \| null \| undefined` | Optional | Used for optimistic concurrency. This opaque token identifies a specific version of the<br>`Payment` object. |
 
 ## Example (as JSON)

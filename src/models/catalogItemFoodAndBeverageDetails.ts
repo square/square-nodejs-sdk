@@ -21,7 +21,9 @@ export interface CatalogItemFoodAndBeverageDetails {
   /** The calorie count (in the unit of kcal) for the `FOOD_AND_BEV` type of items. */
   calorieCount?: number | null;
   /** The dietary preferences for the `FOOD_AND_BEV` item. */
-  dietaryPreferences?: CatalogItemFoodAndBeverageDetailsDietaryPreference[] | null;
+  dietaryPreferences?:
+    | CatalogItemFoodAndBeverageDetailsDietaryPreference[]
+    | null;
   /** The ingredients for the `FOOD_AND_BEV` type item. */
   ingredients?: CatalogItemFoodAndBeverageDetailsIngredient[] | null;
 }

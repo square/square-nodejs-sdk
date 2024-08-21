@@ -1,5 +1,5 @@
 {
-  "version": "37.1.1",
+  "version": "38.0.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
@@ -7,16 +7,19 @@
   "module": "dist/esm/index.js",
   "files": [
     "dist",
-    "src"
+    "src",
+    "test"
   ],
   "engines": {
     "node": ">=14.17.0"
   },
   "scripts": {
     "build": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
-    "test": "jest --coverage --passWithNoTests",
-    "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
-    "prepare": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json"
+    "prepare": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
+    "test": "jest --passWithNoTests",
+    "test:coverage": "jest --coverage --passWithNoTests",
+    "lint": "eslint **/*.ts --ignore-path .eslintignore",
+    "lint:fix": "eslint **/*.ts --ignore-path .eslintignore --fix"
   },
   "peerDependencies": {},
   "prettier": {
@@ -34,6 +37,7 @@
     "url": "https://squareup.com/developers"
   },
   "devDependencies": {
+    "@apimatic/test-utilities": "^0.0.1",
     "@types/jest": "^29.4.0",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
@@ -46,11 +50,11 @@
     "uuid": "^8.3.0"
   },
   "dependencies": {
-    "@apimatic/authentication-adapters": "^0.5.3",
-    "@apimatic/axios-client-adapter": "^0.3.3",
-    "@apimatic/core": "^0.10.11",
+    "@apimatic/authentication-adapters": "^0.5.4",
+    "@apimatic/axios-client-adapter": "^0.3.4",
+    "@apimatic/core": "^0.10.12",
     "@apimatic/json-bigint": "^1.2.0",
-    "@apimatic/schema": "^0.7.11",
+    "@apimatic/schema": "^0.7.12",
     "@types/node": "^14.14.30"
   },
   "bugs": {
