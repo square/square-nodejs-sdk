@@ -212,6 +212,8 @@ export interface Payment {
    * provide the goods/services or refund the payment).
    */
   riskEvaluation?: RiskEvaluation;
+  /** An optional ID for a Terminal checkout that is associated with the payment. */
+  terminalCheckoutId?: string;
   /** The buyer's email address. */
   buyerEmailAddress?: string;
   /**
@@ -320,6 +322,7 @@ export const paymentSchema: Schema<Payment> = object({
     'risk_evaluation',
     optional(lazy(() => riskEvaluationSchema)),
   ],
+  terminalCheckoutId: ['terminal_checkout_id', optional(string())],
   buyerEmailAddress: ['buyer_email_address', optional(string())],
   billingAddress: ['billing_address', optional(lazy(() => addressSchema))],
   shippingAddress: ['shipping_address', optional(lazy(() => addressSchema))],

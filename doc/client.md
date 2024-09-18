@@ -5,7 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2024-08-21'` |
+| `squareVersion` | `string` | Square Connect API versions<br>*Default*: `'2024-09-19'` |
 | `customUrl` | `string` | Sets the base URL requests are made to. Defaults to `https://connect.squareup.com`<br>*Default*: `'https://connect.squareup.com'` |
 | `environment` | `string` | The API environment. <br> **Default: `production`** |
 | `additionalHeaders` | `Readonly<Record<string, string>>` | Additional headers to add to each API call<br>*Default*: `{}` |
@@ -43,28 +43,30 @@ const client = new Client({
   bearerAuthCredentials: {
     accessToken: 'AccessToken'
   },
-  squareVersion: '2024-08-21',
+  squareVersion: '2024-09-19',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
   environment: Environment.Production,
-  custom_url: 'https://connect.squareup.com',
+  customUrl: 'https://connect.squareup.com',
 });
 ```
 
 ## Make Calls with the API Client
 
 ```ts
-import { ApiError, Client } from 'square';
+import { ApiError, Client, Environment } from 'square';
 
 const client = new Client({
   bearerAuthCredentials: {
     accessToken: 'AccessToken'
   },
-  squareVersion: '2024-08-21',
+  squareVersion: '2024-09-19',
   timeout: 60000,
   additionalHeaders: {},
   userAgentDetail: '',
+  environment: Environment.Production,
+  customUrl: 'https://connect.squareup.com',
 });
 
 const locationsApi = client.locationsApi;

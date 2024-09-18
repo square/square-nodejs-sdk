@@ -17,6 +17,13 @@
 ```json
 {
   "booking": {
+    "address": {
+      "address_line_1": "1955 Broadway",
+      "address_line_2": "Suite 600",
+      "administrative_district_level_1": "CA",
+      "locality": "Oakland",
+      "postal_code": "94612"
+    },
     "appointment_segments": [
       {
         "duration_minutes": 60,
@@ -30,6 +37,7 @@
     "customer_note": "I would like to sit near the window please",
     "id": "zkras0xv0xwswx",
     "location_id": "LEQHH0YY8B42M",
+    "location_type": "CUSTOMER_LOCATION",
     "seller_note": "",
     "start_at": "2020-11-26T13:00:00Z",
     "status": "ACCEPTED",

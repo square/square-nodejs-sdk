@@ -62,7 +62,7 @@ describe('Inventory API', () => {
     let { result } = await catalogApi.upsertCatalogObject(body)
 
     itemVariationId = (result.catalogObject?.itemData?.variations!)[0].id!
-  })
+  }, 30000); // Set a hook timeout of 30 seconds.
 
   xit('should testBatchChangeInventory', async () => {
 

@@ -9,6 +9,7 @@ import {
   Schema,
   string,
 } from '../schema';
+import { Address, addressSchema } from './address';
 import {
   AppointmentSegment,
   appointmentSegmentSchema,
@@ -61,6 +62,11 @@ export interface Booking {
   creatorDetails?: BookingCreatorDetails;
   /** Supported sources a booking was created from. */
   source?: string;
+  /**
+   * Represents a postal address in a country.
+   * For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses).
+   */
+  address?: Address;
 }
 
 export const bookingSchema: Schema<Booking> = object({
@@ -86,4 +92,5 @@ export const bookingSchema: Schema<Booking> = object({
     optional(lazy(() => bookingCreatorDetailsSchema)),
   ],
   source: ['source', optional(string())],
+  address: ['address', optional(lazy(() => addressSchema))],
 });
