@@ -28,6 +28,7 @@ at a given location to a requesting customer in one or more appointment segments
 | `locationType` | [`string \| undefined`](../../doc/models/business-appointment-settings-booking-location-type.md) | Optional | Supported types of location where service is provided. |
 | `creatorDetails` | [`BookingCreatorDetails \| undefined`](../../doc/models/booking-creator-details.md) | Optional | Information about a booking creator. |
 | `source` | [`string \| undefined`](../../doc/models/booking-booking-source.md) | Optional | Supported sources a booking was created from. |
+| `address` | [`Address \| undefined`](../../doc/models/address.md) | Optional | Represents a postal address in a country.<br>For more information, see [Working with Addresses](https://developer.squareup.com/docs/build-basics/working-with-addresses). |
 
 ## Example (as JSON)
 
