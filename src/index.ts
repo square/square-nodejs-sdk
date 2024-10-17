@@ -387,6 +387,8 @@ export type { DeprecatedCreateDisputeEvidenceTextResponse } from './models/depre
 export type { Destination } from './models/destination';
 export type { DestinationDetails } from './models/destinationDetails';
 export type { DestinationDetailsCardRefundDetails } from './models/destinationDetailsCardRefundDetails';
+export type { DestinationDetailsCashRefundDetails } from './models/destinationDetailsCashRefundDetails';
+export type { DestinationDetailsExternalRefundDetails } from './models/destinationDetailsExternalRefundDetails';
 export type { Device } from './models/device';
 export type { DeviceAttributes } from './models/deviceAttributes';
 export type { DeviceCheckoutOptions } from './models/deviceCheckoutOptions';
