@@ -59,6 +59,21 @@ Either `errors` or `refunds` is present in a given response (never both).
           },
           "entry_method": "entry_method8",
           "auth_result_code": "auth_result_code0"
+        },
+        "cash_details": {
+          "seller_supplied_money": {
+            "amount": 36,
+            "currency": "AZN"
+          },
+          "change_back_money": {
+            "amount": 78,
+            "currency": "DJF"
+          }
+        },
+        "external_details": {
+          "type": "type6",
+          "source": "source0",
+          "source_id": "source_id8"
         }
       }
     }
