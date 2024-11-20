@@ -144,7 +144,8 @@ to [ISO 4217](https://wikipedia.org/wiki/ISO_4217).
 | `SEK` | Swedish krona |
 | `SGD` | Singapore dollar |
 | `SHP` | Saint Helena pound |
-| `SLL` | Sierra Leonean leone |
+| `SLL` | Sierra Leonean first leone |
+| `SLE` | Sierra Leonean second leone |
 | `SOS` | Somali shilling |
 | `SRD` | Surinamese dollar |
 | `SSP` | South Sudanese pound |

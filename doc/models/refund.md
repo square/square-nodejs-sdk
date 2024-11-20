@@ -34,12 +34,12 @@ Represents a refund processed for a Square transaction.
   "reason": "reason8",
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "status": "PENDING",
   "processing_fee_money": {
     "amount": 112,
-    "currency": "BBD"
+    "currency": "DJF"
   },
   "additional_recipients": [
     {
@@ -47,7 +47,7 @@ Represents a refund processed for a Square transaction.
       "description": "description6",
       "amount_money": {
         "amount": 186,
-        "currency": "TZS"
+        "currency": "AUD"
       },
       "receivable_id": "receivable_id6"
     },
@@ -56,7 +56,7 @@ Represents a refund processed for a Square transaction.
       "description": "description6",
       "amount_money": {
         "amount": 186,
-        "currency": "TZS"
+        "currency": "AUD"
       },
       "receivable_id": "receivable_id6"
     },
@@ -65,7 +65,7 @@ Represents a refund processed for a Square transaction.
       "description": "description6",
       "amount_money": {
         "amount": 186,
-        "currency": "TZS"
+        "currency": "AUD"
       },
       "receivable_id": "receivable_id6"
     }

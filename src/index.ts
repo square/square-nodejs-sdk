@@ -675,6 +675,7 @@ export type { PaymentBalanceActivityAutomaticSavingsDetail } from './models/paym
 export type { PaymentBalanceActivityAutomaticSavingsReversedDetail } from './models/paymentBalanceActivityAutomaticSavingsReversedDetail';
 export type { PaymentBalanceActivityChargeDetail } from './models/paymentBalanceActivityChargeDetail';
 export type { PaymentBalanceActivityDepositFeeDetail } from './models/paymentBalanceActivityDepositFeeDetail';
+export type { PaymentBalanceActivityDepositFeeReversedDetail } from './models/paymentBalanceActivityDepositFeeReversedDetail';
 export type { PaymentBalanceActivityDisputeDetail } from './models/paymentBalanceActivityDisputeDetail';
 export type { PaymentBalanceActivityFeeDetail } from './models/paymentBalanceActivityFeeDetail';
 export type { PaymentBalanceActivityFreeProcessingDetail } from './models/paymentBalanceActivityFreeProcessingDetail';
@@ -688,6 +689,8 @@ export type { PaymentBalanceActivityReserveHoldDetail } from './models/paymentBa
 export type { PaymentBalanceActivityReserveReleaseDetail } from './models/paymentBalanceActivityReserveReleaseDetail';
 export type { PaymentBalanceActivitySquareCapitalPaymentDetail } from './models/paymentBalanceActivitySquareCapitalPaymentDetail';
 export type { PaymentBalanceActivitySquareCapitalReversedPaymentDetail } from './models/paymentBalanceActivitySquareCapitalReversedPaymentDetail';
+export type { PaymentBalanceActivitySquarePayrollTransferDetail } from './models/paymentBalanceActivitySquarePayrollTransferDetail';
+export type { PaymentBalanceActivitySquarePayrollTransferReversedDetail } from './models/paymentBalanceActivitySquarePayrollTransferReversedDetail';
 export type { PaymentBalanceActivityTaxOnFeeDetail } from './models/paymentBalanceActivityTaxOnFeeDetail';
 export type { PaymentBalanceActivityThirdPartyFeeDetail } from './models/paymentBalanceActivityThirdPartyFeeDetail';
 export type { PaymentBalanceActivityThirdPartyFeeRefundDetail } from './models/paymentBalanceActivityThirdPartyFeeRefundDetail';

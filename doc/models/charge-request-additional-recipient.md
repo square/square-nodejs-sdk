@@ -24,7 +24,7 @@ Support is currently limited to USD, CAD and GBP currencies
   "description": "description2",
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   }
 }
 ```

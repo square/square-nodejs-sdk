@@ -32,11 +32,11 @@ are now defined using a catalog pricing rule and other catalog objects. For more
   ],
   "fixed_discount_money": {
     "amount": 36,
-    "currency": "TTD"
+    "currency": "SLL"
   },
   "max_discount_money": {
     "amount": 84,
-    "currency": "STD"
+    "currency": "BOB"
   }
 }
 ```

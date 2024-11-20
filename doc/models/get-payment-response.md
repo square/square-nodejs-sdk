@@ -85,13 +85,13 @@ Defines the response returned by [GetPayment](../../doc/api/payments.md#get-paym
     "version_token": "56pRkL3slrzet2iQrTp9n0bdJVYTB9YEWdTNjQfZOPV6o",
     "tip_money": {
       "amount": 190,
-      "currency": "ZMK"
+      "currency": "TWD"
     }
   },
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

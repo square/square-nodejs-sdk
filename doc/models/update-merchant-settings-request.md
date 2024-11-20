@@ -30,21 +30,21 @@
         "order_eligibility_range": {
           "min": {
             "amount": 34,
-            "currency": "ISK"
+            "currency": "OMR"
           },
           "max": {
             "amount": 140,
-            "currency": "OMR"
+            "currency": "JPY"
           }
         },
         "item_eligibility_range": {
           "min": {
             "amount": 34,
-            "currency": "ISK"
+            "currency": "OMR"
           },
           "max": {
             "amount": 140,
-            "currency": "OMR"
+            "currency": "JPY"
           }
         },
         "enabled": false

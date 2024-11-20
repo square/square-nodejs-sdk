@@ -17,7 +17,7 @@
 ```json
 {
   "amount": 24,
-  "currency_code": "UZS"
+  "currency_code": "XPT"
 }
 ```
 

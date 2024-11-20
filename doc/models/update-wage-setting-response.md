@@ -45,7 +45,7 @@ or error messages.
         "pay_type": "HOURLY",
         "annual_rate": {
           "amount": 232,
-          "currency": "SBD"
+          "currency": "NIO"
         },
         "weekly_hours": 98
       }
@@ -57,13 +57,13 @@ or error messages.
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

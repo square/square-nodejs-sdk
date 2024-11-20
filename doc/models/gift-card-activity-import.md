@@ -21,7 +21,7 @@ This activity type is used when Square imports a third-party gift card, in which
 {
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   }
 }
 ```

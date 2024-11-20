@@ -27,6 +27,7 @@ the original payment and the amount of money refunded.
 | `createdAt` | `string \| undefined` | Optional | The timestamp of when the refund was created, in RFC 3339 format.<br>**Constraints**: *Maximum Length*: `32` |
 | `updatedAt` | `string \| undefined` | Optional | The timestamp of when the refund was last updated, in RFC 3339 format.<br>**Constraints**: *Maximum Length*: `32` |
 | `teamMemberId` | `string \| undefined` | Optional | An optional ID of the team member associated with taking the payment.<br>**Constraints**: *Maximum Length*: `192` |
+| `terminalRefundId` | `string \| undefined` | Optional | An optional ID for a Terminal refund. |
 
 ## Example (as JSON)
 
@@ -52,11 +53,11 @@ the original payment and the amount of money refunded.
     "cash_details": {
       "seller_supplied_money": {
         "amount": 36,
-        "currency": "AZN"
+        "currency": "MKD"
       },
       "change_back_money": {
         "amount": 78,
-        "currency": "DJF"
+        "currency": "XBD"
       }
     },
     "external_details": {
@@ -67,7 +68,7 @@ the original payment and the amount of money refunded.
   },
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   }
 }
 ```

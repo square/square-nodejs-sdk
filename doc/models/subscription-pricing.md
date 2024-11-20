@@ -26,7 +26,7 @@ Describes the pricing for the subscription.
   ],
   "price_money": {
     "amount": 202,
-    "currency": "CNY"
+    "currency": "GTQ"
   }
 }
 ```

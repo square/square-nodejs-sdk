@@ -40,7 +40,7 @@ Adding `INSTALLMENT` payment requests to an invoice requires an
   "due_date": "due_date8",
   "fixed_amount_requested_money": {
     "amount": 162,
-    "currency": "NIO"
+    "currency": "JOD"
   }
 }
 ```

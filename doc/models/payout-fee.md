@@ -21,7 +21,7 @@ Represents a payout fee that can incur as part of a payout.
 {
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "effective_at": "effective_at0",
   "type": "TRANSFER_FEE"

@@ -187,7 +187,6 @@ const body: BulkUpdateTeamMembersRequest = {
     'AFMwA08kR-MIF-3Vs0OE': {
       teamMember: {
         referenceId: 'reference_id_2',
-        isOwner: false,
         status: 'ACTIVE',
         givenName: 'Jane',
         familyName: 'Smith',
@@ -201,7 +200,6 @@ const body: BulkUpdateTeamMembersRequest = {
     'fpgteZNMaf0qOK-a4t6P': {
       teamMember: {
         referenceId: 'reference_id_1',
-        isOwner: false,
         status: 'ACTIVE',
         givenName: 'Joe',
         familyName: 'Doe',

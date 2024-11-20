@@ -27,7 +27,7 @@ Price and inventory alerting overrides for a `CatalogItemVariation` at a specifi
   "location_id": "location_id6",
   "price_money": {
     "amount": 202,
-    "currency": "CNY"
+    "currency": "GTQ"
   },
   "pricing_type": "FIXED_PRICING",
   "track_inventory": false,

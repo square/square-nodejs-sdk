@@ -29,11 +29,11 @@ An object representing a team member's wage information.
       "pay_type": "SALARY",
       "hourly_rate": {
         "amount": 172,
-        "currency": "OMR"
+        "currency": "LAK"
       },
       "annual_rate": {
         "amount": 232,
-        "currency": "SBD"
+        "currency": "NIO"
       },
       "weekly_hours": 98
     },
@@ -42,11 +42,11 @@ An object representing a team member's wage information.
       "pay_type": "SALARY",
       "hourly_rate": {
         "amount": 172,
-        "currency": "OMR"
+        "currency": "LAK"
       },
       "annual_rate": {
         "amount": 232,
-        "currency": "SBD"
+        "currency": "NIO"
       },
       "weekly_hours": 98
     },
@@ -55,11 +55,11 @@ An object representing a team member's wage information.
       "pay_type": "SALARY",
       "hourly_rate": {
         "amount": 172,
-        "currency": "OMR"
+        "currency": "LAK"
       },
       "annual_rate": {
         "amount": 232,
-        "currency": "SBD"
+        "currency": "NIO"
       },
       "weekly_hours": 98
     }

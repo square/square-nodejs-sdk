@@ -74,6 +74,8 @@ export interface PaymentRefund {
   updatedAt?: string;
   /** An optional ID of the team member associated with taking the payment. */
   teamMemberId?: string;
+  /** An optional ID for a Terminal refund. */
+  terminalRefundId?: string;
 }
 
 export const paymentRefundSchema: Schema<PaymentRefund> = object({
@@ -98,4 +100,5 @@ export const paymentRefundSchema: Schema<PaymentRefund> = object({
   createdAt: ['created_at', optional(string())],
   updatedAt: ['updated_at', optional(string())],
   teamMemberId: ['team_member_id', optional(string())],
+  terminalRefundId: ['terminal_refund_id', optional(string())],
 });

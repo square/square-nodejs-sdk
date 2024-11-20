@@ -38,7 +38,7 @@ linking a bank account to a Square account, see
   "id": "id2",
   "account_number_suffix": "account_number_suffix6",
   "country": "TT",
-  "currency": "SLL",
+  "currency": "MVR",
   "account_type": "OTHER",
   "holder_name": "holder_name8",
   "primary_bank_identification_number": "primary_bank_identification_number0",

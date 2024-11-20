@@ -21,7 +21,7 @@ Represents details about an `UNLINKED_ACTIVITY_REFUND` [gift card activity type]
 {
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "reference_id": "reference_id8",
   "payment_id": "payment_id0"

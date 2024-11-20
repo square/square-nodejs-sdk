@@ -27,14 +27,14 @@ Represents an accrual rule, which defines how buyers can earn points from the ba
   "visit_data": {
     "minimum_amount_money": {
       "amount": 146,
-      "currency": "MYR"
+      "currency": "GHS"
     },
     "tax_mode": "BEFORE_TAX"
   },
   "spend_data": {
     "amount_money": {
       "amount": 186,
-      "currency": "TZS"
+      "currency": "AUD"
     },
     "excluded_category_ids": [
       "excluded_category_ids4"

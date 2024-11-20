@@ -28,7 +28,7 @@ specified by the `title` property of this object.
   "title": "title8",
   "hourly_rate": {
     "amount": 172,
-    "currency": "OMR"
+    "currency": "LAK"
   },
   "job_id": "job_id0"
 }

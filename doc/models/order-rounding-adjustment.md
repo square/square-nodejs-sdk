@@ -24,7 +24,7 @@ when the minimum unit of the account is smaller than the lowest physical denomin
   "name": "name0",
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   }
 }
 ```

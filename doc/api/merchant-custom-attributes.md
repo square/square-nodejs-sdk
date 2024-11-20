@@ -280,12 +280,8 @@ requestOptions?: RequestOptions): Promise<ApiResponse<BulkDeleteMerchantCustomAt
 ```ts
 const body: BulkDeleteMerchantCustomAttributesRequest = {
   values: {
-    'id1': {
-      key: 'alternative_seller_name',
-    },
-    'id2': {
-      key: 'has_seen_tutorial',
-    }
+    'id1': {},
+    'id2': {}
   },
 };
 

@@ -65,16 +65,16 @@
       "smart_tips": [
         {
           "amount": 152,
-          "currency": "USN"
+          "currency": "GEL"
         },
         {
           "amount": 152,
-          "currency": "USN"
+          "currency": "GEL"
         }
       ],
       "default_smart_tip": {
         "amount": 58,
-        "currency": "XTS"
+        "currency": "KWD"
       }
     },
     "updated_at": "2022-06-16T22:25:35Z"
@@ -82,19 +82,19 @@
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

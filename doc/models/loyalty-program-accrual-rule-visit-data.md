@@ -20,7 +20,7 @@ Represents additional data for rules with the `VISIT` accrual type.
 {
   "minimum_amount_money": {
     "amount": 146,
-    "currency": "MYR"
+    "currency": "GHS"
   },
   "tax_mode": "BEFORE_TAX"
 }

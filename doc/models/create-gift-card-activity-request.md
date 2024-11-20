@@ -31,7 +31,7 @@ A request to create a gift card activity.
     "gift_card_gan": "gift_card_gan2",
     "gift_card_balance_money": {
       "amount": 82,
-      "currency": "KPW"
+      "currency": "IRR"
     }
   },
   "idempotency_key": "U16kfr-kA70er-q4Rsym-7U7NnY"

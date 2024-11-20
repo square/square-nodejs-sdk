@@ -36,7 +36,7 @@ Represents a payment refund processed by the Square Terminal. Only supports Inte
   "order_id": "order_id2",
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "reason": "reason6",
   "device_id": "device_id4",

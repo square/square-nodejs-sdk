@@ -31,7 +31,7 @@ For more information, see [Subscription Plans and Variations](https://developer.
       "periods": 112,
       "recurring_price_money": {
         "amount": 66,
-        "currency": "TMT"
+        "currency": "ZMW"
       },
       "ordinal": 78,
       "pricing": {
@@ -42,7 +42,7 @@ For more information, see [Subscription Plans and Variations](https://developer.
         ],
         "price_money": {
           "amount": 202,
-          "currency": "CNY"
+          "currency": "GTQ"
         }
       }
     }

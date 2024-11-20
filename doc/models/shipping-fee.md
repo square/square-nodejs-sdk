@@ -19,7 +19,7 @@
   "name": "name6",
   "charge": {
     "amount": 80,
-    "currency": "UNKNOWN_CURRENCY"
+    "currency": "TTD"
   }
 }
 ```

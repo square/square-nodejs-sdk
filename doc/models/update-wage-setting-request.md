@@ -30,7 +30,7 @@ Represents an update request for the `WageSetting` object describing a `TeamMemb
         "weekly_hours": 40,
         "hourly_rate": {
           "amount": 172,
-          "currency": "OMR"
+          "currency": "LAK"
         }
       },
       {
@@ -42,7 +42,7 @@ Represents an update request for the `WageSetting` object describing a `TeamMemb
         "pay_type": "HOURLY",
         "annual_rate": {
           "amount": 232,
-          "currency": "SBD"
+          "currency": "NIO"
         },
         "weekly_hours": 98
       }

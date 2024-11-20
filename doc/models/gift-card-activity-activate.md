@@ -23,7 +23,7 @@ Represents details about an `ACTIVATE` [gift card activity type](../../doc/model
 {
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "order_id": "order_id2",
   "line_item_uid": "line_item_uid4",

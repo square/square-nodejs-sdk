@@ -28,7 +28,7 @@ Represents a business that sells with Square.
   "business_name": "business_name6",
   "country": "HM",
   "language_code": "language_code0",
-  "currency": "HUF",
+  "currency": "BTC",
   "status": "ACTIVE"
 }
 ```

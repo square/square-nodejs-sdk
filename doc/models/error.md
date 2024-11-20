@@ -23,7 +23,7 @@ See [Handling errors](https://developer.squareup.com/docs/build-basics/handling-
 ```json
 {
   "category": "API_ERROR",
-  "code": "CARD_NOT_SUPPORTED",
+  "code": "INVALID_PAUSE_LENGTH",
   "detail": "detail0",
   "field": "field8"
 }
