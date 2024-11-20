@@ -42,7 +42,7 @@ taken during the shift.
     "title": "title8",
     "hourly_rate": {
       "amount": 172,
-      "currency": "OMR"
+      "currency": "LAK"
     },
     "job_id": "job_id0",
     "tip_eligible": false

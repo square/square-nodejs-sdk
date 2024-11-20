@@ -20,11 +20,11 @@ Represents the details of a tender with `type` `CASH`.
 {
   "buyer_tendered_money": {
     "amount": 238,
-    "currency": "QAR"
+    "currency": "XOF"
   },
   "change_back_money": {
     "amount": 78,
-    "currency": "DJF"
+    "currency": "XBD"
   }
 }
 ```

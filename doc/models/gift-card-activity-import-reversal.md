@@ -19,7 +19,7 @@ Represents details about an `IMPORT_REVERSAL` [gift card activity type](../../do
 {
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   }
 }
 ```

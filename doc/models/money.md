@@ -24,7 +24,7 @@ for more information.
 ```json
 {
   "amount": 36,
-  "currency": "NPR"
+  "currency": "AZN"
 }
 ```
 

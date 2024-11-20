@@ -21,7 +21,7 @@ Represents details about a `TRANSFER_BALANCE_TO` [gift card activity type](../..
   "transfer_from_gift_card_id": "transfer_from_gift_card_id6",
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   }
 }
 ```

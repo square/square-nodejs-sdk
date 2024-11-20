@@ -57,11 +57,11 @@ A response that contains the loyalty program.
           ],
           "fixed_discount_money": {
             "amount": 36,
-            "currency": "TTD"
+            "currency": "SLL"
           },
           "max_discount_money": {
             "amount": 84,
-            "currency": "STD"
+            "currency": "BOB"
           }
         },
         "id": "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
@@ -86,7 +86,7 @@ A response that contains the loyalty program.
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

@@ -24,7 +24,7 @@ see [Quick Pay Checkout](https://developer.squareup.com/docs/checkout-api/quick-
   "name": "name8",
   "price_money": {
     "amount": 202,
-    "currency": "CNY"
+    "currency": "GTQ"
   },
   "location_id": "location_id2"
 }

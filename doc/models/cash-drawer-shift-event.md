@@ -24,7 +24,7 @@
   "event_type": "OTHER_TENDER_PAYMENT",
   "event_money": {
     "amount": 148,
-    "currency": "AMD"
+    "currency": "SDG"
   },
   "created_at": "created_at4",
   "description": "description6"

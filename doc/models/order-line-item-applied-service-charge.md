@@ -21,7 +21,7 @@
   "service_charge_uid": "service_charge_uid8",
   "applied_money": {
     "amount": 196,
-    "currency": "HKD"
+    "currency": "AMD"
   }
 }
 ```

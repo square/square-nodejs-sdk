@@ -112,7 +112,8 @@ Square API.
 | `UNSUPPORTED_INSTRUMENT_TYPE` | The API request references an unsupported instrument type. |
 | `REFUND_AMOUNT_INVALID` | The requested refund amount exceeds the amount available to refund. |
 | `REFUND_ALREADY_PENDING` | The payment already has a pending refund. |
-| `PAYMENT_NOT_REFUNDABLE` | The payment is not refundable. For example, the payment has been disputed and is no longer eligible for<br>refunds. |
+| `PAYMENT_NOT_REFUNDABLE` | The payment is not refundable. For example, the payment is too old to be refunded. |
+| `PAYMENT_NOT_REFUNDABLE_DUE_TO_DISPUTE` | The payment is not refundable because it has been disputed. |
 | `REFUND_DECLINED` | Request failed - The card issuer declined the refund. |
 | `INSUFFICIENT_PERMISSIONS_FOR_REFUND` | The Square account does not have the permissions to process this refund. |
 | `INVALID_CARD_DATA` | Generic error - the provided card data is invalid. |

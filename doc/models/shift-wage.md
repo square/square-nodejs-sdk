@@ -23,7 +23,7 @@ The hourly wage rate used to compensate an employee for this shift.
   "title": "title6",
   "hourly_rate": {
     "amount": 172,
-    "currency": "OMR"
+    "currency": "LAK"
   },
   "job_id": "job_id2",
   "tip_eligible": false

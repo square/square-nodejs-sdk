@@ -86,25 +86,25 @@ present, or it might be present with a status of `FAILED`.
     "version_token": "TPtNEOBOa6Qq6E3C3IjckSVOM6b3hMbfhjvTxHBQUsB6o",
     "tip_money": {
       "amount": 190,
-      "currency": "ZMK"
+      "currency": "TWD"
     }
   },
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

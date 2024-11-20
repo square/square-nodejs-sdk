@@ -26,7 +26,7 @@ A parent Catalog Object model represents a set of Quick Amounts and the settings
       "type": "QUICK_AMOUNT_TYPE_MANUAL",
       "amount": {
         "amount": 0,
-        "currency": "MNT"
+        "currency": "LAK"
       },
       "score": 116,
       "ordinal": 48
@@ -35,7 +35,7 @@ A parent Catalog Object model represents a set of Quick Amounts and the settings
       "type": "QUICK_AMOUNT_TYPE_MANUAL",
       "amount": {
         "amount": 0,
-        "currency": "MNT"
+        "currency": "LAK"
       },
       "score": 116,
       "ordinal": 48

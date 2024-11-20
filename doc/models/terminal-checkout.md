@@ -40,7 +40,7 @@ Represents a checkout processed by the Square Terminal.
   "id": "id6",
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "reference_id": "reference_id6",
   "note": "note8",

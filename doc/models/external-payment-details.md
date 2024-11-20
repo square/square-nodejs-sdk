@@ -27,7 +27,7 @@ For more information, see
   "source_id": "source_id6",
   "source_fee_money": {
     "amount": 130,
-    "currency": "BTC"
+    "currency": "NIO"
   }
 }
 ```

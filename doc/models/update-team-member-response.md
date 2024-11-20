@@ -40,7 +40,7 @@ Represents a response from an update request containing the updated `TeamMember`
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

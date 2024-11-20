@@ -48,7 +48,7 @@ includes a `redeem_activity_details` field that contains information about the r
   "gift_card_gan": "gift_card_gan4",
   "gift_card_balance_money": {
     "amount": 82,
-    "currency": "KPW"
+    "currency": "IRR"
   }
 }
 ```

@@ -22,7 +22,7 @@ Represents details about a `REDEEM` [gift card activity type](../../doc/models/g
 {
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "payment_id": "payment_id4",
   "reference_id": "reference_id2",

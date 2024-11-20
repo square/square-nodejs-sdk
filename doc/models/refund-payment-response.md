@@ -56,11 +56,11 @@ present, or it might be present with a status of `FAILED`.
       "cash_details": {
         "seller_supplied_money": {
           "amount": 36,
-          "currency": "AZN"
+          "currency": "MKD"
         },
         "change_back_money": {
           "amount": 78,
-          "currency": "DJF"
+          "currency": "XBD"
         }
       },
       "external_details": {
@@ -73,13 +73,13 @@ present, or it might be present with a status of `FAILED`.
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

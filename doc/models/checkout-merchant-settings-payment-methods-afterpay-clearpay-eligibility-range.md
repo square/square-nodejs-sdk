@@ -20,11 +20,11 @@ A range of purchase price that qualifies.
 {
   "min": {
     "amount": 34,
-    "currency": "ISK"
+    "currency": "OMR"
   },
   "max": {
     "amount": 140,
-    "currency": "OMR"
+    "currency": "JPY"
   }
 }
 ```

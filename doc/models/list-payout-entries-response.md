@@ -26,18 +26,18 @@ The response to retrieve payout records entries.
       "fee_amount_money": {
         "amount": -2,
         "currency_code": "USD",
-        "currency": "NIO"
+        "currency": "CHF"
       },
       "gross_amount_money": {
         "amount": -50,
         "currency_code": "USD",
-        "currency": "BWP"
+        "currency": "MNT"
       },
       "id": "poe_ZQWcw41d0SGJS6IWd4cSi8mKHk",
       "net_amount_money": {
         "amount": -48,
         "currency_code": "USD",
-        "currency": "LTL"
+        "currency": "XPT"
       },
       "payout_id": "po_4d28e6c4-7dd5-4de4-8ec9-a059277646a6",
       "type": "REFUND",
@@ -51,18 +51,18 @@ The response to retrieve payout records entries.
       "fee_amount_money": {
         "amount": 19,
         "currency_code": "USD",
-        "currency": "NIO"
+        "currency": "CHF"
       },
       "gross_amount_money": {
         "amount": 100,
         "currency_code": "USD",
-        "currency": "BWP"
+        "currency": "MNT"
       },
       "id": "poe_EibbY9Ob1d0SGJS6IWd4cSiSi6wkaPk",
       "net_amount_money": {
         "amount": 81,
         "currency_code": "USD",
-        "currency": "LTL"
+        "currency": "XPT"
       },
       "payout_id": "po_4d28e6c4-7dd5-4de4-8ec9-a059277646a6",
       "type": "CHARGE",
@@ -74,7 +74,7 @@ The response to retrieve payout records entries.
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

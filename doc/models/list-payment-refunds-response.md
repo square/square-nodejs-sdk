@@ -63,11 +63,11 @@ Either `errors` or `refunds` is present in a given response (never both).
         "cash_details": {
           "seller_supplied_money": {
             "amount": 36,
-            "currency": "AZN"
+            "currency": "MKD"
           },
           "change_back_money": {
             "amount": 78,
-            "currency": "DJF"
+            "currency": "XBD"
           }
         },
         "external_details": {
@@ -81,13 +81,13 @@ Either `errors` or `refunds` is present in a given response (never both).
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     },
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

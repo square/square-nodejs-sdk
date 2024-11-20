@@ -27,7 +27,7 @@ Describes a phase in a subscription plan variation. For more information, see [S
   "periods": 36,
   "recurring_price_money": {
     "amount": 66,
-    "currency": "TMT"
+    "currency": "ZMW"
   },
   "ordinal": 2,
   "pricing": {
@@ -38,7 +38,7 @@ Describes a phase in a subscription plan variation. For more information, see [S
     ],
     "price_money": {
       "amount": 202,
-      "currency": "CNY"
+      "currency": "GTQ"
     }
   }
 }

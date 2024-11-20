@@ -48,14 +48,14 @@ One of `errors` or `refunds` is present in a given response (never both).
       "transaction_id": "KnL67ZIwXCPtzOrqj0HrkxMF",
       "processing_fee_money": {
         "amount": 112,
-        "currency": "BBD"
+        "currency": "DJF"
       }
     }
   ],
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

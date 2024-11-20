@@ -15,7 +15,8 @@
 | `AUTOMATIC_SAVINGS` | An automatic transfer from the payment processing balance to the Square Savings account. These are generally proportional to the seller's sales. |
 | `AUTOMATIC_SAVINGS_REVERSED` | An automatic transfer from the Square Savings account back to the processing balance. These are generally proportional to the seller's refunds. |
 | `CHARGE` | A credit card payment capture. |
-| `DEPOSIT_FEE` | Any fees involved with deposits such as instant deposits. |
+| `DEPOSIT_FEE` | A fee assessed because of a deposit, such as an instant deposit. |
+| `DEPOSIT_FEE_REVERSED` | Indicates that Square returned a fee that was previously assessed because of a deposit, such as an instant deposit, back to the seller's account. |
 | `DISPUTE` | The balance change due to a dispute event. |
 | `ESCHEATMENT` | An escheatment entry for remittance. |
 | `FEE` | The cost plus adjustment fee. |
@@ -43,7 +44,7 @@
 | `TAX_ON_FEE` | The tax paid on fee amounts. |
 | `THIRD_PARTY_FEE` | Fees collected by a third-party platform. |
 | `THIRD_PARTY_FEE_REFUND` | Refunded fees from a third-party platform. |
-| `PAYOUT` | The balance change due to money transfer. |
+| `PAYOUT` | The balance change due to a money transfer. Note that this type is never returned by the Payouts API. |
 | `AUTOMATIC_BITCOIN_CONVERSIONS` | Indicates that the portion of each payment withheld by Square was automatically converted into bitcoin using Cash App. The seller manages their bitcoin in their Cash App account. |
 | `AUTOMATIC_BITCOIN_CONVERSIONS_REVERSED` | Indicates that a withheld payment, which was scheduled to be converted into bitcoin using Cash App, was deposited back to the Square payments balance. |
 | `CREDIT_CARD_REPAYMENT` | Indicates that a repayment toward the outstanding balance on the seller's Square credit card was made. |
@@ -64,4 +65,6 @@
 | `BALANCE_FOLDERS_TRANSFER_REVERSED` | A reversal of transfer of funds from a banking folder. In the United States, the folder name is 'Checking Folder'; in Canada, it's 'Balance Folder.' |
 | `GIFT_CARD_POOL_TRANSFER` | A transfer of gift card funds to a central gift card pool account. In franchises, when gift cards are loaded or reloaded at any location, the money transfers to the franchisor's account. |
 | `GIFT_CARD_POOL_TRANSFER_REVERSED` | A reversal of transfer of gift card funds from a central gift card pool account. In franchises, when gift cards are loaded or reloaded at any location, the money transfers to the franchisor's account. |
+| `SQUARE_PAYROLL_TRANSFER` | A payroll payment that was transferred to a team member’s bank account. |
+| `SQUARE_PAYROLL_TRANSFER_REVERSED` | A payroll payment to a team member’s bank account that was deposited back to the seller’s account by Square. |
 

@@ -36,7 +36,7 @@ external bank account or to the Square balance.
   "updated_at": "updated_at0",
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "destination": {
     "type": "BANK_ACCOUNT",

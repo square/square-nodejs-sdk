@@ -25,6 +25,7 @@ The total amount of the payout will equal the sum of the payout entries for a ba
 | `typeAutomaticSavingsReversedDetails` | [`PaymentBalanceActivityAutomaticSavingsReversedDetail \| undefined`](../../doc/models/payment-balance-activity-automatic-savings-reversed-detail.md) | Optional | - |
 | `typeChargeDetails` | [`PaymentBalanceActivityChargeDetail \| undefined`](../../doc/models/payment-balance-activity-charge-detail.md) | Optional | - |
 | `typeDepositFeeDetails` | [`PaymentBalanceActivityDepositFeeDetail \| undefined`](../../doc/models/payment-balance-activity-deposit-fee-detail.md) | Optional | - |
+| `typeDepositFeeReversedDetails` | [`PaymentBalanceActivityDepositFeeReversedDetail \| undefined`](../../doc/models/payment-balance-activity-deposit-fee-reversed-detail.md) | Optional | - |
 | `typeDisputeDetails` | [`PaymentBalanceActivityDisputeDetail \| undefined`](../../doc/models/payment-balance-activity-dispute-detail.md) | Optional | - |
 | `typeFeeDetails` | [`PaymentBalanceActivityFeeDetail \| undefined`](../../doc/models/payment-balance-activity-fee-detail.md) | Optional | - |
 | `typeFreeProcessingDetails` | [`PaymentBalanceActivityFreeProcessingDetail \| undefined`](../../doc/models/payment-balance-activity-free-processing-detail.md) | Optional | - |
@@ -41,6 +42,8 @@ The total amount of the payout will equal the sum of the payout entries for a ba
 | `typeTaxOnFeeDetails` | [`PaymentBalanceActivityTaxOnFeeDetail \| undefined`](../../doc/models/payment-balance-activity-tax-on-fee-detail.md) | Optional | - |
 | `typeThirdPartyFeeDetails` | [`PaymentBalanceActivityThirdPartyFeeDetail \| undefined`](../../doc/models/payment-balance-activity-third-party-fee-detail.md) | Optional | - |
 | `typeThirdPartyFeeRefundDetails` | [`PaymentBalanceActivityThirdPartyFeeRefundDetail \| undefined`](../../doc/models/payment-balance-activity-third-party-fee-refund-detail.md) | Optional | - |
+| `typeSquarePayrollTransferDetails` | [`PaymentBalanceActivitySquarePayrollTransferDetail \| undefined`](../../doc/models/payment-balance-activity-square-payroll-transfer-detail.md) | Optional | - |
+| `typeSquarePayrollTransferReversedDetails` | [`PaymentBalanceActivitySquarePayrollTransferReversedDetail \| undefined`](../../doc/models/payment-balance-activity-square-payroll-transfer-reversed-detail.md) | Optional | - |
 
 ## Example (as JSON)
 
@@ -49,18 +52,18 @@ The total amount of the payout will equal the sum of the payout entries for a ba
   "id": "id8",
   "payout_id": "payout_id4",
   "effective_at": "effective_at8",
-  "type": "SQUARE_CAPITAL_REVERSED_PAYMENT",
+  "type": "AUTOMATIC_SAVINGS_REVERSED",
   "gross_amount_money": {
     "amount": 186,
-    "currency": "BWP"
+    "currency": "MNT"
   },
   "fee_amount_money": {
     "amount": 126,
-    "currency": "NIO"
+    "currency": "CHF"
   },
   "net_amount_money": {
     "amount": 6,
-    "currency": "LTL"
+    "currency": "XPT"
   }
 }
 ```

@@ -28,20 +28,20 @@
   "smart_tips": [
     {
       "amount": 152,
-      "currency": "USN"
+      "currency": "GEL"
     },
     {
       "amount": 152,
-      "currency": "USN"
+      "currency": "GEL"
     },
     {
       "amount": 152,
-      "currency": "USN"
+      "currency": "GEL"
     }
   ],
   "default_smart_tip": {
     "amount": 58,
-    "currency": "XTS"
+    "currency": "KWD"
   }
 }
 ```

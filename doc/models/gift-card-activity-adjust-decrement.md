@@ -20,7 +20,7 @@ Represents details about an `ADJUST_DECREMENT` [gift card activity type](../../d
 {
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "reason": "SUPPORT_ISSUE"
 }

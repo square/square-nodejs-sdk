@@ -25,6 +25,10 @@ import {
   paymentBalanceActivityDepositFeeDetailSchema,
 } from './paymentBalanceActivityDepositFeeDetail';
 import {
+  PaymentBalanceActivityDepositFeeReversedDetail,
+  paymentBalanceActivityDepositFeeReversedDetailSchema,
+} from './paymentBalanceActivityDepositFeeReversedDetail';
+import {
   PaymentBalanceActivityDisputeDetail,
   paymentBalanceActivityDisputeDetailSchema,
 } from './paymentBalanceActivityDisputeDetail';
@@ -76,6 +80,14 @@ import {
   PaymentBalanceActivitySquareCapitalReversedPaymentDetail,
   paymentBalanceActivitySquareCapitalReversedPaymentDetailSchema,
 } from './paymentBalanceActivitySquareCapitalReversedPaymentDetail';
+import {
+  PaymentBalanceActivitySquarePayrollTransferDetail,
+  paymentBalanceActivitySquarePayrollTransferDetailSchema,
+} from './paymentBalanceActivitySquarePayrollTransferDetail';
+import {
+  PaymentBalanceActivitySquarePayrollTransferReversedDetail,
+  paymentBalanceActivitySquarePayrollTransferReversedDetailSchema,
+} from './paymentBalanceActivitySquarePayrollTransferReversedDetail';
 import {
   PaymentBalanceActivityTaxOnFeeDetail,
   paymentBalanceActivityTaxOnFeeDetailSchema,
@@ -134,6 +146,7 @@ export interface PayoutEntry {
   typeAutomaticSavingsReversedDetails?: PaymentBalanceActivityAutomaticSavingsReversedDetail;
   typeChargeDetails?: PaymentBalanceActivityChargeDetail;
   typeDepositFeeDetails?: PaymentBalanceActivityDepositFeeDetail;
+  typeDepositFeeReversedDetails?: PaymentBalanceActivityDepositFeeReversedDetail;
   typeDisputeDetails?: PaymentBalanceActivityDisputeDetail;
   typeFeeDetails?: PaymentBalanceActivityFeeDetail;
   typeFreeProcessingDetails?: PaymentBalanceActivityFreeProcessingDetail;
@@ -150,6 +163,8 @@ export interface PayoutEntry {
   typeTaxOnFeeDetails?: PaymentBalanceActivityTaxOnFeeDetail;
   typeThirdPartyFeeDetails?: PaymentBalanceActivityThirdPartyFeeDetail;
   typeThirdPartyFeeRefundDetails?: PaymentBalanceActivityThirdPartyFeeRefundDetail;
+  typeSquarePayrollTransferDetails?: PaymentBalanceActivitySquarePayrollTransferDetail;
+  typeSquarePayrollTransferReversedDetails?: PaymentBalanceActivitySquarePayrollTransferReversedDetail;
 }
 
 export const payoutEntrySchema: Schema<PayoutEntry> = object({
@@ -185,6 +200,10 @@ export const payoutEntrySchema: Schema<PayoutEntry> = object({
   typeDepositFeeDetails: [
     'type_deposit_fee_details',
     optional(lazy(() => paymentBalanceActivityDepositFeeDetailSchema)),
+  ],
+  typeDepositFeeReversedDetails: [
+    'type_deposit_fee_reversed_details',
+    optional(lazy(() => paymentBalanceActivityDepositFeeReversedDetailSchema)),
   ],
   typeDisputeDetails: [
     'type_dispute_details',
@@ -253,5 +272,19 @@ export const payoutEntrySchema: Schema<PayoutEntry> = object({
   typeThirdPartyFeeRefundDetails: [
     'type_third_party_fee_refund_details',
     optional(lazy(() => paymentBalanceActivityThirdPartyFeeRefundDetailSchema)),
+  ],
+  typeSquarePayrollTransferDetails: [
+    'type_square_payroll_transfer_details',
+    optional(
+      lazy(() => paymentBalanceActivitySquarePayrollTransferDetailSchema)
+    ),
+  ],
+  typeSquarePayrollTransferReversedDetails: [
+    'type_square_payroll_transfer_reversed_details',
+    optional(
+      lazy(
+        () => paymentBalanceActivitySquarePayrollTransferReversedDetailSchema
+      )
+    ),
   ],
 });

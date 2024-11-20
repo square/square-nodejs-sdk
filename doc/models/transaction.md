@@ -69,12 +69,12 @@ the transaction.
       "reason": "reason4",
       "amount_money": {
         "amount": 186,
-        "currency": "TZS"
+        "currency": "AUD"
       },
       "status": "PENDING",
       "processing_fee_money": {
         "amount": 112,
-        "currency": "BBD"
+        "currency": "DJF"
       },
       "additional_recipients": [
         {
@@ -82,7 +82,7 @@ the transaction.
           "description": "description6",
           "amount_money": {
             "amount": 186,
-            "currency": "TZS"
+            "currency": "AUD"
           },
           "receivable_id": "receivable_id6"
         },
@@ -91,7 +91,7 @@ the transaction.
           "description": "description6",
           "amount_money": {
             "amount": 186,
-            "currency": "TZS"
+            "currency": "AUD"
           },
           "receivable_id": "receivable_id6"
         }
@@ -106,12 +106,12 @@ the transaction.
       "reason": "reason4",
       "amount_money": {
         "amount": 186,
-        "currency": "TZS"
+        "currency": "AUD"
       },
       "status": "PENDING",
       "processing_fee_money": {
         "amount": 112,
-        "currency": "BBD"
+        "currency": "DJF"
       },
       "additional_recipients": [
         {
@@ -119,7 +119,7 @@ the transaction.
           "description": "description6",
           "amount_money": {
             "amount": 186,
-            "currency": "TZS"
+            "currency": "AUD"
           },
           "receivable_id": "receivable_id6"
         },
@@ -128,7 +128,7 @@ the transaction.
           "description": "description6",
           "amount_money": {
             "amount": 186,
-            "currency": "TZS"
+            "currency": "AUD"
           },
           "receivable_id": "receivable_id6"
         }
@@ -143,12 +143,12 @@ the transaction.
       "reason": "reason4",
       "amount_money": {
         "amount": 186,
-        "currency": "TZS"
+        "currency": "AUD"
       },
       "status": "PENDING",
       "processing_fee_money": {
         "amount": 112,
-        "currency": "BBD"
+        "currency": "DJF"
       },
       "additional_recipients": [
         {
@@ -156,7 +156,7 @@ the transaction.
           "description": "description6",
           "amount_money": {
             "amount": 186,
-            "currency": "TZS"
+            "currency": "AUD"
           },
           "receivable_id": "receivable_id6"
         },
@@ -165,7 +165,7 @@ the transaction.
           "description": "description6",
           "amount_money": {
             "amount": 186,
-            "currency": "TZS"
+            "currency": "AUD"
           },
           "receivable_id": "receivable_id6"
         }

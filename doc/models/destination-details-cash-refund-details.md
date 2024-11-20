@@ -20,11 +20,11 @@ Stores details about a cash refund. Contains only non-confidential information.
 {
   "seller_supplied_money": {
     "amount": 36,
-    "currency": "AZN"
+    "currency": "MKD"
   },
   "change_back_money": {
     "amount": 78,
-    "currency": "DJF"
+    "currency": "XBD"
   }
 }
 ```

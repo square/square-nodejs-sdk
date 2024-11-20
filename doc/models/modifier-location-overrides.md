@@ -22,7 +22,7 @@ Location-specific overrides for specified properties of a `CatalogModifier` obje
   "location_id": "location_id2",
   "price_money": {
     "amount": 202,
-    "currency": "CNY"
+    "currency": "GTQ"
   },
   "sold_out": false
 }

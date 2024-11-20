@@ -280,15 +280,9 @@ requestOptions?: RequestOptions): Promise<ApiResponse<BulkDeleteLocationCustomAt
 ```ts
 const body: BulkDeleteLocationCustomAttributesRequest = {
   values: {
-    'id1': {
-      key: 'bestseller',
-    },
-    'id2': {
-      key: 'bestseller',
-    },
-    'id3': {
-      key: 'phone-number',
-    }
+    'id1': {},
+    'id2': {},
+    'id3': {}
   },
 };
 

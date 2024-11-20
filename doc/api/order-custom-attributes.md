@@ -296,11 +296,9 @@ const body: BulkDeleteOrderCustomAttributesRequest = {
   values: {
     'cover-count': {
       orderId: '7BbXGEIWNldxAzrtGf9GPVZTwZ4F',
-      key: 'cover-count',
     },
     'table-number': {
       orderId: '7BbXGEIWNldxAzrtGf9GPVZTwZ4F',
-      key: 'table-number',
     }
   },
 };

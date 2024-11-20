@@ -41,7 +41,7 @@ A discount applicable to items.
   "percentage": "percentage6",
   "amount_money": {
     "amount": 186,
-    "currency": "TZS"
+    "currency": "AUD"
   },
   "pin_required": false
 }

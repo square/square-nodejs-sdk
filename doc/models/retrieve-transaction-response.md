@@ -73,12 +73,12 @@ One of `errors` or `transaction` is present in a given response (never both).
         "reason": "reason4",
         "amount_money": {
           "amount": 186,
-          "currency": "TZS"
+          "currency": "AUD"
         },
         "status": "PENDING",
         "processing_fee_money": {
           "amount": 112,
-          "currency": "BBD"
+          "currency": "DJF"
         },
         "additional_recipients": [
           {
@@ -86,7 +86,7 @@ One of `errors` or `transaction` is present in a given response (never both).
             "description": "description6",
             "amount_money": {
               "amount": 186,
-              "currency": "TZS"
+              "currency": "AUD"
             },
             "receivable_id": "receivable_id6"
           },
@@ -95,7 +95,7 @@ One of `errors` or `transaction` is present in a given response (never both).
             "description": "description6",
             "amount_money": {
               "amount": 186,
-              "currency": "TZS"
+              "currency": "AUD"
             },
             "receivable_id": "receivable_id6"
           }
@@ -110,12 +110,12 @@ One of `errors` or `transaction` is present in a given response (never both).
         "reason": "reason4",
         "amount_money": {
           "amount": 186,
-          "currency": "TZS"
+          "currency": "AUD"
         },
         "status": "PENDING",
         "processing_fee_money": {
           "amount": 112,
-          "currency": "BBD"
+          "currency": "DJF"
         },
         "additional_recipients": [
           {
@@ -123,7 +123,7 @@ One of `errors` or `transaction` is present in a given response (never both).
             "description": "description6",
             "amount_money": {
               "amount": 186,
-              "currency": "TZS"
+              "currency": "AUD"
             },
             "receivable_id": "receivable_id6"
           },
@@ -132,7 +132,7 @@ One of `errors` or `transaction` is present in a given response (never both).
             "description": "description6",
             "amount_money": {
               "amount": 186,
-              "currency": "TZS"
+              "currency": "AUD"
             },
             "receivable_id": "receivable_id6"
           }
@@ -147,12 +147,12 @@ One of `errors` or `transaction` is present in a given response (never both).
         "reason": "reason4",
         "amount_money": {
           "amount": 186,
-          "currency": "TZS"
+          "currency": "AUD"
         },
         "status": "PENDING",
         "processing_fee_money": {
           "amount": 112,
-          "currency": "BBD"
+          "currency": "DJF"
         },
         "additional_recipients": [
           {
@@ -160,7 +160,7 @@ One of `errors` or `transaction` is present in a given response (never both).
             "description": "description6",
             "amount_money": {
               "amount": 186,
-              "currency": "TZS"
+              "currency": "AUD"
             },
             "receivable_id": "receivable_id6"
           },
@@ -169,7 +169,7 @@ One of `errors` or `transaction` is present in a given response (never both).
             "description": "description6",
             "amount_money": {
               "amount": 186,
-              "currency": "TZS"
+              "currency": "AUD"
             },
             "receivable_id": "receivable_id6"
           }
@@ -180,7 +180,7 @@ One of `errors` or `transaction` is present in a given response (never both).
   "errors": [
     {
       "category": "MERCHANT_SUBSCRIPTION_ERROR",
-      "code": "MAP_KEY_LENGTH_TOO_LONG",
+      "code": "INVALID_EXPIRATION",
       "detail": "detail6",
       "field": "field4"
     }

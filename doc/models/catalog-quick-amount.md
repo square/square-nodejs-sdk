@@ -23,7 +23,7 @@ Represents a Quick Amount in the Catalog.
   "type": "QUICK_AMOUNT_TYPE_MANUAL",
   "amount": {
     "amount": 0,
-    "currency": "MNT"
+    "currency": "LAK"
   },
   "score": 12,
   "ordinal": 200
