@@ -32,8 +32,10 @@ const terminalApi = client.terminalApi;
 Creates a Terminal action request and sends it to the specified device.
 
 ```ts
-async createTerminalAction(  body: CreateTerminalActionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateTerminalActionResponse>>
+async createTerminalAction(
+  body: CreateTerminalActionRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateTerminalActionResponse>>
 ```
 
 ## Parameters
@@ -81,8 +83,10 @@ try {
 Retrieves a filtered list of Terminal action requests created by the account making the request. Terminal action requests are available for 30 days.
 
 ```ts
-async searchTerminalActions(  body: SearchTerminalActionsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchTerminalActionsResponse>>
+async searchTerminalActions(
+  body: SearchTerminalActionsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchTerminalActionsResponse>>
 ```
 
 ## Parameters
@@ -131,8 +135,10 @@ try {
 Retrieves a Terminal action request by `action_id`. Terminal action requests are available for 30 days.
 
 ```ts
-async getTerminalAction(  actionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetTerminalActionResponse>>
+async getTerminalAction(
+  actionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetTerminalActionResponse>>
 ```
 
 ## Parameters
@@ -169,8 +175,10 @@ try {
 Cancels a Terminal action request if the status of the request permits it.
 
 ```ts
-async cancelTerminalAction(  actionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<CancelTerminalActionResponse>>
+async cancelTerminalAction(
+  actionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CancelTerminalActionResponse>>
 ```
 
 ## Parameters
@@ -209,8 +217,10 @@ Dismisses a Terminal action request if the status and type of the request permit
 See [Link and Dismiss Actions](https://developer.squareup.com/docs/terminal-api/advanced-features/custom-workflows/link-and-dismiss-actions) for more details.
 
 ```ts
-async dismissTerminalAction(  actionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DismissTerminalActionResponse>>
+async dismissTerminalAction(
+  actionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DismissTerminalActionResponse>>
 ```
 
 ## Parameters
@@ -248,8 +258,10 @@ Creates a Terminal checkout request and sends it to the specified device to take
 for the requested amount.
 
 ```ts
-async createTerminalCheckout(  body: CreateTerminalCheckoutRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateTerminalCheckoutResponse>>
+async createTerminalCheckout(
+  body: CreateTerminalCheckoutRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateTerminalCheckoutResponse>>
 ```
 
 ## Parameters
@@ -299,8 +311,10 @@ try {
 Returns a filtered list of Terminal checkout requests created by the application making the request. Only Terminal checkout requests created for the merchant scoped to the OAuth token are returned. Terminal checkout requests are available for 30 days.
 
 ```ts
-async searchTerminalCheckouts(  body: SearchTerminalCheckoutsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchTerminalCheckoutsResponse>>
+async searchTerminalCheckouts(
+  body: SearchTerminalCheckoutsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchTerminalCheckoutsResponse>>
 ```
 
 ## Parameters
@@ -344,8 +358,10 @@ try {
 Retrieves a Terminal checkout request by `checkout_id`. Terminal checkout requests are available for 30 days.
 
 ```ts
-async getTerminalCheckout(  checkoutId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetTerminalCheckoutResponse>>
+async getTerminalCheckout(
+  checkoutId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetTerminalCheckoutResponse>>
 ```
 
 ## Parameters
@@ -382,8 +398,10 @@ try {
 Cancels a Terminal checkout request if the status of the request permits it.
 
 ```ts
-async cancelTerminalCheckout(  checkoutId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<CancelTerminalCheckoutResponse>>
+async cancelTerminalCheckout(
+  checkoutId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CancelTerminalCheckoutResponse>>
 ```
 
 ## Parameters
@@ -420,8 +438,10 @@ try {
 Dismisses a Terminal checkout request if the status and type of the request permits it.
 
 ```ts
-async dismissTerminalCheckout(  checkoutId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DismissTerminalCheckoutResponse>>
+async dismissTerminalCheckout(
+  checkoutId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DismissTerminalCheckoutResponse>>
 ```
 
 ## Parameters
@@ -458,8 +478,10 @@ try {
 Creates a request to refund an Interac payment completed on a Square Terminal. Refunds for Interac payments on a Square Terminal are supported only for Interac debit cards in Canada. Other refunds for Terminal payments should use the Refunds API. For more information, see [Refunds API](../../doc/api/refunds.md).
 
 ```ts
-async createTerminalRefund(  body: CreateTerminalRefundRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateTerminalRefundResponse>>
+async createTerminalRefund(
+  body: CreateTerminalRefundRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateTerminalRefundResponse>>
 ```
 
 ## Parameters
@@ -507,8 +529,10 @@ try {
 Retrieves a filtered list of Interac Terminal refund requests created by the seller making the request. Terminal refund requests are available for 30 days.
 
 ```ts
-async searchTerminalRefunds(  body: SearchTerminalRefundsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchTerminalRefundsResponse>>
+async searchTerminalRefunds(
+  body: SearchTerminalRefundsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchTerminalRefundsResponse>>
 ```
 
 ## Parameters
@@ -552,8 +576,10 @@ try {
 Retrieves an Interac Terminal refund object by ID. Terminal refund objects are available for 30 days.
 
 ```ts
-async getTerminalRefund(  terminalRefundId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetTerminalRefundResponse>>
+async getTerminalRefund(
+  terminalRefundId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetTerminalRefundResponse>>
 ```
 
 ## Parameters
@@ -590,8 +616,10 @@ try {
 Cancels an Interac Terminal refund request by refund request ID if the status of the request permits it.
 
 ```ts
-async cancelTerminalRefund(  terminalRefundId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<CancelTerminalRefundResponse>>
+async cancelTerminalRefund(
+  terminalRefundId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CancelTerminalRefundResponse>>
 ```
 
 ## Parameters
@@ -628,8 +656,10 @@ try {
 Dismisses a Terminal refund request if the status and type of the request permits it.
 
 ```ts
-async dismissTerminalRefund(  terminalRefundId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DismissTerminalRefundResponse>>
+async dismissTerminalRefund(
+  terminalRefundId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DismissTerminalRefundResponse>>
 ```
 
 ## Parameters

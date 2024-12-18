@@ -36,8 +36,10 @@ the optional `start_date`. Each individual subscription is associated with a par
 For more information, see [Create a subscription](https://developer.squareup.com/docs/subscriptions-api/manage-subscriptions#create-a-subscription).
 
 ```ts
-async createSubscription(  body: CreateSubscriptionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateSubscriptionResponse>>
+async createSubscription(
+  body: CreateSubscriptionRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateSubscriptionResponse>>
 ```
 
 ## Parameters
@@ -92,8 +94,10 @@ Schedules a plan variation change for all active subscriptions under a given pla
 variation. For more information, see [Swap Subscription Plan Variations](https://developer.squareup.com/docs/subscriptions-api/swap-plan-variations).
 
 ```ts
-async bulkSwapPlan(  body: BulkSwapPlanRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BulkSwapPlanResponse>>
+async bulkSwapPlan(
+  body: BulkSwapPlanRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkSwapPlanResponse>>
 ```
 
 ## Parameters
@@ -147,8 +151,10 @@ first by location, within location by customer ID, and within
 customer by subscription creation date.
 
 ```ts
-async searchSubscriptions(  body: SearchSubscriptionsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchSubscriptionsResponse>>
+async searchSubscriptions(
+  body: SearchSubscriptionsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchSubscriptionsResponse>>
 ```
 
 ## Parameters
@@ -199,9 +205,11 @@ try {
 Retrieves a specific subscription.
 
 ```ts
-async retrieveSubscription(  subscriptionId: string,
+async retrieveSubscription(
+  subscriptionId: string,
   include?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveSubscriptionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveSubscriptionResponse>>
 ```
 
 ## Parameters
@@ -240,9 +248,11 @@ Updates a subscription by modifying or clearing `subscription` field values.
 To clear a field, set its value to `null`.
 
 ```ts
-async updateSubscription(  subscriptionId: string,
+async updateSubscription(
+  subscriptionId: string,
   body: UpdateSubscriptionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateSubscriptionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateSubscriptionResponse>>
 ```
 
 ## Parameters
@@ -290,9 +300,11 @@ try {
 Deletes a scheduled action for a subscription.
 
 ```ts
-async deleteSubscriptionAction(  subscriptionId: string,
+async deleteSubscriptionAction(
+  subscriptionId: string,
   actionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeleteSubscriptionActionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteSubscriptionActionResponse>>
 ```
 
 ## Parameters
@@ -336,9 +348,11 @@ Changes the [billing anchor date](https://developer.squareup.com/docs/subscripti
 for a subscription.
 
 ```ts
-async changeBillingAnchorDate(  subscriptionId: string,
+async changeBillingAnchorDate(
+  subscriptionId: string,
   body: ChangeBillingAnchorDateRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<ChangeBillingAnchorDateResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ChangeBillingAnchorDateResponse>>
 ```
 
 ## Parameters
@@ -385,8 +399,10 @@ sets the `canceled_date` field to the end of the active billing period. After th
 the subscription status changes from ACTIVE to CANCELED.
 
 ```ts
-async cancelSubscription(  subscriptionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<CancelSubscriptionResponse>>
+async cancelSubscription(
+  subscriptionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CancelSubscriptionResponse>>
 ```
 
 ## Parameters
@@ -423,10 +439,12 @@ try {
 Lists all [events](https://developer.squareup.com/docs/subscriptions-api/actions-events) for a specific subscription.
 
 ```ts
-async listSubscriptionEvents(  subscriptionId: string,
+async listSubscriptionEvents(
+  subscriptionId: string,
   cursor?: string,
   limit?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListSubscriptionEventsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListSubscriptionEventsResponse>>
 ```
 
 ## Parameters
@@ -465,9 +483,11 @@ try {
 Schedules a `PAUSE` action to pause an active subscription.
 
 ```ts
-async pauseSubscription(  subscriptionId: string,
+async pauseSubscription(
+  subscriptionId: string,
   body: PauseSubscriptionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<PauseSubscriptionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<PauseSubscriptionResponse>>
 ```
 
 ## Parameters
@@ -487,7 +507,8 @@ requestOptions?: RequestOptions): Promise<ApiResponse<PauseSubscriptionResponse>
 ```ts
 const subscriptionId = 'subscription_id0';
 
-const body: PauseSubscriptionRequest = {};
+const body: PauseSubscriptionRequest = {
+};
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.pauseSubscription(
@@ -510,9 +531,11 @@ try {
 Schedules a `RESUME` action to resume a paused or a deactivated subscription.
 
 ```ts
-async resumeSubscription(  subscriptionId: string,
+async resumeSubscription(
+  subscriptionId: string,
   body: ResumeSubscriptionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<ResumeSubscriptionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ResumeSubscriptionResponse>>
 ```
 
 ## Parameters
@@ -532,7 +555,8 @@ requestOptions?: RequestOptions): Promise<ApiResponse<ResumeSubscriptionResponse
 ```ts
 const subscriptionId = 'subscription_id0';
 
-const body: ResumeSubscriptionRequest = {};
+const body: ResumeSubscriptionRequest = {
+};
 
 try {
   const { result, ...httpResponse } = await subscriptionsApi.resumeSubscription(
@@ -556,9 +580,11 @@ Schedules a `SWAP_PLAN` action to swap a subscription plan variation in an exist
 For more information, see [Swap Subscription Plan Variations](https://developer.squareup.com/docs/subscriptions-api/swap-plan-variations).
 
 ```ts
-async swapPlan(  subscriptionId: string,
+async swapPlan(
+  subscriptionId: string,
   body: SwapPlanRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SwapPlanResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SwapPlanResponse>>
 ```
 
 ## Parameters

@@ -15,5 +15,6 @@
 | `FELICA_QUICPAY` | Launches the QUICPay checkout screen for the buyer to complete. |
 | `FELICA_TRANSPORTATION_GROUP` | Launches the Transportation Group checkout screen for the buyer to complete. |
 | `FELICA_ALL` | Launches a checkout screen for the buyer on the Square Terminal that<br>allows them to select a specific FeliCa brand or select the check balance screen. |
-| `PAYPAY` | Launches the PayPay checkout screen for the buyer to complete. |
+| `PAYPAY` | Replaced by `QR_CODE`. |
+| `QR_CODE` | Launches Square's QR Code checkout screen for the buyer to complete.<br>Displays a single code that supports all digital wallets connected to the target<br>Seller location (e.g. PayPay) |
 

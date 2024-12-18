@@ -18,7 +18,6 @@ Represents an output from a call to [UpdateVendor](../../doc/api/vendors.md#upda
 
 ```json
 {
-  "errors": [],
   "vendor": {
     "account_number": "4025391",
     "address": {
@@ -46,7 +45,27 @@ Represents an output from a call to [UpdateVendor](../../doc/api/vendors.md#upda
     "status": "ACTIVE",
     "updated_at": "2022-03-16T20:21:54.859Z",
     "version": 2
-  }
+  },
+  "errors": [
+    {
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "INVALID_EXPIRATION",
+      "detail": "detail6",
+      "field": "field4"
+    },
+    {
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "INVALID_EXPIRATION",
+      "detail": "detail6",
+      "field": "field4"
+    },
+    {
+      "category": "MERCHANT_SUBSCRIPTION_ERROR",
+      "code": "INVALID_EXPIRATION",
+      "detail": "detail6",
+      "field": "field4"
+    }
+  ]
 }
 ```
 

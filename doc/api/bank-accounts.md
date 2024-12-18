@@ -20,10 +20,12 @@ const bankAccountsApi = client.bankAccountsApi;
 Returns a list of [BankAccount](../../doc/models/bank-account.md) objects linked to a Square account.
 
 ```ts
-async listBankAccounts(  cursor?: string,
+async listBankAccounts(
+  cursor?: string,
   limit?: number,
   locationId?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListBankAccountsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListBankAccountsResponse>>
 ```
 
 ## Parameters
@@ -60,8 +62,10 @@ try {
 Returns details of a [BankAccount](../../doc/models/bank-account.md) identified by V1 bank account ID.
 
 ```ts
-async getBankAccountByV1Id(  v1BankAccountId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetBankAccountByV1IdResponse>>
+async getBankAccountByV1Id(
+  v1BankAccountId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetBankAccountByV1IdResponse>>
 ```
 
 ## Parameters
@@ -99,8 +103,10 @@ Returns details of a [BankAccount](../../doc/models/bank-account.md)
 linked to a Square account.
 
 ```ts
-async getBankAccount(  bankAccountId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetBankAccountResponse>>
+async getBankAccount(
+  bankAccountId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetBankAccountResponse>>
 ```
 
 ## Parameters

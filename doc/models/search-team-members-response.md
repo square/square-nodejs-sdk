@@ -33,7 +33,39 @@ Represents a response from a search request containing a filtered list of `TeamM
       "is_owner": false,
       "reference_id": "12345678",
       "status": "ACTIVE",
-      "updated_at": "2020-04-28T21:49:28Z"
+      "updated_at": "2020-04-28T21:49:28Z",
+      "wage_setting": {
+        "created_at": "2021-06-11T22:55:45Z",
+        "is_overtime_exempt": true,
+        "job_assignments": [
+          {
+            "annual_rate": {
+              "amount": 3000000,
+              "currency": "USD"
+            },
+            "hourly_rate": {
+              "amount": 1443,
+              "currency": "USD"
+            },
+            "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+            "job_title": "Manager",
+            "pay_type": "SALARY",
+            "weekly_hours": 40
+          },
+          {
+            "hourly_rate": {
+              "amount": 2000,
+              "currency": "USD"
+            },
+            "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+            "job_title": "Cashier",
+            "pay_type": "HOURLY"
+          }
+        ],
+        "team_member_id": "-3oZQKPKVk6gUXU_V5Qa",
+        "updated_at": "2021-06-11T22:55:45Z",
+        "version": 1
+      }
     },
     {
       "assigned_locations": {
@@ -47,7 +79,25 @@ Represents a response from a search request containing a filtered list of `TeamM
       "phone_number": "+14155552671",
       "reference_id": "abcded",
       "status": "ACTIVE",
-      "updated_at": "2020-06-09T17:38:05Z"
+      "updated_at": "2020-06-09T17:38:05Z",
+      "wage_setting": {
+        "created_at": "2020-03-24T18:14:01Z",
+        "is_overtime_exempt": true,
+        "job_assignments": [
+          {
+            "hourly_rate": {
+              "amount": 2400,
+              "currency": "USD"
+            },
+            "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+            "job_title": "Cashier",
+            "pay_type": "HOURLY"
+          }
+        ],
+        "team_member_id": "1AVJj0DjkzbmbJw5r4KK",
+        "updated_at": "2020-06-09T17:38:05Z",
+        "version": 2
+      }
     },
     {
       "assigned_locations": {
@@ -60,6 +110,24 @@ Represents a response from a search request containing a filtered list of `TeamM
       "is_owner": false,
       "status": "ACTIVE",
       "updated_at": "2020-03-24T01:11:25Z",
+      "wage_setting": {
+        "created_at": "2020-03-24T01:09:25Z",
+        "is_overtime_exempt": true,
+        "job_assignments": [
+          {
+            "hourly_rate": {
+              "amount": 2400,
+              "currency": "USD"
+            },
+            "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+            "job_title": "Cashier",
+            "pay_type": "HOURLY"
+          }
+        ],
+        "team_member_id": "2JCmiJol_KKFs9z2Evim",
+        "updated_at": "2020-03-24T01:09:25Z",
+        "version": 1
+      },
       "reference_id": "reference_id4"
     },
     {
@@ -100,6 +168,24 @@ Represents a response from a search request containing a filtered list of `TeamM
       "phone_number": "+14155552671",
       "status": "ACTIVE",
       "updated_at": "2020-03-24T18:18:03Z",
+      "wage_setting": {
+        "created_at": "2020-03-24T18:14:03Z",
+        "is_overtime_exempt": true,
+        "job_assignments": [
+          {
+            "hourly_rate": {
+              "amount": 2000,
+              "currency": "USD"
+            },
+            "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+            "job_title": "Cashier",
+            "pay_type": "HOURLY"
+          }
+        ],
+        "team_member_id": "5MRPTTp8MMBLVSmzrGha",
+        "updated_at": "2020-03-24T18:14:03Z",
+        "version": 1
+      },
       "reference_id": "reference_id4"
     },
     {
@@ -158,6 +244,24 @@ Represents a response from a search request containing a filtered list of `TeamM
       "phone_number": "+14155552671",
       "status": "ACTIVE",
       "updated_at": "2020-03-24T18:18:00Z",
+      "wage_setting": {
+        "created_at": "2020-03-24T18:14:00Z",
+        "is_overtime_exempt": true,
+        "job_assignments": [
+          {
+            "hourly_rate": {
+              "amount": 2000,
+              "currency": "USD"
+            },
+            "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+            "job_title": "Cashier",
+            "pay_type": "HOURLY"
+          }
+        ],
+        "team_member_id": "9UglUjOXQ13-hMFypCft",
+        "updated_at": "2020-03-24T18:14:03Z",
+        "version": 1
+      },
       "reference_id": "reference_id4"
     }
   ],

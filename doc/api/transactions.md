@@ -28,12 +28,14 @@ information from returns and exchanges.
 Max results per [page](https://developer.squareup.com/docs/working-with-apis/pagination): 50
 
 ```ts
-async listTransactions(  locationId: string,
+async listTransactions(
+  locationId: string,
   beginTime?: string,
   endTime?: string,
   sortOrder?: string,
   cursor?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListTransactionsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListTransactionsResponse>>
 ```
 
 ## Parameters
@@ -76,9 +78,11 @@ try {
 Retrieves details for a single transaction.
 
 ```ts
-async retrieveTransaction(  locationId: string,
+async retrieveTransaction(
+  locationId: string,
   transactionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveTransactionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveTransactionResponse>>
 ```
 
 ## Parameters
@@ -127,9 +131,11 @@ See [Delayed capture transactions](https://developer.squareup.com/docs/payments/
 for more information.
 
 ```ts
-async captureTransaction(  locationId: string,
+async captureTransaction(
+  locationId: string,
   transactionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<CaptureTransactionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CaptureTransactionResponse>>
 ```
 
 ## Parameters
@@ -178,9 +184,11 @@ See [Delayed capture transactions](https://developer.squareup.com/docs/payments/
 for more information.
 
 ```ts
-async voidTransaction(  locationId: string,
+async voidTransaction(
+  locationId: string,
   transactionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<VoidTransactionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<VoidTransactionResponse>>
 ```
 
 ## Parameters

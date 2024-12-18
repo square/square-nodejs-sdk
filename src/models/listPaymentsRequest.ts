@@ -28,7 +28,7 @@ export interface ListPaymentsRequest {
    */
   endTime?: string | null;
   /**
-   * The order in which results are listed by `Payment.created_at`:
+   * The order in which results are listed by `ListPaymentsRequest.sort_field`:
    * - `ASC` - Oldest to newest.
    * - `DESC` - Newest to oldest (default).
    */
@@ -76,6 +76,17 @@ export interface ListPaymentsRequest {
    * Default: The current time.
    */
   offlineEndTime?: string | null;
+  /**
+   * Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  The
+   * range is determined using the `updated_at` field for each Payment.
+   */
+  updatedAtBeginTime?: string | null;
+  /**
+   * Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The
+   * range is determined using the `updated_at` field for each Payment.
+   */
+  updatedAtEndTime?: string | null;
+  sortField?: string;
 }
 
 export const listPaymentsRequestSchema: Schema<ListPaymentsRequest> = object({
@@ -91,4 +102,7 @@ export const listPaymentsRequestSchema: Schema<ListPaymentsRequest> = object({
   isOfflinePayment: ['is_offline_payment', optional(nullable(boolean()))],
   offlineBeginTime: ['offline_begin_time', optional(nullable(string()))],
   offlineEndTime: ['offline_end_time', optional(nullable(string()))],
+  updatedAtBeginTime: ['updated_at_begin_time', optional(nullable(string()))],
+  updatedAtEndTime: ['updated_at_end_time', optional(nullable(string()))],
+  sortField: ['sort_field', optional(string())],
 });

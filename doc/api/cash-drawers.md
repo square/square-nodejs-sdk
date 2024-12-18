@@ -21,13 +21,15 @@ Provides the details for all of the cash drawer shifts for a location
 in a date range.
 
 ```ts
-async listCashDrawerShifts(  locationId: string,
+async listCashDrawerShifts(
+  locationId: string,
   sortOrder?: string,
   beginTime?: string,
   endTime?: string,
   limit?: number,
   cursor?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListCashDrawerShiftsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListCashDrawerShiftsResponse>>
 ```
 
 ## Parameters
@@ -70,9 +72,11 @@ Provides the summary details for a single cash drawer shift. See
 [ListCashDrawerShiftEvents](../../doc/api/cash-drawers.md#list-cash-drawer-shift-events) for a list of cash drawer shift events.
 
 ```ts
-async retrieveCashDrawerShift(  locationId: string,
+async retrieveCashDrawerShift(
+  locationId: string,
   shiftId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveCashDrawerShiftResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveCashDrawerShiftResponse>>
 ```
 
 ## Parameters
@@ -115,11 +119,13 @@ try {
 Provides a paginated list of events for a single cash drawer shift.
 
 ```ts
-async listCashDrawerShiftEvents(  locationId: string,
+async listCashDrawerShiftEvents(
+  locationId: string,
   shiftId: string,
   limit?: number,
   cursor?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListCashDrawerShiftEventsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListCashDrawerShiftEventsResponse>>
 ```
 
 ## Parameters

@@ -27,8 +27,10 @@ long-lived caches that might not keep in sync with the correct file version.
 To learn more about the Web Payments SDK and how to add Apple Pay, see [Take an Apple Pay Payment](https://developer.squareup.com/docs/web-payments/apple-pay).
 
 ```ts
-async registerDomain(  body: RegisterDomainRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<RegisterDomainResponse>>
+async registerDomain(
+  body: RegisterDomainRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RegisterDomainResponse>>
 ```
 
 ## Parameters

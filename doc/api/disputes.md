@@ -26,10 +26,12 @@ const disputesApi = client.disputesApi;
 Returns a list of disputes associated with a particular account.
 
 ```ts
-async listDisputes(  cursor?: string,
+async listDisputes(
+  cursor?: string,
   states?: string,
   locationId?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListDisputesResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListDisputesResponse>>
 ```
 
 ## Parameters
@@ -66,8 +68,10 @@ try {
 Returns details about a specific dispute.
 
 ```ts
-async retrieveDispute(  disputeId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveDisputeResponse>>
+async retrieveDispute(
+  disputeId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveDisputeResponse>>
 ```
 
 ## Parameters
@@ -108,8 +112,10 @@ Square debits the disputed amount from the seller’s Square account. If the Squ
 does not have sufficient funds, Square debits the associated bank account.
 
 ```ts
-async acceptDispute(  disputeId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<AcceptDisputeResponse>>
+async acceptDispute(
+  disputeId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<AcceptDisputeResponse>>
 ```
 
 ## Parameters
@@ -146,9 +152,11 @@ try {
 Returns a list of evidence associated with a dispute.
 
 ```ts
-async listDisputeEvidence(  disputeId: string,
+async listDisputeEvidence(
+  disputeId: string,
   cursor?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListDisputeEvidenceResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListDisputeEvidenceResponse>>
 ```
 
 ## Parameters
@@ -187,10 +195,12 @@ Uploads a file to use as evidence in a dispute challenge. The endpoint accepts H
 multipart/form-data file uploads in HEIC, HEIF, JPEG, PDF, PNG, and TIFF formats.
 
 ```ts
-async createDisputeEvidenceFile(  disputeId: string,
+async createDisputeEvidenceFile(
+  disputeId: string,
   request?: CreateDisputeEvidenceFileRequest,
   imageFile?: FileWrapper,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateDisputeEvidenceFileResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateDisputeEvidenceFileResponse>>
 ```
 
 ## Parameters
@@ -229,9 +239,11 @@ try {
 Uploads text to use as evidence for a dispute challenge.
 
 ```ts
-async createDisputeEvidenceText(  disputeId: string,
+async createDisputeEvidenceText(
+  disputeId: string,
   body: CreateDisputeEvidenceTextRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateDisputeEvidenceTextResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateDisputeEvidenceTextResponse>>
 ```
 
 ## Parameters
@@ -279,9 +291,11 @@ Removes specified evidence from a dispute.
 Square does not send the bank any evidence that is removed.
 
 ```ts
-async deleteDisputeEvidence(  disputeId: string,
+async deleteDisputeEvidence(
+  disputeId: string,
   evidenceId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeleteDisputeEvidenceResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteDisputeEvidenceResponse>>
 ```
 
 ## Parameters
@@ -326,9 +340,11 @@ Returns the metadata for the evidence specified in the request URL path.
 You must maintain a copy of any evidence uploaded if you want to reference it later. Evidence cannot be downloaded after you upload it.
 
 ```ts
-async retrieveDisputeEvidence(  disputeId: string,
+async retrieveDisputeEvidence(
+  disputeId: string,
   evidenceId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveDisputeEvidenceResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveDisputeEvidenceResponse>>
 ```
 
 ## Parameters
@@ -377,8 +393,10 @@ evidence automatically provided by Square, when available. Evidence cannot be re
 a dispute after submission.
 
 ```ts
-async submitEvidence(  disputeId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<SubmitEvidenceResponse>>
+async submitEvidence(
+  disputeId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SubmitEvidenceResponse>>
 ```
 
 ## Parameters

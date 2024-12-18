@@ -24,8 +24,10 @@ const vendorsApi = client.vendorsApi;
 Creates one or more [Vendor](../../doc/models/vendor.md) objects to represent suppliers to a seller.
 
 ```ts
-async bulkCreateVendors(  body: BulkCreateVendorsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BulkCreateVendorsResponse>>
+async bulkCreateVendors(
+  body: BulkCreateVendorsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkCreateVendorsResponse>>
 ```
 
 ## Parameters
@@ -44,8 +46,10 @@ requestOptions?: RequestOptions): Promise<ApiResponse<BulkCreateVendorsResponse>
 ```ts
 const body: BulkCreateVendorsRequest = {
   vendors: {
-    'key0': {},
-    'key1': {}
+    'key0': {
+    },
+    'key1': {
+    }
   },
 };
 
@@ -67,8 +71,10 @@ try {
 Retrieves one or more vendors of specified [Vendor](../../doc/models/vendor.md) IDs.
 
 ```ts
-async bulkRetrieveVendors(  body: BulkRetrieveVendorsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BulkRetrieveVendorsResponse>>
+async bulkRetrieveVendors(
+  body: BulkRetrieveVendorsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkRetrieveVendorsResponse>>
 ```
 
 ## Parameters
@@ -109,8 +115,10 @@ try {
 Updates one or more of existing [Vendor](../../doc/models/vendor.md) objects as suppliers to a seller.
 
 ```ts
-async bulkUpdateVendors(  body: BulkUpdateVendorsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BulkUpdateVendorsResponse>>
+async bulkUpdateVendors(
+  body: BulkUpdateVendorsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkUpdateVendorsResponse>>
 ```
 
 ## Parameters
@@ -130,10 +138,12 @@ requestOptions?: RequestOptions): Promise<ApiResponse<BulkUpdateVendorsResponse>
 const body: BulkUpdateVendorsRequest = {
   vendors: {
     'key0': {
-      vendor: {},
+      vendor: {
+      },
     },
     'key1': {
-      vendor: {},
+      vendor: {
+      },
     }
   },
 };
@@ -156,8 +166,10 @@ try {
 Creates a single [Vendor](../../doc/models/vendor.md) object to represent a supplier to a seller.
 
 ```ts
-async createVendor(  body: CreateVendorRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateVendorResponse>>
+async createVendor(
+  body: CreateVendorRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateVendorResponse>>
 ```
 
 ## Parameters
@@ -196,8 +208,10 @@ try {
 Searches for vendors using a filter against supported [Vendor](../../doc/models/vendor.md) properties and a supported sorter.
 
 ```ts
-async searchVendors(  body: SearchVendorsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchVendorsResponse>>
+async searchVendors(
+  body: SearchVendorsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchVendorsResponse>>
 ```
 
 ## Parameters
@@ -214,7 +228,8 @@ requestOptions?: RequestOptions): Promise<ApiResponse<SearchVendorsResponse>>
 ## Example Usage
 
 ```ts
-const body: SearchVendorsRequest = {};
+const body: SearchVendorsRequest = {
+};
 
 try {
   const { result, ...httpResponse } = await vendorsApi.searchVendors(body);
@@ -234,8 +249,10 @@ try {
 Retrieves the vendor of a specified [Vendor](../../doc/models/vendor.md) ID.
 
 ```ts
-async retrieveVendor(  vendorId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveVendorResponse>>
+async retrieveVendor(
+  vendorId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveVendorResponse>>
 ```
 
 ## Parameters
@@ -272,9 +289,11 @@ try {
 Updates an existing [Vendor](../../doc/models/vendor.md) object as a supplier to a seller.
 
 ```ts
-async updateVendor(  body: UpdateVendorRequest,
+async updateVendor(
+  body: UpdateVendorRequest,
   vendorId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateVendorResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateVendorResponse>>
 ```
 
 ## Parameters

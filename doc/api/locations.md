@@ -22,7 +22,9 @@ Provides details about all of the seller's [locations](https://developer.squareu
 including those with an inactive status. Locations are listed alphabetically by `name`.
 
 ```ts
-async listLocations(requestOptions?: RequestOptions): Promise<ApiResponse<ListLocationsResponse>>
+async listLocations(
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListLocationsResponse>>
 ```
 
 ## Parameters
@@ -62,8 +64,10 @@ are visible to the seller for their own management. Therefore, ensure that
 each location has a sensible and unique name.
 
 ```ts
-async createLocation(  body: CreateLocationRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateLocationResponse>>
+async createLocation(
+  body: CreateLocationRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateLocationResponse>>
 ```
 
 ## Parameters
@@ -112,8 +116,10 @@ Retrieves details of a single location. Specify "main"
 as the location ID to retrieve details of the [main location](https://developer.squareup.com/docs/locations-api#about-the-main-location).
 
 ```ts
-async retrieveLocation(  locationId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveLocationResponse>>
+async retrieveLocation(
+  locationId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveLocationResponse>>
 ```
 
 ## Parameters
@@ -150,9 +156,11 @@ try {
 Updates a [location](https://developer.squareup.com/docs/locations-api).
 
 ```ts
-async updateLocation(  locationId: string,
+async updateLocation(
+  locationId: string,
   body: UpdateLocationRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateLocationResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateLocationResponse>>
 ```
 
 ## Parameters

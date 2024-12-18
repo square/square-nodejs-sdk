@@ -3,7 +3,10 @@ import { WageSetting, wageSettingSchema } from './wageSetting';
 
 /** Represents an update request for the `WageSetting` object describing a `TeamMember`. */
 export interface UpdateWageSettingRequest {
-  /** An object representing a team member's wage information. */
+  /**
+   * Represents information about the overtime exemption status, job assignments, and compensation
+   * for a [team member]($m/TeamMember).
+   */
   wageSetting: WageSetting;
 }
 

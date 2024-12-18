@@ -34,9 +34,11 @@ NOTE: The Checkout API has been updated with new features.
 For more information, see [Checkout API highlights](https://developer.squareup.com/docs/checkout-api#checkout-api-highlights).
 
 ```ts
-async createCheckout(  locationId: string,
+async createCheckout(
+  locationId: string,
   body: CreateCheckoutRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateCheckoutResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateCheckoutResponse>>
 ```
 
 ## Parameters
@@ -168,8 +170,10 @@ try {
 Retrieves the location-level settings for a Square-hosted checkout page.
 
 ```ts
-async retrieveLocationSettings(  locationId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveLocationSettingsResponse>>
+async retrieveLocationSettings(
+  locationId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveLocationSettingsResponse>>
 ```
 
 ## Parameters
@@ -206,9 +210,11 @@ try {
 Updates the location-level settings for a Square-hosted checkout page.
 
 ```ts
-async updateLocationSettings(  locationId: string,
+async updateLocationSettings(
+  locationId: string,
   body: UpdateLocationSettingsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateLocationSettingsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateLocationSettingsResponse>>
 ```
 
 ## Parameters
@@ -229,7 +235,8 @@ requestOptions?: RequestOptions): Promise<ApiResponse<UpdateLocationSettingsResp
 const locationId = 'location_id4';
 
 const body: UpdateLocationSettingsRequest = {
-  locationSettings: {},
+  locationSettings: {
+  },
 };
 
 try {
@@ -253,7 +260,9 @@ try {
 Retrieves the merchant-level settings for a Square-hosted checkout page.
 
 ```ts
-async retrieveMerchantSettings(requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveMerchantSettingsResponse>>
+async retrieveMerchantSettings(
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveMerchantSettingsResponse>>
 ```
 
 ## Parameters
@@ -287,8 +296,10 @@ try {
 Updates the merchant-level settings for a Square-hosted checkout page.
 
 ```ts
-async updateMerchantSettings(  body: UpdateMerchantSettingsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateMerchantSettingsResponse>>
+async updateMerchantSettings(
+  body: UpdateMerchantSettingsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateMerchantSettingsResponse>>
 ```
 
 ## Parameters
@@ -306,7 +317,8 @@ requestOptions?: RequestOptions): Promise<ApiResponse<UpdateMerchantSettingsResp
 
 ```ts
 const body: UpdateMerchantSettingsRequest = {
-  merchantSettings: {},
+  merchantSettings: {
+  },
 };
 
 try {
@@ -327,9 +339,11 @@ try {
 Lists all payment links.
 
 ```ts
-async listPaymentLinks(  cursor?: string,
+async listPaymentLinks(
+  cursor?: string,
   limit?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListPaymentLinksResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListPaymentLinksResponse>>
 ```
 
 ## Parameters
@@ -365,8 +379,10 @@ try {
 Creates a Square-hosted checkout page. Applications can share the resulting payment link with their buyer to pay for goods and services.
 
 ```ts
-async createPaymentLink(  body: CreatePaymentLinkRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreatePaymentLinkResponse>>
+async createPaymentLink(
+  body: CreatePaymentLinkRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreatePaymentLinkResponse>>
 ```
 
 ## Parameters
@@ -413,8 +429,10 @@ try {
 Deletes a payment link.
 
 ```ts
-async deletePaymentLink(  id: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeletePaymentLinkResponse>>
+async deletePaymentLink(
+  id: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeletePaymentLinkResponse>>
 ```
 
 ## Parameters
@@ -451,8 +469,10 @@ try {
 Retrieves a payment link.
 
 ```ts
-async retrievePaymentLink(  id: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrievePaymentLinkResponse>>
+async retrievePaymentLink(
+  id: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrievePaymentLinkResponse>>
 ```
 
 ## Parameters
@@ -491,9 +511,11 @@ Updates a payment link. You can update the `payment_link` fields such as
 You cannot update other fields such as the `order_id`, `version`, `URL`, or `timestamp` field.
 
 ```ts
-async updatePaymentLink(  id: string,
+async updatePaymentLink(
+  id: string,
   body: UpdatePaymentLinkRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdatePaymentLinkResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdatePaymentLinkResponse>>
 ```
 
 ## Parameters

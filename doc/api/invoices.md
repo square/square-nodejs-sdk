@@ -29,10 +29,12 @@ is paginated. If truncated, the response includes a `cursor` that you
 use in a subsequent request to retrieve the next set of invoices.
 
 ```ts
-async listInvoices(  locationId: string,
+async listInvoices(
+  locationId: string,
   cursor?: string,
   limit?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListInvoicesResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListInvoicesResponse>>
 ```
 
 ## Parameters
@@ -75,8 +77,10 @@ A draft invoice remains in your account and no action is taken.
 You must publish the invoice before Square can process it (send it to the customer's email address or charge the customer’s card on file).
 
 ```ts
-async createInvoice(  body: CreateInvoiceRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateInvoiceResponse>>
+async createInvoice(
+  body: CreateInvoiceRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateInvoiceResponse>>
 ```
 
 ## Parameters
@@ -168,8 +172,10 @@ The response is paginated. If truncated, the response includes a `cursor`
 that you use in a subsequent request to retrieve the next set of invoices.
 
 ```ts
-async searchInvoices(  body: SearchInvoicesRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchInvoicesResponse>>
+async searchInvoices(
+  body: SearchInvoicesRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchInvoicesResponse>>
 ```
 
 ## Parameters
@@ -223,9 +229,11 @@ associated order status changes to CANCELED. You can only delete a draft
 invoice (you cannot delete a published invoice, including one that is scheduled for processing).
 
 ```ts
-async deleteInvoice(  invoiceId: string,
+async deleteInvoice(
+  invoiceId: string,
   version?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeleteInvoiceResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteInvoiceResponse>>
 ```
 
 ## Parameters
@@ -263,8 +271,10 @@ try {
 Retrieves an invoice by invoice ID.
 
 ```ts
-async getInvoice(  invoiceId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetInvoiceResponse>>
+async getInvoice(
+  invoiceId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetInvoiceResponse>>
 ```
 
 ## Parameters
@@ -304,9 +314,11 @@ Some restrictions apply to updating invoices. For example, you cannot change the
 `order_id` or `location_id` field.
 
 ```ts
-async updateInvoice(  invoiceId: string,
+async updateInvoice(
+  invoiceId: string,
   body: UpdateInvoiceRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateInvoiceResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateInvoiceResponse>>
 ```
 
 ## Parameters
@@ -334,9 +346,12 @@ const body: UpdateInvoiceRequest = {
         uid: '2da7964f-f3d2-4f43-81e8-5aa220bf3355',
         tippingEnabled: false,
         reminders: [
-          {},
-          {},
-          {}
+          {
+          },
+          {
+          },
+          {
+          }
         ],
       }
     ],
@@ -370,10 +385,12 @@ Invoices can have up to 10 attachments with a total file size of 25 MB. Attachme
 in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
 
 ```ts
-async createInvoiceAttachment(  invoiceId: string,
+async createInvoiceAttachment(
+  invoiceId: string,
   request?: CreateInvoiceAttachmentRequest,
   imageFile?: FileWrapper,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateInvoiceAttachmentResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateInvoiceAttachmentResponse>>
 ```
 
 ## Parameters
@@ -421,9 +438,11 @@ Removes an attachment from an invoice and permanently deletes the file. Attachme
 from invoices in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
 
 ```ts
-async deleteInvoiceAttachment(  invoiceId: string,
+async deleteInvoiceAttachment(
+  invoiceId: string,
   attachmentId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeleteInvoiceAttachmentResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteInvoiceAttachmentResponse>>
 ```
 
 ## Parameters
@@ -469,9 +488,11 @@ the canceled invoice.
 You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`, `REFUNDED`, `CANCELED`, or `FAILED`.
 
 ```ts
-async cancelInvoice(  invoiceId: string,
+async cancelInvoice(
+  invoiceId: string,
   body: CancelInvoiceRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CancelInvoiceResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CancelInvoiceResponse>>
 ```
 
 ## Parameters
@@ -529,9 +550,11 @@ In addition to the required `ORDERS_WRITE` and `INVOICES_WRITE` permissions, `CU
 and `PAYMENTS_WRITE` are required when publishing invoices configured for card-on-file payments.
 
 ```ts
-async publishInvoice(  invoiceId: string,
+async publishInvoice(
+  invoiceId: string,
   body: PublishInvoiceRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<PublishInvoiceResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<PublishInvoiceResponse>>
 ```
 
 ## Parameters

@@ -11,6 +11,7 @@ import {
   TeamMemberAssignedLocations,
   teamMemberAssignedLocationsSchema,
 } from './teamMemberAssignedLocations';
+import { WageSetting, wageSettingSchema } from './wageSetting';
 
 /** A record representing an individual team member for a business. */
 export interface TeamMember {
@@ -26,7 +27,10 @@ export interface TeamMember {
   givenName?: string | null;
   /** The family name (that is, the last name) associated with the team member. */
   familyName?: string | null;
-  /** The email address associated with the team member. */
+  /**
+   * The email address associated with the team member. After accepting the invitation
+   * from Square, only the team member can change this value.
+   */
   emailAddress?: string | null;
   /**
    * The team member's phone number, in E.164 format. For example:
@@ -34,18 +38,17 @@ export interface TeamMember {
    * +551155256325 - the country code is 55 for BR
    */
   phoneNumber?: string | null;
-  /**
-   * The timestamp, in RFC 3339 format, describing when the team member was created.
-   * For example, "2018-10-04T04:00:00-07:00" or "2019-02-05T12:00:00Z".
-   */
+  /** The timestamp when the team member was created, in RFC 3339 format. */
   createdAt?: string;
-  /**
-   * The timestamp, in RFC 3339 format, describing when the team member was last updated.
-   * For example, "2018-10-04T04:00:00-07:00" or "2019-02-05T12:00:00Z".
-   */
+  /** The timestamp when the team member was last updated, in RFC 3339 format. */
   updatedAt?: string;
   /** An object that represents a team member's assignment to locations. */
   assignedLocations?: TeamMemberAssignedLocations;
+  /**
+   * Represents information about the overtime exemption status, job assignments, and compensation
+   * for a [team member]($m/TeamMember).
+   */
+  wageSetting?: WageSetting;
 }
 
 export const teamMemberSchema: Schema<TeamMember> = object({
@@ -63,4 +66,5 @@ export const teamMemberSchema: Schema<TeamMember> = object({
     'assigned_locations',
     optional(lazy(() => teamMemberAssignedLocationsSchema)),
   ],
+  wageSetting: ['wage_setting', optional(lazy(() => wageSettingSchema))],
 });

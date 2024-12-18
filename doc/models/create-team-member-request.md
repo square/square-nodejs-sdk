@@ -33,6 +33,28 @@ Represents a create request for a `TeamMember` object.
     "phone_number": "+14159283333",
     "reference_id": "reference_id_1",
     "status": "ACTIVE",
+    "wage_setting": {
+      "is_overtime_exempt": true,
+      "job_assignments": [
+        {
+          "annual_rate": {
+            "amount": 3000000,
+            "currency": "USD"
+          },
+          "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+          "pay_type": "SALARY",
+          "weekly_hours": 40
+        },
+        {
+          "hourly_rate": {
+            "amount": 2000,
+            "currency": "USD"
+          },
+          "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+          "pay_type": "HOURLY"
+        }
+      ]
+    },
     "id": "id6",
     "is_owner": false
   }

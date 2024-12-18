@@ -19,9 +19,11 @@ const customerSegmentsApi = client.customerSegmentsApi;
 Retrieves the list of customer segments of a business.
 
 ```ts
-async listCustomerSegments(  cursor?: string,
+async listCustomerSegments(
+  cursor?: string,
   limit?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListCustomerSegmentsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListCustomerSegmentsResponse>>
 ```
 
 ## Parameters
@@ -57,8 +59,10 @@ try {
 Retrieves a specific customer segment as identified by the `segment_id` value.
 
 ```ts
-async retrieveCustomerSegment(  segmentId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveCustomerSegmentResponse>>
+async retrieveCustomerSegment(
+  segmentId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveCustomerSegmentResponse>>
 ```
 
 ## Parameters

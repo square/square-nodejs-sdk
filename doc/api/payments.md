@@ -29,7 +29,8 @@ seconds to appear.
 The maximum results per page is 100.
 
 ```ts
-async listPayments(  beginTime?: string,
+async listPayments(
+  beginTime?: string,
   endTime?: string,
   sortOrder?: string,
   cursor?: string,
@@ -41,7 +42,11 @@ async listPayments(  beginTime?: string,
   isOfflinePayment?: boolean,
   offlineBeginTime?: string,
   offlineEndTime?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListPaymentsResponse>>
+  updatedAtBeginTime?: string,
+  updatedAtEndTime?: string,
+  sortField?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListPaymentsResponse>>
 ```
 
 ## Parameters
@@ -50,7 +55,7 @@ requestOptions?: RequestOptions): Promise<ApiResponse<ListPaymentsResponse>>
 |  --- | --- | --- | --- |
 | `beginTime` | `string \| undefined` | Query, Optional | Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  <br>The range is determined using the `created_at` field for each Payment.<br>Inclusive. Default: The current time minus one year. |
 | `endTime` | `string \| undefined` | Query, Optional | Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The<br>range is determined using the `created_at` field for each Payment.<br><br>Default: The current time. |
-| `sortOrder` | `string \| undefined` | Query, Optional | The order in which results are listed by `Payment.created_at`:<br><br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default). |
+| `sortOrder` | `string \| undefined` | Query, Optional | The order in which results are listed by `ListPaymentsRequest.sort_field`:<br><br>- `ASC` - Oldest to newest.<br>- `DESC` - Newest to oldest (default). |
 | `cursor` | `string \| undefined` | Query, Optional | A pagination cursor returned by a previous call to this endpoint.<br>Provide this cursor to retrieve the next set of results for the original query.<br><br>For more information, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
 | `locationId` | `string \| undefined` | Query, Optional | Limit results to the location supplied. By default, results are returned<br>for the default (main) location associated with the seller. |
 | `total` | `bigint \| undefined` | Query, Optional | The exact amount in the `total_money` for a payment. |
@@ -60,6 +65,9 @@ requestOptions?: RequestOptions): Promise<ApiResponse<ListPaymentsResponse>>
 | `isOfflinePayment` | `boolean \| undefined` | Query, Optional | Whether the payment was taken offline or not.<br>**Default**: `false` |
 | `offlineBeginTime` | `string \| undefined` | Query, Optional | Indicates the start of the time range for which to retrieve offline payments, in RFC 3339<br>format for timestamps. The range is determined using the<br>`offline_payment_details.client_created_at` field for each Payment. If set, payments without a<br>value set in `offline_payment_details.client_created_at` will not be returned.<br><br>Default: The current time. |
 | `offlineEndTime` | `string \| undefined` | Query, Optional | Indicates the end of the time range for which to retrieve offline payments, in RFC 3339<br>format for timestamps. The range is determined using the<br>`offline_payment_details.client_created_at` field for each Payment. If set, payments without a<br>value set in `offline_payment_details.client_created_at` will not be returned.<br><br>Default: The current time. |
+| `updatedAtBeginTime` | `string \| undefined` | Query, Optional | Indicates the start of the time range to retrieve payments for, in RFC 3339 format.  The<br>range is determined using the `updated_at` field for each Payment. |
+| `updatedAtEndTime` | `string \| undefined` | Query, Optional | Indicates the end of the time range to retrieve payments for, in RFC 3339 format.  The<br>range is determined using the `updated_at` field for each Payment. |
+| `sortField` | [`string \| undefined`](../../doc/models/payment-sort-field.md) | Query, Optional | The field used to sort results by. The default is `CREATED_AT`. |
 | `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
 
 ## Response Type
@@ -107,8 +115,10 @@ The endpoint creates a
 `Payment` object and returns it in the response.
 
 ```ts
-async createPayment(  body: CreatePaymentRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreatePaymentResponse>>
+async createPayment(
+  body: CreatePaymentRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreatePaymentResponse>>
 ```
 
 ## Parameters
@@ -171,8 +181,10 @@ Note that if no payment with the specified idempotency key is found, no action i
 returns successfully.
 
 ```ts
-async cancelPaymentByIdempotencyKey(  body: CancelPaymentByIdempotencyKeyRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CancelPaymentByIdempotencyKeyResponse>>
+async cancelPaymentByIdempotencyKey(
+  body: CancelPaymentByIdempotencyKeyRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CancelPaymentByIdempotencyKeyResponse>>
 ```
 
 ## Parameters
@@ -211,8 +223,10 @@ try {
 Retrieves details for a specific payment.
 
 ```ts
-async getPayment(  paymentId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetPaymentResponse>>
+async getPayment(
+  paymentId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetPaymentResponse>>
 ```
 
 ## Parameters
@@ -250,9 +264,11 @@ Updates a payment with the APPROVED status.
 You can update the `amount_money` and `tip_money` using this endpoint.
 
 ```ts
-async updatePayment(  paymentId: string,
+async updatePayment(
+  paymentId: string,
   body: UpdatePaymentRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdatePaymentResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdatePaymentResponse>>
 ```
 
 ## Parameters
@@ -309,8 +325,10 @@ Cancels (voids) a payment. You can use this endpoint to cancel a payment with
 the APPROVED `status`.
 
 ```ts
-async cancelPayment(  paymentId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<CancelPaymentResponse>>
+async cancelPayment(
+  paymentId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CancelPaymentResponse>>
 ```
 
 ## Parameters
@@ -350,9 +368,11 @@ By default, payments are set to complete immediately after they are created.
 You can use this endpoint to complete a payment with the APPROVED `status`.
 
 ```ts
-async completePayment(  paymentId: string,
+async completePayment(
+  paymentId: string,
   body: CompletePaymentRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CompletePaymentResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CompletePaymentResponse>>
 ```
 
 ## Parameters
@@ -372,7 +392,8 @@ requestOptions?: RequestOptions): Promise<ApiResponse<CompletePaymentResponse>>
 ```ts
 const paymentId = 'payment_id0';
 
-const body: CompletePaymentRequest = {};
+const body: CompletePaymentRequest = {
+};
 
 try {
   const { result, ...httpResponse } = await paymentsApi.completePayment(

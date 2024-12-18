@@ -11,7 +11,7 @@ Represents an update request for the `WageSetting` object describing a `TeamMemb
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `wageSetting` | [`WageSetting`](../../doc/models/wage-setting.md) | Required | An object representing a team member's wage information. |
+| `wageSetting` | [`WageSetting`](../../doc/models/wage-setting.md) | Required | Represents information about the overtime exemption status, job assignments, and compensation<br>for a [team member](../../doc/models/team-member.md). |
 
 ## Example (as JSON)
 
@@ -31,11 +31,12 @@ Represents an update request for the `WageSetting` object describing a `TeamMemb
         "hourly_rate": {
           "amount": 172,
           "currency": "LAK"
-        }
+        },
+        "job_id": "job_id2"
       },
       {
         "hourly_rate": {
-          "amount": 1200,
+          "amount": 2000,
           "currency": "USD"
         },
         "job_title": "Cashier",
@@ -44,7 +45,8 @@ Represents an update request for the `WageSetting` object describing a `TeamMemb
           "amount": 232,
           "currency": "NIO"
         },
-        "weekly_hours": 98
+        "weekly_hours": 98,
+        "job_id": "job_id2"
       }
     ],
     "team_member_id": "team_member_id8",

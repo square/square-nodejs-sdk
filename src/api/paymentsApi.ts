@@ -55,39 +55,46 @@ export class PaymentsApi extends BaseApi {
    *
    * The maximum results per page is 100.
    *
-   * @param beginTime          Indicates the start of the time range to retrieve payments for, in RFC 3339
-   *                                      format.   The range is determined using the `created_at` field for each
-   *                                      Payment. Inclusive. Default: The current time minus one year.
-   * @param endTime            Indicates the end of the time range to retrieve payments for, in RFC 3339
-   *                                      format.  The  range is determined using the `created_at` field for each
-   *                                      Payment.  Default: The current time.
-   * @param sortOrder          The order in which results are listed by `Payment.created_at`: - `ASC` -
-   *                                      Oldest to newest. - `DESC` - Newest to oldest (default).
-   * @param cursor             A pagination cursor returned by a previous call to this endpoint. Provide
-   *                                      this cursor to retrieve the next set of results for the original query.  For
-   *                                      more information, see [Pagination](https://developer.squareup.com/docs/build-
-   *                                      basics/common-api-patterns/pagination).
-   * @param locationId         Limit results to the location supplied. By default, results are returned for
-   *                                      the default (main) location associated with the seller.
-   * @param total              The exact amount in the `total_money` for a payment.
-   * @param last4              The last four digits of a payment card.
-   * @param cardBrand          The brand of the payment card (for example, VISA).
-   * @param limit              The maximum number of results to be returned in a single page. It is
-   *                                      possible to receive fewer results than the specified limit on a given page.
-   *                                      The default value of 100 is also the maximum allowed value. If the provided
-   *                                      value is  greater than 100, it is ignored and the default value is used
-   *                                      instead.  Default: `100`
-   * @param isOfflinePayment   Whether the payment was taken offline or not.
-   * @param offlineBeginTime   Indicates the start of the time range for which to retrieve offline payments,
-   *                                      in RFC 3339 format for timestamps. The range is determined using the
-   *                                      `offline_payment_details.client_created_at` field for each Payment. If set,
-   *                                      payments without a value set in `offline_payment_details.client_created_at`
-   *                                      will not be returned.  Default: The current time.
-   * @param offlineEndTime     Indicates the end of the time range for which to retrieve offline payments,
-   *                                      in RFC 3339 format for timestamps. The range is determined using the
-   *                                      `offline_payment_details.client_created_at` field for each Payment. If set,
-   *                                      payments without a value set in `offline_payment_details.client_created_at`
-   *                                      will not be returned.  Default: The current time.
+   * @param beginTime             Indicates the start of the time range to retrieve payments for, in RFC
+   *                                         3339 format.   The range is determined using the `created_at` field for
+   *                                         each Payment. Inclusive. Default: The current time minus one year.
+   * @param endTime               Indicates the end of the time range to retrieve payments for, in RFC 3339
+   *                                         format.  The  range is determined using the `created_at` field for each
+   *                                         Payment.  Default: The current time.
+   * @param sortOrder             The order in which results are listed by `ListPaymentsRequest.sort_field`:
+   *                                         - `ASC` - Oldest to newest. - `DESC` - Newest to oldest (default).
+   * @param cursor                A pagination cursor returned by a previous call to this endpoint. Provide
+   *                                         this cursor to retrieve the next set of results for the original query.
+   *                                         For more information, see [Pagination](https://developer.squareup.
+   *                                         com/docs/build-basics/common-api-patterns/pagination).
+   * @param locationId            Limit results to the location supplied. By default, results are returned
+   *                                         for the default (main) location associated with the seller.
+   * @param total                 The exact amount in the `total_money` for a payment.
+   * @param last4                 The last four digits of a payment card.
+   * @param cardBrand             The brand of the payment card (for example, VISA).
+   * @param limit                 The maximum number of results to be returned in a single page. It is
+   *                                         possible to receive fewer results than the specified limit on a given page.
+   *                                         The default value of 100 is also the maximum allowed value. If the
+   *                                         provided value is  greater than 100, it is ignored and the default value
+   *                                         is used instead.  Default: `100`
+   * @param isOfflinePayment      Whether the payment was taken offline or not.
+   * @param offlineBeginTime      Indicates the start of the time range for which to retrieve offline
+   *                                         payments, in RFC 3339 format for timestamps. The range is determined using
+   *                                         the `offline_payment_details.client_created_at` field for each Payment. If
+   *                                         set, payments without a value set in `offline_payment_details.
+   *                                         client_created_at` will not be returned.  Default: The current time.
+   * @param offlineEndTime        Indicates the end of the time range for which to retrieve offline
+   *                                         payments, in RFC 3339 format for timestamps. The range is determined using
+   *                                         the `offline_payment_details.client_created_at` field for each Payment. If
+   *                                         set, payments without a value set in `offline_payment_details.
+   *                                         client_created_at` will not be returned.  Default: The current time.
+   * @param updatedAtBeginTime    Indicates the start of the time range to retrieve payments for, in RFC
+   *                                         3339 format.  The range is determined using the `updated_at` field for
+   *                                         each Payment.
+   * @param updatedAtEndTime      Indicates the end of the time range to retrieve payments for, in RFC 3339
+   *                                         format.  The range is determined using the `updated_at` field for each
+   *                                         Payment.
+   * @param sortField             The field used to sort results by. The default is `CREATED_AT`.
    * @return Response from the API call
    */
   async listPayments(
@@ -103,6 +110,9 @@ export class PaymentsApi extends BaseApi {
     isOfflinePayment?: boolean,
     offlineBeginTime?: string,
     offlineEndTime?: string,
+    updatedAtBeginTime?: string,
+    updatedAtEndTime?: string,
+    sortField?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<ListPaymentsResponse>> {
     const req = this.createRequest('GET', '/v2/payments');
@@ -119,6 +129,9 @@ export class PaymentsApi extends BaseApi {
       isOfflinePayment: [isOfflinePayment, optional(boolean())],
       offlineBeginTime: [offlineBeginTime, optional(string())],
       offlineEndTime: [offlineEndTime, optional(string())],
+      updatedAtBeginTime: [updatedAtBeginTime, optional(string())],
+      updatedAtEndTime: [updatedAtEndTime, optional(string())],
+      sortField: [sortField, optional(string())],
     });
     req.query('begin_time', mapped.beginTime);
     req.query('end_time', mapped.endTime);
@@ -132,6 +145,9 @@ export class PaymentsApi extends BaseApi {
     req.query('is_offline_payment', mapped.isOfflinePayment);
     req.query('offline_begin_time', mapped.offlineBeginTime);
     req.query('offline_end_time', mapped.offlineEndTime);
+    req.query('updated_at_begin_time', mapped.updatedAtBeginTime);
+    req.query('updated_at_end_time', mapped.updatedAtEndTime);
+    req.query('sort_field', mapped.sortField);
     req.authenticate([{ global: true }]);
     return req.callAsJson(listPaymentsResponseSchema, requestOptions);
   }

@@ -22,14 +22,16 @@ You can filter payouts by location ID, status, time range, and order them in asc
 To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 
 ```ts
-async listPayouts(  locationId?: string,
+async listPayouts(
+  locationId?: string,
   status?: string,
   beginTime?: string,
   endTime?: string,
   sortOrder?: string,
   cursor?: string,
   limit?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListPayoutsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListPayoutsResponse>>
 ```
 
 ## Parameters
@@ -71,8 +73,10 @@ Retrieves details of a specific payout identified by a payout ID.
 To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 
 ```ts
-async getPayout(  payoutId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<GetPayoutResponse>>
+async getPayout(
+  payoutId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<GetPayoutResponse>>
 ```
 
 ## Parameters
@@ -110,11 +114,13 @@ Retrieves a list of all payout entries for a specific payout.
 To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 
 ```ts
-async listPayoutEntries(  payoutId: string,
+async listPayoutEntries(
+  payoutId: string,
   sortOrder?: string,
   cursor?: string,
   limit?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListPayoutEntriesResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListPayoutEntriesResponse>>
 ```
 
 ## Parameters
