@@ -19,11 +19,13 @@ const employeesApi = client.employeesApi;
 **This endpoint is deprecated.**
 
 ```ts
-async listEmployees(  locationId?: string,
+async listEmployees(
+  locationId?: string,
   status?: string,
   limit?: number,
   cursor?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListEmployeesResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListEmployeesResponse>>
 ```
 
 ## Parameters
@@ -61,8 +63,10 @@ try {
 **This endpoint is deprecated.**
 
 ```ts
-async retrieveEmployee(  id: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveEmployeeResponse>>
+async retrieveEmployee(
+  id: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveEmployeeResponse>>
 ```
 
 ## Parameters

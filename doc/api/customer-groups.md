@@ -22,9 +22,11 @@ const customerGroupsApi = client.customerGroupsApi;
 Retrieves the list of customer groups of a business.
 
 ```ts
-async listCustomerGroups(  cursor?: string,
+async listCustomerGroups(
+  cursor?: string,
   limit?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListCustomerGroupsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListCustomerGroupsResponse>>
 ```
 
 ## Parameters
@@ -62,8 +64,10 @@ Creates a new customer group for a business.
 The request must include the `name` value of the group.
 
 ```ts
-async createCustomerGroup(  body: CreateCustomerGroupRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateCustomerGroupResponse>>
+async createCustomerGroup(
+  body: CreateCustomerGroupRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateCustomerGroupResponse>>
 ```
 
 ## Parameters
@@ -104,8 +108,10 @@ try {
 Deletes a customer group as identified by the `group_id` value.
 
 ```ts
-async deleteCustomerGroup(  groupId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeleteCustomerGroupResponse>>
+async deleteCustomerGroup(
+  groupId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteCustomerGroupResponse>>
 ```
 
 ## Parameters
@@ -142,8 +148,10 @@ try {
 Retrieves a specific customer group as identified by the `group_id` value.
 
 ```ts
-async retrieveCustomerGroup(  groupId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveCustomerGroupResponse>>
+async retrieveCustomerGroup(
+  groupId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveCustomerGroupResponse>>
 ```
 
 ## Parameters
@@ -180,9 +188,11 @@ try {
 Updates a customer group as identified by the `group_id` value.
 
 ```ts
-async updateCustomerGroup(  groupId: string,
+async updateCustomerGroup(
+  groupId: string,
   body: UpdateCustomerGroupRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateCustomerGroupResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateCustomerGroupResponse>>
 ```
 
 ## Parameters

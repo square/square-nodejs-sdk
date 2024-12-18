@@ -1,5 +1,5 @@
 {
-  "version": "39.0.0",
+  "version": "39.1.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
@@ -51,10 +51,10 @@
   },
   "dependencies": {
     "@apimatic/authentication-adapters": "^0.5.4",
-    "@apimatic/axios-client-adapter": "^0.3.4",
-    "@apimatic/core": "^0.10.14",
+    "@apimatic/axios-client-adapter": "^0.3.7",
+    "@apimatic/core": "^0.10.16",
     "@apimatic/json-bigint": "^1.2.0",
-    "@apimatic/schema": "^0.7.12",
+    "@apimatic/schema": "^0.7.14",
     "@types/node": "^14.14.30"
   },
   "bugs": {

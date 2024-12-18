@@ -11,7 +11,7 @@ Represents a bulk create request for `TeamMember` objects.
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `teamMembers` | [`Record<string, CreateTeamMemberRequest>`](../../doc/models/create-team-member-request.md) | Required | The data used to create the `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`. The maximum number of create objects is 25. |
+| `teamMembers` | [`Record<string, CreateTeamMemberRequest>`](../../doc/models/create-team-member-request.md) | Required | The data used to create the `TeamMember` objects. Each key is the `idempotency_key` that maps to the `CreateTeamMemberRequest`.<br>The maximum number of create objects is 25.<br><br>If you include a team member's `wage_setting`, you must provide `job_id` for each job assignment. To get job IDs,<br>call [ListJobs](api-endpoint:Team-ListJobs). |
 
 ## Example (as JSON)
 

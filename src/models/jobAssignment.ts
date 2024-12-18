@@ -9,10 +9,13 @@ import {
 } from '../schema';
 import { Money, moneySchema } from './money';
 
-/** An object describing a job that a team member is assigned to. */
+/**
+ * Represents a job assigned to a [team member]($m/TeamMember), including the compensation the team
+ * member earns for the job. Job assignments are listed in the team member's [wage setting]($m/WageSetting).
+ */
 export interface JobAssignment {
   /** The title of the job. */
-  jobTitle: string;
+  jobTitle?: string | null;
   /** Enumerates the possible pay types that a job can be assigned. */
   payType: string;
   /**
@@ -35,12 +38,15 @@ export interface JobAssignment {
   annualRate?: Money;
   /** The planned hours per week for the job. Set if the job `PayType` is `SALARY`. */
   weeklyHours?: number | null;
+  /** The ID of the [job]($m/Job). */
+  jobId?: string | null;
 }
 
 export const jobAssignmentSchema: Schema<JobAssignment> = object({
-  jobTitle: ['job_title', string()],
+  jobTitle: ['job_title', optional(nullable(string()))],
   payType: ['pay_type', string()],
   hourlyRate: ['hourly_rate', optional(lazy(() => moneySchema))],
   annualRate: ['annual_rate', optional(lazy(() => moneySchema))],
   weeklyHours: ['weekly_hours', optional(nullable(number()))],
+  jobId: ['job_id', optional(nullable(string()))],
 });

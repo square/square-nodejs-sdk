@@ -22,12 +22,14 @@ Retrieves a list of cards owned by the account making the request.
 A max of 25 cards will be returned.
 
 ```ts
-async listCards(  cursor?: string,
+async listCards(
+  cursor?: string,
   customerId?: string,
   includeDisabled?: boolean,
   referenceId?: string,
   sortOrder?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListCardsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListCardsResponse>>
 ```
 
 ## Parameters
@@ -72,8 +74,10 @@ try {
 Adds a card on file to an existing merchant.
 
 ```ts
-async createCard(  body: CreateCardRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateCardResponse>>
+async createCard(
+  body: CreateCardRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateCardResponse>>
 ```
 
 ## Parameters
@@ -126,8 +130,10 @@ try {
 Retrieves details for a specific Card.
 
 ```ts
-async retrieveCard(  cardId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveCardResponse>>
+async retrieveCard(
+  cardId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveCardResponse>>
 ```
 
 ## Parameters
@@ -165,8 +171,10 @@ Disables the card, preventing any further updates or charges.
 Disabling an already disabled card is allowed but has no effect.
 
 ```ts
-async disableCard(  cardId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DisableCardResponse>>
+async disableCard(
+  cardId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DisableCardResponse>>
 ```
 
 ## Parameters

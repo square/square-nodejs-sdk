@@ -31,8 +31,10 @@ To pay for a created order, see
 You can modify open orders using the [UpdateOrder](../../doc/api/orders.md#update-order) endpoint.
 
 ```ts
-async createOrder(  body: CreateOrderRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateOrderResponse>>
+async createOrder(
+  body: CreateOrderRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateOrderResponse>>
 ```
 
 ## Parameters
@@ -131,8 +133,10 @@ Retrieves a set of [orders](../../doc/models/order.md) by their IDs.
 If a given order ID does not exist, the ID is ignored instead of generating an error.
 
 ```ts
-async batchRetrieveOrders(  body: BatchRetrieveOrdersRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BatchRetrieveOrdersResponse>>
+async batchRetrieveOrders(
+  body: BatchRetrieveOrdersRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BatchRetrieveOrdersResponse>>
 ```
 
 ## Parameters
@@ -175,8 +179,10 @@ try {
 Enables applications to preview order pricing without creating an order.
 
 ```ts
-async calculateOrder(  body: CalculateOrderRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CalculateOrderResponse>>
+async calculateOrder(
+  body: CalculateOrderRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CalculateOrderResponse>>
 ```
 
 ## Parameters
@@ -243,8 +249,10 @@ Creates a new order, in the `DRAFT` state, by duplicating an existing order. The
 only the core fields (such as line items, taxes, and discounts) copied from the original order.
 
 ```ts
-async cloneOrder(  body: CloneOrderRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CloneOrderResponse>>
+async cloneOrder(
+  body: CloneOrderRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CloneOrderResponse>>
 ```
 
 ## Parameters
@@ -301,8 +309,10 @@ orders have a `created_at` value that reflects the time the order was created,
 not the time it was subsequently transmitted to Square.
 
 ```ts
-async searchOrders(  body: SearchOrdersRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchOrdersResponse>>
+async searchOrders(
+  body: SearchOrdersRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchOrdersResponse>>
 ```
 
 ## Parameters
@@ -365,8 +375,10 @@ try {
 Retrieves an [Order](../../doc/models/order.md) by ID.
 
 ```ts
-async retrieveOrder(  orderId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveOrderResponse>>
+async retrieveOrder(
+  orderId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveOrderResponse>>
 ```
 
 ## Parameters
@@ -417,9 +429,11 @@ To pay for an order, see
 [Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
 
 ```ts
-async updateOrder(  orderId: string,
+async updateOrder(
+  orderId: string,
   body: UpdateOrderRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateOrderResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateOrderResponse>>
 ```
 
 ## Parameters
@@ -439,7 +453,8 @@ requestOptions?: RequestOptions): Promise<ApiResponse<UpdateOrderResponse>>
 ```ts
 const orderId = 'order_id6';
 
-const body: UpdateOrderRequest = {};
+const body: UpdateOrderRequest = {
+};
 
 try {
   const { result, ...httpResponse } = await ordersApi.updateOrder(
@@ -475,9 +490,11 @@ To be used with `PayOrder`, a payment must:
   Using a delayed capture payment with `PayOrder` completes the approved payment.
 
 ```ts
-async payOrder(  orderId: string,
+async payOrder(
+  orderId: string,
   body: PayOrderRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<PayOrderResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<PayOrderResponse>>
 ```
 
 ## Parameters

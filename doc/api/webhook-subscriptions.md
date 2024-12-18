@@ -25,8 +25,10 @@ const webhookSubscriptionsApi = client.webhookSubscriptionsApi;
 Lists all webhook event types that can be subscribed to.
 
 ```ts
-async listWebhookEventTypes(  apiVersion?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListWebhookEventTypesResponse>>
+async listWebhookEventTypes(
+  apiVersion?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListWebhookEventTypesResponse>>
 ```
 
 ## Parameters
@@ -61,11 +63,13 @@ try {
 Lists all webhook subscriptions owned by your application.
 
 ```ts
-async listWebhookSubscriptions(  cursor?: string,
+async listWebhookSubscriptions(
+  cursor?: string,
   includeDisabled?: boolean,
   sortOrder?: string,
   limit?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListWebhookSubscriptionsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListWebhookSubscriptionsResponse>>
 ```
 
 ## Parameters
@@ -108,8 +112,10 @@ try {
 Creates a webhook subscription.
 
 ```ts
-async createWebhookSubscription(  body: CreateWebhookSubscriptionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateWebhookSubscriptionResponse>>
+async createWebhookSubscription(
+  body: CreateWebhookSubscriptionRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateWebhookSubscriptionResponse>>
 ```
 
 ## Parameters
@@ -157,8 +163,10 @@ try {
 Deletes a webhook subscription.
 
 ```ts
-async deleteWebhookSubscription(  subscriptionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeleteWebhookSubscriptionResponse>>
+async deleteWebhookSubscription(
+  subscriptionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteWebhookSubscriptionResponse>>
 ```
 
 ## Parameters
@@ -195,8 +203,10 @@ try {
 Retrieves a webhook subscription identified by its ID.
 
 ```ts
-async retrieveWebhookSubscription(  subscriptionId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveWebhookSubscriptionResponse>>
+async retrieveWebhookSubscription(
+  subscriptionId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveWebhookSubscriptionResponse>>
 ```
 
 ## Parameters
@@ -233,9 +243,11 @@ try {
 Updates a webhook subscription.
 
 ```ts
-async updateWebhookSubscription(  subscriptionId: string,
+async updateWebhookSubscription(
+  subscriptionId: string,
   body: UpdateWebhookSubscriptionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateWebhookSubscriptionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateWebhookSubscriptionResponse>>
 ```
 
 ## Parameters
@@ -283,9 +295,11 @@ try {
 Updates a webhook subscription by replacing the existing signature key with a new one.
 
 ```ts
-async updateWebhookSubscriptionSignatureKey(  subscriptionId: string,
+async updateWebhookSubscriptionSignatureKey(
+  subscriptionId: string,
   body: UpdateWebhookSubscriptionSignatureKeyRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateWebhookSubscriptionSignatureKeyResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateWebhookSubscriptionSignatureKeyResponse>>
 ```
 
 ## Parameters
@@ -330,9 +344,11 @@ try {
 Tests a webhook subscription by sending a test event to the notification URL.
 
 ```ts
-async testWebhookSubscription(  subscriptionId: string,
+async testWebhookSubscription(
+  subscriptionId: string,
   body: TestWebhookSubscriptionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<TestWebhookSubscriptionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<TestWebhookSubscriptionResponse>>
 ```
 
 ## Parameters

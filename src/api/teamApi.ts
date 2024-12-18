@@ -16,6 +16,14 @@ import {
   bulkUpdateTeamMembersResponseSchema,
 } from '../models/bulkUpdateTeamMembersResponse';
 import {
+  CreateJobRequest,
+  createJobRequestSchema,
+} from '../models/createJobRequest';
+import {
+  CreateJobResponse,
+  createJobResponseSchema,
+} from '../models/createJobResponse';
+import {
   CreateTeamMemberRequest,
   createTeamMemberRequestSchema,
 } from '../models/createTeamMemberRequest';
@@ -23,6 +31,14 @@ import {
   CreateTeamMemberResponse,
   createTeamMemberResponseSchema,
 } from '../models/createTeamMemberResponse';
+import {
+  ListJobsResponse,
+  listJobsResponseSchema,
+} from '../models/listJobsResponse';
+import {
+  RetrieveJobResponse,
+  retrieveJobResponseSchema,
+} from '../models/retrieveJobResponse';
 import {
   RetrieveTeamMemberResponse,
   retrieveTeamMemberResponseSchema,
@@ -40,6 +56,14 @@ import {
   searchTeamMembersResponseSchema,
 } from '../models/searchTeamMembersResponse';
 import {
+  UpdateJobRequest,
+  updateJobRequestSchema,
+} from '../models/updateJobRequest';
+import {
+  UpdateJobResponse,
+  updateJobResponseSchema,
+} from '../models/updateJobResponse';
+import {
   UpdateTeamMemberRequest,
   updateTeamMemberRequestSchema,
 } from '../models/updateTeamMemberRequest';
@@ -55,7 +79,7 @@ import {
   UpdateWageSettingResponse,
   updateWageSettingResponseSchema,
 } from '../models/updateWageSettingResponse';
-import { string } from '../schema';
+import { optional, string } from '../schema';
 import { BaseApi } from './baseApi';
 
 export class TeamApi extends BaseApi {
@@ -148,10 +172,93 @@ export class TeamApi extends BaseApi {
   }
 
   /**
+   * Lists jobs in a seller account. Results are sorted by title in ascending order.
+   *
+   * @param cursor The pagination cursor returned by the previous call to this endpoint. Provide this cursor
+   *                         to retrieve the next page of results for your original request. For more information, see
+   *                         [Pagination](https://developer.squareup.com/docs/build-basics/common-api-
+   *                         patterns/pagination).
+   * @return Response from the API call
+   */
+  async listJobs(
+    cursor?: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<ListJobsResponse>> {
+    const req = this.createRequest('GET', '/v2/team-members/jobs');
+    const mapped = req.prepareArgs({ cursor: [cursor, optional(string())] });
+    req.query('cursor', mapped.cursor);
+    req.authenticate([{ global: true }]);
+    return req.callAsJson(listJobsResponseSchema, requestOptions);
+  }
+
+  /**
+   * Creates a job in a seller account. A job defines a title and tip eligibility. Note that
+   * compensation is defined in a [job assignment]($m/JobAssignment) in a team member's wage setting.
+   *
+   * @param body         An object containing the fields to POST for the request.  See the
+   *                                                corresponding object definition for field details.
+   * @return Response from the API call
+   */
+  async createJob(
+    body: CreateJobRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<CreateJobResponse>> {
+    const req = this.createRequest('POST', '/v2/team-members/jobs');
+    const mapped = req.prepareArgs({ body: [body, createJobRequestSchema] });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    req.authenticate([{ global: true }]);
+    return req.callAsJson(createJobResponseSchema, requestOptions);
+  }
+
+  /**
+   * Retrieves a specified job.
+   *
+   * @param jobId  The ID of the job to retrieve.
+   * @return Response from the API call
+   */
+  async retrieveJob(
+    jobId: string,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<RetrieveJobResponse>> {
+    const req = this.createRequest('GET');
+    const mapped = req.prepareArgs({ jobId: [jobId, string()] });
+    req.appendTemplatePath`/v2/team-members/jobs/${mapped.jobId}`;
+    req.authenticate([{ global: true }]);
+    return req.callAsJson(retrieveJobResponseSchema, requestOptions);
+  }
+
+  /**
+   * Updates the title or tip eligibility of a job. Changes to the title propagate to all
+   * `JobAssignment`, `Shift`, and `TeamMemberWage` objects that reference the job ID. Changes to
+   * tip eligibility propagate to all `TeamMemberWage` objects that reference the job ID.
+   *
+   * @param jobId        The ID of the job to update.
+   * @param body         An object containing the fields to POST for the request.  See the
+   *                                                corresponding object definition for field details.
+   * @return Response from the API call
+   */
+  async updateJob(
+    jobId: string,
+    body: UpdateJobRequest,
+    requestOptions?: RequestOptions
+  ): Promise<ApiResponse<UpdateJobResponse>> {
+    const req = this.createRequest('PUT');
+    const mapped = req.prepareArgs({
+      jobId: [jobId, string()],
+      body: [body, updateJobRequestSchema],
+    });
+    req.header('Content-Type', 'application/json');
+    req.json(mapped.body);
+    req.appendTemplatePath`/v2/team-members/jobs/${mapped.jobId}`;
+    req.authenticate([{ global: true }]);
+    return req.callAsJson(updateJobResponseSchema, requestOptions);
+  }
+
+  /**
    * Returns a paginated list of `TeamMember` objects for a business.
-   * The list can be filtered by the following:
-   * - location IDs
-   * - `status`
+   * The list can be filtered by location IDs, `ACTIVE` or `INACTIVE` status, or whether
+   * the team member is the Square account owner.
    *
    * @param body         An object containing the fields to POST for the request.
    *                                                        See the corresponding object definition for field details.
@@ -219,9 +326,13 @@ export class TeamApi extends BaseApi {
 
   /**
    * Retrieves a `WageSetting` object for a team member specified
-   * by `TeamMember.id`.
-   * Learn about [Troubleshooting the Team API](https://developer.squareup.
+   * by `TeamMember.id`. For more information, see
+   * [Troubleshooting the Team API](https://developer.squareup.
    * com/docs/team/troubleshooting#retrievewagesetting).
+   *
+   * Square recommends using [RetrieveTeamMember]($e/Team/RetrieveTeamMember) or
+   * [SearchTeamMembers]($e/Team/SearchTeamMembers)
+   * to get this information directly from the `TeamMember.wage_setting` field.
    *
    * @param teamMemberId   The ID of the team member for which to retrieve the wage setting.
    * @return Response from the API call
@@ -239,11 +350,15 @@ export class TeamApi extends BaseApi {
 
   /**
    * Creates or updates a `WageSetting` object. The object is created if a
-   * `WageSetting` with the specified `team_member_id` does not exist. Otherwise,
+   * `WageSetting` with the specified `team_member_id` doesn't exist. Otherwise,
    * it fully replaces the `WageSetting` object for the team member.
-   * The `WageSetting` is returned on a successful update.
-   * Learn about [Troubleshooting the Team API](https://developer.squareup.
-   * com/docs/team/troubleshooting#create-or-update-a-wage-setting).
+   * The `WageSetting` is returned on a successful update. For more information, see
+   * [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#create-or-
+   * update-a-wage-setting).
+   *
+   * Square recommends using [CreateTeamMember]($e/Team/CreateTeamMember) or
+   * [UpdateTeamMember]($e/Team/UpdateTeamMember)
+   * to manage the `TeamMember.wage_setting` field directly.
    *
    * @param teamMemberId   The ID of the team member for which to update the
    *                                                          `WageSetting` object.

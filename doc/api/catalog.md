@@ -44,8 +44,10 @@ While one (batch or non-batch) delete request is being processed, other (batched
 delete requests are rejected with the `429` error code.
 
 ```ts
-async batchDeleteCatalogObjects(  body: BatchDeleteCatalogObjectsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BatchDeleteCatalogObjectsResponse>>
+async batchDeleteCatalogObjects(
+  body: BatchDeleteCatalogObjectsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BatchDeleteCatalogObjectsResponse>>
 ```
 
 ## Parameters
@@ -92,8 +94,10 @@ its [CatalogModifierList](../../doc/models/catalog-modifier-list.md) objects, an
 any [CatalogTax](../../doc/models/catalog-tax.md) objects that apply to it.
 
 ```ts
-async batchRetrieveCatalogObjects(  body: BatchRetrieveCatalogObjectsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BatchRetrieveCatalogObjectsResponse>>
+async batchRetrieveCatalogObjects(
+  body: BatchRetrieveCatalogObjectsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BatchRetrieveCatalogObjectsResponse>>
 ```
 
 ## Parameters
@@ -148,8 +152,10 @@ While one (batch or non-batch) update request is being processed, other (batched
 update requests are rejected with the `429` error code.
 
 ```ts
-async batchUpsertCatalogObjects(  body: BatchUpsertCatalogObjectsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BatchUpsertCatalogObjectsResponse>>
+async batchUpsertCatalogObjects(
+  body: BatchUpsertCatalogObjectsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BatchUpsertCatalogObjectsResponse>>
 ```
 
 ## Parameters
@@ -300,9 +306,11 @@ This `CreateCatalogImage` endpoint accepts HTTP multipart/form-data requests wit
 JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
 
 ```ts
-async createCatalogImage(  request?: CreateCatalogImageRequest,
+async createCatalogImage(
+  request?: CreateCatalogImageRequest,
   imageFile?: FileWrapper,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateCatalogImageResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateCatalogImageResponse>>
 ```
 
 ## Parameters
@@ -353,10 +361,12 @@ This `UpdateCatalogImage` endpoint accepts HTTP multipart/form-data requests wit
 JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
 
 ```ts
-async updateCatalogImage(  imageId: string,
+async updateCatalogImage(
+  imageId: string,
   request?: UpdateCatalogImageRequest,
   imageFile?: FileWrapper,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateCatalogImageResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateCatalogImageResponse>>
 ```
 
 ## Parameters
@@ -403,7 +413,9 @@ Retrieves information about the Square Catalog API, such as batch size
 limits that can be used by the `BatchUpsertCatalogObjects` endpoint.
 
 ```ts
-async catalogInfo(requestOptions?: RequestOptions): Promise<ApiResponse<CatalogInfoResponse>>
+async catalogInfo(
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CatalogInfoResponse>>
 ```
 
 ## Parameters
@@ -444,10 +456,12 @@ deleted catalog items, use [SearchCatalogObjects](../../doc/api/catalog.md#searc
 and set the `include_deleted_objects` attribute value to `true`.
 
 ```ts
-async listCatalog(  cursor?: string,
+async listCatalog(
+  cursor?: string,
   types?: string,
   catalogVersion?: bigint,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListCatalogResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListCatalogResponse>>
 ```
 
 ## Parameters
@@ -488,8 +502,10 @@ While one (batch or non-batch) update request is being processed, other (batched
 update requests are rejected with the `429` error code.
 
 ```ts
-async upsertCatalogObject(  body: UpsertCatalogObjectRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpsertCatalogObjectResponse>>
+async upsertCatalogObject(
+  body: UpsertCatalogObjectRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpsertCatalogObjectResponse>>
 ```
 
 ## Parameters
@@ -570,8 +586,10 @@ While one (batch or non-batch) delete request is being processed, other (batched
 delete requests are rejected with the `429` error code.
 
 ```ts
-async deleteCatalogObject(  objectId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeleteCatalogObjectResponse>>
+async deleteCatalogObject(
+  objectId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteCatalogObjectResponse>>
 ```
 
 ## Parameters
@@ -614,11 +632,13 @@ children, references to its
 any [CatalogTax](../../doc/models/catalog-tax.md) objects that apply to it.
 
 ```ts
-async retrieveCatalogObject(  objectId: string,
+async retrieveCatalogObject(
+  objectId: string,
   includeRelatedObjects?: boolean,
   catalogVersion?: bigint,
   includeCategoryPathToRoot?: boolean,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveCatalogObjectResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveCatalogObjectResponse>>
 ```
 
 ## Parameters
@@ -676,8 +696,10 @@ endpoint in the following aspects:
 - The both endpoints have different call conventions, including the query filter formats.
 
 ```ts
-async searchCatalogObjects(  body: SearchCatalogObjectsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchCatalogObjectsResponse>>
+async searchCatalogObjects(
+  body: SearchCatalogObjectsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchCatalogObjectsResponse>>
 ```
 
 ## Parameters
@@ -734,8 +756,10 @@ endpoint in the following aspects:
 - The both endpoints use different call conventions, including the query filter formats.
 
 ```ts
-async searchCatalogItems(  body: SearchCatalogItemsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchCatalogItemsResponse>>
+async searchCatalogItems(
+  body: SearchCatalogItemsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchCatalogItemsResponse>>
 ```
 
 ## Parameters
@@ -811,8 +835,10 @@ that apply to the targeted [CatalogItem](../../doc/models/catalog-item.md) witho
 to perform an upsert on the entire item.
 
 ```ts
-async updateItemModifierLists(  body: UpdateItemModifierListsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateItemModifierListsResponse>>
+async updateItemModifierLists(
+  body: UpdateItemModifierListsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateItemModifierListsResponse>>
 ```
 
 ## Parameters
@@ -863,8 +889,10 @@ targeted [CatalogItem](../../doc/models/catalog-item.md) without having to perfo
 upsert on the entire item.
 
 ```ts
-async updateItemTaxes(  body: UpdateItemTaxesRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateItemTaxesResponse>>
+async updateItemTaxes(
+  body: UpdateItemTaxesRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateItemTaxesResponse>>
 ```
 
 ## Parameters

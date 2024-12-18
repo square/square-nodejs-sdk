@@ -35,8 +35,10 @@ const loyaltyApi = client.loyaltyApi;
 Creates a loyalty account. To create a loyalty account, you must provide the `program_id` and a `mapping` with the `phone_number` of the buyer.
 
 ```ts
-async createLoyaltyAccount(  body: CreateLoyaltyAccountRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateLoyaltyAccountResponse>>
+async createLoyaltyAccount(
+  body: CreateLoyaltyAccountRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateLoyaltyAccountResponse>>
 ```
 
 ## Parameters
@@ -85,8 +87,10 @@ You can search for a loyalty account using the phone number or customer ID assoc
 Search results are sorted by `created_at` in ascending order.
 
 ```ts
-async searchLoyaltyAccounts(  body: SearchLoyaltyAccountsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchLoyaltyAccountsResponse>>
+async searchLoyaltyAccounts(
+  body: SearchLoyaltyAccountsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchLoyaltyAccountsResponse>>
 ```
 
 ## Parameters
@@ -132,8 +136,10 @@ try {
 Retrieves a loyalty account.
 
 ```ts
-async retrieveLoyaltyAccount(  accountId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveLoyaltyAccountResponse>>
+async retrieveLoyaltyAccount(
+  accountId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveLoyaltyAccountResponse>>
 ```
 
 ## Parameters
@@ -183,9 +189,11 @@ Adds points earned from a purchase to a [loyalty account](../../doc/models/loyal
   [Calculating promotion points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
 
 ```ts
-async accumulateLoyaltyPoints(  accountId: string,
+async accumulateLoyaltyPoints(
+  accountId: string,
   body: AccumulateLoyaltyPointsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<AccumulateLoyaltyPointsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<AccumulateLoyaltyPointsResponse>>
 ```
 
 ## Parameters
@@ -238,9 +246,11 @@ Use this endpoint only when you need to manually adjust points. Otherwise, in yo
 to add points when a buyer pays for the purchase.
 
 ```ts
-async adjustLoyaltyPoints(  accountId: string,
+async adjustLoyaltyPoints(
+  accountId: string,
   body: AdjustLoyaltyPointsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<AdjustLoyaltyPointsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<AdjustLoyaltyPointsResponse>>
 ```
 
 ## Parameters
@@ -296,8 +306,10 @@ recorded in the ledger. Using this endpoint, you can search the ledger for event
 Search results are sorted by `created_at` in descending order.
 
 ```ts
-async searchLoyaltyEvents(  body: SearchLoyaltyEventsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchLoyaltyEventsResponse>>
+async searchLoyaltyEvents(
+  body: SearchLoyaltyEventsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchLoyaltyEventsResponse>>
 ```
 
 ## Parameters
@@ -348,7 +360,9 @@ Loyalty programs define how buyers can earn points and redeem points for rewards
 Replaced with [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) when used with the keyword `main`.
 
 ```ts
-async listLoyaltyPrograms(requestOptions?: RequestOptions): Promise<ApiResponse<ListLoyaltyProgramsResponse>>
+async listLoyaltyPrograms(
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListLoyaltyProgramsResponse>>
 ```
 
 ## Parameters
@@ -384,8 +398,10 @@ Retrieves the loyalty program in a seller's account, specified by the program ID
 Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
 
 ```ts
-async retrieveLoyaltyProgram(  programId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveLoyaltyProgramResponse>>
+async retrieveLoyaltyProgram(
+  programId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveLoyaltyProgramResponse>>
 ```
 
 ## Parameters
@@ -436,9 +452,11 @@ to display the points to the buyer.
   [Calculating promotion points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
 
 ```ts
-async calculateLoyaltyPoints(  programId: string,
+async calculateLoyaltyPoints(
+  programId: string,
   body: CalculateLoyaltyPointsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CalculateLoyaltyPointsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CalculateLoyaltyPointsResponse>>
 ```
 
 ## Parameters
@@ -485,11 +503,13 @@ Lists the loyalty promotions associated with a [loyalty program](../../doc/model
 Results are sorted by the `created_at` date in descending order (newest to oldest).
 
 ```ts
-async listLoyaltyPromotions(  programId: string,
+async listLoyaltyPromotions(
+  programId: string,
   status?: string,
   cursor?: string,
   limit?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListLoyaltyPromotionsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListLoyaltyPromotionsResponse>>
 ```
 
 ## Parameters
@@ -534,9 +554,11 @@ This endpoint sets the loyalty promotion to the `ACTIVE` or `SCHEDULED` status, 
 `ACTIVE` or `SCHEDULED` status.
 
 ```ts
-async createLoyaltyPromotion(  programId: string,
+async createLoyaltyPromotion(
+  programId: string,
   body: CreateLoyaltyPromotionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateLoyaltyPromotionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateLoyaltyPromotionResponse>>
 ```
 
 ## Parameters
@@ -606,9 +628,11 @@ try {
 Retrieves a loyalty promotion.
 
 ```ts
-async retrieveLoyaltyPromotion(  promotionId: string,
+async retrieveLoyaltyPromotion(
+  promotionId: string,
   programId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveLoyaltyPromotionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveLoyaltyPromotionResponse>>
 ```
 
 ## Parameters
@@ -656,9 +680,11 @@ you create a new one.
 This endpoint sets the loyalty promotion to the `CANCELED` state
 
 ```ts
-async cancelLoyaltyPromotion(  promotionId: string,
+async cancelLoyaltyPromotion(
+  promotionId: string,
   programId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<CancelLoyaltyPromotionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CancelLoyaltyPromotionResponse>>
 ```
 
 ## Parameters
@@ -708,8 +734,10 @@ After a reward is created, the points are locked and
 not available for the buyer to redeem another reward.
 
 ```ts
-async createLoyaltyReward(  body: CreateLoyaltyRewardRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateLoyaltyRewardResponse>>
+async createLoyaltyReward(
+  body: CreateLoyaltyRewardRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateLoyaltyRewardResponse>>
 ```
 
 ## Parameters
@@ -759,8 +787,10 @@ If you know a reward ID, use the
 Search results are sorted by `updated_at` in descending order.
 
 ```ts
-async searchLoyaltyRewards(  body: SearchLoyaltyRewardsRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchLoyaltyRewardsResponse>>
+async searchLoyaltyRewards(
+  body: SearchLoyaltyRewardsRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchLoyaltyRewardsResponse>>
 ```
 
 ## Parameters
@@ -810,8 +840,10 @@ Deletes a loyalty reward by doing the following:
 You cannot delete a reward that has reached the terminal state (REDEEMED).
 
 ```ts
-async deleteLoyaltyReward(  rewardId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeleteLoyaltyRewardResponse>>
+async deleteLoyaltyReward(
+  rewardId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteLoyaltyRewardResponse>>
 ```
 
 ## Parameters
@@ -848,8 +880,10 @@ try {
 Retrieves a loyalty reward.
 
 ```ts
-async retrieveLoyaltyReward(  rewardId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveLoyaltyRewardResponse>>
+async retrieveLoyaltyReward(
+  rewardId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveLoyaltyRewardResponse>>
 ```
 
 ## Parameters
@@ -896,9 +930,11 @@ In other words, points used for the reward cannot be returned
 to the account.
 
 ```ts
-async redeemLoyaltyReward(  rewardId: string,
+async redeemLoyaltyReward(
+  rewardId: string,
   body: RedeemLoyaltyRewardRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<RedeemLoyaltyRewardResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RedeemLoyaltyRewardResponse>>
 ```
 
 ## Parameters

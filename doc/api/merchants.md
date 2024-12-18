@@ -28,8 +28,10 @@ If you know the merchant ID, you can also use the [RetrieveMerchant](../../doc/a
 endpoint to retrieve the merchant information.
 
 ```ts
-async listMerchants(  cursor?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListMerchantsResponse>>
+async listMerchants(
+  cursor?: number,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListMerchantsResponse>>
 ```
 
 ## Parameters
@@ -64,8 +66,10 @@ try {
 Retrieves the `Merchant` object for the given `merchant_id`.
 
 ```ts
-async retrieveMerchant(  merchantId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveMerchantResponse>>
+async retrieveMerchant(
+  merchantId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveMerchantResponse>>
 ```
 
 ## Parameters

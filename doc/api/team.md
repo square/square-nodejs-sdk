@@ -13,6 +13,10 @@ const teamApi = client.teamApi;
 * [Create Team Member](../../doc/api/team.md#create-team-member)
 * [Bulk Create Team Members](../../doc/api/team.md#bulk-create-team-members)
 * [Bulk Update Team Members](../../doc/api/team.md#bulk-update-team-members)
+* [List Jobs](../../doc/api/team.md#list-jobs)
+* [Create Job](../../doc/api/team.md#create-job)
+* [Retrieve Job](../../doc/api/team.md#retrieve-job)
+* [Update Job](../../doc/api/team.md#update-job)
 * [Search Team Members](../../doc/api/team.md#search-team-members)
 * [Retrieve Team Member](../../doc/api/team.md#retrieve-team-member)
 * [Update Team Member](../../doc/api/team.md#update-team-member)
@@ -31,8 +35,10 @@ You must provide the following values in your request to this endpoint:
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#createteammember).
 
 ```ts
-async createTeamMember(  body: CreateTeamMemberRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateTeamMemberResponse>>
+async createTeamMember(
+  body: CreateTeamMemberRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateTeamMemberResponse>>
 ```
 
 ## Parameters
@@ -65,6 +71,28 @@ const body: CreateTeamMemberRequest = {
         'GA2Y9HSJ8KRYT'
       ],
     },
+    wageSetting: {
+      jobAssignments: [
+        {
+          payType: 'SALARY',
+          annualRate: {
+            amount: BigInt(3000000),
+            currency: 'USD',
+          },
+          weeklyHours: 40,
+          jobId: 'FjS8x95cqHiMenw4f1NAUH4P',
+        },
+        {
+          payType: 'HOURLY',
+          hourlyRate: {
+            amount: BigInt(2000),
+            currency: 'USD',
+          },
+          jobId: 'VDNpRv8da51NU8qZFC5zDWpF',
+        }
+      ],
+      isOvertimeExempt: true,
+    },
   },
 };
 
@@ -91,8 +119,10 @@ contains explicit error information for the failed create.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#bulk-create-team-members).
 
 ```ts
-async bulkCreateTeamMembers(  body: BulkCreateTeamMembersRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BulkCreateTeamMembersResponse>>
+async bulkCreateTeamMembers(
+  body: BulkCreateTeamMembersRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkCreateTeamMembersResponse>>
 ```
 
 ## Parameters
@@ -164,8 +194,10 @@ contains explicit error information for the failed update.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#bulk-update-team-members).
 
 ```ts
-async bulkUpdateTeamMembers(  body: BulkUpdateTeamMembersRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BulkUpdateTeamMembersResponse>>
+async bulkUpdateTeamMembers(
+  body: BulkUpdateTeamMembersRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkUpdateTeamMembersResponse>>
 ```
 
 ## Parameters
@@ -230,17 +262,196 @@ try {
 ```
 
 
+# List Jobs
+
+Lists jobs in a seller account. Results are sorted by title in ascending order.
+
+```ts
+async listJobs(
+  cursor?: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListJobsResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `cursor` | `string \| undefined` | Query, Optional | The pagination cursor returned by the previous call to this endpoint. Provide this<br>cursor to retrieve the next page of results for your original request. For more information,<br>see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination). |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`ListJobsResponse`](../../doc/models/list-jobs-response.md)
+
+## Example Usage
+
+```ts
+try {
+  const { result, ...httpResponse } = await teamApi.listJobs();
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Create Job
+
+Creates a job in a seller account. A job defines a title and tip eligibility. Note that
+compensation is defined in a [job assignment](../../doc/models/job-assignment.md) in a team member's wage setting.
+
+```ts
+async createJob(
+  body: CreateJobRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateJobResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreateJobRequest`](../../doc/models/create-job-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`CreateJobResponse`](../../doc/models/create-job-response.md)
+
+## Example Usage
+
+```ts
+const body: CreateJobRequest = {
+  job: {
+    title: 'Cashier',
+    isTipEligible: true,
+  },
+  idempotencyKey: 'idempotency-key-0',
+};
+
+try {
+  const { result, ...httpResponse } = await teamApi.createJob(body);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Retrieve Job
+
+Retrieves a specified job.
+
+```ts
+async retrieveJob(
+  jobId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveJobResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `jobId` | `string` | Template, Required | The ID of the job to retrieve. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`RetrieveJobResponse`](../../doc/models/retrieve-job-response.md)
+
+## Example Usage
+
+```ts
+const jobId = 'job_id2';
+
+try {
+  const { result, ...httpResponse } = await teamApi.retrieveJob(jobId);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
+# Update Job
+
+Updates the title or tip eligibility of a job. Changes to the title propagate to all
+`JobAssignment`, `Shift`, and `TeamMemberWage` objects that reference the job ID. Changes to
+tip eligibility propagate to all `TeamMemberWage` objects that reference the job ID.
+
+```ts
+async updateJob(
+  jobId: string,
+  body: UpdateJobRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateJobResponse>>
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `jobId` | `string` | Template, Required | The ID of the job to update. |
+| `body` | [`UpdateJobRequest`](../../doc/models/update-job-request.md) | Body, Required | An object containing the fields to POST for the request.<br><br>See the corresponding object definition for field details. |
+| `requestOptions` | `RequestOptions \| undefined` | Optional | Pass additional request options. |
+
+## Response Type
+
+[`UpdateJobResponse`](../../doc/models/update-job-response.md)
+
+## Example Usage
+
+```ts
+const jobId = 'job_id2';
+
+const body: UpdateJobRequest = {
+  job: {
+    title: 'Cashier 1',
+    isTipEligible: true,
+  },
+};
+
+try {
+  const { result, ...httpResponse } = await teamApi.updateJob(
+  jobId,
+  body
+);
+  // Get more response info...
+  // const { statusCode, headers } = httpResponse;
+} catch (error) {
+  if (error instanceof ApiError) {
+    const errors = error.result;
+    // const { statusCode, headers } = error;
+  }
+}
+```
+
+
 # Search Team Members
 
 Returns a paginated list of `TeamMember` objects for a business.
-The list can be filtered by the following:
-
-- location IDs
-- `status`
+The list can be filtered by location IDs, `ACTIVE` or `INACTIVE` status, or whether
+the team member is the Square account owner.
 
 ```ts
-async searchTeamMembers(  body: SearchTeamMembersRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<SearchTeamMembersResponse>>
+async searchTeamMembers(
+  body: SearchTeamMembersRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<SearchTeamMembersResponse>>
 ```
 
 ## Parameters
@@ -288,8 +499,10 @@ Retrieves a `TeamMember` object for the given `TeamMember.id`.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrieve-a-team-member).
 
 ```ts
-async retrieveTeamMember(  teamMemberId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveTeamMemberResponse>>
+async retrieveTeamMember(
+  teamMemberId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveTeamMemberResponse>>
 ```
 
 ## Parameters
@@ -327,9 +540,11 @@ Updates a single `TeamMember` object. The `TeamMember` object is returned on suc
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#update-a-team-member).
 
 ```ts
-async updateTeamMember(  teamMemberId: string,
+async updateTeamMember(
+  teamMemberId: string,
   body: UpdateTeamMemberRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateTeamMemberResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateTeamMemberResponse>>
 ```
 
 ## Parameters
@@ -386,12 +601,17 @@ try {
 # Retrieve Wage Setting
 
 Retrieves a `WageSetting` object for a team member specified
-by `TeamMember.id`.
-Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).
+by `TeamMember.id`. For more information, see
+[Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).
+
+Square recommends using [RetrieveTeamMember](../../doc/api/team.md#retrieve-team-member) or [SearchTeamMembers](../../doc/api/team.md#search-team-members)
+to get this information directly from the `TeamMember.wage_setting` field.
 
 ```ts
-async retrieveWageSetting(  teamMemberId: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveWageSettingResponse>>
+async retrieveWageSetting(
+  teamMemberId: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveWageSettingResponse>>
 ```
 
 ## Parameters
@@ -426,15 +646,20 @@ try {
 # Update Wage Setting
 
 Creates or updates a `WageSetting` object. The object is created if a
-`WageSetting` with the specified `team_member_id` does not exist. Otherwise,
+`WageSetting` with the specified `team_member_id` doesn't exist. Otherwise,
 it fully replaces the `WageSetting` object for the team member.
-The `WageSetting` is returned on a successful update.
-Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).
+The `WageSetting` is returned on a successful update. For more information, see
+[Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).
+
+Square recommends using [CreateTeamMember](../../doc/api/team.md#create-team-member) or [UpdateTeamMember](../../doc/api/team.md#update-team-member)
+to manage the `TeamMember.wage_setting` field directly.
 
 ```ts
-async updateWageSetting(  teamMemberId: string,
+async updateWageSetting(
+  teamMemberId: string,
   body: UpdateWageSettingRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateWageSettingResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateWageSettingResponse>>
 ```
 
 ## Parameters
@@ -458,8 +683,8 @@ const body: UpdateWageSettingRequest = {
   wageSetting: {
     jobAssignments: [
       {
-        jobTitle: 'Manager',
         payType: 'SALARY',
+        jobTitle: 'Manager',
         annualRate: {
           amount: BigInt(3000000),
           currency: 'USD',
@@ -467,10 +692,10 @@ const body: UpdateWageSettingRequest = {
         weeklyHours: 40,
       },
       {
-        jobTitle: 'Cashier',
         payType: 'HOURLY',
+        jobTitle: 'Cashier',
         hourlyRate: {
-          amount: BigInt(1200),
+          amount: BigInt(2000),
           currency: 'USD',
         },
       }

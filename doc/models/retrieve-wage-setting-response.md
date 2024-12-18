@@ -11,7 +11,7 @@ Represents a response from a retrieve request containing the specified `WageSett
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `wageSetting` | [`WageSetting \| undefined`](../../doc/models/wage-setting.md) | Optional | An object representing a team member's wage information. |
+| `wageSetting` | [`WageSetting \| undefined`](../../doc/models/wage-setting.md) | Optional | Represents information about the overtime exemption status, job assignments, and compensation<br>for a [team member](../../doc/models/team-member.md). |
 | `errors` | [`Error[] \| undefined`](../../doc/models/error.md) | Optional | The errors that occurred during the request. |
 
 ## Example (as JSON)
@@ -33,7 +33,8 @@ Represents a response from a retrieve request containing the specified `WageSett
         },
         "job_title": "Manager",
         "pay_type": "SALARY",
-        "weekly_hours": 40
+        "weekly_hours": 40,
+        "job_id": "job_id2"
       }
     ],
     "team_member_id": "1yJlHapkseYnNPETIU1B",

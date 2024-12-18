@@ -35,9 +35,11 @@ page for your application in the Developer Dashboard.
 :information_source: **Note** This endpoint does not require authentication.
 
 ```ts
-async revokeToken(  body: RevokeTokenRequest,
+async revokeToken(
+  body: RevokeTokenRequest,
   authorization: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RevokeTokenResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RevokeTokenResponse>>
 ```
 
 ## Parameters
@@ -101,8 +103,10 @@ Application clients should never interact directly with OAuth tokens.
 :information_source: **Note** This endpoint does not require authentication.
 
 ```ts
-async obtainToken(  body: ObtainTokenRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<ObtainTokenResponse>>
+async obtainToken(
+  body: ObtainTokenRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ObtainTokenResponse>>
 ```
 
 ## Parameters
@@ -157,7 +161,9 @@ where `ACCESS_TOKEN` is a
 If the access token is expired or not a valid access token, the endpoint returns an `UNAUTHORIZED` error.
 
 ```ts
-async retrieveTokenStatus(requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveTokenStatusResponse>>
+async retrieveTokenStatus(
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveTokenStatusResponse>>
 ```
 
 ## Parameters

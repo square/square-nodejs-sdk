@@ -22,7 +22,8 @@ filter the list. For example, you can get a list of gift card activities for a g
 for all gift cards in a specific region, or for activities within a time window.
 
 ```ts
-async listGiftCardActivities(  giftCardId?: string,
+async listGiftCardActivities(
+  giftCardId?: string,
   type?: string,
   locationId?: string,
   beginTime?: string,
@@ -30,7 +31,8 @@ async listGiftCardActivities(  giftCardId?: string,
   limit?: number,
   cursor?: string,
   sortOrder?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListGiftCardActivitiesResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListGiftCardActivitiesResponse>>
 ```
 
 ## Parameters
@@ -73,8 +75,10 @@ Creates a gift card activity to manage the balance or state of a [gift card](../
 For example, create an `ACTIVATE` activity to activate a gift card with an initial balance before first use.
 
 ```ts
-async createGiftCardActivity(  body: CreateGiftCardActivityRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateGiftCardActivityResponse>>
+async createGiftCardActivity(
+  body: CreateGiftCardActivityRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateGiftCardActivityResponse>>
 ```
 
 ## Parameters

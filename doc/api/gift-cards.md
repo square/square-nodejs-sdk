@@ -25,12 +25,14 @@ Lists all gift cards. You can specify optional filters to retrieve
 a subset of the gift cards. Results are sorted by `created_at` in ascending order.
 
 ```ts
-async listGiftCards(  type?: string,
+async listGiftCards(
+  type?: string,
   state?: string,
   limit?: number,
   cursor?: string,
   customerId?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListGiftCardsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListGiftCardsResponse>>
 ```
 
 ## Parameters
@@ -73,8 +75,10 @@ activity with the initial balance. Alternatively, you can use [RefundPayment](..
 to refund a payment to the new gift card.
 
 ```ts
-async createGiftCard(  body: CreateGiftCardRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateGiftCardResponse>>
+async createGiftCard(
+  body: CreateGiftCardRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateGiftCardResponse>>
 ```
 
 ## Parameters
@@ -117,8 +121,10 @@ try {
 Retrieves a gift card using the gift card account number (GAN).
 
 ```ts
-async retrieveGiftCardFromGAN(  body: RetrieveGiftCardFromGANRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveGiftCardFromGANResponse>>
+async retrieveGiftCardFromGAN(
+  body: RetrieveGiftCardFromGANRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveGiftCardFromGANResponse>>
 ```
 
 ## Parameters
@@ -157,8 +163,10 @@ try {
 Retrieves a gift card using a secure payment token that represents the gift card.
 
 ```ts
-async retrieveGiftCardFromNonce(  body: RetrieveGiftCardFromNonceRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveGiftCardFromNonceResponse>>
+async retrieveGiftCardFromNonce(
+  body: RetrieveGiftCardFromNonceRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveGiftCardFromNonceResponse>>
 ```
 
 ## Parameters
@@ -197,9 +205,11 @@ try {
 Links a customer to a gift card, which is also referred to as adding a card on file.
 
 ```ts
-async linkCustomerToGiftCard(  giftCardId: string,
+async linkCustomerToGiftCard(
+  giftCardId: string,
   body: LinkCustomerToGiftCardRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<LinkCustomerToGiftCardResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<LinkCustomerToGiftCardResponse>>
 ```
 
 ## Parameters
@@ -244,9 +254,11 @@ try {
 Unlinks a customer from a gift card, which is also referred to as removing a card on file.
 
 ```ts
-async unlinkCustomerFromGiftCard(  giftCardId: string,
+async unlinkCustomerFromGiftCard(
+  giftCardId: string,
   body: UnlinkCustomerFromGiftCardRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UnlinkCustomerFromGiftCardResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UnlinkCustomerFromGiftCardResponse>>
 ```
 
 ## Parameters
@@ -291,8 +303,10 @@ try {
 Retrieves a gift card using the gift card ID.
 
 ```ts
-async retrieveGiftCard(  id: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveGiftCardResponse>>
+async retrieveGiftCard(
+  id: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveGiftCardResponse>>
 ```
 
 ## Parameters

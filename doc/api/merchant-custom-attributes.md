@@ -31,10 +31,12 @@ that are visible to the requesting application, including those that are created
 applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async listMerchantCustomAttributeDefinitions(  visibilityFilter?: string,
+async listMerchantCustomAttributeDefinitions(
+  visibilityFilter?: string,
   limit?: number,
   cursor?: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListMerchantCustomAttributeDefinitionsResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListMerchantCustomAttributeDefinitionsResponse>>
 ```
 
 ## Parameters
@@ -77,8 +79,10 @@ for a custom attribute. After the definition is created, you can call
 to set the custom attribute for a merchant.
 
 ```ts
-async createMerchantCustomAttributeDefinition(  body: CreateMerchantCustomAttributeDefinitionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<CreateMerchantCustomAttributeDefinitionResponse>>
+async createMerchantCustomAttributeDefinition(
+  body: CreateMerchantCustomAttributeDefinitionRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<CreateMerchantCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -125,8 +129,10 @@ the merchant.
 Only the definition owner can delete a custom attribute definition.
 
 ```ts
-async deleteMerchantCustomAttributeDefinition(  key: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeleteMerchantCustomAttributeDefinitionResponse>>
+async deleteMerchantCustomAttributeDefinition(
+  key: string,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteMerchantCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -165,9 +171,11 @@ To retrieve a custom attribute definition created by another application, the `v
 setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async retrieveMerchantCustomAttributeDefinition(  key: string,
+async retrieveMerchantCustomAttributeDefinition(
+  key: string,
   version?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveMerchantCustomAttributeDefinitionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveMerchantCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -208,9 +216,11 @@ Use this endpoint to update the following fields: `name`, `description`, `visibi
 Only the definition owner can update a custom attribute definition.
 
 ```ts
-async updateMerchantCustomAttributeDefinition(  key: string,
+async updateMerchantCustomAttributeDefinition(
+  key: string,
   body: UpdateMerchantCustomAttributeDefinitionRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpdateMerchantCustomAttributeDefinitionResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpdateMerchantCustomAttributeDefinitionResponse>>
 ```
 
 ## Parameters
@@ -260,8 +270,10 @@ To delete a custom attribute owned by another application, the `visibility` sett
 `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async bulkDeleteMerchantCustomAttributes(  body: BulkDeleteMerchantCustomAttributesRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BulkDeleteMerchantCustomAttributesResponse>>
+async bulkDeleteMerchantCustomAttributes(
+  body: BulkDeleteMerchantCustomAttributesRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkDeleteMerchantCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -280,8 +292,10 @@ requestOptions?: RequestOptions): Promise<ApiResponse<BulkDeleteMerchantCustomAt
 ```ts
 const body: BulkDeleteMerchantCustomAttributesRequest = {
   values: {
-    'id1': {},
-    'id2': {}
+    'id1': {
+    },
+    'id2': {
+    }
   },
 };
 
@@ -312,8 +326,10 @@ To create or update a custom attribute owned by another application, the `visibi
 must be `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async bulkUpsertMerchantCustomAttributes(  body: BulkUpsertMerchantCustomAttributesRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<BulkUpsertMerchantCustomAttributesResponse>>
+async bulkUpsertMerchantCustomAttributes(
+  body: BulkUpsertMerchantCustomAttributesRequest,
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<BulkUpsertMerchantCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -334,11 +350,13 @@ const body: BulkUpsertMerchantCustomAttributesRequest = {
   values: {
     'key0': {
       merchantId: 'merchant_id0',
-      customAttribute: {},
+      customAttribute: {
+      },
     },
     'key1': {
       merchantId: 'merchant_id0',
-      customAttribute: {},
+      customAttribute: {
+      },
     }
   },
 };
@@ -366,12 +384,14 @@ visible to the requesting application, including those that are owned by other a
 and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async listMerchantCustomAttributes(  merchantId: string,
+async listMerchantCustomAttributes(
+  merchantId: string,
   visibilityFilter?: string,
   limit?: number,
   cursor?: string,
   withDefinitions?: boolean,
-requestOptions?: RequestOptions): Promise<ApiResponse<ListMerchantCustomAttributesResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<ListMerchantCustomAttributesResponse>>
 ```
 
 ## Parameters
@@ -422,9 +442,11 @@ To delete a custom attribute owned by another application, the `visibility` sett
 `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async deleteMerchantCustomAttribute(  merchantId: string,
+async deleteMerchantCustomAttribute(
+  merchantId: string,
   key: string,
-requestOptions?: RequestOptions): Promise<ApiResponse<DeleteMerchantCustomAttributeResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<DeleteMerchantCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -471,11 +493,13 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async retrieveMerchantCustomAttribute(  merchantId: string,
+async retrieveMerchantCustomAttribute(
+  merchantId: string,
   key: string,
   withDefinition?: boolean,
   version?: number,
-requestOptions?: RequestOptions): Promise<ApiResponse<RetrieveMerchantCustomAttributeResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<RetrieveMerchantCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -528,10 +552,12 @@ To create or update a custom attribute owned by another application, the `visibi
 must be `VISIBILITY_READ_WRITE_VALUES`.
 
 ```ts
-async upsertMerchantCustomAttribute(  merchantId: string,
+async upsertMerchantCustomAttribute(
+  merchantId: string,
   key: string,
   body: UpsertMerchantCustomAttributeRequest,
-requestOptions?: RequestOptions): Promise<ApiResponse<UpsertMerchantCustomAttributeResponse>>
+  requestOptions?: RequestOptions
+): Promise<ApiResponse<UpsertMerchantCustomAttributeResponse>>
 ```
 
 ## Parameters
@@ -555,7 +581,8 @@ const merchantId = 'merchant_id0';
 const key = 'key0';
 
 const body: UpsertMerchantCustomAttributeRequest = {
-  customAttribute: {},
+  customAttribute: {
+  },
 };
 
 try {

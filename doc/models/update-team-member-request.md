@@ -23,7 +23,29 @@ Represents an update request for a `TeamMember` object.
       "location_ids": [
         "YSGH2WBKG94QZ",
         "GA2Y9HSJ8KRYT"
-      ]
+      ],
+      "wage_setting": {
+        "is_overtime_exempt": true,
+        "job_assignments": [
+          {
+            "annual_rate": {
+              "amount": 3000000,
+              "currency": "USD"
+            },
+            "job_id": "FjS8x95cqHiMenw4f1NAUH4P",
+            "pay_type": "SALARY",
+            "weekly_hours": 40
+          },
+          {
+            "hourly_rate": {
+              "amount": 1200,
+              "currency": "USD"
+            },
+            "job_id": "VDNpRv8da51NU8qZFC5zDWpF",
+            "pay_type": "HOURLY"
+          }
+        ]
+      }
     },
     "email_address": "joe_doe@gmail.com",
     "family_name": "Doe",
