@@ -22,7 +22,7 @@ export interface Refund {
   /** The ID of the transaction that the refunded tender is part of. */
   transactionId?: string | null;
   /** The ID of the refunded tender. */
-  tenderId: string;
+  tenderId?: string;
   /** The timestamp for when the refund was created, in RFC 3339 format. */
   createdAt?: string;
   /** The reason for the refund being issued. */
@@ -58,7 +58,7 @@ export const refundSchema: Schema<Refund> = object({
   id: ['id', string()],
   locationId: ['location_id', string()],
   transactionId: ['transaction_id', optional(nullable(string()))],
-  tenderId: ['tender_id', string()],
+  tenderId: ['tender_id', optional(string())],
   createdAt: ['created_at', optional(string())],
   reason: ['reason', string()],
   amountMoney: ['amount_money', lazy(() => moneySchema)],
