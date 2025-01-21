@@ -5,16 +5,6 @@
 
 The Square TypeScript library provides convenient access to the Square API from TypeScript.
 
-## Requirements
-
-Use of the Square Node.js SDK requires:
-
-- Node.js 14 or higher
-
-This SDK supports Node.js versions that are either current, or that are in long-term support status (LTS). The SDK does not support Node.js versions that have reached their end-of-life (EOL). For more information on Node.js versioning, see <https://nodejs.org/en/about/releases/>.
-
-This SDK is for use with Node.js only. It does not support other usages, such as for web browsers or frontend applications.
-
 ## Installation
 
 ```sh
@@ -25,9 +15,16 @@ npm i -s square
 
 A full reference for this library is available [here](./reference.md).
 
-## Quickstart
+## Versioning
 
-For more information, see [Square Node.js SDK Quickstart](https://developer.squareup.com/docs/sdks/nodejs/quick-start).
+By default, the SDK is pinned to the latest version. If you would like
+to override this version you can simply pass in a request option.
+
+```ts
+await client.payments.create(..., {
+    version: "2024-05-04" // override the version used
+})
+```
 
 ## Usage
 
@@ -41,11 +38,11 @@ await client.payments.create({
     sourceId: "ccof:GaJGNaZa8x4OgDJn4GB",
     idempotencyKey: "7b0f3ec5-086a-4871-8f13-3c81b3875218",
     amountMoney: {
-        amount: 1000,
+        amount: BigInt(1000),
         currency: "USD",
     },
     appFeeMoney: {
-        amount: 10,
+        amount: BigInt(10),
         currency: "USD",
     },
     autocomplete: true,
@@ -68,120 +65,6 @@ const request: Square.CreateMobileAuthorizationCodeRequest = {
     ...
 };
 ```
-
-## Tests
-
-First, clone the repo locally and `cd` into the directory.
-
-```sh
-git clone https://github.com/square/square-nodejs-sdk.git
-cd square-nodejs-sdk
-```
-
-Next, install dependencies and build.
-
-```sh
-npm install
-npm run build
-```
-
-Before running the tests, get a sandbox access token from your [Developer Dashboard] and use it to set a `SQUARE_SANDBOX_TOKEN` environment variable.
-
-```sh
-export SQUARE_SANDBOX_TOKEN="YOUR SANDBOX ACCESS TOKEN HERE"
-```
-
-And run the tests.
-
-```sh
-npm test
-```
-
-## SDK Reference
-
-### Payments
-
-- [Payments]
-- [Refunds]
-- [Disputes]
-- [Checkout]
-- [Apple Pay]
-- [Cards]
-- [Payouts]
-
-### Terminal
-
-- [Terminal]
-
-### Orders
-
-- [Orders]
-- [Order Custom Attributes]
-
-### Subscriptions
-
-- [Subscriptions]
-
-### Invoices
-
-- [Invoices]
-
-### Items
-
-- [Catalog]
-- [Inventory]
-
-### Customers
-
-- [Customers]
-- [Customer Groups]
-- [Customer Segments]
-
-### Loyalty
-
-- [Loyalty]
-
-### Gift Cards
-
-- [Gift Cards]
-- [Gift Card Activities]
-
-### Bookings
-
-- [Bookings]
-- [Booking Custom Attributes]
-
-### Business
-
-- [Merchants]
-- [Merchant Custom Attributes]
-- [Locations]
-- [Location Custom Attributes]
-- [Devices]
-- [Cash Drawers]
-
-### Team
-
-- [Team]
-- [Labor]
-
-### Financials
-
-- [Bank Accounts]
-
-### Online
-
-- [Sites]
-- [Snippets]
-
-### Authorization
-
-- [Mobile Authorization]
-- [OAuth]
-
-### Webhook Subscriptions
-
-- [Webhook Subscriptions]
 
 ## Exception Handling
 
@@ -220,6 +103,22 @@ const page = await client.bankAccounts.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+```
+
+## Webhook Signature Verification
+
+The SDK provides utility methods that allow you to verify webhook signatures and ensure that all 
+webhook events originate from Square. The `Webhooks.verifySignature` method will verify the signature.
+
+```ts
+import { WebhooksHelper } from "square";
+
+const isValid = WebhooksHelper.verifySignature({
+  requestBody,
+  signatureHeader: request.headers['x-square-hmacsha256-signature'],
+  signatureKey: "YOUR_SIGNATURE_KEY",
+  notificationUrl: "https://example.com/webhook", // The URL where event notifications are sent.
+});
 ```
 
 ## Advanced
