@@ -2,6 +2,7 @@
 
 README.md
 
+.github/workflows/integration.yml
 src/wrapper
 src/index.ts
 src/errors/SquareError.ts
