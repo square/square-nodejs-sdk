@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
-import { Square, SquareClient, SquareEnvironment } from "../../src";
-import path from "path";
 import { readFile } from "fs/promises";
+import path from "path";
+import { Square, SquareClient, SquareEnvironment } from "../../src";
 
 export const createClient = (): SquareClient => {
     const token = process.env.TEST_SQUARE_TOKEN;
@@ -81,9 +81,6 @@ export function createTestCatalogItem(opts: TestCatalogItemOptions = {}): Square
             name: opts.name || `Item ${newTestUuid()}`,
             description: opts.description || "Test item description",
             abbreviation: opts.abbreviation || "TST",
-            availableOnline: true,
-            availableForPickup: true,
-            availableElectronically: false,
             variations: [variation],
         },
     };

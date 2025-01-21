@@ -1,5 +1,5 @@
-import { createClient, newTestUuid } from "./helpers";
 import { Square, SquareClient } from "../../src";
+import { createClient, newTestUuid } from "./helpers";
 
 describe("Inventory API", () => {
     const client: SquareClient = createClient();
@@ -24,9 +24,6 @@ describe("Inventory API", () => {
                     name: "Coffee",
                     description: "Strong coffee",
                     abbreviation: "C",
-                    availableOnline: true,
-                    availableForPickup: true,
-                    availableElectronically: false,
                     variations: [
                         {
                             id: "#colombian-coffee",
