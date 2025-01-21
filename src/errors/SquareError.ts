@@ -3,10 +3,17 @@
  */
 
 import { toJson } from "../core/json";
+import { Error_, ErrorCategory as GeneratedErrorCategory, ErrorCode as GeneratedErrorCode } from "../api";
+
+const fallbackError = {
+    category: "V1_ERROR",
+    code: "Unknown",
+} as SquareError.BodyError;
 
 export class SquareError extends Error {
     readonly statusCode?: number;
     readonly body?: unknown;
+    readonly errors: SquareError.BodyError[];
 
     constructor({ message, statusCode, body }: { message?: string; statusCode?: number; body?: unknown }) {
         super(buildMessage({ message, statusCode, body }));
@@ -15,8 +22,25 @@ export class SquareError extends Error {
             this.statusCode = statusCode;
         }
 
-        if (body !== undefined) {
-            this.body = body;
+        this.body = body;
+        if (body != null && typeof body === "object") {
+            if ("errors" in body) {
+                this.errors = (body as unknown as SquareErrorBody).errors ?? [fallbackError];
+            }
+            else {
+                const v1Error = body as V1Error;
+                this.errors = [
+                    {
+                        category: SquareError.ErrorCategory.V1Error,
+                        code: v1Error.type ?? SquareError.ErrorCode.Unknown,
+                        detail: v1Error.message,
+                        field: v1Error.field,
+                    }
+                ];
+            }
+        }
+        else{
+            this.errors = [fallbackError]
         }
     }
 }
@@ -44,4 +68,41 @@ function buildMessage({
     }
 
     return lines.join("\n");
+}
+
+export namespace SquareError {
+    export type BodyError = {
+        /**
+         * The high-level category for the error.
+         * See [ErrorCategory](#type-errorcategory) for possible values
+         */
+        category: ErrorCategory;
+        /**
+         * The specific code of the error.
+         * See [ErrorCode](#type-errorcode) for possible values
+         */
+        code: ErrorCode;
+    } & Omit<Error_, "category" | "code">;
+
+    export type ErrorCategory = GeneratedErrorCategory | "V1_ERROR";
+    export const ErrorCategory = {
+        ...GeneratedErrorCategory,
+        V1Error: "V1_ERROR",
+    } as const;
+
+    export type ErrorCode = GeneratedErrorCode | "Unknown" | string;
+    export const ErrorCode = {
+        ...GeneratedErrorCode,
+        Unknown: "Unknown",
+    } as const;
+}
+
+interface SquareErrorBody {
+    errors?: SquareError.BodyError[];
+}
+
+interface V1Error {
+    type?: string;
+    message: string;
+    field: string;
 }
