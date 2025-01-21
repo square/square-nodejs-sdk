@@ -1,64 +1,72 @@
 {
-  "version": "39.1.1",
-  "license": "MIT",
-  "sideEffects": false,
-  "main": "dist/cjs/index.js",
-  "typings": "dist/types/index.d.ts",
-  "module": "dist/esm/index.js",
-  "files": [
-    "dist",
-    "src",
-    "test"
-  ],
-  "engines": {
-    "node": ">=14.17.0"
-  },
-  "scripts": {
-    "build": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
-    "prepare": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
-    "test": "jest --passWithNoTests",
-    "test:coverage": "jest --coverage --passWithNoTests",
-    "lint": "eslint **/*.ts --ignore-path .eslintignore",
-    "lint:fix": "eslint **/*.ts --ignore-path .eslintignore --fix"
-  },
-  "peerDependencies": {},
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "quoteProps": "preserve"
-  },
-  "name": "square",
-  "description": "Use Square APIs to manage and run business including payment, customer, product, inventory, and employee management.",
-  "author": {
-    "name": "Square Developer Platform",
-    "email": "developers@squareup.com",
-    "url": "https://squareup.com/developers"
-  },
-  "devDependencies": {
-    "@apimatic/test-utilities": "^0.0.1",
-    "@types/jest": "^29.4.0",
-    "@types/uuid": "^8.3.0",
-    "@typescript-eslint/eslint-plugin": "^5.52.0",
-    "@typescript-eslint/parser": "^5.52.0",
-    "eslint": "^8.34.0",
-    "jest": "^29.4.3",
-    "ts-jest": "^29.0.5",
-    "tslib": "^2.5.0",
-    "typescript": "^4.9.5",
-    "uuid": "^8.3.0"
-  },
-  "dependencies": {
-    "@apimatic/authentication-adapters": "^0.5.4",
-    "@apimatic/axios-client-adapter": "^0.3.7",
-    "@apimatic/core": "^0.10.16",
-    "@apimatic/json-bigint": "^1.2.0",
-    "@apimatic/schema": "^0.7.14",
-    "@types/node": "^14.14.30"
-  },
-  "bugs": {
-    "url": "https://squareup.com/developers",
-    "email": "developers@squareup.com"
-  }
+    "name": "square",
+    "version": "40.0.0",
+    "private": false,
+    "repository": "https://github.com/square/square-nodejs-sdk",
+    "license": "MIT",
+    "main": "./index.js",
+    "types": "./index.d.ts",
+    "scripts": {
+        "format": "prettier . --write --ignore-unknown",
+        "build": "tsc",
+        "prepack": "cp -rv dist/. .",
+        "test": "yarn test:unit",
+        "test:unit": "jest --testPathPattern=tests/unit",
+        "test:integration": "jest --testPathPattern=tests/integration"
+    },
+    "dependencies": {
+        "url-join": "4.0.1",
+        "form-data": "^4.0.0",
+        "formdata-node": "^6.0.3",
+        "node-fetch": "^2.7.0",
+        "qs": "^6.13.1",
+        "readable-stream": "^4.5.2",
+        "js-base64": "3.7.7",
+        "form-data-encoder": "^4.0.2",
+        "square-legacy": "npm:square@^39.1.1"
+    },
+    "devDependencies": {
+        "@types/url-join": "4.0.1",
+        "@types/qs": "^6.9.17",
+        "@types/node-fetch": "^2.6.12",
+        "@types/readable-stream": "^4.0.18",
+        "webpack": "^5.97.1",
+        "ts-loader": "^9.5.1",
+        "jest": "^29.7.0",
+        "@types/jest": "^29.5.14",
+        "ts-jest": "^29.1.1",
+        "jest-environment-jsdom": "^29.7.0",
+        "@types/node": "^18.19.70",
+        "prettier": "^3.4.2",
+        "typescript": "~5.7.2"
+    },
+    "browser": {
+        "fs": false,
+        "os": false,
+        "path": false
+    },
+    "description": "Use Square APIs to manage and run business including payment, customer, product, inventory, and employee management.",
+    "author": {
+        "name": "Square Developer Platform",
+        "url": "https://developer.squareup.com",
+        "email": "developers@squareup.com"
+    },
+    "bugs": {
+        "url": "https://developer.squareup.com",
+        "email": "developers@squareup.com"
+    },
+    "exports": {
+        ".": "./index.js",
+        "./legacy": {
+            "types": "./legacy/exports/index.d.ts",
+            "require": {
+                "types": "./legacy/exports/index.d.ts",
+                "default": "./legacy/exports/index.js"
+            },
+            "import": {
+                "types": "./legacy/exports/index.d.mts",
+                "default": "./legacy/exports/index.mjs"
+            }
+        }
+    }
 }

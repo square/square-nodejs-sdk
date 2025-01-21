@@ -1,0 +1,1 @@
+export { CreateLoyaltyPromotionRequest } from "./CreateLoyaltyPromotionRequest";

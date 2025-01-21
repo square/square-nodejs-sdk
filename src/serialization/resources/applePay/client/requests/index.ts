@@ -1,0 +1,1 @@
+export { RegisterDomainRequest } from "./RegisterDomainRequest";

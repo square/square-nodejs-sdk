@@ -1,0 +1,1 @@
+export { CalculateLoyaltyPointsRequest } from "./CalculateLoyaltyPointsRequest";
