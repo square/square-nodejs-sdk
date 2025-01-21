@@ -1,1 +1,14 @@
 # Specify files that shouldn't be modified by Fern
+
+README.md
+
+src/wrapper
+src/index.ts
+src/errors/SquareError.ts
+src/core/index.ts
+src/core/crypto
+tests/unit/error.test.ts
+tests/unit/fetcher/stream-wrappers/webpack.test.ts
+tests/integration
+legacy
+jest.config.mjs
