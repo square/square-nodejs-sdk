@@ -17,18 +17,18 @@ function deleteTestCustomerGroup(client: SquareClient, groupId: string): Promise
 describe("CustomerGroups API", () => {
     const client = createClient();
 
-    it("should list customer groups", async () => {
-        const response = await client.customers.groups.list();
-
-        expect(response.data).toBeDefined();
-        expect(response.data.length).toBeGreaterThan(0);
-    });
-
-    it("should create a customer group", async () => {
+    it("should create and list a customer group", async () => {
+        // create
         const response = await createTestCustomerGroup(client);
 
         expect(response.group).toBeDefined();
         expect(response.group?.name).toBeDefined();
+
+        // list
+        const listResponse = await client.customers.groups.list();
+
+        expect(listResponse.data).toBeDefined();
+        expect(listResponse.data.length).toBeGreaterThan(0);
 
         // Cleanup
         await deleteTestCustomerGroup(client, response.group?.id!);
