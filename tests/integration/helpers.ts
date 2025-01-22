@@ -1,6 +1,7 @@
 import { randomUUID } from "crypto";
 import { readFile } from "fs/promises";
 import path from "path";
+import { Client, Environment } from "../../legacy/exports";
 import { Square, SquareClient, SquareEnvironment } from "../../src";
 
 export const createClient = (): SquareClient => {
@@ -11,6 +12,19 @@ export const createClient = (): SquareClient => {
     return new SquareClient({
         token,
         environment: SquareEnvironment.Sandbox,
+    });
+};
+
+export const createLegacyClient = (): Client => {
+    const token = process.env.TEST_SQUARE_TOKEN;
+    if (!token) {
+        throw new Error("TEST_SQUARE_TOKEN is not set");
+    }
+    return new Client({
+        environment: Environment.Sandbox,
+        bearerAuthCredentials: {
+            accessToken: token,
+        },
     });
 };
 
