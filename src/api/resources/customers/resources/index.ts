@@ -1,0 +1,10 @@
+export * as customAttributeDefinitions from "./customAttributeDefinitions";
+export * as groups from "./groups";
+export * as segments from "./segments";
+export * as cards from "./cards";
+export * as customAttributes from "./customAttributes";
+export * from "./customAttributeDefinitions/client/requests";
+export * from "./groups/client/requests";
+export * from "./segments/client/requests";
+export * from "./cards/client/requests";
+export * from "./customAttributes/client/requests";
