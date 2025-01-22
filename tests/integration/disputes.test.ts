@@ -8,7 +8,7 @@ describe("Disputes API", () => {
 
     beforeAll(async () => {
         // Create a payment that will generate a dispute
-        await client.payments.create({
+        const paymentsResp = await client.payments.create({
             idempotencyKey: newTestUuid(),
             autocomplete: true,
             sourceId: "cnon:card-nonce-ok",
@@ -19,7 +19,7 @@ describe("Disputes API", () => {
         });
 
         // Poll for dispute to be created
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 100; i++) {
             const disputeResponse = await client.disputes.list({
                 states: "EVIDENCE_REQUIRED",
             });
@@ -45,7 +45,7 @@ describe("Disputes API", () => {
             evidenceText: "This is not a duplicate",
         });
         textEvidenceId = evidenceResponse.evidence!.id!;
-    }, 60_000);
+    }, 200_000);
 
     afterAll(async () => {
         // Clean up evidence if it exists
