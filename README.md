@@ -1,189 +1,280 @@
-[![Build](https://github.com/square/square-nodejs-sdk/actions/workflows/node.js.yml/badge.svg)](https://github.com/square/square-nodejs-sdk/actions/workflows/node.js.yml)
-[![npm version](https://badge.fury.io/js/square.svg)](https://badge.fury.io/js/square)
-[![Apache-2 license](https://img.shields.io/badge/license-Apache2-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+# Square TypeScript Library
 
-# Square Node.js SDK
+[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fsquare%2Fsquare-nodejs-sdk)
+[![npm shield](https://img.shields.io/npm/v/square)](https://www.npmjs.com/package/square)
 
-Use this JavaScript library to manage Square resources (such as payments, orders, items, and inventory) for your own Square account or on behalf of Square sellers.
-
-* [Requirements](#requirements)
-* [Installation](#installation)
-* [Quickstart](#quickstart)
-* [Usage](#usage)
-* [Tests](#tests)
-* [SDK Reference](#sdk-reference)
-* [Deprecated APIs](#deprecated-apis)
-
-## Requirements
-
-Use of the Square Node.js SDK requires:
-
-* Node.js 14 or higher
-
-This SDK supports Node.js versions that are either current, or that are in long-term support status (LTS).  The SDK does not support Node.js versions that have reached their end-of-life (EOL).  For more information on Node.js versioning, see <https://nodejs.org/en/about/releases/>.
-
-This SDK is for use with Node.js only. It does not support other usages, such as for web browsers or frontend applications.
+The Square TypeScript library provides convenient access to the Square API from TypeScript.
 
 ## Installation
 
-For more information, see [Set Up Your Square SDK for a Node.js Project](https://developer.squareup.com/docs/sdks/nodejs/setup-project).
+```sh
+npm i -s square
+```
 
-## Quickstart
+## Reference
 
-For more information, see [Square Node.js SDK Quickstart](https://developer.squareup.com/docs/sdks/nodejs/quick-start).
+A full reference for this library is available [here](./reference.md).
+
+## Versioning
+
+By default, the SDK is pinned to the latest version. If you would like
+to override this version you can simply pass in a request option.
+
+```ts
+await client.payments.create(..., {
+    version: "2024-05-04" // override the version used
+})
+```
 
 ## Usage
-For more information, see [Using the Square Node.js SDK](https://developer.squareup.com/docs/sdks/nodejs/using-nodejs-sdk).
 
-## Tests
+Instantiate and use the client with the following:
 
-First, clone the repo locally and `cd` into the directory.
+```typescript
+import { SquareClient } from "square";
 
-```sh
-git clone https://github.com/square/square-nodejs-sdk.git
-cd square-nodejs-sdk
+const client = new SquareClient({ token: "YOUR_TOKEN" });
+await client.payments.create({
+    sourceId: "ccof:GaJGNaZa8x4OgDJn4GB",
+    idempotencyKey: "7b0f3ec5-086a-4871-8f13-3c81b3875218",
+    amountMoney: {
+        amount: BigInt(1000),
+        currency: "USD",
+    },
+    appFeeMoney: {
+        amount: BigInt(10),
+        currency: "USD",
+    },
+    autocomplete: true,
+    customerId: "W92WH6P11H4Z77CTET0RNTGFW8",
+    locationId: "L88917AVBK2S5",
+    referenceId: "123456",
+    note: "Brief description",
+});
 ```
 
-Next, install dependencies and build.
+## Legacy SDK
 
-```sh
-npm install
-npm run build
+> If you're using TypeScript, make sure that the `moduleResolution` setting in your `tsconfig.json` is equal to `node16`, `nodenext`,
+> or `bundler` to consume the legacy SDK.
+
+While the new SDK has a lot of improvements, we at Square understand that it takes time to upgrade when there are breaking changes.
+To make the migration easier, the new SDK also exports the legacy SDK as `square/legacy`. Here's an example of how you can use the
+legacy SDK alongside the new SDK inside a single file:
+
+```typescript
+import { randomUUID } from "crypto";
+import { Square, SquareClient } from "square";
+import { Client } from "square/legacy";
+
+const client = new SquareClient({
+  token: process.env.SQUARE_ACCESS_TOKEN,
+});
+
+const legacyClient = new Client({
+  bearerAuthCredentials: {
+    accessToken: process.env.SQUARE_ACCESS_TOKEN!,
+  },
+});
+
+async function getLocation(): Promise<Square.Location> {
+  return (
+    await client.locations.get({
+      locationId: "YOUR_LOCATION_ID",
+    })
+  ).location!;
+}
+
+async function createOrder() {
+  const location = await getLocation();
+  await legacyClient.ordersApi.createOrder({
+    idempotencyKey: randomUUID(),
+    order: {
+      locationId: location.id!,
+      lineItems: [
+        {
+          name: "New Item",
+          quantity: "1",
+          basePriceMoney: {
+            amount: BigInt(100),
+            currency: "USD",
+          },
+        },
+      ],
+    },
+  });
+}
+
+createOrder();
 ```
 
-Before running the tests, get a sandbox access token from your [Developer Dashboard] and use it to set a `SQUARE_SANDBOX_TOKEN` environment variable.
+We recommend migrating to the new SDK using the following steps:
 
-```sh
-export SQUARE_SANDBOX_TOKEN="YOUR SANDBOX ACCESS TOKEN HERE"
+1. Upgrade the NPM module to `^40.0.0`
+2. Search and replace all requires and imports from `"square"` to `"square/legacy"`
+
+- For required, replace `require("square")` with `require("square/legacy")`
+- For imports, replace `from "square"` with `from "square/legacy"`
+- For dynamic imports, replace `import("square")` with `import("square/legacy")`
+
+3. Gradually move over to use the new SDK by importing it from the `"square"` import.
+
+## Request And Response Types
+
+The SDK exports all request and response types as TypeScript interfaces. Simply import them with the
+following namespace:
+
+```typescript
+import { Square } from "square";
+
+const request: Square.CreateMobileAuthorizationCodeRequest = {
+    ...
+};
 ```
 
-And run the tests.
+## Exception Handling
 
-```sh
-npm test
+When the API returns a non-success status code (4xx or 5xx response), a subclass of the following error
+will be thrown.
+
+```typescript
+import { SquareError } from "square";
+
+try {
+    await client.payments.create(...);
+} catch (err) {
+    if (err instanceof SquareError) {
+        console.log(err.statusCode);
+        console.log(err.message);
+        console.log(err.body);
+    }
+}
 ```
 
-## SDK Reference
+## Pagination
 
-### Payments
-* [Payments]
-* [Refunds]
-* [Disputes]
-* [Checkout]
-* [Apple Pay]
-* [Cards]
-* [Payouts]
+List endpoints are paginated. The SDK provides an iterator so that you can simply loop over the items:
 
-### Terminal
-* [Terminal]
+```typescript
+import { SquareClient } from "square";
 
-### Orders
-* [Orders]
-* [Order Custom Attributes]
+const client = new SquareClient({ token: "YOUR_TOKEN" });
+const response = await client.bankAccounts.list();
+for await (const item of response) {
+    console.log(item);
+}
 
-### Subscriptions
-* [Subscriptions]
+// Or you can manually iterate page-by-page
+const page = await client.bankAccounts.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
 
-### Invoices
-* [Invoices]
+## Webhook Signature Verification
 
-### Items
-* [Catalog]
-* [Inventory]
+The SDK provides utility methods that allow you to verify webhook signatures and ensure that all 
+webhook events originate from Square. The `Webhooks.verifySignature` method will verify the signature.
 
-### Customers
-* [Customers]
-* [Customer Groups]
-* [Customer Segments]
+```ts
+import { WebhooksHelper } from "square";
 
-### Loyalty
-* [Loyalty]
+const isValid = WebhooksHelper.verifySignature({
+  requestBody,
+  signatureHeader: request.headers['x-square-hmacsha256-signature'],
+  signatureKey: "YOUR_SIGNATURE_KEY",
+  notificationUrl: "https://example.com/webhook", // The URL where event notifications are sent.
+});
+```
 
-### Gift Cards
-* [Gift Cards]
-* [Gift Card Activities]
+## Advanced
 
-### Bookings
-* [Bookings]
-* [Booking Custom Attributes]
+### Additional Headers
 
-### Business
-* [Merchants]
-* [Merchant Custom Attributes]
-* [Locations]
-* [Location Custom Attributes]
-* [Devices]
-* [Cash Drawers]
+If you would like to send additional headers as part of the request, use the `headers` request option.
 
-### Team
-* [Team]
-* [Labor]
+```typescript
+const response = await client.payments.create(..., {
+    headers: {
+        'X-Custom-Header': 'custom value'
+    }
+});
+```
 
-### Financials
-* [Bank Accounts]
+### Retries
 
-### Online
-* [Sites]
-* [Snippets]
+The SDK is instrumented with automatic retries with exponential backoff. A request will be retried as long
+as the request is deemed retriable and the number of retry attempts has not grown larger than the configured
+retry limit (default: 2).
 
-### Authorization
-* [Mobile Authorization]
-* [OAuth]
+A request is deemed retriable when any of the following HTTP status codes is returned:
 
-### Webhook Subscriptions
-* [Webhook Subscriptions]
-## Deprecated APIs
- 
-The following Square APIs are [deprecated](https://developer.squareup.com/docs/build-basics/api-lifecycle):
- 
-* [Employees] - replaced by the [Team] API. For more information, see [Migrate from the Employees API](https://developer.squareup.com/docs/team/migrate-from-v2-employees).
- 
-* [Transactions] - replaced by the [Orders] and [Payments] APIs.  For more information, see [Migrate from the Transactions API](https://developer.squareup.com/docs/payments-api/migrate-from-transactions-api).
- 
+- [408](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408) (Timeout)
+- [429](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) (Too Many Requests)
+- [5XX](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500) (Internal Server Errors)
 
-[Developer Dashboard]: https://developer.squareup.com/apps
-[Square API]: https://squareup.com/developers
-[sign up for a developer account]: https://squareup.com/signup?v=developers
-[Locations overview]: https://developer.squareup.com/docs/locations-api
-[OAuth overview]: https://developer.squareup.com/docs/oauth-api/overview
-[Client]: doc/client.md
-[Devices]: doc/api/devices.md
-[Disputes]: doc/api/disputes.md
-[Terminal]: doc/api/terminal.md
-[Team]: doc/api/team.md
-[Cash Drawers]: doc/api/cash-drawers.md
-[Vendors]: doc/api/vendors.md
-[Customer Groups]: doc/api/customer-groups.md
-[Customer Segments]: doc/api/customer-segments.md
-[Bank Accounts]: doc/api/bank-accounts.md
-[Payments]: doc/api/payments.md
-[Checkout]: doc/api/checkout.md
-[Catalog]: doc/api/catalog.md
-[Customers]: doc/api/customers.md
-[Customer Custom Attributes]: doc/api/customer-custom-attributes.md
-[Inventory]: doc/api/inventory.md
-[Labor]: doc/api/labor.md
-[Loyalty]: doc/api/loyalty.md
-[Bookings]: doc/api/bookings.md
-[Booking Custom Attributes]: doc/api/booking-custom-attributes.md
-[Locations]: doc/api/locations.md
-[Location Custom Attributes]: doc/api/location-custom-attributes.md
-[Merchants]: doc/api/merchants.md
-[Merchant Custom Attributes]: doc/api/merchant-custom-attributes.md
-[Orders]: doc/api/orders.md
-[Order Custom Attributes]: doc/api/order-custom-attributes.md
-[Invoices]: doc/api/invoices.md
-[Apple Pay]: doc/api/apple-pay.md
-[Refunds]: doc/api/refunds.md
-[Subscriptions]: doc/api/subscriptions.md
-[Mobile Authorization]: doc/api/mobile-authorization.md
-[OAuth]: doc/api/o-auth.md
-[Sites]: doc/api/sites.md
-[Snippets]: doc/api/snippets.md
-[Cards]: doc/api/cards.md
-[Payouts]: doc/api/payouts.md
-[Gift Cards]: doc/api/gift-cards.md
-[Gift Card Activities]: doc/api/gift-card-activities.md
-[Employees]: doc/api/employees.md
-[Transactions]: doc/api/transactions.md
-[Webhook Subscriptions]: doc/api/webhook-subscriptions.md
+Use the `maxRetries` request option to configure this behavior.
+
+```typescript
+const response = await client.payments.create(..., {
+    maxRetries: 0 // override maxRetries at the request level
+});
+```
+
+### Timeouts
+
+The SDK defaults to a 60 second timeout. Use the `timeoutInSeconds` option to configure this behavior.
+
+```typescript
+const response = await client.payments.create(..., {
+    timeoutInSeconds: 30 // override timeout to 30s
+});
+```
+
+### Aborting Requests
+
+The SDK allows users to abort requests at any point by passing in an abort signal.
+
+```typescript
+const controller = new AbortController();
+const response = await client.payments.create(..., {
+    abortSignal: controller.signal
+});
+controller.abort(); // aborts the request
+```
+
+### Runtime Compatibility
+
+The SDK defaults to `node-fetch` but will use the global fetch client if present. The SDK works in the following
+runtimes:
+
+- Node.js 18+
+- Vercel
+- Cloudflare Workers
+- Deno v1.25+
+- Bun 1.0+
+- React Native
+
+### Customizing Fetch Client
+
+The SDK provides a way for your to customize the underlying HTTP client / Fetch function. If you're running in an
+unsupported environment, this provides a way for you to break glass and ensure the SDK works.
+
+```typescript
+import { SquareClient } from "square";
+
+const client = new SquareClient({
+    ...
+    fetcher: // provide your implementation here
+});
+```
+
+## Contributing
+
+While we value open-source contributions to this SDK, this library is generated programmatically.
+Additions made directly to this library would have to be moved over to our generation code,
+otherwise they would be overwritten upon the next generated release. Feel free to open a PR as
+a proof of concept, but know that we will not be able to merge it as-is. We suggest opening
+an issue first to discuss with us!
+
+On the other hand, contributions to the README are always very welcome!
