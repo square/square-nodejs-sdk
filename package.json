@@ -12,7 +12,7 @@
         "prepack": "cp -rv dist/. .",
         "test": "yarn test:unit",
         "test:unit": "jest --testPathPattern=tests/unit",
-        "test:integration": "jest --testPathPattern=tests/integration"
+        "test:integration": "jest '.*tests\\/integration\\/(?!.*\\.serial\\.test\\.ts$).*\\.test\\.ts$'; jest '.*tests\\/integration\\/.*\\.serial\\.test\\.ts$' --runInBand"
     },
     "dependencies": {
         "url-join": "4.0.1",
