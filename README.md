@@ -55,6 +55,9 @@ await client.payments.create({
 
 ## Legacy SDK
 
+> If you're using TypeScript, make sure that the `moduleResolution` setting in your `tsconfig.json` is equal to `node16`, `nodenext`,
+> or `bundler` to consume the legacy SDK.
+
 While the new SDK has a lot of improvements, we at Square understand that it takes time to upgrade when there are breaking changes.
 To make the migration easier, the new SDK also exports the legacy SDK as `square/legacy`. Here's an example of how you can use the
 legacy SDK alongside the new SDK inside a single file:
