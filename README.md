@@ -201,6 +201,23 @@ const response = await client.payments.create(..., {
 });
 ```
 
+### Receive extra properties
+
+Every response includes any extra properties in the JSON response that were not specified in the type.
+This can be useful for API features not present in the SDK yet.
+
+You can receive and interact with the extra properties by accessing each one directly like so:
+
+```typescript
+const response = await client.locations.create(...);
+
+// Cast the response type into an `any`.
+const location = response.location as any;
+
+// Then access the extra property by its name.
+const undocumentedProperty = location.undocumentedProperty;
+```
+
 ### Retries
 
 The SDK is instrumented with automatic retries with exponential backoff. A request will be retried as long
