@@ -1,3 +1,3 @@
-export { type CodesListRequest } from "./CodesListRequest";
+export { type ListCodesRequest } from "./ListCodesRequest";
 export { type CreateDeviceCodeRequest } from "./CreateDeviceCodeRequest";
-export { type CodesGetRequest } from "./CodesGetRequest";
+export { type GetCodesRequest } from "./GetCodesRequest";

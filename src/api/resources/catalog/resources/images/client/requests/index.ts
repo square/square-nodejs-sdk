@@ -1,2 +1,2 @@
-export { type ImagesCreateRequest } from "./ImagesCreateRequest";
-export { type ImagesUpdateRequest } from "./ImagesUpdateRequest";
+export { type CreateImagesRequest } from "./CreateImagesRequest";
+export { type UpdateImagesRequest } from "./UpdateImagesRequest";

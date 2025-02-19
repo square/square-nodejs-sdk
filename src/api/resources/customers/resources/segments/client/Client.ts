@@ -16,7 +16,7 @@ export declare namespace Segments {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Segments {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -40,18 +40,18 @@ export class Segments {
     /**
      * Retrieves the list of customer segments of a business.
      *
-     * @param {Square.customers.SegmentsListRequest} request
+     * @param {Square.customers.ListSegmentsRequest} request
      * @param {Segments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.customers.segments.list()
      */
     public async list(
-        request: Square.customers.SegmentsListRequest = {},
+        request: Square.customers.ListSegmentsRequest = {},
         requestOptions?: Segments.RequestOptions,
     ): Promise<core.Page<Square.CustomerSegment>> {
         const list = async (
-            request: Square.customers.SegmentsListRequest,
+            request: Square.customers.ListSegmentsRequest,
         ): Promise<Square.ListCustomerSegmentsResponse> => {
             const { cursor, limit } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -71,11 +71,11 @@ export class Segments {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -129,7 +129,7 @@ export class Segments {
     /**
      * Retrieves a specific customer segment as identified by the `segment_id` value.
      *
-     * @param {Square.customers.SegmentsGetRequest} request
+     * @param {Square.customers.GetSegmentsRequest} request
      * @param {Segments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -138,7 +138,7 @@ export class Segments {
      *     })
      */
     public async get(
-        request: Square.customers.SegmentsGetRequest,
+        request: Square.customers.GetSegmentsRequest,
         requestOptions?: Segments.RequestOptions,
     ): Promise<Square.GetCustomerSegmentResponse> {
         const { segmentId } = request;
@@ -152,11 +152,11 @@ export class Segments {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

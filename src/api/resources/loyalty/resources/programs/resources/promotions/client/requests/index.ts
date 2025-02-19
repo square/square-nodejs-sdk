@@ -1,4 +1,4 @@
-export { type PromotionsListRequest } from "./PromotionsListRequest";
+export { type ListPromotionsRequest } from "./ListPromotionsRequest";
 export { type CreateLoyaltyPromotionRequest } from "./CreateLoyaltyPromotionRequest";
-export { type PromotionsGetRequest } from "./PromotionsGetRequest";
-export { type PromotionsCancelRequest } from "./PromotionsCancelRequest";
+export { type GetPromotionsRequest } from "./GetPromotionsRequest";
+export { type CancelPromotionsRequest } from "./CancelPromotionsRequest";

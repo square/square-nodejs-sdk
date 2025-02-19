@@ -1,3 +1,3 @@
-export { type ShiftsListRequest } from "./ShiftsListRequest";
-export { type ShiftsGetRequest } from "./ShiftsGetRequest";
-export { type ShiftsListEventsRequest } from "./ShiftsListEventsRequest";
+export { type ListShiftsRequest } from "./ListShiftsRequest";
+export { type GetShiftsRequest } from "./GetShiftsRequest";
+export { type ListEventsShiftsRequest } from "./ListEventsShiftsRequest";

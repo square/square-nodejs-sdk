@@ -16,7 +16,7 @@ export declare namespace Checkouts {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Checkouts {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -74,11 +74,11 @@ export class Checkouts {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -155,11 +155,11 @@ export class Checkouts {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -211,7 +211,7 @@ export class Checkouts {
     /**
      * Retrieves a Terminal checkout request by `checkout_id`. Terminal checkout requests are available for 30 days.
      *
-     * @param {Square.terminal.CheckoutsGetRequest} request
+     * @param {Square.terminal.GetCheckoutsRequest} request
      * @param {Checkouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -220,7 +220,7 @@ export class Checkouts {
      *     })
      */
     public async get(
-        request: Square.terminal.CheckoutsGetRequest,
+        request: Square.terminal.GetCheckoutsRequest,
         requestOptions?: Checkouts.RequestOptions,
     ): Promise<Square.GetTerminalCheckoutResponse> {
         const { checkoutId } = request;
@@ -234,11 +234,11 @@ export class Checkouts {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -286,7 +286,7 @@ export class Checkouts {
     /**
      * Cancels a Terminal checkout request if the status of the request permits it.
      *
-     * @param {Square.terminal.CheckoutsCancelRequest} request
+     * @param {Square.terminal.CancelCheckoutsRequest} request
      * @param {Checkouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -295,7 +295,7 @@ export class Checkouts {
      *     })
      */
     public async cancel(
-        request: Square.terminal.CheckoutsCancelRequest,
+        request: Square.terminal.CancelCheckoutsRequest,
         requestOptions?: Checkouts.RequestOptions,
     ): Promise<Square.CancelTerminalCheckoutResponse> {
         const { checkoutId } = request;
@@ -309,11 +309,11 @@ export class Checkouts {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

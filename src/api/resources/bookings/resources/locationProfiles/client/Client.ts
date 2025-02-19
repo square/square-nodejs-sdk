@@ -16,7 +16,7 @@ export declare namespace LocationProfiles {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace LocationProfiles {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -40,18 +40,18 @@ export class LocationProfiles {
     /**
      * Lists location booking profiles of a seller.
      *
-     * @param {Square.bookings.LocationProfilesListRequest} request
+     * @param {Square.bookings.ListLocationProfilesRequest} request
      * @param {LocationProfiles.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.bookings.locationProfiles.list()
      */
     public async list(
-        request: Square.bookings.LocationProfilesListRequest = {},
+        request: Square.bookings.ListLocationProfilesRequest = {},
         requestOptions?: LocationProfiles.RequestOptions,
     ): Promise<core.Page<Square.LocationBookingProfile>> {
         const list = async (
-            request: Square.bookings.LocationProfilesListRequest,
+            request: Square.bookings.ListLocationProfilesRequest,
         ): Promise<Square.ListLocationBookingProfilesResponse> => {
             const { limit, cursor } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -71,11 +71,11 @@ export class LocationProfiles {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,

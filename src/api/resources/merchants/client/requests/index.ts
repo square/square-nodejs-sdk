@@ -1,2 +1,2 @@
-export { type MerchantsListRequest } from "./MerchantsListRequest";
-export { type MerchantsGetRequest } from "./MerchantsGetRequest";
+export { type ListMerchantsRequest } from "./ListMerchantsRequest";
+export { type GetMerchantsRequest } from "./GetMerchantsRequest";

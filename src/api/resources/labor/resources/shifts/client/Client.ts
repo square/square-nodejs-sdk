@@ -16,7 +16,7 @@ export declare namespace Shifts {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Shifts {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -105,11 +105,11 @@ export class Shifts {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -206,11 +206,11 @@ export class Shifts {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -260,7 +260,7 @@ export class Shifts {
     /**
      * Returns a single `Shift` specified by `id`.
      *
-     * @param {Square.labor.ShiftsGetRequest} request
+     * @param {Square.labor.GetShiftsRequest} request
      * @param {Shifts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -269,7 +269,7 @@ export class Shifts {
      *     })
      */
     public async get(
-        request: Square.labor.ShiftsGetRequest,
+        request: Square.labor.GetShiftsRequest,
         requestOptions?: Shifts.RequestOptions,
     ): Promise<Square.GetShiftResponse> {
         const { id } = request;
@@ -283,11 +283,11 @@ export class Shifts {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -390,11 +390,11 @@ export class Shifts {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -444,7 +444,7 @@ export class Shifts {
     /**
      * Deletes a `Shift`.
      *
-     * @param {Square.labor.ShiftsDeleteRequest} request
+     * @param {Square.labor.DeleteShiftsRequest} request
      * @param {Shifts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -453,7 +453,7 @@ export class Shifts {
      *     })
      */
     public async delete(
-        request: Square.labor.ShiftsDeleteRequest,
+        request: Square.labor.DeleteShiftsRequest,
         requestOptions?: Shifts.RequestOptions,
     ): Promise<Square.DeleteShiftResponse> {
         const { id } = request;
@@ -467,11 +467,11 @@ export class Shifts {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

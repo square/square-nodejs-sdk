@@ -17,7 +17,7 @@ export declare namespace Invoices {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -29,7 +29,7 @@ export declare namespace Invoices {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -43,7 +43,7 @@ export class Invoices {
      * is paginated. If truncated, the response includes a `cursor` that you
      * use in a subsequent request to retrieve the next set of invoices.
      *
-     * @param {Square.InvoicesListRequest} request
+     * @param {Square.ListInvoicesRequest} request
      * @param {Invoices.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -52,10 +52,10 @@ export class Invoices {
      *     })
      */
     public async list(
-        request: Square.InvoicesListRequest,
+        request: Square.ListInvoicesRequest,
         requestOptions?: Invoices.RequestOptions,
     ): Promise<core.Page<Square.Invoice>> {
-        const list = async (request: Square.InvoicesListRequest): Promise<Square.ListInvoicesResponse> => {
+        const list = async (request: Square.ListInvoicesRequest): Promise<Square.ListInvoicesResponse> => {
             const { locationId, cursor, limit } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             _queryParams["location_id"] = locationId;
@@ -75,11 +75,11 @@ export class Invoices {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -199,11 +199,11 @@ export class Invoices {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -290,11 +290,11 @@ export class Invoices {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -344,7 +344,7 @@ export class Invoices {
     /**
      * Retrieves an invoice by invoice ID.
      *
-     * @param {Square.InvoicesGetRequest} request
+     * @param {Square.GetInvoicesRequest} request
      * @param {Invoices.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -353,7 +353,7 @@ export class Invoices {
      *     })
      */
     public async get(
-        request: Square.InvoicesGetRequest,
+        request: Square.GetInvoicesRequest,
         requestOptions?: Invoices.RequestOptions,
     ): Promise<Square.GetInvoiceResponse> {
         const { invoiceId } = request;
@@ -367,11 +367,11 @@ export class Invoices {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -451,11 +451,11 @@ export class Invoices {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -507,7 +507,7 @@ export class Invoices {
      * associated order status changes to CANCELED. You can only delete a draft
      * invoice (you cannot delete a published invoice, including one that is scheduled for processing).
      *
-     * @param {Square.InvoicesDeleteRequest} request
+     * @param {Square.DeleteInvoicesRequest} request
      * @param {Invoices.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -516,7 +516,7 @@ export class Invoices {
      *     })
      */
     public async delete(
-        request: Square.InvoicesDeleteRequest,
+        request: Square.DeleteInvoicesRequest,
         requestOptions?: Invoices.RequestOptions,
     ): Promise<Square.DeleteInvoiceResponse> {
         const { invoiceId, version } = request;
@@ -535,11 +535,11 @@ export class Invoices {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -626,11 +626,11 @@ export class Invoices {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ..._maybeEncodedRequest.headers,
@@ -705,11 +705,11 @@ export class Invoices {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -784,11 +784,11 @@ export class Invoices {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -878,11 +878,11 @@ export class Invoices {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

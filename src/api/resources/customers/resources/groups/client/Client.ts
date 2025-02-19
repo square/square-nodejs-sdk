@@ -16,7 +16,7 @@ export declare namespace Groups {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Groups {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -40,18 +40,18 @@ export class Groups {
     /**
      * Retrieves the list of customer groups of a business.
      *
-     * @param {Square.customers.GroupsListRequest} request
+     * @param {Square.customers.ListGroupsRequest} request
      * @param {Groups.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.customers.groups.list()
      */
     public async list(
-        request: Square.customers.GroupsListRequest = {},
+        request: Square.customers.ListGroupsRequest = {},
         requestOptions?: Groups.RequestOptions,
     ): Promise<core.Page<Square.CustomerGroup>> {
         const list = async (
-            request: Square.customers.GroupsListRequest,
+            request: Square.customers.ListGroupsRequest,
         ): Promise<Square.ListCustomerGroupsResponse> => {
             const { cursor, limit } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -71,11 +71,11 @@ export class Groups {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -155,11 +155,11 @@ export class Groups {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -209,7 +209,7 @@ export class Groups {
     /**
      * Retrieves a specific customer group as identified by the `group_id` value.
      *
-     * @param {Square.customers.GroupsGetRequest} request
+     * @param {Square.customers.GetGroupsRequest} request
      * @param {Groups.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -218,7 +218,7 @@ export class Groups {
      *     })
      */
     public async get(
-        request: Square.customers.GroupsGetRequest,
+        request: Square.customers.GetGroupsRequest,
         requestOptions?: Groups.RequestOptions,
     ): Promise<Square.GetCustomerGroupResponse> {
         const { groupId } = request;
@@ -232,11 +232,11 @@ export class Groups {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -310,11 +310,11 @@ export class Groups {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -366,7 +366,7 @@ export class Groups {
     /**
      * Deletes a customer group as identified by the `group_id` value.
      *
-     * @param {Square.customers.GroupsDeleteRequest} request
+     * @param {Square.customers.DeleteGroupsRequest} request
      * @param {Groups.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -375,7 +375,7 @@ export class Groups {
      *     })
      */
     public async delete(
-        request: Square.customers.GroupsDeleteRequest,
+        request: Square.customers.DeleteGroupsRequest,
         requestOptions?: Groups.RequestOptions,
     ): Promise<Square.DeleteCustomerGroupResponse> {
         const { groupId } = request;
@@ -389,11 +389,11 @@ export class Groups {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -444,7 +444,7 @@ export class Groups {
      * The customer is identified by the `customer_id` value
      * and the customer group is identified by the `group_id` value.
      *
-     * @param {Square.customers.GroupsAddRequest} request
+     * @param {Square.customers.AddGroupsRequest} request
      * @param {Groups.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -454,7 +454,7 @@ export class Groups {
      *     })
      */
     public async add(
-        request: Square.customers.GroupsAddRequest,
+        request: Square.customers.AddGroupsRequest,
         requestOptions?: Groups.RequestOptions,
     ): Promise<Square.AddGroupToCustomerResponse> {
         const { customerId, groupId } = request;
@@ -468,11 +468,11 @@ export class Groups {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -523,7 +523,7 @@ export class Groups {
      * The customer is identified by the `customer_id` value
      * and the customer group is identified by the `group_id` value.
      *
-     * @param {Square.customers.GroupsRemoveRequest} request
+     * @param {Square.customers.RemoveGroupsRequest} request
      * @param {Groups.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -533,7 +533,7 @@ export class Groups {
      *     })
      */
     public async remove(
-        request: Square.customers.GroupsRemoveRequest,
+        request: Square.customers.RemoveGroupsRequest,
         requestOptions?: Groups.RequestOptions,
     ): Promise<Square.RemoveGroupFromCustomerResponse> {
         const { customerId, groupId } = request;
@@ -547,11 +547,11 @@ export class Groups {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

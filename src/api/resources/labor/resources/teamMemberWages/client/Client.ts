@@ -16,7 +16,7 @@ export declare namespace TeamMemberWages {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace TeamMemberWages {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -40,18 +40,18 @@ export class TeamMemberWages {
     /**
      * Returns a paginated list of `TeamMemberWage` instances for a business.
      *
-     * @param {Square.labor.TeamMemberWagesListRequest} request
+     * @param {Square.labor.ListTeamMemberWagesRequest} request
      * @param {TeamMemberWages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.labor.teamMemberWages.list()
      */
     public async list(
-        request: Square.labor.TeamMemberWagesListRequest = {},
+        request: Square.labor.ListTeamMemberWagesRequest = {},
         requestOptions?: TeamMemberWages.RequestOptions,
     ): Promise<core.Page<Square.TeamMemberWage>> {
         const list = async (
-            request: Square.labor.TeamMemberWagesListRequest,
+            request: Square.labor.ListTeamMemberWagesRequest,
         ): Promise<Square.ListTeamMemberWagesResponse> => {
             const { teamMemberId, limit, cursor } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -74,11 +74,11 @@ export class TeamMemberWages {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -134,7 +134,7 @@ export class TeamMemberWages {
     /**
      * Returns a single `TeamMemberWage` specified by `id`.
      *
-     * @param {Square.labor.TeamMemberWagesGetRequest} request
+     * @param {Square.labor.GetTeamMemberWagesRequest} request
      * @param {TeamMemberWages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -143,7 +143,7 @@ export class TeamMemberWages {
      *     })
      */
     public async get(
-        request: Square.labor.TeamMemberWagesGetRequest,
+        request: Square.labor.GetTeamMemberWagesRequest,
         requestOptions?: TeamMemberWages.RequestOptions,
     ): Promise<Square.GetTeamMemberWageResponse> {
         const { id } = request;
@@ -157,11 +157,11 @@ export class TeamMemberWages {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

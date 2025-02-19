@@ -16,7 +16,7 @@ export declare namespace CustomAttributes {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace CustomAttributes {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -74,11 +74,11 @@ export class CustomAttributes {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -183,11 +183,11 @@ export class CustomAttributes {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -244,7 +244,7 @@ export class CustomAttributes {
      * visible to the requesting application, including those that are owned by other applications
      * and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
      *
-     * @param {Square.locations.CustomAttributesListRequest} request
+     * @param {Square.locations.ListCustomAttributesRequest} request
      * @param {CustomAttributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -253,11 +253,11 @@ export class CustomAttributes {
      *     })
      */
     public async list(
-        request: Square.locations.CustomAttributesListRequest,
+        request: Square.locations.ListCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
     ): Promise<core.Page<Square.CustomAttribute>> {
         const list = async (
-            request: Square.locations.CustomAttributesListRequest,
+            request: Square.locations.ListCustomAttributesRequest,
         ): Promise<Square.ListLocationCustomAttributesResponse> => {
             const { locationId, visibilityFilter, limit, cursor, withDefinitions } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -286,11 +286,11 @@ export class CustomAttributes {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -350,7 +350,7 @@ export class CustomAttributes {
      * To retrieve a custom attribute owned by another application, the `visibility` setting must be
      * `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
      *
-     * @param {Square.locations.CustomAttributesGetRequest} request
+     * @param {Square.locations.GetCustomAttributesRequest} request
      * @param {CustomAttributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -360,7 +360,7 @@ export class CustomAttributes {
      *     })
      */
     public async get(
-        request: Square.locations.CustomAttributesGetRequest,
+        request: Square.locations.GetCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
     ): Promise<Square.RetrieveLocationCustomAttributeResponse> {
         const { locationId, key, withDefinition, version } = request;
@@ -383,11 +383,11 @@ export class CustomAttributes {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -468,11 +468,11 @@ export class CustomAttributes {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -526,7 +526,7 @@ export class CustomAttributes {
      * To delete a custom attribute owned by another application, the `visibility` setting must be
      * `VISIBILITY_READ_WRITE_VALUES`.
      *
-     * @param {Square.locations.CustomAttributesDeleteRequest} request
+     * @param {Square.locations.DeleteCustomAttributesRequest} request
      * @param {CustomAttributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -536,7 +536,7 @@ export class CustomAttributes {
      *     })
      */
     public async delete(
-        request: Square.locations.CustomAttributesDeleteRequest,
+        request: Square.locations.DeleteCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
     ): Promise<Square.DeleteLocationCustomAttributeResponse> {
         const { locationId, key } = request;
@@ -550,11 +550,11 @@ export class CustomAttributes {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

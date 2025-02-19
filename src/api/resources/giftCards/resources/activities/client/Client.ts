@@ -16,7 +16,7 @@ export declare namespace Activities {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Activities {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -43,18 +43,18 @@ export class Activities {
      * filter the list. For example, you can get a list of gift card activities for a gift card,
      * for all gift cards in a specific region, or for activities within a time window.
      *
-     * @param {Square.giftCards.ActivitiesListRequest} request
+     * @param {Square.giftCards.ListActivitiesRequest} request
      * @param {Activities.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.giftCards.activities.list()
      */
     public async list(
-        request: Square.giftCards.ActivitiesListRequest = {},
+        request: Square.giftCards.ListActivitiesRequest = {},
         requestOptions?: Activities.RequestOptions,
     ): Promise<core.Page<Square.GiftCardActivity>> {
         const list = async (
-            request: Square.giftCards.ActivitiesListRequest,
+            request: Square.giftCards.ListActivitiesRequest,
         ): Promise<Square.ListGiftCardActivitiesResponse> => {
             const { giftCardId, type: type_, locationId, beginTime, endTime, limit, cursor, sortOrder } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -92,11 +92,11 @@ export class Activities {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -182,11 +182,11 @@ export class Activities {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -1,6 +1,6 @@
 export { type BulkDeleteOrderCustomAttributesRequest } from "./BulkDeleteOrderCustomAttributesRequest";
 export { type BulkUpsertOrderCustomAttributesRequest } from "./BulkUpsertOrderCustomAttributesRequest";
-export { type CustomAttributesListRequest } from "./CustomAttributesListRequest";
-export { type CustomAttributesGetRequest } from "./CustomAttributesGetRequest";
+export { type ListCustomAttributesRequest } from "./ListCustomAttributesRequest";
+export { type GetCustomAttributesRequest } from "./GetCustomAttributesRequest";
 export { type UpsertOrderCustomAttributeRequest } from "./UpsertOrderCustomAttributeRequest";
-export { type CustomAttributesDeleteRequest } from "./CustomAttributesDeleteRequest";
+export { type DeleteCustomAttributesRequest } from "./DeleteCustomAttributesRequest";

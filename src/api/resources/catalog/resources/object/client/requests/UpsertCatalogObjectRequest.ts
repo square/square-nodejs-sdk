@@ -9,8 +9,8 @@ import * as Square from "../../../../../../index";
  *     {
  *         idempotencyKey: "af3d1afc-7212-4300-b463-0bfc5314a5ae",
  *         object: {
- *             type: "SUBSCRIPTION_PRODUCT",
- *             id: "#Cocoa"
+ *             type: "ITEM",
+ *             id: "id"
  *         }
  *     }
  */

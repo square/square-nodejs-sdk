@@ -17,7 +17,7 @@ export declare namespace Images {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -29,7 +29,7 @@ export declare namespace Images {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -46,14 +46,14 @@ export class Images {
      * This `CreateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in
      * JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
      *
-     * @param {Square.catalog.ImagesCreateRequest} request
+     * @param {Square.catalog.CreateImagesRequest} request
      * @param {Images.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.catalog.images.create({})
      */
     public async create(
-        request: Square.catalog.ImagesCreateRequest,
+        request: Square.catalog.CreateImagesRequest,
         requestOptions?: Images.RequestOptions,
     ): Promise<Square.CreateCatalogImageResponse> {
         const _request = await core.newFormData();
@@ -84,11 +84,11 @@ export class Images {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ..._maybeEncodedRequest.headers,
@@ -139,7 +139,7 @@ export class Images {
      * This `UpdateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in
      * JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
      *
-     * @param {Square.catalog.ImagesUpdateRequest} request
+     * @param {Square.catalog.UpdateImagesRequest} request
      * @param {Images.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -148,7 +148,7 @@ export class Images {
      *     })
      */
     public async update(
-        request: Square.catalog.ImagesUpdateRequest,
+        request: Square.catalog.UpdateImagesRequest,
         requestOptions?: Images.RequestOptions,
     ): Promise<Square.UpdateCatalogImageResponse> {
         const _request = await core.newFormData();
@@ -179,11 +179,11 @@ export class Images {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ..._maybeEncodedRequest.headers,

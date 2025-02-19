@@ -16,7 +16,7 @@ export declare namespace Mobile {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Mobile {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -38,11 +38,14 @@ export class Mobile {
     constructor(protected readonly _options: Mobile.Options = {}) {}
 
     /**
+     * __Note:__ This endpoint is used by the deprecated Reader SDK.
+     * Developers should update their integration to use the [Mobile Payments SDK](https://developer.squareup.com/docs/mobile-payments-sdk), which includes its own authorization methods.
+     *
      * Generates code to authorize a mobile application to connect to a Square card reader.
      *
      * Authorization codes are one-time-use codes and expire 60 minutes after being issued.
      *
-     * __Important:__ The `Authorization` header you provide to this endpoint must have the following format:
+     * The `Authorization` header you provide to this endpoint must have the following format:
      *
      * ```
      * Authorization: Bearer ACCESS_TOKEN
@@ -73,11 +76,11 @@ export class Mobile {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

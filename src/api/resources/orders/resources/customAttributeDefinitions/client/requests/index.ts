@@ -1,5 +1,5 @@
-export { type CustomAttributeDefinitionsListRequest } from "./CustomAttributeDefinitionsListRequest";
+export { type ListCustomAttributeDefinitionsRequest } from "./ListCustomAttributeDefinitionsRequest";
 export { type CreateOrderCustomAttributeDefinitionRequest } from "./CreateOrderCustomAttributeDefinitionRequest";
-export { type CustomAttributeDefinitionsGetRequest } from "./CustomAttributeDefinitionsGetRequest";
+export { type GetCustomAttributeDefinitionsRequest } from "./GetCustomAttributeDefinitionsRequest";
 export { type UpdateOrderCustomAttributeDefinitionRequest } from "./UpdateOrderCustomAttributeDefinitionRequest";
-export { type CustomAttributeDefinitionsDeleteRequest } from "./CustomAttributeDefinitionsDeleteRequest";
+export { type DeleteCustomAttributeDefinitionsRequest } from "./DeleteCustomAttributeDefinitionsRequest";

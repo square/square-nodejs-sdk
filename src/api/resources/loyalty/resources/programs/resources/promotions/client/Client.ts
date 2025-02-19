@@ -16,7 +16,7 @@ export declare namespace Promotions {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Promotions {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -41,7 +41,7 @@ export class Promotions {
      * Lists the loyalty promotions associated with a [loyalty program](entity:LoyaltyProgram).
      * Results are sorted by the `created_at` date in descending order (newest to oldest).
      *
-     * @param {Square.loyalty.programs.PromotionsListRequest} request
+     * @param {Square.loyalty.programs.ListPromotionsRequest} request
      * @param {Promotions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -50,11 +50,11 @@ export class Promotions {
      *     })
      */
     public async list(
-        request: Square.loyalty.programs.PromotionsListRequest,
+        request: Square.loyalty.programs.ListPromotionsRequest,
         requestOptions?: Promotions.RequestOptions,
     ): Promise<core.Page<Square.LoyaltyPromotion>> {
         const list = async (
-            request: Square.loyalty.programs.PromotionsListRequest,
+            request: Square.loyalty.programs.ListPromotionsRequest,
         ): Promise<Square.ListLoyaltyPromotionsResponse> => {
             const { programId, status, cursor, limit } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -80,11 +80,11 @@ export class Promotions {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -190,11 +190,11 @@ export class Promotions {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -246,7 +246,7 @@ export class Promotions {
     /**
      * Retrieves a loyalty promotion.
      *
-     * @param {Square.loyalty.programs.PromotionsGetRequest} request
+     * @param {Square.loyalty.programs.GetPromotionsRequest} request
      * @param {Promotions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -256,7 +256,7 @@ export class Promotions {
      *     })
      */
     public async get(
-        request: Square.loyalty.programs.PromotionsGetRequest,
+        request: Square.loyalty.programs.GetPromotionsRequest,
         requestOptions?: Promotions.RequestOptions,
     ): Promise<Square.GetLoyaltyPromotionResponse> {
         const { promotionId, programId } = request;
@@ -270,11 +270,11 @@ export class Promotions {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -327,7 +327,7 @@ export class Promotions {
      *
      * This endpoint sets the loyalty promotion to the `CANCELED` state
      *
-     * @param {Square.loyalty.programs.PromotionsCancelRequest} request
+     * @param {Square.loyalty.programs.CancelPromotionsRequest} request
      * @param {Promotions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -337,7 +337,7 @@ export class Promotions {
      *     })
      */
     public async cancel(
-        request: Square.loyalty.programs.PromotionsCancelRequest,
+        request: Square.loyalty.programs.CancelPromotionsRequest,
         requestOptions?: Promotions.RequestOptions,
     ): Promise<Square.CancelLoyaltyPromotionResponse> {
         const { promotionId, programId } = request;
@@ -351,11 +351,11 @@ export class Promotions {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

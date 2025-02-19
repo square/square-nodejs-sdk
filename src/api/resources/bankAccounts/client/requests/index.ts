@@ -1,3 +1,3 @@
-export { type BankAccountsListRequest } from "./BankAccountsListRequest";
-export { type BankAccountsGetByV1IdRequest } from "./BankAccountsGetByV1IdRequest";
-export { type BankAccountsGetRequest } from "./BankAccountsGetRequest";
+export { type ListBankAccountsRequest } from "./ListBankAccountsRequest";
+export { type GetByV1IdBankAccountsRequest } from "./GetByV1IdBankAccountsRequest";
+export { type GetBankAccountsRequest } from "./GetBankAccountsRequest";

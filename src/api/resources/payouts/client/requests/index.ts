@@ -1,3 +1,3 @@
-export { type PayoutsListRequest } from "./PayoutsListRequest";
-export { type PayoutsGetRequest } from "./PayoutsGetRequest";
-export { type PayoutsListEntriesRequest } from "./PayoutsListEntriesRequest";
+export { type ListPayoutsRequest } from "./ListPayoutsRequest";
+export { type GetPayoutsRequest } from "./GetPayoutsRequest";
+export { type ListEntriesPayoutsRequest } from "./ListEntriesPayoutsRequest";

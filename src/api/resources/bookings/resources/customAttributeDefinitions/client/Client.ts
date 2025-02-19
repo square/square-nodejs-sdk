@@ -16,7 +16,7 @@ export declare namespace CustomAttributeDefinitions {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace CustomAttributeDefinitions {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -43,18 +43,18 @@ export class CustomAttributeDefinitions {
      * To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
      * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
      *
-     * @param {Square.bookings.CustomAttributeDefinitionsListRequest} request
+     * @param {Square.bookings.ListCustomAttributeDefinitionsRequest} request
      * @param {CustomAttributeDefinitions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.bookings.customAttributeDefinitions.list()
      */
     public async list(
-        request: Square.bookings.CustomAttributeDefinitionsListRequest = {},
+        request: Square.bookings.ListCustomAttributeDefinitionsRequest = {},
         requestOptions?: CustomAttributeDefinitions.RequestOptions,
     ): Promise<core.Page<Square.CustomAttributeDefinition>> {
         const list = async (
-            request: Square.bookings.CustomAttributeDefinitionsListRequest,
+            request: Square.bookings.ListCustomAttributeDefinitionsRequest,
         ): Promise<Square.ListBookingCustomAttributeDefinitionsResponse> => {
             const { limit, cursor } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -74,11 +74,11 @@ export class CustomAttributeDefinitions {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -165,11 +165,11 @@ export class CustomAttributeDefinitions {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -224,7 +224,7 @@ export class CustomAttributeDefinitions {
      * To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
      * To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
      *
-     * @param {Square.bookings.CustomAttributeDefinitionsGetRequest} request
+     * @param {Square.bookings.GetCustomAttributeDefinitionsRequest} request
      * @param {CustomAttributeDefinitions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -233,7 +233,7 @@ export class CustomAttributeDefinitions {
      *     })
      */
     public async get(
-        request: Square.bookings.CustomAttributeDefinitionsGetRequest,
+        request: Square.bookings.GetCustomAttributeDefinitionsRequest,
         requestOptions?: CustomAttributeDefinitions.RequestOptions,
     ): Promise<Square.RetrieveBookingCustomAttributeDefinitionResponse> {
         const { key, version } = request;
@@ -252,11 +252,11 @@ export class CustomAttributeDefinitions {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -335,11 +335,11 @@ export class CustomAttributeDefinitions {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -397,7 +397,7 @@ export class CustomAttributeDefinitions {
      * For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
      * or *Appointments Premium*.
      *
-     * @param {Square.bookings.CustomAttributeDefinitionsDeleteRequest} request
+     * @param {Square.bookings.DeleteCustomAttributeDefinitionsRequest} request
      * @param {CustomAttributeDefinitions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -406,7 +406,7 @@ export class CustomAttributeDefinitions {
      *     })
      */
     public async delete(
-        request: Square.bookings.CustomAttributeDefinitionsDeleteRequest,
+        request: Square.bookings.DeleteCustomAttributeDefinitionsRequest,
         requestOptions?: CustomAttributeDefinitions.RequestOptions,
     ): Promise<Square.DeleteBookingCustomAttributeDefinitionResponse> {
         const { key } = request;
@@ -420,11 +420,11 @@ export class CustomAttributeDefinitions {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

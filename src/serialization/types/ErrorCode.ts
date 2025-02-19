@@ -88,6 +88,7 @@ export const ErrorCode: core.serialization.Schema<serializers.ErrorCode.Raw, Squ
         "PAN_FAILURE",
         "EXPIRATION_FAILURE",
         "CARD_NOT_SUPPORTED",
+        "READER_DECLINED",
         "INVALID_PIN",
         "MISSING_PIN",
         "MISSING_ACCOUNT_TYPE",
@@ -110,6 +111,7 @@ export const ErrorCode: core.serialization.Schema<serializers.ErrorCode.Raw, Squ
         "REFUND_ALREADY_PENDING",
         "PAYMENT_NOT_REFUNDABLE",
         "PAYMENT_NOT_REFUNDABLE_DUE_TO_DISPUTE",
+        "REFUND_ERROR_PAYMENT_NEEDS_COMPLETION",
         "REFUND_DECLINED",
         "INSUFFICIENT_PERMISSIONS_FOR_REFUND",
         "INVALID_CARD_DATA",
@@ -242,6 +244,7 @@ export declare namespace ErrorCode {
         | "PAN_FAILURE"
         | "EXPIRATION_FAILURE"
         | "CARD_NOT_SUPPORTED"
+        | "READER_DECLINED"
         | "INVALID_PIN"
         | "MISSING_PIN"
         | "MISSING_ACCOUNT_TYPE"
@@ -264,6 +267,7 @@ export declare namespace ErrorCode {
         | "REFUND_ALREADY_PENDING"
         | "PAYMENT_NOT_REFUNDABLE"
         | "PAYMENT_NOT_REFUNDABLE_DUE_TO_DISPUTE"
+        | "REFUND_ERROR_PAYMENT_NEEDS_COMPLETION"
         | "REFUND_DECLINED"
         | "INSUFFICIENT_PERMISSIONS_FOR_REFUND"
         | "INVALID_CARD_DATA"

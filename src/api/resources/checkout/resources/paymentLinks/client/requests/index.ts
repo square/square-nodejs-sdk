@@ -1,5 +1,5 @@
-export { type PaymentLinksListRequest } from "./PaymentLinksListRequest";
+export { type ListPaymentLinksRequest } from "./ListPaymentLinksRequest";
 export { type CreatePaymentLinkRequest } from "./CreatePaymentLinkRequest";
-export { type PaymentLinksGetRequest } from "./PaymentLinksGetRequest";
+export { type GetPaymentLinksRequest } from "./GetPaymentLinksRequest";
 export { type UpdatePaymentLinkRequest } from "./UpdatePaymentLinkRequest";
-export { type PaymentLinksDeleteRequest } from "./PaymentLinksDeleteRequest";
+export { type DeletePaymentLinksRequest } from "./DeletePaymentLinksRequest";

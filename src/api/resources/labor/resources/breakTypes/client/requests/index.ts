@@ -1,5 +1,5 @@
-export { type BreakTypesListRequest } from "./BreakTypesListRequest";
+export { type ListBreakTypesRequest } from "./ListBreakTypesRequest";
 export { type CreateBreakTypeRequest } from "./CreateBreakTypeRequest";
-export { type BreakTypesGetRequest } from "./BreakTypesGetRequest";
+export { type GetBreakTypesRequest } from "./GetBreakTypesRequest";
 export { type UpdateBreakTypeRequest } from "./UpdateBreakTypeRequest";
-export { type BreakTypesDeleteRequest } from "./BreakTypesDeleteRequest";
+export { type DeleteBreakTypesRequest } from "./DeleteBreakTypesRequest";

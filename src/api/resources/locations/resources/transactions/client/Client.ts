@@ -16,7 +16,7 @@ export declare namespace Transactions {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Transactions {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -45,7 +45,7 @@ export class Transactions {
      *
      * Max results per [page](https://developer.squareup.com/docs/working-with-apis/pagination): 50
      *
-     * @param {Square.locations.TransactionsListRequest} request
+     * @param {Square.locations.ListTransactionsRequest} request
      * @param {Transactions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -54,7 +54,7 @@ export class Transactions {
      *     })
      */
     public async list(
-        request: Square.locations.TransactionsListRequest,
+        request: Square.locations.ListTransactionsRequest,
         requestOptions?: Transactions.RequestOptions,
     ): Promise<Square.ListTransactionsResponse> {
         const { locationId, beginTime, endTime, sortOrder, cursor } = request;
@@ -88,11 +88,11 @@ export class Transactions {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -141,7 +141,7 @@ export class Transactions {
     /**
      * Retrieves details for a single transaction.
      *
-     * @param {Square.locations.TransactionsGetRequest} request
+     * @param {Square.locations.GetTransactionsRequest} request
      * @param {Transactions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -151,7 +151,7 @@ export class Transactions {
      *     })
      */
     public async get(
-        request: Square.locations.TransactionsGetRequest,
+        request: Square.locations.GetTransactionsRequest,
         requestOptions?: Transactions.RequestOptions,
     ): Promise<Square.GetTransactionResponse> {
         const { locationId, transactionId } = request;
@@ -165,11 +165,11 @@ export class Transactions {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -222,7 +222,7 @@ export class Transactions {
      * See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
      * for more information.
      *
-     * @param {Square.locations.TransactionsCaptureRequest} request
+     * @param {Square.locations.CaptureTransactionsRequest} request
      * @param {Transactions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -232,7 +232,7 @@ export class Transactions {
      *     })
      */
     public async capture(
-        request: Square.locations.TransactionsCaptureRequest,
+        request: Square.locations.CaptureTransactionsRequest,
         requestOptions?: Transactions.RequestOptions,
     ): Promise<Square.CaptureTransactionResponse> {
         const { locationId, transactionId } = request;
@@ -246,11 +246,11 @@ export class Transactions {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -303,7 +303,7 @@ export class Transactions {
      * See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
      * for more information.
      *
-     * @param {Square.locations.TransactionsVoidRequest} request
+     * @param {Square.locations.VoidTransactionsRequest} request
      * @param {Transactions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -313,7 +313,7 @@ export class Transactions {
      *     })
      */
     public async void(
-        request: Square.locations.TransactionsVoidRequest,
+        request: Square.locations.VoidTransactionsRequest,
         requestOptions?: Transactions.RequestOptions,
     ): Promise<Square.VoidTransactionResponse> {
         const { locationId, transactionId } = request;
@@ -327,11 +327,11 @@ export class Transactions {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

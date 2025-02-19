@@ -16,7 +16,7 @@ export declare namespace Inventory {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Inventory {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -41,7 +41,7 @@ export class Inventory {
      * Deprecated version of [RetrieveInventoryAdjustment](api-endpoint:Inventory-RetrieveInventoryAdjustment) after the endpoint URL
      * is updated to conform to the standard convention.
      *
-     * @param {Square.InventoryDeprecatedGetAdjustmentRequest} request
+     * @param {Square.DeprecatedGetAdjustmentInventoryRequest} request
      * @param {Inventory.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -50,7 +50,7 @@ export class Inventory {
      *     })
      */
     public async deprecatedGetAdjustment(
-        request: Square.InventoryDeprecatedGetAdjustmentRequest,
+        request: Square.DeprecatedGetAdjustmentInventoryRequest,
         requestOptions?: Inventory.RequestOptions,
     ): Promise<Square.GetInventoryAdjustmentResponse> {
         const { adjustmentId } = request;
@@ -64,11 +64,11 @@ export class Inventory {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -117,7 +117,7 @@ export class Inventory {
      * Returns the [InventoryAdjustment](entity:InventoryAdjustment) object
      * with the provided `adjustment_id`.
      *
-     * @param {Square.InventoryGetAdjustmentRequest} request
+     * @param {Square.GetAdjustmentInventoryRequest} request
      * @param {Inventory.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -126,7 +126,7 @@ export class Inventory {
      *     })
      */
     public async getAdjustment(
-        request: Square.InventoryGetAdjustmentRequest,
+        request: Square.GetAdjustmentInventoryRequest,
         requestOptions?: Inventory.RequestOptions,
     ): Promise<Square.GetInventoryAdjustmentResponse> {
         const { adjustmentId } = request;
@@ -140,11 +140,11 @@ export class Inventory {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -228,11 +228,11 @@ export class Inventory {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -310,11 +310,11 @@ export class Inventory {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -391,11 +391,11 @@ export class Inventory {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -486,11 +486,11 @@ export class Inventory {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -579,11 +579,11 @@ export class Inventory {
                 method: "POST",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -679,11 +679,11 @@ export class Inventory {
                 method: "POST",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -743,7 +743,7 @@ export class Inventory {
      * Deprecated version of [RetrieveInventoryPhysicalCount](api-endpoint:Inventory-RetrieveInventoryPhysicalCount) after the endpoint URL
      * is updated to conform to the standard convention.
      *
-     * @param {Square.InventoryDeprecatedGetPhysicalCountRequest} request
+     * @param {Square.DeprecatedGetPhysicalCountInventoryRequest} request
      * @param {Inventory.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -752,7 +752,7 @@ export class Inventory {
      *     })
      */
     public async deprecatedGetPhysicalCount(
-        request: Square.InventoryDeprecatedGetPhysicalCountRequest,
+        request: Square.DeprecatedGetPhysicalCountInventoryRequest,
         requestOptions?: Inventory.RequestOptions,
     ): Promise<Square.GetInventoryPhysicalCountResponse> {
         const { physicalCountId } = request;
@@ -766,11 +766,11 @@ export class Inventory {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -819,7 +819,7 @@ export class Inventory {
      * Returns the [InventoryPhysicalCount](entity:InventoryPhysicalCount)
      * object with the provided `physical_count_id`.
      *
-     * @param {Square.InventoryGetPhysicalCountRequest} request
+     * @param {Square.GetPhysicalCountInventoryRequest} request
      * @param {Inventory.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -828,7 +828,7 @@ export class Inventory {
      *     })
      */
     public async getPhysicalCount(
-        request: Square.InventoryGetPhysicalCountRequest,
+        request: Square.GetPhysicalCountInventoryRequest,
         requestOptions?: Inventory.RequestOptions,
     ): Promise<Square.GetInventoryPhysicalCountResponse> {
         const { physicalCountId } = request;
@@ -842,11 +842,11 @@ export class Inventory {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -895,7 +895,7 @@ export class Inventory {
      * Returns the [InventoryTransfer](entity:InventoryTransfer) object
      * with the provided `transfer_id`.
      *
-     * @param {Square.InventoryGetTransferRequest} request
+     * @param {Square.GetTransferInventoryRequest} request
      * @param {Inventory.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -904,7 +904,7 @@ export class Inventory {
      *     })
      */
     public async getTransfer(
-        request: Square.InventoryGetTransferRequest,
+        request: Square.GetTransferInventoryRequest,
         requestOptions?: Inventory.RequestOptions,
     ): Promise<Square.GetInventoryTransferResponse> {
         const { transferId } = request;
@@ -918,11 +918,11 @@ export class Inventory {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -973,7 +973,7 @@ export class Inventory {
      * [Location](entity:Location)s. Responses are paginated and unsorted.
      * For more sophisticated queries, use a batch endpoint.
      *
-     * @param {Square.InventoryGetRequest} request
+     * @param {Square.GetInventoryRequest} request
      * @param {Inventory.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -982,10 +982,10 @@ export class Inventory {
      *     })
      */
     public async get(
-        request: Square.InventoryGetRequest,
+        request: Square.GetInventoryRequest,
         requestOptions?: Inventory.RequestOptions,
     ): Promise<core.Page<Square.InventoryCount>> {
-        const list = async (request: Square.InventoryGetRequest): Promise<Square.GetInventoryCountResponse> => {
+        const list = async (request: Square.GetInventoryRequest): Promise<Square.GetInventoryCountResponse> => {
             const { catalogObjectId, locationIds, cursor } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             if (locationIds !== undefined) {
@@ -1004,11 +1004,11 @@ export class Inventory {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -1076,7 +1076,7 @@ export class Inventory {
      * used to display recent changes for a specific item. For more
      * sophisticated queries, use a batch endpoint.
      *
-     * @param {Square.InventoryChangesRequest} request
+     * @param {Square.ChangesInventoryRequest} request
      * @param {Inventory.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -1085,10 +1085,10 @@ export class Inventory {
      *     })
      */
     public async changes(
-        request: Square.InventoryChangesRequest,
+        request: Square.ChangesInventoryRequest,
         requestOptions?: Inventory.RequestOptions,
     ): Promise<core.Page<Square.InventoryChange>> {
-        const list = async (request: Square.InventoryChangesRequest): Promise<Square.GetInventoryChangesResponse> => {
+        const list = async (request: Square.ChangesInventoryRequest): Promise<Square.GetInventoryChangesResponse> => {
             const { catalogObjectId, locationIds, cursor } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             if (locationIds !== undefined) {
@@ -1107,11 +1107,11 @@ export class Inventory {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,

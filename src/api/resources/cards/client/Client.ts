@@ -16,7 +16,7 @@ export declare namespace Cards {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Cards {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -41,17 +41,17 @@ export class Cards {
      * Retrieves a list of cards owned by the account making the request.
      * A max of 25 cards will be returned.
      *
-     * @param {Square.CardsListRequest} request
+     * @param {Square.ListCardsRequest} request
      * @param {Cards.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.cards.list()
      */
     public async list(
-        request: Square.CardsListRequest = {},
+        request: Square.ListCardsRequest = {},
         requestOptions?: Cards.RequestOptions,
     ): Promise<core.Page<Square.Card>> {
-        const list = async (request: Square.CardsListRequest): Promise<Square.ListCardsResponse> => {
+        const list = async (request: Square.ListCardsRequest): Promise<Square.ListCardsResponse> => {
             const { cursor, customerId, includeDisabled, referenceId, sortOrder } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             if (cursor !== undefined) {
@@ -82,11 +82,11 @@ export class Cards {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -176,11 +176,11 @@ export class Cards {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -230,7 +230,7 @@ export class Cards {
     /**
      * Retrieves details for a specific Card.
      *
-     * @param {Square.CardsGetRequest} request
+     * @param {Square.GetCardsRequest} request
      * @param {Cards.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -239,7 +239,7 @@ export class Cards {
      *     })
      */
     public async get(
-        request: Square.CardsGetRequest,
+        request: Square.GetCardsRequest,
         requestOptions?: Cards.RequestOptions,
     ): Promise<Square.GetCardResponse> {
         const { cardId } = request;
@@ -253,11 +253,11 @@ export class Cards {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -304,7 +304,7 @@ export class Cards {
      * Disables the card, preventing any further updates or charges.
      * Disabling an already disabled card is allowed but has no effect.
      *
-     * @param {Square.CardsDisableRequest} request
+     * @param {Square.DisableCardsRequest} request
      * @param {Cards.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -313,7 +313,7 @@ export class Cards {
      *     })
      */
     public async disable(
-        request: Square.CardsDisableRequest,
+        request: Square.DisableCardsRequest,
         requestOptions?: Cards.RequestOptions,
     ): Promise<Square.DisableCardResponse> {
         const { cardId } = request;
@@ -327,11 +327,11 @@ export class Cards {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
