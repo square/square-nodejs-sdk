@@ -1,2 +1,2 @@
-export { type DevicesListRequest } from "./DevicesListRequest";
-export { type DevicesGetRequest } from "./DevicesGetRequest";
+export { type ListDevicesRequest } from "./ListDevicesRequest";
+export { type GetDevicesRequest } from "./GetDevicesRequest";

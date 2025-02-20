@@ -1,9 +1,9 @@
-export { type InvoicesListRequest } from "./InvoicesListRequest";
+export { type ListInvoicesRequest } from "./ListInvoicesRequest";
 export { type CreateInvoiceRequest } from "./CreateInvoiceRequest";
 export { type SearchInvoicesRequest } from "./SearchInvoicesRequest";
-export { type InvoicesGetRequest } from "./InvoicesGetRequest";
+export { type GetInvoicesRequest } from "./GetInvoicesRequest";
 export { type UpdateInvoiceRequest } from "./UpdateInvoiceRequest";
-export { type InvoicesDeleteRequest } from "./InvoicesDeleteRequest";
+export { type DeleteInvoicesRequest } from "./DeleteInvoicesRequest";
 export { type CreateInvoiceAttachmentRequest } from "./CreateInvoiceAttachmentRequest";
 export { type DeleteInvoiceAttachmentRequest } from "./DeleteInvoiceAttachmentRequest";
 export { type CancelInvoiceRequest } from "./CancelInvoiceRequest";

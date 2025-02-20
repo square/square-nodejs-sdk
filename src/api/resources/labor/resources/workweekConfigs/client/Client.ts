@@ -16,7 +16,7 @@ export declare namespace WorkweekConfigs {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace WorkweekConfigs {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -40,18 +40,18 @@ export class WorkweekConfigs {
     /**
      * Returns a list of `WorkweekConfig` instances for a business.
      *
-     * @param {Square.labor.WorkweekConfigsListRequest} request
+     * @param {Square.labor.ListWorkweekConfigsRequest} request
      * @param {WorkweekConfigs.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.labor.workweekConfigs.list()
      */
     public async list(
-        request: Square.labor.WorkweekConfigsListRequest = {},
+        request: Square.labor.ListWorkweekConfigsRequest = {},
         requestOptions?: WorkweekConfigs.RequestOptions,
     ): Promise<core.Page<Square.WorkweekConfig>> {
         const list = async (
-            request: Square.labor.WorkweekConfigsListRequest,
+            request: Square.labor.ListWorkweekConfigsRequest,
         ): Promise<Square.ListWorkweekConfigsResponse> => {
             const { limit, cursor } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -71,11 +71,11 @@ export class WorkweekConfigs {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -159,11 +159,11 @@ export class WorkweekConfigs {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

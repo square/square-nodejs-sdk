@@ -1,3 +1,3 @@
-export { type RefundsListRequest } from "./RefundsListRequest";
+export { type ListRefundsRequest } from "./ListRefundsRequest";
 export { type RefundPaymentRequest } from "./RefundPaymentRequest";
-export { type RefundsGetRequest } from "./RefundsGetRequest";
+export { type GetRefundsRequest } from "./GetRefundsRequest";

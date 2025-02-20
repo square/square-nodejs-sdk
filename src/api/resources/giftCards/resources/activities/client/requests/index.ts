@@ -1,2 +1,2 @@
-export { type ActivitiesListRequest } from "./ActivitiesListRequest";
+export { type ListActivitiesRequest } from "./ListActivitiesRequest";
 export { type CreateGiftCardActivityRequest } from "./CreateGiftCardActivityRequest";

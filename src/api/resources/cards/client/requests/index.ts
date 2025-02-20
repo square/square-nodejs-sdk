@@ -1,4 +1,4 @@
-export { type CardsListRequest } from "./CardsListRequest";
+export { type ListCardsRequest } from "./ListCardsRequest";
 export { type CreateCardRequest } from "./CreateCardRequest";
-export { type CardsGetRequest } from "./CardsGetRequest";
-export { type CardsDisableRequest } from "./CardsDisableRequest";
+export { type GetCardsRequest } from "./GetCardsRequest";
+export { type DisableCardsRequest } from "./DisableCardsRequest";

@@ -16,7 +16,7 @@ export declare namespace Object_ {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Object_ {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -51,8 +51,8 @@ export class Object_ {
      *     await client.catalog.object.upsert({
      *         idempotencyKey: "af3d1afc-7212-4300-b463-0bfc5314a5ae",
      *         object: {
-     *             type: "SUBSCRIPTION_PRODUCT",
-     *             id: "#Cocoa"
+     *             type: "ITEM",
+     *             id: "id"
      *         }
      *     })
      */
@@ -70,11 +70,11 @@ export class Object_ {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -130,7 +130,7 @@ export class Object_ {
      * [CatalogModifierList](entity:CatalogModifierList) objects, and the ids of
      * any [CatalogTax](entity:CatalogTax) objects that apply to it.
      *
-     * @param {Square.catalog.ObjectGetRequest} request
+     * @param {Square.catalog.GetObjectRequest} request
      * @param {Object_.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -139,7 +139,7 @@ export class Object_ {
      *     })
      */
     public async get(
-        request: Square.catalog.ObjectGetRequest,
+        request: Square.catalog.GetObjectRequest,
         requestOptions?: Object_.RequestOptions,
     ): Promise<Square.GetCatalogObjectResponse> {
         const { objectId, includeRelatedObjects, catalogVersion, includeCategoryPathToRoot } = request;
@@ -166,11 +166,11 @@ export class Object_ {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -228,7 +228,7 @@ export class Object_ {
      * While one (batch or non-batch) delete request is being processed, other (batched and non-batched)
      * delete requests are rejected with the `429` error code.
      *
-     * @param {Square.catalog.ObjectDeleteRequest} request
+     * @param {Square.catalog.DeleteObjectRequest} request
      * @param {Object_.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -237,7 +237,7 @@ export class Object_ {
      *     })
      */
     public async delete(
-        request: Square.catalog.ObjectDeleteRequest,
+        request: Square.catalog.DeleteObjectRequest,
         requestOptions?: Object_.RequestOptions,
     ): Promise<Square.DeleteCatalogObjectResponse> {
         const { objectId } = request;
@@ -251,11 +251,11 @@ export class Object_ {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

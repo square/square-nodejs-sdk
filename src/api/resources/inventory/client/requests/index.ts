@@ -1,7 +1,7 @@
-export { type InventoryDeprecatedGetAdjustmentRequest } from "./InventoryDeprecatedGetAdjustmentRequest";
-export { type InventoryGetAdjustmentRequest } from "./InventoryGetAdjustmentRequest";
-export { type InventoryDeprecatedGetPhysicalCountRequest } from "./InventoryDeprecatedGetPhysicalCountRequest";
-export { type InventoryGetPhysicalCountRequest } from "./InventoryGetPhysicalCountRequest";
-export { type InventoryGetTransferRequest } from "./InventoryGetTransferRequest";
-export { type InventoryGetRequest } from "./InventoryGetRequest";
-export { type InventoryChangesRequest } from "./InventoryChangesRequest";
+export { type DeprecatedGetAdjustmentInventoryRequest } from "./DeprecatedGetAdjustmentInventoryRequest";
+export { type GetAdjustmentInventoryRequest } from "./GetAdjustmentInventoryRequest";
+export { type DeprecatedGetPhysicalCountInventoryRequest } from "./DeprecatedGetPhysicalCountInventoryRequest";
+export { type GetPhysicalCountInventoryRequest } from "./GetPhysicalCountInventoryRequest";
+export { type GetTransferInventoryRequest } from "./GetTransferInventoryRequest";
+export { type GetInventoryRequest } from "./GetInventoryRequest";
+export { type ChangesInventoryRequest } from "./ChangesInventoryRequest";

@@ -1,3 +1,3 @@
-export { type EvidenceListRequest } from "./EvidenceListRequest";
-export { type EvidenceGetRequest } from "./EvidenceGetRequest";
-export { type EvidenceDeleteRequest } from "./EvidenceDeleteRequest";
+export { type ListEvidenceRequest } from "./ListEvidenceRequest";
+export { type GetEvidenceRequest } from "./GetEvidenceRequest";
+export { type DeleteEvidenceRequest } from "./DeleteEvidenceRequest";

@@ -14,11 +14,14 @@
 <dl>
 <dd>
 
+**Note:** This endpoint is used by the deprecated Reader SDK.
+Developers should update their integration to use the [Mobile Payments SDK](https://developer.squareup.com/docs/mobile-payments-sdk), which includes its own authorization methods.
+
 Generates code to authorize a mobile application to connect to a Square card reader.
 
 Authorization codes are one-time-use codes and expire 60 minutes after being issued.
 
-**Important:** The `Authorization` header you provide to this endpoint must have the following format:
+The `Authorization` header you provide to this endpoint must have the following format:
 
 ```
 Authorization: Bearer ACCESS_TOKEN
@@ -686,7 +689,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.BankAccountsListRequest`
+**request:** `Square.ListBankAccountsRequest`
 
 </dd>
 </dl>
@@ -751,7 +754,7 @@ await client.bankAccounts.getByV1Id({
 <dl>
 <dd>
 
-**request:** `Square.BankAccountsGetByV1IdRequest`
+**request:** `Square.GetByV1IdBankAccountsRequest`
 
 </dd>
 </dl>
@@ -817,7 +820,7 @@ await client.bankAccounts.get({
 <dl>
 <dd>
 
-**request:** `Square.BankAccountsGetRequest`
+**request:** `Square.GetBankAccountsRequest`
 
 </dd>
 </dl>
@@ -894,7 +897,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.BookingsListRequest`
+**request:** `Square.ListBookingsRequest`
 
 </dd>
 </dl>
@@ -1366,7 +1369,7 @@ await client.bookings.get({
 <dl>
 <dd>
 
-**request:** `Square.BookingsGetRequest`
+**request:** `Square.GetBookingsRequest`
 
 </dd>
 </dl>
@@ -1584,7 +1587,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.CardsListRequest`
+**request:** `Square.ListCardsRequest`
 
 </dd>
 </dl>
@@ -1728,7 +1731,7 @@ await client.cards.get({
 <dl>
 <dd>
 
-**request:** `Square.CardsGetRequest`
+**request:** `Square.GetCardsRequest`
 
 </dd>
 </dl>
@@ -1794,7 +1797,7 @@ await client.cards.disable({
 <dl>
 <dd>
 
-**request:** `Square.CardsDisableRequest`
+**request:** `Square.DisableCardsRequest`
 
 </dd>
 </dl>
@@ -2010,24 +2013,20 @@ await client.catalog.batchUpsert({
         {
             objects: [
                 {
-                    type: "SUBSCRIPTION_PRODUCT",
-                    id: "#Tea",
-                    presentAtAllLocations: true,
+                    type: "ITEM",
+                    id: "id",
                 },
                 {
-                    type: "SUBSCRIPTION_PRODUCT",
-                    id: "#Coffee",
-                    presentAtAllLocations: true,
+                    type: "ITEM",
+                    id: "id",
                 },
                 {
-                    type: "SUBSCRIPTION_PRODUCT",
-                    id: "#Beverages",
-                    presentAtAllLocations: true,
+                    type: "ITEM",
+                    id: "id",
                 },
                 {
-                    type: "SUBSCRIPTION_PRODUCT",
-                    id: "#SalesTax",
-                    presentAtAllLocations: true,
+                    type: "TAX",
+                    id: "id",
                 },
             ],
         },
@@ -2183,7 +2182,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.CatalogListRequest`
+**request:** `Square.ListCatalogRequest`
 
 </dd>
 </dl>
@@ -2578,7 +2577,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.CustomersListRequest`
+**request:** `Square.ListCustomersRequest`
 
 </dd>
 </dl>
@@ -3143,7 +3142,7 @@ await client.customers.get({
 <dl>
 <dd>
 
-**request:** `Square.CustomersGetRequest`
+**request:** `Square.GetCustomersRequest`
 
 </dd>
 </dl>
@@ -3281,7 +3280,7 @@ await client.customers.delete({
 <dl>
 <dd>
 
-**request:** `Square.CustomersDeleteRequest`
+**request:** `Square.DeleteCustomersRequest`
 
 </dd>
 </dl>
@@ -3356,7 +3355,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.DevicesListRequest`
+**request:** `Square.ListDevicesRequest`
 
 </dd>
 </dl>
@@ -3421,7 +3420,7 @@ await client.devices.get({
 <dl>
 <dd>
 
-**request:** `Square.DevicesGetRequest`
+**request:** `Square.GetDevicesRequest`
 
 </dd>
 </dl>
@@ -3495,7 +3494,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.DisputesListRequest`
+**request:** `Square.ListDisputesRequest`
 
 </dd>
 </dl>
@@ -3560,7 +3559,7 @@ await client.disputes.get({
 <dl>
 <dd>
 
-**request:** `Square.DisputesGetRequest`
+**request:** `Square.GetDisputesRequest`
 
 </dd>
 </dl>
@@ -3629,7 +3628,7 @@ await client.disputes.accept({
 <dl>
 <dd>
 
-**request:** `Square.DisputesAcceptRequest`
+**request:** `Square.AcceptDisputesRequest`
 
 </dd>
 </dl>
@@ -3695,7 +3694,7 @@ await client.disputes.createEvidenceFile({
 <dl>
 <dd>
 
-**request:** `Square.DisputesCreateEvidenceFileRequest`
+**request:** `Square.CreateEvidenceFileDisputesRequest`
 
 </dd>
 </dl>
@@ -3834,7 +3833,7 @@ await client.disputes.submitEvidence({
 <dl>
 <dd>
 
-**request:** `Square.DisputesSubmitEvidenceRequest`
+**request:** `Square.SubmitEvidenceDisputesRequest`
 
 </dd>
 </dl>
@@ -3906,7 +3905,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.EmployeesListRequest`
+**request:** `Square.ListEmployeesRequest`
 
 </dd>
 </dl>
@@ -3969,7 +3968,7 @@ await client.employees.get({
 <dl>
 <dd>
 
-**request:** `Square.EmployeesGetRequest`
+**request:** `Square.GetEmployeesRequest`
 
 </dd>
 </dl>
@@ -4284,7 +4283,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.GiftCardsListRequest`
+**request:** `Square.ListGiftCardsRequest`
 
 </dd>
 </dl>
@@ -4684,7 +4683,7 @@ await client.giftCards.get({
 <dl>
 <dd>
 
-**request:** `Square.GiftCardsGetRequest`
+**request:** `Square.GetGiftCardsRequest`
 
 </dd>
 </dl>
@@ -4752,7 +4751,7 @@ await client.inventory.deprecatedGetAdjustment({
 <dl>
 <dd>
 
-**request:** `Square.InventoryDeprecatedGetAdjustmentRequest`
+**request:** `Square.DeprecatedGetAdjustmentInventoryRequest`
 
 </dd>
 </dl>
@@ -4818,7 +4817,7 @@ await client.inventory.getAdjustment({
 <dl>
 <dd>
 
-**request:** `Square.InventoryGetAdjustmentRequest`
+**request:** `Square.GetAdjustmentInventoryRequest`
 
 </dd>
 </dl>
@@ -5371,7 +5370,7 @@ await client.inventory.deprecatedGetPhysicalCount({
 <dl>
 <dd>
 
-**request:** `Square.InventoryDeprecatedGetPhysicalCountRequest`
+**request:** `Square.DeprecatedGetPhysicalCountInventoryRequest`
 
 </dd>
 </dl>
@@ -5437,7 +5436,7 @@ await client.inventory.getPhysicalCount({
 <dl>
 <dd>
 
-**request:** `Square.InventoryGetPhysicalCountRequest`
+**request:** `Square.GetPhysicalCountInventoryRequest`
 
 </dd>
 </dl>
@@ -5503,7 +5502,7 @@ await client.inventory.getTransfer({
 <dl>
 <dd>
 
-**request:** `Square.InventoryGetTransferRequest`
+**request:** `Square.GetTransferInventoryRequest`
 
 </dd>
 </dl>
@@ -5582,7 +5581,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.InventoryGetRequest`
+**request:** `Square.GetInventoryRequest`
 
 </dd>
 </dl>
@@ -5670,7 +5669,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.InventoryChangesRequest`
+**request:** `Square.ChangesInventoryRequest`
 
 </dd>
 </dl>
@@ -5750,7 +5749,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.InvoicesListRequest`
+**request:** `Square.ListInvoicesRequest`
 
 </dd>
 </dl>
@@ -6011,7 +6010,7 @@ await client.invoices.get({
 <dl>
 <dd>
 
-**request:** `Square.InvoicesGetRequest`
+**request:** `Square.GetInvoicesRequest`
 
 </dd>
 </dl>
@@ -6156,7 +6155,7 @@ await client.invoices.delete({
 <dl>
 <dd>
 
-**request:** `Square.InvoicesDeleteRequest`
+**request:** `Square.DeleteInvoicesRequest`
 
 </dd>
 </dl>
@@ -6646,7 +6645,7 @@ await client.locations.get({
 <dl>
 <dd>
 
-**request:** `Square.LocationsGetRequest`
+**request:** `Square.GetLocationsRequest`
 
 </dd>
 </dl>
@@ -7055,7 +7054,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.MerchantsListRequest`
+**request:** `Square.ListMerchantsRequest`
 
 </dd>
 </dl>
@@ -7120,7 +7119,7 @@ await client.merchants.get({
 <dl>
 <dd>
 
-**request:** `Square.MerchantsGetRequest`
+**request:** `Square.GetMerchantsRequest`
 
 </dd>
 </dl>
@@ -7897,7 +7896,7 @@ await client.orders.get({
 <dl>
 <dd>
 
-**request:** `Square.OrdersGetRequest`
+**request:** `Square.GetOrdersRequest`
 
 </dd>
 </dl>
@@ -8151,7 +8150,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.PaymentsListRequest`
+**request:** `Square.ListPaymentsRequest`
 
 </dd>
 </dl>
@@ -8377,7 +8376,7 @@ await client.payments.get({
 <dl>
 <dd>
 
-**request:** `Square.PaymentsGetRequest`
+**request:** `Square.GetPaymentsRequest`
 
 </dd>
 </dl>
@@ -8521,7 +8520,7 @@ await client.payments.cancel({
 <dl>
 <dd>
 
-**request:** `Square.PaymentsCancelRequest`
+**request:** `Square.CancelPaymentsRequest`
 
 </dd>
 </dl>
@@ -8665,7 +8664,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.PayoutsListRequest`
+**request:** `Square.ListPayoutsRequest`
 
 </dd>
 </dl>
@@ -8731,7 +8730,7 @@ await client.payouts.get({
 <dl>
 <dd>
 
-**request:** `Square.PayoutsGetRequest`
+**request:** `Square.GetPayoutsRequest`
 
 </dd>
 </dl>
@@ -8808,7 +8807,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.PayoutsListEntriesRequest`
+**request:** `Square.ListEntriesPayoutsRequest`
 
 </dd>
 </dl>
@@ -8887,7 +8886,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.RefundsListRequest`
+**request:** `Square.ListRefundsRequest`
 
 </dd>
 </dl>
@@ -9030,7 +9029,7 @@ await client.refunds.get({
 <dl>
 <dd>
 
-**request:** `Square.RefundsGetRequest`
+**request:** `Square.GetRefundsRequest`
 
 </dd>
 </dl>
@@ -9160,7 +9159,7 @@ await client.snippets.get({
 <dl>
 <dd>
 
-**request:** `Square.SnippetsGetRequest`
+**request:** `Square.GetSnippetsRequest`
 
 </dd>
 </dl>
@@ -9302,7 +9301,7 @@ await client.snippets.delete({
 <dl>
 <dd>
 
-**request:** `Square.SnippetsDeleteRequest`
+**request:** `Square.DeleteSnippetsRequest`
 
 </dd>
 </dl>
@@ -9608,7 +9607,7 @@ await client.subscriptions.get({
 <dl>
 <dd>
 
-**request:** `Square.SubscriptionsGetRequest`
+**request:** `Square.GetSubscriptionsRequest`
 
 </dd>
 </dl>
@@ -9743,7 +9742,7 @@ await client.subscriptions.deleteAction({
 <dl>
 <dd>
 
-**request:** `Square.SubscriptionsDeleteActionRequest`
+**request:** `Square.DeleteActionSubscriptionsRequest`
 
 </dd>
 </dl>
@@ -9877,7 +9876,7 @@ await client.subscriptions.cancel({
 <dl>
 <dd>
 
-**request:** `Square.SubscriptionsCancelRequest`
+**request:** `Square.CancelSubscriptionsRequest`
 
 </dd>
 </dl>
@@ -9953,7 +9952,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.SubscriptionsListEventsRequest`
+**request:** `Square.ListEventsSubscriptionsRequest`
 
 </dd>
 </dl>
@@ -10597,7 +10596,7 @@ await client.teamMembers.get({
 <dl>
 <dd>
 
-**request:** `Square.TeamMembersGetRequest`
+**request:** `Square.GetTeamMembersRequest`
 
 </dd>
 </dl>
@@ -10677,7 +10676,7 @@ await client.teamMembers.update({
 <dl>
 <dd>
 
-**request:** `Square.TeamMembersUpdateRequest`
+**request:** `Square.UpdateTeamMembersRequest`
 
 </dd>
 </dl>
@@ -11587,7 +11586,7 @@ await client.vendors.get({
 <dl>
 <dd>
 
-**request:** `Square.VendorsGetRequest`
+**request:** `Square.GetVendorsRequest`
 
 </dd>
 </dl>
@@ -11661,7 +11660,7 @@ await client.vendors.update({
 <dl>
 <dd>
 
-**request:** `Square.VendorsUpdateRequest`
+**request:** `Square.UpdateVendorsRequest`
 
 </dd>
 </dl>
@@ -11738,7 +11737,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.bookings.CustomAttributeDefinitionsListRequest`
+**request:** `Square.bookings.ListCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -11877,7 +11876,7 @@ await client.bookings.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**request:** `Square.bookings.CustomAttributeDefinitionsGetRequest`
+**request:** `Square.bookings.GetCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -12020,7 +12019,7 @@ await client.bookings.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**request:** `Square.bookings.CustomAttributeDefinitionsDeleteRequest`
+**request:** `Square.bookings.DeleteCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -12253,7 +12252,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.bookings.CustomAttributesListRequest`
+**request:** `Square.bookings.ListCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -12322,7 +12321,7 @@ await client.bookings.customAttributes.get({
 <dl>
 <dd>
 
-**request:** `Square.bookings.CustomAttributesGetRequest`
+**request:** `Square.bookings.GetCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -12467,7 +12466,7 @@ await client.bookings.customAttributes.delete({
 <dl>
 <dd>
 
-**request:** `Square.bookings.CustomAttributesDeleteRequest`
+**request:** `Square.bookings.DeleteCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -12541,7 +12540,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.bookings.LocationProfilesListRequest`
+**request:** `Square.bookings.ListLocationProfilesRequest`
 
 </dd>
 </dl>
@@ -12615,7 +12614,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.bookings.TeamMemberProfilesListRequest`
+**request:** `Square.bookings.ListTeamMemberProfilesRequest`
 
 </dd>
 </dl>
@@ -12680,7 +12679,7 @@ await client.bookings.teamMemberProfiles.get({
 <dl>
 <dd>
 
-**request:** `Square.bookings.TeamMemberProfilesGetRequest`
+**request:** `Square.bookings.GetTeamMemberProfilesRequest`
 
 </dd>
 </dl>
@@ -12759,7 +12758,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.cashDrawers.ShiftsListRequest`
+**request:** `Square.cashDrawers.ListShiftsRequest`
 
 </dd>
 </dl>
@@ -12826,7 +12825,7 @@ await client.cashDrawers.shifts.get({
 <dl>
 <dd>
 
-**request:** `Square.cashDrawers.ShiftsGetRequest`
+**request:** `Square.cashDrawers.GetShiftsRequest`
 
 </dd>
 </dl>
@@ -12904,7 +12903,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.cashDrawers.ShiftsListEventsRequest`
+**request:** `Square.cashDrawers.ListEventsShiftsRequest`
 
 </dd>
 </dl>
@@ -12974,7 +12973,7 @@ await client.catalog.images.create({});
 <dl>
 <dd>
 
-**request:** `Square.catalog.ImagesCreateRequest`
+**request:** `Square.catalog.CreateImagesRequest`
 
 </dd>
 </dl>
@@ -13042,7 +13041,7 @@ await client.catalog.images.update({
 <dl>
 <dd>
 
-**request:** `Square.catalog.ImagesUpdateRequest`
+**request:** `Square.catalog.UpdateImagesRequest`
 
 </dd>
 </dl>
@@ -13098,8 +13097,8 @@ update requests are rejected with the `429` error code.
 await client.catalog.object.upsert({
     idempotencyKey: "af3d1afc-7212-4300-b463-0bfc5314a5ae",
     object: {
-        type: "SUBSCRIPTION_PRODUCT",
-        id: "#Cocoa",
+        type: "ITEM",
+        id: "id",
     },
 });
 ```
@@ -13188,7 +13187,7 @@ await client.catalog.object.get({
 <dl>
 <dd>
 
-**request:** `Square.catalog.ObjectGetRequest`
+**request:** `Square.catalog.GetObjectRequest`
 
 </dd>
 </dl>
@@ -13262,7 +13261,7 @@ await client.catalog.object.delete({
 <dl>
 <dd>
 
-**request:** `Square.catalog.ObjectDeleteRequest`
+**request:** `Square.catalog.DeleteObjectRequest`
 
 </dd>
 </dl>
@@ -13336,7 +13335,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.checkout.PaymentLinksListRequest`
+**request:** `Square.checkout.ListPaymentLinksRequest`
 
 </dd>
 </dl>
@@ -13474,7 +13473,7 @@ await client.checkout.paymentLinks.get({
 <dl>
 <dd>
 
-**request:** `Square.checkout.PaymentLinksGetRequest`
+**request:** `Square.checkout.GetPaymentLinksRequest`
 
 </dd>
 </dl>
@@ -13612,7 +13611,7 @@ await client.checkout.paymentLinks.delete({
 <dl>
 <dd>
 
-**request:** `Square.checkout.PaymentLinksDeleteRequest`
+**request:** `Square.checkout.DeletePaymentLinksRequest`
 
 </dd>
 </dl>
@@ -13691,7 +13690,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.customers.CustomAttributeDefinitionsListRequest`
+**request:** `Square.customers.ListCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -13843,7 +13842,7 @@ await client.customers.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**request:** `Square.customers.CustomAttributeDefinitionsGetRequest`
+**request:** `Square.customers.GetCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -13988,7 +13987,7 @@ await client.customers.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**request:** `Square.customers.CustomAttributeDefinitionsDeleteRequest`
+**request:** `Square.customers.DeleteCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -14176,7 +14175,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.customers.GroupsListRequest`
+**request:** `Square.customers.ListGroupsRequest`
 
 </dd>
 </dl>
@@ -14310,7 +14309,7 @@ await client.customers.groups.get({
 <dl>
 <dd>
 
-**request:** `Square.customers.GroupsGetRequest`
+**request:** `Square.customers.GetGroupsRequest`
 
 </dd>
 </dl>
@@ -14443,7 +14442,7 @@ await client.customers.groups.delete({
 <dl>
 <dd>
 
-**request:** `Square.customers.GroupsDeleteRequest`
+**request:** `Square.customers.DeleteGroupsRequest`
 
 </dd>
 </dl>
@@ -14512,7 +14511,7 @@ await client.customers.groups.add({
 <dl>
 <dd>
 
-**request:** `Square.customers.GroupsAddRequest`
+**request:** `Square.customers.AddGroupsRequest`
 
 </dd>
 </dl>
@@ -14581,7 +14580,7 @@ await client.customers.groups.remove({
 <dl>
 <dd>
 
-**request:** `Square.customers.GroupsRemoveRequest`
+**request:** `Square.customers.RemoveGroupsRequest`
 
 </dd>
 </dl>
@@ -14655,7 +14654,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.customers.SegmentsListRequest`
+**request:** `Square.customers.ListSegmentsRequest`
 
 </dd>
 </dl>
@@ -14720,7 +14719,7 @@ await client.customers.segments.get({
 <dl>
 <dd>
 
-**request:** `Square.customers.SegmentsGetRequest`
+**request:** `Square.customers.GetSegmentsRequest`
 
 </dd>
 </dl>
@@ -14867,7 +14866,7 @@ await client.customers.cards.delete({
 <dl>
 <dd>
 
-**request:** `Square.customers.CardsDeleteRequest`
+**request:** `Square.customers.DeleteCardsRequest`
 
 </dd>
 </dl>
@@ -14952,7 +14951,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.customers.CustomAttributesListRequest`
+**request:** `Square.customers.ListCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -15025,7 +15024,7 @@ await client.customers.customAttributes.get({
 <dl>
 <dd>
 
-**request:** `Square.customers.CustomAttributesGetRequest`
+**request:** `Square.customers.GetCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -15172,7 +15171,7 @@ await client.customers.customAttributes.delete({
 <dl>
 <dd>
 
-**request:** `Square.customers.CustomAttributesDeleteRequest`
+**request:** `Square.customers.DeleteCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -15246,7 +15245,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.devices.CodesListRequest`
+**request:** `Square.devices.ListCodesRequest`
 
 </dd>
 </dl>
@@ -15382,7 +15381,7 @@ await client.devices.codes.get({
 <dl>
 <dd>
 
-**request:** `Square.devices.CodesGetRequest`
+**request:** `Square.devices.GetCodesRequest`
 
 </dd>
 </dl>
@@ -15460,7 +15459,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.disputes.EvidenceListRequest`
+**request:** `Square.disputes.ListEvidenceRequest`
 
 </dd>
 </dl>
@@ -15528,7 +15527,7 @@ await client.disputes.evidence.get({
 <dl>
 <dd>
 
-**request:** `Square.disputes.EvidenceGetRequest`
+**request:** `Square.disputes.GetEvidenceRequest`
 
 </dd>
 </dl>
@@ -15595,7 +15594,7 @@ await client.disputes.evidence.delete({
 <dl>
 <dd>
 
-**request:** `Square.disputes.EvidenceDeleteRequest`
+**request:** `Square.disputes.DeleteEvidenceRequest`
 
 </dd>
 </dl>
@@ -15672,7 +15671,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.giftCards.ActivitiesListRequest`
+**request:** `Square.giftCards.ListActivitiesRequest`
 
 </dd>
 </dl>
@@ -15821,7 +15820,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.labor.BreakTypesListRequest`
+**request:** `Square.labor.ListBreakTypesRequest`
 
 </dd>
 </dl>
@@ -15970,7 +15969,7 @@ await client.labor.breakTypes.get({
 <dl>
 <dd>
 
-**request:** `Square.labor.BreakTypesGetRequest`
+**request:** `Square.labor.GetBreakTypesRequest`
 
 </dd>
 </dl>
@@ -16109,7 +16108,7 @@ await client.labor.breakTypes.delete({
 <dl>
 <dd>
 
-**request:** `Square.labor.BreakTypesDeleteRequest`
+**request:** `Square.labor.DeleteBreakTypesRequest`
 
 </dd>
 </dl>
@@ -16183,7 +16182,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.labor.EmployeeWagesListRequest`
+**request:** `Square.labor.ListEmployeeWagesRequest`
 
 </dd>
 </dl>
@@ -16248,7 +16247,7 @@ await client.labor.employeeWages.get({
 <dl>
 <dd>
 
-**request:** `Square.labor.EmployeeWagesGetRequest`
+**request:** `Square.labor.GetEmployeeWagesRequest`
 
 </dd>
 </dl>
@@ -16516,7 +16515,7 @@ await client.labor.shifts.get({
 <dl>
 <dd>
 
-**request:** `Square.labor.ShiftsGetRequest`
+**request:** `Square.labor.GetShiftsRequest`
 
 </dd>
 </dl>
@@ -16682,7 +16681,7 @@ await client.labor.shifts.delete({
 <dl>
 <dd>
 
-**request:** `Square.labor.ShiftsDeleteRequest`
+**request:** `Square.labor.DeleteShiftsRequest`
 
 </dd>
 </dl>
@@ -16756,7 +16755,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.labor.TeamMemberWagesListRequest`
+**request:** `Square.labor.ListTeamMemberWagesRequest`
 
 </dd>
 </dl>
@@ -16821,7 +16820,7 @@ await client.labor.teamMemberWages.get({
 <dl>
 <dd>
 
-**request:** `Square.labor.TeamMemberWagesGetRequest`
+**request:** `Square.labor.GetTeamMemberWagesRequest`
 
 </dd>
 </dl>
@@ -16895,7 +16894,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.labor.WorkweekConfigsListRequest`
+**request:** `Square.labor.ListWorkweekConfigsRequest`
 
 </dd>
 </dl>
@@ -17042,7 +17041,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.locations.CustomAttributeDefinitionsListRequest`
+**request:** `Square.locations.ListCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -17188,7 +17187,7 @@ await client.locations.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**request:** `Square.locations.CustomAttributeDefinitionsGetRequest`
+**request:** `Square.locations.GetCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -17328,7 +17327,7 @@ await client.locations.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**request:** `Square.locations.CustomAttributeDefinitionsDeleteRequest`
+**request:** `Square.locations.DeleteCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -17584,7 +17583,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.locations.CustomAttributesListRequest`
+**request:** `Square.locations.ListCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -17654,7 +17653,7 @@ await client.locations.customAttributes.get({
 <dl>
 <dd>
 
-**request:** `Square.locations.CustomAttributesGetRequest`
+**request:** `Square.locations.GetCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -17796,7 +17795,7 @@ await client.locations.customAttributes.delete({
 <dl>
 <dd>
 
-**request:** `Square.locations.CustomAttributesDeleteRequest`
+**request:** `Square.locations.DeleteCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -17868,7 +17867,7 @@ await client.locations.transactions.list({
 <dl>
 <dd>
 
-**request:** `Square.locations.TransactionsListRequest`
+**request:** `Square.locations.ListTransactionsRequest`
 
 </dd>
 </dl>
@@ -17934,7 +17933,7 @@ await client.locations.transactions.get({
 <dl>
 <dd>
 
-**request:** `Square.locations.TransactionsGetRequest`
+**request:** `Square.locations.GetTransactionsRequest`
 
 </dd>
 </dl>
@@ -18004,7 +18003,7 @@ await client.locations.transactions.capture({
 <dl>
 <dd>
 
-**request:** `Square.locations.TransactionsCaptureRequest`
+**request:** `Square.locations.CaptureTransactionsRequest`
 
 </dd>
 </dl>
@@ -18074,7 +18073,7 @@ await client.locations.transactions.void({
 <dl>
 <dd>
 
-**request:** `Square.locations.TransactionsVoidRequest`
+**request:** `Square.locations.VoidTransactionsRequest`
 
 </dd>
 </dl>
@@ -18288,7 +18287,7 @@ await client.loyalty.accounts.get({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.AccountsGetRequest`
+**request:** `Square.loyalty.GetAccountsRequest`
 
 </dd>
 </dl>
@@ -18571,7 +18570,7 @@ await client.loyalty.programs.get({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.ProgramsGetRequest`
+**request:** `Square.loyalty.GetProgramsRequest`
 
 </dd>
 </dl>
@@ -18869,7 +18868,7 @@ await client.loyalty.rewards.get({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.RewardsGetRequest`
+**request:** `Square.loyalty.GetRewardsRequest`
 
 </dd>
 </dl>
@@ -18942,7 +18941,7 @@ await client.loyalty.rewards.delete({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.RewardsDeleteRequest`
+**request:** `Square.loyalty.DeleteRewardsRequest`
 
 </dd>
 </dl>
@@ -19098,7 +19097,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.loyalty.programs.PromotionsListRequest`
+**request:** `Square.loyalty.programs.ListPromotionsRequest`
 
 </dd>
 </dl>
@@ -19258,7 +19257,7 @@ await client.loyalty.programs.promotions.get({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.programs.PromotionsGetRequest`
+**request:** `Square.loyalty.programs.GetPromotionsRequest`
 
 </dd>
 </dl>
@@ -19329,7 +19328,7 @@ await client.loyalty.programs.promotions.cancel({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.programs.PromotionsCancelRequest`
+**request:** `Square.loyalty.programs.CancelPromotionsRequest`
 
 </dd>
 </dl>
@@ -19406,7 +19405,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.merchants.CustomAttributeDefinitionsListRequest`
+**request:** `Square.merchants.ListCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -19552,7 +19551,7 @@ await client.merchants.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**request:** `Square.merchants.CustomAttributeDefinitionsGetRequest`
+**request:** `Square.merchants.GetCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -19692,7 +19691,7 @@ await client.merchants.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**request:** `Square.merchants.CustomAttributeDefinitionsDeleteRequest`
+**request:** `Square.merchants.DeleteCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -19938,7 +19937,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.merchants.CustomAttributesListRequest`
+**request:** `Square.merchants.ListCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -20008,7 +20007,7 @@ await client.merchants.customAttributes.get({
 <dl>
 <dd>
 
-**request:** `Square.merchants.CustomAttributesGetRequest`
+**request:** `Square.merchants.GetCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -20150,7 +20149,7 @@ await client.merchants.customAttributes.delete({
 <dl>
 <dd>
 
-**request:** `Square.merchants.CustomAttributesDeleteRequest`
+**request:** `Square.merchants.DeleteCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -20229,7 +20228,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.orders.CustomAttributeDefinitionsListRequest`
+**request:** `Square.orders.ListCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -20376,7 +20375,7 @@ await client.orders.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**request:** `Square.orders.CustomAttributeDefinitionsGetRequest`
+**request:** `Square.orders.GetCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -20516,7 +20515,7 @@ await client.orders.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**request:** `Square.orders.CustomAttributeDefinitionsDeleteRequest`
+**request:** `Square.orders.DeleteCustomAttributeDefinitionsRequest`
 
 </dd>
 </dl>
@@ -20783,7 +20782,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.orders.CustomAttributesListRequest`
+**request:** `Square.orders.ListCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -20856,7 +20855,7 @@ await client.orders.customAttributes.get({
 <dl>
 <dd>
 
-**request:** `Square.orders.CustomAttributesGetRequest`
+**request:** `Square.orders.GetCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -21005,7 +21004,7 @@ await client.orders.customAttributes.delete({
 <dl>
 <dd>
 
-**request:** `Square.orders.CustomAttributesDeleteRequest`
+**request:** `Square.orders.DeleteCustomAttributesRequest`
 
 </dd>
 </dl>
@@ -21077,7 +21076,7 @@ await client.teamMembers.wageSetting.get({
 <dl>
 <dd>
 
-**request:** `Square.teamMembers.WageSettingGetRequest`
+**request:** `Square.teamMembers.GetWageSettingRequest`
 
 </dd>
 </dl>
@@ -21387,7 +21386,7 @@ await client.terminal.actions.get({
 <dl>
 <dd>
 
-**request:** `Square.terminal.ActionsGetRequest`
+**request:** `Square.terminal.GetActionsRequest`
 
 </dd>
 </dl>
@@ -21452,7 +21451,7 @@ await client.terminal.actions.cancel({
 <dl>
 <dd>
 
-**request:** `Square.terminal.ActionsCancelRequest`
+**request:** `Square.terminal.CancelActionsRequest`
 
 </dd>
 </dl>
@@ -21666,7 +21665,7 @@ await client.terminal.checkouts.get({
 <dl>
 <dd>
 
-**request:** `Square.terminal.CheckoutsGetRequest`
+**request:** `Square.terminal.GetCheckoutsRequest`
 
 </dd>
 </dl>
@@ -21731,7 +21730,7 @@ await client.terminal.checkouts.cancel({
 <dl>
 <dd>
 
-**request:** `Square.terminal.CheckoutsCancelRequest`
+**request:** `Square.terminal.CancelCheckoutsRequest`
 
 </dd>
 </dl>
@@ -21942,7 +21941,7 @@ await client.terminal.refunds.get({
 <dl>
 <dd>
 
-**request:** `Square.terminal.RefundsGetRequest`
+**request:** `Square.terminal.GetRefundsRequest`
 
 </dd>
 </dl>
@@ -22007,7 +22006,7 @@ await client.terminal.refunds.cancel({
 <dl>
 <dd>
 
-**request:** `Square.terminal.RefundsCancelRequest`
+**request:** `Square.terminal.CancelRefundsRequest`
 
 </dd>
 </dl>
@@ -22072,7 +22071,7 @@ await client.webhooks.eventTypes.list();
 <dl>
 <dd>
 
-**request:** `Square.webhooks.EventTypesListRequest`
+**request:** `Square.webhooks.ListEventTypesRequest`
 
 </dd>
 </dl>
@@ -22146,7 +22145,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.webhooks.SubscriptionsListRequest`
+**request:** `Square.webhooks.ListSubscriptionsRequest`
 
 </dd>
 </dl>
@@ -22282,7 +22281,7 @@ await client.webhooks.subscriptions.get({
 <dl>
 <dd>
 
-**request:** `Square.webhooks.SubscriptionsGetRequest`
+**request:** `Square.webhooks.GetSubscriptionsRequest`
 
 </dd>
 </dl>
@@ -22416,7 +22415,7 @@ await client.webhooks.subscriptions.delete({
 <dl>
 <dd>
 
-**request:** `Square.webhooks.SubscriptionsDeleteRequest`
+**request:** `Square.webhooks.DeleteSubscriptionsRequest`
 
 </dd>
 </dl>

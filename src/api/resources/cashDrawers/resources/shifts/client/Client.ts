@@ -16,7 +16,7 @@ export declare namespace Shifts {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Shifts {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -41,7 +41,7 @@ export class Shifts {
      * Provides the details for all of the cash drawer shifts for a location
      * in a date range.
      *
-     * @param {Square.cashDrawers.ShiftsListRequest} request
+     * @param {Square.cashDrawers.ListShiftsRequest} request
      * @param {Shifts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -50,11 +50,11 @@ export class Shifts {
      *     })
      */
     public async list(
-        request: Square.cashDrawers.ShiftsListRequest,
+        request: Square.cashDrawers.ListShiftsRequest,
         requestOptions?: Shifts.RequestOptions,
     ): Promise<core.Page<Square.CashDrawerShiftSummary>> {
         const list = async (
-            request: Square.cashDrawers.ShiftsListRequest,
+            request: Square.cashDrawers.ListShiftsRequest,
         ): Promise<Square.ListCashDrawerShiftsResponse> => {
             const { locationId, sortOrder, beginTime, endTime, limit, cursor } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -87,11 +87,11 @@ export class Shifts {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -146,7 +146,7 @@ export class Shifts {
      * Provides the summary details for a single cash drawer shift. See
      * [ListCashDrawerShiftEvents](api-endpoint:CashDrawers-ListCashDrawerShiftEvents) for a list of cash drawer shift events.
      *
-     * @param {Square.cashDrawers.ShiftsGetRequest} request
+     * @param {Square.cashDrawers.GetShiftsRequest} request
      * @param {Shifts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -156,7 +156,7 @@ export class Shifts {
      *     })
      */
     public async get(
-        request: Square.cashDrawers.ShiftsGetRequest,
+        request: Square.cashDrawers.GetShiftsRequest,
         requestOptions?: Shifts.RequestOptions,
     ): Promise<Square.GetCashDrawerShiftResponse> {
         const { shiftId, locationId } = request;
@@ -172,11 +172,11 @@ export class Shifts {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -225,7 +225,7 @@ export class Shifts {
     /**
      * Provides a paginated list of events for a single cash drawer shift.
      *
-     * @param {Square.cashDrawers.ShiftsListEventsRequest} request
+     * @param {Square.cashDrawers.ListEventsShiftsRequest} request
      * @param {Shifts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -235,11 +235,11 @@ export class Shifts {
      *     })
      */
     public async listEvents(
-        request: Square.cashDrawers.ShiftsListEventsRequest,
+        request: Square.cashDrawers.ListEventsShiftsRequest,
         requestOptions?: Shifts.RequestOptions,
     ): Promise<core.Page<Square.CashDrawerShiftEvent>> {
         const list = async (
-            request: Square.cashDrawers.ShiftsListEventsRequest,
+            request: Square.cashDrawers.ListEventsShiftsRequest,
         ): Promise<Square.ListCashDrawerShiftEventsResponse> => {
             const { shiftId, locationId, limit, cursor } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -260,11 +260,11 @@ export class Shifts {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,

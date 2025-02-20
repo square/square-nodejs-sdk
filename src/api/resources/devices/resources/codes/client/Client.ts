@@ -16,7 +16,7 @@ export declare namespace Codes {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Codes {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -40,17 +40,17 @@ export class Codes {
     /**
      * Lists all DeviceCodes associated with the merchant.
      *
-     * @param {Square.devices.CodesListRequest} request
+     * @param {Square.devices.ListCodesRequest} request
      * @param {Codes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.devices.codes.list()
      */
     public async list(
-        request: Square.devices.CodesListRequest = {},
+        request: Square.devices.ListCodesRequest = {},
         requestOptions?: Codes.RequestOptions,
     ): Promise<core.Page<Square.DeviceCode>> {
-        const list = async (request: Square.devices.CodesListRequest): Promise<Square.ListDeviceCodesResponse> => {
+        const list = async (request: Square.devices.ListCodesRequest): Promise<Square.ListDeviceCodesResponse> => {
             const { cursor, locationId, productType, status } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             if (cursor !== undefined) {
@@ -81,11 +81,11 @@ export class Codes {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -167,11 +167,11 @@ export class Codes {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -221,7 +221,7 @@ export class Codes {
     /**
      * Retrieves DeviceCode with the associated ID.
      *
-     * @param {Square.devices.CodesGetRequest} request
+     * @param {Square.devices.GetCodesRequest} request
      * @param {Codes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -230,7 +230,7 @@ export class Codes {
      *     })
      */
     public async get(
-        request: Square.devices.CodesGetRequest,
+        request: Square.devices.GetCodesRequest,
         requestOptions?: Codes.RequestOptions,
     ): Promise<Square.GetDeviceCodeResponse> {
         const { id } = request;
@@ -244,11 +244,11 @@ export class Codes {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -16,7 +16,7 @@ export declare namespace Payments {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Payments {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -45,17 +45,17 @@ export class Payments {
      *
      * The maximum results per page is 100.
      *
-     * @param {Square.PaymentsListRequest} request
+     * @param {Square.ListPaymentsRequest} request
      * @param {Payments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.payments.list()
      */
     public async list(
-        request: Square.PaymentsListRequest = {},
+        request: Square.ListPaymentsRequest = {},
         requestOptions?: Payments.RequestOptions,
     ): Promise<core.Page<Square.Payment>> {
-        const list = async (request: Square.PaymentsListRequest): Promise<Square.ListPaymentsResponse> => {
+        const list = async (request: Square.ListPaymentsRequest): Promise<Square.ListPaymentsResponse> => {
             const {
                 beginTime,
                 endTime,
@@ -117,7 +117,7 @@ export class Payments {
                 _queryParams["updated_at_end_time"] = updatedAtEndTime;
             }
             if (sortField !== undefined) {
-                _queryParams["sort_field"] = serializers.PaymentSortField.jsonOrThrow(sortField, {
+                _queryParams["sort_field"] = serializers.ListPaymentsRequestSortField.jsonOrThrow(sortField, {
                     unrecognizedObjectKeys: "strip",
                     omitUndefined: true,
                 });
@@ -132,11 +132,11 @@ export class Payments {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -233,11 +233,11 @@ export class Payments {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -319,11 +319,11 @@ export class Payments {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -373,7 +373,7 @@ export class Payments {
     /**
      * Retrieves details for a specific payment.
      *
-     * @param {Square.PaymentsGetRequest} request
+     * @param {Square.GetPaymentsRequest} request
      * @param {Payments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -382,7 +382,7 @@ export class Payments {
      *     })
      */
     public async get(
-        request: Square.PaymentsGetRequest,
+        request: Square.GetPaymentsRequest,
         requestOptions?: Payments.RequestOptions,
     ): Promise<Square.GetPaymentResponse> {
         const { paymentId } = request;
@@ -396,11 +396,11 @@ export class Payments {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -482,11 +482,11 @@ export class Payments {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -537,7 +537,7 @@ export class Payments {
      * Cancels (voids) a payment. You can use this endpoint to cancel a payment with
      * the APPROVED `status`.
      *
-     * @param {Square.PaymentsCancelRequest} request
+     * @param {Square.CancelPaymentsRequest} request
      * @param {Payments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -546,7 +546,7 @@ export class Payments {
      *     })
      */
     public async cancel(
-        request: Square.PaymentsCancelRequest,
+        request: Square.CancelPaymentsRequest,
         requestOptions?: Payments.RequestOptions,
     ): Promise<Square.CancelPaymentResponse> {
         const { paymentId } = request;
@@ -560,11 +560,11 @@ export class Payments {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -638,11 +638,11 @@ export class Payments {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

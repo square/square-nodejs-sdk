@@ -16,7 +16,7 @@ export declare namespace BankAccounts {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace BankAccounts {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -40,17 +40,17 @@ export class BankAccounts {
     /**
      * Returns a list of [BankAccount](entity:BankAccount) objects linked to a Square account.
      *
-     * @param {Square.BankAccountsListRequest} request
+     * @param {Square.ListBankAccountsRequest} request
      * @param {BankAccounts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.bankAccounts.list()
      */
     public async list(
-        request: Square.BankAccountsListRequest = {},
+        request: Square.ListBankAccountsRequest = {},
         requestOptions?: BankAccounts.RequestOptions,
     ): Promise<core.Page<Square.BankAccount>> {
-        const list = async (request: Square.BankAccountsListRequest): Promise<Square.ListBankAccountsResponse> => {
+        const list = async (request: Square.ListBankAccountsRequest): Promise<Square.ListBankAccountsResponse> => {
             const { cursor, limit, locationId } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             if (cursor !== undefined) {
@@ -72,11 +72,11 @@ export class BankAccounts {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -130,7 +130,7 @@ export class BankAccounts {
     /**
      * Returns details of a [BankAccount](entity:BankAccount) identified by V1 bank account ID.
      *
-     * @param {Square.BankAccountsGetByV1IdRequest} request
+     * @param {Square.GetByV1IdBankAccountsRequest} request
      * @param {BankAccounts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -139,7 +139,7 @@ export class BankAccounts {
      *     })
      */
     public async getByV1Id(
-        request: Square.BankAccountsGetByV1IdRequest,
+        request: Square.GetByV1IdBankAccountsRequest,
         requestOptions?: BankAccounts.RequestOptions,
     ): Promise<Square.GetBankAccountByV1IdResponse> {
         const { v1BankAccountId } = request;
@@ -153,11 +153,11 @@ export class BankAccounts {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -206,7 +206,7 @@ export class BankAccounts {
      * Returns details of a [BankAccount](entity:BankAccount)
      * linked to a Square account.
      *
-     * @param {Square.BankAccountsGetRequest} request
+     * @param {Square.GetBankAccountsRequest} request
      * @param {BankAccounts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -215,7 +215,7 @@ export class BankAccounts {
      *     })
      */
     public async get(
-        request: Square.BankAccountsGetRequest,
+        request: Square.GetBankAccountsRequest,
         requestOptions?: BankAccounts.RequestOptions,
     ): Promise<Square.GetBankAccountResponse> {
         const { bankAccountId } = request;
@@ -229,11 +229,11 @@ export class BankAccounts {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

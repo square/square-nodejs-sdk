@@ -16,7 +16,7 @@ export declare namespace BreakTypes {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace BreakTypes {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -40,17 +40,17 @@ export class BreakTypes {
     /**
      * Returns a paginated list of `BreakType` instances for a business.
      *
-     * @param {Square.labor.BreakTypesListRequest} request
+     * @param {Square.labor.ListBreakTypesRequest} request
      * @param {BreakTypes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.labor.breakTypes.list()
      */
     public async list(
-        request: Square.labor.BreakTypesListRequest = {},
+        request: Square.labor.ListBreakTypesRequest = {},
         requestOptions?: BreakTypes.RequestOptions,
     ): Promise<core.Page<Square.BreakType>> {
-        const list = async (request: Square.labor.BreakTypesListRequest): Promise<Square.ListBreakTypesResponse> => {
+        const list = async (request: Square.labor.ListBreakTypesRequest): Promise<Square.ListBreakTypesResponse> => {
             const { locationId, limit, cursor } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             if (locationId !== undefined) {
@@ -72,11 +72,11 @@ export class BreakTypes {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -171,11 +171,11 @@ export class BreakTypes {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -225,7 +225,7 @@ export class BreakTypes {
     /**
      * Returns a single `BreakType` specified by `id`.
      *
-     * @param {Square.labor.BreakTypesGetRequest} request
+     * @param {Square.labor.GetBreakTypesRequest} request
      * @param {BreakTypes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -234,7 +234,7 @@ export class BreakTypes {
      *     })
      */
     public async get(
-        request: Square.labor.BreakTypesGetRequest,
+        request: Square.labor.GetBreakTypesRequest,
         requestOptions?: BreakTypes.RequestOptions,
     ): Promise<Square.GetBreakTypeResponse> {
         const { id } = request;
@@ -248,11 +248,11 @@ export class BreakTypes {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -328,11 +328,11 @@ export class BreakTypes {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -384,7 +384,7 @@ export class BreakTypes {
      *
      * A `BreakType` can be deleted even if it is referenced from a `Shift`.
      *
-     * @param {Square.labor.BreakTypesDeleteRequest} request
+     * @param {Square.labor.DeleteBreakTypesRequest} request
      * @param {BreakTypes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -393,7 +393,7 @@ export class BreakTypes {
      *     })
      */
     public async delete(
-        request: Square.labor.BreakTypesDeleteRequest,
+        request: Square.labor.DeleteBreakTypesRequest,
         requestOptions?: BreakTypes.RequestOptions,
     ): Promise<Square.DeleteBreakTypeResponse> {
         const { id } = request;
@@ -407,11 +407,11 @@ export class BreakTypes {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -1,4 +1,4 @@
 export { type CreateTerminalCheckoutRequest } from "./CreateTerminalCheckoutRequest";
 export { type SearchTerminalCheckoutsRequest } from "./SearchTerminalCheckoutsRequest";
-export { type CheckoutsGetRequest } from "./CheckoutsGetRequest";
-export { type CheckoutsCancelRequest } from "./CheckoutsCancelRequest";
+export { type GetCheckoutsRequest } from "./GetCheckoutsRequest";
+export { type CancelCheckoutsRequest } from "./CancelCheckoutsRequest";

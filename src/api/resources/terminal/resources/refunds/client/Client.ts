@@ -16,7 +16,7 @@ export declare namespace Refunds {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Refunds {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -71,11 +71,11 @@ export class Refunds {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -152,11 +152,11 @@ export class Refunds {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -206,7 +206,7 @@ export class Refunds {
     /**
      * Retrieves an Interac Terminal refund object by ID. Terminal refund objects are available for 30 days.
      *
-     * @param {Square.terminal.RefundsGetRequest} request
+     * @param {Square.terminal.GetRefundsRequest} request
      * @param {Refunds.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -215,7 +215,7 @@ export class Refunds {
      *     })
      */
     public async get(
-        request: Square.terminal.RefundsGetRequest,
+        request: Square.terminal.GetRefundsRequest,
         requestOptions?: Refunds.RequestOptions,
     ): Promise<Square.GetTerminalRefundResponse> {
         const { terminalRefundId } = request;
@@ -229,11 +229,11 @@ export class Refunds {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -281,7 +281,7 @@ export class Refunds {
     /**
      * Cancels an Interac Terminal refund request by refund request ID if the status of the request permits it.
      *
-     * @param {Square.terminal.RefundsCancelRequest} request
+     * @param {Square.terminal.CancelRefundsRequest} request
      * @param {Refunds.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -290,7 +290,7 @@ export class Refunds {
      *     })
      */
     public async cancel(
-        request: Square.terminal.RefundsCancelRequest,
+        request: Square.terminal.CancelRefundsRequest,
         requestOptions?: Refunds.RequestOptions,
     ): Promise<Square.CancelTerminalRefundResponse> {
         const { terminalRefundId } = request;
@@ -304,11 +304,11 @@ export class Refunds {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

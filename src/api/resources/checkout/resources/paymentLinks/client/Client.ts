@@ -16,7 +16,7 @@ export declare namespace PaymentLinks {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace PaymentLinks {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -40,18 +40,18 @@ export class PaymentLinks {
     /**
      * Lists all payment links.
      *
-     * @param {Square.checkout.PaymentLinksListRequest} request
+     * @param {Square.checkout.ListPaymentLinksRequest} request
      * @param {PaymentLinks.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.checkout.paymentLinks.list()
      */
     public async list(
-        request: Square.checkout.PaymentLinksListRequest = {},
+        request: Square.checkout.ListPaymentLinksRequest = {},
         requestOptions?: PaymentLinks.RequestOptions,
     ): Promise<core.Page<Square.PaymentLink>> {
         const list = async (
-            request: Square.checkout.PaymentLinksListRequest,
+            request: Square.checkout.ListPaymentLinksRequest,
         ): Promise<Square.ListPaymentLinksResponse> => {
             const { cursor, limit } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -71,11 +71,11 @@ export class PaymentLinks {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -161,11 +161,11 @@ export class PaymentLinks {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -217,7 +217,7 @@ export class PaymentLinks {
     /**
      * Retrieves a payment link.
      *
-     * @param {Square.checkout.PaymentLinksGetRequest} request
+     * @param {Square.checkout.GetPaymentLinksRequest} request
      * @param {PaymentLinks.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -226,7 +226,7 @@ export class PaymentLinks {
      *     })
      */
     public async get(
-        request: Square.checkout.PaymentLinksGetRequest,
+        request: Square.checkout.GetPaymentLinksRequest,
         requestOptions?: PaymentLinks.RequestOptions,
     ): Promise<Square.GetPaymentLinkResponse> {
         const { id } = request;
@@ -240,11 +240,11 @@ export class PaymentLinks {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -323,11 +323,11 @@ export class PaymentLinks {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -379,7 +379,7 @@ export class PaymentLinks {
     /**
      * Deletes a payment link.
      *
-     * @param {Square.checkout.PaymentLinksDeleteRequest} request
+     * @param {Square.checkout.DeletePaymentLinksRequest} request
      * @param {PaymentLinks.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -388,7 +388,7 @@ export class PaymentLinks {
      *     })
      */
     public async delete(
-        request: Square.checkout.PaymentLinksDeleteRequest,
+        request: Square.checkout.DeletePaymentLinksRequest,
         requestOptions?: PaymentLinks.RequestOptions,
     ): Promise<Square.DeletePaymentLinkResponse> {
         const { id } = request;
@@ -402,11 +402,11 @@ export class PaymentLinks {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

@@ -10,21 +10,17 @@ import * as Square from "../../../../index";
  *         idempotencyKey: "789ff020-f723-43a9-b4b5-43b5dc1fa3dc",
  *         batches: [{
  *                 objects: [{
- *                         type: "SUBSCRIPTION_PRODUCT",
- *                         id: "#Tea",
- *                         presentAtAllLocations: true
+ *                         type: "ITEM",
+ *                         id: "id"
  *                     }, {
- *                         type: "SUBSCRIPTION_PRODUCT",
- *                         id: "#Coffee",
- *                         presentAtAllLocations: true
+ *                         type: "ITEM",
+ *                         id: "id"
  *                     }, {
- *                         type: "SUBSCRIPTION_PRODUCT",
- *                         id: "#Beverages",
- *                         presentAtAllLocations: true
+ *                         type: "ITEM",
+ *                         id: "id"
  *                     }, {
- *                         type: "SUBSCRIPTION_PRODUCT",
- *                         id: "#SalesTax",
- *                         presentAtAllLocations: true
+ *                         type: "TAX",
+ *                         id: "id"
  *                     }]
  *             }]
  *     }

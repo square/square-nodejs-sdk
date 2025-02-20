@@ -1,2 +1,2 @@
-export { type ProgramsGetRequest } from "./ProgramsGetRequest";
+export { type GetProgramsRequest } from "./GetProgramsRequest";
 export { type CalculateLoyaltyPointsRequest } from "./CalculateLoyaltyPointsRequest";

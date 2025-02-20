@@ -1,9 +1,9 @@
-export { type BookingsListRequest } from "./BookingsListRequest";
+export { type ListBookingsRequest } from "./ListBookingsRequest";
 export { type CreateBookingRequest } from "./CreateBookingRequest";
 export { type SearchAvailabilityRequest } from "./SearchAvailabilityRequest";
 export { type BulkRetrieveBookingsRequest } from "./BulkRetrieveBookingsRequest";
 export { type RetrieveLocationBookingProfileRequest } from "./RetrieveLocationBookingProfileRequest";
 export { type BulkRetrieveTeamMemberBookingProfilesRequest } from "./BulkRetrieveTeamMemberBookingProfilesRequest";
-export { type BookingsGetRequest } from "./BookingsGetRequest";
+export { type GetBookingsRequest } from "./GetBookingsRequest";
 export { type UpdateBookingRequest } from "./UpdateBookingRequest";
 export { type CancelBookingRequest } from "./CancelBookingRequest";

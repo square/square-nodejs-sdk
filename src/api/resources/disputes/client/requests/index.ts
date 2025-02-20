@@ -1,6 +1,6 @@
-export { type DisputesListRequest } from "./DisputesListRequest";
-export { type DisputesGetRequest } from "./DisputesGetRequest";
-export { type DisputesAcceptRequest } from "./DisputesAcceptRequest";
-export { type DisputesCreateEvidenceFileRequest } from "./DisputesCreateEvidenceFileRequest";
+export { type ListDisputesRequest } from "./ListDisputesRequest";
+export { type GetDisputesRequest } from "./GetDisputesRequest";
+export { type AcceptDisputesRequest } from "./AcceptDisputesRequest";
+export { type CreateEvidenceFileDisputesRequest } from "./CreateEvidenceFileDisputesRequest";
 export { type CreateDisputeEvidenceTextRequest } from "./CreateDisputeEvidenceTextRequest";
-export { type DisputesSubmitEvidenceRequest } from "./DisputesSubmitEvidenceRequest";
+export { type SubmitEvidenceDisputesRequest } from "./SubmitEvidenceDisputesRequest";

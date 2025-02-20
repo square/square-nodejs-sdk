@@ -18,7 +18,7 @@ export declare namespace Merchants {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -30,7 +30,7 @@ export declare namespace Merchants {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -62,17 +62,17 @@ export class Merchants {
      * If you know the merchant ID, you can also use the [RetrieveMerchant](api-endpoint:Merchants-RetrieveMerchant)
      * endpoint to retrieve the merchant information.
      *
-     * @param {Square.MerchantsListRequest} request
+     * @param {Square.ListMerchantsRequest} request
      * @param {Merchants.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.merchants.list()
      */
     public async list(
-        request: Square.MerchantsListRequest = {},
+        request: Square.ListMerchantsRequest = {},
         requestOptions?: Merchants.RequestOptions,
     ): Promise<core.Page<Square.Merchant>> {
-        const list = async (request: Square.MerchantsListRequest): Promise<Square.ListMerchantsResponse> => {
+        const list = async (request: Square.ListMerchantsRequest): Promise<Square.ListMerchantsResponse> => {
             const { cursor } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             if (cursor !== undefined) {
@@ -88,11 +88,11 @@ export class Merchants {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -146,7 +146,7 @@ export class Merchants {
     /**
      * Retrieves the `Merchant` object for the given `merchant_id`.
      *
-     * @param {Square.MerchantsGetRequest} request
+     * @param {Square.GetMerchantsRequest} request
      * @param {Merchants.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -155,7 +155,7 @@ export class Merchants {
      *     })
      */
     public async get(
-        request: Square.MerchantsGetRequest,
+        request: Square.GetMerchantsRequest,
         requestOptions?: Merchants.RequestOptions,
     ): Promise<Square.GetMerchantResponse> {
         const { merchantId } = request;
@@ -169,11 +169,11 @@ export class Merchants {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

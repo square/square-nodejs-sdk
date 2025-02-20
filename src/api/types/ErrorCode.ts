@@ -87,6 +87,7 @@ export type ErrorCode =
     | "PAN_FAILURE"
     | "EXPIRATION_FAILURE"
     | "CARD_NOT_SUPPORTED"
+    | "READER_DECLINED"
     | "INVALID_PIN"
     | "MISSING_PIN"
     | "MISSING_ACCOUNT_TYPE"
@@ -109,6 +110,7 @@ export type ErrorCode =
     | "REFUND_ALREADY_PENDING"
     | "PAYMENT_NOT_REFUNDABLE"
     | "PAYMENT_NOT_REFUNDABLE_DUE_TO_DISPUTE"
+    | "REFUND_ERROR_PAYMENT_NEEDS_COMPLETION"
     | "REFUND_DECLINED"
     | "INSUFFICIENT_PERMISSIONS_FOR_REFUND"
     | "INVALID_CARD_DATA"
@@ -238,6 +240,7 @@ export const ErrorCode = {
     PanFailure: "PAN_FAILURE",
     ExpirationFailure: "EXPIRATION_FAILURE",
     CardNotSupported: "CARD_NOT_SUPPORTED",
+    ReaderDeclined: "READER_DECLINED",
     InvalidPin: "INVALID_PIN",
     MissingPin: "MISSING_PIN",
     MissingAccountType: "MISSING_ACCOUNT_TYPE",
@@ -260,6 +263,7 @@ export const ErrorCode = {
     RefundAlreadyPending: "REFUND_ALREADY_PENDING",
     PaymentNotRefundable: "PAYMENT_NOT_REFUNDABLE",
     PaymentNotRefundableDueToDispute: "PAYMENT_NOT_REFUNDABLE_DUE_TO_DISPUTE",
+    RefundErrorPaymentNeedsCompletion: "REFUND_ERROR_PAYMENT_NEEDS_COMPLETION",
     RefundDeclined: "REFUND_DECLINED",
     InsufficientPermissionsForRefund: "INSUFFICIENT_PERMISSIONS_FOR_REFUND",
     InvalidCardData: "INVALID_CARD_DATA",

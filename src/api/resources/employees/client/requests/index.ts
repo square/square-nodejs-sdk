@@ -1,2 +1,2 @@
-export { type EmployeesListRequest } from "./EmployeesListRequest";
-export { type EmployeesGetRequest } from "./EmployeesGetRequest";
+export { type ListEmployeesRequest } from "./ListEmployeesRequest";
+export { type GetEmployeesRequest } from "./GetEmployeesRequest";

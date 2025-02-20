@@ -16,7 +16,7 @@ export declare namespace Payouts {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Payouts {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -42,17 +42,17 @@ export class Payouts {
      * You can filter payouts by location ID, status, time range, and order them in ascending or descending order.
      * To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
      *
-     * @param {Square.PayoutsListRequest} request
+     * @param {Square.ListPayoutsRequest} request
      * @param {Payouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.payouts.list()
      */
     public async list(
-        request: Square.PayoutsListRequest = {},
+        request: Square.ListPayoutsRequest = {},
         requestOptions?: Payouts.RequestOptions,
     ): Promise<core.Page<Square.Payout>> {
-        const list = async (request: Square.PayoutsListRequest): Promise<Square.ListPayoutsResponse> => {
+        const list = async (request: Square.ListPayoutsRequest): Promise<Square.ListPayoutsResponse> => {
             const { locationId, status, beginTime, endTime, sortOrder, cursor, limit } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             if (locationId !== undefined) {
@@ -92,11 +92,11 @@ export class Payouts {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -151,7 +151,7 @@ export class Payouts {
      * Retrieves details of a specific payout identified by a payout ID.
      * To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
      *
-     * @param {Square.PayoutsGetRequest} request
+     * @param {Square.GetPayoutsRequest} request
      * @param {Payouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -160,7 +160,7 @@ export class Payouts {
      *     })
      */
     public async get(
-        request: Square.PayoutsGetRequest,
+        request: Square.GetPayoutsRequest,
         requestOptions?: Payouts.RequestOptions,
     ): Promise<Square.GetPayoutResponse> {
         const { payoutId } = request;
@@ -174,11 +174,11 @@ export class Payouts {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -225,7 +225,7 @@ export class Payouts {
      * Retrieves a list of all payout entries for a specific payout.
      * To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
      *
-     * @param {Square.PayoutsListEntriesRequest} request
+     * @param {Square.ListEntriesPayoutsRequest} request
      * @param {Payouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -234,10 +234,10 @@ export class Payouts {
      *     })
      */
     public async listEntries(
-        request: Square.PayoutsListEntriesRequest,
+        request: Square.ListEntriesPayoutsRequest,
         requestOptions?: Payouts.RequestOptions,
     ): Promise<core.Page<Square.PayoutEntry>> {
-        const list = async (request: Square.PayoutsListEntriesRequest): Promise<Square.ListPayoutEntriesResponse> => {
+        const list = async (request: Square.ListEntriesPayoutsRequest): Promise<Square.ListPayoutEntriesResponse> => {
             const { payoutId, sortOrder, cursor, limit } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             if (sortOrder !== undefined) {
@@ -262,11 +262,11 @@ export class Payouts {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,

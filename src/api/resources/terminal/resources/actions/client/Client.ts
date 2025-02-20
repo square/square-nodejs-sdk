@@ -16,7 +16,7 @@ export declare namespace Actions {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Actions {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -71,11 +71,11 @@ export class Actions {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -157,11 +157,11 @@ export class Actions {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -211,7 +211,7 @@ export class Actions {
     /**
      * Retrieves a Terminal action request by `action_id`. Terminal action requests are available for 30 days.
      *
-     * @param {Square.terminal.ActionsGetRequest} request
+     * @param {Square.terminal.GetActionsRequest} request
      * @param {Actions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -220,7 +220,7 @@ export class Actions {
      *     })
      */
     public async get(
-        request: Square.terminal.ActionsGetRequest,
+        request: Square.terminal.GetActionsRequest,
         requestOptions?: Actions.RequestOptions,
     ): Promise<Square.GetTerminalActionResponse> {
         const { actionId } = request;
@@ -234,11 +234,11 @@ export class Actions {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -286,7 +286,7 @@ export class Actions {
     /**
      * Cancels a Terminal action request if the status of the request permits it.
      *
-     * @param {Square.terminal.ActionsCancelRequest} request
+     * @param {Square.terminal.CancelActionsRequest} request
      * @param {Actions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -295,7 +295,7 @@ export class Actions {
      *     })
      */
     public async cancel(
-        request: Square.terminal.ActionsCancelRequest,
+        request: Square.terminal.CancelActionsRequest,
         requestOptions?: Actions.RequestOptions,
     ): Promise<Square.CancelTerminalActionResponse> {
         const { actionId } = request;
@@ -309,11 +309,11 @@ export class Actions {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

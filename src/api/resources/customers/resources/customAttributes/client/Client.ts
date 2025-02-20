@@ -16,7 +16,7 @@ export declare namespace CustomAttributes {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace CustomAttributes {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -47,7 +47,7 @@ export class CustomAttributes {
      * visible to the requesting application, including those that are owned by other applications
      * and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
      *
-     * @param {Square.customers.CustomAttributesListRequest} request
+     * @param {Square.customers.ListCustomAttributesRequest} request
      * @param {CustomAttributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -56,11 +56,11 @@ export class CustomAttributes {
      *     })
      */
     public async list(
-        request: Square.customers.CustomAttributesListRequest,
+        request: Square.customers.ListCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
     ): Promise<core.Page<Square.CustomAttribute>> {
         const list = async (
-            request: Square.customers.CustomAttributesListRequest,
+            request: Square.customers.ListCustomAttributesRequest,
         ): Promise<Square.ListCustomerCustomAttributesResponse> => {
             const { customerId, limit, cursor, withDefinitions } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
@@ -83,11 +83,11 @@ export class CustomAttributes {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -150,7 +150,7 @@ export class CustomAttributes {
      * `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
      * (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
      *
-     * @param {Square.customers.CustomAttributesGetRequest} request
+     * @param {Square.customers.GetCustomAttributesRequest} request
      * @param {CustomAttributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -160,7 +160,7 @@ export class CustomAttributes {
      *     })
      */
     public async get(
-        request: Square.customers.CustomAttributesGetRequest,
+        request: Square.customers.GetCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
     ): Promise<Square.GetCustomerCustomAttributeResponse> {
         const { customerId, key, withDefinition, version } = request;
@@ -183,11 +183,11 @@ export class CustomAttributes {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -271,11 +271,11 @@ export class CustomAttributes {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -331,7 +331,7 @@ export class CustomAttributes {
      * `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
      * (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
      *
-     * @param {Square.customers.CustomAttributesDeleteRequest} request
+     * @param {Square.customers.DeleteCustomAttributesRequest} request
      * @param {CustomAttributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -341,7 +341,7 @@ export class CustomAttributes {
      *     })
      */
     public async delete(
-        request: Square.customers.CustomAttributesDeleteRequest,
+        request: Square.customers.DeleteCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
     ): Promise<Square.DeleteCustomerCustomAttributeResponse> {
         const { customerId, key } = request;
@@ -355,11 +355,11 @@ export class CustomAttributes {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

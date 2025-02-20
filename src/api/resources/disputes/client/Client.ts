@@ -18,7 +18,7 @@ export declare namespace Disputes {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -30,7 +30,7 @@ export declare namespace Disputes {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -48,17 +48,17 @@ export class Disputes {
     /**
      * Returns a list of disputes associated with a particular account.
      *
-     * @param {Square.DisputesListRequest} request
+     * @param {Square.ListDisputesRequest} request
      * @param {Disputes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.disputes.list()
      */
     public async list(
-        request: Square.DisputesListRequest = {},
+        request: Square.ListDisputesRequest = {},
         requestOptions?: Disputes.RequestOptions,
     ): Promise<core.Page<Square.Dispute>> {
-        const list = async (request: Square.DisputesListRequest): Promise<Square.ListDisputesResponse> => {
+        const list = async (request: Square.ListDisputesRequest): Promise<Square.ListDisputesResponse> => {
             const { cursor, states, locationId } = request;
             const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
             if (cursor !== undefined) {
@@ -83,11 +83,11 @@ export class Disputes {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "40.0.0",
-                    "User-Agent": "square/40.0.0",
+                    "X-Fern-SDK-Version": "41.0.0",
+                    "User-Agent": "square/41.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -141,7 +141,7 @@ export class Disputes {
     /**
      * Returns details about a specific dispute.
      *
-     * @param {Square.DisputesGetRequest} request
+     * @param {Square.GetDisputesRequest} request
      * @param {Disputes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -150,7 +150,7 @@ export class Disputes {
      *     })
      */
     public async get(
-        request: Square.DisputesGetRequest,
+        request: Square.GetDisputesRequest,
         requestOptions?: Disputes.RequestOptions,
     ): Promise<Square.GetDisputeResponse> {
         const { disputeId } = request;
@@ -164,11 +164,11 @@ export class Disputes {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -218,7 +218,7 @@ export class Disputes {
      * Square debits the disputed amount from the seller’s Square account. If the Square account
      * does not have sufficient funds, Square debits the associated bank account.
      *
-     * @param {Square.DisputesAcceptRequest} request
+     * @param {Square.AcceptDisputesRequest} request
      * @param {Disputes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -227,7 +227,7 @@ export class Disputes {
      *     })
      */
     public async accept(
-        request: Square.DisputesAcceptRequest,
+        request: Square.AcceptDisputesRequest,
         requestOptions?: Disputes.RequestOptions,
     ): Promise<Square.AcceptDisputeResponse> {
         const { disputeId } = request;
@@ -241,11 +241,11 @@ export class Disputes {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -294,7 +294,7 @@ export class Disputes {
      * Uploads a file to use as evidence in a dispute challenge. The endpoint accepts HTTP
      * multipart/form-data file uploads in HEIC, HEIF, JPEG, PDF, PNG, and TIFF formats.
      *
-     * @param {Square.DisputesCreateEvidenceFileRequest} request
+     * @param {Square.CreateEvidenceFileDisputesRequest} request
      * @param {Disputes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -303,7 +303,7 @@ export class Disputes {
      *     })
      */
     public async createEvidenceFile(
-        request: Square.DisputesCreateEvidenceFileRequest,
+        request: Square.CreateEvidenceFileDisputesRequest,
         requestOptions?: Disputes.RequestOptions,
     ): Promise<Square.CreateDisputeEvidenceFileResponse> {
         const _request = await core.newFormData();
@@ -334,11 +334,11 @@ export class Disputes {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ..._maybeEncodedRequest.headers,
@@ -414,11 +414,11 @@ export class Disputes {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -476,7 +476,7 @@ export class Disputes {
      * evidence automatically provided by Square, when available. Evidence cannot be removed from
      * a dispute after submission.
      *
-     * @param {Square.DisputesSubmitEvidenceRequest} request
+     * @param {Square.SubmitEvidenceDisputesRequest} request
      * @param {Disputes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -485,7 +485,7 @@ export class Disputes {
      *     })
      */
     public async submitEvidence(
-        request: Square.DisputesSubmitEvidenceRequest,
+        request: Square.SubmitEvidenceDisputesRequest,
         requestOptions?: Disputes.RequestOptions,
     ): Promise<Square.SubmitEvidenceResponse> {
         const { disputeId } = request;
@@ -499,11 +499,11 @@ export class Disputes {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

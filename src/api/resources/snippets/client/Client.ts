@@ -16,7 +16,7 @@ export declare namespace Snippets {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Snippets {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-01-23";
+        version?: "2025-02-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -45,7 +45,7 @@ export class Snippets {
      *
      * __Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
      *
-     * @param {Square.SnippetsGetRequest} request
+     * @param {Square.GetSnippetsRequest} request
      * @param {Snippets.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -54,7 +54,7 @@ export class Snippets {
      *     })
      */
     public async get(
-        request: Square.SnippetsGetRequest,
+        request: Square.GetSnippetsRequest,
         requestOptions?: Snippets.RequestOptions,
     ): Promise<Square.GetSnippetResponse> {
         const { siteId } = request;
@@ -68,11 +68,11 @@ export class Snippets {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -150,11 +150,11 @@ export class Snippets {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -209,7 +209,7 @@ export class Snippets {
      *
      * __Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
      *
-     * @param {Square.SnippetsDeleteRequest} request
+     * @param {Square.DeleteSnippetsRequest} request
      * @param {Snippets.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -218,7 +218,7 @@ export class Snippets {
      *     })
      */
     public async delete(
-        request: Square.SnippetsDeleteRequest,
+        request: Square.DeleteSnippetsRequest,
         requestOptions?: Snippets.RequestOptions,
     ): Promise<Square.DeleteSnippetResponse> {
         const { siteId } = request;
@@ -232,11 +232,11 @@ export class Snippets {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-01-23",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "40.0.0",
-                "User-Agent": "square/40.0.0",
+                "X-Fern-SDK-Version": "41.0.0",
+                "User-Agent": "square/41.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
