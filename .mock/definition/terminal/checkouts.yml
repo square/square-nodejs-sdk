@@ -1,0 +1,354 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/terminals/checkouts
+      method: POST
+      auth: true
+      docs: >-
+        Creates a Terminal checkout request and sends it to the specified device
+        to take a payment
+
+        for the requested amount.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateTerminalCheckout
+      request:
+        name: CreateTerminalCheckoutRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this `CreateCheckout` request.
+                Keys can be any valid string but
+
+                must be unique for every `CreateCheckout` request.
+
+
+                See [Idempotency
+                keys](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)
+                for more information.
+              validation:
+                minLength: 1
+                maxLength: 64
+            checkout:
+              type: root.TerminalCheckout
+              docs: The checkout to create.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateTerminalCheckoutResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: 28a0c3bc-7839-11ea-bc55-0242ac130003
+            checkout:
+              amount_money:
+                amount: 2610
+                currency: USD
+              reference_id: id11572
+              note: A brief note
+              device_options:
+                device_id: dbb5d83a-7838-11ea-bc55-0242ac130003
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              checkout:
+                id: 08YceKh7B3ZqO
+                amount_money:
+                  amount: 2610
+                  currency: USD
+                reference_id: id11572
+                note: A brief note
+                order_id: order_id
+                payment_options:
+                  autocomplete: true
+                  delay_duration: delay_duration
+                  accept_partial_authorization: true
+                  delay_action: CANCEL
+                device_options:
+                  device_id: dbb5d83a-7838-11ea-bc55-0242ac130003
+                  skip_receipt_screen: false
+                  collect_signature: true
+                  tip_settings:
+                    allow_tipping: false
+                  show_itemized_cart: true
+                deadline_duration: PT5M
+                status: PENDING
+                cancel_reason: BUYER_CANCELED
+                payment_ids:
+                  - payment_ids
+                created_at: '2020-04-06T16:39:32.545Z'
+                updated_at: '2020-04-06T16:39:32.545Z'
+                app_id: APP_ID
+                location_id: LOCATION_ID
+                payment_type: CARD_PRESENT
+                team_member_id: team_member_id
+                customer_id: customer_id
+                app_fee_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                statement_description_identifier: statement_description_identifier
+                tip_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+    search:
+      path: /v2/terminals/checkouts/search
+      method: POST
+      auth: true
+      docs: >-
+        Returns a filtered list of Terminal checkout requests created by the
+        application making the request. Only Terminal checkout requests created
+        for the merchant scoped to the OAuth token are returned. Terminal
+        checkout requests are available for 30 days.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchTerminalCheckouts
+      request:
+        name: SearchTerminalCheckoutsRequest
+        body:
+          properties:
+            query:
+              type: optional<root.TerminalCheckoutQuery>
+              docs: >-
+                Queries Terminal checkouts based on given conditions and the
+                sort order.
+
+                Leaving these unset returns all checkouts with the default sort
+                order.
+            cursor:
+              type: optional<string>
+              docs: >-
+                A pagination cursor returned by a previous call to this
+                endpoint.
+
+                Provide this cursor to retrieve the next set of results for the
+                original query.
+
+                See
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination)
+                for more information.
+            limit:
+              type: optional<integer>
+              docs: Limits the number of results returned for a single request.
+              validation:
+                min: 1
+                max: 100
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchTerminalCheckoutsResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                status: COMPLETED
+            limit: 2
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              checkouts:
+                - id: tsQPvzwBpMqqO
+                  amount_money:
+                    amount: 2610
+                    currency: USD
+                  reference_id: id14467
+                  note: A brief note
+                  order_id: order_id
+                  device_options:
+                    device_id: dbb5d83a-7838-11ea-bc55-0242ac130003
+                    skip_receipt_screen: false
+                    tip_settings:
+                      allow_tipping: false
+                  deadline_duration: PT5M
+                  status: COMPLETED
+                  cancel_reason: BUYER_CANCELED
+                  payment_ids:
+                    - rXnhZzywrEk4vR6pw76fPZfgvaB
+                  created_at: '2020-03-31T18:13:15.921Z'
+                  updated_at: '2020-03-31T18:13:52.725Z'
+                  app_id: APP_ID
+                  location_id: location_id
+                  payment_type: CARD_PRESENT
+                  team_member_id: team_member_id
+                  customer_id: customer_id
+                  statement_description_identifier: statement_description_identifier
+                - id: XlOPTgcEhrbqO
+                  amount_money:
+                    amount: 2610
+                    currency: USD
+                  reference_id: id41623
+                  note: A brief note
+                  order_id: order_id
+                  device_options:
+                    device_id: dbb5d83a-7838-11ea-bc55-0242ac130003
+                    skip_receipt_screen: true
+                    tip_settings:
+                      allow_tipping: false
+                  deadline_duration: PT5M
+                  status: COMPLETED
+                  cancel_reason: BUYER_CANCELED
+                  payment_ids:
+                    - VYBF861PaoKPP7Pih0TlbZiNvaB
+                  created_at: '2020-03-31T18:08:31.882Z'
+                  updated_at: '2020-03-31T18:08:41.635Z'
+                  app_id: APP_ID
+                  location_id: location_id
+                  payment_type: CARD_PRESENT
+                  team_member_id: team_member_id
+                  customer_id: customer_id
+                  statement_description_identifier: statement_description_identifier
+              cursor: RiTJqBoTuXlbLmmrPvEkX9iG7XnQ4W4RjGnH
+    get:
+      path: /v2/terminals/checkouts/{checkout_id}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a Terminal checkout request by `checkout_id`. Terminal
+        checkout requests are available for 30 days.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetTerminalCheckout
+      request:
+        name: GetCheckoutsRequest
+        path-parameters:
+          checkout_id:
+            type: string
+            docs: The unique ID for the desired `TerminalCheckout`.
+      response:
+        docs: Success
+        type: root.GetTerminalCheckoutResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            checkout_id: checkout_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              checkout:
+                id: 08YceKh7B3ZqO
+                amount_money:
+                  amount: 2610
+                  currency: USD
+                reference_id: id11572
+                note: A brief note
+                order_id: order_id
+                payment_options:
+                  autocomplete: true
+                  delay_duration: delay_duration
+                  accept_partial_authorization: true
+                  delay_action: CANCEL
+                device_options:
+                  device_id: dbb5d83a-7838-11ea-bc55-0242ac130003
+                  skip_receipt_screen: false
+                  collect_signature: true
+                  tip_settings:
+                    allow_tipping: false
+                  show_itemized_cart: true
+                deadline_duration: PT5M
+                status: IN_PROGRESS
+                cancel_reason: BUYER_CANCELED
+                payment_ids:
+                  - payment_ids
+                created_at: '2020-04-06T16:39:32.545Z'
+                updated_at: 2020-04-06T16:39:323.001Z
+                app_id: APP_ID
+                location_id: LOCATION_ID
+                payment_type: CARD_PRESENT
+                team_member_id: team_member_id
+                customer_id: customer_id
+                app_fee_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                statement_description_identifier: statement_description_identifier
+                tip_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+    cancel:
+      path: /v2/terminals/checkouts/{checkout_id}/cancel
+      method: POST
+      auth: true
+      docs: >-
+        Cancels a Terminal checkout request if the status of the request permits
+        it.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CancelTerminalCheckout
+      request:
+        name: CancelCheckoutsRequest
+        path-parameters:
+          checkout_id:
+            type: string
+            docs: The unique ID for the desired `TerminalCheckout`.
+      response:
+        docs: Success
+        type: root.CancelTerminalCheckoutResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            checkout_id: checkout_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              checkout:
+                id: S1yDlPQx7slqO
+                amount_money:
+                  amount: 123
+                  currency: USD
+                reference_id: id36815
+                note: note
+                order_id: order_id
+                payment_options:
+                  autocomplete: true
+                  delay_duration: delay_duration
+                  accept_partial_authorization: true
+                  delay_action: CANCEL
+                device_options:
+                  device_id: dbb5d83a-7838-11ea-bc55-0242ac130003
+                  skip_receipt_screen: true
+                  collect_signature: true
+                  tip_settings:
+                    allow_tipping: true
+                  show_itemized_cart: true
+                deadline_duration: PT5M
+                status: CANCELED
+                cancel_reason: SELLER_CANCELED
+                payment_ids:
+                  - payment_ids
+                created_at: '2020-03-16T15:31:19.934Z'
+                updated_at: '2020-03-16T15:31:45.787Z'
+                app_id: APP_ID
+                location_id: LOCATION_ID
+                payment_type: CARD_PRESENT
+                team_member_id: team_member_id
+                customer_id: customer_id
+                app_fee_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                statement_description_identifier: statement_description_identifier
+                tip_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+  source:
+    openapi: openapi/openapi.json

@@ -1,0 +1,468 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/gift-cards
+      method: GET
+      auth: true
+      docs: >-
+        Lists all gift cards. You can specify optional filters to retrieve 
+
+        a subset of the gift cards. Results are sorted by `created_at` in
+        ascending order.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.gift_cards
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListGiftCards
+      request:
+        name: ListGiftCardsRequest
+        query-parameters:
+          type:
+            type: optional<nullable<string>>
+            docs: >-
+              If a [type](entity:GiftCardType) is provided, the endpoint returns
+              gift cards of the specified type.
+
+              Otherwise, the endpoint returns gift cards of all types.
+          state:
+            type: optional<nullable<string>>
+            docs: >-
+              If a [state](entity:GiftCardStatus) is provided, the endpoint
+              returns the gift cards in the specified state.
+
+              Otherwise, the endpoint returns the gift cards of all states.
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              If a limit is provided, the endpoint returns only the specified
+              number of results per page.
+
+              The maximum value is 200. The default value is 30.
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for the
+              original query.
+
+              If a cursor is not provided, the endpoint returns the first page
+              of the results. 
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+          customer_id:
+            type: optional<nullable<string>>
+            docs: >-
+              If a customer ID is provided, the endpoint returns only the gift
+              cards linked to the specified customer.
+      response:
+        docs: Success
+        type: root.ListGiftCardsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              gift_cards:
+                - id: gftc:00113070ba5745f0b2377c1b9570cb03
+                  type: DIGITAL
+                  gan_source: SQUARE
+                  state: ACTIVE
+                  balance_money:
+                    amount: 3900
+                    currency: USD
+                  gan: '7783320008524605'
+                  created_at: '2021-06-09T22:26:54.000Z'
+                  customer_ids:
+                    - customer_ids
+                - id: gftc:00128a12725b41e58e0de1d20497a9dd
+                  type: DIGITAL
+                  gan_source: SQUARE
+                  state: ACTIVE
+                  balance_money:
+                    amount: 2000
+                    currency: USD
+                  gan: '7783320002692465'
+                  created_at: '2021-05-20T22:26:54.000Z'
+                  customer_ids:
+                    - customer_ids
+              cursor: JbFmyvUpaNKsfC1hoLSA4WlqkgkZXTWeKuStajR5BkP7OE0ETAbeWSi6U6u7sH
+    create:
+      path: /v2/gift-cards
+      method: POST
+      auth: true
+      docs: >-
+        Creates a digital gift card or registers a physical (plastic) gift card.
+        The resulting gift card
+
+        has a `PENDING` state. To activate a gift card so that it can be
+        redeemed for purchases, call
+
+        [CreateGiftCardActivity](api-endpoint:GiftCardActivities-CreateGiftCardActivity)
+        and create an `ACTIVATE`
+
+        activity with the initial balance. Alternatively, you can use
+        [RefundPayment](api-endpoint:Refunds-RefundPayment)
+
+        to refund a payment to the new gift card.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateGiftCard
+      request:
+        name: CreateGiftCardRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique identifier for this request, used to ensure
+                idempotency. For more information, 
+
+                see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                minLength: 1
+                maxLength: 128
+            location_id:
+              type: string
+              docs: >-
+                The ID of the [location](entity:Location) where the gift card
+                should be registered for 
+
+                reporting purposes. Gift cards can be redeemed at any of the
+                seller's locations.
+              validation:
+                minLength: 1
+            gift_card:
+              type: root.GiftCard
+              docs: >-
+                The gift card to create. The `type` field is required for this
+                request. The `gan_source` 
+
+                and `gan` fields are included as follows: 
+
+
+                To direct Square to generate a 16-digit GAN, omit `gan_source`
+                and `gan`.
+
+
+                To provide a custom GAN, include `gan_source` and `gan`.
+
+                - For `gan_source`, specify `OTHER`. 
+
+                - For `gan`, provide a custom GAN containing 8 to 20
+                alphanumeric characters. The GAN must be 
+
+                unique for the seller and cannot start with the same bank
+                identification number (BIN) as major 
+
+                credit cards. Do not use GANs that are easy to guess (such as
+                12345678) because they greatly 
+
+                increase the risk of fraud. It is the responsibility of the
+                developer to ensure the security 
+
+                of their custom GANs. For more information, see 
+
+                [Custom
+                GANs](https://developer.squareup.com/docs/gift-cards/using-gift-cards-api#custom-gans). 
+
+
+                To register an unused, physical gift card that the seller
+                previously ordered from Square, 
+
+                include `gan` and provide the GAN that is printed on the gift
+                card.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateGiftCardResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: NC9Tm69EjbjtConu
+            location_id: 81FN9BNFZTKS4
+            gift_card:
+              type: DIGITAL
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              gift_card:
+                id: gftc:6cbacbb64cf54e2ca9f573d619038059
+                type: DIGITAL
+                gan_source: SQUARE
+                state: PENDING
+                balance_money:
+                  amount: 0
+                  currency: USD
+                gan: '7783320006753271'
+                created_at: '2021-05-20T22:26:54.000Z'
+                customer_ids:
+                  - customer_ids
+    getFromGAN:
+      path: /v2/gift-cards/from-gan
+      method: POST
+      auth: true
+      docs: Retrieves a gift card using the gift card account number (GAN).
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveGiftCardFromGAN
+      request:
+        name: GetGiftCardFromGANRequest
+        body:
+          properties:
+            gan:
+              type: string
+              docs: >-
+                The gift card account number (GAN) of the gift card to retrieve.
+
+                The maximum length of a GAN is 255 digits to account for
+                third-party GANs that have been imported.
+
+                Square-issued gift cards have 16-digit GANs.
+              validation:
+                minLength: 1
+                maxLength: 255
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.GetGiftCardFromGANResponse
+        status-code: 200
+      examples:
+        - request:
+            gan: '7783320001001635'
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              gift_card:
+                id: gftc:6944163553804e439d89adb47caf806a
+                type: DIGITAL
+                gan_source: SQUARE
+                state: ACTIVE
+                balance_money:
+                  amount: 5000
+                  currency: USD
+                gan: '7783320001001635'
+                created_at: '2021-05-20T22:26:54.000Z'
+                customer_ids:
+                  - customer_ids
+    getFromNonce:
+      path: /v2/gift-cards/from-nonce
+      method: POST
+      auth: true
+      docs: >-
+        Retrieves a gift card using a secure payment token that represents the
+        gift card.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveGiftCardFromNonce
+      request:
+        name: GetGiftCardFromNonceRequest
+        body:
+          properties:
+            nonce:
+              type: string
+              docs: >-
+                The payment token of the gift card to retrieve. Payment tokens
+                are generated by the 
+
+                Web Payments SDK or In-App Payments SDK.
+              validation:
+                minLength: 1
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.GetGiftCardFromNonceResponse
+        status-code: 200
+      examples:
+        - request:
+            nonce: cnon:7783322135245171
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              gift_card:
+                id: gftc:6944163553804e439d89adb47caf806a
+                type: DIGITAL
+                gan_source: SQUARE
+                state: ACTIVE
+                balance_money:
+                  amount: 5000
+                  currency: USD
+                gan: '7783320001001635'
+                created_at: '2021-05-20T22:26:54.000Z'
+                customer_ids:
+                  - customer_ids
+    LinkCustomer:
+      path: /v2/gift-cards/{gift_card_id}/link-customer
+      method: POST
+      auth: true
+      docs: >-
+        Links a customer to a gift card, which is also referred to as adding a
+        card on file.
+      source:
+        openapi: openapi/openapi.json
+      display-name: LinkCustomerToGiftCard
+      request:
+        name: LinkCustomerToGiftCardRequest
+        path-parameters:
+          gift_card_id:
+            type: string
+            docs: The ID of the gift card to be linked.
+        body:
+          properties:
+            customer_id:
+              type: string
+              docs: The ID of the customer to link to the gift card.
+              validation:
+                minLength: 1
+                maxLength: 191
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.LinkCustomerToGiftCardResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            gift_card_id: gift_card_id
+          request:
+            customer_id: GKY0FZ3V717AH8Q2D821PNT2ZW
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              gift_card:
+                id: gftc:71ea002277a34f8a945e284b04822edb
+                type: DIGITAL
+                gan_source: SQUARE
+                state: ACTIVE
+                balance_money:
+                  amount: 2500
+                  currency: USD
+                gan: '7783320005440920'
+                created_at: '2021-03-25T05:13:01Z'
+                customer_ids:
+                  - GKY0FZ3V717AH8Q2D821PNT2ZW
+    UnlinkCustomer:
+      path: /v2/gift-cards/{gift_card_id}/unlink-customer
+      method: POST
+      auth: true
+      docs: >-
+        Unlinks a customer from a gift card, which is also referred to as
+        removing a card on file.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UnlinkCustomerFromGiftCard
+      request:
+        name: UnlinkCustomerFromGiftCardRequest
+        path-parameters:
+          gift_card_id:
+            type: string
+            docs: The ID of the gift card to be unlinked.
+        body:
+          properties:
+            customer_id:
+              type: string
+              docs: The ID of the customer to unlink from the gift card.
+              validation:
+                minLength: 1
+                maxLength: 191
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UnlinkCustomerFromGiftCardResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            gift_card_id: gift_card_id
+          request:
+            customer_id: GKY0FZ3V717AH8Q2D821PNT2ZW
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              gift_card:
+                id: gftc:71ea002277a34f8a945e284b04822edb
+                type: DIGITAL
+                gan_source: SQUARE
+                state: ACTIVE
+                balance_money:
+                  amount: 2500
+                  currency: USD
+                gan: '7783320005440920'
+                created_at: '2021-03-25T05:13:01Z'
+                customer_ids:
+                  - customer_ids
+    get:
+      path: /v2/gift-cards/{id}
+      method: GET
+      auth: true
+      docs: Retrieves a gift card using the gift card ID.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveGiftCard
+      request:
+        name: GetGiftCardsRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The ID of the gift card to retrieve.
+      response:
+        docs: Success
+        type: root.GetGiftCardResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              gift_card:
+                id: gftc:00113070ba5745f0b2377c1b9570cb03
+                type: DIGITAL
+                gan_source: SQUARE
+                state: ACTIVE
+                balance_money:
+                  amount: 1000
+                  currency: USD
+                gan: '7783320001001635'
+                created_at: '2021-05-20T22:26:54.000Z'
+                customer_ids:
+                  - customer_ids
+  source:
+    openapi: openapi/openapi.json

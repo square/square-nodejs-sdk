@@ -1,0 +1,76 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    authorizationCode:
+      path: /mobile/authorization-code
+      method: POST
+      auth: true
+      docs: >-
+        __Note:__ This endpoint is used by the deprecated Reader SDK. 
+
+        Developers should update their integration to use the [Mobile Payments
+        SDK](https://developer.squareup.com/docs/mobile-payments-sdk), which
+        includes its own authorization methods. 
+
+
+        Generates code to authorize a mobile application to connect to a Square
+        card reader.
+
+
+        Authorization codes are one-time-use codes and expire 60 minutes after
+        being issued.
+
+
+        The `Authorization` header you provide to this endpoint must have the
+        following format:
+
+
+        ```
+
+        Authorization: Bearer ACCESS_TOKEN
+
+        ```
+
+
+        Replace `ACCESS_TOKEN` with a
+
+        [valid production authorization
+        credential](https://developer.squareup.com/docs/build-basics/access-tokens).
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateMobileAuthorizationCode
+      request:
+        name: CreateMobileAuthorizationCodeRequest
+        body:
+          properties:
+            location_id:
+              type: optional<string>
+              docs: >-
+                The Square location ID that the authorization code should be
+                tied to.
+              validation:
+                minLength: 1
+                maxLength: 191
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateMobileAuthorizationCodeResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - request:
+            location_id: YOUR_LOCATION_ID
+          response:
+            body:
+              authorization_code: YOUR_MOBILE_AUTHORIZATION_CODE
+              expires_at: '2019-01-10T19:42:08Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

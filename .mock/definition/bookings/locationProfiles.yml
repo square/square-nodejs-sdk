@@ -1,0 +1,52 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/bookings/location-booking-profiles
+      method: GET
+      auth: true
+      docs: Lists location booking profiles of a seller.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.location_booking_profiles
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListLocationBookingProfiles
+      request:
+        name: ListLocationProfilesRequest
+        query-parameters:
+          limit:
+            type: optional<nullable<integer>>
+            docs: The maximum number of results to return in a paged response.
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              The pagination cursor from the preceding response to return the
+              next page of the results. Do not set this when retrieving the
+              first page of the results.
+      response:
+        docs: Success
+        type: root.ListLocationBookingProfilesResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              location_booking_profiles:
+                - location_id: LY6WNBPVM6VGV
+                  booking_site_url: https://squareup.com/book/LY6WNBPVM6VGV/testbusiness
+                  online_booking_enabled: true
+                - location_id: PYTRNBPVMJUPV
+                  booking_site_url: booking_site_url
+                  online_booking_enabled: false
+              cursor: cursor
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

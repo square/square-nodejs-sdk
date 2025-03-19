@@ -1,0 +1,456 @@
+imports:
+  root: ../../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/loyalty/programs/{program_id}/promotions
+      method: GET
+      auth: true
+      docs: >-
+        Lists the loyalty promotions associated with a [loyalty
+        program](entity:LoyaltyProgram).
+
+        Results are sorted by the `created_at` date in descending order (newest
+        to oldest).
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.loyalty_promotions
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListLoyaltyPromotions
+      request:
+        name: ListPromotionsRequest
+        path-parameters:
+          program_id:
+            type: string
+            docs: >-
+              The ID of the base [loyalty program](entity:LoyaltyProgram). To
+              get the program ID,
+
+              call
+              [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram)
+              using the `main` keyword.
+        query-parameters:
+          status:
+            type: optional<nullable<root.LoyaltyPromotionStatus>>
+            docs: >-
+              The status to filter the results by. If a status is provided, only
+              loyalty promotions
+
+              with the specified status are returned. Otherwise, all loyalty
+              promotions associated with
+
+              the loyalty program are returned.
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              The cursor returned in the paged response from the previous call
+              to this endpoint.
+
+              Provide this cursor to retrieve the next page of results for your
+              original request.
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to return in a single paged
+              response.
+
+              The minimum value is 1 and the maximum value is 30. The default
+              value is 30.
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+      response:
+        docs: Success
+        type: root.ListLoyaltyPromotionsResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            program_id: program_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              loyalty_promotions:
+                - id: loypromo_f0f9b849-725e-378d-b810-511237e07b67
+                  name: Tuesday Happy Hour Promo
+                  incentive:
+                    type: POINTS_MULTIPLIER
+                    points_multiplier_data:
+                      points_multiplier: 3
+                      multiplier: '3.000'
+                  available_time:
+                    start_date: '2022-08-16'
+                    time_periods:
+                      - |-
+                        BEGIN:VEVENT
+                        DTSTART:20220816T160000
+                        DURATION:PT2H
+                        RRULE:FREQ=WEEKLY;BYDAY=TU
+                        END:VEVENT
+                  trigger_limit:
+                    times: 1
+                    interval: DAY
+                  status: ACTIVE
+                  created_at: '2022-08-16T08:38:54Z'
+                  canceled_at: canceled_at
+                  updated_at: '2022-08-16T08:38:54Z'
+                  loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                  qualifying_item_variation_ids:
+                    - CJ3RYL56ITAKMD4VRCM7XERS
+                    - AT3RYLR3TUA9C34VRCB7X5RR
+                  qualifying_category_ids:
+                    - qualifying_category_ids
+                - id: loypromo_e696f057-2286-35ff-8108-132241328106
+                  name: July Special
+                  incentive:
+                    type: POINTS_MULTIPLIER
+                    points_multiplier_data:
+                      points_multiplier: 2
+                      multiplier: '2.000'
+                  available_time:
+                    start_date: '2022-07-01'
+                    end_date: '2022-08-01'
+                    time_periods:
+                      - |-
+                        BEGIN:VEVENT
+                        DTSTART:20220704T090000
+                        DURATION:PT8H
+                        RRULE:FREQ=WEEKLY;UNTIL=20220801T000000;BYDAY=MO
+                        END:VEVENT
+                      - |-
+                        BEGIN:VEVENT
+                        DTSTART:20220705T090000
+                        DURATION:PT8H
+                        RRULE:FREQ=WEEKLY;UNTIL=20220801T000000;BYDAY=TU
+                        END:VEVENT
+                      - |-
+                        BEGIN:VEVENT
+                        DTSTART:20220706T090000
+                        DURATION:PT8H
+                        RRULE:FREQ=WEEKLY;UNTIL=20220801T000000;BYDAY=WE
+                        END:VEVENT
+                      - |-
+                        BEGIN:VEVENT
+                        DTSTART:20220707T090000
+                        DURATION:PT8H
+                        RRULE:FREQ=WEEKLY;UNTIL=20220801T000000;BYDAY=TH
+                        END:VEVENT
+                      - |-
+                        BEGIN:VEVENT
+                        DTSTART:20220701T090000
+                        DURATION:PT8H
+                        RRULE:FREQ=WEEKLY;UNTIL=20220801T000000;BYDAY=FR
+                        END:VEVENT
+                  trigger_limit:
+                    times: 5
+                    interval: ALL_TIME
+                  status: ENDED
+                  created_at: '2022-06-27T15:37:38Z'
+                  canceled_at: canceled_at
+                  updated_at: '2022-06-27T15:37:38Z'
+                  loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                  minimum_spend_amount_money:
+                    amount: 2000
+                    currency: USD
+                  qualifying_item_variation_ids:
+                    - qualifying_item_variation_ids
+                  qualifying_category_ids:
+                    - XTQPYLR3IIU9C44VRCB3XD12
+              cursor: cursor
+    create:
+      path: /v2/loyalty/programs/{program_id}/promotions
+      method: POST
+      auth: true
+      docs: >-
+        Creates a loyalty promotion for a [loyalty
+        program](entity:LoyaltyProgram). A loyalty promotion
+
+        enables buyers to earn points in addition to those earned from the base
+        loyalty program.
+
+
+        This endpoint sets the loyalty promotion to the `ACTIVE` or `SCHEDULED`
+        status, depending on the
+
+        `available_time` setting. A loyalty program can have a maximum of 10
+        loyalty promotions with an
+
+        `ACTIVE` or `SCHEDULED` status.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateLoyaltyPromotion
+      request:
+        name: CreateLoyaltyPromotionRequest
+        path-parameters:
+          program_id:
+            type: string
+            docs: >-
+              The ID of the [loyalty program](entity:LoyaltyProgram) to
+              associate with the promotion.
+
+              To get the program ID, call
+              [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram)
+
+              using the `main` keyword.
+        body:
+          properties:
+            loyalty_promotion:
+              type: root.LoyaltyPromotion
+              docs: The loyalty promotion to create.
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique identifier for this request, which is used to ensure
+                idempotency. For more information,
+
+                see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                minLength: 1
+                maxLength: 128
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateLoyaltyPromotionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            program_id: program_id
+          request:
+            loyalty_promotion:
+              name: Tuesday Happy Hour Promo
+              incentive:
+                type: POINTS_MULTIPLIER
+                points_multiplier_data:
+                  multiplier: '3.0'
+              available_time:
+                time_periods:
+                  - |-
+                    BEGIN:VEVENT
+                    DTSTART:20220816T160000
+                    DURATION:PT2H
+                    RRULE:FREQ=WEEKLY;BYDAY=TU
+                    END:VEVENT
+              trigger_limit:
+                times: 1
+                interval: DAY
+              minimum_spend_amount_money:
+                amount: 2000
+                currency: USD
+              qualifying_category_ids:
+                - XTQPYLR3IIU9C44VRCB3XD12
+            idempotency_key: ec78c477-b1c3-4899-a209-a4e71337c996
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              loyalty_promotion:
+                id: loypromo_f0f9b849-725e-378d-b810-511237e07b67
+                name: Tuesday Happy Hour Promo
+                incentive:
+                  type: POINTS_MULTIPLIER
+                  points_multiplier_data:
+                    points_multiplier: 3
+                    multiplier: '3.000'
+                  points_addition_data:
+                    points_addition: 1
+                available_time:
+                  start_date: '2022-08-16'
+                  end_date: end_date
+                  time_periods:
+                    - |-
+                      BEGIN:VEVENT
+                      DTSTART:20220816T160000
+                      DURATION:PT2H
+                      RRULE:FREQ=WEEKLY;BYDAY=TU
+                      END:VEVENT
+                trigger_limit:
+                  times: 1
+                  interval: DAY
+                status: ACTIVE
+                created_at: '2022-08-16T08:38:54Z'
+                canceled_at: canceled_at
+                updated_at: '2022-08-16T08:38:54Z'
+                loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                minimum_spend_amount_money:
+                  amount: 2000
+                  currency: USD
+                qualifying_item_variation_ids:
+                  - qualifying_item_variation_ids
+                qualifying_category_ids:
+                  - XTQPYLR3IIU9C44VRCB3XD12
+    get:
+      path: /v2/loyalty/programs/{program_id}/promotions/{promotion_id}
+      method: GET
+      auth: true
+      docs: Retrieves a loyalty promotion.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveLoyaltyPromotion
+      request:
+        name: GetPromotionsRequest
+        path-parameters:
+          promotion_id:
+            type: string
+            docs: >-
+              The ID of the [loyalty promotion](entity:LoyaltyPromotion) to
+              retrieve.
+          program_id:
+            type: string
+            docs: >-
+              The ID of the base [loyalty program](entity:LoyaltyProgram). To
+              get the program ID,
+
+              call
+              [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram)
+              using the `main` keyword.
+      response:
+        docs: Success
+        type: root.GetLoyaltyPromotionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            promotion_id: promotion_id
+            program_id: program_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              loyalty_promotion:
+                id: loypromo_f0f9b849-725e-378d-b810-511237e07b67
+                name: Tuesday Happy Hour Promo
+                incentive:
+                  type: POINTS_MULTIPLIER
+                  points_multiplier_data:
+                    points_multiplier: 3
+                    multiplier: '3.000'
+                  points_addition_data:
+                    points_addition: 1
+                available_time:
+                  start_date: '2022-08-16'
+                  end_date: end_date
+                  time_periods:
+                    - |-
+                      BEGIN:VEVENT
+                      DTSTART:20220816T160000
+                      DURATION:PT2H
+                      RRULE:FREQ=WEEKLY;BYDAY=TU
+                      END:VEVENT
+                trigger_limit:
+                  times: 1
+                  interval: DAY
+                status: ACTIVE
+                created_at: '2022-08-16T08:38:54Z'
+                canceled_at: canceled_at
+                updated_at: '2022-08-16T08:38:54Z'
+                loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                minimum_spend_amount_money:
+                  amount: 2000
+                  currency: USD
+                qualifying_item_variation_ids:
+                  - CJ3RYL56ITAKMD4VRCM7XERS
+                  - AT3RYLR3TUA9C34VRCB7X5RR
+                qualifying_category_ids:
+                  - qualifying_category_ids
+    cancel:
+      path: /v2/loyalty/programs/{program_id}/promotions/{promotion_id}/cancel
+      method: POST
+      auth: true
+      docs: >-
+        Cancels a loyalty promotion. Use this endpoint to cancel an `ACTIVE`
+        promotion earlier than the
+
+        end date, cancel an `ACTIVE` promotion when an end date is not
+        specified, or cancel a `SCHEDULED` promotion.
+
+        Because updating a promotion is not supported, you can also use this
+        endpoint to cancel a promotion before
+
+        you create a new one.
+
+
+        This endpoint sets the loyalty promotion to the `CANCELED` state
+      source:
+        openapi: openapi/openapi.json
+      display-name: CancelLoyaltyPromotion
+      request:
+        name: CancelPromotionsRequest
+        path-parameters:
+          promotion_id:
+            type: string
+            docs: >-
+              The ID of the [loyalty promotion](entity:LoyaltyPromotion) to
+              cancel. You can cancel a
+
+              promotion that has an `ACTIVE` or `SCHEDULED` status.
+          program_id:
+            type: string
+            docs: The ID of the base [loyalty program](entity:LoyaltyProgram).
+      response:
+        docs: Success
+        type: root.CancelLoyaltyPromotionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            promotion_id: promotion_id
+            program_id: program_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              loyalty_promotion:
+                id: loypromo_f0f9b849-725e-378d-b810-511237e07b67
+                name: Tuesday Happy Hour Promo
+                incentive:
+                  type: POINTS_MULTIPLIER
+                  points_multiplier_data:
+                    points_multiplier: 3
+                    multiplier: '3.000'
+                  points_addition_data:
+                    points_addition: 1
+                available_time:
+                  start_date: '2022-08-16'
+                  end_date: end_date
+                  time_periods:
+                    - |-
+                      BEGIN:VEVENT
+                      DTSTART:20220816T160000
+                      DURATION:PT2H
+                      RRULE:FREQ=WEEKLY;BYDAY=TU
+                      END:VEVENT
+                trigger_limit:
+                  times: 1
+                  interval: DAY
+                status: CANCELED
+                created_at: '2022-08-16T08:38:54Z'
+                canceled_at: '2022-08-17T12:42:49Z'
+                updated_at: '2022-08-17T12:42:49Z'
+                loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                minimum_spend_amount_money:
+                  amount: 2000
+                  currency: USD
+                qualifying_item_variation_ids:
+                  - qualifying_item_variation_ids
+                qualifying_category_ids:
+                  - XTQPYLR3IIU9C44VRCB3XD12
+  source:
+    openapi: openapi/openapi.json

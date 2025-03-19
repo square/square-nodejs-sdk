@@ -1,0 +1,156 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    get:
+      path: /v2/sites/{site_id}/snippet
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves your snippet from a Square Online site. A site can contain
+        snippets from multiple snippet applications, but you can retrieve only
+        the snippet that was added by your application.
+
+
+        You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of
+        the sites that belong to a seller.
+
+
+
+        __Note:__ Square Online APIs are publicly available as part of an early
+        access program. For more information, see [Early access program for
+        Square Online
+        APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveSnippet
+      request:
+        name: GetSnippetsRequest
+        path-parameters:
+          site_id:
+            type: string
+            docs: The ID of the site that contains the snippet.
+      response:
+        docs: Success
+        type: root.GetSnippetResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            site_id: site_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              snippet:
+                id: snippet_5d178150-a6c0-11eb-a9f1-437e6a2881e7
+                site_id: site_278075276488921835
+                content: <script>var js = 1;</script>
+                created_at: '2021-03-11T25:40:09.000000Z'
+                updated_at: '2021-03-11T25:40:09.000000Z'
+    upsert:
+      path: /v2/sites/{site_id}/snippet
+      method: POST
+      auth: true
+      docs: >-
+        Adds a snippet to a Square Online site or updates the existing snippet
+        on the site. 
+
+        The snippet code is appended to the end of the `head` element on every
+        page of the site, except checkout pages. A snippet application can add
+        one snippet to a given site. 
+
+
+        You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of
+        the sites that belong to a seller.
+
+
+
+        __Note:__ Square Online APIs are publicly available as part of an early
+        access program. For more information, see [Early access program for
+        Square Online
+        APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpsertSnippet
+      request:
+        name: UpsertSnippetRequest
+        path-parameters:
+          site_id:
+            type: string
+            docs: The ID of the site where you want to add or update the snippet.
+        body:
+          properties:
+            snippet:
+              type: root.Snippet
+              docs: The snippet for the site.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpsertSnippetResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            site_id: site_id
+          request:
+            snippet:
+              content: <script>var js = 1;</script>
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              snippet:
+                id: snippet_5d178150-a6c0-11eb-a9f1-437e6a2881e7
+                site_id: site_278075276488921835
+                content: <script>var js = 1;</script>
+                created_at: '2021-03-11T25:40:09.000000Z'
+                updated_at: '2021-03-11T25:40:09.000000Z'
+    delete:
+      path: /v2/sites/{site_id}/snippet
+      method: DELETE
+      auth: true
+      docs: >-
+        Removes your snippet from a Square Online site.
+
+
+        You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of
+        the sites that belong to a seller.
+
+
+
+        __Note:__ Square Online APIs are publicly available as part of an early
+        access program. For more information, see [Early access program for
+        Square Online
+        APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteSnippet
+      request:
+        name: DeleteSnippetsRequest
+        path-parameters:
+          site_id:
+            type: string
+            docs: The ID of the site that contains the snippet.
+      response:
+        docs: Success
+        type: root.DeleteSnippetResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            site_id: site_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

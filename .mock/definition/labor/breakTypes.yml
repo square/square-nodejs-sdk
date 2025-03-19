@@ -1,0 +1,265 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/labor/break-types
+      method: GET
+      auth: true
+      docs: Returns a paginated list of `BreakType` instances for a business.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.break_types
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListBreakTypes
+      request:
+        name: ListBreakTypesRequest
+        query-parameters:
+          location_id:
+            type: optional<nullable<string>>
+            docs: >-
+              Filter the returned `BreakType` results to only those that are
+              associated with the
+
+              specified location.
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of `BreakType` results to return per page. The
+              number can range between 1
+
+              and 200. The default is 200.
+          cursor:
+            type: optional<nullable<string>>
+            docs: A pointer to the next page of `BreakType` results to fetch.
+      response:
+        docs: Success
+        type: root.ListBreakTypesResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              break_types:
+                - id: REGS1EQR1TPZ5
+                  location_id: PAA1RJZZKXBFG
+                  break_name: Coffee Break
+                  expected_duration: PT5M
+                  is_paid: false
+                  version: 1
+                  created_at: '2019-01-22T20:47:37Z'
+                  updated_at: '2019-01-22T20:47:37Z'
+                - id: 92EPDRQKJ5088
+                  location_id: PAA1RJZZKXBFG
+                  break_name: Lunch Break
+                  expected_duration: PT1H
+                  is_paid: true
+                  version: 3
+                  created_at: '2019-01-25T19:26:30Z'
+                  updated_at: '2019-01-25T19:26:30Z'
+              cursor: 2fofTniCgT0yIPAq26kmk0YyFQJZfbWkh73OOnlTHmTAx13NgED
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    create:
+      path: /v2/labor/break-types
+      method: POST
+      auth: true
+      docs: >-
+        Creates a new `BreakType`.
+
+
+        A `BreakType` is a template for creating `Break` objects.
+
+        You must provide the following values in your request to this
+
+        endpoint:
+
+
+        - `location_id`
+
+        - `break_name`
+
+        - `expected_duration`
+
+        - `is_paid`
+
+
+        You can only have three `BreakType` instances per location. If you
+        attempt to add a fourth
+
+        `BreakType` for a location, an `INVALID_REQUEST_ERROR` "Exceeded limit
+        of 3 breaks per location."
+
+        is returned.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateBreakType
+      request:
+        name: CreateBreakTypeRequest
+        body:
+          properties:
+            idempotency_key:
+              type: optional<string>
+              docs: >-
+                A unique string value to ensure the idempotency of the
+                operation.
+              validation:
+                maxLength: 128
+            break_type:
+              type: root.BreakType
+              docs: The `BreakType` to be created.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateBreakTypeResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: PAD3NG5KSN2GL
+            break_type:
+              location_id: CGJN03P1D08GF
+              break_name: Lunch Break
+              expected_duration: PT30M
+              is_paid: true
+          response:
+            body:
+              break_type:
+                id: 49SSVDJG76WF3
+                location_id: CGJN03P1D08GF
+                break_name: Lunch Break
+                expected_duration: PT30M
+                is_paid: true
+                version: 1
+                created_at: '2019-02-26T22:42:54Z'
+                updated_at: '2019-02-26T22:42:54Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/labor/break-types/{id}
+      method: GET
+      auth: true
+      docs: Returns a single `BreakType` specified by `id`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetBreakType
+      request:
+        name: GetBreakTypesRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The UUID for the `BreakType` being retrieved.
+      response:
+        docs: Success
+        type: root.GetBreakTypeResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              break_type:
+                id: lA0mj_RSOprNPwMUXdYp
+                location_id: 059SB0E0WCNWS
+                break_name: Lunch Break
+                expected_duration: PT30M
+                is_paid: true
+                version: 1
+                created_at: '2019-02-21T17:50:00Z'
+                updated_at: '2019-02-21T17:50:00Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    update:
+      path: /v2/labor/break-types/{id}
+      method: PUT
+      auth: true
+      docs: Updates an existing `BreakType`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateBreakType
+      request:
+        name: UpdateBreakTypeRequest
+        path-parameters:
+          id:
+            type: string
+            docs: ' The UUID for the `BreakType` being updated.'
+        body:
+          properties:
+            break_type:
+              type: root.BreakType
+              docs: The updated `BreakType`.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateBreakTypeResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          request:
+            break_type:
+              location_id: 26M7H24AZ9N6R
+              break_name: Lunch
+              expected_duration: PT50M
+              is_paid: true
+              version: 1
+          response:
+            body:
+              break_type:
+                id: Q6JSJS6D4DBCH
+                location_id: 26M7H24AZ9N6R
+                break_name: Lunch
+                expected_duration: PT50M
+                is_paid: true
+                version: 2
+                created_at: '2018-06-12T20:19:12Z'
+                updated_at: '2019-02-26T23:12:59Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    delete:
+      path: /v2/labor/break-types/{id}
+      method: DELETE
+      auth: true
+      docs: |-
+        Deletes an existing `BreakType`.
+
+        A `BreakType` can be deleted even if it is referenced from a `Shift`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteBreakType
+      request:
+        name: DeleteBreakTypesRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The UUID for the `BreakType` being deleted.
+      response:
+        docs: Success
+        type: root.DeleteBreakTypeResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

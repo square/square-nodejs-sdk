@@ -1,0 +1,789 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    DeprecatedGetAdjustment:
+      path: /v2/inventory/adjustment/{adjustment_id}
+      method: GET
+      auth: true
+      docs: >-
+        Deprecated version of
+        [RetrieveInventoryAdjustment](api-endpoint:Inventory-RetrieveInventoryAdjustment)
+        after the endpoint URL
+
+        is updated to conform to the standard convention.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeprecatedRetrieveInventoryAdjustment
+      request:
+        name: DeprecatedGetAdjustmentInventoryRequest
+        path-parameters:
+          adjustment_id:
+            type: string
+            docs: >-
+              ID of the [InventoryAdjustment](entity:InventoryAdjustment) to
+              retrieve.
+      response:
+        docs: Success
+        type: root.GetInventoryAdjustmentResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - path-parameters:
+            adjustment_id: adjustment_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              adjustment:
+                id: UDMOEO78BG6GYWA2XDRYX3KB
+                reference_id: 4a366069-4096-47a2-99a5-0084ac879509
+                from_state: IN_STOCK
+                to_state: SOLD
+                location_id: C6W5YS5QM06F5
+                catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                catalog_object_type: ITEM_VARIATION
+                quantity: '7'
+                total_price_money:
+                  amount: 4550
+                  currency: USD
+                occurred_at: '2016-11-16T25:44:22.837Z'
+                created_at: '2016-11-17T13:02:15.142Z'
+                source:
+                  product: SQUARE_POS
+                  application_id: 416ff29c-86c4-4feb-b58c-9705f21f3ea0
+                  name: Square Point of Sale 4.37
+                employee_id: employee_id
+                team_member_id: LRK57NSQ5X7PUD05
+                transaction_id: transaction_id
+                refund_id: refund_id
+                purchase_order_id: purchase_order_id
+                goods_receipt_id: goods_receipt_id
+                adjustment_group:
+                  id: id
+                  root_adjustment_id: root_adjustment_id
+                  from_state: CUSTOM
+                  to_state: CUSTOM
+    getAdjustment:
+      path: /v2/inventory/adjustments/{adjustment_id}
+      method: GET
+      auth: true
+      docs: |-
+        Returns the [InventoryAdjustment](entity:InventoryAdjustment) object
+        with the provided `adjustment_id`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveInventoryAdjustment
+      request:
+        name: GetAdjustmentInventoryRequest
+        path-parameters:
+          adjustment_id:
+            type: string
+            docs: >-
+              ID of the [InventoryAdjustment](entity:InventoryAdjustment) to
+              retrieve.
+      response:
+        docs: Success
+        type: root.GetInventoryAdjustmentResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            adjustment_id: adjustment_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              adjustment:
+                id: UDMOEO78BG6GYWA2XDRYX3KB
+                reference_id: 4a366069-4096-47a2-99a5-0084ac879509
+                from_state: IN_STOCK
+                to_state: SOLD
+                location_id: C6W5YS5QM06F5
+                catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                catalog_object_type: ITEM_VARIATION
+                quantity: '7'
+                total_price_money:
+                  amount: 4550
+                  currency: USD
+                occurred_at: '2016-11-16T25:44:22.837Z'
+                created_at: '2016-11-17T13:02:15.142Z'
+                source:
+                  product: SQUARE_POS
+                  application_id: 416ff29c-86c4-4feb-b58c-9705f21f3ea0
+                  name: Square Point of Sale 4.37
+                employee_id: employee_id
+                team_member_id: LRK57NSQ5X7PUD05
+                transaction_id: transaction_id
+                refund_id: refund_id
+                purchase_order_id: purchase_order_id
+                goods_receipt_id: goods_receipt_id
+                adjustment_group:
+                  id: id
+                  root_adjustment_id: root_adjustment_id
+                  from_state: CUSTOM
+                  to_state: CUSTOM
+    DeprecatedBatchChange:
+      path: /v2/inventory/batch-change
+      method: POST
+      auth: true
+      docs: >-
+        Deprecated version of
+        [BatchChangeInventory](api-endpoint:Inventory-BatchChangeInventory)
+        after the endpoint URL
+
+        is updated to conform to the standard convention.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeprecatedBatchChangeInventory
+      request:
+        body: root.BatchChangeInventoryRequest
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchChangeInventoryResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - request:
+            idempotency_key: 8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe
+            changes:
+              - type: PHYSICAL_COUNT
+                physical_count:
+                  reference_id: 1536bfbf-efed-48bf-b17d-a197141b2a92
+                  catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                  state: IN_STOCK
+                  location_id: C6W5YS5QM06F5
+                  quantity: '53'
+                  team_member_id: LRK57NSQ5X7PUD05
+                  occurred_at: '2016-11-16T22:25:24.878Z'
+            ignore_unchanged_counts: true
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              counts:
+                - catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                  catalog_object_type: ITEM_VARIATION
+                  state: IN_STOCK
+                  location_id: C6W5YS5QM06F5
+                  quantity: '53'
+                  calculated_at: '2016-11-16T22:28:01.223Z'
+                  is_estimated: true
+              changes:
+                - type: PHYSICAL_COUNT
+                  measurement_unit_id: measurement_unit_id
+    DeprecatedBatchGetChanges:
+      path: /v2/inventory/batch-retrieve-changes
+      method: POST
+      auth: true
+      docs: >-
+        Deprecated version of
+        [BatchRetrieveInventoryChanges](api-endpoint:Inventory-BatchRetrieveInventoryChanges)
+        after the endpoint URL
+
+        is updated to conform to the standard convention.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeprecatedBatchRetrieveInventoryChanges
+      request:
+        body: root.BatchRetrieveInventoryChangesRequest
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchGetInventoryChangesResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - request:
+            catalog_object_ids:
+              - W62UWFY35CWMYGVWK6TWJDNI
+            location_ids:
+              - C6W5YS5QM06F5
+            types:
+              - PHYSICAL_COUNT
+            states:
+              - IN_STOCK
+            updated_after: '2016-11-01T00:00:00.000Z'
+            updated_before: '2016-12-01T00:00:00.000Z'
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              changes:
+                - type: PHYSICAL_COUNT
+                  physical_count:
+                    id: 46YDTW253DWGGK9HMAE6XCAO
+                    reference_id: 22c07cf4-5626-4224-89f9-691112019399
+                    catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                    catalog_object_type: ITEM_VARIATION
+                    state: IN_STOCK
+                    location_id: C6W5YS5QM06F5
+                    quantity: '86'
+                    source:
+                      product: SQUARE_POS
+                      application_id: 416ff29c-86c4-4feb-b58c-9705f21f3ea0
+                      name: Square Point of Sale 4.37
+                    team_member_id: LRK57NSQ5X7PUD05
+                    occurred_at: '2016-11-16T22:24:49.028Z'
+                    created_at: '2016-11-16T22:25:24.878Z'
+                  measurement_unit_id: measurement_unit_id
+              cursor: cursor
+    DeprecatedBatchGetCounts:
+      path: /v2/inventory/batch-retrieve-counts
+      method: POST
+      auth: true
+      docs: >-
+        Deprecated version of
+        [BatchRetrieveInventoryCounts](api-endpoint:Inventory-BatchRetrieveInventoryCounts)
+        after the endpoint URL
+
+        is updated to conform to the standard convention.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeprecatedBatchRetrieveInventoryCounts
+      request:
+        body: root.BatchGetInventoryCountsRequest
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchGetInventoryCountsResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - request:
+            catalog_object_ids:
+              - W62UWFY35CWMYGVWK6TWJDNI
+            location_ids:
+              - 59TNP9SA8VGDA
+            updated_after: '2016-11-16T00:00:00.000Z'
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              counts:
+                - catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                  catalog_object_type: ITEM_VARIATION
+                  state: IN_STOCK
+                  location_id: 59TNP9SA8VGDA
+                  quantity: '79'
+                  calculated_at: '2016-11-16T22:28:01.223Z'
+                  is_estimated: true
+              cursor: cursor
+    BatchCreateChanges:
+      path: /v2/inventory/changes/batch-create
+      method: POST
+      auth: true
+      docs: |-
+        Applies adjustments and counts to the provided item quantities.
+
+        On success: returns the current calculated counts for all objects
+        referenced in the request.
+        On failure: returns a list of related errors.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BatchChangeInventory
+      request:
+        body: root.BatchChangeInventoryRequest
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchChangeInventoryResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: 8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe
+            changes:
+              - type: PHYSICAL_COUNT
+                physical_count:
+                  reference_id: 1536bfbf-efed-48bf-b17d-a197141b2a92
+                  catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                  state: IN_STOCK
+                  location_id: C6W5YS5QM06F5
+                  quantity: '53'
+                  team_member_id: LRK57NSQ5X7PUD05
+                  occurred_at: '2016-11-16T22:25:24.878Z'
+            ignore_unchanged_counts: true
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              counts:
+                - catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                  catalog_object_type: ITEM_VARIATION
+                  state: IN_STOCK
+                  location_id: C6W5YS5QM06F5
+                  quantity: '53'
+                  calculated_at: '2016-11-16T22:28:01.223Z'
+                  is_estimated: true
+              changes:
+                - type: PHYSICAL_COUNT
+                  measurement_unit_id: measurement_unit_id
+    BatchGetChanges:
+      path: /v2/inventory/changes/batch-retrieve
+      method: POST
+      auth: true
+      docs: |-
+        Returns historical physical counts and adjustments based on the
+        provided filter criteria.
+
+        Results are paginated and sorted in ascending order according their
+        `occurred_at` timestamp (oldest first).
+
+        BatchRetrieveInventoryChanges is a catch-all query endpoint for queries
+        that cannot be handled by other, simpler endpoints.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.changes
+      source:
+        openapi: openapi/openapi.json
+      display-name: BatchRetrieveInventoryChanges
+      request:
+        body: root.BatchRetrieveInventoryChangesRequest
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchGetInventoryChangesResponse
+        status-code: 200
+      examples:
+        - request:
+            catalog_object_ids:
+              - W62UWFY35CWMYGVWK6TWJDNI
+            location_ids:
+              - C6W5YS5QM06F5
+            types:
+              - PHYSICAL_COUNT
+            states:
+              - IN_STOCK
+            updated_after: '2016-11-01T00:00:00.000Z'
+            updated_before: '2016-12-01T00:00:00.000Z'
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              changes:
+                - type: PHYSICAL_COUNT
+                  physical_count:
+                    id: 46YDTW253DWGGK9HMAE6XCAO
+                    reference_id: 22c07cf4-5626-4224-89f9-691112019399
+                    catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                    catalog_object_type: ITEM_VARIATION
+                    state: IN_STOCK
+                    location_id: C6W5YS5QM06F5
+                    quantity: '86'
+                    source:
+                      product: SQUARE_POS
+                      application_id: 416ff29c-86c4-4feb-b58c-9705f21f3ea0
+                      name: Square Point of Sale 4.37
+                    team_member_id: LRK57NSQ5X7PUD05
+                    occurred_at: '2016-11-16T22:24:49.028Z'
+                    created_at: '2016-11-16T22:25:24.878Z'
+                  measurement_unit_id: measurement_unit_id
+              cursor: cursor
+    BatchGetCounts:
+      path: /v2/inventory/counts/batch-retrieve
+      method: POST
+      auth: true
+      docs: >-
+        Returns current counts for the provided
+
+        [CatalogObject](entity:CatalogObject)s at the requested
+
+        [Location](entity:Location)s.
+
+
+        Results are paginated and sorted in descending order according to their
+
+        `calculated_at` timestamp (newest first).
+
+
+        When `updated_after` is specified, only counts that have changed since
+        that
+
+        time (based on the server timestamp for the most recent change) are
+
+        returned. This allows clients to perform a "sync" operation, for example
+
+        in response to receiving a Webhook notification.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.counts
+      source:
+        openapi: openapi/openapi.json
+      display-name: BatchRetrieveInventoryCounts
+      request:
+        body: root.BatchGetInventoryCountsRequest
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchGetInventoryCountsResponse
+        status-code: 200
+      examples:
+        - request:
+            catalog_object_ids:
+              - W62UWFY35CWMYGVWK6TWJDNI
+            location_ids:
+              - 59TNP9SA8VGDA
+            updated_after: '2016-11-16T00:00:00.000Z'
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              counts:
+                - catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                  catalog_object_type: ITEM_VARIATION
+                  state: IN_STOCK
+                  location_id: 59TNP9SA8VGDA
+                  quantity: '79'
+                  calculated_at: '2016-11-16T22:28:01.223Z'
+                  is_estimated: true
+              cursor: cursor
+    deprecatedGetPhysicalCount:
+      path: /v2/inventory/physical-count/{physical_count_id}
+      method: GET
+      auth: true
+      docs: >-
+        Deprecated version of
+        [RetrieveInventoryPhysicalCount](api-endpoint:Inventory-RetrieveInventoryPhysicalCount)
+        after the endpoint URL
+
+        is updated to conform to the standard convention.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeprecatedRetrieveInventoryPhysicalCount
+      request:
+        name: DeprecatedGetPhysicalCountInventoryRequest
+        path-parameters:
+          physical_count_id:
+            type: string
+            docs: >-
+              ID of the
+
+              [InventoryPhysicalCount](entity:InventoryPhysicalCount) to
+              retrieve.
+      response:
+        docs: Success
+        type: root.GetInventoryPhysicalCountResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - path-parameters:
+            physical_count_id: physical_count_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              count:
+                id: ANZADNPLKADOJKJIUANKLMLQ
+                reference_id: f857ec37-f9a0-4458-8e23-5b5e0bea4e53
+                catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                catalog_object_type: ITEM_VARIATION
+                state: IN_STOCK
+                location_id: C6W5YS5QM06F5
+                quantity: '15'
+                source:
+                  product: SQUARE_POS
+                  application_id: 416ff29c-86c4-4feb-b58c-9705f21f3ea0
+                  name: Square Point of Sale 4.37
+                employee_id: employee_id
+                team_member_id: LRK57NSQ5X7PUD05
+                occurred_at: '2016-11-16T22:25:24.878Z'
+                created_at: '2016-11-16T22:25:24.878Z'
+    getPhysicalCount:
+      path: /v2/inventory/physical-counts/{physical_count_id}
+      method: GET
+      auth: true
+      docs: |-
+        Returns the [InventoryPhysicalCount](entity:InventoryPhysicalCount)
+        object with the provided `physical_count_id`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveInventoryPhysicalCount
+      request:
+        name: GetPhysicalCountInventoryRequest
+        path-parameters:
+          physical_count_id:
+            type: string
+            docs: >-
+              ID of the
+
+              [InventoryPhysicalCount](entity:InventoryPhysicalCount) to
+              retrieve.
+      response:
+        docs: Success
+        type: root.GetInventoryPhysicalCountResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            physical_count_id: physical_count_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              count:
+                id: ANZADNPLKADOJKJIUANKLMLQ
+                reference_id: f857ec37-f9a0-4458-8e23-5b5e0bea4e53
+                catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                catalog_object_type: ITEM_VARIATION
+                state: IN_STOCK
+                location_id: C6W5YS5QM06F5
+                quantity: '15'
+                source:
+                  product: SQUARE_POS
+                  application_id: 416ff29c-86c4-4feb-b58c-9705f21f3ea0
+                  name: Square Point of Sale 4.37
+                employee_id: employee_id
+                team_member_id: LRK57NSQ5X7PUD05
+                occurred_at: '2016-11-16T22:25:24.878Z'
+                created_at: '2016-11-16T22:25:24.878Z'
+    getTransfer:
+      path: /v2/inventory/transfers/{transfer_id}
+      method: GET
+      auth: true
+      docs: |-
+        Returns the [InventoryTransfer](entity:InventoryTransfer) object
+        with the provided `transfer_id`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveInventoryTransfer
+      request:
+        name: GetTransferInventoryRequest
+        path-parameters:
+          transfer_id:
+            type: string
+            docs: >-
+              ID of the [InventoryTransfer](entity:InventoryTransfer) to
+              retrieve.
+      response:
+        docs: Success
+        type: root.GetInventoryTransferResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            transfer_id: transfer_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              transfer:
+                id: UDMOEO78BG6GYWA2XDRYX3KB
+                reference_id: 4a366069-4096-47a2-99a5-0084ac879509
+                state: IN_STOCK
+                from_location_id: C6W5YS5QM06F5
+                to_location_id: 59TNP9SA8VGDA
+                catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                catalog_object_type: ITEM_VARIATION
+                quantity: '7'
+                occurred_at: '2016-11-16T25:44:22.837Z'
+                created_at: '2016-11-17T13:02:15.142Z'
+                source:
+                  product: SQUARE_POS
+                  application_id: 416ff29c-86c4-4feb-b58c-9705f21f3ea0
+                  name: Square Point of Sale 4.37
+                employee_id: employee_id
+                team_member_id: LRK57NSQ5X7PUD05
+    get:
+      path: /v2/inventory/{catalog_object_id}
+      method: GET
+      auth: true
+      docs: |-
+        Retrieves the current calculated stock count for a given
+        [CatalogObject](entity:CatalogObject) at a given set of
+        [Location](entity:Location)s. Responses are paginated and unsorted.
+        For more sophisticated queries, use a batch endpoint.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.counts
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveInventoryCount
+      request:
+        name: GetInventoryRequest
+        path-parameters:
+          catalog_object_id:
+            type: string
+            docs: ID of the [CatalogObject](entity:CatalogObject) to retrieve.
+        query-parameters:
+          location_ids:
+            type: optional<nullable<string>>
+            docs: >-
+              The [Location](entity:Location) IDs to look up as a
+              comma-separated
+
+              list. An empty list queries all locations.
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this to retrieve the next set of results for the original
+              query.
+
+
+              See the
+              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)
+              guide for more information.
+      response:
+        docs: Success
+        type: root.GetInventoryCountResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            catalog_object_id: catalog_object_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              counts:
+                - catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                  catalog_object_type: ITEM_VARIATION
+                  state: IN_STOCK
+                  location_id: C6W5YS5QM06F5
+                  quantity: '22'
+                  calculated_at: '2016-11-16T22:28:01.223Z'
+                  is_estimated: true
+              cursor: cursor
+    changes:
+      path: /v2/inventory/{catalog_object_id}/changes
+      method: GET
+      auth: true
+      docs: >-
+        Returns a set of physical counts and inventory adjustments for the
+
+        provided [CatalogObject](entity:CatalogObject) at the requested
+
+        [Location](entity:Location)s.
+
+
+        You can achieve the same result by calling
+        [BatchRetrieveInventoryChanges](api-endpoint:Inventory-BatchRetrieveInventoryChanges)
+
+        and having the `catalog_object_ids` list contain a single element of the
+        `CatalogObject` ID.
+
+
+        Results are paginated and sorted in descending order according to their
+
+        `occurred_at` timestamp (newest first).
+
+
+        There are no limits on how far back the caller can page. This endpoint
+        can be
+
+        used to display recent changes for a specific item. For more
+
+        sophisticated queries, use a batch endpoint.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.changes
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveInventoryChanges
+      request:
+        name: ChangesInventoryRequest
+        path-parameters:
+          catalog_object_id:
+            type: string
+            docs: ID of the [CatalogObject](entity:CatalogObject) to retrieve.
+        query-parameters:
+          location_ids:
+            type: optional<nullable<string>>
+            docs: >-
+              The [Location](entity:Location) IDs to look up as a
+              comma-separated
+
+              list. An empty list queries all locations.
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this to retrieve the next set of results for the original
+              query.
+
+
+              See the
+              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)
+              guide for more information.
+      response:
+        docs: Success
+        type: root.GetInventoryChangesResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - path-parameters:
+            catalog_object_id: catalog_object_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              changes:
+                - type: ADJUSTMENT
+                  adjustment:
+                    id: OJKJIUANKLMLQANZADNPLKAD
+                    reference_id: d8207693-168f-4b44-a2fd-a7ff533ddd26
+                    from_state: IN_STOCK
+                    to_state: SOLD
+                    location_id: C6W5YS5QM06F5
+                    catalog_object_id: W62UWFY35CWMYGVWK6TWJDNI
+                    catalog_object_type: ITEM_VARIATION
+                    quantity: '3'
+                    total_price_money:
+                      amount: 5000
+                      currency: USD
+                    occurred_at: '2016-11-16T22:25:24.878Z'
+                    created_at: '2016-11-16T22:25:24.878Z'
+                    source:
+                      product: SQUARE_POS
+                      application_id: 416ff29c-86c4-4feb-b58c-9705f21f3ea0
+                      name: Square Point of Sale 4.37
+                    team_member_id: AV7YRCGI2H1J5NQ8E1XIZCNA
+                    transaction_id: 5APV6JYK1SNCZD11AND2RX1Z
+                  measurement_unit_id: measurement_unit_id
+              cursor: cursor
+  source:
+    openapi: openapi/openapi.json

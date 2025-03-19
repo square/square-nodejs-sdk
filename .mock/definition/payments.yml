@@ -1,0 +1,1604 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/payments
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a list of payments taken by the account making the request.
+
+
+        Results are eventually consistent, and new payments or changes to
+        payments might take several
+
+        seconds to appear.
+
+
+        The maximum results per page is 100.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.payments
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListPayments
+      request:
+        name: ListPaymentsRequest
+        query-parameters:
+          begin_time:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates the start of the time range to retrieve payments for, in
+              RFC 3339 format.  
+
+              The range is determined using the `created_at` field for each
+              Payment.
+
+              Inclusive. Default: The current time minus one year.
+          end_time:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates the end of the time range to retrieve payments for, in
+              RFC 3339 format.  The 
+
+              range is determined using the `created_at` field for each Payment.
+
+
+              Default: The current time.
+          sort_order:
+            type: optional<nullable<string>>
+            docs: >-
+              The order in which results are listed by
+              `ListPaymentsRequest.sort_field`:
+
+              - `ASC` - Oldest to newest.
+
+              - `DESC` - Newest to oldest (default).
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for the
+              original query.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          location_id:
+            type: optional<nullable<string>>
+            docs: >-
+              Limit results to the location supplied. By default, results are
+              returned
+
+              for the default (main) location associated with the seller.
+          total:
+            type: optional<nullable<long>>
+            docs: The exact amount in the `total_money` for a payment.
+          last_4:
+            type: optional<nullable<string>>
+            docs: The last four digits of a payment card.
+          card_brand:
+            type: optional<nullable<string>>
+            docs: The brand of the payment card (for example, VISA).
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to be returned in a single page.
+
+              It is possible to receive fewer results than the specified limit
+              on a given page.
+
+
+              The default value of 100 is also the maximum allowed value. If the
+              provided value is 
+
+              greater than 100, it is ignored and the default value is used
+              instead.
+
+
+              Default: `100`
+          is_offline_payment:
+            type: optional<nullable<boolean>>
+            default: false
+            docs: Whether the payment was taken offline or not.
+          offline_begin_time:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates the start of the time range for which to retrieve
+              offline payments, in RFC 3339
+
+              format for timestamps. The range is determined using the
+
+              `offline_payment_details.client_created_at` field for each
+              Payment. If set, payments without a
+
+              value set in `offline_payment_details.client_created_at` will not
+              be returned.
+
+
+              Default: The current time.
+          offline_end_time:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates the end of the time range for which to retrieve offline
+              payments, in RFC 3339
+
+              format for timestamps. The range is determined using the
+
+              `offline_payment_details.client_created_at` field for each
+              Payment. If set, payments without a
+
+              value set in `offline_payment_details.client_created_at` will not
+              be returned.
+
+
+              Default: The current time.
+          updated_at_begin_time:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates the start of the time range to retrieve payments for, in
+              RFC 3339 format.  The
+
+              range is determined using the `updated_at` field for each Payment.
+          updated_at_end_time:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates the end of the time range to retrieve payments for, in
+              RFC 3339 format.  The
+
+              range is determined using the `updated_at` field for each Payment.
+          sort_field:
+            type: optional<nullable<root.ListPaymentsRequestSortField>>
+            docs: The field used to sort results by. The default is `CREATED_AT`.
+      response:
+        docs: Success
+        type: root.ListPaymentsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              payments:
+                - id: bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY
+                  created_at: '2021-10-13T19:34:33.524Z'
+                  updated_at: '2021-10-13T19:34:37.261Z'
+                  amount_money:
+                    amount: 555
+                    currency: USD
+                  total_money:
+                    amount: 555
+                    currency: USD
+                  approved_money:
+                    amount: 555
+                    currency: USD
+                  processing_fee:
+                    - effective_at: '2021-10-13T21:34:35.000Z'
+                      type: INITIAL
+                      amount_money:
+                        amount: 34
+                        currency: USD
+                  status: COMPLETED
+                  delay_duration: PT168H
+                  delay_action: CANCEL
+                  delayed_until: '2021-10-20T19:34:33.524Z'
+                  source_type: CARD
+                  card_details:
+                    status: CAPTURED
+                    card:
+                      card_brand: VISA
+                      last_4: '1111'
+                      exp_month: 11
+                      exp_year: 2022
+                      fingerprint: >-
+                        sq-1-Hxim77tbdcbGejOejnoAklBVJed2YFLTmirfl8Q5XZzObTc8qY_U8RkwzoNL8dCEcQ
+                      card_type: DEBIT
+                      prepaid_type: NOT_PREPAID
+                      bin: '411111'
+                    entry_method: KEYED
+                    cvv_status: CVV_ACCEPTED
+                    avs_status: AVS_ACCEPTED
+                    auth_result_code: 2Nkw7q
+                    statement_description: SQ *EXAMPLE TEST GOSQ.C
+                    card_payment_timeline:
+                      authorized_at: '2021-10-13T19:34:33.680Z'
+                      captured_at: '2021-10-13T19:34:34.340Z'
+                  cash_details:
+                    buyer_supplied_money: {}
+                  external_details:
+                    type: type
+                    source: source
+                  location_id: L88917AVBK2S5
+                  order_id: d7eKah653Z579f3gVtjlxpSlmUcZY
+                  reference_id: reference_id
+                  customer_id: customer_id
+                  employee_id: TMoK_ogh6rH1o4dV
+                  team_member_id: TMoK_ogh6rH1o4dV
+                  refund_ids:
+                    - refund_ids
+                  terminal_checkout_id: terminal_checkout_id
+                  buyer_email_address: buyer_email_address
+                  note: Test Note
+                  statement_description_identifier: statement_description_identifier
+                  capabilities:
+                    - capabilities
+                  receipt_number: bP9m
+                  receipt_url: >-
+                    https://squareup.com/receipt/preview/bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY
+                  application_details:
+                    square_product: VIRTUAL_TERMINAL
+                    application_id: sq0ids-Pw67AZAlLVB7hsRmwlJPuA
+                  is_offline_payment: true
+                  version_token: vguW2km0KpVCdAXZcNTZ438qg5LlVPTP4HO5OpiHNfa6o
+              cursor: cursor
+    create:
+      path: /v2/payments
+      method: POST
+      auth: true
+      docs: >-
+        Creates a payment using the provided source. You can use this endpoint 
+
+        to charge a card (credit/debit card or    
+
+        Square gift card) or record a payment that the seller received outside
+        of Square 
+
+        (cash payment from a buyer or a payment that an external entity 
+
+        processed on behalf of the seller).
+
+
+        The endpoint creates a 
+
+        `Payment` object and returns it in the response.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreatePayment
+      request:
+        name: CreatePaymentRequest
+        body:
+          properties:
+            source_id:
+              type: string
+              docs: >-
+                The ID for the source of funds for this payment.
+
+                This could be a payment token generated by the Web Payments SDK
+                for any of its
+
+                [supported
+                methods](https://developer.squareup.com/docs/web-payments/overview#explore-payment-methods),
+
+                including cards, bank transfers, Afterpay or Cash App Pay. If
+                recording a payment
+
+                that the seller received outside of Square, specify either
+                "CASH" or "EXTERNAL".
+
+                For more information, see 
+
+                [Take
+                Payments](https://developer.squareup.com/docs/payments-api/take-payments).
+              validation:
+                minLength: 1
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this `CreatePayment` request.
+                Keys can be any valid string
+
+                but must be unique for every `CreatePayment` request.
+
+
+                Note: The number of allowed characters might be less than the
+                stated maximum, if multi-byte
+
+                characters are used.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
+              validation:
+                minLength: 1
+                maxLength: 45
+            amount_money:
+              type: optional<root.Money>
+              docs: >-
+                The amount of money to accept for this payment, not including
+                `tip_money`.
+
+
+                The amount must be specified in the smallest denomination of the
+                applicable currency
+
+                (for example, US dollar amounts are specified in cents). For
+                more information, see
+
+                [Working with Monetary
+                Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).
+
+
+                The currency code must match the currency associated with the
+                business
+
+                that is accepting the payment.
+            tip_money:
+              type: optional<root.Money>
+              docs: >-
+                The amount designated as a tip, in addition to `amount_money`.
+
+
+                The amount must be specified in the smallest denomination of the
+                applicable currency
+
+                (for example, US dollar amounts are specified in cents). For
+                more information, see
+
+                [Working with Monetary
+                Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).
+
+
+                The currency code must match the currency associated with the
+                business
+
+                that is accepting the payment.
+            app_fee_money:
+              type: optional<root.Money>
+              docs: >-
+                The amount of money that the developer is taking as a fee
+
+                for facilitating the payment on behalf of the seller.
+
+
+                The amount cannot be more than 90% of the total amount of the
+                payment.
+
+
+                The amount must be specified in the smallest denomination of the
+                applicable currency
+
+                (for example, US dollar amounts are specified in cents). For
+                more information, see
+
+                [Working with Monetary
+                Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).
+
+
+                The fee currency code must match the currency associated with
+                the seller
+
+                that is accepting the payment. The application must be from a
+                developer
+
+                account in the same country and using the same currency code as
+                the seller.
+
+
+                For more information about the application fee scenario, see
+
+                [Take Payments and Collect
+                Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).
+
+
+                To set this field, `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth
+                permission is required.
+
+                For more information, see
+                [Permissions](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees#permissions).
+            delay_duration:
+              type: optional<string>
+              docs: >-
+                The duration of time after the payment's creation when Square
+                automatically 
+
+                either completes or cancels the payment depending on the
+                `delay_action` field value. 
+
+                For more information, see 
+
+                [Time
+                threshold](https://developer.squareup.com/docs/payments-api/take-payments/card-payments/delayed-capture#time-threshold). 
+
+
+                This parameter should be specified as a time duration, in RFC
+                3339 format.
+
+
+                Note: This feature is only supported for card payments. This
+                parameter can only be set for a delayed
+
+                capture payment (`autocomplete=false`).
+
+
+                Default:
+
+
+                - Card-present payments: "PT36H" (36 hours) from the creation
+                time.
+
+                - Card-not-present payments: "P7D" (7 days) from the creation
+                time.
+            delay_action:
+              type: optional<string>
+              docs: >-
+                The action to be applied to the payment when the
+                `delay_duration` has elapsed. The action must be
+
+                CANCEL or COMPLETE. For more information, see 
+
+                [Time
+                Threshold](https://developer.squareup.com/docs/payments-api/take-payments/card-payments/delayed-capture#time-threshold). 
+
+
+                Default: CANCEL
+            autocomplete:
+              type: optional<boolean>
+              docs: >-
+                If set to `true`, this payment will be completed when possible.
+                If
+
+                set to `false`, this payment is held in an approved state until
+                either
+
+                explicitly completed (captured) or canceled (voided). For more
+                information, see
+
+                [Delayed
+                capture](https://developer.squareup.com/docs/payments-api/take-payments/card-payments#delayed-capture-of-a-card-payment).
+
+
+                Default: true
+            order_id:
+              type: optional<string>
+              docs: Associates a previously created order with this payment.
+            customer_id:
+              type: optional<string>
+              docs: >-
+                The [Customer](entity:Customer) ID of the customer associated
+                with the payment.
+
+
+                This is required if the `source_id` refers to a card on file
+                created using the Cards API.
+            location_id:
+              type: optional<string>
+              docs: >-
+                The location ID to associate with the payment. If not specified,
+                the [main
+                location](https://developer.squareup.com/docs/locations-api#about-the-main-location)
+                is
+
+                used.
+            team_member_id:
+              type: optional<string>
+              docs: >-
+                An optional [TeamMember](entity:TeamMember) ID to associate
+                with 
+
+                this payment.
+            reference_id:
+              type: optional<string>
+              docs: >-
+                A user-defined ID to associate with the payment.
+
+
+                You can use this field to associate the payment to an entity in
+                an external system 
+
+                (for example, you might specify an order ID that is generated by
+                a third-party shopping cart).
+              validation:
+                maxLength: 40
+            verification_token:
+              type: optional<string>
+              docs: >-
+                An identifying token generated by
+                [payments.verifyBuyer()](https://developer.squareup.com/reference/sdks/web/payments/objects/Payments#Payments.verifyBuyer).
+
+                Verification tokens encapsulate customer device information and
+                3-D Secure
+
+                challenge results to indicate that Square has verified the buyer
+                identity.
+
+
+                For more information, see [SCA
+                Overview](https://developer.squareup.com/docs/sca-overview).
+            accept_partial_authorization:
+              type: optional<boolean>
+              docs: >-
+                If set to `true` and charging a Square Gift Card, a payment
+                might be returned with
+
+                `amount_money` equal to less than what was requested. For
+                example, a request for $20 when charging
+
+                a Square Gift Card with a balance of $5 results in an APPROVED
+                payment of $5. You might choose
+
+                to prompt the buyer for an additional payment to cover the
+                remainder or cancel the Gift Card
+
+                payment. This field cannot be `true` when `autocomplete = true`.
+
+
+                For more information, see
+
+                [Partial amount with Square Gift
+                Cards](https://developer.squareup.com/docs/payments-api/take-payments#partial-payment-gift-card).
+
+
+                Default: false
+            buyer_email_address:
+              type: optional<string>
+              docs: The buyer's email address.
+              validation:
+                maxLength: 255
+            buyer_phone_number:
+              type: optional<string>
+              docs: >-
+                The buyer's phone number.
+
+                Must follow the following format:
+
+                1. A leading + symbol (followed by a country code)
+
+                2. The phone number can contain spaces and the special
+                characters `(` , `)` , `-` , and `.`.
+
+                Alphabetical characters aren't allowed.
+
+                3. The phone number must contain between 9 and 16 digits.
+            billing_address:
+              type: optional<root.Address>
+              docs: The buyer's billing address.
+            shipping_address:
+              type: optional<root.Address>
+              docs: The buyer's shipping address.
+            note:
+              type: optional<string>
+              docs: >-
+                An optional note to be entered by the developer when creating a
+                payment.
+              validation:
+                maxLength: 500
+            statement_description_identifier:
+              type: optional<string>
+              docs: >-
+                Optional additional payment information to include on the
+                customer's card statement
+
+                as part of the statement description. This can be, for example,
+                an invoice number, ticket number,
+
+                or short description that uniquely identifies the purchase.
+
+
+                Note that the `statement_description_identifier` might get
+                truncated on the statement description
+
+                to fit the required information including the Square identifier
+                (SQ *) and name of the
+
+                seller taking the payment.
+              validation:
+                maxLength: 20
+            cash_details:
+              type: optional<root.CashPaymentDetails>
+              docs: >-
+                Additional details required when recording a cash payment
+                (`source_id` is CASH).
+            external_details:
+              type: optional<root.ExternalPaymentDetails>
+              docs: >-
+                Additional details required when recording an external payment
+                (`source_id` is EXTERNAL).
+            customer_details:
+              type: optional<root.CustomerDetails>
+              docs: Details about the customer making the payment.
+            offline_payment_details:
+              type: optional<root.OfflinePaymentDetails>
+              docs: >-
+                An optional field for specifying the offline payment details.
+                This is intended for
+
+                internal 1st-party callers only.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreatePaymentResponse
+        status-code: 200
+      examples:
+        - request:
+            source_id: ccof:GaJGNaZa8x4OgDJn4GB
+            idempotency_key: 7b0f3ec5-086a-4871-8f13-3c81b3875218
+            amount_money:
+              amount: 1000
+              currency: USD
+            app_fee_money:
+              amount: 10
+              currency: USD
+            autocomplete: true
+            customer_id: W92WH6P11H4Z77CTET0RNTGFW8
+            location_id: L88917AVBK2S5
+            reference_id: '123456'
+            note: Brief description
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              payment:
+                id: R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY
+                created_at: '2021-10-13T21:14:29.577Z'
+                updated_at: '2021-10-13T21:14:30.504Z'
+                amount_money:
+                  amount: 1000
+                  currency: USD
+                tip_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                total_money:
+                  amount: 1000
+                  currency: USD
+                app_fee_money:
+                  amount: 10
+                  currency: USD
+                approved_money:
+                  amount: 1000
+                  currency: USD
+                processing_fee:
+                  - {}
+                refunded_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                status: COMPLETED
+                delay_duration: PT168H
+                delay_action: CANCEL
+                delayed_until: '2021-10-20T21:14:29.577Z'
+                source_type: CARD
+                card_details:
+                  status: CAPTURED
+                  card:
+                    card_brand: VISA
+                    last_4: '1111'
+                    exp_month: 11
+                    exp_year: 2022
+                    fingerprint: >-
+                      sq-1-Hxim77tbdcbGejOejnoAklBVJed2YFLTmirfl8Q5XZzObTc8qY_U8RkwzoNL8dCEcQ
+                    card_type: DEBIT
+                    prepaid_type: NOT_PREPAID
+                    bin: '411111'
+                  entry_method: ON_FILE
+                  cvv_status: CVV_ACCEPTED
+                  avs_status: AVS_ACCEPTED
+                  auth_result_code: vNEn2f
+                  application_identifier: application_identifier
+                  application_name: application_name
+                  application_cryptogram: application_cryptogram
+                  verification_method: verification_method
+                  verification_results: verification_results
+                  statement_description: SQ *EXAMPLE TEST GOSQ.C
+                  card_payment_timeline:
+                    authorized_at: '2021-10-13T21:14:29.732Z'
+                    captured_at: '2021-10-13T21:14:30.504Z'
+                  refund_requires_card_presence: true
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                cash_details:
+                  buyer_supplied_money: {}
+                bank_account_details:
+                  bank_name: bank_name
+                  transfer_type: transfer_type
+                  account_ownership_type: account_ownership_type
+                  fingerprint: fingerprint
+                  country: country
+                  statement_description: statement_description
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                external_details:
+                  type: type
+                  source: source
+                  source_id: source_id
+                wallet_details:
+                  status: status
+                  brand: brand
+                buy_now_pay_later_details:
+                  brand: brand
+                square_account_details:
+                  payment_source_token: payment_source_token
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                location_id: L88917AVBK2S5
+                order_id: pRsjRTgFWATl7so6DxdKBJa7ssbZY
+                reference_id: '123456'
+                customer_id: W92WH6P11H4Z77CTET0RNTGFW8
+                employee_id: employee_id
+                team_member_id: team_member_id
+                refund_ids:
+                  - refund_ids
+                risk_evaluation:
+                  created_at: '2021-10-13T21:14:30.423Z'
+                  risk_level: NORMAL
+                terminal_checkout_id: terminal_checkout_id
+                buyer_email_address: buyer_email_address
+                billing_address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                shipping_address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                note: Brief Description
+                statement_description_identifier: statement_description_identifier
+                capabilities:
+                  - capabilities
+                receipt_number: R2B3
+                receipt_url: https://squareup.com/receipt/preview/EXAMPLE_RECEIPT_ID
+                device_details:
+                  device_id: device_id
+                  device_installation_id: device_installation_id
+                  device_name: device_name
+                application_details:
+                  square_product: ECOMMERCE_API
+                  application_id: sq0ids-TcgftTEtKxJTRF1lCFJ9TA
+                is_offline_payment: true
+                offline_payment_details:
+                  client_created_at: client_created_at
+                version_token: TPtNEOBOa6Qq6E3C3IjckSVOM6b3hMbfhjvTxHBQUsB6o
+    cancelByIdempotencyKey:
+      path: /v2/payments/cancel
+      method: POST
+      auth: true
+      docs: >-
+        Cancels (voids) a payment identified by the idempotency key that is
+        specified in the
+
+        request.
+
+
+        Use this method when the status of a `CreatePayment` request is unknown
+        (for example, after you send a
+
+        `CreatePayment` request, a network error occurs and you do not get a
+        response). In this case, you can
+
+        direct Square to cancel the payment using this endpoint. In the request,
+        you provide the same
+
+        idempotency key that you provided in your `CreatePayment` request that
+        you want to cancel. After
+
+        canceling the payment, you can submit your `CreatePayment` request
+        again.
+
+
+        Note that if no payment with the specified idempotency key is found, no
+        action is taken and the endpoint
+
+        returns successfully.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CancelPaymentByIdempotencyKey
+      request:
+        name: CancelPaymentByIdempotencyKeyRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: The `idempotency_key` identifying the payment to be canceled.
+              validation:
+                minLength: 1
+                maxLength: 45
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CancelPaymentByIdempotencyKeyResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: a7e36d40-d24b-11e8-b568-0800200c9a66
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/payments/{payment_id}
+      method: GET
+      auth: true
+      docs: Retrieves details for a specific payment.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetPayment
+      request:
+        name: GetPaymentsRequest
+        path-parameters:
+          payment_id:
+            type: string
+            docs: A unique ID for the desired payment.
+      response:
+        docs: Success
+        type: root.GetPaymentResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            payment_id: payment_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              payment:
+                id: bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY
+                created_at: '2021-10-13T19:34:33.524Z'
+                updated_at: '2021-10-13T19:34:34.339Z'
+                amount_money:
+                  amount: 555
+                  currency: USD
+                tip_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                total_money:
+                  amount: 555
+                  currency: USD
+                app_fee_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                approved_money:
+                  amount: 555
+                  currency: USD
+                processing_fee:
+                  - effective_at: '2021-10-13T21:34:35.000Z'
+                    type: INITIAL
+                    amount_money:
+                      amount: 34
+                      currency: USD
+                refunded_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                status: COMPLETED
+                delay_duration: PT168H
+                delay_action: CANCEL
+                delayed_until: '2021-10-20T19:34:33.524Z'
+                source_type: CARD
+                card_details:
+                  status: CAPTURED
+                  card:
+                    card_brand: VISA
+                    last_4: '1111'
+                    exp_month: 11
+                    exp_year: 2022
+                    fingerprint: >-
+                      sq-1-Hxim77tbdcbGejOejnoAklBVJed2YFLTmirfl8Q5XZzObTc8qY_U8RkwzoNL8dCEcQ
+                    card_type: DEBIT
+                    prepaid_type: NOT_PREPAID
+                    bin: '411111'
+                  entry_method: KEYED
+                  cvv_status: CVV_ACCEPTED
+                  avs_status: AVS_ACCEPTED
+                  auth_result_code: 2Nkw7q
+                  application_identifier: application_identifier
+                  application_name: application_name
+                  application_cryptogram: application_cryptogram
+                  verification_method: verification_method
+                  verification_results: verification_results
+                  statement_description: SQ *EXAMPLE TEST GOSQ.C
+                  card_payment_timeline:
+                    authorized_at: '2021-10-13T19:34:33.680Z'
+                    captured_at: '2021-10-13T19:34:34.340Z'
+                  refund_requires_card_presence: true
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                cash_details:
+                  buyer_supplied_money: {}
+                bank_account_details:
+                  bank_name: bank_name
+                  transfer_type: transfer_type
+                  account_ownership_type: account_ownership_type
+                  fingerprint: fingerprint
+                  country: country
+                  statement_description: statement_description
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                external_details:
+                  type: type
+                  source: source
+                  source_id: source_id
+                wallet_details:
+                  status: status
+                  brand: brand
+                buy_now_pay_later_details:
+                  brand: brand
+                square_account_details:
+                  payment_source_token: payment_source_token
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                location_id: L88917AVBK2S5
+                order_id: d7eKah653Z579f3gVtjlxpSlmUcZY
+                reference_id: reference_id
+                customer_id: customer_id
+                employee_id: TMoK_ogh6rH1o4dV
+                team_member_id: TMoK_ogh6rH1o4dV
+                refund_ids:
+                  - refund_ids
+                risk_evaluation:
+                  created_at: created_at
+                  risk_level: PENDING
+                terminal_checkout_id: terminal_checkout_id
+                buyer_email_address: buyer_email_address
+                billing_address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                shipping_address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                note: Test Note
+                statement_description_identifier: statement_description_identifier
+                capabilities:
+                  - capabilities
+                receipt_number: bP9m
+                receipt_url: >-
+                  https://squareup.com/receipt/preview/bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY
+                device_details:
+                  device_id: device_id
+                  device_installation_id: device_installation_id
+                  device_name: device_name
+                application_details:
+                  square_product: VIRTUAL_TERMINAL
+                  application_id: sq0ids-Pw67AZAlLVB7hsRmwlJPuA
+                is_offline_payment: true
+                offline_payment_details:
+                  client_created_at: client_created_at
+                version_token: 56pRkL3slrzet2iQrTp9n0bdJVYTB9YEWdTNjQfZOPV6o
+    update:
+      path: /v2/payments/{payment_id}
+      method: PUT
+      auth: true
+      docs: |-
+        Updates a payment with the APPROVED status.
+        You can update the `amount_money` and `tip_money` using this endpoint.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdatePayment
+      request:
+        name: UpdatePaymentRequest
+        path-parameters:
+          payment_id:
+            type: string
+            docs: The ID of the payment to update.
+        body:
+          properties:
+            payment:
+              type: optional<root.Payment>
+              docs: The updated `Payment` object.
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this `UpdatePayment` request.
+                Keys can be any valid string
+
+                but must be unique for every `UpdatePayment` request.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                minLength: 1
+                maxLength: 45
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdatePaymentResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            payment_id: payment_id
+          request:
+            payment:
+              amount_money:
+                amount: 1000
+                currency: USD
+              tip_money:
+                amount: 100
+                currency: USD
+              version_token: ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o
+            idempotency_key: 956f8b13-e4ec-45d6-85e8-d1d95ef0c5de
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              payment:
+                id: 1QjqpBVyrI9S4H9sTGDWU9JeiWdZY
+                created_at: '2021-10-13T20:26:44.191Z'
+                updated_at: '2021-10-13T20:26:44.364Z'
+                amount_money:
+                  amount: 1000
+                  currency: USD
+                tip_money:
+                  amount: 100
+                  currency: USD
+                total_money:
+                  amount: 1100
+                  currency: USD
+                app_fee_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                approved_money:
+                  amount: 1000
+                  currency: USD
+                processing_fee:
+                  - {}
+                refunded_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                status: APPROVED
+                delay_duration: PT168H
+                delay_action: CANCEL
+                delayed_until: '2021-10-20T20:26:44.191Z'
+                source_type: CARD
+                card_details:
+                  status: AUTHORIZED
+                  card:
+                    card_brand: VISA
+                    last_4: '1111'
+                    exp_month: 11
+                    exp_year: 2022
+                    fingerprint: >-
+                      sq-1-Hxim77tbdcbGejOejnoAklBVJed2YFLTmirfl8Q5XZzObTc8qY_U8RkwzoNL8dCEcQ
+                    card_type: DEBIT
+                    prepaid_type: NOT_PREPAID
+                    bin: '411111'
+                  entry_method: ON_FILE
+                  cvv_status: CVV_ACCEPTED
+                  avs_status: AVS_ACCEPTED
+                  auth_result_code: 68aLBM
+                  application_identifier: application_identifier
+                  application_name: application_name
+                  application_cryptogram: application_cryptogram
+                  verification_method: verification_method
+                  verification_results: verification_results
+                  statement_description: SQ *EXAMPLE TEST GOSQ.C
+                  card_payment_timeline:
+                    authorized_at: '2021-10-13T20:26:44.364Z'
+                  refund_requires_card_presence: true
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                cash_details:
+                  buyer_supplied_money: {}
+                bank_account_details:
+                  bank_name: bank_name
+                  transfer_type: transfer_type
+                  account_ownership_type: account_ownership_type
+                  fingerprint: fingerprint
+                  country: country
+                  statement_description: statement_description
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                external_details:
+                  type: type
+                  source: source
+                  source_id: source_id
+                wallet_details:
+                  status: status
+                  brand: brand
+                buy_now_pay_later_details:
+                  brand: brand
+                square_account_details:
+                  payment_source_token: payment_source_token
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                location_id: L88917AVBK2S5
+                order_id: nUSN9TdxpiK3SrQg3wzmf6r8LP9YY
+                reference_id: reference_id
+                customer_id: W92WH6P11H4Z77CTET0RNTGFW8
+                employee_id: employee_id
+                team_member_id: team_member_id
+                refund_ids:
+                  - refund_ids
+                risk_evaluation:
+                  created_at: '2021-10-13T20:26:45.271Z'
+                  risk_level: NORMAL
+                terminal_checkout_id: terminal_checkout_id
+                buyer_email_address: buyer_email_address
+                billing_address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                shipping_address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                note: Example Note
+                statement_description_identifier: statement_description_identifier
+                capabilities:
+                  - EDIT_AMOUNT_UP
+                  - EDIT_AMOUNT_DOWN
+                  - EDIT_TIP_AMOUNT_UP
+                  - EDIT_TIP_AMOUNT_DOWN
+                receipt_number: 1Qjq
+                receipt_url: receipt_url
+                device_details:
+                  device_id: device_id
+                  device_installation_id: device_installation_id
+                  device_name: device_name
+                application_details:
+                  square_product: ECOMMERCE_API
+                  application_id: sq0ids-TcgftTEtKxJTRF1lCFJ9TA
+                is_offline_payment: true
+                offline_payment_details:
+                  client_created_at: client_created_at
+                version_token: rDrXnqiS7fJgexccgdpzmwqTiXui1aIKCp9EchZ7trE6o
+    cancel:
+      path: /v2/payments/{payment_id}/cancel
+      method: POST
+      auth: true
+      docs: >-
+        Cancels (voids) a payment. You can use this endpoint to cancel a payment
+        with 
+
+        the APPROVED `status`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CancelPayment
+      request:
+        name: CancelPaymentsRequest
+        path-parameters:
+          payment_id:
+            type: string
+            docs: The ID of the payment to cancel.
+      response:
+        docs: Success
+        type: root.CancelPaymentResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            payment_id: payment_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              payment:
+                id: 1QjqpBVyrI9S4H9sTGDWU9JeiWdZY
+                created_at: '2021-10-13T20:26:44.191Z'
+                updated_at: '2021-10-13T20:31:21.597Z'
+                amount_money:
+                  amount: 1000
+                  currency: USD
+                tip_money:
+                  amount: 100
+                  currency: USD
+                total_money:
+                  amount: 1100
+                  currency: USD
+                app_fee_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                approved_money:
+                  amount: 1000
+                  currency: USD
+                processing_fee:
+                  - {}
+                refunded_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                status: CANCELED
+                delay_duration: PT168H
+                delay_action: CANCEL
+                delayed_until: '2021-10-20T20:26:44.191Z'
+                source_type: CARD
+                card_details:
+                  status: VOIDED
+                  card:
+                    card_brand: VISA
+                    last_4: '1111'
+                    exp_month: 11
+                    exp_year: 2022
+                    fingerprint: >-
+                      sq-1-Hxim77tbdcbGejOejnoAklBVJed2YFLTmirfl8Q5XZzObTc8qY_U8RkwzoNL8dCEcQ
+                    card_type: DEBIT
+                    prepaid_type: NOT_PREPAID
+                    bin: '411111'
+                  entry_method: ON_FILE
+                  cvv_status: CVV_ACCEPTED
+                  avs_status: AVS_ACCEPTED
+                  auth_result_code: 68aLBM
+                  application_identifier: application_identifier
+                  application_name: application_name
+                  application_cryptogram: application_cryptogram
+                  verification_method: verification_method
+                  verification_results: verification_results
+                  statement_description: SQ *EXAMPLE TEST GOSQ.C
+                  card_payment_timeline:
+                    authorized_at: '2021-10-13T20:26:44.364Z'
+                    voided_at: '2021-10-13T20:31:21.597Z'
+                  refund_requires_card_presence: true
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                cash_details:
+                  buyer_supplied_money: {}
+                bank_account_details:
+                  bank_name: bank_name
+                  transfer_type: transfer_type
+                  account_ownership_type: account_ownership_type
+                  fingerprint: fingerprint
+                  country: country
+                  statement_description: statement_description
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                external_details:
+                  type: type
+                  source: source
+                  source_id: source_id
+                wallet_details:
+                  status: status
+                  brand: brand
+                buy_now_pay_later_details:
+                  brand: brand
+                square_account_details:
+                  payment_source_token: payment_source_token
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                location_id: L88917AVBK2S5
+                order_id: nUSN9TdxpiK3SrQg3wzmf6r8LP9YY
+                reference_id: reference_id
+                customer_id: W92WH6P11H4Z77CTET0RNTGFW8
+                employee_id: employee_id
+                team_member_id: team_member_id
+                refund_ids:
+                  - refund_ids
+                risk_evaluation:
+                  created_at: '2021-10-13T20:26:45.271Z'
+                  risk_level: NORMAL
+                terminal_checkout_id: terminal_checkout_id
+                buyer_email_address: buyer_email_address
+                billing_address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                shipping_address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                note: Example Note
+                statement_description_identifier: statement_description_identifier
+                capabilities:
+                  - capabilities
+                receipt_number: receipt_number
+                receipt_url: receipt_url
+                device_details:
+                  device_id: device_id
+                  device_installation_id: device_installation_id
+                  device_name: device_name
+                application_details:
+                  square_product: ECOMMERCE_API
+                  application_id: sq0ids-TcgftTEtKxJTRF1lCFJ9TA
+                is_offline_payment: true
+                offline_payment_details:
+                  client_created_at: client_created_at
+                version_token: N8AGYgEjCiY9Q57Jw7aVHEpBq8bzGCDCQMRX8Vs56N06o
+    complete:
+      path: /v2/payments/{payment_id}/complete
+      method: POST
+      auth: true
+      docs: >-
+        Completes (captures) a payment.
+
+        By default, payments are set to complete immediately after they are
+        created.
+
+
+        You can use this endpoint to complete a payment with the APPROVED
+        `status`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CompletePayment
+      request:
+        name: CompletePaymentRequest
+        path-parameters:
+          payment_id:
+            type: string
+            docs: The unique ID identifying the payment to be completed.
+        body:
+          properties:
+            version_token:
+              type: optional<nullable<string>>
+              docs: >-
+                Used for optimistic concurrency. This opaque token identifies
+                the current `Payment` 
+
+                version that the caller expects. If the server has a different
+                version of the Payment, 
+
+                the update fails and a response with a VERSION_MISMATCH error is
+                returned.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CompletePaymentResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            payment_id: payment_id
+          request: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              payment:
+                id: bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY
+                created_at: '2021-10-13T19:34:33.524Z'
+                updated_at: '2021-10-13T19:34:34.339Z'
+                amount_money:
+                  amount: 555
+                  currency: USD
+                tip_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                total_money:
+                  amount: 555
+                  currency: USD
+                app_fee_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                approved_money:
+                  amount: 555
+                  currency: USD
+                processing_fee:
+                  - effective_at: '2021-10-13T21:34:35.000Z'
+                    type: INITIAL
+                    amount_money:
+                      amount: 34
+                      currency: USD
+                refunded_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                status: COMPLETED
+                delay_duration: PT168H
+                delay_action: CANCEL
+                delayed_until: '2021-10-20T19:34:33.524Z'
+                source_type: CARD
+                card_details:
+                  status: CAPTURED
+                  card:
+                    card_brand: VISA
+                    last_4: '1111'
+                    exp_month: 11
+                    exp_year: 2022
+                    fingerprint: >-
+                      sq-1-Hxim77tbdcbGejOejnoAklBVJed2YFLTmirfl8Q5XZzObTc8qY_U8RkwzoNL8dCEcQ
+                    card_type: DEBIT
+                    prepaid_type: NOT_PREPAID
+                    bin: '411111'
+                  entry_method: KEYED
+                  cvv_status: CVV_ACCEPTED
+                  avs_status: AVS_ACCEPTED
+                  auth_result_code: 2Nkw7q
+                  application_identifier: application_identifier
+                  application_name: application_name
+                  application_cryptogram: application_cryptogram
+                  verification_method: verification_method
+                  verification_results: verification_results
+                  statement_description: SQ *EXAMPLE TEST GOSQ.C
+                  card_payment_timeline:
+                    authorized_at: '2021-10-13T19:34:33.680Z'
+                    captured_at: '2021-10-13T19:34:34.340Z'
+                  refund_requires_card_presence: true
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                cash_details:
+                  buyer_supplied_money: {}
+                bank_account_details:
+                  bank_name: bank_name
+                  transfer_type: transfer_type
+                  account_ownership_type: account_ownership_type
+                  fingerprint: fingerprint
+                  country: country
+                  statement_description: statement_description
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                external_details:
+                  type: type
+                  source: source
+                  source_id: source_id
+                wallet_details:
+                  status: status
+                  brand: brand
+                buy_now_pay_later_details:
+                  brand: brand
+                square_account_details:
+                  payment_source_token: payment_source_token
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                location_id: L88917AVBK2S5
+                order_id: d7eKah653Z579f3gVtjlxpSlmUcZY
+                reference_id: reference_id
+                customer_id: customer_id
+                employee_id: TMoK_ogh6rH1o4dV
+                team_member_id: TMoK_ogh6rH1o4dV
+                refund_ids:
+                  - refund_ids
+                risk_evaluation:
+                  created_at: created_at
+                  risk_level: PENDING
+                terminal_checkout_id: terminal_checkout_id
+                buyer_email_address: buyer_email_address
+                billing_address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                shipping_address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                note: Test Note
+                statement_description_identifier: statement_description_identifier
+                capabilities:
+                  - capabilities
+                receipt_number: bP9m
+                receipt_url: >-
+                  https://squareup.com/receipt/preview/bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY
+                device_details:
+                  device_id: device_id
+                  device_installation_id: device_installation_id
+                  device_name: device_name
+                application_details:
+                  square_product: VIRTUAL_TERMINAL
+                  application_id: sq0ids-Pw67AZAlLVB7hsRmwlJPuA
+                is_offline_payment: true
+                offline_payment_details:
+                  client_created_at: client_created_at
+                version_token: 56pRkL3slrzet2iQrTp9n0bdJVYTB9YEWdTNjQfZOPV6o
+  source:
+    openapi: openapi/openapi.json

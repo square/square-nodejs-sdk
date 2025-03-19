@@ -1,0 +1,446 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/labor/shifts
+      method: POST
+      auth: true
+      docs: >-
+        Creates a new `Shift`.
+
+
+        A `Shift` represents a complete workday for a single team member.
+
+        You must provide the following values in your request to this
+
+        endpoint:
+
+
+        - `location_id`
+
+        - `team_member_id`
+
+        - `start_at`
+
+
+        An attempt to create a new `Shift` can result in a `BAD_REQUEST` error
+        when:
+
+        - The `status` of the new `Shift` is `OPEN` and the team member has
+        another
+
+        shift with an `OPEN` status.
+
+        - The `start_at` date is in the future.
+
+        - The `start_at` or `end_at` date overlaps another shift for the same
+        team member.
+
+        - The `Break` instances are set in the request and a break `start_at`
+
+        is before the `Shift.start_at`, a break `end_at` is after
+
+        the `Shift.end_at`, or both.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateShift
+      request:
+        name: CreateShiftRequest
+        body:
+          properties:
+            idempotency_key:
+              type: optional<string>
+              docs: >-
+                A unique string value to ensure the idempotency of the
+                operation.
+              validation:
+                maxLength: 128
+            shift:
+              type: root.Shift
+              docs: The `Shift` to be created.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateShiftResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: HIDSNG5KS478L
+            shift:
+              location_id: PAA1RJZZKXBFG
+              start_at: '2019-01-25T03:11:00-05:00'
+              end_at: '2019-01-25T13:11:00-05:00'
+              wage:
+                title: Barista
+                hourly_rate:
+                  amount: 1100
+                  currency: USD
+                tip_eligible: true
+              breaks:
+                - start_at: '2019-01-25T06:11:00-05:00'
+                  end_at: '2019-01-25T06:16:00-05:00'
+                  break_type_id: REGS1EQR1TPZ5
+                  name: Tea Break
+                  expected_duration: PT5M
+                  is_paid: true
+              team_member_id: ormj0jJJZ5OZIzxrZYJI
+              declared_cash_tip_money:
+                amount: 500
+                currency: USD
+          response:
+            body:
+              shift:
+                id: K0YH4CV5462JB
+                employee_id: ormj0jJJZ5OZIzxrZYJI
+                location_id: PAA1RJZZKXBFG
+                timezone: America/New_York
+                start_at: '2019-01-25T03:11:00-05:00'
+                end_at: '2019-01-25T13:11:00-05:00'
+                wage:
+                  title: Barista
+                  hourly_rate:
+                    amount: 1100
+                    currency: USD
+                  job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                  tip_eligible: true
+                breaks:
+                  - id: X7GAQYVVRRG6P
+                    start_at: '2019-01-25T06:11:00-05:00'
+                    end_at: '2019-01-25T06:16:00-05:00'
+                    break_type_id: REGS1EQR1TPZ5
+                    name: Tea Break
+                    expected_duration: PT5M
+                    is_paid: true
+                status: CLOSED
+                version: 1
+                created_at: '2019-02-28T00:39:02Z'
+                updated_at: '2019-02-28T00:39:02Z'
+                team_member_id: ormj0jJJZ5OZIzxrZYJI
+                declared_cash_tip_money:
+                  amount: 500
+                  currency: USD
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    search:
+      path: /v2/labor/shifts/search
+      method: POST
+      auth: true
+      docs: |-
+        Returns a paginated list of `Shift` records for a business.
+        The list to be returned can be filtered by:
+        - Location IDs
+        - Team member IDs
+        - Shift status (`OPEN` or `CLOSED`)
+        - Shift start
+        - Shift end
+        - Workday details
+
+        The list can be sorted by:
+        - `START_AT`
+        - `END_AT`
+        - `CREATED_AT`
+        - `UPDATED_AT`
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchShifts
+      request:
+        name: SearchShiftsRequest
+        body:
+          properties:
+            query:
+              type: optional<root.ShiftQuery>
+              docs: Query filters.
+            limit:
+              type: optional<integer>
+              docs: The number of resources in a page (200 by default).
+              validation:
+                min: 1
+                max: 200
+            cursor:
+              type: optional<string>
+              docs: An opaque cursor for fetching the next page.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchShiftsResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                workday:
+                  date_range:
+                    start_date: '2019-01-20'
+                    end_date: '2019-02-03'
+                  match_shifts_by: START_AT
+                  default_timezone: America/Los_Angeles
+            limit: 100
+          response:
+            body:
+              shifts:
+                - id: X714F3HA6D1PT
+                  employee_id: ormj0jJJZ5OZIzxrZYJI
+                  location_id: PAA1RJZZKXBFG
+                  timezone: America/New_York
+                  start_at: '2019-01-21T03:11:00-05:00'
+                  end_at: '2019-01-21T13:11:00-05:00'
+                  wage:
+                    title: Barista
+                    hourly_rate:
+                      amount: 1100
+                      currency: USD
+                    job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                    tip_eligible: true
+                  breaks:
+                    - id: SJW7X6AKEJQ65
+                      start_at: '2019-01-21T06:11:00-05:00'
+                      end_at: '2019-01-21T06:11:00-05:00'
+                      break_type_id: REGS1EQR1TPZ5
+                      name: Tea Break
+                      expected_duration: PT10M
+                      is_paid: true
+                  status: CLOSED
+                  version: 6
+                  created_at: '2019-01-24T01:12:03Z'
+                  updated_at: '2019-02-07T22:21:08Z'
+                  team_member_id: ormj0jJJZ5OZIzxrZYJI
+                  declared_cash_tip_money:
+                    amount: 500
+                    currency: USD
+                - id: GDHYBZYWK0P2V
+                  employee_id: 33fJchumvVdJwxV0H6L9
+                  location_id: PAA1RJZZKXBFG
+                  timezone: America/New_York
+                  start_at: '2019-01-22T12:02:00-05:00'
+                  end_at: '2019-01-22T13:02:00-05:00'
+                  wage:
+                    title: Cook
+                    hourly_rate:
+                      amount: 1600
+                      currency: USD
+                    job_id: gcbz15vKGnMKmaWJJ152kjim
+                    tip_eligible: true
+                  breaks:
+                    - id: BKS6VR7WR748A
+                      start_at: '2019-01-23T14:30:00-05:00'
+                      end_at: '2019-01-23T14:40:00-05:00'
+                      break_type_id: WQX00VR99F53J
+                      name: Tea Break
+                      expected_duration: PT10M
+                      is_paid: true
+                    - id: BQFEZSHFZSC51
+                      start_at: '2019-01-22T12:30:00-05:00'
+                      end_at: '2019-01-22T12:44:00-05:00'
+                      break_type_id: P6Q468ZFRN1AC
+                      name: Coffee Break
+                      expected_duration: PT15M
+                      is_paid: false
+                  status: CLOSED
+                  version: 16
+                  created_at: '2019-01-23T23:32:45Z'
+                  updated_at: '2019-01-24T00:56:25Z'
+                  team_member_id: 33fJchumvVdJwxV0H6L9
+                  declared_cash_tip_money:
+                    amount: 0
+                    currency: USD
+              cursor: cursor
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/labor/shifts/{id}
+      method: GET
+      auth: true
+      docs: Returns a single `Shift` specified by `id`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetShift
+      request:
+        name: GetShiftsRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The UUID for the `Shift` being retrieved.
+      response:
+        docs: Success
+        type: root.GetShiftResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              shift:
+                id: T35HMQSN89SV4
+                employee_id: D71KRMQof6cXGUW0aAv7
+                location_id: PAA1RJZZKXBFG
+                timezone: America/New_York
+                start_at: '2019-02-23T18:00:00-05:00'
+                end_at: '2019-02-23T21:00:00-05:00'
+                wage:
+                  title: Cashier
+                  hourly_rate:
+                    amount: 1457
+                    currency: USD
+                  job_id: N4YKVLzFj3oGtNocqoYHYpW3
+                  tip_eligible: true
+                breaks:
+                  - id: M9BBKEPQAQD2T
+                    start_at: '2019-02-23T19:00:00-05:00'
+                    end_at: '2019-02-23T20:00:00-05:00'
+                    break_type_id: 92EPDRQKJ5088
+                    name: Lunch Break
+                    expected_duration: PT1H
+                    is_paid: true
+                status: CLOSED
+                version: 1
+                created_at: '2019-02-27T00:12:12Z'
+                updated_at: '2019-02-27T00:12:12Z'
+                team_member_id: D71KRMQof6cXGUW0aAv7
+                declared_cash_tip_money:
+                  amount: 500
+                  currency: USD
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    update:
+      path: /v2/labor/shifts/{id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates an existing `Shift`.
+
+
+        When adding a `Break` to a `Shift`, any earlier `Break` instances in the
+        `Shift` have
+
+        the `end_at` property set to a valid RFC-3339 datetime string.
+
+
+        When closing a `Shift`, all `Break` instances in the `Shift` must be
+        complete with `end_at`
+
+        set on each `Break`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateShift
+      request:
+        name: UpdateShiftRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The ID of the object being updated.
+        body:
+          properties:
+            shift:
+              type: root.Shift
+              docs: The updated `Shift` object.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateShiftResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          request:
+            shift:
+              location_id: PAA1RJZZKXBFG
+              start_at: '2019-01-25T03:11:00-05:00'
+              end_at: '2019-01-25T13:11:00-05:00'
+              wage:
+                title: Bartender
+                hourly_rate:
+                  amount: 1500
+                  currency: USD
+                tip_eligible: true
+              breaks:
+                - id: X7GAQYVVRRG6P
+                  start_at: '2019-01-25T06:11:00-05:00'
+                  end_at: '2019-01-25T06:16:00-05:00'
+                  break_type_id: REGS1EQR1TPZ5
+                  name: Tea Break
+                  expected_duration: PT5M
+                  is_paid: true
+              version: 1
+              team_member_id: ormj0jJJZ5OZIzxrZYJI
+              declared_cash_tip_money:
+                amount: 500
+                currency: USD
+          response:
+            body:
+              shift:
+                id: K0YH4CV5462JB
+                employee_id: ormj0jJJZ5OZIzxrZYJI
+                location_id: PAA1RJZZKXBFG
+                timezone: America/New_York
+                start_at: '2019-01-25T03:11:00-05:00'
+                end_at: '2019-01-25T13:11:00-05:00'
+                wage:
+                  title: Bartender
+                  hourly_rate:
+                    amount: 1500
+                    currency: USD
+                  job_id: dZtrPh5GSDGugyXGByesVp51
+                  tip_eligible: true
+                breaks:
+                  - id: X7GAQYVVRRG6P
+                    start_at: '2019-01-25T06:11:00-05:00'
+                    end_at: '2019-01-25T06:16:00-05:00'
+                    break_type_id: REGS1EQR1TPZ5
+                    name: Tea Break
+                    expected_duration: PT5M
+                    is_paid: true
+                status: CLOSED
+                version: 2
+                created_at: '2019-02-28T00:39:02Z'
+                updated_at: '2019-02-28T00:42:41Z'
+                team_member_id: ormj0jJJZ5OZIzxrZYJI
+                declared_cash_tip_money:
+                  amount: 500
+                  currency: USD
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    delete:
+      path: /v2/labor/shifts/{id}
+      method: DELETE
+      auth: true
+      docs: Deletes a `Shift`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteShift
+      request:
+        name: DeleteShiftsRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The UUID for the `Shift` being deleted.
+      response:
+        docs: Success
+        type: root.DeleteShiftResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

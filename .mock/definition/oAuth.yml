@@ -1,0 +1,312 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    revokeToken:
+      path: /oauth2/revoke
+      method: POST
+      auth: true
+      docs: >-
+        Revokes an access token generated with the OAuth flow.
+
+
+        If an account has more than one OAuth access token for your application,
+        this
+
+        endpoint revokes all of them, regardless of which token you specify. 
+
+
+        __Important:__ The `Authorization` header for this endpoint must have
+        the
+
+        following format:
+
+
+        ```
+
+        Authorization: Client APPLICATION_SECRET
+
+        ```
+
+
+        Replace `APPLICATION_SECRET` with the application secret on the
+        **OAuth**
+
+        page for your application in the Developer Dashboard.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RevokeToken
+      request:
+        name: RevokeTokenRequest
+        body:
+          properties:
+            client_id:
+              type: optional<nullable<string>>
+              docs: >-
+                The Square-issued ID for your application, which is available on
+                the **OAuth** page in the
+
+                [Developer Dashboard](https://developer.squareup.com/apps).
+              validation:
+                maxLength: 191
+            access_token:
+              type: optional<nullable<string>>
+              docs: >-
+                The access token of the merchant whose token you want to revoke.
+
+                Do not provide a value for `merchant_id` if you provide this
+                parameter.
+              validation:
+                minLength: 2
+                maxLength: 1024
+            merchant_id:
+              type: optional<nullable<string>>
+              docs: >-
+                The ID of the merchant whose token you want to revoke.
+
+                Do not provide a value for `access_token` if you provide this
+                parameter.
+            revoke_only_access_token:
+              type: optional<nullable<boolean>>
+              docs: |-
+                If `true`, terminate the given single access token, but do not
+                terminate the entire authorization.
+                Default: `false`
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.RevokeTokenResponse
+        status-code: 200
+      examples:
+        - request:
+            client_id: CLIENT_ID
+            access_token: ACCESS_TOKEN
+          response:
+            body:
+              success: true
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    obtainToken:
+      path: /oauth2/token
+      method: POST
+      auth: false
+      docs: >-
+        Returns an OAuth access token and a refresh token unless the 
+
+        `short_lived` parameter is set to `true`, in which case the endpoint 
+
+        returns only an access token.
+
+
+        The `grant_type` parameter specifies the type of OAuth request. If 
+
+        `grant_type` is `authorization_code`, you must include the
+        authorization 
+
+        code you received when a seller granted you authorization. If
+        `grant_type` 
+
+        is `refresh_token`, you must provide a valid refresh token. If you're
+        using 
+
+        an old version of the Square APIs (prior to March 13, 2019),
+        `grant_type` 
+
+        can be `migration_token` and you must provide a valid migration token.
+
+
+        You can use the `scopes` parameter to limit the set of permissions
+        granted 
+
+        to the access token and refresh token. You can use the `short_lived`
+        parameter 
+
+        to create an access token that expires in 24 hours.
+
+
+        __Note:__ OAuth tokens should be encrypted and stored on a secure
+        server. 
+
+        Application clients should never interact directly with OAuth tokens.
+      source:
+        openapi: openapi/openapi.json
+      display-name: ObtainToken
+      request:
+        name: ObtainTokenRequest
+        body:
+          properties:
+            client_id:
+              type: string
+              docs: >-
+                The Square-issued ID of your application, which is available on
+                the **OAuth** page in the
+
+                [Developer Dashboard](https://developer.squareup.com/apps).
+              validation:
+                maxLength: 191
+            client_secret:
+              type: optional<nullable<string>>
+              docs: "The Square-issued application secret for your application, which is available on the **OAuth** page\nin the [Developer Dashboard](https://developer.squareup.com/apps). This parameter is only required when \nyou're not using the [OAuth PKCE (Proof Key for Code Exchange) flow](https://developer.squareup.com/docs/oauth-api/overview#pkce-flow).\nThe PKCE flow requires a\_`code_verifier`\_instead of a\_`client_secret`\_when `grant_type`\_is\_set to `authorization_code`. \nIf\_`grant_type`\_is set to\_`refresh_token`\_and the\_`refresh_token`\_is obtained uaing PKCE, the PKCE flow only requires\_`client_id`,\_\n`grant_type`, and\_`refresh_token`."
+              validation:
+                minLength: 2
+                maxLength: 1024
+            code:
+              type: optional<nullable<string>>
+              docs: >-
+                The authorization code to exchange.
+
+                This code is required if `grant_type` is set to
+                `authorization_code` to indicate that
+
+                the application wants to exchange an authorization code for an
+                OAuth access token.
+              validation:
+                maxLength: 191
+            redirect_uri:
+              type: optional<nullable<string>>
+              docs: >-
+                The redirect URL assigned on the **OAuth** page for your
+                application in the [Developer
+                Dashboard](https://developer.squareup.com/apps).
+              validation:
+                maxLength: 2048
+            grant_type:
+              type: string
+              docs: >-
+                Specifies the method to request an OAuth access token.
+
+                Valid values are `authorization_code`, `refresh_token`, and
+                `migration_token`.
+              validation:
+                minLength: 10
+                maxLength: 20
+            refresh_token:
+              type: optional<nullable<string>>
+              docs: >-
+                A valid refresh token for generating a new OAuth access token.
+
+
+                A valid refresh token is required if `grant_type` is set to
+                `refresh_token`
+
+                to indicate that the application wants a replacement for an
+                expired OAuth access token.
+              validation:
+                minLength: 2
+                maxLength: 1024
+            migration_token:
+              type: optional<nullable<string>>
+              docs: >-
+                A legacy OAuth access token obtained using a Connect API version
+                prior
+
+                to 2019-03-13. This parameter is required if `grant_type` is set
+                to
+
+                `migration_token` to indicate that the application wants to get
+                a replacement
+
+                OAuth access token. The response also returns a refresh token.
+
+                For more information, see [Migrate to Using Refresh
+                Tokens](https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens).
+              validation:
+                minLength: 2
+                maxLength: 1024
+            scopes:
+              type: optional<nullable<list<string>>>
+              docs: >-
+                A JSON list of strings representing the permissions that the
+                application is requesting.
+
+                For example,
+                "`["MERCHANT_PROFILE_READ","PAYMENTS_READ","BANK_ACCOUNTS_READ"]`".
+
+
+                The access token returned in the response is granted the
+                permissions
+
+                that comprise the intersection between the requested list of
+                permissions and those
+
+                that belong to the provided refresh token.
+            short_lived:
+              type: optional<nullable<boolean>>
+              docs: >-
+                A Boolean indicating a request for a short-lived access token.
+
+
+                The short-lived access token returned in the response expires in
+                24 hours.
+            code_verifier:
+              type: optional<nullable<string>>
+              docs: "Must be provided when using the PKCE OAuth flow if `grant_type`\_is set to\_`authorization_code`. The `code_verifier` is used to verify against the\n`code_challenge` associated with the `authorization_code`."
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.ObtainTokenResponse
+        status-code: 200
+      examples:
+        - request:
+            client_id: APPLICATION_ID
+            client_secret: APPLICATION_SECRET
+            code: CODE_FROM_AUTHORIZE
+            grant_type: authorization_code
+          response:
+            body:
+              access_token: ACCESS_TOKEN
+              token_type: bearer
+              expires_at: '2006-01-02T15:04:05Z'
+              merchant_id: MERCHANT_ID
+              subscription_id: subscription_id
+              plan_id: plan_id
+              id_token: id_token
+              refresh_token: REFRESH_TOKEN
+              short_lived: true
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              refresh_token_expires_at: refresh_token_expires_at
+    RetrieveTokenStatus:
+      path: /oauth2/token/status
+      method: POST
+      auth: true
+      docs: "Returns information about an [OAuth access token](https://developer.squareup.com/docs/build-basics/access-tokens#get-an-oauth-access-token)\_or an application’s [personal access token](https://developer.squareup.com/docs/build-basics/access-tokens#get-a-personal-access-token).\n\nAdd the access token to the Authorization header of the request.\n\n__Important:__ The `Authorization` header you provide to this endpoint must have the following format:\n\n```\nAuthorization: Bearer ACCESS_TOKEN\n```\n\nwhere `ACCESS_TOKEN` is a\n[valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-tokens).\n\nIf the access token is expired or not a valid access token, the endpoint returns an `UNAUTHORIZED` error."
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveTokenStatus
+      response:
+        docs: Success
+        type: root.RetrieveTokenStatusResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              scopes:
+                - PAYMENTS_READ
+                - PAYMENTS_WRITE
+              expires_at: '2022-10-14T14:44:00Z'
+              client_id: CLIENT_ID
+              merchant_id: MERCHANT_ID
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    authorize:
+      path: /oauth2/authorize
+      method: GET
+      auth: false
+      source:
+        openapi: openapi/openapi.json
+      examples:
+        - {}
+  source:
+    openapi: openapi/openapi.json

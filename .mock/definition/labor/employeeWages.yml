@@ -1,0 +1,113 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/labor/employee-wages
+      method: GET
+      auth: true
+      docs: Returns a paginated list of `EmployeeWage` instances for a business.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.employee_wages
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListEmployeeWages
+      request:
+        name: ListEmployeeWagesRequest
+        query-parameters:
+          employee_id:
+            type: optional<nullable<string>>
+            docs: >-
+              Filter the returned wages to only those that are associated with
+              the specified employee.
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of `EmployeeWage` results to return per page.
+              The number can range between
+
+              1 and 200. The default is 200.
+          cursor:
+            type: optional<nullable<string>>
+            docs: A pointer to the next page of `EmployeeWage` results to fetch.
+      response:
+        docs: Success
+        type: root.ListEmployeeWagesResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - response:
+            body:
+              employee_wages:
+                - id: pXS3qCv7BERPnEGedM4S8mhm
+                  employee_id: 33fJchumvVdJwxV0H6L9
+                  title: Manager
+                  hourly_rate:
+                    amount: 3250
+                    currency: USD
+                - id: rZduCkzYDUVL3ovh1sQgbue6
+                  employee_id: 33fJchumvVdJwxV0H6L9
+                  title: Cook
+                  hourly_rate:
+                    amount: 2600
+                    currency: USD
+                - id: FxLbs5KpPUHa8wyt5ctjubDX
+                  employee_id: 33fJchumvVdJwxV0H6L9
+                  title: Barista
+                  hourly_rate:
+                    amount: 1600
+                    currency: USD
+                - id: vD1wCgijMDR3cX5TPnu7VXto
+                  employee_id: 33fJchumvVdJwxV0H6L9
+                  title: Cashier
+                  hourly_rate:
+                    amount: 1700
+                    currency: USD
+              cursor: 2fofTniCgT0yIPAq26kmk0YyFQJZfbWkh73OOnlTHmTAx13NgED
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/labor/employee-wages/{id}
+      method: GET
+      auth: true
+      docs: Returns a single `EmployeeWage` specified by `id`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetEmployeeWage
+      request:
+        name: GetEmployeeWagesRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The UUID for the `EmployeeWage` being retrieved.
+      response:
+        docs: Success
+        type: root.GetEmployeeWageResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              employee_wage:
+                id: pXS3qCv7BERPnEGedM4S8mhm
+                employee_id: 33fJchumvVdJwxV0H6L9
+                title: Manager
+                hourly_rate:
+                  amount: 2000
+                  currency: USD
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

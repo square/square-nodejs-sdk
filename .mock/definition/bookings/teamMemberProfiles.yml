@@ -1,0 +1,101 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/bookings/team-member-booking-profiles
+      method: GET
+      auth: true
+      docs: Lists booking profiles for team members.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.team_member_booking_profiles
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListTeamMemberBookingProfiles
+      request:
+        name: ListTeamMemberProfilesRequest
+        query-parameters:
+          bookable_only:
+            type: optional<nullable<boolean>>
+            default: false
+            docs: >-
+              Indicates whether to include only bookable team members in the
+              returned result (`true`) or not (`false`).
+          limit:
+            type: optional<nullable<integer>>
+            docs: The maximum number of results to return in a paged response.
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              The pagination cursor from the preceding response to return the
+              next page of the results. Do not set this when retrieving the
+              first page of the results.
+          location_id:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates whether to include only team members enabled at the
+              given location in the returned result.
+      response:
+        docs: Success
+        type: root.ListTeamMemberBookingProfilesResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              team_member_booking_profiles:
+                - team_member_id: TMXUrsBWWcHTt79t
+                  description: description
+                  display_name: Sandbox Seller
+                  is_bookable: true
+                  profile_image_url: profile_image_url
+                - team_member_id: TMaJcbiRqPIGZuS9
+                  description: description
+                  display_name: Sandbox Staff
+                  is_bookable: true
+                  profile_image_url: profile_image_url
+              cursor: cursor
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/bookings/team-member-booking-profiles/{team_member_id}
+      method: GET
+      auth: true
+      docs: Retrieves a team member's booking profile.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveTeamMemberBookingProfile
+      request:
+        name: GetTeamMemberProfilesRequest
+        path-parameters:
+          team_member_id:
+            type: string
+            docs: The ID of the team member to retrieve.
+      response:
+        docs: Success
+        type: root.GetTeamMemberBookingProfileResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            team_member_id: team_member_id
+          response:
+            body:
+              team_member_booking_profile:
+                team_member_id: TMaJcbiRqPIGZuS9
+                description: description
+                display_name: Sandbox Staff
+                is_bookable: true
+                profile_image_url: profile_image_url
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

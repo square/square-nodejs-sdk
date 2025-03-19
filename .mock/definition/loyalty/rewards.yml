@@ -1,0 +1,370 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/loyalty/rewards
+      method: POST
+      auth: true
+      docs: >-
+        Creates a loyalty reward. In the process, the endpoint does following:
+
+
+        - Uses the `reward_tier_id` in the request to determine the number of
+        points
+
+        to lock for this reward.
+
+        - If the request includes `order_id`, it adds the reward and related
+        discount to the order.
+
+
+        After a reward is created, the points are locked and
+
+        not available for the buyer to redeem another reward.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateLoyaltyReward
+      request:
+        name: CreateLoyaltyRewardRequest
+        body:
+          properties:
+            reward:
+              type: root.LoyaltyReward
+              docs: The reward to create.
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this `CreateLoyaltyReward`
+                request. 
+
+                Keys can be any valid string, but must be unique for every
+                request.
+              validation:
+                minLength: 1
+                maxLength: 128
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateLoyaltyRewardResponse
+        status-code: 200
+      examples:
+        - request:
+            reward:
+              loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+              reward_tier_id: e1b39225-9da5-43d1-a5db-782cdd8ad94f
+              order_id: RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY
+            idempotency_key: 18c2e5ea-a620-4b1f-ad60-7b167285e451
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              reward:
+                id: a8f43ebe-2ad6-3001-bdd5-7d7c2da08943
+                status: ISSUED
+                loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                reward_tier_id: e1b39225-9da5-43d1-a5db-782cdd8ad94f
+                points: 10
+                order_id: RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY
+                created_at: '2020-05-01T21:49:54Z'
+                updated_at: '2020-05-01T21:49:54Z'
+                redeemed_at: redeemed_at
+    search:
+      path: /v2/loyalty/rewards/search
+      method: POST
+      auth: true
+      docs: >-
+        Searches for loyalty rewards. This endpoint accepts a request with no
+        query filters and returns results for all loyalty accounts.
+
+        If you include a `query` object, `loyalty_account_id` is required and
+        `status` is  optional.
+
+
+        If you know a reward ID, use the
+
+        [RetrieveLoyaltyReward](api-endpoint:Loyalty-RetrieveLoyaltyReward)
+        endpoint.
+
+
+        Search results are sorted by `updated_at` in descending order.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchLoyaltyRewards
+      request:
+        name: SearchLoyaltyRewardsRequest
+        body:
+          properties:
+            query:
+              type: optional<root.SearchLoyaltyRewardsRequestLoyaltyRewardQuery>
+              docs: >-
+                The search criteria for the request. 
+
+                If empty, the endpoint retrieves all loyalty rewards in the
+                loyalty program.
+            limit:
+              type: optional<integer>
+              docs: >-
+                The maximum number of results to return in the response. The
+                default value is 30.
+              validation:
+                min: 1
+                max: 30
+            cursor:
+              type: optional<string>
+              docs: >-
+                A pagination cursor returned by a previous call to 
+
+                this endpoint. Provide this to retrieve the next set of 
+
+                results for the original query.
+
+                For more information, 
+
+                see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchLoyaltyRewardsResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+            limit: 10
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              rewards:
+                - id: d03f79f4-815f-3500-b851-cc1e68a457f9
+                  status: REDEEMED
+                  loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                  reward_tier_id: e1b39225-9da5-43d1-a5db-782cdd8ad94f
+                  points: 10
+                  order_id: PyATxhYLfsMqpVkcKJITPydgEYfZY
+                  created_at: '2020-05-08T22:00:44Z'
+                  updated_at: '2020-05-08T22:01:17Z'
+                  redeemed_at: '2020-05-08T22:01:17Z'
+                - id: 9f18ac21-233a-31c3-be77-b45840f5a810
+                  status: REDEEMED
+                  loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                  reward_tier_id: e1b39225-9da5-43d1-a5db-782cdd8ad94f
+                  points: 10
+                  order_id: order_id
+                  created_at: '2020-05-08T21:55:42Z'
+                  updated_at: '2020-05-08T21:56:00Z'
+                  redeemed_at: '2020-05-08T21:56:00Z'
+                - id: a8f43ebe-2ad6-3001-bdd5-7d7c2da08943
+                  status: DELETED
+                  loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                  reward_tier_id: e1b39225-9da5-43d1-a5db-782cdd8ad94f
+                  points: 10
+                  order_id: 5NB69ZNh3FbsOs1ox43bh1xrli6YY
+                  created_at: '2020-05-01T21:49:54Z'
+                  updated_at: '2020-05-08T21:55:10Z'
+                  redeemed_at: redeemed_at
+                - id: a051254c-f840-3b45-8cf1-50bcd38ff92a
+                  status: ISSUED
+                  loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                  reward_tier_id: e1b39225-9da5-43d1-a5db-782cdd8ad94f
+                  points: 10
+                  order_id: LQQ16znvi2VIUKPVhUfJefzr1eEZY
+                  created_at: '2020-05-01T20:20:37Z'
+                  updated_at: '2020-05-01T20:20:40Z'
+                  redeemed_at: redeemed_at
+              cursor: cursor
+    get:
+      path: /v2/loyalty/rewards/{reward_id}
+      method: GET
+      auth: true
+      docs: Retrieves a loyalty reward.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveLoyaltyReward
+      request:
+        name: GetRewardsRequest
+        path-parameters:
+          reward_id:
+            type: string
+            docs: The ID of the [loyalty reward](entity:LoyaltyReward) to retrieve.
+      response:
+        docs: Success
+        type: root.GetLoyaltyRewardResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            reward_id: reward_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              reward:
+                id: 9f18ac21-233a-31c3-be77-b45840f5a810
+                status: REDEEMED
+                loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                reward_tier_id: e1b39225-9da5-43d1-a5db-782cdd8ad94f
+                points: 10
+                order_id: order_id
+                created_at: '2020-05-08T21:55:42Z'
+                updated_at: '2020-05-08T21:56:00Z'
+                redeemed_at: '2020-05-08T21:56:00Z'
+    delete:
+      path: /v2/loyalty/rewards/{reward_id}
+      method: DELETE
+      auth: true
+      docs: >-
+        Deletes a loyalty reward by doing the following:
+
+
+        - Returns the loyalty points back to the loyalty account.
+
+        - If an order ID was specified when the reward was created
+
+        (see [CreateLoyaltyReward](api-endpoint:Loyalty-CreateLoyaltyReward)),
+
+        it updates the order by removing the reward and related
+
+        discounts.
+
+
+        You cannot delete a reward that has reached the terminal state
+        (REDEEMED).
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteLoyaltyReward
+      request:
+        name: DeleteRewardsRequest
+        path-parameters:
+          reward_id:
+            type: string
+            docs: The ID of the [loyalty reward](entity:LoyaltyReward) to delete.
+      response:
+        docs: Success
+        type: root.DeleteLoyaltyRewardResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            reward_id: reward_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    redeem:
+      path: /v2/loyalty/rewards/{reward_id}/redeem
+      method: POST
+      auth: true
+      docs: |-
+        Redeems a loyalty reward.
+
+        The endpoint sets the reward to the `REDEEMED` terminal state.
+
+        If you are using your own order processing system (not using the
+        Orders API), you call this endpoint after the buyer paid for the
+        purchase.
+
+        After the reward reaches the terminal state, it cannot be deleted.
+        In other words, points used for the reward cannot be returned
+        to the account.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RedeemLoyaltyReward
+      request:
+        name: RedeemLoyaltyRewardRequest
+        path-parameters:
+          reward_id:
+            type: string
+            docs: The ID of the [loyalty reward](entity:LoyaltyReward) to redeem.
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this `RedeemLoyaltyReward`
+                request. 
+
+                Keys can be any valid string, but must be unique for every
+                request.
+              validation:
+                minLength: 1
+                maxLength: 128
+            location_id:
+              type: string
+              docs: >-
+                The ID of the [location](entity:Location) where the reward is
+                redeemed.
+              validation:
+                minLength: 1
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.RedeemLoyaltyRewardResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            reward_id: reward_id
+          request:
+            idempotency_key: 98adc7f7-6963-473b-b29c-f3c9cdd7d994
+            location_id: P034NEENMD09F
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              event:
+                id: 67377a6e-dbdc-369d-aa16-2e7ed422e71f
+                type: REDEEM_REWARD
+                created_at: '2020-05-08T21:56:00Z'
+                accumulate_points:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                  order_id: order_id
+                create_reward:
+                  loyalty_program_id: loyalty_program_id
+                  reward_id: reward_id
+                  points: 1
+                redeem_reward:
+                  loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                  reward_id: 9f18ac21-233a-31c3-be77-b45840f5a810
+                  order_id: order_id
+                delete_reward:
+                  loyalty_program_id: loyalty_program_id
+                  reward_id: reward_id
+                  points: 1
+                adjust_points:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                  reason: reason
+                loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                location_id: P034NEENMD09F
+                source: LOYALTY_API
+                expire_points:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                other_event:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                accumulate_promotion_points:
+                  loyalty_program_id: loyalty_program_id
+                  loyalty_promotion_id: loyalty_promotion_id
+                  points: 1
+                  order_id: order_id
+  source:
+    openapi: openapi/openapi.json

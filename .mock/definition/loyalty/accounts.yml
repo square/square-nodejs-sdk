@@ -1,0 +1,475 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/loyalty/accounts
+      method: POST
+      auth: true
+      docs: >-
+        Creates a loyalty account. To create a loyalty account, you must provide
+        the `program_id` and a `mapping` with the `phone_number` of the buyer.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateLoyaltyAccount
+      request:
+        name: CreateLoyaltyAccountRequest
+        body:
+          properties:
+            loyalty_account:
+              type: root.LoyaltyAccount
+              docs: The loyalty account to create.
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this `CreateLoyaltyAccount`
+                request. 
+
+                Keys can be any valid string, but must be unique for every
+                request.
+              validation:
+                minLength: 1
+                maxLength: 128
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateLoyaltyAccountResponse
+        status-code: 200
+      examples:
+        - request:
+            loyalty_account:
+              program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+              mapping:
+                phone_number: '+14155551234'
+            idempotency_key: ec78c477-b1c3-4899-a209-a4e71337c996
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              loyalty_account:
+                id: 79b807d2-d786-46a9-933b-918028d7a8c5
+                program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                balance: 0
+                lifetime_points: 0
+                customer_id: QPTXM8PQNX3Q726ZYHPMNP46XC
+                enrolled_at: enrolled_at
+                created_at: '2020-05-08T21:44:32Z'
+                updated_at: '2020-05-08T21:44:32Z'
+                mapping:
+                  id: 66aaab3f-da99-49ed-8b19-b87f851c844f
+                  created_at: '2020-05-08T21:44:32Z'
+                  phone_number: '+14155551234'
+                expiring_point_deadlines:
+                  - points: 1
+                    expires_at: expires_at
+    search:
+      path: /v2/loyalty/accounts/search
+      method: POST
+      auth: true
+      docs: >-
+        Searches for loyalty accounts in a loyalty program.
+
+
+        You can search for a loyalty account using the phone number or customer
+        ID associated with the account. To return all loyalty accounts, specify
+        an empty `query` object or omit it entirely.
+
+
+        Search results are sorted by `created_at` in ascending order.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchLoyaltyAccounts
+      request:
+        name: SearchLoyaltyAccountsRequest
+        body:
+          properties:
+            query:
+              type: optional<root.SearchLoyaltyAccountsRequestLoyaltyAccountQuery>
+              docs: The search criteria for the request.
+            limit:
+              type: optional<integer>
+              docs: >-
+                The maximum number of results to include in the response. The
+                default value is 30.
+              validation:
+                min: 1
+                max: 200
+            cursor:
+              type: optional<string>
+              docs: >-
+                A pagination cursor returned by a previous call to 
+
+                this endpoint. Provide this to retrieve the next set of 
+
+                results for the original query.
+
+
+                For more information, 
+
+                see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchLoyaltyAccountsResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              mappings:
+                - phone_number: '+14155551234'
+            limit: 10
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              loyalty_accounts:
+                - id: 79b807d2-d786-46a9-933b-918028d7a8c5
+                  program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                  balance: 10
+                  lifetime_points: 20
+                  customer_id: Q8002FAM9V1EZ0ADB2T5609X6NET1H0
+                  enrolled_at: enrolled_at
+                  created_at: '2020-05-08T21:44:32Z'
+                  updated_at: '2020-05-08T21:44:32Z'
+                  mapping:
+                    id: 66aaab3f-da99-49ed-8b19-b87f851c844f
+                    created_at: '2020-05-08T21:44:32Z'
+                    phone_number: '+14155551234'
+                  expiring_point_deadlines:
+                    - points: 1
+                      expires_at: expires_at
+              cursor: cursor
+    get:
+      path: /v2/loyalty/accounts/{account_id}
+      method: GET
+      auth: true
+      docs: Retrieves a loyalty account.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveLoyaltyAccount
+      request:
+        name: GetAccountsRequest
+        path-parameters:
+          account_id:
+            type: string
+            docs: >-
+              The ID of the [loyalty account](entity:LoyaltyAccount) to
+              retrieve.
+      response:
+        docs: Success
+        type: root.GetLoyaltyAccountResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            account_id: account_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              loyalty_account:
+                id: 79b807d2-d786-46a9-933b-918028d7a8c5
+                program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                balance: 10
+                lifetime_points: 20
+                customer_id: Q8002FAM9V1EZ0ADB2T5609X6NET1H0
+                enrolled_at: enrolled_at
+                created_at: '2020-05-08T21:44:32Z'
+                updated_at: '2020-05-08T21:44:32Z'
+                mapping:
+                  id: 66aaab3f-da99-49ed-8b19-b87f851c844f
+                  created_at: '2020-05-08T21:44:32Z'
+                  phone_number: '+14155551234'
+                expiring_point_deadlines:
+                  - points: 1
+                    expires_at: expires_at
+    accumulatePoints:
+      path: /v2/loyalty/accounts/{account_id}/accumulate
+      method: POST
+      auth: true
+      docs: >-
+        Adds points earned from a purchase to a [loyalty
+        account](entity:LoyaltyAccount).
+
+
+        - If you are using the Orders API to manage orders, provide the
+        `order_id`. Square reads the order
+
+        to compute the points earned from both the base loyalty program and an
+        associated
+
+        [loyalty promotion](entity:LoyaltyPromotion). For purchases that qualify
+        for multiple accrual
+
+        rules, Square computes points based on the accrual rule that grants the
+        most points.
+
+        For purchases that qualify for multiple promotions, Square computes
+        points based on the most
+
+        recently created promotion. A purchase must first qualify for program
+        points to be eligible for promotion points.
+
+
+        - If you are not using the Orders API to manage orders, provide `points`
+        with the number of points to add.
+
+        You must first perform a client-side computation of the points earned
+        from the loyalty program and
+
+        loyalty promotion. For spend-based and visit-based programs, you can
+        call
+        [CalculateLoyaltyPoints](api-endpoint:Loyalty-CalculateLoyaltyPoints)
+
+        to compute the points earned from the base loyalty program. For
+        information about computing points earned from a loyalty promotion, see
+
+        [Calculating promotion
+        points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
+      source:
+        openapi: openapi/openapi.json
+      display-name: AccumulateLoyaltyPoints
+      request:
+        name: AccumulateLoyaltyPointsRequest
+        path-parameters:
+          account_id:
+            type: string
+            docs: The ID of the target [loyalty account](entity:LoyaltyAccount).
+        body:
+          properties:
+            accumulate_points:
+              type: root.LoyaltyEventAccumulatePoints
+              docs: >-
+                The points to add to the account. 
+
+                If you are using the Orders API to manage orders, specify the
+                order ID.
+
+                Otherwise, specify the points to add.
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies the `AccumulateLoyaltyPoints`
+                request. 
+
+                Keys can be any valid string but must be unique for every
+                request.
+              validation:
+                minLength: 1
+                maxLength: 128
+            location_id:
+              type: string
+              docs: The [location](entity:Location) where the purchase was made.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.AccumulateLoyaltyPointsResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            account_id: account_id
+          request:
+            accumulate_points:
+              order_id: RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY
+            idempotency_key: 58b90739-c3e8-4b11-85f7-e636d48d72cb
+            location_id: P034NEENMD09F
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              event:
+                id: id
+                type: ACCUMULATE_POINTS
+                created_at: created_at
+                accumulate_points:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                  order_id: order_id
+                create_reward:
+                  loyalty_program_id: loyalty_program_id
+                  reward_id: reward_id
+                  points: 1
+                redeem_reward:
+                  loyalty_program_id: loyalty_program_id
+                  reward_id: reward_id
+                  order_id: order_id
+                delete_reward:
+                  loyalty_program_id: loyalty_program_id
+                  reward_id: reward_id
+                  points: 1
+                adjust_points:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                  reason: reason
+                loyalty_account_id: loyalty_account_id
+                location_id: location_id
+                source: SQUARE
+                expire_points:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                other_event:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                accumulate_promotion_points:
+                  loyalty_program_id: loyalty_program_id
+                  loyalty_promotion_id: loyalty_promotion_id
+                  points: 1
+                  order_id: order_id
+              events:
+                - id: ee46aafd-1af6-3695-a385-276e2ef0be26
+                  type: ACCUMULATE_POINTS
+                  created_at: '2020-05-08T21:41:12Z'
+                  accumulate_points:
+                    loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                    points: 6
+                    order_id: RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY
+                  create_reward:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  redeem_reward:
+                    loyalty_program_id: loyalty_program_id
+                  delete_reward:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  adjust_points:
+                    points: 1
+                  loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                  location_id: P034NEENMD09F
+                  source: LOYALTY_API
+                  expire_points:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  other_event:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  accumulate_promotion_points:
+                    points: 1
+                    order_id: order_id
+    adjust:
+      path: /v2/loyalty/accounts/{account_id}/adjust
+      method: POST
+      auth: true
+      docs: >-
+        Adds points to or subtracts points from a buyer's account.
+
+
+        Use this endpoint only when you need to manually adjust points.
+        Otherwise, in your application flow, you call
+
+        [AccumulateLoyaltyPoints](api-endpoint:Loyalty-AccumulateLoyaltyPoints)
+
+        to add points when a buyer pays for the purchase.
+      source:
+        openapi: openapi/openapi.json
+      display-name: AdjustLoyaltyPoints
+      request:
+        name: AdjustLoyaltyPointsRequest
+        path-parameters:
+          account_id:
+            type: string
+            docs: The ID of the target [loyalty account](entity:LoyaltyAccount).
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this `AdjustLoyaltyPoints`
+                request. 
+
+                Keys can be any valid string, but must be unique for every
+                request.
+              validation:
+                minLength: 1
+                maxLength: 128
+            adjust_points:
+              type: root.LoyaltyEventAdjustPoints
+              docs: >-
+                The points to add or subtract and the reason for the adjustment.
+                To add points, specify a positive integer.
+
+                To subtract points, specify a negative integer.
+            allow_negative_balance:
+              type: optional<nullable<boolean>>
+              docs: >-
+                Indicates whether to allow a negative adjustment to result in a
+                negative balance. If `true`, a negative
+
+                balance is allowed when subtracting points. If `false`, Square
+                returns a `BAD_REQUEST` error when subtracting
+
+                the specified number of points would result in a negative
+                balance. The default value is `false`.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.AdjustLoyaltyPointsResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            account_id: account_id
+          request:
+            idempotency_key: bc29a517-3dc9-450e-aa76-fae39ee849d1
+            adjust_points:
+              points: 10
+              reason: Complimentary points
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              event:
+                id: 613a6fca-8d67-39d0-bad2-3b4bc45c8637
+                type: ADJUST_POINTS
+                created_at: '2020-05-08T21:42:32Z'
+                accumulate_points:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                  order_id: order_id
+                create_reward:
+                  loyalty_program_id: loyalty_program_id
+                  reward_id: reward_id
+                  points: 1
+                redeem_reward:
+                  loyalty_program_id: loyalty_program_id
+                  reward_id: reward_id
+                  order_id: order_id
+                delete_reward:
+                  loyalty_program_id: loyalty_program_id
+                  reward_id: reward_id
+                  points: 1
+                adjust_points:
+                  loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                  points: 10
+                  reason: Complimentary points
+                loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                location_id: location_id
+                source: LOYALTY_API
+                expire_points:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                other_event:
+                  loyalty_program_id: loyalty_program_id
+                  points: 1
+                accumulate_promotion_points:
+                  loyalty_program_id: loyalty_program_id
+                  loyalty_promotion_id: loyalty_promotion_id
+                  points: 1
+                  order_id: order_id
+  source:
+    openapi: openapi/openapi.json

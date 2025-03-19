@@ -1,0 +1,483 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/refunds
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a list of refunds for the account making the request.
+
+
+        Results are eventually consistent, and new refunds or changes to refunds
+        might take several
+
+        seconds to appear.
+
+
+        The maximum results per page is 100.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.refunds
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListPaymentRefunds
+      request:
+        name: ListRefundsRequest
+        query-parameters:
+          begin_time:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates the start of the time range to retrieve each
+              `PaymentRefund` for, in RFC 3339 
+
+              format.  The range is determined using the `created_at` field for
+              each `PaymentRefund`. 
+
+
+              Default: The current time minus one year.
+          end_time:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates the end of the time range to retrieve each
+              `PaymentRefund` for, in RFC 3339 
+
+              format.  The range is determined using the `created_at` field for
+              each `PaymentRefund`.
+
+
+              Default: The current time.
+          sort_order:
+            type: optional<nullable<string>>
+            docs: >-
+              The order in which results are listed by
+              `PaymentRefund.created_at`:
+
+              - `ASC` - Oldest to newest.
+
+              - `DESC` - Newest to oldest (default).
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for the
+              original query.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          location_id:
+            type: optional<nullable<string>>
+            docs: >-
+              Limit results to the location supplied. By default, results are
+              returned
+
+              for all locations associated with the seller.
+          status:
+            type: optional<nullable<string>>
+            docs: >-
+              If provided, only refunds with the given status are returned.
+
+              For a list of refund status values, see
+              [PaymentRefund](entity:PaymentRefund).
+
+
+              Default: If omitted, refunds are returned regardless of their
+              status.
+          source_type:
+            type: optional<nullable<string>>
+            docs: >-
+              If provided, only returns refunds whose payments have the
+              indicated source type.
+
+              Current values include `CARD`, `BANK_ACCOUNT`, `WALLET`, `CASH`,
+              and `EXTERNAL`.
+
+              For information about these payment source types, see
+
+              [Take
+              Payments](https://developer.squareup.com/docs/payments-api/take-payments).
+
+
+              Default: If omitted, refunds are returned regardless of the source
+              type.
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to be returned in a single page.
+
+
+              It is possible to receive fewer results than the specified limit
+              on a given page.
+
+
+              If the supplied value is greater than 100, no more than 100
+              results are returned.
+
+
+              Default: 100
+          updated_at_begin_time:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates the start of the time range to retrieve each
+              `PaymentRefund` for, in RFC 3339
+
+              format.  The range is determined using the `updated_at` field for
+              each `PaymentRefund`.
+
+
+              Default: If omitted, the time range starts at `begin_time`.
+          updated_at_end_time:
+            type: optional<nullable<string>>
+            docs: >-
+              Indicates the end of the time range to retrieve each
+              `PaymentRefund` for, in RFC 3339
+
+              format.  The range is determined using the `updated_at` field for
+              each `PaymentRefund`.
+
+
+              Default: The current time.
+          sort_field:
+            type: optional<nullable<root.ListPaymentRefundsRequestSortField>>
+            docs: The field used to sort results by. The default is `CREATED_AT`.
+      response:
+        docs: Success
+        type: root.ListPaymentRefundsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              refunds:
+                - id: >-
+                    bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY_69MmgHubkLqx9wGhnmenRUHOaKitE6llfZuxcWYjGxd
+                  status: COMPLETED
+                  location_id: L88917AVBK2S5
+                  unlinked: true
+                  destination_type: destination_type
+                  amount_money:
+                    amount: 555
+                    currency: USD
+                  processing_fee:
+                    - effective_at: '2021-10-13T21:34:35.000Z'
+                      type: INITIAL
+                      amount_money:
+                        amount: -34
+                        currency: USD
+                  payment_id: bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY
+                  order_id: 9ltv0bx5PuvGXUYHYHxYSKEqC3IZY
+                  reason: Example Refund
+                  created_at: '2021-10-13T19:59:05.342Z'
+                  updated_at: '2021-10-13T20:00:03.497Z'
+                  team_member_id: team_member_id
+                  terminal_refund_id: terminal_refund_id
+              cursor: >-
+                5evquW1YswHoT4EoyUhzMmTsCnsSXBU9U0WJ4FU4623nrMQcocH0RGU6Up1YkwfiMcF59ood58EBTEGgzMTGHQJpocic7ExOL0NtrTXCeWcv0UJIJNk8eXb
+    RefundPayment:
+      path: /v2/refunds
+      method: POST
+      auth: true
+      docs: >-
+        Refunds a payment. You can refund the entire payment amount or a
+
+        portion of it. You can use this endpoint to refund a card payment or
+        record a 
+
+        refund of a cash or external payment. For more information, see
+
+        [Refund
+        Payment](https://developer.squareup.com/docs/payments-api/refund-payments).
+      source:
+        openapi: openapi/openapi.json
+      display-name: RefundPayment
+      request:
+        name: RefundPaymentRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >2-
+                 A unique string that identifies this `RefundPayment` request. The key can be any valid string
+                but must be unique for every `RefundPayment` request.
+
+
+                Keys are limited to a max of 45 characters - however, the number
+                of allowed characters might be
+
+                less than 45, if multi-byte characters are used.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
+              validation:
+                minLength: 1
+            amount_money:
+              type: root.Money
+              docs: >-
+                The amount of money to refund.
+
+
+                This amount cannot be more than the `total_money` value of the
+                payment minus the total
+
+                amount of all previously completed refunds for this payment.
+
+
+                This amount must be specified in the smallest denomination of
+                the applicable currency
+
+                (for example, US dollar amounts are specified in cents). For
+                more information, see
+
+                [Working with Monetary
+                Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).
+
+
+                The currency code must match the currency associated with the
+                business
+
+                that is charging the card.
+            app_fee_money:
+              type: optional<root.Money>
+              docs: >-
+                The amount of money the developer contributes to help cover the
+                refunded amount.
+
+                This amount is specified in the smallest denomination of the
+                applicable currency (for example,
+
+                US dollar amounts are specified in cents).
+
+
+                The value cannot be more than the `amount_money`.
+
+
+                You can specify this parameter in a refund request only if the
+                same parameter was also included
+
+                when taking the payment. This is part of the application fee
+                scenario the API supports. For more
+
+                information, see [Take Payments and Collect
+                Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).
+
+
+                To set this field, `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth
+                permission is required.
+
+                For more information, see
+                [Permissions](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees#permissions).
+            payment_id:
+              type: optional<nullable<string>>
+              docs: |-
+                The unique ID of the payment being refunded.
+                Required when unlinked=false, otherwise must not be set.
+            destination_id:
+              type: optional<nullable<string>>
+              docs: >-
+                The ID indicating where funds will be refunded to. Required for
+                unlinked refunds. For more
+
+                information, see [Process an Unlinked
+                Refund](https://developer.squareup.com/docs/refunds-api/unlinked-refunds).
+
+
+                For refunds linked to Square payments, `destination_id` is
+                usually omitted; in this case, funds
+
+                will be returned to the original payment source. The field may
+                be specified in order to request
+
+                a cross-method refund to a gift card. For more information,
+
+                see [Cross-method refunds to gift
+                cards](https://developer.squareup.com/docs/payments-api/refund-payments#cross-method-refunds-to-gift-cards).
+            unlinked:
+              type: optional<nullable<boolean>>
+              docs: >-
+                Indicates that the refund is not linked to a Square payment.
+
+                If set to true, `destination_id` and `location_id` must be
+                supplied while `payment_id` must not
+
+                be provided.
+            location_id:
+              type: optional<nullable<string>>
+              docs: >-
+                The location ID associated with the unlinked refund.
+
+                Required for requests specifying `unlinked=true`.
+
+                Otherwise, if included when `unlinked=false`, will throw an
+                error.
+              validation:
+                maxLength: 50
+            customer_id:
+              type: optional<nullable<string>>
+              docs: >-
+                The [Customer](entity:Customer) ID of the customer associated
+                with the refund.
+
+                This is required if the `destination_id` refers to a card on
+                file created using the Cards
+
+                API. Only allowed when `unlinked=true`.
+            reason:
+              type: optional<nullable<string>>
+              docs: A description of the reason for the refund.
+              validation:
+                maxLength: 192
+            payment_version_token:
+              type: optional<nullable<string>>
+              docs: >2-
+                 Used for optimistic concurrency. This opaque token identifies the current `Payment`
+                version that the caller expects. If the server has a different
+                version of the Payment,
+
+                the update fails and a response with a VERSION_MISMATCH error is
+                returned.
+
+                If the versions match, or the field is not provided, the refund
+                proceeds as normal.
+            team_member_id:
+              type: optional<nullable<string>>
+              docs: >-
+                An optional [TeamMember](entity:TeamMember) ID to associate with
+                this refund.
+              validation:
+                maxLength: 192
+            cash_details:
+              type: optional<root.DestinationDetailsCashRefundDetails>
+              docs: >-
+                Additional details required when recording an unlinked cash
+                refund (`destination_id` is CASH).
+            external_details:
+              type: optional<root.DestinationDetailsExternalRefundDetails>
+              docs: >-
+                Additional details required when recording an unlinked external
+                refund
+
+                (`destination_id` is EXTERNAL).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.RefundPaymentResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: 9b7f2dcf-49da-4411-b23e-a2d6af21333a
+            amount_money:
+              amount: 1000
+              currency: USD
+            app_fee_money:
+              amount: 10
+              currency: USD
+            payment_id: R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY
+            reason: Example
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              refund:
+                id: >-
+                  R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY_KlWP8IC1557ddwc9QWTKrCVU6m0JXDz15R2Qym5eQfR
+                status: PENDING
+                location_id: L88917AVBK2S5
+                unlinked: true
+                destination_type: destination_type
+                destination_details:
+                  cash_details:
+                    seller_supplied_money: {}
+                  external_details:
+                    type: type
+                    source: source
+                amount_money:
+                  amount: 1000
+                  currency: USD
+                app_fee_money:
+                  amount: 10
+                  currency: USD
+                processing_fee:
+                  - {}
+                payment_id: R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY
+                order_id: 1JLEUZeEooAIX8HMqm9kvWd69aQZY
+                reason: Example
+                created_at: '2021-10-13T21:23:19.116Z'
+                updated_at: '2021-10-13T21:23:19.508Z'
+                team_member_id: team_member_id
+                terminal_refund_id: terminal_refund_id
+    get:
+      path: /v2/refunds/{refund_id}
+      method: GET
+      auth: true
+      docs: Retrieves a specific refund using the `refund_id`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetPaymentRefund
+      request:
+        name: GetRefundsRequest
+        path-parameters:
+          refund_id:
+            type: string
+            docs: The unique ID for the desired `PaymentRefund`.
+      response:
+        docs: Success
+        type: root.GetPaymentRefundResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            refund_id: refund_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              refund:
+                id: >-
+                  bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY_69MmgHubkLqx9wGhnmenRUHOaKitE6llfZuxcWYjGxd
+                status: COMPLETED
+                location_id: L88917AVBK2S5
+                unlinked: true
+                destination_type: destination_type
+                destination_details:
+                  cash_details:
+                    seller_supplied_money: {}
+                  external_details:
+                    type: type
+                    source: source
+                amount_money:
+                  amount: 555
+                  currency: USD
+                app_fee_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                processing_fee:
+                  - effective_at: '2021-10-13T21:34:35.000Z'
+                    type: INITIAL
+                    amount_money:
+                      amount: -34
+                      currency: USD
+                payment_id: bP9mAsEMYPUGjjGNaNO5ZDVyLhSZY
+                order_id: 9ltv0bx5PuvGXUYHYHxYSKEqC3IZY
+                reason: Example Refund
+                created_at: '2021-10-13T19:59:05.073Z'
+                updated_at: '2021-10-13T20:00:02.442Z'
+                team_member_id: team_member_id
+                terminal_refund_id: terminal_refund_id
+  source:
+    openapi: openapi/openapi.json

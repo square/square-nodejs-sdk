@@ -1,0 +1,545 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    batchDelete:
+      path: /v2/locations/custom-attributes/bulk-delete
+      method: POST
+      auth: true
+      docs: >-
+        Deletes [custom attributes](entity:CustomAttribute) for locations as a
+        bulk operation.
+
+        To delete a custom attribute owned by another application, the
+        `visibility` setting must be
+
+        `VISIBILITY_READ_WRITE_VALUES`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkDeleteLocationCustomAttributes
+      request:
+        name: BulkDeleteLocationCustomAttributesRequest
+        body:
+          properties:
+            values:
+              type: >-
+                map<string,
+                root.BulkDeleteLocationCustomAttributesRequestLocationCustomAttributeDeleteRequest>
+              docs: >-
+                The data used to update the `CustomAttribute` objects.
+
+                The keys must be unique and are used to map to the corresponding
+                response.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkDeleteLocationCustomAttributesResponse
+        status-code: 200
+      examples:
+        - request:
+            values:
+              id1:
+                key: bestseller
+              id2:
+                key: bestseller
+              id3:
+                key: phone-number
+          response:
+            body:
+              values:
+                id1:
+                  location_id: L0TBCBTB7P8RQ
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                id2:
+                  location_id: L9XMD04V3STJX
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                id3:
+                  location_id: L0TBCBTB7P8RQ
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    batchUpsert:
+      path: /v2/locations/custom-attributes/bulk-upsert
+      method: POST
+      auth: true
+      docs: >-
+        Creates or updates [custom attributes](entity:CustomAttribute) for
+        locations as a bulk operation.
+
+        Use this endpoint to set the value of one or more custom attributes for
+        one or more locations.
+
+        A custom attribute is based on a custom attribute definition in a Square
+        seller account, which is
+
+        created using the
+        [CreateLocationCustomAttributeDefinition](api-endpoint:LocationCustomAttributes-CreateLocationCustomAttributeDefinition)
+        endpoint.
+
+        This `BulkUpsertLocationCustomAttributes` endpoint accepts a map of 1 to
+        25 individual upsert
+
+        requests and returns a map of individual upsert responses. Each upsert
+        request has a unique ID
+
+        and provides a location ID and custom attribute. Each upsert response is
+        returned with the ID
+
+        of the corresponding request.
+
+        To create or update a custom attribute owned by another application, the
+        `visibility` setting
+
+        must be `VISIBILITY_READ_WRITE_VALUES`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkUpsertLocationCustomAttributes
+      request:
+        name: BulkUpsertLocationCustomAttributesRequest
+        body:
+          properties:
+            values:
+              type: >-
+                map<string,
+                root.BulkUpsertLocationCustomAttributesRequestLocationCustomAttributeUpsertRequest>
+              docs: >-
+                A map containing 1 to 25 individual upsert requests. For each
+                request, provide an
+
+                arbitrary ID that is unique for this
+                `BulkUpsertLocationCustomAttributes` request and the
+
+                information needed to create or update a custom attribute.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkUpsertLocationCustomAttributesResponse
+        status-code: 200
+      examples:
+        - request:
+            values:
+              id1:
+                location_id: L0TBCBTB7P8RQ
+                custom_attribute:
+                  key: bestseller
+                  value: hot cocoa
+              id2:
+                location_id: L9XMD04V3STJX
+                custom_attribute:
+                  key: bestseller
+                  value: berry smoothie
+              id3:
+                location_id: L0TBCBTB7P8RQ
+                custom_attribute:
+                  key: phone-number
+                  value: '+12223334444'
+          response:
+            body:
+              values:
+                id1:
+                  location_id: L0TBCBTB7P8RQ
+                  custom_attribute:
+                    key: bestseller
+                    value: hot cocoa
+                    version: 2
+                    visibility: VISIBILITY_READ_WRITE_VALUES
+                    updated_at: '2023-01-09T19:21:04.551Z'
+                    created_at: '2023-01-09T19:02:58.647Z'
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                id2:
+                  location_id: L9XMD04V3STJX
+                  custom_attribute:
+                    key: bestseller
+                    value: berry smoothie
+                    version: 1
+                    visibility: VISIBILITY_READ_WRITE_VALUES
+                    updated_at: '2023-01-09T19:21:04.551Z'
+                    created_at: '2023-01-09T19:02:58.647Z'
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                id3:
+                  location_id: L0TBCBTB7P8RQ
+                  custom_attribute:
+                    key: phone-number
+                    value: '+12239903892'
+                    version: 2
+                    visibility: VISIBILITY_READ_WRITE_VALUES
+                    updated_at: '2023-01-09T19:21:04.563Z'
+                    created_at: '2023-01-09T19:04:57.985Z'
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    list:
+      path: /v2/locations/{location_id}/custom-attributes
+      method: GET
+      auth: true
+      docs: >-
+        Lists the [custom attributes](entity:CustomAttribute) associated with a
+        location.
+
+        You can use the `with_definitions` query parameter to also retrieve
+        custom attribute definitions
+
+        in the same call.
+
+        When all response pages are retrieved, the results include all custom
+        attributes that are
+
+        visible to the requesting application, including those that are owned by
+        other applications
+
+        and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.custom_attributes
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListLocationCustomAttributes
+      request:
+        name: ListCustomAttributesRequest
+        path-parameters:
+          location_id:
+            type: string
+            docs: The ID of the target [location](entity:Location).
+        query-parameters:
+          visibility_filter:
+            type: optional<nullable<root.VisibilityFilter>>
+            docs: >-
+              Filters the `CustomAttributeDefinition` results by their
+              `visibility` values.
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to return in a single paged
+              response. This limit is advisory.
+
+              The response might contain more or fewer results. The minimum
+              value is 1 and the maximum value is 100.
+
+              The default value is 20. For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              The cursor returned in the paged response from the previous call
+              to this endpoint.
+
+              Provide this cursor to retrieve the next page of results for your
+              original request. For more
+
+              information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          with_definitions:
+            type: optional<nullable<boolean>>
+            default: false
+            docs: >-
+              Indicates whether to return the [custom attribute
+              definition](entity:CustomAttributeDefinition) in the `definition`
+              field of each
+
+              custom attribute. Set this parameter to `true` to get the name and
+              description of each custom
+
+              attribute, information about the data type, or other definition
+              details. The default value is `false`.
+      response:
+        docs: Success
+        type: root.ListLocationCustomAttributesResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            location_id: location_id
+          response:
+            body:
+              custom_attributes:
+                - key: phone-number
+                  value: '+12223334444'
+                  version: 1
+                  visibility: VISIBILITY_READ_WRITE_VALUES
+                  updated_at: '2022-12-12T18:13:03.745Z'
+                  created_at: '2022-12-12T18:13:03.745Z'
+                - key: bestseller
+                  value: hot cocoa
+                  version: 1
+                  visibility: VISIBILITY_READ_WRITE_VALUES
+                  updated_at: '2022-12-12T19:27:57.975Z'
+                  created_at: '2022-12-12T19:27:57.975Z'
+              cursor: cursor
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/locations/{location_id}/custom-attributes/{key}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a [custom attribute](entity:CustomAttribute) associated with a
+        location.
+
+        You can use the `with_definition` query parameter to also retrieve the
+        custom attribute definition
+
+        in the same call.
+
+        To retrieve a custom attribute owned by another application, the
+        `visibility` setting must be
+
+        `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveLocationCustomAttribute
+      request:
+        name: GetCustomAttributesRequest
+        path-parameters:
+          location_id:
+            type: string
+            docs: The ID of the target [location](entity:Location).
+          key:
+            type: string
+            docs: >-
+              The key of the custom attribute to retrieve. This key must match
+              the `key` of a custom
+
+              attribute definition in the Square seller account. If the
+              requesting application is not the
+
+              definition owner, you must use the qualified key.
+        query-parameters:
+          with_definition:
+            type: optional<nullable<boolean>>
+            default: false
+            docs: >-
+              Indicates whether to return the [custom attribute
+              definition](entity:CustomAttributeDefinition) in the `definition`
+              field of
+
+              the custom attribute. Set this parameter to `true` to get the name
+              and description of the custom
+
+              attribute, information about the data type, or other definition
+              details. The default value is `false`.
+          version:
+            type: optional<nullable<integer>>
+            docs: >-
+              The current version of the custom attribute, which is used for
+              strongly consistent reads to
+
+              guarantee that you receive the most up-to-date data. When included
+              in the request, Square
+
+              returns the specified version or a higher version if one exists.
+              If the specified version is
+
+              higher than the current version, Square returns a `BAD_REQUEST`
+              error.
+      response:
+        docs: Success
+        type: root.RetrieveLocationCustomAttributeResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            location_id: location_id
+            key: key
+          response:
+            body:
+              custom_attribute:
+                key: bestseller
+                value: hot cocoa
+                version: 2
+                visibility: VISIBILITY_READ_WRITE_VALUES
+                definition:
+                  key: key
+                  schema:
+                    key: value
+                  name: name
+                  description: description
+                  visibility: VISIBILITY_HIDDEN
+                  version: 1
+                  updated_at: updated_at
+                  created_at: created_at
+                updated_at: '2023-01-09T19:21:04.551Z'
+                created_at: '2023-01-09T19:02:58.647Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    upsert:
+      path: /v2/locations/{location_id}/custom-attributes/{key}
+      method: POST
+      auth: true
+      docs: >-
+        Creates or updates a [custom attribute](entity:CustomAttribute) for a
+        location.
+
+        Use this endpoint to set the value of a custom attribute for a specified
+        location.
+
+        A custom attribute is based on a custom attribute definition in a Square
+        seller account, which
+
+        is created using the
+        [CreateLocationCustomAttributeDefinition](api-endpoint:LocationCustomAttributes-CreateLocationCustomAttributeDefinition)
+        endpoint.
+
+        To create or update a custom attribute owned by another application, the
+        `visibility` setting
+
+        must be `VISIBILITY_READ_WRITE_VALUES`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpsertLocationCustomAttribute
+      request:
+        name: UpsertLocationCustomAttributeRequest
+        path-parameters:
+          location_id:
+            type: string
+            docs: The ID of the target [location](entity:Location).
+          key:
+            type: string
+            docs: >-
+              The key of the custom attribute to create or update. This key must
+              match the `key` of a
+
+              custom attribute definition in the Square seller account. If the
+              requesting application is not
+
+              the definition owner, you must use the qualified key.
+        body:
+          properties:
+            custom_attribute:
+              type: root.CustomAttribute
+              docs: >-
+                The custom attribute to create or update, with the following
+                fields:
+
+                - `value`. This value must conform to the `schema` specified by
+                the definition.
+
+                For more information, see [Supported data
+                types](https://developer.squareup.com/docs/devtools/customattributes/overview#supported-data-types).
+
+                - `version`. To enable [optimistic
+                concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)
+
+                control for an update operation, include the current version of
+                the custom attribute.
+
+                If this is not important for your application, version can be
+                set to -1.
+            idempotency_key:
+              type: optional<nullable<string>>
+              docs: >-
+                A unique identifier for this request, used to ensure
+                idempotency. For more information,
+
+                see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                maxLength: 45
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpsertLocationCustomAttributeResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            location_id: location_id
+            key: key
+          request:
+            custom_attribute:
+              value: hot cocoa
+          response:
+            body:
+              custom_attribute:
+                key: bestseller
+                value: hot cocoa
+                version: 2
+                visibility: VISIBILITY_READ_WRITE_VALUES
+                definition:
+                  key: key
+                  schema:
+                    key: value
+                  name: name
+                  description: description
+                  visibility: VISIBILITY_HIDDEN
+                  version: 1
+                  updated_at: updated_at
+                  created_at: created_at
+                updated_at: '2023-01-09T19:21:04.551Z'
+                created_at: '2023-01-09T19:02:58.647Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    delete:
+      path: /v2/locations/{location_id}/custom-attributes/{key}
+      method: DELETE
+      auth: true
+      docs: >-
+        Deletes a [custom attribute](entity:CustomAttribute) associated with a
+        location.
+
+        To delete a custom attribute owned by another application, the
+        `visibility` setting must be
+
+        `VISIBILITY_READ_WRITE_VALUES`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteLocationCustomAttribute
+      request:
+        name: DeleteCustomAttributesRequest
+        path-parameters:
+          location_id:
+            type: string
+            docs: The ID of the target [location](entity:Location).
+          key:
+            type: string
+            docs: >-
+              The key of the custom attribute to delete. This key must match the
+              `key` of a custom
+
+              attribute definition in the Square seller account. If the
+              requesting application is not the
+
+              definition owner, you must use the qualified key.
+      response:
+        docs: Success
+        type: root.DeleteLocationCustomAttributeResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            location_id: location_id
+            key: key
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

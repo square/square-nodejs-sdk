@@ -1,0 +1,102 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/employees
+      method: GET
+      auth: true
+      docs: ''
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.employees
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListEmployees
+      request:
+        name: ListEmployeesRequest
+        query-parameters:
+          location_id:
+            type: optional<nullable<string>>
+            docs: ''
+          status:
+            type: optional<nullable<root.EmployeeStatus>>
+            docs: Specifies the EmployeeStatus to filter the employee by.
+          limit:
+            type: optional<nullable<integer>>
+            docs: The number of employees to be returned on each page.
+          cursor:
+            type: optional<nullable<string>>
+            docs: The token required to retrieve the specified page of results.
+      response:
+        docs: Success
+        type: root.ListEmployeesResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - response:
+            body:
+              employees:
+                - id: id
+                  first_name: first_name
+                  last_name: last_name
+                  email: email
+                  phone_number: phone_number
+                  location_ids:
+                    - location_ids
+                  status: ACTIVE
+                  is_owner: true
+                  created_at: created_at
+                  updated_at: updated_at
+              cursor: cursor
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/employees/{id}
+      method: GET
+      auth: true
+      docs: ''
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveEmployee
+      request:
+        name: GetEmployeesRequest
+        path-parameters:
+          id:
+            type: string
+            docs: UUID for the employee that was requested.
+      response:
+        docs: Success
+        type: root.GetEmployeeResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              employee:
+                id: id
+                first_name: first_name
+                last_name: last_name
+                email: email
+                phone_number: phone_number
+                location_ids:
+                  - location_ids
+                status: ACTIVE
+                is_owner: true
+                created_at: created_at
+                updated_at: updated_at
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

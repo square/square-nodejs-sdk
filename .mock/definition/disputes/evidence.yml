@@ -1,0 +1,154 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/disputes/{dispute_id}/evidence
+      method: GET
+      auth: true
+      docs: Returns a list of evidence associated with a dispute.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.evidence
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListDisputeEvidence
+      request:
+        name: ListEvidenceRequest
+        path-parameters:
+          dispute_id:
+            type: string
+            docs: The ID of the dispute.
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for the
+              original query.
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+      response:
+        docs: Success
+        type: root.ListDisputeEvidenceResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            dispute_id: dispute_id
+          response:
+            body:
+              evidence:
+                - evidence_id: evidence_id
+                  id: CpfnkwGselCwS8QFvxN6
+                  dispute_id: bVTprrwk0gygTLZ96VX1oB
+                  evidence_file:
+                    filename: customer-interaction
+                    filetype: JPG
+                  evidence_text: evidence_text
+                  uploaded_at: '2022-05-10T15:57:13.802Z'
+                  evidence_type: CARDHOLDER_COMMUNICATION
+                - evidence_id: evidence_id
+                  id: TOomLInj6iWmP3N8qfCXrB
+                  dispute_id: bVTprrwk0gygTLZ96VX1oB
+                  evidence_file:
+                    filename: ''
+                    filetype: ''
+                  evidence_text: evidence_text
+                  uploaded_at: '2022-05-18T16:01:10.000Z'
+                  evidence_type: REBUTTAL_EXPLANATION
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              cursor: cursor
+    get:
+      path: /v2/disputes/{dispute_id}/evidence/{evidence_id}
+      method: GET
+      auth: true
+      docs: >-
+        Returns the metadata for the evidence specified in the request URL path.
+
+
+        You must maintain a copy of any evidence uploaded if you want to
+        reference it later. Evidence cannot be downloaded after you upload it.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveDisputeEvidence
+      request:
+        name: GetEvidenceRequest
+        path-parameters:
+          dispute_id:
+            type: string
+            docs: >-
+              The ID of the dispute from which you want to retrieve evidence
+              metadata.
+          evidence_id:
+            type: string
+            docs: The ID of the evidence to retrieve.
+      response:
+        docs: Success
+        type: root.GetDisputeEvidenceResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            dispute_id: dispute_id
+            evidence_id: evidence_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              evidence:
+                evidence_id: evidence_id
+                id: TOomLInj6iWmP3N8qfCXrB
+                dispute_id: bVTprrwk0gygTLZ96VX1oB
+                evidence_file:
+                  filename: customer-interaction.jpg
+                  filetype: image/jpeg
+                evidence_text: evidence_text
+                uploaded_at: '2022-05-18T16:01:10.000Z'
+                evidence_type: CARDHOLDER_COMMUNICATION
+    delete:
+      path: /v2/disputes/{dispute_id}/evidence/{evidence_id}
+      method: DELETE
+      auth: true
+      docs: |-
+        Removes specified evidence from a dispute.
+        Square does not send the bank any evidence that is removed.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteDisputeEvidence
+      request:
+        name: DeleteEvidenceRequest
+        path-parameters:
+          dispute_id:
+            type: string
+            docs: The ID of the dispute from which you want to remove evidence.
+          evidence_id:
+            type: string
+            docs: The ID of the evidence you want to remove.
+      response:
+        docs: Success
+        type: root.DeleteDisputeEvidenceResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            dispute_id: dispute_id
+            evidence_id: evidence_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

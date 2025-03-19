@@ -1,0 +1,1186 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    batchDelete:
+      path: /v2/catalog/batch-delete
+      method: POST
+      auth: true
+      docs: >-
+        Deletes a set of [CatalogItem](entity:CatalogItem)s based on the
+
+        provided list of target IDs and returns a set of successfully deleted
+        IDs in
+
+        the response. Deletion is a cascading event such that all children of
+        the
+
+        targeted object are also deleted. For example, deleting a CatalogItem
+        will
+
+        also delete all of its
+        [CatalogItemVariation](entity:CatalogItemVariation)
+
+        children.
+
+
+        `BatchDeleteCatalogObjects` succeeds even if only a portion of the
+        targeted
+
+        IDs can be deleted. The response will only include IDs that were
+
+        actually deleted.
+
+
+        To ensure consistency, only one delete request is processed at a time
+        per seller account.
+
+        While one (batch or non-batch) delete request is being processed, other
+        (batched and non-batched)
+
+        delete requests are rejected with the `429` error code.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BatchDeleteCatalogObjects
+      request:
+        name: BatchDeleteCatalogObjectsRequest
+        body:
+          properties:
+            object_ids:
+              type: optional<nullable<list<string>>>
+              docs: >-
+                The IDs of the CatalogObjects to be deleted. When an object is
+                deleted, other objects
+
+                in the graph that depend on that object will be deleted as well
+                (for example, deleting a
+
+                CatalogItem will delete its CatalogItemVariation.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchDeleteCatalogObjectsResponse
+        status-code: 200
+      examples:
+        - request:
+            object_ids:
+              - W62UWFY35CWMYGVWK6TWJDNI
+              - AA27W3M2GGTF3H6AVPNB77CK
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              deleted_object_ids:
+                - W62UWFY35CWMYGVWK6TWJDNI
+                - AA27W3M2GGTF3H6AVPNB77CK
+              deleted_at: '2016-11-16T22:25:24.878Z'
+    batchGet:
+      path: /v2/catalog/batch-retrieve
+      method: POST
+      auth: true
+      docs: >-
+        Returns a set of objects based on the provided ID.
+
+        Each [CatalogItem](entity:CatalogItem) returned in the set includes all
+        of its
+
+        child information including: all of its
+
+        [CatalogItemVariation](entity:CatalogItemVariation) objects, references
+        to
+
+        its [CatalogModifierList](entity:CatalogModifierList) objects, and the
+        ids of
+
+        any [CatalogTax](entity:CatalogTax) objects that apply to it.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BatchRetrieveCatalogObjects
+      request:
+        name: BatchGetCatalogObjectsRequest
+        body:
+          properties:
+            object_ids:
+              docs: The IDs of the CatalogObjects to be retrieved.
+              type: list<string>
+            include_related_objects:
+              type: optional<nullable<boolean>>
+              docs: >-
+                If `true`, the response will include additional objects that are
+                related to the
+
+                requested objects. Related objects are defined as any objects
+                referenced by ID by the results in the `objects` field
+
+                of the response. These objects are put in the `related_objects`
+                field. Setting this to `true` is
+
+                helpful when the objects are needed for immediate display to a
+                user.
+
+                This process only goes one level deep. Objects referenced by the
+                related objects will not be included. For example,
+
+
+                if the `objects` field of the response contains a CatalogItem,
+                its associated
+
+                CatalogCategory objects, CatalogTax objects, CatalogImage
+                objects and
+
+                CatalogModifierLists will be returned in the `related_objects`
+                field of the
+
+                response. If the `objects` field of the response contains a
+                CatalogItemVariation,
+
+                its parent CatalogItem will be returned in the `related_objects`
+                field of
+
+                the response.
+
+
+                Default value: `false`
+            catalog_version:
+              type: optional<nullable<long>>
+              docs: >-
+                The specific version of the catalog objects to be included in
+                the response. 
+
+                This allows you to retrieve historical versions of objects. The
+                specified version value is matched against
+
+                the [CatalogObject](entity:CatalogObject)s' `version` attribute.
+                If not included, results will
+
+                be from the current version of the catalog.
+            include_deleted_objects:
+              type: optional<nullable<boolean>>
+              docs: >-
+                Indicates whether to include (`true`) or not (`false`) in the
+                response deleted objects, namely, those with the `is_deleted`
+                attribute set to `true`.
+            include_category_path_to_root:
+              type: optional<nullable<boolean>>
+              docs: >-
+                Specifies whether or not to include the `path_to_root` list for
+                each returned category instance. The `path_to_root` list
+                consists
+
+                of `CategoryPathToRootNode` objects and specifies the path that
+                starts with the immediate parent category of the returned
+                category
+
+                and ends with its root category. If the returned category is a
+                top-level category, the `path_to_root` list is empty and is not
+                returned
+
+                in the response payload.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchGetCatalogObjectsResponse
+        status-code: 200
+      examples:
+        - request:
+            object_ids:
+              - W62UWFY35CWMYGVWK6TWJDNI
+              - AA27W3M2GGTF3H6AVPNB77CK
+            include_related_objects: true
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              objects:
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: ITEM
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: ITEM
+              related_objects:
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  ordinal: 1000000
+                  type: CATEGORY
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: TAX
+    batchUpsert:
+      path: /v2/catalog/batch-upsert
+      method: POST
+      auth: true
+      docs: >-
+        Creates or updates up to 10,000 target objects based on the provided
+
+        list of objects. The target objects are grouped into batches and each
+        batch is
+
+        inserted/updated in an all-or-nothing manner. If an object within a
+        batch is
+
+        malformed in some way, or violates a database constraint, the entire
+        batch
+
+        containing that item will be disregarded. However, other batches in the
+        same
+
+        request may still succeed. Each batch may contain up to 1,000 objects,
+        and
+
+        batches will be processed in order as long as the total object count for
+        the
+
+        request (items, variations, modifier lists, discounts, and taxes) is no
+        more
+
+        than 10,000.
+
+
+        To ensure consistency, only one update request is processed at a time
+        per seller account.
+
+        While one (batch or non-batch) update request is being processed, other
+        (batched and non-batched)
+
+        update requests are rejected with the `429` error code.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BatchUpsertCatalogObjects
+      request:
+        name: BatchUpsertCatalogObjectsRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A value you specify that uniquely identifies this
+
+                request among all your requests. A common way to create
+
+                a valid idempotency key is to use a Universally unique
+
+                identifier (UUID).
+
+
+                If you're unsure whether a particular request was successful,
+
+                you can reattempt it with the same idempotency key without
+
+                worrying about creating duplicate objects.
+
+
+                See
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)
+                for more information.
+              validation:
+                minLength: 1
+                maxLength: 128
+            batches:
+              docs: >-
+                A batch of CatalogObjects to be inserted/updated atomically.
+
+                The objects within a batch will be inserted in an all-or-nothing
+                fashion, i.e., if an error occurs
+
+                attempting to insert or update an object within a batch, the
+                entire batch will be rejected. However, an error
+
+                in one batch will not affect other batches within the same
+                request.
+
+
+                For each object, its `updated_at` field is ignored and replaced
+                with a current
+                [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates),
+                and its
+
+                `is_deleted` field must not be set to `true`.
+
+
+                To modify an existing object, supply its ID. To create a new
+                object, use an ID starting
+
+                with `#`. These IDs may be used to create relationships between
+                an object and attributes of
+
+                other objects that reference it. For example, you can create a
+                CatalogItem with
+
+                ID `#ABC` and a CatalogItemVariation with its `item_id`
+                attribute set to
+
+                `#ABC` in order to associate the CatalogItemVariation with its
+                parent
+
+                CatalogItem.
+
+
+                Any `#`-prefixed IDs are valid only within a single atomic
+                batch, and will be replaced by server-generated IDs.
+
+
+                Each batch may contain up to 1,000 objects. The total number of
+                objects across all batches for a single request
+
+                may not exceed 10,000. If either of these limits is violated, an
+                error will be returned and no objects will
+
+                be inserted or updated.
+              type: list<root.CatalogObjectBatch>
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchUpsertCatalogObjectsResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: 789ff020-f723-43a9-b4b5-43b5dc1fa3dc
+            batches:
+              - objects:
+                  - id: id
+                    type: ITEM
+                  - id: id
+                    type: ITEM
+                  - id: id
+                    type: ITEM
+                  - id: id
+                    type: TAX
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              objects:
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: ITEM
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: ITEM
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  ordinal: 1000000
+                  type: CATEGORY
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: TAX
+              updated_at: updated_at
+              id_mappings:
+                - client_object_id: '#Tea'
+                  object_id: 67GA7XA2FWMRYY2VCONTYZJR
+                - client_object_id: '#Coffee'
+                  object_id: MQ4TZKOG3SR2EQI3TWEK4AH7
+                - client_object_id: '#Beverages'
+                  object_id: XCS4SCGN4WQYE2VU4U3TKXEH
+                - client_object_id: '#SalesTax'
+                  object_id: HP5VNYPKZKTNCKZ2Z5NPUH6A
+                - client_object_id: '#Tea_Mug'
+                  object_id: CAJBHUIQH7ONTSZI2KTVOUP6
+                - client_object_id: '#Coffee_Regular'
+                  object_id: GY2GXJTVVPQAPW43GFRR3NG6
+                - client_object_id: '#Coffee_Large'
+                  object_id: JE6VHPSRQL6IWSN26C36CJ7W
+    info:
+      path: /v2/catalog/info
+      method: GET
+      auth: true
+      docs: |-
+        Retrieves information about the Square Catalog API, such as batch size
+        limits that can be used by the `BatchUpsertCatalogObjects` endpoint.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CatalogInfo
+      response:
+        docs: Success
+        type: root.CatalogInfoResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              limits:
+                batch_upsert_max_objects_per_batch: 1000
+                batch_upsert_max_total_objects: 10000
+                batch_retrieve_max_object_ids: 1000
+                search_max_page_limit: 1000
+                batch_delete_max_object_ids: 200
+                update_item_taxes_max_item_ids: 1000
+                update_item_taxes_max_taxes_to_enable: 1000
+                update_item_taxes_max_taxes_to_disable: 1000
+                update_item_modifier_lists_max_item_ids: 1000
+                update_item_modifier_lists_max_modifier_lists_to_enable: 1000
+                update_item_modifier_lists_max_modifier_lists_to_disable: 1000
+              standard_unit_description_group:
+                standard_unit_descriptions:
+                  - {}
+                language_code: language_code
+    list:
+      path: /v2/catalog/list
+      method: GET
+      auth: true
+      docs: >-
+        Returns a list of all [CatalogObject](entity:CatalogObject)s of the
+        specified types in the catalog.
+
+
+        The `types` parameter is specified as a comma-separated list of the
+        [CatalogObjectType](entity:CatalogObjectType) values,
+
+        for example, "`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`,
+        `CATEGORY`, `DISCOUNT`, `TAX`, `IMAGE`".
+
+
+        __Important:__ ListCatalog does not return deleted catalog items. To
+        retrieve
+
+        deleted catalog items, use
+        [SearchCatalogObjects](api-endpoint:Catalog-SearchCatalogObjects)
+
+        and set the `include_deleted_objects` attribute value to `true`.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.objects
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListCatalog
+      request:
+        name: ListCatalogRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              The pagination cursor returned in the previous response. Leave
+              unset for an initial request.
+
+              The page size is currently set to be 100.
+
+              See
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination)
+              for more information.
+          types:
+            type: optional<nullable<string>>
+            docs: >-
+              An optional case-insensitive, comma-separated list of object types
+              to retrieve.
+
+
+              The valid values are defined in the
+              [CatalogObjectType](entity:CatalogObjectType) enum, for example,
+
+              `ITEM`, `ITEM_VARIATION`, `CATEGORY`, `DISCOUNT`, `TAX`,
+
+              `MODIFIER`, `MODIFIER_LIST`, `IMAGE`, etc.
+
+
+              If this is unspecified, the operation returns objects of all the
+              top level types at the version
+
+              of the Square API used to make the request. Object types that are
+              nested onto other object types
+
+              are not included in the defaults.
+
+
+              At the current API version the default object types are:
+
+              ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST, 
+
+              PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,
+
+              SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION,
+              QUICK_AMOUNT_SETTINGS.
+          catalog_version:
+            type: optional<nullable<long>>
+            docs: >-
+              The specific version of the catalog objects to be included in the
+              response.
+
+              This allows you to retrieve historical versions of objects. The
+              specified version value is matched against
+
+              the [CatalogObject](entity:CatalogObject)s' `version` attribute. 
+              If not included, results will be from the
+
+              current version of the catalog.
+      response:
+        docs: Success
+        type: root.ListCatalogResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              cursor: cursor
+              objects:
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  ordinal: 1000000
+                  type: CATEGORY
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: TAX
+    search:
+      path: /v2/catalog/search
+      method: POST
+      auth: true
+      docs: >-
+        Searches for [CatalogObject](entity:CatalogObject) of any type by
+        matching supported search attribute values,
+
+        excluding custom attribute values on items or item variations, against
+        one or more of the specified query filters.
+
+
+        This (`SearchCatalogObjects`) endpoint differs from the
+        [SearchCatalogItems](api-endpoint:Catalog-SearchCatalogItems)
+
+        endpoint in the following aspects:
+
+
+        - `SearchCatalogItems` can only search for items or item variations,
+        whereas `SearchCatalogObjects` can search for any type of catalog
+        objects.
+
+        - `SearchCatalogItems` supports the custom attribute query filters to
+        return items or item variations that contain custom attribute values,
+        where `SearchCatalogObjects` does not.
+
+        - `SearchCatalogItems` does not support the `include_deleted_objects`
+        filter to search for deleted items or item variations, whereas
+        `SearchCatalogObjects` does.
+
+        - The both endpoints have different call conventions, including the
+        query filter formats.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchCatalogObjects
+      request:
+        name: SearchCatalogObjectsRequest
+        body:
+          properties:
+            cursor:
+              type: optional<string>
+              docs: >-
+                The pagination cursor returned in the previous response. Leave
+                unset for an initial request.
+
+                See
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination)
+                for more information.
+            object_types:
+              type: optional<list<root.CatalogObjectType>>
+              docs: >-
+                The desired set of object types to appear in the search results.
+
+
+                If this is unspecified, the operation returns objects of all the
+                top level types at the version
+
+                of the Square API used to make the request. Object types that
+                are nested onto other object types
+
+                are not included in the defaults.
+
+
+                At the current API version the default object types are:
+
+                ITEM, CATEGORY, TAX, DISCOUNT, MODIFIER_LIST, 
+
+                PRICING_RULE, PRODUCT_SET, TIME_PERIOD, MEASUREMENT_UNIT,
+
+                SUBSCRIPTION_PLAN, ITEM_OPTION, CUSTOM_ATTRIBUTE_DEFINITION,
+                QUICK_AMOUNT_SETTINGS.
+
+
+                Note that if you wish for the query to return objects belonging
+                to nested types (i.e., COMPONENT, IMAGE,
+
+                ITEM_OPTION_VAL, ITEM_VARIATION, or MODIFIER), you must
+                explicitly include all the types of interest
+
+                in this field.
+            include_deleted_objects:
+              type: optional<boolean>
+              docs: >-
+                If `true`, deleted objects will be included in the results.
+                Defaults to `false`. Deleted objects will have their
+                `is_deleted` field set to `true`. If `include_deleted_objects`
+                is `true`, then the `include_category_path_to_root` request
+                parameter must be `false`. Both properties cannot be `true` at
+                the same time.
+            include_related_objects:
+              type: optional<boolean>
+              docs: >-
+                If `true`, the response will include additional objects that are
+                related to the
+
+                requested objects. Related objects are objects that are
+                referenced by object ID by the objects
+
+                in the response. This is helpful if the objects are being
+                fetched for immediate display to a user.
+
+                This process only goes one level deep. Objects referenced by the
+                related objects will not be included.
+
+                For example:
+
+
+                If the `objects` field of the response contains a CatalogItem,
+                its associated
+
+                CatalogCategory objects, CatalogTax objects, CatalogImage
+                objects and
+
+                CatalogModifierLists will be returned in the `related_objects`
+                field of the
+
+                response. If the `objects` field of the response contains a
+                CatalogItemVariation,
+
+                its parent CatalogItem will be returned in the `related_objects`
+                field of
+
+                the response.
+
+
+                Default value: `false`
+            begin_time:
+              type: optional<string>
+              docs: >-
+                Return objects modified after this
+                [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates),
+                in RFC 3339
+
+                format, e.g., `2016-09-04T23:59:33.123Z`. The timestamp is
+                exclusive - objects with a
+
+                timestamp equal to `begin_time` will not be included in the
+                response.
+            query:
+              type: optional<root.CatalogQuery>
+              docs: >-
+                A query to be used to filter or sort the results. If no query is
+                specified, the entire catalog will be returned.
+            limit:
+              type: optional<integer>
+              docs: >-
+                A limit on the number of results to be returned in a single
+                page. The limit is advisory -
+
+                the implementation may return more or fewer results. If the
+                supplied limit is negative, zero, or
+
+                is higher than the maximum limit of 1,000, it will be ignored.
+            include_category_path_to_root:
+              type: optional<boolean>
+              docs: >-
+                Specifies whether or not to include the `path_to_root` list for
+                each returned category instance. The `path_to_root` list
+                consists of `CategoryPathToRootNode` objects and specifies the
+                path that starts with the immediate parent category of the
+                returned category and ends with its root category. If the
+                returned category is a top-level category, the `path_to_root`
+                list is empty and is not returned in the response payload. If
+                `include_category_path_to_root` is `true`, then the
+                `include_deleted_objects` request parameter must be `false`.
+                Both properties cannot be `true` at the same time.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchCatalogObjectsResponse
+        status-code: 200
+      examples:
+        - request:
+            object_types:
+              - ITEM
+            query:
+              prefix_query:
+                attribute_name: name
+                attribute_prefix: tea
+            limit: 100
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              cursor: cursor
+              objects:
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: ITEM
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: ITEM
+              related_objects:
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: ITEM
+              latest_time: latest_time
+    SearchItems:
+      path: /v2/catalog/search-catalog-items
+      method: POST
+      auth: true
+      docs: >-
+        Searches for catalog items or item variations by matching supported
+        search attribute values, including
+
+        custom attribute values, against one or more of the specified query
+        filters.
+
+
+        This (`SearchCatalogItems`) endpoint differs from the
+        [SearchCatalogObjects](api-endpoint:Catalog-SearchCatalogObjects)
+
+        endpoint in the following aspects:
+
+
+        - `SearchCatalogItems` can only search for items or item variations,
+        whereas `SearchCatalogObjects` can search for any type of catalog
+        objects.
+
+        - `SearchCatalogItems` supports the custom attribute query filters to
+        return items or item variations that contain custom attribute values,
+        where `SearchCatalogObjects` does not.
+
+        - `SearchCatalogItems` does not support the `include_deleted_objects`
+        filter to search for deleted items or item variations, whereas
+        `SearchCatalogObjects` does.
+
+        - The both endpoints use different call conventions, including the query
+        filter formats.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchCatalogItems
+      request:
+        name: SearchCatalogItemsRequest
+        body:
+          properties:
+            text_filter:
+              type: optional<string>
+              docs: >-
+                The text filter expression to return items or item variations
+                containing specified text in
+
+                the `name`, `description`, or `abbreviation` attribute value of
+                an item, or in
+
+                the `name`, `sku`, or `upc` attribute value of an item
+                variation.
+            category_ids:
+              type: optional<list<string>>
+              docs: >-
+                The category id query expression to return items containing the
+                specified category IDs.
+            stock_levels:
+              type: optional<list<root.SearchCatalogItemsRequestStockLevel>>
+              docs: >-
+                The stock-level query expression to return item variations with
+                the specified stock levels.
+
+                See
+                [SearchCatalogItemsRequestStockLevel](#type-searchcatalogitemsrequeststocklevel)
+                for possible values
+            enabled_location_ids:
+              type: optional<list<string>>
+              docs: >-
+                The enabled-location query expression to return items and item
+                variations having specified enabled locations.
+            cursor:
+              type: optional<string>
+              docs: >-
+                The pagination token, returned in the previous response, used to
+                fetch the next batch of pending results.
+            limit:
+              type: optional<integer>
+              docs: >-
+                The maximum number of results to return per page. The default
+                value is 100.
+              validation:
+                max: 100
+            sort_order:
+              type: optional<root.SortOrder>
+              docs: >-
+                The order to sort the results by item names. The default sort
+                order is ascending (`ASC`).
+
+                See [SortOrder](#type-sortorder) for possible values
+            product_types:
+              type: optional<list<root.CatalogItemProductType>>
+              docs: >-
+                The product types query expression to return items or item
+                variations having the specified product types.
+            custom_attribute_filters:
+              type: optional<list<root.CustomAttributeFilter>>
+              docs: >-
+                The customer-attribute filter to return items or item variations
+                matching the specified
+
+                custom attribute expressions. A maximum number of 10 custom
+                attribute expressions are supported in
+
+                a single call to the
+                [SearchCatalogItems](api-endpoint:Catalog-SearchCatalogItems)
+                endpoint.
+            archived_state:
+              type: optional<root.ArchivedState>
+              docs: >-
+                The query filter to return not archived
+                (`ARCHIVED_STATE_NOT_ARCHIVED`), archived
+                (`ARCHIVED_STATE_ARCHIVED`), or either type
+                (`ARCHIVED_STATE_ALL`) of items.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchCatalogItemsResponse
+        status-code: 200
+      examples:
+        - request:
+            text_filter: red
+            category_ids:
+              - WINE_CATEGORY_ID
+            stock_levels:
+              - OUT
+              - LOW
+            enabled_location_ids:
+              - ATL_LOCATION_ID
+            limit: 100
+            sort_order: ASC
+            product_types:
+              - REGULAR
+            custom_attribute_filters:
+              - custom_attribute_definition_id: VEGAN_DEFINITION_ID
+                bool_filter: true
+              - custom_attribute_definition_id: BRAND_DEFINITION_ID
+                string_filter: Dark Horse
+              - key: VINTAGE
+                number_filter:
+                  min: min
+                  max: max
+              - custom_attribute_definition_id: VARIETAL_DEFINITION_ID
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              items:
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: ITEM
+              cursor: cursor
+              matched_variation_ids:
+                - VBJNPHCOKDFECR6VU25WRJUD
+    UpdateItemModifierLists:
+      path: /v2/catalog/update-item-modifier-lists
+      method: POST
+      auth: true
+      docs: >-
+        Updates the [CatalogModifierList](entity:CatalogModifierList) objects
+
+        that apply to the targeted [CatalogItem](entity:CatalogItem) without
+        having
+
+        to perform an upsert on the entire item.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateItemModifierLists
+      request:
+        name: UpdateItemModifierListsRequest
+        body:
+          properties:
+            item_ids:
+              docs: >-
+                The IDs of the catalog items associated with the
+                CatalogModifierList objects being updated.
+              type: list<string>
+            modifier_lists_to_enable:
+              type: optional<nullable<list<string>>>
+              docs: >-
+                The IDs of the CatalogModifierList objects to enable for the
+                CatalogItem.
+
+                At least one of `modifier_lists_to_enable` or
+                `modifier_lists_to_disable` must be specified.
+            modifier_lists_to_disable:
+              type: optional<nullable<list<string>>>
+              docs: >-
+                The IDs of the CatalogModifierList objects to disable for the
+                CatalogItem.
+
+                At least one of `modifier_lists_to_enable` or
+                `modifier_lists_to_disable` must be specified.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateItemModifierListsResponse
+        status-code: 200
+      examples:
+        - request:
+            item_ids:
+              - H42BRLUJ5KTZTTMPVSLFAACQ
+              - 2JXOBJIHCWBQ4NZ3RIXQGJA6
+            modifier_lists_to_enable:
+              - H42BRLUJ5KTZTTMPVSLFAACQ
+              - 2JXOBJIHCWBQ4NZ3RIXQGJA6
+            modifier_lists_to_disable:
+              - 7WRC16CJZDVLSNDQ35PP6YAD
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              updated_at: '2016-11-16T22:25:24.878Z'
+    UpdateItemTaxes:
+      path: /v2/catalog/update-item-taxes
+      method: POST
+      auth: true
+      docs: |-
+        Updates the [CatalogTax](entity:CatalogTax) objects that apply to the
+        targeted [CatalogItem](entity:CatalogItem) without having to perform an
+        upsert on the entire item.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateItemTaxes
+      request:
+        name: UpdateItemTaxesRequest
+        body:
+          properties:
+            item_ids:
+              docs: >-
+                IDs for the CatalogItems associated with the CatalogTax objects
+                being updated.
+
+                No more than 1,000 IDs may be provided.
+              type: list<string>
+            taxes_to_enable:
+              type: optional<nullable<list<string>>>
+              docs: >-
+                IDs of the CatalogTax objects to enable.
+
+                At least one of `taxes_to_enable` or `taxes_to_disable` must be
+                specified.
+            taxes_to_disable:
+              type: optional<nullable<list<string>>>
+              docs: >-
+                IDs of the CatalogTax objects to disable.
+
+                At least one of `taxes_to_enable` or `taxes_to_disable` must be
+                specified.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateItemTaxesResponse
+        status-code: 200
+      examples:
+        - request:
+            item_ids:
+              - H42BRLUJ5KTZTTMPVSLFAACQ
+              - 2JXOBJIHCWBQ4NZ3RIXQGJA6
+            taxes_to_enable:
+              - 4WRCNHCJZDVLSNDQ35PP6YAD
+            taxes_to_disable:
+              - AQCEGCEBBQONINDOHRGZISEX
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              updated_at: '2016-11-16T22:25:24.878Z'
+  source:
+    openapi: openapi/openapi.json

@@ -1,0 +1,320 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/gift-cards/activities
+      method: GET
+      auth: true
+      docs: >-
+        Lists gift card activities. By default, you get gift card activities for
+        all
+
+        gift cards in the seller's account. You can optionally specify query
+        parameters to
+
+        filter the list. For example, you can get a list of gift card activities
+        for a gift card,
+
+        for all gift cards in a specific region, or for activities within a time
+        window.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.gift_card_activities
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListGiftCardActivities
+      request:
+        name: ListActivitiesRequest
+        query-parameters:
+          gift_card_id:
+            type: optional<nullable<string>>
+            docs: >-
+              If a gift card ID is provided, the endpoint returns activities
+              related 
+
+              to the specified gift card. Otherwise, the endpoint returns all
+              gift card activities for 
+
+              the seller.
+          type:
+            type: optional<nullable<string>>
+            docs: >-
+              If a [type](entity:GiftCardActivityType) is provided, the endpoint
+              returns gift card activities of the specified type. 
+
+              Otherwise, the endpoint returns all types of gift card activities.
+          location_id:
+            type: optional<nullable<string>>
+            docs: >-
+              If a location ID is provided, the endpoint returns gift card
+              activities for the specified location. 
+
+              Otherwise, the endpoint returns gift card activities for all
+              locations.
+          begin_time:
+            type: optional<nullable<string>>
+            docs: >-
+              The timestamp for the beginning of the reporting period, in RFC
+              3339 format.
+
+              This start time is inclusive. The default value is the current
+              time minus one year.
+          end_time:
+            type: optional<nullable<string>>
+            docs: >-
+              The timestamp for the end of the reporting period, in RFC 3339
+              format.
+
+              This end time is inclusive. The default value is the current time.
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              If a limit is provided, the endpoint returns the specified number 
+
+              of results (or fewer) per page. The maximum value is 100. The
+              default value is 50.
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for the
+              original query.
+
+              If a cursor is not provided, the endpoint returns the first page
+              of the results.
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+          sort_order:
+            type: optional<nullable<string>>
+            docs: >-
+              The order in which the endpoint returns the activities, based on
+              `created_at`.
+
+              - `ASC` - Oldest to newest.
+
+              - `DESC` - Newest to oldest (default).
+      response:
+        docs: Success
+        type: root.ListGiftCardActivitiesResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              gift_card_activities:
+                - id: gcact_897698f894b44b3db46c6147e26a0e19
+                  type: REDEEM
+                  location_id: 81FN9BNFZTKS4
+                  created_at: '2021-06-02T22:26:38.000Z'
+                  gift_card_id: gftc:6d55a72470d940c6ba09c0ab8ad08d20
+                  gift_card_gan: '7783320002929081'
+                  gift_card_balance_money:
+                    amount: 700
+                    currency: USD
+                  redeem_activity_details:
+                    amount_money:
+                      amount: 300
+                      currency: USD
+                  clear_balance_activity_details:
+                    reason: SUSPICIOUS_ACTIVITY
+                  deactivate_activity_details:
+                    reason: SUSPICIOUS_ACTIVITY
+                  adjust_increment_activity_details:
+                    amount_money: {}
+                    reason: COMPLIMENTARY
+                  adjust_decrement_activity_details:
+                    amount_money: {}
+                    reason: SUSPICIOUS_ACTIVITY
+                  unlinked_activity_refund_activity_details:
+                    amount_money: {}
+                  import_activity_details:
+                    amount_money: {}
+                  block_activity_details:
+                    reason: CHARGEBACK_BLOCK
+                  unblock_activity_details:
+                    reason: CHARGEBACK_UNBLOCK
+                  import_reversal_activity_details:
+                    amount_money: {}
+                  transfer_balance_to_activity_details:
+                    transfer_from_gift_card_id: transfer_from_gift_card_id
+                    amount_money: {}
+                  transfer_balance_from_activity_details:
+                    transfer_to_gift_card_id: transfer_to_gift_card_id
+                    amount_money: {}
+                - id: gcact_b968ebfc7d46437b945be7b9e09123b4
+                  type: ACTIVATE
+                  location_id: 81FN9BNFZTKS4
+                  created_at: '2021-05-20T22:26:54.000Z'
+                  gift_card_id: gftc:6d55a72470d940c6ba09c0ab8ad08d20
+                  gift_card_gan: '7783320002929081'
+                  gift_card_balance_money:
+                    amount: 1000
+                    currency: USD
+                  activate_activity_details:
+                    amount_money:
+                      amount: 1000
+                      currency: USD
+                    order_id: jJNGHm4gLI6XkFbwtiSLqK72KkAZY
+                    line_item_uid: eIWl7X0nMuO9Ewbh0ChIx
+                  redeem_activity_details:
+                    amount_money: {}
+                  clear_balance_activity_details:
+                    reason: SUSPICIOUS_ACTIVITY
+                  deactivate_activity_details:
+                    reason: SUSPICIOUS_ACTIVITY
+                  adjust_increment_activity_details:
+                    amount_money: {}
+                    reason: COMPLIMENTARY
+                  adjust_decrement_activity_details:
+                    amount_money: {}
+                    reason: SUSPICIOUS_ACTIVITY
+                  unlinked_activity_refund_activity_details:
+                    amount_money: {}
+                  import_activity_details:
+                    amount_money: {}
+                  block_activity_details:
+                    reason: CHARGEBACK_BLOCK
+                  unblock_activity_details:
+                    reason: CHARGEBACK_UNBLOCK
+                  import_reversal_activity_details:
+                    amount_money: {}
+                  transfer_balance_to_activity_details:
+                    transfer_from_gift_card_id: transfer_from_gift_card_id
+                    amount_money: {}
+                  transfer_balance_from_activity_details:
+                    transfer_to_gift_card_id: transfer_to_gift_card_id
+                    amount_money: {}
+              cursor: cursor
+    create:
+      path: /v2/gift-cards/activities
+      method: POST
+      auth: true
+      docs: >-
+        Creates a gift card activity to manage the balance or state of a [gift
+        card](entity:GiftCard).
+
+        For example, create an `ACTIVATE` activity to activate a gift card with
+        an initial balance before first use.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateGiftCardActivity
+      request:
+        name: CreateGiftCardActivityRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies the `CreateGiftCardActivity`
+                request.
+              validation:
+                minLength: 1
+                maxLength: 128
+            gift_card_activity:
+              type: root.GiftCardActivity
+              docs: >-
+                The activity to create for the gift card. This activity must
+                specify `gift_card_id` or `gift_card_gan` for the target
+
+                gift card, the `location_id` where the activity occurred, and
+                the activity `type` along with the corresponding activity
+                details.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateGiftCardActivityResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: U16kfr-kA70er-q4Rsym-7U7NnY
+            gift_card_activity:
+              type: ACTIVATE
+              location_id: 81FN9BNFZTKS4
+              gift_card_id: gftc:6d55a72470d940c6ba09c0ab8ad08d20
+              activate_activity_details:
+                order_id: jJNGHm4gLI6XkFbwtiSLqK72KkAZY
+                line_item_uid: eIWl7X0nMuO9Ewbh0ChIx
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              gift_card_activity:
+                id: gcact_c8f8cbf1f24b448d8ecf39ed03f97864
+                type: ACTIVATE
+                location_id: 81FN9BNFZTKS4
+                created_at: '2021-05-20T22:26:54.000Z'
+                gift_card_id: gftc:6d55a72470d940c6ba09c0ab8ad08d20
+                gift_card_gan: '7783320002929081'
+                gift_card_balance_money:
+                  amount: 1000
+                  currency: USD
+                load_activity_details:
+                  order_id: order_id
+                  line_item_uid: line_item_uid
+                  reference_id: reference_id
+                  buyer_payment_instrument_ids:
+                    - buyer_payment_instrument_ids
+                activate_activity_details:
+                  amount_money:
+                    amount: 1000
+                    currency: USD
+                  order_id: jJNGHm4gLI6XkFbwtiSLqK72KkAZY
+                  line_item_uid: eIWl7X0nMuO9Ewbh0ChIx
+                  reference_id: reference_id
+                  buyer_payment_instrument_ids:
+                    - buyer_payment_instrument_ids
+                redeem_activity_details:
+                  amount_money: {}
+                  payment_id: payment_id
+                  reference_id: reference_id
+                  status: PENDING
+                clear_balance_activity_details:
+                  reason: SUSPICIOUS_ACTIVITY
+                deactivate_activity_details:
+                  reason: SUSPICIOUS_ACTIVITY
+                adjust_increment_activity_details:
+                  amount_money: {}
+                  reason: COMPLIMENTARY
+                adjust_decrement_activity_details:
+                  amount_money: {}
+                  reason: SUSPICIOUS_ACTIVITY
+                refund_activity_details:
+                  redeem_activity_id: redeem_activity_id
+                  reference_id: reference_id
+                  payment_id: payment_id
+                unlinked_activity_refund_activity_details:
+                  amount_money: {}
+                  reference_id: reference_id
+                  payment_id: payment_id
+                import_activity_details:
+                  amount_money: {}
+                block_activity_details:
+                  reason: CHARGEBACK_BLOCK
+                unblock_activity_details:
+                  reason: CHARGEBACK_UNBLOCK
+                import_reversal_activity_details:
+                  amount_money: {}
+                transfer_balance_to_activity_details:
+                  transfer_from_gift_card_id: transfer_from_gift_card_id
+                  amount_money: {}
+                transfer_balance_from_activity_details:
+                  transfer_to_gift_card_id: transfer_to_gift_card_id
+                  amount_money: {}
+  source:
+    openapi: openapi/openapi.json

@@ -1,0 +1,221 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    RetrieveLocationSettings:
+      path: /v2/online-checkout/location-settings/{location_id}
+      method: GET
+      auth: true
+      docs: Retrieves the location-level settings for a Square-hosted checkout page.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveLocationSettings
+      request:
+        name: RetrieveLocationSettingsRequest
+        path-parameters:
+          location_id:
+            type: string
+            docs: The ID of the location for which to retrieve settings.
+      response:
+        docs: Success
+        type: root.RetrieveLocationSettingsResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            location_id: location_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              location_settings:
+                location_id: LOCATION_ID_1
+                customer_notes_enabled: true
+                policies:
+                  - uid: POLICY_ID_1
+                    title: Return Policy
+                    description: This is my Return Policy
+                branding:
+                  header_type: FRAMED_LOGO
+                  button_color: '#ffffff'
+                  button_shape: ROUNDED
+                tipping:
+                  percentages:
+                    - 10
+                    - 15
+                    - 20
+                  smart_tipping_enabled: true
+                  default_percent: 15
+                  smart_tips:
+                    - {}
+                coupons:
+                  enabled: true
+                updated_at: '2022-06-16T22:25:35Z'
+    UpdateLocationSettings:
+      path: /v2/online-checkout/location-settings/{location_id}
+      method: PUT
+      auth: true
+      docs: Updates the location-level settings for a Square-hosted checkout page.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateLocationSettings
+      request:
+        name: UpdateLocationSettingsRequest
+        path-parameters:
+          location_id:
+            type: string
+            docs: The ID of the location for which to retrieve settings.
+        body:
+          properties:
+            location_settings:
+              type: root.CheckoutLocationSettings
+              docs: >-
+                Describe your updates using the `location_settings` object. Make
+                sure it contains only the fields that have changed.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateLocationSettingsResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            location_id: location_id
+          request:
+            location_settings: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              location_settings:
+                location_id: LOCATION_ID_1
+                customer_notes_enabled: false
+                policies:
+                  - uid: POLICY_ID_1
+                    title: Return Policy
+                    description: This is my Return Policy
+                  - uid: POLICY_ID_2
+                    title: Return Policy
+                    description: Items may be returned within 30 days of purchase.
+                branding:
+                  header_type: FRAMED_LOGO
+                  button_color: '#00b23b'
+                  button_shape: ROUNDED
+                tipping:
+                  percentages:
+                    - 15
+                    - 20
+                    - 25
+                  smart_tipping_enabled: true
+                  default_percent: 20
+                  smart_tips:
+                    - {}
+                coupons:
+                  enabled: true
+                updated_at: '2022-06-16T22:25:35Z'
+    RetrieveMerchantSettings:
+      path: /v2/online-checkout/merchant-settings
+      method: GET
+      auth: true
+      docs: Retrieves the merchant-level settings for a Square-hosted checkout page.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveMerchantSettings
+      response:
+        docs: Success
+        type: root.RetrieveMerchantSettingsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              merchant_settings:
+                payment_methods:
+                  apple_pay:
+                    enabled: true
+                  google_pay:
+                    enabled: true
+                  afterpay_clearpay:
+                    order_eligibility_range:
+                      min:
+                        amount: 100
+                        currency: USD
+                      max:
+                        amount: 10000
+                        currency: USD
+                    item_eligibility_range:
+                      min:
+                        amount: 100
+                        currency: USD
+                      max:
+                        amount: 10000
+                        currency: USD
+                    enabled: true
+                updated_at: '2022-06-16T22:25:35Z'
+    UpdateMerchantSettings:
+      path: /v2/online-checkout/merchant-settings
+      method: PUT
+      auth: true
+      docs: Updates the merchant-level settings for a Square-hosted checkout page.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateMerchantSettings
+      request:
+        name: UpdateMerchantSettingsRequest
+        body:
+          properties:
+            merchant_settings:
+              type: root.CheckoutMerchantSettings
+              docs: >-
+                Describe your updates using the `merchant_settings` object. Make
+                sure it contains only the fields that have changed.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateMerchantSettingsResponse
+        status-code: 200
+      examples:
+        - request:
+            merchant_settings: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              merchant_settings:
+                payment_methods:
+                  apple_pay:
+                    enabled: false
+                  google_pay:
+                    enabled: true
+                  afterpay_clearpay:
+                    order_eligibility_range:
+                      min:
+                        amount: 100
+                        currency: USD
+                      max:
+                        amount: 10000
+                        currency: USD
+                    item_eligibility_range:
+                      min:
+                        amount: 100
+                        currency: USD
+                      max:
+                        amount: 10000
+                        currency: USD
+                    enabled: true
+                updated_at: '2022-06-16T22:25:35Z'
+  source:
+    openapi: openapi/openapi.json

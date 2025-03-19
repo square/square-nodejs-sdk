@@ -1,0 +1,369 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/webhooks/subscriptions
+      method: GET
+      auth: true
+      docs: Lists all webhook subscriptions owned by your application.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.subscriptions
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListWebhookSubscriptions
+      request:
+        name: ListSubscriptionsRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this to retrieve the next set of results for your original
+              query.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          include_disabled:
+            type: optional<nullable<boolean>>
+            default: false
+            docs: >-
+              Includes disabled [Subscription](entity:WebhookSubscription)s.
+
+              By default, all enabled
+              [Subscription](entity:WebhookSubscription)s are returned.
+          sort_order:
+            type: optional<nullable<root.SortOrder>>
+            docs: >-
+              Sorts the returned list by when the
+              [Subscription](entity:WebhookSubscription) was created with the
+              specified order.
+
+              This field defaults to ASC.
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to be returned in a single page.
+
+              It is possible to receive fewer results than the specified limit
+              on a given page.
+
+              The default value of 100 is also the maximum allowed value.
+
+
+              Default: 100
+      response:
+        docs: Success
+        type: root.ListWebhookSubscriptionsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscriptions:
+                - id: wbhk_b35f6b3145074cf9ad513610786c19d5
+                  name: Example Webhook Subscription
+                  enabled: true
+                  event_types:
+                    - payment.created
+                    - payment.updated
+                  notification_url: https://example-webhook-url.com
+                  api_version: '2021-12-15'
+                  signature_key: signature_key
+                  created_at: 2022-01-10 23:29:48 +0000 UTC
+                  updated_at: 2022-01-10 23:29:48 +0000 UTC
+              cursor: cursor
+    create:
+      path: /v2/webhooks/subscriptions
+      method: POST
+      auth: true
+      docs: Creates a webhook subscription.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateWebhookSubscription
+      request:
+        name: CreateWebhookSubscriptionRequest
+        body:
+          properties:
+            idempotency_key:
+              type: optional<string>
+              docs: >-
+                A unique string that identifies the
+                [CreateWebhookSubscription](api-endpoint:WebhookSubscriptions-CreateWebhookSubscription)
+                request.
+              validation:
+                maxLength: 45
+            subscription:
+              type: root.WebhookSubscription
+              docs: The [Subscription](entity:WebhookSubscription) to create.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateWebhookSubscriptionResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: 63f84c6c-2200-4c99-846c-2670a1311fbf
+            subscription:
+              name: Example Webhook Subscription
+              event_types:
+                - payment.created
+                - payment.updated
+              notification_url: https://example-webhook-url.com
+              api_version: '2021-12-15'
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: wbhk_b35f6b3145074cf9ad513610786c19d5
+                name: Example Webhook Subscription
+                enabled: true
+                event_types:
+                  - payment.created
+                  - payment.updated
+                notification_url: https://example-webhook-url.com
+                api_version: '2021-12-15'
+                signature_key: 1k9bIJKCeTmSQwyagtNRLg
+                created_at: 2022-01-10 23:29:48 +0000 UTC
+                updated_at: 2022-01-10 23:29:48 +0000 UTC
+    get:
+      path: /v2/webhooks/subscriptions/{subscription_id}
+      method: GET
+      auth: true
+      docs: Retrieves a webhook subscription identified by its ID.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveWebhookSubscription
+      request:
+        name: GetSubscriptionsRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: >-
+              [REQUIRED] The ID of the
+              [Subscription](entity:WebhookSubscription) to retrieve.
+      response:
+        docs: Success
+        type: root.GetWebhookSubscriptionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: wbhk_b35f6b3145074cf9ad513610786c19d5
+                name: Example Webhook Subscription
+                enabled: true
+                event_types:
+                  - payment.created
+                  - payment.updated
+                notification_url: https://example-webhook-url.com
+                api_version: '2021-12-15'
+                signature_key: 1k9bIJKCeTmSQwyagtNRLg
+                created_at: 2022-01-10 23:29:48 +0000 UTC
+                updated_at: 2022-01-10 23:29:48 +0000 UTC
+    update:
+      path: /v2/webhooks/subscriptions/{subscription_id}
+      method: PUT
+      auth: true
+      docs: Updates a webhook subscription.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateWebhookSubscription
+      request:
+        name: UpdateWebhookSubscriptionRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: >-
+              [REQUIRED] The ID of the
+              [Subscription](entity:WebhookSubscription) to update.
+        body:
+          properties:
+            subscription:
+              type: optional<root.WebhookSubscription>
+              docs: The [Subscription](entity:WebhookSubscription) to update.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateWebhookSubscriptionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          request:
+            subscription:
+              name: Updated Example Webhook Subscription
+              enabled: false
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: wbhk_b35f6b3145074cf9ad513610786c19d5
+                name: Updated Example Webhook Subscription
+                enabled: false
+                event_types:
+                  - payment.created
+                  - payment.updated
+                notification_url: https://example-webhook-url.com
+                api_version: '2021-12-15'
+                signature_key: signature_key
+                created_at: 2022-01-10 23:29:48 +0000 UTC
+                updated_at: 2022-01-10 23:45:51 +0000 UTC
+    delete:
+      path: /v2/webhooks/subscriptions/{subscription_id}
+      method: DELETE
+      auth: true
+      docs: Deletes a webhook subscription.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteWebhookSubscription
+      request:
+        name: DeleteSubscriptionsRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: >-
+              [REQUIRED] The ID of the
+              [Subscription](entity:WebhookSubscription) to delete.
+      response:
+        docs: Success
+        type: root.DeleteWebhookSubscriptionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    updateSignatureKey:
+      path: /v2/webhooks/subscriptions/{subscription_id}/signature-key
+      method: POST
+      auth: true
+      docs: >-
+        Updates a webhook subscription by replacing the existing signature key
+        with a new one.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateWebhookSubscriptionSignatureKey
+      request:
+        name: UpdateWebhookSubscriptionSignatureKeyRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: >-
+              [REQUIRED] The ID of the
+              [Subscription](entity:WebhookSubscription) to update.
+        body:
+          properties:
+            idempotency_key:
+              type: optional<nullable<string>>
+              docs: >-
+                A unique string that identifies the
+                [UpdateWebhookSubscriptionSignatureKey](api-endpoint:WebhookSubscriptions-UpdateWebhookSubscriptionSignatureKey)
+                request.
+              validation:
+                maxLength: 45
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateWebhookSubscriptionSignatureKeyResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          request:
+            idempotency_key: ed80ae6b-0654-473b-bbab-a39aee89a60d
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              signature_key: 1k9bIJKCeTmSQwyagtNRLg
+    test:
+      path: /v2/webhooks/subscriptions/{subscription_id}/test
+      method: POST
+      auth: true
+      docs: >-
+        Tests a webhook subscription by sending a test event to the notification
+        URL.
+      source:
+        openapi: openapi/openapi.json
+      display-name: TestWebhookSubscription
+      request:
+        name: TestWebhookSubscriptionRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: >-
+              [REQUIRED] The ID of the
+              [Subscription](entity:WebhookSubscription) to test.
+        body:
+          properties:
+            event_type:
+              type: optional<nullable<string>>
+              docs: >-
+                The event type that will be used to test the
+                [Subscription](entity:WebhookSubscription). The event type must
+                be
+
+                contained in the list of event types in the
+                [Subscription](entity:WebhookSubscription).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.TestWebhookSubscriptionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          request:
+            event_type: payment.created
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription_test_result:
+                id: 23eed5a9-2b12-403e-b212-7e2889aea0f6
+                status_code: 404
+                payload: >-
+                  {"merchant_id":"1ZYMKZY1YFGBW","type":"payment.created","event_id":"23eed5a9-2b12-403e-b212-7e2889aea0f6","created_at":"2022-01-11T00:06:48.322945116Z","data":{"type":"payment","id":"KkAkhdMsgzn59SM8A89WgKwekxLZY","object":{"payment":{"amount_money":{"amount":100,"currency":"USD"},"approved_money":{"amount":100,"currency":"USD"},"capabilities":["EDIT_TIP_AMOUNT","EDIT_TIP_AMOUNT_UP","EDIT_TIP_AMOUNT_DOWN"],"card_details":{"avs_status":"AVS_ACCEPTED","card":{"bin":"540988","card_brand":"MASTERCARD","card_type":"CREDIT","exp_month":11,"exp_year":2022,"fingerprint":"sq-1-Tvruf3vPQxlvI6n0IcKYfBukrcv6IqWr8UyBdViWXU2yzGn5VMJvrsHMKpINMhPmVg","last_4":"9029","prepaid_type":"NOT_PREPAID"},"card_payment_timeline":{"authorized_at":"2020-11-22T21:16:51.198Z"},"cvv_status":"CVV_ACCEPTED","entry_method":"KEYED","statement_description":"SQ
+                  *DEFAULT TEST
+                  ACCOUNT","status":"AUTHORIZED"},"created_at":"2020-11-22T21:16:51.086Z","delay_action":"CANCEL","delay_duration":"PT168H","delayed_until":"2020-11-29T21:16:51.086Z","id":"hYy9pRFVxpDsO1FB05SunFWUe9JZY","location_id":"S8GWD5R9QB376","order_id":"03O3USaPaAaFnI6kkwB1JxGgBsUZY","receipt_number":"hYy9","risk_evaluation":{"created_at":"2020-11-22T21:16:51.198Z","risk_level":"NORMAL"},"source_type":"CARD","status":"APPROVED","total_money":{"amount":100,"currency":"USD"},"updated_at":"2020-11-22T21:16:51.198Z","version_token":"FfQhQJf9r3VSQIgyWBk1oqhIwiznLwVwJbVVA0bdyEv6o"}}}}
+                created_at: 2022-01-11 00:06:48.322945116 +0000 UTC m=+3863.054453746
+                updated_at: 2022-01-11 00:06:48.322945116 +0000 UTC m=+3863.054453746
+  source:
+    openapi: openapi/openapi.json
