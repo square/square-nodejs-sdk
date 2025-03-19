@@ -58,6 +58,10 @@ export const Invoice: core.serialization.ObjectSchema<serializers.Invoice.Raw, S
             core.serialization.boolean().optionalNullable(),
         ),
         attachments: core.serialization.list(InvoiceAttachment).optional(),
+        creatorTeamMemberId: core.serialization.property(
+            "creator_team_member_id",
+            core.serialization.string().optional(),
+        ),
     });
 
 export declare namespace Invoice {
@@ -86,5 +90,6 @@ export declare namespace Invoice {
         payment_conditions?: (string | null) | null;
         store_payment_method_enabled?: (boolean | null) | null;
         attachments?: InvoiceAttachment.Raw[] | null;
+        creator_team_member_id?: string | null;
     }
 }

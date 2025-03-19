@@ -1,0 +1,787 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/locations
+      method: GET
+      auth: true
+      docs: >-
+        Provides details about all of the seller's
+        [locations](https://developer.squareup.com/docs/locations-api),
+
+        including those with an inactive status. Locations are listed
+        alphabetically by `name`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListLocations
+      response:
+        docs: Success
+        type: root.ListLocationsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              locations:
+                - id: 18YC4JDH91E1H
+                  name: Grant Park
+                  address:
+                    address_line_1: 123 Main St
+                    locality: San Francisco
+                    administrative_district_level_1: CA
+                    postal_code: '94114'
+                    country: US
+                  timezone: America/Los_Angeles
+                  capabilities:
+                    - CREDIT_CARD_PROCESSING
+                  status: ACTIVE
+                  created_at: '2016-09-19T17:33:12Z'
+                  merchant_id: 3MYCJG5GVYQ8Q
+                  country: US
+                  language_code: en-US
+                  currency: USD
+                  phone_number: +1 650-354-7217
+                  business_name: Jet Fuel Coffee
+                  type: PHYSICAL
+                  website_url: website_url
+                  business_email: business_email
+                  description: description
+                  twitter_username: twitter_username
+                  instagram_username: instagram_username
+                  facebook_url: facebook_url
+                  logo_url: logo_url
+                  pos_background_url: pos_background_url
+                  mcc: mcc
+                  full_format_logo_url: full_format_logo_url
+                - id: 3Z4V4WHQK64X9
+                  name: Midtown
+                  address:
+                    address_line_1: 1234 Peachtree St. NE
+                    locality: Atlanta
+                    administrative_district_level_1: GA
+                    postal_code: '30309'
+                  timezone: America/New_York
+                  capabilities:
+                    - CREDIT_CARD_PROCESSING
+                  status: ACTIVE
+                  created_at: '2022-02-19T17:58:25Z'
+                  merchant_id: 3MYCJG5GVYQ8Q
+                  country: US
+                  language_code: en-US
+                  currency: USD
+                  phone_number: phone_number
+                  business_name: Jet Fuel Coffee
+                  type: PHYSICAL
+                  website_url: website_url
+                  business_email: business_email
+                  description: Midtown Atlanta store
+                  twitter_username: twitter_username
+                  instagram_username: instagram_username
+                  facebook_url: facebook_url
+                  coordinates:
+                    latitude: 33.7889
+                    longitude: -84.3841
+                  logo_url: logo_url
+                  pos_background_url: pos_background_url
+                  mcc: '7299'
+                  full_format_logo_url: full_format_logo_url
+    create:
+      path: /v2/locations
+      method: POST
+      auth: true
+      docs: >-
+        Creates a [location](https://developer.squareup.com/docs/locations-api).
+
+        Creating new locations allows for separate configuration of receipt
+        layouts, item prices,
+
+        and sales reports. Developers can use locations to separate sales
+        activity through applications
+
+        that integrate with Square from sales activity elsewhere in a seller's
+        account.
+
+        Locations created programmatically with the Locations API last forever
+        and
+
+        are visible to the seller for their own management. Therefore, ensure
+        that
+
+        each location has a sensible and unique name.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateLocation
+      request:
+        name: CreateLocationRequest
+        body:
+          properties:
+            location:
+              type: optional<root.Location>
+              docs: >-
+                The initial values of the location being created. The `name`
+                field is required and must be unique within a seller account.
+
+                All other fields are optional, but any information you care
+                about for the location should be included.
+
+                The remaining fields are automatically added based on the data
+                from the [main
+                location](https://developer.squareup.com/docs/locations-api#about-the-main-location).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateLocationResponse
+        status-code: 200
+      examples:
+        - request:
+            location:
+              name: Midtown
+              address:
+                address_line_1: 1234 Peachtree St. NE
+                locality: Atlanta
+                administrative_district_level_1: GA
+                postal_code: '30309'
+              description: Midtown Atlanta store
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              location:
+                id: 3Z4V4WHQK64X9
+                name: Midtown
+                address:
+                  address_line_1: 1234 Peachtree St. NE
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: Atlanta
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: GA
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '30309'
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                timezone: America/New_York
+                capabilities:
+                  - CREDIT_CARD_PROCESSING
+                status: ACTIVE
+                created_at: '2022-02-19T17:58:25Z'
+                merchant_id: 3MYCJG5GVYQ8Q
+                country: US
+                language_code: en-US
+                currency: USD
+                phone_number: phone_number
+                business_name: Jet Fuel Coffee
+                type: PHYSICAL
+                website_url: website_url
+                business_hours:
+                  periods:
+                    - {}
+                business_email: business_email
+                description: Midtown Atlanta store
+                twitter_username: twitter_username
+                instagram_username: instagram_username
+                facebook_url: facebook_url
+                coordinates:
+                  latitude: 33.7889
+                  longitude: -84.3841
+                logo_url: logo_url
+                pos_background_url: pos_background_url
+                mcc: '7299'
+                full_format_logo_url: full_format_logo_url
+                tax_ids:
+                  eu_vat: eu_vat
+                  fr_siret: fr_siret
+                  fr_naf: fr_naf
+                  es_nif: es_nif
+                  jp_qii: jp_qii
+    get:
+      path: /v2/locations/{location_id}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves details of a single location. Specify "main"
+
+        as the location ID to retrieve details of the [main
+        location](https://developer.squareup.com/docs/locations-api#about-the-main-location).
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveLocation
+      request:
+        name: GetLocationsRequest
+        path-parameters:
+          location_id:
+            type: string
+            docs: |-
+              The ID of the location to retrieve. Specify the string
+              "main" to return the main location.
+      response:
+        docs: Success
+        type: root.GetLocationResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            location_id: location_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              location:
+                id: 18YC4JDH91E1H
+                name: Grant Park
+                address:
+                  address_line_1: 123 Main St
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: San Francisco
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: CA
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '94114'
+                  country: US
+                  first_name: first_name
+                  last_name: last_name
+                timezone: America/Los_Angeles
+                capabilities:
+                  - CREDIT_CARD_PROCESSING
+                status: ACTIVE
+                created_at: '2016-09-19T17:33:12Z'
+                merchant_id: 3MYCJG5GVYQ8Q
+                country: US
+                language_code: en-US
+                currency: USD
+                phone_number: +1 650-354-7217
+                business_name: Jet Fuel Coffee
+                type: PHYSICAL
+                website_url: website_url
+                business_hours:
+                  periods:
+                    - {}
+                business_email: business_email
+                description: description
+                twitter_username: twitter_username
+                instagram_username: instagram_username
+                facebook_url: facebook_url
+                coordinates:
+                  latitude: 1.1
+                  longitude: 1.1
+                logo_url: logo_url
+                pos_background_url: pos_background_url
+                mcc: mcc
+                full_format_logo_url: full_format_logo_url
+                tax_ids:
+                  eu_vat: eu_vat
+                  fr_siret: fr_siret
+                  fr_naf: fr_naf
+                  es_nif: es_nif
+                  jp_qii: jp_qii
+    update:
+      path: /v2/locations/{location_id}
+      method: PUT
+      auth: true
+      docs: Updates a [location](https://developer.squareup.com/docs/locations-api).
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateLocation
+      request:
+        name: UpdateLocationRequest
+        path-parameters:
+          location_id:
+            type: string
+            docs: The ID of the location to update.
+        body:
+          properties:
+            location:
+              type: optional<root.Location>
+              docs: The `Location` object with only the fields to update.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateLocationResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            location_id: location_id
+          request:
+            location:
+              business_hours:
+                periods:
+                  - day_of_week: FRI
+                    start_local_time: '07:00'
+                    end_local_time: '18:00'
+                  - day_of_week: SAT
+                    start_local_time: '07:00'
+                    end_local_time: '18:00'
+                  - day_of_week: SUN
+                    start_local_time: '09:00'
+                    end_local_time: '15:00'
+              description: Midtown Atlanta store - Open weekends
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              location:
+                id: 3Z4V4WHQK64X9
+                name: Midtown
+                address:
+                  address_line_1: 1234 Peachtree St. NE
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: Atlanta
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: GA
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '30309'
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+                timezone: America/New_York
+                capabilities:
+                  - CREDIT_CARD_PROCESSING
+                status: ACTIVE
+                created_at: '2022-02-19T17:58:25Z'
+                merchant_id: 3MYCJG5GVYQ8Q
+                country: US
+                language_code: en-US
+                currency: USD
+                phone_number: phone_number
+                business_name: Jet Fuel Coffee
+                type: PHYSICAL
+                website_url: website_url
+                business_hours:
+                  periods:
+                    - day_of_week: FRI
+                      start_local_time: '07:00'
+                      end_local_time: '18:00'
+                    - day_of_week: SAT
+                      start_local_time: '07:00'
+                      end_local_time: '18:00'
+                    - day_of_week: SUN
+                      start_local_time: '09:00'
+                      end_local_time: '15:00'
+                business_email: business_email
+                description: Midtown Atlanta store - Open weekends
+                twitter_username: twitter_username
+                instagram_username: instagram_username
+                facebook_url: facebook_url
+                coordinates:
+                  latitude: 33.7889
+                  longitude: -84.3841
+                logo_url: logo_url
+                pos_background_url: pos_background_url
+                mcc: '7299'
+                full_format_logo_url: full_format_logo_url
+                tax_ids:
+                  eu_vat: eu_vat
+                  fr_siret: fr_siret
+                  fr_naf: fr_naf
+                  es_nif: es_nif
+                  jp_qii: jp_qii
+    checkouts:
+      path: /v2/locations/{location_id}/checkouts
+      method: POST
+      auth: true
+      docs: >-
+        Links a `checkoutId` to a `checkout_page_url` that customers are
+
+        directed to in order to provide their payment information using a
+
+        payment processing workflow hosted on connect.squareup.com. 
+
+
+
+        NOTE: The Checkout API has been updated with new features. 
+
+        For more information, see [Checkout API
+        highlights](https://developer.squareup.com/docs/checkout-api#checkout-api-highlights).
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateCheckout
+      request:
+        name: CreateCheckoutRequest
+        path-parameters:
+          location_id:
+            type: string
+            docs: The ID of the business location to associate the checkout with.
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this checkout among others you
+                have created. It can be
+
+                any valid string but must be unique for every order sent to
+                Square Checkout for a given location ID.
+
+
+                The idempotency key is used to avoid processing the same order
+                more than once. If you are 
+
+                unsure whether a particular checkout was created successfully,
+                you can attempt it again with
+
+                the same idempotency key and all the same other parameters
+                without worrying about creating duplicates.
+
+
+                You should use a random number/string generator native to the
+                language
+
+                you are working in to generate strings for your idempotency
+                keys.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
+              validation:
+                minLength: 1
+                maxLength: 192
+            order:
+              type: root.CreateOrderRequest
+              docs: The order including line items to be checked out.
+            ask_for_shipping_address:
+              type: optional<boolean>
+              docs: >-
+                If `true`, Square Checkout collects shipping information on your
+                behalf and stores 
+
+                that information with the transaction information in the Square
+                Seller Dashboard.
+
+
+                Default: `false`.
+            merchant_support_email:
+              type: optional<string>
+              docs: >-
+                The email address to display on the Square Checkout confirmation
+                page
+
+                and confirmation email that the buyer can use to contact the
+                seller.
+
+
+                If this value is not set, the confirmation page and email
+                display the
+
+                primary email address associated with the seller's Square
+                account.
+
+
+                Default: none; only exists if explicitly set.
+              validation:
+                maxLength: 254
+            pre_populate_buyer_email:
+              type: optional<string>
+              docs: >-
+                If provided, the buyer's email is prepopulated on the checkout
+                page
+
+                as an editable text field.
+
+
+                Default: none; only exists if explicitly set.
+              validation:
+                maxLength: 254
+            pre_populate_shipping_address:
+              type: optional<root.Address>
+              docs: >-
+                If provided, the buyer's shipping information is prepopulated on
+                the
+
+                checkout page as editable text fields.
+
+
+                Default: none; only exists if explicitly set.
+            redirect_url:
+              type: optional<string>
+              docs: >-
+                The URL to redirect to after the checkout is completed with
+                `checkoutId`,
+
+                `transactionId`, and `referenceId` appended as URL parameters.
+                For example,
+
+                if the provided redirect URL is
+                `http://www.example.com/order-complete`, a
+
+                successful transaction redirects the customer to:
+
+
+                `http://www.example.com/order-complete?checkoutId=xxxxxx&amp;referenceId=xxxxxx&amp;transactionId=xxxxxx`
+
+
+                If you do not provide a redirect URL, Square Checkout displays
+                an order
+
+                confirmation page on your behalf; however, it is strongly
+                recommended that
+
+                you provide a redirect URL so you can verify the transaction
+                results and
+
+                finalize the order through your existing/normal confirmation
+                workflow.
+
+
+                Default: none; only exists if explicitly set.
+              validation:
+                maxLength: 800
+            additional_recipients:
+              type: optional<list<root.ChargeRequestAdditionalRecipient>>
+              docs: >-
+                The basic primitive of a multi-party transaction. The value is
+                optional.
+
+                The transaction facilitated by you can be split from here.
+
+
+                If you provide this value, the `amount_money` value in your
+                `additional_recipients` field
+
+                cannot be more than 90% of the `total_money` calculated by
+                Square for your order.
+
+                The `location_id` must be a valid seller location where the
+                checkout is occurring.
+
+
+                This field requires `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth
+                permission.
+
+
+                This field is currently not supported in the Square Sandbox.
+            note:
+              type: optional<string>
+              docs: |-
+                An optional note to associate with the `checkout` object.
+
+                This value cannot exceed 60 characters.
+              validation:
+                maxLength: 60
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateCheckoutResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - path-parameters:
+            location_id: location_id
+          request:
+            idempotency_key: 86ae1696-b1e3-4328-af6d-f1e04d947ad6
+            order:
+              order:
+                location_id: location_id
+                reference_id: reference_id
+                customer_id: customer_id
+                line_items:
+                  - name: Printed T Shirt
+                    quantity: '2'
+                    applied_taxes:
+                      - tax_uid: 38ze1696-z1e3-5628-af6d-f1e04d947fg3
+                    applied_discounts:
+                      - discount_uid: 56ae1696-z1e3-9328-af6d-f1e04d947gd4
+                    base_price_money:
+                      amount: 1500
+                      currency: USD
+                  - name: Slim Jeans
+                    quantity: '1'
+                    base_price_money:
+                      amount: 2500
+                      currency: USD
+                  - name: Woven Sweater
+                    quantity: '3'
+                    base_price_money:
+                      amount: 3500
+                      currency: USD
+                taxes:
+                  - uid: 38ze1696-z1e3-5628-af6d-f1e04d947fg3
+                    type: INCLUSIVE
+                    percentage: '7.75'
+                    scope: LINE_ITEM
+                discounts:
+                  - uid: 56ae1696-z1e3-9328-af6d-f1e04d947gd4
+                    type: FIXED_AMOUNT
+                    amount_money:
+                      amount: 100
+                      currency: USD
+                    scope: LINE_ITEM
+              idempotency_key: 12ae1696-z1e3-4328-af6d-f1e04d947gd4
+            ask_for_shipping_address: true
+            merchant_support_email: merchant+support@website.com
+            pre_populate_buyer_email: example@email.com
+            pre_populate_shipping_address:
+              address_line_1: 1455 Market St.
+              address_line_2: Suite 600
+              locality: San Francisco
+              administrative_district_level_1: CA
+              postal_code: '94103'
+              country: US
+              first_name: Jane
+              last_name: Doe
+            redirect_url: https://merchant.website.com/order-confirm
+            additional_recipients:
+              - location_id: 057P5VYJ4A5X1
+                description: Application fees
+                amount_money:
+                  amount: 60
+                  currency: USD
+          response:
+            body:
+              checkout:
+                id: CAISEHGimXh-C3RIT4og1a6u1qw
+                checkout_page_url: >-
+                  https://connect.squareup.com/v2/checkout?c=CAISEHGimXh-C3RIT4og1a6u1qw&l=CYTKRM7R7JMV8
+                ask_for_shipping_address: true
+                merchant_support_email: merchant+support@website.com
+                pre_populate_buyer_email: example@email.com
+                pre_populate_shipping_address:
+                  address_line_1: 1455 Market St.
+                  address_line_2: Suite 600
+                  address_line_3: address_line_3
+                  locality: San Francisco
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: CA
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '94103'
+                  country: US
+                  first_name: Jane
+                  last_name: Doe
+                redirect_url: https://merchant.website.com/order-confirm
+                order:
+                  id: id
+                  location_id: location_id
+                  reference_id: reference_id
+                  customer_id: customer_id
+                  line_items:
+                    - name: Printed T Shirt
+                      quantity: '2'
+                      applied_taxes:
+                        - tax_uid: 38ze1696-z1e3-5628-af6d-f1e04d947fg3
+                          applied_money:
+                            amount: 103
+                            currency: USD
+                      applied_discounts:
+                        - discount_uid: 56ae1696-z1e3-9328-af6d-f1e04d947gd4
+                          applied_money:
+                            amount: 100
+                            currency: USD
+                      base_price_money:
+                        amount: 1500
+                        currency: USD
+                      total_tax_money:
+                        amount: 103
+                        currency: USD
+                      total_discount_money:
+                        amount: 100
+                        currency: USD
+                      total_money:
+                        amount: 1503
+                        currency: USD
+                    - name: Slim Jeans
+                      quantity: '1'
+                      base_price_money:
+                        amount: 2500
+                        currency: USD
+                      total_money:
+                        amount: 2500
+                        currency: USD
+                    - name: Woven Sweater
+                      quantity: '3'
+                      base_price_money:
+                        amount: 3500
+                        currency: USD
+                      total_money:
+                        amount: 10500
+                        currency: USD
+                  taxes:
+                    - uid: 38ze1696-z1e3-5628-af6d-f1e04d947fg3
+                      type: INCLUSIVE
+                      percentage: '7.75'
+                      scope: LINE_ITEM
+                  discounts:
+                    - uid: 56ae1696-z1e3-9328-af6d-f1e04d947gd4
+                      type: FIXED_AMOUNT
+                      amount_money:
+                        amount: 100
+                        currency: USD
+                      applied_money:
+                        amount: 100
+                        currency: USD
+                      scope: LINE_ITEM
+                  service_charges:
+                    - {}
+                  fulfillments:
+                    - {}
+                  returns:
+                    - {}
+                  tenders:
+                    - type: CARD
+                  refunds:
+                    - id: id
+                      location_id: location_id
+                      tender_id: tender_id
+                      reason: reason
+                      amount_money: {}
+                      status: PENDING
+                  created_at: created_at
+                  updated_at: updated_at
+                  closed_at: closed_at
+                  state: OPEN
+                  version: 1
+                  total_money:
+                    amount: 14503
+                    currency: USD
+                  total_tax_money:
+                    amount: 103
+                    currency: USD
+                  total_discount_money:
+                    amount: 100
+                    currency: USD
+                  ticket_name: ticket_name
+                  rewards:
+                    - id: id
+                      reward_tier_id: reward_tier_id
+                created_at: '2017-06-16T22:25:35Z'
+                additional_recipients:
+                  - location_id: 057P5VYJ4A5X1
+                    description: Application fees
+                    amount_money:
+                      amount: 60
+                      currency: USD
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

@@ -1,0 +1,19 @@
+name: api
+error-discrimination:
+  strategy: status-code
+display-name: Square
+environments:
+  Production: https://connect.squareup.com
+  Sandbox: https://connect.squareupsandbox.com
+default-environment: Production
+headers:
+  Square-Version:
+    name: version
+    env: VERSION
+    type: literal<"2025-03-19">
+auth-schemes:
+  Bearer:
+    scheme: bearer
+    token:
+      env: SQUARE_TOKEN
+auth: Bearer

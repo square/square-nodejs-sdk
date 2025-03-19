@@ -1,0 +1,194 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/devices/codes
+      method: GET
+      auth: true
+      docs: Lists all DeviceCodes associated with the merchant.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.device_codes
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListDeviceCodes
+      request:
+        name: ListCodesRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this to retrieve the next set of results for your original
+              query.
+
+
+              See [Paginating
+              results](https://developer.squareup.com/docs/working-with-apis/pagination)
+              for more information.
+          location_id:
+            type: optional<nullable<string>>
+            docs: |-
+              If specified, only returns DeviceCodes of the specified location.
+              Returns DeviceCodes of all locations if empty.
+          product_type:
+            type: optional<nullable<root.ProductType>>
+            docs: >-
+              If specified, only returns DeviceCodes targeting the specified
+              product type.
+
+              Returns DeviceCodes of all product types if empty.
+          status:
+            type: optional<nullable<root.DeviceCodeStatus>>
+            docs: |-
+              If specified, returns DeviceCodes with the specified statuses.
+              Returns DeviceCodes of status `PAIRED` and `UNPAIRED` if empty.
+      response:
+        docs: Success
+        type: root.ListDeviceCodesResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              device_codes:
+                - id: B3Z6NAMYQSMTM
+                  name: Counter 1
+                  code: EBCARJ
+                  device_id: 907CS13101300122
+                  product_type: TERMINAL_API
+                  location_id: B5E4484SHHNYH
+                  status: PAIRED
+                  pair_by: '2020-02-06T18:49:33.000Z'
+                  created_at: '2020-02-06T18:44:33.000Z'
+                  status_changed_at: '2020-02-06T18:47:28.000Z'
+                  paired_at: paired_at
+                - id: YKGMJMYK8H4PQ
+                  name: Unused device code
+                  code: GVXNYN
+                  device_id: device_id
+                  product_type: TERMINAL_API
+                  location_id: A6SYFRSV4WAFW
+                  status: UNPAIRED
+                  pair_by: '2020-02-07T20:00:04.000Z'
+                  created_at: '2020-02-07T19:55:04.000Z'
+                  status_changed_at: '2020-02-07T19:55:04.000Z'
+                  paired_at: paired_at
+              cursor: cursor
+    create:
+      path: /v2/devices/codes
+      method: POST
+      auth: true
+      docs: >-
+        Creates a DeviceCode that can be used to login to a Square Terminal
+        device to enter the connected
+
+        terminal mode.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateDeviceCode
+      request:
+        name: CreateDeviceCodeRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this CreateDeviceCode request.
+                Keys can
+
+                be any valid string but must be unique for every
+                CreateDeviceCode request.
+
+
+                See [Idempotency
+                keys](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)
+                for more information.
+              validation:
+                minLength: 1
+                maxLength: 128
+            device_code:
+              type: root.DeviceCode
+              docs: The device code to create.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateDeviceCodeResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: 01bb00a6-0c86-4770-94ed-f5fca973cd56
+            device_code:
+              name: Counter 1
+              product_type: TERMINAL_API
+              location_id: B5E4484SHHNYH
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              device_code:
+                id: B3Z6NAMYQSMTM
+                name: Counter 1
+                code: EBCARJ
+                device_id: device_id
+                product_type: TERMINAL_API
+                location_id: B5E4484SHHNYH
+                status: UNPAIRED
+                pair_by: '2020-02-06T18:49:33.000Z'
+                created_at: '2020-02-06T18:44:33.000Z'
+                status_changed_at: '2020-02-06T18:44:33.000Z'
+                paired_at: paired_at
+    get:
+      path: /v2/devices/codes/{id}
+      method: GET
+      auth: true
+      docs: Retrieves DeviceCode with the associated ID.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetDeviceCode
+      request:
+        name: GetCodesRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The unique identifier for the device code.
+      response:
+        docs: Success
+        type: root.GetDeviceCodeResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              device_code:
+                id: B3Z6NAMYQSMTM
+                name: Counter 1
+                code: EBCARJ
+                device_id: 907CS13101300122
+                product_type: TERMINAL_API
+                location_id: B5E4484SHHNYH
+                status: PAIRED
+                pair_by: '2020-02-06T18:49:33.000Z'
+                created_at: '2020-02-06T18:44:33.000Z'
+                status_changed_at: '2020-02-06T18:47:28.000Z'
+                paired_at: paired_at
+  source:
+    openapi: openapi/openapi.json

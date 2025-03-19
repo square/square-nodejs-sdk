@@ -1,0 +1,199 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/devices
+      method: GET
+      auth: true
+      docs: |-
+        List devices associated with the merchant. Currently, only Terminal API
+        devices are supported.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.devices
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListDevices
+      request:
+        name: ListDevicesRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for the
+              original query.
+
+              See
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination)
+              for more information.
+          sort_order:
+            type: optional<nullable<root.SortOrder>>
+            docs: |-
+              The order in which results are listed.
+              - `ASC` - Oldest to newest.
+              - `DESC` - Newest to oldest (default).
+          limit:
+            type: optional<nullable<integer>>
+            docs: The number of results to return in a single page.
+          location_id:
+            type: optional<nullable<string>>
+            docs: If present, only returns devices at the target location.
+      response:
+        docs: Success
+        type: root.ListDevicesResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              devices:
+                - id: device:995CS397A6475287
+                  attributes:
+                    type: TERMINAL
+                    manufacturer: Square
+                    model: T2
+                    name: Square Terminal 995
+                    manufacturers_id: 995CS397A6475287
+                    updated_at: '2023-09-29T13:04:56.335762883Z'
+                    version: 5.41.0085
+                    merchant_token: MLCHNZCBWFDZB
+                  components:
+                    - type: APPLICATION
+                      application_details:
+                        application_type: TERMINAL_API
+                        version: '6.25'
+                        session_location: LMN2K7S3RTOU3
+                    - type: CARD_READER
+                      card_reader_details:
+                        version: 3.53.70
+                    - type: BATTERY
+                      battery_details:
+                        visible_percent: 5
+                        external_power: AVAILABLE_CHARGING
+                    - type: WIFI
+                      wifi_details:
+                        active: true
+                        ssid: Staff Network
+                        ip_address_v4: 10.0.0.7
+                        secure_connection: WPA/WPA2 PSK
+                        signal_strength:
+                          value: 2
+                    - type: ETHERNET
+                      ethernet_details:
+                        active: false
+                  status:
+                    category: AVAILABLE
+                - id: device:995CS234B5493559
+                  attributes:
+                    type: TERMINAL
+                    manufacturer: Square
+                    model: T2
+                    name: Square Terminal 995
+                    manufacturers_id: 995CS234B5493559
+                    updated_at: '2023-09-29T12:39:56.335742073Z'
+                    version: 5.41.0085
+                    merchant_token: MLCHXZCBWFGDW
+                  components:
+                    - type: APPLICATION
+                      application_details:
+                        application_type: TERMINAL_API
+                        version: '6.25'
+                        session_location: LMN2K7S3RTOU3
+                    - type: CARD_READER
+                      card_reader_details:
+                        version: 3.53.70
+                    - type: BATTERY
+                      battery_details:
+                        visible_percent: 24
+                        external_power: AVAILABLE_CHARGING
+                    - type: WIFI
+                      wifi_details:
+                        active: true
+                        ssid: Staff Network
+                        ip_address_v4: 10.0.0.7
+                        secure_connection: WPA/WPA2 PSK
+                        signal_strength:
+                          value: 2
+                    - type: ETHERNET
+                      ethernet_details:
+                        active: false
+                  status:
+                    category: NEEDS_ATTENTION
+              cursor: GcXjlV2iaizH7R0fMT6wUDbw6l4otigjzx8XOOspUKHo9EPLRByM
+    get:
+      path: /v2/devices/{device_id}
+      method: GET
+      auth: true
+      docs: Retrieves Device with the associated `device_id`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetDevice
+      request:
+        name: GetDevicesRequest
+        path-parameters:
+          device_id:
+            type: string
+            docs: The unique ID for the desired `Device`.
+      response:
+        docs: Success
+        type: root.GetDeviceResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            device_id: device_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              device:
+                id: device:995CS397A6475287
+                attributes:
+                  type: TERMINAL
+                  manufacturer: Square
+                  model: T2
+                  name: Square Terminal 995
+                  manufacturers_id: 995CS397A6475287
+                  updated_at: '2023-09-29T13:12:22.365049321Z'
+                  version: 5.41.0085
+                  merchant_token: MLCHXZCBWFGDW
+                components:
+                  - type: APPLICATION
+                    application_details:
+                      application_type: TERMINAL_API
+                      version: '6.25'
+                      session_location: LMN2K7S3RTOU3
+                  - type: CARD_READER
+                    card_reader_details:
+                      version: 3.53.70
+                  - type: BATTERY
+                    battery_details:
+                      visible_percent: 5
+                      external_power: AVAILABLE_CHARGING
+                  - type: WIFI
+                    wifi_details:
+                      active: true
+                      ssid: Staff Network
+                      ip_address_v4: 10.0.0.7
+                      secure_connection: WPA/WPA2 PSK
+                      signal_strength:
+                        value: 2
+                  - type: ETHERNET
+                    ethernet_details:
+                      active: false
+                status:
+                  category: AVAILABLE
+  source:
+    openapi: openapi/openapi.json

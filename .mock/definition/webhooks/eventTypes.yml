@@ -1,0 +1,42 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/webhooks/event-types
+      method: GET
+      auth: true
+      docs: Lists all webhook event types that can be subscribed to.
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListWebhookEventTypes
+      request:
+        name: ListEventTypesRequest
+        query-parameters:
+          api_version:
+            type: optional<nullable<string>>
+            docs: >-
+              The API version for which to list event types. Setting this field
+              overrides the default version used by the application.
+      response:
+        docs: Success
+        type: root.ListWebhookEventTypesResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              event_types:
+                - inventory.count.updated
+              metadata:
+                - event_type: inventory.count.updated
+                  api_version_introduced: '2018-07-12'
+                  release_status: PUBLIC
+  source:
+    openapi: openapi/openapi.json

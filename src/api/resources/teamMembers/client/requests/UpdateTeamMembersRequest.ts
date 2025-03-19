@@ -19,6 +19,25 @@ import * as Square from "../../../../index";
  *                 assignedLocations: {
  *                     assignmentType: "EXPLICIT_LOCATIONS",
  *                     locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"]
+ *                 },
+ *                 wageSetting: {
+ *                     jobAssignments: [{
+ *                             payType: "SALARY",
+ *                             annualRate: {
+ *                                 amount: 3000000,
+ *                                 currency: "USD"
+ *                             },
+ *                             weeklyHours: 40,
+ *                             jobId: "FjS8x95cqHiMenw4f1NAUH4P"
+ *                         }, {
+ *                             payType: "HOURLY",
+ *                             hourlyRate: {
+ *                                 amount: 1200,
+ *                                 currency: "USD"
+ *                             },
+ *                             jobId: "VDNpRv8da51NU8qZFC5zDWpF"
+ *                         }],
+ *                     isOvertimeExempt: true
  *                 }
  *             }
  *         }

@@ -1,0 +1,253 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/terminals/refunds
+      method: POST
+      auth: true
+      docs: >-
+        Creates a request to refund an Interac payment completed on a Square
+        Terminal. Refunds for Interac payments on a Square Terminal are
+        supported only for Interac debit cards in Canada. Other refunds for
+        Terminal payments should use the Refunds API. For more information, see
+        [Refunds API](api:Refunds).
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateTerminalRefund
+      request:
+        name: CreateTerminalRefundRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this `CreateRefund` request.
+                Keys can be any valid string but
+
+                must be unique for every `CreateRefund` request.
+
+
+                See [Idempotency
+                keys](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)
+                for more information.
+              validation:
+                minLength: 1
+                maxLength: 64
+            refund:
+              type: optional<root.TerminalRefund>
+              docs: The refund to create.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateTerminalRefundResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: 402a640b-b26f-401f-b406-46f839590c04
+            refund:
+              payment_id: 5O5OvgkcNUhl7JBuINflcjKqUzXZY
+              amount_money:
+                amount: 111
+                currency: CAD
+              reason: Returning items
+              device_id: f72dfb8e-4d65-4e56-aade-ec3fb8d33291
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              refund:
+                id: 009DP5HD-5O5OvgkcNUhl7JBuINflcjKqUzXZY
+                refund_id: refund_id
+                payment_id: 5O5OvgkcNUhl7JBuINflcjKqUzXZY
+                order_id: kcuKDKreRaI4gF4TjmEgZjHk8Z7YY
+                amount_money:
+                  amount: 111
+                  currency: CAD
+                reason: Returning items
+                device_id: f72dfb8e-4d65-4e56-aade-ec3fb8d33291
+                deadline_duration: PT5M
+                status: PENDING
+                cancel_reason: BUYER_CANCELED
+                created_at: '2020-09-29T15:21:46.771Z'
+                updated_at: '2020-09-29T15:21:46.771Z'
+                app_id: sandbox-sq0idb-c2OuYt13YaCAeJq_2cd8OQ
+                location_id: 76C9W6K8CNNQ5
+    search:
+      path: /v2/terminals/refunds/search
+      method: POST
+      auth: true
+      docs: >-
+        Retrieves a filtered list of Interac Terminal refund requests created by
+        the seller making the request. Terminal refund requests are available
+        for 30 days.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchTerminalRefunds
+      request:
+        name: SearchTerminalRefundsRequest
+        body:
+          properties:
+            query:
+              type: optional<root.TerminalRefundQuery>
+              docs: >-
+                Queries the Terminal refunds based on given conditions and the
+                sort order. Calling
+
+                `SearchTerminalRefunds` without an explicit query parameter
+                returns all available
+
+                refunds with the default sort order.
+            cursor:
+              type: optional<string>
+              docs: >-
+                A pagination cursor returned by a previous call to this
+                endpoint.
+
+                Provide this cursor to retrieve the next set of results for the
+                original query.
+            limit:
+              type: optional<integer>
+              docs: Limits the number of results returned for a single request.
+              validation:
+                min: 1
+                max: 100
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchTerminalRefundsResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                status: COMPLETED
+            limit: 1
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              refunds:
+                - id: 009DP5HD-5O5OvgkcNUhl7JBuINflcjKqUzXZY
+                  refund_id: >-
+                    5O5OvgkcNUhl7JBuINflcjKqUzXZY_43Q4iGp7sNeATiWrUruA1EYeMRUXaddXXlDDJ1EQLvb
+                  payment_id: 5O5OvgkcNUhl7JBuINflcjKqUzXZY
+                  order_id: kcuKDKreRaI4gF4TjmEgZjHk8Z7YY
+                  amount_money:
+                    amount: 111
+                    currency: CAD
+                  reason: Returning item
+                  device_id: f72dfb8e-4d65-4e56-aade-ec3fb8d33291
+                  deadline_duration: PT5M
+                  status: COMPLETED
+                  cancel_reason: BUYER_CANCELED
+                  created_at: '2020-09-29T15:21:46.771Z'
+                  updated_at: '2020-09-29T15:21:48.675Z'
+                  app_id: sandbox-sq0idb-c2OuYt13YaCAeJq_2cd8OQ
+                  location_id: 76C9W6K8CNNQ5
+              cursor: cursor
+    get:
+      path: /v2/terminals/refunds/{terminal_refund_id}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves an Interac Terminal refund object by ID. Terminal refund
+        objects are available for 30 days.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetTerminalRefund
+      request:
+        name: GetRefundsRequest
+        path-parameters:
+          terminal_refund_id:
+            type: string
+            docs: The unique ID for the desired `TerminalRefund`.
+      response:
+        docs: Success
+        type: root.GetTerminalRefundResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            terminal_refund_id: terminal_refund_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              refund:
+                id: 009DP5HD-5O5OvgkcNUhl7JBuINflcjKqUzXZY
+                refund_id: >-
+                  5O5OvgkcNUhl7JBuINflcjKqUzXZY_43Q4iGp7sNeATiWrUruA1EYeMRUXaddXXlDDJ1EQLvb
+                payment_id: 5O5OvgkcNUhl7JBuINflcjKqUzXZY
+                order_id: kcuKDKreRaI4gF4TjmEgZjHk8Z7YY
+                amount_money:
+                  amount: 111
+                  currency: CAD
+                reason: Returning item
+                device_id: f72dfb8e-4d65-4e56-aade-ec3fb8d33291
+                deadline_duration: PT5M
+                status: COMPLETED
+                cancel_reason: BUYER_CANCELED
+                created_at: '2020-09-29T15:21:46.771Z'
+                updated_at: '2020-09-29T15:21:48.675Z'
+                app_id: sandbox-sq0idb-c2OuYt13YaCAeJq_2cd8OQ
+                location_id: 76C9W6K8CNNQ5
+    cancel:
+      path: /v2/terminals/refunds/{terminal_refund_id}/cancel
+      method: POST
+      auth: true
+      docs: >-
+        Cancels an Interac Terminal refund request by refund request ID if the
+        status of the request permits it.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CancelTerminalRefund
+      request:
+        name: CancelRefundsRequest
+        path-parameters:
+          terminal_refund_id:
+            type: string
+            docs: The unique ID for the desired `TerminalRefund`.
+      response:
+        docs: Success
+        type: root.CancelTerminalRefundResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            terminal_refund_id: terminal_refund_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              refund:
+                id: g6ycb6HD-5O5OvgkcNUhl7JBuINflcjKqUzXZY
+                refund_id: refund_id
+                payment_id: 5O5OvgkcNUhl7JBuINflcjKqUzXZY
+                order_id: kcuKDKreRaI4gF4TjmEgZjHk8Z7YY
+                amount_money:
+                  amount: 100
+                  currency: CAD
+                reason: reason
+                device_id: 42690809-faa2-4701-a24b-19d3d34c9aaa
+                deadline_duration: PT5M
+                status: CANCELED
+                cancel_reason: SELLER_CANCELED
+                created_at: '2020-10-21T22:47:23.241Z'
+                updated_at: '2020-10-21T22:47:30.096Z'
+                app_id: sandbox-sq0idb-c2OuYt13YaCAeJq_2cd8OQ
+                location_id: 76C9W6K8CNNQ5
+  source:
+    openapi: openapi/openapi.json

@@ -1,0 +1,1215 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/subscriptions
+      method: POST
+      auth: true
+      docs: >-
+        Enrolls a customer in a subscription.
+
+
+        If you provide a card on file in the request, Square charges the card
+        for
+
+        the subscription. Otherwise, Square sends an invoice to the customer's
+        email
+
+        address. The subscription starts immediately, unless the request
+        includes
+
+        the optional `start_date`. Each individual subscription is associated
+        with a particular location.
+
+
+        For more information, see [Create a
+        subscription](https://developer.squareup.com/docs/subscriptions-api/manage-subscriptions#create-a-subscription).
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateSubscription
+      request:
+        name: CreateSubscriptionRequest
+        body:
+          properties:
+            idempotency_key:
+              type: optional<string>
+              docs: >-
+                A unique string that identifies this `CreateSubscription`
+                request.
+
+                If you do not provide a unique string (or provide an empty
+                string as the value),
+
+                the endpoint treats each request as independent.
+
+
+                For more information, see [Idempotency
+                keys](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+            location_id:
+              type: string
+              docs: The ID of the location the subscription is associated with.
+              validation:
+                minLength: 1
+            plan_variation_id:
+              type: optional<string>
+              docs: >-
+                The ID of the [subscription plan
+                variation](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations#plan-variations)
+                created using the Catalog API.
+            customer_id:
+              type: string
+              docs: >-
+                The ID of the [customer](entity:Customer) subscribing to the
+                subscription plan variation.
+              validation:
+                minLength: 1
+            start_date:
+              type: optional<string>
+              docs: |-
+                The `YYYY-MM-DD`-formatted date to start the subscription. 
+                If it is unspecified, the subscription starts immediately.
+            canceled_date:
+              type: optional<string>
+              docs: >-
+                The `YYYY-MM-DD`-formatted date when the newly created
+                subscription is scheduled for cancellation. 
+
+
+                This date overrides the cancellation date set in the plan
+                variation configuration.
+
+                If the cancellation date is earlier than the end date of a
+                subscription cycle, the subscription stops
+
+                at the canceled date and the subscriber is sent a prorated
+                invoice at the beginning of the canceled cycle. 
+
+
+                When the subscription plan of the newly created subscription has
+                a fixed number of cycles and the `canceled_date`
+
+                occurs before the subscription plan expires, the specified
+                `canceled_date` sets the date when the subscription 
+
+                stops through the end of the last cycle.
+            tax_percentage:
+              type: optional<string>
+              docs: >-
+                The tax to add when billing the subscription.
+
+                The percentage is expressed in decimal form, using a `'.'` as
+                the decimal
+
+                separator and without a `'%'` sign. For example, a value of 7.5
+
+                corresponds to 7.5%.
+              validation:
+                maxLength: 10
+            price_override_money:
+              type: optional<root.Money>
+              docs: >-
+                A custom price which overrides the cost of a subscription plan
+                variation with `STATIC` pricing.
+
+                This field does not affect itemized subscriptions with
+                `RELATIVE` pricing. Instead, 
+
+                you should edit the Subscription's [order
+                template](https://developer.squareup.com/docs/subscriptions-api/manage-subscriptions#phases-and-order-templates).
+            card_id:
+              type: optional<string>
+              docs: >-
+                The ID of the [subscriber's](entity:Customer)
+                [card](entity:Card) to charge.
+
+                If it is not specified, the subscriber receives an invoice via
+                email with a link to pay for their subscription.
+            timezone:
+              type: optional<string>
+              docs: >-
+                The timezone that is used in date calculations for the
+                subscription. If unset, defaults to
+
+                the location timezone. If a timezone is not configured for the
+                location, defaults to "America/New_York".
+
+                Format: the IANA Timezone Database identifier for the location
+                timezone. For
+
+                a list of time zones, see [List of tz database time
+                zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+            source:
+              type: optional<root.SubscriptionSource>
+              docs: The origination details of the subscription.
+            monthly_billing_anchor_date:
+              type: optional<integer>
+              docs: The day-of-the-month to change the billing date to.
+              validation:
+                min: 1
+                max: 31
+            phases:
+              type: optional<list<root.Phase>>
+              docs: array of phases for this subscription
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateSubscriptionResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: 8193148c-9586-11e6-99f9-28cfe92138cf
+            location_id: S8GWD5R9QB376
+            plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+            customer_id: CHFGVKYY8RSV93M5KCYTG4PN0G
+            start_date: '2023-06-20'
+            card_id: ccof:qy5x8hHGYsgLrp4Q4GB
+            timezone: America/Los_Angeles
+            source:
+              name: My Application
+            phases:
+              - ordinal: 0
+                order_template_id: U2NaowWxzXwpsZU697x7ZHOAnCNZY
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: 56214fb2-cc85-47a1-93bc-44f3766bb56f
+                location_id: S8GWD5R9QB376
+                plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                customer_id: CHFGVKYY8RSV93M5KCYTG4PN0G
+                start_date: '2023-06-20'
+                canceled_date: canceled_date
+                charged_through_date: charged_through_date
+                status: ACTIVE
+                tax_percentage: tax_percentage
+                invoice_ids:
+                  - invoice_ids
+                price_override_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                version: 1
+                created_at: '2023-06-20T21:53:10Z'
+                card_id: ccof:qy5x8hHGYsgLrp4Q4GB
+                timezone: America/Los_Angeles
+                source:
+                  name: My Application
+                actions:
+                  - {}
+                monthly_billing_anchor_date: 1
+                phases:
+                  - uid: 873451e0-745b-4e87-ab0b-c574933fe616
+                    ordinal: 0
+                    order_template_id: U2NaowWxzXwpsZU697x7ZHOAnCNZY
+                    plan_phase_uid: X2Q2AONPB3RB64Y27S25QCZP
+    BulkSwapPlan:
+      path: /v2/subscriptions/bulk-swap-plan
+      method: POST
+      auth: true
+      docs: >-
+        Schedules a plan variation change for all active subscriptions under a
+        given plan
+
+        variation. For more information, see [Swap Subscription Plan
+        Variations](https://developer.squareup.com/docs/subscriptions-api/swap-plan-variations).
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkSwapPlan
+      request:
+        name: BulkSwapPlanRequest
+        body:
+          properties:
+            new_plan_variation_id:
+              type: string
+              docs: |-
+                The ID of the new subscription plan variation.
+
+                This field is required.
+              validation:
+                minLength: 1
+            old_plan_variation_id:
+              type: string
+              docs: >-
+                The ID of the plan variation whose subscriptions should be
+                swapped. Active subscriptions
+
+                using this plan variation will be subscribed to the new plan
+                variation on their next billing
+
+                day.
+              validation:
+                minLength: 1
+            location_id:
+              type: string
+              docs: >-
+                The ID of the location to associate with the swapped
+                subscriptions.
+              validation:
+                minLength: 1
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkSwapPlanResponse
+        status-code: 200
+      examples:
+        - request:
+            new_plan_variation_id: FQ7CDXXWSLUJRPM3GFJSJGZ7
+            old_plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+            location_id: S8GWD5R9QB376
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              affected_subscriptions: 12
+    search:
+      path: /v2/subscriptions/search
+      method: POST
+      auth: true
+      docs: >-
+        Searches for subscriptions.
+
+
+        Results are ordered chronologically by subscription creation date. If
+
+        the request specifies more than one location ID,
+
+        the endpoint orders the result
+
+        by location ID, and then by creation date within each location. If no
+        locations are given
+
+        in the query, all locations are searched.
+
+
+        You can also optionally specify `customer_ids` to search by customer.
+
+        If left unset, all customers
+
+        associated with the specified locations are returned.
+
+        If the request specifies customer IDs, the endpoint orders results
+
+        first by location, within location by customer ID, and within
+
+        customer by subscription creation date.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchSubscriptions
+      request:
+        name: SearchSubscriptionsRequest
+        body:
+          properties:
+            cursor:
+              type: optional<string>
+              docs: >-
+                When the total number of resulting subscriptions exceeds the
+                limit of a paged response, 
+
+                specify the cursor returned from a preceding response here to
+                fetch the next set of results.
+
+                If the cursor is unset, the response contains the last page of
+                the results.
+
+
+                For more information, see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+            limit:
+              type: optional<integer>
+              docs: |-
+                The upper limit on the number of subscriptions to return
+                in a paged response.
+              validation:
+                min: 1
+            query:
+              type: optional<root.SearchSubscriptionsQuery>
+              docs: >-
+                A subscription query consisting of specified filtering
+                conditions.
+
+
+                If this `query` field is unspecified, the `SearchSubscriptions`
+                call will return all subscriptions.
+            include:
+              type: optional<list<string>>
+              docs: >-
+                An option to include related information in the response. 
+
+
+                The supported values are: 
+
+
+                - `actions`: to include scheduled actions on the targeted
+                subscriptions.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchSubscriptionsResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                customer_ids:
+                  - CHFGVKYY8RSV93M5KCYTG4PN0G
+                location_ids:
+                  - S8GWD5R9QB376
+                source_names:
+                  - My App
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscriptions:
+                - id: de86fc96-8664-474b-af1a-abbe59cacf0e
+                  location_id: S8GWD5R9QB376
+                  plan_variation_id: L3TJVDHVBEQEGQDEZL2JJM7R
+                  customer_id: CHFGVKYY8RSV93M5KCYTG4PN0G
+                  start_date: '2021-10-20'
+                  canceled_date: '2021-10-30'
+                  charged_through_date: '2021-11-20'
+                  status: CANCELED
+                  tax_percentage: tax_percentage
+                  invoice_ids:
+                    - invoice_ids
+                  version: 1000000
+                  created_at: '2021-10-20T21:53:10Z'
+                  card_id: ccof:mueUsvgajChmjEbp4GB
+                  timezone: UTC
+                  source:
+                    name: My Application
+                  actions:
+                    - {}
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                - id: 56214fb2-cc85-47a1-93bc-44f3766bb56f
+                  location_id: S8GWD5R9QB376
+                  plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                  customer_id: CHFGVKYY8RSV93M5KCYTG4PN0G
+                  start_date: '2022-01-19'
+                  canceled_date: canceled_date
+                  charged_through_date: '2022-08-19'
+                  status: PAUSED
+                  tax_percentage: '5'
+                  invoice_ids:
+                    - grebK0Q_l8H4fqoMMVvt-Q
+                    - rcX_i3sNmHTGKhI4W2mceA
+                  price_override_money:
+                    amount: 1000
+                    currency: USD
+                  version: 2
+                  created_at: '2022-01-19T21:53:10Z'
+                  card_id: card_id
+                  timezone: America/Los_Angeles
+                  source:
+                    name: My Application
+                  actions:
+                    - {}
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                - id: 56214fb2-cc85-47a1-93bc-44f3766bb56f
+                  location_id: S8GWD5R9QB376
+                  plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                  customer_id: CHFGVKYY8RSV93M5KCYTG4PN0G
+                  start_date: '2023-06-20'
+                  canceled_date: canceled_date
+                  charged_through_date: charged_through_date
+                  status: ACTIVE
+                  tax_percentage: tax_percentage
+                  invoice_ids:
+                    - invoice_ids
+                  version: 1
+                  created_at: '2023-06-20T21:53:10Z'
+                  card_id: ccof:qy5x8hHGYsgLrp4Q4GB
+                  timezone: America/Los_Angeles
+                  source:
+                    name: My Application
+                  actions:
+                    - {}
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - uid: 873451e0-745b-4e87-ab0b-c574933fe616
+                      ordinal: 0
+                      order_template_id: U2NaowWxzXwpsZU697x7ZHOAnCNZY
+                      plan_phase_uid: X2Q2AONPB3RB64Y27S25QCZP
+              cursor: cursor
+    get:
+      path: /v2/subscriptions/{subscription_id}
+      method: GET
+      auth: true
+      docs: Retrieves a specific subscription.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveSubscription
+      request:
+        name: GetSubscriptionsRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: The ID of the subscription to retrieve.
+        query-parameters:
+          include:
+            type: optional<nullable<string>>
+            docs: >-
+              A query parameter to specify related information to be included in
+              the response. 
+
+
+              The supported query parameter values are: 
+
+
+              - `actions`: to include scheduled actions on the targeted
+              subscription.
+      response:
+        docs: Success
+        type: root.GetSubscriptionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: 8151fc89-da15-4eb9-a685-1a70883cebfc
+                location_id: S8GWD5R9QB376
+                plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                start_date: '2022-07-27'
+                canceled_date: canceled_date
+                charged_through_date: '2023-11-20'
+                status: ACTIVE
+                tax_percentage: tax_percentage
+                invoice_ids:
+                  - inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                  - inv:0-ChrcX_i3sNmfsHTGKhI4Wg2mceA
+                price_override_money:
+                  amount: 25000
+                  currency: USD
+                version: 1000000
+                created_at: '2022-07-27T21:53:10Z'
+                card_id: ccof:IkWfpLj4tNHMyFii3GB
+                timezone: America/Los_Angeles
+                source:
+                  name: My Application
+                actions:
+                  - {}
+                monthly_billing_anchor_date: 1
+                phases:
+                  - {}
+    update:
+      path: /v2/subscriptions/{subscription_id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates a subscription by modifying or clearing `subscription` field
+        values.
+
+        To clear a field, set its value to `null`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateSubscription
+      request:
+        name: UpdateSubscriptionRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: The ID of the subscription to update.
+        body:
+          properties:
+            subscription:
+              type: optional<root.Subscription>
+              docs: >-
+                The subscription object containing the current version, and
+                fields to update.
+
+                Unset fields will be left at their current server values, and
+                JSON `null` values will
+
+                be treated as a request to clear the relevant data.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateSubscriptionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          request:
+            subscription:
+              card_id: '{NEW CARD ID}'
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: 7217d8ca-1fee-4446-a9e5-8540b5d8c9bb
+                location_id: LPJKHYR7WFDKN
+                plan_variation_id: XOUNEKCE6NSXQW5NTSQ73MMX
+                customer_id: AM69AB81FT4479YH9HGWS1HZY8
+                start_date: '2023-01-30'
+                canceled_date: canceled_date
+                charged_through_date: '2023-03-13'
+                status: ACTIVE
+                tax_percentage: tax_percentage
+                invoice_ids:
+                  - inv:0-ChAPSfVYvNewckgf3x4iigN_ENMM
+                  - inv:0-ChBQaCCLfjcm9WEUBGxvuydJENMM
+                price_override_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                version: 3
+                created_at: '2023-01-30T19:27:32Z'
+                card_id: '{NEW CARD ID}'
+                timezone: UTC
+                source:
+                  name: My Application
+                actions:
+                  - {}
+                monthly_billing_anchor_date: 1
+                phases:
+                  - {}
+    DeleteAction:
+      path: /v2/subscriptions/{subscription_id}/actions/{action_id}
+      method: DELETE
+      auth: true
+      docs: Deletes a scheduled action for a subscription.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteSubscriptionAction
+      request:
+        name: DeleteActionSubscriptionsRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: The ID of the subscription the targeted action is to act upon.
+          action_id:
+            type: string
+            docs: The ID of the targeted action to be deleted.
+      response:
+        docs: Success
+        type: root.DeleteSubscriptionActionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+            action_id: action_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: 8151fc89-da15-4eb9-a685-1a70883cebfc
+                location_id: S8GWD5R9QB376
+                plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                start_date: '2022-07-27'
+                canceled_date: canceled_date
+                charged_through_date: '2023-11-20'
+                status: ACTIVE
+                tax_percentage: tax_percentage
+                invoice_ids:
+                  - inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                  - inv:0-ChrcX_i3sNmfsHTGKhI4Wg2mceA
+                price_override_money:
+                  amount: 25000
+                  currency: USD
+                version: 1000000
+                created_at: '2022-07-27T21:53:10Z'
+                card_id: ccof:IkWfpLj4tNHMyFii3GB
+                timezone: America/Los_Angeles
+                source:
+                  name: My Application
+                actions:
+                  - {}
+                monthly_billing_anchor_date: 1
+                phases:
+                  - {}
+    ChangeBillingAnchorDate:
+      path: /v2/subscriptions/{subscription_id}/billing-anchor
+      method: POST
+      auth: true
+      docs: >-
+        Changes the [billing anchor
+        date](https://developer.squareup.com/docs/subscriptions-api/subscription-billing#billing-dates)
+
+        for a subscription.
+      source:
+        openapi: openapi/openapi.json
+      display-name: ChangeBillingAnchorDate
+      request:
+        name: ChangeBillingAnchorDateRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: The ID of the subscription to update the billing anchor date.
+        body:
+          properties:
+            monthly_billing_anchor_date:
+              type: optional<nullable<integer>>
+              docs: The anchor day for the billing cycle.
+              validation:
+                min: 1
+                max: 31
+            effective_date:
+              type: optional<nullable<string>>
+              docs: >-
+                The `YYYY-MM-DD`-formatted date when the scheduled
+                `BILLING_ANCHOR_CHANGE` action takes
+
+                place on the subscription.
+
+
+                When this date is unspecified or falls within the current
+                billing cycle, the billing anchor date
+
+                is changed immediately.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.ChangeBillingAnchorDateResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          request:
+            monthly_billing_anchor_date: 1
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: 9ba40961-995a-4a3d-8c53-048c40cafc13
+                location_id: S8GWD5R9QB376
+                plan_variation_id: FQ7CDXXWSLUJRPM3GFJSJGZ7
+                customer_id: CHFGVKYY8RSV93M5KCYTG4PN0G
+                start_date: start_date
+                canceled_date: canceled_date
+                charged_through_date: charged_through_date
+                status: ACTIVE
+                tax_percentage: tax_percentage
+                invoice_ids:
+                  - invoice_ids
+                price_override_money:
+                  amount: 2000
+                  currency: USD
+                version: 3
+                created_at: '2023-06-20T21:53:10Z'
+                card_id: card_id
+                timezone: America/Los_Angeles
+                source:
+                  name: My Application
+                actions:
+                  - {}
+                monthly_billing_anchor_date: 20
+                phases:
+                  - uid: 98d6f53b-40e1-4714-8827-032fd923be25
+                    ordinal: 0
+                    order_template_id: E6oBY5WfQ2eN4pkYZwq4ka6n7KeZY
+                    plan_phase_uid: C66BKH3ASTDYGJJCEZXQQSS7
+              actions:
+                - id: f0a1dfdc-675b-3a14-a640-99f7ac1cee83
+                  type: CHANGE_BILLING_ANCHOR_DATE
+                  effective_date: '2023-11-01'
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                  new_plan_variation_id: new_plan_variation_id
+    cancel:
+      path: /v2/subscriptions/{subscription_id}/cancel
+      method: POST
+      auth: true
+      docs: >-
+        Schedules a `CANCEL` action to cancel an active subscription. This 
+
+        sets the `canceled_date` field to the end of the active billing period.
+        After this date, 
+
+        the subscription status changes from ACTIVE to CANCELED.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CancelSubscription
+      request:
+        name: CancelSubscriptionsRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: The ID of the subscription to cancel.
+      response:
+        docs: Success
+        type: root.CancelSubscriptionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: 910afd30-464a-4e00-a8d8-2296e
+                location_id: S8GWD5R9QB376
+                plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                customer_id: CHFGVKYY8RSV93M5KCYTG4PN0G
+                start_date: '2022-01-19'
+                canceled_date: '2023-06-05'
+                charged_through_date: charged_through_date
+                status: ACTIVE
+                tax_percentage: tax_percentage
+                invoice_ids:
+                  - inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                  - inv:0-ChrcX_i3sNmfsHTGKhI4Wg2mceA
+                price_override_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                version: 3
+                created_at: '2022-01-19T21:53:10Z'
+                card_id: ccof:qy5x8hHGYsgLrp4Q4GB
+                timezone: America/Los_Angeles
+                source:
+                  name: My Application
+                actions:
+                  - {}
+                monthly_billing_anchor_date: 1
+                phases:
+                  - {}
+              actions:
+                - id: id
+                  type: CANCEL
+                  effective_date: effective_date
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                  new_plan_variation_id: new_plan_variation_id
+    listEvents:
+      path: /v2/subscriptions/{subscription_id}/events
+      method: GET
+      auth: true
+      docs: >-
+        Lists all
+        [events](https://developer.squareup.com/docs/subscriptions-api/actions-events)
+        for a specific subscription.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.subscription_events
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListSubscriptionEvents
+      request:
+        name: ListEventsSubscriptionsRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: The ID of the subscription to retrieve the events for.
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              When the total number of resulting subscription events exceeds the
+              limit of a paged response, 
+
+              specify the cursor returned from a preceding response here to
+              fetch the next set of results.
+
+              If the cursor is unset, the response contains the last page of the
+              results.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          limit:
+            type: optional<nullable<integer>>
+            docs: |-
+              The upper limit on the number of subscription events to return
+              in a paged response.
+      response:
+        docs: Success
+        type: root.ListSubscriptionEventsResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription_events:
+                - id: 06809161-3867-4598-8269-8aea5be4f9de
+                  subscription_event_type: START_SUBSCRIPTION
+                  effective_date: '2020-04-24'
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                  plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                - id: f2736603-cd2e-47ec-8675-f815fff54f88
+                  subscription_event_type: DEACTIVATE_SUBSCRIPTION
+                  effective_date: '2020-05-01'
+                  monthly_billing_anchor_date: 1
+                  info:
+                    detail: >-
+                      The customer with ID `V74BMG0GPS2KNCWJE1BTYJ37Y0` does not
+                      have a name on record.
+                    code: CUSTOMER_NO_NAME
+                  phases:
+                    - {}
+                  plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                - id: b426fc85-6859-450b-b0d0-fe3a5d1b565f
+                  subscription_event_type: RESUME_SUBSCRIPTION
+                  effective_date: '2022-05-01'
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                  plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                - id: 09f14de1-2f53-4dae-9091-49aa53f83d01
+                  subscription_event_type: PAUSE_SUBSCRIPTION
+                  effective_date: '2022-09-01'
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                  plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                - id: f28a73ac-1a1b-4b0f-8eeb-709a72945776
+                  subscription_event_type: RESUME_SUBSCRIPTION
+                  effective_date: '2022-12-01'
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                  plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                - id: 1eee8790-472d-4efe-8c69-8ad84e9cefe0
+                  subscription_event_type: PLAN_CHANGE
+                  effective_date: '2023-04-01'
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                  plan_variation_id: 02CD53CFA4d1498AFAD42
+                - id: a0c08083-5db0-4800-85c7-d398de4fbb6e
+                  subscription_event_type: STOP_SUBSCRIPTION
+                  effective_date: '2023-06-21'
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                  plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+              cursor: cursor
+    pause:
+      path: /v2/subscriptions/{subscription_id}/pause
+      method: POST
+      auth: true
+      docs: Schedules a `PAUSE` action to pause an active subscription.
+      source:
+        openapi: openapi/openapi.json
+      display-name: PauseSubscription
+      request:
+        name: PauseSubscriptionRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: The ID of the subscription to pause.
+        body:
+          properties:
+            pause_effective_date:
+              type: optional<nullable<string>>
+              docs: >-
+                The `YYYY-MM-DD`-formatted date when the scheduled `PAUSE`
+                action takes place on the subscription.
+
+
+                When this date is unspecified or falls within the current
+                billing cycle, the subscription is paused
+
+                on the starting date of the next billing cycle.
+            pause_cycle_duration:
+              type: optional<nullable<long>>
+              docs: >-
+                The number of billing cycles the subscription will be paused
+                before it is reactivated. 
+
+
+                When this is set, a `RESUME` action is also scheduled to take
+                place on the subscription at 
+
+                the end of the specified pause cycle duration. In this case,
+                neither `resume_effective_date` 
+
+                nor `resume_change_timing` may be specified.
+            resume_effective_date:
+              type: optional<nullable<string>>
+              docs: >-
+                The date when the subscription is reactivated by a scheduled
+                `RESUME` action. 
+
+                This date must be at least one billing cycle ahead of
+                `pause_effective_date`.
+            resume_change_timing:
+              type: optional<root.ChangeTiming>
+              docs: >-
+                The timing whether the subscription is reactivated immediately
+                or at the end of the billing cycle, relative to 
+
+                `resume_effective_date`.
+
+                See [ChangeTiming](#type-changetiming) for possible values
+            pause_reason:
+              type: optional<nullable<string>>
+              docs: The user-provided reason to pause the subscription.
+              validation:
+                maxLength: 255
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.PauseSubscriptionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          request: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: 56214fb2-cc85-47a1-93bc-44f3766bb56f
+                location_id: S8GWD5R9QB376
+                plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                customer_id: CHFGVKYY8RSV93M5KCYTG4PN0G
+                start_date: '2023-06-20'
+                canceled_date: canceled_date
+                charged_through_date: charged_through_date
+                status: ACTIVE
+                tax_percentage: tax_percentage
+                invoice_ids:
+                  - invoice_ids
+                price_override_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                version: 1
+                created_at: '2023-06-20T21:53:10Z'
+                card_id: ccof:qy5x8hHGYsgLrp4Q4GB
+                timezone: America/Los_Angeles
+                source:
+                  name: My Application
+                actions:
+                  - {}
+                monthly_billing_anchor_date: 1
+                phases:
+                  - uid: 873451e0-745b-4e87-ab0b-c574933fe616
+                    ordinal: 0
+                    order_template_id: U2NaowWxzXwpsZU697x7ZHOAnCNZY
+                    plan_phase_uid: X2Q2AONPB3RB64Y27S25QCZP
+              actions:
+                - id: 99b2439e-63f7-3ad5-95f7-ab2447a80673
+                  type: PAUSE
+                  effective_date: '2023-11-17'
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                  new_plan_variation_id: new_plan_variation_id
+    resume:
+      path: /v2/subscriptions/{subscription_id}/resume
+      method: POST
+      auth: true
+      docs: >-
+        Schedules a `RESUME` action to resume a paused or a deactivated
+        subscription.
+      source:
+        openapi: openapi/openapi.json
+      display-name: ResumeSubscription
+      request:
+        name: ResumeSubscriptionRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: The ID of the subscription to resume.
+        body:
+          properties:
+            resume_effective_date:
+              type: optional<nullable<string>>
+              docs: >-
+                The `YYYY-MM-DD`-formatted date when the subscription
+                reactivated.
+            resume_change_timing:
+              type: optional<root.ChangeTiming>
+              docs: |-
+                The timing to resume a subscription, relative to the specified
+                `resume_effective_date` attribute value.
+                See [ChangeTiming](#type-changetiming) for possible values
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.ResumeSubscriptionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          request: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: 56214fb2-cc85-47a1-93bc-44f3766bb56f
+                location_id: S8GWD5R9QB376
+                plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
+                customer_id: CHFGVKYY8RSV93M5KCYTG4PN0G
+                start_date: '2023-06-20'
+                canceled_date: canceled_date
+                charged_through_date: charged_through_date
+                status: ACTIVE
+                tax_percentage: tax_percentage
+                invoice_ids:
+                  - invoice_ids
+                price_override_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                version: 1
+                created_at: '2023-06-20T21:53:10Z'
+                card_id: ccof:qy5x8hHGYsgLrp4Q4GB
+                timezone: America/Los_Angeles
+                source:
+                  name: My Application
+                actions:
+                  - {}
+                monthly_billing_anchor_date: 1
+                phases:
+                  - uid: 873451e0-745b-4e87-ab0b-c574933fe616
+                    ordinal: 0
+                    order_template_id: U2NaowWxzXwpsZU697x7ZHOAnCNZY
+                    plan_phase_uid: X2Q2AONPB3RB64Y27S25QCZP
+              actions:
+                - id: 18ff74f4-3da4-30c5-929f-7d6fca84f115
+                  type: RESUME
+                  effective_date: '2023-09-01'
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - {}
+                  new_plan_variation_id: new_plan_variation_id
+    SwapPlan:
+      path: /v2/subscriptions/{subscription_id}/swap-plan
+      method: POST
+      auth: true
+      docs: >-
+        Schedules a `SWAP_PLAN` action to swap a subscription plan variation in
+        an existing subscription. 
+
+        For more information, see [Swap Subscription Plan
+        Variations](https://developer.squareup.com/docs/subscriptions-api/swap-plan-variations).
+      source:
+        openapi: openapi/openapi.json
+      display-name: SwapPlan
+      request:
+        name: SwapPlanRequest
+        path-parameters:
+          subscription_id:
+            type: string
+            docs: The ID of the subscription to swap the subscription plan for.
+        body:
+          properties:
+            new_plan_variation_id:
+              type: optional<nullable<string>>
+              docs: |-
+                The ID of the new subscription plan variation.
+
+                This field is required.
+            phases:
+              type: optional<nullable<list<root.PhaseInput>>>
+              docs: >-
+                A list of PhaseInputs, to pass phase-specific information used
+                in the swap.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SwapPlanResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            subscription_id: subscription_id
+          request:
+            new_plan_variation_id: FQ7CDXXWSLUJRPM3GFJSJGZ7
+            phases:
+              - ordinal: 0
+                order_template_id: uhhnjH9osVv3shUADwaC0b3hNxQZY
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              subscription:
+                id: 9ba40961-995a-4a3d-8c53-048c40cafc13
+                location_id: S8GWD5R9QB376
+                plan_variation_id: FQ7CDXXWSLUJRPM3GFJSJGZ7
+                customer_id: CHFGVKYY8RSV93M5KCYTG4PN0G
+                start_date: start_date
+                canceled_date: canceled_date
+                charged_through_date: charged_through_date
+                status: ACTIVE
+                tax_percentage: tax_percentage
+                invoice_ids:
+                  - invoice_ids
+                price_override_money:
+                  amount: 2000
+                  currency: USD
+                version: 3
+                created_at: '2023-06-20T21:53:10Z'
+                card_id: card_id
+                timezone: America/Los_Angeles
+                source:
+                  name: My Application
+                actions:
+                  - {}
+                monthly_billing_anchor_date: 1
+                phases:
+                  - uid: 98d6f53b-40e1-4714-8827-032fd923be25
+                    ordinal: 0
+                    order_template_id: E6oBY5WfQ2eN4pkYZwq4ka6n7KeZY
+                    plan_phase_uid: C66BKH3ASTDYGJJCEZXQQSS7
+              actions:
+                - id: f0a1dfdc-675b-3a14-a640-99f7ac1cee83
+                  type: SWAP_PLAN
+                  effective_date: '2023-11-17'
+                  monthly_billing_anchor_date: 1
+                  phases:
+                    - ordinal: 0
+                      order_template_id: uhhnjH9osVv3shUADwaC0b3hNxQZY
+                  new_plan_variation_id: FQ7CDXXWSLUJRPM3GFJSJGZ7
+  source:
+    openapi: openapi/openapi.json

@@ -1,0 +1,276 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/loyalty/programs
+      method: GET
+      auth: true
+      docs: >-
+        Returns a list of loyalty programs in the seller's account.
+
+        Loyalty programs define how buyers can earn points and redeem points for
+        rewards. Square sellers can have only one loyalty program, which is
+        created and managed from the Seller Dashboard. For more information, see
+        [Loyalty Program
+        Overview](https://developer.squareup.com/docs/loyalty/overview).
+
+
+
+        Replaced with
+        [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram)
+        when used with the keyword `main`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListLoyaltyPrograms
+      response:
+        docs: Success
+        type: root.ListLoyaltyProgramsResponse
+        status-code: 200
+      availability: deprecated
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              programs:
+                - id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                  status: ACTIVE
+                  reward_tiers:
+                    - id: e1b39225-9da5-43d1-a5db-782cdd8ad94f
+                      points: 10
+                      name: 10% off entire sale
+                      definition:
+                        scope: ORDER
+                        discount_type: FIXED_PERCENTAGE
+                        percentage_discount: '10'
+                      created_at: '2020-04-20T16:55:11Z'
+                      pricing_rule_reference:
+                        object_id: 74C4JSHESNLTB2A7ITO5HO6F
+                        catalog_version: 1000000
+                  expiration_policy:
+                    expiration_duration: expiration_duration
+                  terminology:
+                    one: Point
+                    other: Points
+                  location_ids:
+                    - P034NEENMD09F
+                  created_at: '2020-04-20T16:55:11Z'
+                  updated_at: '2020-05-01T02:00:02Z'
+                  accrual_rules:
+                    - accrual_type: SPEND
+                      points: 1
+                      spend_data:
+                        amount_money:
+                          amount: 100
+                          currency: USD
+                        excluded_category_ids:
+                          - 7ZERJKO5PVYXCVUHV2JCZ2UG
+                          - FQKAOJE5C4FIMF5A2URMLW6V
+                        excluded_item_variation_ids:
+                          - CBZXBUVVTYUBZGQO44RHMR6B
+                          - EDILT24Z2NISEXDKGY6HP7XV
+                        tax_mode: BEFORE_TAX
+    get:
+      path: /v2/loyalty/programs/{program_id}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves the loyalty program in a seller's account, specified by the
+        program ID or the keyword `main`.
+
+
+        Loyalty programs define how buyers can earn points and redeem points for
+        rewards. Square sellers can have only one loyalty program, which is
+        created and managed from the Seller Dashboard. For more information, see
+        [Loyalty Program
+        Overview](https://developer.squareup.com/docs/loyalty/overview).
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveLoyaltyProgram
+      request:
+        name: GetProgramsRequest
+        path-parameters:
+          program_id:
+            type: string
+            docs: >-
+              The ID of the loyalty program or the keyword `main`. Either value
+              can be used to retrieve the single loyalty program that belongs to
+              the seller.
+      response:
+        docs: Success
+        type: root.GetLoyaltyProgramResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            program_id: program_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              program:
+                id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                status: ACTIVE
+                reward_tiers:
+                  - id: e1b39225-9da5-43d1-a5db-782cdd8ad94f
+                    points: 10
+                    name: 10% off entire sale
+                    definition:
+                      scope: ORDER
+                      discount_type: FIXED_PERCENTAGE
+                      percentage_discount: '10'
+                    created_at: '2020-04-20T16:55:11Z'
+                    pricing_rule_reference:
+                      object_id: 74C4JSHESNLTB2A7ITO5HO6F
+                      catalog_version: 1000000
+                expiration_policy:
+                  expiration_duration: expiration_duration
+                terminology:
+                  one: Point
+                  other: Points
+                location_ids:
+                  - P034NEENMD09F
+                created_at: '2020-04-20T16:55:11Z'
+                updated_at: '2020-05-01T02:00:02Z'
+                accrual_rules:
+                  - accrual_type: SPEND
+                    points: 1
+                    spend_data:
+                      amount_money:
+                        amount: 100
+                        currency: USD
+                      excluded_category_ids:
+                        - 7ZERJKO5PVYXCVUHV2JCZ2UG
+                        - FQKAOJE5C4FIMF5A2URMLW6V
+                      excluded_item_variation_ids:
+                        - CBZXBUVVTYUBZGQO44RHMR6B
+                        - EDILT24Z2NISEXDKGY6HP7XV
+                      tax_mode: BEFORE_TAX
+    calculate:
+      path: /v2/loyalty/programs/{program_id}/calculate
+      method: POST
+      auth: true
+      docs: >-
+        Calculates the number of points a buyer can earn from a purchase.
+        Applications might call this endpoint
+
+        to display the points to the buyer.
+
+
+        - If you are using the Orders API to manage orders, provide the
+        `order_id` and (optional) `loyalty_account_id`.
+
+        Square reads the order to compute the points earned from the base
+        loyalty program and an associated
+
+        [loyalty promotion](entity:LoyaltyPromotion).
+
+
+        - If you are not using the Orders API to manage orders, provide
+        `transaction_amount_money` with the
+
+        purchase amount. Square uses this amount to calculate the points earned
+        from the base loyalty program,
+
+        but not points earned from a loyalty promotion. For spend-based and
+        visit-based programs, the `tax_mode`
+
+        setting of the accrual rule indicates how taxes should be treated for
+        loyalty points accrual.
+
+        If the purchase qualifies for program points, call
+
+        [ListLoyaltyPromotions](api-endpoint:Loyalty-ListLoyaltyPromotions) and
+        perform a client-side computation
+
+        to calculate whether the purchase also qualifies for promotion points.
+        For more information, see
+
+        [Calculating promotion
+        points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
+      source:
+        openapi: openapi/openapi.json
+      display-name: CalculateLoyaltyPoints
+      request:
+        name: CalculateLoyaltyPointsRequest
+        path-parameters:
+          program_id:
+            type: string
+            docs: >-
+              The ID of the [loyalty program](entity:LoyaltyProgram), which
+              defines the rules for accruing points.
+        body:
+          properties:
+            order_id:
+              type: optional<nullable<string>>
+              docs: >-
+                The [order](entity:Order) ID for which to calculate the points.
+
+                Specify this field if your application uses the Orders API to
+                process orders.
+
+                Otherwise, specify the `transaction_amount_money`.
+            transaction_amount_money:
+              type: optional<root.Money>
+              docs: >-
+                The purchase amount for which to calculate the points. 
+
+                Specify this field if your application does not use the Orders
+                API to process orders.
+
+                Otherwise, specify the `order_id`.
+            loyalty_account_id:
+              type: optional<nullable<string>>
+              docs: >-
+                The ID of the target [loyalty account](entity:LoyaltyAccount).
+                Optionally specify this field
+
+                if your application uses the Orders API to process orders.
+
+
+                If specified, the `promotion_points` field in the response shows
+                the number of points the buyer would
+
+                earn from the purchase. In this case, Square uses the account ID
+                to determine whether the promotion's
+
+                `trigger_limit` (the maximum number of times that a buyer can
+                trigger the promotion) has been reached.
+
+                If not specified, the `promotion_points` field shows the number
+                of points the purchase qualifies
+
+                for regardless of the trigger limit.
+              validation:
+                minLength: 1
+                maxLength: 36
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CalculateLoyaltyPointsResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            program_id: program_id
+          request:
+            order_id: RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY
+            loyalty_account_id: 79b807d2-d786-46a9-933b-918028d7a8c5
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              points: 6
+              promotion_points: 12
+  source:
+    openapi: openapi/openapi.json

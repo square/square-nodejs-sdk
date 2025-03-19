@@ -1,0 +1,276 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/payouts
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a list of all payouts for the default location.
+
+        You can filter payouts by location ID, status, time range, and order
+        them in ascending or descending order.
+
+        To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.payouts
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListPayouts
+      request:
+        name: ListPayoutsRequest
+        query-parameters:
+          location_id:
+            type: optional<nullable<string>>
+            docs: >-
+              The ID of the location for which to list the payouts.
+
+              By default, payouts are returned for the default (main) location
+              associated with the seller.
+          status:
+            type: optional<nullable<root.PayoutStatus>>
+            docs: If provided, only payouts with the given status are returned.
+          begin_time:
+            type: optional<nullable<string>>
+            docs: >-
+              The timestamp for the beginning of the payout creation time, in
+              RFC 3339 format.
+
+              Inclusive. Default: The current time minus one year.
+          end_time:
+            type: optional<nullable<string>>
+            docs: >-
+              The timestamp for the end of the payout creation time, in RFC 3339
+              format.
+
+              Default: The current time.
+          sort_order:
+            type: optional<nullable<root.SortOrder>>
+            docs: The order in which payouts are listed.
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for the
+              original query.
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+
+              If request parameters change between requests, subsequent results
+              may contain duplicates or missing records.
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to be returned in a single page.
+
+              It is possible to receive fewer results than the specified limit
+              on a given page.
+
+              The default value of 100 is also the maximum allowed value. If the
+              provided value is
+
+              greater than 100, it is ignored and the default value is used
+              instead.
+
+              Default: `100`
+      response:
+        docs: Success
+        type: root.ListPayoutsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              payouts:
+                - id: po_b345d2c7-90b3-4f0b-a2aa-df1def7f8afc
+                  status: PAID
+                  location_id: L88917AVBK2S5
+                  created_at: '2022-03-29T16:12:31Z'
+                  updated_at: '2022-03-30T01:07:22.875Z'
+                  amount_money:
+                    amount: 6259
+                  destination:
+                    type: CARD
+                    id: ccof:ZPp3oedR3AeEUNd3z7
+                  version: 2
+                  type: BATCH
+                  payout_fee:
+                    - amount_money:
+                        amount: 95
+                      effective_at: '2022-03-29T16:12:31Z'
+                      type: TRANSFER_FEE
+                  arrival_date: '2022-03-29'
+                  end_to_end_id: L2100000005
+                - id: po_f3c0fb38-a5ce-427d-b858-52b925b72e45
+                  status: PAID
+                  location_id: L88917AVBK2S5
+                  created_at: '2022-03-24T03:07:09Z'
+                  updated_at: '2022-03-24T03:07:09Z'
+                  amount_money:
+                    amount: -103
+                  destination:
+                    type: BANK_ACCOUNT
+                    id: bact:ZPp3oedR3AeEUNd3z7
+                  version: 1
+                  type: BATCH
+                  payout_fee:
+                    - {}
+                  arrival_date: '2022-03-24'
+                  end_to_end_id: L2100000006
+              cursor: >-
+                EMPCyStibo64hS8wLayZPp3oedR3AeEUNd3z7u6zphi72LQZFIEMbkKVvot9eefpU
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/payouts/{payout_id}
+      method: GET
+      auth: true
+      docs: |-
+        Retrieves details of a specific payout identified by a payout ID.
+        To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetPayout
+      request:
+        name: GetPayoutsRequest
+        path-parameters:
+          payout_id:
+            type: string
+            docs: The ID of the payout to retrieve the information for.
+      response:
+        docs: Success
+        type: root.GetPayoutResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            payout_id: payout_id
+          response:
+            body:
+              payout:
+                id: po_f3c0fb38-a5ce-427d-b858-52b925b72e45
+                status: PAID
+                location_id: L88917AVBK2S5
+                created_at: '2022-03-24T03:07:09Z'
+                updated_at: '2022-03-24T03:07:09Z'
+                amount_money:
+                  amount: -103
+                  currency: UNKNOWN_CURRENCY
+                destination:
+                  type: BANK_ACCOUNT
+                  id: bact:ZPp3oedR3AeEUNd3z7
+                version: 1
+                type: BATCH
+                payout_fee:
+                  - {}
+                arrival_date: '2022-03-24'
+                end_to_end_id: end_to_end_id
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    ListEntries:
+      path: /v2/payouts/{payout_id}/payout-entries
+      method: GET
+      auth: true
+      docs: |-
+        Retrieves a list of all payout entries for a specific payout.
+        To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.payout_entries
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListPayoutEntries
+      request:
+        name: ListEntriesPayoutsRequest
+        path-parameters:
+          payout_id:
+            type: string
+            docs: The ID of the payout to retrieve the information for.
+        query-parameters:
+          sort_order:
+            type: optional<nullable<root.SortOrder>>
+            docs: The order in which payout entries are listed.
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for the
+              original query.
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+
+              If request parameters change between requests, subsequent results
+              may contain duplicates or missing records.
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to be returned in a single page.
+
+              It is possible to receive fewer results than the specified limit
+              on a given page.
+
+              The default value of 100 is also the maximum allowed value. If the
+              provided value is
+
+              greater than 100, it is ignored and the default value is used
+              instead.
+
+              Default: `100`
+      response:
+        docs: Success
+        type: root.ListPayoutEntriesResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            payout_id: payout_id
+          response:
+            body:
+              payout_entries:
+                - id: poe_ZQWcw41d0SGJS6IWd4cSi8mKHk
+                  payout_id: po_4d28e6c4-7dd5-4de4-8ec9-a059277646a6
+                  effective_at: '2021-12-14T23:31:49Z'
+                  type: REFUND
+                  gross_amount_money:
+                    amount: -50
+                  fee_amount_money:
+                    amount: -2
+                  net_amount_money:
+                    amount: -48
+                  type_refund_details:
+                    payment_id: HVdG62HeMlti8YYf94oxrN
+                    refund_id: HVdG62HeMlti8YYf94oxrN_dR8Nztxg7umf94oxrN12Ji5r2KW14FAY
+                - id: poe_EibbY9Ob1d0SGJS6IWd4cSiSi6wkaPk
+                  payout_id: po_4d28e6c4-7dd5-4de4-8ec9-a059277646a6
+                  effective_at: '2021-12-14T23:31:49Z'
+                  type: CHARGE
+                  gross_amount_money:
+                    amount: 100
+                  fee_amount_money:
+                    amount: 19
+                  net_amount_money:
+                    amount: 81
+                  type_charge_details:
+                    payment_id: HVdG62H5K3291d0SGJS6IWd4cSi8YY
+              cursor: >-
+                TbfI80z98Xc2LdApCyZ2NvCYLpkPurYLR16GRIttpMJ55mrSIMzHgtkcRQdT0mOnTtfHO
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

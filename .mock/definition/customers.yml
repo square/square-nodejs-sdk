@@ -1,0 +1,1132 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/customers
+      method: GET
+      auth: true
+      docs: >-
+        Lists customer profiles associated with a Square account.
+
+
+        Under normal operating conditions, newly created or updated customer
+        profiles become available
+
+        for the listing operation in well under 30 seconds. Occasionally,
+        propagation of the new or updated
+
+        profiles can take closer to one minute or longer, especially during
+        network incidents and outages.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.customers
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListCustomers
+      request:
+        name: ListCustomersRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for your
+              original query.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to return in a single page. This
+              limit is advisory. The response might contain more or fewer
+              results.
+
+              If the specified limit is less than 1 or greater than 100, Square
+              returns a `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error. The
+              default value is 100.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          sort_field:
+            type: optional<nullable<root.CustomerSortField>>
+            docs: |-
+              Indicates how customers should be sorted.
+
+              The default value is `DEFAULT`.
+          sort_order:
+            type: optional<nullable<root.SortOrder>>
+            docs: >-
+              Indicates whether customers should be sorted in ascending (`ASC`)
+              or
+
+              descending (`DESC`) order.
+
+
+              The default value is `ASC`.
+          count:
+            type: optional<nullable<boolean>>
+            default: false
+            docs: >-
+              Indicates whether to return the total count of customers in the
+              `count` field of the response.
+
+
+              The default value is `false`.
+      response:
+        docs: Success
+        type: root.ListCustomersResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              customers:
+                - id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                  created_at: '2016-03-23T20:21:54.859Z'
+                  updated_at: '2016-03-23T20:21:55Z'
+                  given_name: Amelia
+                  family_name: Earhart
+                  nickname: nickname
+                  company_name: company_name
+                  email_address: Amelia.Earhart@example.com
+                  address:
+                    address_line_1: 500 Electric Ave
+                    address_line_2: Suite 600
+                    locality: New York
+                    administrative_district_level_1: NY
+                    postal_code: '10003'
+                    country: US
+                  phone_number: +1-212-555-4240
+                  birthday: birthday
+                  reference_id: YOUR_REFERENCE_ID
+                  note: a customer
+                  preferences:
+                    email_unsubscribed: false
+                  creation_source: THIRD_PARTY
+                  group_ids:
+                    - 545AXB44B4XXWMVQ4W8SBT3HHF
+                  segment_ids:
+                    - 1KB9JE5EGJXCW.REACHABLE
+                  version: 1
+              cursor: cursor
+              count: 1000000
+    create:
+      path: /v2/customers
+      method: POST
+      auth: true
+      docs: >-
+        Creates a new customer for a business.
+
+
+        You must provide at least one of the following values in your request to
+        this
+
+        endpoint:
+
+
+        - `given_name`
+
+        - `family_name`
+
+        - `company_name`
+
+        - `email_address`
+
+        - `phone_number`
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateCustomer
+      request:
+        name: CreateCustomerRequest
+        body:
+          properties:
+            idempotency_key:
+              type: optional<string>
+              docs: "The idempotency key for the request.\tFor more information, see\n[Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)."
+            given_name:
+              type: optional<string>
+              docs: >-
+                The given name (that is, the first name) associated with the
+                customer profile.
+
+
+                The maximum length for this value is 300 characters.
+            family_name:
+              type: optional<string>
+              docs: >-
+                The family name (that is, the last name) associated with the
+                customer profile.
+
+
+                The maximum length for this value is 300 characters.
+            company_name:
+              type: optional<string>
+              docs: |-
+                A business name associated with the customer profile.
+
+                The maximum length for this value is 500 characters.
+            nickname:
+              type: optional<string>
+              docs: |-
+                A nickname for the customer profile.
+
+                The maximum length for this value is 100 characters.
+            email_address:
+              type: optional<string>
+              docs: |-
+                The email address associated with the customer profile.
+
+                The maximum length for this value is 254 characters.
+            address:
+              type: optional<root.Address>
+              docs: >-
+                The physical address associated with the customer profile. For
+                maximum length constraints, see 
+
+                [Customer
+                addresses](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#address).
+
+                The `first_name` and `last_name` fields are ignored if they are
+                present in the request.
+            phone_number:
+              type: optional<string>
+              docs: >-
+                The phone number associated with the customer profile. The phone
+                number must be valid and can contain
+
+                9–16 digits, with an optional `+` prefix and country code. For
+                more information, see
+
+                [Customer phone
+                numbers](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#phone-number).
+            reference_id:
+              type: optional<string>
+              docs: >-
+                An optional second ID used to associate the customer profile
+                with an
+
+                entity in another system.
+
+
+                The maximum length for this value is 100 characters.
+            note:
+              type: optional<string>
+              docs: A custom note associated with the customer profile.
+            birthday:
+              type: optional<string>
+              docs: >-
+                The birthday associated with the customer profile, in
+                `YYYY-MM-DD` or `MM-DD` format. For example,
+
+                specify `1998-09-21` for September 21, 1998, or `09-21` for
+                September 21. Birthdays are returned in `YYYY-MM-DD`
+
+                format, where `YYYY` is the specified birth year or `0000` if a
+                birth year is not specified.
+            tax_ids:
+              type: optional<root.CustomerTaxIds>
+              docs: >-
+                The tax ID associated with the customer profile. This field is
+                available only for customers of sellers
+
+                in EU countries or the United Kingdom. For more information,
+
+                see [Customer tax
+                IDs](https://developer.squareup.com/docs/customers-api/what-it-does#customer-tax-ids).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateCustomerResponse
+        status-code: 200
+      examples:
+        - request:
+            given_name: Amelia
+            family_name: Earhart
+            email_address: Amelia.Earhart@example.com
+            address:
+              address_line_1: 500 Electric Ave
+              address_line_2: Suite 600
+              locality: New York
+              administrative_district_level_1: NY
+              postal_code: '10003'
+              country: US
+            phone_number: +1-212-555-4240
+            reference_id: YOUR_REFERENCE_ID
+            note: a customer
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              customer:
+                id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                created_at: '2016-03-23T20:21:54.859Z'
+                updated_at: '2016-03-23T20:21:54.859Z'
+                given_name: Amelia
+                family_name: Earhart
+                nickname: nickname
+                company_name: company_name
+                email_address: Amelia.Earhart@example.com
+                address:
+                  address_line_1: 500 Electric Ave
+                  address_line_2: Suite 600
+                  address_line_3: address_line_3
+                  locality: New York
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: NY
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '10003'
+                  country: US
+                  first_name: first_name
+                  last_name: last_name
+                phone_number: +1-212-555-4240
+                birthday: birthday
+                reference_id: YOUR_REFERENCE_ID
+                note: a customer
+                preferences:
+                  email_unsubscribed: false
+                creation_source: THIRD_PARTY
+                group_ids:
+                  - group_ids
+                segment_ids:
+                  - segment_ids
+                version: 0
+                tax_ids:
+                  eu_vat: eu_vat
+    batchCreate:
+      path: /v2/customers/bulk-create
+      method: POST
+      auth: true
+      docs: >-
+        Creates multiple [customer profiles](entity:Customer) for a business.
+
+
+        This endpoint takes a map of individual create requests and returns a
+        map of responses.
+
+
+        You must provide at least one of the following values in each create
+        request:
+
+
+        - `given_name`
+
+        - `family_name`
+
+        - `company_name`
+
+        - `email_address`
+
+        - `phone_number`
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkCreateCustomers
+      request:
+        name: BulkCreateCustomersRequest
+        body:
+          properties:
+            customers:
+              type: map<string, root.BulkCreateCustomerData>
+              docs: >-
+                A map of 1 to 100 individual create requests, represented by
+                `idempotency key: { customer data }`
+
+                key-value pairs.
+
+
+                Each key is an [idempotency
+                key](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)
+
+                that uniquely identifies the create request. Each value contains
+                the customer data used to create the
+
+                customer profile.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkCreateCustomersResponse
+        status-code: 200
+      examples:
+        - request:
+            customers:
+              8bb76c4f-e35d-4c5b-90de-1194cd9179f0:
+                given_name: Amelia
+                family_name: Earhart
+                email_address: Amelia.Earhart@example.com
+                address:
+                  address_line_1: 500 Electric Ave
+                  address_line_2: Suite 600
+                  locality: New York
+                  administrative_district_level_1: NY
+                  postal_code: '10003'
+                  country: US
+                phone_number: +1-212-555-4240
+                reference_id: YOUR_REFERENCE_ID
+                note: a customer
+              d1689f23-b25d-4932-b2f0-aed00f5e2029:
+                given_name: Marie
+                family_name: Curie
+                email_address: Marie.Curie@example.com
+                address:
+                  address_line_1: 500 Electric Ave
+                  address_line_2: Suite 601
+                  locality: New York
+                  administrative_district_level_1: NY
+                  postal_code: '10003'
+                  country: US
+                phone_number: +1-212-444-4240
+                reference_id: YOUR_REFERENCE_ID
+                note: another customer
+          response:
+            body:
+              responses:
+                8bb76c4f-e35d-4c5b-90de-1194cd9179f4:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  customer:
+                    id: 8DDA5NZVBZFGAX0V3HPF81HHE0
+                    created_at: '2024-03-23T20:21:54.859Z'
+                    updated_at: '2024-03-23T20:21:54.859Z'
+                    given_name: Amelia
+                    family_name: Earhart
+                    email_address: Amelia.Earhart@example.com
+                    address:
+                      address_line_1: 500 Electric Ave
+                      address_line_2: Suite 600
+                      locality: New York
+                      administrative_district_level_1: NY
+                      postal_code: '10003'
+                      country: US
+                    phone_number: +1-212-555-4240
+                    reference_id: YOUR_REFERENCE_ID
+                    note: a customer
+                    preferences:
+                      email_unsubscribed: false
+                    creation_source: THIRD_PARTY
+                    version: 0
+                d1689f23-b25d-4932-b2f0-aed00f5e2029:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  customer:
+                    id: N18CPRVXR5214XPBBA6BZQWF3C
+                    created_at: '2024-03-23T20:21:54.859Z'
+                    updated_at: '2024-03-23T20:21:54.859Z'
+                    given_name: Marie
+                    family_name: Curie
+                    email_address: Marie.Curie@example.com
+                    address:
+                      address_line_1: 500 Electric Ave
+                      address_line_2: Suite 601
+                      locality: New York
+                      administrative_district_level_1: NY
+                      postal_code: '10003'
+                      country: US
+                    phone_number: +1-212-444-4240
+                    reference_id: YOUR_REFERENCE_ID
+                    note: another customer
+                    preferences:
+                      email_unsubscribed: false
+                    creation_source: THIRD_PARTY
+                    version: 0
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    BulkDeleteCustomers:
+      path: /v2/customers/bulk-delete
+      method: POST
+      auth: true
+      docs: >-
+        Deletes multiple customer profiles.
+
+
+        The endpoint takes a list of customer IDs and returns a map of
+        responses.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkDeleteCustomers
+      request:
+        name: BulkDeleteCustomersRequest
+        body:
+          properties:
+            customer_ids:
+              docs: The IDs of the [customer profiles](entity:Customer) to delete.
+              type: list<string>
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkDeleteCustomersResponse
+        status-code: 200
+      examples:
+        - request:
+            customer_ids:
+              - 8DDA5NZVBZFGAX0V3HPF81HHE0
+              - N18CPRVXR5214XPBBA6BZQWF3C
+              - 2GYD7WNXF7BJZW1PMGNXZ3Y8M8
+          response:
+            body:
+              responses:
+                2GYD7WNXF7BJZW1PMGNXZ3Y8M8:
+                  errors:
+                    - category: INVALID_REQUEST_ERROR
+                      code: NOT_FOUND
+                      detail: Customer with ID `2GYD7WNXF7BJZW1PMGNXZ3Y8M8` not found.
+                8DDA5NZVBZFGAX0V3HPF81HHE0:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                N18CPRVXR5214XPBBA6BZQWF3C:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    BulkRetrieveCustomers:
+      path: /v2/customers/bulk-retrieve
+      method: POST
+      auth: true
+      docs: >-
+        Retrieves multiple customer profiles.
+
+
+        This endpoint takes a list of customer IDs and returns a map of
+        responses.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkRetrieveCustomers
+      request:
+        name: BulkRetrieveCustomersRequest
+        body:
+          properties:
+            customer_ids:
+              docs: The IDs of the [customer profiles](entity:Customer) to retrieve.
+              type: list<string>
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkRetrieveCustomersResponse
+        status-code: 200
+      examples:
+        - request:
+            customer_ids:
+              - 8DDA5NZVBZFGAX0V3HPF81HHE0
+              - N18CPRVXR5214XPBBA6BZQWF3C
+              - 2GYD7WNXF7BJZW1PMGNXZ3Y8M8
+          response:
+            body:
+              responses:
+                2GYD7WNXF7BJZW1PMGNXZ3Y8M8:
+                  errors:
+                    - category: INVALID_REQUEST_ERROR
+                      code: NOT_FOUND
+                      detail: Customer with ID `2GYD7WNXF7BJZW1PMGNXZ3Y8M8` not found.
+                8DDA5NZVBZFGAX0V3HPF81HHE0:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  customer:
+                    id: 8DDA5NZVBZFGAX0V3HPF81HHE0
+                    created_at: '2024-01-19T00:27:54.59Z'
+                    updated_at: '2024-01-19T00:38:06Z'
+                    given_name: Amelia
+                    family_name: Earhart
+                    email_address: New.Amelia.Earhart@example.com
+                    birthday: '1897-07-24'
+                    note: updated customer note
+                    preferences:
+                      email_unsubscribed: false
+                    creation_source: THIRD_PARTY
+                    version: 3
+                N18CPRVXR5214XPBBA6BZQWF3C:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  customer:
+                    id: N18CPRVXR5214XPBBA6BZQWF3C
+                    created_at: '2024-01-19T00:27:54.59Z'
+                    updated_at: '2024-01-19T00:38:06Z'
+                    given_name: Marie
+                    family_name: Curie
+                    preferences:
+                      email_unsubscribed: false
+                    creation_source: THIRD_PARTY
+                    version: 1
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    BulkUpdateCustomers:
+      path: /v2/customers/bulk-update
+      method: POST
+      auth: true
+      docs: >-
+        Updates multiple customer profiles.
+
+
+        This endpoint takes a map of individual update requests and returns a
+        map of responses.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkUpdateCustomers
+      request:
+        name: BulkUpdateCustomersRequest
+        body:
+          properties:
+            customers:
+              type: map<string, root.BulkUpdateCustomerData>
+              docs: >-
+                A map of 1 to 100 individual update requests, represented by
+                `customer ID: { customer data }`
+
+                key-value pairs.
+
+
+                Each key is the ID of the [customer profile](entity:Customer) to
+                update. To update a customer profile
+
+                that was created by merging existing profiles, provide the ID of
+                the newly created profile.
+
+
+                Each value contains the updated customer data. Only new or
+                changed fields are required. To add or
+
+                update a field, specify the new value. To remove a field,
+                specify `null`.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkUpdateCustomersResponse
+        status-code: 200
+      examples:
+        - request:
+            customers:
+              8DDA5NZVBZFGAX0V3HPF81HHE0:
+                email_address: New.Amelia.Earhart@example.com
+                note: updated customer note
+                version: 2
+              N18CPRVXR5214XPBBA6BZQWF3C:
+                given_name: Marie
+                family_name: Curie
+                version: 0
+          response:
+            body:
+              responses:
+                8DDA5NZVBZFGAX0V3HPF81HHE0:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  customer:
+                    id: 8DDA5NZVBZFGAX0V3HPF81HHE0
+                    created_at: '2024-01-19T00:27:54.59Z'
+                    updated_at: '2024-01-19T00:38:06Z'
+                    given_name: Amelia
+                    family_name: Earhart
+                    email_address: New.Amelia.Earhart@example.com
+                    birthday: '1897-07-24'
+                    note: updated customer note
+                    preferences:
+                      email_unsubscribed: false
+                    creation_source: THIRD_PARTY
+                    version: 3
+                N18CPRVXR5214XPBBA6BZQWF3C:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  customer:
+                    id: N18CPRVXR5214XPBBA6BZQWF3C
+                    created_at: '2024-01-19T00:27:54.59Z'
+                    updated_at: '2024-01-19T00:38:06Z'
+                    given_name: Marie
+                    family_name: Curie
+                    preferences:
+                      email_unsubscribed: false
+                    creation_source: THIRD_PARTY
+                    version: 1
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    search:
+      path: /v2/customers/search
+      method: POST
+      auth: true
+      docs: >-
+        Searches the customer profiles associated with a Square account using
+        one or more supported query filters.
+
+
+        Calling `SearchCustomers` without any explicit query filter returns all
+
+        customer profiles ordered alphabetically based on `given_name` and
+
+        `family_name`.
+
+
+        Under normal operating conditions, newly created or updated customer
+        profiles become available
+
+        for the search operation in well under 30 seconds. Occasionally,
+        propagation of the new or updated
+
+        profiles can take closer to one minute or longer, especially during
+        network incidents and outages.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchCustomers
+      request:
+        name: SearchCustomersRequest
+        body:
+          properties:
+            cursor:
+              type: optional<string>
+              docs: >-
+                Include the pagination cursor in subsequent calls to this
+                endpoint to retrieve
+
+                the next set of results associated with the original query.
+
+
+                For more information, see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+            limit:
+              type: optional<long>
+              docs: >-
+                The maximum number of results to return in a single page. This
+                limit is advisory. The response might contain more or fewer
+                results.
+
+                If the specified limit is invalid, Square returns a `400
+                VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error. The default value
+                is 100.
+
+
+                For more information, see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+            query:
+              type: optional<root.CustomerQuery>
+              docs: >-
+                The filtering and sorting criteria for the search request. If a
+                query is not specified,
+
+                Square returns all customer profiles ordered alphabetically by
+                `given_name` and `family_name`.
+            count:
+              type: optional<boolean>
+              docs: >-
+                Indicates whether to return the total count of matching
+                customers in the `count` field of the response.
+
+
+                The default value is `false`.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchCustomersResponse
+        status-code: 200
+      examples:
+        - request:
+            limit: 2
+            query:
+              filter:
+                creation_source:
+                  values:
+                    - THIRD_PARTY
+                  rule: INCLUDE
+                created_at:
+                  start_at: '2018-01-01T00:00:00-00:00'
+                  end_at: '2018-02-01T00:00:00-00:00'
+                email_address:
+                  fuzzy: example.com
+                group_ids:
+                  all:
+                    - 545AXB44B4XXWMVQ4W8SBT3HHF
+              sort:
+                field: CREATED_AT
+                order: ASC
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              customers:
+                - id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                  created_at: '2018-01-23T20:21:54.859Z'
+                  updated_at: '2020-04-20T10:02:43.083Z'
+                  given_name: James
+                  family_name: Bond
+                  nickname: nickname
+                  company_name: company_name
+                  email_address: james.bond@example.com
+                  address:
+                    address_line_1: 505 Electric Ave
+                    address_line_2: Suite 600
+                    locality: New York
+                    administrative_district_level_1: NY
+                    postal_code: '10003'
+                    country: US
+                  phone_number: +1-212-555-4250
+                  birthday: birthday
+                  reference_id: YOUR_REFERENCE_ID_2
+                  note: note
+                  preferences:
+                    email_unsubscribed: false
+                  creation_source: DIRECTORY
+                  group_ids:
+                    - 545AXB44B4XXWMVQ4W8SBT3HHF
+                  segment_ids:
+                    - 1KB9JE5EGJXCW.REACHABLE
+                  version: 7
+                - id: A9641GZW2H7Z56YYSD41Q12HDW
+                  created_at: '2018-01-30T14:10:54.859Z'
+                  updated_at: '2018-03-08T18:25:21.342Z'
+                  given_name: Amelia
+                  family_name: Earhart
+                  nickname: nickname
+                  company_name: company_name
+                  email_address: amelia.earhart@example.com
+                  address:
+                    address_line_1: 500 Electric Ave
+                    address_line_2: Suite 600
+                    locality: New York
+                    administrative_district_level_1: NY
+                    postal_code: '10003'
+                    country: US
+                  phone_number: +1-212-555-9238
+                  birthday: birthday
+                  reference_id: YOUR_REFERENCE_ID_1
+                  note: a customer
+                  preferences:
+                    email_unsubscribed: false
+                  creation_source: THIRD_PARTY
+                  group_ids:
+                    - 545AXB44B4XXWMVQ4W8SBT3HHF
+                  segment_ids:
+                    - 1KB9JE5EGJXCW.REACHABLE
+                  version: 1
+              cursor: 9dpS093Uy12AzeE
+              count: 1000000
+    get:
+      path: /v2/customers/{customer_id}
+      method: GET
+      auth: true
+      docs: Returns details for a single customer.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveCustomer
+      request:
+        name: GetCustomersRequest
+        path-parameters:
+          customer_id:
+            type: string
+            docs: The ID of the customer to retrieve.
+      response:
+        docs: Success
+        type: root.GetCustomerResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            customer_id: customer_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              customer:
+                id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                created_at: '2016-03-23T20:21:54.859Z'
+                updated_at: '2016-03-23T20:21:54.859Z'
+                given_name: Amelia
+                family_name: Earhart
+                nickname: nickname
+                company_name: company_name
+                email_address: Amelia.Earhart@example.com
+                address:
+                  address_line_1: 500 Electric Ave
+                  address_line_2: Suite 600
+                  address_line_3: address_line_3
+                  locality: New York
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: NY
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '10003'
+                  country: US
+                  first_name: first_name
+                  last_name: last_name
+                phone_number: +1-212-555-4240
+                birthday: birthday
+                reference_id: YOUR_REFERENCE_ID
+                note: a customer
+                preferences:
+                  email_unsubscribed: false
+                creation_source: THIRD_PARTY
+                group_ids:
+                  - 545AXB44B4XXWMVQ4W8SBT3HHF
+                segment_ids:
+                  - 1KB9JE5EGJXCW.REACHABLE
+                version: 1
+                tax_ids:
+                  eu_vat: eu_vat
+    update:
+      path: /v2/customers/{customer_id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates a customer profile. This endpoint supports sparse updates, so
+        only new or changed fields are required in the request.
+
+        To add or update a field, specify the new value. To remove a field,
+        specify `null`.
+
+
+        To update a customer profile that was created by merging existing
+        profiles, you must use the ID of the newly created profile.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateCustomer
+      request:
+        name: UpdateCustomerRequest
+        path-parameters:
+          customer_id:
+            type: string
+            docs: The ID of the customer to update.
+        body:
+          properties:
+            given_name:
+              type: optional<nullable<string>>
+              docs: >-
+                The given name (that is, the first name) associated with the
+                customer profile.
+
+
+                The maximum length for this value is 300 characters.
+            family_name:
+              type: optional<nullable<string>>
+              docs: >-
+                The family name (that is, the last name) associated with the
+                customer profile.
+
+
+                The maximum length for this value is 300 characters.
+            company_name:
+              type: optional<nullable<string>>
+              docs: |-
+                A business name associated with the customer profile.
+
+                The maximum length for this value is 500 characters.
+            nickname:
+              type: optional<nullable<string>>
+              docs: |-
+                A nickname for the customer profile.
+
+                The maximum length for this value is 100 characters.
+            email_address:
+              type: optional<nullable<string>>
+              docs: |-
+                The email address associated with the customer profile.
+
+                The maximum length for this value is 254 characters.
+            address:
+              type: optional<root.Address>
+              docs: >-
+                The physical address associated with the customer profile. Only
+                new or changed fields are required in the request.
+
+
+                For maximum length constraints, see [Customer
+                addresses](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#address).
+
+                The `first_name` and `last_name` fields are ignored if they are
+                present in the request.
+            phone_number:
+              type: optional<nullable<string>>
+              docs: >-
+                The phone number associated with the customer profile. The phone
+                number must be valid and can contain
+
+                9–16 digits, with an optional `+` prefix and country code. For
+                more information, see
+
+                [Customer phone
+                numbers](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#phone-number).
+            reference_id:
+              type: optional<nullable<string>>
+              docs: >-
+                An optional second ID used to associate the customer profile
+                with an
+
+                entity in another system.
+
+
+                The maximum length for this value is 100 characters.
+            note:
+              type: optional<nullable<string>>
+              docs: A custom note associated with the customer profile.
+            birthday:
+              type: optional<nullable<string>>
+              docs: >-
+                The birthday associated with the customer profile, in
+                `YYYY-MM-DD` or `MM-DD` format. For example,
+
+                specify `1998-09-21` for September 21, 1998, or `09-21` for
+                September 21. Birthdays are returned in `YYYY-MM-DD`
+
+                format, where `YYYY` is the specified birth year or `0000` if a
+                birth year is not specified.
+            version:
+              type: optional<long>
+              docs: >-
+                The current version of the customer profile.
+
+
+                As a best practice, you should include this field to enable
+                [optimistic
+                concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)
+                control. For more information, see [Update a customer
+                profile](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#update-a-customer-profile).
+            tax_ids:
+              type: optional<root.CustomerTaxIds>
+              docs: >-
+                The tax ID associated with the customer profile. This field is
+                available only for customers of sellers
+
+                in EU countries or the United Kingdom. For more information,
+
+                see [Customer tax
+                IDs](https://developer.squareup.com/docs/customers-api/what-it-does#customer-tax-ids).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateCustomerResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            customer_id: customer_id
+          request:
+            email_address: New.Amelia.Earhart@example.com
+            note: updated customer note
+            version: 2
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              customer:
+                id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                created_at: '2016-03-23T20:21:54.859Z'
+                updated_at: '2016-05-15T20:21:55Z'
+                given_name: Amelia
+                family_name: Earhart
+                nickname: nickname
+                company_name: company_name
+                email_address: New.Amelia.Earhart@example.com
+                address:
+                  address_line_1: 500 Electric Ave
+                  address_line_2: Suite 600
+                  address_line_3: address_line_3
+                  locality: New York
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: NY
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '10003'
+                  country: US
+                  first_name: first_name
+                  last_name: last_name
+                phone_number: phone_number
+                birthday: birthday
+                reference_id: YOUR_REFERENCE_ID
+                note: updated customer note
+                preferences:
+                  email_unsubscribed: false
+                creation_source: THIRD_PARTY
+                group_ids:
+                  - group_ids
+                segment_ids:
+                  - segment_ids
+                version: 3
+                tax_ids:
+                  eu_vat: eu_vat
+    delete:
+      path: /v2/customers/{customer_id}
+      method: DELETE
+      auth: true
+      docs: >-
+        Deletes a customer profile from a business.
+
+
+        To delete a customer profile that was created by merging existing
+        profiles, you must use the ID of the newly created profile.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteCustomer
+      request:
+        name: DeleteCustomersRequest
+        path-parameters:
+          customer_id:
+            type: string
+            docs: The ID of the customer to delete.
+        query-parameters:
+          version:
+            type: optional<nullable<long>>
+            docs: >-
+              The current version of the customer profile.
+
+
+              As a best practice, you should include this parameter to enable
+              [optimistic
+              concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)
+              control.  For more information, see [Delete a customer
+              profile](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#delete-customer-profile).
+      response:
+        docs: Success
+        type: root.DeleteCustomerResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            customer_id: customer_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

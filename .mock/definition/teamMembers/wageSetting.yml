@@ -1,0 +1,170 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    get:
+      path: /v2/team-members/{team_member_id}/wage-setting
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a `WageSetting` object for a team member specified
+
+        by `TeamMember.id`. For more information, see
+
+        [Troubleshooting the Team
+        API](https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).
+
+
+        Square recommends using
+        [RetrieveTeamMember](api-endpoint:Team-RetrieveTeamMember) or
+        [SearchTeamMembers](api-endpoint:Team-SearchTeamMembers)
+
+        to get this information directly from the `TeamMember.wage_setting`
+        field.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveWageSetting
+      request:
+        name: GetWageSettingRequest
+        path-parameters:
+          team_member_id:
+            type: string
+            docs: The ID of the team member for which to retrieve the wage setting.
+      response:
+        docs: Success
+        type: root.GetWageSettingResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            team_member_id: team_member_id
+          response:
+            body:
+              wage_setting:
+                team_member_id: 1yJlHapkseYnNPETIU1B
+                job_assignments:
+                  - job_title: Manager
+                    pay_type: SALARY
+                    hourly_rate:
+                      amount: 2164
+                      currency: USD
+                    annual_rate:
+                      amount: 4500000
+                      currency: USD
+                    weekly_hours: 40
+                is_overtime_exempt: false
+                version: 1
+                created_at: '2020-06-11T23:01:21+00:00'
+                updated_at: '2020-06-11T23:01:21+00:00'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    update:
+      path: /v2/team-members/{team_member_id}/wage-setting
+      method: PUT
+      auth: true
+      docs: >-
+        Creates or updates a `WageSetting` object. The object is created if a
+
+        `WageSetting` with the specified `team_member_id` doesn't exist.
+        Otherwise,
+
+        it fully replaces the `WageSetting` object for the team member.
+
+        The `WageSetting` is returned on a successful update. For more
+        information, see
+
+        [Troubleshooting the Team
+        API](https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).
+
+
+        Square recommends using
+        [CreateTeamMember](api-endpoint:Team-CreateTeamMember) or
+        [UpdateTeamMember](api-endpoint:Team-UpdateTeamMember)
+
+        to manage the `TeamMember.wage_setting` field directly.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateWageSetting
+      request:
+        name: UpdateWageSettingRequest
+        path-parameters:
+          team_member_id:
+            type: string
+            docs: >-
+              The ID of the team member for which to update the `WageSetting`
+              object.
+        body:
+          properties:
+            wage_setting:
+              type: root.WageSetting
+              docs: >-
+                The complete `WageSetting` object. For all job assignments,
+                specify one of the following:
+
+                - `job_id` (recommended) - If needed, call
+                [ListJobs](api-endpoint:Team-ListJobs) to get a list of all
+                jobs.
+
+                Requires Square API version 2024-12-18 or later.
+
+                - `job_title` - Use the exact, case-sensitive spelling of an
+                existing title unless you want to create a new job.
+
+                This value is ignored if `job_id` is also provided.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateWageSettingResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            team_member_id: team_member_id
+          request:
+            wage_setting:
+              job_assignments:
+                - job_title: Manager
+                  pay_type: SALARY
+                  annual_rate:
+                    amount: 3000000
+                    currency: USD
+                  weekly_hours: 40
+                - job_title: Cashier
+                  pay_type: HOURLY
+                  hourly_rate:
+                    amount: 2000
+                    currency: USD
+              is_overtime_exempt: true
+          response:
+            body:
+              wage_setting:
+                team_member_id: '-3oZQKPKVk6gUXU_V5Qa'
+                job_assignments:
+                  - job_title: Manager
+                    pay_type: SALARY
+                    hourly_rate:
+                      amount: 1443
+                      currency: USD
+                    annual_rate:
+                      amount: 3000000
+                      currency: USD
+                    weekly_hours: 40
+                  - job_title: Cashier
+                    pay_type: HOURLY
+                    hourly_rate:
+                      amount: 2000
+                      currency: USD
+                is_overtime_exempt: true
+                version: 1
+                created_at: '2019-07-10T17:26:48+00:00'
+                updated_at: '2020-06-11T23:12:04+00:00'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

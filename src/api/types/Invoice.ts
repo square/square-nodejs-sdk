@@ -159,4 +159,9 @@ export interface Invoice {
      * [CreateInvoiceAttachment](api-endpoint:Invoices-CreateInvoiceAttachment) and [DeleteInvoiceAttachment](api-endpoint:Invoices-DeleteInvoiceAttachment) endpoints.
      */
     attachments?: Square.InvoiceAttachment[];
+    /**
+     * The ID of the [team member](entity:TeamMember) who created the invoice.
+     * This field is present only on invoices created in the Square Dashboard or Square Invoices app by a logged-in team member.
+     */
+    creatorTeamMemberId?: string;
 }

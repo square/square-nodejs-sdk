@@ -1,0 +1,169 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    searchEvents:
+      path: /v2/loyalty/events/search
+      method: POST
+      auth: true
+      docs: >-
+        Searches for loyalty events.
+
+
+        A Square loyalty program maintains a ledger of events that occur during
+        the lifetime of a
+
+        buyer's loyalty account. Each change in the point balance
+
+        (for example, points earned, points redeemed, and points expired) is
+
+        recorded in the ledger. Using this endpoint, you can search the ledger
+        for events.
+
+
+        Search results are sorted by `created_at` in descending order.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchLoyaltyEvents
+      request:
+        name: SearchLoyaltyEventsRequest
+        body:
+          properties:
+            query:
+              type: optional<root.LoyaltyEventQuery>
+              docs: >-
+                A set of one or more predefined query filters to apply when 
+
+                searching for loyalty events. The endpoint performs a logical
+                AND to 
+
+                evaluate multiple filters and performs a logical OR on arrays  
+
+                that specifies multiple field values.
+            limit:
+              type: optional<integer>
+              docs: |-
+                The maximum number of results to include in the response. 
+                The last page might contain fewer events. 
+                The default is 30 events.
+              validation:
+                min: 1
+                max: 30
+            cursor:
+              type: optional<string>
+              docs: >-
+                A pagination cursor returned by a previous call to this
+                endpoint.
+
+                Provide this to retrieve the next set of results for your
+                original query.
+
+                For more information, see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchLoyaltyEventsResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                order_filter:
+                  order_id: PyATxhYLfsMqpVkcKJITPydgEYfZY
+            limit: 30
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              events:
+                - id: c27c8465-806e-36f2-b4b3-71f5887b5ba8
+                  type: ACCUMULATE_POINTS
+                  created_at: '2020-05-08T22:01:30Z'
+                  accumulate_points:
+                    loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                    points: 5
+                    order_id: PyATxhYLfsMqpVkcKJITPydgEYfZY
+                  create_reward:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  redeem_reward:
+                    loyalty_program_id: loyalty_program_id
+                  delete_reward:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  adjust_points:
+                    points: 1
+                  loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                  location_id: P034NEENMD09F
+                  source: LOYALTY_API
+                  expire_points:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  other_event:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  accumulate_promotion_points:
+                    points: 1
+                    order_id: order_id
+                - id: e4a5cbc3-a4d0-3779-98e9-e578885d9430
+                  type: REDEEM_REWARD
+                  created_at: '2020-05-08T22:01:15Z'
+                  create_reward:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  redeem_reward:
+                    loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                    reward_id: d03f79f4-815f-3500-b851-cc1e68a457f9
+                    order_id: PyATxhYLfsMqpVkcKJITPydgEYfZY
+                  delete_reward:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  adjust_points:
+                    points: 1
+                  loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                  location_id: P034NEENMD09F
+                  source: LOYALTY_API
+                  expire_points:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  other_event:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  accumulate_promotion_points:
+                    points: 1
+                    order_id: order_id
+                - id: 5e127479-0b03-3671-ab1e-15faea8b7188
+                  type: CREATE_REWARD
+                  created_at: '2020-05-08T22:00:44Z'
+                  create_reward:
+                    loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
+                    reward_id: d03f79f4-815f-3500-b851-cc1e68a457f9
+                    points: -10
+                  redeem_reward:
+                    loyalty_program_id: loyalty_program_id
+                  delete_reward:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  adjust_points:
+                    points: 1
+                  loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
+                  location_id: location_id
+                  source: LOYALTY_API
+                  expire_points:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  other_event:
+                    loyalty_program_id: loyalty_program_id
+                    points: 1
+                  accumulate_promotion_points:
+                    points: 1
+                    order_id: order_id
+              cursor: cursor
+  source:
+    openapi: openapi/openapi.json

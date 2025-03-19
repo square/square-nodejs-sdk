@@ -1,0 +1,448 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/terminals/actions
+      method: POST
+      auth: true
+      docs: Creates a Terminal action request and sends it to the specified device.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateTerminalAction
+      request:
+        name: CreateTerminalActionRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this `CreateAction` request.
+                Keys can be any valid string
+
+                but must be unique for every `CreateAction` request.
+
+
+                See [Idempotency
+                keys](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)
+                for more
+
+                information.
+              validation:
+                minLength: 1
+                maxLength: 64
+            action:
+              type: root.TerminalAction
+              docs: The Action to create.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateTerminalActionResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: thahn-70e75c10-47f7-4ab6-88cc-aaa4076d065e
+            action:
+              device_id: '{{DEVICE_ID}}'
+              deadline_duration: PT5M
+              type: SAVE_CARD
+              save_card_options:
+                customer_id: '{{CUSTOMER_ID}}'
+                reference_id: user-id-1
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              action:
+                id: termapia:jveJIAkkAjILHkdCE
+                device_id: DEVICE_ID
+                deadline_duration: PT5M
+                status: PENDING
+                cancel_reason: BUYER_CANCELED
+                created_at: '2021-07-28T23:22:07.476Z'
+                updated_at: '2021-07-28T23:22:07.476Z'
+                app_id: APP_ID
+                location_id: LOCATION_ID
+                type: SAVE_CARD
+                qr_code_options:
+                  title: title
+                  body: body
+                  barcode_contents: barcode_contents
+                save_card_options:
+                  customer_id: CUSTOMER_ID
+                  card_id: card_id
+                  reference_id: user-id-1
+                signature_options:
+                  title: title
+                  body: body
+                  signature:
+                    - {}
+                confirmation_options:
+                  title: title
+                  body: body
+                  agree_button_text: agree_button_text
+                  disagree_button_text: disagree_button_text
+                receipt_options:
+                  payment_id: payment_id
+                  print_only: true
+                  is_duplicate: true
+                data_collection_options:
+                  title: title
+                  body: body
+                  input_type: EMAIL
+                select_options:
+                  title: title
+                  body: body
+                  options:
+                    - reference_id: reference_id
+                      title: title
+                  selected_option:
+                    reference_id: reference_id
+                    title: title
+                device_metadata:
+                  battery_percentage: battery_percentage
+                  charging_state: charging_state
+                  location_id: location_id
+                  merchant_id: merchant_id
+                  network_connection_type: network_connection_type
+                  payment_region: payment_region
+                  serial_number: serial_number
+                  os_version: os_version
+                  app_version: app_version
+                  wifi_network_name: wifi_network_name
+                  wifi_network_strength: wifi_network_strength
+                  ip_address: ip_address
+                await_next_action: true
+                await_next_action_duration: await_next_action_duration
+    search:
+      path: /v2/terminals/actions/search
+      method: POST
+      auth: true
+      docs: >-
+        Retrieves a filtered list of Terminal action requests created by the
+        account making the request. Terminal action requests are available for
+        30 days.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchTerminalActions
+      request:
+        name: SearchTerminalActionsRequest
+        body:
+          properties:
+            query:
+              type: optional<root.TerminalActionQuery>
+              docs: >-
+                Queries terminal actions based on given conditions and sort
+                order.
+
+                Leaving this unset will return all actions with the default sort
+                order.
+            cursor:
+              type: optional<string>
+              docs: >-
+                A pagination cursor returned by a previous call to this
+                endpoint.
+
+                Provide this to retrieve the next set of results for the
+                original query.
+
+                See
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination)
+                for more
+
+                information.
+            limit:
+              type: optional<integer>
+              docs: Limit the number of results returned for a single request.
+              validation:
+                min: 1
+                max: 100
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchTerminalActionsResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                created_at:
+                  start_at: '2022-04-01T00:00:00.000Z'
+              sort:
+                sort_order: DESC
+            limit: 2
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              action:
+                - id: termapia:oBGWlAats8xWCiCE
+                  device_id: DEVICE_ID
+                  deadline_duration: PT5M
+                  status: IN_PROGRESS
+                  cancel_reason: BUYER_CANCELED
+                  created_at: '2022-04-08T15:14:04.895Z'
+                  updated_at: '2022-04-08T15:14:05.446Z'
+                  app_id: APP_ID
+                  location_id: LOCATION_ID
+                  type: SAVE_CARD
+                  qr_code_options:
+                    title: title
+                    body: body
+                    barcode_contents: barcode_contents
+                  save_card_options:
+                    customer_id: CUSTOMER_ID
+                    reference_id: user-id-1
+                  signature_options:
+                    title: title
+                    body: body
+                  confirmation_options:
+                    title: title
+                    body: body
+                    agree_button_text: agree_button_text
+                  receipt_options:
+                    payment_id: payment_id
+                  data_collection_options:
+                    title: title
+                    body: body
+                    input_type: EMAIL
+                  select_options:
+                    title: title
+                    body: body
+                    options:
+                      - reference_id: reference_id
+                        title: title
+                  await_next_action: true
+                  await_next_action_duration: await_next_action_duration
+                - id: termapia:K2NY2YSSml3lTiCE
+                  device_id: DEVICE_ID
+                  deadline_duration: PT5M
+                  status: COMPLETED
+                  cancel_reason: BUYER_CANCELED
+                  created_at: '2022-04-08T15:14:01.210Z'
+                  updated_at: '2022-04-08T15:14:09.861Z'
+                  app_id: APP_ID
+                  location_id: LOCATION_ID
+                  type: SAVE_CARD
+                  qr_code_options:
+                    title: title
+                    body: body
+                    barcode_contents: barcode_contents
+                  save_card_options:
+                    customer_id: CUSTOMER_ID
+                    card_id: ccof:CARD_ID
+                    reference_id: user-id-1
+                  signature_options:
+                    title: title
+                    body: body
+                  confirmation_options:
+                    title: title
+                    body: body
+                    agree_button_text: agree_button_text
+                  receipt_options:
+                    payment_id: payment_id
+                  data_collection_options:
+                    title: title
+                    body: body
+                    input_type: EMAIL
+                  select_options:
+                    title: title
+                    body: body
+                    options:
+                      - reference_id: reference_id
+                        title: title
+                  await_next_action: true
+                  await_next_action_duration: await_next_action_duration
+              cursor: CURSOR
+    get:
+      path: /v2/terminals/actions/{action_id}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a Terminal action request by `action_id`. Terminal action
+        requests are available for 30 days.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetTerminalAction
+      request:
+        name: GetActionsRequest
+        path-parameters:
+          action_id:
+            type: string
+            docs: Unique ID for the desired `TerminalAction`.
+      response:
+        docs: Success
+        type: root.GetTerminalActionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            action_id: action_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              action:
+                id: termapia:jveJIAkkAjILHkdCE
+                device_id: DEVICE_ID
+                deadline_duration: PT5M
+                status: IN_PROGRESS
+                cancel_reason: BUYER_CANCELED
+                created_at: '2021-07-28T23:22:07.476Z'
+                updated_at: '2021-07-28T23:22:08.301Z'
+                app_id: APP_ID
+                location_id: LOCATION_ID
+                type: SAVE_CARD
+                qr_code_options:
+                  title: title
+                  body: body
+                  barcode_contents: barcode_contents
+                save_card_options:
+                  customer_id: CUSTOMER_ID
+                  card_id: card_id
+                  reference_id: user-id-1
+                signature_options:
+                  title: title
+                  body: body
+                  signature:
+                    - {}
+                confirmation_options:
+                  title: title
+                  body: body
+                  agree_button_text: agree_button_text
+                  disagree_button_text: disagree_button_text
+                receipt_options:
+                  payment_id: payment_id
+                  print_only: true
+                  is_duplicate: true
+                data_collection_options:
+                  title: title
+                  body: body
+                  input_type: EMAIL
+                select_options:
+                  title: title
+                  body: body
+                  options:
+                    - reference_id: reference_id
+                      title: title
+                  selected_option:
+                    reference_id: reference_id
+                    title: title
+                device_metadata:
+                  battery_percentage: battery_percentage
+                  charging_state: charging_state
+                  location_id: location_id
+                  merchant_id: merchant_id
+                  network_connection_type: network_connection_type
+                  payment_region: payment_region
+                  serial_number: serial_number
+                  os_version: os_version
+                  app_version: app_version
+                  wifi_network_name: wifi_network_name
+                  wifi_network_strength: wifi_network_strength
+                  ip_address: ip_address
+                await_next_action: true
+                await_next_action_duration: await_next_action_duration
+    cancel:
+      path: /v2/terminals/actions/{action_id}/cancel
+      method: POST
+      auth: true
+      docs: >-
+        Cancels a Terminal action request if the status of the request permits
+        it.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CancelTerminalAction
+      request:
+        name: CancelActionsRequest
+        path-parameters:
+          action_id:
+            type: string
+            docs: Unique ID for the desired `TerminalAction`.
+      response:
+        docs: Success
+        type: root.CancelTerminalActionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            action_id: action_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              action:
+                id: termapia:jveJIAkkAjILHkdCE
+                device_id: DEVICE_ID
+                deadline_duration: PT5M
+                status: CANCELED
+                cancel_reason: SELLER_CANCELED
+                created_at: '2021-07-28T23:22:07.476Z'
+                updated_at: '2021-07-28T23:22:29.511Z'
+                app_id: APP_ID
+                location_id: LOCATION_ID
+                type: SAVE_CARD
+                qr_code_options:
+                  title: title
+                  body: body
+                  barcode_contents: barcode_contents
+                save_card_options:
+                  customer_id: CUSTOMER_ID
+                  card_id: card_id
+                  reference_id: user-id-1
+                signature_options:
+                  title: title
+                  body: body
+                  signature:
+                    - {}
+                confirmation_options:
+                  title: title
+                  body: body
+                  agree_button_text: agree_button_text
+                  disagree_button_text: disagree_button_text
+                receipt_options:
+                  payment_id: payment_id
+                  print_only: true
+                  is_duplicate: true
+                data_collection_options:
+                  title: title
+                  body: body
+                  input_type: EMAIL
+                select_options:
+                  title: title
+                  body: body
+                  options:
+                    - reference_id: reference_id
+                      title: title
+                  selected_option:
+                    reference_id: reference_id
+                    title: title
+                device_metadata:
+                  battery_percentage: battery_percentage
+                  charging_state: charging_state
+                  location_id: location_id
+                  merchant_id: merchant_id
+                  network_connection_type: network_connection_type
+                  payment_region: payment_region
+                  serial_number: serial_number
+                  os_version: os_version
+                  app_version: app_version
+                  wifi_network_name: wifi_network_name
+                  wifi_network_strength: wifi_network_strength
+                  ip_address: ip_address
+                await_next_action: true
+                await_next_action_duration: await_next_action_duration
+  source:
+    openapi: openapi/openapi.json

@@ -16,7 +16,7 @@ export declare namespace BankAccounts {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-02-20";
+        version?: "2025-03-19";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace BankAccounts {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-02-20";
+        version?: "2025-03-19";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -72,11 +72,11 @@ export class BankAccounts {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "41.0.0",
-                    "User-Agent": "square/41.0.0",
+                    "X-Fern-SDK-Version": "42.0.0",
+                    "User-Agent": "square/42.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -153,11 +153,11 @@ export class BankAccounts {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -229,11 +229,11 @@ export class BankAccounts {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

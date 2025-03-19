@@ -119,6 +119,7 @@ export const ErrorCode: core.serialization.Schema<serializers.ErrorCode.Raw, Squ
         "SOURCE_EXPIRED",
         "UNSUPPORTED_LOYALTY_REWARD_TIER",
         "LOCATION_MISMATCH",
+        "ORDER_UNPAID_NOT_RETURNABLE",
         "IDEMPOTENCY_KEY_REUSED",
         "UNEXPECTED_VALUE",
         "SANDBOX_NOT_SUPPORTED",
@@ -275,6 +276,7 @@ export declare namespace ErrorCode {
         | "SOURCE_EXPIRED"
         | "UNSUPPORTED_LOYALTY_REWARD_TIER"
         | "LOCATION_MISMATCH"
+        | "ORDER_UNPAID_NOT_RETURNABLE"
         | "IDEMPOTENCY_KEY_REUSED"
         | "UNEXPECTED_VALUE"
         | "SANDBOX_NOT_SUPPORTED"
