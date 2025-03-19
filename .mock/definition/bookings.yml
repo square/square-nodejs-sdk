@@ -1,0 +1,861 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/bookings
+      method: GET
+      auth: true
+      docs: >-
+        Retrieve a collection of bookings.
+
+
+        To call this endpoint with buyer-level permissions, set
+        `APPOINTMENTS_READ` for the OAuth scope.
+
+        To call this endpoint with seller-level permissions, set
+        `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.bookings
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListBookings
+      request:
+        name: ListBookingsRequest
+        query-parameters:
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results per page to return in a paged
+              response.
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              The pagination cursor from the preceding response to return the
+              next page of the results. Do not set this when retrieving the
+              first page of the results.
+          customer_id:
+            type: optional<nullable<string>>
+            docs: >-
+              The [customer](entity:Customer) for whom to retrieve bookings. If
+              this is not set, bookings for all customers are retrieved.
+          team_member_id:
+            type: optional<nullable<string>>
+            docs: >-
+              The team member for whom to retrieve bookings. If this is not set,
+              bookings of all members are retrieved.
+          location_id:
+            type: optional<nullable<string>>
+            docs: >-
+              The location for which to retrieve bookings. If this is not set,
+              all locations' bookings are retrieved.
+          start_at_min:
+            type: optional<nullable<string>>
+            docs: >-
+              The RFC 3339 timestamp specifying the earliest of the start time.
+              If this is not set, the current time is used.
+          start_at_max:
+            type: optional<nullable<string>>
+            docs: >-
+              The RFC 3339 timestamp specifying the latest of the start time. If
+              this is not set, the time of 31 days after `start_at_min` is used.
+      response:
+        docs: Success
+        type: root.ListBookingsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              bookings:
+                - id: zkras0xv0xwswx
+                  version: 1
+                  status: ACCEPTED
+                  created_at: '2020-10-28T15:47:41Z'
+                  updated_at: '2020-10-28T15:49:25Z'
+                  start_at: '2020-11-26T13:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  customer_id: EX2QSVGTZN4K1E5QE1CBFNVQ8M
+                  customer_note: ''
+                  seller_note: ''
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMXUrsBWWcHTt79t
+                      service_variation_version: 1599775456731
+                  transition_time_minutes: 1
+                  all_day: true
+                  location_type: BUSINESS_LOCATION
+                  source: FIRST_PARTY_MERCHANT
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    create:
+      path: /v2/bookings
+      method: POST
+      auth: true
+      docs: >-
+        Creates a booking.
+
+
+        The required input must include the following:
+
+        - `Booking.location_id`
+
+        - `Booking.start_at`
+
+        - `Booking.AppointmentSegment.team_member_id`
+
+        - `Booking.AppointmentSegment.service_variation_id`
+
+        - `Booking.AppointmentSegment.service_variation_version`
+
+
+        To call this endpoint with buyer-level permissions, set
+        `APPOINTMENTS_WRITE` for the OAuth scope.
+
+        To call this endpoint with seller-level permissions, set
+        `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+
+        For calls to this endpoint with seller-level permissions to succeed, the
+        seller must have subscribed to *Appointments Plus*
+
+        or *Appointments Premium*.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateBooking
+      request:
+        name: CreateBookingRequest
+        body:
+          properties:
+            idempotency_key:
+              type: optional<string>
+              docs: A unique key to make this request an idempotent operation.
+              validation:
+                maxLength: 255
+            booking:
+              type: root.Booking
+              docs: The details of the booking to be created.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateBookingResponse
+        status-code: 200
+      examples:
+        - request:
+            booking: {}
+          response:
+            body:
+              booking:
+                id: zkras0xv0xwswx
+                version: 0
+                status: ACCEPTED
+                created_at: '2020-10-28T15:47:41Z'
+                updated_at: '2020-10-28T15:47:41Z'
+                start_at: '2020-11-26T13:00:00Z'
+                location_id: LEQHH0YY8B42M
+                customer_id: EX2QSVGTZN4K1E5QE1CBFNVQ8M
+                customer_note: ''
+                seller_note: ''
+                appointment_segments:
+                  - duration_minutes: 60
+                    service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                    team_member_id: TMXUrsBWWcHTt79t
+                    service_variation_version: 1599775456731
+                transition_time_minutes: 1
+                all_day: true
+                location_type: BUSINESS_LOCATION
+                creator_details:
+                  creator_type: TEAM_MEMBER
+                  team_member_id: team_member_id
+                  customer_id: customer_id
+                source: FIRST_PARTY_MERCHANT
+                address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    SearchAvailability:
+      path: /v2/bookings/availability/search
+      method: POST
+      auth: true
+      docs: >-
+        Searches for availabilities for booking.
+
+
+        To call this endpoint with buyer-level permissions, set
+        `APPOINTMENTS_READ` for the OAuth scope.
+
+        To call this endpoint with seller-level permissions, set
+        `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchAvailability
+      request:
+        name: SearchAvailabilityRequest
+        body:
+          properties:
+            query:
+              type: root.SearchAvailabilityQuery
+              docs: >-
+                Query conditions used to filter buyer-accessible booking
+                availabilities.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchAvailabilityResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                start_at_range: {}
+          response:
+            body:
+              availabilities:
+                - start_at: '2020-11-26T13:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMXUrsBWWcHTt79t
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-26T13:30:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMXUrsBWWcHTt79t
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-26T14:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMaJcbiRqPIGZuS9
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-26T14:30:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMaJcbiRqPIGZuS9
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-26T15:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMaJcbiRqPIGZuS9
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-26T15:30:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMaJcbiRqPIGZuS9
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-26T16:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMaJcbiRqPIGZuS9
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T09:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMXUrsBWWcHTt79t
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T09:30:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMaJcbiRqPIGZuS9
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T10:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMXUrsBWWcHTt79t
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T10:30:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMXUrsBWWcHTt79t
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T11:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMXUrsBWWcHTt79t
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T11:30:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMaJcbiRqPIGZuS9
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T12:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMaJcbiRqPIGZuS9
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T12:30:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMaJcbiRqPIGZuS9
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T13:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMXUrsBWWcHTt79t
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T13:30:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMXUrsBWWcHTt79t
+                      service_variation_version: 1599775456731
+                - start_at: '2020-11-27T14:00:00Z'
+                  location_id: LEQHH0YY8B42M
+                  appointment_segments:
+                    - duration_minutes: 60
+                      service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                      team_member_id: TMaJcbiRqPIGZuS9
+                      service_variation_version: 1599775456731
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    BulkRetrieveBookings:
+      path: /v2/bookings/bulk-retrieve
+      method: POST
+      auth: true
+      docs: >-
+        Bulk-Retrieves a list of bookings by booking IDs.
+
+
+        To call this endpoint with buyer-level permissions, set
+        `APPOINTMENTS_READ` for the OAuth scope.
+
+        To call this endpoint with seller-level permissions, set
+        `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkRetrieveBookings
+      request:
+        name: BulkRetrieveBookingsRequest
+        body:
+          properties:
+            booking_ids:
+              docs: >-
+                A non-empty list of [Booking](entity:Booking) IDs specifying
+                bookings to retrieve.
+              type: list<string>
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkRetrieveBookingsResponse
+        status-code: 200
+      examples:
+        - request:
+            booking_ids:
+              - booking_ids
+          response:
+            body:
+              bookings:
+                sc3p3m7dvctfr1:
+                  booking:
+                    id: sc3p3m7dvctfr1
+                    version: 0
+                    status: ACCEPTED
+                    created_at: '2023-04-26T18:19:21Z'
+                    updated_at: '2023-04-26T18:19:21Z'
+                    start_at: '2023-05-01T14:00:00Z'
+                    location_id: LY6WNBPVM6VGV
+                    customer_id: 4TDWKN9E8165X8Z77MRS0VFMJM
+                    appointment_segments:
+                      - duration_minutes: 60
+                        service_variation_id: VG4FYBKK3UL6UITOEYQ6MFLS
+                        team_member_id: TMjiqI3PxyLMKr4k
+                        service_variation_version: 1641341724039
+                        any_team_member: false
+                    all_day: false
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                tdegug1dvctdef:
+                  errors:
+                    - category: INVALID_REQUEST_ERROR
+                      code: NOT_FOUND
+                      detail: Specified booking was not found.
+                      field: booking_id
+                tdegug1fqni3wh:
+                  booking:
+                    id: tdegug1fqni3wh
+                    version: 0
+                    status: ACCEPTED
+                    created_at: '2023-04-26T18:19:30Z'
+                    updated_at: '2023-04-26T18:19:30Z'
+                    start_at: '2023-05-02T14:00:00Z'
+                    location_id: LY6WNBPVM6VGV
+                    customer_id: 4TDWKN9E8165X8Z77MRS0VFMJM
+                    appointment_segments:
+                      - duration_minutes: 60
+                        service_variation_id: VG4FYBKK3UL6UITOEYQ6MFLS
+                        team_member_id: TMjiqI3PxyLMKr4k
+                        service_variation_version: 1641341724039
+                        any_team_member: false
+                    all_day: false
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    getBusinessProfile:
+      path: /v2/bookings/business-booking-profile
+      method: GET
+      auth: true
+      docs: Retrieves a seller's booking profile.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveBusinessBookingProfile
+      response:
+        docs: Success
+        type: root.GetBusinessBookingProfileResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              business_booking_profile:
+                seller_id: MLJQYZZRM0D3Y
+                created_at: '2020-09-10T21:40:38Z'
+                booking_enabled: true
+                customer_timezone_choice: CUSTOMER_CHOICE
+                booking_policy: ACCEPT_ALL
+                allow_user_cancel: true
+                business_appointment_settings:
+                  location_types:
+                    - BUSINESS_LOCATION
+                  alignment_time: HALF_HOURLY
+                  min_booking_lead_time_seconds: 0
+                  max_booking_lead_time_seconds: 31536000
+                  any_team_member_booking_enabled: true
+                  multiple_service_booking_enabled: true
+                  max_appointments_per_day_limit_type: PER_TEAM_MEMBER
+                  max_appointments_per_day_limit: 1
+                  cancellation_window_seconds: 1
+                  cancellation_fee_money:
+                    currency: USD
+                  cancellation_policy: CUSTOM_POLICY
+                  cancellation_policy_text: cancellation_policy_text
+                  skip_booking_flow_staff_selection: false
+                support_seller_level_writes: true
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    RetrieveLocationBookingProfile:
+      path: /v2/bookings/location-booking-profiles/{location_id}
+      method: GET
+      auth: true
+      docs: Retrieves a seller's location booking profile.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveLocationBookingProfile
+      request:
+        name: RetrieveLocationBookingProfileRequest
+        path-parameters:
+          location_id:
+            type: string
+            docs: The ID of the location to retrieve the booking profile.
+      response:
+        docs: Success
+        type: root.RetrieveLocationBookingProfileResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            location_id: location_id
+          response:
+            body:
+              location_booking_profile:
+                location_id: L3HETDGYQ4A2C
+                booking_site_url: https://square.site/book/L3HETDGYQ4A2C/prod-business
+                online_booking_enabled: true
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    BulkRetrieveTeamMemberBookingProfiles:
+      path: /v2/bookings/team-member-booking-profiles/bulk-retrieve
+      method: POST
+      auth: true
+      docs: Retrieves one or more team members' booking profiles.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkRetrieveTeamMemberBookingProfiles
+      request:
+        name: BulkRetrieveTeamMemberBookingProfilesRequest
+        body:
+          properties:
+            team_member_ids:
+              docs: >-
+                A non-empty list of IDs of team members whose booking profiles
+                you want to retrieve.
+              type: list<string>
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkRetrieveTeamMemberBookingProfilesResponse
+        status-code: 200
+      examples:
+        - request:
+            team_member_ids:
+              - team_member_ids
+          response:
+            body:
+              team_member_booking_profiles:
+                TMXUrsBWWcHTt79t:
+                  errors:
+                    - category: INVALID_REQUEST_ERROR
+                      code: NOT_FOUND
+                      detail: Resource not found.
+                TMaJcbiRqPIGZuS9:
+                  team_member_booking_profile:
+                    team_member_id: TMaJcbiRqPIGZuS9
+                    display_name: Sandbox Staff 1
+                    is_bookable: true
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                TMtdegug1fqni3wh:
+                  team_member_booking_profile:
+                    team_member_id: TMtdegug1fqni3wh
+                    display_name: Sandbox Staff 2
+                    is_bookable: true
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/bookings/{booking_id}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a booking.
+
+
+        To call this endpoint with buyer-level permissions, set
+        `APPOINTMENTS_READ` for the OAuth scope.
+
+        To call this endpoint with seller-level permissions, set
+        `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveBooking
+      request:
+        name: GetBookingsRequest
+        path-parameters:
+          booking_id:
+            type: string
+            docs: >-
+              The ID of the [Booking](entity:Booking) object representing the
+              to-be-retrieved booking.
+      response:
+        docs: Success
+        type: root.GetBookingResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            booking_id: booking_id
+          response:
+            body:
+              booking:
+                id: zkras0xv0xwswx
+                version: 1
+                status: ACCEPTED
+                created_at: '2020-10-28T15:47:41Z'
+                updated_at: '2020-10-28T15:49:25Z'
+                start_at: '2020-11-26T13:00:00Z'
+                location_id: LEQHH0YY8B42M
+                customer_id: EX2QSVGTZN4K1E5QE1CBFNVQ8M
+                customer_note: ''
+                seller_note: ''
+                appointment_segments:
+                  - duration_minutes: 60
+                    service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                    team_member_id: TMXUrsBWWcHTt79t
+                    service_variation_version: 1599775456731
+                transition_time_minutes: 1
+                all_day: true
+                location_type: BUSINESS_LOCATION
+                creator_details:
+                  creator_type: TEAM_MEMBER
+                  team_member_id: team_member_id
+                  customer_id: customer_id
+                source: FIRST_PARTY_MERCHANT
+                address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    update:
+      path: /v2/bookings/{booking_id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates a booking.
+
+
+        To call this endpoint with buyer-level permissions, set
+        `APPOINTMENTS_WRITE` for the OAuth scope.
+
+        To call this endpoint with seller-level permissions, set
+        `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+
+        For calls to this endpoint with seller-level permissions to succeed, the
+        seller must have subscribed to *Appointments Plus*
+
+        or *Appointments Premium*.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateBooking
+      request:
+        name: UpdateBookingRequest
+        path-parameters:
+          booking_id:
+            type: string
+            docs: >-
+              The ID of the [Booking](entity:Booking) object representing the
+              to-be-updated booking.
+        body:
+          properties:
+            idempotency_key:
+              type: optional<nullable<string>>
+              docs: A unique key to make this request an idempotent operation.
+              validation:
+                maxLength: 255
+            booking:
+              type: root.Booking
+              docs: >-
+                The booking to be updated. Individual attributes explicitly
+                specified here override the corresponding values of the existing
+                booking.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateBookingResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            booking_id: booking_id
+          request:
+            booking: {}
+          response:
+            body:
+              booking:
+                id: zkras0xv0xwswx
+                version: 2
+                status: ACCEPTED
+                created_at: '2020-10-28T15:47:41Z'
+                updated_at: '2020-10-28T15:49:25Z'
+                start_at: '2020-11-26T13:00:00Z'
+                location_id: LEQHH0YY8B42M
+                customer_id: EX2QSVGTZN4K1E5QE1CBFNVQ8M
+                customer_note: I would like to sit near the window please
+                seller_note: ''
+                appointment_segments:
+                  - duration_minutes: 60
+                    service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                    team_member_id: TMXUrsBWWcHTt79t
+                    service_variation_version: 1599775456731
+                transition_time_minutes: 1
+                all_day: true
+                location_type: CUSTOMER_LOCATION
+                creator_details:
+                  creator_type: TEAM_MEMBER
+                  team_member_id: team_member_id
+                  customer_id: customer_id
+                source: FIRST_PARTY_MERCHANT
+                address:
+                  address_line_1: 1955 Broadway
+                  address_line_2: Suite 600
+                  address_line_3: address_line_3
+                  locality: Oakland
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: CA
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '94612'
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    cancel:
+      path: /v2/bookings/{booking_id}/cancel
+      method: POST
+      auth: true
+      docs: >-
+        Cancels an existing booking.
+
+
+        To call this endpoint with buyer-level permissions, set
+        `APPOINTMENTS_WRITE` for the OAuth scope.
+
+        To call this endpoint with seller-level permissions, set
+        `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+
+        For calls to this endpoint with seller-level permissions to succeed, the
+        seller must have subscribed to *Appointments Plus*
+
+        or *Appointments Premium*.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CancelBooking
+      request:
+        name: CancelBookingRequest
+        path-parameters:
+          booking_id:
+            type: string
+            docs: >-
+              The ID of the [Booking](entity:Booking) object representing the
+              to-be-cancelled booking.
+        body:
+          properties:
+            idempotency_key:
+              type: optional<nullable<string>>
+              docs: A unique key to make this request an idempotent operation.
+              validation:
+                maxLength: 255
+            booking_version:
+              type: optional<nullable<integer>>
+              docs: >-
+                The revision number for the booking used for optimistic
+                concurrency.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CancelBookingResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            booking_id: booking_id
+          request: {}
+          response:
+            body:
+              booking:
+                id: zkras0xv0xwswx
+                version: 1
+                status: CANCELLED_BY_CUSTOMER
+                created_at: '2020-10-28T15:47:41Z'
+                updated_at: '2020-10-28T15:49:25Z'
+                start_at: '2020-11-26T13:00:00Z'
+                location_id: LEQHH0YY8B42M
+                customer_id: EX2QSVGTZN4K1E5QE1CBFNVQ8M
+                customer_note: ''
+                seller_note: ''
+                appointment_segments:
+                  - duration_minutes: 60
+                    service_variation_id: RU3PBTZTK7DXZDQFCJHOK2MC
+                    team_member_id: TMXUrsBWWcHTt79t
+                    service_variation_version: 1599775456731
+                transition_time_minutes: 1
+                all_day: true
+                location_type: BUSINESS_LOCATION
+                creator_details:
+                  creator_type: TEAM_MEMBER
+                  team_member_id: team_member_id
+                  customer_id: customer_id
+                source: FIRST_PARTY_MERCHANT
+                address:
+                  address_line_1: address_line_1
+                  address_line_2: address_line_2
+                  address_line_3: address_line_3
+                  locality: locality
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: administrative_district_level_1
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: postal_code
+                  country: ZZ
+                  first_name: first_name
+                  last_name: last_name
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

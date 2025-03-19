@@ -1,0 +1,376 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    upsert:
+      path: /v2/catalog/object
+      method: POST
+      auth: true
+      docs: >-
+        Creates a new or updates the specified
+        [CatalogObject](entity:CatalogObject).
+
+
+        To ensure consistency, only one update request is processed at a time
+        per seller account.
+
+        While one (batch or non-batch) update request is being processed, other
+        (batched and non-batched)
+
+        update requests are rejected with the `429` error code.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpsertCatalogObject
+      request:
+        name: UpsertCatalogObjectRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A value you specify that uniquely identifies this
+
+                request among all your requests. A common way to create
+
+                a valid idempotency key is to use a Universally unique
+
+                identifier (UUID).
+
+
+                If you're unsure whether a particular request was successful,
+
+                you can reattempt it with the same idempotency key without
+
+                worrying about creating duplicate objects.
+
+
+                See
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)
+                for more information.
+              validation:
+                minLength: 1
+                maxLength: 128
+            object:
+              type: root.CatalogObject
+              docs: >-
+                A CatalogObject to be created or updated.
+
+
+                - For updates, the object must be active (the `is_deleted` field
+                is not `true`).
+
+                - For creates, the object ID must start with `#`. The provided
+                ID is replaced with a server-generated ID.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpsertCatalogObjectResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: af3d1afc-7212-4300-b463-0bfc5314a5ae
+            object:
+              id: id
+              type: ITEM
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              catalog_object:
+                id: id
+                updated_at: updated_at
+                version: 1000000
+                is_deleted: true
+                custom_attribute_values:
+                  key: {}
+                catalog_v1_ids:
+                  - {}
+                present_at_all_locations: true
+                present_at_location_ids:
+                  - present_at_location_ids
+                absent_at_location_ids:
+                  - absent_at_location_ids
+                image_id: image_id
+                item_data:
+                  name: name
+                  description: description
+                  abbreviation: abbreviation
+                  label_color: label_color
+                  is_taxable: true
+                  category_id: category_id
+                  tax_ids:
+                    - tax_ids
+                  modifier_list_info:
+                    - modifier_list_id: modifier_list_id
+                  product_type: REGULAR
+                  skip_modifier_screen: true
+                  item_options:
+                    - {}
+                  image_ids:
+                    - image_ids
+                  sort_name: sort_name
+                  description_html: description_html
+                  description_plaintext: description_plaintext
+                  channels:
+                    - channels
+                  is_archived: true
+                type: ITEM
+              id_mappings:
+                - client_object_id: '#Cocoa'
+                  object_id: R2TA2FOBUGCJZNIWJSOSNAI4
+                - client_object_id: '#Small'
+                  object_id: QRT53UP4LITLWGOGBZCUWP63
+                - client_object_id: '#Large'
+                  object_id: NS77DKEIQ3AEQTCP727DSA7U
+    get:
+      path: /v2/catalog/object/{object_id}
+      method: GET
+      auth: true
+      docs: >-
+        Returns a single [CatalogItem](entity:CatalogItem) as a
+
+        [CatalogObject](entity:CatalogObject) based on the provided ID. The
+        returned
+
+        object includes all of the relevant [CatalogItem](entity:CatalogItem)
+
+        information including:
+        [CatalogItemVariation](entity:CatalogItemVariation)
+
+        children, references to its
+
+        [CatalogModifierList](entity:CatalogModifierList) objects, and the ids
+        of
+
+        any [CatalogTax](entity:CatalogTax) objects that apply to it.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveCatalogObject
+      request:
+        name: GetObjectRequest
+        path-parameters:
+          object_id:
+            type: string
+            docs: The object ID of any type of catalog objects to be retrieved.
+        query-parameters:
+          include_related_objects:
+            type: optional<nullable<boolean>>
+            default: false
+            docs: >-
+              If `true`, the response will include additional objects that are
+              related to the
+
+              requested objects. Related objects are defined as any objects
+              referenced by ID by the results in the `objects` field
+
+              of the response. These objects are put in the `related_objects`
+              field. Setting this to `true` is
+
+              helpful when the objects are needed for immediate display to a
+              user.
+
+              This process only goes one level deep. Objects referenced by the
+              related objects will not be included. For example,
+
+
+              if the `objects` field of the response contains a CatalogItem, its
+              associated
+
+              CatalogCategory objects, CatalogTax objects, CatalogImage objects
+              and
+
+              CatalogModifierLists will be returned in the `related_objects`
+              field of the
+
+              response. If the `objects` field of the response contains a
+              CatalogItemVariation,
+
+              its parent CatalogItem will be returned in the `related_objects`
+              field of
+
+              the response.
+
+
+              Default value: `false`
+          catalog_version:
+            type: optional<nullable<long>>
+            docs: >-
+              Requests objects as of a specific version of the catalog. This
+              allows you to retrieve historical
+
+              versions of objects. The value to retrieve a specific version of
+              an object can be found
+
+              in the version field of [CatalogObject](entity:CatalogObject)s. If
+              not included, results will
+
+              be from the current version of the catalog.
+          include_category_path_to_root:
+            type: optional<nullable<boolean>>
+            default: false
+            docs: >-
+              Specifies whether or not to include the `path_to_root` list for
+              each returned category instance. The `path_to_root` list consists
+
+              of `CategoryPathToRootNode` objects and specifies the path that
+              starts with the immediate parent category of the returned category
+
+              and ends with its root category. If the returned category is a
+              top-level category, the `path_to_root` list is empty and is not
+              returned
+
+              in the response payload.
+      response:
+        docs: Success
+        type: root.GetCatalogObjectResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            object_id: object_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              object:
+                id: id
+                updated_at: updated_at
+                version: 1000000
+                is_deleted: true
+                custom_attribute_values:
+                  key: {}
+                catalog_v1_ids:
+                  - {}
+                present_at_all_locations: true
+                present_at_location_ids:
+                  - present_at_location_ids
+                absent_at_location_ids:
+                  - absent_at_location_ids
+                image_id: image_id
+                item_data:
+                  name: name
+                  description: description
+                  abbreviation: abbreviation
+                  label_color: label_color
+                  is_taxable: true
+                  category_id: category_id
+                  tax_ids:
+                    - tax_ids
+                  modifier_list_info:
+                    - modifier_list_id: modifier_list_id
+                  product_type: REGULAR
+                  skip_modifier_screen: true
+                  item_options:
+                    - {}
+                  image_ids:
+                    - image_ids
+                  sort_name: sort_name
+                  description_html: description_html
+                  description_plaintext: description_plaintext
+                  channels:
+                    - channels
+                  is_archived: true
+                type: ITEM
+              related_objects:
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  ordinal: 1000000
+                  type: CATEGORY
+                - id: id
+                  updated_at: updated_at
+                  version: 1000000
+                  is_deleted: true
+                  custom_attribute_values:
+                    key: {}
+                  catalog_v1_ids:
+                    - {}
+                  present_at_all_locations: true
+                  present_at_location_ids:
+                    - present_at_location_ids
+                  absent_at_location_ids:
+                    - absent_at_location_ids
+                  image_id: image_id
+                  type: TAX
+    delete:
+      path: /v2/catalog/object/{object_id}
+      method: DELETE
+      auth: true
+      docs: >-
+        Deletes a single [CatalogObject](entity:CatalogObject) based on the
+
+        provided ID and returns the set of successfully deleted IDs in the
+        response.
+
+        Deletion is a cascading event such that all children of the targeted
+        object
+
+        are also deleted. For example, deleting a
+        [CatalogItem](entity:CatalogItem)
+
+        will also delete all of its
+
+        [CatalogItemVariation](entity:CatalogItemVariation) children.
+
+
+        To ensure consistency, only one delete request is processed at a time
+        per seller account.
+
+        While one (batch or non-batch) delete request is being processed, other
+        (batched and non-batched)
+
+        delete requests are rejected with the `429` error code.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteCatalogObject
+      request:
+        name: DeleteObjectRequest
+        path-parameters:
+          object_id:
+            type: string
+            docs: >-
+              The ID of the catalog object to be deleted. When an object is
+              deleted, other
+
+              objects in the graph that depend on that object will be deleted as
+              well (for example, deleting a
+
+              catalog item will delete its catalog item variations).
+      response:
+        docs: Success
+        type: root.DeleteCatalogObjectResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            object_id: object_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              deleted_object_ids:
+                - 7SB3ZQYJ5GDMVFL7JK46JCHT
+                - KQLFFHA6K6J3YQAQAWDQAL57
+              deleted_at: '2016-11-16T22:25:24.878Z'
+  source:
+    openapi: openapi/openapi.json

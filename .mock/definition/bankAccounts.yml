@@ -1,0 +1,206 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/bank-accounts
+      method: GET
+      auth: true
+      docs: >-
+        Returns a list of [BankAccount](entity:BankAccount) objects linked to a
+        Square account.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.bank_accounts
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListBankAccounts
+      request:
+        name: ListBankAccountsRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              The pagination cursor returned by a previous call to this
+              endpoint.
+
+              Use it in the next `ListBankAccounts` request to retrieve the next
+              set 
+
+              of results.
+
+
+              See the
+              [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)
+              guide for more information.
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              Upper limit on the number of bank accounts to return in the
+              response. 
+
+              Currently, 1000 is the largest supported limit. You can specify a
+              limit 
+
+              of up to 1000 bank accounts. This is also the default limit.
+          location_id:
+            type: optional<nullable<string>>
+            docs: >-
+              Location ID. You can specify this optional filter 
+
+              to retrieve only the linked bank accounts belonging to a specific
+              location.
+      response:
+        docs: Success
+        type: root.ListBankAccountsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              bank_accounts:
+                - id: ao6iaQ9vhDiaQD7n3GB
+                  account_number_suffix: '971'
+                  country: US
+                  currency: USD
+                  account_type: CHECKING
+                  holder_name: Jane Doe
+                  primary_bank_identification_number: '112200303'
+                  secondary_bank_identification_number: secondary_bank_identification_number
+                  debit_mandate_reference_id: debit_mandate_reference_id
+                  reference_id: reference_id
+                  location_id: S8GWD5example
+                  status: VERIFICATION_IN_PROGRESS
+                  creditable: false
+                  debitable: false
+                  fingerprint: fingerprint
+                  version: 5
+                  bank_name: Bank Name
+                - id: 4x7WXuaxrkQkVlka3GB
+                  account_number_suffix: '972'
+                  country: US
+                  currency: USD
+                  account_type: CHECKING
+                  holder_name: Jane Doe
+                  primary_bank_identification_number: '112200303'
+                  secondary_bank_identification_number: secondary_bank_identification_number
+                  debit_mandate_reference_id: debit_mandate_reference_id
+                  reference_id: reference_id
+                  location_id: S8GWD5example
+                  status: VERIFICATION_IN_PROGRESS
+                  creditable: false
+                  debitable: false
+                  fingerprint: fingerprint
+                  version: 5
+                  bank_name: Bank Name
+              cursor: cursor
+    GetByV1Id:
+      path: /v2/bank-accounts/by-v1-id/{v1_bank_account_id}
+      method: GET
+      auth: true
+      docs: >-
+        Returns details of a [BankAccount](entity:BankAccount) identified by V1
+        bank account ID.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetBankAccountByV1Id
+      request:
+        name: GetByV1IdBankAccountsRequest
+        path-parameters:
+          v1_bank_account_id:
+            type: string
+            docs: >-
+              Connect V1 ID of the desired `BankAccount`. For more information,
+              see 
+
+              [Retrieve a bank account by using an ID issued by V1 Bank Accounts
+              API](https://developer.squareup.com/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api).
+      response:
+        docs: Success
+        type: root.GetBankAccountByV1IdResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            v1_bank_account_id: v1_bank_account_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              bank_account:
+                id: w3yRgCGYQnwmdl0R3GB
+                account_number_suffix: '971'
+                country: US
+                currency: USD
+                account_type: CHECKING
+                holder_name: Jane Doe
+                primary_bank_identification_number: '112200303'
+                secondary_bank_identification_number: secondary_bank_identification_number
+                debit_mandate_reference_id: debit_mandate_reference_id
+                reference_id: reference_id
+                location_id: S8GWD5example
+                status: VERIFICATION_IN_PROGRESS
+                creditable: false
+                debitable: false
+                fingerprint: fingerprint
+                version: 5
+                bank_name: Bank Name
+    get:
+      path: /v2/bank-accounts/{bank_account_id}
+      method: GET
+      auth: true
+      docs: |-
+        Returns details of a [BankAccount](entity:BankAccount)
+        linked to a Square account.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetBankAccount
+      request:
+        name: GetBankAccountsRequest
+        path-parameters:
+          bank_account_id:
+            type: string
+            docs: Square-issued ID of the desired `BankAccount`.
+      response:
+        docs: Success
+        type: root.GetBankAccountResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            bank_account_id: bank_account_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              bank_account:
+                id: w3yRgCGYQnwmdl0R3GB
+                account_number_suffix: '971'
+                country: US
+                currency: USD
+                account_type: CHECKING
+                holder_name: Jane Doe
+                primary_bank_identification_number: '112200303'
+                secondary_bank_identification_number: secondary_bank_identification_number
+                debit_mandate_reference_id: debit_mandate_reference_id
+                reference_id: reference_id
+                location_id: S8GWD5example
+                status: VERIFICATION_IN_PROGRESS
+                creditable: false
+                debitable: false
+                fingerprint: fingerprint
+                version: 5
+                bank_name: Bank Name
+  source:
+    openapi: openapi/openapi.json

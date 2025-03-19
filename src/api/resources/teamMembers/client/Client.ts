@@ -17,7 +17,7 @@ export declare namespace TeamMembers {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-02-20";
+        version?: "2025-03-19";
         fetcher?: core.FetchFunction;
     }
 
@@ -29,7 +29,7 @@ export declare namespace TeamMembers {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-02-20";
+        version?: "2025-03-19";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -105,11 +105,11 @@ export class TeamMembers {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -212,11 +212,11 @@ export class TeamMembers {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -322,11 +322,11 @@ export class TeamMembers {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -406,11 +406,11 @@ export class TeamMembers {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -484,11 +484,11 @@ export class TeamMembers {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -554,6 +554,25 @@ export class TeamMembers {
      *                 assignedLocations: {
      *                     assignmentType: "EXPLICIT_LOCATIONS",
      *                     locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"]
+     *                 },
+     *                 wageSetting: {
+     *                     jobAssignments: [{
+     *                             payType: "SALARY",
+     *                             annualRate: {
+     *                                 amount: 3000000,
+     *                                 currency: "USD"
+     *                             },
+     *                             weeklyHours: 40,
+     *                             jobId: "FjS8x95cqHiMenw4f1NAUH4P"
+     *                         }, {
+     *                             payType: "HOURLY",
+     *                             hourlyRate: {
+     *                                 amount: 1200,
+     *                                 currency: "USD"
+     *                             },
+     *                             jobId: "VDNpRv8da51NU8qZFC5zDWpF"
+     *                         }],
+     *                     isOvertimeExempt: true
      *                 }
      *             }
      *         }
@@ -574,11 +593,11 @@ export class TeamMembers {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

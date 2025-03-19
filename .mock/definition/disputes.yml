@@ -1,0 +1,394 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/disputes
+      method: GET
+      auth: true
+      docs: Returns a list of disputes associated with a particular account.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.disputes
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListDisputes
+      request:
+        name: ListDisputesRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for the
+              original query.
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          states:
+            type: optional<nullable<root.DisputeState>>
+            docs: >-
+              The dispute states used to filter the result. If not specified,
+              the endpoint returns all disputes.
+          location_id:
+            type: optional<nullable<string>>
+            docs: >-
+              The ID of the location for which to return a list of disputes.
+
+              If not specified, the endpoint returns disputes associated with
+              all locations.
+      response:
+        docs: Success
+        type: root.ListDisputesResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              disputes:
+                - dispute_id: dispute_id
+                  id: XDgyFu7yo1E2S5lQGGpYn
+                  amount_money:
+                    amount: 2500
+                    currency: USD
+                  reason: NO_KNOWLEDGE
+                  state: ACCEPTED
+                  due_at: '2022-07-13T00:00:00.000Z'
+                  disputed_payment:
+                    payment_id: zhyh1ch64kRBrrlfVhwjCEjZWzNZY
+                  evidence_ids:
+                    - evidence_ids
+                  card_brand: VISA
+                  created_at: '2022-06-29T18:45:22.265Z'
+                  updated_at: '2022-07-07T19:14:42.650Z'
+                  brand_dispute_id: '100000809947'
+                  reported_date: reported_date
+                  reported_at: '2022-06-29T00:00:00.000Z'
+                  version: 2
+                  location_id: L1HN3ZMQK64X9
+                - dispute_id: dispute_id
+                  id: jLGg7aXC7lvKPr9PISt0T
+                  amount_money:
+                    amount: 2209
+                    currency: USD
+                  reason: NOT_AS_DESCRIBED
+                  state: EVIDENCE_REQUIRED
+                  due_at: '2022-05-13T00:00:00.000Z'
+                  disputed_payment:
+                    payment_id: zhyh1ch64kRBrrlfVhwjCEjZWzNZY
+                  evidence_ids:
+                    - evidence_ids
+                  card_brand: VISA
+                  created_at: '2022-04-29T18:45:22.265Z'
+                  updated_at: '2022-04-29T18:45:22.265Z'
+                  brand_dispute_id: r5Of6YaGT7AdeRaVoAGCJw
+                  reported_date: reported_date
+                  reported_at: '2022-04-29T00:00:00.000Z'
+                  version: 1
+                  location_id: 18YC4JDH91E1H
+              cursor: G1aSTRm48CLjJsg6Sg3hQN1b1OMaoVuG
+    get:
+      path: /v2/disputes/{dispute_id}
+      method: GET
+      auth: true
+      docs: Returns details about a specific dispute.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveDispute
+      request:
+        name: GetDisputesRequest
+        path-parameters:
+          dispute_id:
+            type: string
+            docs: The ID of the dispute you want more details about.
+      response:
+        docs: Success
+        type: root.GetDisputeResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            dispute_id: dispute_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              dispute:
+                dispute_id: dispute_id
+                id: XDgyFu7yo1E2S5lQGGpYn
+                amount_money:
+                  amount: 2500
+                  currency: USD
+                reason: NO_KNOWLEDGE
+                state: ACCEPTED
+                due_at: '2022-07-13T00:00:00.000Z'
+                disputed_payment:
+                  payment_id: zhyh1ch64kRBrrlfVhwjCEjZWzNZY
+                evidence_ids:
+                  - evidence_ids
+                card_brand: VISA
+                created_at: '2022-06-29T18:45:22.265Z'
+                updated_at: '2022-07-07T19:14:42.650Z'
+                brand_dispute_id: '100000809947'
+                reported_date: reported_date
+                reported_at: '2022-06-29T00:00:00.000Z'
+                version: 2
+                location_id: L1HN3ZMQK64X9
+    accept:
+      path: /v2/disputes/{dispute_id}/accept
+      method: POST
+      auth: true
+      docs: >-
+        Accepts the loss on a dispute. Square returns the disputed amount to the
+        cardholder and
+
+        updates the dispute state to ACCEPTED.
+
+
+        Square debits the disputed amount from the seller’s Square account. If
+        the Square account
+
+        does not have sufficient funds, Square debits the associated bank
+        account.
+      source:
+        openapi: openapi/openapi.json
+      display-name: AcceptDispute
+      request:
+        name: AcceptDisputesRequest
+        path-parameters:
+          dispute_id:
+            type: string
+            docs: The ID of the dispute you want to accept.
+      response:
+        docs: Success
+        type: root.AcceptDisputeResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            dispute_id: dispute_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              dispute:
+                dispute_id: dispute_id
+                id: XDgyFu7yo1E2S5lQGGpYn
+                amount_money:
+                  amount: 2500
+                  currency: USD
+                reason: NO_KNOWLEDGE
+                state: ACCEPTED
+                due_at: '2022-07-13T00:00:00.000Z'
+                disputed_payment:
+                  payment_id: zhyh1ch64kRBrrlfVhwjCEjZWzNZY
+                evidence_ids:
+                  - evidence_ids
+                card_brand: VISA
+                created_at: '2022-06-29T18:45:22.265Z'
+                updated_at: '2022-07-07T19:14:42.650Z'
+                brand_dispute_id: '100000809947'
+                reported_date: reported_date
+                reported_at: '2022-06-29T00:00:00.000Z'
+                version: 2
+                location_id: L1HN3ZMQK64X9
+    CreateEvidenceFile:
+      path: /v2/disputes/{dispute_id}/evidence-files
+      method: POST
+      auth: true
+      docs: >-
+        Uploads a file to use as evidence in a dispute challenge. The endpoint
+        accepts HTTP
+
+        multipart/form-data file uploads in HEIC, HEIF, JPEG, PDF, PNG, and TIFF
+        formats.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateDisputeEvidenceFile
+      request:
+        name: CreateEvidenceFileDisputesRequest
+        path-parameters:
+          dispute_id:
+            type: string
+            docs: The ID of the dispute for which you want to upload evidence.
+        body:
+          properties:
+            request:
+              type: optional<root.CreateDisputeEvidenceFileRequest>
+              content-type: application/json; charset=utf-8
+            image_file:
+              type: optional<file>
+              content-type: image/jpeg
+        content-type: multipart/form-data
+      response:
+        docs: Success
+        type: root.CreateDisputeEvidenceFileResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            dispute_id: dispute_id
+          request: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              evidence:
+                evidence_id: evidence_id
+                id: TOomLInj6iWmP3N8qfCXrB
+                dispute_id: bVTprrwk0gygTLZ96VX1oB
+                evidence_file:
+                  filename: customer-interaction.jpg
+                  filetype: image/jpeg
+                evidence_text: evidence_text
+                uploaded_at: '2022-05-18T16:01:10.000Z'
+                evidence_type: GENERIC_EVIDENCE
+    CreateEvidenceText:
+      path: /v2/disputes/{dispute_id}/evidence-text
+      method: POST
+      auth: true
+      docs: Uploads text to use as evidence for a dispute challenge.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateDisputeEvidenceText
+      request:
+        name: CreateDisputeEvidenceTextRequest
+        path-parameters:
+          dispute_id:
+            type: string
+            docs: The ID of the dispute for which you want to upload evidence.
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique key identifying the request. For more information, see
+                [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
+              validation:
+                minLength: 1
+                maxLength: 45
+            evidence_type:
+              type: optional<root.DisputeEvidenceType>
+              docs: >-
+                The type of evidence you are uploading.
+
+                See [DisputeEvidenceType](#type-disputeevidencetype) for
+                possible values
+            evidence_text:
+              type: string
+              docs: The evidence string.
+              validation:
+                minLength: 1
+                maxLength: 500
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateDisputeEvidenceTextResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            dispute_id: dispute_id
+          request:
+            idempotency_key: ed3ee3933d946f1514d505d173c82648
+            evidence_type: TRACKING_NUMBER
+            evidence_text: 1Z8888888888888888
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              evidence:
+                evidence_id: evidence_id
+                id: TOomLInj6iWmP3N8qfCXrB
+                dispute_id: bVTprrwk0gygTLZ96VX1oB
+                evidence_file:
+                  filename: filename
+                  filetype: filetype
+                evidence_text: >-
+                  The customer purchased the item twice, on April 11 and April
+                  28.
+                uploaded_at: '2022-05-18T16:01:10.000Z'
+                evidence_type: REBUTTAL_EXPLANATION
+    SubmitEvidence:
+      path: /v2/disputes/{dispute_id}/submit-evidence
+      method: POST
+      auth: true
+      docs: >-
+        Submits evidence to the cardholder's bank.
+
+
+        The evidence submitted by this endpoint includes evidence uploaded
+
+        using the
+        [CreateDisputeEvidenceFile](api-endpoint:Disputes-CreateDisputeEvidenceFile)
+        and
+
+        [CreateDisputeEvidenceText](api-endpoint:Disputes-CreateDisputeEvidenceText)
+        endpoints and
+
+        evidence automatically provided by Square, when available. Evidence
+        cannot be removed from
+
+        a dispute after submission.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SubmitEvidence
+      request:
+        name: SubmitEvidenceDisputesRequest
+        path-parameters:
+          dispute_id:
+            type: string
+            docs: The ID of the dispute for which you want to submit evidence.
+      response:
+        docs: Success
+        type: root.SubmitEvidenceResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            dispute_id: dispute_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              dispute:
+                dispute_id: dispute_id
+                id: EAZoK70gX3fyvibecLwIGB
+                amount_money:
+                  amount: 4350
+                  currency: USD
+                reason: CUSTOMER_REQUESTS_CREDIT
+                state: PROCESSING
+                due_at: '2022-06-01T00:00:00.000Z'
+                disputed_payment:
+                  payment_id: 2yeBUWJzllJTpmnSqtMRAL19taB
+                evidence_ids:
+                  - evidence_ids
+                card_brand: VISA
+                created_at: '2022-05-18T16:02:15.313Z'
+                updated_at: '2022-05-18T16:02:15.313Z'
+                brand_dispute_id: '100000399240'
+                reported_date: reported_date
+                reported_at: '2022-05-18T00:00:00.000Z'
+                version: 4
+                location_id: LSY8XKGSMMX94
+  source:
+    openapi: openapi/openapi.json

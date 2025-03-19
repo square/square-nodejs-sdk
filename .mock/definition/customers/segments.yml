@@ -1,0 +1,113 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/customers/segments
+      method: GET
+      auth: true
+      docs: Retrieves the list of customer segments of a business.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.segments
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListCustomerSegments
+      request:
+        name: ListSegmentsRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by previous calls to
+              `ListCustomerSegments`.
+
+              This cursor is used to retrieve the next set of query results.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to return in a single page. This
+              limit is advisory. The response might contain more or fewer
+              results.
+
+              If the specified limit is less than 1 or greater than 50, Square
+              returns a `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error. The
+              default value is 50.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+      response:
+        docs: Success
+        type: root.ListCustomerSegmentsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              segments:
+                - id: GMNXRZVEXNQDF.CHURN_RISK
+                  name: Lapsed
+                  created_at: '2020-01-09T19:33:24.469Z'
+                  updated_at: '2020-04-13T21:47:04Z'
+                - id: GMNXRZVEXNQDF.LOYAL
+                  name: Regulars
+                  created_at: '2020-01-09T19:33:24.486Z'
+                  updated_at: '2020-04-13T21:47:04Z'
+                - id: GMNXRZVEXNQDF.REACHABLE
+                  name: Reachable
+                  created_at: '2020-01-09T19:33:21.813Z'
+                  updated_at: '2020-04-13T21:47:04Z'
+                - id: gv2:KF92J19VXN5FK30GX2E8HSGQ20
+                  name: Instant Profile
+                  created_at: '2020-01-09T19:33:25Z'
+                  updated_at: '2020-04-13T23:01:03Z'
+              cursor: cursor
+    get:
+      path: /v2/customers/segments/{segment_id}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a specific customer segment as identified by the `segment_id`
+        value.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveCustomerSegment
+      request:
+        name: GetSegmentsRequest
+        path-parameters:
+          segment_id:
+            type: string
+            docs: The Square-issued ID of the customer segment.
+      response:
+        docs: Success
+        type: root.GetCustomerSegmentResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            segment_id: segment_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              segment:
+                id: GMNXRZVEXNQDF.CHURN_RISK
+                name: Lapsed
+                created_at: '2020-01-09T19:33:24.469Z'
+                updated_at: '2020-04-13T23:01:13Z'
+  source:
+    openapi: openapi/openapi.json

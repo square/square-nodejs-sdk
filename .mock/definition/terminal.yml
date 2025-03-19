@@ -1,0 +1,232 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    DismissTerminalAction:
+      path: /v2/terminals/actions/{action_id}/dismiss
+      method: POST
+      auth: true
+      docs: >-
+        Dismisses a Terminal action request if the status and type of the
+        request permits it.
+
+
+        See [Link and Dismiss
+        Actions](https://developer.squareup.com/docs/terminal-api/advanced-features/custom-workflows/link-and-dismiss-actions)
+        for more details.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DismissTerminalAction
+      request:
+        name: DismissTerminalActionRequest
+        path-parameters:
+          action_id:
+            type: string
+            docs: >-
+              Unique ID for the `TerminalAction` associated with the action to
+              be dismissed.
+      response:
+        docs: Success
+        type: root.DismissTerminalActionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            action_id: action_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              action:
+                id: termapia:abcdefg1234567
+                device_id: DEVICE_ID
+                deadline_duration: PT5M
+                status: COMPLETED
+                cancel_reason: BUYER_CANCELED
+                created_at: '2021-07-28T23:22:07.476Z'
+                updated_at: '2021-07-28T23:22:29.511Z'
+                app_id: APP_ID
+                location_id: location_id
+                type: CONFIRMATION
+                qr_code_options:
+                  title: title
+                  body: body
+                  barcode_contents: barcode_contents
+                save_card_options:
+                  customer_id: customer_id
+                  card_id: card_id
+                  reference_id: reference_id
+                signature_options:
+                  title: title
+                  body: body
+                  signature:
+                    - {}
+                confirmation_options:
+                  title: Marketing communications
+                  body: >-
+                    I agree to receive promotional emails about future events
+                    and activities.
+                  agree_button_text: Agree
+                  disagree_button_text: Decline
+                  decision:
+                    has_agreed: true
+                receipt_options:
+                  payment_id: payment_id
+                  print_only: true
+                  is_duplicate: true
+                data_collection_options:
+                  title: title
+                  body: body
+                  input_type: EMAIL
+                select_options:
+                  title: title
+                  body: body
+                  options:
+                    - reference_id: reference_id
+                      title: title
+                  selected_option:
+                    reference_id: reference_id
+                    title: title
+                device_metadata:
+                  battery_percentage: battery_percentage
+                  charging_state: charging_state
+                  location_id: location_id
+                  merchant_id: merchant_id
+                  network_connection_type: network_connection_type
+                  payment_region: payment_region
+                  serial_number: serial_number
+                  os_version: os_version
+                  app_version: app_version
+                  wifi_network_name: wifi_network_name
+                  wifi_network_strength: wifi_network_strength
+                  ip_address: ip_address
+                await_next_action: true
+                await_next_action_duration: PT5M
+    DismissTerminalCheckout:
+      path: /v2/terminals/checkouts/{checkout_id}/dismiss
+      method: POST
+      auth: true
+      docs: >-
+        Dismisses a Terminal checkout request if the status and type of the
+        request permits it.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DismissTerminalCheckout
+      request:
+        name: DismissTerminalCheckoutRequest
+        path-parameters:
+          checkout_id:
+            type: string
+            docs: >-
+              Unique ID for the `TerminalCheckout` associated with the checkout
+              to be dismissed.
+      response:
+        docs: Success
+        type: root.DismissTerminalCheckoutResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            checkout_id: checkout_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              checkout:
+                id: LmZEKbo3SBfqO
+                amount_money:
+                  amount: 2610
+                  currency: USD
+                reference_id: reference_id
+                note: note
+                order_id: order_id
+                payment_options:
+                  autocomplete: true
+                  delay_duration: delay_duration
+                  accept_partial_authorization: true
+                  delay_action: CANCEL
+                device_options:
+                  device_id: dbb5d83a-7838-11ea-bc55-0242ac130003
+                  skip_receipt_screen: false
+                  collect_signature: true
+                  tip_settings:
+                    allow_tipping: true
+                    separate_tip_screen: true
+                    custom_tip_field: false
+                  show_itemized_cart: true
+                deadline_duration: PT5M
+                status: COMPLETED
+                cancel_reason: BUYER_CANCELED
+                payment_ids:
+                  - D7vLJqMkvSoAlX4yyFzUitOy4EPZY
+                created_at: '2023-11-29T14:59:50.682Z'
+                updated_at: '2023-11-29T15:00:18.936Z'
+                app_id: APP_ID
+                location_id: LOCATION_ID
+                payment_type: CARD_PRESENT
+                team_member_id: team_member_id
+                customer_id: customer_id
+                app_fee_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                statement_description_identifier: statement_description_identifier
+                tip_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+    DismissTerminalRefund:
+      path: /v2/terminals/refunds/{terminal_refund_id}/dismiss
+      method: POST
+      auth: true
+      docs: >-
+        Dismisses a Terminal refund request if the status and type of the
+        request permits it.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DismissTerminalRefund
+      request:
+        name: DismissTerminalRefundRequest
+        path-parameters:
+          terminal_refund_id:
+            type: string
+            docs: >-
+              Unique ID for the `TerminalRefund` associated with the refund to
+              be dismissed.
+      response:
+        docs: Success
+        type: root.DismissTerminalRefundResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            terminal_refund_id: terminal_refund_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              refund:
+                id: vjkNb2HD-xq5kiWWiJ7RhwrQnkxIn2N0l1nPZY
+                refund_id: refund_id
+                payment_id: xq5kiWWiJ7RhwrQnkxIn2N0l1nPZY
+                order_id: s8OMhQcpEp1b61YywlccSHWqUaQZY
+                amount_money:
+                  amount: 111
+                  currency: CAD
+                reason: Returning item
+                device_id: 47776348fd8b32b9
+                deadline_duration: PT5M
+                status: IN_PROGRESS
+                cancel_reason: BUYER_CANCELED
+                created_at: '2023-11-30T16:16:39.299Z'
+                updated_at: '2023-11-30T16:16:57.863Z'
+                app_id: APP_ID
+                location_id: location_id
+  source:
+    openapi: openapi/openapi.json

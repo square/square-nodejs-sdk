@@ -1,0 +1,210 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    ListJobs:
+      path: /v2/team-members/jobs
+      method: GET
+      auth: true
+      docs: >-
+        Lists jobs in a seller account. Results are sorted by title in ascending
+        order.
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListJobs
+      request:
+        name: ListJobsRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              The pagination cursor returned by the previous call to this
+              endpoint. Provide this
+
+              cursor to retrieve the next page of results for your original
+              request. For more information,
+
+              see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+      response:
+        docs: Success
+        type: root.ListJobsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              jobs:
+                - id: VDNpRv8da51NU8qZFC5zDWpF
+                  title: Cashier
+                  is_tip_eligible: true
+                  created_at: '2021-06-11T22:55:45Z'
+                  updated_at: '2021-06-11T22:55:45Z'
+                  version: 2
+                - id: FjS8x95cqHiMenw4f1NAUH4P
+                  title: Chef
+                  is_tip_eligible: false
+                  created_at: '2021-06-11T22:55:45Z'
+                  updated_at: '2021-06-11T22:55:45Z'
+                  version: 1
+              cursor: cursor
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    CreateJob:
+      path: /v2/team-members/jobs
+      method: POST
+      auth: true
+      docs: >-
+        Creates a job in a seller account. A job defines a title and tip
+        eligibility. Note that
+
+        compensation is defined in a [job assignment](entity:JobAssignment) in a
+        team member's wage setting.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateJob
+      request:
+        name: CreateJobRequest
+        body:
+          properties:
+            job:
+              type: root.Job
+              docs: >-
+                The job to create. The `title` field is required and
+                `is_tip_eligible` defaults to true.
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique identifier for the `CreateJob` request. Keys can be any
+                valid string,
+
+                but must be unique for each request. For more information, see
+
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                minLength: 1
+                maxLength: 45
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateJobResponse
+        status-code: 200
+      examples:
+        - request:
+            job:
+              title: Cashier
+              is_tip_eligible: true
+            idempotency_key: idempotency-key-0
+          response:
+            body:
+              job:
+                id: 1yJlHapkseYnNPETIU1B
+                title: Cashier
+                is_tip_eligible: true
+                created_at: '2021-06-11T22:55:45Z'
+                updated_at: '2021-06-11T22:55:45Z'
+                version: 1
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    RetrieveJob:
+      path: /v2/team-members/jobs/{job_id}
+      method: GET
+      auth: true
+      docs: Retrieves a specified job.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveJob
+      request:
+        name: RetrieveJobRequest
+        path-parameters:
+          job_id:
+            type: string
+            docs: The ID of the job to retrieve.
+      response:
+        docs: Success
+        type: root.RetrieveJobResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            job_id: job_id
+          response:
+            body:
+              job:
+                id: 1yJlHapkseYnNPETIU1B
+                title: Cashier 1
+                is_tip_eligible: true
+                created_at: '2021-06-11T22:55:45Z'
+                updated_at: '2021-06-11T22:55:45Z'
+                version: 2
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    UpdateJob:
+      path: /v2/team-members/jobs/{job_id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates the title or tip eligibility of a job. Changes to the title
+        propagate to all
+
+        `JobAssignment`, `Shift`, and `TeamMemberWage` objects that reference
+        the job ID. Changes to
+
+        tip eligibility propagate to all `TeamMemberWage` objects that reference
+        the job ID.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateJob
+      request:
+        name: UpdateJobRequest
+        path-parameters:
+          job_id:
+            type: string
+            docs: The ID of the job to update.
+        body:
+          properties:
+            job:
+              type: root.Job
+              docs: >-
+                The job with the updated fields, either `title`,
+                `is_tip_eligible`, or both. Only changed fields need
+
+                to be included in the request. Optionally include `version` to
+                enable optimistic concurrency control.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateJobResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            job_id: job_id
+          request:
+            job:
+              title: Cashier 1
+              is_tip_eligible: true
+          response:
+            body:
+              job:
+                id: 1yJlHapkseYnNPETIU1B
+                title: Cashier 1
+                is_tip_eligible: true
+                created_at: '2021-06-11T22:55:45Z'
+                updated_at: '2021-06-13T12:55:45Z'
+                version: 2
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

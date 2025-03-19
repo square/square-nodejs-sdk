@@ -1,0 +1,530 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    batchCreate:
+      path: /v2/vendors/bulk-create
+      method: POST
+      auth: true
+      docs: >-
+        Creates one or more [Vendor](entity:Vendor) objects to represent
+        suppliers to a seller.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkCreateVendors
+      request:
+        name: BatchCreateVendorsRequest
+        body:
+          properties:
+            vendors:
+              type: map<string, root.Vendor>
+              docs: >-
+                Specifies a set of new [Vendor](entity:Vendor) objects as
+                represented by a collection of idempotency-key/`Vendor`-object
+                pairs.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchCreateVendorsResponse
+        status-code: 200
+      examples:
+        - request:
+            vendors:
+              8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe:
+                name: Joe's Fresh Seafood
+                address:
+                  address_line_1: 505 Electric Ave
+                  address_line_2: Suite 600
+                  locality: New York
+                  administrative_district_level_1: NY
+                  postal_code: '10003'
+                  country: US
+                contacts:
+                  - name: Joe Burrow
+                    email_address: joe@joesfreshseafood.com
+                    phone_number: 1-212-555-4250
+                    ordinal: 1
+                account_number: '4025391'
+                note: a vendor
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              responses:
+                8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  vendor:
+                    id: INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
+                    created_at: '2022-03-16T10:21:54.859Z'
+                    updated_at: '2022-03-16T10:21:54.859Z'
+                    name: Joe's Fresh Seafood
+                    address:
+                      address_line_1: 505 Electric Ave
+                      address_line_2: Suite 600
+                      locality: New York
+                      administrative_district_level_1: NY
+                      postal_code: '10003'
+                      country: US
+                    contacts:
+                      - id: INV_VC_FMCYHBWT1TPL8MFH52PBMEN92A
+                        name: Joe Burrow
+                        email_address: joe@joesfreshseafood.com
+                        phone_number: 1-212-555-4250
+                        ordinal: 1
+                    account_number: '4025391'
+                    note: a vendor
+                    version: 0
+                    status: ACTIVE
+    batchGet:
+      path: /v2/vendors/bulk-retrieve
+      method: POST
+      auth: true
+      docs: Retrieves one or more vendors of specified [Vendor](entity:Vendor) IDs.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkRetrieveVendors
+      request:
+        name: BatchGetVendorsRequest
+        body:
+          properties:
+            vendor_ids:
+              type: optional<nullable<list<string>>>
+              docs: IDs of the [Vendor](entity:Vendor) objects to retrieve.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchGetVendorsResponse
+        status-code: 200
+      examples:
+        - request:
+            vendor_ids:
+              - INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              responses:
+                INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  vendor:
+                    id: INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
+                    created_at: '2022-03-16T10:21:54.859Z'
+                    updated_at: '2022-03-16T10:21:54.859Z'
+                    name: Joe's Fresh Seafood
+                    address:
+                      address_line_1: 505 Electric Ave
+                      address_line_2: Suite 600
+                      locality: New York
+                      administrative_district_level_1: NY
+                      postal_code: '10003'
+                      country: US
+                    contacts:
+                      - id: INV_VC_FMCYHBWT1TPL8MFH52PBMEN92A
+                        name: Joe Burrow
+                        email_address: joe@joesfreshseafood.com
+                        phone_number: 1-212-555-4250
+                        ordinal: 1
+                    account_number: '4025391'
+                    note: a vendor
+                    version: 1
+                    status: ACTIVE
+    batchUpdate:
+      path: /v2/vendors/bulk-update
+      method: PUT
+      auth: true
+      docs: >-
+        Updates one or more of existing [Vendor](entity:Vendor) objects as
+        suppliers to a seller.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkUpdateVendors
+      request:
+        name: BatchUpdateVendorsRequest
+        body:
+          properties:
+            vendors:
+              type: map<string, root.UpdateVendorRequest>
+              docs: >-
+                A set of [UpdateVendorRequest](entity:UpdateVendorRequest)
+                objects encapsulating to-be-updated [Vendor](entity:Vendor)
+
+                objects. The set is represented by  a collection of
+                `Vendor`-ID/`UpdateVendorRequest`-object pairs.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchUpdateVendorsResponse
+        status-code: 200
+      examples:
+        - request:
+            vendors:
+              FMCYHBWT1TPL8MFH52PBMEN92A:
+                vendor: {}
+              INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4:
+                vendor: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              responses:
+                INV_V_FMCYHBWT1TPL8MFH52PBMEN92A:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  vendor:
+                    id: INV_V_FMCYHBWT1TPL8MFH52PBMEN92A
+                    created_at: '2022-03-16T10:21:54.859Z'
+                    updated_at: '2022-03-16T20:21:54.859Z'
+                    name: Annie’s Hot Sauce
+                    address:
+                      address_line_1: 202 Mill St
+                      locality: Moorestown
+                      administrative_district_level_1: NJ
+                      postal_code: '08057'
+                      country: US
+                    contacts:
+                      - id: INV_VC_ABYYHBWT1TPL8MFH52PBMENPJ4
+                        name: Annie Thomas
+                        email_address: annie@annieshotsauce.com
+                        phone_number: 1-212-555-4250
+                        ordinal: 0
+                    version: 11
+                    status: ACTIVE
+                INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  vendor:
+                    id: INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
+                    created_at: '2022-03-16T10:10:54.859Z'
+                    updated_at: '2022-03-16T20:21:54.859Z'
+                    name: Joe's Fresh Seafood
+                    address:
+                      address_line_1: 505 Electric Ave
+                      address_line_2: Suite 600
+                      locality: New York
+                      administrative_district_level_1: NY
+                      postal_code: '10003'
+                      country: US
+                    contacts:
+                      - id: INV_VC_FMCYHBWT1TPL8MFH52PBMEN92A
+                        name: Joe Burrow
+                        email_address: joe@joesfreshseafood.com
+                        phone_number: 1-212-555-4250
+                        ordinal: 0
+                    account_number: '4025391'
+                    note: favorite vendor
+                    version: 31
+                    status: ACTIVE
+    create:
+      path: /v2/vendors/create
+      method: POST
+      auth: true
+      docs: >-
+        Creates a single [Vendor](entity:Vendor) object to represent a supplier
+        to a seller.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateVendor
+      request:
+        name: CreateVendorRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A client-supplied, universally unique identifier (UUID) to make
+                this [CreateVendor](api-endpoint:Vendors-CreateVendor) call
+                idempotent.
+
+
+                See
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)
+                in the
+
+                [API Development
+                101](https://developer.squareup.com/docs/buildbasics) section
+                for more
+
+                information.
+              validation:
+                minLength: 1
+                maxLength: 128
+            vendor:
+              type: optional<root.Vendor>
+              docs: The requested [Vendor](entity:Vendor) to be created.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateVendorResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: 8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe
+            vendor:
+              name: Joe's Fresh Seafood
+              address:
+                address_line_1: 505 Electric Ave
+                address_line_2: Suite 600
+                locality: New York
+                administrative_district_level_1: NY
+                postal_code: '10003'
+                country: US
+              contacts:
+                - name: Joe Burrow
+                  email_address: joe@joesfreshseafood.com
+                  phone_number: 1-212-555-4250
+                  ordinal: 1
+              account_number: '4025391'
+              note: a vendor
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              vendor:
+                id: INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
+                created_at: '2022-03-16T10:21:54.859Z'
+                updated_at: '2022-03-16T10:21:54.859Z'
+                name: Joe's Fresh Seafood
+                address:
+                  address_line_1: 505 Electric Ave
+                  address_line_2: Suite 600
+                  address_line_3: address_line_3
+                  locality: New York
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: NY
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '10003'
+                  country: US
+                  first_name: first_name
+                  last_name: last_name
+                contacts:
+                  - id: INV_VC_FMCYHBWT1TPL8MFH52PBMEN92A
+                    name: Joe Burrow
+                    email_address: joe@joesfreshseafood.com
+                    phone_number: 1-212-555-4250
+                    ordinal: 1
+                account_number: '4025391'
+                note: a vendor
+                version: 1
+                status: ACTIVE
+    search:
+      path: /v2/vendors/search
+      method: POST
+      auth: true
+      docs: >-
+        Searches for vendors using a filter against supported
+        [Vendor](entity:Vendor) properties and a supported sorter.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchVendors
+      request:
+        name: SearchVendorsRequest
+        body:
+          properties:
+            filter:
+              type: optional<root.SearchVendorsRequestFilter>
+              docs: Specifies a filter used to search for vendors.
+            sort:
+              type: optional<root.SearchVendorsRequestSort>
+              docs: Specifies a sorter used to sort the returned vendors.
+            cursor:
+              type: optional<string>
+              docs: >-
+                A pagination cursor returned by a previous call to this
+                endpoint.
+
+                Provide this to retrieve the next set of results for the
+                original query.
+
+
+                See the
+                [Pagination](https://developer.squareup.com/docs/working-with-apis/pagination)
+                guide for more information.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchVendorsResponse
+        status-code: 200
+      examples:
+        - request: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              vendors:
+                - id: INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
+                  created_at: '2022-03-16T10:21:54.859Z'
+                  updated_at: '2022-03-16T10:21:54.859Z'
+                  name: Joe's Fresh Seafood
+                  address:
+                    address_line_1: 505 Electric Ave
+                    address_line_2: Suite 600
+                    locality: New York
+                    administrative_district_level_1: NY
+                    postal_code: '10003'
+                    country: US
+                  contacts:
+                    - id: INV_VC_FMCYHBWT1TPL8MFH52PBMEN92A
+                      name: Joe Burrow
+                      email_address: joe@joesfreshseafood.com
+                      phone_number: 1-212-555-4250
+                      ordinal: 1
+                  account_number: '4025391'
+                  note: a vendor
+                  version: 1
+                  status: ACTIVE
+              cursor: cursor
+    get:
+      path: /v2/vendors/{vendor_id}
+      method: GET
+      auth: true
+      docs: Retrieves the vendor of a specified [Vendor](entity:Vendor) ID.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveVendor
+      request:
+        name: GetVendorsRequest
+        path-parameters:
+          vendor_id:
+            type: string
+            docs: ID of the [Vendor](entity:Vendor) to retrieve.
+      response:
+        docs: Success
+        type: root.GetVendorResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            vendor_id: vendor_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              vendor:
+                id: INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
+                created_at: '2022-03-16T10:21:54.859Z'
+                updated_at: '2022-03-16T10:21:54.859Z'
+                name: Joe's Fresh Seafood
+                address:
+                  address_line_1: 505 Electric Ave
+                  address_line_2: Suite 600
+                  address_line_3: address_line_3
+                  locality: New York
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: NY
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '10003'
+                  country: US
+                  first_name: first_name
+                  last_name: last_name
+                contacts:
+                  - id: INV_VC_FMCYHBWT1TPL8MFH52PBMEN92A
+                    name: Joe Burrow
+                    email_address: joe@joesfreshseafood.com
+                    phone_number: 1-212-555-4250
+                    ordinal: 1
+                account_number: '4025391'
+                note: a vendor
+                version: 1
+                status: ACTIVE
+    update:
+      path: /v2/vendors/{vendor_id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates an existing [Vendor](entity:Vendor) object as a supplier to a
+        seller.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateVendor
+      request:
+        body: root.UpdateVendorRequest
+        path-parameters:
+          vendor_id:
+            type: string
+            docs: ID of the [Vendor](entity:Vendor) to retrieve.
+        name: UpdateVendorsRequest
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateVendorResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            vendor_id: vendor_id
+          request:
+            idempotency_key: 8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe
+            vendor:
+              id: INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
+              name: Jack's Chicken Shack
+              version: 1
+              status: ACTIVE
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              vendor:
+                id: INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
+                created_at: '2022-03-16T10:21:54.859Z'
+                updated_at: '2022-03-16T20:21:54.859Z'
+                name: Jack's Chicken Shack
+                address:
+                  address_line_1: 505 Electric Ave
+                  address_line_2: Suite 600
+                  address_line_3: address_line_3
+                  locality: New York
+                  sublocality: sublocality
+                  sublocality_2: sublocality_2
+                  sublocality_3: sublocality_3
+                  administrative_district_level_1: NY
+                  administrative_district_level_2: administrative_district_level_2
+                  administrative_district_level_3: administrative_district_level_3
+                  postal_code: '10003'
+                  country: US
+                  first_name: first_name
+                  last_name: last_name
+                contacts:
+                  - id: INV_VC_FMCYHBWT1TPL8MFH52PBMEN92A
+                    name: Joe Burrow
+                    email_address: joe@joesfreshseafood.com
+                    phone_number: 1-212-555-4250
+                    ordinal: 0
+                account_number: '4025391'
+                note: note
+                version: 2
+                status: ACTIVE
+  source:
+    openapi: openapi/openapi.json

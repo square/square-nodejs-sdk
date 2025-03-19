@@ -1,0 +1,438 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/online-checkout/payment-links
+      method: GET
+      auth: true
+      docs: Lists all payment links.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.payment_links
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListPaymentLinks
+      request:
+        name: ListPaymentLinksRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for the
+              original query.
+
+              If a cursor is not provided, the endpoint returns the first page
+              of the results.
+
+              For more  information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              A limit on the number of results to return per page. The limit is
+              advisory and
+
+              the implementation might return more or less results. If the
+              supplied limit is negative, zero, or
+
+              greater than the maximum limit of 1000, it is ignored.
+
+
+              Default value: `100`
+      response:
+        docs: Success
+        type: root.ListPaymentLinksResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              payment_links:
+                - id: TN4BWEDJ9AI5MBIV
+                  version: 2
+                  description: description
+                  order_id: Qqc6yppGvxVwc46Cch4zHTaJqc4F
+                  checkout_options:
+                    ask_for_shipping_address: true
+                  url: https://square.link/u/EXAMPLE
+                  long_url: long_url
+                  created_at: '2022-04-26T00:15:15Z'
+                  updated_at: '2022-04-26T00:18:24Z'
+                  payment_note: test
+                - id: RY5UNCUMPJN5XKCT
+                  version: 1
+                  description: ''
+                  order_id: EmBmGt3zJD15QeO1dxzBTxMxtwfZY
+                  url: https://square.link/u/EXAMPLE
+                  long_url: long_url
+                  created_at: '2022-04-11T23:14:59Z'
+                  updated_at: updated_at
+                  payment_note: payment_note
+              cursor: MTY1NQ==
+    create:
+      path: /v2/online-checkout/payment-links
+      method: POST
+      auth: true
+      docs: >-
+        Creates a Square-hosted checkout page. Applications can share the
+        resulting payment link with their buyer to pay for goods and services.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreatePaymentLink
+      request:
+        name: CreatePaymentLinkRequest
+        body:
+          properties:
+            idempotency_key:
+              type: optional<string>
+              docs: >-
+                A unique string that identifies this `CreatePaymentLinkRequest`
+                request.
+
+                If you do not provide a unique string (or provide an empty
+                string as the value),
+
+                the endpoint treats each request as independent.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
+              validation:
+                maxLength: 192
+            description:
+              type: optional<string>
+              docs: >-
+                A description of the payment link. You provide this optional
+                description that is useful in your
+
+                application context. It is not used anywhere.
+              validation:
+                maxLength: 4096
+            quick_pay:
+              type: optional<root.QuickPay>
+              docs: >-
+                Describes an ad hoc item and price for which to generate a quick
+                pay checkout link.
+
+                For more information,
+
+                see [Quick Pay
+                Checkout](https://developer.squareup.com/docs/checkout-api/quick-pay-checkout).
+            order:
+              type: optional<root.Order>
+              docs: >-
+                Describes the `Order` for which to create a checkout link.
+
+                For more information,
+
+                see [Square Order
+                Checkout](https://developer.squareup.com/docs/checkout-api/square-order-checkout).
+            checkout_options:
+              type: optional<root.CheckoutOptions>
+              docs: >-
+                Describes optional fields to add to the resulting checkout page.
+
+                For more information,
+
+                see [Optional Checkout
+                Configurations](https://developer.squareup.com/docs/checkout-api/optional-checkout-configurations).
+            pre_populated_data:
+              type: optional<root.PrePopulatedData>
+              docs: >-
+                Describes fields to prepopulate in the resulting checkout page.
+
+                For more information, see [Prepopulate the shipping
+                address](https://developer.squareup.com/docs/checkout-api/optional-checkout-configurations#prepopulate-the-shipping-address).
+            payment_note:
+              type: optional<string>
+              docs: >-
+                A note for the payment. After processing the payment, Square
+                adds this note to the resulting `Payment`.
+              validation:
+                maxLength: 500
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreatePaymentLinkResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: cd9e25dc-d9f2-4430-aedb-61605070e95f
+            quick_pay:
+              name: Auto Detailing
+              price_money:
+                amount: 10000
+                currency: USD
+              location_id: A9Y43N9ABXZBP
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              payment_link:
+                id: PKVT6XGJZXYUP3NZ
+                version: 1
+                description: description
+                order_id: o4b7saqp4HzhNttf5AJxC0Srjd4F
+                checkout_options:
+                  allow_tipping: true
+                  custom_fields:
+                    - title: title
+                  subscription_plan_id: subscription_plan_id
+                  redirect_url: redirect_url
+                  merchant_support_email: merchant_support_email
+                  ask_for_shipping_address: true
+                  shipping_fee:
+                    charge: {}
+                  enable_coupon: true
+                  enable_loyalty: true
+                pre_populated_data:
+                  buyer_email: buyer_email
+                  buyer_phone_number: buyer_phone_number
+                url: https://square.link/u/EXAMPLE
+                long_url: https://checkout.square.site/EXAMPLE
+                created_at: '2022-04-25T23:58:01Z'
+                updated_at: updated_at
+                payment_note: payment_note
+              related_resources:
+                orders:
+                  - id: o4b7saqp4HzhNttf5AJxC0Srjd4F
+                    location_id: '{LOCATION_ID}'
+                    source:
+                      name: Test Online Checkout Application
+                    line_items:
+                      - uid: 8YX13D1U3jO7czP8JVrAR
+                        name: Auto Detailing
+                        quantity: '1'
+                        item_type: ITEM
+                        base_price_money:
+                          amount: 12500
+                          currency: USD
+                        variation_total_price_money:
+                          amount: 12500
+                          currency: USD
+                        gross_sales_money:
+                          amount: 12500
+                          currency: USD
+                        total_tax_money:
+                          amount: 0
+                          currency: USD
+                        total_discount_money:
+                          amount: 0
+                          currency: USD
+                        total_money:
+                          amount: 12500
+                          currency: USD
+                    fulfillments:
+                      - uid: bBpNrxjdQxGQP16sTmdzi
+                        type: PICKUP
+                        state: PROPOSED
+                    net_amounts:
+                      total_money:
+                        amount: 12500
+                        currency: USD
+                      tax_money:
+                        amount: 0
+                        currency: USD
+                      discount_money:
+                        amount: 0
+                        currency: USD
+                      tip_money:
+                        amount: 0
+                        currency: USD
+                      service_charge_money:
+                        amount: 0
+                        currency: USD
+                    created_at: '2022-03-03T00:53:15.829Z'
+                    updated_at: '2022-03-03T00:53:15.829Z'
+                    state: DRAFT
+                    version: 1
+                    total_money:
+                      amount: 12500
+                      currency: USD
+                    total_tax_money:
+                      amount: 0
+                      currency: USD
+                    total_discount_money:
+                      amount: 0
+                      currency: USD
+                    total_tip_money:
+                      amount: 0
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                subscription_plans:
+                  - id: id
+                    type: ITEM
+    get:
+      path: /v2/online-checkout/payment-links/{id}
+      method: GET
+      auth: true
+      docs: Retrieves a payment link.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrievePaymentLink
+      request:
+        name: GetPaymentLinksRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The ID of link to retrieve.
+      response:
+        docs: Success
+        type: root.GetPaymentLinkResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              payment_link:
+                id: LLO5Q3FRCFICDB4B
+                version: 1
+                description: description
+                order_id: 4uKASDATqSd1QQ9jV86sPhMdVEbSJc4F
+                checkout_options:
+                  allow_tipping: true
+                  custom_fields:
+                    - title: title
+                  subscription_plan_id: subscription_plan_id
+                  redirect_url: redirect_url
+                  merchant_support_email: merchant_support_email
+                  ask_for_shipping_address: true
+                  shipping_fee:
+                    charge: {}
+                  enable_coupon: true
+                  enable_loyalty: true
+                pre_populated_data:
+                  buyer_email: buyer_email
+                  buyer_phone_number: buyer_phone_number
+                url: https://square.link/u/EXAMPLE
+                long_url: https://checkout.square.site/EXAMPLE
+                created_at: '2022-04-26T00:10:29Z'
+                updated_at: updated_at
+                payment_note: payment_note
+    update:
+      path: /v2/online-checkout/payment-links/{id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates a payment link. You can update the `payment_link` fields such as
+
+        `description`, `checkout_options`, and  `pre_populated_data`.
+
+        You cannot update other fields such as the `order_id`, `version`, `URL`,
+        or `timestamp` field.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdatePaymentLink
+      request:
+        name: UpdatePaymentLinkRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The ID of the payment link to update.
+        body:
+          properties:
+            payment_link:
+              type: root.PaymentLink
+              docs: >-
+                The `payment_link` object describing the updates to apply.
+
+                For more information, see [Update a payment
+                link](https://developer.squareup.com/docs/checkout-api/manage-checkout#update-a-payment-link).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdatePaymentLinkResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          request:
+            payment_link:
+              version: 1
+              checkout_options:
+                ask_for_shipping_address: true
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              payment_link:
+                id: TY4BWEDJ6AI5MBIV
+                version: 2
+                description: description
+                order_id: Qqc8ypQGvxVwc46Cch4zHTaJqc4F
+                checkout_options:
+                  allow_tipping: true
+                  custom_fields:
+                    - title: title
+                  subscription_plan_id: subscription_plan_id
+                  redirect_url: redirect_url
+                  merchant_support_email: merchant_support_email
+                  ask_for_shipping_address: true
+                  shipping_fee:
+                    charge: {}
+                  enable_coupon: true
+                  enable_loyalty: true
+                pre_populated_data:
+                  buyer_email: buyer_email
+                  buyer_phone_number: buyer_phone_number
+                url: https://square.link/u/EXAMPLE
+                long_url: https://checkout.square.site/EXAMPLE
+                created_at: '2022-04-26T00:15:15Z'
+                updated_at: '2022-04-26T00:18:24Z'
+                payment_note: test
+    delete:
+      path: /v2/online-checkout/payment-links/{id}
+      method: DELETE
+      auth: true
+      docs: Deletes a payment link.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeletePaymentLink
+      request:
+        name: DeletePaymentLinksRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The ID of the payment link to delete.
+      response:
+        docs: Success
+        type: root.DeletePaymentLinkResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              id: MQASNYL6QB6DFCJ3
+              cancelled_order_id: asx8LgZ6MRzD0fObfkJ6obBmSh4F
+  source:
+    openapi: openapi/openapi.json

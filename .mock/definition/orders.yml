@@ -1,0 +1,1710 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/orders
+      method: POST
+      auth: true
+      docs: >-
+        Creates a new [order](entity:Order) that can include information about
+        products for
+
+        purchase and settings to apply to the purchase.
+
+
+        To pay for a created order, see
+
+        [Pay for
+        Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
+
+
+        You can modify open orders using the
+        [UpdateOrder](api-endpoint:Orders-UpdateOrder) endpoint.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateOrder
+      request:
+        body: root.CreateOrderRequest
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateOrderResponse
+        status-code: 200
+      examples:
+        - request:
+            order:
+              location_id: 057P5VYJ4A5X1
+              reference_id: my-order-001
+              line_items:
+                - name: New York Strip Steak
+                  quantity: '1'
+                  base_price_money:
+                    amount: 1599
+                    currency: USD
+                - quantity: '2'
+                  catalog_object_id: BEMYCSMIJL46OCDV4KYIKXIB
+                  modifiers:
+                    - catalog_object_id: CHQX7Y4KY6N5KINJKZCFURPZ
+                  applied_discounts:
+                    - discount_uid: one-dollar-off
+              taxes:
+                - uid: state-sales-tax
+                  name: State Sales Tax
+                  percentage: '9'
+                  scope: ORDER
+              discounts:
+                - uid: labor-day-sale
+                  name: Labor Day Sale
+                  percentage: '5'
+                  scope: ORDER
+                - uid: membership-discount
+                  catalog_object_id: DB7L55ZH2BGWI4H23ULIWOQ7
+                  scope: ORDER
+                - uid: one-dollar-off
+                  name: Sale - $1.00 off
+                  amount_money:
+                    amount: 100
+                    currency: USD
+                  scope: LINE_ITEM
+            idempotency_key: 8193148c-9586-11e6-99f9-28cfe92138cf
+          response:
+            body:
+              order:
+                id: CAISENgvlJ6jLWAzERDzjyHVybY
+                location_id: 057P5VYJ4A5X1
+                reference_id: my-order-001
+                source:
+                  name: My App
+                customer_id: customer_id
+                line_items:
+                  - uid: 8uSwfzvUImn3IRrvciqlXC
+                    name: New York Strip Steak
+                    quantity: '1'
+                    applied_taxes:
+                      - uid: aKG87ArnDpvMLSZJHxWUl
+                        tax_uid: state-sales-tax
+                        applied_money:
+                          amount: 136
+                          currency: USD
+                    applied_discounts:
+                      - uid: jWdgP1TpHPFBuVrz81mXVC
+                        discount_uid: membership-discount
+                        applied_money:
+                          amount: 8
+                          currency: USD
+                      - uid: jnZOjjVY57eRcQAVgEwFuC
+                        discount_uid: labor-day-sale
+                        applied_money:
+                          amount: 79
+                          currency: USD
+                    base_price_money:
+                      amount: 1599
+                      currency: USD
+                    variation_total_price_money:
+                      amount: 1599
+                      currency: USD
+                    gross_sales_money:
+                      amount: 1599
+                      currency: USD
+                    total_tax_money:
+                      amount: 136
+                      currency: USD
+                    total_discount_money:
+                      amount: 87
+                      currency: USD
+                    total_money:
+                      amount: 1648
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                  - uid: v8ZuEXpOJpb0bazLuvrLDB
+                    name: New York Steak
+                    quantity: '2'
+                    catalog_object_id: BEMYCSMIJL46OCDV4KYIKXIB
+                    variation_name: Larger
+                    modifiers:
+                      - uid: Lo3qMMckDluu9Qsb58d4CC
+                        catalog_object_id: CHQX7Y4KY6N5KINJKZCFURPZ
+                        name: Well
+                        base_price_money:
+                          amount: 50
+                          currency: USD
+                        total_price_money:
+                          amount: 100
+                          currency: USD
+                    applied_taxes:
+                      - uid: v1dAgrfUVUPTnVTf9sRPz
+                        tax_uid: state-sales-tax
+                        applied_money:
+                          amount: 374
+                          currency: USD
+                    applied_discounts:
+                      - uid: nUXvdsIItfKko0dbYtY58C
+                        discount_uid: membership-discount
+                        applied_money:
+                          amount: 22
+                          currency: USD
+                      - uid: qSdkOOOernlVQqsJ94SPjB
+                        discount_uid: labor-day-sale
+                        applied_money:
+                          amount: 224
+                          currency: USD
+                      - uid: y7bVl4njrWAnfDwmz19izB
+                        discount_uid: one-dollar-off
+                        applied_money:
+                          amount: 100
+                          currency: USD
+                    base_price_money:
+                      amount: 2200
+                      currency: USD
+                    variation_total_price_money:
+                      amount: 4400
+                      currency: USD
+                    gross_sales_money:
+                      amount: 4500
+                      currency: USD
+                    total_tax_money:
+                      amount: 374
+                      currency: USD
+                    total_discount_money:
+                      amount: 346
+                      currency: USD
+                    total_money:
+                      amount: 4528
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                taxes:
+                  - uid: state-sales-tax
+                    name: State Sales Tax
+                    type: ADDITIVE
+                    percentage: '9'
+                    applied_money:
+                      amount: 510
+                      currency: USD
+                    scope: ORDER
+                discounts:
+                  - uid: membership-discount
+                    catalog_object_id: DB7L55ZH2BGWI4H23ULIWOQ7
+                    name: Membership Discount
+                    type: FIXED_PERCENTAGE
+                    percentage: '0.5'
+                    applied_money:
+                      amount: 30
+                      currency: USD
+                    scope: ORDER
+                  - uid: labor-day-sale
+                    name: Labor Day Sale
+                    type: FIXED_PERCENTAGE
+                    percentage: '5'
+                    applied_money:
+                      amount: 303
+                      currency: USD
+                    scope: ORDER
+                  - uid: one-dollar-off
+                    name: Sale - $1.00 off
+                    type: FIXED_AMOUNT
+                    amount_money:
+                      amount: 100
+                      currency: USD
+                    applied_money:
+                      amount: 100
+                      currency: USD
+                    scope: LINE_ITEM
+                service_charges:
+                  - {}
+                fulfillments:
+                  - {}
+                returns:
+                  - {}
+                net_amounts:
+                  total_money:
+                    amount: 6176
+                    currency: USD
+                  tax_money:
+                    amount: 510
+                    currency: USD
+                  discount_money:
+                    amount: 433
+                    currency: USD
+                  tip_money:
+                    amount: 0
+                    currency: USD
+                  service_charge_money:
+                    amount: 0
+                    currency: USD
+                rounding_adjustment:
+                  uid: uid
+                  name: name
+                tenders:
+                  - type: CARD
+                refunds:
+                  - id: id
+                    location_id: location_id
+                    tender_id: tender_id
+                    reason: reason
+                    amount_money: {}
+                    status: PENDING
+                metadata:
+                  key: value
+                created_at: '2020-01-17T20:47:53.293Z'
+                updated_at: '2020-01-17T20:47:53.293Z'
+                closed_at: closed_at
+                state: OPEN
+                version: 1
+                total_money:
+                  amount: 6176
+                  currency: USD
+                total_tax_money:
+                  amount: 510
+                  currency: USD
+                total_discount_money:
+                  amount: 433
+                  currency: USD
+                total_tip_money:
+                  amount: 0
+                  currency: USD
+                total_service_charge_money:
+                  amount: 0
+                  currency: USD
+                ticket_name: ticket_name
+                pricing_options:
+                  auto_apply_discounts: true
+                  auto_apply_taxes: true
+                rewards:
+                  - id: id
+                    reward_tier_id: reward_tier_id
+                net_amount_due_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    batchGet:
+      path: /v2/orders/batch-retrieve
+      method: POST
+      auth: true
+      docs: >-
+        Retrieves a set of [orders](entity:Order) by their IDs.
+
+
+        If a given order ID does not exist, the ID is ignored instead of
+        generating an error.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BatchRetrieveOrders
+      request:
+        name: BatchGetOrdersRequest
+        body:
+          properties:
+            location_id:
+              type: optional<nullable<string>>
+              docs: >-
+                The ID of the location for these orders. This field is optional:
+                omit it to retrieve
+
+                orders within the scope of the current authorization's merchant
+                ID.
+            order_ids:
+              docs: >-
+                The IDs of the orders to retrieve. A maximum of 100 orders can
+                be retrieved per request.
+              type: list<string>
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchGetOrdersResponse
+        status-code: 200
+      examples:
+        - request:
+            location_id: 057P5VYJ4A5X1
+            order_ids:
+              - CAISEM82RcpmcFBM0TfOyiHV3es
+              - CAISENgvlJ6jLWAzERDzjyHVybY
+          response:
+            body:
+              orders:
+                - id: CAISEM82RcpmcFBM0TfOyiHV3es
+                  location_id: 057P5VYJ4A5X1
+                  reference_id: my-order-001
+                  customer_id: customer_id
+                  line_items:
+                    - uid: 945986d1-9586-11e6-ad5a-28cfe92138cf
+                      name: Awesome product
+                      quantity: '1'
+                      base_price_money:
+                        amount: 1599
+                        currency: USD
+                      total_money:
+                        amount: 1599
+                        currency: USD
+                    - uid: a8f4168c-9586-11e6-bdf0-28cfe92138cf
+                      name: Another awesome product
+                      quantity: '3'
+                      base_price_money:
+                        amount: 2000
+                        currency: USD
+                      total_money:
+                        amount: 6000
+                        currency: USD
+                  taxes:
+                    - {}
+                  discounts:
+                    - {}
+                  service_charges:
+                    - {}
+                  fulfillments:
+                    - {}
+                  returns:
+                    - {}
+                  tenders:
+                    - type: CARD
+                  refunds:
+                    - id: id
+                      location_id: location_id
+                      tender_id: tender_id
+                      reason: reason
+                      amount_money: {}
+                      status: PENDING
+                  created_at: created_at
+                  updated_at: updated_at
+                  closed_at: closed_at
+                  state: OPEN
+                  version: 1
+                  total_money:
+                    amount: 7599
+                    currency: USD
+                  ticket_name: ticket_name
+                  rewards:
+                    - id: id
+                      reward_tier_id: reward_tier_id
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    calculate:
+      path: /v2/orders/calculate
+      method: POST
+      auth: true
+      docs: Enables applications to preview order pricing without creating an order.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CalculateOrder
+      request:
+        name: CalculateOrderRequest
+        body:
+          properties:
+            order:
+              type: root.Order
+              docs: >-
+                The order to be calculated. Expects the entire order, not a
+                sparse update.
+            proposed_rewards:
+              type: optional<nullable<list<root.OrderReward>>>
+              docs: >-
+                Identifies one or more loyalty reward tiers to apply during the
+                order calculation.
+
+                The discounts defined by the reward tiers are added to the order
+                only to preview the
+
+                effect of applying the specified rewards. The rewards do not
+                correspond to actual
+
+                redemptions; that is, no `reward`s are created. Therefore, the
+                reward `id`s are
+
+                random strings used only to reference the reward tier.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CalculateOrderResponse
+        status-code: 200
+      examples:
+        - request:
+            order:
+              location_id: D7AVYMEAPJ3A3
+              line_items:
+                - name: Item 1
+                  quantity: '1'
+                  base_price_money:
+                    amount: 500
+                    currency: USD
+                - name: Item 2
+                  quantity: '2'
+                  base_price_money:
+                    amount: 300
+                    currency: USD
+              discounts:
+                - name: 50% Off
+                  percentage: '50'
+                  scope: ORDER
+          response:
+            body:
+              order:
+                id: id
+                location_id: D7AVYMEAPJ3A3
+                reference_id: reference_id
+                source:
+                  name: name
+                customer_id: customer_id
+                line_items:
+                  - uid: ULkg0tQTRK2bkU9fNv3IJD
+                    name: Item 1
+                    quantity: '1'
+                    applied_discounts:
+                      - uid: 9zr9S4dxvPAixvn0lpa1VC
+                        discount_uid: zGsRZP69aqSSR9lq9euSPB
+                        applied_money:
+                          amount: 250
+                          currency: USD
+                    base_price_money:
+                      amount: 500
+                      currency: USD
+                    variation_total_price_money:
+                      amount: 500
+                      currency: USD
+                    gross_sales_money:
+                      amount: 500
+                      currency: USD
+                    total_tax_money:
+                      amount: 0
+                      currency: USD
+                    total_discount_money:
+                      amount: 250
+                      currency: USD
+                    total_money:
+                      amount: 250
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                  - uid: mumY8Nun4BC5aKe2yyx5a
+                    name: Item 2
+                    quantity: '2'
+                    applied_discounts:
+                      - uid: qa8LwwZK82FgSEkQc2HYVC
+                        discount_uid: zGsRZP69aqSSR9lq9euSPB
+                        applied_money:
+                          amount: 300
+                          currency: USD
+                    base_price_money:
+                      amount: 300
+                      currency: USD
+                    variation_total_price_money:
+                      amount: 600
+                      currency: USD
+                    gross_sales_money:
+                      amount: 600
+                      currency: USD
+                    total_tax_money:
+                      amount: 0
+                      currency: USD
+                    total_discount_money:
+                      amount: 300
+                      currency: USD
+                    total_money:
+                      amount: 300
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                taxes:
+                  - {}
+                discounts:
+                  - uid: zGsRZP69aqSSR9lq9euSPB
+                    name: 50% Off
+                    type: FIXED_PERCENTAGE
+                    percentage: '50'
+                    applied_money:
+                      amount: 550
+                      currency: USD
+                    scope: ORDER
+                service_charges:
+                  - {}
+                fulfillments:
+                  - {}
+                returns:
+                  - {}
+                net_amounts:
+                  total_money:
+                    amount: 550
+                    currency: USD
+                  tax_money:
+                    amount: 0
+                    currency: USD
+                  discount_money:
+                    amount: 550
+                    currency: USD
+                  tip_money:
+                    amount: 0
+                    currency: USD
+                  service_charge_money:
+                    amount: 0
+                    currency: USD
+                rounding_adjustment:
+                  uid: uid
+                  name: name
+                tenders:
+                  - type: CARD
+                refunds:
+                  - id: id
+                    location_id: location_id
+                    tender_id: tender_id
+                    reason: reason
+                    amount_money: {}
+                    status: PENDING
+                metadata:
+                  key: value
+                created_at: '2020-05-18T16:30:49.614Z'
+                updated_at: '2020-05-18T16:30:49.614Z'
+                closed_at: closed_at
+                state: OPEN
+                version: 1
+                total_money:
+                  amount: 550
+                  currency: USD
+                total_tax_money:
+                  amount: 0
+                  currency: USD
+                total_discount_money:
+                  amount: 550
+                  currency: USD
+                total_tip_money:
+                  amount: 0
+                  currency: USD
+                total_service_charge_money:
+                  amount: 0
+                  currency: USD
+                ticket_name: ticket_name
+                pricing_options:
+                  auto_apply_discounts: true
+                  auto_apply_taxes: true
+                rewards:
+                  - id: id
+                    reward_tier_id: reward_tier_id
+                net_amount_due_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    clone:
+      path: /v2/orders/clone
+      method: POST
+      auth: true
+      docs: >-
+        Creates a new order, in the `DRAFT` state, by duplicating an existing
+        order. The newly created order has
+
+        only the core fields (such as line items, taxes, and discounts) copied
+        from the original order.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CloneOrder
+      request:
+        name: CloneOrderRequest
+        body:
+          properties:
+            order_id:
+              type: string
+              docs: The ID of the order to clone.
+            version:
+              type: optional<integer>
+              docs: >-
+                An optional order version for concurrency protection.
+
+
+                If a version is provided, it must match the latest stored
+                version of the order to clone.
+
+                If a version is not provided, the API clones the latest version.
+            idempotency_key:
+              type: optional<nullable<string>>
+              docs: >-
+                A value you specify that uniquely identifies this clone request.
+
+
+                If you are unsure whether a particular order was cloned
+                successfully,
+
+                you can reattempt the call with the same idempotency key without
+
+                worrying about creating duplicate cloned orders.
+
+                The originally cloned order is returned.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CloneOrderResponse
+        status-code: 200
+      examples:
+        - request:
+            order_id: ZAISEM52YcpmcWAzERDOyiWS123
+            version: 3
+            idempotency_key: UNIQUE_STRING
+          response:
+            body:
+              order:
+                id: CAISENgvlJ6jLWAzERDzjyHVybY
+                location_id: 057P5VYJ4A5X1
+                reference_id: my-order-001
+                source:
+                  name: My App
+                customer_id: customer_id
+                line_items:
+                  - uid: 8uSwfzvUImn3IRrvciqlXC
+                    name: New York Strip Steak
+                    quantity: '1'
+                    applied_taxes:
+                      - uid: aKG87ArnDpvMLSZJHxWUl
+                        tax_uid: state-sales-tax
+                        applied_money:
+                          amount: 136
+                          currency: USD
+                    applied_discounts:
+                      - uid: jWdgP1TpHPFBuVrz81mXVC
+                        discount_uid: membership-discount
+                        applied_money:
+                          amount: 8
+                          currency: USD
+                      - uid: jnZOjjVY57eRcQAVgEwFuC
+                        discount_uid: labor-day-sale
+                        applied_money:
+                          amount: 79
+                          currency: USD
+                    base_price_money:
+                      amount: 1599
+                      currency: USD
+                    variation_total_price_money:
+                      amount: 1599
+                      currency: USD
+                    gross_sales_money:
+                      amount: 1599
+                      currency: USD
+                    total_tax_money:
+                      amount: 136
+                      currency: USD
+                    total_discount_money:
+                      amount: 87
+                      currency: USD
+                    total_money:
+                      amount: 1648
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                  - uid: v8ZuEXpOJpb0bazLuvrLDB
+                    name: New York Steak
+                    quantity: '2'
+                    catalog_object_id: BEMYCSMIJL46OCDV4KYIKXIB
+                    variation_name: Larger
+                    modifiers:
+                      - uid: Lo3qMMckDluu9Qsb58d4CC
+                        catalog_object_id: CHQX7Y4KY6N5KINJKZCFURPZ
+                        name: Well
+                        base_price_money:
+                          amount: 50
+                          currency: USD
+                        total_price_money:
+                          amount: 100
+                          currency: USD
+                    applied_taxes:
+                      - uid: v1dAgrfUVUPTnVTf9sRPz
+                        tax_uid: state-sales-tax
+                        applied_money:
+                          amount: 374
+                          currency: USD
+                    applied_discounts:
+                      - uid: nUXvdsIItfKko0dbYtY58C
+                        discount_uid: membership-discount
+                        applied_money:
+                          amount: 22
+                          currency: USD
+                      - uid: qSdkOOOernlVQqsJ94SPjB
+                        discount_uid: labor-day-sale
+                        applied_money:
+                          amount: 224
+                          currency: USD
+                      - uid: y7bVl4njrWAnfDwmz19izB
+                        discount_uid: one-dollar-off
+                        applied_money:
+                          amount: 100
+                          currency: USD
+                    base_price_money:
+                      amount: 2200
+                      currency: USD
+                    variation_total_price_money:
+                      amount: 4400
+                      currency: USD
+                    gross_sales_money:
+                      amount: 4500
+                      currency: USD
+                    total_tax_money:
+                      amount: 374
+                      currency: USD
+                    total_discount_money:
+                      amount: 346
+                      currency: USD
+                    total_money:
+                      amount: 4528
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                taxes:
+                  - uid: state-sales-tax
+                    name: State Sales Tax
+                    type: ADDITIVE
+                    percentage: '9'
+                    applied_money:
+                      amount: 510
+                      currency: USD
+                    scope: ORDER
+                discounts:
+                  - uid: membership-discount
+                    catalog_object_id: DB7L55ZH2BGWI4H23ULIWOQ7
+                    name: Membership Discount
+                    type: FIXED_PERCENTAGE
+                    percentage: '0.5'
+                    applied_money:
+                      amount: 30
+                      currency: USD
+                    scope: ORDER
+                  - uid: labor-day-sale
+                    name: Labor Day Sale
+                    type: FIXED_PERCENTAGE
+                    percentage: '5'
+                    applied_money:
+                      amount: 303
+                      currency: USD
+                    scope: ORDER
+                  - uid: one-dollar-off
+                    name: Sale - $1.00 off
+                    type: FIXED_AMOUNT
+                    amount_money:
+                      amount: 100
+                      currency: USD
+                    applied_money:
+                      amount: 100
+                      currency: USD
+                    scope: LINE_ITEM
+                service_charges:
+                  - {}
+                fulfillments:
+                  - {}
+                returns:
+                  - {}
+                net_amounts:
+                  total_money:
+                    amount: 6176
+                    currency: USD
+                  tax_money:
+                    amount: 510
+                    currency: USD
+                  discount_money:
+                    amount: 433
+                    currency: USD
+                  tip_money:
+                    amount: 0
+                    currency: USD
+                  service_charge_money:
+                    amount: 0
+                    currency: USD
+                rounding_adjustment:
+                  uid: uid
+                  name: name
+                tenders:
+                  - type: CARD
+                refunds:
+                  - id: id
+                    location_id: location_id
+                    tender_id: tender_id
+                    reason: reason
+                    amount_money: {}
+                    status: PENDING
+                metadata:
+                  key: value
+                created_at: '2020-01-17T20:47:53.293Z'
+                updated_at: '2020-01-17T20:47:53.293Z'
+                closed_at: closed_at
+                state: DRAFT
+                version: 1
+                total_money:
+                  amount: 6176
+                  currency: USD
+                total_tax_money:
+                  amount: 510
+                  currency: USD
+                total_discount_money:
+                  amount: 433
+                  currency: USD
+                total_tip_money:
+                  amount: 0
+                  currency: USD
+                total_service_charge_money:
+                  amount: 0
+                  currency: USD
+                ticket_name: ticket_name
+                pricing_options:
+                  auto_apply_discounts: true
+                  auto_apply_taxes: true
+                rewards:
+                  - id: id
+                    reward_tier_id: reward_tier_id
+                net_amount_due_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    search:
+      path: /v2/orders/search
+      method: POST
+      auth: true
+      docs: >-
+        Search all orders for one or more locations. Orders include all sales,
+
+        returns, and exchanges regardless of how or when they entered the Square
+
+        ecosystem (such as Point of Sale, Invoices, and Connect APIs).
+
+
+        `SearchOrders` requests need to specify which locations to search and
+        define a
+
+        [SearchOrdersQuery](entity:SearchOrdersQuery) object that controls
+
+        how to sort or filter the results. Your `SearchOrdersQuery` can:
+
+          Set filter criteria.
+          Set the sort order.
+          Determine whether to return results as complete `Order` objects or as
+        [OrderEntry](entity:OrderEntry) objects.
+
+
+        Note that details for orders processed with Square Point of Sale while
+        in
+
+        offline mode might not be transmitted to Square for up to 72 hours.
+        Offline
+
+        orders have a `created_at` value that reflects the time the order was
+        created,
+
+        not the time it was subsequently transmitted to Square.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchOrders
+      request:
+        name: SearchOrdersRequest
+        body:
+          properties:
+            location_ids:
+              type: optional<list<string>>
+              docs: >-
+                The location IDs for the orders to query. All locations must
+                belong to
+
+                the same merchant.
+
+
+                Max: 10 location IDs.
+            cursor:
+              type: optional<string>
+              docs: >-
+                A pagination cursor returned by a previous call to this
+                endpoint.
+
+                Provide this cursor to retrieve the next set of results for your
+                original query.
+
+                For more information, see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+            query:
+              type: optional<root.SearchOrdersQuery>
+              docs: >-
+                Query conditions used to filter or sort the results. Note that
+                when
+
+                retrieving additional pages using a cursor, you must use the
+                original query.
+            limit:
+              type: optional<integer>
+              docs: |-
+                The maximum number of results to be returned in a single page.
+
+                Default: `500`
+                Max: `1000`
+            return_entries:
+              type: optional<boolean>
+              docs: >-
+                A Boolean that controls the format of the search results. If
+                `true`,
+
+                `SearchOrders` returns [OrderEntry](entity:OrderEntry) objects.
+                If `false`, `SearchOrders`
+
+                returns complete order objects.
+
+
+                Default: `false`.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchOrdersResponse
+        status-code: 200
+      examples:
+        - request:
+            location_ids:
+              - 057P5VYJ4A5X1
+              - 18YC4JDH91E1H
+            query:
+              filter:
+                state_filter:
+                  states:
+                    - COMPLETED
+                date_time_filter:
+                  closed_at:
+                    start_at: '2018-03-03T20:00:00+00:00'
+                    end_at: '2019-03-04T21:54:45+00:00'
+              sort:
+                sort_field: CLOSED_AT
+                sort_order: DESC
+            limit: 3
+            return_entries: true
+          response:
+            body:
+              order_entries:
+                - order_id: CAISEM82RcpmcFBM0TfOyiHV3es
+                  version: 1
+                  location_id: 057P5VYJ4A5X1
+                - order_id: CAISENgvlJ6jLWAzERDzjyHVybY
+                  version: 1
+                  location_id: 18YC4JDH91E1H
+                - order_id: CAISEM52YcpmcWAzERDOyiWS3ty
+                  version: 1
+                  location_id: 057P5VYJ4A5X1
+              orders:
+                - id: id
+                  location_id: location_id
+                  reference_id: reference_id
+                  customer_id: customer_id
+                  line_items:
+                    - quantity: quantity
+                  taxes:
+                    - {}
+                  discounts:
+                    - {}
+                  service_charges:
+                    - {}
+                  fulfillments:
+                    - {}
+                  returns:
+                    - {}
+                  tenders:
+                    - type: CARD
+                  refunds:
+                    - id: id
+                      location_id: location_id
+                      tender_id: tender_id
+                      reason: reason
+                      amount_money: {}
+                      status: PENDING
+                  created_at: created_at
+                  updated_at: updated_at
+                  closed_at: closed_at
+                  state: OPEN
+                  version: 1
+                  ticket_name: ticket_name
+                  rewards:
+                    - id: id
+                      reward_tier_id: reward_tier_id
+              cursor: '123'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/orders/{order_id}
+      method: GET
+      auth: true
+      docs: Retrieves an [Order](entity:Order) by ID.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveOrder
+      request:
+        name: GetOrdersRequest
+        path-parameters:
+          order_id:
+            type: string
+            docs: The ID of the order to retrieve.
+      response:
+        docs: Success
+        type: root.GetOrderResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            order_id: order_id
+          response:
+            body:
+              order:
+                id: CAISENgvlJ6jLWAzERDzjyHVybY
+                location_id: D7AVYMEAPJ3A3
+                reference_id: reference_id
+                source:
+                  name: name
+                customer_id: customer_id
+                line_items:
+                  - uid: ULkg0tQTRK2bkU9fNv3IJD
+                    name: Item 1
+                    quantity: '1'
+                    applied_discounts:
+                      - uid: 9zr9S4dxvPAixvn0lpa1VC
+                        discount_uid: zGsRZP69aqSSR9lq9euSPB
+                        applied_money:
+                          amount: 250
+                          currency: USD
+                    base_price_money:
+                      amount: 500
+                      currency: USD
+                    variation_total_price_money:
+                      amount: 500
+                      currency: USD
+                    gross_sales_money:
+                      amount: 500
+                      currency: USD
+                    total_tax_money:
+                      amount: 0
+                      currency: USD
+                    total_discount_money:
+                      amount: 250
+                      currency: USD
+                    total_money:
+                      amount: 250
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                  - uid: mumY8Nun4BC5aKe2yyx5a
+                    name: Item 2
+                    quantity: '2'
+                    applied_discounts:
+                      - uid: qa8LwwZK82FgSEkQc2HYVC
+                        discount_uid: zGsRZP69aqSSR9lq9euSPB
+                        applied_money:
+                          amount: 300
+                          currency: USD
+                    base_price_money:
+                      amount: 300
+                      currency: USD
+                    variation_total_price_money:
+                      amount: 600
+                      currency: USD
+                    gross_sales_money:
+                      amount: 600
+                      currency: USD
+                    total_tax_money:
+                      amount: 0
+                      currency: USD
+                    total_discount_money:
+                      amount: 300
+                      currency: USD
+                    total_money:
+                      amount: 300
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                taxes:
+                  - {}
+                discounts:
+                  - uid: zGsRZP69aqSSR9lq9euSPB
+                    name: 50% Off
+                    type: FIXED_PERCENTAGE
+                    percentage: '50'
+                    applied_money:
+                      amount: 550
+                      currency: USD
+                    scope: ORDER
+                service_charges:
+                  - {}
+                fulfillments:
+                  - {}
+                returns:
+                  - {}
+                net_amounts:
+                  total_money:
+                    amount: 550
+                    currency: USD
+                  tax_money:
+                    amount: 0
+                    currency: USD
+                  discount_money:
+                    amount: 550
+                    currency: USD
+                  tip_money:
+                    amount: 0
+                    currency: USD
+                  service_charge_money:
+                    amount: 0
+                    currency: USD
+                rounding_adjustment:
+                  uid: uid
+                  name: name
+                tenders:
+                  - type: CARD
+                refunds:
+                  - id: id
+                    location_id: location_id
+                    tender_id: tender_id
+                    reason: reason
+                    amount_money: {}
+                    status: PENDING
+                metadata:
+                  key: value
+                created_at: '2020-05-18T16:30:49.614Z'
+                updated_at: '2020-05-18T16:30:49.614Z'
+                closed_at: closed_at
+                state: OPEN
+                version: 1
+                total_money:
+                  amount: 550
+                  currency: USD
+                total_tax_money:
+                  amount: 0
+                  currency: USD
+                total_discount_money:
+                  amount: 550
+                  currency: USD
+                total_tip_money:
+                  amount: 0
+                  currency: USD
+                total_service_charge_money:
+                  amount: 0
+                  currency: USD
+                ticket_name: ticket_name
+                pricing_options:
+                  auto_apply_discounts: true
+                  auto_apply_taxes: true
+                rewards:
+                  - id: id
+                    reward_tier_id: reward_tier_id
+                net_amount_due_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    update:
+      path: /v2/orders/{order_id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates an open [order](entity:Order) by adding, replacing, or deleting
+
+        fields. Orders with a `COMPLETED` or `CANCELED` state cannot be updated.
+
+
+        An `UpdateOrder` request requires the following:
+
+
+        - The `order_id` in the endpoint path, identifying the order to update.
+
+        - The latest `version` of the order to update.
+
+        - The [sparse
+        order](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#sparse-order-objects)
+
+        containing only the fields to update and the version to which the update
+        is
+
+        being applied.
+
+        - If deleting fields, the [dot notation
+        paths](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#identifying-fields-to-delete)
+
+        identifying the fields to clear.
+
+
+        To pay for an order, see
+
+        [Pay for
+        Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateOrder
+      request:
+        name: UpdateOrderRequest
+        path-parameters:
+          order_id:
+            type: string
+            docs: The ID of the order to update.
+        body:
+          properties:
+            order:
+              type: optional<root.Order>
+              docs: >-
+                The [sparse
+                order](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#sparse-order-objects)
+
+                containing only the fields to update and the version to which
+                the update is
+
+                being applied.
+            fields_to_clear:
+              type: optional<nullable<list<string>>>
+              docs: >-
+                The [dot notation
+                paths](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#identifying-fields-to-delete)
+
+                fields to clear. For example, `line_items[uid].note`.
+
+                For more information, see [Deleting
+                fields](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#deleting-fields).
+            idempotency_key:
+              type: optional<nullable<string>>
+              docs: >-
+                A value you specify that uniquely identifies this update
+                request.
+
+
+                If you are unsure whether a particular update was applied to an
+                order successfully,
+
+                you can reattempt it with the same idempotency key without
+
+                worrying about creating duplicate updates to the order.
+
+                The latest order version is returned.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                maxLength: 192
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateOrderResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            order_id: order_id
+          request:
+            order:
+              location_id: location_id
+              line_items:
+                - uid: cookie_uid
+                  name: COOKIE
+                  quantity: '2'
+                  base_price_money:
+                    amount: 200
+                    currency: USD
+              version: 1
+            fields_to_clear:
+              - discounts
+            idempotency_key: UNIQUE_STRING
+          response:
+            body:
+              order:
+                id: DREk7wJcyXNHqULq8JJ2iPAsluJZY
+                location_id: MXVQSVNDGN3C8
+                reference_id: reference_id
+                source:
+                  name: Cookies
+                customer_id: customer_id
+                line_items:
+                  - uid: EuYkakhmu3ksHIds5Hiot
+                    name: Small Coffee
+                    quantity: '1'
+                    base_price_money:
+                      amount: 500
+                      currency: USD
+                    variation_total_price_money:
+                      amount: 500
+                      currency: USD
+                    gross_sales_money:
+                      amount: 500
+                      currency: USD
+                    total_tax_money:
+                      amount: 0
+                      currency: USD
+                    total_discount_money:
+                      amount: 0
+                      currency: USD
+                    total_money:
+                      amount: 500
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                  - uid: cookie_uid
+                    name: COOKIE
+                    quantity: '2'
+                    base_price_money:
+                      amount: 200
+                      currency: USD
+                    variation_total_price_money:
+                      amount: 400
+                      currency: USD
+                    gross_sales_money:
+                      amount: 400
+                      currency: USD
+                    total_tax_money:
+                      amount: 0
+                      currency: USD
+                    total_discount_money:
+                      amount: 0
+                      currency: USD
+                    total_money:
+                      amount: 400
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                taxes:
+                  - {}
+                discounts:
+                  - {}
+                service_charges:
+                  - {}
+                fulfillments:
+                  - {}
+                returns:
+                  - {}
+                net_amounts:
+                  total_money:
+                    amount: 900
+                    currency: USD
+                  tax_money:
+                    amount: 0
+                    currency: USD
+                  discount_money:
+                    amount: 0
+                    currency: USD
+                  service_charge_money:
+                    amount: 0
+                    currency: USD
+                rounding_adjustment:
+                  uid: uid
+                  name: name
+                tenders:
+                  - type: CARD
+                refunds:
+                  - id: id
+                    location_id: location_id
+                    tender_id: tender_id
+                    reason: reason
+                    amount_money: {}
+                    status: PENDING
+                metadata:
+                  key: value
+                created_at: '2019-08-23T18:26:18.243Z'
+                updated_at: '2019-08-23T18:33:47.523Z'
+                closed_at: closed_at
+                state: OPEN
+                version: 2
+                total_money:
+                  amount: 900
+                  currency: USD
+                total_tax_money:
+                  amount: 0
+                  currency: USD
+                total_discount_money:
+                  amount: 0
+                  currency: USD
+                total_tip_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                total_service_charge_money:
+                  amount: 0
+                  currency: USD
+                ticket_name: ticket_name
+                pricing_options:
+                  auto_apply_discounts: true
+                  auto_apply_taxes: true
+                rewards:
+                  - id: id
+                    reward_tier_id: reward_tier_id
+                net_amount_due_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    pay:
+      path: /v2/orders/{order_id}/pay
+      method: POST
+      auth: true
+      docs: >-
+        Pay for an [order](entity:Order) using one or more approved
+        [payments](entity:Payment)
+
+        or settle an order with a total of `0`.
+
+
+        The total of the `payment_ids` listed in the request must be equal to
+        the order
+
+        total. Orders with a total amount of `0` can be marked as paid by
+        specifying an empty
+
+        array of `payment_ids` in the request.
+
+
+        To be used with `PayOrder`, a payment must:
+
+
+        - Reference the order by specifying the `order_id` when [creating the
+        payment](api-endpoint:Payments-CreatePayment).
+
+        Any approved payments that reference the same `order_id` not specified
+        in the
+
+        `payment_ids` is canceled.
+
+        - Be approved with [delayed
+        capture](https://developer.squareup.com/docs/payments-api/take-payments/card-payments/delayed-capture).
+
+        Using a delayed capture payment with `PayOrder` completes the approved
+        payment.
+      source:
+        openapi: openapi/openapi.json
+      display-name: PayOrder
+      request:
+        name: PayOrderRequest
+        path-parameters:
+          order_id:
+            type: string
+            docs: The ID of the order being paid.
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A value you specify that uniquely identifies this request among
+                requests you have sent. If
+
+                you are unsure whether a particular payment request was
+                completed successfully, you can reattempt
+
+                it with the same idempotency key without worrying about
+                duplicate payments.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
+              validation:
+                minLength: 1
+                maxLength: 192
+            order_version:
+              type: optional<nullable<integer>>
+              docs: >-
+                The version of the order being paid. If not supplied, the latest
+                version will be paid.
+            payment_ids:
+              type: optional<nullable<list<string>>>
+              docs: |-
+                The IDs of the [payments](entity:Payment) to collect.
+                The payment total must match the order total.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.PayOrderResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            order_id: order_id
+          request:
+            idempotency_key: c043a359-7ad9-4136-82a9-c3f1d66dcbff
+            payment_ids:
+              - EnZdNAlWCmfh6Mt5FMNST1o7taB
+              - 0LRiVlbXVwe8ozu4KbZxd12mvaB
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              order:
+                id: lgwOlEityYPJtcuvKTVKT1pA986YY
+                location_id: P3CCK6HSNDAS7
+                reference_id: reference_id
+                source:
+                  name: Source Name
+                customer_id: customer_id
+                line_items:
+                  - uid: QW6kofLHJK7JEKMjlSVP5C
+                    name: Item 1
+                    quantity: '1'
+                    base_price_money:
+                      amount: 500
+                      currency: USD
+                    gross_sales_money:
+                      amount: 500
+                      currency: USD
+                    total_tax_money:
+                      amount: 0
+                      currency: USD
+                    total_discount_money:
+                      amount: 0
+                      currency: USD
+                    total_money:
+                      amount: 500
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                  - uid: zhw8MNfRGdFQMI2WE1UBJD
+                    name: Item 2
+                    quantity: '2'
+                    base_price_money:
+                      amount: 750
+                      currency: USD
+                    gross_sales_money:
+                      amount: 1500
+                      currency: USD
+                    total_tax_money:
+                      amount: 0
+                      currency: USD
+                    total_discount_money:
+                      amount: 0
+                      currency: USD
+                    total_money:
+                      amount: 1500
+                      currency: USD
+                    total_service_charge_money:
+                      amount: 0
+                      currency: USD
+                taxes:
+                  - {}
+                discounts:
+                  - {}
+                service_charges:
+                  - {}
+                fulfillments:
+                  - {}
+                returns:
+                  - {}
+                net_amounts:
+                  total_money:
+                    amount: 2000
+                    currency: USD
+                  tax_money:
+                    amount: 0
+                    currency: USD
+                  discount_money:
+                    amount: 0
+                    currency: USD
+                  tip_money:
+                    amount: 0
+                    currency: USD
+                  service_charge_money:
+                    amount: 0
+                    currency: USD
+                rounding_adjustment:
+                  uid: uid
+                  name: name
+                tenders:
+                  - id: EnZdNAlWCmfh6Mt5FMNST1o7taB
+                    location_id: P3CCK6HSNDAS7
+                    transaction_id: lgwOlEityYPJtcuvKTVKT1pA986YY
+                    created_at: '2019-08-06T02:47:36.293Z'
+                    amount_money:
+                      amount: 1000
+                      currency: USD
+                    type: CARD
+                    card_details:
+                      status: CAPTURED
+                      card:
+                        card_brand: VISA
+                        last_4: '1111'
+                        exp_month: 2
+                        exp_year: 2022
+                        fingerprint: >-
+                          sq-1-n_BL15KP87ClDa4-h2nXOI0fp5VnxNH6hfhzqhptTfAgxgLuGFcg6jIPngDz4IkkTQ
+                      entry_method: KEYED
+                    payment_id: EnZdNAlWCmfh6Mt5FMNST1o7taB
+                  - id: 0LRiVlbXVwe8ozu4KbZxd12mvaB
+                    location_id: P3CCK6HSNDAS7
+                    transaction_id: lgwOlEityYPJtcuvKTVKT1pA986YY
+                    created_at: '2019-08-06T02:47:36.809Z'
+                    amount_money:
+                      amount: 1000
+                      currency: USD
+                    type: CARD
+                    card_details:
+                      status: CAPTURED
+                      card:
+                        card_brand: VISA
+                        last_4: '1111'
+                        exp_month: 2
+                        exp_year: 2022
+                        fingerprint: >-
+                          sq-1-n_BL15KP87ClDa4-h2nXOI0fp5VnxNH6hfhzqhptTfAgxgLuGFcg6jIPngDz4IkkTQ
+                      entry_method: KEYED
+                    payment_id: 0LRiVlbXVwe8ozu4KbZxd12mvaB
+                refunds:
+                  - id: id
+                    location_id: location_id
+                    tender_id: tender_id
+                    reason: reason
+                    amount_money: {}
+                    status: PENDING
+                metadata:
+                  key: value
+                created_at: '2019-08-06T02:47:35.693Z'
+                updated_at: '2019-08-06T02:47:37.140Z'
+                closed_at: '2019-08-06T02:47:37.140Z'
+                state: COMPLETED
+                version: 4
+                total_money:
+                  amount: 2000
+                  currency: USD
+                total_tax_money:
+                  amount: 0
+                  currency: USD
+                total_discount_money:
+                  amount: 0
+                  currency: USD
+                total_tip_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                total_service_charge_money:
+                  amount: 0
+                  currency: USD
+                ticket_name: ticket_name
+                pricing_options:
+                  auto_apply_discounts: true
+                  auto_apply_taxes: true
+                rewards:
+                  - id: id
+                    reward_tier_id: reward_tier_id
+                net_amount_due_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+  source:
+    openapi: openapi/openapi.json

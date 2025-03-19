@@ -24,7 +24,11 @@ export interface Card {
     expYear?: bigint | null;
     /** The name of the cardholder. */
     cardholderName?: string | null;
-    /** The billing address for this card. */
+    /**
+     * The billing address for this card. `US` postal codes can be provided as a 5-digit zip code
+     * or 9-digit ZIP+4 (example: `12345-6789`). For a full list of field meanings by country, see
+     * [Working with Addresses](https://developer.squareup.com/docs/build-basics/common-data-types/working-with-addresses).
+     */
     billingAddress?: Square.Address;
     /**
      * Intended as a Square-assigned identifier, based
@@ -32,7 +36,7 @@ export interface Card {
      * single application.
      */
     fingerprint?: string;
-    /** **Required** The ID of a customer created using the Customers API to be associated with the card. */
+    /** **Required** The ID of a [customer](entity:Customer) to be associated with the card. */
     customerId?: string | null;
     /** The ID of the merchant associated with the card. */
     merchantId?: string;
@@ -51,8 +55,7 @@ export interface Card {
      */
     cardType?: Square.CardType;
     /**
-     * Indicates whether the Card is prepaid or not.
-     * The Card object includes this field only in response to Payments API calls.
+     * Indicates whether the card is prepaid or not.
      * See [CardPrepaidType](#type-cardprepaidtype) for possible values
      */
     prepaidType?: Square.CardPrepaidType;
@@ -73,4 +76,25 @@ export interface Card {
      * See [CardCoBrand](#type-cardcobrand) for possible values
      */
     cardCoBrand?: Square.CardCoBrand;
+    /**
+     * An alert from the issuing bank about the card status. Alerts can indicate whether
+     * future charges to the card are likely to fail. For more information, see
+     * [Manage Card on File Declines](https://developer.squareup.com/docs/cards-api/manage-card-on-file-declines).
+     *
+     * This field is present only if there's an active issuer alert.
+     * See [IssuerAlert](#type-issueralert) for possible values
+     */
+    issuerAlert?: Square.CardIssuerAlert;
+    /**
+     * The timestamp of when the current issuer alert was received and processed, in
+     * RFC 3339 format.
+     *
+     * This field is present only if there's an active issuer alert.
+     */
+    issuerAlertAt?: string;
+    /**
+     * Indicates whether the card is linked to a Health Savings Account (HSA) or Flexible
+     * Spending Account (FSA), based on the card BIN.
+     */
+    hsaFsa?: boolean;
 }

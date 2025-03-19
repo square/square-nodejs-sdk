@@ -174,22 +174,28 @@ await client.oAuth.revokeToken({
 <dl>
 <dd>
 
-Returns an OAuth access token and a refresh token unless the
-`short_lived` parameter is set to `true`, in which case the endpoint
-returns only an access token.
+Returns an OAuth access token and refresh token using the `authorization_code`
+or `refresh_token` grant type.
 
-The `grant_type` parameter specifies the type of OAuth request. If
-`grant_type` is `authorization_code`, you must include the authorization
-code you received when a seller granted you authorization. If `grant_type`
-is `refresh_token`, you must provide a valid refresh token. If you're using
-an old version of the Square APIs (prior to March 13, 2019), `grant_type`
-can be `migration_token` and you must provide a valid migration token.
+When `grant_type` is `authorization_code`:
 
-You can use the `scopes` parameter to limit the set of permissions granted
-to the access token and refresh token. You can use the `short_lived` parameter
-to create an access token that expires in 24 hours.
+- With the [code flow](https://developer.squareup.com/docs/oauth-api/overview#code-flow),
+  provide `code`, `client_id`, and `client_secret`.
+- With the [PKCE flow](https://developer.squareup.com/docs/oauth-api/overview#pkce-flow),
+  provide `code`, `client_id`, and `code_verifier`.
 
-**Note:** OAuth tokens should be encrypted and stored on a secure server.
+When `grant_type` is `refresh_token`:
+
+- With the code flow, provide `refresh_token`, `client_id`, and `client_secret`.
+  The response returns the same refresh token provided in the request.
+- With the PKCE flow, provide `refresh_token` and `client_id`. The response returns
+  a new refresh token.
+
+You can use the `scopes` parameter to limit the set of permissions authorized by the
+access token. You can use the `short_lived` parameter to create an access token that
+expires in 24 hours.
+
+**Important:** OAuth tokens should be encrypted and stored on a secure server.
 Application clients should never interact directly with OAuth tokens.
 
 </dd>
@@ -207,9 +213,9 @@ Application clients should never interact directly with OAuth tokens.
 
 ```typescript
 await client.oAuth.obtainToken({
-    clientId: "APPLICATION_ID",
-    clientSecret: "APPLICATION_SECRET",
-    code: "CODE_FROM_AUTHORIZE",
+    clientId: "sq0idp-uaPHILoPzWZk3tlJqlML0g",
+    clientSecret: "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
+    code: "sq0cgb-l0SBqxs4uwxErTVyYOdemg",
     grantType: "authorization_code",
 });
 ```
@@ -5929,6 +5935,7 @@ await client.invoices.search({
             order: "DESC",
         },
     },
+    limit: 100,
 });
 ```
 
@@ -6192,6 +6199,8 @@ in a supported format: GIF, JPEG, PNG, TIFF, BMP, or PDF.
 
 Invoices can have up to 10 attachments with a total file size of 25 MB. Attachments can be added only to invoices
 in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
+
+**NOTE:** When testing in the Sandbox environment, the total file size is limited to 1 KB.
 
 </dd>
 </dl>
@@ -10657,6 +10666,28 @@ await client.teamMembers.update({
             assignedLocations: {
                 assignmentType: "EXPLICIT_LOCATIONS",
                 locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
+            },
+            wageSetting: {
+                jobAssignments: [
+                    {
+                        payType: "SALARY",
+                        annualRate: {
+                            amount: 3000000,
+                            currency: "USD",
+                        },
+                        weeklyHours: 40,
+                        jobId: "FjS8x95cqHiMenw4f1NAUH4P",
+                    },
+                    {
+                        payType: "HOURLY",
+                        hourlyRate: {
+                            amount: 1200,
+                            currency: "USD",
+                        },
+                        jobId: "VDNpRv8da51NU8qZFC5zDWpF",
+                    },
+                ],
+                isOvertimeExempt: true,
             },
         },
     },

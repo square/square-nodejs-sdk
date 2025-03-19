@@ -1,0 +1,1185 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/invoices
+      method: GET
+      auth: true
+      docs: >-
+        Returns a list of invoices for a given location. The response 
+
+        is paginated. If truncated, the response includes a `cursor` that
+        you    
+
+        use in a subsequent request to retrieve the next set of invoices.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.invoices
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListInvoices
+      request:
+        name: ListInvoicesRequest
+        query-parameters:
+          location_id:
+            type: string
+            docs: The ID of the location for which to list invoices.
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint. 
+
+              Provide this cursor to retrieve the next set of results for your
+              original query.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of invoices to return (200 is the maximum
+              `limit`). 
+
+              If not provided, the server uses a default limit of 100 invoices.
+      response:
+        docs: Success
+        type: root.ListInvoicesResponse
+        status-code: 200
+      examples:
+        - query-parameters:
+            location_id: location_id
+          response:
+            body:
+              invoices:
+                - id: inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                  version: 1
+                  location_id: ES0RJRZYEC39A
+                  order_id: CAISENgvlJ6jLWAzERDzjyHVybY
+                  primary_recipient:
+                    customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                    given_name: Amelia
+                    family_name: Earhart
+                    email_address: Amelia.Earhart@example.com
+                    phone_number: 1-212-555-4240
+                  payment_requests:
+                    - uid: 2da7964f-f3d2-4f43-81e8-5aa220bf3355
+                      request_type: BALANCE
+                      due_date: '2030-01-24'
+                      tipping_enabled: true
+                      automatic_payment_source: NONE
+                      reminders:
+                        - uid: beebd363-e47f-4075-8785-c235aaa7df11
+                          relative_scheduled_days: -1
+                          message: Your invoice is due tomorrow
+                          status: PENDING
+                      computed_amount_money:
+                        amount: 10000
+                        currency: USD
+                      total_completed_amount_money:
+                        amount: 0
+                        currency: USD
+                  delivery_method: EMAIL
+                  invoice_number: inv-100
+                  title: Event Planning Services
+                  description: We appreciate your business!
+                  scheduled_at: '2030-01-13T10:00:00Z'
+                  public_url: public_url
+                  status: DRAFT
+                  timezone: America/Los_Angeles
+                  created_at: '2030-01-13T17:45:13Z'
+                  updated_at: '2030-01-13T21:24:10Z'
+                  accepted_payment_methods:
+                    card: true
+                    square_gift_card: false
+                    bank_account: false
+                    buy_now_pay_later: false
+                    cash_app_pay: false
+                  custom_fields:
+                    - label: Event Reference Number
+                      value: 'Ref. #1234'
+                      placement: ABOVE_LINE_ITEMS
+                    - label: Terms of Service
+                      value: The terms of service are...
+                      placement: BELOW_LINE_ITEMS
+                  subscription_id: subscription_id
+                  sale_or_service_date: '2030-01-24'
+                  payment_conditions: payment_conditions
+                  store_payment_method_enabled: false
+                  attachments:
+                    - id: inva:0-3bB9ZuDHiziThQhuC4fwWt
+                      filename: file.jpg
+                      description: Service contract
+                      filesize: 102705
+                      hash: 273ee02cb6f5f8a3a8ca23604930dd53
+                      mime_type: image/jpeg
+                      uploaded_at: '2030-01-13T21:24:10Z'
+                  creator_team_member_id: creator_team_member_id
+                - id: inv:0-ChC366qAfskpGrBI_1bozs9mEA3
+                  version: 3
+                  location_id: ES0RJRZYEC39A
+                  order_id: a65jnS8NXbfprvGJzY9F4fQTuaB
+                  primary_recipient:
+                    customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                    given_name: Amelia
+                    family_name: Earhart
+                    email_address: Amelia.Earhart@example.com
+                    phone_number: 1-212-555-4240
+                  payment_requests:
+                    - uid: 66c3bdfd-5090-4ff9-a8a0-c1e1a2ffa176
+                      request_type: DEPOSIT
+                      due_date: '2021-01-23'
+                      percentage_requested: '25'
+                      tipping_enabled: false
+                      automatic_payment_source: CARD_ON_FILE
+                      card_id: ccof:IkWfpLj4tNHMyFii3GB
+                      computed_amount_money:
+                        amount: 1000
+                        currency: USD
+                      total_completed_amount_money:
+                        amount: 1000
+                        currency: USD
+                    - uid: 120c5e18-4f80-4f6b-b159-774cb9bf8f99
+                      request_type: BALANCE
+                      due_date: '2021-06-15'
+                      tipping_enabled: false
+                      automatic_payment_source: CARD_ON_FILE
+                      card_id: ccof:IkWfpLj4tNHMyFii3GB
+                      computed_amount_money:
+                        amount: 3000
+                        currency: USD
+                      total_completed_amount_money:
+                        amount: 0
+                        currency: USD
+                  delivery_method: EMAIL
+                  invoice_number: inv-455
+                  title: title
+                  description: description
+                  scheduled_at: scheduled_at
+                  public_url: https://squareup.com/pay-invoice/h9sfsfTGTSnYEhISUDBhEQ
+                  next_payment_amount_money:
+                    amount: 3000
+                    currency: USD
+                  status: PARTIALLY_PAID
+                  timezone: America/Los_Angeles
+                  created_at: '2021-01-23T15:29:12Z'
+                  updated_at: '2021-01-23T15:29:56Z'
+                  accepted_payment_methods:
+                    card: true
+                    square_gift_card: true
+                    bank_account: false
+                    buy_now_pay_later: false
+                    cash_app_pay: false
+                  custom_fields:
+                    - {}
+                  subscription_id: subscription_id
+                  sale_or_service_date: '2030-01-24'
+                  payment_conditions: payment_conditions
+                  store_payment_method_enabled: false
+                  attachments:
+                    - {}
+                  creator_team_member_id: creator_team_member_id
+              cursor: ChoIDhIWVm54ZVRhLXhySFBOejBBM2xJb2daUQoFCI4IGAE
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    create:
+      path: /v2/invoices
+      method: POST
+      auth: true
+      docs: >-
+        Creates a draft [invoice](entity:Invoice) 
+
+        for an order created using the Orders API.
+
+
+        A draft invoice remains in your account and no action is taken. 
+
+        You must publish the invoice before Square can process it (send it to
+        the customer's email address or charge the customer’s card on file).
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateInvoice
+      request:
+        name: CreateInvoiceRequest
+        body:
+          properties:
+            invoice:
+              type: root.Invoice
+              docs: The invoice to create.
+            idempotency_key:
+              type: optional<string>
+              docs: >-
+                A unique string that identifies the `CreateInvoice` request. If
+                you do not 
+
+                provide `idempotency_key` (or provide an empty string as the
+                value), the endpoint 
+
+                treats each request as independent.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                maxLength: 128
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateInvoiceResponse
+        status-code: 200
+      examples:
+        - request:
+            invoice:
+              location_id: ES0RJRZYEC39A
+              order_id: CAISENgvlJ6jLWAzERDzjyHVybY
+              primary_recipient:
+                customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+              payment_requests:
+                - request_type: BALANCE
+                  due_date: '2030-01-24'
+                  tipping_enabled: true
+                  automatic_payment_source: NONE
+                  reminders:
+                    - relative_scheduled_days: -1
+                      message: Your invoice is due tomorrow
+              delivery_method: EMAIL
+              invoice_number: inv-100
+              title: Event Planning Services
+              description: We appreciate your business!
+              scheduled_at: '2030-01-13T10:00:00Z'
+              accepted_payment_methods:
+                card: true
+                square_gift_card: false
+                bank_account: false
+                buy_now_pay_later: false
+                cash_app_pay: false
+              custom_fields:
+                - label: Event Reference Number
+                  value: 'Ref. #1234'
+                  placement: ABOVE_LINE_ITEMS
+                - label: Terms of Service
+                  value: The terms of service are...
+                  placement: BELOW_LINE_ITEMS
+              sale_or_service_date: '2030-01-24'
+              store_payment_method_enabled: false
+            idempotency_key: ce3748f9-5fc1-4762-aa12-aae5e843f1f4
+          response:
+            body:
+              invoice:
+                id: inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                version: 0
+                location_id: ES0RJRZYEC39A
+                order_id: CAISENgvlJ6jLWAzERDzjyHVybY
+                primary_recipient:
+                  customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                  given_name: Amelia
+                  family_name: Earhart
+                  email_address: Amelia.Earhart@example.com
+                  phone_number: 1-212-555-4240
+                  company_name: company_name
+                payment_requests:
+                  - uid: 2da7964f-f3d2-4f43-81e8-5aa220bf3355
+                    request_type: BALANCE
+                    due_date: '2030-01-24'
+                    tipping_enabled: true
+                    automatic_payment_source: NONE
+                    reminders:
+                      - uid: beebd363-e47f-4075-8785-c235aaa7df11
+                        relative_scheduled_days: -1
+                        message: Your invoice is due tomorrow
+                        status: PENDING
+                    computed_amount_money:
+                      amount: 10000
+                      currency: USD
+                    total_completed_amount_money:
+                      amount: 0
+                      currency: USD
+                delivery_method: EMAIL
+                invoice_number: inv-100
+                title: Event Planning Services
+                description: We appreciate your business!
+                scheduled_at: '2030-01-13T10:00:00Z'
+                public_url: public_url
+                next_payment_amount_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                status: DRAFT
+                timezone: America/Los_Angeles
+                created_at: '2020-06-18T17:45:13Z'
+                updated_at: '2020-06-18T17:45:13Z'
+                accepted_payment_methods:
+                  card: true
+                  square_gift_card: false
+                  bank_account: false
+                  buy_now_pay_later: false
+                  cash_app_pay: false
+                custom_fields:
+                  - label: Event Reference Number
+                    value: 'Ref. #1234'
+                    placement: ABOVE_LINE_ITEMS
+                  - label: Terms of Service
+                    value: The terms of service are...
+                    placement: BELOW_LINE_ITEMS
+                subscription_id: subscription_id
+                sale_or_service_date: '2030-01-24'
+                payment_conditions: payment_conditions
+                store_payment_method_enabled: false
+                attachments:
+                  - {}
+                creator_team_member_id: creator_team_member_id
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    search:
+      path: /v2/invoices/search
+      method: POST
+      auth: true
+      docs: >-
+        Searches for invoices from a location specified in 
+
+        the filter. You can optionally specify customers in the filter for whom
+        to 
+
+        retrieve invoices. In the current implementation, you can only specify
+        one location and 
+
+        optionally one customer.
+
+
+        The response is paginated. If truncated, the response includes a
+        `cursor` 
+
+        that you use in a subsequent request to retrieve the next set of
+        invoices.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchInvoices
+      request:
+        name: SearchInvoicesRequest
+        body:
+          properties:
+            query:
+              type: root.InvoiceQuery
+              docs: Describes the query criteria for searching invoices.
+            limit:
+              type: optional<integer>
+              docs: >-
+                The maximum number of invoices to return (200 is the maximum
+                `limit`). 
+
+                If not provided, the server uses a default limit of 100
+                invoices.
+            cursor:
+              type: optional<string>
+              docs: >-
+                A pagination cursor returned by a previous call to this
+                endpoint. 
+
+                Provide this cursor to retrieve the next set of results for your
+                original query.
+
+
+                For more information, see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchInvoicesResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                location_ids:
+                  - ES0RJRZYEC39A
+                customer_ids:
+                  - JDKYHBWT1D4F8MFH63DBMEN8Y4
+              sort:
+                field: INVOICE_SORT_DATE
+                order: DESC
+            limit: 100
+          response:
+            body:
+              invoices:
+                - id: inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                  version: 0
+                  location_id: ES0RJRZYEC39A
+                  order_id: CAISENgvlJ6jLWAzERDzjyHVybY
+                  primary_recipient:
+                    customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                    given_name: Amelia
+                    family_name: Earhart
+                    email_address: Amelia.Earhart@example.com
+                    phone_number: 1-212-555-4240
+                  payment_requests:
+                    - uid: 2da7964f-f3d2-4f43-81e8-5aa220bf3355
+                      request_type: BALANCE
+                      due_date: '2030-01-24'
+                      tipping_enabled: true
+                      automatic_payment_source: NONE
+                      reminders:
+                        - uid: beebd363-e47f-4075-8785-c235aaa7df11
+                          relative_scheduled_days: -1
+                          message: Your invoice is due tomorrow
+                          status: PENDING
+                      computed_amount_money:
+                        amount: 10000
+                        currency: USD
+                      total_completed_amount_money:
+                        amount: 0
+                        currency: USD
+                  delivery_method: EMAIL
+                  invoice_number: inv-100
+                  title: Event Planning Services
+                  description: We appreciate your business!
+                  scheduled_at: '2030-01-13T10:00:00Z'
+                  public_url: public_url
+                  status: DRAFT
+                  timezone: America/Los_Angeles
+                  created_at: '2020-06-18T17:45:13Z'
+                  updated_at: '2020-06-18T17:45:13Z'
+                  accepted_payment_methods:
+                    card: true
+                    square_gift_card: false
+                    bank_account: false
+                    buy_now_pay_later: false
+                    cash_app_pay: false
+                  custom_fields:
+                    - label: Event Reference Number
+                      value: 'Ref. #1234'
+                      placement: ABOVE_LINE_ITEMS
+                    - label: Terms of Service
+                      value: The terms of service are...
+                      placement: BELOW_LINE_ITEMS
+                  subscription_id: subscription_id
+                  sale_or_service_date: '2030-01-24'
+                  payment_conditions: payment_conditions
+                  store_payment_method_enabled: false
+                  attachments:
+                    - {}
+                  creator_team_member_id: creator_team_member_id
+                - id: inv:0-ChC366qAfskpGrBI_1bozs9mEA3
+                  version: 3
+                  location_id: ES0RJRZYEC39A
+                  order_id: a65jnS8NXbfprvGJzY9F4fQTuaB
+                  primary_recipient:
+                    customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                    given_name: Amelia
+                    family_name: Earhart
+                    email_address: Amelia.Earhart@example.com
+                    phone_number: 1-212-555-4240
+                  payment_requests:
+                    - uid: 66c3bdfd-5090-4ff9-a8a0-c1e1a2ffa176
+                      request_type: DEPOSIT
+                      due_date: '2021-01-23'
+                      percentage_requested: '25'
+                      tipping_enabled: false
+                      automatic_payment_source: CARD_ON_FILE
+                      card_id: ccof:IkWfpLj4tNHMyFii3GB
+                      computed_amount_money:
+                        amount: 1000
+                        currency: USD
+                      total_completed_amount_money:
+                        amount: 1000
+                        currency: USD
+                    - uid: 120c5e18-4f80-4f6b-b159-774cb9bf8f99
+                      request_type: BALANCE
+                      due_date: '2021-06-15'
+                      tipping_enabled: false
+                      automatic_payment_source: CARD_ON_FILE
+                      card_id: ccof:IkWfpLj4tNHMyFii3GB
+                      computed_amount_money:
+                        amount: 3000
+                        currency: USD
+                      total_completed_amount_money:
+                        amount: 0
+                        currency: USD
+                  delivery_method: EMAIL
+                  invoice_number: inv-455
+                  title: title
+                  description: description
+                  scheduled_at: scheduled_at
+                  public_url: https://squareup.com/pay-invoice/h9sfsfTGTSnYEhISUDBhEQ
+                  next_payment_amount_money:
+                    amount: 3000
+                    currency: USD
+                  status: PARTIALLY_PAID
+                  timezone: America/Los_Angeles
+                  created_at: '2021-01-23T15:29:12Z'
+                  updated_at: '2021-01-23T15:29:56Z'
+                  accepted_payment_methods:
+                    card: true
+                    square_gift_card: true
+                    bank_account: false
+                    buy_now_pay_later: false
+                    cash_app_pay: false
+                  custom_fields:
+                    - {}
+                  subscription_id: subscription_id
+                  sale_or_service_date: '2030-01-24'
+                  payment_conditions: payment_conditions
+                  store_payment_method_enabled: false
+                  attachments:
+                    - {}
+                  creator_team_member_id: creator_team_member_id
+              cursor: ChoIDhIWVm54ZVRhLXhySFBOejBBM2xJb2daUQoFCI4IGAE
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/invoices/{invoice_id}
+      method: GET
+      auth: true
+      docs: Retrieves an invoice by invoice ID.
+      source:
+        openapi: openapi/openapi.json
+      display-name: GetInvoice
+      request:
+        name: GetInvoicesRequest
+        path-parameters:
+          invoice_id:
+            type: string
+            docs: The ID of the invoice to retrieve.
+      response:
+        docs: Success
+        type: root.GetInvoiceResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            invoice_id: invoice_id
+          response:
+            body:
+              invoice:
+                id: inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                version: 0
+                location_id: ES0RJRZYEC39A
+                order_id: CAISENgvlJ6jLWAzERDzjyHVybY
+                primary_recipient:
+                  customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                  given_name: Amelia
+                  family_name: Earhart
+                  email_address: Amelia.Earhart@example.com
+                  phone_number: 1-212-555-4240
+                  company_name: company_name
+                payment_requests:
+                  - uid: 2da7964f-f3d2-4f43-81e8-5aa220bf3355
+                    request_type: BALANCE
+                    due_date: '2030-01-24'
+                    tipping_enabled: true
+                    automatic_payment_source: NONE
+                    reminders:
+                      - uid: beebd363-e47f-4075-8785-c235aaa7df11
+                        relative_scheduled_days: -1
+                        message: Your invoice is due tomorrow
+                        status: PENDING
+                    computed_amount_money:
+                      amount: 10000
+                      currency: USD
+                    total_completed_amount_money:
+                      amount: 0
+                      currency: USD
+                delivery_method: EMAIL
+                invoice_number: inv-100
+                title: Event Planning Services
+                description: We appreciate your business!
+                scheduled_at: '2030-01-13T10:00:00Z'
+                public_url: public_url
+                next_payment_amount_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                status: DRAFT
+                timezone: America/Los_Angeles
+                created_at: '2020-06-18T17:45:13Z'
+                updated_at: '2020-06-18T17:45:13Z'
+                accepted_payment_methods:
+                  card: true
+                  square_gift_card: false
+                  bank_account: false
+                  buy_now_pay_later: false
+                  cash_app_pay: false
+                custom_fields:
+                  - label: Event Reference Number
+                    value: 'Ref. #1234'
+                    placement: ABOVE_LINE_ITEMS
+                  - label: Terms of Service
+                    value: The terms of service are...
+                    placement: BELOW_LINE_ITEMS
+                subscription_id: subscription_id
+                sale_or_service_date: '2030-01-24'
+                payment_conditions: payment_conditions
+                store_payment_method_enabled: false
+                attachments:
+                  - {}
+                creator_team_member_id: creator_team_member_id
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    update:
+      path: /v2/invoices/{invoice_id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates an invoice. This endpoint supports sparse updates, so you only
+        need
+
+        to specify the fields you want to change along with the required
+        `version` field.
+
+        Some restrictions apply to updating invoices. For example, you cannot
+        change the
+
+        `order_id` or `location_id` field.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateInvoice
+      request:
+        name: UpdateInvoiceRequest
+        path-parameters:
+          invoice_id:
+            type: string
+            docs: The ID of the invoice to update.
+        body:
+          properties:
+            invoice:
+              type: root.Invoice
+              docs: >-
+                The invoice fields to add, change, or clear. Fields can be
+                cleared using
+
+                null values or the `remove` field (for individual payment
+                requests or reminders).
+
+                The current invoice `version` is also required. For more
+                information, including requirements,
+
+                limitations, and more examples, see [Update an
+                Invoice](https://developer.squareup.com/docs/invoices-api/update-invoices).
+            idempotency_key:
+              type: optional<nullable<string>>
+              docs: >-
+                A unique string that identifies the `UpdateInvoice` request. If
+                you do not
+
+                provide `idempotency_key` (or provide an empty string as the
+                value), the endpoint
+
+                treats each request as independent.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                maxLength: 128
+            fields_to_clear:
+              type: optional<nullable<list<string>>>
+              docs: >-
+                The list of fields to clear. Although this field is currently
+                supported, we
+
+                recommend using null values or the `remove` field when possible.
+                For examples, see
+
+                [Update an
+                Invoice](https://developer.squareup.com/docs/invoices-api/update-invoices).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateInvoiceResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            invoice_id: invoice_id
+          request:
+            invoice:
+              version: 1
+              payment_requests:
+                - uid: 2da7964f-f3d2-4f43-81e8-5aa220bf3355
+                  tipping_enabled: false
+            idempotency_key: 4ee82288-0910-499e-ab4c-5d0071dad1be
+          response:
+            body:
+              invoice:
+                id: inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                version: 2
+                location_id: ES0RJRZYEC39A
+                order_id: CAISENgvlJ6jLWAzERDzjyHVybY
+                primary_recipient:
+                  customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                  given_name: Amelia
+                  family_name: Earhart
+                  email_address: Amelia.Earhart@example.com
+                  phone_number: 1-212-555-4240
+                  company_name: company_name
+                payment_requests:
+                  - uid: 2da7964f-f3d2-4f43-81e8-5aa220bf3355
+                    request_type: BALANCE
+                    due_date: '2030-01-24'
+                    tipping_enabled: false
+                    automatic_payment_source: NONE
+                    computed_amount_money:
+                      amount: 10000
+                      currency: USD
+                    total_completed_amount_money:
+                      amount: 0
+                      currency: USD
+                delivery_method: EMAIL
+                invoice_number: inv-100
+                title: Event Planning Services
+                description: We appreciate your business!
+                scheduled_at: '2030-01-13T10:00:00Z'
+                public_url: public_url
+                next_payment_amount_money:
+                  amount: 10000
+                  currency: USD
+                status: UNPAID
+                timezone: America/Los_Angeles
+                created_at: '2020-06-18T17:45:13Z'
+                updated_at: '2020-06-18T18:23:11Z'
+                accepted_payment_methods:
+                  card: true
+                  square_gift_card: false
+                  bank_account: false
+                  buy_now_pay_later: false
+                  cash_app_pay: false
+                custom_fields:
+                  - label: Event Reference Number
+                    value: 'Ref. #1234'
+                    placement: ABOVE_LINE_ITEMS
+                  - label: Terms of Service
+                    value: The terms of service are...
+                    placement: BELOW_LINE_ITEMS
+                subscription_id: subscription_id
+                sale_or_service_date: '2030-01-24'
+                payment_conditions: payment_conditions
+                store_payment_method_enabled: false
+                attachments:
+                  - {}
+                creator_team_member_id: creator_team_member_id
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    delete:
+      path: /v2/invoices/{invoice_id}
+      method: DELETE
+      auth: true
+      docs: >-
+        Deletes the specified invoice. When an invoice is deleted, the 
+
+        associated order status changes to CANCELED. You can only delete a
+        draft 
+
+        invoice (you cannot delete a published invoice, including one that is
+        scheduled for processing).
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteInvoice
+      request:
+        name: DeleteInvoicesRequest
+        path-parameters:
+          invoice_id:
+            type: string
+            docs: The ID of the invoice to delete.
+        query-parameters:
+          version:
+            type: optional<nullable<integer>>
+            docs: >-
+              The version of the [invoice](entity:Invoice) to delete.
+
+              If you do not know the version, you can call
+              [GetInvoice](api-endpoint:Invoices-GetInvoice) or 
+
+              [ListInvoices](api-endpoint:Invoices-ListInvoices).
+      response:
+        docs: Success
+        type: root.DeleteInvoiceResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            invoice_id: invoice_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    CreateInvoiceAttachment:
+      path: /v2/invoices/{invoice_id}/attachments
+      method: POST
+      auth: true
+      docs: >-
+        Uploads a file and attaches it to an invoice. This endpoint accepts HTTP
+        multipart/form-data file uploads
+
+        with a JSON `request` part and a `file` part. The `file` part must be a
+        `readable stream` that contains a file
+
+        in a supported format: GIF, JPEG, PNG, TIFF, BMP, or PDF.
+
+
+        Invoices can have up to 10 attachments with a total file size of 25 MB.
+        Attachments can be added only to invoices
+
+        in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
+
+
+        __NOTE:__ When testing in the Sandbox environment, the total file size
+        is limited to 1 KB.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateInvoiceAttachment
+      request:
+        name: CreateInvoiceAttachmentRequest
+        path-parameters:
+          invoice_id:
+            type: string
+            docs: The ID of the [invoice](entity:Invoice) to attach the file to.
+        body:
+          properties:
+            request:
+              type: optional<unknown>
+              content-type: application/json; charset=utf-8
+            image_file:
+              type: optional<file>
+              content-type: image/jpeg
+        content-type: multipart/form-data
+      response:
+        docs: Success
+        type: root.CreateInvoiceAttachmentResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            invoice_id: invoice_id
+          request: {}
+          response:
+            body:
+              attachment:
+                id: inva:0-3bB9ZuDHiziThQhuC4fwWt
+                filename: file.jpg
+                description: Service contract
+                filesize: 102705
+                hash: 273ee02cb6f5f8a3a8ca23604930dd53
+                mime_type: image/jpeg
+                uploaded_at: '2023-02-03T20:28:14Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    DeleteInvoiceAttachment:
+      path: /v2/invoices/{invoice_id}/attachments/{attachment_id}
+      method: DELETE
+      auth: true
+      docs: >-
+        Removes an attachment from an invoice and permanently deletes the file.
+        Attachments can be removed only
+
+        from invoices in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID`
+        state.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteInvoiceAttachment
+      request:
+        name: DeleteInvoiceAttachmentRequest
+        path-parameters:
+          invoice_id:
+            type: string
+            docs: >-
+              The ID of the [invoice](entity:Invoice) to delete the attachment
+              from.
+          attachment_id:
+            type: string
+            docs: The ID of the [attachment](entity:InvoiceAttachment) to delete.
+      response:
+        docs: Success
+        type: root.DeleteInvoiceAttachmentResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            invoice_id: invoice_id
+            attachment_id: attachment_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    cancel:
+      path: /v2/invoices/{invoice_id}/cancel
+      method: POST
+      auth: true
+      docs: >-
+        Cancels an invoice. The seller cannot collect payments for 
+
+        the canceled invoice.
+
+
+        You cannot cancel an invoice in the `DRAFT` state or in a terminal
+        state: `PAID`, `REFUNDED`, `CANCELED`, or `FAILED`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CancelInvoice
+      request:
+        name: CancelInvoiceRequest
+        path-parameters:
+          invoice_id:
+            type: string
+            docs: The ID of the [invoice](entity:Invoice) to cancel.
+        body:
+          properties:
+            version:
+              type: integer
+              docs: >-
+                The version of the [invoice](entity:Invoice) to cancel.
+
+                If you do not know the version, you can call 
+
+                [GetInvoice](api-endpoint:Invoices-GetInvoice) or
+                [ListInvoices](api-endpoint:Invoices-ListInvoices).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CancelInvoiceResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            invoice_id: invoice_id
+          request:
+            version: 0
+          response:
+            body:
+              invoice:
+                id: inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                version: 1
+                location_id: ES0RJRZYEC39A
+                order_id: CAISENgvlJ6jLWAzERDzjyHVybY
+                primary_recipient:
+                  customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                  given_name: Amelia
+                  family_name: Earhart
+                  email_address: Amelia.Earhart@example.com
+                  phone_number: 1-212-555-4240
+                  company_name: company_name
+                payment_requests:
+                  - uid: 2da7964f-f3d2-4f43-81e8-5aa220bf3355
+                    request_type: BALANCE
+                    due_date: '2030-01-24'
+                    tipping_enabled: true
+                    automatic_payment_source: NONE
+                    reminders:
+                      - uid: beebd363-e47f-4075-8785-c235aaa7df11
+                        relative_scheduled_days: -1
+                        message: Your invoice is due tomorrow
+                        status: PENDING
+                    computed_amount_money:
+                      amount: 10000
+                      currency: USD
+                    total_completed_amount_money:
+                      amount: 0
+                      currency: USD
+                delivery_method: EMAIL
+                invoice_number: inv-100
+                title: Event Planning Services
+                description: We appreciate your business!
+                scheduled_at: '2030-01-13T10:00:00Z'
+                public_url: public_url
+                next_payment_amount_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                status: CANCELED
+                timezone: America/Los_Angeles
+                created_at: '2020-06-18T17:45:13Z'
+                updated_at: '2020-06-18T18:23:11Z'
+                accepted_payment_methods:
+                  card: true
+                  square_gift_card: false
+                  bank_account: false
+                  buy_now_pay_later: false
+                  cash_app_pay: false
+                custom_fields:
+                  - label: Event Reference Number
+                    value: 'Ref. #1234'
+                    placement: ABOVE_LINE_ITEMS
+                  - label: Terms of Service
+                    value: The terms of service are...
+                    placement: BELOW_LINE_ITEMS
+                subscription_id: subscription_id
+                sale_or_service_date: '2030-01-24'
+                payment_conditions: payment_conditions
+                store_payment_method_enabled: false
+                attachments:
+                  - {}
+                creator_team_member_id: creator_team_member_id
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    publish:
+      path: /v2/invoices/{invoice_id}/publish
+      method: POST
+      auth: true
+      docs: >-
+        Publishes the specified draft invoice. 
+
+
+        After an invoice is published, Square 
+
+        follows up based on the invoice configuration. For example, Square 
+
+        sends the invoice to the customer's email address, charges the
+        customer's card on file, or does 
+
+        nothing. Square also makes the invoice available on a Square-hosted
+        invoice page. 
+
+
+        The invoice `status` also changes from `DRAFT` to a status 
+
+        based on the invoice configuration. For example, the status changes to
+        `UNPAID` if 
+
+        Square emails the invoice or `PARTIALLY_PAID` if Square charges a card
+        on file for a portion of the 
+
+        invoice amount.
+
+
+        In addition to the required `ORDERS_WRITE` and `INVOICES_WRITE`
+        permissions, `CUSTOMERS_READ`
+
+        and `PAYMENTS_WRITE` are required when publishing invoices configured
+        for card-on-file payments.
+      source:
+        openapi: openapi/openapi.json
+      display-name: PublishInvoice
+      request:
+        name: PublishInvoiceRequest
+        path-parameters:
+          invoice_id:
+            type: string
+            docs: The ID of the invoice to publish.
+        body:
+          properties:
+            version:
+              type: integer
+              docs: >-
+                The version of the [invoice](entity:Invoice) to publish.
+
+                This must match the current version of the invoice; otherwise,
+                the request is rejected.
+            idempotency_key:
+              type: optional<nullable<string>>
+              docs: >-
+                A unique string that identifies the `PublishInvoice` request. If
+                you do not 
+
+                provide `idempotency_key` (or provide an empty string as the
+                value), the endpoint 
+
+                treats each request as independent.
+
+
+                For more information, see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                maxLength: 128
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.PublishInvoiceResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            invoice_id: invoice_id
+          request:
+            version: 1
+            idempotency_key: 32da42d0-1997-41b0-826b-f09464fc2c2e
+          response:
+            body:
+              invoice:
+                id: inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                version: 1
+                location_id: ES0RJRZYEC39A
+                order_id: CAISENgvlJ6jLWAzERDzjyHVybY
+                primary_recipient:
+                  customer_id: JDKYHBWT1D4F8MFH63DBMEN8Y4
+                  given_name: Amelia
+                  family_name: Earhart
+                  email_address: Amelia.Earhart@example.com
+                  phone_number: 1-212-555-4240
+                  company_name: company_name
+                payment_requests:
+                  - uid: 2da7964f-f3d2-4f43-81e8-5aa220bf3355
+                    request_type: BALANCE
+                    due_date: '2030-01-24'
+                    tipping_enabled: true
+                    automatic_payment_source: NONE
+                    reminders:
+                      - uid: beebd363-e47f-4075-8785-c235aaa7df11
+                        relative_scheduled_days: -1
+                        message: Your invoice is due tomorrow
+                        status: PENDING
+                    computed_amount_money:
+                      amount: 10000
+                      currency: USD
+                    total_completed_amount_money:
+                      amount: 0
+                      currency: USD
+                delivery_method: EMAIL
+                invoice_number: inv-100
+                title: Event Planning Services
+                description: We appreciate your business!
+                scheduled_at: '2030-01-13T10:00:00Z'
+                public_url: >-
+                  https://squareup.com/pay-invoice/inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                next_payment_amount_money:
+                  amount: 1000000
+                  currency: UNKNOWN_CURRENCY
+                status: SCHEDULED
+                timezone: America/Los_Angeles
+                created_at: '2020-06-18T17:45:13Z'
+                updated_at: '2020-06-18T18:23:11Z'
+                accepted_payment_methods:
+                  card: true
+                  square_gift_card: false
+                  bank_account: false
+                  buy_now_pay_later: false
+                  cash_app_pay: false
+                custom_fields:
+                  - label: Event Reference Number
+                    value: 'Ref. #1234'
+                    placement: ABOVE_LINE_ITEMS
+                  - label: Terms of Service
+                    value: The terms of service are...
+                    placement: BELOW_LINE_ITEMS
+                subscription_id: subscription_id
+                sale_or_service_date: '2030-01-24'
+                payment_conditions: payment_conditions
+                store_payment_method_enabled: false
+                attachments:
+                  - {}
+                creator_team_member_id: creator_team_member_id
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

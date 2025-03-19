@@ -1,0 +1,576 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/customers/custom-attribute-definitions
+      method: GET
+      auth: true
+      docs: >-
+        Lists the customer-related [custom attribute
+        definitions](entity:CustomAttributeDefinition) that belong to a Square
+        seller account.
+
+
+        When all response pages are retrieved, the results include all custom
+        attribute definitions
+
+        that are visible to the requesting application, including those that are
+        created by other
+
+        applications and set to `VISIBILITY_READ_ONLY` or
+        `VISIBILITY_READ_WRITE_VALUES`. Note that
+
+        seller-defined custom attributes (also known as custom fields) are
+        always set to `VISIBILITY_READ_WRITE_VALUES`.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.custom_attribute_definitions
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListCustomerCustomAttributeDefinitions
+      request:
+        name: ListCustomAttributeDefinitionsRequest
+        query-parameters:
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to return in a single paged
+              response. This limit is advisory.
+
+              The response might contain more or fewer results. The minimum
+              value is 1 and the maximum value is 100.
+
+              The default value is 20. For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              The cursor returned in the paged response from the previous call
+              to this endpoint.
+
+              Provide this cursor to retrieve the next page of results for your
+              original request.
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+      response:
+        docs: Success
+        type: root.ListCustomerCustomAttributeDefinitionsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              custom_attribute_definitions:
+                - key: favoritemovie
+                  schema:
+                    ref: >-
+                      https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
+                  name: Favorite Movie
+                  description: Update the description as desired.
+                  visibility: VISIBILITY_READ_ONLY
+                  version: 3
+                  updated_at: '2022-04-26T15:39:38Z'
+                  created_at: '2022-04-26T15:27:30Z'
+                - key: ownsmovie
+                  schema:
+                    ref: >-
+                      https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Boolean
+                  name: Owns Movie
+                  description: Customer owns movie.
+                  visibility: VISIBILITY_HIDDEN
+                  version: 1
+                  updated_at: '2022-04-26T15:49:05Z'
+                  created_at: '2022-04-26T15:49:05Z'
+              cursor: >-
+                YEk4UPbUEsu8MUV0xouO5hCiFcD9T5ztB6UWEJq5vZnqBFmoBEi0j1j6HWYTFGMRre4p7T5wAQBj3Th1NX3XgBFcQVEVsIxUQ2NsbwjRitfoEZDml9uxxQXepowyRvCuSThHPbJSn7M7wInl3x8XypQF9ahVVQXegJ0CxEKc0SBH
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    create:
+      path: /v2/customers/custom-attribute-definitions
+      method: POST
+      auth: true
+      docs: >-
+        Creates a customer-related [custom attribute
+        definition](entity:CustomAttributeDefinition) for a Square seller
+        account.
+
+        Use this endpoint to define a custom attribute that can be associated
+        with customer profiles.
+
+
+        A custom attribute definition specifies the `key`, `visibility`,
+        `schema`, and other properties
+
+        for a custom attribute. After the definition is created, you can call
+
+        [UpsertCustomerCustomAttribute](api-endpoint:CustomerCustomAttributes-UpsertCustomerCustomAttribute)
+        or
+
+        [BulkUpsertCustomerCustomAttributes](api-endpoint:CustomerCustomAttributes-BulkUpsertCustomerCustomAttributes)
+
+        to set the custom attribute for customer profiles in the seller's
+        Customer Directory.
+
+
+        Sellers can view all custom attributes in exported customer data,
+        including those set to
+
+        `VISIBILITY_HIDDEN`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateCustomerCustomAttributeDefinition
+      request:
+        name: CreateCustomerCustomAttributeDefinitionRequest
+        body:
+          properties:
+            custom_attribute_definition:
+              type: root.CustomAttributeDefinition
+              docs: >-
+                The custom attribute definition to create. Note the following:
+
+                - With the exception of the `Selection` data type, the `schema`
+                is specified as a simple URL to the JSON schema
+
+                definition hosted on the Square CDN. For more information,
+                including supported values and constraints, see
+
+                [Specifying the
+                schema](https://developer.squareup.com/docs/customer-custom-attributes-api/custom-attribute-definitions#specify-schema).
+
+                - If provided, `name` must be unique (case-sensitive) across all
+                visible customer-related custom attribute definitions for the
+                seller.
+
+                - All custom attributes are visible in exported customer data,
+                including those set to `VISIBILITY_HIDDEN`.
+            idempotency_key:
+              type: optional<string>
+              docs: >-
+                A unique identifier for this request, used to ensure
+                idempotency. For more information,
+
+                see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                maxLength: 45
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateCustomerCustomAttributeDefinitionResponse
+        status-code: 200
+      examples:
+        - request:
+            custom_attribute_definition:
+              key: favoritemovie
+              schema:
+                ref: >-
+                  https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
+              name: Favorite Movie
+              description: The favorite movie of the customer.
+              visibility: VISIBILITY_HIDDEN
+          response:
+            body:
+              custom_attribute_definition:
+                key: favoritemovie
+                schema:
+                  ref: >-
+                    https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
+                name: Favorite Movie
+                description: The favorite movie of the customer.
+                visibility: VISIBILITY_HIDDEN
+                version: 1
+                updated_at: '2022-04-26T15:27:30Z'
+                created_at: '2022-04-26T15:27:30Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/customers/custom-attribute-definitions/{key}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a customer-related [custom attribute
+        definition](entity:CustomAttributeDefinition) from a Square seller
+        account.
+
+
+        To retrieve a custom attribute definition created by another
+        application, the `visibility`
+
+        setting must be `VISIBILITY_READ_ONLY` or
+        `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom
+        attributes
+
+        (also known as custom fields) are always set to
+        `VISIBILITY_READ_WRITE_VALUES`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveCustomerCustomAttributeDefinition
+      request:
+        name: GetCustomAttributeDefinitionsRequest
+        path-parameters:
+          key:
+            type: string
+            docs: >-
+              The key of the custom attribute definition to retrieve. If the
+              requesting application
+
+              is not the definition owner, you must use the qualified key.
+        query-parameters:
+          version:
+            type: optional<nullable<integer>>
+            docs: >-
+              The current version of the custom attribute definition, which is
+              used for strongly consistent
+
+              reads to guarantee that you receive the most up-to-date data. When
+              included in the request,
+
+              Square returns the specified version or a higher version if one
+              exists. If the specified version
+
+              is higher than the current version, Square returns a `BAD_REQUEST`
+              error.
+      response:
+        docs: Success
+        type: root.GetCustomerCustomAttributeDefinitionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            key: key
+          response:
+            body:
+              custom_attribute_definition:
+                key: favoritemovie
+                schema:
+                  ref: >-
+                    https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
+                name: Favorite Movie
+                description: The favorite movie of the customer.
+                visibility: VISIBILITY_READ_WRITE_VALUES
+                version: 1
+                updated_at: '2022-04-26T15:27:30Z'
+                created_at: '2022-04-26T15:27:30Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    update:
+      path: /v2/customers/custom-attribute-definitions/{key}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates a customer-related [custom attribute
+        definition](entity:CustomAttributeDefinition) for a Square seller
+        account.
+
+
+        Use this endpoint to update the following fields: `name`, `description`,
+        `visibility`, or the
+
+        `schema` for a `Selection` data type.
+
+
+        Only the definition owner can update a custom attribute definition. Note
+        that sellers can view
+
+        all custom attributes in exported customer data, including those set to
+        `VISIBILITY_HIDDEN`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateCustomerCustomAttributeDefinition
+      request:
+        name: UpdateCustomerCustomAttributeDefinitionRequest
+        path-parameters:
+          key:
+            type: string
+            docs: The key of the custom attribute definition to update.
+        body:
+          properties:
+            custom_attribute_definition:
+              type: root.CustomAttributeDefinition
+              docs: >-
+                The custom attribute definition that contains the fields to
+                update. This endpoint
+
+                supports sparse updates, so only new or changed fields need to
+                be included in the request.
+
+                Only the following fields can be updated:
+
+
+                - `name`
+
+                - `description`
+
+                - `visibility`
+
+                - `schema` for a `Selection` data type. Only changes to the
+                named options or the maximum number of allowed
+
+                selections are supported.
+
+
+                For more information, see
+
+                [Updatable definition
+                fields](https://developer.squareup.com/docs/customer-custom-attributes-api/custom-attribute-definitions#updatable-definition-fields).
+
+
+                To enable [optimistic
+                concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) 
+
+                control, include the optional `version` field and specify the
+                current version of the custom attribute definition.
+            idempotency_key:
+              type: optional<nullable<string>>
+              docs: >-
+                A unique identifier for this request, used to ensure
+                idempotency. For more information,
+
+                see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+              validation:
+                maxLength: 45
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateCustomerCustomAttributeDefinitionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            key: key
+          request:
+            custom_attribute_definition:
+              description: Update the description as desired.
+              visibility: VISIBILITY_READ_ONLY
+          response:
+            body:
+              custom_attribute_definition:
+                key: favoritemovie
+                schema:
+                  ref: >-
+                    https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
+                name: Favorite Movie
+                description: Update the description as desired.
+                visibility: VISIBILITY_READ_ONLY
+                version: 2
+                updated_at: '2022-04-26T15:39:38Z'
+                created_at: '2022-04-26T15:27:30Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    delete:
+      path: /v2/customers/custom-attribute-definitions/{key}
+      method: DELETE
+      auth: true
+      docs: >-
+        Deletes a customer-related [custom attribute
+        definition](entity:CustomAttributeDefinition) from a Square seller
+        account.
+
+
+        Deleting a custom attribute definition also deletes the corresponding
+        custom attribute from
+
+        all customer profiles in the seller's Customer Directory.
+
+
+        Only the definition owner can delete a custom attribute definition.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteCustomerCustomAttributeDefinition
+      request:
+        name: DeleteCustomAttributeDefinitionsRequest
+        path-parameters:
+          key:
+            type: string
+            docs: The key of the custom attribute definition to delete.
+      response:
+        docs: Success
+        type: root.DeleteCustomerCustomAttributeDefinitionResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            key: key
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    batchUpsert:
+      path: /v2/customers/custom-attributes/bulk-upsert
+      method: POST
+      auth: true
+      docs: >-
+        Creates or updates [custom attributes](entity:CustomAttribute) for
+        customer profiles as a bulk operation.
+
+
+        Use this endpoint to set the value of one or more custom attributes for
+        one or more customer profiles.
+
+        A custom attribute is based on a custom attribute definition in a Square
+        seller account, which is
+
+        created using the
+        [CreateCustomerCustomAttributeDefinition](api-endpoint:CustomerCustomAttributes-CreateCustomerCustomAttributeDefinition)
+        endpoint.
+
+
+        This `BulkUpsertCustomerCustomAttributes` endpoint accepts a map of 1 to
+        25 individual upsert
+
+        requests and returns a map of individual upsert responses. Each upsert
+        request has a unique ID
+
+        and provides a customer ID and custom attribute. Each upsert response is
+        returned with the ID
+
+        of the corresponding request.
+
+
+        To create or update a custom attribute owned by another application, the
+        `visibility` setting
+
+        must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom
+        attributes
+
+        (also known as custom fields) are always set to
+        `VISIBILITY_READ_WRITE_VALUES`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkUpsertCustomerCustomAttributes
+      request:
+        name: BatchUpsertCustomerCustomAttributesRequest
+        body:
+          properties:
+            values:
+              type: >-
+                map<string,
+                root.BatchUpsertCustomerCustomAttributesRequestCustomerCustomAttributeUpsertRequest>
+              docs: >-
+                A map containing 1 to 25 individual upsert requests. For each
+                request, provide an
+
+                arbitrary ID that is unique for this
+                `BulkUpsertCustomerCustomAttributes` request and the
+
+                information needed to create or update a custom attribute.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchUpsertCustomerCustomAttributesResponse
+        status-code: 200
+      examples:
+        - request:
+            values:
+              id1:
+                customer_id: N3NCVYY3WS27HF0HKANA3R9FP8
+                custom_attribute:
+                  key: favoritemovie
+                  value: Dune
+              id2:
+                customer_id: SY8EMWRNDN3TQDP2H4KS1QWMMM
+                custom_attribute:
+                  key: ownsmovie
+                  value: false
+              id3:
+                customer_id: SY8EMWRNDN3TQDP2H4KS1QWMMM
+                custom_attribute:
+                  key: favoritemovie
+                  value: Star Wars
+              id4:
+                customer_id: N3NCVYY3WS27HF0HKANA3R9FP8
+                custom_attribute:
+                  key: square:a0f1505a-2aa1-490d-91a8-8d31ff181808
+                  value: '10.5'
+              id5:
+                customer_id: 70548QG1HN43B05G0KCZ4MMC1G
+                custom_attribute:
+                  key: sq0ids-0evKIskIGaY45fCyNL66aw:backupemail
+                  value: fake-email@squareup.com
+          response:
+            body:
+              values:
+                id1:
+                  customer_id: N3NCVYY3WS27HF0HKANA3R9FP8
+                  custom_attribute:
+                    key: favoritemovie
+                    value: Dune
+                    version: 1
+                    visibility: VISIBILITY_READ_WRITE_VALUES
+                    updated_at: '2021-12-09T00:16:23Z'
+                    created_at: '2021-12-08T23:14:47Z'
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                id2:
+                  customer_id: SY8EMWRNDN3TQDP2H4KS1QWMMM
+                  custom_attribute:
+                    key: ownsmovie
+                    value: false
+                    version: 2
+                    visibility: VISIBILITY_READ_WRITE_VALUES
+                    updated_at: '2021-12-09T00:16:23Z'
+                    created_at: '2021-12-09T00:16:20Z'
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                id3:
+                  customer_id: SY8EMWRNDN3TQDP2H4KS1QWMMM
+                  custom_attribute:
+                    key: favoritemovie
+                    value: Star Wars
+                    version: 2
+                    visibility: VISIBILITY_READ_WRITE_VALUES
+                    updated_at: '2021-12-09T00:16:23Z'
+                    created_at: '2021-12-09T00:16:20Z'
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                id4:
+                  customer_id: N3NCVYY3WS27HF0HKANA3R9FP8
+                  custom_attribute:
+                    key: square:a0f1505a-2aa1-490d-91a8-8d31ff181808
+                    value: '10.5'
+                    version: 1
+                    visibility: VISIBILITY_READ_WRITE_VALUES
+                    updated_at: '2021-12-09T00:16:23Z'
+                    created_at: '2021-12-08T23:14:47Z'
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                id5:
+                  customer_id: 70548QG1HN43B05G0KCZ4MMC1G
+                  custom_attribute:
+                    key: sq0ids-0evKIskIGaY45fCyNL66aw:backupemail
+                    value: fake-email@squareup.com
+                    version: 2
+                    visibility: VISIBILITY_READ_WRITE_VALUES
+                    updated_at: '2021-12-09T00:16:23Z'
+                    created_at: '2021-12-09T00:16:20Z'
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

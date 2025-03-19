@@ -1,0 +1,293 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/customers/groups
+      method: GET
+      auth: true
+      docs: Retrieves the list of customer groups of a business.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.groups
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListCustomerGroups
+      request:
+        name: ListGroupsRequest
+        query-parameters:
+          cursor:
+            type: optional<nullable<string>>
+            docs: >-
+              A pagination cursor returned by a previous call to this endpoint.
+
+              Provide this cursor to retrieve the next set of results for your
+              original query.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              The maximum number of results to return in a single page. This
+              limit is advisory. The response might contain more or fewer
+              results.
+
+              If the limit is less than 1 or greater than 50, Square returns a
+              `400 VALUE_TOO_LOW` or `400 VALUE_TOO_HIGH` error. The default
+              value is 50.
+
+
+              For more information, see
+              [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+      response:
+        docs: Success
+        type: root.ListCustomerGroupsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              groups:
+                - id: 2TAT3CMH4Q0A9M87XJZED0WMR3
+                  name: Loyal Customers
+                  created_at: '2020-04-13T21:54:57.863Z'
+                  updated_at: '2020-04-13T21:54:58Z'
+                - id: 4XMEHESXJBNE9S9JAKZD2FGB14
+                  name: Super Loyal Customers
+                  created_at: '2020-04-13T21:55:18.795Z'
+                  updated_at: '2020-04-13T21:55:19Z'
+              cursor: cursor
+    create:
+      path: /v2/customers/groups
+      method: POST
+      auth: true
+      docs: |-
+        Creates a new customer group for a business.
+
+        The request must include the `name` value of the group.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateCustomerGroup
+      request:
+        name: CreateCustomerGroupRequest
+        body:
+          properties:
+            idempotency_key:
+              type: optional<string>
+              docs: >-
+                The idempotency key for the request. For more information, see
+                [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+            group:
+              type: root.CustomerGroup
+              docs: The customer group to create.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateCustomerGroupResponse
+        status-code: 200
+      examples:
+        - request:
+            group:
+              name: Loyal Customers
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              group:
+                id: 2TAT3CMH4Q0A9M87XJZED0WMR3
+                name: Loyal Customers
+                created_at: '2020-04-13T21:54:57.863Z'
+                updated_at: '2020-04-13T21:54:58Z'
+    get:
+      path: /v2/customers/groups/{group_id}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a specific customer group as identified by the `group_id`
+        value.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveCustomerGroup
+      request:
+        name: GetGroupsRequest
+        path-parameters:
+          group_id:
+            type: string
+            docs: The ID of the customer group to retrieve.
+      response:
+        docs: Success
+        type: root.GetCustomerGroupResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            group_id: group_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              group:
+                id: 2TAT3CMH4Q0A9M87XJZED0WMR3
+                name: Loyal Customers
+                created_at: '2020-04-13T21:54:57.863Z'
+                updated_at: '2020-04-13T21:54:58Z'
+    update:
+      path: /v2/customers/groups/{group_id}
+      method: PUT
+      auth: true
+      docs: Updates a customer group as identified by the `group_id` value.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateCustomerGroup
+      request:
+        name: UpdateCustomerGroupRequest
+        path-parameters:
+          group_id:
+            type: string
+            docs: The ID of the customer group to update.
+        body:
+          properties:
+            group:
+              type: root.CustomerGroup
+              docs: >-
+                The `CustomerGroup` object including all the updates you want to
+                make.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateCustomerGroupResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            group_id: group_id
+          request:
+            group:
+              name: Loyal Customers
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              group:
+                id: 2TAT3CMH4Q0A9M87XJZED0WMR3
+                name: Loyal Customers
+                created_at: '2020-04-13T21:54:57.863Z'
+                updated_at: '2020-04-13T21:54:58Z'
+    delete:
+      path: /v2/customers/groups/{group_id}
+      method: DELETE
+      auth: true
+      docs: Deletes a customer group as identified by the `group_id` value.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteCustomerGroup
+      request:
+        name: DeleteGroupsRequest
+        path-parameters:
+          group_id:
+            type: string
+            docs: The ID of the customer group to delete.
+      response:
+        docs: Success
+        type: root.DeleteCustomerGroupResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            group_id: group_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    add:
+      path: /v2/customers/{customer_id}/groups/{group_id}
+      method: PUT
+      auth: true
+      docs: |-
+        Adds a group membership to a customer.
+
+        The customer is identified by the `customer_id` value
+        and the customer group is identified by the `group_id` value.
+      source:
+        openapi: openapi/openapi.json
+      display-name: AddGroupToCustomer
+      request:
+        name: AddGroupsRequest
+        path-parameters:
+          customer_id:
+            type: string
+            docs: The ID of the customer to add to a group.
+          group_id:
+            type: string
+            docs: The ID of the customer group to add the customer to.
+      response:
+        docs: Success
+        type: root.AddGroupToCustomerResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            customer_id: customer_id
+            group_id: group_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    remove:
+      path: /v2/customers/{customer_id}/groups/{group_id}
+      method: DELETE
+      auth: true
+      docs: |-
+        Removes a group membership from a customer.
+
+        The customer is identified by the `customer_id` value
+        and the customer group is identified by the `group_id` value.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RemoveGroupFromCustomer
+      request:
+        name: RemoveGroupsRequest
+        path-parameters:
+          customer_id:
+            type: string
+            docs: The ID of the customer to remove from the group.
+          group_id:
+            type: string
+            docs: The ID of the customer group to remove the customer from.
+      response:
+        docs: Success
+        type: root.RemoveGroupFromCustomerResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            customer_id: customer_id
+            group_id: group_id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

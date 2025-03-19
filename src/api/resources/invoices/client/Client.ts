@@ -17,7 +17,7 @@ export declare namespace Invoices {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-02-20";
+        version?: "2025-03-19";
         fetcher?: core.FetchFunction;
     }
 
@@ -29,7 +29,7 @@ export declare namespace Invoices {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-02-20";
+        version?: "2025-03-19";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -75,11 +75,11 @@ export class Invoices {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "41.0.0",
-                    "User-Agent": "square/41.0.0",
+                    "X-Fern-SDK-Version": "42.0.0",
+                    "User-Agent": "square/42.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -199,11 +199,11 @@ export class Invoices {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -273,7 +273,8 @@ export class Invoices {
      *                 field: "INVOICE_SORT_DATE",
      *                 order: "DESC"
      *             }
-     *         }
+     *         },
+     *         limit: 100
      *     })
      */
     public async search(
@@ -290,11 +291,11 @@ export class Invoices {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -367,11 +368,11 @@ export class Invoices {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -451,11 +452,11 @@ export class Invoices {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -535,11 +536,11 @@ export class Invoices {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -591,6 +592,8 @@ export class Invoices {
      * Invoices can have up to 10 attachments with a total file size of 25 MB. Attachments can be added only to invoices
      * in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
      *
+     * __NOTE:__ When testing in the Sandbox environment, the total file size is limited to 1 KB.
+     *
      * @param {Square.CreateInvoiceAttachmentRequest} request
      * @param {Invoices.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -626,11 +629,11 @@ export class Invoices {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ..._maybeEncodedRequest.headers,
@@ -705,11 +708,11 @@ export class Invoices {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -784,11 +787,11 @@ export class Invoices {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -878,11 +881,11 @@ export class Invoices {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-02-20",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-03-19",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "41.0.0",
-                "User-Agent": "square/41.0.0",
+                "X-Fern-SDK-Version": "42.0.0",
+                "User-Agent": "square/42.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

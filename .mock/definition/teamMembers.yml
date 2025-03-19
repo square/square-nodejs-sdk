@@ -1,0 +1,765 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/team-members
+      method: POST
+      auth: true
+      docs: >-
+        Creates a single `TeamMember` object. The `TeamMember` object is
+        returned on successful creates.
+
+        You must provide the following values in your request to this endpoint:
+
+        - `given_name`
+
+        - `family_name`
+
+
+        Learn about [Troubleshooting the Team
+        API](https://developer.squareup.com/docs/team/troubleshooting#createteammember).
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateTeamMember
+      request:
+        body: root.CreateTeamMemberRequest
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateTeamMemberResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: idempotency-key-0
+            team_member:
+              reference_id: reference_id_1
+              status: ACTIVE
+              given_name: Joe
+              family_name: Doe
+              email_address: joe_doe@gmail.com
+              phone_number: '+14159283333'
+              assigned_locations:
+                assignment_type: EXPLICIT_LOCATIONS
+                location_ids:
+                  - YSGH2WBKG94QZ
+                  - GA2Y9HSJ8KRYT
+              wage_setting:
+                job_assignments:
+                  - pay_type: SALARY
+                    annual_rate:
+                      amount: 3000000
+                      currency: USD
+                    weekly_hours: 40
+                    job_id: FjS8x95cqHiMenw4f1NAUH4P
+                  - pay_type: HOURLY
+                    hourly_rate:
+                      amount: 2000
+                      currency: USD
+                    job_id: VDNpRv8da51NU8qZFC5zDWpF
+                is_overtime_exempt: true
+          response:
+            body:
+              team_member:
+                id: 1yJlHapkseYnNPETIU1B
+                reference_id: reference_id_1
+                is_owner: false
+                status: ACTIVE
+                given_name: Joe
+                family_name: Doe
+                email_address: joe_doe@example.com
+                phone_number: '+14159283333'
+                created_at: '2021-06-11T22:55:45Z'
+                updated_at: '2021-06-11T22:55:45Z'
+                assigned_locations:
+                  assignment_type: EXPLICIT_LOCATIONS
+                  location_ids:
+                    - GA2Y9HSJ8KRYT
+                    - YSGH2WBKG94QZ
+                wage_setting:
+                  team_member_id: 1yJlHapkseYnNPETIU1B
+                  job_assignments:
+                    - job_title: Manager
+                      pay_type: SALARY
+                      hourly_rate:
+                        amount: 1443
+                        currency: USD
+                      annual_rate:
+                        amount: 3000000
+                        currency: USD
+                      weekly_hours: 40
+                      job_id: FjS8x95cqHiMenw4f1NAUH4P
+                    - job_title: Cashier
+                      pay_type: HOURLY
+                      hourly_rate:
+                        amount: 2000
+                        currency: USD
+                      job_id: VDNpRv8da51NU8qZFC5zDWpF
+                  is_overtime_exempt: true
+                  version: 1
+                  created_at: '2021-06-11T22:55:45Z'
+                  updated_at: '2021-06-11T22:55:45Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    batchCreate:
+      path: /v2/team-members/bulk-create
+      method: POST
+      auth: true
+      docs: >-
+        Creates multiple `TeamMember` objects. The created `TeamMember` objects
+        are returned on successful creates.
+
+        This process is non-transactional and processes as much of the request
+        as possible. If one of the creates in
+
+        the request cannot be successfully processed, the request is not marked
+        as failed, but the body of the response
+
+        contains explicit error information for the failed create.
+
+
+        Learn about [Troubleshooting the Team
+        API](https://developer.squareup.com/docs/team/troubleshooting#bulk-create-team-members).
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkCreateTeamMembers
+      request:
+        name: BatchCreateTeamMembersRequest
+        body:
+          properties:
+            team_members:
+              type: map<string, root.CreateTeamMemberRequest>
+              docs: >-
+                The data used to create the `TeamMember` objects. Each key is
+                the `idempotency_key` that maps to the
+                `CreateTeamMemberRequest`.
+
+                The maximum number of create objects is 25.
+
+
+                If you include a team member's `wage_setting`, you must provide
+                `job_id` for each job assignment. To get job IDs,
+
+                call [ListJobs](api-endpoint:Team-ListJobs).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchCreateTeamMembersResponse
+        status-code: 200
+      examples:
+        - request:
+            team_members:
+              idempotency-key-1:
+                team_member:
+                  reference_id: reference_id_1
+                  given_name: Joe
+                  family_name: Doe
+                  email_address: joe_doe@gmail.com
+                  phone_number: '+14159283333'
+                  assigned_locations:
+                    assignment_type: EXPLICIT_LOCATIONS
+                    location_ids:
+                      - YSGH2WBKG94QZ
+                      - GA2Y9HSJ8KRYT
+              idempotency-key-2:
+                team_member:
+                  reference_id: reference_id_2
+                  given_name: Jane
+                  family_name: Smith
+                  email_address: jane_smith@gmail.com
+                  phone_number: '+14159223334'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+          response:
+            body:
+              team_members:
+                idempotency-key-1:
+                  team_member:
+                    id: ywhG1qfIOoqsHfVRubFV
+                    reference_id: reference_id_1
+                    is_owner: false
+                    status: ACTIVE
+                    given_name: Joe
+                    family_name: Doe
+                    email_address: joe_doe@gmail.com
+                    phone_number: '+14159283333'
+                    assigned_locations:
+                      assignment_type: EXPLICIT_LOCATIONS
+                      location_ids:
+                        - GA2Y9HSJ8KRYT
+                        - YSGH2WBKG94QZ
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                idempotency-key-2:
+                  team_member:
+                    id: IF_Ncrg7fHhCqxVI9T6R
+                    reference_id: reference_id_2
+                    is_owner: false
+                    status: ACTIVE
+                    given_name: Jane
+                    family_name: Smith
+                    email_address: jane_smith@gmail.com
+                    phone_number: '+14159223334'
+                    assigned_locations:
+                      assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    batchUpdate:
+      path: /v2/team-members/bulk-update
+      method: POST
+      auth: true
+      docs: >-
+        Updates multiple `TeamMember` objects. The updated `TeamMember` objects
+        are returned on successful updates.
+
+        This process is non-transactional and processes as much of the request
+        as possible. If one of the updates in
+
+        the request cannot be successfully processed, the request is not marked
+        as failed, but the body of the response
+
+        contains explicit error information for the failed update.
+
+        Learn about [Troubleshooting the Team
+        API](https://developer.squareup.com/docs/team/troubleshooting#bulk-update-team-members).
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkUpdateTeamMembers
+      request:
+        name: BatchUpdateTeamMembersRequest
+        body:
+          properties:
+            team_members:
+              type: map<string, root.UpdateTeamMemberRequest>
+              docs: >-
+                The data used to update the `TeamMember` objects. Each key is
+                the `team_member_id` that maps to the `UpdateTeamMemberRequest`.
+
+                The maximum number of update objects is 25.
+
+
+                For each team member, include the fields to add, change, or
+                clear. Fields can be cleared using a null value.
+
+                To update `wage_setting.job_assignments`, you must provide the
+                complete list of job assignments. If needed,
+
+                call [ListJobs](api-endpoint:Team-ListJobs) to get the required
+                `job_id` values.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BatchUpdateTeamMembersResponse
+        status-code: 200
+      examples:
+        - request:
+            team_members:
+              AFMwA08kR-MIF-3Vs0OE:
+                team_member:
+                  reference_id: reference_id_2
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Jane
+                  family_name: Smith
+                  email_address: jane_smith@gmail.com
+                  phone_number: '+14159223334'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+              fpgteZNMaf0qOK-a4t6P:
+                team_member:
+                  reference_id: reference_id_1
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Joe
+                  family_name: Doe
+                  email_address: joe_doe@gmail.com
+                  phone_number: '+14159283333'
+                  assigned_locations:
+                    assignment_type: EXPLICIT_LOCATIONS
+                    location_ids:
+                      - YSGH2WBKG94QZ
+                      - GA2Y9HSJ8KRYT
+          response:
+            body:
+              team_members:
+                AFMwA08kR-MIF-3Vs0OE:
+                  team_member:
+                    id: AFMwA08kR-MIF-3Vs0OE
+                    reference_id: reference_id_2
+                    is_owner: false
+                    status: ACTIVE
+                    given_name: Jane
+                    family_name: Smith
+                    email_address: jane_smith@example.com
+                    phone_number: '+14159223334'
+                    created_at: '2020-03-24T18:14:00Z'
+                    updated_at: '2020-03-24T18:18:00Z'
+                    assigned_locations:
+                      assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                fpgteZNMaf0qOK-a4t6P:
+                  team_member:
+                    id: fpgteZNMaf0qOK-a4t6P
+                    reference_id: reference_id_1
+                    is_owner: false
+                    status: ACTIVE
+                    given_name: Joe
+                    family_name: Doe
+                    email_address: joe_doe@example.com
+                    phone_number: '+14159283333'
+                    created_at: '2020-03-24T18:14:00Z'
+                    updated_at: '2020-03-24T18:18:00Z'
+                    assigned_locations:
+                      assignment_type: EXPLICIT_LOCATIONS
+                      location_ids:
+                        - GA2Y9HSJ8KRYT
+                        - YSGH2WBKG94QZ
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    search:
+      path: /v2/team-members/search
+      method: POST
+      auth: true
+      docs: >-
+        Returns a paginated list of `TeamMember` objects for a business. 
+
+        The list can be filtered by location IDs, `ACTIVE` or `INACTIVE` status,
+        or whether
+
+        the team member is the Square account owner.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchTeamMembers
+      request:
+        name: SearchTeamMembersRequest
+        body:
+          properties:
+            query:
+              type: optional<root.SearchTeamMembersQuery>
+              docs: The query parameters.
+            limit:
+              type: optional<integer>
+              docs: >-
+                The maximum number of `TeamMember` objects in a page (100 by
+                default).
+              validation:
+                min: 1
+                max: 200
+            cursor:
+              type: optional<string>
+              docs: >-
+                The opaque cursor for fetching the next page. For more
+                information, see
+
+                [pagination](https://developer.squareup.com/docs/working-with-apis/pagination).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchTeamMembersResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                location_ids:
+                  - 0G5P3VGACMMQZ
+                status: ACTIVE
+            limit: 10
+          response:
+            body:
+              team_members:
+                - id: '-3oZQKPKVk6gUXU_V5Qa'
+                  reference_id: '12345678'
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Johnny
+                  family_name: Cash
+                  email_address: johnny_cash@squareup.com
+                  phone_number: phone_number
+                  created_at: '2019-07-10T17:26:48Z'
+                  updated_at: '2020-04-28T21:49:28Z'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                  wage_setting:
+                    team_member_id: '-3oZQKPKVk6gUXU_V5Qa'
+                    job_assignments:
+                      - job_title: Manager
+                        pay_type: SALARY
+                        hourly_rate:
+                          amount: 1443
+                          currency: USD
+                        annual_rate:
+                          amount: 3000000
+                          currency: USD
+                        weekly_hours: 40
+                        job_id: FjS8x95cqHiMenw4f1NAUH4P
+                      - job_title: Cashier
+                        pay_type: HOURLY
+                        hourly_rate:
+                          amount: 2000
+                          currency: USD
+                        job_id: VDNpRv8da51NU8qZFC5zDWpF
+                    is_overtime_exempt: true
+                    version: 1
+                    created_at: '2021-06-11T22:55:45Z'
+                    updated_at: '2021-06-11T22:55:45Z'
+                - id: 1AVJj0DjkzbmbJw5r4KK
+                  reference_id: abcded
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Lombard
+                  family_name: Smith
+                  email_address: email_address
+                  phone_number: '+14155552671'
+                  created_at: '2020-03-24T18:14:01Z'
+                  updated_at: '2020-06-09T17:38:05Z'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                  wage_setting:
+                    team_member_id: 1AVJj0DjkzbmbJw5r4KK
+                    job_assignments:
+                      - job_title: Cashier
+                        pay_type: HOURLY
+                        hourly_rate:
+                          amount: 2400
+                          currency: USD
+                        job_id: VDNpRv8da51NU8qZFC5zDWpF
+                    is_overtime_exempt: true
+                    version: 2
+                    created_at: '2020-03-24T18:14:01Z'
+                    updated_at: '2020-06-09T17:38:05Z'
+                - id: 2JCmiJol_KKFs9z2Evim
+                  reference_id: reference_id
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Monica
+                  family_name: Sway
+                  email_address: email_address
+                  phone_number: phone_number
+                  created_at: '2020-03-24T01:09:25Z'
+                  updated_at: '2020-03-24T01:11:25Z'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                  wage_setting:
+                    team_member_id: 2JCmiJol_KKFs9z2Evim
+                    job_assignments:
+                      - job_title: Cashier
+                        pay_type: HOURLY
+                        hourly_rate:
+                          amount: 2400
+                          currency: USD
+                        job_id: VDNpRv8da51NU8qZFC5zDWpF
+                    is_overtime_exempt: true
+                    version: 1
+                    created_at: '2020-03-24T01:09:25Z'
+                    updated_at: '2020-03-24T01:09:25Z'
+                - id: 4uXcJQSLtbk3F0UQHFNQ
+                  reference_id: reference_id
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Elton
+                  family_name: Ipsum
+                  email_address: email_address
+                  phone_number: phone_number
+                  created_at: '2020-03-24T01:09:23Z'
+                  updated_at: '2020-03-24T01:15:23Z'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                - id: 5CoUpyrw1YwGWcRd-eDL
+                  reference_id: reference_id
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Steven
+                  family_name: Lo
+                  email_address: email_address
+                  phone_number: phone_number
+                  created_at: '2020-03-24T01:09:23Z'
+                  updated_at: '2020-03-24T01:19:23Z'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                - id: 5MRPTTp8MMBLVSmzrGha
+                  reference_id: reference_id
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Patrick
+                  family_name: Steward
+                  email_address: email_address
+                  phone_number: '+14155552671'
+                  created_at: '2020-03-24T18:14:03Z'
+                  updated_at: '2020-03-24T18:18:03Z'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                  wage_setting:
+                    team_member_id: 5MRPTTp8MMBLVSmzrGha
+                    job_assignments:
+                      - job_title: Cashier
+                        pay_type: HOURLY
+                        hourly_rate:
+                          amount: 2000
+                          currency: USD
+                        job_id: VDNpRv8da51NU8qZFC5zDWpF
+                    is_overtime_exempt: true
+                    version: 1
+                    created_at: '2020-03-24T18:14:03Z'
+                    updated_at: '2020-03-24T18:14:03Z'
+                - id: 7F5ZxsfRnkexhu1PTbfh
+                  reference_id: reference_id
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Ivy
+                  family_name: Manny
+                  email_address: email_address
+                  phone_number: phone_number
+                  created_at: '2020-03-24T01:09:25Z'
+                  updated_at: '2020-03-24T01:09:25Z'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                - id: 808X9HR72yKvVaigQXf4
+                  reference_id: reference_id
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: John
+                  family_name: Smith
+                  email_address: john_smith@example.com
+                  phone_number: '+14155552671'
+                  created_at: '2020-03-24T18:14:02Z'
+                  updated_at: '2020-03-24T18:14:02Z'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                - id: 9MVDVoY4hazkWKGo_OuZ
+                  reference_id: reference_id
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Robert
+                  family_name: Wen
+                  email_address: r_wen@example.com
+                  phone_number: '+14155552671'
+                  created_at: '2020-03-24T18:14:00Z'
+                  updated_at: '2020-03-24T18:14:00Z'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                - id: 9UglUjOXQ13-hMFypCft
+                  reference_id: reference_id
+                  is_owner: false
+                  status: ACTIVE
+                  given_name: Ashley
+                  family_name: Simpson
+                  email_address: asimpson@example.com
+                  phone_number: '+14155552671'
+                  created_at: '2020-03-24T18:14:00Z'
+                  updated_at: '2020-03-24T18:18:00Z'
+                  assigned_locations:
+                    assignment_type: ALL_CURRENT_AND_FUTURE_LOCATIONS
+                  wage_setting:
+                    team_member_id: 9UglUjOXQ13-hMFypCft
+                    job_assignments:
+                      - job_title: Cashier
+                        pay_type: HOURLY
+                        hourly_rate:
+                          amount: 2000
+                          currency: USD
+                        job_id: VDNpRv8da51NU8qZFC5zDWpF
+                    is_overtime_exempt: true
+                    version: 1
+                    created_at: '2020-03-24T18:14:00Z'
+                    updated_at: '2020-03-24T18:14:03Z'
+              cursor: N:9UglUjOXQ13-hMFypCft
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/team-members/{team_member_id}
+      method: GET
+      auth: true
+      docs: >-
+        Retrieves a `TeamMember` object for the given `TeamMember.id`.
+
+        Learn about [Troubleshooting the Team
+        API](https://developer.squareup.com/docs/team/troubleshooting#retrieve-a-team-member).
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveTeamMember
+      request:
+        name: GetTeamMembersRequest
+        path-parameters:
+          team_member_id:
+            type: string
+            docs: The ID of the team member to retrieve.
+      response:
+        docs: Success
+        type: root.GetTeamMemberResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            team_member_id: team_member_id
+          response:
+            body:
+              team_member:
+                id: 1yJlHapkseYnNPETIU1B
+                reference_id: reference_id_1
+                is_owner: false
+                status: ACTIVE
+                given_name: Joe
+                family_name: Doe
+                email_address: joe_doe@example.com
+                phone_number: '+14159283333'
+                created_at: '2021-06-11T22:55:45Z'
+                updated_at: '2021-06-15T17:38:05Z'
+                assigned_locations:
+                  assignment_type: EXPLICIT_LOCATIONS
+                  location_ids:
+                    - GA2Y9HSJ8KRYT
+                    - YSGH2WBKG94QZ
+                wage_setting:
+                  team_member_id: 1yJlHapkseYnNPETIU1B
+                  job_assignments:
+                    - job_title: Manager
+                      pay_type: SALARY
+                      hourly_rate:
+                        amount: 1443
+                        currency: USD
+                      annual_rate:
+                        amount: 3000000
+                        currency: USD
+                      weekly_hours: 40
+                      job_id: FjS8x95cqHiMenw4f1NAUH4P
+                    - job_title: Cashier
+                      pay_type: HOURLY
+                      hourly_rate:
+                        amount: 2000
+                        currency: USD
+                      job_id: VDNpRv8da51NU8qZFC5zDWpF
+                  is_overtime_exempt: true
+                  version: 1
+                  created_at: '2021-06-11T22:55:45Z'
+                  updated_at: '2021-06-11T22:55:45Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    update:
+      path: /v2/team-members/{team_member_id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates a single `TeamMember` object. The `TeamMember` object is
+        returned on successful updates.
+
+        Learn about [Troubleshooting the Team
+        API](https://developer.squareup.com/docs/team/troubleshooting#update-a-team-member).
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateTeamMember
+      request:
+        body: root.UpdateTeamMemberRequest
+        path-parameters:
+          team_member_id:
+            type: string
+            docs: The ID of the team member to update.
+        name: UpdateTeamMembersRequest
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateTeamMemberResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            team_member_id: team_member_id
+          request:
+            team_member:
+              reference_id: reference_id_1
+              status: ACTIVE
+              given_name: Joe
+              family_name: Doe
+              email_address: joe_doe@gmail.com
+              phone_number: '+14159283333'
+              assigned_locations:
+                assignment_type: EXPLICIT_LOCATIONS
+                location_ids:
+                  - YSGH2WBKG94QZ
+                  - GA2Y9HSJ8KRYT
+              wage_setting:
+                job_assignments:
+                  - pay_type: SALARY
+                    annual_rate:
+                      amount: 3000000
+                      currency: USD
+                    weekly_hours: 40
+                    job_id: FjS8x95cqHiMenw4f1NAUH4P
+                  - pay_type: HOURLY
+                    hourly_rate:
+                      amount: 1200
+                      currency: USD
+                    job_id: VDNpRv8da51NU8qZFC5zDWpF
+                is_overtime_exempt: true
+          response:
+            body:
+              team_member:
+                id: 1yJlHapkseYnNPETIU1B
+                reference_id: reference_id_1
+                is_owner: false
+                status: ACTIVE
+                given_name: Joe
+                family_name: Doe
+                email_address: joe_doe@example.com
+                phone_number: '+14159283333'
+                created_at: '2021-06-11T22:55:45Z'
+                updated_at: '2021-06-15T17:38:05Z'
+                assigned_locations:
+                  assignment_type: EXPLICIT_LOCATIONS
+                  location_ids:
+                    - GA2Y9HSJ8KRYT
+                    - YSGH2WBKG94QZ
+                wage_setting:
+                  team_member_id: 1yJlHapkseYnNPETIU1B
+                  job_assignments:
+                    - job_title: Manager
+                      pay_type: SALARY
+                      hourly_rate:
+                        amount: 1443
+                        currency: USD
+                      annual_rate:
+                        amount: 3000000
+                        currency: USD
+                      weekly_hours: 40
+                      job_id: FjS8x95cqHiMenw4f1NAUH4P
+                    - job_title: Cashier
+                      pay_type: HOURLY
+                      hourly_rate:
+                        amount: 1200
+                        currency: USD
+                      job_id: VDNpRv8da51NU8qZFC5zDWpF
+                  is_overtime_exempt: true
+                  version: 1
+                  created_at: '2021-06-11T22:55:45Z'
+                  updated_at: '2021-06-11T22:55:45Z'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

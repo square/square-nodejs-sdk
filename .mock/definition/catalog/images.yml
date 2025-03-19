@@ -1,0 +1,144 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/catalog/images
+      method: POST
+      auth: true
+      docs: >-
+        Uploads an image file to be represented by a
+        [CatalogImage](entity:CatalogImage) object that can be linked to an
+        existing
+
+        [CatalogObject](entity:CatalogObject) instance. The resulting
+        `CatalogImage` is unattached to any `CatalogObject` if the `object_id`
+
+        is not specified.
+
+
+        This `CreateCatalogImage` endpoint accepts HTTP multipart/form-data
+        requests with a JSON part and an image file part in
+
+        JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateCatalogImage
+      request:
+        name: CreateImagesRequest
+        body:
+          properties:
+            request:
+              type: optional<root.CreateCatalogImageRequest>
+              content-type: application/json; charset=utf-8
+            image_file:
+              type: optional<file>
+              content-type: image/jpeg
+        content-type: multipart/form-data
+      response:
+        docs: Success
+        type: root.CreateCatalogImageResponse
+        status-code: 200
+      examples:
+        - request: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              image:
+                id: id
+                updated_at: updated_at
+                version: 1000000
+                is_deleted: true
+                custom_attribute_values:
+                  key: {}
+                catalog_v1_ids:
+                  - {}
+                present_at_all_locations: true
+                present_at_location_ids:
+                  - present_at_location_ids
+                absent_at_location_ids:
+                  - absent_at_location_ids
+                image_id: image_id
+                image_data:
+                  name: name
+                  url: url
+                  caption: caption
+                  photo_studio_order_id: photo_studio_order_id
+                type: IMAGE
+    update:
+      path: /v2/catalog/images/{image_id}
+      method: PUT
+      auth: true
+      docs: >-
+        Uploads a new image file to replace the existing one in the specified
+        [CatalogImage](entity:CatalogImage) object.
+
+
+        This `UpdateCatalogImage` endpoint accepts HTTP multipart/form-data
+        requests with a JSON part and an image file part in
+
+        JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateCatalogImage
+      request:
+        name: UpdateImagesRequest
+        path-parameters:
+          image_id:
+            type: string
+            docs: >-
+              The ID of the `CatalogImage` object to update the encapsulated
+              image file.
+        body:
+          properties:
+            request:
+              type: optional<root.UpdateCatalogImageRequest>
+              content-type: application/json; charset=utf-8
+            image_file:
+              type: optional<file>
+              content-type: image/jpeg
+        content-type: multipart/form-data
+      response:
+        docs: Success
+        type: root.UpdateCatalogImageResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            image_id: image_id
+          request: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              image:
+                id: id
+                updated_at: updated_at
+                version: 1000000
+                is_deleted: true
+                custom_attribute_values:
+                  key: {}
+                catalog_v1_ids:
+                  - {}
+                present_at_all_locations: true
+                present_at_location_ids:
+                  - present_at_location_ids
+                absent_at_location_ids:
+                  - absent_at_location_ids
+                image_id: image_id
+                image_data:
+                  name: name
+                  url: url
+                  caption: caption
+                  photo_studio_order_id: photo_studio_order_id
+                type: IMAGE
+  source:
+    openapi: openapi/openapi.json

@@ -101,6 +101,7 @@ export * from "./CaptureTransactionResponse";
 export * from "./Card";
 export * from "./CardBrand";
 export * from "./CardCoBrand";
+export * from "./CardIssuerAlert";
 export * from "./CardPaymentDetails";
 export * from "./CardPaymentTimeline";
 export * from "./CardPrepaidType";

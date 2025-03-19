@@ -1,0 +1,184 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    SearchEvents:
+      path: /v2/events
+      method: POST
+      auth: true
+      docs: Search for Square API events that occur within a 28-day timeframe.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchEvents
+      request:
+        name: SearchEventsRequest
+        body:
+          properties:
+            cursor:
+              type: optional<string>
+              docs: >-
+                A pagination cursor returned by a previous call to this
+                endpoint. Provide this cursor to retrieve the next set of events
+                for your original query.
+
+
+                For more information, see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+              validation:
+                maxLength: 256
+            limit:
+              type: optional<integer>
+              docs: >-
+                The maximum number of events to return in a single page. The
+                response might contain fewer events. The default value is 100,
+                which is also the maximum allowed value.
+
+
+                For more information, see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+
+
+                Default: 100
+              validation:
+                min: 1
+                max: 100
+            query:
+              type: optional<root.SearchEventsQuery>
+              docs: >-
+                The filtering and sorting criteria for the search request. To
+                retrieve additional pages using a cursor, you must use the
+                original query.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchEventsResponse
+        status-code: 200
+      examples:
+        - request: {}
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              events:
+                - merchant_id: 0HPGX5JYE6EE1
+                  location_id: VJDQQP3CG14EY
+                  type: dispute.state.updated
+                  event_id: 73ecd468-0aba-424f-b862-583d44efe7c8
+                  created_at: '2022-04-26T10:08:40.454726'
+                  data:
+                    type: dispute
+                    id: ORSEVtZAJxb37RA1EiGw
+                    object:
+                      dispute:
+                        amount_money:
+                          amount: 8801
+                          currency: USD
+                        brand_dispute_id: r9rKGSBBQbywBNnWWIiGFg
+                        card_brand: VISA
+                        created_at: '2020-02-19T21:24:53.258Z'
+                        disputed_payment:
+                          payment_id: fbmsaEOpoARDKxiSGH1fqPuqoqFZY
+                        due_at: '2020-03-04T00:00:00.000Z'
+                        id: ORSEVtZAJxb37RA1EiGw
+                        location_id: VJDQQP3CG14EY
+                        reason: AMOUNT_DIFFERS
+                        reported_at: '2020-02-19T00:00:00.000Z'
+                        state: WON
+                        updated_at: '2020-02-19T21:34:41.851Z'
+                        version: 6
+              metadata:
+                - event_id: 73ecd468-0aba-424f-b862-583d44efe7c8
+                  api_version: '2022-12-13'
+              cursor: 6b571fc9773647f=
+    DisableEvents:
+      path: /v2/events/disable
+      method: PUT
+      auth: true
+      docs: >-
+        Disables events to prevent them from being searchable.
+
+        All events are disabled by default. You must enable events to make them
+        searchable.
+
+        Disabling events for a specific time period prevents them from being
+        searchable, even if you re-enable them later.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DisableEvents
+      response:
+        docs: Success
+        type: root.DisableEventsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    EnableEvents:
+      path: /v2/events/enable
+      method: PUT
+      auth: true
+      docs: >-
+        Enables events to make them searchable. Only events that occur while in
+        the enabled state are searchable.
+      source:
+        openapi: openapi/openapi.json
+      display-name: EnableEvents
+      response:
+        docs: Success
+        type: root.EnableEventsResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    ListEventTypes:
+      path: /v2/events/types
+      method: GET
+      auth: true
+      docs: >-
+        Lists all event types that you can subscribe to as webhooks or query
+        using the Events API.
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListEventTypes
+      request:
+        name: ListEventTypesRequest
+        query-parameters:
+          api_version:
+            type: optional<nullable<string>>
+            docs: >-
+              The API version for which to list event types. Setting this field
+              overrides the default version used by the application.
+      response:
+        docs: Success
+        type: root.ListEventTypesResponse
+        status-code: 200
+      examples:
+        - response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              event_types:
+                - inventory.count.updated
+              metadata:
+                - event_type: inventory.count.updated
+                  api_version_introduced: '2018-07-12'
+                  release_status: PUBLIC
+  source:
+    openapi: openapi/openapi.json

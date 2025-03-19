@@ -118,6 +118,7 @@ export type ErrorCode =
     | "SOURCE_EXPIRED"
     | "UNSUPPORTED_LOYALTY_REWARD_TIER"
     | "LOCATION_MISMATCH"
+    | "ORDER_UNPAID_NOT_RETURNABLE"
     | "IDEMPOTENCY_KEY_REUSED"
     | "UNEXPECTED_VALUE"
     | "SANDBOX_NOT_SUPPORTED"
@@ -271,6 +272,7 @@ export const ErrorCode = {
     SourceExpired: "SOURCE_EXPIRED",
     UnsupportedLoyaltyRewardTier: "UNSUPPORTED_LOYALTY_REWARD_TIER",
     LocationMismatch: "LOCATION_MISMATCH",
+    OrderUnpaidNotReturnable: "ORDER_UNPAID_NOT_RETURNABLE",
     IdempotencyKeyReused: "IDEMPOTENCY_KEY_REUSED",
     UnexpectedValue: "UNEXPECTED_VALUE",
     SandboxNotSupported: "SANDBOX_NOT_SUPPORTED",

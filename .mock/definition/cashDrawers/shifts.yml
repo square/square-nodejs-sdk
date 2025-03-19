@@ -1,0 +1,258 @@
+imports:
+  root: ../__package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/cash-drawers/shifts
+      method: GET
+      auth: true
+      docs: |-
+        Provides the details for all of the cash drawer shifts for a location
+        in a date range.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.cash_drawer_shifts
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListCashDrawerShifts
+      request:
+        name: ListShiftsRequest
+        query-parameters:
+          location_id:
+            type: string
+            docs: The ID of the location to query for a list of cash drawer shifts.
+          sort_order:
+            type: optional<nullable<root.SortOrder>>
+            docs: |-
+              The order in which cash drawer shifts are listed in the response,
+              based on their opened_at field. Default value: ASC
+          begin_time:
+            type: optional<nullable<string>>
+            docs: >-
+              The inclusive start time of the query on opened_at, in ISO 8601
+              format.
+          end_time:
+            type: optional<nullable<string>>
+            docs: >-
+              The exclusive end date of the query on opened_at, in ISO 8601
+              format.
+          limit:
+            type: optional<nullable<integer>>
+            docs: |-
+              Number of cash drawer shift events in a page of results (200 by
+              default, 1000 max).
+          cursor:
+            type: optional<nullable<string>>
+            docs: Opaque cursor for fetching the next page of results.
+      response:
+        docs: Success
+        type: root.ListCashDrawerShiftsResponse
+        status-code: 200
+      examples:
+        - query-parameters:
+            location_id: location_id
+          response:
+            body:
+              cursor: cursor
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              cash_drawer_shifts:
+                - id: DCC99978-09A6-4926-849F-300BE9C5793A
+                  state: CLOSED
+                  opened_at: '2019-11-22T00:42:54.000Z'
+                  ended_at: '2019-11-22T00:44:49.000Z'
+                  closed_at: '2019-11-22T00:44:49.000Z'
+                  description: Misplaced some change
+                  opened_cash_money:
+                    amount: 10000
+                    currency: USD
+                  expected_cash_money:
+                    amount: 10000
+                    currency: USD
+                  closed_cash_money:
+                    amount: 9970
+                    currency: USD
+                  created_at: created_at
+                  updated_at: updated_at
+                  location_id: location_id
+    get:
+      path: /v2/cash-drawers/shifts/{shift_id}
+      method: GET
+      auth: true
+      docs: >-
+        Provides the summary details for a single cash drawer shift. See
+
+        [ListCashDrawerShiftEvents](api-endpoint:CashDrawers-ListCashDrawerShiftEvents)
+        for a list of cash drawer shift events.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveCashDrawerShift
+      request:
+        name: GetShiftsRequest
+        path-parameters:
+          shift_id:
+            type: string
+            docs: The shift ID.
+        query-parameters:
+          location_id:
+            type: string
+            docs: The ID of the location to retrieve cash drawer shifts from.
+      response:
+        docs: Success
+        type: root.GetCashDrawerShiftResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            shift_id: shift_id
+          query-parameters:
+            location_id: location_id
+          response:
+            body:
+              cash_drawer_shift:
+                id: DCC99978-09A6-4926-849F-300BE9C5793A
+                state: CLOSED
+                opened_at: '2019-11-22T00:42:54.000Z'
+                ended_at: '2019-11-22T00:44:49.000Z'
+                closed_at: '2019-11-22T00:44:49.000Z'
+                description: Misplaced some change
+                opened_cash_money:
+                  amount: 10000
+                  currency: USD
+                cash_payment_money:
+                  amount: 100
+                  currency: USD
+                cash_refunds_money:
+                  amount: -100
+                  currency: USD
+                cash_paid_in_money:
+                  amount: 10000
+                  currency: USD
+                cash_paid_out_money:
+                  amount: -10000
+                  currency: USD
+                expected_cash_money:
+                  amount: 10000
+                  currency: USD
+                closed_cash_money:
+                  amount: 9970
+                  currency: USD
+                device:
+                  id: id
+                  name: My iPad
+                created_at: created_at
+                updated_at: updated_at
+                location_id: location_id
+                team_member_ids:
+                  - team_member_ids
+                opening_team_member_id: ''
+                ending_team_member_id: ''
+                closing_team_member_id: ''
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    listEvents:
+      path: /v2/cash-drawers/shifts/{shift_id}/events
+      method: GET
+      auth: true
+      docs: Provides a paginated list of events for a single cash drawer shift.
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.cash_drawer_shift_events
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListCashDrawerShiftEvents
+      request:
+        name: ListEventsShiftsRequest
+        path-parameters:
+          shift_id:
+            type: string
+            docs: The shift ID.
+        query-parameters:
+          location_id:
+            type: string
+            docs: The ID of the location to list cash drawer shifts for.
+          limit:
+            type: optional<nullable<integer>>
+            docs: |-
+              Number of resources to be returned in a page of results (200 by
+              default, 1000 max).
+          cursor:
+            type: optional<nullable<string>>
+            docs: Opaque cursor for fetching the next page of results.
+      response:
+        docs: Success
+        type: root.ListCashDrawerShiftEventsResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            shift_id: shift_id
+          query-parameters:
+            location_id: location_id
+          response:
+            body:
+              cursor: cursor
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              cash_drawer_shift_events:
+                - id: 9F07DB01-D85A-4B77-88C3-D5C64CEB5155
+                  event_type: CASH_TENDER_PAYMENT
+                  event_money:
+                    amount: 100
+                    currency: USD
+                  created_at: '2019-11-22T00:43:02.000Z'
+                  description: ''
+                  team_member_id: ''
+                - id: B2854CEA-A781-49B3-8F31-C64558231F48
+                  event_type: CASH_TENDER_PAYMENT
+                  event_money:
+                    amount: 250
+                    currency: USD
+                  created_at: '2019-11-22T00:43:12.000Z'
+                  description: ''
+                  team_member_id: ''
+                - id: B5FB7F72-95CD-44A3-974D-26C41064D042
+                  event_type: CASH_TENDER_CANCELLED_PAYMENT
+                  event_money:
+                    amount: 250
+                    currency: USD
+                  created_at: '2019-11-22T00:43:23.000Z'
+                  description: ''
+                  team_member_id: ''
+                - id: 0B425480-8504-40B4-A867-37B23543931B
+                  event_type: CASH_TENDER_REFUND
+                  event_money:
+                    amount: 100
+                    currency: USD
+                  created_at: '2019-11-22T00:43:46.000Z'
+                  description: ''
+                  team_member_id: ''
+                - id: 8C66E60E-FDCF-4EEF-A98D-3B14B7ED5CBE
+                  event_type: PAID_IN
+                  event_money:
+                    amount: 10000
+                    currency: USD
+                  created_at: '2019-11-22T00:44:18.000Z'
+                  description: Transfer from another drawer
+                  team_member_id: ''
+                - id: D5ACA7FE-C64D-4ADA-8BC8-82118A2DAE4F
+                  event_type: PAID_OUT
+                  event_money:
+                    amount: 10000
+                    currency: USD
+                  created_at: '2019-11-22T00:44:29.000Z'
+                  description: Transfer out to another drawer
+                  team_member_id: ''
+  source:
+    openapi: openapi/openapi.json

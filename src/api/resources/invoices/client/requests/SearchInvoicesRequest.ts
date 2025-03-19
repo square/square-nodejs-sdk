@@ -16,7 +16,8 @@ import * as Square from "../../../../index";
  *                 field: "INVOICE_SORT_DATE",
  *                 order: "DESC"
  *             }
- *         }
+ *         },
+ *         limit: 100
  *     }
  */
 export interface SearchInvoicesRequest {

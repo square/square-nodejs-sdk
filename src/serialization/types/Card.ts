@@ -10,6 +10,7 @@ import { Address } from "./Address";
 import { CardType } from "./CardType";
 import { CardPrepaidType } from "./CardPrepaidType";
 import { CardCoBrand } from "./CardCoBrand";
+import { CardIssuerAlert } from "./CardIssuerAlert";
 
 export const Card: core.serialization.ObjectSchema<serializers.Card.Raw, Square.Card> = core.serialization.object({
     id: core.serialization.string().optional(),
@@ -29,6 +30,9 @@ export const Card: core.serialization.ObjectSchema<serializers.Card.Raw, Square.
     bin: core.serialization.string().optional(),
     version: core.serialization.bigint().optional(),
     cardCoBrand: core.serialization.property("card_co_brand", CardCoBrand.optional()),
+    issuerAlert: core.serialization.property("issuer_alert", CardIssuerAlert.optional()),
+    issuerAlertAt: core.serialization.property("issuer_alert_at", core.serialization.string().optional()),
+    hsaFsa: core.serialization.property("hsa_fsa", core.serialization.boolean().optional()),
 });
 
 export declare namespace Card {
@@ -50,5 +54,8 @@ export declare namespace Card {
         bin?: string | null;
         version?: (bigint | number) | null;
         card_co_brand?: CardCoBrand.Raw | null;
+        issuer_alert?: CardIssuerAlert.Raw | null;
+        issuer_alert_at?: string | null;
+        hsa_fsa?: boolean | null;
     }
 }
