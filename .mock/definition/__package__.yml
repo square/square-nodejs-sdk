@@ -3378,6 +3378,38 @@ types:
           from the `amount_money` and `buyer_supplied_money` fields.
     source:
       openapi: openapi/openapi.json
+  CatalogAvailabilityPeriod:
+    docs: Represents a time period of availability.
+    properties:
+      start_local_time:
+        type: optional<nullable<string>>
+        docs: >-
+          The start time of an availability period, specified in local time
+          using partial-time
+
+          RFC 3339 format. For example, `8:30:00` for a period starting at 8:30
+          in the morning.
+
+          Note that the seconds value is always :00, but it is appended for
+          conformance to the RFC.
+      end_local_time:
+        type: optional<nullable<string>>
+        docs: >-
+          The end time of an availability period, specified in local time using
+          partial-time
+
+          RFC 3339 format. For example, `21:00:00` for a period ending at 9:00
+          in the evening.
+
+          Note that the seconds value is always :00, but it is appended for
+          conformance to the RFC.
+      day_of_week:
+        type: optional<DayOfWeek>
+        docs: |-
+          The day of the week for this availability period.
+          See [DayOfWeek](#type-dayofweek) for possible values
+    source:
+      openapi: openapi/openapi.json
   CatalogCategory:
     docs: A category to which a `CatalogItem` instance belongs.
     properties:
@@ -5129,6 +5161,8 @@ types:
       CHECKOUT_LINK: CatalogObjectCheckoutLink
       ADDRESS: CatalogObjectAddress
       SUBSCRIPTION_PRODUCT: CatalogObjectSubscriptionProduct
+      SUBSCRIPTION_PLAN_VARIATION: CatalogObjectSubscriptionPlanVariation
+      AVAILABILITY_PERIOD: CatalogObjectAvailabilityPeriod
     source:
       openapi: openapi/openapi.json
   CatalogObjectBatch:
@@ -6154,6 +6188,43 @@ types:
         docs: >-
           If true, all items in the merchant's catalog are subscribable by this
           SubscriptionPlan.
+    source:
+      openapi: openapi/openapi.json
+  CatalogSubscriptionPlanVariation:
+    docs: >-
+      Describes a subscription plan variation. A subscription plan variation
+      represents how the subscription for a product or service is sold.
+
+      For more information, see [Subscription Plans and
+      Variations](https://developer.squareup.com/docs/subscriptions-api/plans-and-variations).
+    properties:
+      name:
+        type: string
+        docs: The name of the plan variation.
+      phases:
+        docs: >-
+          A list containing each [SubscriptionPhase](entity:SubscriptionPhase)
+          for this plan variation.
+        type: list<SubscriptionPhase>
+      subscription_plan_id:
+        type: optional<nullable<string>>
+        docs: The id of the subscription plan, if there is one.
+      monthly_billing_anchor_date:
+        type: optional<nullable<long>>
+        docs: The day of the month the billing period starts.
+      can_prorate:
+        type: optional<nullable<boolean>>
+        docs: Whether bills for this plan variation can be split for proration.
+      successor_plan_variation_id:
+        type: optional<nullable<string>>
+        docs: >-
+          The ID of a "successor" plan variation to this one. If the field is
+          set, and this object is disabled at all
+
+          locations, it indicates that this variation is deprecated and the
+          object identified by the successor ID be used in
+
+          its stead.
     source:
       openapi: openapi/openapi.json
   CatalogTax:
@@ -26935,6 +27006,28 @@ types:
         docs: >-
           Structured data for a `CatalogQuickAmountsSettings`, set for
           CatalogObjects of type `QUICK_AMOUNTS_SETTINGS`.
+    extends:
+      - CatalogObjectBase
+    source:
+      openapi: openapi/openapi.json
+  CatalogObjectSubscriptionPlanVariation:
+    properties:
+      subscription_plan_variation_data:
+        type: optional<CatalogSubscriptionPlanVariation>
+        docs: >-
+          Structured data for a `CatalogSubscriptionPlanVariation`, set for
+          CatalogObjects of type `SUBSCRIPTION_PLAN_VARIATION`.
+    extends:
+      - CatalogObjectBase
+    source:
+      openapi: openapi/openapi.json
+  CatalogObjectAvailabilityPeriod:
+    properties:
+      availability_period_data:
+        type: optional<CatalogAvailabilityPeriod>
+        docs: >-
+          Structured data for a `CatalogAvailabilityPeriod`, set for
+          CatalogObjects of type `AVAILABILITY_PERIOD`.
     extends:
       - CatalogObjectBase
     source:
