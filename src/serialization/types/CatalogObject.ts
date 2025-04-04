@@ -26,6 +26,8 @@ import { CatalogObjectResource } from "./CatalogObjectResource";
 import { CatalogObjectCheckoutLink } from "./CatalogObjectCheckoutLink";
 import { CatalogObjectAddress } from "./CatalogObjectAddress";
 import { CatalogObjectSubscriptionProduct } from "./CatalogObjectSubscriptionProduct";
+import { CatalogObjectSubscriptionPlanVariation } from "./CatalogObjectSubscriptionPlanVariation";
+import { CatalogObjectAvailabilityPeriod } from "./CatalogObjectAvailabilityPeriod";
 
 export const CatalogObject: core.serialization.Schema<serializers.CatalogObject.Raw, Square.CatalogObject> =
     core.serialization
@@ -56,6 +58,8 @@ export const CatalogObject: core.serialization.Schema<serializers.CatalogObject.
             CHECKOUT_LINK: CatalogObjectCheckoutLink,
             ADDRESS: CatalogObjectAddress,
             SUBSCRIPTION_PRODUCT: CatalogObjectSubscriptionProduct,
+            SUBSCRIPTION_PLAN_VARIATION: CatalogObjectSubscriptionPlanVariation,
+            AVAILABILITY_PERIOD: CatalogObjectAvailabilityPeriod,
         })
         .transform<Square.CatalogObject>({
             transform: (value) => value,
@@ -89,7 +93,9 @@ export declare namespace CatalogObject {
         | CatalogObject.Resource
         | CatalogObject.CheckoutLink
         | CatalogObject.Address
-        | CatalogObject.SubscriptionProduct;
+        | CatalogObject.SubscriptionProduct
+        | CatalogObject.SubscriptionPlanVariation
+        | CatalogObject.AvailabilityPeriod;
 
     export interface Item extends serializers.CatalogObjectItem.Raw {
         type: "ITEM";
@@ -193,5 +199,13 @@ export declare namespace CatalogObject {
 
     export interface SubscriptionProduct extends CatalogObjectSubscriptionProduct.Raw {
         type: "SUBSCRIPTION_PRODUCT";
+    }
+
+    export interface SubscriptionPlanVariation extends CatalogObjectSubscriptionPlanVariation.Raw {
+        type: "SUBSCRIPTION_PLAN_VARIATION";
+    }
+
+    export interface AvailabilityPeriod extends CatalogObjectAvailabilityPeriod.Raw {
+        type: "AVAILABILITY_PERIOD";
     }
 }

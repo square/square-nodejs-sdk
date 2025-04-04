@@ -42,7 +42,9 @@ export type CatalogObject =
     | Square.CatalogObject.Resource
     | Square.CatalogObject.CheckoutLink
     | Square.CatalogObject.Address
-    | Square.CatalogObject.SubscriptionProduct;
+    | Square.CatalogObject.SubscriptionProduct
+    | Square.CatalogObject.SubscriptionPlanVariation
+    | Square.CatalogObject.AvailabilityPeriod;
 
 export namespace CatalogObject {
     export interface Item extends Square.CatalogObjectItem {
@@ -147,5 +149,13 @@ export namespace CatalogObject {
 
     export interface SubscriptionProduct extends Square.CatalogObjectSubscriptionProduct {
         type: "SUBSCRIPTION_PRODUCT";
+    }
+
+    export interface SubscriptionPlanVariation extends Square.CatalogObjectSubscriptionPlanVariation {
+        type: "SUBSCRIPTION_PLAN_VARIATION";
+    }
+
+    export interface AvailabilityPeriod extends Square.CatalogObjectAvailabilityPeriod {
+        type: "AVAILABILITY_PERIOD";
     }
 }
