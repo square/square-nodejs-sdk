@@ -160,7 +160,8 @@ service:
                   title: title
                   description: description
                   scheduled_at: scheduled_at
-                  public_url: https://squareup.com/pay-invoice/h9sfsfTGTSnYEhISUDBhEQ
+                  public_url: >-
+                    https://squareup.com/pay-invoice/invtmp:5e22a2c2-47c1-46d6-b061-808764dfe2b9
                   next_payment_amount_money:
                     amount: 3000
                     currency: USD
@@ -508,7 +509,8 @@ service:
                   title: title
                   description: description
                   scheduled_at: scheduled_at
-                  public_url: https://squareup.com/pay-invoice/h9sfsfTGTSnYEhISUDBhEQ
+                  public_url: >-
+                    https://squareup.com/pay-invoice/invtmp:5e22a2c2-47c1-46d6-b061-808764dfe2b9
                   next_payment_amount_money:
                     amount: 3000
                     currency: USD
@@ -1148,7 +1150,7 @@ service:
                 description: We appreciate your business!
                 scheduled_at: '2030-01-13T10:00:00Z'
                 public_url: >-
-                  https://squareup.com/pay-invoice/inv:0-ChCHu2mZEabLeeHahQnXDjZQECY
+                  https://squareup.com/pay-invoice/invtmp:5e22a2c2-47c1-46d6-b061-808764dfe2b9
                 next_payment_amount_money:
                   amount: 1000000
                   currency: UNKNOWN_CURRENCY

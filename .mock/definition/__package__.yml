@@ -4220,6 +4220,16 @@ types:
           variations in a specified order.
 
           Maximum: 6 item options.
+      ecom_uri:
+        type: optional<nullable<string>>
+        docs: >-
+          Deprecated; see go/ecomUriUseCases. A URI pointing to a published
+          e-commerce product page for the Item.
+      ecom_image_uris:
+        type: optional<nullable<list<string>>>
+        docs: >-
+          Deprecated; see go/ecomUriUseCases. A comma-separated list of encoded
+          URIs pointing to a set of published e-commerce images for the Item.
       image_ids:
         type: optional<nullable<list<string>>>
         docs: |-
@@ -4319,6 +4329,9 @@ types:
       reporting_category:
         type: optional<CatalogObjectCategory>
         docs: The item's reporting category.
+      is_alcoholic:
+        type: optional<nullable<boolean>>
+        docs: Indicates whether this item is alcoholic (`true`) or not (`false`).
     source:
       openapi: openapi/openapi.json
   CatalogItemFoodAndBeverageDetails:
@@ -13535,12 +13548,20 @@ types:
       public_url:
         type: optional<string>
         docs: >-
-          The URL of the Square-hosted invoice page.
+          A temporary link to the Square-hosted payment page where the customer
+          can pay the
 
-          After you publish the invoice using the `PublishInvoice` endpoint,
-          Square hosts the invoice
+          invoice. If the link expires, customers can provide the email address
+          or phone number
 
-          page and returns the page URL in the response.
+          associated with the invoice and request a new link directly from the
+          expired payment page. 
+
+
+          This field is added after the invoice is published and reaches the
+          scheduled date
+
+          (if one is defined).
         access: read-only
       next_payment_amount_money:
         type: optional<Money>
@@ -14252,7 +14273,7 @@ types:
       - CANCELED
       - FAILED
       - PAYMENT_PENDING
-    docs: Indicates the status of an invoice.
+    docs: Indicates the status of an [invoice](entity:Invoice).
     source:
       openapi: openapi/openapi.json
   ItemVariationLocationOverrides:
@@ -20762,9 +20783,10 @@ types:
         type: optional<nullable<boolean>>
         docs: >-
           Indicates whether the `Payment` objects created from this
-          `TerminalCheckout` are automatically
+          `TerminalCheckout` are
 
-          `COMPLETED` or left in an `APPROVED` state for later modification.
+          automatically `COMPLETED` or left in an `APPROVED` state for later
+          modification.
 
 
           Default: true
@@ -25072,9 +25094,7 @@ types:
         docs: The reference to the Square order ID for the checkout request.
       payment_options:
         type: optional<PaymentOptions>
-        docs: >-
-          Payment-specific options for the checkout request. Supported only in
-          the US.
+        docs: Payment-specific options for the checkout request.
       device_options:
         type: DeviceCheckoutOptions
         docs: >-
@@ -25185,9 +25205,6 @@ types:
           To set this field, PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS OAuth
           permission is required. For more information, see
           [Permissions](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees#permissions).
-
-
-          Supported only in the US.
       statement_description_identifier:
         type: optional<nullable<string>>
         docs: >-
@@ -25197,8 +25214,7 @@ types:
           part of the statement description. This can be, for example, an
           invoice number, ticket number,
 
-          or short description that uniquely identifies the purchase. Supported
-          only in the US.
+          or short description that uniquely identifies the purchase.
         validation:
           maxLength: 20
       tip_money:
@@ -25208,9 +25224,7 @@ types:
           may only be set for a
 
           checkout that has tipping disabled (`tip_settings.allow_tipping` is
-          `false`). Supported only in
-
-          the US.
+          `false`).
     source:
       openapi: openapi/openapi.json
   TerminalCheckoutQuery:

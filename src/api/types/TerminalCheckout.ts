@@ -26,7 +26,7 @@ export interface TerminalCheckout {
     note?: string | null;
     /** The reference to the Square order ID for the checkout request. */
     orderId?: string | null;
-    /** Payment-specific options for the checkout request. Supported only in the US. */
+    /** Payment-specific options for the checkout request. */
     paymentOptions?: Square.PaymentOptions;
     /** Options to control the display and behavior of the Square Terminal device. */
     deviceOptions: Square.DeviceCheckoutOptions;
@@ -82,20 +82,17 @@ export interface TerminalCheckout {
      * For more information about the application fee scenario, see [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).
      *
      * To set this field, PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS OAuth permission is required. For more information, see [Permissions](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees#permissions).
-     *
-     * Supported only in the US.
      */
     appFeeMoney?: Square.Money;
     /**
      * Optional additional payment information to include on the customer's card statement as
      * part of the statement description. This can be, for example, an invoice number, ticket number,
-     * or short description that uniquely identifies the purchase. Supported only in the US.
+     * or short description that uniquely identifies the purchase.
      */
     statementDescriptionIdentifier?: string | null;
     /**
      * The amount designated as a tip, in addition to `amount_money`. This may only be set for a
-     * checkout that has tipping disabled (`tip_settings.allow_tipping` is `false`). Supported only in
-     * the US.
+     * checkout that has tipping disabled (`tip_settings.allow_tipping` is `false`).
      */
     tipMoney?: Square.Money;
 }

@@ -10,14 +10,11 @@ export const BatchDeleteCatalogObjectsRequest: core.serialization.Schema<
     serializers.BatchDeleteCatalogObjectsRequest.Raw,
     Square.BatchDeleteCatalogObjectsRequest
 > = core.serialization.object({
-    objectIds: core.serialization.property(
-        "object_ids",
-        core.serialization.list(core.serialization.string()).optionalNullable(),
-    ),
+    objectIds: core.serialization.property("object_ids", core.serialization.list(core.serialization.string())),
 });
 
 export declare namespace BatchDeleteCatalogObjectsRequest {
     export interface Raw {
-        object_ids?: (string[] | null) | null;
+        object_ids: string[];
     }
 }

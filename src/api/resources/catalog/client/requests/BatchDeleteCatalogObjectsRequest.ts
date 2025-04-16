@@ -14,5 +14,5 @@ export interface BatchDeleteCatalogObjectsRequest {
      * in the graph that depend on that object will be deleted as well (for example, deleting a
      * CatalogItem will delete its CatalogItemVariation.
      */
-    objectIds?: string[] | null;
+    objectIds: string[];
 }

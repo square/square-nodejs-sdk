@@ -75,6 +75,10 @@ export interface CatalogItem {
      * Maximum: 6 item options.
      */
     itemOptions?: Square.CatalogItemOptionForItem[] | null;
+    /** Deprecated; see go/ecomUriUseCases. A URI pointing to a published e-commerce product page for the Item. */
+    ecomUri?: string | null;
+    /** Deprecated; see go/ecomUriUseCases. A comma-separated list of encoded URIs pointing to a set of published e-commerce images for the Item. */
+    ecomImageUris?: string[] | null;
     /**
      * The IDs of images associated with this `CatalogItem` instance.
      * These images will be shown to customers in Square Online Store.
@@ -132,4 +136,6 @@ export interface CatalogItem {
     foodAndBeverageDetails?: Square.CatalogItemFoodAndBeverageDetails;
     /** The item's reporting category. */
     reportingCategory?: Square.CatalogObjectCategory;
+    /** Indicates whether this item is alcoholic (`true`) or not (`false`). */
+    isAlcoholic?: boolean | null;
 }

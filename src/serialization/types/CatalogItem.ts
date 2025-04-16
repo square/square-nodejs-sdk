@@ -39,6 +39,11 @@ export const CatalogItem: core.serialization.ObjectSchema<serializers.CatalogIte
             "item_options",
             core.serialization.list(CatalogItemOptionForItem).optionalNullable(),
         ),
+        ecomUri: core.serialization.property("ecom_uri", core.serialization.string().optionalNullable()),
+        ecomImageUris: core.serialization.property(
+            "ecom_image_uris",
+            core.serialization.list(core.serialization.string()).optionalNullable(),
+        ),
         imageIds: core.serialization.property(
             "image_ids",
             core.serialization.list(core.serialization.string()).optionalNullable(),
@@ -66,6 +71,7 @@ export const CatalogItem: core.serialization.ObjectSchema<serializers.CatalogIte
             "reporting_category",
             core.serialization.lazyObject(() => serializers.CatalogObjectCategory).optional(),
         ),
+        isAlcoholic: core.serialization.property("is_alcoholic", core.serialization.boolean().optionalNullable()),
     });
 
 export declare namespace CatalogItem {
@@ -82,6 +88,8 @@ export declare namespace CatalogItem {
         product_type?: CatalogItemProductType.Raw | null;
         skip_modifier_screen?: (boolean | null) | null;
         item_options?: (CatalogItemOptionForItem.Raw[] | null) | null;
+        ecom_uri?: (string | null) | null;
+        ecom_image_uris?: (string[] | null) | null;
         image_ids?: (string[] | null) | null;
         sort_name?: (string | null) | null;
         categories?: (serializers.CatalogObjectCategory.Raw[] | null) | null;
@@ -92,5 +100,6 @@ export declare namespace CatalogItem {
         ecom_seo_data?: CatalogEcomSeoData.Raw | null;
         food_and_beverage_details?: CatalogItemFoodAndBeverageDetails.Raw | null;
         reporting_category?: serializers.CatalogObjectCategory.Raw | null;
+        is_alcoholic?: (boolean | null) | null;
     }
 }
