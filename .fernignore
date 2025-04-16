@@ -2,6 +2,7 @@
 
 README.md
 
+.github/workflows/ci.yml
 .github/workflows/integration.yml
 src/wrapper
 src/index.ts

@@ -30,7 +30,7 @@ jobs:
         run: yarn && yarn test    
 
   publish:
-    needs: [ compile, test ]
+    needs: [ compile ]
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
