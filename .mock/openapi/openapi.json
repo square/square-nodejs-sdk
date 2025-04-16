@@ -146,7 +146,7 @@
             "name": "Square-Version",
             "description": "Square Connect API versions",
             "schema": {
-              "default": "2025-03-19"
+              "default": "2025-04-16"
             }
           }
         ],
@@ -1437,14 +1437,16 @@
       "BatchDeleteCatalogObjectsRequest": {
         "type": "object",
         "x-release-status": "PUBLIC",
+        "required": [
+          "object_ids"
+        ],
         "properties": {
           "object_ids": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "The IDs of the CatalogObjects to be deleted. When an object is deleted, other objects\nin the graph that depend on that object will be deleted as well (for example, deleting a\nCatalogItem will delete its CatalogItemVariation.",
-            "nullable": true
+            "description": "The IDs of the CatalogObjects to be deleted. When an object is deleted, other objects\nin the graph that depend on that object will be deleted as well (for example, deleting a\nCatalogItem will delete its CatalogItemVariation."
           }
         },
         "example": {
@@ -7841,6 +7843,21 @@
             "description": "List of item options IDs for this item. Used to manage and group item\nvariations in a specified order.\n\nMaximum: 6 item options.",
             "nullable": true
           },
+          "ecom_uri": {
+            "type": "string",
+            "description": "Deprecated; see go/ecomUriUseCases. A URI pointing to a published e-commerce product page for the Item.",
+            "x-release-status": "DEPRECATED",
+            "nullable": true
+          },
+          "ecom_image_uris": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Deprecated; see go/ecomUriUseCases. A comma-separated list of encoded URIs pointing to a set of published e-commerce images for the Item.",
+            "x-release-status": "DEPRECATED",
+            "nullable": true
+          },
           "image_ids": {
             "type": "array",
             "items": {
@@ -7902,6 +7919,11 @@
           "reporting_category": {
             "$ref": "#/components/schemas/CatalogObjectCategory",
             "description": "The item's reporting category.",
+            "nullable": true
+          },
+          "is_alcoholic": {
+            "type": "boolean",
+            "description": "Indicates whether this item is alcoholic (`true`) or not (`false`).",
             "nullable": true
           }
         },
@@ -24011,7 +24033,7 @@
           },
           "public_url": {
             "type": "string",
-            "description": "The URL of the Square-hosted invoice page.\nAfter you publish the invoice using the `PublishInvoice` endpoint, Square hosts the invoice\npage and returns the page URL in the response.",
+            "description": "A temporary link to the Square-hosted payment page where the customer can pay the\ninvoice. If the link expires, customers can provide the email address or phone number\nassociated with the invoice and request a new link directly from the expired payment page. \n\nThis field is added after the invoice is published and reaches the scheduled date\n(if one is defined).",
             "readOnly": true
           },
           "next_payment_amount_money": {
@@ -24645,7 +24667,7 @@
           },
           {
             "name": "CANCELED",
-            "description": "The invoice is canceled. Square no longer requests payments from the customer.\nThe `public_url` page remains and is accessible, but it displays the invoice\nas canceled and does not accept payment."
+            "description": "The invoice is canceled. Square no longer requests payments from the customer.\nThe Square-hosted payment page is still accessible using the temporary `public_url`\nlink, but the invoice is shown as canceled and does not accept payment."
           },
           {
             "name": "FAILED",
@@ -24656,7 +24678,7 @@
             "description": "A payment on the invoice was initiated but has not yet been processed.\n\nWhen in this state, invoices cannot be updated and other payments cannot be initiated."
           }
         ],
-        "description": "Indicates the status of an invoice.",
+        "description": "Indicates the status of an [invoice](entity:Invoice).",
         "x-release-status": "PUBLIC"
       },
       "ItemVariationLocationOverrides": {
@@ -27052,7 +27074,7 @@
                 "given_name": "Amelia",
                 "phone_number": "1-212-555-4240"
               },
-              "public_url": "https://squareup.com/pay-invoice/h9sfsfTGTSnYEhISUDBhEQ",
+              "public_url": "https://squareup.com/pay-invoice/invtmp:5e22a2c2-47c1-46d6-b061-808764dfe2b9",
               "sale_or_service_date": "2030-01-24",
               "status": "PARTIALLY_PAID",
               "store_payment_method_enabled": false,
@@ -35081,7 +35103,7 @@
         "properties": {
           "autocomplete": {
             "type": "boolean",
-            "description": "Indicates whether the `Payment` objects created from this `TerminalCheckout` are automatically\n`COMPLETED` or left in an `APPROVED` state for later modification.\n\nDefault: true",
+            "description": "Indicates whether the `Payment` objects created from this `TerminalCheckout` are\nautomatically `COMPLETED` or left in an `APPROVED` state for later modification.\n\nDefault: true",
             "nullable": true
           },
           "delay_duration": {
@@ -35097,7 +35119,6 @@
           "delay_action": {
             "$ref": "#/components/schemas/PaymentOptionsDelayAction",
             "description": "The action to be applied to the `Payment` when the delay_duration has elapsed.\nThe action must be CANCEL or COMPLETE.\n\nThe action cannot be set to COMPLETE if an `order_id` is present on the TerminalCheckout.\n\nThis parameter can only be set for a delayed capture payment (`autocomplete=false`). For more\ninformation, see [Delayed Capture](https://developer.squareup.com/docs/payments-api/take-payments/card-payments/delayed-capture#time-threshold).\n\nDefault: CANCEL\nSee [DelayAction](#type-delayaction) for possible values",
-            "x-release-status": "BETA",
             "nullable": true
           }
         }
@@ -35119,7 +35140,7 @@
           }
         ],
         "description": "Describes the action to be applied to a delayed capture payment when the delay_duration\nhas elapsed.",
-        "x-release-status": "BETA"
+        "x-release-status": "PUBLIC"
       },
       "PaymentRefund": {
         "type": "object",
@@ -35818,7 +35839,7 @@
               "given_name": "Amelia",
               "phone_number": "1-212-555-4240"
             },
-            "public_url": "https://squareup.com/pay-invoice/inv:0-ChCHu2mZEabLeeHahQnXDjZQECY",
+            "public_url": "https://squareup.com/pay-invoice/invtmp:5e22a2c2-47c1-46d6-b061-808764dfe2b9",
             "sale_or_service_date": "2030-01-24",
             "scheduled_at": "2030-01-13T10:00:00Z",
             "status": "SCHEDULED",
@@ -40485,7 +40506,7 @@
                 "given_name": "Amelia",
                 "phone_number": "1-212-555-4240"
               },
-              "public_url": "https://squareup.com/pay-invoice/h9sfsfTGTSnYEhISUDBhEQ",
+              "public_url": "https://squareup.com/pay-invoice/invtmp:5e22a2c2-47c1-46d6-b061-808764dfe2b9",
               "sale_or_service_date": "2030-01-24",
               "status": "PARTIALLY_PAID",
               "store_payment_method_enabled": false,
@@ -44512,7 +44533,7 @@
           },
           "payment_options": {
             "$ref": "#/components/schemas/PaymentOptions",
-            "description": "Payment-specific options for the checkout request. Supported only in the US.",
+            "description": "Payment-specific options for the checkout request.",
             "nullable": true
           },
           "device_options": {
@@ -44572,7 +44593,6 @@
           "team_member_id": {
             "type": "string",
             "description": "An optional ID of the team member associated with creating the checkout.",
-            "x-release-status": "BETA",
             "nullable": true
           },
           "customer_id": {
@@ -44582,20 +44602,18 @@
           },
           "app_fee_money": {
             "$ref": "#/components/schemas/Money",
-            "description": "The amount the developer is taking as a fee for facilitating the payment on behalf\nof the seller.\n\nThe amount cannot be more than 90% of the total amount of the payment.\n\nThe amount must be specified in the smallest denomination of the applicable currency (for example, US dollar amounts are specified in cents). For more information, see [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).\n\nThe fee currency code must match the currency associated with the seller that is accepting the payment. The application must be from a developer account in the same country and using the same currency code as the seller.\n\nFor more information about the application fee scenario, see [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).\n\nTo set this field, PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS OAuth permission is required. For more information, see [Permissions](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees#permissions).\n\nSupported only in the US.",
+            "description": "The amount the developer is taking as a fee for facilitating the payment on behalf\nof the seller.\n\nThe amount cannot be more than 90% of the total amount of the payment.\n\nThe amount must be specified in the smallest denomination of the applicable currency (for example, US dollar amounts are specified in cents). For more information, see [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).\n\nThe fee currency code must match the currency associated with the seller that is accepting the payment. The application must be from a developer account in the same country and using the same currency code as the seller.\n\nFor more information about the application fee scenario, see [Take Payments and Collect Fees](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees).\n\nTo set this field, PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS OAuth permission is required. For more information, see [Permissions](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees#permissions).",
             "nullable": true
           },
           "statement_description_identifier": {
             "type": "string",
-            "description": "Optional additional payment information to include on the customer's card statement as\npart of the statement description. This can be, for example, an invoice number, ticket number,\nor short description that uniquely identifies the purchase. Supported only in the US.",
+            "description": "Optional additional payment information to include on the customer's card statement as\npart of the statement description. This can be, for example, an invoice number, ticket number,\nor short description that uniquely identifies the purchase.",
             "maxLength": 20,
-            "x-release-status": "BETA",
             "nullable": true
           },
           "tip_money": {
             "$ref": "#/components/schemas/Money",
-            "description": "The amount designated as a tip, in addition to `amount_money`. This may only be set for a\ncheckout that has tipping disabled (`tip_settings.allow_tipping` is `false`). Supported only in\nthe US.",
-            "x-release-status": "BETA",
+            "description": "The amount designated as a tip, in addition to `amount_money`. This may only be set for a\ncheckout that has tipping disabled (`tip_settings.allow_tipping` is `false`).",
             "nullable": true
           }
         }
@@ -64759,7 +64777,7 @@
       "name": "version",
       "optional": true,
       "env": "VERSION",
-      "type": "literal\u003c\"2025-03-19\"\u003e"
+      "type": "literal\u003c\"2025-04-16\"\u003e"
     }
   ]
 }

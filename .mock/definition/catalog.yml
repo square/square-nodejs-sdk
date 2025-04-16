@@ -49,7 +49,6 @@ service:
         body:
           properties:
             object_ids:
-              type: optional<nullable<list<string>>>
               docs: >-
                 The IDs of the CatalogObjects to be deleted. When an object is
                 deleted, other objects
@@ -58,6 +57,7 @@ service:
                 (for example, deleting a
 
                 CatalogItem will delete its CatalogItemVariation.
+              type: list<string>
         content-type: application/json
       response:
         docs: Success

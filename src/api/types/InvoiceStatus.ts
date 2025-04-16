@@ -3,7 +3,7 @@
  */
 
 /**
- * Indicates the status of an invoice.
+ * Indicates the status of an [invoice](entity:Invoice).
  */
 export type InvoiceStatus =
     | "DRAFT"

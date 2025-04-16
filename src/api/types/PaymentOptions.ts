@@ -6,8 +6,8 @@ import * as Square from "../index";
 
 export interface PaymentOptions {
     /**
-     * Indicates whether the `Payment` objects created from this `TerminalCheckout` are automatically
-     * `COMPLETED` or left in an `APPROVED` state for later modification.
+     * Indicates whether the `Payment` objects created from this `TerminalCheckout` are
+     * automatically `COMPLETED` or left in an `APPROVED` state for later modification.
      *
      * Default: true
      */

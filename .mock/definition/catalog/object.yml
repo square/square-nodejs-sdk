@@ -111,6 +111,9 @@ service:
                   skip_modifier_screen: true
                   item_options:
                     - {}
+                  ecom_uri: ecom_uri
+                  ecom_image_uris:
+                    - ecom_image_uris
                   image_ids:
                     - image_ids
                   sort_name: sort_name
@@ -119,6 +122,7 @@ service:
                   channels:
                     - channels
                   is_archived: true
+                  is_alcoholic: true
                 type: ITEM
               id_mappings:
                 - client_object_id: '#Cocoa'
@@ -269,6 +273,9 @@ service:
                   skip_modifier_screen: true
                   item_options:
                     - {}
+                  ecom_uri: ecom_uri
+                  ecom_image_uris:
+                    - ecom_image_uris
                   image_ids:
                     - image_ids
                   sort_name: sort_name
@@ -277,6 +284,7 @@ service:
                   channels:
                     - channels
                   is_archived: true
+                  is_alcoholic: true
                 type: ITEM
               related_objects:
                 - id: id
