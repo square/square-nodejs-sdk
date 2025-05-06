@@ -10,23 +10,14 @@ import { CatalogObjectItemVariation } from "./CatalogObjectItemVariation";
 import { CatalogObjectTax } from "./CatalogObjectTax";
 import { CatalogObjectDiscount } from "./CatalogObjectDiscount";
 import { CatalogObjectModifier } from "./CatalogObjectModifier";
-import { CatalogObjectDiningOption } from "./CatalogObjectDiningOption";
-import { CatalogObjectTaxExemption } from "./CatalogObjectTaxExemption";
-import { CatalogObjectServiceCharge } from "./CatalogObjectServiceCharge";
 import { CatalogObjectPricingRule } from "./CatalogObjectPricingRule";
 import { CatalogObjectProductSet } from "./CatalogObjectProductSet";
 import { CatalogObjectTimePeriod } from "./CatalogObjectTimePeriod";
 import { CatalogObjectMeasurementUnit } from "./CatalogObjectMeasurementUnit";
+import { CatalogObjectSubscriptionPlanVariation } from "./CatalogObjectSubscriptionPlanVariation";
 import { CatalogObjectItemOptionValue } from "./CatalogObjectItemOptionValue";
 import { CatalogObjectCustomAttributeDefinition } from "./CatalogObjectCustomAttributeDefinition";
 import { CatalogObjectQuickAmountsSettings } from "./CatalogObjectQuickAmountsSettings";
-import { CatalogObjectComponent } from "./CatalogObjectComponent";
-import { CatalogObjectComposition } from "./CatalogObjectComposition";
-import { CatalogObjectResource } from "./CatalogObjectResource";
-import { CatalogObjectCheckoutLink } from "./CatalogObjectCheckoutLink";
-import { CatalogObjectAddress } from "./CatalogObjectAddress";
-import { CatalogObjectSubscriptionProduct } from "./CatalogObjectSubscriptionProduct";
-import { CatalogObjectSubscriptionPlanVariation } from "./CatalogObjectSubscriptionPlanVariation";
 import { CatalogObjectAvailabilityPeriod } from "./CatalogObjectAvailabilityPeriod";
 
 export const CatalogObject: core.serialization.Schema<serializers.CatalogObject.Raw, Square.CatalogObject> =
@@ -40,25 +31,16 @@ export const CatalogObject: core.serialization.Schema<serializers.CatalogObject.
             DISCOUNT: CatalogObjectDiscount,
             MODIFIER_LIST: core.serialization.lazyObject(() => serializers.CatalogObjectModifierList),
             MODIFIER: CatalogObjectModifier,
-            DINING_OPTION: CatalogObjectDiningOption,
-            TAX_EXEMPTION: CatalogObjectTaxExemption,
-            SERVICE_CHARGE: CatalogObjectServiceCharge,
             PRICING_RULE: CatalogObjectPricingRule,
             PRODUCT_SET: CatalogObjectProductSet,
             TIME_PERIOD: CatalogObjectTimePeriod,
             MEASUREMENT_UNIT: CatalogObjectMeasurementUnit,
-            SUBSCRIPTION_PLAN: core.serialization.lazyObject(() => serializers.CatalogObjectSubscriptionPlan),
+            SUBSCRIPTION_PLAN_VARIATION: CatalogObjectSubscriptionPlanVariation,
             ITEM_OPTION: core.serialization.lazyObject(() => serializers.CatalogObjectItemOption),
             ITEM_OPTION_VAL: CatalogObjectItemOptionValue,
             CUSTOM_ATTRIBUTE_DEFINITION: CatalogObjectCustomAttributeDefinition,
             QUICK_AMOUNTS_SETTINGS: CatalogObjectQuickAmountsSettings,
-            COMPONENT: CatalogObjectComponent,
-            COMPOSITION: CatalogObjectComposition,
-            RESOURCE: CatalogObjectResource,
-            CHECKOUT_LINK: CatalogObjectCheckoutLink,
-            ADDRESS: CatalogObjectAddress,
-            SUBSCRIPTION_PRODUCT: CatalogObjectSubscriptionProduct,
-            SUBSCRIPTION_PLAN_VARIATION: CatalogObjectSubscriptionPlanVariation,
+            SUBSCRIPTION_PLAN: core.serialization.lazyObject(() => serializers.CatalogObjectSubscriptionPlan),
             AVAILABILITY_PERIOD: CatalogObjectAvailabilityPeriod,
         })
         .transform<Square.CatalogObject>({
@@ -76,25 +58,16 @@ export declare namespace CatalogObject {
         | CatalogObject.Discount
         | CatalogObject.ModifierList
         | CatalogObject.Modifier
-        | CatalogObject.DiningOption
-        | CatalogObject.TaxExemption
-        | CatalogObject.ServiceCharge
         | CatalogObject.PricingRule
         | CatalogObject.ProductSet
         | CatalogObject.TimePeriod
         | CatalogObject.MeasurementUnit
-        | CatalogObject.SubscriptionPlan
+        | CatalogObject.SubscriptionPlanVariation
         | CatalogObject.ItemOption
         | CatalogObject.ItemOptionVal
         | CatalogObject.CustomAttributeDefinition
         | CatalogObject.QuickAmountsSettings
-        | CatalogObject.Component
-        | CatalogObject.Composition
-        | CatalogObject.Resource
-        | CatalogObject.CheckoutLink
-        | CatalogObject.Address
-        | CatalogObject.SubscriptionProduct
-        | CatalogObject.SubscriptionPlanVariation
+        | CatalogObject.SubscriptionPlan
         | CatalogObject.AvailabilityPeriod;
 
     export interface Item extends serializers.CatalogObjectItem.Raw {
@@ -129,18 +102,6 @@ export declare namespace CatalogObject {
         type: "MODIFIER";
     }
 
-    export interface DiningOption extends CatalogObjectDiningOption.Raw {
-        type: "DINING_OPTION";
-    }
-
-    export interface TaxExemption extends CatalogObjectTaxExemption.Raw {
-        type: "TAX_EXEMPTION";
-    }
-
-    export interface ServiceCharge extends CatalogObjectServiceCharge.Raw {
-        type: "SERVICE_CHARGE";
-    }
-
     export interface PricingRule extends CatalogObjectPricingRule.Raw {
         type: "PRICING_RULE";
     }
@@ -157,8 +118,8 @@ export declare namespace CatalogObject {
         type: "MEASUREMENT_UNIT";
     }
 
-    export interface SubscriptionPlan extends serializers.CatalogObjectSubscriptionPlan.Raw {
-        type: "SUBSCRIPTION_PLAN";
+    export interface SubscriptionPlanVariation extends CatalogObjectSubscriptionPlanVariation.Raw {
+        type: "SUBSCRIPTION_PLAN_VARIATION";
     }
 
     export interface ItemOption extends serializers.CatalogObjectItemOption.Raw {
@@ -177,32 +138,8 @@ export declare namespace CatalogObject {
         type: "QUICK_AMOUNTS_SETTINGS";
     }
 
-    export interface Component extends CatalogObjectComponent.Raw {
-        type: "COMPONENT";
-    }
-
-    export interface Composition extends CatalogObjectComposition.Raw {
-        type: "COMPOSITION";
-    }
-
-    export interface Resource extends CatalogObjectResource.Raw {
-        type: "RESOURCE";
-    }
-
-    export interface CheckoutLink extends CatalogObjectCheckoutLink.Raw {
-        type: "CHECKOUT_LINK";
-    }
-
-    export interface Address extends CatalogObjectAddress.Raw {
-        type: "ADDRESS";
-    }
-
-    export interface SubscriptionProduct extends CatalogObjectSubscriptionProduct.Raw {
-        type: "SUBSCRIPTION_PRODUCT";
-    }
-
-    export interface SubscriptionPlanVariation extends CatalogObjectSubscriptionPlanVariation.Raw {
-        type: "SUBSCRIPTION_PLAN_VARIATION";
+    export interface SubscriptionPlan extends serializers.CatalogObjectSubscriptionPlan.Raw {
+        type: "SUBSCRIPTION_PLAN";
     }
 
     export interface AvailabilityPeriod extends CatalogObjectAvailabilityPeriod.Raw {

@@ -5156,25 +5156,16 @@ types:
       DISCOUNT: CatalogObjectDiscount
       MODIFIER_LIST: CatalogObjectModifierList
       MODIFIER: CatalogObjectModifier
-      DINING_OPTION: CatalogObjectDiningOption
-      TAX_EXEMPTION: CatalogObjectTaxExemption
-      SERVICE_CHARGE: CatalogObjectServiceCharge
       PRICING_RULE: CatalogObjectPricingRule
       PRODUCT_SET: CatalogObjectProductSet
       TIME_PERIOD: CatalogObjectTimePeriod
       MEASUREMENT_UNIT: CatalogObjectMeasurementUnit
-      SUBSCRIPTION_PLAN: CatalogObjectSubscriptionPlan
+      SUBSCRIPTION_PLAN_VARIATION: CatalogObjectSubscriptionPlanVariation
       ITEM_OPTION: CatalogObjectItemOption
       ITEM_OPTION_VAL: CatalogObjectItemOptionValue
       CUSTOM_ATTRIBUTE_DEFINITION: CatalogObjectCustomAttributeDefinition
       QUICK_AMOUNTS_SETTINGS: CatalogObjectQuickAmountsSettings
-      COMPONENT: CatalogObjectComponent
-      COMPOSITION: CatalogObjectComposition
-      RESOURCE: CatalogObjectResource
-      CHECKOUT_LINK: CatalogObjectCheckoutLink
-      ADDRESS: CatalogObjectAddress
-      SUBSCRIPTION_PRODUCT: CatalogObjectSubscriptionProduct
-      SUBSCRIPTION_PLAN_VARIATION: CatalogObjectSubscriptionPlanVariation
+      SUBSCRIPTION_PLAN: CatalogObjectSubscriptionPlan
       AVAILABILITY_PERIOD: CatalogObjectAvailabilityPeriod
     source:
       openapi: openapi/openapi.json
@@ -7504,6 +7495,28 @@ types:
       gift_card:
         type: optional<GiftCard>
         docs: The new gift card.
+    source:
+      openapi: openapi/openapi.json
+  CreateInvoiceAttachmentRequestData:
+    docs: >-
+      Represents a
+      [CreateInvoiceAttachment](api-endpoint:Invoices-CreateInvoiceAttachment)
+      request.
+    properties:
+      idempotency_key:
+        type: optional<string>
+        docs: >-
+          A unique string that identifies the `CreateInvoiceAttachment` request.
+
+          For more information, see
+          [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
+        validation:
+          maxLength: 128
+      description:
+        type: optional<string>
+        docs: The description of the attachment to display on the invoice.
+        validation:
+          maxLength: 128
     source:
       openapi: openapi/openapi.json
   CreateInvoiceAttachmentResponse:
@@ -26838,6 +26851,17 @@ types:
       - CatalogObjectBase
     source:
       openapi: openapi/openapi.json
+  CatalogObjectImage:
+    properties:
+      image_data:
+        type: optional<CatalogImage>
+        docs: >-
+          Structured data for a `CatalogImage`, set for CatalogObjects of type
+          `IMAGE`.
+    extends:
+      - CatalogObjectBase
+    source:
+      openapi: openapi/openapi.json
   CatalogObjectItemVariation:
     properties:
       item_variation_data:
@@ -26893,31 +26917,16 @@ types:
       - CatalogObjectBase
     source:
       openapi: openapi/openapi.json
-  CatalogObjectDiningOption:
-    properties: {}
-    extends:
-      - CatalogObjectBase
-    source:
-      openapi: openapi/openapi.json
-  CatalogObjectTaxExemption:
-    properties: {}
-    extends:
-      - CatalogObjectBase
-    source:
-      openapi: openapi/openapi.json
-  CatalogObjectServiceCharge:
-    properties: {}
-    extends:
-      - CatalogObjectBase
-    source:
-      openapi: openapi/openapi.json
-  CatalogObjectTimePeriod:
+  CatalogObjectPricingRule:
     properties:
-      time_period_data:
-        type: optional<CatalogTimePeriod>
+      pricing_rule_data:
+        type: optional<CatalogPricingRule>
         docs: >-
-          Structured data for a `CatalogTimePeriod`, set for CatalogObjects of
-          type `TIME_PERIOD`.
+          Structured data for a `CatalogPricingRule`, set for CatalogObjects of
+          type `PRICING_RULE`.
+
+          A `CatalogPricingRule` object often works with a `CatalogProductSet`
+          object or a `CatalogTimePeriod` object.
     extends:
       - CatalogObjectBase
     source:
@@ -26933,27 +26942,13 @@ types:
       - CatalogObjectBase
     source:
       openapi: openapi/openapi.json
-  CatalogObjectPricingRule:
+  CatalogObjectTimePeriod:
     properties:
-      pricing_rule_data:
-        type: optional<CatalogPricingRule>
+      time_period_data:
+        type: optional<CatalogTimePeriod>
         docs: >-
-          Structured data for a `CatalogPricingRule`, set for CatalogObjects of
-          type `PRICING_RULE`.
-
-          A `CatalogPricingRule` object often works with a `CatalogProductSet`
-          object or a `CatalogTimePeriod` object.
-    extends:
-      - CatalogObjectBase
-    source:
-      openapi: openapi/openapi.json
-  CatalogObjectImage:
-    properties:
-      image_data:
-        type: optional<CatalogImage>
-        docs: >-
-          Structured data for a `CatalogImage`, set for CatalogObjects of type
-          `IMAGE`.
+          Structured data for a `CatalogTimePeriod`, set for CatalogObjects of
+          type `TIME_PERIOD`.
     extends:
       - CatalogObjectBase
     source:
@@ -26969,13 +26964,13 @@ types:
       - CatalogObjectBase
     source:
       openapi: openapi/openapi.json
-  CatalogObjectSubscriptionPlan:
+  CatalogObjectSubscriptionPlanVariation:
     properties:
-      subscription_plan_data:
-        type: optional<CatalogSubscriptionPlan>
+      subscription_plan_variation_data:
+        type: optional<CatalogSubscriptionPlanVariation>
         docs: >-
-          Structured data for a `CatalogSubscriptionPlan`, set for
-          CatalogObjects of type `SUBSCRIPTION_PLAN`.
+          Structured data for a `CatalogSubscriptionPlanVariation`, set for
+          CatalogObjects of type `SUBSCRIPTION_PLAN_VARIATION`.
     extends:
       - CatalogObjectBase
     source:
@@ -27024,13 +27019,13 @@ types:
       - CatalogObjectBase
     source:
       openapi: openapi/openapi.json
-  CatalogObjectSubscriptionPlanVariation:
+  CatalogObjectSubscriptionPlan:
     properties:
-      subscription_plan_variation_data:
-        type: optional<CatalogSubscriptionPlanVariation>
+      subscription_plan_data:
+        type: optional<CatalogSubscriptionPlan>
         docs: >-
-          Structured data for a `CatalogSubscriptionPlanVariation`, set for
-          CatalogObjects of type `SUBSCRIPTION_PLAN_VARIATION`.
+          Structured data for a `CatalogSubscriptionPlan`, set for
+          CatalogObjects of type `SUBSCRIPTION_PLAN`.
     extends:
       - CatalogObjectBase
     source:
@@ -27042,42 +27037,6 @@ types:
         docs: >-
           Structured data for a `CatalogAvailabilityPeriod`, set for
           CatalogObjects of type `AVAILABILITY_PERIOD`.
-    extends:
-      - CatalogObjectBase
-    source:
-      openapi: openapi/openapi.json
-  CatalogObjectComponent:
-    properties: {}
-    extends:
-      - CatalogObjectBase
-    source:
-      openapi: openapi/openapi.json
-  CatalogObjectComposition:
-    properties: {}
-    extends:
-      - CatalogObjectBase
-    source:
-      openapi: openapi/openapi.json
-  CatalogObjectResource:
-    properties: {}
-    extends:
-      - CatalogObjectBase
-    source:
-      openapi: openapi/openapi.json
-  CatalogObjectCheckoutLink:
-    properties: {}
-    extends:
-      - CatalogObjectBase
-    source:
-      openapi: openapi/openapi.json
-  CatalogObjectAddress:
-    properties: {}
-    extends:
-      - CatalogObjectBase
-    source:
-      openapi: openapi/openapi.json
-  CatalogObjectSubscriptionProduct:
-    properties: {}
     extends:
       - CatalogObjectBase
     source:
