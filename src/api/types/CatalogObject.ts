@@ -25,25 +25,16 @@ export type CatalogObject =
     | Square.CatalogObject.Discount
     | Square.CatalogObject.ModifierList
     | Square.CatalogObject.Modifier
-    | Square.CatalogObject.DiningOption
-    | Square.CatalogObject.TaxExemption
-    | Square.CatalogObject.ServiceCharge
     | Square.CatalogObject.PricingRule
     | Square.CatalogObject.ProductSet
     | Square.CatalogObject.TimePeriod
     | Square.CatalogObject.MeasurementUnit
-    | Square.CatalogObject.SubscriptionPlan
+    | Square.CatalogObject.SubscriptionPlanVariation
     | Square.CatalogObject.ItemOption
     | Square.CatalogObject.ItemOptionVal
     | Square.CatalogObject.CustomAttributeDefinition
     | Square.CatalogObject.QuickAmountsSettings
-    | Square.CatalogObject.Component
-    | Square.CatalogObject.Composition
-    | Square.CatalogObject.Resource
-    | Square.CatalogObject.CheckoutLink
-    | Square.CatalogObject.Address
-    | Square.CatalogObject.SubscriptionProduct
-    | Square.CatalogObject.SubscriptionPlanVariation
+    | Square.CatalogObject.SubscriptionPlan
     | Square.CatalogObject.AvailabilityPeriod;
 
 export namespace CatalogObject {
@@ -79,18 +70,6 @@ export namespace CatalogObject {
         type: "MODIFIER";
     }
 
-    export interface DiningOption extends Square.CatalogObjectDiningOption {
-        type: "DINING_OPTION";
-    }
-
-    export interface TaxExemption extends Square.CatalogObjectTaxExemption {
-        type: "TAX_EXEMPTION";
-    }
-
-    export interface ServiceCharge extends Square.CatalogObjectServiceCharge {
-        type: "SERVICE_CHARGE";
-    }
-
     export interface PricingRule extends Square.CatalogObjectPricingRule {
         type: "PRICING_RULE";
     }
@@ -107,8 +86,8 @@ export namespace CatalogObject {
         type: "MEASUREMENT_UNIT";
     }
 
-    export interface SubscriptionPlan extends Square.CatalogObjectSubscriptionPlan {
-        type: "SUBSCRIPTION_PLAN";
+    export interface SubscriptionPlanVariation extends Square.CatalogObjectSubscriptionPlanVariation {
+        type: "SUBSCRIPTION_PLAN_VARIATION";
     }
 
     export interface ItemOption extends Square.CatalogObjectItemOption {
@@ -127,32 +106,8 @@ export namespace CatalogObject {
         type: "QUICK_AMOUNTS_SETTINGS";
     }
 
-    export interface Component extends Square.CatalogObjectComponent {
-        type: "COMPONENT";
-    }
-
-    export interface Composition extends Square.CatalogObjectComposition {
-        type: "COMPOSITION";
-    }
-
-    export interface Resource extends Square.CatalogObjectResource {
-        type: "RESOURCE";
-    }
-
-    export interface CheckoutLink extends Square.CatalogObjectCheckoutLink {
-        type: "CHECKOUT_LINK";
-    }
-
-    export interface Address extends Square.CatalogObjectAddress {
-        type: "ADDRESS";
-    }
-
-    export interface SubscriptionProduct extends Square.CatalogObjectSubscriptionProduct {
-        type: "SUBSCRIPTION_PRODUCT";
-    }
-
-    export interface SubscriptionPlanVariation extends Square.CatalogObjectSubscriptionPlanVariation {
-        type: "SUBSCRIPTION_PLAN_VARIATION";
+    export interface SubscriptionPlan extends Square.CatalogObjectSubscriptionPlan {
+        type: "SUBSCRIPTION_PLAN";
     }
 
     export interface AvailabilityPeriod extends Square.CatalogObjectAvailabilityPeriod {

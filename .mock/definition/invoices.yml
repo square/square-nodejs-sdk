@@ -854,7 +854,7 @@ service:
         body:
           properties:
             request:
-              type: optional<unknown>
+              type: optional<root.CreateInvoiceAttachmentRequestData>
               content-type: application/json; charset=utf-8
             image_file:
               type: optional<file>
