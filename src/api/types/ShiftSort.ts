@@ -6,6 +6,8 @@ import * as Square from "../index";
 
 /**
  * Sets the sort order of search results.
+ *
+ * Deprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
  */
 export interface ShiftSort {
     /**

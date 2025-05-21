@@ -4,6 +4,8 @@
 
 /**
  * Enumerates the `Shift` fields to sort on.
+ *
+ * Deprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
  */
 export type ShiftSortField = "START_AT" | "END_AT" | "CREATED_AT" | "UPDATED_AT";
 export const ShiftSortField = {

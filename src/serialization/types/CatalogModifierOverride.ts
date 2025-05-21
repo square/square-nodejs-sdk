@@ -12,11 +12,18 @@ export const CatalogModifierOverride: core.serialization.ObjectSchema<
 > = core.serialization.object({
     modifierId: core.serialization.property("modifier_id", core.serialization.string()),
     onByDefault: core.serialization.property("on_by_default", core.serialization.boolean().optionalNullable()),
+    hiddenOnlineOverride: core.serialization.property(
+        "hidden_online_override",
+        core.serialization.unknown().optional(),
+    ),
+    onByDefaultOverride: core.serialization.property("on_by_default_override", core.serialization.unknown().optional()),
 });
 
 export declare namespace CatalogModifierOverride {
     export interface Raw {
         modifier_id: string;
         on_by_default?: (boolean | null) | null;
+        hidden_online_override?: unknown | null;
+        on_by_default_override?: unknown | null;
     }
 }

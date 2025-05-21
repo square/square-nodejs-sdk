@@ -20,10 +20,24 @@ export const CatalogModifierList: core.serialization.ObjectSchema<
         "image_ids",
         core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
+    allowQuantities: core.serialization.property("allow_quantities", core.serialization.boolean().optionalNullable()),
+    isConversational: core.serialization.property("is_conversational", core.serialization.boolean().optionalNullable()),
     modifierType: core.serialization.property("modifier_type", CatalogModifierListModifierType.optional()),
     maxLength: core.serialization.property("max_length", core.serialization.number().optionalNullable()),
     textRequired: core.serialization.property("text_required", core.serialization.boolean().optionalNullable()),
     internalName: core.serialization.property("internal_name", core.serialization.string().optionalNullable()),
+    minSelectedModifiers: core.serialization.property(
+        "min_selected_modifiers",
+        core.serialization.bigint().optionalNullable(),
+    ),
+    maxSelectedModifiers: core.serialization.property(
+        "max_selected_modifiers",
+        core.serialization.bigint().optionalNullable(),
+    ),
+    hiddenFromCustomer: core.serialization.property(
+        "hidden_from_customer",
+        core.serialization.boolean().optionalNullable(),
+    ),
 });
 
 export declare namespace CatalogModifierList {
@@ -33,9 +47,14 @@ export declare namespace CatalogModifierList {
         selection_type?: CatalogModifierListSelectionType.Raw | null;
         modifiers?: (serializers.CatalogObject.Raw[] | null) | null;
         image_ids?: (string[] | null) | null;
+        allow_quantities?: (boolean | null) | null;
+        is_conversational?: (boolean | null) | null;
         modifier_type?: CatalogModifierListModifierType.Raw | null;
         max_length?: (number | null) | null;
         text_required?: (boolean | null) | null;
         internal_name?: (string | null) | null;
+        min_selected_modifiers?: ((bigint | number) | null) | null;
+        max_selected_modifiers?: ((bigint | number) | null) | null;
+        hidden_from_customer?: (boolean | null) | null;
     }
 }

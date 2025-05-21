@@ -20,6 +20,7 @@ import { Events } from "./api/resources/events/client/Client";
 import { GiftCards } from "./api/resources/giftCards/client/Client";
 import { Inventory } from "./api/resources/inventory/client/Client";
 import { Invoices } from "./api/resources/invoices/client/Client";
+import { Labor } from "./api/resources/labor/client/Client";
 import { Locations } from "./api/resources/locations/client/Client";
 import { Loyalty } from "./api/resources/loyalty/client/Client";
 import { Merchants } from "./api/resources/merchants/client/Client";
@@ -36,7 +37,6 @@ import { Team } from "./api/resources/team/client/Client";
 import { Terminal } from "./api/resources/terminal/client/Client";
 import { Vendors } from "./api/resources/vendors/client/Client";
 import { CashDrawers } from "./api/resources/cashDrawers/client/Client";
-import { Labor } from "./api/resources/labor/client/Client";
 import { Webhooks } from "./api/resources/webhooks/client/Client";
 
 export declare namespace SquareClient {
@@ -46,7 +46,7 @@ export declare namespace SquareClient {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-04-16";
+        version?: "2025-05-21";
         fetcher?: core.FetchFunction;
     }
 
@@ -58,7 +58,7 @@ export declare namespace SquareClient {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-04-16";
+        version?: "2025-05-21";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -81,6 +81,7 @@ export class SquareClient {
     protected _giftCards: GiftCards | undefined;
     protected _inventory: Inventory | undefined;
     protected _invoices: Invoices | undefined;
+    protected _labor: Labor | undefined;
     protected _locations: Locations | undefined;
     protected _loyalty: Loyalty | undefined;
     protected _merchants: Merchants | undefined;
@@ -97,7 +98,6 @@ export class SquareClient {
     protected _terminal: Terminal | undefined;
     protected _vendors: Vendors | undefined;
     protected _cashDrawers: CashDrawers | undefined;
-    protected _labor: Labor | undefined;
     protected _webhooks: Webhooks | undefined;
 
     constructor(protected readonly _options: SquareClient.Options = {}) {}
@@ -166,6 +166,10 @@ export class SquareClient {
         return (this._invoices ??= new Invoices(this._options));
     }
 
+    public get labor(): Labor {
+        return (this._labor ??= new Labor(this._options));
+    }
+
     public get locations(): Locations {
         return (this._locations ??= new Locations(this._options));
     }
@@ -228,10 +232,6 @@ export class SquareClient {
 
     public get cashDrawers(): CashDrawers {
         return (this._cashDrawers ??= new CashDrawers(this._options));
-    }
-
-    public get labor(): Labor {
-        return (this._labor ??= new Labor(this._options));
     }
 
     public get webhooks(): Webhooks {

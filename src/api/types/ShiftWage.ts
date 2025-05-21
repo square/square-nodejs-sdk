@@ -6,6 +6,8 @@ import * as Square from "../index";
 
 /**
  * The hourly wage rate used to compensate an employee for this shift.
+ *
+ * Deprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
  */
 export interface ShiftWage {
     /** The name of the job performed during this shift. */
@@ -17,7 +19,7 @@ export interface ShiftWage {
     hourlyRate?: Square.Money;
     /**
      * The id of the job performed during this shift. Square
-     * labor-reporting UIs might group shifts together by id. This cannot be used to retrieve the job.
+     * labor-reporting UIs might group shifts together by id.
      */
     jobId?: string;
     /** Whether team members are eligible for tips when working this job. */

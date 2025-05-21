@@ -6469,6 +6469,893 @@ await client.invoices.publish({
 </dl>
 </details>
 
+## Labor
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">createScheduledShift</a>({ ...params }) -> Square.CreateScheduledShiftResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a scheduled shift by providing draft shift details such as job ID,
+team member assignment, and start and end times.
+
+The following `draft_shift_details` fields are required:
+
+- `location_id`
+- `job_id`
+- `start_at`
+- `end_at`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.createScheduledShift({
+    idempotencyKey: "HIDSNG5KS478L",
+    scheduledShift: {
+        draftShiftDetails: {
+            teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
+            locationId: "PAA1RJZZKXBFG",
+            jobId: "FzbJAtt9qEWncK1BWgVCxQ6M",
+            startAt: "2019-01-25T03:11:00-05:00",
+            endAt: "2019-01-25T13:11:00-05:00",
+            notes: "Dont forget to prep the vegetables",
+            isDeleted: false,
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.CreateScheduledShiftRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">bulkPublishScheduledShifts</a>({ ...params }) -> Square.BulkPublishScheduledShiftsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Publishes 1 - 100 scheduled shifts. This endpoint takes a map of individual publish
+requests and returns a map of responses. When a scheduled shift is published, Square keeps
+the `draft_shift_details` field as is and copies it to the `published_shift_details` field.
+
+The minimum `start_at` and maximum `end_at` timestamps of all shifts in a
+`BulkPublishScheduledShifts` request must fall within a two-week period.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.bulkPublishScheduledShifts({
+    scheduledShifts: {
+        key: {},
+    },
+    scheduledShiftNotificationAudience: "AFFECTED",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.BulkPublishScheduledShiftsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">searchScheduledShifts</a>({ ...params }) -> Square.SearchScheduledShiftsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a paginated list of scheduled shifts, with optional filter and sort settings.
+By default, results are sorted by `start_at` in ascending order.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.searchScheduledShifts({
+    query: {
+        filter: {
+            assignmentStatus: "ASSIGNED",
+        },
+        sort: {
+            field: "CREATED_AT",
+            order: "ASC",
+        },
+    },
+    limit: 2,
+    cursor: "xoxp-1234-5678-90123",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.SearchScheduledShiftsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">retrieveScheduledShift</a>({ ...params }) -> Square.RetrieveScheduledShiftResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a scheduled shift by ID.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.retrieveScheduledShift({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.RetrieveScheduledShiftRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">updateScheduledShift</a>({ ...params }) -> Square.UpdateScheduledShiftResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates the draft shift details for a scheduled shift. This endpoint supports
+sparse updates, so only new, changed, or removed fields are required in the request.
+You must publish the shift to make updates public.
+
+You can make the following updates to `draft_shift_details`:
+
+- Change the `location_id`, `job_id`, `start_at`, and `end_at` fields.
+- Add, change, or clear the `team_member_id` and `notes` fields. To clear these fields,
+  set the value to null.
+- Change the `is_deleted` field. To delete a scheduled shift, set `is_deleted` to true
+and then publish the shift.
+  </dd>
+  </dl>
+  </dd>
+  </dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.updateScheduledShift({
+    id: "id",
+    scheduledShift: {
+        draftShiftDetails: {
+            teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
+            locationId: "PAA1RJZZKXBFG",
+            jobId: "FzbJAtt9qEWncK1BWgVCxQ6M",
+            startAt: "2019-03-25T03:11:00-05:00",
+            endAt: "2019-03-25T13:18:00-05:00",
+            notes: "Dont forget to prep the vegetables",
+            isDeleted: false,
+        },
+        version: 1,
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.UpdateScheduledShiftRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">publishScheduledShift</a>({ ...params }) -> Square.PublishScheduledShiftResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Publishes a scheduled shift. When a scheduled shift is published, Square keeps the
+`draft_shift_details` field as is and copies it to the `published_shift_details` field.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.publishScheduledShift({
+    id: "id",
+    idempotencyKey: "HIDSNG5KS478L",
+    version: 2,
+    scheduledShiftNotificationAudience: "ALL",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.PublishScheduledShiftRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">createTimecard</a>({ ...params }) -> Square.CreateTimecardResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new `Timecard`.
+
+A `Timecard` represents a complete workday for a single team member.
+You must provide the following values in your request to this
+endpoint:
+
+- `location_id`
+- `team_member_id`
+- `start_at`
+
+An attempt to create a new `Timecard` can result in a `BAD_REQUEST` error when:
+
+- The `status` of the new `Timecard` is `OPEN` and the team member has another
+  timecard with an `OPEN` status.
+- The `start_at` date is in the future.
+- The `start_at` or `end_at` date overlaps another timecard for the same team member.
+- The `Break` instances are set in the request and a break `start_at`
+is before the `Timecard.start_at`, a break `end_at` is after
+the `Timecard.end_at`, or both.
+  </dd>
+  </dl>
+  </dd>
+  </dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.createTimecard({
+    idempotencyKey: "HIDSNG5KS478L",
+    timecard: {
+        locationId: "PAA1RJZZKXBFG",
+        startAt: "2019-01-25T03:11:00-05:00",
+        endAt: "2019-01-25T13:11:00-05:00",
+        wage: {
+            title: "Barista",
+            hourlyRate: {
+                amount: 1100,
+                currency: "USD",
+            },
+            tipEligible: true,
+        },
+        breaks: [
+            {
+                startAt: "2019-01-25T06:11:00-05:00",
+                endAt: "2019-01-25T06:16:00-05:00",
+                breakTypeId: "REGS1EQR1TPZ5",
+                name: "Tea Break",
+                expectedDuration: "PT5M",
+                isPaid: true,
+            },
+        ],
+        teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
+        declaredCashTipMoney: {
+            amount: 500,
+            currency: "USD",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.CreateTimecardRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">searchTimecards</a>({ ...params }) -> Square.SearchTimecardsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a paginated list of `Timecard` records for a business.
+The list to be returned can be filtered by:
+
+- Location IDs
+- Team member IDs
+- Timecard status (`OPEN` or `CLOSED`)
+- Timecard start
+- Timecard end
+- Workday details
+
+The list can be sorted by:
+
+- `START_AT`
+- `END_AT`
+- `CREATED_AT`
+- `UPDATED_AT`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.searchTimecards({
+    query: {
+        filter: {
+            workday: {
+                dateRange: {
+                    startDate: "2019-01-20",
+                    endDate: "2019-02-03",
+                },
+                matchTimecardsBy: "START_AT",
+                defaultTimezone: "America/Los_Angeles",
+            },
+        },
+    },
+    limit: 100,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.SearchTimecardsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">retrieveTimecard</a>({ ...params }) -> Square.RetrieveTimecardResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single `Timecard` specified by `id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.retrieveTimecard({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.RetrieveTimecardRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">updateTimecard</a>({ ...params }) -> Square.UpdateTimecardResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates an existing `Timecard`.
+
+When adding a `Break` to a `Timecard`, any earlier `Break` instances in the `Timecard` have
+the `end_at` property set to a valid RFC-3339 datetime string.
+
+When closing a `Timecard`, all `Break` instances in the `Timecard` must be complete with `end_at`
+set on each `Break`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.updateTimecard({
+    id: "id",
+    timecard: {
+        locationId: "PAA1RJZZKXBFG",
+        startAt: "2019-01-25T03:11:00-05:00",
+        endAt: "2019-01-25T13:11:00-05:00",
+        wage: {
+            title: "Bartender",
+            hourlyRate: {
+                amount: 1500,
+                currency: "USD",
+            },
+            tipEligible: true,
+        },
+        breaks: [
+            {
+                id: "X7GAQYVVRRG6P",
+                startAt: "2019-01-25T06:11:00-05:00",
+                endAt: "2019-01-25T06:16:00-05:00",
+                breakTypeId: "REGS1EQR1TPZ5",
+                name: "Tea Break",
+                expectedDuration: "PT5M",
+                isPaid: true,
+            },
+        ],
+        status: "CLOSED",
+        version: 1,
+        teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
+        declaredCashTipMoney: {
+            amount: 500,
+            currency: "USD",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.UpdateTimecardRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">deleteTimecard</a>({ ...params }) -> Square.DeleteTimecardResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a `Timecard`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.deleteTimecard({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.DeleteTimecardRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Labor.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Locations
 
 <details><summary><code>client.locations.<a href="/src/api/resources/locations/client/Client.ts">list</a>() -> Square.ListLocationsResponse</code></summary>

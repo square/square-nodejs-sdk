@@ -66,6 +66,7 @@ service:
         docs: Success
         type: root.CreateShiftResponse
         status-code: 200
+      availability: deprecated
       examples:
         - request:
             idempotency_key: HIDSNG5KS478L
@@ -170,6 +171,7 @@ service:
         docs: Success
         type: root.SearchShiftsResponse
         status-code: 200
+      availability: deprecated
       examples:
         - request:
             query:
@@ -273,6 +275,7 @@ service:
         docs: Success
         type: root.GetShiftResponse
         status-code: 200
+      availability: deprecated
       examples:
         - path-parameters:
             id: id
@@ -350,6 +353,7 @@ service:
         docs: Success
         type: root.UpdateShiftResponse
         status-code: 200
+      availability: deprecated
       examples:
         - path-parameters:
             id: id
@@ -432,6 +436,7 @@ service:
         docs: Success
         type: root.DeleteShiftResponse
         status-code: 200
+      availability: deprecated
       examples:
         - path-parameters:
             id: id

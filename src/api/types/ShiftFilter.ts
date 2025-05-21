@@ -7,6 +7,8 @@ import * as Square from "../index";
 /**
  * Defines a filter used in a search for `Shift` records. `AND` logic is
  * used by Square's servers to apply each filter property specified.
+ *
+ * Deprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
  */
 export interface ShiftFilter {
     /** Fetch shifts for the specified location. */
