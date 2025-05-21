@@ -4,6 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
+import * as Square from "../../../index";
+import * as serializers from "../../../../serialization/index";
+import urlJoin from "url-join";
+import * as errors from "../../../../errors/index";
 import { BreakTypes } from "../resources/breakTypes/client/Client";
 import { EmployeeWages } from "../resources/employeeWages/client/Client";
 import { Shifts } from "../resources/shifts/client/Client";
@@ -17,7 +21,7 @@ export declare namespace Labor {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-04-16";
+        version?: "2025-05-21";
         fetcher?: core.FetchFunction;
     }
 
@@ -29,7 +33,7 @@ export declare namespace Labor {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-04-16";
+        version?: "2025-05-21";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -62,5 +66,1019 @@ export class Labor {
 
     public get workweekConfigs(): WorkweekConfigs {
         return (this._workweekConfigs ??= new WorkweekConfigs(this._options));
+    }
+
+    /**
+     * Creates a scheduled shift by providing draft shift details such as job ID,
+     * team member assignment, and start and end times.
+     *
+     * The following `draft_shift_details` fields are required:
+     * - `location_id`
+     * - `job_id`
+     * - `start_at`
+     * - `end_at`
+     *
+     * @param {Square.CreateScheduledShiftRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.createScheduledShift({
+     *         idempotencyKey: "HIDSNG5KS478L",
+     *         scheduledShift: {
+     *             draftShiftDetails: {
+     *                 teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
+     *                 locationId: "PAA1RJZZKXBFG",
+     *                 jobId: "FzbJAtt9qEWncK1BWgVCxQ6M",
+     *                 startAt: "2019-01-25T03:11:00-05:00",
+     *                 endAt: "2019-01-25T13:11:00-05:00",
+     *                 notes: "Dont forget to prep the vegetables",
+     *                 isDeleted: false
+     *             }
+     *         }
+     *     })
+     */
+    public async createScheduledShift(
+        request: Square.CreateScheduledShiftRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.CreateScheduledShiftResponse> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/labor/scheduled-shifts",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.CreateScheduledShiftRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.CreateScheduledShiftResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError("Timeout exceeded when calling POST /v2/labor/scheduled-shifts.");
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Publishes 1 - 100 scheduled shifts. This endpoint takes a map of individual publish
+     * requests and returns a map of responses. When a scheduled shift is published, Square keeps
+     * the `draft_shift_details` field as is and copies it to the `published_shift_details` field.
+     *
+     * The minimum `start_at` and maximum `end_at` timestamps of all shifts in a
+     * `BulkPublishScheduledShifts` request must fall within a two-week period.
+     *
+     * @param {Square.BulkPublishScheduledShiftsRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.bulkPublishScheduledShifts({
+     *         scheduledShifts: {
+     *             "key": {}
+     *         },
+     *         scheduledShiftNotificationAudience: "AFFECTED"
+     *     })
+     */
+    public async bulkPublishScheduledShifts(
+        request: Square.BulkPublishScheduledShiftsRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.BulkPublishScheduledShiftsResponse> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/labor/scheduled-shifts/bulk-publish",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.BulkPublishScheduledShiftsRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.BulkPublishScheduledShiftsResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError(
+                    "Timeout exceeded when calling POST /v2/labor/scheduled-shifts/bulk-publish.",
+                );
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Returns a paginated list of scheduled shifts, with optional filter and sort settings.
+     * By default, results are sorted by `start_at` in ascending order.
+     *
+     * @param {Square.SearchScheduledShiftsRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.searchScheduledShifts({
+     *         query: {
+     *             filter: {
+     *                 assignmentStatus: "ASSIGNED"
+     *             },
+     *             sort: {
+     *                 field: "CREATED_AT",
+     *                 order: "ASC"
+     *             }
+     *         },
+     *         limit: 2,
+     *         cursor: "xoxp-1234-5678-90123"
+     *     })
+     */
+    public async searchScheduledShifts(
+        request: Square.SearchScheduledShiftsRequest = {},
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.SearchScheduledShiftsResponse> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/labor/scheduled-shifts/search",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.SearchScheduledShiftsRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.SearchScheduledShiftsResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError(
+                    "Timeout exceeded when calling POST /v2/labor/scheduled-shifts/search.",
+                );
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Retrieves a scheduled shift by ID.
+     *
+     * @param {Square.RetrieveScheduledShiftRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.retrieveScheduledShift({
+     *         id: "id"
+     *     })
+     */
+    public async retrieveScheduledShift(
+        request: Square.RetrieveScheduledShiftRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.RetrieveScheduledShiftResponse> {
+        const { id } = request;
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                `v2/labor/scheduled-shifts/${encodeURIComponent(id)}`,
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.RetrieveScheduledShiftResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError(
+                    "Timeout exceeded when calling GET /v2/labor/scheduled-shifts/{id}.",
+                );
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Updates the draft shift details for a scheduled shift. This endpoint supports
+     * sparse updates, so only new, changed, or removed fields are required in the request.
+     * You must publish the shift to make updates public.
+     *
+     * You can make the following updates to `draft_shift_details`:
+     * - Change the `location_id`, `job_id`, `start_at`, and `end_at` fields.
+     * - Add, change, or clear the `team_member_id` and `notes` fields. To clear these fields,
+     * set the value to null.
+     * - Change the `is_deleted` field. To delete a scheduled shift, set `is_deleted` to true
+     * and then publish the shift.
+     *
+     * @param {Square.UpdateScheduledShiftRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.updateScheduledShift({
+     *         id: "id",
+     *         scheduledShift: {
+     *             draftShiftDetails: {
+     *                 teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
+     *                 locationId: "PAA1RJZZKXBFG",
+     *                 jobId: "FzbJAtt9qEWncK1BWgVCxQ6M",
+     *                 startAt: "2019-03-25T03:11:00-05:00",
+     *                 endAt: "2019-03-25T13:18:00-05:00",
+     *                 notes: "Dont forget to prep the vegetables",
+     *                 isDeleted: false
+     *             },
+     *             version: 1
+     *         }
+     *     })
+     */
+    public async updateScheduledShift(
+        request: Square.UpdateScheduledShiftRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.UpdateScheduledShiftResponse> {
+        const { id, ..._body } = request;
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                `v2/labor/scheduled-shifts/${encodeURIComponent(id)}`,
+            ),
+            method: "PUT",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.UpdateScheduledShiftRequest.jsonOrThrow(_body, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.UpdateScheduledShiftResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError(
+                    "Timeout exceeded when calling PUT /v2/labor/scheduled-shifts/{id}.",
+                );
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Publishes a scheduled shift. When a scheduled shift is published, Square keeps the
+     * `draft_shift_details` field as is and copies it to the `published_shift_details` field.
+     *
+     * @param {Square.PublishScheduledShiftRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.publishScheduledShift({
+     *         id: "id",
+     *         idempotencyKey: "HIDSNG5KS478L",
+     *         version: 2,
+     *         scheduledShiftNotificationAudience: "ALL"
+     *     })
+     */
+    public async publishScheduledShift(
+        request: Square.PublishScheduledShiftRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.PublishScheduledShiftResponse> {
+        const { id, ..._body } = request;
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                `v2/labor/scheduled-shifts/${encodeURIComponent(id)}/publish`,
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.PublishScheduledShiftRequest.jsonOrThrow(_body, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.PublishScheduledShiftResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError(
+                    "Timeout exceeded when calling POST /v2/labor/scheduled-shifts/{id}/publish.",
+                );
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Creates a new `Timecard`.
+     *
+     * A `Timecard` represents a complete workday for a single team member.
+     * You must provide the following values in your request to this
+     * endpoint:
+     *
+     * - `location_id`
+     * - `team_member_id`
+     * - `start_at`
+     *
+     * An attempt to create a new `Timecard` can result in a `BAD_REQUEST` error when:
+     * - The `status` of the new `Timecard` is `OPEN` and the team member has another
+     * timecard with an `OPEN` status.
+     * - The `start_at` date is in the future.
+     * - The `start_at` or `end_at` date overlaps another timecard for the same team member.
+     * - The `Break` instances are set in the request and a break `start_at`
+     * is before the `Timecard.start_at`, a break `end_at` is after
+     * the `Timecard.end_at`, or both.
+     *
+     * @param {Square.CreateTimecardRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.createTimecard({
+     *         idempotencyKey: "HIDSNG5KS478L",
+     *         timecard: {
+     *             locationId: "PAA1RJZZKXBFG",
+     *             startAt: "2019-01-25T03:11:00-05:00",
+     *             endAt: "2019-01-25T13:11:00-05:00",
+     *             wage: {
+     *                 title: "Barista",
+     *                 hourlyRate: {
+     *                     amount: 1100,
+     *                     currency: "USD"
+     *                 },
+     *                 tipEligible: true
+     *             },
+     *             breaks: [{
+     *                     startAt: "2019-01-25T06:11:00-05:00",
+     *                     endAt: "2019-01-25T06:16:00-05:00",
+     *                     breakTypeId: "REGS1EQR1TPZ5",
+     *                     name: "Tea Break",
+     *                     expectedDuration: "PT5M",
+     *                     isPaid: true
+     *                 }],
+     *             teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
+     *             declaredCashTipMoney: {
+     *                 amount: 500,
+     *                 currency: "USD"
+     *             }
+     *         }
+     *     })
+     */
+    public async createTimecard(
+        request: Square.CreateTimecardRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.CreateTimecardResponse> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/labor/timecards",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.CreateTimecardRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.CreateTimecardResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError("Timeout exceeded when calling POST /v2/labor/timecards.");
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Returns a paginated list of `Timecard` records for a business.
+     * The list to be returned can be filtered by:
+     * - Location IDs
+     * - Team member IDs
+     * - Timecard status (`OPEN` or `CLOSED`)
+     * - Timecard start
+     * - Timecard end
+     * - Workday details
+     *
+     * The list can be sorted by:
+     * - `START_AT`
+     * - `END_AT`
+     * - `CREATED_AT`
+     * - `UPDATED_AT`
+     *
+     * @param {Square.SearchTimecardsRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.searchTimecards({
+     *         query: {
+     *             filter: {
+     *                 workday: {
+     *                     dateRange: {
+     *                         startDate: "2019-01-20",
+     *                         endDate: "2019-02-03"
+     *                     },
+     *                     matchTimecardsBy: "START_AT",
+     *                     defaultTimezone: "America/Los_Angeles"
+     *                 }
+     *             }
+     *         },
+     *         limit: 100
+     *     })
+     */
+    public async searchTimecards(
+        request: Square.SearchTimecardsRequest = {},
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.SearchTimecardsResponse> {
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/labor/timecards/search",
+            ),
+            method: "POST",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.SearchTimecardsRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.SearchTimecardsResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError("Timeout exceeded when calling POST /v2/labor/timecards/search.");
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Returns a single `Timecard` specified by `id`.
+     *
+     * @param {Square.RetrieveTimecardRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.retrieveTimecard({
+     *         id: "id"
+     *     })
+     */
+    public async retrieveTimecard(
+        request: Square.RetrieveTimecardRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.RetrieveTimecardResponse> {
+        const { id } = request;
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                `v2/labor/timecards/${encodeURIComponent(id)}`,
+            ),
+            method: "GET",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.RetrieveTimecardResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError("Timeout exceeded when calling GET /v2/labor/timecards/{id}.");
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Updates an existing `Timecard`.
+     *
+     * When adding a `Break` to a `Timecard`, any earlier `Break` instances in the `Timecard` have
+     * the `end_at` property set to a valid RFC-3339 datetime string.
+     *
+     * When closing a `Timecard`, all `Break` instances in the `Timecard` must be complete with `end_at`
+     * set on each `Break`.
+     *
+     * @param {Square.UpdateTimecardRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.updateTimecard({
+     *         id: "id",
+     *         timecard: {
+     *             locationId: "PAA1RJZZKXBFG",
+     *             startAt: "2019-01-25T03:11:00-05:00",
+     *             endAt: "2019-01-25T13:11:00-05:00",
+     *             wage: {
+     *                 title: "Bartender",
+     *                 hourlyRate: {
+     *                     amount: 1500,
+     *                     currency: "USD"
+     *                 },
+     *                 tipEligible: true
+     *             },
+     *             breaks: [{
+     *                     id: "X7GAQYVVRRG6P",
+     *                     startAt: "2019-01-25T06:11:00-05:00",
+     *                     endAt: "2019-01-25T06:16:00-05:00",
+     *                     breakTypeId: "REGS1EQR1TPZ5",
+     *                     name: "Tea Break",
+     *                     expectedDuration: "PT5M",
+     *                     isPaid: true
+     *                 }],
+     *             status: "CLOSED",
+     *             version: 1,
+     *             teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
+     *             declaredCashTipMoney: {
+     *                 amount: 500,
+     *                 currency: "USD"
+     *             }
+     *         }
+     *     })
+     */
+    public async updateTimecard(
+        request: Square.UpdateTimecardRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.UpdateTimecardResponse> {
+        const { id, ..._body } = request;
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                `v2/labor/timecards/${encodeURIComponent(id)}`,
+            ),
+            method: "PUT",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.UpdateTimecardRequest.jsonOrThrow(_body, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.UpdateTimecardResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError("Timeout exceeded when calling PUT /v2/labor/timecards/{id}.");
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Deletes a `Timecard`.
+     *
+     * @param {Square.DeleteTimecardRequest} request
+     * @param {Labor.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.labor.deleteTimecard({
+     *         id: "id"
+     *     })
+     */
+    public async deleteTimecard(
+        request: Square.DeleteTimecardRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<Square.DeleteTimecardResponse> {
+        const { id } = request;
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                `v2/labor/timecards/${encodeURIComponent(id)}`,
+            ),
+            method: "DELETE",
+            headers: {
+                Authorization: await this._getAuthorizationHeader(),
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "square",
+                "X-Fern-SDK-Version": "42.2.0",
+                "User-Agent": "square/42.2.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.DeleteTimecardResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                skipValidation: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.SquareError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.SquareTimeoutError("Timeout exceeded when calling DELETE /v2/labor/timecards/{id}.");
+            case "unknown":
+                throw new errors.SquareError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    protected async _getAuthorizationHeader(): Promise<string | undefined> {
+        const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SQUARE_TOKEN"];
+        if (bearer != null) {
+            return `Bearer ${bearer}`;
+        }
+
+        return undefined;
     }
 }

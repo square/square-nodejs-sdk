@@ -75,9 +75,9 @@ export interface CatalogItem {
      * Maximum: 6 item options.
      */
     itemOptions?: Square.CatalogItemOptionForItem[] | null;
-    /** Deprecated; see go/ecomUriUseCases. A URI pointing to a published e-commerce product page for the Item. */
+    /** Deprecated. A URI pointing to a published e-commerce product page for the Item. */
     ecomUri?: string | null;
-    /** Deprecated; see go/ecomUriUseCases. A comma-separated list of encoded URIs pointing to a set of published e-commerce images for the Item. */
+    /** Deprecated. A comma-separated list of encoded URIs pointing to a set of published e-commerce images for the Item. */
     ecomImageUris?: string[] | null;
     /**
      * The IDs of images associated with this `CatalogItem` instance.

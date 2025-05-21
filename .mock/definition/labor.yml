@@ -1,0 +1,1001 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    CreateScheduledShift:
+      path: /v2/labor/scheduled-shifts
+      method: POST
+      auth: true
+      docs: >-
+        Creates a scheduled shift by providing draft shift details such as job
+        ID,
+
+        team member assignment, and start and end times.
+
+
+        The following `draft_shift_details` fields are required:
+
+        - `location_id`
+
+        - `job_id`
+
+        - `start_at`
+
+        - `end_at`
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateScheduledShift
+      request:
+        name: CreateScheduledShiftRequest
+        body:
+          properties:
+            idempotency_key:
+              type: optional<string>
+              docs: >-
+                A unique identifier for the `CreateScheduledShift` request, used
+                to ensure the
+
+                [idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)
+
+                of the operation.
+              validation:
+                maxLength: 128
+            scheduled_shift:
+              type: root.ScheduledShift
+              docs: >-
+                The scheduled shift with `draft_shift_details`.
+
+                If needed, call
+                [ListLocations](api-endpoint:Locations-ListLocations) to get
+                location IDs,
+
+                [ListJobs](api-endpoint:Team-ListJobs) to get job IDs, and
+                [SearchTeamMembers](api-endpoint:Team-SearchTeamMembers)
+
+                to get team member IDs and current job assignments.
+
+
+                The `start_at` and `end_at` timestamps must be provided in the
+                time zone + offset of the
+
+                shift location specified in `location_id`. Example for Pacific
+                Standard Time: 2024-10-31T12:30:00-08:00
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateScheduledShiftResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: HIDSNG5KS478L
+            scheduled_shift:
+              draft_shift_details:
+                team_member_id: ormj0jJJZ5OZIzxrZYJI
+                location_id: PAA1RJZZKXBFG
+                job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                start_at: '2019-01-25T03:11:00-05:00'
+                end_at: '2019-01-25T13:11:00-05:00'
+                notes: Dont forget to prep the vegetables
+                is_deleted: false
+          response:
+            body:
+              scheduled_shift:
+                id: K0YH4CV5462JB
+                draft_shift_details:
+                  team_member_id: ormj0jJJZ5OZIzxrZYJI
+                  location_id: PAA1RJZZKXBFG
+                  job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                  start_at: '2019-01-25T03:11:00-05:00'
+                  end_at: '2019-01-25T13:11:00-05:00'
+                  notes: Dont forget to prep the vegetables
+                  is_deleted: false
+                  timezone: America/New_York
+                published_shift_details:
+                  team_member_id: team_member_id
+                  location_id: location_id
+                  job_id: job_id
+                  start_at: start_at
+                  end_at: end_at
+                  notes: notes
+                  is_deleted: true
+                  timezone: timezone
+                version: 1
+                created_at: '2019-02-25T03:11:00-05:00'
+                updated_at: '2019-02-25T03:11:00-05:00'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    BulkPublishScheduledShifts:
+      path: /v2/labor/scheduled-shifts/bulk-publish
+      method: POST
+      auth: true
+      docs: >-
+        Publishes 1 - 100 scheduled shifts. This endpoint takes a map of
+        individual publish
+
+        requests and returns a map of responses. When a scheduled shift is
+        published, Square keeps
+
+        the `draft_shift_details` field as is and copies it to the
+        `published_shift_details` field.
+
+
+        The minimum `start_at` and maximum `end_at` timestamps of all shifts in
+        a
+
+        `BulkPublishScheduledShifts` request must fall within a two-week period.
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkPublishScheduledShifts
+      request:
+        name: BulkPublishScheduledShiftsRequest
+        body:
+          properties:
+            scheduled_shifts:
+              type: map<string, root.BulkPublishScheduledShiftsData>
+              docs: >-
+                A map of 1 to 100 key-value pairs that represent individual
+                publish requests.
+
+
+                - Each key is the ID of a scheduled shift you want to publish.
+
+                - Each value is a `BulkPublishScheduledShiftsData` object that
+                contains the
+
+                `version` field or is an empty object.
+            scheduled_shift_notification_audience:
+              type: optional<root.ScheduledShiftNotificationAudience>
+              docs: >-
+                Indicates whether Square should send email notifications to team
+                members and
+
+                which team members should receive the notifications. This
+                setting applies to all shifts
+
+                specified in the bulk operation. The default value is
+                `AFFECTED`.
+
+                See
+                [ScheduledShiftNotificationAudience](#type-scheduledshiftnotificationaudience)
+                for possible values
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkPublishScheduledShiftsResponse
+        status-code: 200
+      examples:
+        - request:
+            scheduled_shifts:
+              key: {}
+            scheduled_shift_notification_audience: AFFECTED
+          response:
+            body:
+              responses:
+                idp_key_1:
+                  scheduled_shift:
+                    id: K0YH4CV5462JB
+                    draft_shift_details:
+                      team_member_id: ormj0jJJZ5OZIzxrZYJI
+                      location_id: PAA1RJZZKXBFG
+                      job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                      start_at: '2019-03-25T03:11:00-05:00'
+                      end_at: '2019-03-25T13:18:00-05:00'
+                      notes: Don't forget to prep the vegetables
+                      is_deleted: false
+                      timezone: America/New_York
+                    published_shift_details:
+                      team_member_id: ormj0jJJZ5OZIzxrZYJI
+                      location_id: PAA1RJZZKXBFG
+                      job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                      start_at: '2019-03-25T03:11:00-05:00'
+                      end_at: '2019-03-25T13:18:00-05:00'
+                      notes: Don't forget to prep the vegetables
+                      is_deleted: false
+                      timezone: America/New_York
+                    version: 3
+                    created_at: '2019-02-25T03:11:00-05:00'
+                    updated_at: '2019-02-25T03:11:15-05:00'
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                idp_key_2:
+                  errors:
+                    - category: INVALID_REQUEST_ERROR
+                      code: INVALID_VALUE
+                      detail: Scheduled shift with id 'scheduled-shift-2' not found
+                      field: scheduled-shifts.scheduled-shift-2
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    SearchScheduledShifts:
+      path: /v2/labor/scheduled-shifts/search
+      method: POST
+      auth: true
+      docs: >-
+        Returns a paginated list of scheduled shifts, with optional filter and
+        sort settings.
+
+        By default, results are sorted by `start_at` in ascending order.
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchScheduledShifts
+      request:
+        name: SearchScheduledShiftsRequest
+        body:
+          properties:
+            query:
+              type: optional<root.ScheduledShiftQuery>
+              docs: Query conditions used to filter and sort the results.
+            limit:
+              type: optional<integer>
+              docs: >-
+                The maximum number of results to return in a single response
+                page. The default value is 50.
+              validation:
+                min: 1
+                max: 50
+            cursor:
+              type: optional<string>
+              docs: >-
+                The pagination cursor returned by the previous call to this
+                endpoint. Provide
+
+                this cursor to retrieve the next page of results for your
+                original request. For more
+
+                information, see
+                [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination).
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchScheduledShiftsResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                assignment_status: ASSIGNED
+              sort:
+                field: CREATED_AT
+                order: ASC
+            limit: 2
+            cursor: xoxp-1234-5678-90123
+          response:
+            body:
+              scheduled_shifts:
+                - id: K0YH4CV5462JB
+                  draft_shift_details:
+                    team_member_id: ormj0jJJZ5OZIzxrZYJI
+                    location_id: PAA1RJZZKXBFG
+                    job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                    start_at: '2019-01-25T03:11:00-05:00'
+                    end_at: '2019-01-25T13:11:00-05:00'
+                    notes: Dont forget to prep the vegetables
+                    is_deleted: false
+                    timezone: America/New_York
+                  version: 1
+                  created_at: '2019-02-25T03:11:00-05:00'
+                  updated_at: '2019-02-25T03:11:00-05:00'
+              cursor: xoxp-123-2123-123232
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    RetrieveScheduledShift:
+      path: /v2/labor/scheduled-shifts/{id}
+      method: GET
+      auth: true
+      docs: Retrieves a scheduled shift by ID.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveScheduledShift
+      request:
+        name: RetrieveScheduledShiftRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The ID of the scheduled shift to retrieve.
+      response:
+        docs: Success
+        type: root.RetrieveScheduledShiftResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              scheduled_shift:
+                id: K0YH4CV5462JB
+                draft_shift_details:
+                  team_member_id: ormj0jJJZ5OZIzxrZYJI
+                  location_id: PAA1RJZZKXBFG
+                  job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                  start_at: '2019-03-25T03:11:00-05:00'
+                  end_at: '2019-03-25T13:18:00-05:00'
+                  notes: Don't forget to prep the vegetables
+                  is_deleted: false
+                  timezone: America/New_York
+                published_shift_details:
+                  team_member_id: team_member_id
+                  location_id: location_id
+                  job_id: job_id
+                  start_at: start_at
+                  end_at: end_at
+                  notes: notes
+                  is_deleted: true
+                  timezone: timezone
+                version: 2
+                created_at: '2019-02-25T03:11:00-05:00'
+                updated_at: '2019-02-25T03:11:15-05:00'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    UpdateScheduledShift:
+      path: /v2/labor/scheduled-shifts/{id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates the draft shift details for a scheduled shift. This endpoint
+        supports
+
+        sparse updates, so only new, changed, or removed fields are required in
+        the request.
+
+        You must publish the shift to make updates public.
+
+
+        You can make the following updates to `draft_shift_details`:
+
+        - Change the `location_id`, `job_id`, `start_at`, and `end_at` fields.
+
+        - Add, change, or clear the `team_member_id` and `notes` fields. To
+        clear these fields,
+
+        set the value to null.
+
+        - Change the `is_deleted` field. To delete a scheduled shift, set
+        `is_deleted` to true
+
+        and then publish the shift.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateScheduledShift
+      request:
+        name: UpdateScheduledShiftRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The ID of the scheduled shift to update.
+        body:
+          properties:
+            scheduled_shift:
+              type: root.ScheduledShift
+              docs: >-
+                The scheduled shift with any updates in the
+                `draft_shift_details` field.
+
+                If needed, call
+                [ListLocations](api-endpoint:Locations-ListLocations) to get
+                location IDs,
+
+                [ListJobs](api-endpoint:Team-ListJobs) to get job IDs, and
+                [SearchTeamMembers](api-endpoint:Team-SearchTeamMembers)
+
+                to get team member IDs and current job assignments. Updates made
+                to `published_shift_details`
+
+                are ignored.
+
+
+                If provided, the `start_at` and `end_at` timestamps must be in
+                the time zone + offset of the
+
+                shift location specified in `location_id`. Example for Pacific
+                Standard Time: 2024-10-31T12:30:00-08:00
+
+
+                To enable [optimistic
+                concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)
+
+                control for the request, provide the current version of the
+                shift in the `version` field.
+
+                If the provided version doesn't match the server version, the
+                request fails. If `version` is
+
+                omitted, Square executes a blind write, potentially overwriting
+                data from another publish request.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateScheduledShiftResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          request:
+            scheduled_shift:
+              draft_shift_details:
+                team_member_id: ormj0jJJZ5OZIzxrZYJI
+                location_id: PAA1RJZZKXBFG
+                job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                start_at: '2019-03-25T03:11:00-05:00'
+                end_at: '2019-03-25T13:18:00-05:00'
+                notes: Dont forget to prep the vegetables
+                is_deleted: false
+              version: 1
+          response:
+            body:
+              scheduled_shift:
+                id: K0YH4CV5462JB
+                draft_shift_details:
+                  team_member_id: ormj0jJJZ5OZIzxrZYJI
+                  location_id: PAA1RJZZKXBFG
+                  job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                  start_at: '2019-03-25T03:11:00-05:00'
+                  end_at: '2019-03-25T13:18:00-05:00'
+                  notes: Dont forget to prep the vegetables
+                  is_deleted: false
+                  timezone: America/New_York
+                published_shift_details:
+                  team_member_id: team_member_id
+                  location_id: location_id
+                  job_id: job_id
+                  start_at: start_at
+                  end_at: end_at
+                  notes: notes
+                  is_deleted: true
+                  timezone: timezone
+                version: 2
+                created_at: '2019-02-25T03:11:00-05:00'
+                updated_at: '2019-02-25T03:11:15-05:00'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    PublishScheduledShift:
+      path: /v2/labor/scheduled-shifts/{id}/publish
+      method: POST
+      auth: true
+      docs: >-
+        Publishes a scheduled shift. When a scheduled shift is published, Square
+        keeps the
+
+        `draft_shift_details` field as is and copies it to the
+        `published_shift_details` field.
+      source:
+        openapi: openapi/openapi.json
+      display-name: PublishScheduledShift
+      request:
+        name: PublishScheduledShiftRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The ID of the scheduled shift to publish.
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique identifier for the `PublishScheduledShift` request,
+                used to ensure the
+
+                [idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)
+
+                of the operation.
+              validation:
+                minLength: 1
+                maxLength: 128
+            version:
+              type: optional<integer>
+              docs: >-
+                The current version of the scheduled shift, used to enable
+                [optimistic
+                concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)
+
+                control. If the provided version doesn't match the server
+                version, the request fails.
+
+                If omitted, Square executes a blind write, potentially
+                overwriting data from another publish request.
+            scheduled_shift_notification_audience:
+              type: optional<root.ScheduledShiftNotificationAudience>
+              docs: >-
+                Indicates whether Square should send an email notification to
+                team members and
+
+                which team members should receive the notification. The default
+                value is `AFFECTED`.
+
+                See
+                [ScheduledShiftNotificationAudience](#type-scheduledshiftnotificationaudience)
+                for possible values
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.PublishScheduledShiftResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          request:
+            idempotency_key: HIDSNG5KS478L
+            version: 2
+            scheduled_shift_notification_audience: ALL
+          response:
+            body:
+              scheduled_shift:
+                id: K0YH4CV5462JB
+                draft_shift_details:
+                  team_member_id: ormj0jJJZ5OZIzxrZYJI
+                  location_id: PAA1RJZZKXBFG
+                  job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                  start_at: '2019-01-25T03:11:00-05:00'
+                  end_at: '2019-01-25T13:11:00-05:00'
+                  notes: Dont forget to prep the vegetables
+                  is_deleted: false
+                  timezone: America/New_York
+                published_shift_details:
+                  team_member_id: ormj0jJJZ5OZIzxrZYJI
+                  location_id: PAA1RJZZKXBFG
+                  job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                  start_at: '2019-01-25T03:11:00-05:00'
+                  end_at: '2019-01-25T13:11:00-05:00'
+                  notes: Dont forget to prep the vegetables
+                  is_deleted: false
+                  timezone: America/New_York
+                version: 2
+                created_at: '2019-02-25T03:11:00-05:00'
+                updated_at: '2019-02-25T03:11:00-05:00'
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    CreateTimecard:
+      path: /v2/labor/timecards
+      method: POST
+      auth: true
+      docs: >-
+        Creates a new `Timecard`.
+
+
+        A `Timecard` represents a complete workday for a single team member.
+
+        You must provide the following values in your request to this
+
+        endpoint:
+
+
+        - `location_id`
+
+        - `team_member_id`
+
+        - `start_at`
+
+
+        An attempt to create a new `Timecard` can result in a `BAD_REQUEST`
+        error when:
+
+        - The `status` of the new `Timecard` is `OPEN` and the team member has
+        another
+
+        timecard with an `OPEN` status.
+
+        - The `start_at` date is in the future.
+
+        - The `start_at` or `end_at` date overlaps another timecard for the same
+        team member.
+
+        - The `Break` instances are set in the request and a break `start_at`
+
+        is before the `Timecard.start_at`, a break `end_at` is after
+
+        the `Timecard.end_at`, or both.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateTimecard
+      request:
+        name: CreateTimecardRequest
+        body:
+          properties:
+            idempotency_key:
+              type: optional<string>
+              docs: >-
+                A unique string value to ensure the idempotency of the
+                operation.
+              validation:
+                maxLength: 128
+            timecard:
+              type: root.Timecard
+              docs: The `Timecard` to be created.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateTimecardResponse
+        status-code: 200
+      examples:
+        - request:
+            idempotency_key: HIDSNG5KS478L
+            timecard:
+              location_id: PAA1RJZZKXBFG
+              start_at: '2019-01-25T03:11:00-05:00'
+              end_at: '2019-01-25T13:11:00-05:00'
+              wage:
+                title: Barista
+                hourly_rate:
+                  amount: 1100
+                  currency: USD
+                tip_eligible: true
+              breaks:
+                - start_at: '2019-01-25T06:11:00-05:00'
+                  end_at: '2019-01-25T06:16:00-05:00'
+                  break_type_id: REGS1EQR1TPZ5
+                  name: Tea Break
+                  expected_duration: PT5M
+                  is_paid: true
+              team_member_id: ormj0jJJZ5OZIzxrZYJI
+              declared_cash_tip_money:
+                amount: 500
+                currency: USD
+          response:
+            body:
+              timecard:
+                id: K0YH4CV5462JB
+                location_id: PAA1RJZZKXBFG
+                timezone: America/New_York
+                start_at: '2019-01-25T03:11:00-05:00'
+                end_at: '2019-01-25T13:11:00-05:00'
+                wage:
+                  title: Barista
+                  hourly_rate:
+                    amount: 1100
+                    currency: USD
+                  job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                  tip_eligible: true
+                breaks:
+                  - id: X7GAQYVVRRG6P
+                    start_at: '2019-01-25T06:11:00-05:00'
+                    end_at: '2019-01-25T06:16:00-05:00'
+                    break_type_id: REGS1EQR1TPZ5
+                    name: Tea Break
+                    expected_duration: PT5M
+                    is_paid: true
+                status: CLOSED
+                version: 1
+                created_at: '2019-02-28T00:39:02Z'
+                updated_at: '2019-02-28T00:39:02Z'
+                team_member_id: ormj0jJJZ5OZIzxrZYJI
+                declared_cash_tip_money:
+                  amount: 500
+                  currency: USD
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    SearchTimecards:
+      path: /v2/labor/timecards/search
+      method: POST
+      auth: true
+      docs: |-
+        Returns a paginated list of `Timecard` records for a business.
+        The list to be returned can be filtered by:
+        - Location IDs
+        - Team member IDs
+        - Timecard status (`OPEN` or `CLOSED`)
+        - Timecard start
+        - Timecard end
+        - Workday details
+
+        The list can be sorted by:
+        - `START_AT`
+        - `END_AT`
+        - `CREATED_AT`
+        - `UPDATED_AT`
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchTimecards
+      request:
+        name: SearchTimecardsRequest
+        body:
+          properties:
+            query:
+              type: optional<root.TimecardQuery>
+              docs: Query filters.
+            limit:
+              type: optional<integer>
+              docs: The number of resources in a page (200 by default).
+              validation:
+                min: 1
+                max: 200
+            cursor:
+              type: optional<string>
+              docs: An opaque cursor for fetching the next page.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchTimecardsResponse
+        status-code: 200
+      examples:
+        - request:
+            query:
+              filter:
+                workday:
+                  date_range:
+                    start_date: '2019-01-20'
+                    end_date: '2019-02-03'
+                  match_timecards_by: START_AT
+                  default_timezone: America/Los_Angeles
+            limit: 100
+          response:
+            body:
+              timecards:
+                - id: X714F3HA6D1PT
+                  location_id: PAA1RJZZKXBFG
+                  timezone: America/New_York
+                  start_at: '2019-01-21T03:11:00-05:00'
+                  end_at: '2019-01-21T13:11:00-05:00'
+                  wage:
+                    title: Barista
+                    hourly_rate:
+                      amount: 1100
+                      currency: USD
+                    job_id: FzbJAtt9qEWncK1BWgVCxQ6M
+                    tip_eligible: true
+                  breaks:
+                    - id: SJW7X6AKEJQ65
+                      start_at: '2019-01-21T06:11:00-05:00'
+                      end_at: '2019-01-21T06:11:00-05:00'
+                      break_type_id: REGS1EQR1TPZ5
+                      name: Tea Break
+                      expected_duration: PT10M
+                      is_paid: true
+                  status: CLOSED
+                  version: 6
+                  created_at: '2019-01-24T01:12:03Z'
+                  updated_at: '2019-02-07T22:21:08Z'
+                  team_member_id: ormj0jJJZ5OZIzxrZYJI
+                  declared_cash_tip_money:
+                    amount: 500
+                    currency: USD
+                - id: GDHYBZYWK0P2V
+                  location_id: PAA1RJZZKXBFG
+                  timezone: America/New_York
+                  start_at: '2019-01-22T12:02:00-05:00'
+                  end_at: '2019-01-22T13:02:00-05:00'
+                  wage:
+                    title: Cook
+                    hourly_rate:
+                      amount: 1600
+                      currency: USD
+                    job_id: gcbz15vKGnMKmaWJJ152kjim
+                    tip_eligible: true
+                  breaks:
+                    - id: BKS6VR7WR748A
+                      start_at: '2019-01-22T14:30:00-05:00'
+                      end_at: '2019-01-22T14:40:00-05:00'
+                      break_type_id: WQX00VR99F53J
+                      name: Tea Break
+                      expected_duration: PT10M
+                      is_paid: true
+                    - id: BQFEZSHFZSC51
+                      start_at: '2019-01-22T12:30:00-05:00'
+                      end_at: '2019-01-22T12:44:00-05:00'
+                      break_type_id: P6Q468ZFRN1AC
+                      name: Coffee Break
+                      expected_duration: PT15M
+                      is_paid: false
+                  status: CLOSED
+                  version: 16
+                  created_at: '2019-01-23T23:32:45Z'
+                  updated_at: '2019-01-24T00:56:25Z'
+                  team_member_id: 33fJchumvVdJwxV0H6L9
+                  declared_cash_tip_money:
+                    amount: 0
+                    currency: USD
+              cursor: cursor
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    RetrieveTimecard:
+      path: /v2/labor/timecards/{id}
+      method: GET
+      auth: true
+      docs: Returns a single `Timecard` specified by `id`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveTimecard
+      request:
+        name: RetrieveTimecardRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The UUID for the `Timecard` being retrieved.
+      response:
+        docs: Success
+        type: root.RetrieveTimecardResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              timecard:
+                id: T35HMQSN89SV4
+                location_id: PAA1RJZZKXBFG
+                timezone: America/New_York
+                start_at: '2019-02-23T18:00:00-05:00'
+                end_at: '2019-02-23T21:00:00-05:00'
+                wage:
+                  title: Cashier
+                  hourly_rate:
+                    amount: 1457
+                    currency: USD
+                  job_id: N4YKVLzFj3oGtNocqoYHYpW3
+                  tip_eligible: true
+                breaks:
+                  - id: M9BBKEPQAQD2T
+                    start_at: '2019-02-23T19:00:00-05:00'
+                    end_at: '2019-02-23T20:00:00-05:00'
+                    break_type_id: 92EPDRQKJ5088
+                    name: Lunch Break
+                    expected_duration: PT1H
+                    is_paid: true
+                status: CLOSED
+                version: 1
+                created_at: '2019-02-27T00:12:12Z'
+                updated_at: '2019-02-27T00:12:12Z'
+                team_member_id: D71KRMQof6cXGUW0aAv7
+                declared_cash_tip_money:
+                  amount: 500
+                  currency: USD
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    UpdateTimecard:
+      path: /v2/labor/timecards/{id}
+      method: PUT
+      auth: true
+      docs: >-
+        Updates an existing `Timecard`.
+
+
+        When adding a `Break` to a `Timecard`, any earlier `Break` instances in
+        the `Timecard` have
+
+        the `end_at` property set to a valid RFC-3339 datetime string.
+
+
+        When closing a `Timecard`, all `Break` instances in the `Timecard` must
+        be complete with `end_at`
+
+        set on each `Break`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateTimecard
+      request:
+        name: UpdateTimecardRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The ID of the object being updated.
+        body:
+          properties:
+            timecard:
+              type: root.Timecard
+              docs: The updated `Timecard` object.
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateTimecardResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          request:
+            timecard:
+              location_id: PAA1RJZZKXBFG
+              start_at: '2019-01-25T03:11:00-05:00'
+              end_at: '2019-01-25T13:11:00-05:00'
+              wage:
+                title: Bartender
+                hourly_rate:
+                  amount: 1500
+                  currency: USD
+                tip_eligible: true
+              breaks:
+                - id: X7GAQYVVRRG6P
+                  start_at: '2019-01-25T06:11:00-05:00'
+                  end_at: '2019-01-25T06:16:00-05:00'
+                  break_type_id: REGS1EQR1TPZ5
+                  name: Tea Break
+                  expected_duration: PT5M
+                  is_paid: true
+              status: CLOSED
+              version: 1
+              team_member_id: ormj0jJJZ5OZIzxrZYJI
+              declared_cash_tip_money:
+                amount: 500
+                currency: USD
+          response:
+            body:
+              timecard:
+                id: K0YH4CV5462JB
+                location_id: PAA1RJZZKXBFG
+                timezone: America/New_York
+                start_at: '2019-01-25T03:11:00-05:00'
+                end_at: '2019-01-25T13:11:00-05:00'
+                wage:
+                  title: Bartender
+                  hourly_rate:
+                    amount: 1500
+                    currency: USD
+                  job_id: dZtrPh5GSDGugyXGByesVp51
+                  tip_eligible: true
+                breaks:
+                  - id: X7GAQYVVRRG6P
+                    start_at: '2019-01-25T06:11:00-05:00'
+                    end_at: '2019-01-25T06:16:00-05:00'
+                    break_type_id: REGS1EQR1TPZ5
+                    name: Tea Break
+                    expected_duration: PT5M
+                    is_paid: true
+                status: CLOSED
+                version: 2
+                created_at: '2019-02-28T00:39:02Z'
+                updated_at: '2019-02-28T00:42:41Z'
+                team_member_id: ormj0jJJZ5OZIzxrZYJI
+                declared_cash_tip_money:
+                  amount: 500
+                  currency: USD
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    DeleteTimecard:
+      path: /v2/labor/timecards/{id}
+      method: DELETE
+      auth: true
+      docs: Deletes a `Timecard`.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteTimecard
+      request:
+        name: DeleteTimecardRequest
+        path-parameters:
+          id:
+            type: string
+            docs: The UUID for the `Timecard` being deleted.
+      response:
+        docs: Success
+        type: root.DeleteTimecardResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            id: id
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

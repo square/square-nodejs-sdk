@@ -26,6 +26,12 @@ export const CatalogItemModifierListInfo: core.serialization.ObjectSchema<
     ),
     enabled: core.serialization.boolean().optionalNullable(),
     ordinal: core.serialization.number().optionalNullable(),
+    allowQuantities: core.serialization.property("allow_quantities", core.serialization.unknown().optional()),
+    isConversational: core.serialization.property("is_conversational", core.serialization.unknown().optional()),
+    hiddenFromCustomerOverride: core.serialization.property(
+        "hidden_from_customer_override",
+        core.serialization.unknown().optional(),
+    ),
 });
 
 export declare namespace CatalogItemModifierListInfo {
@@ -36,5 +42,8 @@ export declare namespace CatalogItemModifierListInfo {
         max_selected_modifiers?: (number | null) | null;
         enabled?: (boolean | null) | null;
         ordinal?: (number | null) | null;
+        allow_quantities?: unknown | null;
+        is_conversational?: unknown | null;
+        hidden_from_customer_override?: unknown | null;
     }
 }

@@ -8,6 +8,8 @@
 export interface CatalogModifierOverride {
     /** The ID of the `CatalogModifier` whose default behavior is being overridden. */
     modifierId: string;
-    /** If `true`, this `CatalogModifier` should be selected by default for this `CatalogItem`. */
+    /** __Deprecated__: Use `on_by_default_override` instead. */
     onByDefault?: boolean | null;
+    hiddenOnlineOverride?: unknown;
+    onByDefaultOverride?: unknown;
 }

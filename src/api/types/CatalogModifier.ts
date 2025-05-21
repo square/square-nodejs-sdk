@@ -5,13 +5,18 @@
 import * as Square from "../index";
 
 /**
- * A modifier applicable to items at the time of sale. An example of a modifier is a Cheese add-on to a Burger item.
+ * A modifier that can be applied to items at the time of sale. For example, a cheese modifier for a burger, or a flavor modifier for a serving of ice cream.
  */
 export interface CatalogModifier {
     /** The modifier name.  This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points. */
     name?: string | null;
     /** The modifier price. */
     priceMoney?: Square.Money;
+    /**
+     * When `true`, this modifier is selected by default when displaying the modifier list.
+     * This setting can be overridden at the item level using `CatalogModifierListInfo.modifier_overrides`.
+     */
+    onByDefault?: boolean | null;
     /** Determines where this `CatalogModifier` appears in the `CatalogModifierList`. */
     ordinal?: number | null;
     /** The ID of the `CatalogModifierList` associated with this modifier. */
@@ -23,4 +28,6 @@ export interface CatalogModifier {
      * Currently this image is not displayed by Square, but is free to be displayed in 3rd party applications.
      */
     imageId?: string | null;
+    /** When `true`, this modifier is hidden from online ordering channels. This setting can be overridden at the item level using `CatalogModifierListInfo.modifier_overrides`. */
+    hiddenOnline?: boolean | null;
 }

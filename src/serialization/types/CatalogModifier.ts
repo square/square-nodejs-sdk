@@ -12,6 +12,7 @@ export const CatalogModifier: core.serialization.ObjectSchema<serializers.Catalo
     core.serialization.object({
         name: core.serialization.string().optionalNullable(),
         priceMoney: core.serialization.property("price_money", Money.optional()),
+        onByDefault: core.serialization.property("on_by_default", core.serialization.boolean().optionalNullable()),
         ordinal: core.serialization.number().optionalNullable(),
         modifierListId: core.serialization.property("modifier_list_id", core.serialization.string().optionalNullable()),
         locationOverrides: core.serialization.property(
@@ -19,15 +20,18 @@ export const CatalogModifier: core.serialization.ObjectSchema<serializers.Catalo
             core.serialization.list(ModifierLocationOverrides).optionalNullable(),
         ),
         imageId: core.serialization.property("image_id", core.serialization.string().optionalNullable()),
+        hiddenOnline: core.serialization.property("hidden_online", core.serialization.boolean().optionalNullable()),
     });
 
 export declare namespace CatalogModifier {
     export interface Raw {
         name?: (string | null) | null;
         price_money?: Money.Raw | null;
+        on_by_default?: (boolean | null) | null;
         ordinal?: (number | null) | null;
         modifier_list_id?: (string | null) | null;
         location_overrides?: (ModifierLocationOverrides.Raw[] | null) | null;
         image_id?: (string | null) | null;
+        hidden_online?: (boolean | null) | null;
     }
 }

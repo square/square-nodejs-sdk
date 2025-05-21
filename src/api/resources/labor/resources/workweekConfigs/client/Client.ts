@@ -16,7 +16,7 @@ export declare namespace WorkweekConfigs {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-04-16";
+        version?: "2025-05-21";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace WorkweekConfigs {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-04-16";
+        version?: "2025-05-21";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -71,7 +71,7 @@ export class WorkweekConfigs {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-04-16",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
                     "X-Fern-SDK-Version": "42.2.0",
@@ -159,7 +159,7 @@ export class WorkweekConfigs {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-04-16",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
                 "X-Fern-SDK-Version": "42.2.0",

@@ -146,7 +146,7 @@
             "name": "Square-Version",
             "description": "Square Connect API versions",
             "schema": {
-              "default": "2025-04-16"
+              "default": "2025-05-21"
             }
           }
         ],
@@ -2734,7 +2734,7 @@
       },
       "Break": {
         "type": "object",
-        "description": "A record of an employee's break during a shift.",
+        "description": "A record of a team member's break on a [timecard](entity:Timecard).",
         "x-release-status": "PUBLIC",
         "required": [
           "start_at",
@@ -2750,17 +2750,17 @@
           },
           "start_at": {
             "type": "string",
-            "description": "RFC 3339; follows the same timezone information as `Shift`. Precision up to\nthe minute is respected; seconds are truncated.",
+            "description": "RFC 3339; follows the same timezone information as the [timecard](entity:Timecard). Precision up to\nthe minute is respected; seconds are truncated.",
             "minLength": 1
           },
           "end_at": {
             "type": "string",
-            "description": "RFC 3339; follows the same timezone information as `Shift`. Precision up to\nthe minute is respected; seconds are truncated.",
+            "description": "RFC 3339; follows the same timezone information as the [timecard](entity:Timecard). Precision up to\nthe minute is respected; seconds are truncated.",
             "nullable": true
           },
           "break_type_id": {
             "type": "string",
-            "description": "The `BreakType` that this `Break` was templated on.",
+            "description": "The [BreakType](entity:BreakType) that this break was templated on.",
             "minLength": 1
           },
           "name": {
@@ -2770,7 +2770,7 @@
           },
           "expected_duration": {
             "type": "string",
-            "description": "Format: RFC-3339 P[n]Y[n]M[n]DT[n]H[n]M[n]S. The expected length of\nthe break.",
+            "description": "Format: RFC-3339 P[n]Y[n]M[n]DT[n]H[n]M[n]S. The expected length of\nthe break.\n\nExample for break expected duration of 15 minutes: PT15M",
             "minLength": 1
           },
           "is_paid": {
@@ -2781,7 +2781,7 @@
       },
       "BreakType": {
         "type": "object",
-        "description": "A defined break template that sets an expectation for possible `Break`\ninstances on a `Shift`.",
+        "description": "A template for a type of [break](entity:Break) that can be added to a\n[timecard](entity:Timecard), including the expected duration and paid status.",
         "x-release-status": "PUBLIC",
         "required": [
           "location_id",
@@ -2802,12 +2802,12 @@
           },
           "break_name": {
             "type": "string",
-            "description": "A human-readable name for this type of break. The name is displayed to\nemployees in Square products.",
+            "description": "A human-readable name for this type of break. The name is displayed to\nteam members in Square products.",
             "minLength": 1
           },
           "expected_duration": {
             "type": "string",
-            "description": "Format: RFC-3339 P[n]Y[n]M[n]DT[n]H[n]M[n]S. The expected length of\nthis break. Precision less than minutes is truncated.\n\nExample for break expected duration of 15 minutes: T15M",
+            "description": "Format: RFC-3339 P[n]Y[n]M[n]DT[n]H[n]M[n]S. The expected length of\nthis break. Precision less than minutes is truncated.\n\nExample for break expected duration of 15 minutes: PT15M",
             "minLength": 1
           },
           "is_paid": {
@@ -3656,6 +3656,113 @@
           "values": {
             "cover-count": {},
             "table-number": {}
+          }
+        }
+      },
+      "BulkPublishScheduledShiftsData": {
+        "type": "object",
+        "description": "Represents options for an individual publish request in a\n[BulkPublishScheduledShifts](api-endpoint:Labor-BulkPublishScheduledShifts)\noperation, provided as the value in a key-value pair.",
+        "x-release-status": "BETA",
+        "properties": {
+          "version": {
+            "type": "integer",
+            "description": "The current version of the scheduled shift, used to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)\ncontrol. If the provided version doesn't match the server version, the request fails.\nIf omitted, Square executes a blind write, potentially overwriting data from another publish request."
+          }
+        }
+      },
+      "BulkPublishScheduledShiftsRequest": {
+        "type": "object",
+        "description": "Represents a [BulkPublishScheduledShifts](api-endpoint:Labor-BulkPublishScheduledShifts) request.",
+        "x-release-status": "BETA",
+        "required": [
+          "scheduled_shifts"
+        ],
+        "properties": {
+          "scheduled_shifts": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/BulkPublishScheduledShiftsData"
+            },
+            "description": "A map of 1 to 100 key-value pairs that represent individual publish requests.\n\n- Each key is the ID of a scheduled shift you want to publish.\n- Each value is a `BulkPublishScheduledShiftsData` object that contains the\n`version` field or is an empty object."
+          },
+          "scheduled_shift_notification_audience": {
+            "$ref": "#/components/schemas/ScheduledShiftNotificationAudience",
+            "description": "Indicates whether Square should send email notifications to team members and\nwhich team members should receive the notifications. This setting applies to all shifts\nspecified in the bulk operation. The default value is `AFFECTED`.\nSee [ScheduledShiftNotificationAudience](#type-scheduledshiftnotificationaudience) for possible values",
+            "nullable": true
+          }
+        },
+        "example": {
+          "scheduled-shifts": {
+            "K0YH4CV5462JB": {
+              "version": 3
+            },
+            "scheduled-shift-2": {
+              "version": 2
+            }
+          },
+          "scheduled_shift_notification_audience": "AFFECTED"
+        }
+      },
+      "BulkPublishScheduledShiftsResponse": {
+        "type": "object",
+        "description": "Represents a [BulkPublishScheduledShifts](api-endpoint:Labor-BulkPublishScheduledShifts) response.\nEither `scheduled_shifts` or `errors` is present in the response.",
+        "x-release-status": "BETA",
+        "properties": {
+          "responses": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/PublishScheduledShiftResponse"
+            },
+            "description": "A map of key-value pairs that represent responses for individual publish requests.\nThe order of responses might differ from the order in which the requests were provided.\n\n- Each key is the scheduled shift ID that was specified for a publish request.\n- Each value is the corresponding response. If the request succeeds, the value is the\npublished scheduled shift. If the request fails, the value is an `errors` array containing\nany errors that occurred while processing the request."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any top-level errors that prevented the bulk operation from succeeding."
+          }
+        },
+        "example": {
+          "responses": {
+            "idp_key_1": {
+              "scheduled_shift": {
+                "created_at": "2019-02-25T03:11:00-05:00",
+                "draft_shift_details": {
+                  "end_at": "2019-03-25T13:18:00-05:00",
+                  "is_deleted": false,
+                  "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+                  "location_id": "PAA1RJZZKXBFG",
+                  "notes": "Don't forget to prep the vegetables",
+                  "start_at": "2019-03-25T03:11:00-05:00",
+                  "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+                  "timezone": "America/New_York"
+                },
+                "id": "K0YH4CV5462JB",
+                "published_shift_details": {
+                  "end_at": "2019-03-25T13:18:00-05:00",
+                  "is_deleted": false,
+                  "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+                  "location_id": "PAA1RJZZKXBFG",
+                  "notes": "Don't forget to prep the vegetables",
+                  "start_at": "2019-03-25T03:11:00-05:00",
+                  "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+                  "timezone": "America/New_York"
+                },
+                "updated_at": "2019-02-25T03:11:15-05:00",
+                "version": 3
+              }
+            },
+            "idp_key_2": {
+              "errors": [
+                {
+                  "category": "INVALID_REQUEST_ERROR",
+                  "code": "INVALID_VALUE",
+                  "detail": "Scheduled shift with id 'scheduled-shift-2' not found",
+                  "field": "scheduled-shifts.scheduled-shift-2"
+                }
+              ]
+            }
           }
         }
       },
@@ -7845,7 +7952,7 @@
           },
           "ecom_uri": {
             "type": "string",
-            "description": "Deprecated; see go/ecomUriUseCases. A URI pointing to a published e-commerce product page for the Item.",
+            "description": "Deprecated. A URI pointing to a published e-commerce product page for the Item.",
             "x-release-status": "DEPRECATED",
             "nullable": true
           },
@@ -7854,7 +7961,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Deprecated; see go/ecomUriUseCases. A comma-separated list of encoded URIs pointing to a set of published e-commerce images for the Item.",
+            "description": "Deprecated. A comma-separated list of encoded URIs pointing to a set of published e-commerce images for the Item.",
             "x-release-status": "DEPRECATED",
             "nullable": true
           },
@@ -8157,7 +8264,7 @@
       },
       "CatalogItemModifierListInfo": {
         "type": "object",
-        "description": "References a text-based modifier or a list of non text-based modifiers applied to a `CatalogItem` instance\nand specifies supported behaviors of the application.",
+        "description": "Controls how a modifier list is applied to a specific item. This object allows for item-specific customization of modifier list behavior\nand provides the ability to override global modifier list settings.",
         "x-release-status": "PUBLIC",
         "required": [
           "modifier_list_id"
@@ -8173,17 +8280,17 @@
             "items": {
               "$ref": "#/components/schemas/CatalogModifierOverride"
             },
-            "description": "A set of `CatalogModifierOverride` objects that override whether a given `CatalogModifier` is enabled by default.",
+            "description": "A set of `CatalogModifierOverride` objects that override default modifier settings for this item.",
             "nullable": true
           },
           "min_selected_modifiers": {
             "type": "integer",
-            "description": "If 0 or larger, the smallest number of `CatalogModifier`s that must be selected from this `CatalogModifierList`.\nThe default value is `-1`.\n\nWhen  `CatalogModifierList.selection_type` is `MULTIPLE`, `CatalogModifierListInfo.min_selected_modifiers=-1` \nand `CatalogModifierListInfo.max_selected_modifier=-1` means that from zero to the maximum number of modifiers of\nthe `CatalogModifierList` can be selected from the `CatalogModifierList`. \n\nWhen the `CatalogModifierList.selection_type` is `SINGLE`, `CatalogModifierListInfo.min_selected_modifiers=-1`\nand `CatalogModifierListInfo.max_selected_modifier=-1` means that exactly one modifier must be present in \nand can be selected from the `CatalogModifierList`",
+            "description": "The minimum number of modifiers that must be selected from this modifier list.\nValues:\n\n- 0: No selection is required.\n- -1: Default value, the attribute was not set by the client. When `max_selected_modifiers` is\nalso -1, use the minimum and maximum selection values set on the `CatalogItemModifierList`.\n- \u0026gt;0: The required minimum modifier selections. This can be larger than the total `CatalogModifiers` when `allow_quantities` is enabled.\n- \u0026lt; -1: Invalid. Treated as no selection required.",
             "nullable": true
           },
           "max_selected_modifiers": {
             "type": "integer",
-            "description": "If 0 or larger, the largest number of `CatalogModifier`s that can be selected from this `CatalogModifierList`.\nThe default value is `-1`.\n\nWhen  `CatalogModifierList.selection_type` is `MULTIPLE`, `CatalogModifierListInfo.min_selected_modifiers=-1` \nand `CatalogModifierListInfo.max_selected_modifier=-1` means that from zero to the maximum number of modifiers of\nthe `CatalogModifierList` can be selected from the `CatalogModifierList`. \n\nWhen the `CatalogModifierList.selection_type` is `SINGLE`, `CatalogModifierListInfo.min_selected_modifiers=-1`\nand `CatalogModifierListInfo.max_selected_modifier=-1` means that exactly one modifier must be present in \nand can be selected from the `CatalogModifierList`",
+            "description": "The maximum number of modifiers that can be selected.\nValues:\n\n- 0: No maximum limit.\n- -1: Default value, the attribute was not set by the client. When `min_selected_modifiers` is\nalso -1, use the minimum and maximum selection values set on the `CatalogItemModifierList`.\n- \u0026gt;0: The maximum total modifier selections. This can be larger than the total `CatalogModifiers` when `allow_quantities` is enabled.\n- \u0026lt; -1: Invalid. Treated as no maximum limit.",
             "nullable": true
           },
           "enabled": {
@@ -8194,6 +8301,24 @@
           "ordinal": {
             "type": "integer",
             "description": "The position of this `CatalogItemModifierListInfo` object within the `modifier_list_info` list applied \nto a `CatalogItem` instance.",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "allow_quantities": {
+            "$ref": "#/components/schemas/CatalogModifierToggleOverrideType",
+            "description": "Controls whether multiple quantities of the same modifier can be selected for this item.\n- `YES` means that every modifier in the `CatalogModifierList` can have multiple quantities\nselected for this item.\n- `NO` means that each modifier in the `CatalogModifierList` can be selected only once for this item.\n- `NOT_SET` means that the `allow_quantities` setting on the `CatalogModifierList` is obeyed.\nSee [CatalogModifierToggleOverrideType](#type-catalogmodifiertoggleoverridetype) for possible values",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "is_conversational": {
+            "$ref": "#/components/schemas/CatalogModifierToggleOverrideType",
+            "description": "Controls whether conversational mode is enabled for modifiers on this item.\n\n- `YES` means conversational mode is enabled for every modifier in the `CatalogModifierList`.\n- `NO` means that conversational mode is not enabled for any modifier in the `CatalogModifierList`.\n- `NOT_SET` means that conversational mode is not enabled for any modifier in the `CatalogModifierList`.\nSee [CatalogModifierToggleOverrideType](#type-catalogmodifiertoggleoverridetype) for possible values",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "hidden_from_customer_override": {
+            "$ref": "#/components/schemas/CatalogModifierToggleOverrideType",
+            "description": "Controls whether all modifiers for this item are hidden from customer receipts.\n- `YES` means that all modifiers in the `CatalogModifierList` are hidden from customer\nreceipts for this item.\n- `NO` means that all modifiers in the `CatalogModifierList` are visible on customer receipts for this item.\n- `NOT_SET` means that the `hidden_from_customer` setting on the `CatalogModifierList` is obeyed.\nSee [CatalogModifierToggleOverrideType](#type-catalogmodifiertoggleoverridetype) for possible values",
             "x-release-status": "BETA",
             "nullable": true
           }
@@ -8500,7 +8625,7 @@
       },
       "CatalogModifier": {
         "type": "object",
-        "description": "A modifier applicable to items at the time of sale. An example of a modifier is a Cheese add-on to a Burger item.",
+        "description": "A modifier that can be applied to items at the time of sale. For example, a cheese modifier for a burger, or a flavor modifier for a serving of ice cream.",
         "x-release-status": "PUBLIC",
         "properties": {
           "name": {
@@ -8512,6 +8637,12 @@
           "price_money": {
             "$ref": "#/components/schemas/Money",
             "description": "The modifier price.",
+            "nullable": true
+          },
+          "on_by_default": {
+            "type": "boolean",
+            "description": "When `true`, this modifier is selected by default when displaying the modifier list.\nThis setting can be overridden at the item level using `CatalogModifierListInfo.modifier_overrides`.",
+            "x-release-status": "BETA",
             "nullable": true
           },
           "ordinal": {
@@ -8537,6 +8668,12 @@
             "description": "The ID of the image associated with this `CatalogModifier` instance.\nCurrently this image is not displayed by Square, but is free to be displayed in 3rd party applications.",
             "x-release-status": "BETA",
             "nullable": true
+          },
+          "hidden_online": {
+            "type": "boolean",
+            "description": "When `true`, this modifier is hidden from online ordering channels. This setting can be overridden at the item level using `CatalogModifierListInfo.modifier_overrides`.",
+            "x-release-status": "BETA",
+            "nullable": true
           }
         },
         "example": {
@@ -8555,7 +8692,7 @@
       },
       "CatalogModifierList": {
         "type": "object",
-        "description": "For a text-based modifier, this encapsulates the modifier's text when its `modifier_type` is `TEXT`. \nFor example, to sell T-shirts with custom prints, a text-based modifier can be used to capture the buyer-supplied \ntext string to be selected for the T-shirt at the time of sale.\n\nFor non text-based modifiers, this encapsulates a non-empty list of modifiers applicable to items \nat the time of sale. Each element of the modifier list is a `CatalogObject` instance of the `MODIFIER` type.   \nFor example, a \"Condiments\" modifier list applicable to a \"Hot Dog\" item\nmay contain \"Ketchup\", \"Mustard\", and \"Relish\" modifiers. \n\nA non text-based modifier can be applied to the modified item once or multiple times, if the `selection_type` field \nis set to `SINGLE` or `MULTIPLE`, respectively. On the other hand, a text-based modifier can be applied to the item \nonly once and the `selection_type` field is always set to `SINGLE`.",
+        "description": "A container for a list of modifiers, or a text-based modifier.\nFor text-based modifiers, this represents text configuration for an item. (For example, custom text to print on a t-shirt).\nFor non text-based modifiers, this represents a list of modifiers that can be applied to items at the time of sale.\n(For example, a list of condiments for a hot dog, or a list of ice cream flavors).\nEach element of the modifier list is a `CatalogObject` instance of the `MODIFIER` type.",
         "x-release-status": "PUBLIC",
         "properties": {
           "name": {
@@ -8571,7 +8708,8 @@
           },
           "selection_type": {
             "$ref": "#/components/schemas/CatalogModifierListSelectionType",
-            "description": "Indicates whether a single (`SINGLE`) or multiple (`MULTIPLE`) modifiers from the list\ncan be applied to a single `CatalogItem`.\n\nFor text-based modifiers, the `selection_type` attribute is always `SINGLE`. The other value is ignored.\nSee [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values",
+            "description": "__Deprecated__: Indicates whether a single (`SINGLE`) modifier or multiple (`MULTIPLE`) modifiers can be selected. Use\n`min_selected_modifiers` and `max_selected_modifiers` instead.\nSee [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values",
+            "x-release-status": "DEPRECATED",
             "nullable": true
           },
           "modifiers": {
@@ -8588,6 +8726,18 @@
               "type": "string"
             },
             "description": "The IDs of images associated with this `CatalogModifierList` instance.\nCurrently these images are not displayed on Square products, but may be displayed in 3rd-party applications.",
+            "nullable": true
+          },
+          "allow_quantities": {
+            "type": "boolean",
+            "description": "When `true`, allows multiple quantities of the same modifier to be selected.",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "is_conversational": {
+            "type": "boolean",
+            "description": "True if modifiers belonging to this list can be used conversationally.",
+            "x-release-status": "BETA",
             "nullable": true
           },
           "modifier_type": {
@@ -8612,6 +8762,26 @@
             "type": "string",
             "description": "A note for internal use by the business.   \n\nFor example, for a text-based modifier applied to a T-shirt item, if the buyer-supplied text of \"Hello, Kitty!\"  \nis to be printed on the T-shirt, this `internal_name` attribute can be \"Use italic face\" as \nan instruction for the business to follow.  \n\nFor non text-based modifiers, this `internal_name` attribute can be \nused to include SKUs, internal codes, or supplemental descriptions for internal use.",
             "maxLength": 512,
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "min_selected_modifiers": {
+            "type": "integer",
+            "description": "The minimum number of modifiers that must be selected from this list. The value can be overridden with `CatalogItemModifierListInfo`.\n\nValues:\n\n- 0: No selection is required.\n- -1: Default value, the attribute was not set by the client. Treated as no selection required.\n- \u0026gt;0: The required minimum modifier selections. This can be larger than the total `CatalogModifiers` when `allow_quantities` is enabled.\n- \u0026lt; -1: Invalid. Treated as no selection required.",
+            "format": "int64",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "max_selected_modifiers": {
+            "type": "integer",
+            "description": "The maximum number of modifiers that must be selected from this list. The value can be overridden with `CatalogItemModifierListInfo`.\n\nValues:\n\n- 0: No maximum limit.\n- -1: Default value, the attribute was not set by the client. Treated as no maximum limit.\n- \u0026gt;0: The maximum total modifier selections. This can be larger than the total `CatalogModifiers` when `allow_quantities` is enabled.\n- \u0026lt; -1: Invalid. Treated as no maximum limit.",
+            "format": "int64",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "hidden_from_customer": {
+            "type": "boolean",
+            "description": "If `true`, modifiers from this list are hidden from customer receipts. The default value is `false`.\nThis setting can be overridden with `CatalogItemModifierListInfo.hidden_from_customer_override`.",
             "x-release-status": "BETA",
             "nullable": true
           }
@@ -8715,7 +8885,20 @@
           },
           "on_by_default": {
             "type": "boolean",
-            "description": "If `true`, this `CatalogModifier` should be selected by default for this `CatalogItem`.",
+            "description": "__Deprecated__: Use `on_by_default_override` instead.",
+            "x-release-status": "DEPRECATED",
+            "nullable": true
+          },
+          "hidden_online_override": {
+            "$ref": "#/components/schemas/CatalogModifierToggleOverrideType",
+            "description": "If `YES`, this setting overrides the `hidden_online` setting on the `CatalogModifier` object,\nand the modifier is always hidden from online sales channels.\nIf `NO`, the modifier is not hidden. It is always visible in online sales channels for this catalog item.\n`NOT_SET` means the `hidden_online` setting on the `CatalogModifier` object is obeyed.\nSee [CatalogModifierToggleOverrideType](#type-catalogmodifiertoggleoverridetype) for possible values",
+            "x-release-status": "BETA",
+            "nullable": true
+          },
+          "on_by_default_override": {
+            "$ref": "#/components/schemas/CatalogModifierToggleOverrideType",
+            "description": "If `YES`, this setting overrides the `on_by_default` setting on the `CatalogModifier` object,\nand the modifier is always selected by default for the catalog item.\n\nIf `NO`, the modifier is not selected by default for this catalog item.\n`NOT_SET` means the `on_by_default` setting on the `CatalogModifier` object is obeyed.\nSee [CatalogModifierToggleOverrideType](#type-catalogmodifiertoggleoverridetype) for possible values",
+            "x-release-status": "BETA",
             "nullable": true
           }
         }
@@ -15339,10 +15522,79 @@
           "ruby": "/sdk_samples/CreateRefund/CreateRefundResponse.ruby"
         }
       },
+      "CreateScheduledShiftRequest": {
+        "type": "object",
+        "description": "Represents a [CreateScheduledShift](api-endpoint:Labor-CreateScheduledShift) request.",
+        "x-release-status": "BETA",
+        "required": [
+          "scheduled_shift"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "A unique identifier for the `CreateScheduledShift` request, used to ensure the\n[idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)\nof the operation.",
+            "maxLength": 128
+          },
+          "scheduled_shift": {
+            "$ref": "#/components/schemas/ScheduledShift",
+            "description": "The scheduled shift with `draft_shift_details`.\nIf needed, call [ListLocations](api-endpoint:Locations-ListLocations) to get location IDs,\n[ListJobs](api-endpoint:Team-ListJobs) to get job IDs, and [SearchTeamMembers](api-endpoint:Team-SearchTeamMembers)\nto get team member IDs and current job assignments.\n\nThe `start_at` and `end_at` timestamps must be provided in the time zone + offset of the\nshift location specified in `location_id`. Example for Pacific Standard Time: 2024-10-31T12:30:00-08:00"
+          }
+        },
+        "example": {
+          "idempotency_key": "HIDSNG5KS478L",
+          "scheduled_shift": {
+            "draft_shift_details": {
+              "end_at": "2019-01-25T13:11:00-05:00",
+              "is_deleted": false,
+              "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+              "location_id": "PAA1RJZZKXBFG",
+              "notes": "Dont forget to prep the vegetables",
+              "start_at": "2019-01-25T03:11:00-05:00",
+              "team_member_id": "ormj0jJJZ5OZIzxrZYJI"
+            }
+          }
+        }
+      },
+      "CreateScheduledShiftResponse": {
+        "type": "object",
+        "description": "Represents a [CreateScheduledShift](api-endpoint:Labor-CreateScheduledShift) response.\nEither `scheduled_shift` or `errors` is present in the response.",
+        "x-release-status": "BETA",
+        "properties": {
+          "scheduled_shift": {
+            "$ref": "#/components/schemas/ScheduledShift",
+            "description": "The new scheduled shift. To make the shift public, call \n[PublishScheduledShift](api-endpoint:Labor-PublishScheduledShift) or\n[BulkPublishScheduledShifts](api-endpoint:Labor-BulkPublishScheduledShifts)."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {
+          "scheduled_shift": {
+            "created_at": "2019-02-25T03:11:00-05:00",
+            "draft_shift_details": {
+              "end_at": "2019-01-25T13:11:00-05:00",
+              "is_deleted": false,
+              "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+              "location_id": "PAA1RJZZKXBFG",
+              "notes": "Dont forget to prep the vegetables",
+              "start_at": "2019-01-25T03:11:00-05:00",
+              "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+              "timezone": "America/New_York"
+            },
+            "id": "K0YH4CV5462JB",
+            "updated_at": "2019-02-25T03:11:00-05:00",
+            "version": 1
+          }
+        }
+      },
       "CreateShiftRequest": {
         "type": "object",
         "description": "Represents a request to create a `Shift`.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "required": [
           "shift"
         ],
@@ -15392,7 +15644,7 @@
       "CreateShiftResponse": {
         "type": "object",
         "description": "The response to a request to create a `Shift`. The response contains\nthe created `Shift` object and might contain a set of `Error` objects if\nthe request resulted in errors.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "shift": {
             "$ref": "#/components/schemas/Shift",
@@ -15921,6 +16173,112 @@
             "reason": "Returning items",
             "status": "PENDING",
             "updated_at": "2020-09-29T15:21:46.771Z"
+          }
+        }
+      },
+      "CreateTimecardRequest": {
+        "type": "object",
+        "description": "Represents a request to create a `Timecard`.",
+        "x-release-status": "PUBLIC",
+        "required": [
+          "timecard"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "A unique string value to ensure the idempotency of the operation.",
+            "maxLength": 128
+          },
+          "timecard": {
+            "$ref": "#/components/schemas/Timecard",
+            "description": "The `Timecard` to be created."
+          }
+        },
+        "example": {
+          "idempotency_key": "HIDSNG5KS478L",
+          "timecard": {
+            "breaks": [
+              {
+                "break_type_id": "REGS1EQR1TPZ5",
+                "end_at": "2019-01-25T06:16:00-05:00",
+                "expected_duration": "PT5M",
+                "is_paid": true,
+                "name": "Tea Break",
+                "start_at": "2019-01-25T06:11:00-05:00"
+              }
+            ],
+            "declared_cash_tip_money": {
+              "amount": 500,
+              "currency": "USD"
+            },
+            "end_at": "2019-01-25T13:11:00-05:00",
+            "location_id": "PAA1RJZZKXBFG",
+            "start_at": "2019-01-25T03:11:00-05:00",
+            "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+            "wage": {
+              "hourly_rate": {
+                "amount": 1100,
+                "currency": "USD"
+              },
+              "tip_eligible": true,
+              "title": "Barista"
+            }
+          }
+        }
+      },
+      "CreateTimecardResponse": {
+        "type": "object",
+        "description": "The response to a request to create a `Timecard`. The response contains\nthe created `Timecard` object and might contain a set of `Error` objects if\nthe request resulted in errors.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "timecard": {
+            "$ref": "#/components/schemas/Timecard",
+            "description": "The `Timecard` that was created on the request."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {
+          "timecard": {
+            "breaks": [
+              {
+                "break_type_id": "REGS1EQR1TPZ5",
+                "end_at": "2019-01-25T06:16:00-05:00",
+                "expected_duration": "PT5M",
+                "id": "X7GAQYVVRRG6P",
+                "is_paid": true,
+                "name": "Tea Break",
+                "start_at": "2019-01-25T06:11:00-05:00"
+              }
+            ],
+            "created_at": "2019-02-28T00:39:02Z",
+            "declared_cash_tip_money": {
+              "amount": 500,
+              "currency": "USD"
+            },
+            "end_at": "2019-01-25T13:11:00-05:00",
+            "id": "K0YH4CV5462JB",
+            "location_id": "PAA1RJZZKXBFG",
+            "start_at": "2019-01-25T03:11:00-05:00",
+            "status": "CLOSED",
+            "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+            "timezone": "America/New_York",
+            "updated_at": "2019-02-28T00:39:02Z",
+            "version": 1,
+            "wage": {
+              "hourly_rate": {
+                "amount": 1100,
+                "currency": "USD"
+              },
+              "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+              "tip_eligible": true,
+              "title": "Barista"
+            }
           }
         }
       },
@@ -18383,13 +18741,13 @@
       "DeleteShiftRequest": {
         "type": "object",
         "description": "A request to delete a `Shift`.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "properties": {}
       },
       "DeleteShiftResponse": {
         "type": "object",
         "description": "The response to a request to delete a `Shift`. The response might contain a set of \n`Error` objects if the request resulted in errors.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "errors": {
             "type": "array",
@@ -18471,6 +18829,27 @@
             "timezone": "America/Los_Angeles"
           }
         }
+      },
+      "DeleteTimecardRequest": {
+        "type": "object",
+        "description": "A request to delete a `Timecard`.",
+        "x-release-status": "PUBLIC",
+        "properties": {}
+      },
+      "DeleteTimecardResponse": {
+        "type": "object",
+        "description": "The response to a request to delete a `Timecard`. The response might contain a set of \n`Error` objects if the request resulted in errors.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {}
       },
       "DeleteWebhookSubscriptionRequest": {
         "type": "object",
@@ -22419,13 +22798,13 @@
       "GetShiftRequest": {
         "type": "object",
         "description": "A request to get a `Shift` by ID.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "properties": {}
       },
       "GetShiftResponse": {
         "type": "object",
         "description": "A response to a request to get a `Shift`. The response contains\nthe requested `Shift` object and might contain a set of `Error` objects if\nthe request resulted in errors.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "shift": {
             "$ref": "#/components/schemas/Shift",
@@ -35851,6 +36230,82 @@
           }
         }
       },
+      "PublishScheduledShiftRequest": {
+        "type": "object",
+        "description": "Represents a [PublishScheduledShift](api-endpoint:Labor-PublishScheduledShift) request.",
+        "x-release-status": "BETA",
+        "required": [
+          "idempotency_key"
+        ],
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "description": "A unique identifier for the `PublishScheduledShift` request, used to ensure the\n[idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency)\nof the operation.",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "version": {
+            "type": "integer",
+            "description": "The current version of the scheduled shift, used to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)\ncontrol. If the provided version doesn't match the server version, the request fails.\nIf omitted, Square executes a blind write, potentially overwriting data from another publish request."
+          },
+          "scheduled_shift_notification_audience": {
+            "$ref": "#/components/schemas/ScheduledShiftNotificationAudience",
+            "description": "Indicates whether Square should send an email notification to team members and\nwhich team members should receive the notification. The default value is `AFFECTED`.\nSee [ScheduledShiftNotificationAudience](#type-scheduledshiftnotificationaudience) for possible values",
+            "nullable": true
+          }
+        },
+        "example": {
+          "idempotency_key": "HIDSNG5KS478L",
+          "scheduled_shift_notification_audience": "ALL",
+          "version": 2
+        }
+      },
+      "PublishScheduledShiftResponse": {
+        "type": "object",
+        "description": "Represents a [PublishScheduledShift](api-endpoint:Labor-PublishScheduledShift) response.\nEither `scheduled_shift` or `errors` is present in the response.",
+        "x-release-status": "BETA",
+        "properties": {
+          "scheduled_shift": {
+            "$ref": "#/components/schemas/ScheduledShift",
+            "description": "The published scheduled shift."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {
+          "scheduled_shift": {
+            "created_at": "2019-02-25T03:11:00-05:00",
+            "draft_shift_details": {
+              "end_at": "2019-01-25T13:11:00-05:00",
+              "is_deleted": false,
+              "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+              "location_id": "PAA1RJZZKXBFG",
+              "notes": "Dont forget to prep the vegetables",
+              "start_at": "2019-01-25T03:11:00-05:00",
+              "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+              "timezone": "America/New_York"
+            },
+            "id": "K0YH4CV5462JB",
+            "published_shift_details": {
+              "end_at": "2019-01-25T13:11:00-05:00",
+              "is_deleted": false,
+              "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+              "location_id": "PAA1RJZZKXBFG",
+              "notes": "Dont forget to prep the vegetables",
+              "start_at": "2019-01-25T03:11:00-05:00",
+              "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+              "timezone": "America/New_York"
+            },
+            "updated_at": "2019-02-25T03:11:00-05:00",
+            "version": 2
+          }
+        }
+      },
       "QrCodeOptions": {
         "type": "object",
         "description": "Fields to describe the action that displays QR-Codes.",
@@ -38614,6 +39069,48 @@
           }
         }
       },
+      "RetrieveScheduledShiftRequest": {
+        "type": "object",
+        "description": "Represents a [RetrieveScheduledShift](api-endpoint:Labor-RetrieveScheduledShift) request.",
+        "x-release-status": "BETA",
+        "properties": {}
+      },
+      "RetrieveScheduledShiftResponse": {
+        "type": "object",
+        "description": "Represents a [RetrieveScheduledShift](api-endpoint:Labor-RetrieveScheduledShift) response.\nEither `scheduled_shift` or `errors` is present in the response.",
+        "x-release-status": "BETA",
+        "properties": {
+          "scheduled_shift": {
+            "$ref": "#/components/schemas/ScheduledShift",
+            "description": "The requested scheduled shift."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {
+          "scheduled_shift": {
+            "created_at": "2019-02-25T03:11:00-05:00",
+            "draft_shift_details": {
+              "end_at": "2019-03-25T13:18:00-05:00",
+              "is_deleted": false,
+              "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+              "location_id": "PAA1RJZZKXBFG",
+              "notes": "Don't forget to prep the vegetables",
+              "start_at": "2019-03-25T03:11:00-05:00",
+              "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+              "timezone": "America/New_York"
+            },
+            "id": "K0YH4CV5462JB",
+            "updated_at": "2019-02-25T03:11:15-05:00",
+            "version": 2
+          }
+        }
+      },
       "RetrieveSnippetRequest": {
         "type": "object",
         "description": "Represents a `RetrieveSnippet` request.",
@@ -38808,6 +39305,68 @@
               "team_member_id": "1yJlHapkseYnNPETIU1B",
               "updated_at": "2021-06-11T22:55:45Z",
               "version": 1
+            }
+          }
+        }
+      },
+      "RetrieveTimecardRequest": {
+        "type": "object",
+        "description": "A request to get a `Timecard` by ID.",
+        "x-release-status": "PUBLIC",
+        "properties": {}
+      },
+      "RetrieveTimecardResponse": {
+        "type": "object",
+        "description": "A response to a request to get a `Timecard`. The response contains\nthe requested `Timecard` object and might contain a set of `Error` objects if\nthe request resulted in errors.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "timecard": {
+            "$ref": "#/components/schemas/Timecard",
+            "description": "The requested `Timecard`."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {
+          "timecard": {
+            "breaks": [
+              {
+                "break_type_id": "92EPDRQKJ5088",
+                "end_at": "2019-02-23T20:00:00-05:00",
+                "expected_duration": "PT1H",
+                "id": "M9BBKEPQAQD2T",
+                "is_paid": true,
+                "name": "Lunch Break",
+                "start_at": "2019-02-23T19:00:00-05:00"
+              }
+            ],
+            "created_at": "2019-02-27T00:12:12Z",
+            "declared_cash_tip_money": {
+              "amount": 500,
+              "currency": "USD"
+            },
+            "end_at": "2019-02-23T21:00:00-05:00",
+            "id": "T35HMQSN89SV4",
+            "location_id": "PAA1RJZZKXBFG",
+            "start_at": "2019-02-23T18:00:00-05:00",
+            "status": "CLOSED",
+            "team_member_id": "D71KRMQof6cXGUW0aAv7",
+            "timezone": "America/New_York",
+            "updated_at": "2019-02-27T00:12:12Z",
+            "version": 1,
+            "wage": {
+              "hourly_rate": {
+                "amount": 1457,
+                "currency": "USD"
+              },
+              "job_id": "N4YKVLzFj3oGtNocqoYHYpW3",
+              "tip_eligible": true,
+              "title": "Cashier"
             }
           }
         }
@@ -39230,6 +39789,314 @@
             "nullable": true
           }
         }
+      },
+      "ScheduledShift": {
+        "type": "object",
+        "description": "Represents a specific time slot in a work schedule. This object is used to manage the\nlifecycle of a scheduled shift from the draft to published state. A scheduled shift contains\nthe latest draft shift details and current published shift details.",
+        "x-release-status": "BETA",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "**Read only** The Square-issued ID of the scheduled shift.",
+            "maxLength": 255
+          },
+          "draft_shift_details": {
+            "$ref": "#/components/schemas/ScheduledShiftDetails",
+            "description": "The latest draft shift details for the scheduled shift. Draft shift details are used to\nstage and manage shifts before publishing. This field is always present.",
+            "nullable": true
+          },
+          "published_shift_details": {
+            "$ref": "#/components/schemas/ScheduledShiftDetails",
+            "description": "The current published (public) shift details for the scheduled shift. This field is\npresent only if the shift was published.",
+            "readOnly": true
+          },
+          "version": {
+            "type": "integer",
+            "description": "**Read only** The current version of the scheduled shift, which is incremented with each update.\nThis field is used for [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)\ncontrol to ensure that requests don't overwrite data from another request."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp of when the scheduled shift was created, in RFC 3339 format presented as UTC.",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp of when the scheduled shift was last updated, in RFC 3339 format presented as UTC.",
+            "readOnly": true
+          }
+        }
+      },
+      "ScheduledShiftDetails": {
+        "type": "object",
+        "description": "Represents shift details for draft and published versions of a [scheduled shift](entity:ScheduledShift),\nsuch as job ID, team member assignment, and start and end times.",
+        "x-release-status": "BETA",
+        "properties": {
+          "team_member_id": {
+            "type": "string",
+            "description": "The ID of the [team member](entity:TeamMember) scheduled for the shift.",
+            "maxLength": 255,
+            "nullable": true
+          },
+          "location_id": {
+            "type": "string",
+            "description": "The ID of the [location](entity:Location) the shift is scheduled for.",
+            "maxLength": 255,
+            "nullable": true
+          },
+          "job_id": {
+            "type": "string",
+            "description": "The ID of the [job](entity:Job) the shift is scheduled for.",
+            "nullable": true
+          },
+          "start_at": {
+            "type": "string",
+            "description": "The start time of the shift, in RFC 3339 format in the time zone \u0026plus;\noffset of the shift location specified in `location_id`. Precision up to the minute\nis respected; seconds are truncated.",
+            "nullable": true
+          },
+          "end_at": {
+            "type": "string",
+            "description": "The end time for the shift, in RFC 3339 format in the time zone \u0026plus;\noffset of the shift location specified in `location_id`. Precision up to the minute\nis respected; seconds are truncated.",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "description": "Optional notes for the shift.",
+            "maxLength": 1000,
+            "nullable": true
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "description": "Indicates whether the draft shift version is deleted. If set to `true` when the shift\nis published, the entire scheduled shift (including the published shift) is deleted and\ncannot be accessed using any endpoint.",
+            "nullable": true
+          },
+          "timezone": {
+            "type": "string",
+            "description": "The time zone of the shift location, calculated based on the `location_id`. This field\nis provided for convenience.",
+            "readOnly": true
+          }
+        }
+      },
+      "ScheduledShiftFilter": {
+        "type": "object",
+        "description": "Defines filter criteria for a [SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts)\nrequest. Multiple filters in a query are combined as an `AND` operation.",
+        "x-release-status": "BETA",
+        "properties": {
+          "location_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Return shifts for the specified locations. When omitted, shifts for all\nlocations are returned. If needed, call [ListLocations](api-endpoint:Locations-ListLocations)\nto get location IDs.",
+            "nullable": true
+          },
+          "start": {
+            "$ref": "#/components/schemas/TimeRange",
+            "description": "Return shifts whose `start_at` time is within the specified\ntime range (inclusive).",
+            "nullable": true
+          },
+          "end": {
+            "$ref": "#/components/schemas/TimeRange",
+            "description": "Return shifts whose `end_at` time is within the specified\ntime range (inclusive).",
+            "nullable": true
+          },
+          "workday": {
+            "$ref": "#/components/schemas/ScheduledShiftWorkday",
+            "description": "Return shifts based on a workday date range.",
+            "nullable": true
+          },
+          "team_member_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Return shifts assigned to specified team members. If needed, call\n[SearchTeamMembers](api-endpoint:Team-SearchTeamMembers) to get team member IDs.\n\nTo return only the shifts assigned to the specified team members, include the\n`assignment_status` filter in the query. Otherwise, all unassigned shifts are\nreturned along with shifts assigned to the specified team members.",
+            "nullable": true
+          },
+          "assignment_status": {
+            "$ref": "#/components/schemas/ScheduledShiftFilterAssignmentStatus",
+            "description": "Return shifts based on whether a team member is assigned. A shift is\nassigned if the `team_member_id` field is populated in the `draft_shift_details`\nor `published_shift details` field of the shift.\n\nTo return only draft or published shifts, include the `scheduled_shift_statuses`\nfilter in the query.\nSee [ScheduledShiftFilterAssignmentStatus](#type-scheduledshiftfilterassignmentstatus) for possible values",
+            "nullable": true
+          },
+          "scheduled_shift_statuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScheduledShiftFilterScheduledShiftStatus"
+            },
+            "description": "Return shifts based on the draft or published status of the shift.\nA shift is published if the `published_shift_details` field is present.\n\nNote that shifts with `draft_shift_details.is_deleted` set to `true` are ignored\nwith the `DRAFT` filter.\nSee [ScheduledShiftFilterScheduledShiftStatus](#type-scheduledshiftfilterscheduledshiftstatus) for possible values",
+            "nullable": true
+          }
+        }
+      },
+      "ScheduledShiftFilterAssignmentStatus": {
+        "type": "string",
+        "enum": [
+          "ASSIGNED",
+          "UNASSIGNED"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "ASSIGNED",
+            "description": "The shift is assigned to a team member."
+          },
+          {
+            "name": "UNASSIGNED",
+            "description": "The shift isn't assigned to a team member."
+          }
+        ],
+        "description": "Defines valid values for the `assignment_status` filter in a\n[SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts) request.\nAssignment status is based on the `draft_shift_details.team_member_id` and\n`published_shift_details.team_member_id` fields of the scheduled shift.",
+        "x-release-status": "BETA"
+      },
+      "ScheduledShiftFilterScheduledShiftStatus": {
+        "type": "string",
+        "enum": [
+          "DRAFT",
+          "PUBLISHED"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "DRAFT",
+            "description": "The scheduled shift has never been published or its draft details were\nupdated after it was published. This means that the shift has no `published_shift_details`\nfield or that `draft_shift_details` has different settings than `published_shift_details`."
+          },
+          {
+            "name": "PUBLISHED",
+            "description": "The scheduled shift was published. This means that the shift has a\n`published_shift_details` field."
+          }
+        ],
+        "description": "Defines valid values for the `scheduled_shift_statuses` filter in a\n[SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts) request.",
+        "x-release-status": "BETA"
+      },
+      "ScheduledShiftNotificationAudience": {
+        "type": "string",
+        "enum": [
+          "ALL",
+          "AFFECTED",
+          "NONE"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "ALL",
+            "description": "Notify all active team members. Note that republishing an unchanged\nshift with this setting resends the notification."
+          },
+          {
+            "name": "AFFECTED",
+            "description": "Notify the team member assigned to the shift. If the shift assignment\nchanges, notify both the newly assigned and previously assigned team members."
+          },
+          {
+            "name": "NONE",
+            "description": "Do not send a notification."
+          }
+        ],
+        "description": "Indicates whether Square sends an email notification to team members\nwhen a scheduled shift is published and which team members receive the notification.",
+        "x-release-status": "BETA"
+      },
+      "ScheduledShiftQuery": {
+        "type": "object",
+        "description": "Represents filter and sort criteria for the `query` field in a\n[SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts) request.",
+        "x-release-status": "BETA",
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/ScheduledShiftFilter",
+            "description": "Filtering options for the query.",
+            "nullable": true
+          },
+          "sort": {
+            "$ref": "#/components/schemas/ScheduledShiftSort",
+            "description": "Sorting options for the query.",
+            "nullable": true
+          }
+        }
+      },
+      "ScheduledShiftSort": {
+        "type": "object",
+        "description": "Defines sort criteria for a [SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts)\nrequest.",
+        "x-release-status": "BETA",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/ScheduledShiftSortField",
+            "description": "The field to sort on. The default value is `START_AT`.\nSee [ScheduledShiftSortField](#type-scheduledshiftsortfield) for possible values",
+            "nullable": true
+          },
+          "order": {
+            "$ref": "#/components/schemas/SortOrder",
+            "description": "The order in which results are returned. The default value is `ASC`.\nSee [SortOrder](#type-sortorder) for possible values",
+            "nullable": true
+          }
+        }
+      },
+      "ScheduledShiftSortField": {
+        "type": "string",
+        "enum": [
+          "START_AT",
+          "END_AT",
+          "CREATED_AT",
+          "UPDATED_AT"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "START_AT",
+            "description": "Sort by the start time of the shift."
+          },
+          {
+            "name": "END_AT",
+            "description": "Sort by the end time of the shift."
+          },
+          {
+            "name": "CREATED_AT",
+            "description": "Sort by the creation date of the shift."
+          },
+          {
+            "name": "UPDATED_AT",
+            "description": "Sort by the last updated date of the shift."
+          }
+        ],
+        "description": "Defines valid values for the `field` sort setting in a\n[SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts) request.",
+        "x-release-status": "BETA"
+      },
+      "ScheduledShiftWorkday": {
+        "type": "object",
+        "description": "A `ScheduledShift` search query filter parameter that sets a range of days that\na `Shift` must start or end in before passing the filter condition.",
+        "x-release-status": "BETA",
+        "properties": {
+          "date_range": {
+            "$ref": "#/components/schemas/DateRange",
+            "description": "Dates for fetching the scheduled shifts.",
+            "nullable": true
+          },
+          "match_scheduled_shifts_by": {
+            "$ref": "#/components/schemas/ScheduledShiftWorkdayMatcher",
+            "description": "The strategy on which the dates are applied.\nSee [ScheduledShiftWorkdayMatcher](#type-scheduledshiftworkdaymatcher) for possible values",
+            "nullable": true
+          },
+          "default_timezone": {
+            "type": "string",
+            "description": "Location-specific timezones convert workdays to datetime filters.\nEvery location included in the query must have a timezone or this field\nmust be provided as a fallback. Format: the IANA timezone database\nidentifier for the relevant timezone.",
+            "nullable": true
+          }
+        }
+      },
+      "ScheduledShiftWorkdayMatcher": {
+        "type": "string",
+        "enum": [
+          "START_AT",
+          "END_AT",
+          "INTERSECTION"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "START_AT",
+            "description": "All shifts that start on or after the specified workday"
+          },
+          {
+            "name": "END_AT",
+            "description": "All shifts that end on or before the specified workday"
+          },
+          {
+            "name": "INTERSECTION",
+            "description": "All shifts that start between the start and end workdays (inclusive)"
+          }
+        ],
+        "description": "Defines the logic used to apply a workday filter.",
+        "x-release-status": "BETA"
       },
       "SearchAvailabilityFilter": {
         "type": "object",
@@ -41118,10 +41985,94 @@
           }
         }
       },
+      "SearchScheduledShiftsRequest": {
+        "type": "object",
+        "description": "Represents a [SearchScheduledShift](api-endpoint:Labor-SearchScheduledShift) request.",
+        "x-release-status": "BETA",
+        "properties": {
+          "query": {
+            "$ref": "#/components/schemas/ScheduledShiftQuery",
+            "description": "Query conditions used to filter and sort the results."
+          },
+          "limit": {
+            "type": "integer",
+            "description": "The maximum number of results to return in a single response page. The default value is 50.",
+            "minimum": 1,
+            "maximum": 50
+          },
+          "cursor": {
+            "type": "string",
+            "description": "The pagination cursor returned by the previous call to this endpoint. Provide\nthis cursor to retrieve the next page of results for your original request. For more\ninformation, see [Pagination](https://developer.squareup.com/docs/build-basics/common-api-patterns/pagination)."
+          }
+        },
+        "example": {
+          "cursor": "xoxp-1234-5678-90123",
+          "limit": 2,
+          "query": {
+            "filter": {
+              "assignment_status": "ASSIGNED",
+              "scheduled_shift_status": [
+                "PUBLISHED",
+                "DRAFT"
+              ]
+            },
+            "sort": {
+              "field": "CREATED_AT",
+              "order": "ASC"
+            }
+          }
+        }
+      },
+      "SearchScheduledShiftsResponse": {
+        "type": "object",
+        "description": "Represents a [SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts) response.\nEither `scheduled_shifts` or `errors` is present in the response.",
+        "x-release-status": "BETA",
+        "properties": {
+          "scheduled_shifts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScheduledShift"
+            },
+            "description": "A paginated list of scheduled shifts that match the query conditions."
+          },
+          "cursor": {
+            "type": "string",
+            "description": "The pagination cursor used to retrieve the next page of results. This field is present\nonly if additional results are available."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {
+          "cursor": "xoxp-123-2123-123232",
+          "scheduled_shifts": [
+            {
+              "created_at": "2019-02-25T03:11:00-05:00",
+              "draft_shift_details": {
+                "end_at": "2019-01-25T13:11:00-05:00",
+                "is_deleted": false,
+                "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+                "location_id": "PAA1RJZZKXBFG",
+                "notes": "Dont forget to prep the vegetables",
+                "start_at": "2019-01-25T03:11:00-05:00",
+                "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+                "timezone": "America/New_York"
+              },
+              "id": "K0YH4CV5462JB",
+              "updated_at": "2019-02-25T03:11:00-05:00",
+              "version": 1
+            }
+          ]
+        }
+      },
       "SearchShiftsRequest": {
         "type": "object",
         "description": "A request for a filtered and sorted set of `Shift` objects.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "query": {
             "$ref": "#/components/schemas/ShiftQuery",
@@ -41157,7 +42108,7 @@
       "SearchShiftsResponse": {
         "type": "object",
         "description": "The response to a request for `Shift` objects. The response contains\nthe requested `Shift` objects and might contain a set of `Error` objects if\nthe request resulted in errors.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "shifts": {
             "type": "array",
@@ -42061,6 +43012,152 @@
           ]
         }
       },
+      "SearchTimecardsRequest": {
+        "type": "object",
+        "description": "A request for a filtered and sorted set of `Timecard` objects.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "query": {
+            "$ref": "#/components/schemas/TimecardQuery",
+            "description": "Query filters."
+          },
+          "limit": {
+            "type": "integer",
+            "description": "The number of resources in a page (200 by default).",
+            "minimum": 1,
+            "maximum": 200
+          },
+          "cursor": {
+            "type": "string",
+            "description": "An opaque cursor for fetching the next page."
+          }
+        },
+        "example": {
+          "limit": 100,
+          "query": {
+            "filter": {
+              "workday": {
+                "date_range": {
+                  "end_date": "2019-02-03",
+                  "start_date": "2019-01-20"
+                },
+                "default_timezone": "America/Los_Angeles",
+                "match_timecards_by": "START_AT"
+              }
+            }
+          }
+        }
+      },
+      "SearchTimecardsResponse": {
+        "type": "object",
+        "description": "The response to a request for `Timecard` objects. The response contains\nthe requested `Timecard` objects and might contain a set of `Error` objects if\nthe request resulted in errors.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "timecards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Timecard"
+            },
+            "description": "Timecards."
+          },
+          "cursor": {
+            "type": "string",
+            "description": "An opaque cursor for fetching the next page."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {
+          "timecards": [
+            {
+              "breaks": [
+                {
+                  "break_type_id": "REGS1EQR1TPZ5",
+                  "end_at": "2019-01-21T06:11:00-05:00",
+                  "expected_duration": "PT10M",
+                  "id": "SJW7X6AKEJQ65",
+                  "is_paid": true,
+                  "name": "Tea Break",
+                  "start_at": "2019-01-21T06:11:00-05:00"
+                }
+              ],
+              "created_at": "2019-01-24T01:12:03Z",
+              "declared_cash_tip_money": {
+                "amount": 500,
+                "currency": "USD"
+              },
+              "end_at": "2019-01-21T13:11:00-05:00",
+              "id": "X714F3HA6D1PT",
+              "location_id": "PAA1RJZZKXBFG",
+              "start_at": "2019-01-21T03:11:00-05:00",
+              "status": "CLOSED",
+              "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+              "timezone": "America/New_York",
+              "updated_at": "2019-02-07T22:21:08Z",
+              "version": 6,
+              "wage": {
+                "hourly_rate": {
+                  "amount": 1100,
+                  "currency": "USD"
+                },
+                "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+                "tip_eligible": true,
+                "title": "Barista"
+              }
+            },
+            {
+              "breaks": [
+                {
+                  "break_type_id": "WQX00VR99F53J",
+                  "end_at": "2019-01-22T14:40:00-05:00",
+                  "expected_duration": "PT10M",
+                  "id": "BKS6VR7WR748A",
+                  "is_paid": true,
+                  "name": "Tea Break",
+                  "start_at": "2019-01-22T14:30:00-05:00"
+                },
+                {
+                  "break_type_id": "P6Q468ZFRN1AC",
+                  "end_at": "2019-01-22T12:44:00-05:00",
+                  "expected_duration": "PT15M",
+                  "id": "BQFEZSHFZSC51",
+                  "is_paid": false,
+                  "name": "Coffee Break",
+                  "start_at": "2019-01-22T12:30:00-05:00"
+                }
+              ],
+              "created_at": "2019-01-23T23:32:45Z",
+              "declared_cash_tip_money": {
+                "amount": 0,
+                "currency": "USD"
+              },
+              "end_at": "2019-01-22T13:02:00-05:00",
+              "id": "GDHYBZYWK0P2V",
+              "location_id": "PAA1RJZZKXBFG",
+              "start_at": "2019-01-22T12:02:00-05:00",
+              "status": "CLOSED",
+              "team_member_id": "33fJchumvVdJwxV0H6L9",
+              "timezone": "America/New_York",
+              "updated_at": "2019-01-24T00:56:25Z",
+              "version": 16,
+              "wage": {
+                "hourly_rate": {
+                  "amount": 1600,
+                  "currency": "USD"
+                },
+                "job_id": "gcbz15vKGnMKmaWJJ152kjim",
+                "tip_eligible": true,
+                "title": "Cook"
+              }
+            }
+          ]
+        }
+      },
       "SearchVendorsRequest": {
         "type": "object",
         "description": "Represents an input into a call to [SearchVendors](api-endpoint:Vendors-SearchVendors).",
@@ -42291,8 +43388,8 @@
       },
       "Shift": {
         "type": "object",
-        "description": "A record of the hourly rate, start, and end times for a single work shift\nfor an employee. This might include a record of the start and end times for breaks\ntaken during the shift.",
-        "x-release-status": "PUBLIC",
+        "description": "A record of the hourly rate, start, and end times for a single work shift\nfor an employee. This might include a record of the start and end times for breaks\ntaken during the shift.\n\nDeprecated at Square API version 2025-05-21. Replaced by [Timecard](entity:Timecard).\nSee the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).",
+        "x-release-status": "DEPRECATED",
         "required": [
           "location_id",
           "start_at"
@@ -42306,7 +43403,6 @@
           "employee_id": {
             "type": "string",
             "description": "The ID of the employee this shift belongs to. DEPRECATED at version 2020-08-26. Use `team_member_id` instead.",
-            "x-release-status": "DEPRECATED",
             "nullable": true
           },
           "location_id": {
@@ -42375,8 +43471,8 @@
       },
       "ShiftFilter": {
         "type": "object",
-        "description": "Defines a filter used in a search for `Shift` records. `AND` logic is\nused by Square's servers to apply each filter property specified.",
-        "x-release-status": "PUBLIC",
+        "description": "Defines a filter used in a search for `Shift` records. `AND` logic is\nused by Square's servers to apply each filter property specified.\n\nDeprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "location_ids": {
             "type": "array",
@@ -42392,7 +43488,6 @@
               "type": "string"
             },
             "description": "Fetch shifts for the specified employees. DEPRECATED at version 2020-08-26. Use `team_member_ids` instead.",
-            "x-release-status": "DEPRECATED",
             "nullable": true
           },
           "status": {
@@ -42441,13 +43536,13 @@
             "description": "Shifts that have been started and ended."
           }
         ],
-        "description": "Specifies the `status` of `Shift` records to be returned.",
-        "x-release-status": "PUBLIC"
+        "description": "Specifies the `status` of `Shift` records to be returned.\n\nDeprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).",
+        "x-release-status": "DEPRECATED"
       },
       "ShiftQuery": {
         "type": "object",
-        "description": "The parameters of a `Shift` search query, which includes filter and sort options.",
-        "x-release-status": "PUBLIC",
+        "description": "The parameters of a `Shift` search query, which includes filter and sort options.\n\nDeprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "filter": {
             "$ref": "#/components/schemas/ShiftFilter",
@@ -42463,8 +43558,8 @@
       },
       "ShiftSort": {
         "type": "object",
-        "description": "Sets the sort order of search results.",
-        "x-release-status": "PUBLIC",
+        "description": "Sets the sort order of search results.\n\nDeprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "field": {
             "$ref": "#/components/schemas/ShiftSortField",
@@ -42504,8 +43599,8 @@
             "description": "The most recent date/time that a `Shift` is updated"
           }
         ],
-        "description": "Enumerates the `Shift` fields to sort on.",
-        "x-release-status": "PUBLIC"
+        "description": "Enumerates the `Shift` fields to sort on.\n\nDeprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).",
+        "x-release-status": "DEPRECATED"
       },
       "ShiftStatus": {
         "type": "string",
@@ -42523,13 +43618,13 @@
             "description": "Employee started and ended a work shift."
           }
         ],
-        "description": "Enumerates the possible status of a `Shift`.",
-        "x-release-status": "PUBLIC"
+        "description": "Enumerates the possible status of a `Shift`.\n\nDeprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).",
+        "x-release-status": "DEPRECATED"
       },
       "ShiftWage": {
         "type": "object",
-        "description": "The hourly wage rate used to compensate an employee for this shift.",
-        "x-release-status": "PUBLIC",
+        "description": "The hourly wage rate used to compensate an employee for this shift.\n\nDeprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "title": {
             "type": "string",
@@ -42543,7 +43638,7 @@
           },
           "job_id": {
             "type": "string",
-            "description": "The id of the job performed during this shift. Square\nlabor-reporting UIs might group shifts together by id. This cannot be used to retrieve the job.",
+            "description": "The id of the job performed during this shift. Square\nlabor-reporting UIs might group shifts together by id.",
             "readOnly": true
           },
           "tip_eligible": {
@@ -42555,8 +43650,8 @@
       },
       "ShiftWorkday": {
         "type": "object",
-        "description": "A `Shift` search query filter parameter that sets a range of days that\na `Shift` must start or end in before passing the filter condition.",
-        "x-release-status": "PUBLIC",
+        "description": "A `Shift` search query filter parameter that sets a range of days that\na `Shift` must start or end in before passing the filter condition.\n\nDeprecated at Square API version 2025-05-21. See the [migration notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "date_range": {
             "$ref": "#/components/schemas/DateRange",
@@ -42597,7 +43692,7 @@
           }
         ],
         "description": "Defines the logic used to apply a workday filter.",
-        "x-release-status": "PUBLIC"
+        "x-release-status": "DEPRECATED"
       },
       "ShippingFee": {
         "type": "object",
@@ -43833,7 +44928,7 @@
       },
       "TeamMemberWage": {
         "type": "object",
-        "description": "The hourly wage rate that a team member earns on a `Shift` for doing the job\nspecified by the `title` property of this object.",
+        "description": "Job and wage information for a [team member](entity:TeamMember).\nThis convenience object provides details needed to specify the `wage`\nfield for a [timecard](entity:Timecard).",
         "x-release-status": "PUBLIC",
         "properties": {
           "id": {
@@ -43857,7 +44952,7 @@
           },
           "job_id": {
             "type": "string",
-            "description": "An identifier for the job that this wage relates to. This cannot be\nused to retrieve the job.",
+            "description": "An identifier for the [job](entity:Job) that this wage relates to.",
             "nullable": true
           },
           "tip_eligible": {
@@ -44854,6 +45949,302 @@
             "nullable": true
           }
         }
+      },
+      "Timecard": {
+        "type": "object",
+        "description": "A record of the hourly rate, start time, and end time of a single timecard (shift)\nfor a team member. This might include a record of the start and end times of breaks\ntaken during the shift.",
+        "x-release-status": "PUBLIC",
+        "required": [
+          "location_id",
+          "start_at",
+          "team_member_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "**Read only** The Square-issued UUID for this object.",
+            "maxLength": 255
+          },
+          "location_id": {
+            "type": "string",
+            "description": "The ID of the [location](entity:Location) for this timecard. The location should be based on\nwhere the team member clocked in.",
+            "minLength": 1
+          },
+          "timezone": {
+            "type": "string",
+            "description": "**Read only** The time zone calculated from the location based on the `location_id`,\nprovided as a convenience value. Format: the IANA time zone database identifier for the\nlocation time zone.",
+            "nullable": true
+          },
+          "start_at": {
+            "type": "string",
+            "description": "The start time of the timecard, in RFC 3339 format and shifted to the location\ntimezone + offset. Precision up to the minute is respected; seconds are truncated.",
+            "minLength": 1
+          },
+          "end_at": {
+            "type": "string",
+            "description": "The end time of the timecard, in RFC 3339 format and shifted to the location\ntimezone + offset. Precision up to the minute is respected; seconds are truncated.",
+            "nullable": true
+          },
+          "wage": {
+            "$ref": "#/components/schemas/TimecardWage",
+            "description": "Job and pay related information. If the wage is not set on create, it defaults to a wage\nof zero. If the title is not set on create, it defaults to the name of the role the team member\nis assigned to, if any.",
+            "nullable": true
+          },
+          "breaks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Break"
+            },
+            "description": "A list of all the paid or unpaid breaks that were taken during this timecard.",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/TimecardStatus",
+            "description": "Describes the working state of the timecard.\nSee [TimecardStatus](#type-timecardstatus) for possible values",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "description": "**Read only** The current version of the timecard, which is incremented with each update.\nThis field is used for [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)\ncontrol to ensure that requests don't overwrite data from another request."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The timestamp of when the timecard was created, in RFC 3339 format presented as UTC.",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "The timestamp of when the timecard was last updated, in RFC 3339 format presented as UTC.",
+            "readOnly": true
+          },
+          "team_member_id": {
+            "type": "string",
+            "description": "The ID of the [team member](entity:TeamMember) this timecard belongs to.",
+            "minLength": 1
+          },
+          "declared_cash_tip_money": {
+            "$ref": "#/components/schemas/Money",
+            "description": "The cash tips declared by the team member for this timecard.",
+            "nullable": true
+          }
+        }
+      },
+      "TimecardFilter": {
+        "type": "object",
+        "description": "Defines a filter used in a search for `Timecard` records. `AND` logic is\nused by Square's servers to apply each filter property specified.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "location_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Fetch timecards for the specified location.",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/TimecardFilterStatus",
+            "description": "Fetch a `Timecard` instance by `Timecard.status`.\nSee [TimecardFilterStatus](#type-timecardfilterstatus) for possible values",
+            "nullable": true
+          },
+          "start": {
+            "$ref": "#/components/schemas/TimeRange",
+            "description": "Fetch `Timecard` instances that start in the time range - Inclusive.",
+            "nullable": true
+          },
+          "end": {
+            "$ref": "#/components/schemas/TimeRange",
+            "description": "Fetch the `Timecard` instances that end in the time range - Inclusive.",
+            "nullable": true
+          },
+          "workday": {
+            "$ref": "#/components/schemas/TimecardWorkday",
+            "description": "Fetch the `Timecard` instances based on the workday date range.",
+            "nullable": true
+          },
+          "team_member_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Fetch timecards for the specified team members.",
+            "nullable": true
+          }
+        }
+      },
+      "TimecardFilterStatus": {
+        "type": "string",
+        "enum": [
+          "OPEN",
+          "CLOSED"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "OPEN",
+            "description": "Timecards that have been started and not ended."
+          },
+          {
+            "name": "CLOSED",
+            "description": "Timecards that have been started and ended."
+          }
+        ],
+        "description": "Specifies the `status` of `Timecard` records to be returned.",
+        "x-release-status": "PUBLIC"
+      },
+      "TimecardQuery": {
+        "type": "object",
+        "description": "The parameters of a `Timecard` search query, which includes filter and sort options.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "filter": {
+            "$ref": "#/components/schemas/TimecardFilter",
+            "description": "Query filter options.",
+            "nullable": true
+          },
+          "sort": {
+            "$ref": "#/components/schemas/TimecardSort",
+            "description": "Sort order details.",
+            "nullable": true
+          }
+        }
+      },
+      "TimecardSort": {
+        "type": "object",
+        "description": "Sets the sort order of search results.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "field": {
+            "$ref": "#/components/schemas/TimecardSortField",
+            "description": "The field to sort on.\nSee [TimecardSortField](#type-timecardsortfield) for possible values",
+            "nullable": true
+          },
+          "order": {
+            "$ref": "#/components/schemas/SortOrder",
+            "description": "The order in which results are returned. Defaults to DESC.\nSee [SortOrder](#type-sortorder) for possible values",
+            "nullable": true
+          }
+        }
+      },
+      "TimecardSortField": {
+        "type": "string",
+        "enum": [
+          "START_AT",
+          "END_AT",
+          "CREATED_AT",
+          "UPDATED_AT"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "START_AT",
+            "description": "The start date/time of a `Timecard`"
+          },
+          {
+            "name": "END_AT",
+            "description": "The end date/time of a `Timecard`"
+          },
+          {
+            "name": "CREATED_AT",
+            "description": "The date/time that a `Timecard` is created"
+          },
+          {
+            "name": "UPDATED_AT",
+            "description": "The most recent date/time that a `Timecard` is updated"
+          }
+        ],
+        "description": "Enumerates the `Timecard` fields to sort on.",
+        "x-release-status": "PUBLIC"
+      },
+      "TimecardStatus": {
+        "type": "string",
+        "enum": [
+          "OPEN",
+          "CLOSED"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "OPEN",
+            "description": "The timecard has a `start_at` time but no `end_at` time, indicating an ongoing shift."
+          },
+          {
+            "name": "CLOSED",
+            "description": "The timecard has both `start_at` and `end_at` times, indicating a completed shift."
+          }
+        ],
+        "description": "**Read only** Enumerates the possible status of a [timecard](entity:Timecard).",
+        "x-release-status": "PUBLIC"
+      },
+      "TimecardWage": {
+        "type": "object",
+        "description": "The hourly wage rate used to compensate a team member for a [timecard](entity:Timecard).",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The name of the job performed during this timecard.",
+            "nullable": true
+          },
+          "hourly_rate": {
+            "$ref": "#/components/schemas/Money",
+            "description": "Can be a custom-set hourly wage or the calculated effective hourly\nwage based on the annual wage and hours worked per week.",
+            "nullable": true
+          },
+          "job_id": {
+            "type": "string",
+            "description": "The ID of the [job](entity:Job) performed for this timecard. Square\nlabor-reporting UIs might group timecards together by ID.",
+            "readOnly": true
+          },
+          "tip_eligible": {
+            "type": "boolean",
+            "description": "Whether team members are eligible for tips when working this job.",
+            "nullable": true
+          }
+        }
+      },
+      "TimecardWorkday": {
+        "type": "object",
+        "description": "A `Timecard` search query filter parameter that sets a range of days that\na `Timecard` must start or end in before passing the filter condition.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "date_range": {
+            "$ref": "#/components/schemas/DateRange",
+            "description": "Dates for fetching the timecards.",
+            "nullable": true
+          },
+          "match_timecards_by": {
+            "$ref": "#/components/schemas/TimecardWorkdayMatcher",
+            "description": "The strategy on which the dates are applied.\nSee [TimecardWorkdayMatcher](#type-timecardworkdaymatcher) for possible values",
+            "nullable": true
+          },
+          "default_timezone": {
+            "type": "string",
+            "description": "Location-specific timezones convert workdays to datetime filters.\nEvery location included in the query must have a timezone or this field\nmust be provided as a fallback. Format: the IANA timezone database\nidentifier for the relevant timezone.",
+            "nullable": true
+          }
+        }
+      },
+      "TimecardWorkdayMatcher": {
+        "type": "string",
+        "enum": [
+          "START_AT",
+          "END_AT",
+          "INTERSECTION"
+        ],
+        "x-enum-elements": [
+          {
+            "name": "START_AT",
+            "description": "All timecards that start on or after the specified workday"
+          },
+          {
+            "name": "END_AT",
+            "description": "All timecards that end on or before the specified workday"
+          },
+          {
+            "name": "INTERSECTION",
+            "description": "All timecards that start between the start and end workdays (inclusive)"
+          }
+        ],
+        "description": "Defines the logic used to apply a workday filter.",
+        "x-release-status": "PUBLIC"
       },
       "TipSettings": {
         "type": "object",
@@ -46661,10 +48052,73 @@
           }
         }
       },
+      "UpdateScheduledShiftRequest": {
+        "type": "object",
+        "x-release-status": "BETA",
+        "required": [
+          "scheduled_shift"
+        ],
+        "properties": {
+          "scheduled_shift": {
+            "$ref": "#/components/schemas/ScheduledShift",
+            "description": "The scheduled shift with any updates in the `draft_shift_details` field.\nIf needed, call [ListLocations](api-endpoint:Locations-ListLocations) to get location IDs,\n[ListJobs](api-endpoint:Team-ListJobs) to get job IDs, and [SearchTeamMembers](api-endpoint:Team-SearchTeamMembers)\nto get team member IDs and current job assignments. Updates made to `published_shift_details`\nare ignored.\n\nIf provided, the `start_at` and `end_at` timestamps must be in the time zone + offset of the\nshift location specified in `location_id`. Example for Pacific Standard Time: 2024-10-31T12:30:00-08:00\n\nTo enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)\ncontrol for the request, provide the current version of the shift in the `version` field.\nIf the provided version doesn't match the server version, the request fails. If `version` is\nomitted, Square executes a blind write, potentially overwriting data from another publish request."
+          }
+        },
+        "example": {
+          "scheduled_shift": {
+            "draft_shift_details": {
+              "end_at": "2019-03-25T13:18:00-05:00",
+              "is_deleted": false,
+              "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+              "location_id": "PAA1RJZZKXBFG",
+              "notes": "Dont forget to prep the vegetables",
+              "start_at": "2019-03-25T03:11:00-05:00",
+              "team_member_id": "ormj0jJJZ5OZIzxrZYJI"
+            },
+            "version": 1
+          }
+        }
+      },
+      "UpdateScheduledShiftResponse": {
+        "type": "object",
+        "description": "Represents an [UpdateScheduledShift](api-endpoint:Labor-UpdateScheduledShift) response.\nEither `scheduled_shift` or `errors` is present in the response.",
+        "x-release-status": "BETA",
+        "properties": {
+          "scheduled_shift": {
+            "$ref": "#/components/schemas/ScheduledShift",
+            "description": "The updated scheduled shift. To make the changes public, call \n[PublishScheduledShift](api-endpoint:Labor-PublishScheduledShift) or\n[BulkPublishScheduledShifts](api-endpoint:Labor-BulkPublishScheduledShifts)."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {
+          "scheduled_shift": {
+            "created_at": "2019-02-25T03:11:00-05:00",
+            "draft_shift_details": {
+              "end_at": "2019-03-25T13:18:00-05:00",
+              "is_deleted": false,
+              "job_id": "FzbJAtt9qEWncK1BWgVCxQ6M",
+              "location_id": "PAA1RJZZKXBFG",
+              "notes": "Dont forget to prep the vegetables",
+              "start_at": "2019-03-25T03:11:00-05:00",
+              "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+              "timezone": "America/New_York"
+            },
+            "id": "K0YH4CV5462JB",
+            "updated_at": "2019-02-25T03:11:15-05:00",
+            "version": 2
+          }
+        }
+      },
       "UpdateShiftRequest": {
         "type": "object",
         "description": "A request to update a `Shift` object.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "required": [
           "shift"
         ],
@@ -46710,7 +48164,7 @@
       "UpdateShiftResponse": {
         "type": "object",
         "description": "The response to a request to update a `Shift`. The response contains\nthe updated `Shift` object and might contain a set of `Error` objects if\nthe request resulted in errors.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
         "properties": {
           "shift": {
             "$ref": "#/components/schemas/Shift",
@@ -46940,6 +48394,110 @@
               "team_member_id": "1yJlHapkseYnNPETIU1B",
               "updated_at": "2021-06-11T22:55:45Z",
               "version": 1
+            }
+          }
+        }
+      },
+      "UpdateTimecardRequest": {
+        "type": "object",
+        "description": "A request to update a `Timecard` object.",
+        "x-release-status": "PUBLIC",
+        "required": [
+          "timecard"
+        ],
+        "properties": {
+          "timecard": {
+            "$ref": "#/components/schemas/Timecard",
+            "description": "The updated `Timecard` object."
+          }
+        },
+        "example": {
+          "idempotency_key": "HIDSNG5KS478L",
+          "timecard": {
+            "breaks": [
+              {
+                "break_type_id": "REGS1EQR1TPZ5",
+                "end_at": "2019-01-25T06:16:00-05:00",
+                "expected_duration": "PT5M",
+                "id": "X7GAQYVVRRG6P",
+                "is_paid": true,
+                "name": "Tea Break",
+                "start_at": "2019-01-25T06:11:00-05:00"
+              }
+            ],
+            "declared_cash_tip_money": {
+              "amount": 500,
+              "currency": "USD"
+            },
+            "end_at": "2019-01-25T13:11:00-05:00",
+            "location_id": "PAA1RJZZKXBFG",
+            "start_at": "2019-01-25T03:11:00-05:00",
+            "status": "CLOSED",
+            "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+            "version": 1,
+            "wage": {
+              "hourly_rate": {
+                "amount": 1500,
+                "currency": "USD"
+              },
+              "tip_eligible": true,
+              "title": "Bartender"
+            }
+          }
+        }
+      },
+      "UpdateTimecardResponse": {
+        "type": "object",
+        "description": "The response to a request to update a `Timecard`. The response contains\nthe updated `Timecard` object and might contain a set of `Error` objects if\nthe request resulted in errors.",
+        "x-release-status": "PUBLIC",
+        "properties": {
+          "timecard": {
+            "$ref": "#/components/schemas/Timecard",
+            "description": "The updated `Timecard`."
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "description": "Any errors that occurred during the request."
+          }
+        },
+        "example": {
+          "timecard": {
+            "breaks": [
+              {
+                "break_type_id": "REGS1EQR1TPZ5",
+                "end_at": "2019-01-25T06:16:00-05:00",
+                "expected_duration": "PT5M",
+                "id": "X7GAQYVVRRG6P",
+                "is_paid": true,
+                "name": "Tea Break",
+                "start_at": "2019-01-25T06:11:00-05:00"
+              }
+            ],
+            "created_at": "2019-02-28T00:39:02Z",
+            "declared_cash_tip_money": {
+              "amount": 500,
+              "currency": "USD"
+            },
+            "end_at": "2019-01-25T13:11:00-05:00",
+            "id": "K0YH4CV5462JB",
+            "location_id": "PAA1RJZZKXBFG",
+            "start_at": "2019-01-25T03:11:00-05:00",
+            "status": "CLOSED",
+            "team_member_id": "ormj0jJJZ5OZIzxrZYJI",
+            "timezone": "America/New_York",
+            "updated_at": "2019-02-28T00:42:41Z",
+            "version": 2,
+            "wage": {
+              "hourly_rate": {
+                "amount": 1500,
+                "currency": "USD"
+              },
+              "job_id": "dZtrPh5GSDGugyXGByesVp51",
+              "tip_eligible": true,
+              "title": "Bartender"
             }
           }
         }
@@ -48806,8 +50364,8 @@
       },
       "Labor": {
         "name": "Labor",
-        "summary": "Manage shifts, breaks, and wages for employees in Square Point of Sale.",
-        "description": "\nThe Labor API allows you to see when employees clocked in and out, how much they worked during different\nperiods, and how many breaks they took. You can also call the API to register a past break, adjust a shift,\nor update a wage.\n\nThis API is used in conjunction with the Team API.\n\nFor more information, see the following guides:\n - [Labor](https://developer.squareup.com/docs/labor-api/what-it-does)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+        "summary": "Manage timecards and schedules for team members.",
+        "description": "\nThe Labor API allows applications to manage time tracking and shift scheduling workflows.\n\n**Time tracking** - Create and manage timecards (shifts) to track work hours, breaks, and declared cash tips for payroll processing and labor cost calculations. The Labor API provides search capabilities to retrieve timecards by location, time period, status, and team member assignments. It can also be used to access job and wage information for team members, define break types, and configure workweek start times for overtime calculations and reporting periods.\n\n**Scheduling** - Create and manage scheduled shifts with draft and published states to coordinate team member work schedules. The Labor API supports both individual and bulk publishing of scheduled shifts and provides search capabilities to retrieve scheduled shifts by location, time period, status, and team member assignments.\n\nThe Labor API integrates closely with the Team API.\n\nFor more information, see the following guides:\n - [Labor](https://developer.squareup.com/docs/labor-api/what-it-does)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)\n"
       },
       "LocationCustomAttributes": {
         "name": "Location Custom Attributes",
@@ -48841,8 +50399,8 @@
       },
       "OAuth": {
         "name": "OAuth",
-        "summary": "Allow your application to gain programmatic access to other seller accounts.",
-        "description": "\nThe Square OAuth API lets applications request and obtain permission from a Square account to make API\ncalls on behalf of that account. Applications can request individual permissions so that users do not need\nto grant full access to their Square accounts.\n\nFor more information, see the following guides:\n - [OAuth](https://developer.squareup.com/docs/oauth-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
+        "summary": "Allow your application to gain programmatic access to Square seller accounts.",
+        "description": "\nApplications use the OAuth API to obtain access tokens that allow them to call Square APIs on behalf of Square sellers. Applications can request scoped permissions to limit their access to only the resources they need. The OAuth flow for obtaining an OAuth access token has three stages:\n\n**Authorization** - Your application directs the seller to the Square authorization page using an authorization URL that specifies your requested permissions. The seller signs in to Square and reviews the permissions.\n\n**Callback** - After approving the permissions, Square redirects the seller back to your application's registered redirect URL with an authorization code appended as a query parameter.\n\n**Token request** - Your application calls the `ObtainToken` endpoint with the authorization code, your application ID, and other information. Square returns an access token and refresh token.\n\nFor more information, see the following guides:\n - [OAuth](https://developer.squareup.com/docs/oauth-api/overview)\n - [Square Webhooks Overview](https://developer.squareup.com/docs/webhooks-overview)"
       },
       "OrderCustomAttributes": {
         "name": "Order Custom Attributes",
@@ -48892,7 +50450,7 @@
       "Team": {
         "name": "Team",
         "summary": "Manage a roster of team members and pull employee data into accounting and payroll systems.",
-        "description": "\nThe Team API allows applications to manage team members and job definitions for Square sellers. \nThis includes creating and managing team member profiles, wage settings, and job data. The Team API \nsupports synchronization of team member data with accounting and payroll systems, which is useful \nfor applications that handle payroll, scheduling, and other team member-related activities. \nNote that some operations, such as setting permissions and passcodes, still need to be done directly \nthrough the Square Dashboard.\n\nThe Team API integrates closely with the Labor API for timecard management.\n\nFor more information, see the following guide:\n - [Team](https://developer.squareup.com/docs/team/overview)\n - [Square Webhooks](https://developer.squareup.com/docs/webhooks-overview)\n"
+        "description": "\nThe Team API allows applications to manage team members and job definitions for Square sellers. \nThis includes creating and managing team member profiles, wage settings, and job data. The Team API \nsupports synchronization of team member data with accounting and payroll systems, which is useful \nfor applications that handle payroll, scheduling, and other team member-related activities. \nNote that some operations, such as setting permissions and passcodes, still need to be done directly \nthrough the Square Dashboard.\n\nThe Team API integrates closely with the Labor API.\n\nFor more information, see the following guide:\n - [Team](https://developer.squareup.com/docs/team/overview)\n - [Square Webhooks](https://developer.squareup.com/docs/webhooks-overview)\n"
       },
       "Terminal": {
         "name": "Terminal",
@@ -48995,7 +50553,7 @@
       },
       "Staff": {
         "name": "Staff",
-        "summary": "Manage team members and jobs, and track shift hours.",
+        "summary": "Manage team members and jobs, track hours worked, and manage team schedules.",
         "description": "",
         "apis": [
           "#/components/x-apis/Labor",
@@ -56510,6 +58068,329 @@
         }
       }
     },
+    "/v2/labor/scheduled-shifts": {
+      "post": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "CreateScheduledShift",
+        "operationId": "CreateScheduledShift",
+        "description": "Creates a scheduled shift by providing draft shift details such as job ID,\nteam member assignment, and start and end times.\n\nThe following `draft_shift_details` fields are required:\n- `location_id`\n- `job_id`\n- `start_at`\n- `end_at`",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateScheduledShiftRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateScheduledShiftResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          }
+        ]
+      }
+    },
+    "/v2/labor/scheduled-shifts/bulk-publish": {
+      "post": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "BulkPublishScheduledShifts",
+        "operationId": "BulkPublishScheduledShifts",
+        "description": "Publishes 1 - 100 scheduled shifts. This endpoint takes a map of individual publish\nrequests and returns a map of responses. When a scheduled shift is published, Square keeps\nthe `draft_shift_details` field as is and copies it to the `published_shift_details` field.\n\nThe minimum `start_at` and maximum `end_at` timestamps of all shifts in a\n`BulkPublishScheduledShifts` request must fall within a two-week period.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkPublishScheduledShiftsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkPublishScheduledShiftsResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          }
+        ]
+      }
+    },
+    "/v2/labor/scheduled-shifts/search": {
+      "post": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "SearchScheduledShifts",
+        "operationId": "SearchScheduledShifts",
+        "description": "Returns a paginated list of scheduled shifts, with optional filter and sort settings.\nBy default, results are sorted by `start_at` in ascending order.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_READ"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchScheduledShiftsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchScheduledShiftsResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "EXPECTED_STRING"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          }
+        ]
+      }
+    },
+    "/v2/labor/scheduled-shifts/{id}": {
+      "get": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "RetrieveScheduledShift",
+        "operationId": "RetrieveScheduledShift",
+        "description": "Retrieves a scheduled shift by ID.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the scheduled shift to retrieve.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrieveScheduledShiftResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "NOT_FOUND"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "UpdateScheduledShift",
+        "operationId": "UpdateScheduledShift",
+        "description": "Updates the draft shift details for a scheduled shift. This endpoint supports\nsparse updates, so only new, changed, or removed fields are required in the request.\nYou must publish the shift to make updates public.\n\nYou can make the following updates to `draft_shift_details`:\n- Change the `location_id`, `job_id`, `start_at`, and `end_at` fields.\n- Add, change, or clear the `team_member_id` and `notes` fields. To clear these fields,\nset the value to null.\n- Change the `is_deleted` field. To delete a scheduled shift, set `is_deleted` to true\nand then publish the shift.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the scheduled shift to update.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateScheduledShiftRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateScheduledShiftResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          },
+          {
+            "error-code": "VERSION_MISMATCH"
+          }
+        ]
+      }
+    },
+    "/v2/labor/scheduled-shifts/{id}/publish": {
+      "post": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "PublishScheduledShift",
+        "operationId": "PublishScheduledShift",
+        "description": "Publishes a scheduled shift. When a scheduled shift is published, Square keeps the\n`draft_shift_details` field as is and copies it to the `published_shift_details` field.",
+        "x-release-status": "BETA",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the scheduled shift to publish.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishScheduledShiftRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishScheduledShiftResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          }
+        ]
+      }
+    },
     "/v2/labor/shifts": {
       "post": {
         "tags": [
@@ -56518,7 +58399,14 @@
         "summary": "CreateShift",
         "operationId": "CreateShift",
         "description": "Creates a new `Shift`.\n\nA `Shift` represents a complete workday for a single team member.\nYou must provide the following values in your request to this\nendpoint:\n\n- `location_id`\n- `team_member_id`\n- `start_at`\n\nAn attempt to create a new `Shift` can result in a `BAD_REQUEST` error when:\n- The `status` of the new `Shift` is `OPEN` and the team member has another\nshift with an `OPEN` status.\n- The `start_at` date is in the future.\n- The `start_at` or `end_at` date overlaps another shift for the same team member.\n- The `Break` instances are set in the request and a break `start_at`\nis before the `Shift.start_at`, a break `end_at` is after\nthe `Shift.end_at`, or both.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
+        "deprecated": true,
+        "x-deprecation": {
+          "deprecationDate": "2025-05-21",
+          "retirementDate": "2026-05-21",
+          "replacedBy": "CreateTimecard",
+          "guideUrl": "https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes"
+        },
         "security": [
           {
             "oauth2": [
@@ -56560,7 +58448,14 @@
         "summary": "SearchShifts",
         "operationId": "SearchShifts",
         "description": "Returns a paginated list of `Shift` records for a business.\nThe list to be returned can be filtered by:\n- Location IDs\n- Team member IDs\n- Shift status (`OPEN` or `CLOSED`)\n- Shift start\n- Shift end\n- Workday details\n\nThe list can be sorted by:\n- `START_AT`\n- `END_AT`\n- `CREATED_AT`\n- `UPDATED_AT`",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
+        "deprecated": true,
+        "x-deprecation": {
+          "deprecationDate": "2025-05-21",
+          "retirementDate": "2026-05-21",
+          "replacedBy": "SearchTimecards",
+          "guideUrl": "https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes"
+        },
         "security": [
           {
             "oauth2": [
@@ -56602,7 +58497,14 @@
         "summary": "DeleteShift",
         "operationId": "DeleteShift",
         "description": "Deletes a `Shift`.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
+        "deprecated": true,
+        "x-deprecation": {
+          "deprecationDate": "2025-05-21",
+          "retirementDate": "2026-05-21",
+          "replacedBy": "DeleteTimecard",
+          "guideUrl": "https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes"
+        },
         "security": [
           {
             "oauth2": [
@@ -56641,7 +58543,14 @@
         "summary": "GetShift",
         "operationId": "GetShift",
         "description": "Returns a single `Shift` specified by `id`.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
+        "deprecated": true,
+        "x-deprecation": {
+          "deprecationDate": "2025-05-21",
+          "retirementDate": "2026-05-21",
+          "replacedBy": "RetrieveTimecard",
+          "guideUrl": "https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes"
+        },
         "security": [
           {
             "oauth2": [
@@ -56680,7 +58589,14 @@
         "summary": "UpdateShift",
         "operationId": "UpdateShift",
         "description": "Updates an existing `Shift`.\n\nWhen adding a `Break` to a `Shift`, any earlier `Break` instances in the `Shift` have\nthe `end_at` property set to a valid RFC-3339 datetime string.\n\nWhen closing a `Shift`, all `Break` instances in the `Shift` must be complete with `end_at`\nset on each `Break`.",
-        "x-release-status": "PUBLIC",
+        "x-release-status": "DEPRECATED",
+        "deprecated": true,
+        "x-deprecation": {
+          "deprecationDate": "2025-05-21",
+          "retirementDate": "2026-05-21",
+          "replacedBy": "UpdateTimecard",
+          "guideUrl": "https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes"
+        },
         "security": [
           {
             "oauth2": [
@@ -56823,6 +58739,253 @@
             }
           }
         }
+      }
+    },
+    "/v2/labor/timecards": {
+      "post": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "CreateTimecard",
+        "operationId": "CreateTimecard",
+        "description": "Creates a new `Timecard`.\n\nA `Timecard` represents a complete workday for a single team member.\nYou must provide the following values in your request to this\nendpoint:\n\n- `location_id`\n- `team_member_id`\n- `start_at`\n\nAn attempt to create a new `Timecard` can result in a `BAD_REQUEST` error when:\n- The `status` of the new `Timecard` is `OPEN` and the team member has another\ntimecard with an `OPEN` status.\n- The `start_at` date is in the future.\n- The `start_at` or `end_at` date overlaps another timecard for the same team member.\n- The `Break` instances are set in the request and a break `start_at`\nis before the `Timecard.start_at`, a break `end_at` is after\nthe `Timecard.end_at`, or both.",
+        "x-release-status": "PUBLIC",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTimecardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTimecardResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          },
+          {
+            "error-code": "NOT_FOUND"
+          }
+        ]
+      }
+    },
+    "/v2/labor/timecards/search": {
+      "post": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "SearchTimecards",
+        "operationId": "SearchTimecards",
+        "description": "Returns a paginated list of `Timecard` records for a business.\nThe list to be returned can be filtered by:\n- Location IDs\n- Team member IDs\n- Timecard status (`OPEN` or `CLOSED`)\n- Timecard start\n- Timecard end\n- Workday details\n\nThe list can be sorted by:\n- `START_AT`\n- `END_AT`\n- `CREATED_AT`\n- `UPDATED_AT`",
+        "x-release-status": "PUBLIC",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_READ"
+            ]
+          }
+        ],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchTimecardsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchTimecardsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/labor/timecards/{id}": {
+      "delete": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "DeleteTimecard",
+        "operationId": "DeleteTimecard",
+        "description": "Deletes a `Timecard`.",
+        "x-release-status": "PUBLIC",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_WRITE"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The UUID for the `Timecard` being deleted.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteTimecardResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "NOT_FOUND"
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "RetrieveTimecard",
+        "operationId": "RetrieveTimecard",
+        "description": "Returns a single `Timecard` specified by `id`.",
+        "x-release-status": "PUBLIC",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The UUID for the `Timecard` being retrieved.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrieveTimecardResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "NOT_FOUND"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Labor"
+        ],
+        "summary": "UpdateTimecard",
+        "operationId": "UpdateTimecard",
+        "description": "Updates an existing `Timecard`.\n\nWhen adding a `Break` to a `Timecard`, any earlier `Break` instances in the `Timecard` have\nthe `end_at` property set to a valid RFC-3339 datetime string.\n\nWhen closing a `Timecard`, all `Break` instances in the `Timecard` must be complete with `end_at`\nset on each `Break`.",
+        "x-release-status": "PUBLIC",
+        "security": [
+          {
+            "oauth2": [
+              "TIMECARDS_WRITE",
+              "TIMECARDS_READ"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The ID of the object being updated.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "An object containing the fields to POST for the request.\n\nSee the corresponding object definition for field details.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTimecardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateTimecardResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-endpoint-errors": [
+          {
+            "error-code": "BAD_REQUEST"
+          },
+          {
+            "error-code": "INVALID_VALUE"
+          },
+          {
+            "error-code": "VERSION_MISMATCH"
+          }
+        ]
       }
     },
     "/v2/labor/workweek-configs": {
@@ -64777,7 +66940,7 @@
       "name": "version",
       "optional": true,
       "env": "VERSION",
-      "type": "literal\u003c\"2025-04-16\"\u003e"
+      "type": "literal\u003c\"2025-05-21\"\u003e"
     }
   ]
 }

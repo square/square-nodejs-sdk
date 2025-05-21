@@ -1178,7 +1178,7 @@ types:
     source:
       openapi: openapi/openapi.json
   Break:
-    docs: A record of an employee's break during a shift.
+    docs: A record of a team member's break on a [timecard](entity:Timecard).
     properties:
       id:
         type: optional<string>
@@ -1186,8 +1186,8 @@ types:
       start_at:
         type: string
         docs: >-
-          RFC 3339; follows the same timezone information as `Shift`. Precision
-          up to
+          RFC 3339; follows the same timezone information as the
+          [timecard](entity:Timecard). Precision up to
 
           the minute is respected; seconds are truncated.
         validation:
@@ -1195,13 +1195,13 @@ types:
       end_at:
         type: optional<nullable<string>>
         docs: >-
-          RFC 3339; follows the same timezone information as `Shift`. Precision
-          up to
+          RFC 3339; follows the same timezone information as the
+          [timecard](entity:Timecard). Precision up to
 
           the minute is respected; seconds are truncated.
       break_type_id:
         type: string
-        docs: The `BreakType` that this `Break` was templated on.
+        docs: The [BreakType](entity:BreakType) that this break was templated on.
         validation:
           minLength: 1
       name:
@@ -1214,6 +1214,8 @@ types:
         docs: |-
           Format: RFC-3339 P[n]Y[n]M[n]DT[n]H[n]M[n]S. The expected length of
           the break.
+
+          Example for break expected duration of 15 minutes: PT15M
         validation:
           minLength: 1
       is_paid:
@@ -1224,9 +1226,11 @@ types:
     source:
       openapi: openapi/openapi.json
   BreakType:
-    docs: |-
-      A defined break template that sets an expectation for possible `Break`
-      instances on a `Shift`.
+    docs: >-
+      A template for a type of [break](entity:Break) that can be added to a
+
+      [timecard](entity:Timecard), including the expected duration and paid
+      status.
     properties:
       id:
         type: optional<string>
@@ -1242,7 +1246,7 @@ types:
         type: string
         docs: |-
           A human-readable name for this type of break. The name is displayed to
-          employees in Square products.
+          team members in Square products.
         validation:
           minLength: 1
       expected_duration:
@@ -1251,7 +1255,7 @@ types:
           Format: RFC-3339 P[n]Y[n]M[n]DT[n]H[n]M[n]S. The expected length of
           this break. Precision less than minutes is truncated.
 
-          Example for break expected duration of 15 minutes: T15M
+          Example for break expected duration of 15 minutes: PT15M
         validation:
           minLength: 1
       is_paid:
@@ -1651,6 +1655,62 @@ types:
            A map of responses that correspond to individual delete requests. Each response has the same ID 
           as the corresponding request and contains either a `custom_attribute`
           or an `errors` field.
+    source:
+      openapi: openapi/openapi.json
+  BulkPublishScheduledShiftsData:
+    docs: >-
+      Represents options for an individual publish request in a
+
+      [BulkPublishScheduledShifts](api-endpoint:Labor-BulkPublishScheduledShifts)
+
+      operation, provided as the value in a key-value pair.
+    properties:
+      version:
+        type: optional<integer>
+        docs: >-
+          The current version of the scheduled shift, used to enable [optimistic
+          concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)
+
+          control. If the provided version doesn't match the server version, the
+          request fails.
+
+          If omitted, Square executes a blind write, potentially overwriting
+          data from another publish request.
+    source:
+      openapi: openapi/openapi.json
+  BulkPublishScheduledShiftsResponse:
+    docs: >-
+      Represents a
+      [BulkPublishScheduledShifts](api-endpoint:Labor-BulkPublishScheduledShifts)
+      response.
+
+      Either `scheduled_shifts` or `errors` is present in the response.
+    properties:
+      responses:
+        type: optional<map<string, PublishScheduledShiftResponse>>
+        docs: >-
+          A map of key-value pairs that represent responses for individual
+          publish requests.
+
+          The order of responses might differ from the order in which the
+          requests were provided.
+
+
+          - Each key is the scheduled shift ID that was specified for a publish
+          request.
+
+          - Each value is the corresponding response. If the request succeeds,
+          the value is the
+
+          published scheduled shift. If the request fails, the value is an
+          `errors` array containing
+
+          any errors that occurred while processing the request.
+      errors:
+        type: optional<list<Error>>
+        docs: >-
+          Any top-level errors that prevented the bulk operation from
+          succeeding.
     source:
       openapi: openapi/openapi.json
   BulkRetrieveBookingsResponse:
@@ -4223,13 +4283,13 @@ types:
       ecom_uri:
         type: optional<nullable<string>>
         docs: >-
-          Deprecated; see go/ecomUriUseCases. A URI pointing to a published
-          e-commerce product page for the Item.
+          Deprecated. A URI pointing to a published e-commerce product page for
+          the Item.
       ecom_image_uris:
         type: optional<nullable<list<string>>>
         docs: >-
-          Deprecated; see go/ecomUriUseCases. A comma-separated list of encoded
-          URIs pointing to a set of published e-commerce images for the Item.
+          Deprecated. A comma-separated list of encoded URIs pointing to a set
+          of published e-commerce images for the Item.
       image_ids:
         type: optional<nullable<list<string>>>
         docs: |-
@@ -4454,10 +4514,10 @@ types:
       openapi: openapi/openapi.json
   CatalogItemModifierListInfo:
     docs: >-
-      References a text-based modifier or a list of non text-based modifiers
-      applied to a `CatalogItem` instance
+      Controls how a modifier list is applied to a specific item. This object
+      allows for item-specific customization of modifier list behavior
 
-      and specifies supported behaviors of the application.
+      and provides the ability to override global modifier list settings.
     properties:
       modifier_list_id:
         type: string
@@ -4469,60 +4529,49 @@ types:
       modifier_overrides:
         type: optional<nullable<list<CatalogModifierOverride>>>
         docs: >-
-          A set of `CatalogModifierOverride` objects that override whether a
-          given `CatalogModifier` is enabled by default.
+          A set of `CatalogModifierOverride` objects that override default
+          modifier settings for this item.
       min_selected_modifiers:
         type: optional<nullable<integer>>
         docs: >-
-          If 0 or larger, the smallest number of `CatalogModifier`s that must be
-          selected from this `CatalogModifierList`.
+          The minimum number of modifiers that must be selected from this
+          modifier list.
 
-          The default value is `-1`.
-
-
-          When  `CatalogModifierList.selection_type` is `MULTIPLE`,
-          `CatalogModifierListInfo.min_selected_modifiers=-1` 
-
-          and `CatalogModifierListInfo.max_selected_modifier=-1` means that from
-          zero to the maximum number of modifiers of
-
-          the `CatalogModifierList` can be selected from the
-          `CatalogModifierList`. 
+          Values:
 
 
-          When the `CatalogModifierList.selection_type` is `SINGLE`,
-          `CatalogModifierListInfo.min_selected_modifiers=-1`
+          - 0: No selection is required.
 
-          and `CatalogModifierListInfo.max_selected_modifier=-1` means that
-          exactly one modifier must be present in 
+          - -1: Default value, the attribute was not set by the client. When
+          `max_selected_modifiers` is
 
-          and can be selected from the `CatalogModifierList`
+          also -1, use the minimum and maximum selection values set on the
+          `CatalogItemModifierList`.
+
+          - &gt;0: The required minimum modifier selections. This can be larger
+          than the total `CatalogModifiers` when `allow_quantities` is enabled.
+
+          - &lt; -1: Invalid. Treated as no selection required.
       max_selected_modifiers:
         type: optional<nullable<integer>>
         docs: >-
-          If 0 or larger, the largest number of `CatalogModifier`s that can be
-          selected from this `CatalogModifierList`.
+          The maximum number of modifiers that can be selected.
 
-          The default value is `-1`.
-
-
-          When  `CatalogModifierList.selection_type` is `MULTIPLE`,
-          `CatalogModifierListInfo.min_selected_modifiers=-1` 
-
-          and `CatalogModifierListInfo.max_selected_modifier=-1` means that from
-          zero to the maximum number of modifiers of
-
-          the `CatalogModifierList` can be selected from the
-          `CatalogModifierList`. 
+          Values:
 
 
-          When the `CatalogModifierList.selection_type` is `SINGLE`,
-          `CatalogModifierListInfo.min_selected_modifiers=-1`
+          - 0: No maximum limit.
 
-          and `CatalogModifierListInfo.max_selected_modifier=-1` means that
-          exactly one modifier must be present in 
+          - -1: Default value, the attribute was not set by the client. When
+          `min_selected_modifiers` is
 
-          and can be selected from the `CatalogModifierList`
+          also -1, use the minimum and maximum selection values set on the
+          `CatalogItemModifierList`.
+
+          - &gt;0: The maximum total modifier selections. This can be larger
+          than the total `CatalogModifiers` when `allow_quantities` is enabled.
+
+          - &lt; -1: Invalid. Treated as no maximum limit.
       enabled:
         type: optional<nullable<boolean>>
         docs: >-
@@ -4535,6 +4584,9 @@ types:
           `modifier_list_info` list applied 
 
           to a `CatalogItem` instance.
+      allow_quantities: optional<unknown>
+      is_conversational: optional<unknown>
+      hidden_from_customer_override: optional<unknown>
     source:
       openapi: openapi/openapi.json
   CatalogItemOption:
@@ -4906,8 +4958,9 @@ types:
       openapi: openapi/openapi.json
   CatalogModifier:
     docs: >-
-      A modifier applicable to items at the time of sale. An example of a
-      modifier is a Cheese add-on to a Burger item.
+      A modifier that can be applied to items at the time of sale. For example,
+      a cheese modifier for a burger, or a flavor modifier for a serving of ice
+      cream.
     properties:
       name:
         type: optional<nullable<string>>
@@ -4920,6 +4973,14 @@ types:
       price_money:
         type: optional<Money>
         docs: The modifier price.
+      on_by_default:
+        type: optional<nullable<boolean>>
+        docs: >-
+          When `true`, this modifier is selected by default when displaying the
+          modifier list.
+
+          This setting can be overridden at the item level using
+          `CatalogModifierListInfo.modifier_overrides`.
       ordinal:
         type: optional<nullable<integer>>
         docs: >-
@@ -4938,37 +4999,29 @@ types:
 
           Currently this image is not displayed by Square, but is free to be
           displayed in 3rd party applications.
+      hidden_online:
+        type: optional<nullable<boolean>>
+        docs: >-
+          When `true`, this modifier is hidden from online ordering channels.
+          This setting can be overridden at the item level using
+          `CatalogModifierListInfo.modifier_overrides`.
     source:
       openapi: openapi/openapi.json
   CatalogModifierList:
     docs: >-
-      For a text-based modifier, this encapsulates the modifier's text when its
-      `modifier_type` is `TEXT`. 
+      A container for a list of modifiers, or a text-based modifier.
 
-      For example, to sell T-shirts with custom prints, a text-based modifier
-      can be used to capture the buyer-supplied 
+      For text-based modifiers, this represents text configuration for an item.
+      (For example, custom text to print on a t-shirt).
 
-      text string to be selected for the T-shirt at the time of sale.
+      For non text-based modifiers, this represents a list of modifiers that can
+      be applied to items at the time of sale.
 
+      (For example, a list of condiments for a hot dog, or a list of ice cream
+      flavors).
 
-      For non text-based modifiers, this encapsulates a non-empty list of
-      modifiers applicable to items 
-
-      at the time of sale. Each element of the modifier list is a
-      `CatalogObject` instance of the `MODIFIER` type.   
-
-      For example, a "Condiments" modifier list applicable to a "Hot Dog" item
-
-      may contain "Ketchup", "Mustard", and "Relish" modifiers. 
-
-
-      A non text-based modifier can be applied to the modified item once or
-      multiple times, if the `selection_type` field 
-
-      is set to `SINGLE` or `MULTIPLE`, respectively. On the other hand, a
-      text-based modifier can be applied to the item 
-
-      only once and the `selection_type` field is always set to `SINGLE`.
+      Each element of the modifier list is a `CatalogObject` instance of the
+      `MODIFIER` type.
     properties:
       name:
         type: optional<nullable<string>>
@@ -4988,14 +5041,10 @@ types:
       selection_type:
         type: optional<CatalogModifierListSelectionType>
         docs: >-
-          Indicates whether a single (`SINGLE`) or multiple (`MULTIPLE`)
-          modifiers from the list
+          __Deprecated__: Indicates whether a single (`SINGLE`) modifier or
+          multiple (`MULTIPLE`) modifiers can be selected. Use
 
-          can be applied to a single `CatalogItem`.
-
-
-          For text-based modifiers, the `selection_type` attribute is always
-          `SINGLE`. The other value is ignored.
+          `min_selected_modifiers` and `max_selected_modifiers` instead.
 
           See
           [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype)
@@ -5032,6 +5081,14 @@ types:
 
           Currently these images are not displayed on Square products, but may
           be displayed in 3rd-party applications.
+      allow_quantities:
+        type: optional<nullable<boolean>>
+        docs: >-
+          When `true`, allows multiple quantities of the same modifier to be
+          selected.
+      is_conversational:
+        type: optional<nullable<boolean>>
+        docs: True if modifiers belonging to this list can be used conversationally.
       modifier_type:
         type: optional<CatalogModifierListModifierType>
         docs: >-
@@ -5084,6 +5141,52 @@ types:
           internal use.
         validation:
           maxLength: 512
+      min_selected_modifiers:
+        type: optional<nullable<long>>
+        docs: >-
+          The minimum number of modifiers that must be selected from this list.
+          The value can be overridden with `CatalogItemModifierListInfo`.
+
+
+          Values:
+
+
+          - 0: No selection is required.
+
+          - -1: Default value, the attribute was not set by the client. Treated
+          as no selection required.
+
+          - &gt;0: The required minimum modifier selections. This can be larger
+          than the total `CatalogModifiers` when `allow_quantities` is enabled.
+
+          - &lt; -1: Invalid. Treated as no selection required.
+      max_selected_modifiers:
+        type: optional<nullable<long>>
+        docs: >-
+          The maximum number of modifiers that must be selected from this list.
+          The value can be overridden with `CatalogItemModifierListInfo`.
+
+
+          Values:
+
+
+          - 0: No maximum limit.
+
+          - -1: Default value, the attribute was not set by the client. Treated
+          as no maximum limit.
+
+          - &gt;0: The maximum total modifier selections. This can be larger
+          than the total `CatalogModifiers` when `allow_quantities` is enabled.
+
+          - &lt; -1: Invalid. Treated as no maximum limit.
+      hidden_from_customer:
+        type: optional<nullable<boolean>>
+        docs: >-
+          If `true`, modifiers from this list are hidden from customer receipts.
+          The default value is `false`.
+
+          This setting can be overridden with
+          `CatalogItemModifierListInfo.hidden_from_customer_override`.
     source:
       openapi: openapi/openapi.json
   CatalogModifierListModifierType:
@@ -5114,9 +5217,9 @@ types:
           minLength: 1
       on_by_default:
         type: optional<nullable<boolean>>
-        docs: >-
-          If `true`, this `CatalogModifier` should be selected by default for
-          this `CatalogItem`.
+        docs: '__Deprecated__: Use `on_by_default_override` instead.'
+      hidden_online_override: optional<unknown>
+      on_by_default_override: optional<unknown>
     source:
       openapi: openapi/openapi.json
   CatalogObject:
@@ -7764,6 +7867,26 @@ types:
         docs: The newly created payment.
     source:
       openapi: openapi/openapi.json
+  CreateScheduledShiftResponse:
+    docs: >-
+      Represents a
+      [CreateScheduledShift](api-endpoint:Labor-CreateScheduledShift) response.
+
+      Either `scheduled_shift` or `errors` is present in the response.
+    properties:
+      scheduled_shift:
+        type: optional<ScheduledShift>
+        docs: >-
+          The new scheduled shift. To make the shift public, call 
+
+          [PublishScheduledShift](api-endpoint:Labor-PublishScheduledShift) or
+
+          [BulkPublishScheduledShifts](api-endpoint:Labor-BulkPublishScheduledShifts).
+      errors:
+        type: optional<list<Error>>
+        docs: Any errors that occurred during the request.
+    source:
+      openapi: openapi/openapi.json
   CreateShiftResponse:
     docs: |-
       The response to a request to create a `Shift`. The response contains
@@ -7866,6 +7989,23 @@ types:
       refund:
         type: optional<TerminalRefund>
         docs: The created `TerminalRefund`.
+    source:
+      openapi: openapi/openapi.json
+  CreateTimecardResponse:
+    docs: >-
+      The response to a request to create a `Timecard`. The response contains
+
+      the created `Timecard` object and might contain a set of `Error` objects
+      if
+
+      the request resulted in errors.
+    properties:
+      timecard:
+        type: optional<Timecard>
+        docs: The `Timecard` that was created on the request.
+      errors:
+        type: optional<list<Error>>
+        docs: Any errors that occurred during the request.
     source:
       openapi: openapi/openapi.json
   CreateVendorResponse:
@@ -9618,6 +9758,18 @@ types:
       subscription:
         type: optional<Subscription>
         docs: The subscription that has the specified action deleted.
+    source:
+      openapi: openapi/openapi.json
+  DeleteTimecardResponse:
+    docs: >-
+      The response to a request to delete a `Timecard`. The response might
+      contain a set of 
+
+      `Error` objects if the request resulted in errors.
+    properties:
+      errors:
+        type: optional<list<Error>>
+        docs: Any errors that occurred during the request.
     source:
       openapi: openapi/openapi.json
   DeleteWebhookSubscriptionResponse:
@@ -21386,6 +21538,22 @@ types:
         docs: Information about errors encountered during the request.
     source:
       openapi: openapi/openapi.json
+  PublishScheduledShiftResponse:
+    docs: >-
+      Represents a
+      [PublishScheduledShift](api-endpoint:Labor-PublishScheduledShift)
+      response.
+
+      Either `scheduled_shift` or `errors` is present in the response.
+    properties:
+      scheduled_shift:
+        type: optional<ScheduledShift>
+        docs: The published scheduled shift.
+      errors:
+        type: optional<list<Error>>
+        docs: Any errors that occurred during the request.
+    source:
+      openapi: openapi/openapi.json
   QrCodeOptions:
     docs: Fields to describe the action that displays QR-Codes.
     properties:
@@ -22226,6 +22394,22 @@ types:
         docs: The payment link that is retrieved.
     source:
       openapi: openapi/openapi.json
+  RetrieveScheduledShiftResponse:
+    docs: >-
+      Represents a
+      [RetrieveScheduledShift](api-endpoint:Labor-RetrieveScheduledShift)
+      response.
+
+      Either `scheduled_shift` or `errors` is present in the response.
+    properties:
+      scheduled_shift:
+        type: optional<ScheduledShift>
+        docs: The requested scheduled shift.
+      errors:
+        type: optional<list<Error>>
+        docs: Any errors that occurred during the request.
+    source:
+      openapi: openapi/openapi.json
   GetSnippetResponse:
     docs: >-
       Represents a `RetrieveSnippet` response. The response can include either
@@ -22275,6 +22459,23 @@ types:
       errors:
         type: optional<list<Error>>
         docs: The errors that occurred during the request.
+    source:
+      openapi: openapi/openapi.json
+  RetrieveTimecardResponse:
+    docs: >-
+      A response to a request to get a `Timecard`. The response contains
+
+      the requested `Timecard` object and might contain a set of `Error` objects
+      if
+
+      the request resulted in errors.
+    properties:
+      timecard:
+        type: optional<Timecard>
+        docs: The requested `Timecard`.
+      errors:
+        type: optional<list<Error>>
+        docs: Any errors that occurred during the request.
     source:
       openapi: openapi/openapi.json
   RetrieveTokenStatusResponse:
@@ -22443,6 +22644,326 @@ types:
           ID generated by a third-party system.
         validation:
           maxLength: 128
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShift:
+    docs: >-
+      Represents a specific time slot in a work schedule. This object is used to
+      manage the
+
+      lifecycle of a scheduled shift from the draft to published state. A
+      scheduled shift contains
+
+      the latest draft shift details and current published shift details.
+    properties:
+      id:
+        type: optional<string>
+        docs: '**Read only** The Square-issued ID of the scheduled shift.'
+        validation:
+          maxLength: 255
+      draft_shift_details:
+        type: optional<ScheduledShiftDetails>
+        docs: >-
+          The latest draft shift details for the scheduled shift. Draft shift
+          details are used to
+
+          stage and manage shifts before publishing. This field is always
+          present.
+      published_shift_details:
+        type: optional<ScheduledShiftDetails>
+        docs: >-
+          The current published (public) shift details for the scheduled shift.
+          This field is
+
+          present only if the shift was published.
+      version:
+        type: optional<integer>
+        docs: >-
+          **Read only** The current version of the scheduled shift, which is
+          incremented with each update.
+
+          This field is used for [optimistic
+          concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)
+
+          control to ensure that requests don't overwrite data from another
+          request.
+      created_at:
+        type: optional<string>
+        docs: >-
+          The timestamp of when the scheduled shift was created, in RFC 3339
+          format presented as UTC.
+        access: read-only
+      updated_at:
+        type: optional<string>
+        docs: >-
+          The timestamp of when the scheduled shift was last updated, in RFC
+          3339 format presented as UTC.
+        access: read-only
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShiftDetails:
+    docs: >-
+      Represents shift details for draft and published versions of a [scheduled
+      shift](entity:ScheduledShift),
+
+      such as job ID, team member assignment, and start and end times.
+    properties:
+      team_member_id:
+        type: optional<nullable<string>>
+        docs: >-
+          The ID of the [team member](entity:TeamMember) scheduled for the
+          shift.
+        validation:
+          maxLength: 255
+      location_id:
+        type: optional<nullable<string>>
+        docs: The ID of the [location](entity:Location) the shift is scheduled for.
+        validation:
+          maxLength: 255
+      job_id:
+        type: optional<nullable<string>>
+        docs: The ID of the [job](entity:Job) the shift is scheduled for.
+      start_at:
+        type: optional<nullable<string>>
+        docs: >-
+          The start time of the shift, in RFC 3339 format in the time zone
+          &plus;
+
+          offset of the shift location specified in `location_id`. Precision up
+          to the minute
+
+          is respected; seconds are truncated.
+      end_at:
+        type: optional<nullable<string>>
+        docs: >-
+          The end time for the shift, in RFC 3339 format in the time zone &plus;
+
+          offset of the shift location specified in `location_id`. Precision up
+          to the minute
+
+          is respected; seconds are truncated.
+      notes:
+        type: optional<nullable<string>>
+        docs: Optional notes for the shift.
+        validation:
+          maxLength: 1000
+      is_deleted:
+        type: optional<nullable<boolean>>
+        docs: >-
+          Indicates whether the draft shift version is deleted. If set to `true`
+          when the shift
+
+          is published, the entire scheduled shift (including the published
+          shift) is deleted and
+
+          cannot be accessed using any endpoint.
+      timezone:
+        type: optional<string>
+        docs: >-
+          The time zone of the shift location, calculated based on the
+          `location_id`. This field
+
+          is provided for convenience.
+        access: read-only
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShiftFilter:
+    docs: >-
+      Defines filter criteria for a
+      [SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts)
+
+      request. Multiple filters in a query are combined as an `AND` operation.
+    properties:
+      location_ids:
+        type: optional<nullable<list<string>>>
+        docs: >-
+          Return shifts for the specified locations. When omitted, shifts for
+          all
+
+          locations are returned. If needed, call
+          [ListLocations](api-endpoint:Locations-ListLocations)
+
+          to get location IDs.
+      start:
+        type: optional<TimeRange>
+        docs: |-
+          Return shifts whose `start_at` time is within the specified
+          time range (inclusive).
+      end:
+        type: optional<TimeRange>
+        docs: |-
+          Return shifts whose `end_at` time is within the specified
+          time range (inclusive).
+      workday:
+        type: optional<ScheduledShiftWorkday>
+        docs: Return shifts based on a workday date range.
+      team_member_ids:
+        type: optional<nullable<list<string>>>
+        docs: >-
+          Return shifts assigned to specified team members. If needed, call
+
+          [SearchTeamMembers](api-endpoint:Team-SearchTeamMembers) to get team
+          member IDs.
+
+
+          To return only the shifts assigned to the specified team members,
+          include the
+
+          `assignment_status` filter in the query. Otherwise, all unassigned
+          shifts are
+
+          returned along with shifts assigned to the specified team members.
+      assignment_status:
+        type: optional<ScheduledShiftFilterAssignmentStatus>
+        docs: >-
+          Return shifts based on whether a team member is assigned. A shift is
+
+          assigned if the `team_member_id` field is populated in the
+          `draft_shift_details`
+
+          or `published_shift details` field of the shift.
+
+
+          To return only draft or published shifts, include the
+          `scheduled_shift_statuses`
+
+          filter in the query.
+
+          See
+          [ScheduledShiftFilterAssignmentStatus](#type-scheduledshiftfilterassignmentstatus)
+          for possible values
+      scheduled_shift_statuses:
+        type: optional<nullable<list<ScheduledShiftFilterScheduledShiftStatus>>>
+        docs: >-
+          Return shifts based on the draft or published status of the shift.
+
+          A shift is published if the `published_shift_details` field is
+          present.
+
+
+          Note that shifts with `draft_shift_details.is_deleted` set to `true`
+          are ignored
+
+          with the `DRAFT` filter.
+
+          See
+          [ScheduledShiftFilterScheduledShiftStatus](#type-scheduledshiftfilterscheduledshiftstatus)
+          for possible values
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShiftFilterAssignmentStatus:
+    enum:
+      - ASSIGNED
+      - UNASSIGNED
+    docs: |-
+      Defines valid values for the `assignment_status` filter in a
+      [SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts) request.
+      Assignment status is based on the `draft_shift_details.team_member_id` and
+      `published_shift_details.team_member_id` fields of the scheduled shift.
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShiftFilterScheduledShiftStatus:
+    enum:
+      - DRAFT
+      - PUBLISHED
+    docs: |-
+      Defines valid values for the `scheduled_shift_statuses` filter in a
+      [SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts) request.
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShiftNotificationAudience:
+    enum:
+      - ALL
+      - AFFECTED
+      - NONE
+    docs: >-
+      Indicates whether Square sends an email notification to team members
+
+      when a scheduled shift is published and which team members receive the
+      notification.
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShiftQuery:
+    docs: |-
+      Represents filter and sort criteria for the `query` field in a
+      [SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts) request.
+    properties:
+      filter:
+        type: optional<ScheduledShiftFilter>
+        docs: Filtering options for the query.
+      sort:
+        type: optional<ScheduledShiftSort>
+        docs: Sorting options for the query.
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShiftSort:
+    docs: >-
+      Defines sort criteria for a
+      [SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts)
+
+      request.
+    properties:
+      field:
+        type: optional<ScheduledShiftSortField>
+        docs: >-
+          The field to sort on. The default value is `START_AT`.
+
+          See [ScheduledShiftSortField](#type-scheduledshiftsortfield) for
+          possible values
+      order:
+        type: optional<SortOrder>
+        docs: |-
+          The order in which results are returned. The default value is `ASC`.
+          See [SortOrder](#type-sortorder) for possible values
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShiftSortField:
+    enum:
+      - START_AT
+      - END_AT
+      - CREATED_AT
+      - UPDATED_AT
+    docs: |-
+      Defines valid values for the `field` sort setting in a
+      [SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts) request.
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShiftWorkday:
+    docs: >-
+      A `ScheduledShift` search query filter parameter that sets a range of days
+      that
+
+      a `Shift` must start or end in before passing the filter condition.
+    properties:
+      date_range:
+        type: optional<DateRange>
+        docs: Dates for fetching the scheduled shifts.
+      match_scheduled_shifts_by:
+        type: optional<ScheduledShiftWorkdayMatcher>
+        docs: >-
+          The strategy on which the dates are applied.
+
+          See [ScheduledShiftWorkdayMatcher](#type-scheduledshiftworkdaymatcher)
+          for possible values
+      default_timezone:
+        type: optional<nullable<string>>
+        docs: >-
+          Location-specific timezones convert workdays to datetime filters.
+
+          Every location included in the query must have a timezone or this
+          field
+
+          must be provided as a fallback. Format: the IANA timezone database
+
+          identifier for the relevant timezone.
+    source:
+      openapi: openapi/openapi.json
+  ScheduledShiftWorkdayMatcher:
+    enum:
+      - START_AT
+      - END_AT
+      - INTERSECTION
+    docs: Defines the logic used to apply a workday filter.
     source:
       openapi: openapi/openapi.json
   SearchAvailabilityFilter:
@@ -23101,6 +23622,29 @@ types:
         type: list<OrderState>
     source:
       openapi: openapi/openapi.json
+  SearchScheduledShiftsResponse:
+    docs: >-
+      Represents a
+      [SearchScheduledShifts](api-endpoint:Labor-SearchScheduledShifts)
+      response.
+
+      Either `scheduled_shifts` or `errors` is present in the response.
+    properties:
+      scheduled_shifts:
+        type: optional<list<ScheduledShift>>
+        docs: A paginated list of scheduled shifts that match the query conditions.
+      cursor:
+        type: optional<string>
+        docs: >-
+          The pagination cursor used to retrieve the next page of results. This
+          field is present
+
+          only if additional results are available.
+      errors:
+        type: optional<list<Error>>
+        docs: Any errors that occurred during the request.
+    source:
+      openapi: openapi/openapi.json
   SearchShiftsResponse:
     docs: >-
       The response to a request for `Shift` objects. The response contains
@@ -23313,6 +23857,26 @@ types:
           for more information.
     source:
       openapi: openapi/openapi.json
+  SearchTimecardsResponse:
+    docs: >-
+      The response to a request for `Timecard` objects. The response contains
+
+      the requested `Timecard` objects and might contain a set of `Error`
+      objects if
+
+      the request resulted in errors.
+    properties:
+      timecards:
+        type: optional<list<Timecard>>
+        docs: Timecards.
+      cursor:
+        type: optional<string>
+        docs: An opaque cursor for fetching the next page.
+      errors:
+        type: optional<list<Error>>
+        docs: Any errors that occurred during the request.
+    source:
+      openapi: openapi/openapi.json
   SearchVendorsRequestFilter:
     docs: Defines supported query expressions to search for vendors by.
     properties:
@@ -23455,6 +24019,13 @@ types:
       for breaks
 
       taken during the shift.
+
+
+      Deprecated at Square API version 2025-05-21. Replaced by
+      [Timecard](entity:Timecard).
+
+      See the [migration
+      notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
     properties:
       id:
         type: optional<string>
@@ -23553,9 +24124,14 @@ types:
     source:
       openapi: openapi/openapi.json
   ShiftFilter:
-    docs: |-
+    docs: >-
       Defines a filter used in a search for `Shift` records. `AND` logic is
+
       used by Square's servers to apply each filter property specified.
+
+
+      Deprecated at Square API version 2025-05-21. See the [migration
+      notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
     properties:
       location_ids:
         type: optional<nullable<list<string>>>
@@ -23590,13 +24166,22 @@ types:
     enum:
       - OPEN
       - CLOSED
-    docs: Specifies the `status` of `Shift` records to be returned.
+    docs: >-
+      Specifies the `status` of `Shift` records to be returned.
+
+
+      Deprecated at Square API version 2025-05-21. See the [migration
+      notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
     source:
       openapi: openapi/openapi.json
   ShiftQuery:
     docs: >-
       The parameters of a `Shift` search query, which includes filter and sort
       options.
+
+
+      Deprecated at Square API version 2025-05-21. See the [migration
+      notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
     properties:
       filter:
         type: optional<ShiftFilter>
@@ -23607,7 +24192,12 @@ types:
     source:
       openapi: openapi/openapi.json
   ShiftSort:
-    docs: Sets the sort order of search results.
+    docs: >-
+      Sets the sort order of search results.
+
+
+      Deprecated at Square API version 2025-05-21. See the [migration
+      notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
     properties:
       field:
         type: optional<ShiftSortField>
@@ -23627,18 +24217,33 @@ types:
       - END_AT
       - CREATED_AT
       - UPDATED_AT
-    docs: Enumerates the `Shift` fields to sort on.
+    docs: >-
+      Enumerates the `Shift` fields to sort on.
+
+
+      Deprecated at Square API version 2025-05-21. See the [migration
+      notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
     source:
       openapi: openapi/openapi.json
   ShiftStatus:
     enum:
       - OPEN
       - CLOSED
-    docs: Enumerates the possible status of a `Shift`.
+    docs: >-
+      Enumerates the possible status of a `Shift`.
+
+
+      Deprecated at Square API version 2025-05-21. See the [migration
+      notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
     source:
       openapi: openapi/openapi.json
   ShiftWage:
-    docs: The hourly wage rate used to compensate an employee for this shift.
+    docs: >-
+      The hourly wage rate used to compensate an employee for this shift.
+
+
+      Deprecated at Square API version 2025-05-21. See the [migration
+      notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
     properties:
       title:
         type: optional<nullable<string>>
@@ -23650,11 +24255,9 @@ types:
           wage based on the annual wage and hours worked per week.
       job_id:
         type: optional<string>
-        docs: >-
+        docs: |-
           The id of the job performed during this shift. Square
-
-          labor-reporting UIs might group shifts together by id. This cannot be
-          used to retrieve the job.
+          labor-reporting UIs might group shifts together by id.
         access: read-only
       tip_eligible:
         type: optional<nullable<boolean>>
@@ -23662,9 +24265,14 @@ types:
     source:
       openapi: openapi/openapi.json
   ShiftWorkday:
-    docs: |-
+    docs: >-
       A `Shift` search query filter parameter that sets a range of days that
+
       a `Shift` must start or end in before passing the filter condition.
+
+
+      Deprecated at Square API version 2025-05-21. See the [migration
+      notes](https://developer.squareup.com/docs/labor-api/what-it-does#migration-notes).
     properties:
       date_range:
         type: optional<DateRange>
@@ -24538,11 +25146,10 @@ types:
     source:
       openapi: openapi/openapi.json
   TeamMemberWage:
-    docs: >-
-      The hourly wage rate that a team member earns on a `Shift` for doing the
-      job
-
-      specified by the `title` property of this object.
+    docs: |-
+      Job and wage information for a [team member](entity:TeamMember).
+      This convenience object provides details needed to specify the `wage`
+      field for a [timecard](entity:Timecard).
     properties:
       id:
         type: optional<string>
@@ -24560,9 +25167,7 @@ types:
           wage based on the annual wage and hours worked per week.
       job_id:
         type: optional<nullable<string>>
-        docs: |-
-          An identifier for the job that this wage relates to. This cannot be
-          used to retrieve the job.
+        docs: An identifier for the [job](entity:Job) that this wage relates to.
       tip_eligible:
         type: optional<nullable<boolean>>
         docs: Whether team members are eligible for tips when working this job.
@@ -25479,6 +26084,255 @@ types:
           ends.
     source:
       openapi: openapi/openapi.json
+  Timecard:
+    docs: >-
+      A record of the hourly rate, start time, and end time of a single timecard
+      (shift)
+
+      for a team member. This might include a record of the start and end times
+      of breaks
+
+      taken during the shift.
+    properties:
+      id:
+        type: optional<string>
+        docs: '**Read only** The Square-issued UUID for this object.'
+        validation:
+          maxLength: 255
+      location_id:
+        type: string
+        docs: >-
+          The ID of the [location](entity:Location) for this timecard. The
+          location should be based on
+
+          where the team member clocked in.
+        validation:
+          minLength: 1
+      timezone:
+        type: optional<nullable<string>>
+        docs: >-
+          **Read only** The time zone calculated from the location based on the
+          `location_id`,
+
+          provided as a convenience value. Format: the IANA time zone database
+          identifier for the
+
+          location time zone.
+      start_at:
+        type: string
+        docs: >-
+          The start time of the timecard, in RFC 3339 format and shifted to the
+          location
+
+          timezone + offset. Precision up to the minute is respected; seconds
+          are truncated.
+        validation:
+          minLength: 1
+      end_at:
+        type: optional<nullable<string>>
+        docs: >-
+          The end time of the timecard, in RFC 3339 format and shifted to the
+          location
+
+          timezone + offset. Precision up to the minute is respected; seconds
+          are truncated.
+      wage:
+        type: optional<TimecardWage>
+        docs: >-
+          Job and pay related information. If the wage is not set on create, it
+          defaults to a wage
+
+          of zero. If the title is not set on create, it defaults to the name of
+          the role the team member
+
+          is assigned to, if any.
+      breaks:
+        type: optional<nullable<list<Break>>>
+        docs: >-
+          A list of all the paid or unpaid breaks that were taken during this
+          timecard.
+      status:
+        type: optional<TimecardStatus>
+        docs: |-
+          Describes the working state of the timecard.
+          See [TimecardStatus](#type-timecardstatus) for possible values
+      version:
+        type: optional<integer>
+        docs: >-
+          **Read only** The current version of the timecard, which is
+          incremented with each update.
+
+          This field is used for [optimistic
+          concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)
+
+          control to ensure that requests don't overwrite data from another
+          request.
+      created_at:
+        type: optional<string>
+        docs: >-
+          The timestamp of when the timecard was created, in RFC 3339 format
+          presented as UTC.
+        access: read-only
+      updated_at:
+        type: optional<string>
+        docs: >-
+          The timestamp of when the timecard was last updated, in RFC 3339
+          format presented as UTC.
+        access: read-only
+      team_member_id:
+        type: string
+        docs: >-
+          The ID of the [team member](entity:TeamMember) this timecard belongs
+          to.
+        validation:
+          minLength: 1
+      declared_cash_tip_money:
+        type: optional<Money>
+        docs: The cash tips declared by the team member for this timecard.
+    source:
+      openapi: openapi/openapi.json
+  TimecardFilter:
+    docs: |-
+      Defines a filter used in a search for `Timecard` records. `AND` logic is
+      used by Square's servers to apply each filter property specified.
+    properties:
+      location_ids:
+        type: optional<nullable<list<string>>>
+        docs: Fetch timecards for the specified location.
+      status:
+        type: optional<TimecardFilterStatus>
+        docs: >-
+          Fetch a `Timecard` instance by `Timecard.status`.
+
+          See [TimecardFilterStatus](#type-timecardfilterstatus) for possible
+          values
+      start:
+        type: optional<TimeRange>
+        docs: Fetch `Timecard` instances that start in the time range - Inclusive.
+      end:
+        type: optional<TimeRange>
+        docs: Fetch the `Timecard` instances that end in the time range - Inclusive.
+      workday:
+        type: optional<TimecardWorkday>
+        docs: Fetch the `Timecard` instances based on the workday date range.
+      team_member_ids:
+        type: optional<nullable<list<string>>>
+        docs: Fetch timecards for the specified team members.
+    source:
+      openapi: openapi/openapi.json
+  TimecardFilterStatus:
+    enum:
+      - OPEN
+      - CLOSED
+    docs: Specifies the `status` of `Timecard` records to be returned.
+    source:
+      openapi: openapi/openapi.json
+  TimecardQuery:
+    docs: >-
+      The parameters of a `Timecard` search query, which includes filter and
+      sort options.
+    properties:
+      filter:
+        type: optional<TimecardFilter>
+        docs: Query filter options.
+      sort:
+        type: optional<TimecardSort>
+        docs: Sort order details.
+    source:
+      openapi: openapi/openapi.json
+  TimecardSort:
+    docs: Sets the sort order of search results.
+    properties:
+      field:
+        type: optional<TimecardSortField>
+        docs: |-
+          The field to sort on.
+          See [TimecardSortField](#type-timecardsortfield) for possible values
+      order:
+        type: optional<SortOrder>
+        docs: |-
+          The order in which results are returned. Defaults to DESC.
+          See [SortOrder](#type-sortorder) for possible values
+    source:
+      openapi: openapi/openapi.json
+  TimecardSortField:
+    enum:
+      - START_AT
+      - END_AT
+      - CREATED_AT
+      - UPDATED_AT
+    docs: Enumerates the `Timecard` fields to sort on.
+    source:
+      openapi: openapi/openapi.json
+  TimecardStatus:
+    enum:
+      - OPEN
+      - CLOSED
+    docs: >-
+      **Read only** Enumerates the possible status of a
+      [timecard](entity:Timecard).
+    source:
+      openapi: openapi/openapi.json
+  TimecardWage:
+    docs: >-
+      The hourly wage rate used to compensate a team member for a
+      [timecard](entity:Timecard).
+    properties:
+      title:
+        type: optional<nullable<string>>
+        docs: The name of the job performed during this timecard.
+      hourly_rate:
+        type: optional<Money>
+        docs: |-
+          Can be a custom-set hourly wage or the calculated effective hourly
+          wage based on the annual wage and hours worked per week.
+      job_id:
+        type: optional<string>
+        docs: |-
+          The ID of the [job](entity:Job) performed for this timecard. Square
+          labor-reporting UIs might group timecards together by ID.
+        access: read-only
+      tip_eligible:
+        type: optional<nullable<boolean>>
+        docs: Whether team members are eligible for tips when working this job.
+    source:
+      openapi: openapi/openapi.json
+  TimecardWorkday:
+    docs: |-
+      A `Timecard` search query filter parameter that sets a range of days that
+      a `Timecard` must start or end in before passing the filter condition.
+    properties:
+      date_range:
+        type: optional<DateRange>
+        docs: Dates for fetching the timecards.
+      match_timecards_by:
+        type: optional<TimecardWorkdayMatcher>
+        docs: >-
+          The strategy on which the dates are applied.
+
+          See [TimecardWorkdayMatcher](#type-timecardworkdaymatcher) for
+          possible values
+      default_timezone:
+        type: optional<nullable<string>>
+        docs: >-
+          Location-specific timezones convert workdays to datetime filters.
+
+          Every location included in the query must have a timezone or this
+          field
+
+          must be provided as a fallback. Format: the IANA timezone database
+
+          identifier for the relevant timezone.
+    source:
+      openapi: openapi/openapi.json
+  TimecardWorkdayMatcher:
+    enum:
+      - START_AT
+      - END_AT
+      - INTERSECTION
+    docs: Defines the logic used to apply a workday filter.
+    source:
+      openapi: openapi/openapi.json
   TipSettings:
     properties:
       allow_tipping:
@@ -25955,6 +26809,26 @@ types:
         docs: The updated payment.
     source:
       openapi: openapi/openapi.json
+  UpdateScheduledShiftResponse:
+    docs: >-
+      Represents an
+      [UpdateScheduledShift](api-endpoint:Labor-UpdateScheduledShift) response.
+
+      Either `scheduled_shift` or `errors` is present in the response.
+    properties:
+      scheduled_shift:
+        type: optional<ScheduledShift>
+        docs: >-
+          The updated scheduled shift. To make the changes public, call 
+
+          [PublishScheduledShift](api-endpoint:Labor-PublishScheduledShift) or
+
+          [BulkPublishScheduledShifts](api-endpoint:Labor-BulkPublishScheduledShifts).
+      errors:
+        type: optional<list<Error>>
+        docs: Any errors that occurred during the request.
+    source:
+      openapi: openapi/openapi.json
   UpdateShiftResponse:
     docs: |-
       The response to a request to update a `Shift`. The response contains
@@ -26011,6 +26885,23 @@ types:
       errors:
         type: optional<list<Error>>
         docs: The errors that occurred during the request.
+    source:
+      openapi: openapi/openapi.json
+  UpdateTimecardResponse:
+    docs: >-
+      The response to a request to update a `Timecard`. The response contains
+
+      the updated `Timecard` object and might contain a set of `Error` objects
+      if
+
+      the request resulted in errors.
+    properties:
+      timecard:
+        type: optional<Timecard>
+        docs: The updated `Timecard`.
+      errors:
+        type: optional<list<Error>>
+        docs: Any errors that occurred during the request.
     source:
       openapi: openapi/openapi.json
   UpdateVendorRequest:
