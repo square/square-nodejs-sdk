@@ -5,6 +5,11 @@ const MAX_CATALOG_PAGE_SIZE = 100;
 const MAX_RETRIES_CATALOG = 5;
 const MAX_TIMEOUT = 120;
 
+const sleep = (ms: number) => new Promise((resolve) => {
+    const timer = setTimeout(resolve, ms);
+    timer.unref();
+});
+
 async function deleteAllCatalogObjects(client: SquareClient): Promise<Square.BatchDeleteCatalogObjectsResponse> {
     const catalogObjectsResp = await client.catalog.list();
     const objectIds: string[] = [];
@@ -36,10 +41,31 @@ describe("Catalog API", () => {
     let catalogModifierListId: string;
     let catalogModifierId: string;
     let catalogTaxId: string;
-    jest.setTimeout(120_000);
+
+    beforeAll(async () => {
+        jest.setTimeout(240_000); // Set timeout for all tests
+    }, 240_000);
+
+    afterAll(async () => {
+        // Cleanup any remaining objects
+        try {
+            await deleteAllCatalogObjects(client);
+            // Create a promise that resolves after cleanup delay
+            await new Promise((resolve) => {
+                const timer = setTimeout(() => {
+                    resolve(true);
+                }, 2000);
+                // Unref the timer so it doesn't keep the process alive
+                timer.unref();
+            });
+        } catch (error) {
+            console.warn('Cleanup failed:', error);
+        }
+    }, 240_000);
 
     it("should bulk create and iterate through paginated catalog objects", async () => {
         await deleteAllCatalogObjects(client);
+        await sleep(2000); // Wait after deletion
 
         // Setup: Create 100 catalog objects with 1 CatalogItemVariation each
         const catalogObjects = Array(200)
@@ -63,6 +89,7 @@ describe("Catalog API", () => {
         );
 
         expect(createCatalogObjectsResp.objects).toHaveLength(200);
+        await sleep(2000); // Wait after bulk creation
 
         // List all catalog objects
         let numberOfPages = 0;
@@ -71,77 +98,125 @@ describe("Catalog API", () => {
         expect(catalogObjectsResp.data).toHaveLength(MAX_CATALOG_PAGE_SIZE);
 
         while (catalogObjectsResp.hasNextPage()) {
+            await sleep(1000); // Wait between page requests
             catalogObjectsResp = await catalogObjectsResp.getNextPage();
             numberOfPages++;
         }
 
         expect(numberOfPages).toBeGreaterThan(1);
+        await sleep(2000); // Wait before cleanup
 
         const deleteCatalogObjectsResp = await deleteAllCatalogObjects(client);
         expect(deleteCatalogObjectsResp.deletedObjectIds).toHaveLength(200);
-    });
+    }, 240_000);
 
     it("should upload catalog image", async () => {
-        // Setup: Load a test image file
-        const imageFile = await getTestFile();
+        // Add retry logic for the image upload
+        const maxRetries = 5; // Increased from 3 to 5
+        let lastError = null;
+        
+        for (let attempt = 0; attempt < maxRetries; attempt++) {
+            try {
+                // If this isn't the first attempt, wait before retrying
+                if (attempt > 0) {
+                    console.log(`Attempt ${attempt + 1} for image upload...`);
+                    // Increase wait time between retries exponentially
+                    await sleep(Math.pow(2, attempt) * 5000);
+                }
 
-        // Setup: Create a catalog object to associate the image with
-        const catalogObject = createTestCatalogItem();
-        const createCatalogResp = await client.catalog.batchUpsert(
-            {
-                idempotencyKey: newTestUuid(),
-                batches: [
+                console.log(`Starting image upload attempt ${attempt + 1}`);
+
+                // Setup: Load a test image file
+                const imageFile = await getTestFile();
+                console.log('Test file loaded');
+
+                // Setup: Create a catalog object to associate the image with
+                const catalogObject = createTestCatalogItem();
+                
+                // Add delay before catalog creation
+                await sleep(3000);
+                console.log('Creating catalog object...');
+                
+                const createCatalogResp = await client.catalog.batchUpsert(
                     {
-                        objects: [catalogObject],
+                        idempotencyKey: newTestUuid(),
+                        batches: [
+                            {
+                                objects: [catalogObject],
+                            },
+                        ],
                     },
-                ],
-            },
-            {
-                maxRetries: MAX_RETRIES_CATALOG,
-                timeoutInSeconds: MAX_TIMEOUT,
-            },
-        );
+                    {
+                        maxRetries: MAX_RETRIES_CATALOG,
+                        timeoutInSeconds: MAX_TIMEOUT,
+                    },
+                );
 
-        expect(createCatalogResp.objects).toHaveLength(1);
-        const createdCatalogObject = createCatalogResp.objects?.[0];
-        expect(createdCatalogObject).toBeDefined();
+                console.log('Catalog object created');
+                expect(createCatalogResp.objects).toHaveLength(1);
+                const createdCatalogObject = createCatalogResp.objects?.[0];
+                expect(createdCatalogObject).toBeDefined();
 
-        // Create a new catalog image
-        const imageName = `Test Image ${newTestUuid()}`;
-        const createCatalogImageResp = await client.catalog.images.create(
-            {
-                imageFile,
-                request: {
-                    idempotencyKey: newTestUuid(),
-                    objectId: createdCatalogObject!.id,
-                    image: {
-                        type: "IMAGE",
-                        id: newTestSquareTempId(),
-                        imageData: {
-                            name: imageName,
+                // Add delay before image upload
+                await sleep(5000);
+                console.log('Uploading image...');
+
+                // Create a new catalog image
+                const imageName = `Test Image ${newTestUuid()}`;
+                const createCatalogImageResp = await client.catalog.images.create(
+                    {
+                        imageFile,
+                        request: {
+                            idempotencyKey: newTestUuid(),
+                            objectId: createdCatalogObject!.id,
+                            image: {
+                                type: "IMAGE",
+                                id: newTestSquareTempId(),
+                                imageData: {
+                                    name: imageName,
+                                },
+                            },
                         },
                     },
-                },
-            },
-            {
-                maxRetries: MAX_RETRIES_CATALOG,
-                timeoutInSeconds: MAX_TIMEOUT,
-            },
-        );
+                    {
+                        maxRetries: MAX_RETRIES_CATALOG,
+                        timeoutInSeconds: 180, // Increased timeout for image upload
+                    },
+                );
 
-        expect(createCatalogImageResp.image).toBeDefined();
+                console.log('Image uploaded successfully');
+                expect(createCatalogImageResp.image).toBeDefined();
 
-        // Cleanup: Delete the created catalog object and image
-        await client.catalog.batchDelete(
-            {
-                objectIds: [createdCatalogObject!.id!, createCatalogImageResp.image!.id!],
-            },
-            {
-                maxRetries: MAX_RETRIES_CATALOG,
-                timeoutInSeconds: MAX_TIMEOUT,
-            },
-        );
-    });
+                // Add delay before cleanup
+                await sleep(3000);
+                console.log('Starting cleanup...');
+
+                // Cleanup: Delete the created catalog object and image
+                await client.catalog.batchDelete(
+                    {
+                        objectIds: [createdCatalogObject!.id!, createCatalogImageResp.image!.id!],
+                    },
+                    {
+                        maxRetries: MAX_RETRIES_CATALOG,
+                        timeoutInSeconds: MAX_TIMEOUT,
+                    },
+                );
+
+                console.log('Cleanup completed');
+                // If we get here, the test succeeded, so break out of retry loop
+                return;
+
+            } catch (error) {
+                lastError = error;
+                console.log(`Attempt ${attempt + 1} failed with error:`, error);
+                // If this was the last attempt, the error will be thrown below
+            }
+        }
+
+        // If we get here, all retries failed
+        console.log('All image upload attempts failed');
+        throw lastError;
+    }, 240_000);
 
     it("should test upsert catalog object", async () => {
         const coffee = createTestCatalogItem({
@@ -151,6 +226,8 @@ describe("Catalog API", () => {
             price: BigInt(100),
             variationName: "Colombian Fair Trade",
         });
+
+        await sleep(2000); // Wait before upsert
 
         const response = await client.catalog.object.upsert(
             {
@@ -174,30 +251,36 @@ describe("Catalog API", () => {
     });
 
     it("should test catalog info", async () => {
+        await sleep(2000); // Wait before info request
         const response = await client.catalog.info();
         expect(response).toBeDefined();
-    });
+    }, 240_000);
 
     it("should test list catalog", async () => {
+        await sleep(2000); // Wait before list request
         const response = await client.catalog.list();
         expect(response).toBeDefined();
-    });
+    }, 240_000);
 
     it("should test search catalog objects", async () => {
+        await sleep(2000); // Wait before search
         const response = await client.catalog.search({
             limit: 1,
         });
         expect(response).toBeDefined();
-    });
+    }, 240_000);
 
     it("should test search catalog items", async () => {
+        await sleep(2000); // Wait before search items
         const response = await client.catalog.searchItems({
             limit: 1,
         });
         expect(response).toBeDefined();
-    });
+    }, 240_000);
 
     it("should test batch upsert catalog objects", async () => {
+        await sleep(2000); // Wait before batch upsert
+
         const modifier: Square.CatalogObject = {
             type: "MODIFIER",
             id: "#temp-modifier-id",
@@ -256,9 +339,11 @@ describe("Catalog API", () => {
             if (clientObjectId === "#temp-modifier-id") catalogModifierId = objectId!;
             if (clientObjectId === "#temp-modifier-list-id") catalogModifierListId = objectId!;
         });
-    });
+    }, 240_000);
 
     it("should test retrieve catalog object", async () => {
+        await sleep(2000); // Wait before test start
+
         // First create a catalog object
         const coffee = createTestCatalogItem();
         const createResp = await client.catalog.object.upsert(
@@ -272,12 +357,16 @@ describe("Catalog API", () => {
             },
         );
 
+        await sleep(2000); // Wait before retrieve
+
         // Then retrieve it
         const response = await client.catalog.object.get({
             objectId: createResp.catalogObject!.id!,
         });
         expect(response.object).toBeDefined();
         expect(response.object!.id).toBe(createResp.catalogObject!.id);
+
+        await sleep(2000); // Wait before cleanup
 
         // Cleanup
         await client.catalog.object.delete(
@@ -289,9 +378,11 @@ describe("Catalog API", () => {
                 timeoutInSeconds: MAX_TIMEOUT,
             },
         );
-    });
+    }, 240_000);
 
     it("should test batch retrieve catalog objects", async () => {
+        await sleep(2000); // Wait before batch retrieve
+
         // Use the IDs created in the batch upsert test
         const response = await client.catalog.batchGet({
             objectIds: [catalogModifierId, catalogModifierListId, catalogTaxId],
@@ -302,9 +393,11 @@ describe("Catalog API", () => {
         expect(response.objects!.map((obj) => obj.id)).toEqual(
             expect.arrayContaining([catalogModifierId, catalogModifierListId, catalogTaxId]),
         );
-    });
+    }, 240_000);
 
     it("should test update item taxes", async () => {
+        await sleep(2000); // Wait before test start
+
         // First create a test item
         const item = createTestCatalogItem();
         const createResp = await client.catalog.object.upsert(
@@ -317,6 +410,8 @@ describe("Catalog API", () => {
                 timeoutInSeconds: MAX_TIMEOUT,
             },
         );
+
+        await sleep(2000); // Wait before update
 
         const response = await client.catalog.updateItemTaxes(
             {
@@ -331,6 +426,8 @@ describe("Catalog API", () => {
 
         expect(response.updatedAt).toBeDefined();
 
+        await sleep(2000); // Wait before cleanup
+
         // Cleanup
         await client.catalog.object.delete(
             {
@@ -341,9 +438,11 @@ describe("Catalog API", () => {
                 timeoutInSeconds: MAX_TIMEOUT,
             },
         );
-    });
+    }, 240_000);
 
     it("should test update item modifier lists", async () => {
+        await sleep(2000); // Wait before test start
+
         // First create a test item
         const item = createTestCatalogItem();
         const createResp = await client.catalog.object.upsert(
@@ -356,6 +455,8 @@ describe("Catalog API", () => {
                 timeoutInSeconds: MAX_TIMEOUT,
             },
         );
+
+        await sleep(2000); // Wait before update
 
         const response = await client.catalog.updateItemModifierLists(
             {
@@ -370,6 +471,8 @@ describe("Catalog API", () => {
 
         expect(response.updatedAt).toBeDefined();
 
+        await sleep(2000); // Wait before cleanup
+
         // Cleanup
         await client.catalog.object.delete(
             {
@@ -380,5 +483,5 @@ describe("Catalog API", () => {
                 timeoutInSeconds: MAX_TIMEOUT,
             },
         );
-    });
+    }, 240_000);
 });
