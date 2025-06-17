@@ -46,7 +46,7 @@ export declare namespace SquareClient {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-05-21";
+        version?: "2025-06-18";
         fetcher?: core.FetchFunction;
     }
 
@@ -58,7 +58,7 @@ export declare namespace SquareClient {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-05-21";
+        version?: "2025-06-18";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }

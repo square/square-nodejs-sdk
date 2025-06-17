@@ -5,7 +5,6 @@
 import * as serializers from "../index";
 import * as Square from "../../api/index";
 import * as core from "../../core";
-import { LoyaltyProgramRewardDefinition } from "./LoyaltyProgramRewardDefinition";
 import { CatalogObjectReference } from "./CatalogObjectReference";
 
 export const LoyaltyProgramRewardTier: core.serialization.ObjectSchema<
@@ -15,7 +14,6 @@ export const LoyaltyProgramRewardTier: core.serialization.ObjectSchema<
     id: core.serialization.string().optional(),
     points: core.serialization.number(),
     name: core.serialization.string().optional(),
-    definition: LoyaltyProgramRewardDefinition.optional(),
     createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
     pricingRuleReference: core.serialization.property("pricing_rule_reference", CatalogObjectReference),
 });
@@ -25,7 +23,6 @@ export declare namespace LoyaltyProgramRewardTier {
         id?: string | null;
         points: number;
         name?: string | null;
-        definition?: LoyaltyProgramRewardDefinition.Raw | null;
         created_at?: string | null;
         pricing_rule_reference: CatalogObjectReference.Raw;
     }
