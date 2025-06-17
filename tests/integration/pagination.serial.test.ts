@@ -7,6 +7,9 @@ import {
     newTestUuid,
 } from "./helpers";
 
+// Add a sleep helper function
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 type TestClient = Customers | Catalog;
 
 describe("Pagination", () => {
@@ -29,11 +32,11 @@ describe("Pagination", () => {
             perPage: 1,
             greaterThan: 4,
             async setup() {
-                await Promise.all(
-                    Array(5)
-                        .fill(null)
-                        .map(() => createTestCustomer(client)),
-                );
+                // Add sequential processing with delays instead of Promise.all
+                for (let i = 0; i < 5; i++) {
+                    await createTestCustomer(client);
+                    await sleep(1000); // Wait 1 second between customer creations
+                }
             },
         },
         {
@@ -42,23 +45,21 @@ describe("Pagination", () => {
             limit: 5,
             greaterThan: 4,
             async setup() {
-                await Promise.all(
-                    Array(5)
-                        .fill(null)
-                        .map(() => createTestCatalogItem())
-                        .map((item) =>
-                            client.catalog.object.upsert(
-                                {
-                                    idempotencyKey: newTestUuid(),
-                                    object: item,
-                                },
-                                {
-                                    maxRetries: 5,
-                                    timeoutInSeconds: 60,
-                                },
-                            ),
-                        ),
-                );
+                // Create items sequentially with delays instead of in parallel
+                for (let i = 0; i < 5; i++) {
+                    const item = createTestCatalogItem();
+                    await client.catalog.object.upsert(
+                        {
+                            idempotencyKey: newTestUuid(),
+                            object: item,
+                        },
+                        {
+                            maxRetries: 5,
+                            timeoutInSeconds: 60,
+                        },
+                    );
+                    await sleep(2000); // Wait 2 seconds between catalog operations
+                }
             },
         },
     ];
@@ -93,6 +94,7 @@ describe("Pagination", () => {
                 break;
             }
 
+            await sleep(1000); // Add delay before fetching next page
             currentPage = await currentPage.getNextPage();
         }
 
@@ -113,6 +115,7 @@ describe("Pagination", () => {
 
         let count = pager.data.length;
         while (pager.hasNextPage()) {
+            await sleep(1000); // Add delay before fetching next page
             await pager.getNextPage();
             count += pager.data.length;
 
@@ -132,13 +135,15 @@ describe("Pagination", () => {
                     await setup();
                 }
 
+                // Add delay between iterator and pager tests
                 const iteratorCount = await testIterator({ client, limit, params: { ...params } });
+                await sleep(2000); // Wait 2 seconds between major operations
                 const pagerCount = await testPager({ client, limit, params: { ...params } });
+
                 expect(iteratorCount).toBeGreaterThan(greaterThan);
                 expect(pagerCount).toBeGreaterThan(greaterThan);
 
                 if (perPage != null) {
-                    // Confirm iterator and pager return same count.
                     expect(pagerCount).toEqual(iteratorCount);
                 }
             },
