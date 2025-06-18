@@ -14,11 +14,6 @@ export interface LoyaltyProgramRewardTier {
     points: number;
     /** The name of the reward tier. */
     name?: string;
-    /**
-     * Provides details about the reward tier definition.
-     * DEPRECATED at version 2020-12-16. Replaced by the `pricing_rule_reference` field.
-     */
-    definition?: Square.LoyaltyProgramRewardDefinition;
     /** The timestamp when the reward tier was created, in RFC 3339 format. */
     createdAt?: string;
     /**

@@ -1,6 +1,6 @@
 {
     "name": "square",
-    "version": "42.3.0",
+    "version": "43.0.0",
     "private": false,
     "repository": "https://github.com/square/square-nodejs-sdk",
     "license": "MIT",

@@ -16,7 +16,7 @@ export declare namespace PaymentLinks {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-05-21";
+        version?: "2025-06-18";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace PaymentLinks {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-05-21";
+        version?: "2025-06-18";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -71,11 +71,11 @@ export class PaymentLinks {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "42.3.0",
-                    "User-Agent": "square/42.3.0",
+                    "X-Fern-SDK-Version": "43.0.0",
+                    "User-Agent": "square/43.0.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                     ...requestOptions?.headers,
@@ -161,11 +161,11 @@ export class PaymentLinks {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "42.3.0",
-                "User-Agent": "square/42.3.0",
+                "X-Fern-SDK-Version": "43.0.0",
+                "User-Agent": "square/43.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -240,11 +240,11 @@ export class PaymentLinks {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "42.3.0",
-                "User-Agent": "square/42.3.0",
+                "X-Fern-SDK-Version": "43.0.0",
+                "User-Agent": "square/43.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -323,11 +323,11 @@ export class PaymentLinks {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "42.3.0",
-                "User-Agent": "square/42.3.0",
+                "X-Fern-SDK-Version": "43.0.0",
+                "User-Agent": "square/43.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,
@@ -402,11 +402,11 @@ export class PaymentLinks {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-05-21",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "42.3.0",
-                "User-Agent": "square/42.3.0",
+                "X-Fern-SDK-Version": "43.0.0",
+                "User-Agent": "square/43.0.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...requestOptions?.headers,

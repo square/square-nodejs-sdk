@@ -14,7 +14,7 @@ export const Refund: core.serialization.ObjectSchema<serializers.Refund.Raw, Squ
         id: core.serialization.string(),
         locationId: core.serialization.property("location_id", core.serialization.string()),
         transactionId: core.serialization.property("transaction_id", core.serialization.string().optionalNullable()),
-        tenderId: core.serialization.property("tender_id", core.serialization.string()),
+        tenderId: core.serialization.property("tender_id", core.serialization.string().optionalNullable()),
         createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
         reason: core.serialization.string(),
         amountMoney: core.serialization.property("amount_money", Money),
@@ -32,7 +32,7 @@ export declare namespace Refund {
         id: string;
         location_id: string;
         transaction_id?: (string | null) | null;
-        tender_id: string;
+        tender_id?: (string | null) | null;
         created_at?: string | null;
         reason: string;
         amount_money: Money.Raw;

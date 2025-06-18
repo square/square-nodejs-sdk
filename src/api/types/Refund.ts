@@ -15,7 +15,7 @@ export interface Refund {
     /** The ID of the transaction that the refunded tender is part of. */
     transactionId?: string | null;
     /** The ID of the refunded tender. */
-    tenderId: string;
+    tenderId?: string | null;
     /** The timestamp for when the refund was created, in RFC 3339 format. */
     createdAt?: string;
     /** The reason for the refund being issued. */

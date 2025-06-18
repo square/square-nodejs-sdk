@@ -10,7 +10,7 @@ headers:
   Square-Version:
     name: version
     env: VERSION
-    type: literal<"2025-05-21">
+    type: literal<"2025-06-18">
 auth-schemes:
   Bearer:
     scheme: bearer
