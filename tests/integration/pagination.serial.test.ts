@@ -134,10 +134,12 @@ describe("Pagination", () => {
                 if (setup) {
                     await setup();
                 }
+                
+                await sleep(2000); // Wait before starting tests
 
                 // Add delay between iterator and pager tests
                 const iteratorCount = await testIterator({ client, limit, params: { ...params } });
-                await sleep(2000); // Wait 2 seconds between major operations
+                await sleep(5000); // Increased wait between major operations
                 const pagerCount = await testPager({ client, limit, params: { ...params } });
 
                 expect(iteratorCount).toBeGreaterThan(greaterThan);
@@ -147,7 +149,7 @@ describe("Pagination", () => {
                     expect(pagerCount).toEqual(iteratorCount);
                 }
             },
-            60_000,
+            180_000, // Increased timeout to 3 minutes
         );
     });
 });

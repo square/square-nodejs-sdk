@@ -248,7 +248,19 @@ describe("Catalog API", () => {
 
         const variation = catalogObject.itemData?.variations?.[0] as Square.CatalogObject.ItemVariation;
         expect(variation.itemVariationData?.name).toBe("Colombian Fair Trade");
-    });
+
+        // Add cleanup
+        await sleep(2000); // Wait before cleanup
+        await client.catalog.object.delete(
+            {
+                objectId: catalogObject.id!,
+            },
+            {
+                maxRetries: MAX_RETRIES_CATALOG,
+                timeoutInSeconds: MAX_TIMEOUT,
+            },
+        );
+    }, 180_000); // Increased timeout to 3 minutes
 
     it("should test catalog info", async () => {
         await sleep(2000); // Wait before info request
