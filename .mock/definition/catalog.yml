@@ -64,7 +64,9 @@ service:
         type: root.BatchDeleteCatalogObjectsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             object_ids:
               - W62UWFY35CWMYGVWK6TWJDNI
               - AA27W3M2GGTF3H6AVPNB77CK
@@ -187,7 +189,9 @@ service:
         type: root.BatchGetCatalogObjectsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             object_ids:
               - W62UWFY35CWMYGVWK6TWJDNI
               - AA27W3M2GGTF3H6AVPNB77CK
@@ -390,7 +394,9 @@ service:
         type: root.BatchUpsertCatalogObjectsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             idempotency_key: 789ff020-f723-43a9-b4b5-43b5dc1fa3dc
             batches:
               - objects:
@@ -502,7 +508,9 @@ service:
         type: root.CatalogInfoResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               errors:
                 - category: API_ERROR
@@ -619,7 +627,9 @@ service:
         type: root.ListCatalogResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               errors:
                 - category: API_ERROR
@@ -831,7 +841,9 @@ service:
         type: root.SearchCatalogObjectsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             object_types:
               - ITEM
             query:
@@ -1013,7 +1025,9 @@ service:
         type: root.SearchCatalogItemsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             text_filter: red
             category_ids:
               - WINE_CATEGORY_ID
@@ -1107,7 +1121,9 @@ service:
         type: root.UpdateItemModifierListsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             item_ids:
               - H42BRLUJ5KTZTTMPVSLFAACQ
               - 2JXOBJIHCWBQ4NZ3RIXQGJA6
@@ -1166,7 +1182,9 @@ service:
         type: root.UpdateItemTaxesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             item_ids:
               - H42BRLUJ5KTZTTMPVSLFAACQ
               - 2JXOBJIHCWBQ4NZ3RIXQGJA6

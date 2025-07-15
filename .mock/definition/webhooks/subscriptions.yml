@@ -63,7 +63,9 @@ service:
         type: root.ListWebhookSubscriptionsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               errors:
                 - category: API_ERROR
@@ -112,7 +114,9 @@ service:
         type: root.CreateWebhookSubscriptionResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             idempotency_key: 63f84c6c-2200-4c99-846c-2670a1311fbf
             subscription:
               name: Example Webhook Subscription
@@ -163,6 +167,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -211,6 +217,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             subscription:
               name: Updated Example Webhook Subscription
@@ -257,6 +265,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -300,6 +310,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             idempotency_key: ed80ae6b-0654-473b-bbab-a39aee89a60d
           response:
@@ -347,6 +359,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             event_type: payment.created
           response:

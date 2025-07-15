@@ -45,7 +45,9 @@ service:
         type: root.CreateTerminalRefundResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             idempotency_key: 402a640b-b26f-401f-b406-46f839590c04
             refund:
               payment_id: 5O5OvgkcNUhl7JBuINflcjKqUzXZY
@@ -123,7 +125,9 @@ service:
         type: root.SearchTerminalRefundsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             query:
               filter:
                 status: COMPLETED
@@ -177,6 +181,8 @@ service:
       examples:
         - path-parameters:
             terminal_refund_id: terminal_refund_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -225,6 +231,8 @@ service:
       examples:
         - path-parameters:
             terminal_refund_id: terminal_refund_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

@@ -16,7 +16,7 @@ export declare namespace Groups {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-06-18";
+        version?: "2025-07-16";
         fetcher?: core.FetchFunction;
     }
 
@@ -28,7 +28,7 @@ export declare namespace Groups {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-06-18";
+        version?: "2025-07-16";
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -71,7 +71,7 @@ export class Groups {
                 method: "GET",
                 headers: {
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
+                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
                     "X-Fern-SDK-Version": "43.0.0",
@@ -155,7 +155,7 @@ export class Groups {
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
                 "X-Fern-SDK-Version": "43.0.0",
@@ -232,7 +232,7 @@ export class Groups {
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
                 "X-Fern-SDK-Version": "43.0.0",
@@ -310,7 +310,7 @@ export class Groups {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
                 "X-Fern-SDK-Version": "43.0.0",
@@ -389,7 +389,7 @@ export class Groups {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
                 "X-Fern-SDK-Version": "43.0.0",
@@ -468,7 +468,7 @@ export class Groups {
             method: "PUT",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
                 "X-Fern-SDK-Version": "43.0.0",
@@ -547,7 +547,7 @@ export class Groups {
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-06-18",
+                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "square",
                 "X-Fern-SDK-Version": "43.0.0",

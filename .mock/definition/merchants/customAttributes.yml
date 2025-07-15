@@ -38,7 +38,9 @@ service:
         type: root.BulkDeleteMerchantCustomAttributesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             values:
               id1:
                 key: alternative_seller_name
@@ -118,7 +120,9 @@ service:
         type: root.BulkUpsertMerchantCustomAttributesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             values:
               id1:
                 merchant_id: DM7VKY8Q63GNP
@@ -243,6 +247,8 @@ service:
       examples:
         - path-parameters:
             merchant_id: merchant_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               custom_attributes:
@@ -336,6 +342,8 @@ service:
         - path-parameters:
             merchant_id: merchant_id
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               custom_attribute:
@@ -443,6 +451,8 @@ service:
         - path-parameters:
             merchant_id: merchant_id
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           request:
             custom_attribute:
               value: Ultimate Sneaker Store
@@ -509,6 +519,8 @@ service:
         - path-parameters:
             merchant_id: merchant_id
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

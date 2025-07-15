@@ -7,7 +7,7 @@
  */
 export interface LoyaltyEventRedeemReward {
     /** The ID of the [loyalty program](entity:LoyaltyProgram). */
-    loyaltyProgramId: string;
+    loyaltyProgramId?: string;
     /**
      * The ID of the redeemed [loyalty reward](entity:LoyaltyReward).
      * This field is returned only if the event source is `LOYALTY_API`.

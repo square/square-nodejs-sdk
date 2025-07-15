@@ -41,7 +41,9 @@ service:
         type: root.ListTeamMemberWagesResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               team_member_wages:
                 - id: pXS3qCv7BERPnEGedM4S8mhm
@@ -103,6 +105,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               team_member_wage:

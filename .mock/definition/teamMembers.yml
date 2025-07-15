@@ -32,7 +32,9 @@ service:
         type: root.CreateTeamMemberResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             idempotency_key: idempotency-key-0
             team_member:
               reference_id: reference_id_1
@@ -152,7 +154,9 @@ service:
         type: root.BatchCreateTeamMembersResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             team_members:
               idempotency-key-1:
                 team_member:
@@ -264,7 +268,9 @@ service:
         type: root.BatchUpdateTeamMembersResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             team_members:
               AFMwA08kR-MIF-3Vs0OE:
                 team_member:
@@ -378,7 +384,9 @@ service:
         type: root.SearchTeamMembersResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             query:
               filter:
                 location_ids:
@@ -614,6 +622,8 @@ service:
       examples:
         - path-parameters:
             team_member_id: team_member_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               team_member:
@@ -688,6 +698,8 @@ service:
       examples:
         - path-parameters:
             team_member_id: team_member_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             team_member:
               reference_id: reference_id_1

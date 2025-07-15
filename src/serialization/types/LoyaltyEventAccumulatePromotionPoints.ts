@@ -12,15 +12,15 @@ export const LoyaltyEventAccumulatePromotionPoints: core.serialization.ObjectSch
 > = core.serialization.object({
     loyaltyProgramId: core.serialization.property("loyalty_program_id", core.serialization.string().optional()),
     loyaltyPromotionId: core.serialization.property("loyalty_promotion_id", core.serialization.string().optional()),
-    points: core.serialization.number(),
-    orderId: core.serialization.property("order_id", core.serialization.string()),
+    points: core.serialization.number().optional(),
+    orderId: core.serialization.property("order_id", core.serialization.string().optional()),
 });
 
 export declare namespace LoyaltyEventAccumulatePromotionPoints {
     export interface Raw {
         loyalty_program_id?: string | null;
         loyalty_promotion_id?: string | null;
-        points: number;
-        order_id: string;
+        points?: number | null;
+        order_id?: string | null;
     }
 }

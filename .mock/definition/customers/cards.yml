@@ -84,6 +84,8 @@ service:
       examples:
         - path-parameters:
             customer_id: customer_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             card_nonce: YOUR_CARD_NONCE
             billing_address:
@@ -162,6 +164,8 @@ service:
         - path-parameters:
             customer_id: customer_id
             card_id: card_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

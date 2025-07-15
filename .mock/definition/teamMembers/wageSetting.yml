@@ -39,6 +39,8 @@ service:
       examples:
         - path-parameters:
             team_member_id: team_member_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               wage_setting:
@@ -123,6 +125,8 @@ service:
       examples:
         - path-parameters:
             team_member_id: team_member_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             wage_setting:
               job_assignments:

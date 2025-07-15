@@ -40,6 +40,8 @@ service:
       examples:
         - path-parameters:
             location_id: location_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               - errors:
@@ -136,6 +138,8 @@ service:
         - path-parameters:
             location_id: location_id
             order_id: order_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -279,6 +283,8 @@ service:
         - path-parameters:
             location_id: location_id
             order_id: order_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             action: COMPLETE
           response:

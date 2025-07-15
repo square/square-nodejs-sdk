@@ -9,7 +9,7 @@ import * as core from "../../core";
 export const CustomerSegment: core.serialization.ObjectSchema<serializers.CustomerSegment.Raw, Square.CustomerSegment> =
     core.serialization.object({
         id: core.serialization.string().optional(),
-        name: core.serialization.string(),
+        name: core.serialization.string().optional(),
         createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
         updatedAt: core.serialization.property("updated_at", core.serialization.string().optional()),
     });
@@ -17,7 +17,7 @@ export const CustomerSegment: core.serialization.ObjectSchema<serializers.Custom
 export declare namespace CustomerSegment {
     export interface Raw {
         id?: string | null;
-        name: string;
+        name?: string | null;
         created_at?: string | null;
         updated_at?: string | null;
     }

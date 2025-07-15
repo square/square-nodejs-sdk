@@ -30,7 +30,9 @@ service:
         type: root.BatchCreateVendorsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             vendors:
               8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe:
                 name: Joe's Fresh Seafood
@@ -103,7 +105,9 @@ service:
         type: root.BatchGetVendorsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             vendor_ids:
               - INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
           response:
@@ -168,7 +172,9 @@ service:
         type: root.BatchUpdateVendorsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             vendors:
               FMCYHBWT1TPL8MFH52PBMEN92A:
                 vendor: {}
@@ -274,7 +280,9 @@ service:
         type: root.CreateVendorResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             idempotency_key: 8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe
             vendor:
               name: Joe's Fresh Seafood
@@ -368,7 +376,9 @@ service:
         type: root.SearchVendorsResponse
         status-code: 200
       examples:
-        - request: {}
+        - headers:
+            Square-Version: '2025-07-16'
+          request: {}
           response:
             body:
               errors:
@@ -420,6 +430,8 @@ service:
       examples:
         - path-parameters:
             vendor_id: vendor_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -482,6 +494,8 @@ service:
       examples:
         - path-parameters:
             vendor_id: vendor_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             idempotency_key: 8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe
             vendor:
