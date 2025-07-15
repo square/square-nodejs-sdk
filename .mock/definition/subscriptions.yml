@@ -159,7 +159,9 @@ service:
         type: root.CreateSubscriptionResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             idempotency_key: 8193148c-9586-11e6-99f9-28cfe92138cf
             location_id: S8GWD5R9QB376
             plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
@@ -258,7 +260,9 @@ service:
         type: root.BulkSwapPlanResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             new_plan_variation_id: FQ7CDXXWSLUJRPM3GFJSJGZ7
             old_plan_variation_id: 6JHXF3B2CW3YKHDV4XEM674H
             location_id: S8GWD5R9QB376
@@ -356,7 +360,9 @@ service:
         type: root.SearchSubscriptionsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             query:
               filter:
                 customer_ids:
@@ -481,6 +487,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -553,6 +561,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             subscription:
               card_id: '{NEW CARD ID}'
@@ -615,6 +625,8 @@ service:
         - path-parameters:
             subscription_id: subscription_id
             action_id: action_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -696,6 +708,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             monthly_billing_anchor_date: 1
           response:
@@ -769,6 +783,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -860,6 +876,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -994,6 +1012,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-06-18'
           request: {}
           response:
             body:
@@ -1076,6 +1096,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-06-18'
           request: {}
           response:
             body:
@@ -1161,6 +1183,8 @@ service:
       examples:
         - path-parameters:
             subscription_id: subscription_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             new_plan_variation_id: FQ7CDXXWSLUJRPM3GFJSJGZ7
             phases:

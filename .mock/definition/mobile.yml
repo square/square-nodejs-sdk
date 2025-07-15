@@ -61,7 +61,9 @@ service:
         status-code: 200
       availability: deprecated
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             location_id: YOUR_LOCATION_ID
           response:
             body:

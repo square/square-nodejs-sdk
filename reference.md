@@ -12393,3 +12393,11093 @@ await client.vendors.create({
 
 </dd>
 </dl>
+</details>
+
+<details><summary><code>client.vendors.<a href="/src/api/resources/vendors/client/Client.ts">search</a>({ ...params }) -> Square.SearchVendorsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches for vendors using a filter against supported [Vendor](entity:Vendor) properties and a supported sorter.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vendors.search();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.SearchVendorsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vendors.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vendors.<a href="/src/api/resources/vendors/client/Client.ts">get</a>({ ...params }) -> Square.GetVendorResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves the vendor of a specified [Vendor](entity:Vendor) ID.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vendors.get({
+    vendorId: "vendor_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.GetVendorsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vendors.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vendors.<a href="/src/api/resources/vendors/client/Client.ts">update</a>({ ...params }) -> Square.UpdateVendorResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates an existing [Vendor](entity:Vendor) object as a supplier to a seller.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.vendors.update({
+    vendorId: "vendor_id",
+    body: {
+        idempotencyKey: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+        vendor: {
+            id: "INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4",
+            name: "Jack's Chicken Shack",
+            version: 1,
+            status: "ACTIVE",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.UpdateVendorsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Vendors.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Bookings CustomAttributeDefinitions
+
+<details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get all bookings custom attribute definitions.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.bookings.customAttributeDefinitions.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.bookings.customAttributeDefinitions.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.ListCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">create</a>({ ...params }) -> Square.CreateBookingCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a bookings custom attribute definition.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
+or _Appointments Premium_.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bookings.customAttributeDefinitions.create({
+    customAttributeDefinition: {},
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.CreateBookingCustomAttributeDefinitionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">get</a>({ ...params }) -> Square.RetrieveBookingCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a bookings custom attribute definition.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bookings.customAttributeDefinitions.get({
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.GetCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">update</a>({ ...params }) -> Square.UpdateBookingCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a bookings custom attribute definition.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
+or _Appointments Premium_.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bookings.customAttributeDefinitions.update({
+    key: "key",
+    customAttributeDefinition: {},
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.UpdateBookingCustomAttributeDefinitionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteBookingCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a bookings custom attribute definition.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
+or _Appointments Premium_.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bookings.customAttributeDefinitions.delete({
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.DeleteCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Bookings CustomAttributes
+
+<details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">batchDelete</a>({ ...params }) -> Square.BulkDeleteBookingCustomAttributesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Bulk deletes bookings custom attributes.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
+or _Appointments Premium_.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bookings.customAttributes.batchDelete({
+    values: {
+        key: {
+            bookingId: "booking_id",
+            key: "key",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.BulkDeleteBookingCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">batchUpsert</a>({ ...params }) -> Square.BulkUpsertBookingCustomAttributesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Bulk upserts bookings custom attributes.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
+or _Appointments Premium_.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bookings.customAttributes.batchUpsert({
+    values: {
+        key: {
+            bookingId: "booking_id",
+            customAttribute: {},
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.BulkUpsertBookingCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists a booking's custom attributes.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.bookings.customAttributes.list({
+    bookingId: "booking_id",
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.bookings.customAttributes.list({
+    bookingId: "booking_id",
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.ListCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">get</a>({ ...params }) -> Square.RetrieveBookingCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a bookings custom attribute.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bookings.customAttributes.get({
+    bookingId: "booking_id",
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.GetCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">upsert</a>({ ...params }) -> Square.UpsertBookingCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Upserts a bookings custom attribute.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
+or _Appointments Premium_.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bookings.customAttributes.upsert({
+    bookingId: "booking_id",
+    key: "key",
+    customAttribute: {},
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.UpsertBookingCustomAttributeRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteBookingCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a bookings custom attribute.
+
+To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
+To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
+
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
+or _Appointments Premium_.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bookings.customAttributes.delete({
+    bookingId: "booking_id",
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.DeleteCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Bookings LocationProfiles
+
+<details><summary><code>client.bookings.locationProfiles.<a href="/src/api/resources/bookings/resources/locationProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.LocationBookingProfile></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists location booking profiles of a seller.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.bookings.locationProfiles.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.bookings.locationProfiles.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.ListLocationProfilesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `LocationProfiles.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Bookings TeamMemberProfiles
+
+<details><summary><code>client.bookings.teamMemberProfiles.<a href="/src/api/resources/bookings/resources/teamMemberProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.TeamMemberBookingProfile></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists booking profiles for team members.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.bookings.teamMemberProfiles.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.bookings.teamMemberProfiles.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.ListTeamMemberProfilesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TeamMemberProfiles.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bookings.teamMemberProfiles.<a href="/src/api/resources/bookings/resources/teamMemberProfiles/client/Client.ts">get</a>({ ...params }) -> Square.GetTeamMemberBookingProfileResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a team member's booking profile.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bookings.teamMemberProfiles.get({
+    teamMemberId: "team_member_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.bookings.GetTeamMemberProfilesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TeamMemberProfiles.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## CashDrawers Shifts
+
+<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CashDrawerShiftSummary></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Provides the details for all of the cash drawer shifts for a location
+in a date range.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.cashDrawers.shifts.list({
+    locationId: "location_id",
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.cashDrawers.shifts.list({
+    locationId: "location_id",
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.cashDrawers.ListShiftsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Shifts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">get</a>({ ...params }) -> Square.GetCashDrawerShiftResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Provides the summary details for a single cash drawer shift. See
+[ListCashDrawerShiftEvents](api-endpoint:CashDrawers-ListCashDrawerShiftEvents) for a list of cash drawer shift events.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.cashDrawers.shifts.get({
+    shiftId: "shift_id",
+    locationId: "location_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.cashDrawers.GetShiftsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Shifts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">listEvents</a>({ ...params }) -> core.Page<Square.CashDrawerShiftEvent></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Provides a paginated list of events for a single cash drawer shift.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.cashDrawers.shifts.listEvents({
+    shiftId: "shift_id",
+    locationId: "location_id",
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.cashDrawers.shifts.listEvents({
+    shiftId: "shift_id",
+    locationId: "location_id",
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.cashDrawers.ListEventsShiftsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Shifts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Catalog Images
+
+<details><summary><code>client.catalog.images.<a href="/src/api/resources/catalog/resources/images/client/Client.ts">create</a>({ ...params }) -> Square.CreateCatalogImageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Uploads an image file to be represented by a [CatalogImage](entity:CatalogImage) object that can be linked to an existing
+[CatalogObject](entity:CatalogObject) instance. The resulting `CatalogImage` is unattached to any `CatalogObject` if the `object_id`
+is not specified.
+
+This `CreateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in
+JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.catalog.images.create({});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.catalog.CreateImagesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Images.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.images.<a href="/src/api/resources/catalog/resources/images/client/Client.ts">update</a>({ ...params }) -> Square.UpdateCatalogImageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Uploads a new image file to replace the existing one in the specified [CatalogImage](entity:CatalogImage) object.
+
+This `UpdateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in
+JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.catalog.images.update({
+    imageId: "image_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.catalog.UpdateImagesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Images.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Catalog Object
+
+<details><summary><code>client.catalog.object.<a href="/src/api/resources/catalog/resources/object/client/Client.ts">upsert</a>({ ...params }) -> Square.UpsertCatalogObjectResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new or updates the specified [CatalogObject](entity:CatalogObject).
+
+To ensure consistency, only one update request is processed at a time per seller account.
+While one (batch or non-batch) update request is being processed, other (batched and non-batched)
+update requests are rejected with the `429` error code.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.catalog.object.upsert({
+    idempotencyKey: "af3d1afc-7212-4300-b463-0bfc5314a5ae",
+    object: {
+        type: "ITEM",
+        id: "id",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.catalog.UpsertCatalogObjectRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Object_.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.object.<a href="/src/api/resources/catalog/resources/object/client/Client.ts">get</a>({ ...params }) -> Square.GetCatalogObjectResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single [CatalogItem](entity:CatalogItem) as a
+[CatalogObject](entity:CatalogObject) based on the provided ID. The returned
+object includes all of the relevant [CatalogItem](entity:CatalogItem)
+information including: [CatalogItemVariation](entity:CatalogItemVariation)
+children, references to its
+[CatalogModifierList](entity:CatalogModifierList) objects, and the ids of
+any [CatalogTax](entity:CatalogTax) objects that apply to it.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.catalog.object.get({
+    objectId: "object_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.catalog.GetObjectRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Object_.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.catalog.object.<a href="/src/api/resources/catalog/resources/object/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteCatalogObjectResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a single [CatalogObject](entity:CatalogObject) based on the
+provided ID and returns the set of successfully deleted IDs in the response.
+Deletion is a cascading event such that all children of the targeted object
+are also deleted. For example, deleting a [CatalogItem](entity:CatalogItem)
+will also delete all of its
+[CatalogItemVariation](entity:CatalogItemVariation) children.
+
+To ensure consistency, only one delete request is processed at a time per seller account.
+While one (batch or non-batch) delete request is being processed, other (batched and non-batched)
+delete requests are rejected with the `429` error code.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.catalog.object.delete({
+    objectId: "object_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.catalog.DeleteObjectRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Object_.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Checkout PaymentLinks
+
+<details><summary><code>client.checkout.paymentLinks.<a href="/src/api/resources/checkout/resources/paymentLinks/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.PaymentLink></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists all payment links.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.checkout.paymentLinks.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.checkout.paymentLinks.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.checkout.ListPaymentLinksRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentLinks.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.checkout.paymentLinks.<a href="/src/api/resources/checkout/resources/paymentLinks/client/Client.ts">create</a>({ ...params }) -> Square.CreatePaymentLinkResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a Square-hosted checkout page. Applications can share the resulting payment link with their buyer to pay for goods and services.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.checkout.paymentLinks.create({
+    idempotencyKey: "cd9e25dc-d9f2-4430-aedb-61605070e95f",
+    quickPay: {
+        name: "Auto Detailing",
+        priceMoney: {
+            amount: 10000,
+            currency: "USD",
+        },
+        locationId: "A9Y43N9ABXZBP",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.checkout.CreatePaymentLinkRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentLinks.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.checkout.paymentLinks.<a href="/src/api/resources/checkout/resources/paymentLinks/client/Client.ts">get</a>({ ...params }) -> Square.GetPaymentLinkResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a payment link.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.checkout.paymentLinks.get({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.checkout.GetPaymentLinksRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentLinks.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.checkout.paymentLinks.<a href="/src/api/resources/checkout/resources/paymentLinks/client/Client.ts">update</a>({ ...params }) -> Square.UpdatePaymentLinkResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a payment link. You can update the `payment_link` fields such as
+`description`, `checkout_options`, and `pre_populated_data`.
+You cannot update other fields such as the `order_id`, `version`, `URL`, or `timestamp` field.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.checkout.paymentLinks.update({
+    id: "id",
+    paymentLink: {
+        version: 1,
+        checkoutOptions: {
+            askForShippingAddress: true,
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.checkout.UpdatePaymentLinkRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentLinks.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.checkout.paymentLinks.<a href="/src/api/resources/checkout/resources/paymentLinks/client/Client.ts">delete</a>({ ...params }) -> Square.DeletePaymentLinkResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a payment link.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.checkout.paymentLinks.delete({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.checkout.DeletePaymentLinksRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PaymentLinks.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Customers CustomAttributeDefinitions
+
+<details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the customer-related [custom attribute definitions](entity:CustomAttributeDefinition) that belong to a Square seller account.
+
+When all response pages are retrieved, the results include all custom attribute definitions
+that are visible to the requesting application, including those that are created by other
+applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that
+seller-defined custom attributes (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.customers.customAttributeDefinitions.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.customers.customAttributeDefinitions.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.ListCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">create</a>({ ...params }) -> Square.CreateCustomerCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a customer-related [custom attribute definition](entity:CustomAttributeDefinition) for a Square seller account.
+Use this endpoint to define a custom attribute that can be associated with customer profiles.
+
+A custom attribute definition specifies the `key`, `visibility`, `schema`, and other properties
+for a custom attribute. After the definition is created, you can call
+[UpsertCustomerCustomAttribute](api-endpoint:CustomerCustomAttributes-UpsertCustomerCustomAttribute) or
+[BulkUpsertCustomerCustomAttributes](api-endpoint:CustomerCustomAttributes-BulkUpsertCustomerCustomAttributes)
+to set the custom attribute for customer profiles in the seller's Customer Directory.
+
+Sellers can view all custom attributes in exported customer data, including those set to
+`VISIBILITY_HIDDEN`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.customAttributeDefinitions.create({
+    customAttributeDefinition: {
+        key: "favoritemovie",
+        schema: {
+            ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+        },
+        name: "Favorite Movie",
+        description: "The favorite movie of the customer.",
+        visibility: "VISIBILITY_HIDDEN",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.CreateCustomerCustomAttributeDefinitionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">get</a>({ ...params }) -> Square.GetCustomerCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a customer-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
+
+To retrieve a custom attribute definition created by another application, the `visibility`
+setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.customAttributeDefinitions.get({
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.GetCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">update</a>({ ...params }) -> Square.UpdateCustomerCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a customer-related [custom attribute definition](entity:CustomAttributeDefinition) for a Square seller account.
+
+Use this endpoint to update the following fields: `name`, `description`, `visibility`, or the
+`schema` for a `Selection` data type.
+
+Only the definition owner can update a custom attribute definition. Note that sellers can view
+all custom attributes in exported customer data, including those set to `VISIBILITY_HIDDEN`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.customAttributeDefinitions.update({
+    key: "key",
+    customAttributeDefinition: {
+        description: "Update the description as desired.",
+        visibility: "VISIBILITY_READ_ONLY",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.UpdateCustomerCustomAttributeDefinitionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteCustomerCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a customer-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
+
+Deleting a custom attribute definition also deletes the corresponding custom attribute from
+all customer profiles in the seller's Customer Directory.
+
+Only the definition owner can delete a custom attribute definition.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.customAttributeDefinitions.delete({
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.DeleteCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">batchUpsert</a>({ ...params }) -> Square.BatchUpsertCustomerCustomAttributesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates or updates [custom attributes](entity:CustomAttribute) for customer profiles as a bulk operation.
+
+Use this endpoint to set the value of one or more custom attributes for one or more customer profiles.
+A custom attribute is based on a custom attribute definition in a Square seller account, which is
+created using the [CreateCustomerCustomAttributeDefinition](api-endpoint:CustomerCustomAttributes-CreateCustomerCustomAttributeDefinition) endpoint.
+
+This `BulkUpsertCustomerCustomAttributes` endpoint accepts a map of 1 to 25 individual upsert
+requests and returns a map of individual upsert responses. Each upsert request has a unique ID
+and provides a customer ID and custom attribute. Each upsert response is returned with the ID
+of the corresponding request.
+
+To create or update a custom attribute owned by another application, the `visibility` setting
+must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.customAttributeDefinitions.batchUpsert({
+    values: {
+        id1: {
+            customerId: "N3NCVYY3WS27HF0HKANA3R9FP8",
+            customAttribute: {
+                key: "favoritemovie",
+                value: "Dune",
+            },
+        },
+        id2: {
+            customerId: "SY8EMWRNDN3TQDP2H4KS1QWMMM",
+            customAttribute: {
+                key: "ownsmovie",
+                value: false,
+            },
+        },
+        id3: {
+            customerId: "SY8EMWRNDN3TQDP2H4KS1QWMMM",
+            customAttribute: {
+                key: "favoritemovie",
+                value: "Star Wars",
+            },
+        },
+        id4: {
+            customerId: "N3NCVYY3WS27HF0HKANA3R9FP8",
+            customAttribute: {
+                key: "square:a0f1505a-2aa1-490d-91a8-8d31ff181808",
+                value: "10.5",
+            },
+        },
+        id5: {
+            customerId: "70548QG1HN43B05G0KCZ4MMC1G",
+            customAttribute: {
+                key: "sq0ids-0evKIskIGaY45fCyNL66aw:backupemail",
+                value: "fake-email@squareup.com",
+            },
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.BatchUpsertCustomerCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Customers Groups
+
+<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomerGroup></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves the list of customer groups of a business.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.customers.groups.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.customers.groups.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.ListGroupsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Groups.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">create</a>({ ...params }) -> Square.CreateCustomerGroupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new customer group for a business.
+
+The request must include the `name` value of the group.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.groups.create({
+    group: {
+        name: "Loyal Customers",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.CreateCustomerGroupRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Groups.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">get</a>({ ...params }) -> Square.GetCustomerGroupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a specific customer group as identified by the `group_id` value.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.groups.get({
+    groupId: "group_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.GetGroupsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Groups.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">update</a>({ ...params }) -> Square.UpdateCustomerGroupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a customer group as identified by the `group_id` value.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.groups.update({
+    groupId: "group_id",
+    group: {
+        name: "Loyal Customers",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.UpdateCustomerGroupRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Groups.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteCustomerGroupResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a customer group as identified by the `group_id` value.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.groups.delete({
+    groupId: "group_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.DeleteGroupsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Groups.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">add</a>({ ...params }) -> Square.AddGroupToCustomerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds a group membership to a customer.
+
+The customer is identified by the `customer_id` value
+and the customer group is identified by the `group_id` value.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.groups.add({
+    customerId: "customer_id",
+    groupId: "group_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.AddGroupsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Groups.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">remove</a>({ ...params }) -> Square.RemoveGroupFromCustomerResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Removes a group membership from a customer.
+
+The customer is identified by the `customer_id` value
+and the customer group is identified by the `group_id` value.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.groups.remove({
+    customerId: "customer_id",
+    groupId: "group_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.RemoveGroupsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Groups.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Customers Segments
+
+<details><summary><code>client.customers.segments.<a href="/src/api/resources/customers/resources/segments/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomerSegment></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves the list of customer segments of a business.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.customers.segments.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.customers.segments.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.ListSegmentsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Segments.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.segments.<a href="/src/api/resources/customers/resources/segments/client/Client.ts">get</a>({ ...params }) -> Square.GetCustomerSegmentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a specific customer segment as identified by the `segment_id` value.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.segments.get({
+    segmentId: "segment_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.GetSegmentsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Segments.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Customers Cards
+
+<details><summary><code>client.customers.cards.<a href="/src/api/resources/customers/resources/cards/client/Client.ts">create</a>({ ...params }) -> Square.CreateCustomerCardResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds a card on file to an existing customer.
+
+As with charges, calls to `CreateCustomerCard` are idempotent. Multiple
+calls with the same card nonce return the same card record that was created
+with the provided nonce during the _first_ call.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.cards.create({
+    customerId: "customer_id",
+    cardNonce: "YOUR_CARD_NONCE",
+    billingAddress: {
+        addressLine1: "500 Electric Ave",
+        addressLine2: "Suite 600",
+        locality: "New York",
+        administrativeDistrictLevel1: "NY",
+        postalCode: "10003",
+        country: "US",
+    },
+    cardholderName: "Amelia Earhart",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.CreateCustomerCardRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Cards.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.cards.<a href="/src/api/resources/customers/resources/cards/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteCustomerCardResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Removes a card on file from a customer.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.cards.delete({
+    customerId: "customer_id",
+    cardId: "card_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.DeleteCardsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Cards.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Customers CustomAttributes
+
+<details><summary><code>client.customers.customAttributes.<a href="/src/api/resources/customers/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the [custom attributes](entity:CustomAttribute) associated with a customer profile.
+
+You can use the `with_definitions` query parameter to also retrieve custom attribute definitions
+in the same call.
+
+When all response pages are retrieved, the results include all custom attributes that are
+visible to the requesting application, including those that are owned by other applications
+and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.customers.customAttributes.list({
+    customerId: "customer_id",
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.customers.customAttributes.list({
+    customerId: "customer_id",
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.ListCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.customAttributes.<a href="/src/api/resources/customers/resources/customAttributes/client/Client.ts">get</a>({ ...params }) -> Square.GetCustomerCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a [custom attribute](entity:CustomAttribute) associated with a customer profile.
+
+You can use the `with_definition` query parameter to also retrieve the custom attribute definition
+in the same call.
+
+To retrieve a custom attribute owned by another application, the `visibility` setting must be
+`VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.customAttributes.get({
+    customerId: "customer_id",
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.GetCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.customAttributes.<a href="/src/api/resources/customers/resources/customAttributes/client/Client.ts">upsert</a>({ ...params }) -> Square.UpsertCustomerCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates or updates a [custom attribute](entity:CustomAttribute) for a customer profile.
+
+Use this endpoint to set the value of a custom attribute for a specified customer profile.
+A custom attribute is based on a custom attribute definition in a Square seller account, which
+is created using the [CreateCustomerCustomAttributeDefinition](api-endpoint:CustomerCustomAttributes-CreateCustomerCustomAttributeDefinition) endpoint.
+
+To create or update a custom attribute owned by another application, the `visibility` setting
+must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.customAttributes.upsert({
+    customerId: "customer_id",
+    key: "key",
+    customAttribute: {
+        value: "Dune",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.UpsertCustomerCustomAttributeRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.customers.customAttributes.<a href="/src/api/resources/customers/resources/customAttributes/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteCustomerCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a [custom attribute](entity:CustomAttribute) associated with a customer profile.
+
+To delete a custom attribute owned by another application, the `visibility` setting must be
+`VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.customers.customAttributes.delete({
+    customerId: "customer_id",
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.customers.DeleteCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Devices Codes
+
+<details><summary><code>client.devices.codes.<a href="/src/api/resources/devices/resources/codes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.DeviceCode></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists all DeviceCodes associated with the merchant.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.devices.codes.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.devices.codes.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.devices.ListCodesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Codes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.devices.codes.<a href="/src/api/resources/devices/resources/codes/client/Client.ts">create</a>({ ...params }) -> Square.CreateDeviceCodeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a DeviceCode that can be used to login to a Square Terminal device to enter the connected
+terminal mode.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.devices.codes.create({
+    idempotencyKey: "01bb00a6-0c86-4770-94ed-f5fca973cd56",
+    deviceCode: {
+        name: "Counter 1",
+        productType: "TERMINAL_API",
+        locationId: "B5E4484SHHNYH",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.devices.CreateDeviceCodeRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Codes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.devices.codes.<a href="/src/api/resources/devices/resources/codes/client/Client.ts">get</a>({ ...params }) -> Square.GetDeviceCodeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves DeviceCode with the associated ID.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.devices.codes.get({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.devices.GetCodesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Codes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Disputes Evidence
+
+<details><summary><code>client.disputes.evidence.<a href="/src/api/resources/disputes/resources/evidence/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.DisputeEvidence></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a list of evidence associated with a dispute.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.disputes.evidence.list({
+    disputeId: "dispute_id",
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.disputes.evidence.list({
+    disputeId: "dispute_id",
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.disputes.ListEvidenceRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Evidence.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.disputes.evidence.<a href="/src/api/resources/disputes/resources/evidence/client/Client.ts">get</a>({ ...params }) -> Square.GetDisputeEvidenceResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the metadata for the evidence specified in the request URL path.
+
+You must maintain a copy of any evidence uploaded if you want to reference it later. Evidence cannot be downloaded after you upload it.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.disputes.evidence.get({
+    disputeId: "dispute_id",
+    evidenceId: "evidence_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.disputes.GetEvidenceRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Evidence.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.disputes.evidence.<a href="/src/api/resources/disputes/resources/evidence/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteDisputeEvidenceResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Removes specified evidence from a dispute.
+Square does not send the bank any evidence that is removed.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.disputes.evidence.delete({
+    disputeId: "dispute_id",
+    evidenceId: "evidence_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.disputes.DeleteEvidenceRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Evidence.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## GiftCards Activities
+
+<details><summary><code>client.giftCards.activities.<a href="/src/api/resources/giftCards/resources/activities/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.GiftCardActivity></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists gift card activities. By default, you get gift card activities for all
+gift cards in the seller's account. You can optionally specify query parameters to
+filter the list. For example, you can get a list of gift card activities for a gift card,
+for all gift cards in a specific region, or for activities within a time window.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.giftCards.activities.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.giftCards.activities.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.giftCards.ListActivitiesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Activities.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.giftCards.activities.<a href="/src/api/resources/giftCards/resources/activities/client/Client.ts">create</a>({ ...params }) -> Square.CreateGiftCardActivityResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a gift card activity to manage the balance or state of a [gift card](entity:GiftCard).
+For example, create an `ACTIVATE` activity to activate a gift card with an initial balance before first use.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.giftCards.activities.create({
+    idempotencyKey: "U16kfr-kA70er-q4Rsym-7U7NnY",
+    giftCardActivity: {
+        type: "ACTIVATE",
+        locationId: "81FN9BNFZTKS4",
+        giftCardId: "gftc:6d55a72470d940c6ba09c0ab8ad08d20",
+        activateActivityDetails: {
+            orderId: "jJNGHm4gLI6XkFbwtiSLqK72KkAZY",
+            lineItemUid: "eIWl7X0nMuO9Ewbh0ChIx",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.giftCards.CreateGiftCardActivityRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Activities.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Labor BreakTypes
+
+<details><summary><code>client.labor.breakTypes.<a href="/src/api/resources/labor/resources/breakTypes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.BreakType></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a paginated list of `BreakType` instances for a business.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.labor.breakTypes.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.labor.breakTypes.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.ListBreakTypesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BreakTypes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.breakTypes.<a href="/src/api/resources/labor/resources/breakTypes/client/Client.ts">create</a>({ ...params }) -> Square.CreateBreakTypeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new `BreakType`.
+
+A `BreakType` is a template for creating `Break` objects.
+You must provide the following values in your request to this
+endpoint:
+
+- `location_id`
+- `break_name`
+- `expected_duration`
+- `is_paid`
+
+You can only have three `BreakType` instances per location. If you attempt to add a fourth
+`BreakType` for a location, an `INVALID_REQUEST_ERROR` "Exceeded limit of 3 breaks per location."
+is returned.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.breakTypes.create({
+    idempotencyKey: "PAD3NG5KSN2GL",
+    breakType: {
+        locationId: "CGJN03P1D08GF",
+        breakName: "Lunch Break",
+        expectedDuration: "PT30M",
+        isPaid: true,
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.CreateBreakTypeRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BreakTypes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.breakTypes.<a href="/src/api/resources/labor/resources/breakTypes/client/Client.ts">get</a>({ ...params }) -> Square.GetBreakTypeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single `BreakType` specified by `id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.breakTypes.get({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.GetBreakTypesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BreakTypes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.breakTypes.<a href="/src/api/resources/labor/resources/breakTypes/client/Client.ts">update</a>({ ...params }) -> Square.UpdateBreakTypeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates an existing `BreakType`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.breakTypes.update({
+    id: "id",
+    breakType: {
+        locationId: "26M7H24AZ9N6R",
+        breakName: "Lunch",
+        expectedDuration: "PT50M",
+        isPaid: true,
+        version: 1,
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.UpdateBreakTypeRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BreakTypes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.breakTypes.<a href="/src/api/resources/labor/resources/breakTypes/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteBreakTypeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes an existing `BreakType`.
+
+A `BreakType` can be deleted even if it is referenced from a `Shift`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.breakTypes.delete({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.DeleteBreakTypesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BreakTypes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Labor EmployeeWages
+
+<details><summary><code>client.labor.employeeWages.<a href="/src/api/resources/labor/resources/employeeWages/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.EmployeeWage></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a paginated list of `EmployeeWage` instances for a business.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.labor.employeeWages.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.labor.employeeWages.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.ListEmployeeWagesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EmployeeWages.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.employeeWages.<a href="/src/api/resources/labor/resources/employeeWages/client/Client.ts">get</a>({ ...params }) -> Square.GetEmployeeWageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single `EmployeeWage` specified by `id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.employeeWages.get({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.GetEmployeeWagesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EmployeeWages.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Labor Shifts
+
+<details><summary><code>client.labor.shifts.<a href="/src/api/resources/labor/resources/shifts/client/Client.ts">create</a>({ ...params }) -> Square.CreateShiftResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new `Shift`.
+
+A `Shift` represents a complete workday for a single team member.
+You must provide the following values in your request to this
+endpoint:
+
+- `location_id`
+- `team_member_id`
+- `start_at`
+
+An attempt to create a new `Shift` can result in a `BAD_REQUEST` error when:
+
+- The `status` of the new `Shift` is `OPEN` and the team member has another
+  shift with an `OPEN` status.
+- The `start_at` date is in the future.
+- The `start_at` or `end_at` date overlaps another shift for the same team member.
+- The `Break` instances are set in the request and a break `start_at`
+is before the `Shift.start_at`, a break `end_at` is after
+the `Shift.end_at`, or both.
+  </dd>
+  </dl>
+  </dd>
+  </dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.shifts.create({
+    idempotencyKey: "HIDSNG5KS478L",
+    shift: {
+        locationId: "PAA1RJZZKXBFG",
+        startAt: "2019-01-25T03:11:00-05:00",
+        endAt: "2019-01-25T13:11:00-05:00",
+        wage: {
+            title: "Barista",
+            hourlyRate: {
+                amount: 1100,
+                currency: "USD",
+            },
+            tipEligible: true,
+        },
+        breaks: [
+            {
+                startAt: "2019-01-25T06:11:00-05:00",
+                endAt: "2019-01-25T06:16:00-05:00",
+                breakTypeId: "REGS1EQR1TPZ5",
+                name: "Tea Break",
+                expectedDuration: "PT5M",
+                isPaid: true,
+            },
+        ],
+        teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
+        declaredCashTipMoney: {
+            amount: 500,
+            currency: "USD",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.CreateShiftRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Shifts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.shifts.<a href="/src/api/resources/labor/resources/shifts/client/Client.ts">search</a>({ ...params }) -> Square.SearchShiftsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a paginated list of `Shift` records for a business.
+The list to be returned can be filtered by:
+
+- Location IDs
+- Team member IDs
+- Shift status (`OPEN` or `CLOSED`)
+- Shift start
+- Shift end
+- Workday details
+
+The list can be sorted by:
+
+- `START_AT`
+- `END_AT`
+- `CREATED_AT`
+- `UPDATED_AT`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.shifts.search({
+    query: {
+        filter: {
+            workday: {
+                dateRange: {
+                    startDate: "2019-01-20",
+                    endDate: "2019-02-03",
+                },
+                matchShiftsBy: "START_AT",
+                defaultTimezone: "America/Los_Angeles",
+            },
+        },
+    },
+    limit: 100,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.SearchShiftsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Shifts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.shifts.<a href="/src/api/resources/labor/resources/shifts/client/Client.ts">get</a>({ ...params }) -> Square.GetShiftResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single `Shift` specified by `id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.shifts.get({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.GetShiftsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Shifts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.shifts.<a href="/src/api/resources/labor/resources/shifts/client/Client.ts">update</a>({ ...params }) -> Square.UpdateShiftResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates an existing `Shift`.
+
+When adding a `Break` to a `Shift`, any earlier `Break` instances in the `Shift` have
+the `end_at` property set to a valid RFC-3339 datetime string.
+
+When closing a `Shift`, all `Break` instances in the `Shift` must be complete with `end_at`
+set on each `Break`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.shifts.update({
+    id: "id",
+    shift: {
+        locationId: "PAA1RJZZKXBFG",
+        startAt: "2019-01-25T03:11:00-05:00",
+        endAt: "2019-01-25T13:11:00-05:00",
+        wage: {
+            title: "Bartender",
+            hourlyRate: {
+                amount: 1500,
+                currency: "USD",
+            },
+            tipEligible: true,
+        },
+        breaks: [
+            {
+                id: "X7GAQYVVRRG6P",
+                startAt: "2019-01-25T06:11:00-05:00",
+                endAt: "2019-01-25T06:16:00-05:00",
+                breakTypeId: "REGS1EQR1TPZ5",
+                name: "Tea Break",
+                expectedDuration: "PT5M",
+                isPaid: true,
+            },
+        ],
+        version: 1,
+        teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
+        declaredCashTipMoney: {
+            amount: 500,
+            currency: "USD",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.UpdateShiftRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Shifts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.shifts.<a href="/src/api/resources/labor/resources/shifts/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteShiftResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a `Shift`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.shifts.delete({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.DeleteShiftsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Shifts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Labor TeamMemberWages
+
+<details><summary><code>client.labor.teamMemberWages.<a href="/src/api/resources/labor/resources/teamMemberWages/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.TeamMemberWage></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a paginated list of `TeamMemberWage` instances for a business.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.labor.teamMemberWages.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.labor.teamMemberWages.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.ListTeamMemberWagesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TeamMemberWages.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.teamMemberWages.<a href="/src/api/resources/labor/resources/teamMemberWages/client/Client.ts">get</a>({ ...params }) -> Square.GetTeamMemberWageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single `TeamMemberWage` specified by `id`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.teamMemberWages.get({
+    id: "id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.GetTeamMemberWagesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TeamMemberWages.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Labor WorkweekConfigs
+
+<details><summary><code>client.labor.workweekConfigs.<a href="/src/api/resources/labor/resources/workweekConfigs/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WorkweekConfig></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a list of `WorkweekConfig` instances for a business.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.labor.workweekConfigs.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.labor.workweekConfigs.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.ListWorkweekConfigsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WorkweekConfigs.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.labor.workweekConfigs.<a href="/src/api/resources/labor/resources/workweekConfigs/client/Client.ts">get</a>({ ...params }) -> Square.UpdateWorkweekConfigResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a `WorkweekConfig`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.labor.workweekConfigs.get({
+    id: "id",
+    workweekConfig: {
+        startOfWeek: "MON",
+        startOfDayLocalTime: "10:00",
+        version: 10,
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.labor.UpdateWorkweekConfigRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WorkweekConfigs.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Locations CustomAttributeDefinitions
+
+<details><summary><code>client.locations.customAttributeDefinitions.<a href="/src/api/resources/locations/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the location-related [custom attribute definitions](entity:CustomAttributeDefinition) that belong to a Square seller account.
+When all response pages are retrieved, the results include all custom attribute definitions
+that are visible to the requesting application, including those that are created by other
+applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.locations.customAttributeDefinitions.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.locations.customAttributeDefinitions.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.ListCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.customAttributeDefinitions.<a href="/src/api/resources/locations/resources/customAttributeDefinitions/client/Client.ts">create</a>({ ...params }) -> Square.CreateLocationCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a location-related [custom attribute definition](entity:CustomAttributeDefinition) for a Square seller account.
+Use this endpoint to define a custom attribute that can be associated with locations.
+A custom attribute definition specifies the `key`, `visibility`, `schema`, and other properties
+for a custom attribute. After the definition is created, you can call
+[UpsertLocationCustomAttribute](api-endpoint:LocationCustomAttributes-UpsertLocationCustomAttribute) or
+[BulkUpsertLocationCustomAttributes](api-endpoint:LocationCustomAttributes-BulkUpsertLocationCustomAttributes)
+to set the custom attribute for locations.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.customAttributeDefinitions.create({
+    customAttributeDefinition: {
+        key: "bestseller",
+        schema: {
+            ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+        },
+        name: "Bestseller",
+        description: "Bestselling item at location",
+        visibility: "VISIBILITY_READ_WRITE_VALUES",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.CreateLocationCustomAttributeDefinitionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.customAttributeDefinitions.<a href="/src/api/resources/locations/resources/customAttributeDefinitions/client/Client.ts">get</a>({ ...params }) -> Square.RetrieveLocationCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a location-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
+To retrieve a custom attribute definition created by another application, the `visibility`
+setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.customAttributeDefinitions.get({
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.GetCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.customAttributeDefinitions.<a href="/src/api/resources/locations/resources/customAttributeDefinitions/client/Client.ts">update</a>({ ...params }) -> Square.UpdateLocationCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a location-related [custom attribute definition](entity:CustomAttributeDefinition) for a Square seller account.
+Use this endpoint to update the following fields: `name`, `description`, `visibility`, or the
+`schema` for a `Selection` data type.
+Only the definition owner can update a custom attribute definition.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.customAttributeDefinitions.update({
+    key: "key",
+    customAttributeDefinition: {
+        description: "Update the description as desired.",
+        visibility: "VISIBILITY_READ_ONLY",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.UpdateLocationCustomAttributeDefinitionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.customAttributeDefinitions.<a href="/src/api/resources/locations/resources/customAttributeDefinitions/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteLocationCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a location-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
+Deleting a custom attribute definition also deletes the corresponding custom attribute from
+all locations.
+Only the definition owner can delete a custom attribute definition.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.customAttributeDefinitions.delete({
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.DeleteCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Locations CustomAttributes
+
+<details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">batchDelete</a>({ ...params }) -> Square.BulkDeleteLocationCustomAttributesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes [custom attributes](entity:CustomAttribute) for locations as a bulk operation.
+To delete a custom attribute owned by another application, the `visibility` setting must be
+`VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.customAttributes.batchDelete({
+    values: {
+        id1: {
+            key: "bestseller",
+        },
+        id2: {
+            key: "bestseller",
+        },
+        id3: {
+            key: "phone-number",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.BulkDeleteLocationCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">batchUpsert</a>({ ...params }) -> Square.BulkUpsertLocationCustomAttributesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates or updates [custom attributes](entity:CustomAttribute) for locations as a bulk operation.
+Use this endpoint to set the value of one or more custom attributes for one or more locations.
+A custom attribute is based on a custom attribute definition in a Square seller account, which is
+created using the [CreateLocationCustomAttributeDefinition](api-endpoint:LocationCustomAttributes-CreateLocationCustomAttributeDefinition) endpoint.
+This `BulkUpsertLocationCustomAttributes` endpoint accepts a map of 1 to 25 individual upsert
+requests and returns a map of individual upsert responses. Each upsert request has a unique ID
+and provides a location ID and custom attribute. Each upsert response is returned with the ID
+of the corresponding request.
+To create or update a custom attribute owned by another application, the `visibility` setting
+must be `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.customAttributes.batchUpsert({
+    values: {
+        id1: {
+            locationId: "L0TBCBTB7P8RQ",
+            customAttribute: {
+                key: "bestseller",
+                value: "hot cocoa",
+            },
+        },
+        id2: {
+            locationId: "L9XMD04V3STJX",
+            customAttribute: {
+                key: "bestseller",
+                value: "berry smoothie",
+            },
+        },
+        id3: {
+            locationId: "L0TBCBTB7P8RQ",
+            customAttribute: {
+                key: "phone-number",
+                value: "+12223334444",
+            },
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.BulkUpsertLocationCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the [custom attributes](entity:CustomAttribute) associated with a location.
+You can use the `with_definitions` query parameter to also retrieve custom attribute definitions
+in the same call.
+When all response pages are retrieved, the results include all custom attributes that are
+visible to the requesting application, including those that are owned by other applications
+and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.locations.customAttributes.list({
+    locationId: "location_id",
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.locations.customAttributes.list({
+    locationId: "location_id",
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.ListCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">get</a>({ ...params }) -> Square.RetrieveLocationCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a [custom attribute](entity:CustomAttribute) associated with a location.
+You can use the `with_definition` query parameter to also retrieve the custom attribute definition
+in the same call.
+To retrieve a custom attribute owned by another application, the `visibility` setting must be
+`VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.customAttributes.get({
+    locationId: "location_id",
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.GetCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">upsert</a>({ ...params }) -> Square.UpsertLocationCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates or updates a [custom attribute](entity:CustomAttribute) for a location.
+Use this endpoint to set the value of a custom attribute for a specified location.
+A custom attribute is based on a custom attribute definition in a Square seller account, which
+is created using the [CreateLocationCustomAttributeDefinition](api-endpoint:LocationCustomAttributes-CreateLocationCustomAttributeDefinition) endpoint.
+To create or update a custom attribute owned by another application, the `visibility` setting
+must be `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.customAttributes.upsert({
+    locationId: "location_id",
+    key: "key",
+    customAttribute: {
+        value: "hot cocoa",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.UpsertLocationCustomAttributeRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteLocationCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a [custom attribute](entity:CustomAttribute) associated with a location.
+To delete a custom attribute owned by another application, the `visibility` setting must be
+`VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.customAttributes.delete({
+    locationId: "location_id",
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.DeleteCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Locations Transactions
+
+<details><summary><code>client.locations.transactions.<a href="/src/api/resources/locations/resources/transactions/client/Client.ts">list</a>({ ...params }) -> Square.ListTransactionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists transactions for a particular location.
+
+Transactions include payment information from sales and exchanges and refund
+information from returns and exchanges.
+
+Max results per [page](https://developer.squareup.com/docs/working-with-apis/pagination): 50
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.transactions.list({
+    locationId: "location_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.ListTransactionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Transactions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.transactions.<a href="/src/api/resources/locations/resources/transactions/client/Client.ts">get</a>({ ...params }) -> Square.GetTransactionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves details for a single transaction.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.transactions.get({
+    locationId: "location_id",
+    transactionId: "transaction_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.GetTransactionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Transactions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.transactions.<a href="/src/api/resources/locations/resources/transactions/client/Client.ts">capture</a>({ ...params }) -> Square.CaptureTransactionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
+endpoint with a `delay_capture` value of `true`.
+
+See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
+for more information.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.transactions.capture({
+    locationId: "location_id",
+    transactionId: "transaction_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.CaptureTransactionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Transactions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.locations.transactions.<a href="/src/api/resources/locations/resources/transactions/client/Client.ts">void</a>({ ...params }) -> Square.VoidTransactionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
+endpoint with a `delay_capture` value of `true`.
+
+See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
+for more information.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.locations.transactions.void({
+    locationId: "location_id",
+    transactionId: "transaction_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.locations.VoidTransactionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Transactions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Loyalty Accounts
+
+<details><summary><code>client.loyalty.accounts.<a href="/src/api/resources/loyalty/resources/accounts/client/Client.ts">create</a>({ ...params }) -> Square.CreateLoyaltyAccountResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a loyalty account. To create a loyalty account, you must provide the `program_id` and a `mapping` with the `phone_number` of the buyer.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.accounts.create({
+    loyaltyAccount: {
+        programId: "d619f755-2d17-41f3-990d-c04ecedd64dd",
+        mapping: {
+            phoneNumber: "+14155551234",
+        },
+    },
+    idempotencyKey: "ec78c477-b1c3-4899-a209-a4e71337c996",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.CreateLoyaltyAccountRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Accounts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.accounts.<a href="/src/api/resources/loyalty/resources/accounts/client/Client.ts">search</a>({ ...params }) -> Square.SearchLoyaltyAccountsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches for loyalty accounts in a loyalty program.
+
+You can search for a loyalty account using the phone number or customer ID associated with the account. To return all loyalty accounts, specify an empty `query` object or omit it entirely.
+
+Search results are sorted by `created_at` in ascending order.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.accounts.search({
+    query: {
+        mappings: [
+            {
+                phoneNumber: "+14155551234",
+            },
+        ],
+    },
+    limit: 10,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.SearchLoyaltyAccountsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Accounts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.accounts.<a href="/src/api/resources/loyalty/resources/accounts/client/Client.ts">get</a>({ ...params }) -> Square.GetLoyaltyAccountResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a loyalty account.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.accounts.get({
+    accountId: "account_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.GetAccountsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Accounts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.accounts.<a href="/src/api/resources/loyalty/resources/accounts/client/Client.ts">accumulatePoints</a>({ ...params }) -> Square.AccumulateLoyaltyPointsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds points earned from a purchase to a [loyalty account](entity:LoyaltyAccount).
+
+- If you are using the Orders API to manage orders, provide the `order_id`. Square reads the order
+  to compute the points earned from both the base loyalty program and an associated
+  [loyalty promotion](entity:LoyaltyPromotion). For purchases that qualify for multiple accrual
+  rules, Square computes points based on the accrual rule that grants the most points.
+  For purchases that qualify for multiple promotions, Square computes points based on the most
+  recently created promotion. A purchase must first qualify for program points to be eligible for promotion points.
+
+- If you are not using the Orders API to manage orders, provide `points` with the number of points to add.
+You must first perform a client-side computation of the points earned from the loyalty program and
+loyalty promotion. For spend-based and visit-based programs, you can call [CalculateLoyaltyPoints](api-endpoint:Loyalty-CalculateLoyaltyPoints)
+to compute the points earned from the base loyalty program. For information about computing points earned from a loyalty promotion, see
+[Calculating promotion points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
+  </dd>
+  </dl>
+  </dd>
+  </dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.accounts.accumulatePoints({
+    accountId: "account_id",
+    accumulatePoints: {
+        orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
+    },
+    idempotencyKey: "58b90739-c3e8-4b11-85f7-e636d48d72cb",
+    locationId: "P034NEENMD09F",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.AccumulateLoyaltyPointsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Accounts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.accounts.<a href="/src/api/resources/loyalty/resources/accounts/client/Client.ts">adjust</a>({ ...params }) -> Square.AdjustLoyaltyPointsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Adds points to or subtracts points from a buyer's account.
+
+Use this endpoint only when you need to manually adjust points. Otherwise, in your application flow, you call
+[AccumulateLoyaltyPoints](api-endpoint:Loyalty-AccumulateLoyaltyPoints)
+to add points when a buyer pays for the purchase.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.accounts.adjust({
+    accountId: "account_id",
+    idempotencyKey: "bc29a517-3dc9-450e-aa76-fae39ee849d1",
+    adjustPoints: {
+        points: 10,
+        reason: "Complimentary points",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.AdjustLoyaltyPointsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Accounts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Loyalty Programs
+
+<details><summary><code>client.loyalty.programs.<a href="/src/api/resources/loyalty/resources/programs/client/Client.ts">list</a>() -> Square.ListLoyaltyProgramsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a list of loyalty programs in the seller's account.
+Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
+
+Replaced with [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) when used with the keyword `main`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.programs.list();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `Programs.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.programs.<a href="/src/api/resources/loyalty/resources/programs/client/Client.ts">get</a>({ ...params }) -> Square.GetLoyaltyProgramResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves the loyalty program in a seller's account, specified by the program ID or the keyword `main`.
+
+Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.programs.get({
+    programId: "program_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.GetProgramsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Programs.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.programs.<a href="/src/api/resources/loyalty/resources/programs/client/Client.ts">calculate</a>({ ...params }) -> Square.CalculateLoyaltyPointsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Calculates the number of points a buyer can earn from a purchase. Applications might call this endpoint
+to display the points to the buyer.
+
+- If you are using the Orders API to manage orders, provide the `order_id` and (optional) `loyalty_account_id`.
+  Square reads the order to compute the points earned from the base loyalty program and an associated
+  [loyalty promotion](entity:LoyaltyPromotion).
+
+- If you are not using the Orders API to manage orders, provide `transaction_amount_money` with the
+purchase amount. Square uses this amount to calculate the points earned from the base loyalty program,
+but not points earned from a loyalty promotion. For spend-based and visit-based programs, the `tax_mode`
+setting of the accrual rule indicates how taxes should be treated for loyalty points accrual.
+If the purchase qualifies for program points, call
+[ListLoyaltyPromotions](api-endpoint:Loyalty-ListLoyaltyPromotions) and perform a client-side computation
+to calculate whether the purchase also qualifies for promotion points. For more information, see
+[Calculating promotion points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
+  </dd>
+  </dl>
+  </dd>
+  </dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.programs.calculate({
+    programId: "program_id",
+    orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
+    loyaltyAccountId: "79b807d2-d786-46a9-933b-918028d7a8c5",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.CalculateLoyaltyPointsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Programs.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Loyalty Rewards
+
+<details><summary><code>client.loyalty.rewards.<a href="/src/api/resources/loyalty/resources/rewards/client/Client.ts">create</a>({ ...params }) -> Square.CreateLoyaltyRewardResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a loyalty reward. In the process, the endpoint does following:
+
+- Uses the `reward_tier_id` in the request to determine the number of points
+  to lock for this reward.
+- If the request includes `order_id`, it adds the reward and related discount to the order.
+
+After a reward is created, the points are locked and
+not available for the buyer to redeem another reward.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.rewards.create({
+    reward: {
+        loyaltyAccountId: "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd",
+        rewardTierId: "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
+        orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
+    },
+    idempotencyKey: "18c2e5ea-a620-4b1f-ad60-7b167285e451",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.CreateLoyaltyRewardRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Rewards.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.rewards.<a href="/src/api/resources/loyalty/resources/rewards/client/Client.ts">search</a>({ ...params }) -> Square.SearchLoyaltyRewardsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches for loyalty rewards. This endpoint accepts a request with no query filters and returns results for all loyalty accounts.
+If you include a `query` object, `loyalty_account_id` is required and `status` is optional.
+
+If you know a reward ID, use the
+[RetrieveLoyaltyReward](api-endpoint:Loyalty-RetrieveLoyaltyReward) endpoint.
+
+Search results are sorted by `updated_at` in descending order.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.rewards.search({
+    query: {
+        loyaltyAccountId: "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd",
+    },
+    limit: 10,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.SearchLoyaltyRewardsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Rewards.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.rewards.<a href="/src/api/resources/loyalty/resources/rewards/client/Client.ts">get</a>({ ...params }) -> Square.GetLoyaltyRewardResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a loyalty reward.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.rewards.get({
+    rewardId: "reward_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.GetRewardsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Rewards.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.rewards.<a href="/src/api/resources/loyalty/resources/rewards/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteLoyaltyRewardResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a loyalty reward by doing the following:
+
+- Returns the loyalty points back to the loyalty account.
+- If an order ID was specified when the reward was created
+  (see [CreateLoyaltyReward](api-endpoint:Loyalty-CreateLoyaltyReward)),
+  it updates the order by removing the reward and related
+  discounts.
+
+You cannot delete a reward that has reached the terminal state (REDEEMED).
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.rewards.delete({
+    rewardId: "reward_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.DeleteRewardsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Rewards.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.rewards.<a href="/src/api/resources/loyalty/resources/rewards/client/Client.ts">redeem</a>({ ...params }) -> Square.RedeemLoyaltyRewardResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Redeems a loyalty reward.
+
+The endpoint sets the reward to the `REDEEMED` terminal state.
+
+If you are using your own order processing system (not using the
+Orders API), you call this endpoint after the buyer paid for the
+purchase.
+
+After the reward reaches the terminal state, it cannot be deleted.
+In other words, points used for the reward cannot be returned
+to the account.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.rewards.redeem({
+    rewardId: "reward_id",
+    idempotencyKey: "98adc7f7-6963-473b-b29c-f3c9cdd7d994",
+    locationId: "P034NEENMD09F",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.RedeemLoyaltyRewardRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Rewards.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Loyalty Programs Promotions
+
+<details><summary><code>client.loyalty.programs.promotions.<a href="/src/api/resources/loyalty/resources/programs/resources/promotions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.LoyaltyPromotion></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the loyalty promotions associated with a [loyalty program](entity:LoyaltyProgram).
+Results are sorted by the `created_at` date in descending order (newest to oldest).
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.loyalty.programs.promotions.list({
+    programId: "program_id",
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.loyalty.programs.promotions.list({
+    programId: "program_id",
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.programs.ListPromotionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Promotions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.programs.promotions.<a href="/src/api/resources/loyalty/resources/programs/resources/promotions/client/Client.ts">create</a>({ ...params }) -> Square.CreateLoyaltyPromotionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a loyalty promotion for a [loyalty program](entity:LoyaltyProgram). A loyalty promotion
+enables buyers to earn points in addition to those earned from the base loyalty program.
+
+This endpoint sets the loyalty promotion to the `ACTIVE` or `SCHEDULED` status, depending on the
+`available_time` setting. A loyalty program can have a maximum of 10 loyalty promotions with an
+`ACTIVE` or `SCHEDULED` status.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.programs.promotions.create({
+    programId: "program_id",
+    loyaltyPromotion: {
+        name: "Tuesday Happy Hour Promo",
+        incentive: {
+            type: "POINTS_MULTIPLIER",
+            pointsMultiplierData: {
+                multiplier: "3.0",
+            },
+        },
+        availableTime: {
+            timePeriods: [
+                "BEGIN:VEVENT\nDTSTART:20220816T160000\nDURATION:PT2H\nRRULE:FREQ=WEEKLY;BYDAY=TU\nEND:VEVENT",
+            ],
+        },
+        triggerLimit: {
+            times: 1,
+            interval: "DAY",
+        },
+        minimumSpendAmountMoney: {
+            amount: 2000,
+            currency: "USD",
+        },
+        qualifyingCategoryIds: ["XTQPYLR3IIU9C44VRCB3XD12"],
+    },
+    idempotencyKey: "ec78c477-b1c3-4899-a209-a4e71337c996",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.programs.CreateLoyaltyPromotionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Promotions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.programs.promotions.<a href="/src/api/resources/loyalty/resources/programs/resources/promotions/client/Client.ts">get</a>({ ...params }) -> Square.GetLoyaltyPromotionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a loyalty promotion.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.programs.promotions.get({
+    promotionId: "promotion_id",
+    programId: "program_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.programs.GetPromotionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Promotions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.loyalty.programs.promotions.<a href="/src/api/resources/loyalty/resources/programs/resources/promotions/client/Client.ts">cancel</a>({ ...params }) -> Square.CancelLoyaltyPromotionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Cancels a loyalty promotion. Use this endpoint to cancel an `ACTIVE` promotion earlier than the
+end date, cancel an `ACTIVE` promotion when an end date is not specified, or cancel a `SCHEDULED` promotion.
+Because updating a promotion is not supported, you can also use this endpoint to cancel a promotion before
+you create a new one.
+
+This endpoint sets the loyalty promotion to the `CANCELED` state
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.loyalty.programs.promotions.cancel({
+    promotionId: "promotion_id",
+    programId: "program_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.loyalty.programs.CancelPromotionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Promotions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Merchants CustomAttributeDefinitions
+
+<details><summary><code>client.merchants.customAttributeDefinitions.<a href="/src/api/resources/merchants/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the merchant-related [custom attribute definitions](entity:CustomAttributeDefinition) that belong to a Square seller account.
+When all response pages are retrieved, the results include all custom attribute definitions
+that are visible to the requesting application, including those that are created by other
+applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.merchants.customAttributeDefinitions.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.merchants.customAttributeDefinitions.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.ListCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.merchants.customAttributeDefinitions.<a href="/src/api/resources/merchants/resources/customAttributeDefinitions/client/Client.ts">create</a>({ ...params }) -> Square.CreateMerchantCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a merchant-related [custom attribute definition](entity:CustomAttributeDefinition) for a Square seller account.
+Use this endpoint to define a custom attribute that can be associated with a merchant connecting to your application.
+A custom attribute definition specifies the `key`, `visibility`, `schema`, and other properties
+for a custom attribute. After the definition is created, you can call
+[UpsertMerchantCustomAttribute](api-endpoint:MerchantCustomAttributes-UpsertMerchantCustomAttribute) or
+[BulkUpsertMerchantCustomAttributes](api-endpoint:MerchantCustomAttributes-BulkUpsertMerchantCustomAttributes)
+to set the custom attribute for a merchant.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.merchants.customAttributeDefinitions.create({
+    customAttributeDefinition: {
+        key: "alternative_seller_name",
+        schema: {
+            ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+        },
+        name: "Alternative Merchant Name",
+        description: "This is the other name this merchant goes by.",
+        visibility: "VISIBILITY_READ_ONLY",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.CreateMerchantCustomAttributeDefinitionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.merchants.customAttributeDefinitions.<a href="/src/api/resources/merchants/resources/customAttributeDefinitions/client/Client.ts">get</a>({ ...params }) -> Square.RetrieveMerchantCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a merchant-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
+To retrieve a custom attribute definition created by another application, the `visibility`
+setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.merchants.customAttributeDefinitions.get({
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.GetCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.merchants.customAttributeDefinitions.<a href="/src/api/resources/merchants/resources/customAttributeDefinitions/client/Client.ts">update</a>({ ...params }) -> Square.UpdateMerchantCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a merchant-related [custom attribute definition](entity:CustomAttributeDefinition) for a Square seller account.
+Use this endpoint to update the following fields: `name`, `description`, `visibility`, or the
+`schema` for a `Selection` data type.
+Only the definition owner can update a custom attribute definition.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.merchants.customAttributeDefinitions.update({
+    key: "key",
+    customAttributeDefinition: {
+        description: "Update the description as desired.",
+        visibility: "VISIBILITY_READ_ONLY",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.UpdateMerchantCustomAttributeDefinitionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.merchants.customAttributeDefinitions.<a href="/src/api/resources/merchants/resources/customAttributeDefinitions/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteMerchantCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a merchant-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
+Deleting a custom attribute definition also deletes the corresponding custom attribute from
+the merchant.
+Only the definition owner can delete a custom attribute definition.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.merchants.customAttributeDefinitions.delete({
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.DeleteCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Merchants CustomAttributes
+
+<details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">batchDelete</a>({ ...params }) -> Square.BulkDeleteMerchantCustomAttributesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes [custom attributes](entity:CustomAttribute) for a merchant as a bulk operation.
+To delete a custom attribute owned by another application, the `visibility` setting must be
+`VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.merchants.customAttributes.batchDelete({
+    values: {
+        id1: {
+            key: "alternative_seller_name",
+        },
+        id2: {
+            key: "has_seen_tutorial",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.BulkDeleteMerchantCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">batchUpsert</a>({ ...params }) -> Square.BulkUpsertMerchantCustomAttributesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates or updates [custom attributes](entity:CustomAttribute) for a merchant as a bulk operation.
+Use this endpoint to set the value of one or more custom attributes for a merchant.
+A custom attribute is based on a custom attribute definition in a Square seller account, which is
+created using the [CreateMerchantCustomAttributeDefinition](api-endpoint:MerchantCustomAttributes-CreateMerchantCustomAttributeDefinition) endpoint.
+This `BulkUpsertMerchantCustomAttributes` endpoint accepts a map of 1 to 25 individual upsert
+requests and returns a map of individual upsert responses. Each upsert request has a unique ID
+and provides a merchant ID and custom attribute. Each upsert response is returned with the ID
+of the corresponding request.
+To create or update a custom attribute owned by another application, the `visibility` setting
+must be `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.merchants.customAttributes.batchUpsert({
+    values: {
+        id1: {
+            merchantId: "DM7VKY8Q63GNP",
+            customAttribute: {
+                key: "alternative_seller_name",
+                value: "Ultimate Sneaker Store",
+            },
+        },
+        id2: {
+            merchantId: "DM7VKY8Q63GNP",
+            customAttribute: {
+                key: "has_seen_tutorial",
+                value: true,
+            },
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.BulkUpsertMerchantCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the [custom attributes](entity:CustomAttribute) associated with a merchant.
+You can use the `with_definitions` query parameter to also retrieve custom attribute definitions
+in the same call.
+When all response pages are retrieved, the results include all custom attributes that are
+visible to the requesting application, including those that are owned by other applications
+and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.merchants.customAttributes.list({
+    merchantId: "merchant_id",
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.merchants.customAttributes.list({
+    merchantId: "merchant_id",
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.ListCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">get</a>({ ...params }) -> Square.RetrieveMerchantCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a [custom attribute](entity:CustomAttribute) associated with a merchant.
+You can use the `with_definition` query parameter to also retrieve the custom attribute definition
+in the same call.
+To retrieve a custom attribute owned by another application, the `visibility` setting must be
+`VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.merchants.customAttributes.get({
+    merchantId: "merchant_id",
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.GetCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">upsert</a>({ ...params }) -> Square.UpsertMerchantCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates or updates a [custom attribute](entity:CustomAttribute) for a merchant.
+Use this endpoint to set the value of a custom attribute for a specified merchant.
+A custom attribute is based on a custom attribute definition in a Square seller account, which
+is created using the [CreateMerchantCustomAttributeDefinition](api-endpoint:MerchantCustomAttributes-CreateMerchantCustomAttributeDefinition) endpoint.
+To create or update a custom attribute owned by another application, the `visibility` setting
+must be `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.merchants.customAttributes.upsert({
+    merchantId: "merchant_id",
+    key: "key",
+    customAttribute: {
+        value: "Ultimate Sneaker Store",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.UpsertMerchantCustomAttributeRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteMerchantCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a [custom attribute](entity:CustomAttribute) associated with a merchant.
+To delete a custom attribute owned by another application, the `visibility` setting must be
+`VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.merchants.customAttributes.delete({
+    merchantId: "merchant_id",
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.merchants.DeleteCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Orders CustomAttributeDefinitions
+
+<details><summary><code>client.orders.customAttributeDefinitions.<a href="/src/api/resources/orders/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the order-related [custom attribute definitions](entity:CustomAttributeDefinition) that belong to a Square seller account.
+
+When all response pages are retrieved, the results include all custom attribute definitions
+that are visible to the requesting application, including those that are created by other
+applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that
+seller-defined custom attributes (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.orders.customAttributeDefinitions.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.orders.customAttributeDefinitions.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.ListCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orders.customAttributeDefinitions.<a href="/src/api/resources/orders/resources/customAttributeDefinitions/client/Client.ts">create</a>({ ...params }) -> Square.CreateOrderCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates an order-related custom attribute definition. Use this endpoint to
+define a custom attribute that can be associated with orders.
+
+After creating a custom attribute definition, you can set the custom attribute for orders
+in the Square seller account.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orders.customAttributeDefinitions.create({
+    customAttributeDefinition: {
+        key: "cover-count",
+        schema: {
+            ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number",
+        },
+        name: "Cover count",
+        description: "The number of people seated at a table",
+        visibility: "VISIBILITY_READ_WRITE_VALUES",
+    },
+    idempotencyKey: "IDEMPOTENCY_KEY",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.CreateOrderCustomAttributeDefinitionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orders.customAttributeDefinitions.<a href="/src/api/resources/orders/resources/customAttributeDefinitions/client/Client.ts">get</a>({ ...params }) -> Square.RetrieveOrderCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves an order-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
+
+To retrieve a custom attribute definition created by another application, the `visibility`
+setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orders.customAttributeDefinitions.get({
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.GetCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orders.customAttributeDefinitions.<a href="/src/api/resources/orders/resources/customAttributeDefinitions/client/Client.ts">update</a>({ ...params }) -> Square.UpdateOrderCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates an order-related custom attribute definition for a Square seller account.
+
+Only the definition owner can update a custom attribute definition. Note that sellers can view all custom attributes in exported customer data, including those set to `VISIBILITY_HIDDEN`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orders.customAttributeDefinitions.update({
+    key: "key",
+    customAttributeDefinition: {
+        key: "cover-count",
+        visibility: "VISIBILITY_READ_ONLY",
+        version: 1,
+    },
+    idempotencyKey: "IDEMPOTENCY_KEY",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.UpdateOrderCustomAttributeDefinitionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orders.customAttributeDefinitions.<a href="/src/api/resources/orders/resources/customAttributeDefinitions/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteOrderCustomAttributeDefinitionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes an order-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
+
+Only the definition owner can delete a custom attribute definition.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orders.customAttributeDefinitions.delete({
+    key: "key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.DeleteCustomAttributeDefinitionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Orders CustomAttributes
+
+<details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">batchDelete</a>({ ...params }) -> Square.BulkDeleteOrderCustomAttributesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes order [custom attributes](entity:CustomAttribute) as a bulk operation.
+
+Use this endpoint to delete one or more custom attributes from one or more orders.
+A custom attribute is based on a custom attribute definition in a Square seller account. (To create a
+custom attribute definition, use the [CreateOrderCustomAttributeDefinition](api-endpoint:OrderCustomAttributes-CreateOrderCustomAttributeDefinition) endpoint.)
+
+This `BulkDeleteOrderCustomAttributes` endpoint accepts a map of 1 to 25 individual delete
+requests and returns a map of individual delete responses. Each delete request has a unique ID
+and provides an order ID and custom attribute. Each delete response is returned with the ID
+of the corresponding request.
+
+To delete a custom attribute owned by another application, the `visibility` setting
+must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orders.customAttributes.batchDelete({
+    values: {
+        "cover-count": {
+            key: "cover-count",
+            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
+        },
+        "table-number": {
+            key: "table-number",
+            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.BulkDeleteOrderCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">batchUpsert</a>({ ...params }) -> Square.BulkUpsertOrderCustomAttributesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates or updates order [custom attributes](entity:CustomAttribute) as a bulk operation.
+
+Use this endpoint to delete one or more custom attributes from one or more orders.
+A custom attribute is based on a custom attribute definition in a Square seller account. (To create a
+custom attribute definition, use the [CreateOrderCustomAttributeDefinition](api-endpoint:OrderCustomAttributes-CreateOrderCustomAttributeDefinition) endpoint.)
+
+This `BulkUpsertOrderCustomAttributes` endpoint accepts a map of 1 to 25 individual upsert
+requests and returns a map of individual upsert responses. Each upsert request has a unique ID
+and provides an order ID and custom attribute. Each upsert response is returned with the ID
+of the corresponding request.
+
+To create or update a custom attribute owned by another application, the `visibility` setting
+must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orders.customAttributes.batchUpsert({
+    values: {
+        "cover-count": {
+            customAttribute: {
+                key: "cover-count",
+                value: "6",
+                version: 2,
+            },
+            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
+        },
+        "table-number": {
+            customAttribute: {
+                key: "table-number",
+                value: "11",
+                version: 4,
+            },
+            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.BulkUpsertOrderCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists the [custom attributes](entity:CustomAttribute) associated with an order.
+
+You can use the `with_definitions` query parameter to also retrieve custom attribute definitions
+in the same call.
+
+When all response pages are retrieved, the results include all custom attributes that are
+visible to the requesting application, including those that are owned by other applications
+and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.orders.customAttributes.list({
+    orderId: "order_id",
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.orders.customAttributes.list({
+    orderId: "order_id",
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.ListCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">get</a>({ ...params }) -> Square.RetrieveOrderCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a [custom attribute](entity:CustomAttribute) associated with an order.
+
+You can use the `with_definition` query parameter to also retrieve the custom attribute definition
+in the same call.
+
+To retrieve a custom attribute owned by another application, the `visibility` setting must be
+`VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orders.customAttributes.get({
+    orderId: "order_id",
+    customAttributeKey: "custom_attribute_key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.GetCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">upsert</a>({ ...params }) -> Square.UpsertOrderCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates or updates a [custom attribute](entity:CustomAttribute) for an order.
+
+Use this endpoint to set the value of a custom attribute for a specific order.
+A custom attribute is based on a custom attribute definition in a Square seller account. (To create a
+custom attribute definition, use the [CreateOrderCustomAttributeDefinition](api-endpoint:OrderCustomAttributes-CreateOrderCustomAttributeDefinition) endpoint.)
+
+To create or update a custom attribute owned by another application, the `visibility` setting
+must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orders.customAttributes.upsert({
+    orderId: "order_id",
+    customAttributeKey: "custom_attribute_key",
+    customAttribute: {
+        key: "table-number",
+        value: "42",
+        version: 1,
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.UpsertOrderCustomAttributeRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteOrderCustomAttributeResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a [custom attribute](entity:CustomAttribute) associated with a customer profile.
+
+To delete a custom attribute owned by another application, the `visibility` setting must be
+`VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
+(also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.orders.customAttributes.delete({
+    orderId: "order_id",
+    customAttributeKey: "custom_attribute_key",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.orders.DeleteCustomAttributesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CustomAttributes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## TeamMembers WageSetting
+
+<details><summary><code>client.teamMembers.wageSetting.<a href="/src/api/resources/teamMembers/resources/wageSetting/client/Client.ts">get</a>({ ...params }) -> Square.GetWageSettingResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a `WageSetting` object for a team member specified
+by `TeamMember.id`. For more information, see
+[Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrievewagesetting).
+
+Square recommends using [RetrieveTeamMember](api-endpoint:Team-RetrieveTeamMember) or [SearchTeamMembers](api-endpoint:Team-SearchTeamMembers)
+to get this information directly from the `TeamMember.wage_setting` field.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.teamMembers.wageSetting.get({
+    teamMemberId: "team_member_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.teamMembers.GetWageSettingRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WageSetting.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.teamMembers.wageSetting.<a href="/src/api/resources/teamMembers/resources/wageSetting/client/Client.ts">update</a>({ ...params }) -> Square.UpdateWageSettingResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates or updates a `WageSetting` object. The object is created if a
+`WageSetting` with the specified `team_member_id` doesn't exist. Otherwise,
+it fully replaces the `WageSetting` object for the team member.
+The `WageSetting` is returned on a successful update. For more information, see
+[Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#create-or-update-a-wage-setting).
+
+Square recommends using [CreateTeamMember](api-endpoint:Team-CreateTeamMember) or [UpdateTeamMember](api-endpoint:Team-UpdateTeamMember)
+to manage the `TeamMember.wage_setting` field directly.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.teamMembers.wageSetting.update({
+    teamMemberId: "team_member_id",
+    wageSetting: {
+        jobAssignments: [
+            {
+                jobTitle: "Manager",
+                payType: "SALARY",
+                annualRate: {
+                    amount: 3000000,
+                    currency: "USD",
+                },
+                weeklyHours: 40,
+            },
+            {
+                jobTitle: "Cashier",
+                payType: "HOURLY",
+                hourlyRate: {
+                    amount: 2000,
+                    currency: "USD",
+                },
+            },
+        ],
+        isOvertimeExempt: true,
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.teamMembers.UpdateWageSettingRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WageSetting.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Terminal Actions
+
+<details><summary><code>client.terminal.actions.<a href="/src/api/resources/terminal/resources/actions/client/Client.ts">create</a>({ ...params }) -> Square.CreateTerminalActionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a Terminal action request and sends it to the specified device.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.actions.create({
+    idempotencyKey: "thahn-70e75c10-47f7-4ab6-88cc-aaa4076d065e",
+    action: {
+        deviceId: "{{DEVICE_ID}}",
+        deadlineDuration: "PT5M",
+        type: "SAVE_CARD",
+        saveCardOptions: {
+            customerId: "{{CUSTOMER_ID}}",
+            referenceId: "user-id-1",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.CreateTerminalActionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Actions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.terminal.actions.<a href="/src/api/resources/terminal/resources/actions/client/Client.ts">search</a>({ ...params }) -> Square.SearchTerminalActionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a filtered list of Terminal action requests created by the account making the request. Terminal action requests are available for 30 days.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.actions.search({
+    query: {
+        filter: {
+            createdAt: {
+                startAt: "2022-04-01T00:00:00.000Z",
+            },
+        },
+        sort: {
+            sortOrder: "DESC",
+        },
+    },
+    limit: 2,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.SearchTerminalActionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Actions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.terminal.actions.<a href="/src/api/resources/terminal/resources/actions/client/Client.ts">get</a>({ ...params }) -> Square.GetTerminalActionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a Terminal action request by `action_id`. Terminal action requests are available for 30 days.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.actions.get({
+    actionId: "action_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.GetActionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Actions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.terminal.actions.<a href="/src/api/resources/terminal/resources/actions/client/Client.ts">cancel</a>({ ...params }) -> Square.CancelTerminalActionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Cancels a Terminal action request if the status of the request permits it.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.actions.cancel({
+    actionId: "action_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.CancelActionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Actions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Terminal Checkouts
+
+<details><summary><code>client.terminal.checkouts.<a href="/src/api/resources/terminal/resources/checkouts/client/Client.ts">create</a>({ ...params }) -> Square.CreateTerminalCheckoutResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a Terminal checkout request and sends it to the specified device to take a payment
+for the requested amount.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.checkouts.create({
+    idempotencyKey: "28a0c3bc-7839-11ea-bc55-0242ac130003",
+    checkout: {
+        amountMoney: {
+            amount: 2610,
+            currency: "USD",
+        },
+        referenceId: "id11572",
+        note: "A brief note",
+        deviceOptions: {
+            deviceId: "dbb5d83a-7838-11ea-bc55-0242ac130003",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.CreateTerminalCheckoutRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Checkouts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.terminal.checkouts.<a href="/src/api/resources/terminal/resources/checkouts/client/Client.ts">search</a>({ ...params }) -> Square.SearchTerminalCheckoutsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a filtered list of Terminal checkout requests created by the application making the request. Only Terminal checkout requests created for the merchant scoped to the OAuth token are returned. Terminal checkout requests are available for 30 days.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.checkouts.search({
+    query: {
+        filter: {
+            status: "COMPLETED",
+        },
+    },
+    limit: 2,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.SearchTerminalCheckoutsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Checkouts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.terminal.checkouts.<a href="/src/api/resources/terminal/resources/checkouts/client/Client.ts">get</a>({ ...params }) -> Square.GetTerminalCheckoutResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a Terminal checkout request by `checkout_id`. Terminal checkout requests are available for 30 days.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.checkouts.get({
+    checkoutId: "checkout_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.GetCheckoutsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Checkouts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.terminal.checkouts.<a href="/src/api/resources/terminal/resources/checkouts/client/Client.ts">cancel</a>({ ...params }) -> Square.CancelTerminalCheckoutResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Cancels a Terminal checkout request if the status of the request permits it.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.checkouts.cancel({
+    checkoutId: "checkout_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.CancelCheckoutsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Checkouts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Terminal Refunds
+
+<details><summary><code>client.terminal.refunds.<a href="/src/api/resources/terminal/resources/refunds/client/Client.ts">create</a>({ ...params }) -> Square.CreateTerminalRefundResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a request to refund an Interac payment completed on a Square Terminal. Refunds for Interac payments on a Square Terminal are supported only for Interac debit cards in Canada. Other refunds for Terminal payments should use the Refunds API. For more information, see [Refunds API](api:Refunds).
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.refunds.create({
+    idempotencyKey: "402a640b-b26f-401f-b406-46f839590c04",
+    refund: {
+        paymentId: "5O5OvgkcNUhl7JBuINflcjKqUzXZY",
+        amountMoney: {
+            amount: 111,
+            currency: "CAD",
+        },
+        reason: "Returning items",
+        deviceId: "f72dfb8e-4d65-4e56-aade-ec3fb8d33291",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.CreateTerminalRefundRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Refunds.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.terminal.refunds.<a href="/src/api/resources/terminal/resources/refunds/client/Client.ts">search</a>({ ...params }) -> Square.SearchTerminalRefundsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a filtered list of Interac Terminal refund requests created by the seller making the request. Terminal refund requests are available for 30 days.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.refunds.search({
+    query: {
+        filter: {
+            status: "COMPLETED",
+        },
+    },
+    limit: 1,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.SearchTerminalRefundsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Refunds.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.terminal.refunds.<a href="/src/api/resources/terminal/resources/refunds/client/Client.ts">get</a>({ ...params }) -> Square.GetTerminalRefundResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves an Interac Terminal refund object by ID. Terminal refund objects are available for 30 days.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.refunds.get({
+    terminalRefundId: "terminal_refund_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.GetRefundsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Refunds.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.terminal.refunds.<a href="/src/api/resources/terminal/resources/refunds/client/Client.ts">cancel</a>({ ...params }) -> Square.CancelTerminalRefundResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Cancels an Interac Terminal refund request by refund request ID if the status of the request permits it.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.terminal.refunds.cancel({
+    terminalRefundId: "terminal_refund_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.terminal.CancelRefundsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Refunds.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Webhooks EventTypes
+
+<details><summary><code>client.webhooks.eventTypes.<a href="/src/api/resources/webhooks/resources/eventTypes/client/Client.ts">list</a>({ ...params }) -> Square.ListWebhookEventTypesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists all webhook event types that can be subscribed to.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhooks.eventTypes.list();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.webhooks.ListEventTypesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EventTypes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Webhooks Subscriptions
+
+<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WebhookSubscription></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists all webhook subscriptions owned by your application.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.webhooks.subscriptions.list();
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+const page = await client.webhooks.subscriptions.list();
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.webhooks.ListSubscriptionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Subscriptions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">create</a>({ ...params }) -> Square.CreateWebhookSubscriptionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a webhook subscription.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhooks.subscriptions.create({
+    idempotencyKey: "63f84c6c-2200-4c99-846c-2670a1311fbf",
+    subscription: {
+        name: "Example Webhook Subscription",
+        eventTypes: ["payment.created", "payment.updated"],
+        notificationUrl: "https://example-webhook-url.com",
+        apiVersion: "2021-12-15",
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.webhooks.CreateWebhookSubscriptionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Subscriptions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">get</a>({ ...params }) -> Square.GetWebhookSubscriptionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a webhook subscription identified by its ID.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhooks.subscriptions.get({
+    subscriptionId: "subscription_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.webhooks.GetSubscriptionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Subscriptions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">update</a>({ ...params }) -> Square.UpdateWebhookSubscriptionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a webhook subscription.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhooks.subscriptions.update({
+    subscriptionId: "subscription_id",
+    subscription: {
+        name: "Updated Example Webhook Subscription",
+        enabled: false,
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.webhooks.UpdateWebhookSubscriptionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Subscriptions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteWebhookSubscriptionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a webhook subscription.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhooks.subscriptions.delete({
+    subscriptionId: "subscription_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.webhooks.DeleteSubscriptionsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Subscriptions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">updateSignatureKey</a>({ ...params }) -> Square.UpdateWebhookSubscriptionSignatureKeyResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a webhook subscription by replacing the existing signature key with a new one.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhooks.subscriptions.updateSignatureKey({
+    subscriptionId: "subscription_id",
+    idempotencyKey: "ed80ae6b-0654-473b-bbab-a39aee89a60d",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.webhooks.UpdateWebhookSubscriptionSignatureKeyRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Subscriptions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">test</a>({ ...params }) -> Square.TestWebhookSubscriptionResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Tests a webhook subscription by sending a test event to the notification URL.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.webhooks.subscriptions.test({
+    subscriptionId: "subscription_id",
+    eventType: "payment.created",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.webhooks.TestWebhookSubscriptionRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Subscriptions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>

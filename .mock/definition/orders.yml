@@ -34,7 +34,9 @@ service:
         type: root.CreateOrderResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             order:
               location_id: 057P5VYJ4A5X1
               reference_id: my-order-001
@@ -322,7 +324,9 @@ service:
         type: root.BatchGetOrdersResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             location_id: 057P5VYJ4A5X1
             order_ids:
               - CAISEM82RcpmcFBM0TfOyiHV3es
@@ -427,7 +431,9 @@ service:
         type: root.CalculateOrderResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             order:
               location_id: D7AVYMEAPJ3A3
               line_items:
@@ -650,7 +656,9 @@ service:
         type: root.CloneOrderResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             order_id: ZAISEM52YcpmcWAzERDOyiWS123
             version: 3
             idempotency_key: UNIQUE_STRING
@@ -967,7 +975,9 @@ service:
         type: root.SearchOrdersResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             location_ids:
               - 057P5VYJ4A5X1
               - 18YC4JDH91E1H
@@ -1058,6 +1068,8 @@ service:
       examples:
         - path-parameters:
             order_id: order_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               order:
@@ -1304,6 +1316,8 @@ service:
       examples:
         - path-parameters:
             order_id: order_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             order:
               location_id: location_id
@@ -1530,6 +1544,8 @@ service:
       examples:
         - path-parameters:
             order_id: order_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             idempotency_key: c043a359-7ad9-4136-82a9-c3f1d66dcbff
             payment_ids:

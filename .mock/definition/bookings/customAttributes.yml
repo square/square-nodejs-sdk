@@ -46,7 +46,9 @@ service:
         type: root.BulkDeleteBookingCustomAttributesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             values:
               key:
                 booking_id: booking_id
@@ -116,7 +118,9 @@ service:
         type: root.BulkUpsertBookingCustomAttributesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             values:
               key:
                 booking_id: booking_id
@@ -258,6 +262,8 @@ service:
       examples:
         - path-parameters:
             booking_id: booking_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               custom_attributes:
@@ -347,6 +353,8 @@ service:
         - path-parameters:
             booking_id: booking_id
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               custom_attribute:
@@ -451,6 +459,8 @@ service:
         - path-parameters:
             booking_id: booking_id
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           request:
             custom_attribute: {}
           response:
@@ -523,6 +533,8 @@ service:
         - path-parameters:
             booking_id: booking_id
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

@@ -51,7 +51,9 @@ service:
         type: root.CreateLoyaltyRewardResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             reward:
               loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
               reward_tier_id: e1b39225-9da5-43d1-a5db-782cdd8ad94f
@@ -134,7 +136,9 @@ service:
         type: root.SearchLoyaltyRewardsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             query:
               loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
             limit: 10
@@ -204,6 +208,8 @@ service:
       examples:
         - path-parameters:
             reward_id: reward_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -258,6 +264,8 @@ service:
       examples:
         - path-parameters:
             reward_id: reward_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -318,6 +326,8 @@ service:
       examples:
         - path-parameters:
             reward_id: reward_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             idempotency_key: 98adc7f7-6963-473b-b29c-f3c9cdd7d994
             location_id: P034NEENMD09F

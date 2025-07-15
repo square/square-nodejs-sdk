@@ -32,7 +32,9 @@ service:
         type: root.ListWorkweekConfigsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               workweek_configs:
                 - id: FY4VCAQN700GM
@@ -74,6 +76,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             workweek_config:
               start_of_week: MON

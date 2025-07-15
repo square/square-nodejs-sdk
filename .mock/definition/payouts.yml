@@ -85,7 +85,9 @@ service:
         type: root.ListPayoutsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               payouts:
                 - id: po_b345d2c7-90b3-4f0b-a2aa-df1def7f8afc
@@ -153,6 +155,8 @@ service:
       examples:
         - path-parameters:
             payout_id: payout_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               payout:
@@ -237,6 +241,8 @@ service:
       examples:
         - path-parameters:
             payout_id: payout_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               payout_entries:

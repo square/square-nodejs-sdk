@@ -22,7 +22,9 @@ service:
         type: root.ListLocationsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               errors:
                 - category: API_ERROR
@@ -140,7 +142,9 @@ service:
         type: root.CreateLocationResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             location:
               name: Midtown
               address:
@@ -235,6 +239,8 @@ service:
       examples:
         - path-parameters:
             location_id: location_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -321,6 +327,8 @@ service:
       examples:
         - path-parameters:
             location_id: location_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             location:
               business_hours:
@@ -593,6 +601,8 @@ service:
       examples:
         - path-parameters:
             location_id: location_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             idempotency_key: 86ae1696-b1e3-4328-af6d-f1e04d947ad6
             order:

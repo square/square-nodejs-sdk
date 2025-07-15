@@ -33,7 +33,9 @@ service:
         type: root.ListLocationBookingProfilesResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               location_booking_profiles:
                 - location_id: LY6WNBPVM6VGV

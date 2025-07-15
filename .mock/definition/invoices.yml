@@ -53,6 +53,8 @@ service:
       examples:
         - query-parameters:
             location_id: location_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               invoices:
@@ -236,7 +238,9 @@ service:
         type: root.CreateInvoiceResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             invoice:
               location_id: ES0RJRZYEC39A
               order_id: CAISENgvlJ6jLWAzERDzjyHVybY
@@ -397,7 +401,9 @@ service:
         type: root.SearchInvoicesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             query:
               filter:
                 location_ids:
@@ -560,6 +566,8 @@ service:
       examples:
         - path-parameters:
             invoice_id: invoice_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               invoice:
@@ -704,6 +712,8 @@ service:
       examples:
         - path-parameters:
             invoice_id: invoice_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             invoice:
               version: 1
@@ -813,6 +823,8 @@ service:
       examples:
         - path-parameters:
             invoice_id: invoice_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -867,6 +879,8 @@ service:
       examples:
         - path-parameters:
             invoice_id: invoice_id
+          headers:
+            Square-Version: '2025-06-18'
           request: {}
           response:
             body:
@@ -915,6 +929,8 @@ service:
         - path-parameters:
             invoice_id: invoice_id
             attachment_id: attachment_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -962,6 +978,8 @@ service:
       examples:
         - path-parameters:
             invoice_id: invoice_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             version: 0
           response:
@@ -1110,6 +1128,8 @@ service:
       examples:
         - path-parameters:
             invoice_id: invoice_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             version: 1
             idempotency_key: 32da42d0-1997-41b0-826b-f09464fc2c2e

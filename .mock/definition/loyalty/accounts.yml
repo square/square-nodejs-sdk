@@ -38,7 +38,9 @@ service:
         type: root.CreateLoyaltyAccountResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             loyalty_account:
               program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
               mapping:
@@ -119,7 +121,9 @@ service:
         type: root.SearchLoyaltyAccountsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             query:
               mappings:
                 - phone_number: '+14155551234'
@@ -171,6 +175,8 @@ service:
       examples:
         - path-parameters:
             account_id: account_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -279,6 +285,8 @@ service:
       examples:
         - path-parameters:
             account_id: account_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             accumulate_points:
               order_id: RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY
@@ -337,28 +345,15 @@ service:
                     loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
                     points: 6
                     order_id: RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY
-                  create_reward:
-                    loyalty_program_id: loyalty_program_id
-                    points: 1
-                  redeem_reward:
-                    loyalty_program_id: loyalty_program_id
-                  delete_reward:
-                    loyalty_program_id: loyalty_program_id
-                    points: 1
                   adjust_points:
                     points: 1
                   loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
                   location_id: P034NEENMD09F
                   source: LOYALTY_API
                   expire_points:
-                    loyalty_program_id: loyalty_program_id
                     points: 1
                   other_event:
-                    loyalty_program_id: loyalty_program_id
                     points: 1
-                  accumulate_promotion_points:
-                    points: 1
-                    order_id: order_id
     adjust:
       path: /v2/loyalty/accounts/{account_id}/adjust
       method: POST
@@ -421,6 +416,8 @@ service:
       examples:
         - path-parameters:
             account_id: account_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             idempotency_key: bc29a517-3dc9-450e-aa76-fae39ee849d1
             adjust_points:

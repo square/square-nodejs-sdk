@@ -80,7 +80,9 @@ service:
         type: root.RevokeTokenResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             client_id: CLIENT_ID
             access_token: ACCESS_TOKEN
           response:
@@ -309,7 +311,9 @@ service:
         type: root.ObtainTokenResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             client_id: sq0idp-uaPHILoPzWZk3tlJqlML0g
             client_secret: sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM
             code: sq0cgb-l0SBqxs4uwxErTVyYOdemg
@@ -344,7 +348,9 @@ service:
         type: root.RetrieveTokenStatusResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               scopes:
                 - PAYMENTS_READ
@@ -364,6 +370,7 @@ service:
       source:
         openapi: openapi/openapi.json
       examples:
-        - {}
+        - headers:
+            Square-Version: '2025-06-18'
   source:
     openapi: openapi/openapi.json

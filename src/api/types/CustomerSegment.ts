@@ -12,7 +12,7 @@ export interface CustomerSegment {
     /** A unique Square-generated ID for the segment. */
     id?: string;
     /** The name of the segment. */
-    name: string;
+    name?: string;
     /** The timestamp when the segment was created, in RFC 3339 format. */
     createdAt?: string;
     /** The timestamp when the segment was last updated, in RFC 3339 format. */

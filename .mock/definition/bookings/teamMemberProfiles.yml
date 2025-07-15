@@ -44,7 +44,9 @@ service:
         type: root.ListTeamMemberBookingProfilesResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               team_member_booking_profiles:
                 - team_member_id: TMXUrsBWWcHTt79t
@@ -84,6 +86,8 @@ service:
       examples:
         - path-parameters:
             team_member_id: team_member_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               team_member_booking_profile:

@@ -49,7 +49,9 @@ service:
         type: root.ListCustomerSegmentsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               errors:
                 - category: API_ERROR
@@ -97,6 +99,8 @@ service:
       examples:
         - path-parameters:
             segment_id: segment_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

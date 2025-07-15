@@ -7,7 +7,7 @@
  */
 export interface LoyaltyEventOther {
     /** The Square-assigned ID of the [loyalty program](entity:LoyaltyProgram). */
-    loyaltyProgramId: string;
+    loyaltyProgramId?: string;
     /** The number of points added or removed. */
     points: number;
 }

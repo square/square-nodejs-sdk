@@ -70,7 +70,9 @@ service:
         type: root.ListGiftCardsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               errors:
                 - category: API_ERROR
@@ -193,7 +195,9 @@ service:
         type: root.CreateGiftCardResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             idempotency_key: NC9Tm69EjbjtConu
             location_id: 81FN9BNFZTKS4
             gift_card:
@@ -247,7 +251,9 @@ service:
         type: root.GetGiftCardFromGANResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             gan: '7783320001001635'
           response:
             body:
@@ -297,7 +303,9 @@ service:
         type: root.GetGiftCardFromNonceResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             nonce: cnon:7783322135245171
           response:
             body:
@@ -350,6 +358,8 @@ service:
       examples:
         - path-parameters:
             gift_card_id: gift_card_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             customer_id: GKY0FZ3V717AH8Q2D821PNT2ZW
           response:
@@ -403,6 +413,8 @@ service:
       examples:
         - path-parameters:
             gift_card_id: gift_card_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             customer_id: GKY0FZ3V717AH8Q2D821PNT2ZW
           response:
@@ -445,6 +457,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

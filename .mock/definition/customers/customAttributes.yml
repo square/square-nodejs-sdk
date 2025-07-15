@@ -82,6 +82,8 @@ service:
       examples:
         - path-parameters:
             customer_id: customer_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               custom_attributes:
@@ -181,6 +183,8 @@ service:
         - path-parameters:
             customer_id: customer_id
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               custom_attribute:
@@ -294,6 +298,8 @@ service:
         - path-parameters:
             customer_id: customer_id
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           request:
             custom_attribute:
               value: Dune
@@ -365,6 +371,8 @@ service:
         - path-parameters:
             customer_id: customer_id
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

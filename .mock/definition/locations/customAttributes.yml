@@ -38,7 +38,9 @@ service:
         type: root.BulkDeleteLocationCustomAttributesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             values:
               id1:
                 key: bestseller
@@ -127,7 +129,9 @@ service:
         type: root.BulkUpsertLocationCustomAttributesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             values:
               id1:
                 location_id: L0TBCBTB7P8RQ
@@ -269,6 +273,8 @@ service:
       examples:
         - path-parameters:
             location_id: location_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               custom_attributes:
@@ -362,6 +368,8 @@ service:
         - path-parameters:
             location_id: location_id
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               custom_attribute:
@@ -468,6 +476,8 @@ service:
         - path-parameters:
             location_id: location_id
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           request:
             custom_attribute:
               value: hot cocoa
@@ -534,6 +544,8 @@ service:
         - path-parameters:
             location_id: location_id
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

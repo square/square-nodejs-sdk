@@ -42,7 +42,9 @@ service:
         type: root.CreateCatalogImageResponse
         status-code: 200
       examples:
-        - request: {}
+        - headers:
+            Square-Version: '2025-06-18'
+          request: {}
           response:
             body:
               errors:
@@ -111,6 +113,8 @@ service:
       examples:
         - path-parameters:
             image_id: image_id
+          headers:
+            Square-Version: '2025-06-18'
           request: {}
           response:
             body:

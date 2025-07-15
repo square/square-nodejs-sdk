@@ -73,6 +73,8 @@ service:
       examples:
         - path-parameters:
             program_id: program_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -226,6 +228,8 @@ service:
       examples:
         - path-parameters:
             program_id: program_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             loyalty_promotion:
               name: Tuesday Happy Hour Promo
@@ -325,6 +329,8 @@ service:
         - path-parameters:
             promotion_id: promotion_id
             program_id: program_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -410,6 +416,8 @@ service:
         - path-parameters:
             promotion_id: promotion_id
             program_id: program_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

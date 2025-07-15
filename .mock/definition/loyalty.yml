@@ -68,7 +68,9 @@ service:
         type: root.SearchLoyaltyEventsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             query:
               filter:
                 order_filter:
@@ -89,55 +91,31 @@ service:
                     loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
                     points: 5
                     order_id: PyATxhYLfsMqpVkcKJITPydgEYfZY
-                  create_reward:
-                    loyalty_program_id: loyalty_program_id
-                    points: 1
-                  redeem_reward:
-                    loyalty_program_id: loyalty_program_id
-                  delete_reward:
-                    loyalty_program_id: loyalty_program_id
-                    points: 1
                   adjust_points:
                     points: 1
                   loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
                   location_id: P034NEENMD09F
                   source: LOYALTY_API
                   expire_points:
-                    loyalty_program_id: loyalty_program_id
                     points: 1
                   other_event:
-                    loyalty_program_id: loyalty_program_id
                     points: 1
-                  accumulate_promotion_points:
-                    points: 1
-                    order_id: order_id
                 - id: e4a5cbc3-a4d0-3779-98e9-e578885d9430
                   type: REDEEM_REWARD
                   created_at: '2020-05-08T22:01:15Z'
-                  create_reward:
-                    loyalty_program_id: loyalty_program_id
-                    points: 1
                   redeem_reward:
                     loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
                     reward_id: d03f79f4-815f-3500-b851-cc1e68a457f9
                     order_id: PyATxhYLfsMqpVkcKJITPydgEYfZY
-                  delete_reward:
-                    loyalty_program_id: loyalty_program_id
-                    points: 1
                   adjust_points:
                     points: 1
                   loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
                   location_id: P034NEENMD09F
                   source: LOYALTY_API
                   expire_points:
-                    loyalty_program_id: loyalty_program_id
                     points: 1
                   other_event:
-                    loyalty_program_id: loyalty_program_id
                     points: 1
-                  accumulate_promotion_points:
-                    points: 1
-                    order_id: order_id
                 - id: 5e127479-0b03-3671-ab1e-15faea8b7188
                   type: CREATE_REWARD
                   created_at: '2020-05-08T22:00:44Z'
@@ -145,25 +123,15 @@ service:
                     loyalty_program_id: d619f755-2d17-41f3-990d-c04ecedd64dd
                     reward_id: d03f79f4-815f-3500-b851-cc1e68a457f9
                     points: -10
-                  redeem_reward:
-                    loyalty_program_id: loyalty_program_id
-                  delete_reward:
-                    loyalty_program_id: loyalty_program_id
-                    points: 1
                   adjust_points:
                     points: 1
                   loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
                   location_id: location_id
                   source: LOYALTY_API
                   expire_points:
-                    loyalty_program_id: loyalty_program_id
                     points: 1
                   other_event:
-                    loyalty_program_id: loyalty_program_id
                     points: 1
-                  accumulate_promotion_points:
-                    points: 1
-                    order_id: order_id
               cursor: cursor
   source:
     openapi: openapi/openapi.json

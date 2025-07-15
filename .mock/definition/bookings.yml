@@ -68,7 +68,9 @@ service:
         type: root.ListBookingsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               bookings:
                 - id: zkras0xv0xwswx
@@ -148,7 +150,9 @@ service:
         type: root.CreateBookingResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             booking: {}
           response:
             body:
@@ -227,7 +231,9 @@ service:
         type: root.SearchAvailabilityResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             query:
               filter:
                 start_at_range: {}
@@ -396,7 +402,9 @@ service:
         type: root.BulkRetrieveBookingsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             booking_ids:
               - booking_ids
           response:
@@ -466,7 +474,9 @@ service:
         type: root.GetBusinessBookingProfileResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               business_booking_profile:
                 seller_id: MLJQYZZRM0D3Y
@@ -518,6 +528,8 @@ service:
       examples:
         - path-parameters:
             location_id: location_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               location_booking_profile:
@@ -552,7 +564,9 @@ service:
         type: root.BulkRetrieveTeamMemberBookingProfilesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             team_member_ids:
               - team_member_ids
           response:
@@ -615,6 +629,8 @@ service:
       examples:
         - path-parameters:
             booking_id: booking_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               booking:
@@ -712,6 +728,8 @@ service:
       examples:
         - path-parameters:
             booking_id: booking_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             booking: {}
           response:
@@ -810,6 +828,8 @@ service:
       examples:
         - path-parameters:
             booking_id: booking_id
+          headers:
+            Square-Version: '2025-06-18'
           request: {}
           response:
             body:

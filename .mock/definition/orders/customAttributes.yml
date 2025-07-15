@@ -64,7 +64,9 @@ service:
         type: root.BulkDeleteOrderCustomAttributesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             values:
               cover-count:
                 key: cover-count
@@ -148,7 +150,9 @@ service:
         type: root.BulkUpsertOrderCustomAttributesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             values:
               cover-count:
                 custom_attribute:
@@ -275,6 +279,8 @@ service:
       examples:
         - path-parameters:
             order_id: order_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               custom_attributes:
@@ -359,6 +365,8 @@ service:
         - path-parameters:
             order_id: order_id
             custom_attribute_key: custom_attribute_key
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               custom_attribute:
@@ -468,6 +476,8 @@ service:
         - path-parameters:
             order_id: order_id
             custom_attribute_key: custom_attribute_key
+          headers:
+            Square-Version: '2025-06-18'
           request:
             custom_attribute:
               key: table-number
@@ -538,6 +548,8 @@ service:
         - path-parameters:
             order_id: order_id
             custom_attribute_key: custom_attribute_key
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

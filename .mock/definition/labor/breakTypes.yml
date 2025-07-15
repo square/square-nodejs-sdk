@@ -41,7 +41,9 @@ service:
         type: root.ListBreakTypesResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               break_types:
                 - id: REGS1EQR1TPZ5
@@ -120,7 +122,9 @@ service:
         type: root.CreateBreakTypeResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             idempotency_key: PAD3NG5KSN2GL
             break_type:
               location_id: CGJN03P1D08GF
@@ -164,6 +168,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               break_type:
@@ -207,6 +213,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             break_type:
               location_id: 26M7H24AZ9N6R
@@ -254,6 +262,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

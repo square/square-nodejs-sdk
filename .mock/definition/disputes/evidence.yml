@@ -40,6 +40,8 @@ service:
       examples:
         - path-parameters:
             dispute_id: dispute_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               evidence:
@@ -99,6 +101,8 @@ service:
         - path-parameters:
             dispute_id: dispute_id
             evidence_id: evidence_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -143,6 +147,8 @@ service:
         - path-parameters:
             dispute_id: dispute_id
             evidence_id: evidence_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

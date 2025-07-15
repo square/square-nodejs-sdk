@@ -63,7 +63,9 @@ service:
         type: root.ListMerchantCustomAttributeDefinitionsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               custom_attribute_definitions:
                 - key: has_seen_tutorial
@@ -157,7 +159,9 @@ service:
         type: root.CreateMerchantCustomAttributeDefinitionResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             custom_attribute_definition:
               key: alternative_seller_name
               schema:
@@ -233,6 +237,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               custom_attribute_definition:
@@ -331,6 +337,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           request:
             custom_attribute_definition:
               description: Update the description as desired.
@@ -384,6 +392,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

@@ -69,7 +69,9 @@ service:
         type: root.UpsertCatalogObjectResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             idempotency_key: af3d1afc-7212-4300-b463-0bfc5314a5ae
             object:
               id: id
@@ -236,6 +238,8 @@ service:
       examples:
         - path-parameters:
             object_id: object_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -369,6 +373,8 @@ service:
       examples:
         - path-parameters:
             object_id: object_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

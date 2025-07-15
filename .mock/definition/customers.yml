@@ -85,7 +85,9 @@ service:
         type: root.ListCustomersResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-06-18'
+          response:
             body:
               errors:
                 - category: API_ERROR
@@ -251,7 +253,9 @@ service:
         type: root.CreateCustomerResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             given_name: Amelia
             family_name: Earhart
             email_address: Amelia.Earhart@example.com
@@ -364,7 +368,9 @@ service:
         type: root.BulkCreateCustomersResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             customers:
               8bb76c4f-e35d-4c5b-90de-1194cd9179f0:
                 given_name: Amelia
@@ -478,7 +484,9 @@ service:
         type: root.BulkDeleteCustomersResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             customer_ids:
               - 8DDA5NZVBZFGAX0V3HPF81HHE0
               - N18CPRVXR5214XPBBA6BZQWF3C
@@ -530,7 +538,9 @@ service:
         type: root.BulkRetrieveCustomersResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             customer_ids:
               - 8DDA5NZVBZFGAX0V3HPF81HHE0
               - N18CPRVXR5214XPBBA6BZQWF3C
@@ -623,7 +633,9 @@ service:
         type: root.BulkUpdateCustomersResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             customers:
               8DDA5NZVBZFGAX0V3HPF81HHE0:
                 email_address: New.Amelia.Earhart@example.com
@@ -750,7 +762,9 @@ service:
         type: root.SearchCustomersResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             limit: 2
             query:
               filter:
@@ -854,6 +868,8 @@ service:
       examples:
         - path-parameters:
             customer_id: customer_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -1034,6 +1050,8 @@ service:
       examples:
         - path-parameters:
             customer_id: customer_id
+          headers:
+            Square-Version: '2025-06-18'
           request:
             email_address: New.Amelia.Earhart@example.com
             note: updated customer note
@@ -1121,6 +1139,8 @@ service:
       examples:
         - path-parameters:
             customer_id: customer_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

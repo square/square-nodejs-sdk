@@ -34,6 +34,8 @@ service:
       examples:
         - path-parameters:
             action_id: action_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -131,6 +133,8 @@ service:
       examples:
         - path-parameters:
             checkout_id: checkout_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -204,6 +208,8 @@ service:
       examples:
         - path-parameters:
             terminal_refund_id: terminal_refund_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:

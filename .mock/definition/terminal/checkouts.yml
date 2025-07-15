@@ -44,7 +44,9 @@ service:
         type: root.CreateTerminalCheckoutResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             idempotency_key: 28a0c3bc-7839-11ea-bc55-0242ac130003
             checkout:
               amount_money:
@@ -148,7 +150,9 @@ service:
         type: root.SearchTerminalCheckoutsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-06-18'
+          request:
             query:
               filter:
                 status: COMPLETED
@@ -235,6 +239,8 @@ service:
       examples:
         - path-parameters:
             checkout_id: checkout_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
@@ -304,6 +310,8 @@ service:
       examples:
         - path-parameters:
             checkout_id: checkout_id
+          headers:
+            Square-Version: '2025-06-18'
           response:
             body:
               errors:
