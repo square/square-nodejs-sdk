@@ -46,7 +46,9 @@ service:
         type: root.ListDisputesResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               errors:
                 - category: API_ERROR
@@ -116,6 +118,8 @@ service:
       examples:
         - path-parameters:
             dispute_id: dispute_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -176,6 +180,8 @@ service:
       examples:
         - path-parameters:
             dispute_id: dispute_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -239,6 +245,8 @@ service:
       examples:
         - path-parameters:
             dispute_id: dispute_id
+          headers:
+            Square-Version: '2025-07-16'
           request: {}
           response:
             body:
@@ -302,6 +310,8 @@ service:
       examples:
         - path-parameters:
             dispute_id: dispute_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             idempotency_key: ed3ee3933d946f1514d505d173c82648
             evidence_type: TRACKING_NUMBER
@@ -362,6 +372,8 @@ service:
       examples:
         - path-parameters:
             dispute_id: dispute_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

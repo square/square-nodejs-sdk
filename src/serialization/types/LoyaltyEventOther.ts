@@ -10,13 +10,13 @@ export const LoyaltyEventOther: core.serialization.ObjectSchema<
     serializers.LoyaltyEventOther.Raw,
     Square.LoyaltyEventOther
 > = core.serialization.object({
-    loyaltyProgramId: core.serialization.property("loyalty_program_id", core.serialization.string()),
+    loyaltyProgramId: core.serialization.property("loyalty_program_id", core.serialization.string().optional()),
     points: core.serialization.number(),
 });
 
 export declare namespace LoyaltyEventOther {
     export interface Raw {
-        loyalty_program_id: string;
+        loyalty_program_id?: string | null;
         points: number;
     }
 }

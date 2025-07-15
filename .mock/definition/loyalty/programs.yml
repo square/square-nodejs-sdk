@@ -31,7 +31,9 @@ service:
         status-code: 200
       availability: deprecated
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               errors:
                 - category: API_ERROR
@@ -105,6 +107,8 @@ service:
       examples:
         - path-parameters:
             program_id: program_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -252,6 +256,8 @@ service:
       examples:
         - path-parameters:
             program_id: program_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             order_id: RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY
             loyalty_account_id: 79b807d2-d786-46a9-933b-918028d7a8c5

@@ -69,7 +69,9 @@ service:
         type: root.ListOrderCustomAttributeDefinitionsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               custom_attribute_definitions:
                 - key: cover-count
@@ -167,7 +169,9 @@ service:
         type: root.CreateOrderCustomAttributeDefinitionResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             custom_attribute_definition:
               key: cover-count
               schema:
@@ -239,6 +243,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               custom_attribute_definition:
@@ -316,6 +322,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           request:
             custom_attribute_definition:
               key: cover-count
@@ -367,6 +375,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

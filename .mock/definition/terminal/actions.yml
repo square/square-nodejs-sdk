@@ -42,7 +42,9 @@ service:
         type: root.CreateTerminalActionResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             idempotency_key: thahn-70e75c10-47f7-4ab6-88cc-aaa4076d065e
             action:
               device_id: '{{DEVICE_ID}}'
@@ -168,7 +170,9 @@ service:
         type: root.SearchTerminalActionsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             query:
               filter:
                 created_at:
@@ -285,6 +289,8 @@ service:
       examples:
         - path-parameters:
             action_id: action_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -376,6 +382,8 @@ service:
       examples:
         - path-parameters:
             action_id: action_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

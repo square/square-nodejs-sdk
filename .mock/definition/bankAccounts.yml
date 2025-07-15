@@ -58,7 +58,9 @@ service:
         type: root.ListBankAccountsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               errors:
                 - category: API_ERROR
@@ -129,6 +131,8 @@ service:
       examples:
         - path-parameters:
             v1_bank_account_id: v1_bank_account_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -177,6 +181,8 @@ service:
       examples:
         - path-parameters:
             bank_account_id: bank_account_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

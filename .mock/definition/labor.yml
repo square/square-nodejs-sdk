@@ -68,7 +68,9 @@ service:
         type: root.CreateScheduledShiftResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             idempotency_key: HIDSNG5KS478L
             scheduled_shift:
               draft_shift_details:
@@ -169,7 +171,9 @@ service:
         type: root.BulkPublishScheduledShiftsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             scheduled_shifts:
               key: {}
             scheduled_shift_notification_audience: AFFECTED
@@ -258,7 +262,9 @@ service:
         type: root.SearchScheduledShiftsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             query:
               filter:
                 assignment_status: ASSIGNED
@@ -310,6 +316,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               scheduled_shift:
@@ -423,6 +431,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             scheduled_shift:
               draft_shift_details:
@@ -529,6 +539,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             idempotency_key: HIDSNG5KS478L
             version: 2
@@ -626,7 +638,9 @@ service:
         type: root.CreateTimecardResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             idempotency_key: HIDSNG5KS478L
             timecard:
               location_id: PAA1RJZZKXBFG
@@ -729,7 +743,9 @@ service:
         type: root.SearchTimecardsResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             query:
               filter:
                 workday:
@@ -832,6 +848,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               timecard:
@@ -908,6 +926,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             timecard:
               location_id: PAA1RJZZKXBFG
@@ -990,6 +1010,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

@@ -68,7 +68,9 @@ service:
         status-code: 200
       availability: deprecated
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             idempotency_key: HIDSNG5KS478L
             shift:
               location_id: PAA1RJZZKXBFG
@@ -173,7 +175,9 @@ service:
         status-code: 200
       availability: deprecated
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             query:
               filter:
                 workday:
@@ -279,6 +283,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               shift:
@@ -357,6 +363,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             shift:
               location_id: PAA1RJZZKXBFG
@@ -440,6 +448,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

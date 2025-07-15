@@ -37,7 +37,9 @@ service:
         status-code: 200
       availability: deprecated
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               employees:
                 - id: id
@@ -79,6 +81,8 @@ service:
       examples:
         - path-parameters:
             id: id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               employee:

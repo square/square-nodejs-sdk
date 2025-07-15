@@ -64,7 +64,9 @@ service:
         type: root.RegisterDomainResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             domain_name: example.com
           response:
             body:

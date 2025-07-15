@@ -54,6 +54,8 @@ service:
       examples:
         - query-parameters:
             location_id: location_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               cursor: cursor
@@ -112,6 +114,8 @@ service:
             shift_id: shift_id
           query-parameters:
             location_id: location_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               cash_drawer_shift:
@@ -197,6 +201,8 @@ service:
             shift_id: shift_id
           query-parameters:
             location_id: location_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               cursor: cursor

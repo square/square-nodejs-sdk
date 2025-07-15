@@ -10,15 +10,15 @@ export const LoyaltyEventDeleteReward: core.serialization.ObjectSchema<
     serializers.LoyaltyEventDeleteReward.Raw,
     Square.LoyaltyEventDeleteReward
 > = core.serialization.object({
-    loyaltyProgramId: core.serialization.property("loyalty_program_id", core.serialization.string()),
+    loyaltyProgramId: core.serialization.property("loyalty_program_id", core.serialization.string().optional()),
     rewardId: core.serialization.property("reward_id", core.serialization.string().optional()),
-    points: core.serialization.number(),
+    points: core.serialization.number().optional(),
 });
 
 export declare namespace LoyaltyEventDeleteReward {
     export interface Raw {
-        loyalty_program_id: string;
+        loyalty_program_id?: string | null;
         reward_id?: string | null;
-        points: number;
+        points?: number | null;
     }
 }

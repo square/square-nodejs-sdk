@@ -39,6 +39,8 @@ service:
       examples:
         - path-parameters:
             site_id: site_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -96,6 +98,8 @@ service:
       examples:
         - path-parameters:
             site_id: site_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             snippet:
               content: <script>var js = 1;</script>
@@ -145,6 +149,8 @@ service:
       examples:
         - path-parameters:
             site_id: site_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

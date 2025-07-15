@@ -54,7 +54,9 @@ service:
         type: root.ListBookingCustomAttributeDefinitionsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               custom_attribute_definitions:
                 - key: favoriteShampoo
@@ -159,7 +161,9 @@ service:
         type: root.CreateBookingCustomAttributeDefinitionResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             custom_attribute_definition: {}
           response:
             body:
@@ -227,6 +231,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               custom_attribute_definition:
@@ -322,6 +328,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           request:
             custom_attribute_definition: {}
           response:
@@ -377,6 +385,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:

@@ -62,7 +62,9 @@ service:
         type: root.ListCustomerCustomAttributeDefinitionsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               custom_attribute_definitions:
                 - key: favoritemovie
@@ -166,7 +168,9 @@ service:
         type: root.CreateCustomerCustomAttributeDefinitionResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             custom_attribute_definition:
               key: favoritemovie
               schema:
@@ -247,6 +251,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               custom_attribute_definition:
@@ -350,6 +356,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           request:
             custom_attribute_definition:
               description: Update the description as desired.
@@ -405,6 +413,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
@@ -477,7 +487,9 @@ service:
         type: root.BatchUpsertCustomerCustomAttributesResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             values:
               id1:
                 customer_id: N3NCVYY3WS27HF0HKANA3R9FP8

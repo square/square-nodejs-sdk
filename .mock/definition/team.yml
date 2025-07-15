@@ -33,7 +33,9 @@ service:
         type: root.ListJobsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               jobs:
                 - id: VDNpRv8da51NU8qZFC5zDWpF
@@ -94,7 +96,9 @@ service:
         type: root.CreateJobResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             job:
               title: Cashier
               is_tip_eligible: true
@@ -134,6 +138,8 @@ service:
       examples:
         - path-parameters:
             job_id: job_id
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               job:
@@ -188,6 +194,8 @@ service:
       examples:
         - path-parameters:
             job_id: job_id
+          headers:
+            Square-Version: '2025-07-16'
           request:
             job:
               title: Cashier 1

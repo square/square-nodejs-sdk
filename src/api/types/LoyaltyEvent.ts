@@ -10,14 +10,14 @@ import * as Square from "../index";
  */
 export interface LoyaltyEvent {
     /** The Square-assigned ID of the loyalty event. */
-    id: string;
+    id?: string;
     /**
      * The type of the loyalty event.
      * See [LoyaltyEventType](#type-loyaltyeventtype) for possible values
      */
     type: Square.LoyaltyEventType;
     /** The timestamp when the event was created, in RFC 3339 format. */
-    createdAt: string;
+    createdAt?: string;
     /** Provides metadata when the event `type` is `ACCUMULATE_POINTS`. */
     accumulatePoints?: Square.LoyaltyEventAccumulatePoints;
     /** Provides metadata when the event `type` is `CREATE_REWARD`. */
@@ -29,7 +29,7 @@ export interface LoyaltyEvent {
     /** Provides metadata when the event `type` is `ADJUST_POINTS`. */
     adjustPoints?: Square.LoyaltyEventAdjustPoints;
     /** The ID of the [loyalty account](entity:LoyaltyAccount) associated with the event. */
-    loyaltyAccountId: string;
+    loyaltyAccountId?: string;
     /** The ID of the [location](entity:Location) where the event occurred. */
     locationId?: string;
     /**

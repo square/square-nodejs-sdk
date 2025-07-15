@@ -63,7 +63,9 @@ service:
         type: root.ListLocationCustomAttributeDefinitionsResponse
         status-code: 200
       examples:
-        - response:
+        - headers:
+            Square-Version: '2025-07-16'
+          response:
             body:
               custom_attribute_definitions:
                 - key: phone-number
@@ -155,7 +157,9 @@ service:
         type: root.CreateLocationCustomAttributeDefinitionResponse
         status-code: 200
       examples:
-        - request:
+        - headers:
+            Square-Version: '2025-07-16'
+          request:
             custom_attribute_definition:
               key: bestseller
               schema:
@@ -231,6 +235,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               custom_attribute_definition:
@@ -329,6 +335,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           request:
             custom_attribute_definition:
               description: Update the description as desired.
@@ -382,6 +390,8 @@ service:
       examples:
         - path-parameters:
             key: key
+          headers:
+            Square-Version: '2025-07-16'
           response:
             body:
               errors:
