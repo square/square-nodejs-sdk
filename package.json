@@ -10,11 +10,11 @@
         "format": "prettier . --write --ignore-unknown",
         "build": "tsc",
         "prepack": "cp -rv dist/. .",
-        "test": "yarn test:unit",
-        "test:unit": "jest --testPathPattern=tests/unit",
+        "test": "jest --selectProjects unit browser wire",
+        "test:unit": "jest --selectProjects unit",
         "test:browser": "jest --selectProjects browser",
         "test:wire": "jest --selectProjects wire",
-        "test:integration": "jest --testPathPattern=tests/integration"
+        "test:integration": "jest --selectProjects integration"
     },
     "dependencies": {
         "form-data": "^4.0.0",
