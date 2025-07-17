@@ -5,7 +5,7 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as Square from "../../../../../index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
 import * as errors from "../../../../../../errors/index";
 
@@ -17,6 +17,8 @@ export declare namespace CustomAttributeDefinitions {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
     }
 
@@ -30,12 +32,16 @@ export declare namespace CustomAttributeDefinitions {
         /** Override the Square-Version header */
         version?: "2025-07-16";
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
 }
 
 export class CustomAttributeDefinitions {
-    constructor(protected readonly _options: CustomAttributeDefinitions.Options = {}) {}
+    protected readonly _options: CustomAttributeDefinitions.Options;
+
+    constructor(_options: CustomAttributeDefinitions.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Get all bookings custom attribute definitions.
@@ -53,80 +59,87 @@ export class CustomAttributeDefinitions {
         request: Square.bookings.ListCustomAttributeDefinitionsRequest = {},
         requestOptions?: CustomAttributeDefinitions.RequestOptions,
     ): Promise<core.Page<Square.CustomAttributeDefinition>> {
-        const list = async (
-            request: Square.bookings.ListCustomAttributeDefinitionsRequest,
-        ): Promise<Square.ListBookingCustomAttributeDefinitionsResponse> => {
-            const { limit, cursor } = request;
-            const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-            if (limit !== undefined) {
-                _queryParams["limit"] = limit?.toString() ?? null;
-            }
-            if (cursor !== undefined) {
-                _queryParams["cursor"] = cursor;
-            }
-            const _response = await (this._options.fetcher ?? core.fetcher)({
-                url: urlJoin(
-                    (await core.Supplier.get(this._options.baseUrl)) ??
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.SquareEnvironment.Production,
-                    "v2/bookings/custom-attribute-definitions",
-                ),
-                method: "GET",
-                headers: {
-                    Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                    "X-Fern-Language": "JavaScript",
-                    "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "43.0.1",
-                    "User-Agent": "square/43.0.0",
-                    "X-Fern-Runtime": core.RUNTIME.type,
-                    "X-Fern-Runtime-Version": core.RUNTIME.version,
-                    ...requestOptions?.headers,
-                },
-                contentType: "application/json",
-                queryParameters: _queryParams,
-                requestType: "json",
-                timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-                maxRetries: requestOptions?.maxRetries,
-                abortSignal: requestOptions?.abortSignal,
-            });
-            if (_response.ok) {
-                return serializers.ListBookingCustomAttributeDefinitionsResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
+        const list = core.HttpResponsePromise.interceptFunction(
+            async (
+                request: Square.bookings.ListCustomAttributeDefinitionsRequest,
+            ): Promise<core.WithRawResponse<Square.ListBookingCustomAttributeDefinitionsResponse>> => {
+                const { limit, cursor } = request;
+                const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+                if (limit !== undefined) {
+                    _queryParams["limit"] = limit?.toString() ?? null;
+                }
+                if (cursor !== undefined) {
+                    _queryParams["cursor"] = cursor;
+                }
+                const _response = await (this._options.fetcher ?? core.fetcher)({
+                    url: core.url.join(
+                        (await core.Supplier.get(this._options.baseUrl)) ??
+                            (await core.Supplier.get(this._options.environment)) ??
+                            environments.SquareEnvironment.Production,
+                        "v2/bookings/custom-attribute-definitions",
+                    ),
+                    method: "GET",
+                    headers: mergeHeaders(
+                        this._options?.headers,
+                        mergeOnlyDefinedHeaders({
+                            Authorization: await this._getAuthorizationHeader(),
+                            "Square-Version": requestOptions?.version ?? "2025-07-16",
+                        }),
+                        requestOptions?.headers,
+                    ),
+                    queryParameters: _queryParams,
+                    timeoutMs:
+                        requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+                    maxRetries: requestOptions?.maxRetries,
+                    abortSignal: requestOptions?.abortSignal,
                 });
-            }
-            if (_response.error.reason === "status-code") {
-                throw new errors.SquareError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.body,
-                });
-            }
-            switch (_response.error.reason) {
-                case "non-json":
+                if (_response.ok) {
+                    return {
+                        data: serializers.ListBookingCustomAttributeDefinitionsResponse.parseOrThrow(_response.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        rawResponse: _response.rawResponse,
+                    };
+                }
+                if (_response.error.reason === "status-code") {
                     throw new errors.SquareError({
                         statusCode: _response.error.statusCode,
-                        body: _response.error.rawBody,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
                     });
-                case "timeout":
-                    throw new errors.SquareTimeoutError(
-                        "Timeout exceeded when calling GET /v2/bookings/custom-attribute-definitions.",
-                    );
-                case "unknown":
-                    throw new errors.SquareError({
-                        message: _response.error.errorMessage,
-                    });
-            }
-        };
+                }
+                switch (_response.error.reason) {
+                    case "non-json":
+                        throw new errors.SquareError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.rawBody,
+                            rawResponse: _response.rawResponse,
+                        });
+                    case "timeout":
+                        throw new errors.SquareTimeoutError(
+                            "Timeout exceeded when calling GET /v2/bookings/custom-attribute-definitions.",
+                        );
+                    case "unknown":
+                        throw new errors.SquareError({
+                            message: _response.error.errorMessage,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            },
+        );
+        const dataWithRawResponse = await list(request).withRawResponse();
         return new core.Pageable<
             Square.ListBookingCustomAttributeDefinitionsResponse,
             Square.CustomAttributeDefinition
         >({
-            response: await list(request),
-            hasNextPage: (response) => response?.cursor != null,
+            response: dataWithRawResponse.data,
+            rawResponse: dataWithRawResponse.rawResponse,
+            hasNextPage: (response) =>
+                response?.cursor != null && !(typeof response?.cursor === "string" && response?.cursor === ""),
             getItems: (response) => response?.customAttributeDefinitions ?? [],
             loadPage: (response) => {
                 return list(core.setObjectProperty(request, "cursor", response?.cursor));
@@ -151,29 +164,33 @@ export class CustomAttributeDefinitions {
      *         customAttributeDefinition: {}
      *     })
      */
-    public async create(
+    public create(
         request: Square.bookings.CreateBookingCustomAttributeDefinitionRequest,
         requestOptions?: CustomAttributeDefinitions.RequestOptions,
-    ): Promise<Square.CreateBookingCustomAttributeDefinitionResponse> {
+    ): core.HttpResponsePromise<Square.CreateBookingCustomAttributeDefinitionResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
+        request: Square.bookings.CreateBookingCustomAttributeDefinitionRequest,
+        requestOptions?: CustomAttributeDefinitions.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.CreateBookingCustomAttributeDefinitionResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/bookings/custom-attribute-definitions",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.bookings.CreateBookingCustomAttributeDefinitionRequest.jsonOrThrow(request, {
@@ -185,19 +202,23 @@ export class CustomAttributeDefinitions {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.CreateBookingCustomAttributeDefinitionResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.CreateBookingCustomAttributeDefinitionResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -206,6 +227,7 @@ export class CustomAttributeDefinitions {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -214,6 +236,7 @@ export class CustomAttributeDefinitions {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -232,10 +255,17 @@ export class CustomAttributeDefinitions {
      *         key: "key"
      *     })
      */
-    public async get(
+    public get(
         request: Square.bookings.GetCustomAttributeDefinitionsRequest,
         requestOptions?: CustomAttributeDefinitions.RequestOptions,
-    ): Promise<Square.RetrieveBookingCustomAttributeDefinitionResponse> {
+    ): core.HttpResponsePromise<Square.RetrieveBookingCustomAttributeDefinitionResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__get(request, requestOptions));
+    }
+
+    private async __get(
+        request: Square.bookings.GetCustomAttributeDefinitionsRequest,
+        requestOptions?: CustomAttributeDefinitions.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.RetrieveBookingCustomAttributeDefinitionResponse>> {
         const { key, version } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (version !== undefined) {
@@ -243,45 +273,44 @@ export class CustomAttributeDefinitions {
         }
 
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/bookings/custom-attribute-definitions/${encodeURIComponent(key)}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             queryParameters: _queryParams,
-            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.RetrieveBookingCustomAttributeDefinitionResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.RetrieveBookingCustomAttributeDefinitionResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -290,6 +319,7 @@ export class CustomAttributeDefinitions {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -298,6 +328,7 @@ export class CustomAttributeDefinitions {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -320,30 +351,34 @@ export class CustomAttributeDefinitions {
      *         customAttributeDefinition: {}
      *     })
      */
-    public async update(
+    public update(
         request: Square.bookings.UpdateBookingCustomAttributeDefinitionRequest,
         requestOptions?: CustomAttributeDefinitions.RequestOptions,
-    ): Promise<Square.UpdateBookingCustomAttributeDefinitionResponse> {
+    ): core.HttpResponsePromise<Square.UpdateBookingCustomAttributeDefinitionResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
+    }
+
+    private async __update(
+        request: Square.bookings.UpdateBookingCustomAttributeDefinitionRequest,
+        requestOptions?: CustomAttributeDefinitions.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.UpdateBookingCustomAttributeDefinitionResponse>> {
         const { key, ..._body } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/bookings/custom-attribute-definitions/${encodeURIComponent(key)}`,
             ),
             method: "PUT",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.bookings.UpdateBookingCustomAttributeDefinitionRequest.jsonOrThrow(_body, {
@@ -355,19 +390,23 @@ export class CustomAttributeDefinitions {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.UpdateBookingCustomAttributeDefinitionResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.UpdateBookingCustomAttributeDefinitionResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -376,6 +415,7 @@ export class CustomAttributeDefinitions {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -384,6 +424,7 @@ export class CustomAttributeDefinitions {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -405,50 +446,56 @@ export class CustomAttributeDefinitions {
      *         key: "key"
      *     })
      */
-    public async delete(
+    public delete(
         request: Square.bookings.DeleteCustomAttributeDefinitionsRequest,
         requestOptions?: CustomAttributeDefinitions.RequestOptions,
-    ): Promise<Square.DeleteBookingCustomAttributeDefinitionResponse> {
+    ): core.HttpResponsePromise<Square.DeleteBookingCustomAttributeDefinitionResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
+    }
+
+    private async __delete(
+        request: Square.bookings.DeleteCustomAttributeDefinitionsRequest,
+        requestOptions?: CustomAttributeDefinitions.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.DeleteBookingCustomAttributeDefinitionResponse>> {
         const { key } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/bookings/custom-attribute-definitions/${encodeURIComponent(key)}`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DeleteBookingCustomAttributeDefinitionResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DeleteBookingCustomAttributeDefinitionResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -457,6 +504,7 @@ export class CustomAttributeDefinitions {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -465,6 +513,7 @@ export class CustomAttributeDefinitions {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

@@ -10,11 +10,11 @@ import * as Square from "../../../../index";
  *         paymentId: "payment_id",
  *         payment: {
  *             amountMoney: {
- *                 amount: 1000,
+ *                 amount: BigInt("1000"),
  *                 currency: "USD"
  *             },
  *             tipMoney: {
- *                 amount: 100,
+ *                 amount: BigInt("100"),
  *                 currency: "USD"
  *             },
  *             versionToken: "ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o"

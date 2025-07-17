@@ -676,7 +676,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bankAccounts.list();
+let page = await client.bankAccounts.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -884,7 +884,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bookings.list();
+let page = await client.bookings.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -1574,7 +1574,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.cards.list();
+let page = await client.cards.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -2169,7 +2169,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.catalog.list();
+let page = await client.catalog.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -2564,7 +2564,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.customers.list();
+let page = await client.customers.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -2964,12 +2964,12 @@ await client.customers.bulkUpdateCustomers({
         "8DDA5NZVBZFGAX0V3HPF81HHE0": {
             emailAddress: "New.Amelia.Earhart@example.com",
             note: "updated customer note",
-            version: 2,
+            version: BigInt("2"),
         },
         N18CPRVXR5214XPBBA6BZQWF3C: {
             givenName: "Marie",
             familyName: "Curie",
-            version: 0,
+            version: BigInt("0"),
         },
     },
 });
@@ -3044,7 +3044,7 @@ profiles can take closer to one minute or longer, especially during network inci
 
 ```typescript
 await client.customers.search({
-    limit: 2,
+    limit: BigInt("2"),
     query: {
         filter: {
             creationSource: {
@@ -3202,7 +3202,7 @@ await client.customers.update({
     customerId: "customer_id",
     emailAddress: "New.Amelia.Earhart@example.com",
     note: "updated customer note",
-    version: 2,
+    version: BigInt("2"),
 });
 ```
 
@@ -3342,7 +3342,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.devices.list();
+let page = await client.devices.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -3481,7 +3481,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.disputes.list();
+let page = await client.disputes.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -3892,7 +3892,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.employees.list();
+let page = await client.employees.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -4270,7 +4270,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.giftCards.list();
+let page = await client.giftCards.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -5194,7 +5194,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.inventory.batchGetChanges({
+let page = await client.inventory.batchGetChanges({
     catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
     locationIds: ["C6W5YS5QM06F5"],
     types: ["PHYSICAL_COUNT"],
@@ -5287,7 +5287,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.inventory.batchGetCounts({
+let page = await client.inventory.batchGetCounts({
     catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
     locationIds: ["59TNP9SA8VGDA"],
     updatedAfter: "2016-11-16T00:00:00.000Z",
@@ -5566,7 +5566,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.inventory.get({
+let page = await client.inventory.get({
     catalogObjectId: "catalog_object_id",
 });
 while (page.hasNextPage()) {
@@ -5654,7 +5654,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.inventory.changes({
+let page = await client.inventory.changes({
     catalogObjectId: "catalog_object_id",
 });
 while (page.hasNextPage()) {
@@ -5734,7 +5734,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.invoices.list({
+let page = await client.invoices.list({
     locationId: "location_id",
 });
 while (page.hasNextPage()) {
@@ -6977,7 +6977,7 @@ await client.labor.createTimecard({
         wage: {
             title: "Barista",
             hourlyRate: {
-                amount: 1100,
+                amount: BigInt("1100"),
                 currency: "USD",
             },
             tipEligible: true,
@@ -6994,7 +6994,7 @@ await client.labor.createTimecard({
         ],
         teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
         declaredCashTipMoney: {
-            amount: 500,
+            amount: BigInt("500"),
             currency: "USD",
         },
     },
@@ -7232,7 +7232,7 @@ await client.labor.updateTimecard({
         wage: {
             title: "Bartender",
             hourlyRate: {
-                amount: 1500,
+                amount: BigInt("1500"),
                 currency: "USD",
             },
             tipEligible: true,
@@ -7252,7 +7252,7 @@ await client.labor.updateTimecard({
         version: 1,
         teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
         declaredCashTipMoney: {
-            amount: 500,
+            amount: BigInt("500"),
             currency: "USD",
         },
     },
@@ -7703,7 +7703,7 @@ await client.locations.checkouts({
                         },
                     ],
                     basePriceMoney: {
-                        amount: 1500,
+                        amount: BigInt("1500"),
                         currency: "USD",
                     },
                 },
@@ -7711,7 +7711,7 @@ await client.locations.checkouts({
                     name: "Slim Jeans",
                     quantity: "1",
                     basePriceMoney: {
-                        amount: 2500,
+                        amount: BigInt("2500"),
                         currency: "USD",
                     },
                 },
@@ -7719,7 +7719,7 @@ await client.locations.checkouts({
                     name: "Woven Sweater",
                     quantity: "3",
                     basePriceMoney: {
-                        amount: 3500,
+                        amount: BigInt("3500"),
                         currency: "USD",
                     },
                 },
@@ -7737,7 +7737,7 @@ await client.locations.checkouts({
                     uid: "56ae1696-z1e3-9328-af6d-f1e04d947gd4",
                     type: "FIXED_AMOUNT",
                     amountMoney: {
-                        amount: 100,
+                        amount: BigInt("100"),
                         currency: "USD",
                     },
                     scope: "LINE_ITEM",
@@ -7765,7 +7765,7 @@ await client.locations.checkouts({
             locationId: "057P5VYJ4A5X1",
             description: "Application fees",
             amountMoney: {
-                amount: 60,
+                amount: BigInt("60"),
                 currency: "USD",
             },
         },
@@ -7931,7 +7931,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.merchants.list();
+let page = await client.merchants.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -8332,7 +8332,7 @@ await client.orders.create({
                 name: "New York Strip Steak",
                 quantity: "1",
                 basePriceMoney: {
-                    amount: 1599,
+                    amount: BigInt("1599"),
                     currency: "USD",
                 },
             },
@@ -8375,7 +8375,7 @@ await client.orders.create({
                 uid: "one-dollar-off",
                 name: "Sale - $1.00 off",
                 amountMoney: {
-                    amount: 100,
+                    amount: BigInt("100"),
                     currency: "USD",
                 },
                 scope: "LINE_ITEM",
@@ -8522,7 +8522,7 @@ await client.orders.calculate({
                 name: "Item 1",
                 quantity: "1",
                 basePriceMoney: {
-                    amount: 500,
+                    amount: BigInt("500"),
                     currency: "USD",
                 },
             },
@@ -8530,7 +8530,7 @@ await client.orders.calculate({
                 name: "Item 2",
                 quantity: "2",
                 basePriceMoney: {
-                    amount: 300,
+                    amount: BigInt("300"),
                     currency: "USD",
                 },
             },
@@ -8863,7 +8863,7 @@ await client.orders.update({
                 name: "COOKIE",
                 quantity: "2",
                 basePriceMoney: {
-                    amount: 200,
+                    amount: BigInt("200"),
                     currency: "USD",
                 },
             },
@@ -9027,7 +9027,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.payments.list();
+let page = await client.payments.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -9104,11 +9104,11 @@ await client.payments.create({
     sourceId: "ccof:GaJGNaZa8x4OgDJn4GB",
     idempotencyKey: "7b0f3ec5-086a-4871-8f13-3c81b3875218",
     amountMoney: {
-        amount: 1000,
+        amount: BigInt("1000"),
         currency: "USD",
     },
     appFeeMoney: {
-        amount: 10,
+        amount: BigInt("10"),
         currency: "USD",
     },
     autocomplete: true,
@@ -9324,11 +9324,11 @@ await client.payments.update({
     paymentId: "payment_id",
     payment: {
         amountMoney: {
-            amount: 1000,
+            amount: BigInt("1000"),
             currency: "USD",
         },
         tipMoney: {
-            amount: 100,
+            amount: BigInt("100"),
             currency: "USD",
         },
         versionToken: "ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o",
@@ -9541,7 +9541,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.payouts.list();
+let page = await client.payouts.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -9682,7 +9682,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.payouts.listEntries({
+let page = await client.payouts.listEntries({
     payoutId: "payout_id",
 });
 while (page.hasNextPage()) {
@@ -9763,7 +9763,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.refunds.list();
+let page = await client.refunds.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -9835,11 +9835,11 @@ refund of a cash or external payment. For more information, see
 await client.refunds.refundPayment({
     idempotencyKey: "9b7f2dcf-49da-4411-b23e-a2d6af21333a",
     amountMoney: {
-        amount: 1000,
+        amount: BigInt("1000"),
         currency: "USD",
     },
     appFeeMoney: {
-        amount: 10,
+        amount: BigInt("10"),
         currency: "USD",
     },
     paymentId: "R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",
@@ -10266,7 +10266,7 @@ await client.subscriptions.create({
     },
     phases: [
         {
-            ordinal: 0,
+            ordinal: BigInt("0"),
             orderTemplateId: "U2NaowWxzXwpsZU697x7ZHOAnCNZY",
         },
     ],
@@ -10827,7 +10827,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.subscriptions.listEvents({
+let page = await client.subscriptions.listEvents({
     subscriptionId: "subscription_id",
 });
 while (page.hasNextPage()) {
@@ -11031,7 +11031,7 @@ await client.subscriptions.swapPlan({
     newPlanVariationId: "FQ7CDXXWSLUJRPM3GFJSJGZ7",
     phases: [
         {
-            ordinal: 0,
+            ordinal: BigInt("0"),
             orderTemplateId: "uhhnjH9osVv3shUADwaC0b3hNxQZY",
         },
     ],
@@ -11124,7 +11124,7 @@ await client.teamMembers.create({
                 {
                     payType: "SALARY",
                     annualRate: {
-                        amount: 3000000,
+                        amount: BigInt("3000000"),
                         currency: "USD",
                     },
                     weeklyHours: 40,
@@ -11133,7 +11133,7 @@ await client.teamMembers.create({
                 {
                     payType: "HOURLY",
                     hourlyRate: {
-                        amount: 2000,
+                        amount: BigInt("2000"),
                         currency: "USD",
                     },
                     jobId: "VDNpRv8da51NU8qZFC5zDWpF",
@@ -11559,7 +11559,7 @@ await client.teamMembers.update({
                     {
                         payType: "SALARY",
                         annualRate: {
-                            amount: 3000000,
+                            amount: BigInt("3000000"),
                             currency: "USD",
                         },
                         weeklyHours: 40,
@@ -11568,7 +11568,7 @@ await client.teamMembers.update({
                     {
                         payType: "HOURLY",
                         hourlyRate: {
-                            amount: 1200,
+                            amount: BigInt("1200"),
                             currency: "USD",
                         },
                         jobId: "VDNpRv8da51NU8qZFC5zDWpF",
@@ -12636,7 +12636,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bookings.customAttributeDefinitions.list();
+let page = await client.bookings.customAttributeDefinitions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -13149,7 +13149,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bookings.customAttributes.list({
+let page = await client.bookings.customAttributes.list({
     bookingId: "booking_id",
 });
 while (page.hasNextPage()) {
@@ -13439,7 +13439,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bookings.locationProfiles.list();
+let page = await client.bookings.locationProfiles.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -13513,7 +13513,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bookings.teamMemberProfiles.list();
+let page = await client.bookings.teamMemberProfiles.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -13655,7 +13655,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.cashDrawers.shifts.list({
+let page = await client.cashDrawers.shifts.list({
     locationId: "location_id",
 });
 while (page.hasNextPage()) {
@@ -13799,7 +13799,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.cashDrawers.shifts.listEvents({
+let page = await client.cashDrawers.shifts.listEvents({
     shiftId: "shift_id",
     locationId: "location_id",
 });
@@ -14234,7 +14234,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.checkout.paymentLinks.list();
+let page = await client.checkout.paymentLinks.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -14305,7 +14305,7 @@ await client.checkout.paymentLinks.create({
     quickPay: {
         name: "Auto Detailing",
         priceMoney: {
-            amount: 10000,
+            amount: BigInt("10000"),
             currency: "USD",
         },
         locationId: "A9Y43N9ABXZBP",
@@ -14589,7 +14589,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.customers.customAttributeDefinitions.list();
+let page = await client.customers.customAttributeDefinitions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -15074,7 +15074,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.customers.groups.list();
+let page = await client.customers.groups.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -15553,7 +15553,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.customers.segments.list();
+let page = await client.customers.segments.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -15848,7 +15848,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.customers.customAttributes.list({
+let page = await client.customers.customAttributes.list({
     customerId: "customer_id",
 });
 while (page.hasNextPage()) {
@@ -16144,7 +16144,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.devices.codes.list();
+let page = await client.devices.codes.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -16356,7 +16356,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.disputes.evidence.list({
+let page = await client.disputes.evidence.list({
     disputeId: "dispute_id",
 });
 while (page.hasNextPage()) {
@@ -16570,7 +16570,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.giftCards.activities.list();
+let page = await client.giftCards.activities.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -16719,7 +16719,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.labor.breakTypes.list();
+let page = await client.labor.breakTypes.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17081,7 +17081,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.labor.employeeWages.list();
+let page = await client.labor.employeeWages.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17240,7 +17240,7 @@ await client.labor.shifts.create({
         wage: {
             title: "Barista",
             hourlyRate: {
-                amount: 1100,
+                amount: BigInt("1100"),
                 currency: "USD",
             },
             tipEligible: true,
@@ -17257,7 +17257,7 @@ await client.labor.shifts.create({
         ],
         teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
         declaredCashTipMoney: {
-            amount: 500,
+            amount: BigInt("500"),
             currency: "USD",
         },
     },
@@ -17495,7 +17495,7 @@ await client.labor.shifts.update({
         wage: {
             title: "Bartender",
             hourlyRate: {
-                amount: 1500,
+                amount: BigInt("1500"),
                 currency: "USD",
             },
             tipEligible: true,
@@ -17514,7 +17514,7 @@ await client.labor.shifts.update({
         version: 1,
         teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
         declaredCashTipMoney: {
-            amount: 500,
+            amount: BigInt("500"),
             currency: "USD",
         },
     },
@@ -17654,7 +17654,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.labor.teamMemberWages.list();
+let page = await client.labor.teamMemberWages.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17793,7 +17793,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.labor.workweekConfigs.list();
+let page = await client.labor.workweekConfigs.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17940,7 +17940,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.locations.customAttributeDefinitions.list();
+let page = await client.locations.customAttributeDefinitions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -18480,7 +18480,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.locations.customAttributes.list({
+let page = await client.locations.customAttributes.list({
     locationId: "location_id",
 });
 while (page.hasNextPage()) {
@@ -19994,7 +19994,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.loyalty.programs.promotions.list({
+let page = await client.loyalty.programs.promotions.list({
     programId: "program_id",
 });
 while (page.hasNextPage()) {
@@ -20087,7 +20087,7 @@ await client.loyalty.programs.promotions.create({
             interval: "DAY",
         },
         minimumSpendAmountMoney: {
-            amount: 2000,
+            amount: BigInt("2000"),
             currency: "USD",
         },
         qualifyingCategoryIds: ["XTQPYLR3IIU9C44VRCB3XD12"],
@@ -20304,7 +20304,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.merchants.customAttributeDefinitions.list();
+let page = await client.merchants.customAttributeDefinitions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -20834,7 +20834,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.merchants.customAttributes.list({
+let page = await client.merchants.customAttributes.list({
     merchantId: "merchant_id",
 });
 while (page.hasNextPage()) {
@@ -21127,7 +21127,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.orders.customAttributeDefinitions.list();
+let page = await client.orders.customAttributeDefinitions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -21679,7 +21679,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.orders.customAttributes.list({
+let page = await client.orders.customAttributes.list({
     orderId: "order_id",
 });
 while (page.hasNextPage()) {
@@ -22056,7 +22056,7 @@ await client.teamMembers.wageSetting.update({
                 jobTitle: "Manager",
                 payType: "SALARY",
                 annualRate: {
-                    amount: 3000000,
+                    amount: BigInt("3000000"),
                     currency: "USD",
                 },
                 weeklyHours: 40,
@@ -22065,7 +22065,7 @@ await client.teamMembers.wageSetting.update({
                 jobTitle: "Cashier",
                 payType: "HOURLY",
                 hourlyRate: {
-                    amount: 2000,
+                    amount: BigInt("2000"),
                     currency: "USD",
                 },
             },
@@ -22423,7 +22423,7 @@ await client.terminal.checkouts.create({
     idempotencyKey: "28a0c3bc-7839-11ea-bc55-0242ac130003",
     checkout: {
         amountMoney: {
-            amount: 2610,
+            amount: BigInt("2610"),
             currency: "USD",
         },
         referenceId: "id11572",
@@ -22702,7 +22702,7 @@ await client.terminal.refunds.create({
     refund: {
         paymentId: "5O5OvgkcNUhl7JBuINflcjKqUzXZY",
         amountMoney: {
-            amount: 111,
+            amount: BigInt("111"),
             currency: "CAD",
         },
         reason: "Returning items",
@@ -22879,607 +22879,3 @@ await client.terminal.refunds.get({
 </details>
 
 <details><summary><code>client.terminal.refunds.<a href="/src/api/resources/terminal/resources/refunds/client/Client.ts">cancel</a>({ ...params }) -> Square.CancelTerminalRefundResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Cancels an Interac Terminal refund request by refund request ID if the status of the request permits it.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.terminal.refunds.cancel({
-    terminalRefundId: "terminal_refund_id",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.terminal.CancelRefundsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Refunds.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## Webhooks EventTypes
-
-<details><summary><code>client.webhooks.eventTypes.<a href="/src/api/resources/webhooks/resources/eventTypes/client/Client.ts">list</a>({ ...params }) -> Square.ListWebhookEventTypesResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Lists all webhook event types that can be subscribed to.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.webhooks.eventTypes.list();
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.webhooks.ListEventTypesRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `EventTypes.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## Webhooks Subscriptions
-
-<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WebhookSubscription></code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Lists all webhook subscriptions owned by your application.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-const response = await client.webhooks.subscriptions.list();
-for await (const item of response) {
-    console.log(item);
-}
-
-// Or you can manually iterate page-by-page
-const page = await client.webhooks.subscriptions.list();
-while (page.hasNextPage()) {
-    page = page.getNextPage();
-}
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.webhooks.ListSubscriptionsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Subscriptions.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">create</a>({ ...params }) -> Square.CreateWebhookSubscriptionResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Creates a webhook subscription.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.webhooks.subscriptions.create({
-    idempotencyKey: "63f84c6c-2200-4c99-846c-2670a1311fbf",
-    subscription: {
-        name: "Example Webhook Subscription",
-        eventTypes: ["payment.created", "payment.updated"],
-        notificationUrl: "https://example-webhook-url.com",
-        apiVersion: "2021-12-15",
-    },
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.webhooks.CreateWebhookSubscriptionRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Subscriptions.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">get</a>({ ...params }) -> Square.GetWebhookSubscriptionResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieves a webhook subscription identified by its ID.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.webhooks.subscriptions.get({
-    subscriptionId: "subscription_id",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.webhooks.GetSubscriptionsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Subscriptions.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">update</a>({ ...params }) -> Square.UpdateWebhookSubscriptionResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Updates a webhook subscription.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.webhooks.subscriptions.update({
-    subscriptionId: "subscription_id",
-    subscription: {
-        name: "Updated Example Webhook Subscription",
-        enabled: false,
-    },
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.webhooks.UpdateWebhookSubscriptionRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Subscriptions.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteWebhookSubscriptionResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Deletes a webhook subscription.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.webhooks.subscriptions.delete({
-    subscriptionId: "subscription_id",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.webhooks.DeleteSubscriptionsRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Subscriptions.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">updateSignatureKey</a>({ ...params }) -> Square.UpdateWebhookSubscriptionSignatureKeyResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Updates a webhook subscription by replacing the existing signature key with a new one.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.webhooks.subscriptions.updateSignatureKey({
-    subscriptionId: "subscription_id",
-    idempotencyKey: "ed80ae6b-0654-473b-bbab-a39aee89a60d",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.webhooks.UpdateWebhookSubscriptionSignatureKeyRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Subscriptions.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">test</a>({ ...params }) -> Square.TestWebhookSubscriptionResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Tests a webhook subscription by sending a test event to the notification URL.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.webhooks.subscriptions.test({
-    subscriptionId: "subscription_id",
-    eventType: "payment.created",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.webhooks.TestWebhookSubscriptionRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Subscriptions.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>

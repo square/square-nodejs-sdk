@@ -5,8 +5,8 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Square from "../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers";
 import * as serializers from "../../../../serialization/index";
-import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 import { Accounts } from "../resources/accounts/client/Client";
 import { Programs } from "../resources/programs/client/Client";
@@ -20,6 +20,8 @@ export declare namespace Loyalty {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
     }
 
@@ -33,16 +35,19 @@ export declare namespace Loyalty {
         /** Override the Square-Version header */
         version?: "2025-07-16";
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
 }
 
 export class Loyalty {
+    protected readonly _options: Loyalty.Options;
     protected _accounts: Accounts | undefined;
     protected _programs: Programs | undefined;
     protected _rewards: Rewards | undefined;
 
-    constructor(protected readonly _options: Loyalty.Options = {}) {}
+    constructor(_options: Loyalty.Options = {}) {
+        this._options = _options;
+    }
 
     public get accounts(): Accounts {
         return (this._accounts ??= new Accounts(this._options));
@@ -81,29 +86,33 @@ export class Loyalty {
      *         limit: 30
      *     })
      */
-    public async searchEvents(
+    public searchEvents(
         request: Square.SearchLoyaltyEventsRequest = {},
         requestOptions?: Loyalty.RequestOptions,
-    ): Promise<Square.SearchLoyaltyEventsResponse> {
+    ): core.HttpResponsePromise<Square.SearchLoyaltyEventsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__searchEvents(request, requestOptions));
+    }
+
+    private async __searchEvents(
+        request: Square.SearchLoyaltyEventsRequest = {},
+        requestOptions?: Loyalty.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.SearchLoyaltyEventsResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/loyalty/events/search",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.SearchLoyaltyEventsRequest.jsonOrThrow(request, {
@@ -115,19 +124,23 @@ export class Loyalty {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.SearchLoyaltyEventsResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.SearchLoyaltyEventsResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -136,12 +149,14 @@ export class Loyalty {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling POST /v2/loyalty/events/search.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
