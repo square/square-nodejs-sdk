@@ -24,7 +24,7 @@ import * as Square from "../../../../index";
  *                     jobAssignments: [{
  *                             payType: "SALARY",
  *                             annualRate: {
- *                                 amount: 3000000,
+ *                                 amount: BigInt("3000000"),
  *                                 currency: "USD"
  *                             },
  *                             weeklyHours: 40,
@@ -32,7 +32,7 @@ import * as Square from "../../../../index";
  *                         }, {
  *                             payType: "HOURLY",
  *                             hourlyRate: {
- *                                 amount: 1200,
+ *                                 amount: BigInt("1200"),
  *                                 currency: "USD"
  *                             },
  *                             jobId: "VDNpRv8da51NU8qZFC5zDWpF"

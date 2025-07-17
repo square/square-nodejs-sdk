@@ -11,7 +11,7 @@ import * as Square from "../../../../../../index";
  *         quickPay: {
  *             name: "Auto Detailing",
  *             priceMoney: {
- *                 amount: 10000,
+ *                 amount: BigInt("10000"),
  *                 currency: "USD"
  *             },
  *             locationId: "A9Y43N9ABXZBP"

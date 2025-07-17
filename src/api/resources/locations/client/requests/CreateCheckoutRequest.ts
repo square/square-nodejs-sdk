@@ -24,21 +24,21 @@ import * as Square from "../../../../index";
  *                                 discountUid: "56ae1696-z1e3-9328-af6d-f1e04d947gd4"
  *                             }],
  *                         basePriceMoney: {
- *                             amount: 1500,
+ *                             amount: BigInt("1500"),
  *                             currency: "USD"
  *                         }
  *                     }, {
  *                         name: "Slim Jeans",
  *                         quantity: "1",
  *                         basePriceMoney: {
- *                             amount: 2500,
+ *                             amount: BigInt("2500"),
  *                             currency: "USD"
  *                         }
  *                     }, {
  *                         name: "Woven Sweater",
  *                         quantity: "3",
  *                         basePriceMoney: {
- *                             amount: 3500,
+ *                             amount: BigInt("3500"),
  *                             currency: "USD"
  *                         }
  *                     }],
@@ -52,7 +52,7 @@ import * as Square from "../../../../index";
  *                         uid: "56ae1696-z1e3-9328-af6d-f1e04d947gd4",
  *                         type: "FIXED_AMOUNT",
  *                         amountMoney: {
- *                             amount: 100,
+ *                             amount: BigInt("100"),
  *                             currency: "USD"
  *                         },
  *                         scope: "LINE_ITEM"
@@ -78,7 +78,7 @@ import * as Square from "../../../../index";
  *                 locationId: "057P5VYJ4A5X1",
  *                 description: "Application fees",
  *                 amountMoney: {
- *                     amount: 60,
+ *                     amount: BigInt("60"),
  *                     currency: "USD"
  *                 }
  *             }]

@@ -7,7 +7,7 @@ import * as Square from "../../../../index";
 /**
  * @example
  *     {
- *         limit: 2,
+ *         limit: BigInt("2"),
  *         query: {
  *             filter: {
  *                 creationSource: {
