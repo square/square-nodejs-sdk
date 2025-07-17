@@ -5,14 +5,14 @@
 /**
  * @example
  *     {
- *         orderId: "ZAISEM52YcpmcWAzERDOyiWS123",
+ *         order_id: "ZAISEM52YcpmcWAzERDOyiWS123",
  *         version: 3,
- *         idempotencyKey: "UNIQUE_STRING"
+ *         idempotency_key: "UNIQUE_STRING"
  *     }
  */
 export interface CloneOrderRequest {
     /** The ID of the order to clone. */
-    orderId: string;
+    order_id: string;
     /**
      * An optional order version for concurrency protection.
      *
@@ -30,5 +30,5 @@ export interface CloneOrderRequest {
      *
      * For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
      */
-    idempotencyKey?: string | null;
+    idempotency_key?: string | null;
 }

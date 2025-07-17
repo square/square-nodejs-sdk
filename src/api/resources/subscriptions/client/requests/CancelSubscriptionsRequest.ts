@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         subscriptionId: "subscription_id"
+ *         subscription_id: "subscription_id"
  *     }
  */
 export interface CancelSubscriptionsRequest {
     /**
      * The ID of the subscription to cancel.
      */
-    subscriptionId: string;
+    subscription_id: string;
 }

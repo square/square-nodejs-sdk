@@ -1,3 +1,3 @@
-export { type UpsertCatalogObjectRequest } from "./UpsertCatalogObjectRequest";
-export { type GetObjectRequest } from "./GetObjectRequest";
-export { type DeleteObjectRequest } from "./DeleteObjectRequest";
+export { type UpsertCatalogObjectRequest } from "./UpsertCatalogObjectRequest.js";
+export { type GetObjectRequest } from "./GetObjectRequest.js";
+export { type DeleteObjectRequest } from "./DeleteObjectRequest.js";

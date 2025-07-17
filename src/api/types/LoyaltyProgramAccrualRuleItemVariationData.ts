@@ -10,5 +10,5 @@ export interface LoyaltyProgramAccrualRuleItemVariationData {
      * The ID of the `ITEM_VARIATION` [catalog object](entity:CatalogObject) that buyers can purchase to earn
      * points.
      */
-    itemVariationId: string;
+    item_variation_id: string;
 }

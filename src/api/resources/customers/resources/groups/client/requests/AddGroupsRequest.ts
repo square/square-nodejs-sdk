@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         customerId: "customer_id",
- *         groupId: "group_id"
+ *         customer_id: "customer_id",
+ *         group_id: "group_id"
  *     }
  */
 export interface AddGroupsRequest {
     /**
      * The ID of the customer to add to a group.
      */
-    customerId: string;
+    customer_id: string;
     /**
      * The ID of the customer group to add the customer to.
      */
-    groupId: string;
+    group_id: string;
 }

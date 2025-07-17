@@ -1,7 +1,7 @@
-export { type ListGiftCardsRequest } from "./ListGiftCardsRequest";
-export { type CreateGiftCardRequest } from "./CreateGiftCardRequest";
-export { type GetGiftCardFromGanRequest } from "./GetGiftCardFromGanRequest";
-export { type GetGiftCardFromNonceRequest } from "./GetGiftCardFromNonceRequest";
-export { type LinkCustomerToGiftCardRequest } from "./LinkCustomerToGiftCardRequest";
-export { type UnlinkCustomerFromGiftCardRequest } from "./UnlinkCustomerFromGiftCardRequest";
-export { type GetGiftCardsRequest } from "./GetGiftCardsRequest";
+export { type ListGiftCardsRequest } from "./ListGiftCardsRequest.js";
+export { type CreateGiftCardRequest } from "./CreateGiftCardRequest.js";
+export { type GetGiftCardFromGanRequest } from "./GetGiftCardFromGanRequest.js";
+export { type GetGiftCardFromNonceRequest } from "./GetGiftCardFromNonceRequest.js";
+export { type LinkCustomerToGiftCardRequest } from "./LinkCustomerToGiftCardRequest.js";
+export { type UnlinkCustomerFromGiftCardRequest } from "./UnlinkCustomerFromGiftCardRequest.js";
+export { type GetGiftCardsRequest } from "./GetGiftCardsRequest.js";

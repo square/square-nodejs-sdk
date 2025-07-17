@@ -7,7 +7,7 @@
  */
 export interface LoyaltyEventExpirePoints {
     /** The Square-assigned ID of the [loyalty program](entity:LoyaltyProgram). */
-    loyaltyProgramId?: string;
+    loyalty_program_id?: string;
     /** The number of points expired. */
     points: number;
 }

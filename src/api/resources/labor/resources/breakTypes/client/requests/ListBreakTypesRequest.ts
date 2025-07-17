@@ -11,7 +11,7 @@ export interface ListBreakTypesRequest {
      * Filter the returned `BreakType` results to only those that are associated with the
      * specified location.
      */
-    locationId?: string | null;
+    location_id?: string | null;
     /**
      * The maximum number of `BreakType` results to return per page. The number can range between 1
      * and 200. The default is 200.

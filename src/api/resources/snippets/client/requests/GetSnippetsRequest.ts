@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         siteId: "site_id"
+ *         site_id: "site_id"
  *     }
  */
 export interface GetSnippetsRequest {
     /**
      * The ID of the site that contains the snippet.
      */
-    siteId: string;
+    site_id: string;
 }

@@ -10,7 +10,7 @@ export interface CreateInvoiceAttachmentRequestData {
      * A unique string that identifies the `CreateInvoiceAttachment` request.
      * For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
      */
-    idempotencyKey?: string;
+    idempotency_key?: string;
     /** The description of the attachment to display on the invoice. */
     description?: string;
 }

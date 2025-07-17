@@ -5,16 +5,16 @@
 /**
  * @example
  *     {
- *         bookingId: "booking_id"
+ *         booking_id: "booking_id"
  *     }
  */
 export interface CancelBookingRequest {
     /**
      * The ID of the [Booking](entity:Booking) object representing the to-be-cancelled booking.
      */
-    bookingId: string;
+    booking_id: string;
     /** A unique key to make this request an idempotent operation. */
-    idempotencyKey?: string | null;
+    idempotency_key?: string | null;
     /** The revision number for the booking used for optimistic concurrency. */
-    bookingVersion?: number | null;
+    booking_version?: number | null;
 }

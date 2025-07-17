@@ -5,14 +5,14 @@
 /**
  * @example
  *     {
- *         subscriptionId: "subscription_id"
+ *         subscription_id: "subscription_id"
  *     }
  */
 export interface GetSubscriptionsRequest {
     /**
      * The ID of the subscription to retrieve.
      */
-    subscriptionId: string;
+    subscription_id: string;
     /**
      * A query parameter to specify related information to be included in the response.
      *

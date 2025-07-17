@@ -7,16 +7,16 @@
  */
 export interface ReceiptOptions {
     /** The reference to the Square payment ID for the receipt. */
-    paymentId: string;
+    payment_id: string;
     /**
      * Instructs the device to print the receipt without displaying the receipt selection screen.
      * Requires `printer_enabled` set to true.
      * Defaults to false.
      */
-    printOnly?: boolean | null;
+    print_only?: boolean | null;
     /**
      * Identify the receipt as a reprint rather than an original receipt.
      * Defaults to false.
      */
-    isDuplicate?: boolean | null;
+    is_duplicate?: boolean | null;
 }

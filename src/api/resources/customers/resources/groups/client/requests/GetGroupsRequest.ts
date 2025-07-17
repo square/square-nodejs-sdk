@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         groupId: "group_id"
+ *         group_id: "group_id"
  *     }
  */
 export interface GetGroupsRequest {
     /**
      * The ID of the customer group to retrieve.
      */
-    groupId: string;
+    group_id: string;
 }

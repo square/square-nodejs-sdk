@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         paymentId: "payment_id"
+ *         payment_id: "payment_id"
  *     }
  */
 export interface GetPaymentsRequest {
     /**
      * A unique ID for the desired payment.
      */
-    paymentId: string;
+    payment_id: string;
 }

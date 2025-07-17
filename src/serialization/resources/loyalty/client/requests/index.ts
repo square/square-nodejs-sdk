@@ -1,1 +1,0 @@
-export { SearchLoyaltyEventsRequest } from "./SearchLoyaltyEventsRequest";

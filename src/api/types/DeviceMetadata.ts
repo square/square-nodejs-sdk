@@ -4,39 +4,39 @@
 
 export interface DeviceMetadata {
     /** The Terminal’s remaining battery percentage, between 1-100. */
-    batteryPercentage?: string | null;
+    battery_percentage?: string | null;
     /**
      * The current charging state of the Terminal.
      * Options: `CHARGING`, `NOT_CHARGING`
      */
-    chargingState?: string | null;
+    charging_state?: string | null;
     /** The ID of the Square seller business location associated with the Terminal. */
-    locationId?: string | null;
+    location_id?: string | null;
     /** The ID of the Square merchant account that is currently signed-in to the Terminal. */
-    merchantId?: string | null;
+    merchant_id?: string | null;
     /**
      * The Terminal’s current network connection type.
      * Options: `WIFI`, `ETHERNET`
      */
-    networkConnectionType?: string | null;
+    network_connection_type?: string | null;
     /** The country in which the Terminal is authorized to take payments. */
-    paymentRegion?: string | null;
+    payment_region?: string | null;
     /**
      * The unique identifier assigned to the Terminal, which can be found on the lower back
      * of the device.
      */
-    serialNumber?: string | null;
+    serial_number?: string | null;
     /** The current version of the Terminal’s operating system. */
-    osVersion?: string | null;
+    os_version?: string | null;
     /** The current version of the application running on the Terminal. */
-    appVersion?: string | null;
+    app_version?: string | null;
     /** The name of the Wi-Fi network to which the Terminal is connected. */
-    wifiNetworkName?: string | null;
+    wifi_network_name?: string | null;
     /**
      * The signal strength of the Wi-FI network connection.
      * Options: `POOR`, `FAIR`, `GOOD`, `EXCELLENT`
      */
-    wifiNetworkStrength?: string | null;
+    wifi_network_strength?: string | null;
     /** The IP address of the Terminal. */
-    ipAddress?: string | null;
+    ip_address?: string | null;
 }

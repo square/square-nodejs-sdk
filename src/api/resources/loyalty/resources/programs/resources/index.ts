@@ -1,2 +1,2 @@
-export * as promotions from "./promotions";
-export * from "./promotions/client/requests";
+export * as promotions from "./promotions/index.js";
+export * from "./promotions/client/requests/index.js";

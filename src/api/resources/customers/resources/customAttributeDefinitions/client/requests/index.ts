@@ -1,6 +1,6 @@
-export { type ListCustomAttributeDefinitionsRequest } from "./ListCustomAttributeDefinitionsRequest";
-export { type CreateCustomerCustomAttributeDefinitionRequest } from "./CreateCustomerCustomAttributeDefinitionRequest";
-export { type GetCustomAttributeDefinitionsRequest } from "./GetCustomAttributeDefinitionsRequest";
-export { type UpdateCustomerCustomAttributeDefinitionRequest } from "./UpdateCustomerCustomAttributeDefinitionRequest";
-export { type DeleteCustomAttributeDefinitionsRequest } from "./DeleteCustomAttributeDefinitionsRequest";
-export { type BatchUpsertCustomerCustomAttributesRequest } from "./BatchUpsertCustomerCustomAttributesRequest";
+export { type ListCustomAttributeDefinitionsRequest } from "./ListCustomAttributeDefinitionsRequest.js";
+export { type CreateCustomerCustomAttributeDefinitionRequest } from "./CreateCustomerCustomAttributeDefinitionRequest.js";
+export { type GetCustomAttributeDefinitionsRequest } from "./GetCustomAttributeDefinitionsRequest.js";
+export { type UpdateCustomerCustomAttributeDefinitionRequest } from "./UpdateCustomerCustomAttributeDefinitionRequest.js";
+export { type DeleteCustomAttributeDefinitionsRequest } from "./DeleteCustomAttributeDefinitionsRequest.js";
+export { type BatchUpsertCustomerCustomAttributesRequest } from "./BatchUpsertCustomerCustomAttributesRequest.js";

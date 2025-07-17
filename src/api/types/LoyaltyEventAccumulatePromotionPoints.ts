@@ -7,14 +7,14 @@
  */
 export interface LoyaltyEventAccumulatePromotionPoints {
     /** The Square-assigned ID of the [loyalty program](entity:LoyaltyProgram). */
-    loyaltyProgramId?: string;
+    loyalty_program_id?: string;
     /** The Square-assigned ID of the [loyalty promotion](entity:LoyaltyPromotion). */
-    loyaltyPromotionId?: string;
+    loyalty_promotion_id?: string;
     /** The number of points earned by the event. */
     points?: number;
     /**
      * The ID of the [order](entity:Order) for which the buyer earned the promotion points.
      * Only applications that use the Orders API to process orders can trigger this event.
      */
-    orderId?: string;
+    order_id?: string;
 }

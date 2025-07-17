@@ -1,5 +1,5 @@
-export { type BatchCreateTeamMembersRequest } from "./BatchCreateTeamMembersRequest";
-export { type BatchUpdateTeamMembersRequest } from "./BatchUpdateTeamMembersRequest";
-export { type SearchTeamMembersRequest } from "./SearchTeamMembersRequest";
-export { type GetTeamMembersRequest } from "./GetTeamMembersRequest";
-export { type UpdateTeamMembersRequest } from "./UpdateTeamMembersRequest";
+export { type BatchCreateTeamMembersRequest } from "./BatchCreateTeamMembersRequest.js";
+export { type BatchUpdateTeamMembersRequest } from "./BatchUpdateTeamMembersRequest.js";
+export { type SearchTeamMembersRequest } from "./SearchTeamMembersRequest.js";
+export { type GetTeamMembersRequest } from "./GetTeamMembersRequest.js";
+export { type UpdateTeamMembersRequest } from "./UpdateTeamMembersRequest.js";

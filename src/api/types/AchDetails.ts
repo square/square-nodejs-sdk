@@ -7,12 +7,12 @@
  */
 export interface AchDetails {
     /** The routing number for the bank account. */
-    routingNumber?: string | null;
+    routing_number?: string | null;
     /** The last few digits of the bank account number. */
-    accountNumberSuffix?: string | null;
+    account_number_suffix?: string | null;
     /**
      * The type of the bank account performing the transfer. The account type can be `CHECKING`,
      * `SAVINGS`, or `UNKNOWN`.
      */
-    accountType?: string | null;
+    account_type?: string | null;
 }

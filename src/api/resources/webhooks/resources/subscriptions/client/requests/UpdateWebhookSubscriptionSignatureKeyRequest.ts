@@ -5,15 +5,15 @@
 /**
  * @example
  *     {
- *         subscriptionId: "subscription_id",
- *         idempotencyKey: "ed80ae6b-0654-473b-bbab-a39aee89a60d"
+ *         subscription_id: "subscription_id",
+ *         idempotency_key: "ed80ae6b-0654-473b-bbab-a39aee89a60d"
  *     }
  */
 export interface UpdateWebhookSubscriptionSignatureKeyRequest {
     /**
      * [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to update.
      */
-    subscriptionId: string;
+    subscription_id: string;
     /** A unique string that identifies the [UpdateWebhookSubscriptionSignatureKey](api-endpoint:WebhookSubscriptions-UpdateWebhookSubscriptionSignatureKey) request. */
-    idempotencyKey?: string | null;
+    idempotency_key?: string | null;
 }

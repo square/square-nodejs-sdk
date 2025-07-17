@@ -7,12 +7,12 @@
  */
 export interface LoyaltyEventDeleteReward {
     /** The ID of the [loyalty program](entity:LoyaltyProgram). */
-    loyaltyProgramId?: string;
+    loyalty_program_id?: string;
     /**
      * The ID of the deleted [loyalty reward](entity:LoyaltyReward).
      * This field is returned only if the event source is `LOYALTY_API`.
      */
-    rewardId?: string;
+    reward_id?: string;
     /** The number of points returned to the loyalty account. */
     points?: number;
 }

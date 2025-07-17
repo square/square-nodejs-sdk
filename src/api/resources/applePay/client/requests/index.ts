@@ -1,1 +1,1 @@
-export { type RegisterDomainRequest } from "./RegisterDomainRequest";
+export { type RegisterDomainRequest } from "./RegisterDomainRequest.js";

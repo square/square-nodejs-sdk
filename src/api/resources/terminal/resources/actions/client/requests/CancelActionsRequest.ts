@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         actionId: "action_id"
+ *         action_id: "action_id"
  *     }
  */
 export interface CancelActionsRequest {
     /**
      * Unique ID for the desired `TerminalAction`.
      */
-    actionId: string;
+    action_id: string;
 }

@@ -1,2 +1,2 @@
-export * as codes from "./codes";
-export * from "./codes/client/requests";
+export * as codes from "./codes/index.js";
+export * from "./codes/client/requests/index.js";

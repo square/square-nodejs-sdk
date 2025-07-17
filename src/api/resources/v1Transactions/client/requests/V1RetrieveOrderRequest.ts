@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         locationId: "location_id",
- *         orderId: "order_id"
+ *         location_id: "location_id",
+ *         order_id: "order_id"
  *     }
  */
 export interface V1RetrieveOrderRequest {
     /**
      * The ID of the order's associated location.
      */
-    locationId: string;
+    location_id: string;
     /**
      * The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
      */
-    orderId: string;
+    order_id: string;
 }

@@ -10,5 +10,5 @@ export interface LoyaltyProgramAccrualRuleCategoryData {
      * The ID of the `CATEGORY` [catalog object](entity:CatalogObject) that buyers can purchase to earn
      * points.
      */
-    categoryId: string;
+    category_id: string;
 }

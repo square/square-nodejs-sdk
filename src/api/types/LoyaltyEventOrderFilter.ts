@@ -7,5 +7,5 @@
  */
 export interface LoyaltyEventOrderFilter {
     /** The ID of the [order](entity:Order) associated with the event. */
-    orderId: string;
+    order_id: string;
 }

@@ -1,2 +1,2 @@
-export { type RevokeTokenRequest } from "./RevokeTokenRequest";
-export { type ObtainTokenRequest } from "./ObtainTokenRequest";
+export { type RevokeTokenRequest } from "./RevokeTokenRequest.js";
+export { type ObtainTokenRequest } from "./ObtainTokenRequest.js";

@@ -11,5 +11,5 @@ export interface CatalogQueryItemsForItemOptions {
      * `CatalogItem`s. All Items that contain all of the given Item Options (in any order)
      * will be returned.
      */
-    itemOptionIds?: string[] | null;
+    item_option_ids?: string[] | null;
 }

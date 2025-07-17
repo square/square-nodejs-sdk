@@ -7,13 +7,13 @@
  */
 export interface CashAppDetails {
     /** The name of the Cash App account holder. */
-    buyerFullName?: string | null;
+    buyer_full_name?: string | null;
     /**
      * The country of the Cash App account holder, in ISO 3166-1-alpha-2 format.
      *
      * For possible values, see [Country](entity:Country).
      */
-    buyerCountryCode?: string | null;
+    buyer_country_code?: string | null;
     /** $Cashtag of the Cash App account holder. */
-    buyerCashtag?: string;
+    buyer_cashtag?: string;
 }

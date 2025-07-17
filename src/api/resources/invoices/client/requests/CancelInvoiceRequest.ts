@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         invoiceId: "invoice_id",
+ *         invoice_id: "invoice_id",
  *         version: 0
  *     }
  */
@@ -13,7 +13,7 @@ export interface CancelInvoiceRequest {
     /**
      * The ID of the [invoice](entity:Invoice) to cancel.
      */
-    invoiceId: string;
+    invoice_id: string;
     /**
      * The version of the [invoice](entity:Invoice) to cancel.
      * If you do not know the version, you can call

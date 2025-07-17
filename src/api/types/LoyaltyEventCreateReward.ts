@@ -7,12 +7,12 @@
  */
 export interface LoyaltyEventCreateReward {
     /** The ID of the [loyalty program](entity:LoyaltyProgram). */
-    loyaltyProgramId?: string;
+    loyalty_program_id?: string;
     /**
      * The Square-assigned ID of the created [loyalty reward](entity:LoyaltyReward).
      * This field is returned only if the event source is `LOYALTY_API`.
      */
-    rewardId?: string;
+    reward_id?: string;
     /** The loyalty points used to create the reward. */
     points?: number;
 }

@@ -8,5 +8,5 @@
  */
 export interface CustomerTaxIds {
     /** The EU VAT identification number for the customer. For example, `IE3426675K`. The ID can contain alphanumeric characters only. */
-    euVat?: string | null;
+    eu_vat?: string | null;
 }

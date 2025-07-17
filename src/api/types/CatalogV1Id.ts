@@ -7,7 +7,7 @@
  */
 export interface CatalogV1Id {
     /** The ID for an object used in the Square API V1, if the object ID differs from the Square API V2 object ID. */
-    catalogV1Id?: string | null;
+    catalog_v1_id?: string | null;
     /** The ID of the `Location` this Connect V1 ID is associated with. */
-    locationId?: string | null;
+    location_id?: string | null;
 }

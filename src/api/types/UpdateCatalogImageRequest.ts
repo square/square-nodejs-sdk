@@ -9,5 +9,5 @@ export interface UpdateCatalogImageRequest {
      *
      * See [Idempotency keys](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency) for more information.
      */
-    idempotencyKey: string;
+    idempotency_key: string;
 }

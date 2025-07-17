@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         locationId: "location_id",
- *         transactionId: "transaction_id"
+ *         location_id: "location_id",
+ *         transaction_id: "transaction_id"
  *     }
  */
 export interface GetTransactionsRequest {
     /**
      * The ID of the transaction's associated location.
      */
-    locationId: string;
+    location_id: string;
     /**
      * The ID of the transaction to retrieve.
      */
-    transactionId: string;
+    transaction_id: string;
 }

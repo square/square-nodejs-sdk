@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         merchantId: "merchant_id"
+ *         merchant_id: "merchant_id"
  *     }
  */
 export interface GetMerchantsRequest {
@@ -13,5 +13,5 @@ export interface GetMerchantsRequest {
      * The ID of the merchant to retrieve. If the string "me" is supplied as the ID,
      * then retrieve the merchant that is currently accessible to this call.
      */
-    merchantId: string;
+    merchant_id: string;
 }

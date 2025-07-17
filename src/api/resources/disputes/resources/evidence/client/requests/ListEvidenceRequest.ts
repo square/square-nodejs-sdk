@@ -5,14 +5,14 @@
 /**
  * @example
  *     {
- *         disputeId: "dispute_id"
+ *         dispute_id: "dispute_id"
  *     }
  */
 export interface ListEvidenceRequest {
     /**
      * The ID of the dispute.
      */
-    disputeId: string;
+    dispute_id: string;
     /**
      * A pagination cursor returned by a previous call to this endpoint.
      * Provide this cursor to retrieve the next set of results for the original query.

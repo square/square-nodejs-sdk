@@ -1,2 +1,2 @@
-export { SquareError } from "./SquareError";
-export { SquareTimeoutError } from "./SquareTimeoutError";
+export { SquareError } from "./SquareError.js";
+export { SquareTimeoutError } from "./SquareTimeoutError.js";

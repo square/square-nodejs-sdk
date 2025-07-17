@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         invoiceId: "invoice_id",
- *         attachmentId: "attachment_id"
+ *         invoice_id: "invoice_id",
+ *         attachment_id: "attachment_id"
  *     }
  */
 export interface DeleteInvoiceAttachmentRequest {
     /**
      * The ID of the [invoice](entity:Invoice) to delete the attachment from.
      */
-    invoiceId: string;
+    invoice_id: string;
     /**
      * The ID of the [attachment](entity:InvoiceAttachment) to delete.
      */
-    attachmentId: string;
+    attachment_id: string;
 }

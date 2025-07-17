@@ -1,5 +1,5 @@
-export { type ListCustomAttributeDefinitionsRequest } from "./ListCustomAttributeDefinitionsRequest";
-export { type CreateOrderCustomAttributeDefinitionRequest } from "./CreateOrderCustomAttributeDefinitionRequest";
-export { type GetCustomAttributeDefinitionsRequest } from "./GetCustomAttributeDefinitionsRequest";
-export { type UpdateOrderCustomAttributeDefinitionRequest } from "./UpdateOrderCustomAttributeDefinitionRequest";
-export { type DeleteCustomAttributeDefinitionsRequest } from "./DeleteCustomAttributeDefinitionsRequest";
+export { type ListCustomAttributeDefinitionsRequest } from "./ListCustomAttributeDefinitionsRequest.js";
+export { type CreateOrderCustomAttributeDefinitionRequest } from "./CreateOrderCustomAttributeDefinitionRequest.js";
+export { type GetCustomAttributeDefinitionsRequest } from "./GetCustomAttributeDefinitionsRequest.js";
+export { type UpdateOrderCustomAttributeDefinitionRequest } from "./UpdateOrderCustomAttributeDefinitionRequest.js";
+export { type DeleteCustomAttributeDefinitionsRequest } from "./DeleteCustomAttributeDefinitionsRequest.js";

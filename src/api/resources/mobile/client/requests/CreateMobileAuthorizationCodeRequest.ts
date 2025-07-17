@@ -5,10 +5,10 @@
 /**
  * @example
  *     {
- *         locationId: "YOUR_LOCATION_ID"
+ *         location_id: "YOUR_LOCATION_ID"
  *     }
  */
 export interface CreateMobileAuthorizationCodeRequest {
     /** The Square location ID that the authorization code should be tied to. */
-    locationId?: string;
+    location_id?: string;
 }

@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         teamMemberId: "team_member_id"
+ *         team_member_id: "team_member_id"
  *     }
  */
 export interface GetTeamMemberProfilesRequest {
     /**
      * The ID of the team member to retrieve.
      */
-    teamMemberId: string;
+    team_member_id: string;
 }

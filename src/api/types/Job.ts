@@ -17,11 +17,11 @@ export interface Job {
     /** The title of the job. */
     title?: string | null;
     /** Indicates whether team members can earn tips for the job. */
-    isTipEligible?: boolean | null;
+    is_tip_eligible?: boolean | null;
     /** The timestamp when the job was created, in RFC 3339 format. */
-    createdAt?: string;
+    created_at?: string;
     /** The timestamp when the job was last updated, in RFC 3339 format. */
-    updatedAt?: string;
+    updated_at?: string;
     /**
      * **Read only** The current version of the job. Include this field in `UpdateJob` requests to enable
      * [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency)

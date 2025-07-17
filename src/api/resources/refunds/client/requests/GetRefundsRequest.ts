@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         refundId: "refund_id"
+ *         refund_id: "refund_id"
  *     }
  */
 export interface GetRefundsRequest {
     /**
      * The unique ID for the desired `PaymentRefund`.
      */
-    refundId: string;
+    refund_id: string;
 }

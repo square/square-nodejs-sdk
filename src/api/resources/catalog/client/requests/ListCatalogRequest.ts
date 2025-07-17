@@ -36,5 +36,5 @@ export interface ListCatalogRequest {
      * the [CatalogObject](entity:CatalogObject)s' `version` attribute.  If not included, results will be from the
      * current version of the catalog.
      */
-    catalogVersion?: bigint | null;
+    catalog_version?: (number | bigint) | null;
 }

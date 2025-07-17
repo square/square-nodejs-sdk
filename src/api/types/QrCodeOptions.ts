@@ -14,5 +14,5 @@ export interface QrCodeOptions {
      * The text representation of the data to show in the QR code
      * as UTF8-encoded data.
      */
-    barcodeContents: string;
+    barcode_contents: string;
 }

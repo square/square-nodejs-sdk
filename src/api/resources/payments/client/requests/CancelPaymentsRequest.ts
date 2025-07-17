@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         paymentId: "payment_id"
+ *         payment_id: "payment_id"
  *     }
  */
 export interface CancelPaymentsRequest {
     /**
      * The ID of the payment to cancel.
      */
-    paymentId: string;
+    payment_id: string;
 }

@@ -5,15 +5,15 @@
 /**
  * @example
  *     {
- *         giftCardId: "gift_card_id",
- *         customerId: "GKY0FZ3V717AH8Q2D821PNT2ZW"
+ *         gift_card_id: "gift_card_id",
+ *         customer_id: "GKY0FZ3V717AH8Q2D821PNT2ZW"
  *     }
  */
 export interface LinkCustomerToGiftCardRequest {
     /**
      * The ID of the gift card to be linked.
      */
-    giftCardId: string;
+    gift_card_id: string;
     /** The ID of the customer to link to the gift card. */
-    customerId: string;
+    customer_id: string;
 }

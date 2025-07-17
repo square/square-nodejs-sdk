@@ -9,13 +9,13 @@ export interface Site {
     /** The Square-assigned ID of the site. */
     id?: string;
     /** The title of the site. */
-    siteTitle?: string | null;
+    site_title?: string | null;
     /** The domain of the site (without the protocol). For example, `mysite1.square.site`. */
     domain?: string | null;
     /** Indicates whether the site is published. */
-    isPublished?: boolean | null;
+    is_published?: boolean | null;
     /** The timestamp of when the site was created, in RFC 3339 format. */
-    createdAt?: string;
+    created_at?: string;
     /** The timestamp of when the site was last updated, in RFC 3339 format. */
-    updatedAt?: string;
+    updated_at?: string;
 }

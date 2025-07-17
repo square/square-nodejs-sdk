@@ -12,7 +12,7 @@ export interface LoyaltyAccountMapping {
     /** The Square-assigned ID of the mapping. */
     id?: string;
     /** The timestamp when the mapping was created, in RFC 3339 format. */
-    createdAt?: string;
+    created_at?: string;
     /** The phone number of the buyer, in E.164 format. For example, "+14155551111". */
-    phoneNumber?: string | null;
+    phone_number?: string | null;
 }

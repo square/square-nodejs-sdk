@@ -1,8 +1,8 @@
-export * as customAttributeDefinitions from "./customAttributeDefinitions";
-export * as customAttributes from "./customAttributes";
-export * as locationProfiles from "./locationProfiles";
-export * as teamMemberProfiles from "./teamMemberProfiles";
-export * from "./customAttributeDefinitions/client/requests";
-export * from "./customAttributes/client/requests";
-export * from "./locationProfiles/client/requests";
-export * from "./teamMemberProfiles/client/requests";
+export * as customAttributeDefinitions from "./customAttributeDefinitions/index.js";
+export * as customAttributes from "./customAttributes/index.js";
+export * as locationProfiles from "./locationProfiles/index.js";
+export * as teamMemberProfiles from "./teamMemberProfiles/index.js";
+export * from "./customAttributeDefinitions/client/requests/index.js";
+export * from "./customAttributes/client/requests/index.js";
+export * from "./locationProfiles/client/requests/index.js";
+export * from "./teamMemberProfiles/client/requests/index.js";

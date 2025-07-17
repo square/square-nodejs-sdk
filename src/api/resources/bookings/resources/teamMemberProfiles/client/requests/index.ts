@@ -1,2 +1,2 @@
-export { type ListTeamMemberProfilesRequest } from "./ListTeamMemberProfilesRequest";
-export { type GetTeamMemberProfilesRequest } from "./GetTeamMemberProfilesRequest";
+export { type ListTeamMemberProfilesRequest } from "./ListTeamMemberProfilesRequest.js";
+export { type GetTeamMemberProfilesRequest } from "./GetTeamMemberProfilesRequest.js";

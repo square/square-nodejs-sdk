@@ -1,3 +1,3 @@
-export { type ListRefundsRequest } from "./ListRefundsRequest";
-export { type RefundPaymentRequest } from "./RefundPaymentRequest";
-export { type GetRefundsRequest } from "./GetRefundsRequest";
+export { type ListRefundsRequest } from "./ListRefundsRequest.js";
+export { type RefundPaymentRequest } from "./RefundPaymentRequest.js";
+export { type GetRefundsRequest } from "./GetRefundsRequest.js";

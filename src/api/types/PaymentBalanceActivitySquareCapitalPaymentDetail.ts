@@ -4,5 +4,5 @@
 
 export interface PaymentBalanceActivitySquareCapitalPaymentDetail {
     /** The ID of the payment associated with this activity. */
-    paymentId?: string | null;
+    payment_id?: string | null;
 }

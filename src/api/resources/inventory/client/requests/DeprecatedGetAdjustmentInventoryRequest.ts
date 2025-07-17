@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         adjustmentId: "adjustment_id"
+ *         adjustment_id: "adjustment_id"
  *     }
  */
 export interface DeprecatedGetAdjustmentInventoryRequest {
     /**
      * ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve.
      */
-    adjustmentId: string;
+    adjustment_id: string;
 }

@@ -5,22 +5,22 @@
 /**
  * @example
  *     {
- *         itemIds: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
- *         modifierListsToEnable: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
- *         modifierListsToDisable: ["7WRC16CJZDVLSNDQ35PP6YAD"]
+ *         item_ids: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
+ *         modifier_lists_to_enable: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
+ *         modifier_lists_to_disable: ["7WRC16CJZDVLSNDQ35PP6YAD"]
  *     }
  */
 export interface UpdateItemModifierListsRequest {
     /** The IDs of the catalog items associated with the CatalogModifierList objects being updated. */
-    itemIds: string[];
+    item_ids: string[];
     /**
      * The IDs of the CatalogModifierList objects to enable for the CatalogItem.
      * At least one of `modifier_lists_to_enable` or `modifier_lists_to_disable` must be specified.
      */
-    modifierListsToEnable?: string[] | null;
+    modifier_lists_to_enable?: string[] | null;
     /**
      * The IDs of the CatalogModifierList objects to disable for the CatalogItem.
      * At least one of `modifier_lists_to_enable` or `modifier_lists_to_disable` must be specified.
      */
-    modifierListsToDisable?: string[] | null;
+    modifier_lists_to_disable?: string[] | null;
 }

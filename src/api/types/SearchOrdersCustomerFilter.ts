@@ -13,5 +13,5 @@ export interface SearchOrdersCustomerFilter {
      *
      * Max: 10 customer ids.
      */
-    customerIds?: string[] | null;
+    customer_ids?: string[] | null;
 }

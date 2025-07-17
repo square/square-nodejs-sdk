@@ -5,9 +5,9 @@
 /**
  * @example
  *     {
- *         itemIds: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
- *         taxesToEnable: ["4WRCNHCJZDVLSNDQ35PP6YAD"],
- *         taxesToDisable: ["AQCEGCEBBQONINDOHRGZISEX"]
+ *         item_ids: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
+ *         taxes_to_enable: ["4WRCNHCJZDVLSNDQ35PP6YAD"],
+ *         taxes_to_disable: ["AQCEGCEBBQONINDOHRGZISEX"]
  *     }
  */
 export interface UpdateItemTaxesRequest {
@@ -15,15 +15,15 @@ export interface UpdateItemTaxesRequest {
      * IDs for the CatalogItems associated with the CatalogTax objects being updated.
      * No more than 1,000 IDs may be provided.
      */
-    itemIds: string[];
+    item_ids: string[];
     /**
      * IDs of the CatalogTax objects to enable.
      * At least one of `taxes_to_enable` or `taxes_to_disable` must be specified.
      */
-    taxesToEnable?: string[] | null;
+    taxes_to_enable?: string[] | null;
     /**
      * IDs of the CatalogTax objects to disable.
      * At least one of `taxes_to_enable` or `taxes_to_disable` must be specified.
      */
-    taxesToDisable?: string[] | null;
+    taxes_to_disable?: string[] | null;
 }

@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         subscriptionId: "subscription_id",
- *         monthlyBillingAnchorDate: 1
+ *         subscription_id: "subscription_id",
+ *         monthly_billing_anchor_date: 1
  *     }
  */
 export interface ChangeBillingAnchorDateRequest {
     /**
      * The ID of the subscription to update the billing anchor date.
      */
-    subscriptionId: string;
+    subscription_id: string;
     /** The anchor day for the billing cycle. */
-    monthlyBillingAnchorDate?: number | null;
+    monthly_billing_anchor_date?: number | null;
     /**
      * The `YYYY-MM-DD`-formatted date when the scheduled `BILLING_ANCHOR_CHANGE` action takes
      * place on the subscription.
@@ -23,5 +23,5 @@ export interface ChangeBillingAnchorDateRequest {
      * When this date is unspecified or falls within the current billing cycle, the billing anchor date
      * is changed immediately.
      */
-    effectiveDate?: string | null;
+    effective_date?: string | null;
 }

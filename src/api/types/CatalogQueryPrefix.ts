@@ -7,7 +7,7 @@
  */
 export interface CatalogQueryPrefix {
     /** The name of the attribute to be searched. */
-    attributeName: string;
+    attribute_name: string;
     /** The desired prefix of the search attribute value. */
-    attributePrefix: string;
+    attribute_prefix: string;
 }

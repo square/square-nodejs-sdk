@@ -5,10 +5,10 @@
 /**
  * @example
  *     {
- *         clientId: "sq0idp-uaPHILoPzWZk3tlJqlML0g",
- *         clientSecret: "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
+ *         client_id: "sq0idp-uaPHILoPzWZk3tlJqlML0g",
+ *         client_secret: "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
  *         code: "sq0cgb-l0SBqxs4uwxErTVyYOdemg",
- *         grantType: "authorization_code"
+ *         grant_type: "authorization_code"
  *     }
  */
 export interface ObtainTokenRequest {
@@ -18,7 +18,7 @@ export interface ObtainTokenRequest {
      *
      * Required for the code flow and PKCE flow for any grant type.
      */
-    clientId: string;
+    client_id: string;
     /**
      * The secret key for your application, which is available as the **Application secret**
      * on the **OAuth** page in the [Developer Console](https://developer.squareup.com/apps).
@@ -26,7 +26,7 @@ export interface ObtainTokenRequest {
      * Required for the code flow for any grant type. Don't confuse your client secret with your
      * personal access token.
      */
-    clientSecret?: string | null;
+    client_secret?: string | null;
     /**
      * The authorization code to exchange for an OAuth access token. This is the `code`
      * value that Square sent to your redirect URL in the authorization response.
@@ -41,7 +41,7 @@ export interface ObtainTokenRequest {
      * Required for the code flow and PKCE flow if `grant_type` is `authorization_code` and
      * you provided the `redirect_uri` parameter in your authorization URL.
      */
-    redirectUri?: string | null;
+    redirect_uri?: string | null;
     /**
      * The method used to obtain an OAuth access token. The request must include the
      * credential that corresponds to the specified grant type. Valid values are:
@@ -50,14 +50,14 @@ export interface ObtainTokenRequest {
      * - `migration_token` - LEGACY for access tokens obtained using a Square API version prior
      * to 2019-03-13. Requires the `migration_token` field.
      */
-    grantType: string;
+    grant_type: string;
     /**
      * A valid refresh token used to generate a new OAuth access token. This is a
      * refresh token that was returned in a previous `ObtainToken` response.
      *
      * Required for the code flow and PKCE flow if `grant_type` is `refresh_token`.
      */
-    refreshToken?: string | null;
+    refresh_token?: string | null;
     /**
      * __LEGACY__ A valid access token (obtained using a Square API version prior to 2019-03-13)
      * used to generate a new OAuth access token.
@@ -65,7 +65,7 @@ export interface ObtainTokenRequest {
      * Required if `grant_type` is `migration_token`. For more information, see
      * [Migrate to Using Refresh Tokens](https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens).
      */
-    migrationToken?: string | null;
+    migration_token?: string | null;
     /**
      * The list of permissions that are explicitly requested for the access token.
      * For example, ["MERCHANT_PROFILE_READ","PAYMENTS_READ","BANK_ACCOUNTS_READ"].
@@ -81,7 +81,7 @@ export interface ObtainTokenRequest {
      *
      * Optional for the code flow and PKCE flow for any grant type. The default value is `false`.
      */
-    shortLived?: boolean | null;
+    short_lived?: boolean | null;
     /**
      * The secret your application generated for the authorization request used to
      * obtain the authorization code. This is the source of the `code_challenge` hash you
@@ -89,5 +89,5 @@ export interface ObtainTokenRequest {
      *
      * Required for the PKCE flow if `grant_type` is `authorization_code`.
      */
-    codeVerifier?: string | null;
+    code_verifier?: string | null;
 }

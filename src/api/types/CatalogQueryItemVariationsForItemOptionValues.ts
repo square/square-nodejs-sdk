@@ -11,5 +11,5 @@ export interface CatalogQueryItemVariationsForItemOptionValues {
      * `CatalogItemVariation`s. All ItemVariations that contain all of the given
      * Item Option Values (in any order) will be returned.
      */
-    itemOptionValueIds?: string[] | null;
+    item_option_value_ids?: string[] | null;
 }

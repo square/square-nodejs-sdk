@@ -9,5 +9,5 @@ export interface PaymentBalanceActivityFeeDetail {
      * If the fee is independent (there is no principal LedgerEntryToken) then this will likely not
      * be populated.
      */
-    paymentId?: string | null;
+    payment_id?: string | null;
 }

@@ -4,19 +4,19 @@
 
 export interface TipSettings {
     /** Indicates whether tipping is enabled for this checkout. Defaults to false. */
-    allowTipping?: boolean | null;
+    allow_tipping?: boolean | null;
     /**
      * Indicates whether tip options should be presented on the screen before presenting
      * the signature screen during card payment. Defaults to false.
      */
-    separateTipScreen?: boolean | null;
+    separate_tip_screen?: boolean | null;
     /** Indicates whether custom tip amounts are allowed during the checkout flow. Defaults to false. */
-    customTipField?: boolean | null;
+    custom_tip_field?: boolean | null;
     /**
      * A list of tip percentages that should be presented during the checkout flow, specified as
      * up to 3 non-negative integers from 0 to 100 (inclusive). Defaults to 15, 20, and 25.
      */
-    tipPercentages?: number[] | null;
+    tip_percentages?: number[] | null;
     /**
      * Enables the "Smart Tip Amounts" behavior.
      * Exact tipping options depend on the region in which the Square seller is active.
@@ -30,5 +30,5 @@ export interface TipSettings {
      *
      * To learn more about smart tipping, see [Accept Tips with the Square App](https://squareup.com/help/us/en/article/5069-accept-tips-with-the-square-app).
      */
-    smartTipping?: boolean | null;
+    smart_tipping?: boolean | null;
 }

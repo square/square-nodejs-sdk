@@ -14,7 +14,7 @@ export interface CustomerGroup {
     /** The name of the customer group. */
     name: string;
     /** The timestamp when the customer group was created, in RFC 3339 format. */
-    createdAt?: string;
+    created_at?: string;
     /** The timestamp when the customer group was last updated, in RFC 3339 format. */
-    updatedAt?: string;
+    updated_at?: string;
 }

@@ -1,3 +1,3 @@
-export { type ListPayoutsRequest } from "./ListPayoutsRequest";
-export { type GetPayoutsRequest } from "./GetPayoutsRequest";
-export { type ListEntriesPayoutsRequest } from "./ListEntriesPayoutsRequest";
+export { type ListPayoutsRequest } from "./ListPayoutsRequest.js";
+export { type GetPayoutsRequest } from "./GetPayoutsRequest.js";
+export { type ListEntriesPayoutsRequest } from "./ListEntriesPayoutsRequest.js";

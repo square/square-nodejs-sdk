@@ -9,7 +9,7 @@
  */
 export interface CatalogObjectReference {
     /** The ID of the referenced object. */
-    objectId?: string | null;
+    object_id?: string | null;
     /** The version of the object. */
-    catalogVersion?: bigint | null;
+    catalog_version?: (number | bigint) | null;
 }

@@ -19,7 +19,7 @@ export interface LoyaltyPromotionIncentivePointsMultiplierData {
      * - This deprecated `points_multiplier` field. If provided in the request, Square also returns `multiplier`
      * with the equivalent value.
      */
-    pointsMultiplier?: number | null;
+    points_multiplier?: number | null;
     /**
      * The multiplier used to calculate the number of points earned each time the promotion is triggered,
      * specified as a string representation of a decimal. Square supports multipliers up to 10x, with three

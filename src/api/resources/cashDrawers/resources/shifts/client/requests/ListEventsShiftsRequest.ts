@@ -5,19 +5,19 @@
 /**
  * @example
  *     {
- *         shiftId: "shift_id",
- *         locationId: "location_id"
+ *         shift_id: "shift_id",
+ *         location_id: "location_id"
  *     }
  */
 export interface ListEventsShiftsRequest {
     /**
      * The shift ID.
      */
-    shiftId: string;
+    shift_id: string;
     /**
      * The ID of the location to list cash drawer shifts for.
      */
-    locationId: string;
+    location_id: string;
     /**
      * Number of resources to be returned in a page of results (200 by
      * default, 1000 max).

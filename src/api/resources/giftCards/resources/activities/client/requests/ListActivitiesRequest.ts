@@ -12,7 +12,7 @@ export interface ListActivitiesRequest {
      * to the specified gift card. Otherwise, the endpoint returns all gift card activities for
      * the seller.
      */
-    giftCardId?: string | null;
+    gift_card_id?: string | null;
     /**
      * If a [type](entity:GiftCardActivityType) is provided, the endpoint returns gift card activities of the specified type.
      * Otherwise, the endpoint returns all types of gift card activities.
@@ -22,17 +22,17 @@ export interface ListActivitiesRequest {
      * If a location ID is provided, the endpoint returns gift card activities for the specified location.
      * Otherwise, the endpoint returns gift card activities for all locations.
      */
-    locationId?: string | null;
+    location_id?: string | null;
     /**
      * The timestamp for the beginning of the reporting period, in RFC 3339 format.
      * This start time is inclusive. The default value is the current time minus one year.
      */
-    beginTime?: string | null;
+    begin_time?: string | null;
     /**
      * The timestamp for the end of the reporting period, in RFC 3339 format.
      * This end time is inclusive. The default value is the current time.
      */
-    endTime?: string | null;
+    end_time?: string | null;
     /**
      * If a limit is provided, the endpoint returns the specified number
      * of results (or fewer) per page. The maximum value is 100. The default value is 50.
@@ -51,5 +51,5 @@ export interface ListActivitiesRequest {
      * - `ASC` - Oldest to newest.
      * - `DESC` - Newest to oldest (default).
      */
-    sortOrder?: string | null;
+    sort_order?: string | null;
 }

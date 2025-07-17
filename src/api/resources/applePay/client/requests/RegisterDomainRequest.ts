@@ -5,10 +5,10 @@
 /**
  * @example
  *     {
- *         domainName: "example.com"
+ *         domain_name: "example.com"
  *     }
  */
 export interface RegisterDomainRequest {
     /** A domain name as described in RFC-1034 that will be registered with ApplePay. */
-    domainName: string;
+    domain_name: string;
 }

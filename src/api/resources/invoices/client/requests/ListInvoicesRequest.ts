@@ -5,14 +5,14 @@
 /**
  * @example
  *     {
- *         locationId: "location_id"
+ *         location_id: "location_id"
  *     }
  */
 export interface ListInvoicesRequest {
     /**
      * The ID of the location for which to list invoices.
      */
-    locationId: string;
+    location_id: string;
     /**
      * A pagination cursor returned by a previous call to this endpoint.
      * Provide this cursor to retrieve the next set of results for your original query.

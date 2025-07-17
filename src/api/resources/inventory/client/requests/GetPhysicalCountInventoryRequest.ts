@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         physicalCountId: "physical_count_id"
+ *         physical_count_id: "physical_count_id"
  *     }
  */
 export interface GetPhysicalCountInventoryRequest {
@@ -13,5 +13,5 @@ export interface GetPhysicalCountInventoryRequest {
      * ID of the
      * [InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve.
      */
-    physicalCountId: string;
+    physical_count_id: string;
 }

@@ -7,17 +7,17 @@
  */
 export interface AppointmentSegment {
     /** The time span in minutes of an appointment segment. */
-    durationMinutes?: number | null;
+    duration_minutes?: number | null;
     /** The ID of the [CatalogItemVariation](entity:CatalogItemVariation) object representing the service booked in this segment. */
-    serviceVariationId?: string | null;
+    service_variation_id?: string | null;
     /** The ID of the [TeamMember](entity:TeamMember) object representing the team member booked in this segment. */
-    teamMemberId: string;
+    team_member_id: string;
     /** The current version of the item variation representing the service booked in this segment. */
-    serviceVariationVersion?: bigint | null;
+    service_variation_version?: (number | bigint) | null;
     /** Time between the end of this segment and the beginning of the subsequent segment. */
-    intermissionMinutes?: number;
+    intermission_minutes?: number;
     /** Whether the customer accepts any team member, instead of a specific one, to serve this segment. */
-    anyTeamMember?: boolean;
+    any_team_member?: boolean;
     /** The IDs of the seller-accessible resources used for this appointment segment. */
-    resourceIds?: string[];
+    resource_ids?: string[];
 }

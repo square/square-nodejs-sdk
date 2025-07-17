@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         customerId: "customer_id",
+ *         customer_id: "customer_id",
  *         key: "key"
  *     }
  */
@@ -13,7 +13,7 @@ export interface DeleteCustomAttributesRequest {
     /**
      * The ID of the target [customer profile](entity:Customer).
      */
-    customerId: string;
+    customer_id: string;
     /**
      * The key of the custom attribute to delete. This key must match the `key` of a custom
      * attribute definition in the Square seller account. If the requesting application is not the

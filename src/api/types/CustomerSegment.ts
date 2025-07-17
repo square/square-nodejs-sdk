@@ -14,7 +14,7 @@ export interface CustomerSegment {
     /** The name of the segment. */
     name?: string;
     /** The timestamp when the segment was created, in RFC 3339 format. */
-    createdAt?: string;
+    created_at?: string;
     /** The timestamp when the segment was last updated, in RFC 3339 format. */
-    updatedAt?: string;
+    updated_at?: string;
 }

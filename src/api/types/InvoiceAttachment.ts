@@ -24,7 +24,7 @@ export interface InvoiceAttachment {
      * The following mime types are supported:
      * image/gif, image/jpeg, image/png, image/tiff, image/bmp, application/pdf.
      */
-    mimeType?: string;
+    mime_type?: string;
     /** The timestamp when the attachment was uploaded, in RFC 3339 format. */
-    uploadedAt?: string;
+    uploaded_at?: string;
 }

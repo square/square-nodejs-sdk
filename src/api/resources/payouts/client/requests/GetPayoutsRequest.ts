@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         payoutId: "payout_id"
+ *         payout_id: "payout_id"
  *     }
  */
 export interface GetPayoutsRequest {
     /**
      * The ID of the payout to retrieve the information for.
      */
-    payoutId: string;
+    payout_id: string;
 }

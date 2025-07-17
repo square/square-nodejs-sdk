@@ -12,5 +12,5 @@ export interface LoyaltyPromotionIncentivePointsAdditionData {
      * qualifies for a `POINTS_ADDITION` promotion incentive with a `points_addition` of 3, the buyer
      * earns a total of 8 points (5 program points + 3 promotion points = 8 points).
      */
-    pointsAddition: number;
+    points_addition: number;
 }

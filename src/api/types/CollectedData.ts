@@ -4,5 +4,5 @@
 
 export interface CollectedData {
     /** The buyer's input text. */
-    inputText?: string;
+    input_text?: string;
 }

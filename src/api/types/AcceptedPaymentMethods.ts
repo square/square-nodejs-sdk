@@ -4,11 +4,11 @@
 
 export interface AcceptedPaymentMethods {
     /** Whether Apple Pay is accepted at checkout. */
-    applePay?: boolean | null;
+    apple_pay?: boolean | null;
     /** Whether Google Pay is accepted at checkout. */
-    googlePay?: boolean | null;
+    google_pay?: boolean | null;
     /** Whether Cash App Pay is accepted at checkout. */
-    cashAppPay?: boolean | null;
+    cash_app_pay?: boolean | null;
     /** Whether Afterpay/Clearpay is accepted at checkout. */
-    afterpayClearpay?: boolean | null;
+    afterpay_clearpay?: boolean | null;
 }

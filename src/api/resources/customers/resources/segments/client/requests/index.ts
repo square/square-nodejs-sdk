@@ -1,2 +1,2 @@
-export { type ListSegmentsRequest } from "./ListSegmentsRequest";
-export { type GetSegmentsRequest } from "./GetSegmentsRequest";
+export { type ListSegmentsRequest } from "./ListSegmentsRequest.js";
+export { type GetSegmentsRequest } from "./GetSegmentsRequest.js";

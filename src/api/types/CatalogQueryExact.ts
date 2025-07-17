@@ -7,10 +7,10 @@
  */
 export interface CatalogQueryExact {
     /** The name of the attribute to be searched. Matching of the attribute name is exact. */
-    attributeName: string;
+    attribute_name: string;
     /**
      * The desired value of the search attribute. Matching of the attribute value is case insensitive and can be partial.
      * For example, if a specified value of "sma", objects with the named attribute value of "Small", "small" are both matched.
      */
-    attributeValue: string;
+    attribute_value: string;
 }

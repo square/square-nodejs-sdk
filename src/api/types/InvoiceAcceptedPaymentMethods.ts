@@ -9,9 +9,9 @@ export interface InvoiceAcceptedPaymentMethods {
     /** Indicates whether credit card or debit card payments are accepted. The default value is `false`. */
     card?: boolean | null;
     /** Indicates whether Square gift card payments are accepted. The default value is `false`. */
-    squareGiftCard?: boolean | null;
+    square_gift_card?: boolean | null;
     /** Indicates whether ACH bank transfer payments are accepted. The default value is `false`. */
-    bankAccount?: boolean | null;
+    bank_account?: boolean | null;
     /**
      * Indicates whether Afterpay (also known as Clearpay) payments are accepted. The default value is `false`.
      *
@@ -21,11 +21,11 @@ export interface InvoiceAcceptedPaymentMethods {
      * `buy_now_pay_later` payments. For more information, including detailed requirements and processing limits, see
      * [Buy Now Pay Later payments with Afterpay](https://developer.squareup.com/docs/invoices-api/overview#buy-now-pay-later).
      */
-    buyNowPayLater?: boolean | null;
+    buy_now_pay_later?: boolean | null;
     /**
      * Indicates whether Cash App payments are accepted. The default value is `false`.
      *
      * This payment method is supported only for seller [locations](entity:Location) in the United States.
      */
-    cashAppPay?: boolean | null;
+    cash_app_pay?: boolean | null;
 }

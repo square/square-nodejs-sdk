@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         invoiceId: "invoice_id"
+ *         invoice_id: "invoice_id"
  *     }
  */
 export interface GetInvoicesRequest {
     /**
      * The ID of the invoice to retrieve.
      */
-    invoiceId: string;
+    invoice_id: string;
 }

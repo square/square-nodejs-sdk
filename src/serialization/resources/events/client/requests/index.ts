@@ -1,1 +1,0 @@
-export { SearchEventsRequest } from "./SearchEventsRequest";

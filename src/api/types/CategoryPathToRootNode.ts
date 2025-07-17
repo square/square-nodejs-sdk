@@ -7,7 +7,7 @@
  */
 export interface CategoryPathToRootNode {
     /** The category's ID. */
-    categoryId?: string | null;
+    category_id?: string | null;
     /** The category's name. */
-    categoryName?: string | null;
+    category_name?: string | null;
 }

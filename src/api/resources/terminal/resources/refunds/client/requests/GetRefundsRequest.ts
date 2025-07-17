@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         terminalRefundId: "terminal_refund_id"
+ *         terminal_refund_id: "terminal_refund_id"
  *     }
  */
 export interface GetRefundsRequest {
     /**
      * The unique ID for the desired `TerminalRefund`.
      */
-    terminalRefundId: string;
+    terminal_refund_id: string;
 }

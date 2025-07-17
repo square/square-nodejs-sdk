@@ -5,16 +5,16 @@
 /**
  * @example
  *     {
- *         orderId: "order_id",
- *         idempotencyKey: "c043a359-7ad9-4136-82a9-c3f1d66dcbff",
- *         paymentIds: ["EnZdNAlWCmfh6Mt5FMNST1o7taB", "0LRiVlbXVwe8ozu4KbZxd12mvaB"]
+ *         order_id: "order_id",
+ *         idempotency_key: "c043a359-7ad9-4136-82a9-c3f1d66dcbff",
+ *         payment_ids: ["EnZdNAlWCmfh6Mt5FMNST1o7taB", "0LRiVlbXVwe8ozu4KbZxd12mvaB"]
  *     }
  */
 export interface PayOrderRequest {
     /**
      * The ID of the order being paid.
      */
-    orderId: string;
+    order_id: string;
     /**
      * A value you specify that uniquely identifies this request among requests you have sent. If
      * you are unsure whether a particular payment request was completed successfully, you can reattempt
@@ -22,12 +22,12 @@ export interface PayOrderRequest {
      *
      * For more information, see [Idempotency](https://developer.squareup.com/docs/working-with-apis/idempotency).
      */
-    idempotencyKey: string;
+    idempotency_key: string;
     /** The version of the order being paid. If not supplied, the latest version will be paid. */
-    orderVersion?: number | null;
+    order_version?: number | null;
     /**
      * The IDs of the [payments](entity:Payment) to collect.
      * The payment total must match the order total.
      */
-    paymentIds?: string[] | null;
+    payment_ids?: string[] | null;
 }

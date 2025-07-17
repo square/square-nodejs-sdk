@@ -27,7 +27,7 @@ export interface CatalogProductSet {
      *
      * Max: 500 catalog object IDs.
      */
-    productIdsAny?: string[] | null;
+    product_ids_any?: string[] | null;
     /**
      * Unique IDs for any `CatalogObject` included in this product set.
      * All objects in this set must be included in an order for a pricing rule to apply.
@@ -36,28 +36,28 @@ export interface CatalogProductSet {
      *
      * Max: 500 catalog object IDs.
      */
-    productIdsAll?: string[] | null;
+    product_ids_all?: string[] | null;
     /**
      * If set, there must be exactly this many items from `products_any` or `products_all`
      * in the cart for the discount to apply.
      *
      * Cannot be combined with either `quantity_min` or `quantity_max`.
      */
-    quantityExact?: bigint | null;
+    quantity_exact?: (number | bigint) | null;
     /**
      * If set, there must be at least this many items from `products_any` or `products_all`
      * in a cart for the discount to apply. See `quantity_exact`. Defaults to 0 if
      * `quantity_exact`, `quantity_min` and `quantity_max` are all unspecified.
      */
-    quantityMin?: bigint | null;
+    quantity_min?: (number | bigint) | null;
     /**
      * If set, the pricing rule will apply to a maximum of this many items from
      * `products_any` or `products_all`.
      */
-    quantityMax?: bigint | null;
+    quantity_max?: (number | bigint) | null;
     /**
      * If set to `true`, the product set will include every item in the catalog.
      * Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.
      */
-    allProducts?: boolean | null;
+    all_products?: boolean | null;
 }

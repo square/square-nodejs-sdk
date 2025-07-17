@@ -11,7 +11,7 @@ export interface FulfillmentFulfillmentEntry {
     /** A unique ID that identifies the fulfillment entry only within this order. */
     uid?: string | null;
     /** The `uid` from the order line item. */
-    lineItemUid: string;
+    line_item_uid: string;
     /**
      * The quantity of the line item being fulfilled, formatted as a decimal number.
      * For example, `"3"`.

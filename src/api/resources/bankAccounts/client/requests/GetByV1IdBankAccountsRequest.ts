@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         v1BankAccountId: "v1_bank_account_id"
+ *         v1_bank_account_id: "v1_bank_account_id"
  *     }
  */
 export interface GetByV1IdBankAccountsRequest {
@@ -13,5 +13,5 @@ export interface GetByV1IdBankAccountsRequest {
      * Connect V1 ID of the desired `BankAccount`. For more information, see
      * [Retrieve a bank account by using an ID issued by V1 Bank Accounts API](https://developer.squareup.com/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api).
      */
-    v1BankAccountId: string;
+    v1_bank_account_id: string;
 }

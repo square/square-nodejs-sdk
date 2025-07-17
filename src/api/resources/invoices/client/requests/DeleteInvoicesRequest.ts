@@ -5,14 +5,14 @@
 /**
  * @example
  *     {
- *         invoiceId: "invoice_id"
+ *         invoice_id: "invoice_id"
  *     }
  */
 export interface DeleteInvoicesRequest {
     /**
      * The ID of the invoice to delete.
      */
-    invoiceId: string;
+    invoice_id: string;
     /**
      * The version of the [invoice](entity:Invoice) to delete.
      * If you do not know the version, you can call [GetInvoice](api-endpoint:Invoices-GetInvoice) or

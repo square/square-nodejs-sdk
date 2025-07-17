@@ -17,7 +17,7 @@
  */
 export interface CatalogIdMapping {
     /** The client-supplied temporary `#`-prefixed ID for a new `CatalogObject`. */
-    clientObjectId?: string | null;
+    client_object_id?: string | null;
     /** The permanent ID for the CatalogObject created by the server. */
-    objectId?: string | null;
+    object_id?: string | null;
 }

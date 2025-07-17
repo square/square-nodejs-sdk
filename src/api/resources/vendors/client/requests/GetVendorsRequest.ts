@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         vendorId: "vendor_id"
+ *         vendor_id: "vendor_id"
  *     }
  */
 export interface GetVendorsRequest {
     /**
      * ID of the [Vendor](entity:Vendor) to retrieve.
      */
-    vendorId: string;
+    vendor_id: string;
 }

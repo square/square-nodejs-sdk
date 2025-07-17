@@ -7,5 +7,5 @@
  */
 export interface OfflinePaymentDetails {
     /** The client-side timestamp of when the offline payment was created, in RFC 3339 format. */
-    clientCreatedAt?: string;
+    client_created_at?: string;
 }

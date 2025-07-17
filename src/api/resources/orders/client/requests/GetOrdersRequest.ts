@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         orderId: "order_id"
+ *         order_id: "order_id"
  *     }
  */
 export interface GetOrdersRequest {
     /**
      * The ID of the order to retrieve.
      */
-    orderId: string;
+    order_id: string;
 }

@@ -1,2 +1,2 @@
-export { type CreateCustomerCardRequest } from "./CreateCustomerCardRequest";
-export { type DeleteCardsRequest } from "./DeleteCardsRequest";
+export { type CreateCustomerCardRequest } from "./CreateCustomerCardRequest.js";
+export { type DeleteCardsRequest } from "./DeleteCardsRequest.js";

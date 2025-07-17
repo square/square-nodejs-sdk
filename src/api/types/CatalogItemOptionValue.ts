@@ -9,7 +9,7 @@
  */
 export interface CatalogItemOptionValue {
     /** Unique ID of the associated item option. */
-    itemOptionId?: string | null;
+    item_option_id?: string | null;
     /** Name of this item option value. This is a searchable attribute for use in applicable query filters. */
     name?: string | null;
     /** A human-readable description for the option value. This is a searchable attribute for use in applicable query filters. */

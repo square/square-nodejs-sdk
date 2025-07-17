@@ -1,6 +1,6 @@
-export { type BulkDeleteLocationCustomAttributesRequest } from "./BulkDeleteLocationCustomAttributesRequest";
-export { type BulkUpsertLocationCustomAttributesRequest } from "./BulkUpsertLocationCustomAttributesRequest";
-export { type ListCustomAttributesRequest } from "./ListCustomAttributesRequest";
-export { type GetCustomAttributesRequest } from "./GetCustomAttributesRequest";
-export { type UpsertLocationCustomAttributeRequest } from "./UpsertLocationCustomAttributeRequest";
-export { type DeleteCustomAttributesRequest } from "./DeleteCustomAttributesRequest";
+export { type BulkDeleteLocationCustomAttributesRequest } from "./BulkDeleteLocationCustomAttributesRequest.js";
+export { type BulkUpsertLocationCustomAttributesRequest } from "./BulkUpsertLocationCustomAttributesRequest.js";
+export { type ListCustomAttributesRequest } from "./ListCustomAttributesRequest.js";
+export { type GetCustomAttributesRequest } from "./GetCustomAttributesRequest.js";
+export { type UpsertLocationCustomAttributeRequest } from "./UpsertLocationCustomAttributeRequest.js";
+export { type DeleteCustomAttributesRequest } from "./DeleteCustomAttributesRequest.js";

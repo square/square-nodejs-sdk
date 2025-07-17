@@ -9,5 +9,5 @@
  */
 export interface InvoiceRecipientTaxIds {
     /** The EU VAT identification number for the invoice recipient. For example, `IE3426675K`. */
-    euVat?: string;
+    eu_vat?: string;
 }

@@ -4,5 +4,5 @@
 
 export interface ConfirmationDecision {
     /** The buyer's decision to the displayed terms. */
-    hasAgreed?: boolean;
+    has_agreed?: boolean;
 }

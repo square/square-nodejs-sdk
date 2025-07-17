@@ -18,21 +18,21 @@ export interface ListBookingsRequest {
     /**
      * The [customer](entity:Customer) for whom to retrieve bookings. If this is not set, bookings for all customers are retrieved.
      */
-    customerId?: string | null;
+    customer_id?: string | null;
     /**
      * The team member for whom to retrieve bookings. If this is not set, bookings of all members are retrieved.
      */
-    teamMemberId?: string | null;
+    team_member_id?: string | null;
     /**
      * The location for which to retrieve bookings. If this is not set, all locations' bookings are retrieved.
      */
-    locationId?: string | null;
+    location_id?: string | null;
     /**
      * The RFC 3339 timestamp specifying the earliest of the start time. If this is not set, the current time is used.
      */
-    startAtMin?: string | null;
+    start_at_min?: string | null;
     /**
      * The RFC 3339 timestamp specifying the latest of the start time. If this is not set, the time of 31 days after `start_at_min` is used.
      */
-    startAtMax?: string | null;
+    start_at_max?: string | null;
 }

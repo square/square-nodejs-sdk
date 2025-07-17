@@ -17,9 +17,9 @@ export interface VendorContact {
      */
     name?: string | null;
     /** The email address of the [VendorContact](entity:VendorContact). */
-    emailAddress?: string | null;
+    email_address?: string | null;
     /** The phone number of the [VendorContact](entity:VendorContact). */
-    phoneNumber?: string | null;
+    phone_number?: string | null;
     /** The state of the [VendorContact](entity:VendorContact). */
     removed?: boolean | null;
     /** The ordinal of the [VendorContact](entity:VendorContact). */

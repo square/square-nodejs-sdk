@@ -5,18 +5,18 @@
 /**
  * @example
  *     {
- *         subscriptionId: "subscription_id",
- *         eventType: "payment.created"
+ *         subscription_id: "subscription_id",
+ *         event_type: "payment.created"
  *     }
  */
 export interface TestWebhookSubscriptionRequest {
     /**
      * [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to test.
      */
-    subscriptionId: string;
+    subscription_id: string;
     /**
      * The event type that will be used to test the [Subscription](entity:WebhookSubscription). The event type must be
      * contained in the list of event types in the [Subscription](entity:WebhookSubscription).
      */
-    eventType?: string | null;
+    event_type?: string | null;
 }

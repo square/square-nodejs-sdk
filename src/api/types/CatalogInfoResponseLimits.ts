@@ -7,55 +7,55 @@ export interface CatalogInfoResponseLimits {
      * The maximum number of objects that may appear within a single batch in a
      * `/v2/catalog/batch-upsert` request.
      */
-    batchUpsertMaxObjectsPerBatch?: number | null;
+    batch_upsert_max_objects_per_batch?: number | null;
     /**
      * The maximum number of objects that may appear across all batches in a
      * `/v2/catalog/batch-upsert` request.
      */
-    batchUpsertMaxTotalObjects?: number | null;
+    batch_upsert_max_total_objects?: number | null;
     /**
      * The maximum number of object IDs that may appear in a `/v2/catalog/batch-retrieve`
      * request.
      */
-    batchRetrieveMaxObjectIds?: number | null;
+    batch_retrieve_max_object_ids?: number | null;
     /**
      * The maximum number of results that may be returned in a page of a
      * `/v2/catalog/search` response.
      */
-    searchMaxPageLimit?: number | null;
+    search_max_page_limit?: number | null;
     /**
      * The maximum number of object IDs that may be included in a single
      * `/v2/catalog/batch-delete` request.
      */
-    batchDeleteMaxObjectIds?: number | null;
+    batch_delete_max_object_ids?: number | null;
     /**
      * The maximum number of item IDs that may be included in a single
      * `/v2/catalog/update-item-taxes` request.
      */
-    updateItemTaxesMaxItemIds?: number | null;
+    update_item_taxes_max_item_ids?: number | null;
     /**
      * The maximum number of tax IDs to be enabled that may be included in a single
      * `/v2/catalog/update-item-taxes` request.
      */
-    updateItemTaxesMaxTaxesToEnable?: number | null;
+    update_item_taxes_max_taxes_to_enable?: number | null;
     /**
      * The maximum number of tax IDs to be disabled that may be included in a single
      * `/v2/catalog/update-item-taxes` request.
      */
-    updateItemTaxesMaxTaxesToDisable?: number | null;
+    update_item_taxes_max_taxes_to_disable?: number | null;
     /**
      * The maximum number of item IDs that may be included in a single
      * `/v2/catalog/update-item-modifier-lists` request.
      */
-    updateItemModifierListsMaxItemIds?: number | null;
+    update_item_modifier_lists_max_item_ids?: number | null;
     /**
      * The maximum number of modifier list IDs to be enabled that may be included in
      * a single `/v2/catalog/update-item-modifier-lists` request.
      */
-    updateItemModifierListsMaxModifierListsToEnable?: number | null;
+    update_item_modifier_lists_max_modifier_lists_to_enable?: number | null;
     /**
      * The maximum number of modifier list IDs to be disabled that may be included in
      * a single `/v2/catalog/update-item-modifier-lists` request.
      */
-    updateItemModifierListsMaxModifierListsToDisable?: number | null;
+    update_item_modifier_lists_max_modifier_lists_to_disable?: number | null;
 }

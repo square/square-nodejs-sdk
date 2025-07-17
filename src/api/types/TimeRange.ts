@@ -14,10 +14,10 @@ export interface TimeRange {
      * A datetime value in RFC 3339 format indicating when the time range
      * starts.
      */
-    startAt?: string | null;
+    start_at?: string | null;
     /**
      * A datetime value in RFC 3339 format indicating when the time range
      * ends.
      */
-    endAt?: string | null;
+    end_at?: string | null;
 }

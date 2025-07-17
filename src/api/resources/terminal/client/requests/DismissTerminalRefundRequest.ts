@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         terminalRefundId: "terminal_refund_id"
+ *         terminal_refund_id: "terminal_refund_id"
  *     }
  */
 export interface DismissTerminalRefundRequest {
     /**
      * Unique ID for the `TerminalRefund` associated with the refund to be dismissed.
      */
-    terminalRefundId: string;
+    terminal_refund_id: string;
 }

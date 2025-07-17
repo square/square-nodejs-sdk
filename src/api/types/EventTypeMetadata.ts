@@ -7,9 +7,9 @@
  */
 export interface EventTypeMetadata {
     /** The event type. */
-    eventType?: string;
+    event_type?: string;
     /** The API version at which the event type was introduced. */
-    apiVersionIntroduced?: string;
+    api_version_introduced?: string;
     /** The release status of the event type. */
-    releaseStatus?: string;
+    release_status?: string;
 }

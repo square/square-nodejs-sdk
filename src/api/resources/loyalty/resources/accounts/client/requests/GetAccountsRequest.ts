@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         accountId: "account_id"
+ *         account_id: "account_id"
  *     }
  */
 export interface GetAccountsRequest {
     /**
      * The ID of the [loyalty account](entity:LoyaltyAccount) to retrieve.
      */
-    accountId: string;
+    account_id: string;
 }

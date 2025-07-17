@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         disputeId: "dispute_id"
+ *         dispute_id: "dispute_id"
  *     }
  */
 export interface AcceptDisputesRequest {
     /**
      * The ID of the dispute you want to accept.
      */
-    disputeId: string;
+    dispute_id: string;
 }

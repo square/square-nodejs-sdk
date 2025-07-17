@@ -6,5 +6,5 @@ export interface DeviceComponentDetailsEthernetDetails {
     /** A boolean to represent whether the Ethernet interface is currently active. */
     active?: boolean | null;
     /** The string representation of the device’s IPv4 address. */
-    ipAddressV4?: string | null;
+    ip_address_v4?: string | null;
 }

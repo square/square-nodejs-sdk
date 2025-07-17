@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         jobId: "job_id"
+ *         job_id: "job_id"
  *     }
  */
 export interface RetrieveJobRequest {
     /**
      * The ID of the job to retrieve.
      */
-    jobId: string;
+    job_id: string;
 }

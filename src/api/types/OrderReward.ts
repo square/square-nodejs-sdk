@@ -10,5 +10,5 @@ export interface OrderReward {
     /** The identifier of the reward. */
     id: string;
     /** The identifier of the reward tier corresponding to this reward. */
-    rewardTierId: string;
+    reward_tier_id: string;
 }

@@ -7,5 +7,5 @@
  */
 export interface AfterpayDetails {
     /** Email address on the buyer's Afterpay account. */
-    emailAddress?: string | null;
+    email_address?: string | null;
 }

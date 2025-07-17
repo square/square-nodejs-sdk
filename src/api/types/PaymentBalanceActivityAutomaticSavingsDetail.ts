@@ -4,7 +4,7 @@
 
 export interface PaymentBalanceActivityAutomaticSavingsDetail {
     /** The ID of the payment associated with this activity. */
-    paymentId?: string | null;
+    payment_id?: string | null;
     /** The ID of the payout associated with this activity. */
-    payoutId?: string | null;
+    payout_id?: string | null;
 }

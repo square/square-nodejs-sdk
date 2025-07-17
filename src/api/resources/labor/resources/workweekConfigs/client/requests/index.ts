@@ -1,2 +1,2 @@
-export { type ListWorkweekConfigsRequest } from "./ListWorkweekConfigsRequest";
-export { type UpdateWorkweekConfigRequest } from "./UpdateWorkweekConfigRequest";
+export { type ListWorkweekConfigsRequest } from "./ListWorkweekConfigsRequest.js";
+export { type UpdateWorkweekConfigRequest } from "./UpdateWorkweekConfigRequest.js";

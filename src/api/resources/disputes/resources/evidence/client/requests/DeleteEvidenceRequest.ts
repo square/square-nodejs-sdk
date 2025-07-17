@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         disputeId: "dispute_id",
- *         evidenceId: "evidence_id"
+ *         dispute_id: "dispute_id",
+ *         evidence_id: "evidence_id"
  *     }
  */
 export interface DeleteEvidenceRequest {
     /**
      * The ID of the dispute from which you want to remove evidence.
      */
-    disputeId: string;
+    dispute_id: string;
     /**
      * The ID of the evidence you want to remove.
      */
-    evidenceId: string;
+    evidence_id: string;
 }

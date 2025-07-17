@@ -1,2 +1,2 @@
-export * as shifts from "./shifts";
-export * from "./shifts/client/requests";
+export * as shifts from "./shifts/index.js";
+export * from "./shifts/client/requests/index.js";

@@ -5,10 +5,10 @@
 /**
  * @example
  *     {
- *         customerIds: ["8DDA5NZVBZFGAX0V3HPF81HHE0", "N18CPRVXR5214XPBBA6BZQWF3C", "2GYD7WNXF7BJZW1PMGNXZ3Y8M8"]
+ *         customer_ids: ["8DDA5NZVBZFGAX0V3HPF81HHE0", "N18CPRVXR5214XPBBA6BZQWF3C", "2GYD7WNXF7BJZW1PMGNXZ3Y8M8"]
  *     }
  */
 export interface BulkRetrieveCustomersRequest {
     /** The IDs of the [customer profiles](entity:Customer) to retrieve. */
-    customerIds: string[];
+    customer_ids: string[];
 }

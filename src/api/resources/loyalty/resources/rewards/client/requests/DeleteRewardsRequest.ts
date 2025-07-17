@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         rewardId: "reward_id"
+ *         reward_id: "reward_id"
  *     }
  */
 export interface DeleteRewardsRequest {
     /**
      * The ID of the [loyalty reward](entity:LoyaltyReward) to delete.
      */
-    rewardId: string;
+    reward_id: string;
 }

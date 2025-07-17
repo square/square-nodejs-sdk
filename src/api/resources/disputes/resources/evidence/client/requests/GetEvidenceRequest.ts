@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         disputeId: "dispute_id",
- *         evidenceId: "evidence_id"
+ *         dispute_id: "dispute_id",
+ *         evidence_id: "evidence_id"
  *     }
  */
 export interface GetEvidenceRequest {
     /**
      * The ID of the dispute from which you want to retrieve evidence metadata.
      */
-    disputeId: string;
+    dispute_id: string;
     /**
      * The ID of the evidence to retrieve.
      */
-    evidenceId: string;
+    evidence_id: string;
 }

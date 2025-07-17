@@ -5,10 +5,10 @@
 /**
  * @example
  *     {
- *         vendorIds: ["INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4"]
+ *         vendor_ids: ["INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4"]
  *     }
  */
 export interface BatchGetVendorsRequest {
     /** IDs of the [Vendor](entity:Vendor) objects to retrieve. */
-    vendorIds?: string[] | null;
+    vendor_ids?: string[] | null;
 }

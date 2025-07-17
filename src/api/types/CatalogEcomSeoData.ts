@@ -7,9 +7,9 @@
  */
 export interface CatalogEcomSeoData {
     /** The SEO title used for the Square Online store. */
-    pageTitle?: string | null;
+    page_title?: string | null;
     /** The SEO description used for the Square Online store. */
-    pageDescription?: string | null;
+    page_description?: string | null;
     /** The SEO permalink used for the Square Online store. */
     permalink?: string | null;
 }

@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         customerId: "customer_id",
- *         cardId: "card_id"
+ *         customer_id: "customer_id",
+ *         card_id: "card_id"
  *     }
  */
 export interface DeleteCardsRequest {
     /**
      * The ID of the customer that the card on file belongs to.
      */
-    customerId: string;
+    customer_id: string;
     /**
      * The ID of the card on file to delete.
      */
-    cardId: string;
+    card_id: string;
 }

@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         customerId: "customer_id"
+ *         customer_id: "customer_id"
  *     }
  */
 export interface GetCustomersRequest {
     /**
      * The ID of the customer to retrieve.
      */
-    customerId: string;
+    customer_id: string;
 }

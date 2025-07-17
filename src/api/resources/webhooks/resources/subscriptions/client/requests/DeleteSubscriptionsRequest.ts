@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         subscriptionId: "subscription_id"
+ *         subscription_id: "subscription_id"
  *     }
  */
 export interface DeleteSubscriptionsRequest {
     /**
      * [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to delete.
      */
-    subscriptionId: string;
+    subscription_id: string;
 }

@@ -1,2 +1,2 @@
-export * as activities from "./activities";
-export * from "./activities/client/requests";
+export * as activities from "./activities/index.js";
+export * from "./activities/client/requests/index.js";

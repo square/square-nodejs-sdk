@@ -7,5 +7,5 @@
  */
 export interface LoyaltyEventLoyaltyAccountFilter {
     /** The ID of the [loyalty account](entity:LoyaltyAccount) associated with loyalty events. */
-    loyaltyAccountId: string;
+    loyalty_account_id: string;
 }

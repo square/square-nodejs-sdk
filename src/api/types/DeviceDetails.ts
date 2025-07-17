@@ -7,9 +7,9 @@
  */
 export interface DeviceDetails {
     /** The Square-issued ID of the device. */
-    deviceId?: string | null;
+    device_id?: string | null;
     /** The Square-issued installation ID for the device. */
-    deviceInstallationId?: string | null;
+    device_installation_id?: string | null;
     /** The name of the device set by the seller. */
-    deviceName?: string | null;
+    device_name?: string | null;
 }

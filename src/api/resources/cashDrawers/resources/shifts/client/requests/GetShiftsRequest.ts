@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         shiftId: "shift_id",
- *         locationId: "location_id"
+ *         shift_id: "shift_id",
+ *         location_id: "location_id"
  *     }
  */
 export interface GetShiftsRequest {
     /**
      * The shift ID.
      */
-    shiftId: string;
+    shift_id: string;
     /**
      * The ID of the location to retrieve cash drawer shifts from.
      */
-    locationId: string;
+    location_id: string;
 }

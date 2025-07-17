@@ -8,7 +8,7 @@
  */
 export interface OrderEntry {
     /** The ID of the order. */
-    orderId?: string | null;
+    order_id?: string | null;
     /**
      * The version number, which is incremented each time an update is committed to the order.
      * Orders that were not created through the API do not include a version number and
@@ -18,5 +18,5 @@ export interface OrderEntry {
      */
     version?: number;
     /** The location ID the order belongs to. */
-    locationId?: string | null;
+    location_id?: string | null;
 }

@@ -7,9 +7,9 @@
  */
 export interface CatalogQueryRange {
     /** The name of the attribute to be searched. */
-    attributeName: string;
+    attribute_name: string;
     /** The desired minimum value for the search attribute (inclusive). */
-    attributeMinValue?: bigint | null;
+    attribute_min_value?: (number | bigint) | null;
     /** The desired maximum value for the search attribute (inclusive). */
-    attributeMaxValue?: bigint | null;
+    attribute_max_value?: (number | bigint) | null;
 }

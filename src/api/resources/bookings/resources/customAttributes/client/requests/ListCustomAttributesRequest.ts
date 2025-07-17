@@ -5,14 +5,14 @@
 /**
  * @example
  *     {
- *         bookingId: "booking_id"
+ *         booking_id: "booking_id"
  *     }
  */
 export interface ListCustomAttributesRequest {
     /**
      * The ID of the target [booking](entity:Booking).
      */
-    bookingId: string;
+    booking_id: string;
     /**
      * The maximum number of results to return in a single paged response. This limit is advisory.
      * The response might contain more or fewer results. The minimum value is 1 and the maximum value is 100.
@@ -30,5 +30,5 @@ export interface ListCustomAttributesRequest {
      * custom attribute. Set this parameter to `true` to get the name and description of each custom
      * attribute, information about the data type, or other definition details. The default value is `false`.
      */
-    withDefinitions?: boolean | null;
+    with_definitions?: boolean | null;
 }

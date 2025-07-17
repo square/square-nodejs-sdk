@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         disputeId: "dispute_id"
+ *         dispute_id: "dispute_id"
  *     }
  */
 export interface SubmitEvidenceDisputesRequest {
     /**
      * The ID of the dispute for which you want to submit evidence.
      */
-    disputeId: string;
+    dispute_id: string;
 }

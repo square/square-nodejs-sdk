@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         programId: "program_id"
+ *         program_id: "program_id"
  *     }
  */
 export interface GetProgramsRequest {
     /**
      * The ID of the loyalty program or the keyword `main`. Either value can be used to retrieve the single loyalty program that belongs to the seller.
      */
-    programId: string;
+    program_id: string;
 }

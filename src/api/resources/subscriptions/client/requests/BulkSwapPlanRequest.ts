@@ -5,9 +5,9 @@
 /**
  * @example
  *     {
- *         newPlanVariationId: "FQ7CDXXWSLUJRPM3GFJSJGZ7",
- *         oldPlanVariationId: "6JHXF3B2CW3YKHDV4XEM674H",
- *         locationId: "S8GWD5R9QB376"
+ *         new_plan_variation_id: "FQ7CDXXWSLUJRPM3GFJSJGZ7",
+ *         old_plan_variation_id: "6JHXF3B2CW3YKHDV4XEM674H",
+ *         location_id: "S8GWD5R9QB376"
  *     }
  */
 export interface BulkSwapPlanRequest {
@@ -16,13 +16,13 @@ export interface BulkSwapPlanRequest {
      *
      * This field is required.
      */
-    newPlanVariationId: string;
+    new_plan_variation_id: string;
     /**
      * The ID of the plan variation whose subscriptions should be swapped. Active subscriptions
      * using this plan variation will be subscribed to the new plan variation on their next billing
      * day.
      */
-    oldPlanVariationId: string;
+    old_plan_variation_id: string;
     /** The ID of the location to associate with the swapped subscriptions. */
-    locationId: string;
+    location_id: string;
 }

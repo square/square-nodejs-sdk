@@ -1,5 +1,5 @@
-export { type CreateLoyaltyAccountRequest } from "./CreateLoyaltyAccountRequest";
-export { type SearchLoyaltyAccountsRequest } from "./SearchLoyaltyAccountsRequest";
-export { type GetAccountsRequest } from "./GetAccountsRequest";
-export { type AccumulateLoyaltyPointsRequest } from "./AccumulateLoyaltyPointsRequest";
-export { type AdjustLoyaltyPointsRequest } from "./AdjustLoyaltyPointsRequest";
+export { type CreateLoyaltyAccountRequest } from "./CreateLoyaltyAccountRequest.js";
+export { type SearchLoyaltyAccountsRequest } from "./SearchLoyaltyAccountsRequest.js";
+export { type GetAccountsRequest } from "./GetAccountsRequest.js";
+export { type AccumulateLoyaltyPointsRequest } from "./AccumulateLoyaltyPointsRequest.js";
+export { type AdjustLoyaltyPointsRequest } from "./AdjustLoyaltyPointsRequest.js";

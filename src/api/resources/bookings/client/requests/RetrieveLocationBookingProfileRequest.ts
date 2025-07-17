@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         locationId: "location_id"
+ *         location_id: "location_id"
  *     }
  */
 export interface RetrieveLocationBookingProfileRequest {
     /**
      * The ID of the location to retrieve the booking profile.
      */
-    locationId: string;
+    location_id: string;
 }

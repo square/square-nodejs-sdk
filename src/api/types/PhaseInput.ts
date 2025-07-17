@@ -7,7 +7,7 @@
  */
 export interface PhaseInput {
     /** index of phase in total subscription plan */
-    ordinal: bigint;
+    ordinal: number | bigint;
     /** id of order to be used in billing */
-    orderTemplateId?: string | null;
+    order_template_id?: string | null;
 }

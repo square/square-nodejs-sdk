@@ -7,5 +7,5 @@
  */
 export interface ClearpayDetails {
     /** Email address on the buyer's Clearpay account. */
-    emailAddress?: string | null;
+    email_address?: string | null;
 }

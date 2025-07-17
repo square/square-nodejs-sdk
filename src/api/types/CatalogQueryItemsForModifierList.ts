@@ -7,5 +7,5 @@
  */
 export interface CatalogQueryItemsForModifierList {
     /** A set of `CatalogModifierList` IDs to be used to find associated `CatalogItem`s. */
-    modifierListIds: string[];
+    modifier_list_ids: string[];
 }

@@ -10,7 +10,7 @@ export interface ListTeamMemberProfilesRequest {
     /**
      * Indicates whether to include only bookable team members in the returned result (`true`) or not (`false`).
      */
-    bookableOnly?: boolean | null;
+    bookable_only?: boolean | null;
     /**
      * The maximum number of results to return in a paged response.
      */
@@ -22,5 +22,5 @@ export interface ListTeamMemberProfilesRequest {
     /**
      * Indicates whether to include only team members enabled at the given location in the returned result.
      */
-    locationId?: string | null;
+    location_id?: string | null;
 }

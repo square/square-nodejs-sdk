@@ -10,5 +10,5 @@ export interface ListEventTypesRequest {
     /**
      * The API version for which to list event types. Setting this field overrides the default version used by the application.
      */
-    apiVersion?: string | null;
+    api_version?: string | null;
 }

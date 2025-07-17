@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         bankAccountId: "bank_account_id"
+ *         bank_account_id: "bank_account_id"
  *     }
  */
 export interface GetBankAccountsRequest {
     /**
      * Square-issued ID of the desired `BankAccount`.
      */
-    bankAccountId: string;
+    bank_account_id: string;
 }

@@ -11,5 +11,5 @@ export interface LoyaltyEventLocationFilter {
      * If multiple values are specified, the endpoint uses
      * a logical OR to combine them.
      */
-    locationIds: string[];
+    location_ids: string[];
 }

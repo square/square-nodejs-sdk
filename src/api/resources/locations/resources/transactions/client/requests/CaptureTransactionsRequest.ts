@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         locationId: "location_id",
- *         transactionId: "transaction_id"
+ *         location_id: "location_id",
+ *         transaction_id: "transaction_id"
  *     }
  */
 export interface CaptureTransactionsRequest {
     /**
      *
      */
-    locationId: string;
+    location_id: string;
     /**
      *
      */
-    transactionId: string;
+    transaction_id: string;
 }

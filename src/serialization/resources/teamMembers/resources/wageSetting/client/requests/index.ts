@@ -1,1 +1,0 @@
-export { UpdateWageSettingRequest } from "./UpdateWageSettingRequest";

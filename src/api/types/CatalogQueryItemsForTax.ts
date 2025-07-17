@@ -7,5 +7,5 @@
  */
 export interface CatalogQueryItemsForTax {
     /** A set of `CatalogTax` IDs to be used to find associated `CatalogItem`s. */
-    taxIds: string[];
+    tax_ids: string[];
 }

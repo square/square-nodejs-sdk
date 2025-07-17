@@ -8,5 +8,5 @@ export interface TerminalRefundQuerySort {
      * - `ASC` - Oldest to newest.
      * - `DESC` - Newest to oldest (default).
      */
-    sortOrder?: string | null;
+    sort_order?: string | null;
 }

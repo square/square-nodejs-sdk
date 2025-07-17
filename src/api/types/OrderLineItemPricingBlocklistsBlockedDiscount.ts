@@ -13,11 +13,11 @@ export interface OrderLineItemPricingBlocklistsBlockedDiscount {
      * The `uid` of the discount that should be blocked. Use this field to block
      * ad hoc discounts. For catalog discounts, use the `discount_catalog_object_id` field.
      */
-    discountUid?: string | null;
+    discount_uid?: string | null;
     /**
      * The `catalog_object_id` of the discount that should be blocked.
      * Use this field to block catalog discounts. For ad hoc discounts, use the
      * `discount_uid` field.
      */
-    discountCatalogObjectId?: string | null;
+    discount_catalog_object_id?: string | null;
 }

@@ -29,5 +29,5 @@ export interface DestinationDetailsExternalRefundDetails {
      */
     source: string;
     /** An ID to associate the refund to its originating source. */
-    sourceId?: string | null;
+    source_id?: string | null;
 }

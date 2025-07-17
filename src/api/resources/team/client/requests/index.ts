@@ -1,4 +1,4 @@
-export { type ListJobsRequest } from "./ListJobsRequest";
-export { type CreateJobRequest } from "./CreateJobRequest";
-export { type RetrieveJobRequest } from "./RetrieveJobRequest";
-export { type UpdateJobRequest } from "./UpdateJobRequest";
+export { type ListJobsRequest } from "./ListJobsRequest.js";
+export { type CreateJobRequest } from "./CreateJobRequest.js";
+export { type RetrieveJobRequest } from "./RetrieveJobRequest.js";
+export { type UpdateJobRequest } from "./UpdateJobRequest.js";

@@ -1,6 +1,6 @@
-export * as customAttributeDefinitions from "./customAttributeDefinitions";
-export * as customAttributes from "./customAttributes";
-export * as transactions from "./transactions";
-export * from "./customAttributeDefinitions/client/requests";
-export * from "./customAttributes/client/requests";
-export * from "./transactions/client/requests";
+export * as customAttributeDefinitions from "./customAttributeDefinitions/index.js";
+export * as customAttributes from "./customAttributes/index.js";
+export * as transactions from "./transactions/index.js";
+export * from "./customAttributeDefinitions/client/requests/index.js";
+export * from "./customAttributes/client/requests/index.js";
+export * from "./transactions/client/requests/index.js";

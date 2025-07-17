@@ -12,14 +12,14 @@ export interface Break {
      * RFC 3339; follows the same timezone information as the [timecard](entity:Timecard). Precision up to
      * the minute is respected; seconds are truncated.
      */
-    startAt: string;
+    start_at: string;
     /**
      * RFC 3339; follows the same timezone information as the [timecard](entity:Timecard). Precision up to
      * the minute is respected; seconds are truncated.
      */
-    endAt?: string | null;
+    end_at?: string | null;
     /** The [BreakType](entity:BreakType) that this break was templated on. */
-    breakTypeId: string;
+    break_type_id: string;
     /** A human-readable name. */
     name: string;
     /**
@@ -28,10 +28,10 @@ export interface Break {
      *
      * Example for break expected duration of 15 minutes: PT15M
      */
-    expectedDuration: string;
+    expected_duration: string;
     /**
      * Whether this break counts towards time worked for compensation
      * purposes.
      */
-    isPaid: boolean;
+    is_paid: boolean;
 }

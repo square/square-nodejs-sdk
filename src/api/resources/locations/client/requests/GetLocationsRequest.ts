@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         locationId: "location_id"
+ *         location_id: "location_id"
  *     }
  */
 export interface GetLocationsRequest {
@@ -13,5 +13,5 @@ export interface GetLocationsRequest {
      * The ID of the location to retrieve. Specify the string
      * "main" to return the main location.
      */
-    locationId: string;
+    location_id: string;
 }

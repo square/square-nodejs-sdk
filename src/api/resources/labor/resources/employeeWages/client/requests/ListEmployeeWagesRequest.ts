@@ -10,7 +10,7 @@ export interface ListEmployeeWagesRequest {
     /**
      * Filter the returned wages to only those that are associated with the specified employee.
      */
-    employeeId?: string | null;
+    employee_id?: string | null;
     /**
      * The maximum number of `EmployeeWage` results to return per page. The number can range between
      * 1 and 200. The default is 200.

@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         actionId: "action_id"
+ *         action_id: "action_id"
  *     }
  */
 export interface DismissTerminalActionRequest {
     /**
      * Unique ID for the `TerminalAction` associated with the action to be dismissed.
      */
-    actionId: string;
+    action_id: string;
 }

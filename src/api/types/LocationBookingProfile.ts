@@ -7,9 +7,9 @@
  */
 export interface LocationBookingProfile {
     /** The ID of the [location](entity:Location). */
-    locationId?: string | null;
+    location_id?: string | null;
     /** Url for the online booking site for this location. */
-    bookingSiteUrl?: string | null;
+    booking_site_url?: string | null;
     /** Indicates whether the location is enabled for online booking. */
-    onlineBookingEnabled?: boolean | null;
+    online_booking_enabled?: boolean | null;
 }

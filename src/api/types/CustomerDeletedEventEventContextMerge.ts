@@ -7,7 +7,7 @@
  */
 export interface CustomerDeletedEventEventContextMerge {
     /** The IDs of the existing customers that were merged and then deleted. */
-    fromCustomerIds?: string[] | null;
+    from_customer_ids?: string[] | null;
     /** The ID of the new customer created by the merge. */
-    toCustomerId?: string | null;
+    to_customer_id?: string | null;
 }

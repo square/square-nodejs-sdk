@@ -11,13 +11,13 @@ export interface LoyaltyPromotionAvailableTimeData {
      * The date that the promotion starts, in `YYYY-MM-DD` format. Square populates this field
      * based on the provided `time_periods`.
      */
-    startDate?: string;
+    start_date?: string;
     /**
      * The date that the promotion ends, in `YYYY-MM-DD` format. Square populates this field
      * based on the provided `time_periods`. If an end date is not specified, an `ACTIVE` promotion
      * remains available until it is canceled.
      */
-    endDate?: string;
+    end_date?: string;
     /**
      * A list of [iCalendar (RFC 5545) events](https://tools.ietf.org/html/rfc5545#section-3.6.1)
      * (`VEVENT`). Each event represents an available time period per day or days of the week.
@@ -31,5 +31,5 @@ export interface LoyaltyPromotionAvailableTimeData {
      * Note that `BEGIN:VEVENT` and `END:VEVENT` are optional in a `CreateLoyaltyPromotion` request
      * but are always included in the response.
      */
-    timePeriods: string[];
+    time_periods: string[];
 }

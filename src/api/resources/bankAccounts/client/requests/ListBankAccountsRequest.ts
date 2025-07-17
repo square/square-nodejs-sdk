@@ -25,5 +25,5 @@ export interface ListBankAccountsRequest {
      * Location ID. You can specify this optional filter
      * to retrieve only the linked bank accounts belonging to a specific location.
      */
-    locationId?: string | null;
+    location_id?: string | null;
 }

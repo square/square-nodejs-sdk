@@ -8,23 +8,23 @@
  */
 export interface ScheduledShiftDetails {
     /** The ID of the [team member](entity:TeamMember) scheduled for the shift. */
-    teamMemberId?: string | null;
+    team_member_id?: string | null;
     /** The ID of the [location](entity:Location) the shift is scheduled for. */
-    locationId?: string | null;
+    location_id?: string | null;
     /** The ID of the [job](entity:Job) the shift is scheduled for. */
-    jobId?: string | null;
+    job_id?: string | null;
     /**
      * The start time of the shift, in RFC 3339 format in the time zone &plus;
      * offset of the shift location specified in `location_id`. Precision up to the minute
      * is respected; seconds are truncated.
      */
-    startAt?: string | null;
+    start_at?: string | null;
     /**
      * The end time for the shift, in RFC 3339 format in the time zone &plus;
      * offset of the shift location specified in `location_id`. Precision up to the minute
      * is respected; seconds are truncated.
      */
-    endAt?: string | null;
+    end_at?: string | null;
     /** Optional notes for the shift. */
     notes?: string | null;
     /**
@@ -32,7 +32,7 @@ export interface ScheduledShiftDetails {
      * is published, the entire scheduled shift (including the published shift) is deleted and
      * cannot be accessed using any endpoint.
      */
-    isDeleted?: boolean | null;
+    is_deleted?: boolean | null;
     /**
      * The time zone of the shift location, calculated based on the `location_id`. This field
      * is provided for convenience.

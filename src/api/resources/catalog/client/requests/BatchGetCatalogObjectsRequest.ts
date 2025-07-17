@@ -5,13 +5,13 @@
 /**
  * @example
  *     {
- *         objectIds: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"],
- *         includeRelatedObjects: true
+ *         object_ids: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"],
+ *         include_related_objects: true
  *     }
  */
 export interface BatchGetCatalogObjectsRequest {
     /** The IDs of the CatalogObjects to be retrieved. */
-    objectIds: string[];
+    object_ids: string[];
     /**
      * If `true`, the response will include additional objects that are related to the
      * requested objects. Related objects are defined as any objects referenced by ID by the results in the `objects` field
@@ -28,21 +28,21 @@ export interface BatchGetCatalogObjectsRequest {
      *
      * Default value: `false`
      */
-    includeRelatedObjects?: boolean | null;
+    include_related_objects?: boolean | null;
     /**
      * The specific version of the catalog objects to be included in the response.
      * This allows you to retrieve historical versions of objects. The specified version value is matched against
      * the [CatalogObject](entity:CatalogObject)s' `version` attribute. If not included, results will
      * be from the current version of the catalog.
      */
-    catalogVersion?: bigint | null;
+    catalog_version?: (number | bigint) | null;
     /** Indicates whether to include (`true`) or not (`false`) in the response deleted objects, namely, those with the `is_deleted` attribute set to `true`. */
-    includeDeletedObjects?: boolean | null;
+    include_deleted_objects?: boolean | null;
     /**
      * Specifies whether or not to include the `path_to_root` list for each returned category instance. The `path_to_root` list consists
      * of `CategoryPathToRootNode` objects and specifies the path that starts with the immediate parent category of the returned category
      * and ends with its root category. If the returned category is a top-level category, the `path_to_root` list is empty and is not returned
      * in the response payload.
      */
-    includeCategoryPathToRoot?: boolean | null;
+    include_category_path_to_root?: boolean | null;
 }

@@ -5,14 +5,14 @@
 /**
  * @example
  *     {
- *         subscriptionId: "subscription_id"
+ *         subscription_id: "subscription_id"
  *     }
  */
 export interface ListEventsSubscriptionsRequest {
     /**
      * The ID of the subscription to retrieve the events for.
      */
-    subscriptionId: string;
+    subscription_id: string;
     /**
      * When the total number of resulting subscription events exceeds the limit of a paged response,
      * specify the cursor returned from a preceding response here to fetch the next set of results.

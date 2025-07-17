@@ -7,7 +7,7 @@
  */
 export interface FloatNumberRange {
     /** A decimal value indicating where the range starts. */
-    startAt?: string | null;
+    start_at?: string | null;
     /** A decimal value indicating where the range ends. */
-    endAt?: string | null;
+    end_at?: string | null;
 }

@@ -14,22 +14,22 @@ export interface WebhookSubscription {
     /** Indicates whether the subscription is enabled (`true`) or not (`false`). */
     enabled?: boolean | null;
     /** The event types associated with this subscription. */
-    eventTypes?: string[] | null;
+    event_types?: string[] | null;
     /** The URL to which webhooks are sent. */
-    notificationUrl?: string | null;
+    notification_url?: string | null;
     /**
      * The API version of the subscription.
      * This field is optional for `CreateWebhookSubscription`.
      * The value defaults to the API version used by the application.
      */
-    apiVersion?: string | null;
+    api_version?: string | null;
     /** The Square-generated signature key used to validate the origin of the webhook event. */
-    signatureKey?: string;
+    signature_key?: string;
     /** The timestamp of when the subscription was created, in RFC 3339 format. For example, "2016-09-04T23:59:33.123Z". */
-    createdAt?: string;
+    created_at?: string;
     /**
      * The timestamp of when the subscription was last updated, in RFC 3339 format.
      * For example, "2016-09-04T23:59:33.123Z".
      */
-    updatedAt?: string;
+    updated_at?: string;
 }

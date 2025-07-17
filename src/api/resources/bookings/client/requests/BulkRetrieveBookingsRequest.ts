@@ -5,10 +5,10 @@
 /**
  * @example
  *     {
- *         bookingIds: ["booking_ids"]
+ *         booking_ids: ["booking_ids"]
  *     }
  */
 export interface BulkRetrieveBookingsRequest {
     /** A non-empty list of [Booking](entity:Booking) IDs specifying bookings to retrieve. */
-    bookingIds: string[];
+    booking_ids: string[];
 }

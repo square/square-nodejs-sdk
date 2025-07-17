@@ -4,5 +4,5 @@
 
 export interface PaymentBalanceActivityDepositFeeDetail {
     /** The ID of the payout that triggered this deposit fee activity. */
-    payoutId?: string | null;
+    payout_id?: string | null;
 }

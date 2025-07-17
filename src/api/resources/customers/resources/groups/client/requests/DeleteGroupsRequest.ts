@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         groupId: "group_id"
+ *         group_id: "group_id"
  *     }
  */
 export interface DeleteGroupsRequest {
     /**
      * The ID of the customer group to delete.
      */
-    groupId: string;
+    group_id: string;
 }

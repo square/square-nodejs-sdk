@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         disputeId: "dispute_id"
+ *         dispute_id: "dispute_id"
  *     }
  */
 export interface GetDisputesRequest {
     /**
      * The ID of the dispute you want more details about.
      */
-    disputeId: string;
+    dispute_id: string;
 }

@@ -7,10 +7,10 @@
  */
 export interface CustomerDetails {
     /** Indicates whether the customer initiated the payment. */
-    customerInitiated?: boolean | null;
+    customer_initiated?: boolean | null;
     /**
      * Indicates that the seller keyed in payment details on behalf of the customer.
      * This is used to flag a payment as Mail Order / Telephone Order (MOTO).
      */
-    sellerKeyedIn?: boolean | null;
+    seller_keyed_in?: boolean | null;
 }

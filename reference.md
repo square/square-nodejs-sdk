@@ -45,7 +45,7 @@ Replace `ACCESS_TOKEN` with a
 
 ```typescript
 await client.mobile.authorizationCode({
-    locationId: "YOUR_LOCATION_ID",
+    location_id: "YOUR_LOCATION_ID",
 });
 ```
 
@@ -125,8 +125,8 @@ page for your application in the Developer Dashboard.
 
 ```typescript
 await client.oAuth.revokeToken({
-    clientId: "CLIENT_ID",
-    accessToken: "ACCESS_TOKEN",
+    client_id: "CLIENT_ID",
+    access_token: "ACCESS_TOKEN",
 });
 ```
 
@@ -213,10 +213,10 @@ Application clients should never interact directly with OAuth tokens.
 
 ```typescript
 await client.oAuth.obtainToken({
-    clientId: "sq0idp-uaPHILoPzWZk3tlJqlML0g",
-    clientSecret: "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
+    client_id: "sq0idp-uaPHILoPzWZk3tlJqlML0g",
+    client_secret: "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
     code: "sq0cgb-l0SBqxs4uwxErTVyYOdemg",
-    grantType: "authorization_code",
+    grant_type: "authorization_code",
 });
 ```
 
@@ -391,7 +391,7 @@ Provides summary information for a merchant's online store orders.
 
 ```typescript
 await client.v1Transactions.v1ListOrders({
-    locationId: "location_id",
+    location_id: "location_id",
 });
 ```
 
@@ -456,8 +456,8 @@ Provides comprehensive information for a single online store order, including th
 
 ```typescript
 await client.v1Transactions.v1RetrieveOrder({
-    locationId: "location_id",
-    orderId: "order_id",
+    location_id: "location_id",
+    order_id: "order_id",
 });
 ```
 
@@ -522,8 +522,8 @@ Updates the details of an online store order. Every update you perform on an ord
 
 ```typescript
 await client.v1Transactions.v1UpdateOrder({
-    locationId: "location_id",
-    orderId: "order_id",
+    location_id: "location_id",
+    order_id: "order_id",
     action: "COMPLETE",
 });
 ```
@@ -604,7 +604,7 @@ To learn more about the Web Payments SDK and how to add Apple Pay, see [Take an 
 
 ```typescript
 await client.applePay.registerDomain({
-    domainName: "example.com",
+    domain_name: "example.com",
 });
 ```
 
@@ -676,7 +676,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bankAccounts.list();
+let page = await client.bankAccounts.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -743,7 +743,7 @@ Returns details of a [BankAccount](entity:BankAccount) identified by V1 bank acc
 
 ```typescript
 await client.bankAccounts.getByV1Id({
-    v1BankAccountId: "v1_bank_account_id",
+    v1_bank_account_id: "v1_bank_account_id",
 });
 ```
 
@@ -809,7 +809,7 @@ linked to a Square account.
 
 ```typescript
 await client.bankAccounts.get({
-    bankAccountId: "bank_account_id",
+    bank_account_id: "bank_account_id",
 });
 ```
 
@@ -884,7 +884,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bookings.list();
+let page = await client.bookings.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -1035,7 +1035,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 await client.bookings.searchAvailability({
     query: {
         filter: {
-            startAtRange: {},
+            start_at_range: {},
         },
     },
 });
@@ -1105,7 +1105,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```typescript
 await client.bookings.bulkRetrieveBookings({
-    bookingIds: ["booking_ids"],
+    booking_ids: ["booking_ids"],
 });
 ```
 
@@ -1225,7 +1225,7 @@ Retrieves a seller's location booking profile.
 
 ```typescript
 await client.bookings.retrieveLocationBookingProfile({
-    locationId: "location_id",
+    location_id: "location_id",
 });
 ```
 
@@ -1290,7 +1290,7 @@ Retrieves one or more team members' booking profiles.
 
 ```typescript
 await client.bookings.bulkRetrieveTeamMemberBookingProfiles({
-    teamMemberIds: ["team_member_ids"],
+    team_member_ids: ["team_member_ids"],
 });
 ```
 
@@ -1358,7 +1358,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```typescript
 await client.bookings.get({
-    bookingId: "booking_id",
+    booking_id: "booking_id",
 });
 ```
 
@@ -1429,7 +1429,7 @@ or _Appointments Premium_.
 
 ```typescript
 await client.bookings.update({
-    bookingId: "booking_id",
+    booking_id: "booking_id",
     booking: {},
 });
 ```
@@ -1501,7 +1501,7 @@ or _Appointments Premium_.
 
 ```typescript
 await client.bookings.cancel({
-    bookingId: "booking_id",
+    booking_id: "booking_id",
 });
 ```
 
@@ -1574,7 +1574,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.cards.list();
+let page = await client.cards.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -1641,20 +1641,20 @@ Adds a card on file to an existing merchant.
 
 ```typescript
 await client.cards.create({
-    idempotencyKey: "4935a656-a929-4792-b97c-8848be85c27c",
-    sourceId: "cnon:uIbfJXhXETSP197M3GB",
+    idempotency_key: "4935a656-a929-4792-b97c-8848be85c27c",
+    source_id: "cnon:uIbfJXhXETSP197M3GB",
     card: {
-        cardholderName: "Amelia Earhart",
-        billingAddress: {
-            addressLine1: "500 Electric Ave",
-            addressLine2: "Suite 600",
+        cardholder_name: "Amelia Earhart",
+        billing_address: {
+            address_line_1: "500 Electric Ave",
+            address_line_2: "Suite 600",
             locality: "New York",
-            administrativeDistrictLevel1: "NY",
-            postalCode: "10003",
+            administrative_district_level_1: "NY",
+            postal_code: "10003",
             country: "US",
         },
-        customerId: "VDKXEEKPJN48QDG3BGGFAK05P8",
-        referenceId: "user-id-1",
+        customer_id: "VDKXEEKPJN48QDG3BGGFAK05P8",
+        reference_id: "user-id-1",
     },
 });
 ```
@@ -1720,7 +1720,7 @@ Retrieves details for a specific Card.
 
 ```typescript
 await client.cards.get({
-    cardId: "card_id",
+    card_id: "card_id",
 });
 ```
 
@@ -1786,7 +1786,7 @@ Disabling an already disabled card is allowed but has no effect.
 
 ```typescript
 await client.cards.disable({
-    cardId: "card_id",
+    card_id: "card_id",
 });
 ```
 
@@ -1866,7 +1866,7 @@ delete requests are rejected with the `429` error code.
 
 ```typescript
 await client.catalog.batchDelete({
-    objectIds: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"],
+    object_ids: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"],
 });
 ```
 
@@ -1936,8 +1936,8 @@ any [CatalogTax](entity:CatalogTax) objects that apply to it.
 
 ```typescript
 await client.catalog.batchGet({
-    objectIds: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"],
-    includeRelatedObjects: true,
+    object_ids: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"],
+    include_related_objects: true,
 });
 ```
 
@@ -2014,7 +2014,7 @@ update requests are rejected with the `429` error code.
 
 ```typescript
 await client.catalog.batchUpsert({
-    idempotencyKey: "789ff020-f723-43a9-b4b5-43b5dc1fa3dc",
+    idempotency_key: "789ff020-f723-43a9-b4b5-43b5dc1fa3dc",
     batches: [
         {
             objects: [
@@ -2169,7 +2169,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.catalog.list();
+let page = await client.catalog.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -2244,11 +2244,11 @@ endpoint in the following aspects:
 
 ```typescript
 await client.catalog.search({
-    objectTypes: ["ITEM"],
+    object_types: ["ITEM"],
     query: {
-        prefixQuery: {
-            attributeName: "name",
-            attributePrefix: "tea",
+        prefix_query: {
+            attribute_name: "name",
+            attribute_prefix: "tea",
         },
     },
     limit: 100,
@@ -2324,31 +2324,31 @@ endpoint in the following aspects:
 
 ```typescript
 await client.catalog.searchItems({
-    textFilter: "red",
-    categoryIds: ["WINE_CATEGORY_ID"],
-    stockLevels: ["OUT", "LOW"],
-    enabledLocationIds: ["ATL_LOCATION_ID"],
+    text_filter: "red",
+    category_ids: ["WINE_CATEGORY_ID"],
+    stock_levels: ["OUT", "LOW"],
+    enabled_location_ids: ["ATL_LOCATION_ID"],
     limit: 100,
-    sortOrder: "ASC",
-    productTypes: ["REGULAR"],
-    customAttributeFilters: [
+    sort_order: "ASC",
+    product_types: ["REGULAR"],
+    custom_attribute_filters: [
         {
-            customAttributeDefinitionId: "VEGAN_DEFINITION_ID",
-            boolFilter: true,
+            custom_attribute_definition_id: "VEGAN_DEFINITION_ID",
+            bool_filter: true,
         },
         {
-            customAttributeDefinitionId: "BRAND_DEFINITION_ID",
-            stringFilter: "Dark Horse",
+            custom_attribute_definition_id: "BRAND_DEFINITION_ID",
+            string_filter: "Dark Horse",
         },
         {
             key: "VINTAGE",
-            numberFilter: {
+            number_filter: {
                 min: "min",
                 max: "max",
             },
         },
         {
-            customAttributeDefinitionId: "VARIETAL_DEFINITION_ID",
+            custom_attribute_definition_id: "VARIETAL_DEFINITION_ID",
         },
     ],
 });
@@ -2417,9 +2417,9 @@ to perform an upsert on the entire item.
 
 ```typescript
 await client.catalog.updateItemModifierLists({
-    itemIds: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
-    modifierListsToEnable: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
-    modifierListsToDisable: ["7WRC16CJZDVLSNDQ35PP6YAD"],
+    item_ids: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
+    modifier_lists_to_enable: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
+    modifier_lists_to_disable: ["7WRC16CJZDVLSNDQ35PP6YAD"],
 });
 ```
 
@@ -2486,9 +2486,9 @@ upsert on the entire item.
 
 ```typescript
 await client.catalog.updateItemTaxes({
-    itemIds: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
-    taxesToEnable: ["4WRCNHCJZDVLSNDQ35PP6YAD"],
-    taxesToDisable: ["AQCEGCEBBQONINDOHRGZISEX"],
+    item_ids: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
+    taxes_to_enable: ["4WRCNHCJZDVLSNDQ35PP6YAD"],
+    taxes_to_disable: ["AQCEGCEBBQONINDOHRGZISEX"],
 });
 ```
 
@@ -2564,7 +2564,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.customers.list();
+let page = await client.customers.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -2639,19 +2639,19 @@ endpoint:
 
 ```typescript
 await client.customers.create({
-    givenName: "Amelia",
-    familyName: "Earhart",
-    emailAddress: "Amelia.Earhart@example.com",
+    given_name: "Amelia",
+    family_name: "Earhart",
+    email_address: "Amelia.Earhart@example.com",
     address: {
-        addressLine1: "500 Electric Ave",
-        addressLine2: "Suite 600",
+        address_line_1: "500 Electric Ave",
+        address_line_2: "Suite 600",
         locality: "New York",
-        administrativeDistrictLevel1: "NY",
-        postalCode: "10003",
+        administrative_district_level_1: "NY",
+        postal_code: "10003",
         country: "US",
     },
-    phoneNumber: "+1-212-555-4240",
-    referenceId: "YOUR_REFERENCE_ID",
+    phone_number: "+1-212-555-4240",
+    reference_id: "YOUR_REFERENCE_ID",
     note: "a customer",
 });
 ```
@@ -2728,35 +2728,35 @@ You must provide at least one of the following values in each create request:
 await client.customers.batchCreate({
     customers: {
         "8bb76c4f-e35d-4c5b-90de-1194cd9179f0": {
-            givenName: "Amelia",
-            familyName: "Earhart",
-            emailAddress: "Amelia.Earhart@example.com",
+            given_name: "Amelia",
+            family_name: "Earhart",
+            email_address: "Amelia.Earhart@example.com",
             address: {
-                addressLine1: "500 Electric Ave",
-                addressLine2: "Suite 600",
+                address_line_1: "500 Electric Ave",
+                address_line_2: "Suite 600",
                 locality: "New York",
-                administrativeDistrictLevel1: "NY",
-                postalCode: "10003",
+                administrative_district_level_1: "NY",
+                postal_code: "10003",
                 country: "US",
             },
-            phoneNumber: "+1-212-555-4240",
-            referenceId: "YOUR_REFERENCE_ID",
+            phone_number: "+1-212-555-4240",
+            reference_id: "YOUR_REFERENCE_ID",
             note: "a customer",
         },
         "d1689f23-b25d-4932-b2f0-aed00f5e2029": {
-            givenName: "Marie",
-            familyName: "Curie",
-            emailAddress: "Marie.Curie@example.com",
+            given_name: "Marie",
+            family_name: "Curie",
+            email_address: "Marie.Curie@example.com",
             address: {
-                addressLine1: "500 Electric Ave",
-                addressLine2: "Suite 601",
+                address_line_1: "500 Electric Ave",
+                address_line_2: "Suite 601",
                 locality: "New York",
-                administrativeDistrictLevel1: "NY",
-                postalCode: "10003",
+                administrative_district_level_1: "NY",
+                postal_code: "10003",
                 country: "US",
             },
-            phoneNumber: "+1-212-444-4240",
-            referenceId: "YOUR_REFERENCE_ID",
+            phone_number: "+1-212-444-4240",
+            reference_id: "YOUR_REFERENCE_ID",
             note: "another customer",
         },
     },
@@ -2826,7 +2826,7 @@ The endpoint takes a list of customer IDs and returns a map of responses.
 
 ```typescript
 await client.customers.bulkDeleteCustomers({
-    customerIds: ["8DDA5NZVBZFGAX0V3HPF81HHE0", "N18CPRVXR5214XPBBA6BZQWF3C", "2GYD7WNXF7BJZW1PMGNXZ3Y8M8"],
+    customer_ids: ["8DDA5NZVBZFGAX0V3HPF81HHE0", "N18CPRVXR5214XPBBA6BZQWF3C", "2GYD7WNXF7BJZW1PMGNXZ3Y8M8"],
 });
 ```
 
@@ -2893,7 +2893,7 @@ This endpoint takes a list of customer IDs and returns a map of responses.
 
 ```typescript
 await client.customers.bulkRetrieveCustomers({
-    customerIds: ["8DDA5NZVBZFGAX0V3HPF81HHE0", "N18CPRVXR5214XPBBA6BZQWF3C", "2GYD7WNXF7BJZW1PMGNXZ3Y8M8"],
+    customer_ids: ["8DDA5NZVBZFGAX0V3HPF81HHE0", "N18CPRVXR5214XPBBA6BZQWF3C", "2GYD7WNXF7BJZW1PMGNXZ3Y8M8"],
 });
 ```
 
@@ -2962,14 +2962,14 @@ This endpoint takes a map of individual update requests and returns a map of res
 await client.customers.bulkUpdateCustomers({
     customers: {
         "8DDA5NZVBZFGAX0V3HPF81HHE0": {
-            emailAddress: "New.Amelia.Earhart@example.com",
+            email_address: "New.Amelia.Earhart@example.com",
             note: "updated customer note",
-            version: 2,
+            version: BigInt("2"),
         },
         N18CPRVXR5214XPBBA6BZQWF3C: {
-            givenName: "Marie",
-            familyName: "Curie",
-            version: 0,
+            given_name: "Marie",
+            family_name: "Curie",
+            version: BigInt("0"),
         },
     },
 });
@@ -3044,21 +3044,21 @@ profiles can take closer to one minute or longer, especially during network inci
 
 ```typescript
 await client.customers.search({
-    limit: 2,
+    limit: BigInt("2"),
     query: {
         filter: {
-            creationSource: {
+            creation_source: {
                 values: ["THIRD_PARTY"],
                 rule: "INCLUDE",
             },
-            createdAt: {
-                startAt: "2018-01-01T00:00:00-00:00",
-                endAt: "2018-02-01T00:00:00-00:00",
+            created_at: {
+                start_at: "2018-01-01T00:00:00-00:00",
+                end_at: "2018-02-01T00:00:00-00:00",
             },
-            emailAddress: {
+            email_address: {
                 fuzzy: "example.com",
             },
-            groupIds: {
+            group_ids: {
                 all: ["545AXB44B4XXWMVQ4W8SBT3HHF"],
             },
         },
@@ -3131,7 +3131,7 @@ Returns details for a single customer.
 
 ```typescript
 await client.customers.get({
-    customerId: "customer_id",
+    customer_id: "customer_id",
 });
 ```
 
@@ -3199,10 +3199,10 @@ To update a customer profile that was created by merging existing profiles, you 
 
 ```typescript
 await client.customers.update({
-    customerId: "customer_id",
-    emailAddress: "New.Amelia.Earhart@example.com",
+    customer_id: "customer_id",
+    email_address: "New.Amelia.Earhart@example.com",
     note: "updated customer note",
-    version: 2,
+    version: BigInt("2"),
 });
 ```
 
@@ -3269,7 +3269,7 @@ To delete a customer profile that was created by merging existing profiles, you 
 
 ```typescript
 await client.customers.delete({
-    customerId: "customer_id",
+    customer_id: "customer_id",
 });
 ```
 
@@ -3342,7 +3342,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.devices.list();
+let page = await client.devices.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -3409,7 +3409,7 @@ Retrieves Device with the associated `device_id`.
 
 ```typescript
 await client.devices.get({
-    deviceId: "device_id",
+    device_id: "device_id",
 });
 ```
 
@@ -3481,7 +3481,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.disputes.list();
+let page = await client.disputes.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -3548,7 +3548,7 @@ Returns details about a specific dispute.
 
 ```typescript
 await client.disputes.get({
-    disputeId: "dispute_id",
+    dispute_id: "dispute_id",
 });
 ```
 
@@ -3617,7 +3617,7 @@ does not have sufficient funds, Square debits the associated bank account.
 
 ```typescript
 await client.disputes.accept({
-    disputeId: "dispute_id",
+    dispute_id: "dispute_id",
 });
 ```
 
@@ -3683,7 +3683,7 @@ multipart/form-data file uploads in HEIC, HEIF, JPEG, PDF, PNG, and TIFF formats
 
 ```typescript
 await client.disputes.createEvidenceFile({
-    disputeId: "dispute_id",
+    dispute_id: "dispute_id",
 });
 ```
 
@@ -3748,10 +3748,10 @@ Uploads text to use as evidence for a dispute challenge.
 
 ```typescript
 await client.disputes.createEvidenceText({
-    disputeId: "dispute_id",
-    idempotencyKey: "ed3ee3933d946f1514d505d173c82648",
-    evidenceType: "TRACKING_NUMBER",
-    evidenceText: "1Z8888888888888888",
+    dispute_id: "dispute_id",
+    idempotency_key: "ed3ee3933d946f1514d505d173c82648",
+    evidence_type: "TRACKING_NUMBER",
+    evidence_text: "1Z8888888888888888",
 });
 ```
 
@@ -3822,7 +3822,7 @@ a dispute after submission.
 
 ```typescript
 await client.disputes.submitEvidence({
-    disputeId: "dispute_id",
+    dispute_id: "dispute_id",
 });
 ```
 
@@ -3892,7 +3892,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.employees.list();
+let page = await client.employees.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -4270,7 +4270,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.giftCards.list();
+let page = await client.giftCards.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -4341,9 +4341,9 @@ to refund a payment to the new gift card.
 
 ```typescript
 await client.giftCards.create({
-    idempotencyKey: "NC9Tm69EjbjtConu",
-    locationId: "81FN9BNFZTKS4",
-    giftCard: {
+    idempotency_key: "NC9Tm69EjbjtConu",
+    location_id: "81FN9BNFZTKS4",
+    gift_card: {
         type: "DIGITAL",
     },
 });
@@ -4540,8 +4540,8 @@ Links a customer to a gift card, which is also referred to as adding a card on f
 
 ```typescript
 await client.giftCards.linkCustomer({
-    giftCardId: "gift_card_id",
-    customerId: "GKY0FZ3V717AH8Q2D821PNT2ZW",
+    gift_card_id: "gift_card_id",
+    customer_id: "GKY0FZ3V717AH8Q2D821PNT2ZW",
 });
 ```
 
@@ -4606,8 +4606,8 @@ Unlinks a customer from a gift card, which is also referred to as removing a car
 
 ```typescript
 await client.giftCards.unlinkCustomer({
-    giftCardId: "gift_card_id",
-    customerId: "GKY0FZ3V717AH8Q2D821PNT2ZW",
+    gift_card_id: "gift_card_id",
+    customer_id: "GKY0FZ3V717AH8Q2D821PNT2ZW",
 });
 ```
 
@@ -4740,7 +4740,7 @@ is updated to conform to the standard convention.
 
 ```typescript
 await client.inventory.deprecatedGetAdjustment({
-    adjustmentId: "adjustment_id",
+    adjustment_id: "adjustment_id",
 });
 ```
 
@@ -4806,7 +4806,7 @@ with the provided `adjustment_id`.
 
 ```typescript
 await client.inventory.getAdjustment({
-    adjustmentId: "adjustment_id",
+    adjustment_id: "adjustment_id",
 });
 ```
 
@@ -4872,22 +4872,22 @@ is updated to conform to the standard convention.
 
 ```typescript
 await client.inventory.deprecatedBatchChange({
-    idempotencyKey: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+    idempotency_key: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
     changes: [
         {
             type: "PHYSICAL_COUNT",
-            physicalCount: {
-                referenceId: "1536bfbf-efed-48bf-b17d-a197141b2a92",
-                catalogObjectId: "W62UWFY35CWMYGVWK6TWJDNI",
+            physical_count: {
+                reference_id: "1536bfbf-efed-48bf-b17d-a197141b2a92",
+                catalog_object_id: "W62UWFY35CWMYGVWK6TWJDNI",
                 state: "IN_STOCK",
-                locationId: "C6W5YS5QM06F5",
+                location_id: "C6W5YS5QM06F5",
                 quantity: "53",
-                teamMemberId: "LRK57NSQ5X7PUD05",
-                occurredAt: "2016-11-16T22:25:24.878Z",
+                team_member_id: "LRK57NSQ5X7PUD05",
+                occurred_at: "2016-11-16T22:25:24.878Z",
             },
         },
     ],
-    ignoreUnchangedCounts: true,
+    ignore_unchanged_counts: true,
 });
 ```
 
@@ -4953,12 +4953,12 @@ is updated to conform to the standard convention.
 
 ```typescript
 await client.inventory.deprecatedBatchGetChanges({
-    catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
-    locationIds: ["C6W5YS5QM06F5"],
+    catalog_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
+    location_ids: ["C6W5YS5QM06F5"],
     types: ["PHYSICAL_COUNT"],
     states: ["IN_STOCK"],
-    updatedAfter: "2016-11-01T00:00:00.000Z",
-    updatedBefore: "2016-12-01T00:00:00.000Z",
+    updated_after: "2016-11-01T00:00:00.000Z",
+    updated_before: "2016-12-01T00:00:00.000Z",
 });
 ```
 
@@ -5024,9 +5024,9 @@ is updated to conform to the standard convention.
 
 ```typescript
 await client.inventory.deprecatedBatchGetCounts({
-    catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
-    locationIds: ["59TNP9SA8VGDA"],
-    updatedAfter: "2016-11-16T00:00:00.000Z",
+    catalog_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
+    location_ids: ["59TNP9SA8VGDA"],
+    updated_after: "2016-11-16T00:00:00.000Z",
 });
 ```
 
@@ -5095,22 +5095,22 @@ On failure: returns a list of related errors.
 
 ```typescript
 await client.inventory.batchCreateChanges({
-    idempotencyKey: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+    idempotency_key: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
     changes: [
         {
             type: "PHYSICAL_COUNT",
-            physicalCount: {
-                referenceId: "1536bfbf-efed-48bf-b17d-a197141b2a92",
-                catalogObjectId: "W62UWFY35CWMYGVWK6TWJDNI",
+            physical_count: {
+                reference_id: "1536bfbf-efed-48bf-b17d-a197141b2a92",
+                catalog_object_id: "W62UWFY35CWMYGVWK6TWJDNI",
                 state: "IN_STOCK",
-                locationId: "C6W5YS5QM06F5",
+                location_id: "C6W5YS5QM06F5",
                 quantity: "53",
-                teamMemberId: "LRK57NSQ5X7PUD05",
-                occurredAt: "2016-11-16T22:25:24.878Z",
+                team_member_id: "LRK57NSQ5X7PUD05",
+                occurred_at: "2016-11-16T22:25:24.878Z",
             },
         },
     ],
-    ignoreUnchangedCounts: true,
+    ignore_unchanged_counts: true,
 });
 ```
 
@@ -5182,25 +5182,25 @@ that cannot be handled by other, simpler endpoints.
 
 ```typescript
 const response = await client.inventory.batchGetChanges({
-    catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
-    locationIds: ["C6W5YS5QM06F5"],
+    catalog_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
+    location_ids: ["C6W5YS5QM06F5"],
     types: ["PHYSICAL_COUNT"],
     states: ["IN_STOCK"],
-    updatedAfter: "2016-11-01T00:00:00.000Z",
-    updatedBefore: "2016-12-01T00:00:00.000Z",
+    updated_after: "2016-11-01T00:00:00.000Z",
+    updated_before: "2016-12-01T00:00:00.000Z",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.inventory.batchGetChanges({
-    catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
-    locationIds: ["C6W5YS5QM06F5"],
+let page = await client.inventory.batchGetChanges({
+    catalog_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
+    location_ids: ["C6W5YS5QM06F5"],
     types: ["PHYSICAL_COUNT"],
     states: ["IN_STOCK"],
-    updatedAfter: "2016-11-01T00:00:00.000Z",
-    updatedBefore: "2016-12-01T00:00:00.000Z",
+    updated_after: "2016-11-01T00:00:00.000Z",
+    updated_before: "2016-12-01T00:00:00.000Z",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -5278,19 +5278,19 @@ in response to receiving a Webhook notification.
 
 ```typescript
 const response = await client.inventory.batchGetCounts({
-    catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
-    locationIds: ["59TNP9SA8VGDA"],
-    updatedAfter: "2016-11-16T00:00:00.000Z",
+    catalog_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
+    location_ids: ["59TNP9SA8VGDA"],
+    updated_after: "2016-11-16T00:00:00.000Z",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.inventory.batchGetCounts({
-    catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
-    locationIds: ["59TNP9SA8VGDA"],
-    updatedAfter: "2016-11-16T00:00:00.000Z",
+let page = await client.inventory.batchGetCounts({
+    catalog_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
+    location_ids: ["59TNP9SA8VGDA"],
+    updated_after: "2016-11-16T00:00:00.000Z",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -5359,7 +5359,7 @@ is updated to conform to the standard convention.
 
 ```typescript
 await client.inventory.deprecatedGetPhysicalCount({
-    physicalCountId: "physical_count_id",
+    physical_count_id: "physical_count_id",
 });
 ```
 
@@ -5425,7 +5425,7 @@ object with the provided `physical_count_id`.
 
 ```typescript
 await client.inventory.getPhysicalCount({
-    physicalCountId: "physical_count_id",
+    physical_count_id: "physical_count_id",
 });
 ```
 
@@ -5491,7 +5491,7 @@ with the provided `transfer_id`.
 
 ```typescript
 await client.inventory.getTransfer({
-    transferId: "transfer_id",
+    transfer_id: "transfer_id",
 });
 ```
 
@@ -5559,15 +5559,15 @@ For more sophisticated queries, use a batch endpoint.
 
 ```typescript
 const response = await client.inventory.get({
-    catalogObjectId: "catalog_object_id",
+    catalog_object_id: "catalog_object_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.inventory.get({
-    catalogObjectId: "catalog_object_id",
+let page = await client.inventory.get({
+    catalog_object_id: "catalog_object_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -5647,15 +5647,15 @@ sophisticated queries, use a batch endpoint.
 
 ```typescript
 const response = await client.inventory.changes({
-    catalogObjectId: "catalog_object_id",
+    catalog_object_id: "catalog_object_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.inventory.changes({
-    catalogObjectId: "catalog_object_id",
+let page = await client.inventory.changes({
+    catalog_object_id: "catalog_object_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -5727,15 +5727,15 @@ use in a subsequent request to retrieve the next set of invoices.
 
 ```typescript
 const response = await client.invoices.list({
-    locationId: "location_id",
+    location_id: "location_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.invoices.list({
-    locationId: "location_id",
+let page = await client.invoices.list({
+    location_id: "location_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -5808,38 +5808,38 @@ You must publish the invoice before Square can process it (send it to the custom
 ```typescript
 await client.invoices.create({
     invoice: {
-        locationId: "ES0RJRZYEC39A",
-        orderId: "CAISENgvlJ6jLWAzERDzjyHVybY",
-        primaryRecipient: {
-            customerId: "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+        location_id: "ES0RJRZYEC39A",
+        order_id: "CAISENgvlJ6jLWAzERDzjyHVybY",
+        primary_recipient: {
+            customer_id: "JDKYHBWT1D4F8MFH63DBMEN8Y4",
         },
-        paymentRequests: [
+        payment_requests: [
             {
-                requestType: "BALANCE",
-                dueDate: "2030-01-24",
-                tippingEnabled: true,
-                automaticPaymentSource: "NONE",
+                request_type: "BALANCE",
+                due_date: "2030-01-24",
+                tipping_enabled: true,
+                automatic_payment_source: "NONE",
                 reminders: [
                     {
-                        relativeScheduledDays: -1,
+                        relative_scheduled_days: -1,
                         message: "Your invoice is due tomorrow",
                     },
                 ],
             },
         ],
-        deliveryMethod: "EMAIL",
-        invoiceNumber: "inv-100",
+        delivery_method: "EMAIL",
+        invoice_number: "inv-100",
         title: "Event Planning Services",
         description: "We appreciate your business!",
-        scheduledAt: "2030-01-13T10:00:00Z",
-        acceptedPaymentMethods: {
+        scheduled_at: "2030-01-13T10:00:00Z",
+        accepted_payment_methods: {
             card: true,
-            squareGiftCard: false,
-            bankAccount: false,
-            buyNowPayLater: false,
-            cashAppPay: false,
+            square_gift_card: false,
+            bank_account: false,
+            buy_now_pay_later: false,
+            cash_app_pay: false,
         },
-        customFields: [
+        custom_fields: [
             {
                 label: "Event Reference Number",
                 value: "Ref. #1234",
@@ -5851,10 +5851,10 @@ await client.invoices.create({
                 placement: "BELOW_LINE_ITEMS",
             },
         ],
-        saleOrServiceDate: "2030-01-24",
-        storePaymentMethodEnabled: false,
+        sale_or_service_date: "2030-01-24",
+        store_payment_method_enabled: false,
     },
-    idempotencyKey: "ce3748f9-5fc1-4762-aa12-aae5e843f1f4",
+    idempotency_key: "ce3748f9-5fc1-4762-aa12-aae5e843f1f4",
 });
 ```
 
@@ -5927,8 +5927,8 @@ that you use in a subsequent request to retrieve the next set of invoices.
 await client.invoices.search({
     query: {
         filter: {
-            locationIds: ["ES0RJRZYEC39A"],
-            customerIds: ["JDKYHBWT1D4F8MFH63DBMEN8Y4"],
+            location_ids: ["ES0RJRZYEC39A"],
+            customer_ids: ["JDKYHBWT1D4F8MFH63DBMEN8Y4"],
         },
         sort: {
             field: "INVOICE_SORT_DATE",
@@ -6000,7 +6000,7 @@ Retrieves an invoice by invoice ID.
 
 ```typescript
 await client.invoices.get({
-    invoiceId: "invoice_id",
+    invoice_id: "invoice_id",
 });
 ```
 
@@ -6068,17 +6068,17 @@ Some restrictions apply to updating invoices. For example, you cannot change the
 
 ```typescript
 await client.invoices.update({
-    invoiceId: "invoice_id",
+    invoice_id: "invoice_id",
     invoice: {
         version: 1,
-        paymentRequests: [
+        payment_requests: [
             {
                 uid: "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
-                tippingEnabled: false,
+                tipping_enabled: false,
             },
         ],
     },
-    idempotencyKey: "4ee82288-0910-499e-ab4c-5d0071dad1be",
+    idempotency_key: "4ee82288-0910-499e-ab4c-5d0071dad1be",
 });
 ```
 
@@ -6145,7 +6145,7 @@ invoice (you cannot delete a published invoice, including one that is scheduled 
 
 ```typescript
 await client.invoices.delete({
-    invoiceId: "invoice_id",
+    invoice_id: "invoice_id",
 });
 ```
 
@@ -6217,7 +6217,7 @@ in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
 
 ```typescript
 await client.invoices.createInvoiceAttachment({
-    invoiceId: "invoice_id",
+    invoice_id: "invoice_id",
 });
 ```
 
@@ -6283,8 +6283,8 @@ from invoices in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
 
 ```typescript
 await client.invoices.deleteInvoiceAttachment({
-    invoiceId: "invoice_id",
-    attachmentId: "attachment_id",
+    invoice_id: "invoice_id",
+    attachment_id: "attachment_id",
 });
 ```
 
@@ -6352,7 +6352,7 @@ You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`
 
 ```typescript
 await client.invoices.cancel({
-    invoiceId: "invoice_id",
+    invoice_id: "invoice_id",
     version: 0,
 });
 ```
@@ -6431,9 +6431,9 @@ and `PAYMENTS_WRITE` are required when publishing invoices configured for card-o
 
 ```typescript
 await client.invoices.publish({
-    invoiceId: "invoice_id",
+    invoice_id: "invoice_id",
     version: 1,
-    idempotencyKey: "32da42d0-1997-41b0-826b-f09464fc2c2e",
+    idempotency_key: "32da42d0-1997-41b0-826b-f09464fc2c2e",
 });
 ```
 
@@ -6507,16 +6507,16 @@ The following `draft_shift_details` fields are required:
 
 ```typescript
 await client.labor.createScheduledShift({
-    idempotencyKey: "HIDSNG5KS478L",
-    scheduledShift: {
-        draftShiftDetails: {
-            teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
-            locationId: "PAA1RJZZKXBFG",
-            jobId: "FzbJAtt9qEWncK1BWgVCxQ6M",
-            startAt: "2019-01-25T03:11:00-05:00",
-            endAt: "2019-01-25T13:11:00-05:00",
+    idempotency_key: "HIDSNG5KS478L",
+    scheduled_shift: {
+        draft_shift_details: {
+            team_member_id: "ormj0jJJZ5OZIzxrZYJI",
+            location_id: "PAA1RJZZKXBFG",
+            job_id: "FzbJAtt9qEWncK1BWgVCxQ6M",
+            start_at: "2019-01-25T03:11:00-05:00",
+            end_at: "2019-01-25T13:11:00-05:00",
             notes: "Dont forget to prep the vegetables",
-            isDeleted: false,
+            is_deleted: false,
         },
     },
 });
@@ -6588,10 +6588,10 @@ The minimum `start_at` and maximum `end_at` timestamps of all shifts in a
 
 ```typescript
 await client.labor.bulkPublishScheduledShifts({
-    scheduledShifts: {
+    scheduled_shifts: {
         key: {},
     },
-    scheduledShiftNotificationAudience: "AFFECTED",
+    scheduled_shift_notification_audience: "AFFECTED",
 });
 ```
 
@@ -6659,7 +6659,7 @@ By default, results are sorted by `start_at` in ascending order.
 await client.labor.searchScheduledShifts({
     query: {
         filter: {
-            assignmentStatus: "ASSIGNED",
+            assignment_status: "ASSIGNED",
         },
         sort: {
             field: "CREATED_AT",
@@ -6807,15 +6807,15 @@ and then publish the shift.
 ```typescript
 await client.labor.updateScheduledShift({
     id: "id",
-    scheduledShift: {
-        draftShiftDetails: {
-            teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
-            locationId: "PAA1RJZZKXBFG",
-            jobId: "FzbJAtt9qEWncK1BWgVCxQ6M",
-            startAt: "2019-03-25T03:11:00-05:00",
-            endAt: "2019-03-25T13:18:00-05:00",
+    scheduled_shift: {
+        draft_shift_details: {
+            team_member_id: "ormj0jJJZ5OZIzxrZYJI",
+            location_id: "PAA1RJZZKXBFG",
+            job_id: "FzbJAtt9qEWncK1BWgVCxQ6M",
+            start_at: "2019-03-25T03:11:00-05:00",
+            end_at: "2019-03-25T13:18:00-05:00",
             notes: "Dont forget to prep the vegetables",
-            isDeleted: false,
+            is_deleted: false,
         },
         version: 1,
     },
@@ -6885,9 +6885,9 @@ Publishes a scheduled shift. When a scheduled shift is published, Square keeps t
 ```typescript
 await client.labor.publishScheduledShift({
     id: "id",
-    idempotencyKey: "HIDSNG5KS478L",
+    idempotency_key: "HIDSNG5KS478L",
     version: 2,
-    scheduledShiftNotificationAudience: "ALL",
+    scheduled_shift_notification_audience: "ALL",
 });
 ```
 
@@ -6969,32 +6969,32 @@ the `Timecard.end_at`, or both.
 
 ```typescript
 await client.labor.createTimecard({
-    idempotencyKey: "HIDSNG5KS478L",
+    idempotency_key: "HIDSNG5KS478L",
     timecard: {
-        locationId: "PAA1RJZZKXBFG",
-        startAt: "2019-01-25T03:11:00-05:00",
-        endAt: "2019-01-25T13:11:00-05:00",
+        location_id: "PAA1RJZZKXBFG",
+        start_at: "2019-01-25T03:11:00-05:00",
+        end_at: "2019-01-25T13:11:00-05:00",
         wage: {
             title: "Barista",
-            hourlyRate: {
-                amount: 1100,
+            hourly_rate: {
+                amount: BigInt("1100"),
                 currency: "USD",
             },
-            tipEligible: true,
+            tip_eligible: true,
         },
         breaks: [
             {
-                startAt: "2019-01-25T06:11:00-05:00",
-                endAt: "2019-01-25T06:16:00-05:00",
-                breakTypeId: "REGS1EQR1TPZ5",
+                start_at: "2019-01-25T06:11:00-05:00",
+                end_at: "2019-01-25T06:16:00-05:00",
+                break_type_id: "REGS1EQR1TPZ5",
                 name: "Tea Break",
-                expectedDuration: "PT5M",
-                isPaid: true,
+                expected_duration: "PT5M",
+                is_paid: true,
             },
         ],
-        teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
-        declaredCashTipMoney: {
-            amount: 500,
+        team_member_id: "ormj0jJJZ5OZIzxrZYJI",
+        declared_cash_tip_money: {
+            amount: BigInt("500"),
             currency: "USD",
         },
     },
@@ -7079,12 +7079,12 @@ await client.labor.searchTimecards({
     query: {
         filter: {
             workday: {
-                dateRange: {
-                    startDate: "2019-01-20",
-                    endDate: "2019-02-03",
+                date_range: {
+                    start_date: "2019-01-20",
+                    end_date: "2019-02-03",
                 },
-                matchTimecardsBy: "START_AT",
-                defaultTimezone: "America/Los_Angeles",
+                match_timecards_by: "START_AT",
+                default_timezone: "America/Los_Angeles",
             },
         },
     },
@@ -7226,33 +7226,33 @@ set on each `Break`.
 await client.labor.updateTimecard({
     id: "id",
     timecard: {
-        locationId: "PAA1RJZZKXBFG",
-        startAt: "2019-01-25T03:11:00-05:00",
-        endAt: "2019-01-25T13:11:00-05:00",
+        location_id: "PAA1RJZZKXBFG",
+        start_at: "2019-01-25T03:11:00-05:00",
+        end_at: "2019-01-25T13:11:00-05:00",
         wage: {
             title: "Bartender",
-            hourlyRate: {
-                amount: 1500,
+            hourly_rate: {
+                amount: BigInt("1500"),
                 currency: "USD",
             },
-            tipEligible: true,
+            tip_eligible: true,
         },
         breaks: [
             {
                 id: "X7GAQYVVRRG6P",
-                startAt: "2019-01-25T06:11:00-05:00",
-                endAt: "2019-01-25T06:16:00-05:00",
-                breakTypeId: "REGS1EQR1TPZ5",
+                start_at: "2019-01-25T06:11:00-05:00",
+                end_at: "2019-01-25T06:16:00-05:00",
+                break_type_id: "REGS1EQR1TPZ5",
                 name: "Tea Break",
-                expectedDuration: "PT5M",
-                isPaid: true,
+                expected_duration: "PT5M",
+                is_paid: true,
             },
         ],
         status: "CLOSED",
         version: 1,
-        teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
-        declaredCashTipMoney: {
-            amount: 500,
+        team_member_id: "ormj0jJJZ5OZIzxrZYJI",
+        declared_cash_tip_money: {
+            amount: BigInt("500"),
             currency: "USD",
         },
     },
@@ -7452,10 +7452,10 @@ await client.locations.create({
     location: {
         name: "Midtown",
         address: {
-            addressLine1: "1234 Peachtree St. NE",
+            address_line_1: "1234 Peachtree St. NE",
             locality: "Atlanta",
-            administrativeDistrictLevel1: "GA",
-            postalCode: "30309",
+            administrative_district_level_1: "GA",
+            postal_code: "30309",
         },
         description: "Midtown Atlanta store",
     },
@@ -7524,7 +7524,7 @@ as the location ID to retrieve details of the [main location](https://developer.
 
 ```typescript
 await client.locations.get({
-    locationId: "location_id",
+    location_id: "location_id",
 });
 ```
 
@@ -7589,24 +7589,24 @@ Updates a [location](https://developer.squareup.com/docs/locations-api).
 
 ```typescript
 await client.locations.update({
-    locationId: "location_id",
+    location_id: "location_id",
     location: {
-        businessHours: {
+        business_hours: {
             periods: [
                 {
-                    dayOfWeek: "FRI",
-                    startLocalTime: "07:00",
-                    endLocalTime: "18:00",
+                    day_of_week: "FRI",
+                    start_local_time: "07:00",
+                    end_local_time: "18:00",
                 },
                 {
-                    dayOfWeek: "SAT",
-                    startLocalTime: "07:00",
-                    endLocalTime: "18:00",
+                    day_of_week: "SAT",
+                    start_local_time: "07:00",
+                    end_local_time: "18:00",
                 },
                 {
-                    dayOfWeek: "SUN",
-                    startLocalTime: "09:00",
-                    endLocalTime: "15:00",
+                    day_of_week: "SUN",
+                    start_local_time: "09:00",
+                    end_local_time: "15:00",
                 },
             ],
         },
@@ -7681,45 +7681,45 @@ For more information, see [Checkout API highlights](https://developer.squareup.c
 
 ```typescript
 await client.locations.checkouts({
-    locationId: "location_id",
-    idempotencyKey: "86ae1696-b1e3-4328-af6d-f1e04d947ad6",
+    location_id: "location_id",
+    idempotency_key: "86ae1696-b1e3-4328-af6d-f1e04d947ad6",
     order: {
         order: {
-            locationId: "location_id",
-            referenceId: "reference_id",
-            customerId: "customer_id",
-            lineItems: [
+            location_id: "location_id",
+            reference_id: "reference_id",
+            customer_id: "customer_id",
+            line_items: [
                 {
                     name: "Printed T Shirt",
                     quantity: "2",
-                    appliedTaxes: [
+                    applied_taxes: [
                         {
-                            taxUid: "38ze1696-z1e3-5628-af6d-f1e04d947fg3",
+                            tax_uid: "38ze1696-z1e3-5628-af6d-f1e04d947fg3",
                         },
                     ],
-                    appliedDiscounts: [
+                    applied_discounts: [
                         {
-                            discountUid: "56ae1696-z1e3-9328-af6d-f1e04d947gd4",
+                            discount_uid: "56ae1696-z1e3-9328-af6d-f1e04d947gd4",
                         },
                     ],
-                    basePriceMoney: {
-                        amount: 1500,
+                    base_price_money: {
+                        amount: BigInt("1500"),
                         currency: "USD",
                     },
                 },
                 {
                     name: "Slim Jeans",
                     quantity: "1",
-                    basePriceMoney: {
-                        amount: 2500,
+                    base_price_money: {
+                        amount: BigInt("2500"),
                         currency: "USD",
                     },
                 },
                 {
                     name: "Woven Sweater",
                     quantity: "3",
-                    basePriceMoney: {
-                        amount: 3500,
+                    base_price_money: {
+                        amount: BigInt("3500"),
                         currency: "USD",
                     },
                 },
@@ -7736,36 +7736,36 @@ await client.locations.checkouts({
                 {
                     uid: "56ae1696-z1e3-9328-af6d-f1e04d947gd4",
                     type: "FIXED_AMOUNT",
-                    amountMoney: {
-                        amount: 100,
+                    amount_money: {
+                        amount: BigInt("100"),
                         currency: "USD",
                     },
                     scope: "LINE_ITEM",
                 },
             ],
         },
-        idempotencyKey: "12ae1696-z1e3-4328-af6d-f1e04d947gd4",
+        idempotency_key: "12ae1696-z1e3-4328-af6d-f1e04d947gd4",
     },
-    askForShippingAddress: true,
-    merchantSupportEmail: "merchant+support@website.com",
-    prePopulateBuyerEmail: "example@email.com",
-    prePopulateShippingAddress: {
-        addressLine1: "1455 Market St.",
-        addressLine2: "Suite 600",
+    ask_for_shipping_address: true,
+    merchant_support_email: "merchant+support@website.com",
+    pre_populate_buyer_email: "example@email.com",
+    pre_populate_shipping_address: {
+        address_line_1: "1455 Market St.",
+        address_line_2: "Suite 600",
         locality: "San Francisco",
-        administrativeDistrictLevel1: "CA",
-        postalCode: "94103",
+        administrative_district_level_1: "CA",
+        postal_code: "94103",
         country: "US",
-        firstName: "Jane",
-        lastName: "Doe",
+        first_name: "Jane",
+        last_name: "Doe",
     },
-    redirectUrl: "https://merchant.website.com/order-confirm",
-    additionalRecipients: [
+    redirect_url: "https://merchant.website.com/order-confirm",
+    additional_recipients: [
         {
-            locationId: "057P5VYJ4A5X1",
+            location_id: "057P5VYJ4A5X1",
             description: "Application fees",
-            amountMoney: {
-                amount: 60,
+            amount_money: {
+                amount: BigInt("60"),
                 currency: "USD",
             },
         },
@@ -7845,8 +7845,8 @@ Search results are sorted by `created_at` in descending order.
 await client.loyalty.searchEvents({
     query: {
         filter: {
-            orderFilter: {
-                orderId: "PyATxhYLfsMqpVkcKJITPydgEYfZY",
+            order_filter: {
+                order_id: "PyATxhYLfsMqpVkcKJITPydgEYfZY",
             },
         },
     },
@@ -7931,7 +7931,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.merchants.list();
+let page = await client.merchants.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -7998,7 +7998,7 @@ Retrieves the `Merchant` object for the given `merchant_id`.
 
 ```typescript
 await client.merchants.get({
-    merchantId: "merchant_id",
+    merchant_id: "merchant_id",
 });
 ```
 
@@ -8065,7 +8065,7 @@ Retrieves the location-level settings for a Square-hosted checkout page.
 
 ```typescript
 await client.checkout.retrieveLocationSettings({
-    locationId: "location_id",
+    location_id: "location_id",
 });
 ```
 
@@ -8130,8 +8130,8 @@ Updates the location-level settings for a Square-hosted checkout page.
 
 ```typescript
 await client.checkout.updateLocationSettings({
-    locationId: "location_id",
-    locationSettings: {},
+    location_id: "location_id",
+    location_settings: {},
 });
 ```
 
@@ -8251,7 +8251,7 @@ Updates the merchant-level settings for a Square-hosted checkout page.
 
 ```typescript
 await client.checkout.updateMerchantSettings({
-    merchantSettings: {},
+    merchant_settings: {},
 });
 ```
 
@@ -8325,28 +8325,28 @@ You can modify open orders using the [UpdateOrder](api-endpoint:Orders-UpdateOrd
 ```typescript
 await client.orders.create({
     order: {
-        locationId: "057P5VYJ4A5X1",
-        referenceId: "my-order-001",
-        lineItems: [
+        location_id: "057P5VYJ4A5X1",
+        reference_id: "my-order-001",
+        line_items: [
             {
                 name: "New York Strip Steak",
                 quantity: "1",
-                basePriceMoney: {
-                    amount: 1599,
+                base_price_money: {
+                    amount: BigInt("1599"),
                     currency: "USD",
                 },
             },
             {
                 quantity: "2",
-                catalogObjectId: "BEMYCSMIJL46OCDV4KYIKXIB",
+                catalog_object_id: "BEMYCSMIJL46OCDV4KYIKXIB",
                 modifiers: [
                     {
-                        catalogObjectId: "CHQX7Y4KY6N5KINJKZCFURPZ",
+                        catalog_object_id: "CHQX7Y4KY6N5KINJKZCFURPZ",
                     },
                 ],
-                appliedDiscounts: [
+                applied_discounts: [
                     {
-                        discountUid: "one-dollar-off",
+                        discount_uid: "one-dollar-off",
                     },
                 ],
             },
@@ -8368,21 +8368,21 @@ await client.orders.create({
             },
             {
                 uid: "membership-discount",
-                catalogObjectId: "DB7L55ZH2BGWI4H23ULIWOQ7",
+                catalog_object_id: "DB7L55ZH2BGWI4H23ULIWOQ7",
                 scope: "ORDER",
             },
             {
                 uid: "one-dollar-off",
                 name: "Sale - $1.00 off",
-                amountMoney: {
-                    amount: 100,
+                amount_money: {
+                    amount: BigInt("100"),
                     currency: "USD",
                 },
                 scope: "LINE_ITEM",
             },
         ],
     },
-    idempotencyKey: "8193148c-9586-11e6-99f9-28cfe92138cf",
+    idempotency_key: "8193148c-9586-11e6-99f9-28cfe92138cf",
 });
 ```
 
@@ -8449,8 +8449,8 @@ If a given order ID does not exist, the ID is ignored instead of generating an e
 
 ```typescript
 await client.orders.batchGet({
-    locationId: "057P5VYJ4A5X1",
-    orderIds: ["CAISEM82RcpmcFBM0TfOyiHV3es", "CAISENgvlJ6jLWAzERDzjyHVybY"],
+    location_id: "057P5VYJ4A5X1",
+    order_ids: ["CAISEM82RcpmcFBM0TfOyiHV3es", "CAISENgvlJ6jLWAzERDzjyHVybY"],
 });
 ```
 
@@ -8516,21 +8516,21 @@ Enables applications to preview order pricing without creating an order.
 ```typescript
 await client.orders.calculate({
     order: {
-        locationId: "D7AVYMEAPJ3A3",
-        lineItems: [
+        location_id: "D7AVYMEAPJ3A3",
+        line_items: [
             {
                 name: "Item 1",
                 quantity: "1",
-                basePriceMoney: {
-                    amount: 500,
+                base_price_money: {
+                    amount: BigInt("500"),
                     currency: "USD",
                 },
             },
             {
                 name: "Item 2",
                 quantity: "2",
-                basePriceMoney: {
-                    amount: 300,
+                base_price_money: {
+                    amount: BigInt("300"),
                     currency: "USD",
                 },
             },
@@ -8608,9 +8608,9 @@ only the core fields (such as line items, taxes, and discounts) copied from the 
 
 ```typescript
 await client.orders.clone({
-    orderId: "ZAISEM52YcpmcWAzERDOyiWS123",
+    order_id: "ZAISEM52YcpmcWAzERDOyiWS123",
     version: 3,
-    idempotencyKey: "UNIQUE_STRING",
+    idempotency_key: "UNIQUE_STRING",
 });
 ```
 
@@ -8691,26 +8691,26 @@ not the time it was subsequently transmitted to Square.
 
 ```typescript
 await client.orders.search({
-    locationIds: ["057P5VYJ4A5X1", "18YC4JDH91E1H"],
+    location_ids: ["057P5VYJ4A5X1", "18YC4JDH91E1H"],
     query: {
         filter: {
-            stateFilter: {
+            state_filter: {
                 states: ["COMPLETED"],
             },
-            dateTimeFilter: {
-                closedAt: {
-                    startAt: "2018-03-03T20:00:00+00:00",
-                    endAt: "2019-03-04T21:54:45+00:00",
+            date_time_filter: {
+                closed_at: {
+                    start_at: "2018-03-03T20:00:00+00:00",
+                    end_at: "2019-03-04T21:54:45+00:00",
                 },
             },
         },
         sort: {
-            sortField: "CLOSED_AT",
-            sortOrder: "DESC",
+            sort_field: "CLOSED_AT",
+            sort_order: "DESC",
         },
     },
     limit: 3,
-    returnEntries: true,
+    return_entries: true,
 });
 ```
 
@@ -8775,7 +8775,7 @@ Retrieves an [Order](entity:Order) by ID.
 
 ```typescript
 await client.orders.get({
-    orderId: "order_id",
+    order_id: "order_id",
 });
 ```
 
@@ -8854,24 +8854,24 @@ To pay for an order, see
 
 ```typescript
 await client.orders.update({
-    orderId: "order_id",
+    order_id: "order_id",
     order: {
-        locationId: "location_id",
-        lineItems: [
+        location_id: "location_id",
+        line_items: [
             {
                 uid: "cookie_uid",
                 name: "COOKIE",
                 quantity: "2",
-                basePriceMoney: {
-                    amount: 200,
+                base_price_money: {
+                    amount: BigInt("200"),
                     currency: "USD",
                 },
             },
         ],
         version: 1,
     },
-    fieldsToClear: ["discounts"],
-    idempotencyKey: "UNIQUE_STRING",
+    fields_to_clear: ["discounts"],
+    idempotency_key: "UNIQUE_STRING",
 });
 ```
 
@@ -8948,9 +8948,9 @@ Using a delayed capture payment with `PayOrder` completes the approved payment.
 
 ```typescript
 await client.orders.pay({
-    orderId: "order_id",
-    idempotencyKey: "c043a359-7ad9-4136-82a9-c3f1d66dcbff",
-    paymentIds: ["EnZdNAlWCmfh6Mt5FMNST1o7taB", "0LRiVlbXVwe8ozu4KbZxd12mvaB"],
+    order_id: "order_id",
+    idempotency_key: "c043a359-7ad9-4136-82a9-c3f1d66dcbff",
+    payment_ids: ["EnZdNAlWCmfh6Mt5FMNST1o7taB", "0LRiVlbXVwe8ozu4KbZxd12mvaB"],
 });
 ```
 
@@ -9027,7 +9027,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.payments.list();
+let page = await client.payments.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -9101,20 +9101,20 @@ The endpoint creates a
 
 ```typescript
 await client.payments.create({
-    sourceId: "ccof:GaJGNaZa8x4OgDJn4GB",
-    idempotencyKey: "7b0f3ec5-086a-4871-8f13-3c81b3875218",
-    amountMoney: {
-        amount: 1000,
+    source_id: "ccof:GaJGNaZa8x4OgDJn4GB",
+    idempotency_key: "7b0f3ec5-086a-4871-8f13-3c81b3875218",
+    amount_money: {
+        amount: BigInt("1000"),
         currency: "USD",
     },
-    appFeeMoney: {
-        amount: 10,
+    app_fee_money: {
+        amount: BigInt("10"),
         currency: "USD",
     },
     autocomplete: true,
-    customerId: "W92WH6P11H4Z77CTET0RNTGFW8",
-    locationId: "L88917AVBK2S5",
-    referenceId: "123456",
+    customer_id: "W92WH6P11H4Z77CTET0RNTGFW8",
+    location_id: "L88917AVBK2S5",
+    reference_id: "123456",
     note: "Brief description",
 });
 ```
@@ -9190,7 +9190,7 @@ returns successfully.
 
 ```typescript
 await client.payments.cancelByIdempotencyKey({
-    idempotencyKey: "a7e36d40-d24b-11e8-b568-0800200c9a66",
+    idempotency_key: "a7e36d40-d24b-11e8-b568-0800200c9a66",
 });
 ```
 
@@ -9255,7 +9255,7 @@ Retrieves details for a specific payment.
 
 ```typescript
 await client.payments.get({
-    paymentId: "payment_id",
+    payment_id: "payment_id",
 });
 ```
 
@@ -9321,19 +9321,19 @@ You can update the `amount_money` and `tip_money` using this endpoint.
 
 ```typescript
 await client.payments.update({
-    paymentId: "payment_id",
+    payment_id: "payment_id",
     payment: {
-        amountMoney: {
-            amount: 1000,
+        amount_money: {
+            amount: BigInt("1000"),
             currency: "USD",
         },
-        tipMoney: {
-            amount: 100,
+        tip_money: {
+            amount: BigInt("100"),
             currency: "USD",
         },
-        versionToken: "ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o",
+        version_token: "ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o",
     },
-    idempotencyKey: "956f8b13-e4ec-45d6-85e8-d1d95ef0c5de",
+    idempotency_key: "956f8b13-e4ec-45d6-85e8-d1d95ef0c5de",
 });
 ```
 
@@ -9399,7 +9399,7 @@ the APPROVED `status`.
 
 ```typescript
 await client.payments.cancel({
-    paymentId: "payment_id",
+    payment_id: "payment_id",
 });
 ```
 
@@ -9467,7 +9467,7 @@ You can use this endpoint to complete a payment with the APPROVED `status`.
 
 ```typescript
 await client.payments.complete({
-    paymentId: "payment_id",
+    payment_id: "payment_id",
 });
 ```
 
@@ -9541,7 +9541,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.payouts.list();
+let page = await client.payouts.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -9609,7 +9609,7 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 
 ```typescript
 await client.payouts.get({
-    payoutId: "payout_id",
+    payout_id: "payout_id",
 });
 ```
 
@@ -9675,15 +9675,15 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 
 ```typescript
 const response = await client.payouts.listEntries({
-    payoutId: "payout_id",
+    payout_id: "payout_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.payouts.listEntries({
-    payoutId: "payout_id",
+let page = await client.payouts.listEntries({
+    payout_id: "payout_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -9763,7 +9763,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.refunds.list();
+let page = await client.refunds.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -9833,16 +9833,16 @@ refund of a cash or external payment. For more information, see
 
 ```typescript
 await client.refunds.refundPayment({
-    idempotencyKey: "9b7f2dcf-49da-4411-b23e-a2d6af21333a",
-    amountMoney: {
-        amount: 1000,
+    idempotency_key: "9b7f2dcf-49da-4411-b23e-a2d6af21333a",
+    amount_money: {
+        amount: BigInt("1000"),
         currency: "USD",
     },
-    appFeeMoney: {
-        amount: 10,
+    app_fee_money: {
+        amount: BigInt("10"),
         currency: "USD",
     },
-    paymentId: "R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",
+    payment_id: "R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",
     reason: "Example",
 });
 ```
@@ -9908,7 +9908,7 @@ Retrieves a specific refund using the `refund_id`.
 
 ```typescript
 await client.refunds.get({
-    refundId: "refund_id",
+    refund_id: "refund_id",
 });
 ```
 
@@ -10038,7 +10038,7 @@ You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of the sit
 
 ```typescript
 await client.snippets.get({
-    siteId: "site_id",
+    site_id: "site_id",
 });
 ```
 
@@ -10108,7 +10108,7 @@ You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of the sit
 
 ```typescript
 await client.snippets.upsert({
-    siteId: "site_id",
+    site_id: "site_id",
     snippet: {
         content: "<script>var js = 1;</script>",
     },
@@ -10180,7 +10180,7 @@ You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of the sit
 
 ```typescript
 await client.snippets.delete({
-    siteId: "site_id",
+    site_id: "site_id",
 });
 ```
 
@@ -10254,20 +10254,20 @@ For more information, see [Create a subscription](https://developer.squareup.com
 
 ```typescript
 await client.subscriptions.create({
-    idempotencyKey: "8193148c-9586-11e6-99f9-28cfe92138cf",
-    locationId: "S8GWD5R9QB376",
-    planVariationId: "6JHXF3B2CW3YKHDV4XEM674H",
-    customerId: "CHFGVKYY8RSV93M5KCYTG4PN0G",
-    startDate: "2023-06-20",
-    cardId: "ccof:qy5x8hHGYsgLrp4Q4GB",
+    idempotency_key: "8193148c-9586-11e6-99f9-28cfe92138cf",
+    location_id: "S8GWD5R9QB376",
+    plan_variation_id: "6JHXF3B2CW3YKHDV4XEM674H",
+    customer_id: "CHFGVKYY8RSV93M5KCYTG4PN0G",
+    start_date: "2023-06-20",
+    card_id: "ccof:qy5x8hHGYsgLrp4Q4GB",
     timezone: "America/Los_Angeles",
     source: {
         name: "My Application",
     },
     phases: [
         {
-            ordinal: 0,
-            orderTemplateId: "U2NaowWxzXwpsZU697x7ZHOAnCNZY",
+            ordinal: BigInt("0"),
+            order_template_id: "U2NaowWxzXwpsZU697x7ZHOAnCNZY",
         },
     ],
 });
@@ -10335,9 +10335,9 @@ variation. For more information, see [Swap Subscription Plan Variations](https:/
 
 ```typescript
 await client.subscriptions.bulkSwapPlan({
-    newPlanVariationId: "FQ7CDXXWSLUJRPM3GFJSJGZ7",
-    oldPlanVariationId: "6JHXF3B2CW3YKHDV4XEM674H",
-    locationId: "S8GWD5R9QB376",
+    new_plan_variation_id: "FQ7CDXXWSLUJRPM3GFJSJGZ7",
+    old_plan_variation_id: "6JHXF3B2CW3YKHDV4XEM674H",
+    location_id: "S8GWD5R9QB376",
 });
 ```
 
@@ -10417,9 +10417,9 @@ customer by subscription creation date.
 await client.subscriptions.search({
     query: {
         filter: {
-            customerIds: ["CHFGVKYY8RSV93M5KCYTG4PN0G"],
-            locationIds: ["S8GWD5R9QB376"],
-            sourceNames: ["My App"],
+            customer_ids: ["CHFGVKYY8RSV93M5KCYTG4PN0G"],
+            location_ids: ["S8GWD5R9QB376"],
+            source_names: ["My App"],
         },
     },
 });
@@ -10486,7 +10486,7 @@ Retrieves a specific subscription.
 
 ```typescript
 await client.subscriptions.get({
-    subscriptionId: "subscription_id",
+    subscription_id: "subscription_id",
 });
 ```
 
@@ -10552,9 +10552,9 @@ To clear a field, set its value to `null`.
 
 ```typescript
 await client.subscriptions.update({
-    subscriptionId: "subscription_id",
+    subscription_id: "subscription_id",
     subscription: {
-        cardId: "{NEW CARD ID}",
+        card_id: "{NEW CARD ID}",
     },
 });
 ```
@@ -10620,8 +10620,8 @@ Deletes a scheduled action for a subscription.
 
 ```typescript
 await client.subscriptions.deleteAction({
-    subscriptionId: "subscription_id",
-    actionId: "action_id",
+    subscription_id: "subscription_id",
+    action_id: "action_id",
 });
 ```
 
@@ -10687,8 +10687,8 @@ for a subscription.
 
 ```typescript
 await client.subscriptions.changeBillingAnchorDate({
-    subscriptionId: "subscription_id",
-    monthlyBillingAnchorDate: 1,
+    subscription_id: "subscription_id",
+    monthly_billing_anchor_date: 1,
 });
 ```
 
@@ -10755,7 +10755,7 @@ the subscription status changes from ACTIVE to CANCELED.
 
 ```typescript
 await client.subscriptions.cancel({
-    subscriptionId: "subscription_id",
+    subscription_id: "subscription_id",
 });
 ```
 
@@ -10820,15 +10820,15 @@ Lists all [events](https://developer.squareup.com/docs/subscriptions-api/actions
 
 ```typescript
 const response = await client.subscriptions.listEvents({
-    subscriptionId: "subscription_id",
+    subscription_id: "subscription_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.subscriptions.listEvents({
-    subscriptionId: "subscription_id",
+let page = await client.subscriptions.listEvents({
+    subscription_id: "subscription_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -10896,7 +10896,7 @@ Schedules a `PAUSE` action to pause an active subscription.
 
 ```typescript
 await client.subscriptions.pause({
-    subscriptionId: "subscription_id",
+    subscription_id: "subscription_id",
 });
 ```
 
@@ -10961,7 +10961,7 @@ Schedules a `RESUME` action to resume a paused or a deactivated subscription.
 
 ```typescript
 await client.subscriptions.resume({
-    subscriptionId: "subscription_id",
+    subscription_id: "subscription_id",
 });
 ```
 
@@ -11027,12 +11027,12 @@ For more information, see [Swap Subscription Plan Variations](https://developer.
 
 ```typescript
 await client.subscriptions.swapPlan({
-    subscriptionId: "subscription_id",
-    newPlanVariationId: "FQ7CDXXWSLUJRPM3GFJSJGZ7",
+    subscription_id: "subscription_id",
+    new_plan_variation_id: "FQ7CDXXWSLUJRPM3GFJSJGZ7",
     phases: [
         {
-            ordinal: 0,
-            orderTemplateId: "uhhnjH9osVv3shUADwaC0b3hNxQZY",
+            ordinal: BigInt("0"),
+            order_template_id: "uhhnjH9osVv3shUADwaC0b3hNxQZY",
         },
     ],
 });
@@ -11107,39 +11107,39 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```typescript
 await client.teamMembers.create({
-    idempotencyKey: "idempotency-key-0",
-    teamMember: {
-        referenceId: "reference_id_1",
+    idempotency_key: "idempotency-key-0",
+    team_member: {
+        reference_id: "reference_id_1",
         status: "ACTIVE",
-        givenName: "Joe",
-        familyName: "Doe",
-        emailAddress: "joe_doe@gmail.com",
-        phoneNumber: "+14159283333",
-        assignedLocations: {
-            assignmentType: "EXPLICIT_LOCATIONS",
-            locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
+        given_name: "Joe",
+        family_name: "Doe",
+        email_address: "joe_doe@gmail.com",
+        phone_number: "+14159283333",
+        assigned_locations: {
+            assignment_type: "EXPLICIT_LOCATIONS",
+            location_ids: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
         },
-        wageSetting: {
-            jobAssignments: [
+        wage_setting: {
+            job_assignments: [
                 {
-                    payType: "SALARY",
-                    annualRate: {
-                        amount: 3000000,
+                    pay_type: "SALARY",
+                    annual_rate: {
+                        amount: BigInt("3000000"),
                         currency: "USD",
                     },
-                    weeklyHours: 40,
-                    jobId: "FjS8x95cqHiMenw4f1NAUH4P",
+                    weekly_hours: 40,
+                    job_id: "FjS8x95cqHiMenw4f1NAUH4P",
                 },
                 {
-                    payType: "HOURLY",
-                    hourlyRate: {
-                        amount: 2000,
+                    pay_type: "HOURLY",
+                    hourly_rate: {
+                        amount: BigInt("2000"),
                         currency: "USD",
                     },
-                    jobId: "VDNpRv8da51NU8qZFC5zDWpF",
+                    job_id: "VDNpRv8da51NU8qZFC5zDWpF",
                 },
             ],
-            isOvertimeExempt: true,
+            is_overtime_exempt: true,
         },
     },
 });
@@ -11211,29 +11211,29 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```typescript
 await client.teamMembers.batchCreate({
-    teamMembers: {
+    team_members: {
         "idempotency-key-1": {
-            teamMember: {
-                referenceId: "reference_id_1",
-                givenName: "Joe",
-                familyName: "Doe",
-                emailAddress: "joe_doe@gmail.com",
-                phoneNumber: "+14159283333",
-                assignedLocations: {
-                    assignmentType: "EXPLICIT_LOCATIONS",
-                    locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
+            team_member: {
+                reference_id: "reference_id_1",
+                given_name: "Joe",
+                family_name: "Doe",
+                email_address: "joe_doe@gmail.com",
+                phone_number: "+14159283333",
+                assigned_locations: {
+                    assignment_type: "EXPLICIT_LOCATIONS",
+                    location_ids: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
                 },
             },
         },
         "idempotency-key-2": {
-            teamMember: {
-                referenceId: "reference_id_2",
-                givenName: "Jane",
-                familyName: "Smith",
-                emailAddress: "jane_smith@gmail.com",
-                phoneNumber: "+14159223334",
-                assignedLocations: {
-                    assignmentType: "ALL_CURRENT_AND_FUTURE_LOCATIONS",
+            team_member: {
+                reference_id: "reference_id_2",
+                given_name: "Jane",
+                family_name: "Smith",
+                email_address: "jane_smith@gmail.com",
+                phone_number: "+14159223334",
+                assigned_locations: {
+                    assignment_type: "ALL_CURRENT_AND_FUTURE_LOCATIONS",
                 },
             },
         },
@@ -11306,33 +11306,33 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```typescript
 await client.teamMembers.batchUpdate({
-    teamMembers: {
+    team_members: {
         "AFMwA08kR-MIF-3Vs0OE": {
-            teamMember: {
-                referenceId: "reference_id_2",
-                isOwner: false,
+            team_member: {
+                reference_id: "reference_id_2",
+                is_owner: false,
                 status: "ACTIVE",
-                givenName: "Jane",
-                familyName: "Smith",
-                emailAddress: "jane_smith@gmail.com",
-                phoneNumber: "+14159223334",
-                assignedLocations: {
-                    assignmentType: "ALL_CURRENT_AND_FUTURE_LOCATIONS",
+                given_name: "Jane",
+                family_name: "Smith",
+                email_address: "jane_smith@gmail.com",
+                phone_number: "+14159223334",
+                assigned_locations: {
+                    assignment_type: "ALL_CURRENT_AND_FUTURE_LOCATIONS",
                 },
             },
         },
         "fpgteZNMaf0qOK-a4t6P": {
-            teamMember: {
-                referenceId: "reference_id_1",
-                isOwner: false,
+            team_member: {
+                reference_id: "reference_id_1",
+                is_owner: false,
                 status: "ACTIVE",
-                givenName: "Joe",
-                familyName: "Doe",
-                emailAddress: "joe_doe@gmail.com",
-                phoneNumber: "+14159283333",
-                assignedLocations: {
-                    assignmentType: "EXPLICIT_LOCATIONS",
-                    locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
+                given_name: "Joe",
+                family_name: "Doe",
+                email_address: "joe_doe@gmail.com",
+                phone_number: "+14159283333",
+                assigned_locations: {
+                    assignment_type: "EXPLICIT_LOCATIONS",
+                    location_ids: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
                 },
             },
         },
@@ -11405,7 +11405,7 @@ the team member is the Square account owner.
 await client.teamMembers.search({
     query: {
         filter: {
-            locationIds: ["0G5P3VGACMMQZ"],
+            location_ids: ["0G5P3VGACMMQZ"],
             status: "ACTIVE",
         },
     },
@@ -11475,7 +11475,7 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```typescript
 await client.teamMembers.get({
-    teamMemberId: "team_member_id",
+    team_member_id: "team_member_id",
 });
 ```
 
@@ -11541,40 +11541,40 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```typescript
 await client.teamMembers.update({
-    teamMemberId: "team_member_id",
+    team_member_id: "team_member_id",
     body: {
-        teamMember: {
-            referenceId: "reference_id_1",
+        team_member: {
+            reference_id: "reference_id_1",
             status: "ACTIVE",
-            givenName: "Joe",
-            familyName: "Doe",
-            emailAddress: "joe_doe@gmail.com",
-            phoneNumber: "+14159283333",
-            assignedLocations: {
-                assignmentType: "EXPLICIT_LOCATIONS",
-                locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
+            given_name: "Joe",
+            family_name: "Doe",
+            email_address: "joe_doe@gmail.com",
+            phone_number: "+14159283333",
+            assigned_locations: {
+                assignment_type: "EXPLICIT_LOCATIONS",
+                location_ids: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
             },
-            wageSetting: {
-                jobAssignments: [
+            wage_setting: {
+                job_assignments: [
                     {
-                        payType: "SALARY",
-                        annualRate: {
-                            amount: 3000000,
+                        pay_type: "SALARY",
+                        annual_rate: {
+                            amount: BigInt("3000000"),
                             currency: "USD",
                         },
-                        weeklyHours: 40,
-                        jobId: "FjS8x95cqHiMenw4f1NAUH4P",
+                        weekly_hours: 40,
+                        job_id: "FjS8x95cqHiMenw4f1NAUH4P",
                     },
                     {
-                        payType: "HOURLY",
-                        hourlyRate: {
-                            amount: 1200,
+                        pay_type: "HOURLY",
+                        hourly_rate: {
+                            amount: BigInt("1200"),
                             currency: "USD",
                         },
-                        jobId: "VDNpRv8da51NU8qZFC5zDWpF",
+                        job_id: "VDNpRv8da51NU8qZFC5zDWpF",
                     },
                 ],
-                isOvertimeExempt: true,
+                is_overtime_exempt: true,
             },
         },
     },
@@ -11710,9 +11710,9 @@ compensation is defined in a [job assignment](entity:JobAssignment) in a team me
 await client.team.createJob({
     job: {
         title: "Cashier",
-        isTipEligible: true,
+        is_tip_eligible: true,
     },
-    idempotencyKey: "idempotency-key-0",
+    idempotency_key: "idempotency-key-0",
 });
 ```
 
@@ -11777,7 +11777,7 @@ Retrieves a specified job.
 
 ```typescript
 await client.team.retrieveJob({
-    jobId: "job_id",
+    job_id: "job_id",
 });
 ```
 
@@ -11844,10 +11844,10 @@ tip eligibility propagate to all `TeamMemberWage` objects that reference the job
 
 ```typescript
 await client.team.updateJob({
-    jobId: "job_id",
+    job_id: "job_id",
     job: {
         title: "Cashier 1",
-        isTipEligible: true,
+        is_tip_eligible: true,
     },
 });
 ```
@@ -11917,7 +11917,7 @@ See [Link and Dismiss Actions](https://developer.squareup.com/docs/terminal-api/
 
 ```typescript
 await client.terminal.dismissTerminalAction({
-    actionId: "action_id",
+    action_id: "action_id",
 });
 ```
 
@@ -11982,7 +11982,7 @@ Dismisses a Terminal checkout request if the status and type of the request perm
 
 ```typescript
 await client.terminal.dismissTerminalCheckout({
-    checkoutId: "checkout_id",
+    checkout_id: "checkout_id",
 });
 ```
 
@@ -12047,7 +12047,7 @@ Dismisses a Terminal refund request if the status and type of the request permit
 
 ```typescript
 await client.terminal.dismissTerminalRefund({
-    terminalRefundId: "terminal_refund_id",
+    terminal_refund_id: "terminal_refund_id",
 });
 ```
 
@@ -12118,22 +12118,22 @@ await client.vendors.batchCreate({
         "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe": {
             name: "Joe's Fresh Seafood",
             address: {
-                addressLine1: "505 Electric Ave",
-                addressLine2: "Suite 600",
+                address_line_1: "505 Electric Ave",
+                address_line_2: "Suite 600",
                 locality: "New York",
-                administrativeDistrictLevel1: "NY",
-                postalCode: "10003",
+                administrative_district_level_1: "NY",
+                postal_code: "10003",
                 country: "US",
             },
             contacts: [
                 {
                     name: "Joe Burrow",
-                    emailAddress: "joe@joesfreshseafood.com",
-                    phoneNumber: "1-212-555-4250",
+                    email_address: "joe@joesfreshseafood.com",
+                    phone_number: "1-212-555-4250",
                     ordinal: 1,
                 },
             ],
-            accountNumber: "4025391",
+            account_number: "4025391",
             note: "a vendor",
         },
     },
@@ -12201,7 +12201,7 @@ Retrieves one or more vendors of specified [Vendor](entity:Vendor) IDs.
 
 ```typescript
 await client.vendors.batchGet({
-    vendorIds: ["INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4"],
+    vendor_ids: ["INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4"],
 });
 ```
 
@@ -12338,26 +12338,26 @@ Creates a single [Vendor](entity:Vendor) object to represent a supplier to a sel
 
 ```typescript
 await client.vendors.create({
-    idempotencyKey: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+    idempotency_key: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
     vendor: {
         name: "Joe's Fresh Seafood",
         address: {
-            addressLine1: "505 Electric Ave",
-            addressLine2: "Suite 600",
+            address_line_1: "505 Electric Ave",
+            address_line_2: "Suite 600",
             locality: "New York",
-            administrativeDistrictLevel1: "NY",
-            postalCode: "10003",
+            administrative_district_level_1: "NY",
+            postal_code: "10003",
             country: "US",
         },
         contacts: [
             {
                 name: "Joe Burrow",
-                emailAddress: "joe@joesfreshseafood.com",
-                phoneNumber: "1-212-555-4250",
+                email_address: "joe@joesfreshseafood.com",
+                phone_number: "1-212-555-4250",
                 ordinal: 1,
             },
         ],
-        accountNumber: "4025391",
+        account_number: "4025391",
         note: "a vendor",
     },
 });
@@ -12487,7 +12487,7 @@ Retrieves the vendor of a specified [Vendor](entity:Vendor) ID.
 
 ```typescript
 await client.vendors.get({
-    vendorId: "vendor_id",
+    vendor_id: "vendor_id",
 });
 ```
 
@@ -12552,9 +12552,9 @@ Updates an existing [Vendor](entity:Vendor) object as a supplier to a seller.
 
 ```typescript
 await client.vendors.update({
-    vendorId: "vendor_id",
+    vendor_id: "vendor_id",
     body: {
-        idempotencyKey: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+        idempotency_key: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
         vendor: {
             id: "INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4",
             name: "Jack's Chicken Shack",
@@ -12636,7 +12636,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bookings.customAttributeDefinitions.list();
+let page = await client.bookings.customAttributeDefinitions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -12709,7 +12709,7 @@ or _Appointments Premium_.
 
 ```typescript
 await client.bookings.customAttributeDefinitions.create({
-    customAttributeDefinition: {},
+    custom_attribute_definition: {},
 });
 ```
 
@@ -12849,7 +12849,7 @@ or _Appointments Premium_.
 ```typescript
 await client.bookings.customAttributeDefinitions.update({
     key: "key",
-    customAttributeDefinition: {},
+    custom_attribute_definition: {},
 });
 ```
 
@@ -12995,7 +12995,7 @@ or _Appointments Premium_.
 await client.bookings.customAttributes.batchDelete({
     values: {
         key: {
-            bookingId: "booking_id",
+            booking_id: "booking_id",
             key: "key",
         },
     },
@@ -13071,8 +13071,8 @@ or _Appointments Premium_.
 await client.bookings.customAttributes.batchUpsert({
     values: {
         key: {
-            bookingId: "booking_id",
-            customAttribute: {},
+            booking_id: "booking_id",
+            custom_attribute: {},
         },
     },
 });
@@ -13142,15 +13142,15 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```typescript
 const response = await client.bookings.customAttributes.list({
-    bookingId: "booking_id",
+    booking_id: "booking_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bookings.customAttributes.list({
-    bookingId: "booking_id",
+let page = await client.bookings.customAttributes.list({
+    booking_id: "booking_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -13221,7 +13221,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```typescript
 await client.bookings.customAttributes.get({
-    bookingId: "booking_id",
+    booking_id: "booking_id",
     key: "key",
 });
 ```
@@ -13293,9 +13293,9 @@ or _Appointments Premium_.
 
 ```typescript
 await client.bookings.customAttributes.upsert({
-    bookingId: "booking_id",
+    booking_id: "booking_id",
     key: "key",
-    customAttribute: {},
+    custom_attribute: {},
 });
 ```
 
@@ -13366,7 +13366,7 @@ or _Appointments Premium_.
 
 ```typescript
 await client.bookings.customAttributes.delete({
-    bookingId: "booking_id",
+    booking_id: "booking_id",
     key: "key",
 });
 ```
@@ -13439,7 +13439,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bookings.locationProfiles.list();
+let page = await client.bookings.locationProfiles.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -13513,7 +13513,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bookings.teamMemberProfiles.list();
+let page = await client.bookings.teamMemberProfiles.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -13580,7 +13580,7 @@ Retrieves a team member's booking profile.
 
 ```typescript
 await client.bookings.teamMemberProfiles.get({
-    teamMemberId: "team_member_id",
+    team_member_id: "team_member_id",
 });
 ```
 
@@ -13648,15 +13648,15 @@ in a date range.
 
 ```typescript
 const response = await client.cashDrawers.shifts.list({
-    locationId: "location_id",
+    location_id: "location_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.cashDrawers.shifts.list({
-    locationId: "location_id",
+let page = await client.cashDrawers.shifts.list({
+    location_id: "location_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -13725,8 +13725,8 @@ Provides the summary details for a single cash drawer shift. See
 
 ```typescript
 await client.cashDrawers.shifts.get({
-    shiftId: "shift_id",
-    locationId: "location_id",
+    shift_id: "shift_id",
+    location_id: "location_id",
 });
 ```
 
@@ -13791,17 +13791,17 @@ Provides a paginated list of events for a single cash drawer shift.
 
 ```typescript
 const response = await client.cashDrawers.shifts.listEvents({
-    shiftId: "shift_id",
-    locationId: "location_id",
+    shift_id: "shift_id",
+    location_id: "location_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.cashDrawers.shifts.listEvents({
-    shiftId: "shift_id",
-    locationId: "location_id",
+let page = await client.cashDrawers.shifts.listEvents({
+    shift_id: "shift_id",
+    location_id: "location_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -13942,7 +13942,7 @@ JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
 
 ```typescript
 await client.catalog.images.update({
-    imageId: "image_id",
+    image_id: "image_id",
 });
 ```
 
@@ -14013,7 +14013,7 @@ update requests are rejected with the `429` error code.
 
 ```typescript
 await client.catalog.object.upsert({
-    idempotencyKey: "af3d1afc-7212-4300-b463-0bfc5314a5ae",
+    idempotency_key: "af3d1afc-7212-4300-b463-0bfc5314a5ae",
     object: {
         type: "ITEM",
         id: "id",
@@ -14088,7 +14088,7 @@ any [CatalogTax](entity:CatalogTax) objects that apply to it.
 
 ```typescript
 await client.catalog.object.get({
-    objectId: "object_id",
+    object_id: "object_id",
 });
 ```
 
@@ -14162,7 +14162,7 @@ delete requests are rejected with the `429` error code.
 
 ```typescript
 await client.catalog.object.delete({
-    objectId: "object_id",
+    object_id: "object_id",
 });
 ```
 
@@ -14234,7 +14234,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.checkout.paymentLinks.list();
+let page = await client.checkout.paymentLinks.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -14301,14 +14301,14 @@ Creates a Square-hosted checkout page. Applications can share the resulting paym
 
 ```typescript
 await client.checkout.paymentLinks.create({
-    idempotencyKey: "cd9e25dc-d9f2-4430-aedb-61605070e95f",
-    quickPay: {
+    idempotency_key: "cd9e25dc-d9f2-4430-aedb-61605070e95f",
+    quick_pay: {
         name: "Auto Detailing",
-        priceMoney: {
-            amount: 10000,
+        price_money: {
+            amount: BigInt("10000"),
             currency: "USD",
         },
-        locationId: "A9Y43N9ABXZBP",
+        location_id: "A9Y43N9ABXZBP",
     },
 });
 ```
@@ -14442,10 +14442,10 @@ You cannot update other fields such as the `order_id`, `version`, `URL`, or `tim
 ```typescript
 await client.checkout.paymentLinks.update({
     id: "id",
-    paymentLink: {
+    payment_link: {
         version: 1,
-        checkoutOptions: {
-            askForShippingAddress: true,
+        checkout_options: {
+            ask_for_shipping_address: true,
         },
     },
 });
@@ -14589,7 +14589,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.customers.customAttributeDefinitions.list();
+let page = await client.customers.customAttributeDefinitions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -14666,7 +14666,7 @@ Sellers can view all custom attributes in exported customer data, including thos
 
 ```typescript
 await client.customers.customAttributeDefinitions.create({
-    customAttributeDefinition: {
+    custom_attribute_definition: {
         key: "favoritemovie",
         schema: {
             ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
@@ -14815,7 +14815,7 @@ all custom attributes in exported customer data, including those set to `VISIBIL
 ```typescript
 await client.customers.customAttributeDefinitions.update({
     key: "key",
-    customAttributeDefinition: {
+    custom_attribute_definition: {
         description: "Update the description as desired.",
         visibility: "VISIBILITY_READ_ONLY",
     },
@@ -14968,36 +14968,36 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 await client.customers.customAttributeDefinitions.batchUpsert({
     values: {
         id1: {
-            customerId: "N3NCVYY3WS27HF0HKANA3R9FP8",
-            customAttribute: {
+            customer_id: "N3NCVYY3WS27HF0HKANA3R9FP8",
+            custom_attribute: {
                 key: "favoritemovie",
                 value: "Dune",
             },
         },
         id2: {
-            customerId: "SY8EMWRNDN3TQDP2H4KS1QWMMM",
-            customAttribute: {
+            customer_id: "SY8EMWRNDN3TQDP2H4KS1QWMMM",
+            custom_attribute: {
                 key: "ownsmovie",
                 value: false,
             },
         },
         id3: {
-            customerId: "SY8EMWRNDN3TQDP2H4KS1QWMMM",
-            customAttribute: {
+            customer_id: "SY8EMWRNDN3TQDP2H4KS1QWMMM",
+            custom_attribute: {
                 key: "favoritemovie",
                 value: "Star Wars",
             },
         },
         id4: {
-            customerId: "N3NCVYY3WS27HF0HKANA3R9FP8",
-            customAttribute: {
+            customer_id: "N3NCVYY3WS27HF0HKANA3R9FP8",
+            custom_attribute: {
                 key: "square:a0f1505a-2aa1-490d-91a8-8d31ff181808",
                 value: "10.5",
             },
         },
         id5: {
-            customerId: "70548QG1HN43B05G0KCZ4MMC1G",
-            customAttribute: {
+            customer_id: "70548QG1HN43B05G0KCZ4MMC1G",
+            custom_attribute: {
                 key: "sq0ids-0evKIskIGaY45fCyNL66aw:backupemail",
                 value: "fake-email@squareup.com",
             },
@@ -15074,7 +15074,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.customers.groups.list();
+let page = await client.customers.groups.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -15210,7 +15210,7 @@ Retrieves a specific customer group as identified by the `group_id` value.
 
 ```typescript
 await client.customers.groups.get({
-    groupId: "group_id",
+    group_id: "group_id",
 });
 ```
 
@@ -15275,7 +15275,7 @@ Updates a customer group as identified by the `group_id` value.
 
 ```typescript
 await client.customers.groups.update({
-    groupId: "group_id",
+    group_id: "group_id",
     group: {
         name: "Loyal Customers",
     },
@@ -15343,7 +15343,7 @@ Deletes a customer group as identified by the `group_id` value.
 
 ```typescript
 await client.customers.groups.delete({
-    groupId: "group_id",
+    group_id: "group_id",
 });
 ```
 
@@ -15411,8 +15411,8 @@ and the customer group is identified by the `group_id` value.
 
 ```typescript
 await client.customers.groups.add({
-    customerId: "customer_id",
-    groupId: "group_id",
+    customer_id: "customer_id",
+    group_id: "group_id",
 });
 ```
 
@@ -15480,8 +15480,8 @@ and the customer group is identified by the `group_id` value.
 
 ```typescript
 await client.customers.groups.remove({
-    customerId: "customer_id",
-    groupId: "group_id",
+    customer_id: "customer_id",
+    group_id: "group_id",
 });
 ```
 
@@ -15553,7 +15553,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.customers.segments.list();
+let page = await client.customers.segments.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -15620,7 +15620,7 @@ Retrieves a specific customer segment as identified by the `segment_id` value.
 
 ```typescript
 await client.customers.segments.get({
-    segmentId: "segment_id",
+    segment_id: "segment_id",
 });
 ```
 
@@ -15691,17 +15691,17 @@ with the provided nonce during the _first_ call.
 
 ```typescript
 await client.customers.cards.create({
-    customerId: "customer_id",
-    cardNonce: "YOUR_CARD_NONCE",
-    billingAddress: {
-        addressLine1: "500 Electric Ave",
-        addressLine2: "Suite 600",
+    customer_id: "customer_id",
+    card_nonce: "YOUR_CARD_NONCE",
+    billing_address: {
+        address_line_1: "500 Electric Ave",
+        address_line_2: "Suite 600",
         locality: "New York",
-        administrativeDistrictLevel1: "NY",
-        postalCode: "10003",
+        administrative_district_level_1: "NY",
+        postal_code: "10003",
         country: "US",
     },
-    cardholderName: "Amelia Earhart",
+    cardholder_name: "Amelia Earhart",
 });
 ```
 
@@ -15766,8 +15766,8 @@ Removes a card on file from a customer.
 
 ```typescript
 await client.customers.cards.delete({
-    customerId: "customer_id",
-    cardId: "card_id",
+    customer_id: "customer_id",
+    card_id: "card_id",
 });
 ```
 
@@ -15841,15 +15841,15 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```typescript
 const response = await client.customers.customAttributes.list({
-    customerId: "customer_id",
+    customer_id: "customer_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.customers.customAttributes.list({
-    customerId: "customer_id",
+let page = await client.customers.customAttributes.list({
+    customer_id: "customer_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -15924,7 +15924,7 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 
 ```typescript
 await client.customers.customAttributes.get({
-    customerId: "customer_id",
+    customer_id: "customer_id",
     key: "key",
 });
 ```
@@ -15998,9 +15998,9 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 
 ```typescript
 await client.customers.customAttributes.upsert({
-    customerId: "customer_id",
+    customer_id: "customer_id",
     key: "key",
-    customAttribute: {
+    custom_attribute: {
         value: "Dune",
     },
 });
@@ -16071,7 +16071,7 @@ To delete a custom attribute owned by another application, the `visibility` sett
 
 ```typescript
 await client.customers.customAttributes.delete({
-    customerId: "customer_id",
+    customer_id: "customer_id",
     key: "key",
 });
 ```
@@ -16144,7 +16144,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.devices.codes.list();
+let page = await client.devices.codes.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -16212,11 +16212,11 @@ terminal mode.
 
 ```typescript
 await client.devices.codes.create({
-    idempotencyKey: "01bb00a6-0c86-4770-94ed-f5fca973cd56",
-    deviceCode: {
+    idempotency_key: "01bb00a6-0c86-4770-94ed-f5fca973cd56",
+    device_code: {
         name: "Counter 1",
-        productType: "TERMINAL_API",
-        locationId: "B5E4484SHHNYH",
+        product_type: "TERMINAL_API",
+        location_id: "B5E4484SHHNYH",
     },
 });
 ```
@@ -16349,15 +16349,15 @@ Returns a list of evidence associated with a dispute.
 
 ```typescript
 const response = await client.disputes.evidence.list({
-    disputeId: "dispute_id",
+    dispute_id: "dispute_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.disputes.evidence.list({
-    disputeId: "dispute_id",
+let page = await client.disputes.evidence.list({
+    dispute_id: "dispute_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -16427,8 +16427,8 @@ You must maintain a copy of any evidence uploaded if you want to reference it la
 
 ```typescript
 await client.disputes.evidence.get({
-    disputeId: "dispute_id",
-    evidenceId: "evidence_id",
+    dispute_id: "dispute_id",
+    evidence_id: "evidence_id",
 });
 ```
 
@@ -16494,8 +16494,8 @@ Square does not send the bank any evidence that is removed.
 
 ```typescript
 await client.disputes.evidence.delete({
-    disputeId: "dispute_id",
-    evidenceId: "evidence_id",
+    dispute_id: "dispute_id",
+    evidence_id: "evidence_id",
 });
 ```
 
@@ -16570,7 +16570,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.giftCards.activities.list();
+let page = await client.giftCards.activities.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -16638,14 +16638,14 @@ For example, create an `ACTIVATE` activity to activate a gift card with an initi
 
 ```typescript
 await client.giftCards.activities.create({
-    idempotencyKey: "U16kfr-kA70er-q4Rsym-7U7NnY",
-    giftCardActivity: {
+    idempotency_key: "U16kfr-kA70er-q4Rsym-7U7NnY",
+    gift_card_activity: {
         type: "ACTIVATE",
-        locationId: "81FN9BNFZTKS4",
-        giftCardId: "gftc:6d55a72470d940c6ba09c0ab8ad08d20",
-        activateActivityDetails: {
-            orderId: "jJNGHm4gLI6XkFbwtiSLqK72KkAZY",
-            lineItemUid: "eIWl7X0nMuO9Ewbh0ChIx",
+        location_id: "81FN9BNFZTKS4",
+        gift_card_id: "gftc:6d55a72470d940c6ba09c0ab8ad08d20",
+        activate_activity_details: {
+            order_id: "jJNGHm4gLI6XkFbwtiSLqK72KkAZY",
+            line_item_uid: "eIWl7X0nMuO9Ewbh0ChIx",
         },
     },
 });
@@ -16719,7 +16719,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.labor.breakTypes.list();
+let page = await client.labor.breakTypes.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -16799,12 +16799,12 @@ is returned.
 
 ```typescript
 await client.labor.breakTypes.create({
-    idempotencyKey: "PAD3NG5KSN2GL",
-    breakType: {
-        locationId: "CGJN03P1D08GF",
-        breakName: "Lunch Break",
-        expectedDuration: "PT30M",
-        isPaid: true,
+    idempotency_key: "PAD3NG5KSN2GL",
+    break_type: {
+        location_id: "CGJN03P1D08GF",
+        break_name: "Lunch Break",
+        expected_duration: "PT30M",
+        is_paid: true,
     },
 });
 ```
@@ -16936,11 +16936,11 @@ Updates an existing `BreakType`.
 ```typescript
 await client.labor.breakTypes.update({
     id: "id",
-    breakType: {
-        locationId: "26M7H24AZ9N6R",
-        breakName: "Lunch",
-        expectedDuration: "PT50M",
-        isPaid: true,
+    break_type: {
+        location_id: "26M7H24AZ9N6R",
+        break_name: "Lunch",
+        expected_duration: "PT50M",
+        is_paid: true,
         version: 1,
     },
 });
@@ -17081,7 +17081,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.labor.employeeWages.list();
+let page = await client.labor.employeeWages.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17232,32 +17232,32 @@ the `Shift.end_at`, or both.
 
 ```typescript
 await client.labor.shifts.create({
-    idempotencyKey: "HIDSNG5KS478L",
+    idempotency_key: "HIDSNG5KS478L",
     shift: {
-        locationId: "PAA1RJZZKXBFG",
-        startAt: "2019-01-25T03:11:00-05:00",
-        endAt: "2019-01-25T13:11:00-05:00",
+        location_id: "PAA1RJZZKXBFG",
+        start_at: "2019-01-25T03:11:00-05:00",
+        end_at: "2019-01-25T13:11:00-05:00",
         wage: {
             title: "Barista",
-            hourlyRate: {
-                amount: 1100,
+            hourly_rate: {
+                amount: BigInt("1100"),
                 currency: "USD",
             },
-            tipEligible: true,
+            tip_eligible: true,
         },
         breaks: [
             {
-                startAt: "2019-01-25T06:11:00-05:00",
-                endAt: "2019-01-25T06:16:00-05:00",
-                breakTypeId: "REGS1EQR1TPZ5",
+                start_at: "2019-01-25T06:11:00-05:00",
+                end_at: "2019-01-25T06:16:00-05:00",
+                break_type_id: "REGS1EQR1TPZ5",
                 name: "Tea Break",
-                expectedDuration: "PT5M",
-                isPaid: true,
+                expected_duration: "PT5M",
+                is_paid: true,
             },
         ],
-        teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
-        declaredCashTipMoney: {
-            amount: 500,
+        team_member_id: "ormj0jJJZ5OZIzxrZYJI",
+        declared_cash_tip_money: {
+            amount: BigInt("500"),
             currency: "USD",
         },
     },
@@ -17342,12 +17342,12 @@ await client.labor.shifts.search({
     query: {
         filter: {
             workday: {
-                dateRange: {
-                    startDate: "2019-01-20",
-                    endDate: "2019-02-03",
+                date_range: {
+                    start_date: "2019-01-20",
+                    end_date: "2019-02-03",
                 },
-                matchShiftsBy: "START_AT",
-                defaultTimezone: "America/Los_Angeles",
+                match_shifts_by: "START_AT",
+                default_timezone: "America/Los_Angeles",
             },
         },
     },
@@ -17489,32 +17489,32 @@ set on each `Break`.
 await client.labor.shifts.update({
     id: "id",
     shift: {
-        locationId: "PAA1RJZZKXBFG",
-        startAt: "2019-01-25T03:11:00-05:00",
-        endAt: "2019-01-25T13:11:00-05:00",
+        location_id: "PAA1RJZZKXBFG",
+        start_at: "2019-01-25T03:11:00-05:00",
+        end_at: "2019-01-25T13:11:00-05:00",
         wage: {
             title: "Bartender",
-            hourlyRate: {
-                amount: 1500,
+            hourly_rate: {
+                amount: BigInt("1500"),
                 currency: "USD",
             },
-            tipEligible: true,
+            tip_eligible: true,
         },
         breaks: [
             {
                 id: "X7GAQYVVRRG6P",
-                startAt: "2019-01-25T06:11:00-05:00",
-                endAt: "2019-01-25T06:16:00-05:00",
-                breakTypeId: "REGS1EQR1TPZ5",
+                start_at: "2019-01-25T06:11:00-05:00",
+                end_at: "2019-01-25T06:16:00-05:00",
+                break_type_id: "REGS1EQR1TPZ5",
                 name: "Tea Break",
-                expectedDuration: "PT5M",
-                isPaid: true,
+                expected_duration: "PT5M",
+                is_paid: true,
             },
         ],
         version: 1,
-        teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
-        declaredCashTipMoney: {
-            amount: 500,
+        team_member_id: "ormj0jJJZ5OZIzxrZYJI",
+        declared_cash_tip_money: {
+            amount: BigInt("500"),
             currency: "USD",
         },
     },
@@ -17654,7 +17654,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.labor.teamMemberWages.list();
+let page = await client.labor.teamMemberWages.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17793,7 +17793,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.labor.workweekConfigs.list();
+let page = await client.labor.workweekConfigs.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17861,9 +17861,9 @@ Updates a `WorkweekConfig`.
 ```typescript
 await client.labor.workweekConfigs.get({
     id: "id",
-    workweekConfig: {
-        startOfWeek: "MON",
-        startOfDayLocalTime: "10:00",
+    workweek_config: {
+        start_of_week: "MON",
+        start_of_day_local_time: "10:00",
         version: 10,
     },
 });
@@ -17940,7 +17940,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.locations.customAttributeDefinitions.list();
+let page = await client.locations.customAttributeDefinitions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -18013,7 +18013,7 @@ to set the custom attribute for locations.
 
 ```typescript
 await client.locations.customAttributeDefinitions.create({
-    customAttributeDefinition: {
+    custom_attribute_definition: {
         key: "bestseller",
         schema: {
             ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
@@ -18157,7 +18157,7 @@ Only the definition owner can update a custom attribute definition.
 ```typescript
 await client.locations.customAttributeDefinitions.update({
     key: "key",
-    customAttributeDefinition: {
+    custom_attribute_definition: {
         description: "Update the description as desired.",
         visibility: "VISIBILITY_READ_ONLY",
     },
@@ -18383,22 +18383,22 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 await client.locations.customAttributes.batchUpsert({
     values: {
         id1: {
-            locationId: "L0TBCBTB7P8RQ",
-            customAttribute: {
+            location_id: "L0TBCBTB7P8RQ",
+            custom_attribute: {
                 key: "bestseller",
                 value: "hot cocoa",
             },
         },
         id2: {
-            locationId: "L9XMD04V3STJX",
-            customAttribute: {
+            location_id: "L9XMD04V3STJX",
+            custom_attribute: {
                 key: "bestseller",
                 value: "berry smoothie",
             },
         },
         id3: {
-            locationId: "L0TBCBTB7P8RQ",
-            customAttribute: {
+            location_id: "L0TBCBTB7P8RQ",
+            custom_attribute: {
                 key: "phone-number",
                 value: "+12223334444",
             },
@@ -18473,15 +18473,15 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```typescript
 const response = await client.locations.customAttributes.list({
-    locationId: "location_id",
+    location_id: "location_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.locations.customAttributes.list({
-    locationId: "location_id",
+let page = await client.locations.customAttributes.list({
+    location_id: "location_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -18553,7 +18553,7 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 
 ```typescript
 await client.locations.customAttributes.get({
-    locationId: "location_id",
+    location_id: "location_id",
     key: "key",
 });
 ```
@@ -18624,9 +18624,9 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 
 ```typescript
 await client.locations.customAttributes.upsert({
-    locationId: "location_id",
+    location_id: "location_id",
     key: "key",
-    customAttribute: {
+    custom_attribute: {
         value: "hot cocoa",
     },
 });
@@ -18695,7 +18695,7 @@ To delete a custom attribute owned by another application, the `visibility` sett
 
 ```typescript
 await client.locations.customAttributes.delete({
-    locationId: "location_id",
+    location_id: "location_id",
     key: "key",
 });
 ```
@@ -18768,7 +18768,7 @@ Max results per [page](https://developer.squareup.com/docs/working-with-apis/pag
 
 ```typescript
 await client.locations.transactions.list({
-    locationId: "location_id",
+    location_id: "location_id",
 });
 ```
 
@@ -18833,8 +18833,8 @@ Retrieves details for a single transaction.
 
 ```typescript
 await client.locations.transactions.get({
-    locationId: "location_id",
-    transactionId: "transaction_id",
+    location_id: "location_id",
+    transaction_id: "transaction_id",
 });
 ```
 
@@ -18903,8 +18903,8 @@ for more information.
 
 ```typescript
 await client.locations.transactions.capture({
-    locationId: "location_id",
-    transactionId: "transaction_id",
+    location_id: "location_id",
+    transaction_id: "transaction_id",
 });
 ```
 
@@ -18973,8 +18973,8 @@ for more information.
 
 ```typescript
 await client.locations.transactions.void({
-    locationId: "location_id",
-    transactionId: "transaction_id",
+    location_id: "location_id",
+    transaction_id: "transaction_id",
 });
 ```
 
@@ -19041,13 +19041,13 @@ Creates a loyalty account. To create a loyalty account, you must provide the `pr
 
 ```typescript
 await client.loyalty.accounts.create({
-    loyaltyAccount: {
-        programId: "d619f755-2d17-41f3-990d-c04ecedd64dd",
+    loyalty_account: {
+        program_id: "d619f755-2d17-41f3-990d-c04ecedd64dd",
         mapping: {
-            phoneNumber: "+14155551234",
+            phone_number: "+14155551234",
         },
     },
-    idempotencyKey: "ec78c477-b1c3-4899-a209-a4e71337c996",
+    idempotency_key: "ec78c477-b1c3-4899-a209-a4e71337c996",
 });
 ```
 
@@ -19119,7 +19119,7 @@ await client.loyalty.accounts.search({
     query: {
         mappings: [
             {
-                phoneNumber: "+14155551234",
+                phone_number: "+14155551234",
             },
         ],
     },
@@ -19188,7 +19188,7 @@ Retrieves a loyalty account.
 
 ```typescript
 await client.loyalty.accounts.get({
-    accountId: "account_id",
+    account_id: "account_id",
 });
 ```
 
@@ -19265,12 +19265,12 @@ to compute the points earned from the base loyalty program. For information abou
 
 ```typescript
 await client.loyalty.accounts.accumulatePoints({
-    accountId: "account_id",
-    accumulatePoints: {
-        orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
+    account_id: "account_id",
+    accumulate_points: {
+        order_id: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
     },
-    idempotencyKey: "58b90739-c3e8-4b11-85f7-e636d48d72cb",
-    locationId: "P034NEENMD09F",
+    idempotency_key: "58b90739-c3e8-4b11-85f7-e636d48d72cb",
+    location_id: "P034NEENMD09F",
 });
 ```
 
@@ -19339,9 +19339,9 @@ to add points when a buyer pays for the purchase.
 
 ```typescript
 await client.loyalty.accounts.adjust({
-    accountId: "account_id",
-    idempotencyKey: "bc29a517-3dc9-450e-aa76-fae39ee849d1",
-    adjustPoints: {
+    account_id: "account_id",
+    idempotency_key: "bc29a517-3dc9-450e-aa76-fae39ee849d1",
+    adjust_points: {
         points: 10,
         reason: "Complimentary points",
     },
@@ -19471,7 +19471,7 @@ Loyalty programs define how buyers can earn points and redeem points for rewards
 
 ```typescript
 await client.loyalty.programs.get({
-    programId: "program_id",
+    program_id: "program_id",
 });
 ```
 
@@ -19549,9 +19549,9 @@ to calculate whether the purchase also qualifies for promotion points. For more 
 
 ```typescript
 await client.loyalty.programs.calculate({
-    programId: "program_id",
-    orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
-    loyaltyAccountId: "79b807d2-d786-46a9-933b-918028d7a8c5",
+    program_id: "program_id",
+    order_id: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
+    loyalty_account_id: "79b807d2-d786-46a9-933b-918028d7a8c5",
 });
 ```
 
@@ -19626,11 +19626,11 @@ not available for the buyer to redeem another reward.
 ```typescript
 await client.loyalty.rewards.create({
     reward: {
-        loyaltyAccountId: "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd",
-        rewardTierId: "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
-        orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
+        loyalty_account_id: "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd",
+        reward_tier_id: "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
+        order_id: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
     },
-    idempotencyKey: "18c2e5ea-a620-4b1f-ad60-7b167285e451",
+    idempotency_key: "18c2e5ea-a620-4b1f-ad60-7b167285e451",
 });
 ```
 
@@ -19702,7 +19702,7 @@ Search results are sorted by `updated_at` in descending order.
 ```typescript
 await client.loyalty.rewards.search({
     query: {
-        loyaltyAccountId: "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd",
+        loyalty_account_id: "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd",
     },
     limit: 10,
 });
@@ -19769,7 +19769,7 @@ Retrieves a loyalty reward.
 
 ```typescript
 await client.loyalty.rewards.get({
-    rewardId: "reward_id",
+    reward_id: "reward_id",
 });
 ```
 
@@ -19842,7 +19842,7 @@ You cannot delete a reward that has reached the terminal state (REDEEMED).
 
 ```typescript
 await client.loyalty.rewards.delete({
-    rewardId: "reward_id",
+    reward_id: "reward_id",
 });
 ```
 
@@ -19917,9 +19917,9 @@ to the account.
 
 ```typescript
 await client.loyalty.rewards.redeem({
-    rewardId: "reward_id",
-    idempotencyKey: "98adc7f7-6963-473b-b29c-f3c9cdd7d994",
-    locationId: "P034NEENMD09F",
+    reward_id: "reward_id",
+    idempotency_key: "98adc7f7-6963-473b-b29c-f3c9cdd7d994",
+    location_id: "P034NEENMD09F",
 });
 ```
 
@@ -19987,15 +19987,15 @@ Results are sorted by the `created_at` date in descending order (newest to oldes
 
 ```typescript
 const response = await client.loyalty.programs.promotions.list({
-    programId: "program_id",
+    program_id: "program_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.loyalty.programs.promotions.list({
-    programId: "program_id",
+let page = await client.loyalty.programs.promotions.list({
+    program_id: "program_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -20068,31 +20068,31 @@ This endpoint sets the loyalty promotion to the `ACTIVE` or `SCHEDULED` status, 
 
 ```typescript
 await client.loyalty.programs.promotions.create({
-    programId: "program_id",
-    loyaltyPromotion: {
+    program_id: "program_id",
+    loyalty_promotion: {
         name: "Tuesday Happy Hour Promo",
         incentive: {
             type: "POINTS_MULTIPLIER",
-            pointsMultiplierData: {
+            points_multiplier_data: {
                 multiplier: "3.0",
             },
         },
-        availableTime: {
-            timePeriods: [
+        available_time: {
+            time_periods: [
                 "BEGIN:VEVENT\nDTSTART:20220816T160000\nDURATION:PT2H\nRRULE:FREQ=WEEKLY;BYDAY=TU\nEND:VEVENT",
             ],
         },
-        triggerLimit: {
+        trigger_limit: {
             times: 1,
             interval: "DAY",
         },
-        minimumSpendAmountMoney: {
-            amount: 2000,
+        minimum_spend_amount_money: {
+            amount: BigInt("2000"),
             currency: "USD",
         },
-        qualifyingCategoryIds: ["XTQPYLR3IIU9C44VRCB3XD12"],
+        qualifying_category_ids: ["XTQPYLR3IIU9C44VRCB3XD12"],
     },
-    idempotencyKey: "ec78c477-b1c3-4899-a209-a4e71337c996",
+    idempotency_key: "ec78c477-b1c3-4899-a209-a4e71337c996",
 });
 ```
 
@@ -20157,8 +20157,8 @@ Retrieves a loyalty promotion.
 
 ```typescript
 await client.loyalty.programs.promotions.get({
-    promotionId: "promotion_id",
-    programId: "program_id",
+    promotion_id: "promotion_id",
+    program_id: "program_id",
 });
 ```
 
@@ -20228,8 +20228,8 @@ This endpoint sets the loyalty promotion to the `CANCELED` state
 
 ```typescript
 await client.loyalty.programs.promotions.cancel({
-    promotionId: "promotion_id",
-    programId: "program_id",
+    promotion_id: "promotion_id",
+    program_id: "program_id",
 });
 ```
 
@@ -20304,7 +20304,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.merchants.customAttributeDefinitions.list();
+let page = await client.merchants.customAttributeDefinitions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -20377,7 +20377,7 @@ to set the custom attribute for a merchant.
 
 ```typescript
 await client.merchants.customAttributeDefinitions.create({
-    customAttributeDefinition: {
+    custom_attribute_definition: {
         key: "alternative_seller_name",
         schema: {
             ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
@@ -20521,7 +20521,7 @@ Only the definition owner can update a custom attribute definition.
 ```typescript
 await client.merchants.customAttributeDefinitions.update({
     key: "key",
-    customAttributeDefinition: {
+    custom_attribute_definition: {
         description: "Update the description as desired.",
         visibility: "VISIBILITY_READ_ONLY",
     },
@@ -20744,15 +20744,15 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 await client.merchants.customAttributes.batchUpsert({
     values: {
         id1: {
-            merchantId: "DM7VKY8Q63GNP",
-            customAttribute: {
+            merchant_id: "DM7VKY8Q63GNP",
+            custom_attribute: {
                 key: "alternative_seller_name",
                 value: "Ultimate Sneaker Store",
             },
         },
         id2: {
-            merchantId: "DM7VKY8Q63GNP",
-            customAttribute: {
+            merchant_id: "DM7VKY8Q63GNP",
+            custom_attribute: {
                 key: "has_seen_tutorial",
                 value: true,
             },
@@ -20827,15 +20827,15 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```typescript
 const response = await client.merchants.customAttributes.list({
-    merchantId: "merchant_id",
+    merchant_id: "merchant_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.merchants.customAttributes.list({
-    merchantId: "merchant_id",
+let page = await client.merchants.customAttributes.list({
+    merchant_id: "merchant_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -20907,7 +20907,7 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 
 ```typescript
 await client.merchants.customAttributes.get({
-    merchantId: "merchant_id",
+    merchant_id: "merchant_id",
     key: "key",
 });
 ```
@@ -20978,9 +20978,9 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 
 ```typescript
 await client.merchants.customAttributes.upsert({
-    merchantId: "merchant_id",
+    merchant_id: "merchant_id",
     key: "key",
-    customAttribute: {
+    custom_attribute: {
         value: "Ultimate Sneaker Store",
     },
 });
@@ -21049,7 +21049,7 @@ To delete a custom attribute owned by another application, the `visibility` sett
 
 ```typescript
 await client.merchants.customAttributes.delete({
-    merchantId: "merchant_id",
+    merchant_id: "merchant_id",
     key: "key",
 });
 ```
@@ -21127,7 +21127,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.orders.customAttributeDefinitions.list();
+let page = await client.orders.customAttributeDefinitions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -21198,7 +21198,7 @@ in the Square seller account.
 
 ```typescript
 await client.orders.customAttributeDefinitions.create({
-    customAttributeDefinition: {
+    custom_attribute_definition: {
         key: "cover-count",
         schema: {
             ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number",
@@ -21207,7 +21207,7 @@ await client.orders.customAttributeDefinitions.create({
         description: "The number of people seated at a table",
         visibility: "VISIBILITY_READ_WRITE_VALUES",
     },
-    idempotencyKey: "IDEMPOTENCY_KEY",
+    idempotency_key: "IDEMPOTENCY_KEY",
 });
 ```
 
@@ -21344,12 +21344,12 @@ Only the definition owner can update a custom attribute definition. Note that se
 ```typescript
 await client.orders.customAttributeDefinitions.update({
     key: "key",
-    customAttributeDefinition: {
+    custom_attribute_definition: {
         key: "cover-count",
         visibility: "VISIBILITY_READ_ONLY",
         version: 1,
     },
-    idempotencyKey: "IDEMPOTENCY_KEY",
+    idempotency_key: "IDEMPOTENCY_KEY",
 });
 ```
 
@@ -21499,11 +21499,11 @@ await client.orders.customAttributes.batchDelete({
     values: {
         "cover-count": {
             key: "cover-count",
-            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
+            order_id: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
         },
         "table-number": {
             key: "table-number",
-            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
+            order_id: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
         },
     },
 });
@@ -21585,20 +21585,20 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 await client.orders.customAttributes.batchUpsert({
     values: {
         "cover-count": {
-            customAttribute: {
+            custom_attribute: {
                 key: "cover-count",
                 value: "6",
                 version: 2,
             },
-            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
+            order_id: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
         },
         "table-number": {
-            customAttribute: {
+            custom_attribute: {
                 key: "table-number",
                 value: "11",
                 version: 4,
             },
-            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
+            order_id: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
         },
     },
 });
@@ -21672,15 +21672,15 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 
 ```typescript
 const response = await client.orders.customAttributes.list({
-    orderId: "order_id",
+    order_id: "order_id",
 });
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.orders.customAttributes.list({
-    orderId: "order_id",
+let page = await client.orders.customAttributes.list({
+    order_id: "order_id",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -21755,8 +21755,8 @@ also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 
 ```typescript
 await client.orders.customAttributes.get({
-    orderId: "order_id",
-    customAttributeKey: "custom_attribute_key",
+    order_id: "order_id",
+    custom_attribute_key: "custom_attribute_key",
 });
 ```
 
@@ -21829,9 +21829,9 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 
 ```typescript
 await client.orders.customAttributes.upsert({
-    orderId: "order_id",
-    customAttributeKey: "custom_attribute_key",
-    customAttribute: {
+    order_id: "order_id",
+    custom_attribute_key: "custom_attribute_key",
+    custom_attribute: {
         key: "table-number",
         value: "42",
         version: 1,
@@ -21904,8 +21904,8 @@ To delete a custom attribute owned by another application, the `visibility` sett
 
 ```typescript
 await client.orders.customAttributes.delete({
-    orderId: "order_id",
-    customAttributeKey: "custom_attribute_key",
+    order_id: "order_id",
+    custom_attribute_key: "custom_attribute_key",
 });
 ```
 
@@ -21977,7 +21977,7 @@ to get this information directly from the `TeamMember.wage_setting` field.
 
 ```typescript
 await client.teamMembers.wageSetting.get({
-    teamMemberId: "team_member_id",
+    team_member_id: "team_member_id",
 });
 ```
 
@@ -22049,28 +22049,28 @@ to manage the `TeamMember.wage_setting` field directly.
 
 ```typescript
 await client.teamMembers.wageSetting.update({
-    teamMemberId: "team_member_id",
-    wageSetting: {
-        jobAssignments: [
+    team_member_id: "team_member_id",
+    wage_setting: {
+        job_assignments: [
             {
-                jobTitle: "Manager",
-                payType: "SALARY",
-                annualRate: {
-                    amount: 3000000,
+                job_title: "Manager",
+                pay_type: "SALARY",
+                annual_rate: {
+                    amount: BigInt("3000000"),
                     currency: "USD",
                 },
-                weeklyHours: 40,
+                weekly_hours: 40,
             },
             {
-                jobTitle: "Cashier",
-                payType: "HOURLY",
-                hourlyRate: {
-                    amount: 2000,
+                job_title: "Cashier",
+                pay_type: "HOURLY",
+                hourly_rate: {
+                    amount: BigInt("2000"),
                     currency: "USD",
                 },
             },
         ],
-        isOvertimeExempt: true,
+        is_overtime_exempt: true,
     },
 });
 ```
@@ -22138,14 +22138,14 @@ Creates a Terminal action request and sends it to the specified device.
 
 ```typescript
 await client.terminal.actions.create({
-    idempotencyKey: "thahn-70e75c10-47f7-4ab6-88cc-aaa4076d065e",
+    idempotency_key: "thahn-70e75c10-47f7-4ab6-88cc-aaa4076d065e",
     action: {
-        deviceId: "{{DEVICE_ID}}",
-        deadlineDuration: "PT5M",
+        device_id: "{{DEVICE_ID}}",
+        deadline_duration: "PT5M",
         type: "SAVE_CARD",
-        saveCardOptions: {
-            customerId: "{{CUSTOMER_ID}}",
-            referenceId: "user-id-1",
+        save_card_options: {
+            customer_id: "{{CUSTOMER_ID}}",
+            reference_id: "user-id-1",
         },
     },
 });
@@ -22214,12 +22214,12 @@ Retrieves a filtered list of Terminal action requests created by the account mak
 await client.terminal.actions.search({
     query: {
         filter: {
-            createdAt: {
-                startAt: "2022-04-01T00:00:00.000Z",
+            created_at: {
+                start_at: "2022-04-01T00:00:00.000Z",
             },
         },
         sort: {
-            sortOrder: "DESC",
+            sort_order: "DESC",
         },
     },
     limit: 2,
@@ -22287,7 +22287,7 @@ Retrieves a Terminal action request by `action_id`. Terminal action requests are
 
 ```typescript
 await client.terminal.actions.get({
-    actionId: "action_id",
+    action_id: "action_id",
 });
 ```
 
@@ -22352,7 +22352,7 @@ Cancels a Terminal action request if the status of the request permits it.
 
 ```typescript
 await client.terminal.actions.cancel({
-    actionId: "action_id",
+    action_id: "action_id",
 });
 ```
 
@@ -22420,16 +22420,16 @@ for the requested amount.
 
 ```typescript
 await client.terminal.checkouts.create({
-    idempotencyKey: "28a0c3bc-7839-11ea-bc55-0242ac130003",
+    idempotency_key: "28a0c3bc-7839-11ea-bc55-0242ac130003",
     checkout: {
-        amountMoney: {
-            amount: 2610,
+        amount_money: {
+            amount: BigInt("2610"),
             currency: "USD",
         },
-        referenceId: "id11572",
+        reference_id: "id11572",
         note: "A brief note",
-        deviceOptions: {
-            deviceId: "dbb5d83a-7838-11ea-bc55-0242ac130003",
+        device_options: {
+            device_id: "dbb5d83a-7838-11ea-bc55-0242ac130003",
         },
     },
 });
@@ -22566,7 +22566,7 @@ Retrieves a Terminal checkout request by `checkout_id`. Terminal checkout reques
 
 ```typescript
 await client.terminal.checkouts.get({
-    checkoutId: "checkout_id",
+    checkout_id: "checkout_id",
 });
 ```
 
@@ -22631,7 +22631,7 @@ Cancels a Terminal checkout request if the status of the request permits it.
 
 ```typescript
 await client.terminal.checkouts.cancel({
-    checkoutId: "checkout_id",
+    checkout_id: "checkout_id",
 });
 ```
 
@@ -22698,15 +22698,15 @@ Creates a request to refund an Interac payment completed on a Square Terminal. R
 
 ```typescript
 await client.terminal.refunds.create({
-    idempotencyKey: "402a640b-b26f-401f-b406-46f839590c04",
+    idempotency_key: "402a640b-b26f-401f-b406-46f839590c04",
     refund: {
-        paymentId: "5O5OvgkcNUhl7JBuINflcjKqUzXZY",
-        amountMoney: {
-            amount: 111,
+        payment_id: "5O5OvgkcNUhl7JBuINflcjKqUzXZY",
+        amount_money: {
+            amount: BigInt("111"),
             currency: "CAD",
         },
         reason: "Returning items",
-        deviceId: "f72dfb8e-4d65-4e56-aade-ec3fb8d33291",
+        device_id: "f72dfb8e-4d65-4e56-aade-ec3fb8d33291",
     },
 });
 ```
@@ -22842,7 +22842,7 @@ Retrieves an Interac Terminal refund object by ID. Terminal refund objects are a
 
 ```typescript
 await client.terminal.refunds.get({
-    terminalRefundId: "terminal_refund_id",
+    terminal_refund_id: "terminal_refund_id",
 });
 ```
 
@@ -22907,7 +22907,7 @@ Cancels an Interac Terminal refund request by refund request ID if the status of
 
 ```typescript
 await client.terminal.refunds.cancel({
-    terminalRefundId: "terminal_refund_id",
+    terminal_refund_id: "terminal_refund_id",
 });
 ```
 
@@ -23044,7 +23044,7 @@ for await (const item of response) {
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.webhooks.subscriptions.list();
+let page = await client.webhooks.subscriptions.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -23111,12 +23111,12 @@ Creates a webhook subscription.
 
 ```typescript
 await client.webhooks.subscriptions.create({
-    idempotencyKey: "63f84c6c-2200-4c99-846c-2670a1311fbf",
+    idempotency_key: "63f84c6c-2200-4c99-846c-2670a1311fbf",
     subscription: {
         name: "Example Webhook Subscription",
-        eventTypes: ["payment.created", "payment.updated"],
-        notificationUrl: "https://example-webhook-url.com",
-        apiVersion: "2021-12-15",
+        event_types: ["payment.created", "payment.updated"],
+        notification_url: "https://example-webhook-url.com",
+        api_version: "2021-12-15",
     },
 });
 ```
@@ -23182,7 +23182,7 @@ Retrieves a webhook subscription identified by its ID.
 
 ```typescript
 await client.webhooks.subscriptions.get({
-    subscriptionId: "subscription_id",
+    subscription_id: "subscription_id",
 });
 ```
 
@@ -23247,7 +23247,7 @@ Updates a webhook subscription.
 
 ```typescript
 await client.webhooks.subscriptions.update({
-    subscriptionId: "subscription_id",
+    subscription_id: "subscription_id",
     subscription: {
         name: "Updated Example Webhook Subscription",
         enabled: false,
@@ -23316,7 +23316,7 @@ Deletes a webhook subscription.
 
 ```typescript
 await client.webhooks.subscriptions.delete({
-    subscriptionId: "subscription_id",
+    subscription_id: "subscription_id",
 });
 ```
 
@@ -23381,8 +23381,8 @@ Updates a webhook subscription by replacing the existing signature key with a ne
 
 ```typescript
 await client.webhooks.subscriptions.updateSignatureKey({
-    subscriptionId: "subscription_id",
-    idempotencyKey: "ed80ae6b-0654-473b-bbab-a39aee89a60d",
+    subscription_id: "subscription_id",
+    idempotency_key: "ed80ae6b-0654-473b-bbab-a39aee89a60d",
 });
 ```
 
@@ -23447,8 +23447,8 @@ Tests a webhook subscription by sending a test event to the notification URL.
 
 ```typescript
 await client.webhooks.subscriptions.test({
-    subscriptionId: "subscription_id",
-    eventType: "payment.created",
+    subscription_id: "subscription_id",
+    event_type: "payment.created",
 });
 ```
 

@@ -5,20 +5,20 @@
 /**
  * @example
  *     {
- *         orderId: "order_id",
- *         customAttributeKey: "custom_attribute_key"
+ *         order_id: "order_id",
+ *         custom_attribute_key: "custom_attribute_key"
  *     }
  */
 export interface GetCustomAttributesRequest {
     /**
      * The ID of the target [order](entity:Order).
      */
-    orderId: string;
+    order_id: string;
     /**
      * The key of the custom attribute to retrieve.  This key must match the key of an
      * existing custom attribute definition.
      */
-    customAttributeKey: string;
+    custom_attribute_key: string;
     /**
      * To enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency)
      * control, include this optional field and specify the current version of the custom attribute.
@@ -29,5 +29,5 @@ export interface GetCustomAttributesRequest {
      * custom attribute. Set this parameter to `true` to get the name and description of each custom attribute,
      * information about the data type, or other definition details. The default value is `false`.
      */
-    withDefinition?: boolean | null;
+    with_definition?: boolean | null;
 }

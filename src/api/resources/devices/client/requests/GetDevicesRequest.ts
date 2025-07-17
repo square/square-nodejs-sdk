@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         deviceId: "device_id"
+ *         device_id: "device_id"
  *     }
  */
 export interface GetDevicesRequest {
     /**
      * The unique ID for the desired `Device`.
      */
-    deviceId: string;
+    device_id: string;
 }

@@ -4,5 +4,5 @@
 
 export interface CatalogVersionUpdatedEventCatalogVersion {
     /** Last modification timestamp in RFC 3339 format. */
-    updatedAt?: string;
+    updated_at?: string;
 }

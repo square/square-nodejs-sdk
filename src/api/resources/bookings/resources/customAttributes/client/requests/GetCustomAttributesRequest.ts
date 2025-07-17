@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         bookingId: "booking_id",
+ *         booking_id: "booking_id",
  *         key: "key"
  *     }
  */
@@ -13,7 +13,7 @@ export interface GetCustomAttributesRequest {
     /**
      * The ID of the target [booking](entity:Booking).
      */
-    bookingId: string;
+    booking_id: string;
     /**
      * The key of the custom attribute to retrieve. This key must match the `key` of a custom
      * attribute definition in the Square seller account. If the requesting application is not the
@@ -25,7 +25,7 @@ export interface GetCustomAttributesRequest {
      * the custom attribute. Set this parameter to `true` to get the name and description of the custom
      * attribute, information about the data type, or other definition details. The default value is `false`.
      */
-    withDefinition?: boolean | null;
+    with_definition?: boolean | null;
     /**
      * The current version of the custom attribute, which is used for strongly consistent reads to
      * guarantee that you receive the most up-to-date data. When included in the request, Square

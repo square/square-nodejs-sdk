@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         checkoutId: "checkout_id"
+ *         checkout_id: "checkout_id"
  *     }
  */
 export interface CancelCheckoutsRequest {
     /**
      * The unique ID for the desired `TerminalCheckout`.
      */
-    checkoutId: string;
+    checkout_id: string;
 }

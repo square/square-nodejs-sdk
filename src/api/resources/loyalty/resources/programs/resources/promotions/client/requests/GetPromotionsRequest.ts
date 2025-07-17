@@ -5,18 +5,18 @@
 /**
  * @example
  *     {
- *         promotionId: "promotion_id",
- *         programId: "program_id"
+ *         promotion_id: "promotion_id",
+ *         program_id: "program_id"
  *     }
  */
 export interface GetPromotionsRequest {
     /**
      * The ID of the [loyalty promotion](entity:LoyaltyPromotion) to retrieve.
      */
-    promotionId: string;
+    promotion_id: string;
     /**
      * The ID of the base [loyalty program](entity:LoyaltyProgram). To get the program ID,
      * call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) using the `main` keyword.
      */
-    programId: string;
+    program_id: string;
 }

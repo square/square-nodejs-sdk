@@ -10,24 +10,24 @@ export interface BreakType {
     /** The UUID for this object. */
     id?: string;
     /** The ID of the business location this type of break applies to. */
-    locationId: string;
+    location_id: string;
     /**
      * A human-readable name for this type of break. The name is displayed to
      * team members in Square products.
      */
-    breakName: string;
+    break_name: string;
     /**
      * Format: RFC-3339 P[n]Y[n]M[n]DT[n]H[n]M[n]S. The expected length of
      * this break. Precision less than minutes is truncated.
      *
      * Example for break expected duration of 15 minutes: PT15M
      */
-    expectedDuration: string;
+    expected_duration: string;
     /**
      * Whether this break counts towards time worked for compensation
      * purposes.
      */
-    isPaid: boolean;
+    is_paid: boolean;
     /**
      * Used for resolving concurrency issues. The request fails if the version
      * provided does not match the server version at the time of the request. If a value is not
@@ -36,7 +36,7 @@ export interface BreakType {
      */
     version?: number;
     /** A read-only timestamp in RFC 3339 format. */
-    createdAt?: string;
+    created_at?: string;
     /** A read-only timestamp in RFC 3339 format. */
-    updatedAt?: string;
+    updated_at?: string;
 }

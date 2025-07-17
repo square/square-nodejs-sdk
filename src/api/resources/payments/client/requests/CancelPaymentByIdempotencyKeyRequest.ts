@@ -5,10 +5,10 @@
 /**
  * @example
  *     {
- *         idempotencyKey: "a7e36d40-d24b-11e8-b568-0800200c9a66"
+ *         idempotency_key: "a7e36d40-d24b-11e8-b568-0800200c9a66"
  *     }
  */
 export interface CancelPaymentByIdempotencyKeyRequest {
     /** The `idempotency_key` identifying the payment to be canceled. */
-    idempotencyKey: string;
+    idempotency_key: string;
 }

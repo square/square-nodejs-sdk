@@ -5,15 +5,15 @@
 /**
  * @example
  *     {
- *         giftCardId: "gift_card_id",
- *         customerId: "GKY0FZ3V717AH8Q2D821PNT2ZW"
+ *         gift_card_id: "gift_card_id",
+ *         customer_id: "GKY0FZ3V717AH8Q2D821PNT2ZW"
  *     }
  */
 export interface UnlinkCustomerFromGiftCardRequest {
     /**
      * The ID of the gift card to be unlinked.
      */
-    giftCardId: string;
+    gift_card_id: string;
     /** The ID of the customer to unlink from the gift card. */
-    customerId: string;
+    customer_id: string;
 }

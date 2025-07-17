@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         objectId: "object_id"
+ *         object_id: "object_id"
  *     }
  */
 export interface DeleteObjectRequest {
@@ -14,5 +14,5 @@ export interface DeleteObjectRequest {
      * objects in the graph that depend on that object will be deleted as well (for example, deleting a
      * catalog item will delete its catalog item variations).
      */
-    objectId: string;
+    object_id: string;
 }

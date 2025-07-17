@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         teamMemberId: "team_member_id"
+ *         team_member_id: "team_member_id"
  *     }
  */
 export interface GetWageSettingRequest {
     /**
      * The ID of the team member for which to retrieve the wage setting.
      */
-    teamMemberId: string;
+    team_member_id: string;
 }

@@ -8,5 +8,5 @@
  */
 export interface CatalogItemOptionForItem {
     /** The unique id of the item option, used to form the dimensions of the item option matrix in a specified order. */
-    itemOptionId?: string | null;
+    item_option_id?: string | null;
 }

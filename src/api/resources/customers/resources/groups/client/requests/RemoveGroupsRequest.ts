@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         customerId: "customer_id",
- *         groupId: "group_id"
+ *         customer_id: "customer_id",
+ *         group_id: "group_id"
  *     }
  */
 export interface RemoveGroupsRequest {
     /**
      * The ID of the customer to remove from the group.
      */
-    customerId: string;
+    customer_id: string;
     /**
      * The ID of the customer group to remove the customer from.
      */
-    groupId: string;
+    group_id: string;
 }

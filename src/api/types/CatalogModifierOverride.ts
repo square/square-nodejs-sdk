@@ -7,9 +7,9 @@
  */
 export interface CatalogModifierOverride {
     /** The ID of the `CatalogModifier` whose default behavior is being overridden. */
-    modifierId: string;
+    modifier_id: string;
     /** __Deprecated__: Use `on_by_default_override` instead. */
-    onByDefault?: boolean | null;
-    hiddenOnlineOverride?: unknown;
-    onByDefaultOverride?: unknown;
+    on_by_default?: boolean | null;
+    hidden_online_override?: unknown;
+    on_by_default_override?: unknown;
 }

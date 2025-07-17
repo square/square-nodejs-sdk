@@ -13,5 +13,5 @@ export interface CatalogCustomAttributeDefinitionStringConfig {
      * duplicated within a seller's catalog. May not be modified after the
      * definition has been created.
      */
-    enforceUniqueness?: boolean | null;
+    enforce_uniqueness?: boolean | null;
 }

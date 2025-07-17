@@ -1,1 +1,0 @@
-export { UpsertCatalogObjectRequest } from "./UpsertCatalogObjectRequest";

@@ -12,10 +12,10 @@ export interface OrderPricingOptions {
      * The option to determine whether pricing rule-based
      * discounts are automatically applied to an order.
      */
-    autoApplyDiscounts?: boolean | null;
+    auto_apply_discounts?: boolean | null;
     /**
      * The option to determine whether rule-based taxes are automatically
      * applied to an order when the criteria of the corresponding rules are met.
      */
-    autoApplyTaxes?: boolean | null;
+    auto_apply_taxes?: boolean | null;
 }

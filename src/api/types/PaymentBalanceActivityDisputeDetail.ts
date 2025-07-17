@@ -4,7 +4,7 @@
 
 export interface PaymentBalanceActivityDisputeDetail {
     /** The ID of the payment associated with this activity. */
-    paymentId?: string | null;
+    payment_id?: string | null;
     /** The ID of the dispute associated with this activity. */
-    disputeId?: string | null;
+    dispute_id?: string | null;
 }

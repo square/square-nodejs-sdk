@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         bookingId: "booking_id"
+ *         booking_id: "booking_id"
  *     }
  */
 export interface GetBookingsRequest {
     /**
      * The ID of the [Booking](entity:Booking) object representing the to-be-retrieved booking.
      */
-    bookingId: string;
+    booking_id: string;
 }

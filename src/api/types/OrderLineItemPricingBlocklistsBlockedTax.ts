@@ -13,11 +13,11 @@ export interface OrderLineItemPricingBlocklistsBlockedTax {
      * The `uid` of the tax that should be blocked. Use this field to block
      * ad hoc taxes. For catalog, taxes use the `tax_catalog_object_id` field.
      */
-    taxUid?: string | null;
+    tax_uid?: string | null;
     /**
      * The `catalog_object_id` of the tax that should be blocked.
      * Use this field to block catalog taxes. For ad hoc taxes, use the
      * `tax_uid` field.
      */
-    taxCatalogObjectId?: string | null;
+    tax_catalog_object_id?: string | null;
 }

@@ -5,14 +5,14 @@
 /**
  * @example
  *     {
- *         objectId: "object_id"
+ *         object_id: "object_id"
  *     }
  */
 export interface GetObjectRequest {
     /**
      * The object ID of any type of catalog objects to be retrieved.
      */
-    objectId: string;
+    object_id: string;
     /**
      * If `true`, the response will include additional objects that are related to the
      * requested objects. Related objects are defined as any objects referenced by ID by the results in the `objects` field
@@ -29,19 +29,19 @@ export interface GetObjectRequest {
      *
      * Default value: `false`
      */
-    includeRelatedObjects?: boolean | null;
+    include_related_objects?: boolean | null;
     /**
      * Requests objects as of a specific version of the catalog. This allows you to retrieve historical
      * versions of objects. The value to retrieve a specific version of an object can be found
      * in the version field of [CatalogObject](entity:CatalogObject)s. If not included, results will
      * be from the current version of the catalog.
      */
-    catalogVersion?: bigint | null;
+    catalog_version?: (number | bigint) | null;
     /**
      * Specifies whether or not to include the `path_to_root` list for each returned category instance. The `path_to_root` list consists
      * of `CategoryPathToRootNode` objects and specifies the path that starts with the immediate parent category of the returned category
      * and ends with its root category. If the returned category is a top-level category, the `path_to_root` list is empty and is not returned
      * in the response payload.
      */
-    includeCategoryPathToRoot?: boolean | null;
+    include_category_path_to_root?: boolean | null;
 }

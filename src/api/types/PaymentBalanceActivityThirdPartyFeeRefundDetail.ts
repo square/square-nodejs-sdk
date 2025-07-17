@@ -4,7 +4,7 @@
 
 export interface PaymentBalanceActivityThirdPartyFeeRefundDetail {
     /** The ID of the payment associated with this activity. */
-    paymentId?: string | null;
+    payment_id?: string | null;
     /** The public refund id associated with this activity. */
-    refundId?: string | null;
+    refund_id?: string | null;
 }

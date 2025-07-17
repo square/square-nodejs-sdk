@@ -5,7 +5,7 @@
 /**
  * @example
  *     {
- *         objectIds: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"]
+ *         object_ids: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"]
  *     }
  */
 export interface BatchDeleteCatalogObjectsRequest {
@@ -14,5 +14,5 @@ export interface BatchDeleteCatalogObjectsRequest {
      * in the graph that depend on that object will be deleted as well (for example, deleting a
      * CatalogItem will delete its CatalogItemVariation.
      */
-    objectIds: string[];
+    object_ids: string[];
 }

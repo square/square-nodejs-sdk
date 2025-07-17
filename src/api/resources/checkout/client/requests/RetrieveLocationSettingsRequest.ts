@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         locationId: "location_id"
+ *         location_id: "location_id"
  *     }
  */
 export interface RetrieveLocationSettingsRequest {
     /**
      * The ID of the location for which to retrieve settings.
      */
-    locationId: string;
+    location_id: string;
 }

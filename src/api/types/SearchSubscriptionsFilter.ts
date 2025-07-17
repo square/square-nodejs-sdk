@@ -8,9 +8,9 @@
  */
 export interface SearchSubscriptionsFilter {
     /** A filter to select subscriptions based on the subscribing customer IDs. */
-    customerIds?: string[] | null;
+    customer_ids?: string[] | null;
     /** A filter to select subscriptions based on the location. */
-    locationIds?: string[] | null;
+    location_ids?: string[] | null;
     /** A filter to select subscriptions based on the source application. */
-    sourceNames?: string[] | null;
+    source_names?: string[] | null;
 }

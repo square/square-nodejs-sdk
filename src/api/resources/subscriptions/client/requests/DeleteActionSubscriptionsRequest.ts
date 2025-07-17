@@ -5,17 +5,17 @@
 /**
  * @example
  *     {
- *         subscriptionId: "subscription_id",
- *         actionId: "action_id"
+ *         subscription_id: "subscription_id",
+ *         action_id: "action_id"
  *     }
  */
 export interface DeleteActionSubscriptionsRequest {
     /**
      * The ID of the subscription the targeted action is to act upon.
      */
-    subscriptionId: string;
+    subscription_id: string;
     /**
      * The ID of the targeted action to be deleted.
      */
-    actionId: string;
+    action_id: string;
 }

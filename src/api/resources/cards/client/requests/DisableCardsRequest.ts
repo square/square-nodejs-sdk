@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         cardId: "card_id"
+ *         card_id: "card_id"
  *     }
  */
 export interface DisableCardsRequest {
     /**
      * Unique ID for the desired Card.
      */
-    cardId: string;
+    card_id: string;
 }

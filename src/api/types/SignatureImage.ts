@@ -7,7 +7,7 @@ export interface SignatureImage {
      * The mime/type of the image data.
      * Use `image/png;base64` for png.
      */
-    imageType?: string;
+    image_type?: string;
     /** The base64 representation of the image. */
     data?: string;
 }

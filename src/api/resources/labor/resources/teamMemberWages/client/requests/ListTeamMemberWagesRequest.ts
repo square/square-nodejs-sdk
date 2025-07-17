@@ -11,7 +11,7 @@ export interface ListTeamMemberWagesRequest {
      * Filter the returned wages to only those that are associated with the
      * specified team member.
      */
-    teamMemberId?: string | null;
+    team_member_id?: string | null;
     /**
      * The maximum number of `TeamMemberWage` results to return per page. The number can range between
      * 1 and 200. The default is 200.

@@ -1,2 +1,2 @@
-export { type GetWageSettingRequest } from "./GetWageSettingRequest";
-export { type UpdateWageSettingRequest } from "./UpdateWageSettingRequest";
+export { type GetWageSettingRequest } from "./GetWageSettingRequest.js";
+export { type UpdateWageSettingRequest } from "./UpdateWageSettingRequest.js";

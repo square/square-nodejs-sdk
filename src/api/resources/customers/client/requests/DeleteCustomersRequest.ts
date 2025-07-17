@@ -5,18 +5,18 @@
 /**
  * @example
  *     {
- *         customerId: "customer_id"
+ *         customer_id: "customer_id"
  *     }
  */
 export interface DeleteCustomersRequest {
     /**
      * The ID of the customer to delete.
      */
-    customerId: string;
+    customer_id: string;
     /**
      * The current version of the customer profile.
      *
      * As a best practice, you should include this parameter to enable [optimistic concurrency](https://developer.squareup.com/docs/build-basics/common-api-patterns/optimistic-concurrency) control.  For more information, see [Delete a customer profile](https://developer.squareup.com/docs/customers-api/use-the-api/keep-records#delete-customer-profile).
      */
-    version?: bigint | null;
+    version?: (number | bigint) | null;
 }

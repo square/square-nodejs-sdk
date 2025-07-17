@@ -1,7 +1,7 @@
-export { type BatchGetOrdersRequest } from "./BatchGetOrdersRequest";
-export { type CalculateOrderRequest } from "./CalculateOrderRequest";
-export { type CloneOrderRequest } from "./CloneOrderRequest";
-export { type SearchOrdersRequest } from "./SearchOrdersRequest";
-export { type GetOrdersRequest } from "./GetOrdersRequest";
-export { type UpdateOrderRequest } from "./UpdateOrderRequest";
-export { type PayOrderRequest } from "./PayOrderRequest";
+export { type BatchGetOrdersRequest } from "./BatchGetOrdersRequest.js";
+export { type CalculateOrderRequest } from "./CalculateOrderRequest.js";
+export { type CloneOrderRequest } from "./CloneOrderRequest.js";
+export { type SearchOrdersRequest } from "./SearchOrdersRequest.js";
+export { type GetOrdersRequest } from "./GetOrdersRequest.js";
+export { type UpdateOrderRequest } from "./UpdateOrderRequest.js";
+export { type PayOrderRequest } from "./PayOrderRequest.js";

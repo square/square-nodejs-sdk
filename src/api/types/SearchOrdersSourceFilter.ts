@@ -12,5 +12,5 @@ export interface SearchOrdersSourceFilter {
      *
      * Max: 10 source names.
      */
-    sourceNames?: string[] | null;
+    source_names?: string[] | null;
 }

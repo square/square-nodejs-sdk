@@ -10,7 +10,7 @@
  */
 export interface CatalogItemOptionValueForItemVariation {
     /** The unique id of an item option. */
-    itemOptionId?: string | null;
+    item_option_id?: string | null;
     /** The unique id of the selected value for the item option. */
-    itemOptionValueId?: string | null;
+    item_option_value_id?: string | null;
 }

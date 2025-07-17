@@ -4,7 +4,7 @@
 
 export interface SelectOption {
     /** The reference id for the option. */
-    referenceId: string;
+    reference_id: string;
     /** The title text that displays in the select option button. */
     title: string;
 }

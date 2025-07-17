@@ -31,5 +31,5 @@ export interface CatalogImage {
      */
     caption?: string | null;
     /** The immutable order ID for this image object created by the Photo Studio service in Square Online Store. */
-    photoStudioOrderId?: string | null;
+    photo_studio_order_id?: string | null;
 }

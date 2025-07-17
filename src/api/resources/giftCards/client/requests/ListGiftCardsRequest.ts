@@ -33,5 +33,5 @@ export interface ListGiftCardsRequest {
     /**
      * If a customer ID is provided, the endpoint returns only the gift cards linked to the specified customer.
      */
-    customerId?: string | null;
+    customer_id?: string | null;
 }

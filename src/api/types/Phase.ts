@@ -9,9 +9,9 @@ export interface Phase {
     /** id of subscription phase */
     uid?: string | null;
     /** index of phase in total subscription plan */
-    ordinal?: bigint | null;
+    ordinal?: (number | bigint) | null;
     /** id of order to be used in billing */
-    orderTemplateId?: string | null;
+    order_template_id?: string | null;
     /** the uid from the plan's phase in catalog */
-    planPhaseUid?: string | null;
+    plan_phase_uid?: string | null;
 }

@@ -5,10 +5,10 @@
 /**
  * @example
  *     {
- *         teamMemberIds: ["team_member_ids"]
+ *         team_member_ids: ["team_member_ids"]
  *     }
  */
 export interface BulkRetrieveTeamMemberBookingProfilesRequest {
     /** A non-empty list of IDs of team members whose booking profiles you want to retrieve. */
-    teamMemberIds: string[];
+    team_member_ids: string[];
 }

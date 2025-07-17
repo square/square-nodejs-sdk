@@ -8,7 +8,7 @@
  */
 export interface BookingCustomAttributeDeleteRequest {
     /** The ID of the target [booking](entity:Booking). */
-    bookingId: string;
+    booking_id: string;
     /**
      * The key of the custom attribute to delete. This key must match the `key` of a
      * custom attribute definition in the Square seller account. If the requesting application is not

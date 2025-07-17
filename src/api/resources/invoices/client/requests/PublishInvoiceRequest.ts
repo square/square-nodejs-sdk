@@ -5,16 +5,16 @@
 /**
  * @example
  *     {
- *         invoiceId: "invoice_id",
+ *         invoice_id: "invoice_id",
  *         version: 1,
- *         idempotencyKey: "32da42d0-1997-41b0-826b-f09464fc2c2e"
+ *         idempotency_key: "32da42d0-1997-41b0-826b-f09464fc2c2e"
  *     }
  */
 export interface PublishInvoiceRequest {
     /**
      * The ID of the invoice to publish.
      */
-    invoiceId: string;
+    invoice_id: string;
     /**
      * The version of the [invoice](entity:Invoice) to publish.
      * This must match the current version of the invoice; otherwise, the request is rejected.
@@ -27,5 +27,5 @@ export interface PublishInvoiceRequest {
      *
      * For more information, see [Idempotency](https://developer.squareup.com/docs/build-basics/common-api-patterns/idempotency).
      */
-    idempotencyKey?: string | null;
+    idempotency_key?: string | null;
 }

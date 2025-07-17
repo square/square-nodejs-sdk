@@ -5,12 +5,12 @@
 /**
  * @example
  *     {
- *         segmentId: "segment_id"
+ *         segment_id: "segment_id"
  *     }
  */
 export interface GetSegmentsRequest {
     /**
      * The Square-issued ID of the customer segment.
      */
-    segmentId: string;
+    segment_id: string;
 }
