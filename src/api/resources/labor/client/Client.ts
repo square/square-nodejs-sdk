@@ -5,8 +5,8 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Square from "../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers";
 import * as serializers from "../../../../serialization/index";
-import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 import { BreakTypes } from "../resources/breakTypes/client/Client";
 import { EmployeeWages } from "../resources/employeeWages/client/Client";
@@ -22,6 +22,8 @@ export declare namespace Labor {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
     }
 
@@ -35,18 +37,21 @@ export declare namespace Labor {
         /** Override the Square-Version header */
         version?: "2025-07-16";
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
 }
 
 export class Labor {
+    protected readonly _options: Labor.Options;
     protected _breakTypes: BreakTypes | undefined;
     protected _employeeWages: EmployeeWages | undefined;
     protected _shifts: Shifts | undefined;
     protected _teamMemberWages: TeamMemberWages | undefined;
     protected _workweekConfigs: WorkweekConfigs | undefined;
 
-    constructor(protected readonly _options: Labor.Options = {}) {}
+    constructor(_options: Labor.Options = {}) {
+        this._options = _options;
+    }
 
     public get breakTypes(): BreakTypes {
         return (this._breakTypes ??= new BreakTypes(this._options));
@@ -97,29 +102,33 @@ export class Labor {
      *         }
      *     })
      */
-    public async createScheduledShift(
+    public createScheduledShift(
         request: Square.CreateScheduledShiftRequest,
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.CreateScheduledShiftResponse> {
+    ): core.HttpResponsePromise<Square.CreateScheduledShiftResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__createScheduledShift(request, requestOptions));
+    }
+
+    private async __createScheduledShift(
+        request: Square.CreateScheduledShiftRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.CreateScheduledShiftResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/labor/scheduled-shifts",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.CreateScheduledShiftRequest.jsonOrThrow(request, {
@@ -131,19 +140,23 @@ export class Labor {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.CreateScheduledShiftResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.CreateScheduledShiftResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -152,12 +165,14 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling POST /v2/labor/scheduled-shifts.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -181,29 +196,33 @@ export class Labor {
      *         scheduledShiftNotificationAudience: "AFFECTED"
      *     })
      */
-    public async bulkPublishScheduledShifts(
+    public bulkPublishScheduledShifts(
         request: Square.BulkPublishScheduledShiftsRequest,
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.BulkPublishScheduledShiftsResponse> {
+    ): core.HttpResponsePromise<Square.BulkPublishScheduledShiftsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__bulkPublishScheduledShifts(request, requestOptions));
+    }
+
+    private async __bulkPublishScheduledShifts(
+        request: Square.BulkPublishScheduledShiftsRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.BulkPublishScheduledShiftsResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/labor/scheduled-shifts/bulk-publish",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.BulkPublishScheduledShiftsRequest.jsonOrThrow(request, {
@@ -215,19 +234,23 @@ export class Labor {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.BulkPublishScheduledShiftsResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.BulkPublishScheduledShiftsResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -236,6 +259,7 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -244,6 +268,7 @@ export class Labor {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -270,29 +295,33 @@ export class Labor {
      *         cursor: "xoxp-1234-5678-90123"
      *     })
      */
-    public async searchScheduledShifts(
+    public searchScheduledShifts(
         request: Square.SearchScheduledShiftsRequest = {},
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.SearchScheduledShiftsResponse> {
+    ): core.HttpResponsePromise<Square.SearchScheduledShiftsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__searchScheduledShifts(request, requestOptions));
+    }
+
+    private async __searchScheduledShifts(
+        request: Square.SearchScheduledShiftsRequest = {},
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.SearchScheduledShiftsResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/labor/scheduled-shifts/search",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.SearchScheduledShiftsRequest.jsonOrThrow(request, {
@@ -304,19 +333,23 @@ export class Labor {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.SearchScheduledShiftsResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.SearchScheduledShiftsResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -325,6 +358,7 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -333,6 +367,7 @@ export class Labor {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -348,50 +383,56 @@ export class Labor {
      *         id: "id"
      *     })
      */
-    public async retrieveScheduledShift(
+    public retrieveScheduledShift(
         request: Square.RetrieveScheduledShiftRequest,
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.RetrieveScheduledShiftResponse> {
+    ): core.HttpResponsePromise<Square.RetrieveScheduledShiftResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieveScheduledShift(request, requestOptions));
+    }
+
+    private async __retrieveScheduledShift(
+        request: Square.RetrieveScheduledShiftRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.RetrieveScheduledShiftResponse>> {
         const { id } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/labor/scheduled-shifts/${encodeURIComponent(id)}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.RetrieveScheduledShiftResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.RetrieveScheduledShiftResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -400,6 +441,7 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -408,6 +450,7 @@ export class Labor {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -444,30 +487,34 @@ export class Labor {
      *         }
      *     })
      */
-    public async updateScheduledShift(
+    public updateScheduledShift(
         request: Square.UpdateScheduledShiftRequest,
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.UpdateScheduledShiftResponse> {
+    ): core.HttpResponsePromise<Square.UpdateScheduledShiftResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__updateScheduledShift(request, requestOptions));
+    }
+
+    private async __updateScheduledShift(
+        request: Square.UpdateScheduledShiftRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.UpdateScheduledShiftResponse>> {
         const { id, ..._body } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/labor/scheduled-shifts/${encodeURIComponent(id)}`,
             ),
             method: "PUT",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.UpdateScheduledShiftRequest.jsonOrThrow(_body, {
@@ -479,19 +526,23 @@ export class Labor {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.UpdateScheduledShiftResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.UpdateScheduledShiftResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -500,6 +551,7 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -508,6 +560,7 @@ export class Labor {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -527,30 +580,34 @@ export class Labor {
      *         scheduledShiftNotificationAudience: "ALL"
      *     })
      */
-    public async publishScheduledShift(
+    public publishScheduledShift(
         request: Square.PublishScheduledShiftRequest,
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.PublishScheduledShiftResponse> {
+    ): core.HttpResponsePromise<Square.PublishScheduledShiftResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__publishScheduledShift(request, requestOptions));
+    }
+
+    private async __publishScheduledShift(
+        request: Square.PublishScheduledShiftRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.PublishScheduledShiftResponse>> {
         const { id, ..._body } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/labor/scheduled-shifts/${encodeURIComponent(id)}/publish`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.PublishScheduledShiftRequest.jsonOrThrow(_body, {
@@ -562,19 +619,23 @@ export class Labor {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PublishScheduledShiftResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.PublishScheduledShiftResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -583,6 +644,7 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -591,6 +653,7 @@ export class Labor {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -628,7 +691,7 @@ export class Labor {
      *             wage: {
      *                 title: "Barista",
      *                 hourlyRate: {
-     *                     amount: 1100,
+     *                     amount: BigInt("1100"),
      *                     currency: "USD"
      *                 },
      *                 tipEligible: true
@@ -643,35 +706,39 @@ export class Labor {
      *                 }],
      *             teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
      *             declaredCashTipMoney: {
-     *                 amount: 500,
+     *                 amount: BigInt("500"),
      *                 currency: "USD"
      *             }
      *         }
      *     })
      */
-    public async createTimecard(
+    public createTimecard(
         request: Square.CreateTimecardRequest,
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.CreateTimecardResponse> {
+    ): core.HttpResponsePromise<Square.CreateTimecardResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__createTimecard(request, requestOptions));
+    }
+
+    private async __createTimecard(
+        request: Square.CreateTimecardRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.CreateTimecardResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/labor/timecards",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.CreateTimecardRequest.jsonOrThrow(request, {
@@ -683,19 +750,23 @@ export class Labor {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.CreateTimecardResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.CreateTimecardResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -704,12 +775,14 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling POST /v2/labor/timecards.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -750,29 +823,33 @@ export class Labor {
      *         limit: 100
      *     })
      */
-    public async searchTimecards(
+    public searchTimecards(
         request: Square.SearchTimecardsRequest = {},
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.SearchTimecardsResponse> {
+    ): core.HttpResponsePromise<Square.SearchTimecardsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__searchTimecards(request, requestOptions));
+    }
+
+    private async __searchTimecards(
+        request: Square.SearchTimecardsRequest = {},
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.SearchTimecardsResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/labor/timecards/search",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.SearchTimecardsRequest.jsonOrThrow(request, {
@@ -784,19 +861,23 @@ export class Labor {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.SearchTimecardsResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.SearchTimecardsResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -805,12 +886,14 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling POST /v2/labor/timecards/search.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -826,50 +909,56 @@ export class Labor {
      *         id: "id"
      *     })
      */
-    public async retrieveTimecard(
+    public retrieveTimecard(
         request: Square.RetrieveTimecardRequest,
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.RetrieveTimecardResponse> {
+    ): core.HttpResponsePromise<Square.RetrieveTimecardResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieveTimecard(request, requestOptions));
+    }
+
+    private async __retrieveTimecard(
+        request: Square.RetrieveTimecardRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.RetrieveTimecardResponse>> {
         const { id } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/labor/timecards/${encodeURIComponent(id)}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.RetrieveTimecardResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.RetrieveTimecardResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -878,12 +967,14 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling GET /v2/labor/timecards/{id}.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -910,7 +1001,7 @@ export class Labor {
      *             wage: {
      *                 title: "Bartender",
      *                 hourlyRate: {
-     *                     amount: 1500,
+     *                     amount: BigInt("1500"),
      *                     currency: "USD"
      *                 },
      *                 tipEligible: true
@@ -928,36 +1019,40 @@ export class Labor {
      *             version: 1,
      *             teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
      *             declaredCashTipMoney: {
-     *                 amount: 500,
+     *                 amount: BigInt("500"),
      *                 currency: "USD"
      *             }
      *         }
      *     })
      */
-    public async updateTimecard(
+    public updateTimecard(
         request: Square.UpdateTimecardRequest,
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.UpdateTimecardResponse> {
+    ): core.HttpResponsePromise<Square.UpdateTimecardResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__updateTimecard(request, requestOptions));
+    }
+
+    private async __updateTimecard(
+        request: Square.UpdateTimecardRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.UpdateTimecardResponse>> {
         const { id, ..._body } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/labor/timecards/${encodeURIComponent(id)}`,
             ),
             method: "PUT",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.UpdateTimecardRequest.jsonOrThrow(_body, {
@@ -969,19 +1064,23 @@ export class Labor {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.UpdateTimecardResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.UpdateTimecardResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -990,12 +1089,14 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling PUT /v2/labor/timecards/{id}.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -1011,50 +1112,56 @@ export class Labor {
      *         id: "id"
      *     })
      */
-    public async deleteTimecard(
+    public deleteTimecard(
         request: Square.DeleteTimecardRequest,
         requestOptions?: Labor.RequestOptions,
-    ): Promise<Square.DeleteTimecardResponse> {
+    ): core.HttpResponsePromise<Square.DeleteTimecardResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteTimecard(request, requestOptions));
+    }
+
+    private async __deleteTimecard(
+        request: Square.DeleteTimecardRequest,
+        requestOptions?: Labor.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.DeleteTimecardResponse>> {
         const { id } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/labor/timecards/${encodeURIComponent(id)}`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DeleteTimecardResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DeleteTimecardResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -1063,12 +1170,14 @@ export class Labor {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling DELETE /v2/labor/timecards/{id}.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

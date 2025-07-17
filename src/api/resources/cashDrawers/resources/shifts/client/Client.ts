@@ -6,7 +6,7 @@ import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as Square from "../../../../../index";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as errors from "../../../../../../errors/index";
 
 export declare namespace Shifts {
@@ -17,6 +17,8 @@ export declare namespace Shifts {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
     }
 
@@ -30,12 +32,16 @@ export declare namespace Shifts {
         /** Override the Square-Version header */
         version?: "2025-07-16";
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
 }
 
 export class Shifts {
-    constructor(protected readonly _options: Shifts.Options = {}) {}
+    protected readonly _options: Shifts.Options;
+
+    constructor(_options: Shifts.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Provides the details for all of the cash drawer shifts for a location
@@ -53,88 +59,97 @@ export class Shifts {
         request: Square.cashDrawers.ListShiftsRequest,
         requestOptions?: Shifts.RequestOptions,
     ): Promise<core.Page<Square.CashDrawerShiftSummary>> {
-        const list = async (
-            request: Square.cashDrawers.ListShiftsRequest,
-        ): Promise<Square.ListCashDrawerShiftsResponse> => {
-            const { locationId, sortOrder, beginTime, endTime, limit, cursor } = request;
-            const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-            _queryParams["location_id"] = locationId;
-            if (sortOrder !== undefined) {
-                _queryParams["sort_order"] = serializers.SortOrder.jsonOrThrow(sortOrder, {
-                    unrecognizedObjectKeys: "strip",
-                    omitUndefined: true,
+        const list = core.HttpResponsePromise.interceptFunction(
+            async (
+                request: Square.cashDrawers.ListShiftsRequest,
+            ): Promise<core.WithRawResponse<Square.ListCashDrawerShiftsResponse>> => {
+                const { locationId, sortOrder, beginTime, endTime, limit, cursor } = request;
+                const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+                _queryParams["location_id"] = locationId;
+                if (sortOrder !== undefined) {
+                    _queryParams["sort_order"] = serializers.SortOrder.jsonOrThrow(sortOrder, {
+                        unrecognizedObjectKeys: "strip",
+                        omitUndefined: true,
+                    });
+                }
+                if (beginTime !== undefined) {
+                    _queryParams["begin_time"] = beginTime;
+                }
+                if (endTime !== undefined) {
+                    _queryParams["end_time"] = endTime;
+                }
+                if (limit !== undefined) {
+                    _queryParams["limit"] = limit?.toString() ?? null;
+                }
+                if (cursor !== undefined) {
+                    _queryParams["cursor"] = cursor;
+                }
+                const _response = await (this._options.fetcher ?? core.fetcher)({
+                    url: core.url.join(
+                        (await core.Supplier.get(this._options.baseUrl)) ??
+                            (await core.Supplier.get(this._options.environment)) ??
+                            environments.SquareEnvironment.Production,
+                        "v2/cash-drawers/shifts",
+                    ),
+                    method: "GET",
+                    headers: mergeHeaders(
+                        this._options?.headers,
+                        mergeOnlyDefinedHeaders({
+                            Authorization: await this._getAuthorizationHeader(),
+                            "Square-Version": requestOptions?.version ?? "2025-07-16",
+                        }),
+                        requestOptions?.headers,
+                    ),
+                    queryParameters: _queryParams,
+                    timeoutMs:
+                        requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+                    maxRetries: requestOptions?.maxRetries,
+                    abortSignal: requestOptions?.abortSignal,
                 });
-            }
-            if (beginTime !== undefined) {
-                _queryParams["begin_time"] = beginTime;
-            }
-            if (endTime !== undefined) {
-                _queryParams["end_time"] = endTime;
-            }
-            if (limit !== undefined) {
-                _queryParams["limit"] = limit?.toString() ?? null;
-            }
-            if (cursor !== undefined) {
-                _queryParams["cursor"] = cursor;
-            }
-            const _response = await (this._options.fetcher ?? core.fetcher)({
-                url: urlJoin(
-                    (await core.Supplier.get(this._options.baseUrl)) ??
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.SquareEnvironment.Production,
-                    "v2/cash-drawers/shifts",
-                ),
-                method: "GET",
-                headers: {
-                    Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                    "X-Fern-Language": "JavaScript",
-                    "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "43.0.1",
-                    "User-Agent": "square/43.0.1",
-                    "X-Fern-Runtime": core.RUNTIME.type,
-                    "X-Fern-Runtime-Version": core.RUNTIME.version,
-                    ...requestOptions?.headers,
-                },
-                contentType: "application/json",
-                queryParameters: _queryParams,
-                requestType: "json",
-                timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-                maxRetries: requestOptions?.maxRetries,
-                abortSignal: requestOptions?.abortSignal,
-            });
-            if (_response.ok) {
-                return serializers.ListCashDrawerShiftsResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                });
-            }
-            if (_response.error.reason === "status-code") {
-                throw new errors.SquareError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.body,
-                });
-            }
-            switch (_response.error.reason) {
-                case "non-json":
+                if (_response.ok) {
+                    return {
+                        data: serializers.ListCashDrawerShiftsResponse.parseOrThrow(_response.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        rawResponse: _response.rawResponse,
+                    };
+                }
+                if (_response.error.reason === "status-code") {
                     throw new errors.SquareError({
                         statusCode: _response.error.statusCode,
-                        body: _response.error.rawBody,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
                     });
-                case "timeout":
-                    throw new errors.SquareTimeoutError("Timeout exceeded when calling GET /v2/cash-drawers/shifts.");
-                case "unknown":
-                    throw new errors.SquareError({
-                        message: _response.error.errorMessage,
-                    });
-            }
-        };
+                }
+                switch (_response.error.reason) {
+                    case "non-json":
+                        throw new errors.SquareError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.rawBody,
+                            rawResponse: _response.rawResponse,
+                        });
+                    case "timeout":
+                        throw new errors.SquareTimeoutError(
+                            "Timeout exceeded when calling GET /v2/cash-drawers/shifts.",
+                        );
+                    case "unknown":
+                        throw new errors.SquareError({
+                            message: _response.error.errorMessage,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            },
+        );
+        const dataWithRawResponse = await list(request).withRawResponse();
         return new core.Pageable<Square.ListCashDrawerShiftsResponse, Square.CashDrawerShiftSummary>({
-            response: await list(request),
-            hasNextPage: (response) => response?.cursor != null,
+            response: dataWithRawResponse.data,
+            rawResponse: dataWithRawResponse.rawResponse,
+            hasNextPage: (response) =>
+                response?.cursor != null && !(typeof response?.cursor === "string" && response?.cursor === ""),
             getItems: (response) => response?.cashDrawerShifts ?? [],
             loadPage: (response) => {
                 return list(core.setObjectProperty(request, "cursor", response?.cursor));
@@ -155,53 +170,59 @@ export class Shifts {
      *         locationId: "location_id"
      *     })
      */
-    public async get(
+    public get(
         request: Square.cashDrawers.GetShiftsRequest,
         requestOptions?: Shifts.RequestOptions,
-    ): Promise<Square.GetCashDrawerShiftResponse> {
+    ): core.HttpResponsePromise<Square.GetCashDrawerShiftResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__get(request, requestOptions));
+    }
+
+    private async __get(
+        request: Square.cashDrawers.GetShiftsRequest,
+        requestOptions?: Shifts.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.GetCashDrawerShiftResponse>> {
         const { shiftId, locationId } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         _queryParams["location_id"] = locationId;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/cash-drawers/shifts/${encodeURIComponent(shiftId)}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             queryParameters: _queryParams,
-            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.GetCashDrawerShiftResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.GetCashDrawerShiftResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -210,6 +231,7 @@ export class Shifts {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -218,6 +240,7 @@ export class Shifts {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -238,78 +261,85 @@ export class Shifts {
         request: Square.cashDrawers.ListEventsShiftsRequest,
         requestOptions?: Shifts.RequestOptions,
     ): Promise<core.Page<Square.CashDrawerShiftEvent>> {
-        const list = async (
-            request: Square.cashDrawers.ListEventsShiftsRequest,
-        ): Promise<Square.ListCashDrawerShiftEventsResponse> => {
-            const { shiftId, locationId, limit, cursor } = request;
-            const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-            _queryParams["location_id"] = locationId;
-            if (limit !== undefined) {
-                _queryParams["limit"] = limit?.toString() ?? null;
-            }
-            if (cursor !== undefined) {
-                _queryParams["cursor"] = cursor;
-            }
-            const _response = await (this._options.fetcher ?? core.fetcher)({
-                url: urlJoin(
-                    (await core.Supplier.get(this._options.baseUrl)) ??
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.SquareEnvironment.Production,
-                    `v2/cash-drawers/shifts/${encodeURIComponent(shiftId)}/events`,
-                ),
-                method: "GET",
-                headers: {
-                    Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                    "X-Fern-Language": "JavaScript",
-                    "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "43.0.0",
-                    "User-Agent": "square/43.0.0",
-                    "X-Fern-Runtime": core.RUNTIME.type,
-                    "X-Fern-Runtime-Version": core.RUNTIME.version,
-                    ...requestOptions?.headers,
-                },
-                contentType: "application/json",
-                queryParameters: _queryParams,
-                requestType: "json",
-                timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-                maxRetries: requestOptions?.maxRetries,
-                abortSignal: requestOptions?.abortSignal,
-            });
-            if (_response.ok) {
-                return serializers.ListCashDrawerShiftEventsResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
+        const list = core.HttpResponsePromise.interceptFunction(
+            async (
+                request: Square.cashDrawers.ListEventsShiftsRequest,
+            ): Promise<core.WithRawResponse<Square.ListCashDrawerShiftEventsResponse>> => {
+                const { shiftId, locationId, limit, cursor } = request;
+                const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+                _queryParams["location_id"] = locationId;
+                if (limit !== undefined) {
+                    _queryParams["limit"] = limit?.toString() ?? null;
+                }
+                if (cursor !== undefined) {
+                    _queryParams["cursor"] = cursor;
+                }
+                const _response = await (this._options.fetcher ?? core.fetcher)({
+                    url: core.url.join(
+                        (await core.Supplier.get(this._options.baseUrl)) ??
+                            (await core.Supplier.get(this._options.environment)) ??
+                            environments.SquareEnvironment.Production,
+                        `v2/cash-drawers/shifts/${encodeURIComponent(shiftId)}/events`,
+                    ),
+                    method: "GET",
+                    headers: mergeHeaders(
+                        this._options?.headers,
+                        mergeOnlyDefinedHeaders({
+                            Authorization: await this._getAuthorizationHeader(),
+                            "Square-Version": requestOptions?.version ?? "2025-07-16",
+                        }),
+                        requestOptions?.headers,
+                    ),
+                    queryParameters: _queryParams,
+                    timeoutMs:
+                        requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+                    maxRetries: requestOptions?.maxRetries,
+                    abortSignal: requestOptions?.abortSignal,
                 });
-            }
-            if (_response.error.reason === "status-code") {
-                throw new errors.SquareError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.body,
-                });
-            }
-            switch (_response.error.reason) {
-                case "non-json":
+                if (_response.ok) {
+                    return {
+                        data: serializers.ListCashDrawerShiftEventsResponse.parseOrThrow(_response.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        rawResponse: _response.rawResponse,
+                    };
+                }
+                if (_response.error.reason === "status-code") {
                     throw new errors.SquareError({
                         statusCode: _response.error.statusCode,
-                        body: _response.error.rawBody,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
                     });
-                case "timeout":
-                    throw new errors.SquareTimeoutError(
-                        "Timeout exceeded when calling GET /v2/cash-drawers/shifts/{shift_id}/events.",
-                    );
-                case "unknown":
-                    throw new errors.SquareError({
-                        message: _response.error.errorMessage,
-                    });
-            }
-        };
+                }
+                switch (_response.error.reason) {
+                    case "non-json":
+                        throw new errors.SquareError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.rawBody,
+                            rawResponse: _response.rawResponse,
+                        });
+                    case "timeout":
+                        throw new errors.SquareTimeoutError(
+                            "Timeout exceeded when calling GET /v2/cash-drawers/shifts/{shift_id}/events.",
+                        );
+                    case "unknown":
+                        throw new errors.SquareError({
+                            message: _response.error.errorMessage,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            },
+        );
+        const dataWithRawResponse = await list(request).withRawResponse();
         return new core.Pageable<Square.ListCashDrawerShiftEventsResponse, Square.CashDrawerShiftEvent>({
-            response: await list(request),
-            hasNextPage: (response) => response?.cursor != null,
+            response: dataWithRawResponse.data,
+            rawResponse: dataWithRawResponse.rawResponse,
+            hasNextPage: (response) =>
+                response?.cursor != null && !(typeof response?.cursor === "string" && response?.cursor === ""),
             getItems: (response) => response?.cashDrawerShiftEvents ?? [],
             loadPage: (response) => {
                 return list(core.setObjectProperty(request, "cursor", response?.cursor));

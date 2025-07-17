@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as Square from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index";
 
 export declare namespace Checkouts {
@@ -17,6 +17,8 @@ export declare namespace Checkouts {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
     }
 
@@ -30,12 +32,16 @@ export declare namespace Checkouts {
         /** Override the Square-Version header */
         version?: "2025-07-16";
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
 }
 
 export class Checkouts {
-    constructor(protected readonly _options: Checkouts.Options = {}) {}
+    protected readonly _options: Checkouts.Options;
+
+    constructor(_options: Checkouts.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Creates a Terminal checkout request and sends it to the specified device to take a payment
@@ -49,7 +55,7 @@ export class Checkouts {
      *         idempotencyKey: "28a0c3bc-7839-11ea-bc55-0242ac130003",
      *         checkout: {
      *             amountMoney: {
-     *                 amount: 2610,
+     *                 amount: BigInt("2610"),
      *                 currency: "USD"
      *             },
      *             referenceId: "id11572",
@@ -60,29 +66,33 @@ export class Checkouts {
      *         }
      *     })
      */
-    public async create(
+    public create(
         request: Square.terminal.CreateTerminalCheckoutRequest,
         requestOptions?: Checkouts.RequestOptions,
-    ): Promise<Square.CreateTerminalCheckoutResponse> {
+    ): core.HttpResponsePromise<Square.CreateTerminalCheckoutResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
+    }
+
+    private async __create(
+        request: Square.terminal.CreateTerminalCheckoutRequest,
+        requestOptions?: Checkouts.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.CreateTerminalCheckoutResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/terminals/checkouts",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.1",
-                "User-Agent": "square/43.0.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.terminal.CreateTerminalCheckoutRequest.jsonOrThrow(request, {
@@ -94,19 +104,23 @@ export class Checkouts {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.CreateTerminalCheckoutResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.CreateTerminalCheckoutResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -115,12 +129,14 @@ export class Checkouts {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling POST /v2/terminals/checkouts.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -141,29 +157,33 @@ export class Checkouts {
      *         limit: 2
      *     })
      */
-    public async search(
+    public search(
         request: Square.terminal.SearchTerminalCheckoutsRequest = {},
         requestOptions?: Checkouts.RequestOptions,
-    ): Promise<Square.SearchTerminalCheckoutsResponse> {
+    ): core.HttpResponsePromise<Square.SearchTerminalCheckoutsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__search(request, requestOptions));
+    }
+
+    private async __search(
+        request: Square.terminal.SearchTerminalCheckoutsRequest = {},
+        requestOptions?: Checkouts.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.SearchTerminalCheckoutsResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/terminals/checkouts/search",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.1",
-                "User-Agent": "square/43.0.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.terminal.SearchTerminalCheckoutsRequest.jsonOrThrow(request, {
@@ -175,19 +195,23 @@ export class Checkouts {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.SearchTerminalCheckoutsResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.SearchTerminalCheckoutsResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -196,6 +220,7 @@ export class Checkouts {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -204,6 +229,7 @@ export class Checkouts {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -219,50 +245,56 @@ export class Checkouts {
      *         checkoutId: "checkout_id"
      *     })
      */
-    public async get(
+    public get(
         request: Square.terminal.GetCheckoutsRequest,
         requestOptions?: Checkouts.RequestOptions,
-    ): Promise<Square.GetTerminalCheckoutResponse> {
+    ): core.HttpResponsePromise<Square.GetTerminalCheckoutResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__get(request, requestOptions));
+    }
+
+    private async __get(
+        request: Square.terminal.GetCheckoutsRequest,
+        requestOptions?: Checkouts.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.GetTerminalCheckoutResponse>> {
         const { checkoutId } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/terminals/checkouts/${encodeURIComponent(checkoutId)}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.1",
-                "User-Agent": "square/43.0.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.GetTerminalCheckoutResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.GetTerminalCheckoutResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -271,6 +303,7 @@ export class Checkouts {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -279,6 +312,7 @@ export class Checkouts {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -294,50 +328,56 @@ export class Checkouts {
      *         checkoutId: "checkout_id"
      *     })
      */
-    public async cancel(
+    public cancel(
         request: Square.terminal.CancelCheckoutsRequest,
         requestOptions?: Checkouts.RequestOptions,
-    ): Promise<Square.CancelTerminalCheckoutResponse> {
+    ): core.HttpResponsePromise<Square.CancelTerminalCheckoutResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__cancel(request, requestOptions));
+    }
+
+    private async __cancel(
+        request: Square.terminal.CancelCheckoutsRequest,
+        requestOptions?: Checkouts.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.CancelTerminalCheckoutResponse>> {
         const { checkoutId } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/terminals/checkouts/${encodeURIComponent(checkoutId)}/cancel`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.1",
-                "User-Agent": "square/43.0.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.CancelTerminalCheckoutResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.CancelTerminalCheckoutResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -346,6 +386,7 @@ export class Checkouts {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -354,6 +395,7 @@ export class Checkouts {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

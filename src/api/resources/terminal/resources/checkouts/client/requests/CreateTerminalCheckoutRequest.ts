@@ -10,7 +10,7 @@ import * as Square from "../../../../../../index";
  *         idempotencyKey: "28a0c3bc-7839-11ea-bc55-0242ac130003",
  *         checkout: {
  *             amountMoney: {
- *                 amount: 2610,
+ *                 amount: BigInt("2610"),
  *                 currency: "USD"
  *             },
  *             referenceId: "id11572",

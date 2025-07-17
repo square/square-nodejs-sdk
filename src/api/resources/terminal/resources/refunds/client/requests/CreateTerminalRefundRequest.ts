@@ -11,7 +11,7 @@ import * as Square from "../../../../../../index";
  *         refund: {
  *             paymentId: "5O5OvgkcNUhl7JBuINflcjKqUzXZY",
  *             amountMoney: {
- *                 amount: 111,
+ *                 amount: BigInt("111"),
  *                 currency: "CAD"
  *             },
  *             reason: "Returning items",
