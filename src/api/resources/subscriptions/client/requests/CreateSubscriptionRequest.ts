@@ -18,7 +18,7 @@ import * as Square from "../../../../index";
  *             name: "My Application"
  *         },
  *         phases: [{
- *                 ordinal: 0,
+ *                 ordinal: BigInt("0"),
  *                 orderTemplateId: "U2NaowWxzXwpsZU697x7ZHOAnCNZY"
  *             }]
  *     }

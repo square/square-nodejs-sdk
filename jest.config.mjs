@@ -2,8 +2,49 @@
 export default {
     preset: "ts-jest",
     testEnvironment: "node",
-    moduleNameMapper: {
-        "(.+)\.js$": "$1",
-    },
-    workerThreads: true,
+    projects: [
+        {
+            displayName: "unit",
+            preset: "ts-jest",
+            testEnvironment: "node",
+            moduleNameMapper: {
+                "^(\.{1,2}/.*)\.js$": "$1",
+            },
+            roots: ["<rootDir>/tests"],
+            testPathIgnorePatterns: ["\.browser\.(spec|test)\.[jt]sx?$", "/tests/wire/", "/tests/integration/"],
+            setupFilesAfterEnv: [],
+        },
+        {
+            displayName: "browser",
+            preset: "ts-jest",
+            testEnvironment: "<rootDir>/tests/BrowserTestEnvironment.ts",
+            moduleNameMapper: {
+                "^(\.{1,2}/.*)\.js$": "$1",
+            },
+            roots: ["<rootDir>/tests"],
+            testMatch: ["<rootDir>/tests/unit/**/?(*.)+(browser).(spec|test).[jt]s?(x)"],
+            setupFilesAfterEnv: [],
+        },
+        {
+            displayName: "wire",
+            preset: "ts-jest",
+            testEnvironment: "node",
+            moduleNameMapper: {
+                "^(\.{1,2}/.*)\.js$": "$1",
+            },
+            roots: ["<rootDir>/tests/wire"],
+            setupFilesAfterEnv: ["<rootDir>/tests/mock-server/setup.ts"],
+        },
+        {
+            displayName: "integration",
+            preset: "ts-jest",
+            testEnvironment: "node",
+            moduleNameMapper: {
+                "^(\.{1,2}/.*)\.js$": "$1",
+            },
+            roots: ["<rootDir>/tests/integration"],
+        },
+    ],
+    workerThreads: false,
+    passWithNoTests: true,
 };

@@ -15,7 +15,7 @@ import * as Square from "../../../../index";
  *             wage: {
  *                 title: "Barista",
  *                 hourlyRate: {
- *                     amount: 1100,
+ *                     amount: BigInt("1100"),
  *                     currency: "USD"
  *                 },
  *                 tipEligible: true
@@ -30,7 +30,7 @@ import * as Square from "../../../../index";
  *                 }],
  *             teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
  *             declaredCashTipMoney: {
- *                 amount: 500,
+ *                 amount: BigInt("500"),
  *                 currency: "USD"
  *             }
  *         }

@@ -13,14 +13,14 @@ import * as Square from "../../../../index";
  *                     name: "Item 1",
  *                     quantity: "1",
  *                     basePriceMoney: {
- *                         amount: 500,
+ *                         amount: BigInt("500"),
  *                         currency: "USD"
  *                     }
  *                 }, {
  *                     name: "Item 2",
  *                     quantity: "2",
  *                     basePriceMoney: {
- *                         amount: 300,
+ *                         amount: BigInt("300"),
  *                         currency: "USD"
  *                     }
  *                 }],

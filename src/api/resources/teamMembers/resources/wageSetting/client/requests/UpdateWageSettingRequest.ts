@@ -13,7 +13,7 @@ import * as Square from "../../../../../../index";
  *                     jobTitle: "Manager",
  *                     payType: "SALARY",
  *                     annualRate: {
- *                         amount: 3000000,
+ *                         amount: BigInt("3000000"),
  *                         currency: "USD"
  *                     },
  *                     weeklyHours: 40
@@ -21,7 +21,7 @@ import * as Square from "../../../../../../index";
  *                     jobTitle: "Cashier",
  *                     payType: "HOURLY",
  *                     hourlyRate: {
- *                         amount: 2000,
+ *                         amount: BigInt("2000"),
  *                         currency: "USD"
  *                     }
  *                 }],

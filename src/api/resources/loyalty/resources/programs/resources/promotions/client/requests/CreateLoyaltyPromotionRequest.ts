@@ -24,7 +24,7 @@ import * as Square from "../../../../../../../../index";
  *                 interval: "DAY"
  *             },
  *             minimumSpendAmountMoney: {
- *                 amount: 2000,
+ *                 amount: BigInt("2000"),
  *                 currency: "USD"
  *             },
  *             qualifyingCategoryIds: ["XTQPYLR3IIU9C44VRCB3XD12"]

@@ -10,7 +10,7 @@ import * as Square from "../../../../index";
  *         customerId: "customer_id",
  *         emailAddress: "New.Amelia.Earhart@example.com",
  *         note: "updated customer note",
- *         version: 2
+ *         version: BigInt("2")
  *     }
  */
 export interface UpdateCustomerRequest {

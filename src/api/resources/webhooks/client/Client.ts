@@ -15,28 +15,20 @@ export declare namespace Webhooks {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
-    }
-
-    export interface RequestOptions {
-        /** The maximum time to wait for a response in seconds. */
-        timeoutInSeconds?: number;
-        /** The number of times to retry the request. Defaults to 2. */
-        maxRetries?: number;
-        /** A hook to abort the request. */
-        abortSignal?: AbortSignal;
-        /** Override the Square-Version header */
-        version?: "2025-07-16";
-        /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
     }
 }
 
 export class Webhooks {
+    protected readonly _options: Webhooks.Options;
     protected _eventTypes: EventTypes | undefined;
     protected _subscriptions: Subscriptions | undefined;
 
-    constructor(protected readonly _options: Webhooks.Options = {}) {}
+    constructor(_options: Webhooks.Options = {}) {
+        this._options = _options;
+    }
 
     public get eventTypes(): EventTypes {
         return (this._eventTypes ??= new EventTypes(this._options));

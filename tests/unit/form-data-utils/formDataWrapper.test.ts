@@ -11,7 +11,7 @@ describe("CrossPlatformFormData", () => {
         });
 
         it("should append a Readable stream with a specified filename", async () => {
-            const value = (await import("readable-stream")).Readable.from(["file content"]);
+            const value = (await import("stream")).Readable.from(["file content"]);
             const filename = "testfile.txt";
 
             await formData.appendFile("file", value, filename);
@@ -69,6 +69,22 @@ describe("CrossPlatformFormData", () => {
             }
             expect(data).toContain("test.txt");
         });
+
+        it("should append stream with path", async () => {
+            const expectedFileName = "testfile.txt";
+            const filePath = "/test/testfile.txt";
+            const stream = (await import("stream")).Readable.from(["file content"]);
+            (stream as any).path = filePath;
+            await formData.appendFile("file", stream);
+
+            const request = await formData.getRequest();
+            const decoder = new TextDecoder("utf-8");
+            let data = "";
+            for await (const chunk of request.body) {
+                data += decoder.decode(chunk);
+            }
+            expect(data).toContain('Content-Disposition: form-data; name="file"; filename="' + expectedFileName + '"');
+        });
     });
 
     describe("WebFormData", () => {
@@ -80,7 +96,7 @@ describe("CrossPlatformFormData", () => {
         });
 
         it("should append a Readable stream with a specified filename", async () => {
-            const value = (await import("readable-stream")).Readable.from(["file content"]);
+            const value = (await import("stream")).Readable.from(["file content"]);
             const filename = "testfile.txt";
 
             await formData.appendFile("file", value, filename);

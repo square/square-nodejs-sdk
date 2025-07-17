@@ -15,7 +15,7 @@ import * as Square from "../../../../index";
  *                     name: "COOKIE",
  *                     quantity: "2",
  *                     basePriceMoney: {
- *                         amount: 200,
+ *                         amount: BigInt("200"),
  *                         currency: "USD"
  *                     }
  *                 }],

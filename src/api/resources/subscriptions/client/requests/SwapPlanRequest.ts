@@ -10,7 +10,7 @@ import * as Square from "../../../../index";
  *         subscriptionId: "subscription_id",
  *         newPlanVariationId: "FQ7CDXXWSLUJRPM3GFJSJGZ7",
  *         phases: [{
- *                 ordinal: 0,
+ *                 ordinal: BigInt("0"),
  *                 orderTemplateId: "uhhnjH9osVv3shUADwaC0b3hNxQZY"
  *             }]
  *     }

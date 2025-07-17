@@ -9,11 +9,11 @@ import * as Square from "../../../../index";
  *     {
  *         idempotencyKey: "9b7f2dcf-49da-4411-b23e-a2d6af21333a",
  *         amountMoney: {
- *             amount: 1000,
+ *             amount: BigInt("1000"),
  *             currency: "USD"
  *         },
  *         appFeeMoney: {
- *             amount: 10,
+ *             amount: BigInt("10"),
  *             currency: "USD"
  *         },
  *         paymentId: "R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",

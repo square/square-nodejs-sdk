@@ -3,6 +3,7 @@
  */
 
 import { toJson } from "../core/json";
+import * as core from "../core";
 import { Error_, ErrorCategory as GeneratedErrorCategory, ErrorCode as GeneratedErrorCode } from "../api";
 
 const fallbackError = {
@@ -14,20 +15,28 @@ export class SquareError extends Error {
     readonly statusCode?: number;
     readonly body?: unknown;
     readonly errors: SquareError.BodyError[];
+    public readonly rawResponse?: core.RawResponse;
 
-    constructor({ message, statusCode, body }: { message?: string; statusCode?: number; body?: unknown }) {
+    constructor({
+        message,
+        statusCode,
+        body,
+        rawResponse,
+    }: {
+        message?: string;
+        statusCode?: number;
+        body?: unknown;
+        rawResponse?: core.RawResponse;
+    }) {
         super(buildMessage({ message, statusCode, body }));
         Object.setPrototypeOf(this, SquareError.prototype);
-        if (statusCode != null) {
-            this.statusCode = statusCode;
-        }
-
+        this.statusCode = statusCode;
+        this.rawResponse = rawResponse;
         this.body = body;
         if (body != null && typeof body === "object") {
             if ("errors" in body) {
                 this.errors = (body as unknown as SquareErrorBody).errors ?? [fallbackError];
-            }
-            else {
+            } else {
                 const v1Error = body as V1Error;
                 this.errors = [
                     {
@@ -35,12 +44,11 @@ export class SquareError extends Error {
                         code: v1Error.type ?? SquareError.ErrorCode.Unknown,
                         detail: v1Error.message,
                         field: v1Error.field,
-                    }
+                    },
                 ];
             }
-        }
-        else{
-            this.errors = [fallbackError]
+        } else {
+            this.errors = [fallbackError];
         }
     }
 }
