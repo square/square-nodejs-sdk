@@ -6,7 +6,7 @@ import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Square from "../../../index";
 import * as serializers from "../../../../serialization/index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers";
 import * as errors from "../../../../errors/index";
 
 export declare namespace Refunds {
@@ -17,6 +17,8 @@ export declare namespace Refunds {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
     }
 
@@ -30,12 +32,16 @@ export declare namespace Refunds {
         /** Override the Square-Version header */
         version?: "2025-07-16";
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
 }
 
 export class Refunds {
-    constructor(protected readonly _options: Refunds.Options = {}) {}
+    protected readonly _options: Refunds.Options;
+
+    constructor(_options: Refunds.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Retrieves a list of refunds for the account making the request.
@@ -55,115 +61,124 @@ export class Refunds {
         request: Square.ListRefundsRequest = {},
         requestOptions?: Refunds.RequestOptions,
     ): Promise<core.Page<Square.PaymentRefund>> {
-        const list = async (request: Square.ListRefundsRequest): Promise<Square.ListPaymentRefundsResponse> => {
-            const {
-                beginTime,
-                endTime,
-                sortOrder,
-                cursor,
-                locationId,
-                status,
-                sourceType,
-                limit,
-                updatedAtBeginTime,
-                updatedAtEndTime,
-                sortField,
-            } = request;
-            const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-            if (beginTime !== undefined) {
-                _queryParams["begin_time"] = beginTime;
-            }
-            if (endTime !== undefined) {
-                _queryParams["end_time"] = endTime;
-            }
-            if (sortOrder !== undefined) {
-                _queryParams["sort_order"] = sortOrder;
-            }
-            if (cursor !== undefined) {
-                _queryParams["cursor"] = cursor;
-            }
-            if (locationId !== undefined) {
-                _queryParams["location_id"] = locationId;
-            }
-            if (status !== undefined) {
-                _queryParams["status"] = status;
-            }
-            if (sourceType !== undefined) {
-                _queryParams["source_type"] = sourceType;
-            }
-            if (limit !== undefined) {
-                _queryParams["limit"] = limit?.toString() ?? null;
-            }
-            if (updatedAtBeginTime !== undefined) {
-                _queryParams["updated_at_begin_time"] = updatedAtBeginTime;
-            }
-            if (updatedAtEndTime !== undefined) {
-                _queryParams["updated_at_end_time"] = updatedAtEndTime;
-            }
-            if (sortField !== undefined) {
-                _queryParams["sort_field"] = serializers.ListPaymentRefundsRequestSortField.jsonOrThrow(sortField, {
-                    unrecognizedObjectKeys: "strip",
-                    omitUndefined: true,
+        const list = core.HttpResponsePromise.interceptFunction(
+            async (
+                request: Square.ListRefundsRequest,
+            ): Promise<core.WithRawResponse<Square.ListPaymentRefundsResponse>> => {
+                const {
+                    beginTime,
+                    endTime,
+                    sortOrder,
+                    cursor,
+                    locationId,
+                    status,
+                    sourceType,
+                    limit,
+                    updatedAtBeginTime,
+                    updatedAtEndTime,
+                    sortField,
+                } = request;
+                const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+                if (beginTime !== undefined) {
+                    _queryParams["begin_time"] = beginTime;
+                }
+                if (endTime !== undefined) {
+                    _queryParams["end_time"] = endTime;
+                }
+                if (sortOrder !== undefined) {
+                    _queryParams["sort_order"] = sortOrder;
+                }
+                if (cursor !== undefined) {
+                    _queryParams["cursor"] = cursor;
+                }
+                if (locationId !== undefined) {
+                    _queryParams["location_id"] = locationId;
+                }
+                if (status !== undefined) {
+                    _queryParams["status"] = status;
+                }
+                if (sourceType !== undefined) {
+                    _queryParams["source_type"] = sourceType;
+                }
+                if (limit !== undefined) {
+                    _queryParams["limit"] = limit?.toString() ?? null;
+                }
+                if (updatedAtBeginTime !== undefined) {
+                    _queryParams["updated_at_begin_time"] = updatedAtBeginTime;
+                }
+                if (updatedAtEndTime !== undefined) {
+                    _queryParams["updated_at_end_time"] = updatedAtEndTime;
+                }
+                if (sortField !== undefined) {
+                    _queryParams["sort_field"] = serializers.ListPaymentRefundsRequestSortField.jsonOrThrow(sortField, {
+                        unrecognizedObjectKeys: "strip",
+                        omitUndefined: true,
+                    });
+                }
+                const _response = await (this._options.fetcher ?? core.fetcher)({
+                    url: core.url.join(
+                        (await core.Supplier.get(this._options.baseUrl)) ??
+                            (await core.Supplier.get(this._options.environment)) ??
+                            environments.SquareEnvironment.Production,
+                        "v2/refunds",
+                    ),
+                    method: "GET",
+                    headers: mergeHeaders(
+                        this._options?.headers,
+                        mergeOnlyDefinedHeaders({
+                            Authorization: await this._getAuthorizationHeader(),
+                            "Square-Version": requestOptions?.version ?? "2025-07-16",
+                        }),
+                        requestOptions?.headers,
+                    ),
+                    queryParameters: _queryParams,
+                    timeoutMs:
+                        requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+                    maxRetries: requestOptions?.maxRetries,
+                    abortSignal: requestOptions?.abortSignal,
                 });
-            }
-            const _response = await (this._options.fetcher ?? core.fetcher)({
-                url: urlJoin(
-                    (await core.Supplier.get(this._options.baseUrl)) ??
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.SquareEnvironment.Production,
-                    "v2/refunds",
-                ),
-                method: "GET",
-                headers: {
-                    Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                    "X-Fern-Language": "JavaScript",
-                    "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "43.0.0",
-                    "User-Agent": "square/43.0.0",
-                    "X-Fern-Runtime": core.RUNTIME.type,
-                    "X-Fern-Runtime-Version": core.RUNTIME.version,
-                    ...requestOptions?.headers,
-                },
-                contentType: "application/json",
-                queryParameters: _queryParams,
-                requestType: "json",
-                timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-                maxRetries: requestOptions?.maxRetries,
-                abortSignal: requestOptions?.abortSignal,
-            });
-            if (_response.ok) {
-                return serializers.ListPaymentRefundsResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                });
-            }
-            if (_response.error.reason === "status-code") {
-                throw new errors.SquareError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.body,
-                });
-            }
-            switch (_response.error.reason) {
-                case "non-json":
+                if (_response.ok) {
+                    return {
+                        data: serializers.ListPaymentRefundsResponse.parseOrThrow(_response.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        rawResponse: _response.rawResponse,
+                    };
+                }
+                if (_response.error.reason === "status-code") {
                     throw new errors.SquareError({
                         statusCode: _response.error.statusCode,
-                        body: _response.error.rawBody,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
                     });
-                case "timeout":
-                    throw new errors.SquareTimeoutError("Timeout exceeded when calling GET /v2/refunds.");
-                case "unknown":
-                    throw new errors.SquareError({
-                        message: _response.error.errorMessage,
-                    });
-            }
-        };
+                }
+                switch (_response.error.reason) {
+                    case "non-json":
+                        throw new errors.SquareError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.rawBody,
+                            rawResponse: _response.rawResponse,
+                        });
+                    case "timeout":
+                        throw new errors.SquareTimeoutError("Timeout exceeded when calling GET /v2/refunds.");
+                    case "unknown":
+                        throw new errors.SquareError({
+                            message: _response.error.errorMessage,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            },
+        );
+        const dataWithRawResponse = await list(request).withRawResponse();
         return new core.Pageable<Square.ListPaymentRefundsResponse, Square.PaymentRefund>({
-            response: await list(request),
-            hasNextPage: (response) => response?.cursor != null,
+            response: dataWithRawResponse.data,
+            rawResponse: dataWithRawResponse.rawResponse,
+            hasNextPage: (response) =>
+                response?.cursor != null && !(typeof response?.cursor === "string" && response?.cursor === ""),
             getItems: (response) => response?.refunds ?? [],
             loadPage: (response) => {
                 return list(core.setObjectProperty(request, "cursor", response?.cursor));
@@ -184,40 +199,44 @@ export class Refunds {
      *     await client.refunds.refundPayment({
      *         idempotencyKey: "9b7f2dcf-49da-4411-b23e-a2d6af21333a",
      *         amountMoney: {
-     *             amount: 1000,
+     *             amount: BigInt("1000"),
      *             currency: "USD"
      *         },
      *         appFeeMoney: {
-     *             amount: 10,
+     *             amount: BigInt("10"),
      *             currency: "USD"
      *         },
      *         paymentId: "R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",
      *         reason: "Example"
      *     })
      */
-    public async refundPayment(
+    public refundPayment(
         request: Square.RefundPaymentRequest,
         requestOptions?: Refunds.RequestOptions,
-    ): Promise<Square.RefundPaymentResponse> {
+    ): core.HttpResponsePromise<Square.RefundPaymentResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__refundPayment(request, requestOptions));
+    }
+
+    private async __refundPayment(
+        request: Square.RefundPaymentRequest,
+        requestOptions?: Refunds.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.RefundPaymentResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/refunds",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.RefundPaymentRequest.jsonOrThrow(request, {
@@ -229,19 +248,23 @@ export class Refunds {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.RefundPaymentResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.RefundPaymentResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -250,12 +273,14 @@ export class Refunds {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling POST /v2/refunds.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -271,50 +296,56 @@ export class Refunds {
      *         refundId: "refund_id"
      *     })
      */
-    public async get(
+    public get(
         request: Square.GetRefundsRequest,
         requestOptions?: Refunds.RequestOptions,
-    ): Promise<Square.GetPaymentRefundResponse> {
+    ): core.HttpResponsePromise<Square.GetPaymentRefundResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__get(request, requestOptions));
+    }
+
+    private async __get(
+        request: Square.GetRefundsRequest,
+        requestOptions?: Refunds.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.GetPaymentRefundResponse>> {
         const { refundId } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/refunds/${encodeURIComponent(refundId)}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.GetPaymentRefundResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.GetPaymentRefundResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -323,12 +354,14 @@ export class Refunds {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling GET /v2/refunds/{refund_id}.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

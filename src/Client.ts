@@ -4,6 +4,7 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
+import { mergeHeaders } from "./core/headers";
 import { Mobile } from "./api/resources/mobile/client/Client";
 import { OAuth } from "./api/resources/oAuth/client/Client";
 import { V1Transactions } from "./api/resources/v1Transactions/client/Client";
@@ -47,6 +48,8 @@ export declare namespace SquareClient {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
     }
 
@@ -60,11 +63,12 @@ export declare namespace SquareClient {
         /** Override the Square-Version header */
         version?: "2025-07-16";
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
 }
 
 export class SquareClient {
+    protected readonly _options: SquareClient.Options;
     protected _mobile: Mobile | undefined;
     protected _oAuth: OAuth | undefined;
     protected _v1Transactions: V1Transactions | undefined;
@@ -100,7 +104,23 @@ export class SquareClient {
     protected _cashDrawers: CashDrawers | undefined;
     protected _webhooks: Webhooks | undefined;
 
-    constructor(protected readonly _options: SquareClient.Options = {}) {}
+    constructor(_options: SquareClient.Options = {}) {
+        this._options = {
+            ..._options,
+            headers: mergeHeaders(
+                {
+                    "Square-Version": _options?.version ?? "2025-07-16",
+                    "X-Fern-Language": "JavaScript",
+                    "X-Fern-SDK-Name": "square",
+                    "X-Fern-SDK-Version": "43.0.1",
+                    "User-Agent": "square/43.0.1",
+                    "X-Fern-Runtime": core.RUNTIME.type,
+                    "X-Fern-Runtime-Version": core.RUNTIME.version,
+                },
+                _options?.headers,
+            ),
+        };
+    }
 
     public get mobile(): Mobile {
         return (this._mobile ??= new Mobile(this._options));

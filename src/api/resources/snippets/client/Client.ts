@@ -5,7 +5,7 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Square from "../../../index";
-import urlJoin from "url-join";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
 
@@ -17,6 +17,8 @@ export declare namespace Snippets {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
     }
 
@@ -30,12 +32,16 @@ export declare namespace Snippets {
         /** Override the Square-Version header */
         version?: "2025-07-16";
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
 }
 
 export class Snippets {
-    constructor(protected readonly _options: Snippets.Options = {}) {}
+    protected readonly _options: Snippets.Options;
+
+    constructor(_options: Snippets.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Retrieves your snippet from a Square Online site. A site can contain snippets from multiple snippet applications, but you can retrieve only the snippet that was added by your application.
@@ -53,50 +59,56 @@ export class Snippets {
      *         siteId: "site_id"
      *     })
      */
-    public async get(
+    public get(
         request: Square.GetSnippetsRequest,
         requestOptions?: Snippets.RequestOptions,
-    ): Promise<Square.GetSnippetResponse> {
+    ): core.HttpResponsePromise<Square.GetSnippetResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__get(request, requestOptions));
+    }
+
+    private async __get(
+        request: Square.GetSnippetsRequest,
+        requestOptions?: Snippets.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.GetSnippetResponse>> {
         const { siteId } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/sites/${encodeURIComponent(siteId)}/snippet`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.GetSnippetResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.GetSnippetResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -105,12 +117,14 @@ export class Snippets {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling GET /v2/sites/{site_id}/snippet.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -135,30 +149,34 @@ export class Snippets {
      *         }
      *     })
      */
-    public async upsert(
+    public upsert(
         request: Square.UpsertSnippetRequest,
         requestOptions?: Snippets.RequestOptions,
-    ): Promise<Square.UpsertSnippetResponse> {
+    ): core.HttpResponsePromise<Square.UpsertSnippetResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__upsert(request, requestOptions));
+    }
+
+    private async __upsert(
+        request: Square.UpsertSnippetRequest,
+        requestOptions?: Snippets.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.UpsertSnippetResponse>> {
         const { siteId, ..._body } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/sites/${encodeURIComponent(siteId)}/snippet`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.UpsertSnippetRequest.jsonOrThrow(_body, {
@@ -170,19 +188,23 @@ export class Snippets {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.UpsertSnippetResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.UpsertSnippetResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -191,12 +213,14 @@ export class Snippets {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError("Timeout exceeded when calling POST /v2/sites/{site_id}/snippet.");
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -217,50 +241,56 @@ export class Snippets {
      *         siteId: "site_id"
      *     })
      */
-    public async delete(
+    public delete(
         request: Square.DeleteSnippetsRequest,
         requestOptions?: Snippets.RequestOptions,
-    ): Promise<Square.DeleteSnippetResponse> {
+    ): core.HttpResponsePromise<Square.DeleteSnippetResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
+    }
+
+    private async __delete(
+        request: Square.DeleteSnippetsRequest,
+        requestOptions?: Snippets.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.DeleteSnippetResponse>> {
         const { siteId } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/sites/${encodeURIComponent(siteId)}/snippet`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DeleteSnippetResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DeleteSnippetResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -269,6 +299,7 @@ export class Snippets {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -277,6 +308,7 @@ export class Snippets {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

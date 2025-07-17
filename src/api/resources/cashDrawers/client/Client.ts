@@ -14,27 +14,19 @@ export declare namespace CashDrawers {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
-    }
-
-    export interface RequestOptions {
-        /** The maximum time to wait for a response in seconds. */
-        timeoutInSeconds?: number;
-        /** The number of times to retry the request. Defaults to 2. */
-        maxRetries?: number;
-        /** A hook to abort the request. */
-        abortSignal?: AbortSignal;
-        /** Override the Square-Version header */
-        version?: "2025-07-16";
-        /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
     }
 }
 
 export class CashDrawers {
+    protected readonly _options: CashDrawers.Options;
     protected _shifts: Shifts | undefined;
 
-    constructor(protected readonly _options: CashDrawers.Options = {}) {}
+    constructor(_options: CashDrawers.Options = {}) {
+        this._options = _options;
+    }
 
     public get shifts(): Shifts {
         return (this._shifts ??= new Shifts(this._options));

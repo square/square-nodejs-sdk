@@ -5,8 +5,8 @@
 import * as environments from "../../../../../../environments";
 import * as core from "../../../../../../core";
 import * as Square from "../../../../../index";
+import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers";
 import * as serializers from "../../../../../../serialization/index";
-import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index";
 
 export declare namespace CustomAttributes {
@@ -17,6 +17,8 @@ export declare namespace CustomAttributes {
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
         version?: "2025-07-16";
+        /** Additional headers to include in requests. */
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
     }
 
@@ -30,12 +32,16 @@ export declare namespace CustomAttributes {
         /** Override the Square-Version header */
         version?: "2025-07-16";
         /** Additional headers to include in the request. */
-        headers?: Record<string, string>;
+        headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
 }
 
 export class CustomAttributes {
-    constructor(protected readonly _options: CustomAttributes.Options = {}) {}
+    protected readonly _options: CustomAttributes.Options;
+
+    constructor(_options: CustomAttributes.Options = {}) {
+        this._options = _options;
+    }
 
     /**
      * Deletes order [custom attributes](entity:CustomAttribute) as a bulk operation.
@@ -70,29 +76,33 @@ export class CustomAttributes {
      *         }
      *     })
      */
-    public async batchDelete(
+    public batchDelete(
         request: Square.orders.BulkDeleteOrderCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
-    ): Promise<Square.BulkDeleteOrderCustomAttributesResponse> {
+    ): core.HttpResponsePromise<Square.BulkDeleteOrderCustomAttributesResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__batchDelete(request, requestOptions));
+    }
+
+    private async __batchDelete(
+        request: Square.orders.BulkDeleteOrderCustomAttributesRequest,
+        requestOptions?: CustomAttributes.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.BulkDeleteOrderCustomAttributesResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/orders/custom-attributes/bulk-delete",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.orders.BulkDeleteOrderCustomAttributesRequest.jsonOrThrow(request, {
@@ -104,19 +114,23 @@ export class CustomAttributes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.BulkDeleteOrderCustomAttributesResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.BulkDeleteOrderCustomAttributesResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -125,6 +139,7 @@ export class CustomAttributes {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -133,6 +148,7 @@ export class CustomAttributes {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -178,29 +194,33 @@ export class CustomAttributes {
      *         }
      *     })
      */
-    public async batchUpsert(
+    public batchUpsert(
         request: Square.orders.BulkUpsertOrderCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
-    ): Promise<Square.BulkUpsertOrderCustomAttributesResponse> {
+    ): core.HttpResponsePromise<Square.BulkUpsertOrderCustomAttributesResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__batchUpsert(request, requestOptions));
+    }
+
+    private async __batchUpsert(
+        request: Square.orders.BulkUpsertOrderCustomAttributesRequest,
+        requestOptions?: CustomAttributes.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.BulkUpsertOrderCustomAttributesResponse>> {
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 "v2/orders/custom-attributes/bulk-upsert",
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.orders.BulkUpsertOrderCustomAttributesRequest.jsonOrThrow(request, {
@@ -212,19 +232,23 @@ export class CustomAttributes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.BulkUpsertOrderCustomAttributesResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.BulkUpsertOrderCustomAttributesResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -233,6 +257,7 @@ export class CustomAttributes {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -241,6 +266,7 @@ export class CustomAttributes {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -267,86 +293,93 @@ export class CustomAttributes {
         request: Square.orders.ListCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
     ): Promise<core.Page<Square.CustomAttribute>> {
-        const list = async (
-            request: Square.orders.ListCustomAttributesRequest,
-        ): Promise<Square.ListOrderCustomAttributesResponse> => {
-            const { orderId, visibilityFilter, cursor, limit, withDefinitions } = request;
-            const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-            if (visibilityFilter !== undefined) {
-                _queryParams["visibility_filter"] = serializers.VisibilityFilter.jsonOrThrow(visibilityFilter, {
-                    unrecognizedObjectKeys: "strip",
-                    omitUndefined: true,
+        const list = core.HttpResponsePromise.interceptFunction(
+            async (
+                request: Square.orders.ListCustomAttributesRequest,
+            ): Promise<core.WithRawResponse<Square.ListOrderCustomAttributesResponse>> => {
+                const { orderId, visibilityFilter, cursor, limit, withDefinitions } = request;
+                const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+                if (visibilityFilter !== undefined) {
+                    _queryParams["visibility_filter"] = serializers.VisibilityFilter.jsonOrThrow(visibilityFilter, {
+                        unrecognizedObjectKeys: "strip",
+                        omitUndefined: true,
+                    });
+                }
+                if (cursor !== undefined) {
+                    _queryParams["cursor"] = cursor;
+                }
+                if (limit !== undefined) {
+                    _queryParams["limit"] = limit?.toString() ?? null;
+                }
+                if (withDefinitions !== undefined) {
+                    _queryParams["with_definitions"] = withDefinitions?.toString() ?? null;
+                }
+                const _response = await (this._options.fetcher ?? core.fetcher)({
+                    url: core.url.join(
+                        (await core.Supplier.get(this._options.baseUrl)) ??
+                            (await core.Supplier.get(this._options.environment)) ??
+                            environments.SquareEnvironment.Production,
+                        `v2/orders/${encodeURIComponent(orderId)}/custom-attributes`,
+                    ),
+                    method: "GET",
+                    headers: mergeHeaders(
+                        this._options?.headers,
+                        mergeOnlyDefinedHeaders({
+                            Authorization: await this._getAuthorizationHeader(),
+                            "Square-Version": requestOptions?.version ?? "2025-07-16",
+                        }),
+                        requestOptions?.headers,
+                    ),
+                    queryParameters: _queryParams,
+                    timeoutMs:
+                        requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+                    maxRetries: requestOptions?.maxRetries,
+                    abortSignal: requestOptions?.abortSignal,
                 });
-            }
-            if (cursor !== undefined) {
-                _queryParams["cursor"] = cursor;
-            }
-            if (limit !== undefined) {
-                _queryParams["limit"] = limit?.toString() ?? null;
-            }
-            if (withDefinitions !== undefined) {
-                _queryParams["with_definitions"] = withDefinitions?.toString() ?? null;
-            }
-            const _response = await (this._options.fetcher ?? core.fetcher)({
-                url: urlJoin(
-                    (await core.Supplier.get(this._options.baseUrl)) ??
-                        (await core.Supplier.get(this._options.environment)) ??
-                        environments.SquareEnvironment.Production,
-                    `v2/orders/${encodeURIComponent(orderId)}/custom-attributes`,
-                ),
-                method: "GET",
-                headers: {
-                    Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                    "X-Fern-Language": "JavaScript",
-                    "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "43.0.0",
-                    "User-Agent": "square/43.0.0",
-                    "X-Fern-Runtime": core.RUNTIME.type,
-                    "X-Fern-Runtime-Version": core.RUNTIME.version,
-                    ...requestOptions?.headers,
-                },
-                contentType: "application/json",
-                queryParameters: _queryParams,
-                requestType: "json",
-                timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-                maxRetries: requestOptions?.maxRetries,
-                abortSignal: requestOptions?.abortSignal,
-            });
-            if (_response.ok) {
-                return serializers.ListOrderCustomAttributesResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                });
-            }
-            if (_response.error.reason === "status-code") {
-                throw new errors.SquareError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.body,
-                });
-            }
-            switch (_response.error.reason) {
-                case "non-json":
+                if (_response.ok) {
+                    return {
+                        data: serializers.ListOrderCustomAttributesResponse.parseOrThrow(_response.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        rawResponse: _response.rawResponse,
+                    };
+                }
+                if (_response.error.reason === "status-code") {
                     throw new errors.SquareError({
                         statusCode: _response.error.statusCode,
-                        body: _response.error.rawBody,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
                     });
-                case "timeout":
-                    throw new errors.SquareTimeoutError(
-                        "Timeout exceeded when calling GET /v2/orders/{order_id}/custom-attributes.",
-                    );
-                case "unknown":
-                    throw new errors.SquareError({
-                        message: _response.error.errorMessage,
-                    });
-            }
-        };
+                }
+                switch (_response.error.reason) {
+                    case "non-json":
+                        throw new errors.SquareError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.rawBody,
+                            rawResponse: _response.rawResponse,
+                        });
+                    case "timeout":
+                        throw new errors.SquareTimeoutError(
+                            "Timeout exceeded when calling GET /v2/orders/{order_id}/custom-attributes.",
+                        );
+                    case "unknown":
+                        throw new errors.SquareError({
+                            message: _response.error.errorMessage,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            },
+        );
+        const dataWithRawResponse = await list(request).withRawResponse();
         return new core.Pageable<Square.ListOrderCustomAttributesResponse, Square.CustomAttribute>({
-            response: await list(request),
-            hasNextPage: (response) => response?.cursor != null,
+            response: dataWithRawResponse.data,
+            rawResponse: dataWithRawResponse.rawResponse,
+            hasNextPage: (response) =>
+                response?.cursor != null && !(typeof response?.cursor === "string" && response?.cursor === ""),
             getItems: (response) => response?.customAttributes ?? [],
             loadPage: (response) => {
                 return list(core.setObjectProperty(request, "cursor", response?.cursor));
@@ -373,10 +406,17 @@ export class CustomAttributes {
      *         customAttributeKey: "custom_attribute_key"
      *     })
      */
-    public async get(
+    public get(
         request: Square.orders.GetCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
-    ): Promise<Square.RetrieveOrderCustomAttributeResponse> {
+    ): core.HttpResponsePromise<Square.RetrieveOrderCustomAttributeResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__get(request, requestOptions));
+    }
+
+    private async __get(
+        request: Square.orders.GetCustomAttributesRequest,
+        requestOptions?: CustomAttributes.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.RetrieveOrderCustomAttributeResponse>> {
         const { orderId, customAttributeKey, version, withDefinition } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (version !== undefined) {
@@ -388,45 +428,44 @@ export class CustomAttributes {
         }
 
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/orders/${encodeURIComponent(orderId)}/custom-attributes/${encodeURIComponent(customAttributeKey)}`,
             ),
             method: "GET",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             queryParameters: _queryParams,
-            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.RetrieveOrderCustomAttributeResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.RetrieveOrderCustomAttributeResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -435,6 +474,7 @@ export class CustomAttributes {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -443,6 +483,7 @@ export class CustomAttributes {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -472,30 +513,34 @@ export class CustomAttributes {
      *         }
      *     })
      */
-    public async upsert(
+    public upsert(
         request: Square.orders.UpsertOrderCustomAttributeRequest,
         requestOptions?: CustomAttributes.RequestOptions,
-    ): Promise<Square.UpsertOrderCustomAttributeResponse> {
+    ): core.HttpResponsePromise<Square.UpsertOrderCustomAttributeResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__upsert(request, requestOptions));
+    }
+
+    private async __upsert(
+        request: Square.orders.UpsertOrderCustomAttributeRequest,
+        requestOptions?: CustomAttributes.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.UpsertOrderCustomAttributeResponse>> {
         const { orderId, customAttributeKey, ..._body } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/orders/${encodeURIComponent(orderId)}/custom-attributes/${encodeURIComponent(customAttributeKey)}`,
             ),
             method: "POST",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             contentType: "application/json",
             requestType: "json",
             body: serializers.orders.UpsertOrderCustomAttributeRequest.jsonOrThrow(_body, {
@@ -507,19 +552,23 @@ export class CustomAttributes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.UpsertOrderCustomAttributeResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.UpsertOrderCustomAttributeResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -528,6 +577,7 @@ export class CustomAttributes {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -536,6 +586,7 @@ export class CustomAttributes {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -556,50 +607,56 @@ export class CustomAttributes {
      *         customAttributeKey: "custom_attribute_key"
      *     })
      */
-    public async delete(
+    public delete(
         request: Square.orders.DeleteCustomAttributesRequest,
         requestOptions?: CustomAttributes.RequestOptions,
-    ): Promise<Square.DeleteOrderCustomAttributeResponse> {
+    ): core.HttpResponsePromise<Square.DeleteOrderCustomAttributeResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
+    }
+
+    private async __delete(
+        request: Square.orders.DeleteCustomAttributesRequest,
+        requestOptions?: CustomAttributes.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.DeleteOrderCustomAttributeResponse>> {
         const { orderId, customAttributeKey } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: urlJoin(
+            url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SquareEnvironment.Production,
                 `v2/orders/${encodeURIComponent(orderId)}/custom-attributes/${encodeURIComponent(customAttributeKey)}`,
             ),
             method: "DELETE",
-            headers: {
-                Authorization: await this._getAuthorizationHeader(),
-                "Square-Version": requestOptions?.version ?? this._options?.version ?? "2025-07-16",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "square",
-                "X-Fern-SDK-Version": "43.0.0",
-                "User-Agent": "square/43.0.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
+            headers: mergeHeaders(
+                this._options?.headers,
+                mergeOnlyDefinedHeaders({
+                    Authorization: await this._getAuthorizationHeader(),
+                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                }),
+                requestOptions?.headers,
+            ),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DeleteOrderCustomAttributeResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                skipValidation: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DeleteOrderCustomAttributeResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.SquareError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -608,6 +665,7 @@ export class CustomAttributes {
                 throw new errors.SquareError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.SquareTimeoutError(
@@ -616,6 +674,7 @@ export class CustomAttributes {
             case "unknown":
                 throw new errors.SquareError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

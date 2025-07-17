@@ -11,12 +11,12 @@ import * as Square from "../../../../index";
  *             "8DDA5NZVBZFGAX0V3HPF81HHE0": {
  *                 emailAddress: "New.Amelia.Earhart@example.com",
  *                 note: "updated customer note",
- *                 version: 2
+ *                 version: BigInt("2")
  *             },
  *             "N18CPRVXR5214XPBBA6BZQWF3C": {
  *                 givenName: "Marie",
  *                 familyName: "Curie",
- *                 version: 0
+ *                 version: BigInt("0")
  *             }
  *         }
  *     }
