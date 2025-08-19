@@ -161,7 +161,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -620,7 +620,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             source_id: ccof:GaJGNaZa8x4OgDJn4GB
             idempotency_key: 7b0f3ec5-086a-4871-8f13-3c81b3875218
@@ -837,7 +837,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: a7e36d40-d24b-11e8-b568-0800200c9a66
           response:
@@ -869,7 +869,7 @@ service:
         - path-parameters:
             payment_id: payment_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -1070,7 +1070,7 @@ service:
         - path-parameters:
             payment_id: payment_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             payment:
               amount_money:
@@ -1260,7 +1260,7 @@ service:
         - path-parameters:
             payment_id: payment_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -1456,7 +1456,7 @@ service:
         - path-parameters:
             payment_id: payment_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request: {}
           response:
             body:

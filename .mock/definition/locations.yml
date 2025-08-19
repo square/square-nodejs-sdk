@@ -23,7 +23,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -143,7 +143,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             location:
               name: Midtown
@@ -240,7 +240,7 @@ service:
         - path-parameters:
             location_id: location_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -328,7 +328,7 @@ service:
         - path-parameters:
             location_id: location_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             location:
               business_hours:
@@ -602,7 +602,7 @@ service:
         - path-parameters:
             location_id: location_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 86ae1696-b1e3-4328-af6d-f1e04d947ad6
             order:

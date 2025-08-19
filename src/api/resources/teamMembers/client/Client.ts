@@ -17,7 +17,7 @@ export declare namespace TeamMembers {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-07-16";
+        version?: "2025-08-20";
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
@@ -31,7 +31,7 @@ export declare namespace TeamMembers {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-07-16";
+        version?: "2025-08-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -119,7 +119,7 @@ export class TeamMembers {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                    "Square-Version": requestOptions?.version ?? "2025-08-20",
                 }),
                 requestOptions?.headers,
             ),
@@ -236,7 +236,7 @@ export class TeamMembers {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                    "Square-Version": requestOptions?.version ?? "2025-08-20",
                 }),
                 requestOptions?.headers,
             ),
@@ -356,7 +356,7 @@ export class TeamMembers {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                    "Square-Version": requestOptions?.version ?? "2025-08-20",
                 }),
                 requestOptions?.headers,
             ),
@@ -450,7 +450,7 @@ export class TeamMembers {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                    "Square-Version": requestOptions?.version ?? "2025-08-20",
                 }),
                 requestOptions?.headers,
             ),
@@ -538,7 +538,7 @@ export class TeamMembers {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                    "Square-Version": requestOptions?.version ?? "2025-08-20",
                 }),
                 requestOptions?.headers,
             ),
@@ -655,7 +655,7 @@ export class TeamMembers {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-07-16",
+                    "Square-Version": requestOptions?.version ?? "2025-08-20",
                 }),
                 requestOptions?.headers,
             ),

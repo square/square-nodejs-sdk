@@ -60,7 +60,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -159,7 +159,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 4935a656-a929-4792-b97c-8848be85c27c
             source_id: cnon:uIbfJXhXETSP197M3GB
@@ -239,7 +239,7 @@ service:
         - path-parameters:
             card_id: card_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -307,7 +307,7 @@ service:
         - path-parameters:
             card_id: card_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

@@ -81,7 +81,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             client_id: CLIENT_ID
             access_token: ACCESS_TOKEN
@@ -312,7 +312,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             client_id: sq0idp-uaPHILoPzWZk3tlJqlML0g
             client_secret: sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM
@@ -349,7 +349,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               scopes:
@@ -371,6 +371,6 @@ service:
         openapi: openapi/openapi.json
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
   source:
     openapi: openapi/openapi.json

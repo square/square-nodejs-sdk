@@ -86,7 +86,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               payouts:
@@ -156,7 +156,7 @@ service:
         - path-parameters:
             payout_id: payout_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               payout:
@@ -242,7 +242,7 @@ service:
         - path-parameters:
             payout_id: payout_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               payout_entries:

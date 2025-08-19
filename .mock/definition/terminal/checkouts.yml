@@ -45,7 +45,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 28a0c3bc-7839-11ea-bc55-0242ac130003
             checkout:
@@ -151,7 +151,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             query:
               filter:
@@ -240,7 +240,7 @@ service:
         - path-parameters:
             checkout_id: checkout_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -311,7 +311,7 @@ service:
         - path-parameters:
             checkout_id: checkout_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

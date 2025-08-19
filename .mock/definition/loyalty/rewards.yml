@@ -52,7 +52,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             reward:
               loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
@@ -137,7 +137,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             query:
               loyalty_account_id: 5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd
@@ -209,7 +209,7 @@ service:
         - path-parameters:
             reward_id: reward_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -265,7 +265,7 @@ service:
         - path-parameters:
             reward_id: reward_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -327,7 +327,7 @@ service:
         - path-parameters:
             reward_id: reward_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 98adc7f7-6963-473b-b29c-f3c9cdd7d994
             location_id: P034NEENMD09F

@@ -47,7 +47,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -119,7 +119,7 @@ service:
         - path-parameters:
             dispute_id: dispute_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -181,7 +181,7 @@ service:
         - path-parameters:
             dispute_id: dispute_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -246,7 +246,7 @@ service:
         - path-parameters:
             dispute_id: dispute_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request: {}
           response:
             body:
@@ -311,7 +311,7 @@ service:
         - path-parameters:
             dispute_id: dispute_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: ed3ee3933d946f1514d505d173c82648
             evidence_type: TRACKING_NUMBER
@@ -373,7 +373,7 @@ service:
         - path-parameters:
             dispute_id: dispute_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

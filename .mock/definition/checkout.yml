@@ -26,7 +26,7 @@ service:
         - path-parameters:
             location_id: location_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -87,7 +87,7 @@ service:
         - path-parameters:
             location_id: location_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             location_settings: {}
           response:
@@ -137,7 +137,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -192,7 +192,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             merchant_settings: {}
           response:

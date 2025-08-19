@@ -47,7 +47,7 @@ export declare namespace SquareClient {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-07-16";
+        version?: "2025-08-20";
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
@@ -61,7 +61,7 @@ export declare namespace SquareClient {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-07-16";
+        version?: "2025-08-20";
         /** Additional headers to include in the request. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -109,11 +109,11 @@ export class SquareClient {
             ..._options,
             headers: mergeHeaders(
                 {
-                    "Square-Version": _options?.version ?? "2025-07-16",
+                    "Square-Version": _options?.version ?? "2025-08-20",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "43.0.1",
-                    "User-Agent": "square/43.0.1",
+                    "X-Fern-SDK-Version": "43.0.2",
+                    "User-Agent": "square/43.0.2",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },

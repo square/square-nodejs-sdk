@@ -43,7 +43,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request: {}
           response:
             body:
@@ -114,7 +114,7 @@ service:
         - path-parameters:
             image_id: image_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request: {}
           response:
             body:

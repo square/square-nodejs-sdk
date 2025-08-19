@@ -65,7 +65,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             object_ids:
               - W62UWFY35CWMYGVWK6TWJDNI
@@ -190,7 +190,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             object_ids:
               - W62UWFY35CWMYGVWK6TWJDNI
@@ -395,7 +395,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 789ff020-f723-43a9-b4b5-43b5dc1fa3dc
             batches:
@@ -509,7 +509,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -628,7 +628,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -842,7 +842,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             object_types:
               - ITEM
@@ -1026,7 +1026,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             text_filter: red
             category_ids:
@@ -1122,7 +1122,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             item_ids:
               - H42BRLUJ5KTZTTMPVSLFAACQ
@@ -1183,7 +1183,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             item_ids:
               - H42BRLUJ5KTZTTMPVSLFAACQ

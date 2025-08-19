@@ -42,7 +42,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               team_member_wages:
@@ -106,7 +106,7 @@ service:
         - path-parameters:
             id: id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               team_member_wage:

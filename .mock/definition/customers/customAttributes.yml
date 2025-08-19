@@ -83,7 +83,7 @@ service:
         - path-parameters:
             customer_id: customer_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               custom_attributes:
@@ -184,7 +184,7 @@ service:
             customer_id: customer_id
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               custom_attribute:
@@ -299,7 +299,7 @@ service:
             customer_id: customer_id
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             custom_attribute:
               value: Dune
@@ -372,7 +372,7 @@ service:
             customer_id: customer_id
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

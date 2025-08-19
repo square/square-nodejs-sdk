@@ -33,7 +33,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: idempotency-key-0
             team_member:
@@ -155,7 +155,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             team_members:
               idempotency-key-1:
@@ -269,7 +269,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             team_members:
               AFMwA08kR-MIF-3Vs0OE:
@@ -385,7 +385,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             query:
               filter:
@@ -623,7 +623,7 @@ service:
         - path-parameters:
             team_member_id: team_member_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               team_member:
@@ -699,7 +699,7 @@ service:
         - path-parameters:
             team_member_id: team_member_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             team_member:
               reference_id: reference_id_1

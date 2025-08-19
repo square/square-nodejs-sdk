@@ -43,7 +43,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: thahn-70e75c10-47f7-4ab6-88cc-aaa4076d065e
             action:
@@ -171,7 +171,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             query:
               filter:
@@ -290,7 +290,7 @@ service:
         - path-parameters:
             action_id: action_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -383,7 +383,7 @@ service:
         - path-parameters:
             action_id: action_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

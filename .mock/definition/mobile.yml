@@ -62,7 +62,7 @@ service:
       availability: deprecated
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             location_id: YOUR_LOCATION_ID
           response:

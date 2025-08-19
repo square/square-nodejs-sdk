@@ -50,7 +50,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -98,7 +98,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             group:
               name: Loyal Customers
@@ -138,7 +138,7 @@ service:
         - path-parameters:
             group_id: group_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -181,7 +181,7 @@ service:
         - path-parameters:
             group_id: group_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             group:
               name: Loyal Customers
@@ -219,7 +219,7 @@ service:
         - path-parameters:
             group_id: group_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -257,7 +257,7 @@ service:
             customer_id: customer_id
             group_id: group_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -295,7 +295,7 @@ service:
             customer_id: customer_id
             group_id: group_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

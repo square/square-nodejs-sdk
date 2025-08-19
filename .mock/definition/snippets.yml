@@ -40,7 +40,7 @@ service:
         - path-parameters:
             site_id: site_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -99,7 +99,7 @@ service:
         - path-parameters:
             site_id: site_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             snippet:
               content: <script>var js = 1;</script>
@@ -150,7 +150,7 @@ service:
         - path-parameters:
             site_id: site_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

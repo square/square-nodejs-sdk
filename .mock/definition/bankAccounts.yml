@@ -59,7 +59,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -132,7 +132,7 @@ service:
         - path-parameters:
             v1_bank_account_id: v1_bank_account_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -182,7 +182,7 @@ service:
         - path-parameters:
             bank_account_id: bank_account_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

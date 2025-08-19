@@ -70,7 +70,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: af3d1afc-7212-4300-b463-0bfc5314a5ae
             object:
@@ -239,7 +239,7 @@ service:
         - path-parameters:
             object_id: object_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -374,7 +374,7 @@ service:
         - path-parameters:
             object_id: object_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

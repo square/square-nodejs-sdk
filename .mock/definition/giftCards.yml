@@ -71,7 +71,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -196,7 +196,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: NC9Tm69EjbjtConu
             location_id: 81FN9BNFZTKS4
@@ -252,7 +252,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             gan: '7783320001001635'
           response:
@@ -304,7 +304,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             nonce: cnon:7783322135245171
           response:
@@ -359,7 +359,7 @@ service:
         - path-parameters:
             gift_card_id: gift_card_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             customer_id: GKY0FZ3V717AH8Q2D821PNT2ZW
           response:
@@ -414,7 +414,7 @@ service:
         - path-parameters:
             gift_card_id: gift_card_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             customer_id: GKY0FZ3V717AH8Q2D821PNT2ZW
           response:
@@ -458,7 +458,7 @@ service:
         - path-parameters:
             id: id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

@@ -74,7 +74,7 @@ service:
         - path-parameters:
             program_id: program_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -229,7 +229,7 @@ service:
         - path-parameters:
             program_id: program_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             loyalty_promotion:
               name: Tuesday Happy Hour Promo
@@ -330,7 +330,7 @@ service:
             promotion_id: promotion_id
             program_id: program_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -417,7 +417,7 @@ service:
             promotion_id: promotion_id
             program_id: program_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

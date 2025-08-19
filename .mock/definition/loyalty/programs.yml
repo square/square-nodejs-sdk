@@ -32,7 +32,7 @@ service:
       availability: deprecated
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -108,7 +108,7 @@ service:
         - path-parameters:
             program_id: program_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -257,7 +257,7 @@ service:
         - path-parameters:
             program_id: program_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             order_id: RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY
             loyalty_account_id: 79b807d2-d786-46a9-933b-918028d7a8c5

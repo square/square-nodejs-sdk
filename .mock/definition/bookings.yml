@@ -69,7 +69,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               bookings:
@@ -151,7 +151,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             booking: {}
           response:
@@ -232,7 +232,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             query:
               filter:
@@ -403,7 +403,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             booking_ids:
               - booking_ids
@@ -475,7 +475,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               business_booking_profile:
@@ -529,7 +529,7 @@ service:
         - path-parameters:
             location_id: location_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               location_booking_profile:
@@ -565,7 +565,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             team_member_ids:
               - team_member_ids
@@ -630,7 +630,7 @@ service:
         - path-parameters:
             booking_id: booking_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               booking:
@@ -729,7 +729,7 @@ service:
         - path-parameters:
             booking_id: booking_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             booking: {}
           response:
@@ -829,7 +829,7 @@ service:
         - path-parameters:
             booking_id: booking_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request: {}
           response:
             body:

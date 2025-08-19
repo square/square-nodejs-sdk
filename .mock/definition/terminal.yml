@@ -35,7 +35,7 @@ service:
         - path-parameters:
             action_id: action_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -134,7 +134,7 @@ service:
         - path-parameters:
             checkout_id: checkout_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -209,7 +209,7 @@ service:
         - path-parameters:
             terminal_refund_id: terminal_refund_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

@@ -41,7 +41,7 @@ service:
         - path-parameters:
             dispute_id: dispute_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               evidence:
@@ -102,7 +102,7 @@ service:
             dispute_id: dispute_id
             evidence_id: evidence_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -148,7 +148,7 @@ service:
             dispute_id: dispute_id
             evidence_id: evidence_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
