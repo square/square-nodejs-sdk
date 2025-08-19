@@ -54,7 +54,7 @@ service:
         - query-parameters:
             location_id: location_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               invoices:
@@ -239,7 +239,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             invoice:
               location_id: ES0RJRZYEC39A
@@ -402,7 +402,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             query:
               filter:
@@ -567,7 +567,7 @@ service:
         - path-parameters:
             invoice_id: invoice_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               invoice:
@@ -713,7 +713,7 @@ service:
         - path-parameters:
             invoice_id: invoice_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             invoice:
               version: 1
@@ -824,7 +824,7 @@ service:
         - path-parameters:
             invoice_id: invoice_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -880,7 +880,7 @@ service:
         - path-parameters:
             invoice_id: invoice_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request: {}
           response:
             body:
@@ -930,7 +930,7 @@ service:
             invoice_id: invoice_id
             attachment_id: attachment_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -979,7 +979,7 @@ service:
         - path-parameters:
             invoice_id: invoice_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             version: 0
           response:
@@ -1129,7 +1129,7 @@ service:
         - path-parameters:
             invoice_id: invoice_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             version: 1
             idempotency_key: 32da42d0-1997-41b0-826b-f09464fc2c2e

@@ -69,7 +69,7 @@ service:
       availability: deprecated
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: HIDSNG5KS478L
             shift:
@@ -176,7 +176,7 @@ service:
       availability: deprecated
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             query:
               filter:
@@ -284,7 +284,7 @@ service:
         - path-parameters:
             id: id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               shift:
@@ -364,7 +364,7 @@ service:
         - path-parameters:
             id: id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             shift:
               location_id: PAA1RJZZKXBFG
@@ -449,7 +449,7 @@ service:
         - path-parameters:
             id: id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

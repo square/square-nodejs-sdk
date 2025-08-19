@@ -34,7 +34,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               jobs:
@@ -97,7 +97,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             job:
               title: Cashier
@@ -139,7 +139,7 @@ service:
         - path-parameters:
             job_id: job_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               job:
@@ -195,7 +195,7 @@ service:
         - path-parameters:
             job_id: job_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             job:
               title: Cashier 1

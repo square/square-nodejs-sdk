@@ -39,7 +39,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             values:
               id1:
@@ -130,7 +130,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             values:
               id1:
@@ -274,7 +274,7 @@ service:
         - path-parameters:
             location_id: location_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               custom_attributes:
@@ -369,7 +369,7 @@ service:
             location_id: location_id
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               custom_attribute:
@@ -477,7 +477,7 @@ service:
             location_id: location_id
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             custom_attribute:
               value: hot cocoa
@@ -545,7 +545,7 @@ service:
             location_id: location_id
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

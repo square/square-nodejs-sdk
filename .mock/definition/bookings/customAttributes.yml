@@ -47,7 +47,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             values:
               key:
@@ -119,7 +119,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             values:
               key:
@@ -263,7 +263,7 @@ service:
         - path-parameters:
             booking_id: booking_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               custom_attributes:
@@ -354,7 +354,7 @@ service:
             booking_id: booking_id
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               custom_attribute:
@@ -460,7 +460,7 @@ service:
             booking_id: booking_id
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             custom_attribute: {}
           response:
@@ -534,7 +534,7 @@ service:
             booking_id: booking_id
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

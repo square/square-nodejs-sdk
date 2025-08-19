@@ -64,7 +64,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -115,7 +115,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 63f84c6c-2200-4c99-846c-2670a1311fbf
             subscription:
@@ -168,7 +168,7 @@ service:
         - path-parameters:
             subscription_id: subscription_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -218,7 +218,7 @@ service:
         - path-parameters:
             subscription_id: subscription_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             subscription:
               name: Updated Example Webhook Subscription
@@ -266,7 +266,7 @@ service:
         - path-parameters:
             subscription_id: subscription_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -311,7 +311,7 @@ service:
         - path-parameters:
             subscription_id: subscription_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: ed80ae6b-0654-473b-bbab-a39aee89a60d
           response:
@@ -360,7 +360,7 @@ service:
         - path-parameters:
             subscription_id: subscription_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             event_type: payment.created
           response:

@@ -31,7 +31,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             vendors:
               8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe:
@@ -106,7 +106,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             vendor_ids:
               - INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4
@@ -173,7 +173,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             vendors:
               FMCYHBWT1TPL8MFH52PBMEN92A:
@@ -281,7 +281,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe
             vendor:
@@ -377,7 +377,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request: {}
           response:
             body:
@@ -431,7 +431,7 @@ service:
         - path-parameters:
             vendor_id: vendor_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -495,7 +495,7 @@ service:
         - path-parameters:
             vendor_id: vendor_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe
             vendor:

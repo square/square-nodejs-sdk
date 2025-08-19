@@ -34,7 +34,7 @@ service:
         - path-parameters:
             adjustment_id: adjustment_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -97,7 +97,7 @@ service:
         - path-parameters:
             adjustment_id: adjustment_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -157,7 +157,7 @@ service:
       availability: deprecated
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe
             changes:
@@ -212,7 +212,7 @@ service:
       availability: deprecated
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             catalog_object_ids:
               - W62UWFY35CWMYGVWK6TWJDNI
@@ -273,7 +273,7 @@ service:
       availability: deprecated
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             catalog_object_ids:
               - W62UWFY35CWMYGVWK6TWJDNI
@@ -318,7 +318,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe
             changes:
@@ -379,7 +379,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             catalog_object_ids:
               - W62UWFY35CWMYGVWK6TWJDNI
@@ -458,7 +458,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             catalog_object_ids:
               - W62UWFY35CWMYGVWK6TWJDNI
@@ -513,7 +513,7 @@ service:
         - path-parameters:
             physical_count_id: physical_count_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -565,7 +565,7 @@ service:
         - path-parameters:
             physical_count_id: physical_count_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -615,7 +615,7 @@ service:
         - path-parameters:
             transfer_id: transfer_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -690,7 +690,7 @@ service:
         - path-parameters:
             catalog_object_id: catalog_object_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -779,7 +779,7 @@ service:
         - path-parameters:
             catalog_object_id: catalog_object_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

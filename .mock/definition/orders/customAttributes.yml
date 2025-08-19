@@ -65,7 +65,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             values:
               cover-count:
@@ -151,7 +151,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             values:
               cover-count:
@@ -280,7 +280,7 @@ service:
         - path-parameters:
             order_id: order_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               custom_attributes:
@@ -366,7 +366,7 @@ service:
             order_id: order_id
             custom_attribute_key: custom_attribute_key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               custom_attribute:
@@ -477,7 +477,7 @@ service:
             order_id: order_id
             custom_attribute_key: custom_attribute_key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             custom_attribute:
               key: table-number
@@ -549,7 +549,7 @@ service:
             order_id: order_id
             custom_attribute_key: custom_attribute_key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

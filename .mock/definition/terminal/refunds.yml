@@ -46,7 +46,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: 402a640b-b26f-401f-b406-46f839590c04
             refund:
@@ -126,7 +126,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             query:
               filter:
@@ -182,7 +182,7 @@ service:
         - path-parameters:
             terminal_refund_id: terminal_refund_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -232,7 +232,7 @@ service:
         - path-parameters:
             terminal_refund_id: terminal_refund_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

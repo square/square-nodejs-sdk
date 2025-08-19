@@ -38,7 +38,7 @@ service:
       availability: deprecated
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               employees:
@@ -82,7 +82,7 @@ service:
         - path-parameters:
             id: id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               employee:

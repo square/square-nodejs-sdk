@@ -35,7 +35,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             order:
               location_id: 057P5VYJ4A5X1
@@ -325,7 +325,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             location_id: 057P5VYJ4A5X1
             order_ids:
@@ -432,7 +432,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             order:
               location_id: D7AVYMEAPJ3A3
@@ -657,7 +657,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             order_id: ZAISEM52YcpmcWAzERDOyiWS123
             version: 3
@@ -976,7 +976,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             location_ids:
               - 057P5VYJ4A5X1
@@ -1069,7 +1069,7 @@ service:
         - path-parameters:
             order_id: order_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               order:
@@ -1317,7 +1317,7 @@ service:
         - path-parameters:
             order_id: order_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             order:
               location_id: location_id
@@ -1545,7 +1545,7 @@ service:
         - path-parameters:
             order_id: order_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             idempotency_key: c043a359-7ad9-4136-82a9-c3f1d66dcbff
             payment_ids:

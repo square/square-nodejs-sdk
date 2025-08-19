@@ -86,7 +86,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -254,7 +254,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             given_name: Amelia
             family_name: Earhart
@@ -369,7 +369,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             customers:
               8bb76c4f-e35d-4c5b-90de-1194cd9179f0:
@@ -485,7 +485,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             customer_ids:
               - 8DDA5NZVBZFGAX0V3HPF81HHE0
@@ -539,7 +539,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             customer_ids:
               - 8DDA5NZVBZFGAX0V3HPF81HHE0
@@ -634,7 +634,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             customers:
               8DDA5NZVBZFGAX0V3HPF81HHE0:
@@ -763,7 +763,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             limit: 2
             query:
@@ -869,7 +869,7 @@ service:
         - path-parameters:
             customer_id: customer_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
@@ -1051,7 +1051,7 @@ service:
         - path-parameters:
             customer_id: customer_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             email_address: New.Amelia.Earhart@example.com
             note: updated customer note
@@ -1140,7 +1140,7 @@ service:
         - path-parameters:
             customer_id: customer_id
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:

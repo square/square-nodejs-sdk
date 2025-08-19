@@ -55,7 +55,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               custom_attribute_definitions:
@@ -162,7 +162,7 @@ service:
         status-code: 200
       examples:
         - headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             custom_attribute_definition: {}
           response:
@@ -232,7 +232,7 @@ service:
         - path-parameters:
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               custom_attribute_definition:
@@ -329,7 +329,7 @@ service:
         - path-parameters:
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           request:
             custom_attribute_definition: {}
           response:
@@ -386,7 +386,7 @@ service:
         - path-parameters:
             key: key
           headers:
-            Square-Version: '2025-07-16'
+            Square-Version: '2025-08-20'
           response:
             body:
               errors:
