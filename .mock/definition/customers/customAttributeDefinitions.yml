@@ -69,7 +69,7 @@ service:
               custom_attribute_definitions:
                 - key: favoritemovie
                   schema:
-                    ref: >-
+                    \$ref: >-
                       https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
                   name: Favorite Movie
                   description: Update the description as desired.
@@ -79,7 +79,7 @@ service:
                   created_at: '2022-04-26T15:27:30Z'
                 - key: ownsmovie
                   schema:
-                    ref: >-
+                    \$ref: >-
                       https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Boolean
                   name: Owns Movie
                   description: Customer owns movie.
@@ -174,7 +174,7 @@ service:
             custom_attribute_definition:
               key: favoritemovie
               schema:
-                ref: >-
+                \$ref: >-
                   https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
               name: Favorite Movie
               description: The favorite movie of the customer.
@@ -184,7 +184,7 @@ service:
               custom_attribute_definition:
                 key: favoritemovie
                 schema:
-                  ref: >-
+                  \$ref: >-
                     https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
                 name: Favorite Movie
                 description: The favorite movie of the customer.
@@ -258,7 +258,7 @@ service:
               custom_attribute_definition:
                 key: favoritemovie
                 schema:
-                  ref: >-
+                  \$ref: >-
                     https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
                 name: Favorite Movie
                 description: The favorite movie of the customer.
@@ -367,7 +367,7 @@ service:
               custom_attribute_definition:
                 key: favoritemovie
                 schema:
-                  ref: >-
+                  \$ref: >-
                     https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
                 name: Favorite Movie
                 description: Update the description as desired.

@@ -170,7 +170,7 @@ export class CustomAttributeDefinitions {
      *         customAttributeDefinition: {
      *             key: "favoritemovie",
      *             schema: {
-     *                 "ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
+     *                 "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
      *             },
      *             name: "Favorite Movie",
      *             description: "The favorite movie of the customer.",

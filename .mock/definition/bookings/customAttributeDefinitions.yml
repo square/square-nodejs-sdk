@@ -61,7 +61,7 @@ service:
               custom_attribute_definitions:
                 - key: favoriteShampoo
                   schema:
-                    ref: >-
+                    \$ref: >-
                       https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
                   name: Favorite shampoo
                   description: Update the description as desired.
@@ -71,7 +71,7 @@ service:
                   created_at: '2022-11-16T15:27:30Z'
                 - key: partySize
                   schema:
-                    ref: >-
+                    \$ref: >-
                       https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number
                   name: Party size
                   description: Number of people in the party for dine-in
@@ -170,7 +170,7 @@ service:
               custom_attribute_definition:
                 key: favoriteShampoo
                 schema:
-                  ref: >-
+                  \$ref: >-
                     https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
                 name: Favorite Shampoo
                 description: The favorite shampoo of the customer.
@@ -238,7 +238,7 @@ service:
               custom_attribute_definition:
                 key: favoriteShampoo
                 schema:
-                  ref: >-
+                  \$ref: >-
                     https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
                 name: Favorite shampoo
                 description: The favorite shampoo of the customer.
@@ -337,7 +337,7 @@ service:
               custom_attribute_definition:
                 key: favoriteShampoo
                 schema:
-                  ref: >-
+                  \$ref: >-
                     https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String
                 name: Favorite shampoo
                 description: Update the description as desired.

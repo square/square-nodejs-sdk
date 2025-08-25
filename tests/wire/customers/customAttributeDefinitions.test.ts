@@ -13,7 +13,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "favoritemovie",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite Movie",
                 description: "The favorite movie of the customer.",
@@ -24,7 +24,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "favoritemovie",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite Movie",
                 description: "The favorite movie of the customer.",
@@ -48,7 +48,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "favoritemovie",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite Movie",
                 description: "The favorite movie of the customer.",
@@ -59,7 +59,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "favoritemovie",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite Movie",
                 description: "The favorite movie of the customer.",
@@ -87,7 +87,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "favoritemovie",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite Movie",
                 description: "The favorite movie of the customer.",
@@ -113,7 +113,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "favoritemovie",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite Movie",
                 description: "The favorite movie of the customer.",
@@ -146,7 +146,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "favoritemovie",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite Movie",
                 description: "Update the description as desired.",
@@ -177,7 +177,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "favoritemovie",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite Movie",
                 description: "Update the description as desired.",
