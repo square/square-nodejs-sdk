@@ -99,4 +99,6 @@ export interface Subscription {
     monthlyBillingAnchorDate?: number;
     /** array of phases for this subscription */
     phases?: Square.Phase[];
+    /** The `YYYY-MM-DD`-formatted date when the subscription enters a terminal state. */
+    completedDate?: string | null;
 }

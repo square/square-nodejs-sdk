@@ -12,52 +12,52 @@ export interface CardPaymentDetails {
      * The card payment's current state. The state can be AUTHORIZED, CAPTURED, VOIDED, or
      * FAILED.
      */
-    status?: string | null;
+    status?: string;
     /** The credit card's non-confidential details. */
     card?: Square.Card;
     /**
      * The method used to enter the card's details for the payment. The method can be
      * `KEYED`, `SWIPED`, `EMV`, `ON_FILE`, or `CONTACTLESS`.
      */
-    entryMethod?: string | null;
+    entryMethod?: string;
     /**
      * The status code returned from the Card Verification Value (CVV) check. The code can be
      * `CVV_ACCEPTED`, `CVV_REJECTED`, or `CVV_NOT_CHECKED`.
      */
-    cvvStatus?: string | null;
+    cvvStatus?: string;
     /**
      * The status code returned from the Address Verification System (AVS) check. The code can be
      * `AVS_ACCEPTED`, `AVS_REJECTED`, or `AVS_NOT_CHECKED`.
      */
-    avsStatus?: string | null;
+    avsStatus?: string;
     /**
      * The status code returned by the card issuer that describes the payment's
      * authorization status.
      */
-    authResultCode?: string | null;
+    authResultCode?: string;
     /** For EMV payments, the application ID identifies the EMV application used for the payment. */
-    applicationIdentifier?: string | null;
+    applicationIdentifier?: string;
     /** For EMV payments, the human-readable name of the EMV application used for the payment. */
-    applicationName?: string | null;
+    applicationName?: string;
     /** For EMV payments, the cryptogram generated for the payment. */
-    applicationCryptogram?: string | null;
+    applicationCryptogram?: string;
     /**
      * For EMV payments, the method used to verify the cardholder's identity. The method can be
      * `PIN`, `SIGNATURE`, `PIN_AND_SIGNATURE`, `ON_DEVICE`, or `NONE`.
      */
-    verificationMethod?: string | null;
+    verificationMethod?: string;
     /**
      * For EMV payments, the results of the cardholder verification. The result can be
      * `SUCCESS`, `FAILURE`, or `UNKNOWN`.
      */
-    verificationResults?: string | null;
+    verificationResults?: string;
     /**
      * The statement description sent to the card networks.
      *
      * Note: The actual statement description varies and is likely to be truncated and appended with
      * additional information on a per issuer basis.
      */
-    statementDescription?: string | null;
+    statementDescription?: string;
     /**
      * __Deprecated__: Use `Payment.device_details` instead.
      *
@@ -70,7 +70,7 @@ export interface CardPaymentDetails {
      * Whether the card must be physically present for the payment to
      * be refunded.  If set to `true`, the card must be present.
      */
-    refundRequiresCardPresence?: boolean | null;
+    refundRequiresCardPresence?: boolean;
     /** Information about errors encountered during the request. */
-    errors?: Square.Error_[] | null;
+    errors?: Square.Error_[];
 }

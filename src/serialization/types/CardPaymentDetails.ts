@@ -14,59 +14,50 @@ export const CardPaymentDetails: core.serialization.ObjectSchema<
     serializers.CardPaymentDetails.Raw,
     Square.CardPaymentDetails
 > = core.serialization.object({
-    status: core.serialization.string().optionalNullable(),
+    status: core.serialization.string().optional(),
     card: Card.optional(),
-    entryMethod: core.serialization.property("entry_method", core.serialization.string().optionalNullable()),
-    cvvStatus: core.serialization.property("cvv_status", core.serialization.string().optionalNullable()),
-    avsStatus: core.serialization.property("avs_status", core.serialization.string().optionalNullable()),
-    authResultCode: core.serialization.property("auth_result_code", core.serialization.string().optionalNullable()),
+    entryMethod: core.serialization.property("entry_method", core.serialization.string().optional()),
+    cvvStatus: core.serialization.property("cvv_status", core.serialization.string().optional()),
+    avsStatus: core.serialization.property("avs_status", core.serialization.string().optional()),
+    authResultCode: core.serialization.property("auth_result_code", core.serialization.string().optional()),
     applicationIdentifier: core.serialization.property(
         "application_identifier",
-        core.serialization.string().optionalNullable(),
+        core.serialization.string().optional(),
     ),
-    applicationName: core.serialization.property("application_name", core.serialization.string().optionalNullable()),
+    applicationName: core.serialization.property("application_name", core.serialization.string().optional()),
     applicationCryptogram: core.serialization.property(
         "application_cryptogram",
-        core.serialization.string().optionalNullable(),
+        core.serialization.string().optional(),
     ),
-    verificationMethod: core.serialization.property(
-        "verification_method",
-        core.serialization.string().optionalNullable(),
-    ),
-    verificationResults: core.serialization.property(
-        "verification_results",
-        core.serialization.string().optionalNullable(),
-    ),
-    statementDescription: core.serialization.property(
-        "statement_description",
-        core.serialization.string().optionalNullable(),
-    ),
+    verificationMethod: core.serialization.property("verification_method", core.serialization.string().optional()),
+    verificationResults: core.serialization.property("verification_results", core.serialization.string().optional()),
+    statementDescription: core.serialization.property("statement_description", core.serialization.string().optional()),
     deviceDetails: core.serialization.property("device_details", DeviceDetails.optional()),
     cardPaymentTimeline: core.serialization.property("card_payment_timeline", CardPaymentTimeline.optional()),
     refundRequiresCardPresence: core.serialization.property(
         "refund_requires_card_presence",
-        core.serialization.boolean().optionalNullable(),
+        core.serialization.boolean().optional(),
     ),
-    errors: core.serialization.list(Error_).optionalNullable(),
+    errors: core.serialization.list(Error_).optional(),
 });
 
 export declare namespace CardPaymentDetails {
     export interface Raw {
-        status?: (string | null) | null;
+        status?: string | null;
         card?: Card.Raw | null;
-        entry_method?: (string | null) | null;
-        cvv_status?: (string | null) | null;
-        avs_status?: (string | null) | null;
-        auth_result_code?: (string | null) | null;
-        application_identifier?: (string | null) | null;
-        application_name?: (string | null) | null;
-        application_cryptogram?: (string | null) | null;
-        verification_method?: (string | null) | null;
-        verification_results?: (string | null) | null;
-        statement_description?: (string | null) | null;
+        entry_method?: string | null;
+        cvv_status?: string | null;
+        avs_status?: string | null;
+        auth_result_code?: string | null;
+        application_identifier?: string | null;
+        application_name?: string | null;
+        application_cryptogram?: string | null;
+        verification_method?: string | null;
+        verification_results?: string | null;
+        statement_description?: string | null;
         device_details?: DeviceDetails.Raw | null;
         card_payment_timeline?: CardPaymentTimeline.Raw | null;
-        refund_requires_card_presence?: (boolean | null) | null;
-        errors?: (Error_.Raw[] | null) | null;
+        refund_requires_card_presence?: boolean | null;
+        errors?: Error_.Raw[] | null;
     }
 }

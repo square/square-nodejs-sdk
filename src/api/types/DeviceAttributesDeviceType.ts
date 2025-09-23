@@ -5,4 +5,8 @@
 /**
  * An enum identifier of the device type.
  */
-export type DeviceAttributesDeviceType = "TERMINAL";
+export type DeviceAttributesDeviceType = "TERMINAL" | "HANDHELD";
+export const DeviceAttributesDeviceType = {
+    Terminal: "TERMINAL",
+    Handheld: "HANDHELD",
+} as const;

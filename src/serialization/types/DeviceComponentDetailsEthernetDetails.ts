@@ -12,11 +12,13 @@ export const DeviceComponentDetailsEthernetDetails: core.serialization.ObjectSch
 > = core.serialization.object({
     active: core.serialization.boolean().optionalNullable(),
     ipAddressV4: core.serialization.property("ip_address_v4", core.serialization.string().optionalNullable()),
+    macAddress: core.serialization.property("mac_address", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace DeviceComponentDetailsEthernetDetails {
     export interface Raw {
         active?: (boolean | null) | null;
         ip_address_v4?: (string | null) | null;
+        mac_address?: (string | null) | null;
     }
 }

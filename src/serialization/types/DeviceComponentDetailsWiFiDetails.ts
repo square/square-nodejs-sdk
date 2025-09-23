@@ -16,6 +16,7 @@ export const DeviceComponentDetailsWiFiDetails: core.serialization.ObjectSchema<
     ipAddressV4: core.serialization.property("ip_address_v4", core.serialization.string().optionalNullable()),
     secureConnection: core.serialization.property("secure_connection", core.serialization.string().optionalNullable()),
     signalStrength: core.serialization.property("signal_strength", DeviceComponentDetailsMeasurement.optional()),
+    macAddress: core.serialization.property("mac_address", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace DeviceComponentDetailsWiFiDetails {
@@ -25,5 +26,6 @@ export declare namespace DeviceComponentDetailsWiFiDetails {
         ip_address_v4?: (string | null) | null;
         secure_connection?: (string | null) | null;
         signal_strength?: DeviceComponentDetailsMeasurement.Raw | null;
+        mac_address?: (string | null) | null;
     }
 }

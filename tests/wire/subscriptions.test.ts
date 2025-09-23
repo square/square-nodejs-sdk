@@ -49,6 +49,7 @@ describe("Subscriptions", () => {
                         plan_phase_uid: "X2Q2AONPB3RB64Y27S25QCZP",
                     },
                 ],
+                completed_date: "completed_date",
             },
         };
         server
@@ -119,6 +120,7 @@ describe("Subscriptions", () => {
                         planPhaseUid: "X2Q2AONPB3RB64Y27S25QCZP",
                     },
                 ],
+                completedDate: "completed_date",
             },
         });
     });
@@ -196,6 +198,7 @@ describe("Subscriptions", () => {
                     actions: [{}],
                     monthly_billing_anchor_date: 1,
                     phases: [{}],
+                    completed_date: "completed_date",
                 },
                 {
                     id: "56214fb2-cc85-47a1-93bc-44f3766bb56f",
@@ -217,6 +220,7 @@ describe("Subscriptions", () => {
                     actions: [{}],
                     monthly_billing_anchor_date: 1,
                     phases: [{}],
+                    completed_date: "completed_date",
                 },
                 {
                     id: "56214fb2-cc85-47a1-93bc-44f3766bb56f",
@@ -244,6 +248,7 @@ describe("Subscriptions", () => {
                             plan_phase_uid: "X2Q2AONPB3RB64Y27S25QCZP",
                         },
                     ],
+                    completed_date: "completed_date",
                 },
             ],
             cursor: "cursor",
@@ -297,6 +302,7 @@ describe("Subscriptions", () => {
                     actions: [{}],
                     monthlyBillingAnchorDate: 1,
                     phases: [{}],
+                    completedDate: "completed_date",
                 },
                 {
                     id: "56214fb2-cc85-47a1-93bc-44f3766bb56f",
@@ -323,6 +329,7 @@ describe("Subscriptions", () => {
                     actions: [{}],
                     monthlyBillingAnchorDate: 1,
                     phases: [{}],
+                    completedDate: "completed_date",
                 },
                 {
                     id: "56214fb2-cc85-47a1-93bc-44f3766bb56f",
@@ -352,6 +359,7 @@ describe("Subscriptions", () => {
                             planPhaseUid: "X2Q2AONPB3RB64Y27S25QCZP",
                         },
                     ],
+                    completedDate: "completed_date",
                 },
             ],
             cursor: "cursor",
@@ -384,6 +392,7 @@ describe("Subscriptions", () => {
                 actions: [{}],
                 monthly_billing_anchor_date: 1,
                 phases: [{}],
+                completed_date: "completed_date",
             },
         };
         server
@@ -431,6 +440,7 @@ describe("Subscriptions", () => {
                 actions: [{}],
                 monthlyBillingAnchorDate: 1,
                 phases: [{}],
+                completedDate: "completed_date",
             },
         });
     });
@@ -461,6 +471,7 @@ describe("Subscriptions", () => {
                 actions: [{}],
                 monthly_billing_anchor_date: 1,
                 phases: [{}],
+                completed_date: "completed_date",
             },
         };
         server
@@ -512,6 +523,7 @@ describe("Subscriptions", () => {
                 actions: [{}],
                 monthlyBillingAnchorDate: 1,
                 phases: [{}],
+                completedDate: "completed_date",
             },
         });
     });
@@ -542,6 +554,7 @@ describe("Subscriptions", () => {
                 actions: [{}],
                 monthly_billing_anchor_date: 1,
                 phases: [{}],
+                completed_date: "completed_date",
             },
         };
         server
@@ -590,6 +603,7 @@ describe("Subscriptions", () => {
                 actions: [{}],
                 monthlyBillingAnchorDate: 1,
                 phases: [{}],
+                completedDate: "completed_date",
             },
         });
     });
@@ -627,6 +641,7 @@ describe("Subscriptions", () => {
                         plan_phase_uid: "C66BKH3ASTDYGJJCEZXQQSS7",
                     },
                 ],
+                completed_date: "completed_date",
             },
             actions: [
                 {
@@ -693,6 +708,7 @@ describe("Subscriptions", () => {
                         planPhaseUid: "C66BKH3ASTDYGJJCEZXQQSS7",
                     },
                 ],
+                completedDate: "completed_date",
             },
             actions: [
                 {
@@ -733,6 +749,7 @@ describe("Subscriptions", () => {
                 actions: [{}],
                 monthly_billing_anchor_date: 1,
                 phases: [{}],
+                completed_date: "completed_date",
             },
             actions: [
                 {
@@ -790,6 +807,7 @@ describe("Subscriptions", () => {
                 actions: [{}],
                 monthlyBillingAnchorDate: 1,
                 phases: [{}],
+                completedDate: "completed_date",
             },
             actions: [
                 {
@@ -837,6 +855,7 @@ describe("Subscriptions", () => {
                         plan_phase_uid: "X2Q2AONPB3RB64Y27S25QCZP",
                     },
                 ],
+                completed_date: "completed_date",
             },
             actions: [
                 {
@@ -902,6 +921,7 @@ describe("Subscriptions", () => {
                         planPhaseUid: "X2Q2AONPB3RB64Y27S25QCZP",
                     },
                 ],
+                completedDate: "completed_date",
             },
             actions: [
                 {
@@ -949,6 +969,7 @@ describe("Subscriptions", () => {
                         plan_phase_uid: "X2Q2AONPB3RB64Y27S25QCZP",
                     },
                 ],
+                completed_date: "completed_date",
             },
             actions: [
                 {
@@ -1014,6 +1035,7 @@ describe("Subscriptions", () => {
                         planPhaseUid: "X2Q2AONPB3RB64Y27S25QCZP",
                     },
                 ],
+                completedDate: "completed_date",
             },
             actions: [
                 {
@@ -1064,6 +1086,7 @@ describe("Subscriptions", () => {
                         plan_phase_uid: "C66BKH3ASTDYGJJCEZXQQSS7",
                     },
                 ],
+                completed_date: "completed_date",
             },
             actions: [
                 {
@@ -1136,6 +1159,7 @@ describe("Subscriptions", () => {
                         planPhaseUid: "C66BKH3ASTDYGJJCEZXQQSS7",
                     },
                 ],
+                completedDate: "completed_date",
             },
             actions: [
                 {

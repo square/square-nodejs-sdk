@@ -5,11 +5,18 @@
 /**
  * Supported types of an action as a pending change to a subscription.
  */
-export type SubscriptionActionType = "CANCEL" | "PAUSE" | "RESUME" | "SWAP_PLAN" | "CHANGE_BILLING_ANCHOR_DATE";
+export type SubscriptionActionType =
+    | "CANCEL"
+    | "PAUSE"
+    | "RESUME"
+    | "SWAP_PLAN"
+    | "CHANGE_BILLING_ANCHOR_DATE"
+    | "COMPLETE";
 export const SubscriptionActionType = {
     Cancel: "CANCEL",
     Pause: "PAUSE",
     Resume: "RESUME",
     SwapPlan: "SWAP_PLAN",
     ChangeBillingAnchorDate: "CHANGE_BILLING_ANCHOR_DATE",
+    Complete: "COMPLETE",
 } as const;

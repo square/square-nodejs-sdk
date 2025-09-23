@@ -7,4 +7,6 @@ export interface DeviceComponentDetailsEthernetDetails {
     active?: boolean | null;
     /** The string representation of the device’s IPv4 address. */
     ipAddressV4?: string | null;
+    /** The mac address of the device in this network. */
+    macAddress?: string | null;
 }

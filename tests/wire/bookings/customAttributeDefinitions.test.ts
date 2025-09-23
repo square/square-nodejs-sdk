@@ -14,7 +14,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "favoriteShampoo",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite Shampoo",
                 description: "The favorite shampoo of the customer.",
@@ -41,7 +41,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "favoriteShampoo",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite Shampoo",
                 description: "The favorite shampoo of the customer.",
@@ -69,7 +69,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "favoriteShampoo",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite shampoo",
                 description: "The favorite shampoo of the customer.",
@@ -95,7 +95,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "favoriteShampoo",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite shampoo",
                 description: "The favorite shampoo of the customer.",
@@ -123,7 +123,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "favoriteShampoo",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite shampoo",
                 description: "Update the description as desired.",
@@ -151,7 +151,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "favoriteShampoo",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Favorite shampoo",
                 description: "Update the description as desired.",

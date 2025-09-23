@@ -13,7 +13,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "bestseller",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Bestseller",
                 description: "Bestselling item at location",
@@ -24,7 +24,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "bestseller",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Bestseller",
                 description: "Bestselling item at location",
@@ -48,7 +48,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "bestseller",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Bestseller",
                 description: "Bestselling item at location",
@@ -59,7 +59,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "bestseller",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Bestseller",
                 description: "Bestselling item at location",
@@ -87,7 +87,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "bestseller",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Bestseller",
                 description: "Bestselling item at location",
@@ -113,7 +113,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "bestseller",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Bestseller",
                 description: "Bestselling item at location",
@@ -146,7 +146,7 @@ describe("CustomAttributeDefinitions", () => {
             custom_attribute_definition: {
                 key: "bestseller",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Bestseller",
                 description: "Update the description as desired.",
@@ -177,7 +177,7 @@ describe("CustomAttributeDefinitions", () => {
             customAttributeDefinition: {
                 key: "bestseller",
                 schema: {
-                    ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+                    $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
                 },
                 name: "Bestseller",
                 description: "Update the description as desired.",
