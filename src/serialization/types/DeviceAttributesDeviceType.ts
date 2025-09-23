@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const DeviceAttributesDeviceType: core.serialization.Schema<
     serializers.DeviceAttributesDeviceType.Raw,
     Square.DeviceAttributesDeviceType
-> = core.serialization.stringLiteral("TERMINAL");
+> = core.serialization.enum_(["TERMINAL", "HANDHELD"]);
 
 export declare namespace DeviceAttributesDeviceType {
-    export type Raw = "TERMINAL";
+    export type Raw = "TERMINAL" | "HANDHELD";
 }

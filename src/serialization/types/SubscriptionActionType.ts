@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const SubscriptionActionType: core.serialization.Schema<
     serializers.SubscriptionActionType.Raw,
     Square.SubscriptionActionType
-> = core.serialization.enum_(["CANCEL", "PAUSE", "RESUME", "SWAP_PLAN", "CHANGE_BILLING_ANCHOR_DATE"]);
+> = core.serialization.enum_(["CANCEL", "PAUSE", "RESUME", "SWAP_PLAN", "CHANGE_BILLING_ANCHOR_DATE", "COMPLETE"]);
 
 export declare namespace SubscriptionActionType {
-    export type Raw = "CANCEL" | "PAUSE" | "RESUME" | "SWAP_PLAN" | "CHANGE_BILLING_ANCHOR_DATE";
+    export type Raw = "CANCEL" | "PAUSE" | "RESUME" | "SWAP_PLAN" | "CHANGE_BILLING_ANCHOR_DATE" | "COMPLETE";
 }

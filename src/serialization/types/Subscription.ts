@@ -38,6 +38,7 @@ export const Subscription: core.serialization.ObjectSchema<serializers.Subscript
             core.serialization.number().optional(),
         ),
         phases: core.serialization.list(Phase).optional(),
+        completedDate: core.serialization.property("completed_date", core.serialization.string().optionalNullable()),
     });
 
 export declare namespace Subscription {
@@ -61,5 +62,6 @@ export declare namespace Subscription {
         actions?: (SubscriptionAction.Raw[] | null) | null;
         monthly_billing_anchor_date?: number | null;
         phases?: Phase.Raw[] | null;
+        completed_date?: (string | null) | null;
     }
 }

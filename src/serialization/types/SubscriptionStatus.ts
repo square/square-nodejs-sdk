@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const SubscriptionStatus: core.serialization.Schema<
     serializers.SubscriptionStatus.Raw,
     Square.SubscriptionStatus
-> = core.serialization.enum_(["PENDING", "ACTIVE", "CANCELED", "DEACTIVATED", "PAUSED"]);
+> = core.serialization.enum_(["PENDING", "ACTIVE", "CANCELED", "DEACTIVATED", "PAUSED", "COMPLETED"]);
 
 export declare namespace SubscriptionStatus {
-    export type Raw = "PENDING" | "ACTIVE" | "CANCELED" | "DEACTIVATED" | "PAUSED";
+    export type Raw = "PENDING" | "ACTIVE" | "CANCELED" | "DEACTIVATED" | "PAUSED" | "COMPLETED";
 }

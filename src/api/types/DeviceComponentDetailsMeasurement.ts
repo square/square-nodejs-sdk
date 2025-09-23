@@ -6,5 +6,6 @@
  * A value qualified by unit of measure.
  */
 export interface DeviceComponentDetailsMeasurement {
+    /** Value of measure. */
     value?: number | null;
 }

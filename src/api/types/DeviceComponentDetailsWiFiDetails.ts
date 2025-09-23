@@ -18,4 +18,6 @@ export interface DeviceComponentDetailsWiFiDetails {
     secureConnection?: string | null;
     /** A representation of signal strength of the WIFI network connection. */
     signalStrength?: Square.DeviceComponentDetailsMeasurement;
+    /** The mac address of the device in this network. */
+    macAddress?: string | null;
 }

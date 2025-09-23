@@ -6,6 +6,7 @@ import * as Square from "../index";
 
 export interface DeviceStatus {
     /**
+     * Category of the device status.
      * See [Category](#type-category) for possible values
      */
     category?: Square.DeviceStatusCategory;

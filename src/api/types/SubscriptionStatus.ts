@@ -5,11 +5,12 @@
 /**
  * Supported subscription statuses.
  */
-export type SubscriptionStatus = "PENDING" | "ACTIVE" | "CANCELED" | "DEACTIVATED" | "PAUSED";
+export type SubscriptionStatus = "PENDING" | "ACTIVE" | "CANCELED" | "DEACTIVATED" | "PAUSED" | "COMPLETED";
 export const SubscriptionStatus = {
     Pending: "PENDING",
     Active: "ACTIVE",
     Canceled: "CANCELED",
     Deactivated: "DEACTIVATED",
     Paused: "PAUSED",
+    Completed: "COMPLETED",
 } as const;
