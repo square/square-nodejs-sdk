@@ -13,6 +13,13 @@ export default {
             roots: ["<rootDir>/tests"],
             testPathIgnorePatterns: ["\.browser\.(spec|test)\.[jt]sx?$", "/tests/wire/", "/tests/integration/"],
             setupFilesAfterEnv: [],
+            transformIgnorePatterns: [
+                "node_modules/(?!(msw|@mswjs|@bundled-es-modules|until-async)/)",
+            ],
+            transform: {
+                "^.+\\.tsx?$": "ts-jest",
+                "^.+\\.m?jsx?$": "ts-jest",
+            },
         },
         {
             displayName: "browser",
@@ -24,6 +31,13 @@ export default {
             roots: ["<rootDir>/tests"],
             testMatch: ["<rootDir>/tests/unit/**/?(*.)+(browser).(spec|test).[jt]s?(x)"],
             setupFilesAfterEnv: [],
+            transformIgnorePatterns: [
+                "node_modules/(?!(msw|@mswjs|@bundled-es-modules|until-async)/)",
+            ],
+            transform: {
+                "^.+\\.tsx?$": "ts-jest",
+                "^.+\\.m?jsx?$": "ts-jest",
+            },
         },
         {
             displayName: "wire",
@@ -34,6 +48,13 @@ export default {
             },
             roots: ["<rootDir>/tests/wire"],
             setupFilesAfterEnv: ["<rootDir>/tests/mock-server/setup.ts"],
+            transformIgnorePatterns: [
+                "node_modules/(?!(msw|@mswjs|@bundled-es-modules|until-async)/)",
+            ],
+            transform: {
+                "^.+\\.tsx?$": "ts-jest",
+                "^.+\\.m?jsx?$": "ts-jest",
+            },
         },
         {
             displayName: "integration",
@@ -43,6 +64,13 @@ export default {
                 "^(\.{1,2}/.*)\.js$": "$1",
             },
             roots: ["<rootDir>/tests/integration"],
+            transformIgnorePatterns: [
+                "node_modules/(?!(msw|@mswjs|@bundled-es-modules|until-async)/)",
+            ],
+            transform: {
+                "^.+\\.tsx?$": "ts-jest",
+                "^.+\\.m?jsx?$": "ts-jest",
+            },
         },
     ],
     workerThreads: false,
