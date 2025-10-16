@@ -9,6 +9,7 @@ src/index.ts
 src/errors/SquareError.ts
 src/core/index.ts
 src/core/crypto
+src/core/json.ts
 tests/unit/error.test.ts
 tests/unit/fetcher/stream-wrappers/webpack.test.ts
 tests/integration
