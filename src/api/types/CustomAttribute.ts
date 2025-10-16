@@ -23,7 +23,13 @@ export interface CustomAttribute {
      * underscores (_), and hyphens (-).
      */
     key?: string | null;
-    value?: unknown;
+    /**
+     * The value assigned to the custom attribute. It is validated against the custom
+     * attribute definition's schema on write operations. For more information about custom
+     * attribute values,
+     * see [Custom Attributes Overview](https://developer.squareup.com/docs/devtools/customattributes/overview).
+     */
+    value?: unknown | null;
     /**
      * Read only. The current version of the custom attribute. This field is incremented when the custom attribute is changed.
      * When updating an existing custom attribute value, you can provide this field

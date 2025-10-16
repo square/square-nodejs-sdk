@@ -6,7 +6,13 @@ import * as Square from "../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         cursor: "cursor",
+ *         customerId: "customer_id",
+ *         includeDisabled: true,
+ *         referenceId: "reference_id",
+ *         sortOrder: "DESC"
+ *     }
  */
 export interface ListCardsRequest {
     /**

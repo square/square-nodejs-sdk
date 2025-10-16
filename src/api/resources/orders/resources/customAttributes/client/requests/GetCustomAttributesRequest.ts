@@ -6,7 +6,9 @@
  * @example
  *     {
  *         orderId: "order_id",
- *         customAttributeKey: "custom_attribute_key"
+ *         customAttributeKey: "custom_attribute_key",
+ *         version: 1,
+ *         withDefinition: true
  *     }
  */
 export interface GetCustomAttributesRequest {

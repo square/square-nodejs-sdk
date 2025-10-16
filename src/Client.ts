@@ -13,6 +13,7 @@ import { BankAccounts } from "./api/resources/bankAccounts/client/Client";
 import { Bookings } from "./api/resources/bookings/client/Client";
 import { Cards } from "./api/resources/cards/client/Client";
 import { Catalog } from "./api/resources/catalog/client/Client";
+import { Channels } from "./api/resources/channels/client/Client";
 import { Customers } from "./api/resources/customers/client/Client";
 import { Devices } from "./api/resources/devices/client/Client";
 import { Disputes } from "./api/resources/disputes/client/Client";
@@ -36,6 +37,7 @@ import { Subscriptions } from "./api/resources/subscriptions/client/Client";
 import { TeamMembers } from "./api/resources/teamMembers/client/Client";
 import { Team } from "./api/resources/team/client/Client";
 import { Terminal } from "./api/resources/terminal/client/Client";
+import { TransferOrders } from "./api/resources/transferOrders/client/Client";
 import { Vendors } from "./api/resources/vendors/client/Client";
 import { CashDrawers } from "./api/resources/cashDrawers/client/Client";
 import { Webhooks } from "./api/resources/webhooks/client/Client";
@@ -47,7 +49,7 @@ export declare namespace SquareClient {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
@@ -61,7 +63,7 @@ export declare namespace SquareClient {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in the request. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -77,6 +79,7 @@ export class SquareClient {
     protected _bookings: Bookings | undefined;
     protected _cards: Cards | undefined;
     protected _catalog: Catalog | undefined;
+    protected _channels: Channels | undefined;
     protected _customers: Customers | undefined;
     protected _devices: Devices | undefined;
     protected _disputes: Disputes | undefined;
@@ -100,6 +103,7 @@ export class SquareClient {
     protected _teamMembers: TeamMembers | undefined;
     protected _team: Team | undefined;
     protected _terminal: Terminal | undefined;
+    protected _transferOrders: TransferOrders | undefined;
     protected _vendors: Vendors | undefined;
     protected _cashDrawers: CashDrawers | undefined;
     protected _webhooks: Webhooks | undefined;
@@ -109,11 +113,11 @@ export class SquareClient {
             ..._options,
             headers: mergeHeaders(
                 {
-                    "Square-Version": _options?.version ?? "2025-09-24",
+                    "Square-Version": _options?.version ?? "2025-10-16",
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "square",
-                    "X-Fern-SDK-Version": "43.1.1",
-                    "User-Agent": "square/43.1.1",
+                    "X-Fern-SDK-Version": "43.1.0",
+                    "User-Agent": "square/43.1.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },
@@ -152,6 +156,10 @@ export class SquareClient {
 
     public get catalog(): Catalog {
         return (this._catalog ??= new Catalog(this._options));
+    }
+
+    public get channels(): Channels {
+        return (this._channels ??= new Channels(this._options));
     }
 
     public get customers(): Customers {
@@ -244,6 +252,10 @@ export class SquareClient {
 
     public get terminal(): Terminal {
         return (this._terminal ??= new Terminal(this._options));
+    }
+
+    public get transferOrders(): TransferOrders {
+        return (this._transferOrders ??= new TransferOrders(this._options));
     }
 
     public get vendors(): Vendors {

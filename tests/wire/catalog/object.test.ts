@@ -220,6 +220,9 @@ describe("Object_", () => {
 
         const response = await client.catalog.object.get({
             objectId: "object_id",
+            includeRelatedObjects: true,
+            catalogVersion: BigInt("1000000"),
+            includeCategoryPathToRoot: true,
         });
         expect(response).toEqual({
             errors: [

@@ -4,7 +4,11 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         teamMemberId: "team_member_id",
+ *         limit: 1,
+ *         cursor: "cursor"
+ *     }
  */
 export interface ListTeamMemberWagesRequest {
     /**

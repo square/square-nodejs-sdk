@@ -220,6 +220,8 @@ describe("CustomAttributes", () => {
         const response = await client.merchants.customAttributes.get({
             merchantId: "merchant_id",
             key: "key",
+            withDefinition: true,
+            version: 1,
         });
         expect(response).toEqual({
             customAttribute: {

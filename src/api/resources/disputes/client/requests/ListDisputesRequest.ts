@@ -6,7 +6,11 @@ import * as Square from "../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         cursor: "cursor",
+ *         states: "INQUIRY_EVIDENCE_REQUIRED",
+ *         locationId: "location_id"
+ *     }
  */
 export interface ListDisputesRequest {
     /**

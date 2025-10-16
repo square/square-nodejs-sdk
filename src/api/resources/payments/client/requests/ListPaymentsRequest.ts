@@ -6,7 +6,23 @@ import * as Square from "../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         beginTime: "begin_time",
+ *         endTime: "end_time",
+ *         sortOrder: "sort_order",
+ *         cursor: "cursor",
+ *         locationId: "location_id",
+ *         total: BigInt("1000000"),
+ *         last4: "last_4",
+ *         cardBrand: "card_brand",
+ *         limit: 1,
+ *         isOfflinePayment: true,
+ *         offlineBeginTime: "offline_begin_time",
+ *         offlineEndTime: "offline_end_time",
+ *         updatedAtBeginTime: "updated_at_begin_time",
+ *         updatedAtEndTime: "updated_at_end_time",
+ *         sortField: "CREATED_AT"
+ *     }
  */
 export interface ListPaymentsRequest {
     /**

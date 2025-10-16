@@ -40,7 +40,9 @@ describe("Team", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.team.listJobs();
+        const response = await client.team.listJobs({
+            cursor: "cursor",
+        });
         expect(response).toEqual({
             jobs: [
                 {

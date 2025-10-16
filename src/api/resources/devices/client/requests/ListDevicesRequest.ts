@@ -6,7 +6,12 @@ import * as Square from "../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         cursor: "cursor",
+ *         sortOrder: "DESC",
+ *         limit: 1,
+ *         locationId: "location_id"
+ *     }
  */
 export interface ListDevicesRequest {
     /**

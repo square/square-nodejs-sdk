@@ -11,7 +11,7 @@ import { CustomAttributeDefinition } from "./CustomAttributeDefinition";
 export const CustomAttribute: core.serialization.ObjectSchema<serializers.CustomAttribute.Raw, Square.CustomAttribute> =
     core.serialization.object({
         key: core.serialization.string().optionalNullable(),
-        value: core.serialization.unknown().optional(),
+        value: core.serialization.unknown().optionalNullable(),
         version: core.serialization.number().optional(),
         visibility: CustomAttributeDefinitionVisibility.optional(),
         definition: CustomAttributeDefinition.optional(),
@@ -22,7 +22,7 @@ export const CustomAttribute: core.serialization.ObjectSchema<serializers.Custom
 export declare namespace CustomAttribute {
     export interface Raw {
         key?: (string | null) | null;
-        value?: unknown | null;
+        value?: (unknown | null) | null;
         version?: number | null;
         visibility?: CustomAttributeDefinitionVisibility.Raw | null;
         definition?: CustomAttributeDefinition.Raw | null;

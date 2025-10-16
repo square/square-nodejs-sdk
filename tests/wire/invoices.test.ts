@@ -939,6 +939,7 @@ describe("Invoices", () => {
 
         const response = await client.invoices.delete({
             invoiceId: "invoice_id",
+            version: 1,
         });
         expect(response).toEqual({
             errors: [

@@ -5,7 +5,8 @@
 /**
  * @example
  *     {
- *         invoiceId: "invoice_id"
+ *         invoiceId: "invoice_id",
+ *         version: 1
  *     }
  */
 export interface DeleteInvoicesRequest {

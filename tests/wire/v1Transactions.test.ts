@@ -77,6 +77,9 @@ describe("V1Transactions", () => {
 
         const response = await client.v1Transactions.v1ListOrders({
             locationId: "location_id",
+            order: "DESC",
+            limit: 1,
+            batchToken: "batch_token",
         });
         expect(response).toEqual([
             {

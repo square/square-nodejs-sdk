@@ -1106,6 +1106,7 @@ describe("Customers", () => {
 
         const response = await client.customers.delete({
             customerId: "customer_id",
+            version: BigInt("1000000"),
         });
         expect(response).toEqual({
             errors: [

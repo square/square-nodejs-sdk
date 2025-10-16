@@ -4,7 +4,13 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         type: "type",
+ *         state: "state",
+ *         limit: 1,
+ *         cursor: "cursor",
+ *         customerId: "customer_id"
+ *     }
  */
 export interface ListGiftCardsRequest {
     /**

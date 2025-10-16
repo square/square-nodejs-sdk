@@ -4,7 +4,9 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         cursor: 1
+ *     }
  */
 export interface ListMerchantsRequest {
     /**

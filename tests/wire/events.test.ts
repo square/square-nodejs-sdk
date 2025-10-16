@@ -170,7 +170,9 @@ describe("Events", () => {
         };
         server.mockEndpoint().get("/v2/events/types").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.events.listEventTypes();
+        const response = await client.events.listEventTypes({
+            apiVersion: "api_version",
+        });
         expect(response).toEqual({
             errors: [
                 {

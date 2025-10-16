@@ -405,6 +405,7 @@ describe("Subscriptions", () => {
 
         const response = await client.subscriptions.get({
             subscriptionId: "subscription_id",
+            include: "include",
         });
         expect(response).toEqual({
             errors: [

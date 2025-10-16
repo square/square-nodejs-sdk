@@ -5,7 +5,10 @@
 /**
  * @example
  *     {
- *         objectId: "object_id"
+ *         objectId: "object_id",
+ *         includeRelatedObjects: true,
+ *         catalogVersion: BigInt("1000000"),
+ *         includeCategoryPathToRoot: true
  *     }
  */
 export interface GetObjectRequest {
