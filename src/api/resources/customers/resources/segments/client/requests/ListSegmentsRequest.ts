@@ -4,7 +4,10 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         cursor: "cursor",
+ *         limit: 1
+ *     }
  */
 export interface ListSegmentsRequest {
     /**

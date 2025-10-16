@@ -7,7 +7,10 @@ import * as Square from "../../../../index";
 /**
  * @example
  *     {
- *         locationId: "location_id"
+ *         locationId: "location_id",
+ *         order: "DESC",
+ *         limit: 1,
+ *         batchToken: "batch_token"
  *     }
  */
 export interface V1ListOrdersRequest {

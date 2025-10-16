@@ -4,7 +4,16 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         giftCardId: "gift_card_id",
+ *         type: "type",
+ *         locationId: "location_id",
+ *         beginTime: "begin_time",
+ *         endTime: "end_time",
+ *         limit: 1,
+ *         cursor: "cursor",
+ *         sortOrder: "sort_order"
+ *     }
  */
 export interface ListActivitiesRequest {
     /**

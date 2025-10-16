@@ -16,7 +16,7 @@ export declare namespace Promotions {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
@@ -30,7 +30,7 @@ export declare namespace Promotions {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in the request. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -52,7 +52,10 @@ export class Promotions {
      *
      * @example
      *     await client.loyalty.programs.promotions.list({
-     *         programId: "program_id"
+     *         programId: "program_id",
+     *         status: "ACTIVE",
+     *         cursor: "cursor",
+     *         limit: 1
      *     })
      */
     public async list(
@@ -89,7 +92,7 @@ export class Promotions {
                         this._options?.headers,
                         mergeOnlyDefinedHeaders({
                             Authorization: await this._getAuthorizationHeader(),
-                            "Square-Version": requestOptions?.version ?? "2025-09-24",
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
                         }),
                         requestOptions?.headers,
                     ),
@@ -212,7 +215,7 @@ export class Promotions {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -274,8 +277,8 @@ export class Promotions {
      *
      * @example
      *     await client.loyalty.programs.promotions.get({
-     *         promotionId: "promotion_id",
-     *         programId: "program_id"
+     *         programId: "program_id",
+     *         promotionId: "promotion_id"
      *     })
      */
     public get(
@@ -289,7 +292,7 @@ export class Promotions {
         request: Square.loyalty.programs.GetPromotionsRequest,
         requestOptions?: Promotions.RequestOptions,
     ): Promise<core.WithRawResponse<Square.GetLoyaltyPromotionResponse>> {
-        const { promotionId, programId } = request;
+        const { programId, promotionId } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -302,7 +305,7 @@ export class Promotions {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -363,8 +366,8 @@ export class Promotions {
      *
      * @example
      *     await client.loyalty.programs.promotions.cancel({
-     *         promotionId: "promotion_id",
-     *         programId: "program_id"
+     *         programId: "program_id",
+     *         promotionId: "promotion_id"
      *     })
      */
     public cancel(
@@ -378,7 +381,7 @@ export class Promotions {
         request: Square.loyalty.programs.CancelPromotionsRequest,
         requestOptions?: Promotions.RequestOptions,
     ): Promise<core.WithRawResponse<Square.CancelLoyaltyPromotionResponse>> {
-        const { promotionId, programId } = request;
+        const { programId, promotionId } = request;
         const _response = await (this._options.fetcher ?? core.fetcher)({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -391,7 +394,7 @@ export class Promotions {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),

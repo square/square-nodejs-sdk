@@ -16,7 +16,7 @@ export declare namespace Codes {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
@@ -30,7 +30,7 @@ export declare namespace Codes {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in the request. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -50,7 +50,12 @@ export class Codes {
      * @param {Codes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.devices.codes.list()
+     *     await client.devices.codes.list({
+     *         cursor: "cursor",
+     *         locationId: "location_id",
+     *         productType: "TERMINAL_API",
+     *         status: "UNKNOWN"
+     *     })
      */
     public async list(
         request: Square.devices.ListCodesRequest = {},
@@ -92,7 +97,7 @@ export class Codes {
                         this._options?.headers,
                         mergeOnlyDefinedHeaders({
                             Authorization: await this._getAuthorizationHeader(),
-                            "Square-Version": requestOptions?.version ?? "2025-09-24",
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
                         }),
                         requestOptions?.headers,
                     ),
@@ -191,7 +196,7 @@ export class Codes {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -278,7 +283,7 @@ export class Codes {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),

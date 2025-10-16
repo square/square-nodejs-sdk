@@ -5,7 +5,10 @@
 /**
  * @example
  *     {
- *         bookingId: "booking_id"
+ *         bookingId: "booking_id",
+ *         limit: 1,
+ *         cursor: "cursor",
+ *         withDefinitions: true
  *     }
  */
 export interface ListCustomAttributesRequest {

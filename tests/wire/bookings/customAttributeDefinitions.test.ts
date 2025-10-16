@@ -90,6 +90,7 @@ describe("CustomAttributeDefinitions", () => {
 
         const response = await client.bookings.customAttributeDefinitions.get({
             key: "key",
+            version: 1,
         });
         expect(response).toEqual({
             customAttributeDefinition: {

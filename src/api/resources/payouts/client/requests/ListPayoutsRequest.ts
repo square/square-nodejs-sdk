@@ -6,7 +6,15 @@ import * as Square from "../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         locationId: "location_id",
+ *         status: "SENT",
+ *         beginTime: "begin_time",
+ *         endTime: "end_time",
+ *         sortOrder: "DESC",
+ *         cursor: "cursor",
+ *         limit: 1
+ *     }
  */
 export interface ListPayoutsRequest {
     /**

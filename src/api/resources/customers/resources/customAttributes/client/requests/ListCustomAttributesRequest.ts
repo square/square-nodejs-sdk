@@ -5,7 +5,10 @@
 /**
  * @example
  *     {
- *         customerId: "customer_id"
+ *         customerId: "customer_id",
+ *         limit: 1,
+ *         cursor: "cursor",
+ *         withDefinitions: true
  *     }
  */
 export interface ListCustomAttributesRequest {

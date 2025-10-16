@@ -6,7 +6,9 @@
  * @example
  *     {
  *         merchantId: "merchant_id",
- *         key: "key"
+ *         key: "key",
+ *         withDefinition: true,
+ *         version: 1
  *     }
  */
 export interface GetCustomAttributesRequest {

@@ -6,7 +6,12 @@ import * as Square from "../../../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         cursor: "cursor",
+ *         includeDisabled: true,
+ *         sortOrder: "DESC",
+ *         limit: 1
+ *     }
  */
 export interface ListSubscriptionsRequest {
     /**

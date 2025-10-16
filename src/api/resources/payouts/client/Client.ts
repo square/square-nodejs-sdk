@@ -16,7 +16,7 @@ export declare namespace Payouts {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
@@ -30,7 +30,7 @@ export declare namespace Payouts {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in the request. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -52,7 +52,15 @@ export class Payouts {
      * @param {Payouts.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.payouts.list()
+     *     await client.payouts.list({
+     *         locationId: "location_id",
+     *         status: "SENT",
+     *         beginTime: "begin_time",
+     *         endTime: "end_time",
+     *         sortOrder: "DESC",
+     *         cursor: "cursor",
+     *         limit: 1
+     *     })
      */
     public async list(
         request: Square.ListPayoutsRequest = {},
@@ -101,7 +109,7 @@ export class Payouts {
                         this._options?.headers,
                         mergeOnlyDefinedHeaders({
                             Authorization: await this._getAuthorizationHeader(),
-                            "Square-Version": requestOptions?.version ?? "2025-09-24",
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
                         }),
                         requestOptions?.headers,
                     ),
@@ -196,7 +204,7 @@ export class Payouts {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -251,7 +259,10 @@ export class Payouts {
      *
      * @example
      *     await client.payouts.listEntries({
-     *         payoutId: "payout_id"
+     *         payoutId: "payout_id",
+     *         sortOrder: "DESC",
+     *         cursor: "cursor",
+     *         limit: 1
      *     })
      */
     public async listEntries(
@@ -288,7 +299,7 @@ export class Payouts {
                         this._options?.headers,
                         mergeOnlyDefinedHeaders({
                             Authorization: await this._getAuthorizationHeader(),
-                            "Square-Version": requestOptions?.version ?? "2025-09-24",
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
                         }),
                         requestOptions?.headers,
                     ),

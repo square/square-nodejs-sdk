@@ -6,7 +6,19 @@ import * as Square from "../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         beginTime: "begin_time",
+ *         endTime: "end_time",
+ *         sortOrder: "sort_order",
+ *         cursor: "cursor",
+ *         locationId: "location_id",
+ *         status: "status",
+ *         sourceType: "source_type",
+ *         limit: 1,
+ *         updatedAtBeginTime: "updated_at_begin_time",
+ *         updatedAtEndTime: "updated_at_end_time",
+ *         sortField: "CREATED_AT"
+ *     }
  */
 export interface ListRefundsRequest {
     /**

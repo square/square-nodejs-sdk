@@ -7,7 +7,11 @@ import * as Square from "../../../../../../index";
 /**
  * @example
  *     {
- *         merchantId: "merchant_id"
+ *         merchantId: "merchant_id",
+ *         visibilityFilter: "ALL",
+ *         limit: 1,
+ *         cursor: "cursor",
+ *         withDefinitions: true
  *     }
  */
 export interface ListCustomAttributesRequest {

@@ -222,6 +222,8 @@ describe("CustomAttributes", () => {
         const response = await client.orders.customAttributes.get({
             orderId: "order_id",
             customAttributeKey: "custom_attribute_key",
+            version: 1,
+            withDefinition: true,
         });
         expect(response).toEqual({
             customAttribute: {

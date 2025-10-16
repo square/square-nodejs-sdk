@@ -4,7 +4,15 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         limit: 1,
+ *         cursor: "cursor",
+ *         customerId: "customer_id",
+ *         teamMemberId: "team_member_id",
+ *         locationId: "location_id",
+ *         startAtMin: "start_at_min",
+ *         startAtMax: "start_at_max"
+ *     }
  */
 export interface ListBookingsRequest {
     /**

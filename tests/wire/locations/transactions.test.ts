@@ -79,6 +79,10 @@ describe("Transactions", () => {
 
         const response = await client.locations.transactions.list({
             locationId: "location_id",
+            beginTime: "begin_time",
+            endTime: "end_time",
+            sortOrder: "DESC",
+            cursor: "cursor",
         });
         expect(response).toEqual({
             errors: [

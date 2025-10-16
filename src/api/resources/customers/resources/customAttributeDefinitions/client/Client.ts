@@ -16,7 +16,7 @@ export declare namespace CustomAttributeDefinitions {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
@@ -30,7 +30,7 @@ export declare namespace CustomAttributeDefinitions {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in the request. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -55,7 +55,10 @@ export class CustomAttributeDefinitions {
      * @param {CustomAttributeDefinitions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.customers.customAttributeDefinitions.list()
+     *     await client.customers.customAttributeDefinitions.list({
+     *         limit: 1,
+     *         cursor: "cursor"
+     *     })
      */
     public async list(
         request: Square.customers.ListCustomAttributeDefinitionsRequest = {},
@@ -85,7 +88,7 @@ export class CustomAttributeDefinitions {
                         this._options?.headers,
                         mergeOnlyDefinedHeaders({
                             Authorization: await this._getAuthorizationHeader(),
-                            "Square-Version": requestOptions?.version ?? "2025-09-24",
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
                         }),
                         requestOptions?.headers,
                     ),
@@ -201,7 +204,7 @@ export class CustomAttributeDefinitions {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -267,7 +270,8 @@ export class CustomAttributeDefinitions {
      *
      * @example
      *     await client.customers.customAttributeDefinitions.get({
-     *         key: "key"
+     *         key: "key",
+     *         version: 1
      *     })
      */
     public get(
@@ -299,7 +303,7 @@ export class CustomAttributeDefinitions {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -393,7 +397,7 @@ export class CustomAttributeDefinitions {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -487,7 +491,7 @@ export class CustomAttributeDefinitions {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -618,7 +622,7 @@ export class CustomAttributeDefinitions {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),

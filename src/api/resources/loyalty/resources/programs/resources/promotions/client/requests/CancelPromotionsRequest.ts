@@ -5,18 +5,18 @@
 /**
  * @example
  *     {
- *         promotionId: "promotion_id",
- *         programId: "program_id"
+ *         programId: "program_id",
+ *         promotionId: "promotion_id"
  *     }
  */
 export interface CancelPromotionsRequest {
+    /**
+     * The ID of the base [loyalty program](entity:LoyaltyProgram).
+     */
+    programId: string;
     /**
      * The ID of the [loyalty promotion](entity:LoyaltyPromotion) to cancel. You can cancel a
      * promotion that has an `ACTIVE` or `SCHEDULED` status.
      */
     promotionId: string;
-    /**
-     * The ID of the base [loyalty program](entity:LoyaltyProgram).
-     */
-    programId: string;
 }
