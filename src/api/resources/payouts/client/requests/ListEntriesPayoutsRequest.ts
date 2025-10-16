@@ -7,7 +7,10 @@ import * as Square from "../../../../index";
 /**
  * @example
  *     {
- *         payoutId: "payout_id"
+ *         payoutId: "payout_id",
+ *         sortOrder: "DESC",
+ *         cursor: "cursor",
+ *         limit: 1
  *     }
  */
 export interface ListEntriesPayoutsRequest {

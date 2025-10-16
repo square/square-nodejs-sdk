@@ -278,6 +278,8 @@ describe("CustomAttributes", () => {
         const response = await client.locations.customAttributes.get({
             locationId: "location_id",
             key: "key",
+            withDefinition: true,
+            version: 1,
         });
         expect(response).toEqual({
             customAttribute: {

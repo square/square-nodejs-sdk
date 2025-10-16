@@ -4,7 +4,11 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         locationId: "location_id",
+ *         limit: 1,
+ *         cursor: "cursor"
+ *     }
  */
 export interface ListBreakTypesRequest {
     /**

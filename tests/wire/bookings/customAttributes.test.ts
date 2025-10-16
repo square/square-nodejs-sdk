@@ -306,6 +306,8 @@ describe("CustomAttributes", () => {
         const response = await client.bookings.customAttributes.get({
             bookingId: "booking_id",
             key: "key",
+            withDefinition: true,
+            version: 1,
         });
         expect(response).toEqual({
             customAttribute: {

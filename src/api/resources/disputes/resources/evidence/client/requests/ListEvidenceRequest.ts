@@ -5,7 +5,8 @@
 /**
  * @example
  *     {
- *         disputeId: "dispute_id"
+ *         disputeId: "dispute_id",
+ *         cursor: "cursor"
  *     }
  */
 export interface ListEvidenceRequest {

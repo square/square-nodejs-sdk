@@ -5,7 +5,9 @@
 /**
  * @example
  *     {
- *         locationId: "location_id"
+ *         locationId: "location_id",
+ *         cursor: "cursor",
+ *         limit: 1
  *     }
  */
 export interface ListInvoicesRequest {

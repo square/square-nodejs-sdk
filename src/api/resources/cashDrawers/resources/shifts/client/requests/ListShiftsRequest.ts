@@ -7,7 +7,12 @@ import * as Square from "../../../../../../index";
 /**
  * @example
  *     {
- *         locationId: "location_id"
+ *         locationId: "location_id",
+ *         sortOrder: "DESC",
+ *         beginTime: "begin_time",
+ *         endTime: "end_time",
+ *         limit: 1,
+ *         cursor: "cursor"
  *     }
  */
 export interface ListShiftsRequest {

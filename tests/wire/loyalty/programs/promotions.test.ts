@@ -177,8 +177,8 @@ describe("Promotions", () => {
             .build();
 
         const response = await client.loyalty.programs.promotions.get({
-            promotionId: "promotion_id",
             programId: "program_id",
+            promotionId: "promotion_id",
         });
         expect(response).toEqual({
             errors: [
@@ -269,8 +269,8 @@ describe("Promotions", () => {
             .build();
 
         const response = await client.loyalty.programs.promotions.cancel({
-            promotionId: "promotion_id",
             programId: "program_id",
+            promotionId: "promotion_id",
         });
         expect(response).toEqual({
             errors: [

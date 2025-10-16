@@ -392,6 +392,9 @@ Provides summary information for a merchant's online store orders.
 ```typescript
 await client.v1Transactions.v1ListOrders({
     locationId: "location_id",
+    order: "DESC",
+    limit: 1,
+    batchToken: "batch_token",
 });
 ```
 
@@ -670,13 +673,21 @@ Returns a list of [BankAccount](entity:BankAccount) objects linked to a Square a
 <dd>
 
 ```typescript
-const response = await client.bankAccounts.list();
+const response = await client.bankAccounts.list({
+    cursor: "cursor",
+    limit: 1,
+    locationId: "location_id",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.bankAccounts.list();
+let page = await client.bankAccounts.list({
+    cursor: "cursor",
+    limit: 1,
+    locationId: "location_id",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -878,13 +889,29 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 <dd>
 
 ```typescript
-const response = await client.bookings.list();
+const response = await client.bookings.list({
+    limit: 1,
+    cursor: "cursor",
+    customerId: "customer_id",
+    teamMemberId: "team_member_id",
+    locationId: "location_id",
+    startAtMin: "start_at_min",
+    startAtMax: "start_at_max",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.bookings.list();
+let page = await client.bookings.list({
+    limit: 1,
+    cursor: "cursor",
+    customerId: "customer_id",
+    teamMemberId: "team_member_id",
+    locationId: "location_id",
+    startAtMin: "start_at_min",
+    startAtMax: "start_at_max",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -1568,13 +1595,25 @@ A max of 25 cards will be returned.
 <dd>
 
 ```typescript
-const response = await client.cards.list();
+const response = await client.cards.list({
+    cursor: "cursor",
+    customerId: "customer_id",
+    includeDisabled: true,
+    referenceId: "reference_id",
+    sortOrder: "DESC",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.cards.list();
+let page = await client.cards.list({
+    cursor: "cursor",
+    customerId: "customer_id",
+    includeDisabled: true,
+    referenceId: "reference_id",
+    sortOrder: "DESC",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -2163,13 +2202,21 @@ and set the `include_deleted_objects` attribute value to `true`.
 <dd>
 
 ```typescript
-const response = await client.catalog.list();
+const response = await client.catalog.list({
+    cursor: "cursor",
+    types: "types",
+    catalogVersion: BigInt("1000000"),
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.catalog.list();
+let page = await client.catalog.list({
+    cursor: "cursor",
+    types: "types",
+    catalogVersion: BigInt("1000000"),
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -2524,6 +2571,216 @@ await client.catalog.updateItemTaxes({
 </dl>
 </details>
 
+## Channels
+
+<details><summary><code>client.channels.<a href="/src/api/resources/channels/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Channel></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.channels.list({
+    referenceType: "UNKNOWN_TYPE",
+    referenceId: "reference_id",
+    status: "ACTIVE",
+    cursor: "cursor",
+    limit: 1,
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+let page = await client.channels.list({
+    referenceType: "UNKNOWN_TYPE",
+    referenceId: "reference_id",
+    status: "ACTIVE",
+    cursor: "cursor",
+    limit: 1,
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.ListChannelsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Channels.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.channels.<a href="/src/api/resources/channels/client/Client.ts">bulkRetrieve</a>({ ...params }) -> Square.BulkRetrieveChannelsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.channels.bulkRetrieve({
+    channelIds: ["CH_9C03D0B59", "CH_6X139B5MN", "NOT_EXISTING"],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.BulkRetrieveChannelsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Channels.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.channels.<a href="/src/api/resources/channels/client/Client.ts">get</a>({ ...params }) -> Square.RetrieveChannelResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.channels.get({
+    channelId: "channel_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.GetChannelsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Channels.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Customers
 
 <details><summary><code>client.customers.<a href="/src/api/resources/customers/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Customer></code></summary>
@@ -2558,13 +2815,25 @@ profiles can take closer to one minute or longer, especially during network inci
 <dd>
 
 ```typescript
-const response = await client.customers.list();
+const response = await client.customers.list({
+    cursor: "cursor",
+    limit: 1,
+    sortField: "DEFAULT",
+    sortOrder: "DESC",
+    count: true,
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.customers.list();
+let page = await client.customers.list({
+    cursor: "cursor",
+    limit: 1,
+    sortField: "DEFAULT",
+    sortOrder: "DESC",
+    count: true,
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -3270,6 +3539,7 @@ To delete a customer profile that was created by merging existing profiles, you 
 ```typescript
 await client.customers.delete({
     customerId: "customer_id",
+    version: BigInt("1000000"),
 });
 ```
 
@@ -3336,13 +3606,23 @@ devices are supported.
 <dd>
 
 ```typescript
-const response = await client.devices.list();
+const response = await client.devices.list({
+    cursor: "cursor",
+    sortOrder: "DESC",
+    limit: 1,
+    locationId: "location_id",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.devices.list();
+let page = await client.devices.list({
+    cursor: "cursor",
+    sortOrder: "DESC",
+    limit: 1,
+    locationId: "location_id",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -3475,13 +3755,21 @@ Returns a list of disputes associated with a particular account.
 <dd>
 
 ```typescript
-const response = await client.disputes.list();
+const response = await client.disputes.list({
+    cursor: "cursor",
+    states: "INQUIRY_EVIDENCE_REQUIRED",
+    locationId: "location_id",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.disputes.list();
+let page = await client.disputes.list({
+    cursor: "cursor",
+    states: "INQUIRY_EVIDENCE_REQUIRED",
+    locationId: "location_id",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -3886,13 +4174,23 @@ await client.disputes.submitEvidence({
 <dd>
 
 ```typescript
-const response = await client.employees.list();
+const response = await client.employees.list({
+    locationId: "location_id",
+    status: "ACTIVE",
+    limit: 1,
+    cursor: "cursor",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.employees.list();
+let page = await client.employees.list({
+    locationId: "location_id",
+    status: "ACTIVE",
+    limit: 1,
+    cursor: "cursor",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -4198,7 +4496,9 @@ Lists all event types that you can subscribe to as webhooks or query using the E
 <dd>
 
 ```typescript
-await client.events.listEventTypes();
+await client.events.listEventTypes({
+    apiVersion: "api_version",
+});
 ```
 
 </dd>
@@ -4264,13 +4564,25 @@ a subset of the gift cards. Results are sorted by `created_at` in ascending orde
 <dd>
 
 ```typescript
-const response = await client.giftCards.list();
+const response = await client.giftCards.list({
+    type: "type",
+    state: "state",
+    limit: 1,
+    cursor: "cursor",
+    customerId: "customer_id",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.giftCards.list();
+let page = await client.giftCards.list({
+    type: "type",
+    state: "state",
+    limit: 1,
+    cursor: "cursor",
+    customerId: "customer_id",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -5560,6 +5872,8 @@ For more sophisticated queries, use a batch endpoint.
 ```typescript
 const response = await client.inventory.get({
     catalogObjectId: "catalog_object_id",
+    locationIds: "location_ids",
+    cursor: "cursor",
 });
 for await (const item of response) {
     console.log(item);
@@ -5568,6 +5882,8 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.inventory.get({
     catalogObjectId: "catalog_object_id",
+    locationIds: "location_ids",
+    cursor: "cursor",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -5648,6 +5964,8 @@ sophisticated queries, use a batch endpoint.
 ```typescript
 const response = await client.inventory.changes({
     catalogObjectId: "catalog_object_id",
+    locationIds: "location_ids",
+    cursor: "cursor",
 });
 for await (const item of response) {
     console.log(item);
@@ -5656,6 +5974,8 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.inventory.changes({
     catalogObjectId: "catalog_object_id",
+    locationIds: "location_ids",
+    cursor: "cursor",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -5728,6 +6048,8 @@ use in a subsequent request to retrieve the next set of invoices.
 ```typescript
 const response = await client.invoices.list({
     locationId: "location_id",
+    cursor: "cursor",
+    limit: 1,
 });
 for await (const item of response) {
     console.log(item);
@@ -5736,6 +6058,8 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.invoices.list({
     locationId: "location_id",
+    cursor: "cursor",
+    limit: 1,
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -6146,6 +6470,7 @@ invoice (you cannot delete a published invoice, including one that is scheduled 
 ```typescript
 await client.invoices.delete({
     invoiceId: "invoice_id",
+    version: 1,
 });
 ```
 
@@ -7925,13 +8250,17 @@ endpoint to retrieve the merchant information.
 <dd>
 
 ```typescript
-const response = await client.merchants.list();
+const response = await client.merchants.list({
+    cursor: 1,
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.merchants.list();
+let page = await client.merchants.list({
+    cursor: 1,
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -9021,13 +9350,45 @@ The maximum results per page is 100.
 <dd>
 
 ```typescript
-const response = await client.payments.list();
+const response = await client.payments.list({
+    beginTime: "begin_time",
+    endTime: "end_time",
+    sortOrder: "sort_order",
+    cursor: "cursor",
+    locationId: "location_id",
+    total: BigInt("1000000"),
+    last4: "last_4",
+    cardBrand: "card_brand",
+    limit: 1,
+    isOfflinePayment: true,
+    offlineBeginTime: "offline_begin_time",
+    offlineEndTime: "offline_end_time",
+    updatedAtBeginTime: "updated_at_begin_time",
+    updatedAtEndTime: "updated_at_end_time",
+    sortField: "CREATED_AT",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.payments.list();
+let page = await client.payments.list({
+    beginTime: "begin_time",
+    endTime: "end_time",
+    sortOrder: "sort_order",
+    cursor: "cursor",
+    locationId: "location_id",
+    total: BigInt("1000000"),
+    last4: "last_4",
+    cardBrand: "card_brand",
+    limit: 1,
+    isOfflinePayment: true,
+    offlineBeginTime: "offline_begin_time",
+    offlineEndTime: "offline_end_time",
+    updatedAtBeginTime: "updated_at_begin_time",
+    updatedAtEndTime: "updated_at_end_time",
+    sortField: "CREATED_AT",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -9535,13 +9896,29 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 <dd>
 
 ```typescript
-const response = await client.payouts.list();
+const response = await client.payouts.list({
+    locationId: "location_id",
+    status: "SENT",
+    beginTime: "begin_time",
+    endTime: "end_time",
+    sortOrder: "DESC",
+    cursor: "cursor",
+    limit: 1,
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.payouts.list();
+let page = await client.payouts.list({
+    locationId: "location_id",
+    status: "SENT",
+    beginTime: "begin_time",
+    endTime: "end_time",
+    sortOrder: "DESC",
+    cursor: "cursor",
+    limit: 1,
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -9676,6 +10053,9 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 ```typescript
 const response = await client.payouts.listEntries({
     payoutId: "payout_id",
+    sortOrder: "DESC",
+    cursor: "cursor",
+    limit: 1,
 });
 for await (const item of response) {
     console.log(item);
@@ -9684,6 +10064,9 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.payouts.listEntries({
     payoutId: "payout_id",
+    sortOrder: "DESC",
+    cursor: "cursor",
+    limit: 1,
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -9757,13 +10140,37 @@ The maximum results per page is 100.
 <dd>
 
 ```typescript
-const response = await client.refunds.list();
+const response = await client.refunds.list({
+    beginTime: "begin_time",
+    endTime: "end_time",
+    sortOrder: "sort_order",
+    cursor: "cursor",
+    locationId: "location_id",
+    status: "status",
+    sourceType: "source_type",
+    limit: 1,
+    updatedAtBeginTime: "updated_at_begin_time",
+    updatedAtEndTime: "updated_at_end_time",
+    sortField: "CREATED_AT",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.refunds.list();
+let page = await client.refunds.list({
+    beginTime: "begin_time",
+    endTime: "end_time",
+    sortOrder: "sort_order",
+    cursor: "cursor",
+    locationId: "location_id",
+    status: "status",
+    sourceType: "source_type",
+    limit: 1,
+    updatedAtBeginTime: "updated_at_begin_time",
+    updatedAtEndTime: "updated_at_end_time",
+    sortField: "CREATED_AT",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -10487,6 +10894,7 @@ Retrieves a specific subscription.
 ```typescript
 await client.subscriptions.get({
     subscriptionId: "subscription_id",
+    include: "include",
 });
 ```
 
@@ -10821,6 +11229,8 @@ Lists all [events](https://developer.squareup.com/docs/subscriptions-api/actions
 ```typescript
 const response = await client.subscriptions.listEvents({
     subscriptionId: "subscription_id",
+    cursor: "cursor",
+    limit: 1,
 });
 for await (const item of response) {
     console.log(item);
@@ -10829,6 +11239,8 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.subscriptions.listEvents({
     subscriptionId: "subscription_id",
+    cursor: "cursor",
+    limit: 1,
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -11643,7 +12055,9 @@ Lists jobs in a seller account. Results are sorted by title in ascending order.
 <dd>
 
 ```typescript
-await client.team.listJobs();
+await client.team.listJobs({
+    cursor: "cursor",
+});
 ```
 
 </dd>
@@ -12073,6 +12487,698 @@ await client.terminal.dismissTerminalRefund({
 <dd>
 
 **requestOptions:** `Terminal.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## TransferOrders
+
+<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">create</a>({ ...params }) -> Square.CreateTransferOrderResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new transfer order in [DRAFT](entity:TransferOrderStatus) status. A transfer order represents the intent
+to move [CatalogItemVariation](entity:CatalogItemVariation)s from one [Location](entity:Location) to another.
+The source and destination locations must be different and must belong to your Square account.
+
+In [DRAFT](entity:TransferOrderStatus) status, you can:
+
+- Add or remove items
+- Modify quantities
+- Update shipping information
+- Delete the entire order via [DeleteTransferOrder](api-endpoint:TransferOrders-DeleteTransferOrder)
+
+The request requires source_location_id and destination_location_id.
+Inventory levels are not affected until the order is started via
+[StartTransferOrder](api-endpoint:TransferOrders-StartTransferOrder).
+
+Common integration points:
+
+- Sync with warehouse management systems
+- Automate regular stock transfers
+- Initialize transfers from inventory optimization systems
+
+Creates a [transfer_order.created](webhook:transfer_order.created) webhook event.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transferOrders.create({
+    idempotencyKey: "65cc0586-3e82-384s-b524-3885cffd52",
+    transferOrder: {
+        sourceLocationId: "EXAMPLE_SOURCE_LOCATION_ID_123",
+        destinationLocationId: "EXAMPLE_DEST_LOCATION_ID_456",
+        expectedAt: "2025-11-09T05:00:00Z",
+        notes: "Example transfer order for inventory redistribution between locations",
+        trackingNumber: "TRACK123456789",
+        createdByTeamMemberId: "EXAMPLE_TEAM_MEMBER_ID_789",
+        lineItems: [
+            {
+                itemVariationId: "EXAMPLE_ITEM_VARIATION_ID_001",
+                quantityOrdered: "5",
+            },
+            {
+                itemVariationId: "EXAMPLE_ITEM_VARIATION_ID_002",
+                quantityOrdered: "3",
+            },
+        ],
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.CreateTransferOrderRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TransferOrders.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">search</a>({ ...params }) -> core.Page<Square.TransferOrder></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Searches for transfer orders using filters. Returns a paginated list of matching
+[TransferOrder](entity:TransferOrder)s sorted by creation date.
+
+Common search scenarios:
+
+- Find orders for a source [Location](entity:Location)
+- Find orders for a destination [Location](entity:Location)
+- Find orders in a particular [TransferOrderStatus](entity:TransferOrderStatus)
+  </dd>
+  </dl>
+  </dd>
+  </dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.transferOrders.search({
+    query: {
+        filter: {
+            sourceLocationIds: ["EXAMPLE_SOURCE_LOCATION_ID_123"],
+            destinationLocationIds: ["EXAMPLE_DEST_LOCATION_ID_456"],
+            statuses: ["STARTED", "PARTIALLY_RECEIVED"],
+        },
+        sort: {
+            field: "UPDATED_AT",
+            order: "DESC",
+        },
+    },
+    cursor: "eyJsYXN0X3VwZGF0ZWRfYXQiOjE3NTMxMTg2NjQ4NzN9",
+    limit: 10,
+});
+for await (const item of response) {
+    console.log(item);
+}
+
+// Or you can manually iterate page-by-page
+let page = await client.transferOrders.search({
+    query: {
+        filter: {
+            sourceLocationIds: ["EXAMPLE_SOURCE_LOCATION_ID_123"],
+            destinationLocationIds: ["EXAMPLE_DEST_LOCATION_ID_456"],
+            statuses: ["STARTED", "PARTIALLY_RECEIVED"],
+        },
+        sort: {
+            field: "UPDATED_AT",
+            order: "DESC",
+        },
+    },
+    cursor: "eyJsYXN0X3VwZGF0ZWRfYXQiOjE3NTMxMTg2NjQ4NzN9",
+    limit: 10,
+});
+while (page.hasNextPage()) {
+    page = page.getNextPage();
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.SearchTransferOrdersRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TransferOrders.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">get</a>({ ...params }) -> Square.RetrieveTransferOrderResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves a specific [TransferOrder](entity:TransferOrder) by ID. Returns the complete
+order details including:
+
+- Basic information (status, dates, notes)
+- Line items with ordered and received quantities
+- Source and destination [Location](entity:Location)s
+- Tracking information (if available)
+  </dd>
+  </dl>
+  </dd>
+  </dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transferOrders.get({
+    transferOrderId: "transfer_order_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.GetTransferOrdersRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TransferOrders.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">update</a>({ ...params }) -> Square.UpdateTransferOrderResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates an existing transfer order. This endpoint supports sparse updates,
+allowing you to modify specific fields without affecting others.
+
+Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transferOrders.update({
+    transferOrderId: "transfer_order_id",
+    idempotencyKey: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    transferOrder: {
+        sourceLocationId: "EXAMPLE_SOURCE_LOCATION_ID_789",
+        destinationLocationId: "EXAMPLE_DEST_LOCATION_ID_101",
+        expectedAt: "2025-11-10T08:00:00Z",
+        notes: "Updated: Priority transfer due to low stock at destination",
+        trackingNumber: "TRACK987654321",
+        lineItems: [
+            {
+                uid: "1",
+                quantityOrdered: "7",
+            },
+            {
+                itemVariationId: "EXAMPLE_NEW_ITEM_VARIATION_ID_003",
+                quantityOrdered: "2",
+            },
+            {
+                uid: "2",
+                remove: true,
+            },
+        ],
+    },
+    version: BigInt("1753109537351"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.UpdateTransferOrderRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TransferOrders.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">delete</a>({ ...params }) -> Square.DeleteTransferOrderResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a transfer order in [DRAFT](entity:TransferOrderStatus) status.
+Only draft orders can be deleted. Once an order is started via
+[StartTransferOrder](api-endpoint:TransferOrders-StartTransferOrder), it can no longer be deleted.
+
+Creates a [transfer_order.deleted](webhook:transfer_order.deleted) webhook event.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transferOrders.delete({
+    transferOrderId: "transfer_order_id",
+    version: BigInt("1000000"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.DeleteTransferOrdersRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TransferOrders.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">cancel</a>({ ...params }) -> Square.CancelTransferOrderResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Cancels a transfer order in [STARTED](entity:TransferOrderStatus) or
+[PARTIALLY_RECEIVED](entity:TransferOrderStatus) status. Any unreceived quantities will no
+longer be receivable and will be immediately returned to the source [Location](entity:Location)'s inventory.
+
+Common reasons for cancellation:
+
+- Items no longer needed at destination
+- Source location needs the inventory
+- Order created in error
+
+Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transferOrders.cancel({
+    transferOrderId: "transfer_order_id",
+    idempotencyKey: "65cc0586-3e82-4d08-b524-3885cffd52",
+    version: BigInt("1753117449752"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.CancelTransferOrderRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TransferOrders.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">receive</a>({ ...params }) -> Square.ReceiveTransferOrderResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Records receipt of [CatalogItemVariation](entity:CatalogItemVariation)s for a transfer order.
+This endpoint supports partial receiving - you can receive items in multiple batches.
+
+For each line item, you can specify:
+
+- Quantity received in good condition (added to destination inventory with [InventoryState](entity:InventoryState) of IN_STOCK)
+- Quantity damaged during transit/handling (added to destination inventory with [InventoryState](entity:InventoryState) of WASTE)
+- Quantity canceled (returned to source location's inventory)
+
+The order must be in [STARTED](entity:TransferOrderStatus) or [PARTIALLY_RECEIVED](entity:TransferOrderStatus) status.
+Received quantities are added to the destination [Location](entity:Location)'s inventory according to their condition.
+Canceled quantities are immediately returned to the source [Location](entity:Location)'s inventory.
+
+When all items are either received, damaged, or canceled, the order moves to
+[COMPLETED](entity:TransferOrderStatus) status.
+
+Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transferOrders.receive({
+    transferOrderId: "transfer_order_id",
+    idempotencyKey: "EXAMPLE_IDEMPOTENCY_KEY_101",
+    receipt: {
+        lineItems: [
+            {
+                transferOrderLineUid: "transfer_order_line_uid",
+                quantityReceived: "3",
+                quantityDamaged: "1",
+                quantityCanceled: "1",
+            },
+            {
+                transferOrderLineUid: "transfer_order_line_uid",
+                quantityReceived: "2",
+                quantityCanceled: "1",
+            },
+        ],
+    },
+    version: BigInt("1753118664873"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.ReceiveTransferOrderRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TransferOrders.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">start</a>({ ...params }) -> Square.StartTransferOrderResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Changes a [DRAFT](entity:TransferOrderStatus) transfer order to [STARTED](entity:TransferOrderStatus) status.
+This decrements inventory at the source [Location](entity:Location) and marks it as in-transit.
+
+The order must be in [DRAFT](entity:TransferOrderStatus) status and have all required fields populated.
+Once started, the order can no longer be deleted, but it can be canceled via
+[CancelTransferOrder](api-endpoint:TransferOrders-CancelTransferOrder).
+
+Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transferOrders.start({
+    transferOrderId: "transfer_order_id",
+    idempotencyKey: "EXAMPLE_IDEMPOTENCY_KEY_789",
+    version: BigInt("1753109537351"),
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.StartTransferOrderRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TransferOrders.RequestOptions`
 
 </dd>
 </dl>
@@ -12630,13 +13736,19 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 <dd>
 
 ```typescript
-const response = await client.bookings.customAttributeDefinitions.list();
+const response = await client.bookings.customAttributeDefinitions.list({
+    limit: 1,
+    cursor: "cursor",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.bookings.customAttributeDefinitions.list();
+let page = await client.bookings.customAttributeDefinitions.list({
+    limit: 1,
+    cursor: "cursor",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -12778,6 +13890,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 ```typescript
 await client.bookings.customAttributeDefinitions.get({
     key: "key",
+    version: 1,
 });
 ```
 
@@ -13143,6 +14256,9 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 ```typescript
 const response = await client.bookings.customAttributes.list({
     bookingId: "booking_id",
+    limit: 1,
+    cursor: "cursor",
+    withDefinitions: true,
 });
 for await (const item of response) {
     console.log(item);
@@ -13151,6 +14267,9 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.bookings.customAttributes.list({
     bookingId: "booking_id",
+    limit: 1,
+    cursor: "cursor",
+    withDefinitions: true,
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -13223,6 +14342,8 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 await client.bookings.customAttributes.get({
     bookingId: "booking_id",
     key: "key",
+    withDefinition: true,
+    version: 1,
 });
 ```
 
@@ -13433,13 +14554,19 @@ Lists location booking profiles of a seller.
 <dd>
 
 ```typescript
-const response = await client.bookings.locationProfiles.list();
+const response = await client.bookings.locationProfiles.list({
+    limit: 1,
+    cursor: "cursor",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.bookings.locationProfiles.list();
+let page = await client.bookings.locationProfiles.list({
+    limit: 1,
+    cursor: "cursor",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -13507,13 +14634,23 @@ Lists booking profiles for team members.
 <dd>
 
 ```typescript
-const response = await client.bookings.teamMemberProfiles.list();
+const response = await client.bookings.teamMemberProfiles.list({
+    bookableOnly: true,
+    limit: 1,
+    cursor: "cursor",
+    locationId: "location_id",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.bookings.teamMemberProfiles.list();
+let page = await client.bookings.teamMemberProfiles.list({
+    bookableOnly: true,
+    limit: 1,
+    cursor: "cursor",
+    locationId: "location_id",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -13649,6 +14786,11 @@ in a date range.
 ```typescript
 const response = await client.cashDrawers.shifts.list({
     locationId: "location_id",
+    sortOrder: "DESC",
+    beginTime: "begin_time",
+    endTime: "end_time",
+    limit: 1,
+    cursor: "cursor",
 });
 for await (const item of response) {
     console.log(item);
@@ -13657,6 +14799,11 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.cashDrawers.shifts.list({
     locationId: "location_id",
+    sortOrder: "DESC",
+    beginTime: "begin_time",
+    endTime: "end_time",
+    limit: 1,
+    cursor: "cursor",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -13793,6 +14940,8 @@ Provides a paginated list of events for a single cash drawer shift.
 const response = await client.cashDrawers.shifts.listEvents({
     shiftId: "shift_id",
     locationId: "location_id",
+    limit: 1,
+    cursor: "cursor",
 });
 for await (const item of response) {
     console.log(item);
@@ -13802,6 +14951,8 @@ for await (const item of response) {
 let page = await client.cashDrawers.shifts.listEvents({
     shiftId: "shift_id",
     locationId: "location_id",
+    limit: 1,
+    cursor: "cursor",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -14089,6 +15240,9 @@ any [CatalogTax](entity:CatalogTax) objects that apply to it.
 ```typescript
 await client.catalog.object.get({
     objectId: "object_id",
+    includeRelatedObjects: true,
+    catalogVersion: BigInt("1000000"),
+    includeCategoryPathToRoot: true,
 });
 ```
 
@@ -14228,13 +15382,19 @@ Lists all payment links.
 <dd>
 
 ```typescript
-const response = await client.checkout.paymentLinks.list();
+const response = await client.checkout.paymentLinks.list({
+    cursor: "cursor",
+    limit: 1,
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.checkout.paymentLinks.list();
+let page = await client.checkout.paymentLinks.list({
+    cursor: "cursor",
+    limit: 1,
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -14583,13 +15743,19 @@ seller-defined custom attributes (also known as custom fields) are always set to
 <dd>
 
 ```typescript
-const response = await client.customers.customAttributeDefinitions.list();
+const response = await client.customers.customAttributeDefinitions.list({
+    limit: 1,
+    cursor: "cursor",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.customers.customAttributeDefinitions.list();
+let page = await client.customers.customAttributeDefinitions.list({
+    limit: 1,
+    cursor: "cursor",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -14744,6 +15910,7 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note t
 ```typescript
 await client.customers.customAttributeDefinitions.get({
     key: "key",
+    version: 1,
 });
 ```
 
@@ -15068,13 +16235,19 @@ Retrieves the list of customer groups of a business.
 <dd>
 
 ```typescript
-const response = await client.customers.groups.list();
+const response = await client.customers.groups.list({
+    cursor: "cursor",
+    limit: 1,
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.customers.groups.list();
+let page = await client.customers.groups.list({
+    cursor: "cursor",
+    limit: 1,
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -15547,13 +16720,19 @@ Retrieves the list of customer segments of a business.
 <dd>
 
 ```typescript
-const response = await client.customers.segments.list();
+const response = await client.customers.segments.list({
+    cursor: "cursor",
+    limit: 1,
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.customers.segments.list();
+let page = await client.customers.segments.list({
+    cursor: "cursor",
+    limit: 1,
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -15842,6 +17021,9 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 ```typescript
 const response = await client.customers.customAttributes.list({
     customerId: "customer_id",
+    limit: 1,
+    cursor: "cursor",
+    withDefinitions: true,
 });
 for await (const item of response) {
     console.log(item);
@@ -15850,6 +17032,9 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.customers.customAttributes.list({
     customerId: "customer_id",
+    limit: 1,
+    cursor: "cursor",
+    withDefinitions: true,
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -15926,6 +17111,8 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 await client.customers.customAttributes.get({
     customerId: "customer_id",
     key: "key",
+    withDefinition: true,
+    version: 1,
 });
 ```
 
@@ -16138,13 +17325,23 @@ Lists all DeviceCodes associated with the merchant.
 <dd>
 
 ```typescript
-const response = await client.devices.codes.list();
+const response = await client.devices.codes.list({
+    cursor: "cursor",
+    locationId: "location_id",
+    productType: "TERMINAL_API",
+    status: "UNKNOWN",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.devices.codes.list();
+let page = await client.devices.codes.list({
+    cursor: "cursor",
+    locationId: "location_id",
+    productType: "TERMINAL_API",
+    status: "UNKNOWN",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -16350,6 +17547,7 @@ Returns a list of evidence associated with a dispute.
 ```typescript
 const response = await client.disputes.evidence.list({
     disputeId: "dispute_id",
+    cursor: "cursor",
 });
 for await (const item of response) {
     console.log(item);
@@ -16358,6 +17556,7 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.disputes.evidence.list({
     disputeId: "dispute_id",
+    cursor: "cursor",
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -16564,13 +17763,31 @@ for all gift cards in a specific region, or for activities within a time window.
 <dd>
 
 ```typescript
-const response = await client.giftCards.activities.list();
+const response = await client.giftCards.activities.list({
+    giftCardId: "gift_card_id",
+    type: "type",
+    locationId: "location_id",
+    beginTime: "begin_time",
+    endTime: "end_time",
+    limit: 1,
+    cursor: "cursor",
+    sortOrder: "sort_order",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.giftCards.activities.list();
+let page = await client.giftCards.activities.list({
+    giftCardId: "gift_card_id",
+    type: "type",
+    locationId: "location_id",
+    beginTime: "begin_time",
+    endTime: "end_time",
+    limit: 1,
+    cursor: "cursor",
+    sortOrder: "sort_order",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -16713,13 +17930,21 @@ Returns a paginated list of `BreakType` instances for a business.
 <dd>
 
 ```typescript
-const response = await client.labor.breakTypes.list();
+const response = await client.labor.breakTypes.list({
+    locationId: "location_id",
+    limit: 1,
+    cursor: "cursor",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.labor.breakTypes.list();
+let page = await client.labor.breakTypes.list({
+    locationId: "location_id",
+    limit: 1,
+    cursor: "cursor",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17075,13 +18300,21 @@ Returns a paginated list of `EmployeeWage` instances for a business.
 <dd>
 
 ```typescript
-const response = await client.labor.employeeWages.list();
+const response = await client.labor.employeeWages.list({
+    employeeId: "employee_id",
+    limit: 1,
+    cursor: "cursor",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.labor.employeeWages.list();
+let page = await client.labor.employeeWages.list({
+    employeeId: "employee_id",
+    limit: 1,
+    cursor: "cursor",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17648,13 +18881,21 @@ Returns a paginated list of `TeamMemberWage` instances for a business.
 <dd>
 
 ```typescript
-const response = await client.labor.teamMemberWages.list();
+const response = await client.labor.teamMemberWages.list({
+    teamMemberId: "team_member_id",
+    limit: 1,
+    cursor: "cursor",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.labor.teamMemberWages.list();
+let page = await client.labor.teamMemberWages.list({
+    teamMemberId: "team_member_id",
+    limit: 1,
+    cursor: "cursor",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17787,13 +19028,19 @@ Returns a list of `WorkweekConfig` instances for a business.
 <dd>
 
 ```typescript
-const response = await client.labor.workweekConfigs.list();
+const response = await client.labor.workweekConfigs.list({
+    limit: 1,
+    cursor: "cursor",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.labor.workweekConfigs.list();
+let page = await client.labor.workweekConfigs.list({
+    limit: 1,
+    cursor: "cursor",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -17934,13 +19181,21 @@ applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`
 <dd>
 
 ```typescript
-const response = await client.locations.customAttributeDefinitions.list();
+const response = await client.locations.customAttributeDefinitions.list({
+    visibilityFilter: "ALL",
+    limit: 1,
+    cursor: "cursor",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.locations.customAttributeDefinitions.list();
+let page = await client.locations.customAttributeDefinitions.list({
+    visibilityFilter: "ALL",
+    limit: 1,
+    cursor: "cursor",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -18089,6 +19344,7 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 ```typescript
 await client.locations.customAttributeDefinitions.get({
     key: "key",
+    version: 1,
 });
 ```
 
@@ -18474,6 +19730,10 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 ```typescript
 const response = await client.locations.customAttributes.list({
     locationId: "location_id",
+    visibilityFilter: "ALL",
+    limit: 1,
+    cursor: "cursor",
+    withDefinitions: true,
 });
 for await (const item of response) {
     console.log(item);
@@ -18482,6 +19742,10 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.locations.customAttributes.list({
     locationId: "location_id",
+    visibilityFilter: "ALL",
+    limit: 1,
+    cursor: "cursor",
+    withDefinitions: true,
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -18555,6 +19819,8 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 await client.locations.customAttributes.get({
     locationId: "location_id",
     key: "key",
+    withDefinition: true,
+    version: 1,
 });
 ```
 
@@ -18769,6 +20035,10 @@ Max results per [page](https://developer.squareup.com/docs/working-with-apis/pag
 ```typescript
 await client.locations.transactions.list({
     locationId: "location_id",
+    beginTime: "begin_time",
+    endTime: "end_time",
+    sortOrder: "DESC",
+    cursor: "cursor",
 });
 ```
 
@@ -19988,6 +21258,9 @@ Results are sorted by the `created_at` date in descending order (newest to oldes
 ```typescript
 const response = await client.loyalty.programs.promotions.list({
     programId: "program_id",
+    status: "ACTIVE",
+    cursor: "cursor",
+    limit: 1,
 });
 for await (const item of response) {
     console.log(item);
@@ -19996,6 +21269,9 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.loyalty.programs.promotions.list({
     programId: "program_id",
+    status: "ACTIVE",
+    cursor: "cursor",
+    limit: 1,
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -20157,8 +21433,8 @@ Retrieves a loyalty promotion.
 
 ```typescript
 await client.loyalty.programs.promotions.get({
-    promotionId: "promotion_id",
     programId: "program_id",
+    promotionId: "promotion_id",
 });
 ```
 
@@ -20228,8 +21504,8 @@ This endpoint sets the loyalty promotion to the `CANCELED` state
 
 ```typescript
 await client.loyalty.programs.promotions.cancel({
-    promotionId: "promotion_id",
     programId: "program_id",
+    promotionId: "promotion_id",
 });
 ```
 
@@ -20298,13 +21574,21 @@ applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`
 <dd>
 
 ```typescript
-const response = await client.merchants.customAttributeDefinitions.list();
+const response = await client.merchants.customAttributeDefinitions.list({
+    visibilityFilter: "ALL",
+    limit: 1,
+    cursor: "cursor",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.merchants.customAttributeDefinitions.list();
+let page = await client.merchants.customAttributeDefinitions.list({
+    visibilityFilter: "ALL",
+    limit: 1,
+    cursor: "cursor",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -20453,6 +21737,7 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 ```typescript
 await client.merchants.customAttributeDefinitions.get({
     key: "key",
+    version: 1,
 });
 ```
 
@@ -20828,6 +22113,10 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 ```typescript
 const response = await client.merchants.customAttributes.list({
     merchantId: "merchant_id",
+    visibilityFilter: "ALL",
+    limit: 1,
+    cursor: "cursor",
+    withDefinitions: true,
 });
 for await (const item of response) {
     console.log(item);
@@ -20836,6 +22125,10 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.merchants.customAttributes.list({
     merchantId: "merchant_id",
+    visibilityFilter: "ALL",
+    limit: 1,
+    cursor: "cursor",
+    withDefinitions: true,
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -20909,6 +22202,8 @@ To retrieve a custom attribute owned by another application, the `visibility` se
 await client.merchants.customAttributes.get({
     merchantId: "merchant_id",
     key: "key",
+    withDefinition: true,
+    version: 1,
 });
 ```
 
@@ -21121,13 +22416,21 @@ seller-defined custom attributes (also known as custom fields) are always set to
 <dd>
 
 ```typescript
-const response = await client.orders.customAttributeDefinitions.list();
+const response = await client.orders.customAttributeDefinitions.list({
+    visibilityFilter: "ALL",
+    cursor: "cursor",
+    limit: 1,
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.orders.customAttributeDefinitions.list();
+let page = await client.orders.customAttributeDefinitions.list({
+    visibilityFilter: "ALL",
+    cursor: "cursor",
+    limit: 1,
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -21277,6 +22580,7 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note t
 ```typescript
 await client.orders.customAttributeDefinitions.get({
     key: "key",
+    version: 1,
 });
 ```
 
@@ -21673,6 +22977,10 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 ```typescript
 const response = await client.orders.customAttributes.list({
     orderId: "order_id",
+    visibilityFilter: "ALL",
+    cursor: "cursor",
+    limit: 1,
+    withDefinitions: true,
 });
 for await (const item of response) {
     console.log(item);
@@ -21681,6 +22989,10 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.orders.customAttributes.list({
     orderId: "order_id",
+    visibilityFilter: "ALL",
+    cursor: "cursor",
+    limit: 1,
+    withDefinitions: true,
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -21757,6 +23069,8 @@ also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
 await client.orders.customAttributes.get({
     orderId: "order_id",
     customAttributeKey: "custom_attribute_key",
+    version: 1,
+    withDefinition: true,
 });
 ```
 
@@ -22973,7 +24287,9 @@ Lists all webhook event types that can be subscribed to.
 <dd>
 
 ```typescript
-await client.webhooks.eventTypes.list();
+await client.webhooks.eventTypes.list({
+    apiVersion: "api_version",
+});
 ```
 
 </dd>
@@ -23038,13 +24354,23 @@ Lists all webhook subscriptions owned by your application.
 <dd>
 
 ```typescript
-const response = await client.webhooks.subscriptions.list();
+const response = await client.webhooks.subscriptions.list({
+    cursor: "cursor",
+    includeDisabled: true,
+    sortOrder: "DESC",
+    limit: 1,
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-let page = await client.webhooks.subscriptions.list();
+let page = await client.webhooks.subscriptions.list({
+    cursor: "cursor",
+    includeDisabled: true,
+    sortOrder: "DESC",
+    limit: 1,
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }

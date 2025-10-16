@@ -4,7 +4,9 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         apiVersion: "api_version"
+ *     }
  */
 export interface ListEventTypesRequest {
     /**

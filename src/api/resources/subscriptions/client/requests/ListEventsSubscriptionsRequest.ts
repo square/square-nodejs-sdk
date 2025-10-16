@@ -5,7 +5,9 @@
 /**
  * @example
  *     {
- *         subscriptionId: "subscription_id"
+ *         subscriptionId: "subscription_id",
+ *         cursor: "cursor",
+ *         limit: 1
  *     }
  */
 export interface ListEventsSubscriptionsRequest {

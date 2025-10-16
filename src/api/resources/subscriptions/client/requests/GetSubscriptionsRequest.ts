@@ -5,7 +5,8 @@
 /**
  * @example
  *     {
- *         subscriptionId: "subscription_id"
+ *         subscriptionId: "subscription_id",
+ *         include: "include"
  *     }
  */
 export interface GetSubscriptionsRequest {

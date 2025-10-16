@@ -6,7 +6,12 @@ import * as Square from "../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         locationId: "location_id",
+ *         status: "ACTIVE",
+ *         limit: 1,
+ *         cursor: "cursor"
+ *     }
  */
 export interface ListEmployeesRequest {
     /**

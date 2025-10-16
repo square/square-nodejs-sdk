@@ -5,7 +5,9 @@
 /**
  * @example
  *     {
- *         catalogObjectId: "catalog_object_id"
+ *         catalogObjectId: "catalog_object_id",
+ *         locationIds: "location_ids",
+ *         cursor: "cursor"
  *     }
  */
 export interface ChangesInventoryRequest {

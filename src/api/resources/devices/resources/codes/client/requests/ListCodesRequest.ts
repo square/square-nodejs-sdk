@@ -6,7 +6,12 @@ import * as Square from "../../../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         cursor: "cursor",
+ *         locationId: "location_id",
+ *         productType: "TERMINAL_API",
+ *         status: "UNKNOWN"
+ *     }
  */
 export interface ListCodesRequest {
     /**
