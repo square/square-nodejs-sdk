@@ -4,7 +4,9 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         cursor: "cursor"
+ *     }
  */
 export interface ListJobsRequest {
     /**

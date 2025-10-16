@@ -16,7 +16,7 @@ export declare namespace Checkouts {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
@@ -30,7 +30,7 @@ export declare namespace Checkouts {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in the request. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -89,7 +89,7 @@ export class Checkouts {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -157,81 +157,90 @@ export class Checkouts {
      *         limit: 2
      *     })
      */
-    public search(
+    public async search(
         request: Square.terminal.SearchTerminalCheckoutsRequest = {},
         requestOptions?: Checkouts.RequestOptions,
-    ): core.HttpResponsePromise<Square.SearchTerminalCheckoutsResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__search(request, requestOptions));
-    }
-
-    private async __search(
-        request: Square.terminal.SearchTerminalCheckoutsRequest = {},
-        requestOptions?: Checkouts.RequestOptions,
-    ): Promise<core.WithRawResponse<Square.SearchTerminalCheckoutsResponse>> {
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SquareEnvironment.Production,
-                "v2/terminals/checkouts/search",
-            ),
-            method: "POST",
-            headers: mergeHeaders(
-                this._options?.headers,
-                mergeOnlyDefinedHeaders({
-                    Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
-                }),
-                requestOptions?.headers,
-            ),
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.terminal.SearchTerminalCheckoutsRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-                omitUndefined: true,
-            }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+    ): Promise<core.Page<Square.TerminalCheckout>> {
+        const list = core.HttpResponsePromise.interceptFunction(
+            async (
+                request: Square.terminal.SearchTerminalCheckoutsRequest,
+            ): Promise<core.WithRawResponse<Square.SearchTerminalCheckoutsResponse>> => {
+                const _response = await (this._options.fetcher ?? core.fetcher)({
+                    url: core.url.join(
+                        (await core.Supplier.get(this._options.baseUrl)) ??
+                            (await core.Supplier.get(this._options.environment)) ??
+                            environments.SquareEnvironment.Production,
+                        "v2/terminals/checkouts/search",
+                    ),
+                    method: "POST",
+                    headers: mergeHeaders(
+                        this._options?.headers,
+                        mergeOnlyDefinedHeaders({
+                            Authorization: await this._getAuthorizationHeader(),
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
+                        }),
+                        requestOptions?.headers,
+                    ),
+                    contentType: "application/json",
+                    requestType: "json",
+                    body: serializers.terminal.SearchTerminalCheckoutsRequest.jsonOrThrow(request, {
+                        unrecognizedObjectKeys: "strip",
+                        omitUndefined: true,
+                    }),
+                    timeoutMs:
+                        requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+                    maxRetries: requestOptions?.maxRetries,
+                    abortSignal: requestOptions?.abortSignal,
+                });
+                if (_response.ok) {
+                    return {
+                        data: serializers.SearchTerminalCheckoutsResponse.parseOrThrow(_response.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        rawResponse: _response.rawResponse,
+                    };
+                }
+                if (_response.error.reason === "status-code") {
+                    throw new errors.SquareError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+                }
+                switch (_response.error.reason) {
+                    case "non-json":
+                        throw new errors.SquareError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.rawBody,
+                            rawResponse: _response.rawResponse,
+                        });
+                    case "timeout":
+                        throw new errors.SquareTimeoutError(
+                            "Timeout exceeded when calling POST /v2/terminals/checkouts/search.",
+                        );
+                    case "unknown":
+                        throw new errors.SquareError({
+                            message: _response.error.errorMessage,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            },
+        );
+        const dataWithRawResponse = await list(request).withRawResponse();
+        return new core.Pageable<Square.SearchTerminalCheckoutsResponse, Square.TerminalCheckout>({
+            response: dataWithRawResponse.data,
+            rawResponse: dataWithRawResponse.rawResponse,
+            hasNextPage: (response) =>
+                response?.cursor != null && !(typeof response?.cursor === "string" && response?.cursor === ""),
+            getItems: (response) => response?.checkouts ?? [],
+            loadPage: (response) => {
+                return list(core.setObjectProperty(request, "cursor", response?.cursor));
+            },
         });
-        if (_response.ok) {
-            return {
-                data: serializers.SearchTerminalCheckoutsResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.SquareError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.SquareError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.SquareTimeoutError(
-                    "Timeout exceeded when calling POST /v2/terminals/checkouts/search.",
-                );
-            case "unknown":
-                throw new errors.SquareError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
     }
 
     /**
@@ -269,7 +278,7 @@ export class Checkouts {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -352,7 +361,7 @@ export class Checkouts {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),

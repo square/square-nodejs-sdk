@@ -6,7 +6,9 @@
  * @example
  *     {
  *         shiftId: "shift_id",
- *         locationId: "location_id"
+ *         locationId: "location_id",
+ *         limit: 1,
+ *         cursor: "cursor"
  *     }
  */
 export interface ListEventsShiftsRequest {

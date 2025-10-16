@@ -5,7 +5,8 @@
 /**
  * @example
  *     {
- *         key: "key"
+ *         key: "key",
+ *         version: 1
  *     }
  */
 export interface GetCustomAttributeDefinitionsRequest {

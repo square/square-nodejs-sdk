@@ -7,7 +7,10 @@ import * as Square from "../../../../../../../../index";
 /**
  * @example
  *     {
- *         programId: "program_id"
+ *         programId: "program_id",
+ *         status: "ACTIVE",
+ *         cursor: "cursor",
+ *         limit: 1
  *     }
  */
 export interface ListPromotionsRequest {

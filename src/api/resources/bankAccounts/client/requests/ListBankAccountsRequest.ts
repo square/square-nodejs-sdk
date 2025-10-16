@@ -4,7 +4,11 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         cursor: "cursor",
+ *         limit: 1,
+ *         locationId: "location_id"
+ *     }
  */
 export interface ListBankAccountsRequest {
     /**

@@ -16,7 +16,7 @@ export declare namespace Inventory {
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
         fetcher?: core.FetchFunction;
@@ -30,7 +30,7 @@ export declare namespace Inventory {
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
         /** Override the Square-Version header */
-        version?: "2025-09-24";
+        version?: "2025-10-16";
         /** Additional headers to include in the request. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -79,7 +79,7 @@ export class Inventory {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -163,7 +163,7 @@ export class Inventory {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -259,7 +259,7 @@ export class Inventory {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -328,81 +328,90 @@ export class Inventory {
      *         updatedBefore: "2016-12-01T00:00:00.000Z"
      *     })
      */
-    public deprecatedBatchGetChanges(
+    public async deprecatedBatchGetChanges(
         request: Square.BatchRetrieveInventoryChangesRequest,
         requestOptions?: Inventory.RequestOptions,
-    ): core.HttpResponsePromise<Square.BatchGetInventoryChangesResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__deprecatedBatchGetChanges(request, requestOptions));
-    }
-
-    private async __deprecatedBatchGetChanges(
-        request: Square.BatchRetrieveInventoryChangesRequest,
-        requestOptions?: Inventory.RequestOptions,
-    ): Promise<core.WithRawResponse<Square.BatchGetInventoryChangesResponse>> {
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SquareEnvironment.Production,
-                "v2/inventory/batch-retrieve-changes",
-            ),
-            method: "POST",
-            headers: mergeHeaders(
-                this._options?.headers,
-                mergeOnlyDefinedHeaders({
-                    Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
-                }),
-                requestOptions?.headers,
-            ),
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.BatchRetrieveInventoryChangesRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-                omitUndefined: true,
-            }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+    ): Promise<core.Page<Square.InventoryChange>> {
+        const list = core.HttpResponsePromise.interceptFunction(
+            async (
+                request: Square.BatchRetrieveInventoryChangesRequest,
+            ): Promise<core.WithRawResponse<Square.BatchGetInventoryChangesResponse>> => {
+                const _response = await (this._options.fetcher ?? core.fetcher)({
+                    url: core.url.join(
+                        (await core.Supplier.get(this._options.baseUrl)) ??
+                            (await core.Supplier.get(this._options.environment)) ??
+                            environments.SquareEnvironment.Production,
+                        "v2/inventory/batch-retrieve-changes",
+                    ),
+                    method: "POST",
+                    headers: mergeHeaders(
+                        this._options?.headers,
+                        mergeOnlyDefinedHeaders({
+                            Authorization: await this._getAuthorizationHeader(),
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
+                        }),
+                        requestOptions?.headers,
+                    ),
+                    contentType: "application/json",
+                    requestType: "json",
+                    body: serializers.BatchRetrieveInventoryChangesRequest.jsonOrThrow(request, {
+                        unrecognizedObjectKeys: "strip",
+                        omitUndefined: true,
+                    }),
+                    timeoutMs:
+                        requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+                    maxRetries: requestOptions?.maxRetries,
+                    abortSignal: requestOptions?.abortSignal,
+                });
+                if (_response.ok) {
+                    return {
+                        data: serializers.BatchGetInventoryChangesResponse.parseOrThrow(_response.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        rawResponse: _response.rawResponse,
+                    };
+                }
+                if (_response.error.reason === "status-code") {
+                    throw new errors.SquareError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+                }
+                switch (_response.error.reason) {
+                    case "non-json":
+                        throw new errors.SquareError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.rawBody,
+                            rawResponse: _response.rawResponse,
+                        });
+                    case "timeout":
+                        throw new errors.SquareTimeoutError(
+                            "Timeout exceeded when calling POST /v2/inventory/batch-retrieve-changes.",
+                        );
+                    case "unknown":
+                        throw new errors.SquareError({
+                            message: _response.error.errorMessage,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            },
+        );
+        const dataWithRawResponse = await list(request).withRawResponse();
+        return new core.Pageable<Square.BatchGetInventoryChangesResponse, Square.InventoryChange>({
+            response: dataWithRawResponse.data,
+            rawResponse: dataWithRawResponse.rawResponse,
+            hasNextPage: (response) =>
+                response?.cursor != null && !(typeof response?.cursor === "string" && response?.cursor === ""),
+            getItems: (response) => response?.changes ?? [],
+            loadPage: (response) => {
+                return list(core.setObjectProperty(request, "cursor", response?.cursor));
+            },
         });
-        if (_response.ok) {
-            return {
-                data: serializers.BatchGetInventoryChangesResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.SquareError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.SquareError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.SquareTimeoutError(
-                    "Timeout exceeded when calling POST /v2/inventory/batch-retrieve-changes.",
-                );
-            case "unknown":
-                throw new errors.SquareError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
     }
 
     /**
@@ -419,81 +428,90 @@ export class Inventory {
      *         updatedAfter: "2016-11-16T00:00:00.000Z"
      *     })
      */
-    public deprecatedBatchGetCounts(
+    public async deprecatedBatchGetCounts(
         request: Square.BatchGetInventoryCountsRequest,
         requestOptions?: Inventory.RequestOptions,
-    ): core.HttpResponsePromise<Square.BatchGetInventoryCountsResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__deprecatedBatchGetCounts(request, requestOptions));
-    }
-
-    private async __deprecatedBatchGetCounts(
-        request: Square.BatchGetInventoryCountsRequest,
-        requestOptions?: Inventory.RequestOptions,
-    ): Promise<core.WithRawResponse<Square.BatchGetInventoryCountsResponse>> {
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SquareEnvironment.Production,
-                "v2/inventory/batch-retrieve-counts",
-            ),
-            method: "POST",
-            headers: mergeHeaders(
-                this._options?.headers,
-                mergeOnlyDefinedHeaders({
-                    Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
-                }),
-                requestOptions?.headers,
-            ),
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.BatchGetInventoryCountsRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-                omitUndefined: true,
-            }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
+    ): Promise<core.Page<Square.InventoryCount>> {
+        const list = core.HttpResponsePromise.interceptFunction(
+            async (
+                request: Square.BatchGetInventoryCountsRequest,
+            ): Promise<core.WithRawResponse<Square.BatchGetInventoryCountsResponse>> => {
+                const _response = await (this._options.fetcher ?? core.fetcher)({
+                    url: core.url.join(
+                        (await core.Supplier.get(this._options.baseUrl)) ??
+                            (await core.Supplier.get(this._options.environment)) ??
+                            environments.SquareEnvironment.Production,
+                        "v2/inventory/batch-retrieve-counts",
+                    ),
+                    method: "POST",
+                    headers: mergeHeaders(
+                        this._options?.headers,
+                        mergeOnlyDefinedHeaders({
+                            Authorization: await this._getAuthorizationHeader(),
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
+                        }),
+                        requestOptions?.headers,
+                    ),
+                    contentType: "application/json",
+                    requestType: "json",
+                    body: serializers.BatchGetInventoryCountsRequest.jsonOrThrow(request, {
+                        unrecognizedObjectKeys: "strip",
+                        omitUndefined: true,
+                    }),
+                    timeoutMs:
+                        requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+                    maxRetries: requestOptions?.maxRetries,
+                    abortSignal: requestOptions?.abortSignal,
+                });
+                if (_response.ok) {
+                    return {
+                        data: serializers.BatchGetInventoryCountsResponse.parseOrThrow(_response.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        rawResponse: _response.rawResponse,
+                    };
+                }
+                if (_response.error.reason === "status-code") {
+                    throw new errors.SquareError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+                }
+                switch (_response.error.reason) {
+                    case "non-json":
+                        throw new errors.SquareError({
+                            statusCode: _response.error.statusCode,
+                            body: _response.error.rawBody,
+                            rawResponse: _response.rawResponse,
+                        });
+                    case "timeout":
+                        throw new errors.SquareTimeoutError(
+                            "Timeout exceeded when calling POST /v2/inventory/batch-retrieve-counts.",
+                        );
+                    case "unknown":
+                        throw new errors.SquareError({
+                            message: _response.error.errorMessage,
+                            rawResponse: _response.rawResponse,
+                        });
+                }
+            },
+        );
+        const dataWithRawResponse = await list(request).withRawResponse();
+        return new core.Pageable<Square.BatchGetInventoryCountsResponse, Square.InventoryCount>({
+            response: dataWithRawResponse.data,
+            rawResponse: dataWithRawResponse.rawResponse,
+            hasNextPage: (response) =>
+                response?.cursor != null && !(typeof response?.cursor === "string" && response?.cursor === ""),
+            getItems: (response) => response?.counts ?? [],
+            loadPage: (response) => {
+                return list(core.setObjectProperty(request, "cursor", response?.cursor));
+            },
         });
-        if (_response.ok) {
-            return {
-                data: serializers.BatchGetInventoryCountsResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.SquareError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.SquareError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.SquareTimeoutError(
-                    "Timeout exceeded when calling POST /v2/inventory/batch-retrieve-counts.",
-                );
-            case "unknown":
-                throw new errors.SquareError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
     }
 
     /**
@@ -547,7 +565,7 @@ export class Inventory {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -644,7 +662,7 @@ export class Inventory {
                         this._options?.headers,
                         mergeOnlyDefinedHeaders({
                             Authorization: await this._getAuthorizationHeader(),
-                            "Square-Version": requestOptions?.version ?? "2025-09-24",
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
                         }),
                         requestOptions?.headers,
                     ),
@@ -753,7 +771,7 @@ export class Inventory {
                         this._options?.headers,
                         mergeOnlyDefinedHeaders({
                             Authorization: await this._getAuthorizationHeader(),
-                            "Square-Version": requestOptions?.version ?? "2025-09-24",
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
                         }),
                         requestOptions?.headers,
                     ),
@@ -855,7 +873,7 @@ export class Inventory {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -939,7 +957,7 @@ export class Inventory {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -1023,7 +1041,7 @@ export class Inventory {
                 this._options?.headers,
                 mergeOnlyDefinedHeaders({
                     Authorization: await this._getAuthorizationHeader(),
-                    "Square-Version": requestOptions?.version ?? "2025-09-24",
+                    "Square-Version": requestOptions?.version ?? "2025-10-16",
                 }),
                 requestOptions?.headers,
             ),
@@ -1082,7 +1100,9 @@ export class Inventory {
      *
      * @example
      *     await client.inventory.get({
-     *         catalogObjectId: "catalog_object_id"
+     *         catalogObjectId: "catalog_object_id",
+     *         locationIds: "location_ids",
+     *         cursor: "cursor"
      *     })
      */
     public async get(
@@ -1113,7 +1133,7 @@ export class Inventory {
                         this._options?.headers,
                         mergeOnlyDefinedHeaders({
                             Authorization: await this._getAuthorizationHeader(),
-                            "Square-Version": requestOptions?.version ?? "2025-09-24",
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
                         }),
                         requestOptions?.headers,
                     ),
@@ -1194,7 +1214,9 @@ export class Inventory {
      *
      * @example
      *     await client.inventory.changes({
-     *         catalogObjectId: "catalog_object_id"
+     *         catalogObjectId: "catalog_object_id",
+     *         locationIds: "location_ids",
+     *         cursor: "cursor"
      *     })
      */
     public async changes(
@@ -1225,7 +1247,7 @@ export class Inventory {
                         this._options?.headers,
                         mergeOnlyDefinedHeaders({
                             Authorization: await this._getAuthorizationHeader(),
-                            "Square-Version": requestOptions?.version ?? "2025-09-24",
+                            "Square-Version": requestOptions?.version ?? "2025-10-16",
                         }),
                         requestOptions?.headers,
                     ),

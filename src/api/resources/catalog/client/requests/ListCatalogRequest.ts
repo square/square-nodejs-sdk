@@ -4,7 +4,11 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         cursor: "cursor",
+ *         types: "types",
+ *         catalogVersion: BigInt("1000000")
+ *     }
  */
 export interface ListCatalogRequest {
     /**

@@ -5,7 +5,8 @@
 /**
  * @example
  *     {
- *         customerId: "customer_id"
+ *         customerId: "customer_id",
+ *         version: BigInt("1000000")
  *     }
  */
 export interface DeleteCustomersRequest {

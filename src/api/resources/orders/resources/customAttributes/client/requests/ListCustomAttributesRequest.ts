@@ -7,7 +7,11 @@ import * as Square from "../../../../../../index";
 /**
  * @example
  *     {
- *         orderId: "order_id"
+ *         orderId: "order_id",
+ *         visibilityFilter: "ALL",
+ *         cursor: "cursor",
+ *         limit: 1,
+ *         withDefinitions: true
  *     }
  */
 export interface ListCustomAttributesRequest {

@@ -4,7 +4,12 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         bookableOnly: true,
+ *         limit: 1,
+ *         cursor: "cursor",
+ *         locationId: "location_id"
+ *     }
  */
 export interface ListTeamMemberProfilesRequest {
     /**

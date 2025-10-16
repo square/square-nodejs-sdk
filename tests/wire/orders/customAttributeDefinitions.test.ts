@@ -110,6 +110,7 @@ describe("CustomAttributeDefinitions", () => {
 
         const response = await client.orders.customAttributeDefinitions.get({
             key: "key",
+            version: 1,
         });
         expect(response).toEqual({
             customAttributeDefinition: {

@@ -29,7 +29,9 @@ describe("EventTypes", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.webhooks.eventTypes.list();
+        const response = await client.webhooks.eventTypes.list({
+            apiVersion: "api_version",
+        });
         expect(response).toEqual({
             errors: [
                 {

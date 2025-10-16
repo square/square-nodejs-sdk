@@ -6,7 +6,11 @@ import * as Square from "../../../../../../index";
 
 /**
  * @example
- *     {}
+ *     {
+ *         visibilityFilter: "ALL",
+ *         limit: 1,
+ *         cursor: "cursor"
+ *     }
  */
 export interface ListCustomAttributeDefinitionsRequest {
     /**
