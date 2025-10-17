@@ -1,4 +1,4 @@
-import { SquareClient } from "../../src";
+import type { SquareClient } from "../../src";
 import { createClient } from "./helpers";
 
 describe("CustomerSegments API", () => {

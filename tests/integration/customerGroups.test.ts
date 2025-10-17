@@ -1,4 +1,4 @@
-import { Square, SquareClient, SquareError } from "../../src";
+import { type Square, type SquareClient, SquareError } from "../../src";
 import { createClient, newTestUuid } from "./helpers";
 
 async function createTestCustomerGroup(client: SquareClient): Promise<Square.CreateCustomerGroupResponse> {

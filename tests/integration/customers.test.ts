@@ -1,5 +1,5 @@
+import type { SquareClient } from "../../src";
 import { createClient, createTestCustomer, newTestUuid } from "./helpers";
-import { Square, SquareClient } from "../../src";
 
 describe("Customers API", () => {
     const client: SquareClient = createClient();
@@ -14,7 +14,7 @@ describe("Customers API", () => {
                 name: `Test Group ${newTestUuid()}`,
             },
         });
-        customerGroupId = createGroupResponse.group!.id!;
+        customerGroupId = createGroupResponse.group?.id!;
 
         // Create custom attribute definition
         customAttributeKey = `favorite-drink-${newTestUuid()}`;
@@ -72,7 +72,7 @@ describe("Customers API", () => {
         });
 
         expect(createCardResponse.card).toBeDefined();
-        const customerCardId = createCardResponse.card!.id!;
+        const customerCardId = createCardResponse.card?.id!;
 
         const deleteCardResponse = await client.customers.cards.delete({
             customerId,

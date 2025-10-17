@@ -1,5 +1,5 @@
+import type { SquareClient } from "../../src";
 import { createClient, newTestUuid } from "./helpers";
-import { SquareClient } from "../../src";
 
 describe("Team members API", () => {
     const client: SquareClient = createClient();
@@ -15,7 +15,7 @@ describe("Team members API", () => {
                 familyName: "Holmes",
             },
         });
-        memberId = memberResponse.teamMember!.id!;
+        memberId = memberResponse.teamMember?.id!;
 
         // Create bulk team members for testing
         const bulkResponse = await client.teamMembers.batchCreate({
@@ -35,7 +35,7 @@ describe("Team members API", () => {
             },
         });
 
-        bulkMemberIds = Object.values(bulkResponse.teamMembers!).map((result) => result.teamMember!.id!);
+        bulkMemberIds = Object.values(bulkResponse.teamMembers!).map((result) => result.teamMember?.id!);
     });
 
     it("should search team members", async () => {
@@ -80,7 +80,7 @@ describe("Team members API", () => {
     });
 
     it("should update team member", async () => {
-        const response = await client.teamMembers.update({
+        const _response = await client.teamMembers.update({
             teamMemberId: memberId,
             // TODO: check if we can flatter this
             body: {

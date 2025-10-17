@@ -1,6 +1,6 @@
 export * as actions from "./actions";
-export * as checkouts from "./checkouts";
-export * as refunds from "./refunds";
 export * from "./actions/client/requests";
+export * as checkouts from "./checkouts";
 export * from "./checkouts/client/requests";
+export * as refunds from "./refunds";
 export * from "./refunds/client/requests";

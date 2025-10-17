@@ -1,1 +1,1 @@
-export { type SearchLoyaltyEventsRequest } from "./SearchLoyaltyEventsRequest";
+export type { SearchLoyaltyEventsRequest } from "./SearchLoyaltyEventsRequest";

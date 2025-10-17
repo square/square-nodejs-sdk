@@ -1,5 +1,5 @@
+import type { SquareClient } from "../../src";
 import { createClient, newTestUuid } from "./helpers";
-import { SquareClient } from "../../src";
 
 describe("Terminal API", () => {
     const client: SquareClient = createClient();
@@ -20,7 +20,7 @@ describe("Terminal API", () => {
                 },
             },
         });
-        checkoutId = checkoutResponse.checkout!.id!;
+        checkoutId = checkoutResponse.checkout?.id!;
     });
 
     it("should create terminal checkout", async () => {

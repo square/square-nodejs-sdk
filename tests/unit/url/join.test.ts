@@ -16,14 +16,14 @@ describe("join", () => {
 
         it("should handle multiple segments", () => {
             expect(join("base", "path1", "path2", "path3")).toBe("base/path1/path2/path3");
-            expect(join("base/", "/path1/", "/path2/", "/path3/")).toBe("base/path1/path2/path3");
+            expect(join("base/", "/path1/", "/path2/", "/path3/")).toBe("base/path1/path2/path3/");
         });
     });
 
     describe("URL handling", () => {
         it("should handle absolute URLs", () => {
             expect(join("https://example.com", "api", "v1")).toBe("https://example.com/api/v1");
-            expect(join("https://example.com/", "/api/", "/v1/")).toBe("https://example.com/api/v1");
+            expect(join("https://example.com/", "/api/", "/v1/")).toBe("https://example.com/api/v1/");
             expect(join("https://example.com/base", "api", "v1")).toBe("https://example.com/base/api/v1");
         });
 
@@ -90,12 +90,31 @@ describe("join", () => {
         it("should handle many segments efficiently", () => {
             const segments = Array(100).fill("segment");
             const result = join("base", ...segments);
-            expect(result).toBe("base/" + segments.join("/"));
+            expect(result).toBe(`base/${segments.join("/")}`);
         });
 
         it("should handle long URLs", () => {
             const longPath = "a".repeat(1000);
             expect(join("https://example.com", longPath)).toBe(`https://example.com/${longPath}`);
+        });
+    });
+
+    describe("trailing slash preservation", () => {
+        it("should preserve trailing slash on final result when base has trailing slash and no segments", () => {
+            expect(join("https://api.example.com/")).toBe("https://api.example.com/");
+            expect(join("https://api.example.com/v1/")).toBe("https://api.example.com/v1/");
+        });
+
+        it("should preserve trailing slash when last segment has trailing slash", () => {
+            expect(join("https://api.example.com", "users/")).toBe("https://api.example.com/users/");
+            expect(join("api/v1", "users/")).toBe("api/v1/users/");
+        });
+
+        it("should preserve trailing slash with multiple segments where last has trailing slash", () => {
+            expect(join("https://api.example.com", "v1", "collections/")).toBe(
+                "https://api.example.com/v1/collections/",
+            );
+            expect(join("base", "path1", "path2/")).toBe("base/path1/path2/");
         });
     });
 });

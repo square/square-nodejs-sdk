@@ -1,0 +1,807 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    create:
+      path: /v2/transfer-orders
+      method: POST
+      auth:
+        - oauth2:
+            - INVENTORY_READ
+            - INVENTORY_WRITE
+      docs: >-
+        Creates a new transfer order in [DRAFT](entity:TransferOrderStatus)
+        status. A transfer order represents the intent 
+
+        to move [CatalogItemVariation](entity:CatalogItemVariation)s from one
+        [Location](entity:Location) to another. 
+
+        The source and destination locations must be different and must belong
+        to your Square account.
+
+
+        In [DRAFT](entity:TransferOrderStatus) status, you can:
+
+        - Add or remove items
+
+        - Modify quantities
+
+        - Update shipping information
+
+        - Delete the entire order via
+        [DeleteTransferOrder](api-endpoint:TransferOrders-DeleteTransferOrder)
+
+
+        The request requires source_location_id and destination_location_id.
+
+        Inventory levels are not affected until the order is started via 
+
+        [StartTransferOrder](api-endpoint:TransferOrders-StartTransferOrder).
+
+
+        Common integration points:
+
+        - Sync with warehouse management systems
+
+        - Automate regular stock transfers
+
+        - Initialize transfers from inventory optimization systems
+
+
+        Creates a [transfer_order.created](webhook:transfer_order.created)
+        webhook event.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CreateTransferOrder
+      request:
+        name: CreateTransferOrderRequest
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this CreateTransferOrder
+                request. Keys can be
+
+                any valid string but must be unique for every
+                CreateTransferOrder request.
+              validation:
+                minLength: 1
+            transfer_order:
+              type: root.CreateTransferOrderData
+              docs: The transfer order to create
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CreateTransferOrderResponse
+        status-code: 200
+      examples:
+        - headers:
+            Square-Version: '2025-10-16'
+          request:
+            idempotency_key: 65cc0586-3e82-384s-b524-3885cffd52
+            transfer_order:
+              source_location_id: EXAMPLE_SOURCE_LOCATION_ID_123
+              destination_location_id: EXAMPLE_DEST_LOCATION_ID_456
+              expected_at: '2025-11-09T05:00:00Z'
+              notes: >-
+                Example transfer order for inventory redistribution between
+                locations
+              tracking_number: TRACK123456789
+              created_by_team_member_id: EXAMPLE_TEAM_MEMBER_ID_789
+              line_items:
+                - item_variation_id: EXAMPLE_ITEM_VARIATION_ID_001
+                  quantity_ordered: '5'
+                - item_variation_id: EXAMPLE_ITEM_VARIATION_ID_002
+                  quantity_ordered: '3'
+          response:
+            body:
+              transfer_order:
+                id: EXAMPLE_TRANSFER_ORDER_ID_123
+                source_location_id: EXAMPLE_SOURCE_LOCATION_ID_123
+                destination_location_id: EXAMPLE_DEST_LOCATION_ID_456
+                status: DRAFT
+                created_at: '2025-01-15T10:30:00Z'
+                updated_at: '2025-01-15T10:30:00Z'
+                expected_at: '2025-11-09T05:00:00Z'
+                completed_at: completed_at
+                notes: >-
+                  Example transfer order for inventory redistribution between
+                  locations
+                tracking_number: TRACK123456789
+                created_by_team_member_id: EXAMPLE_TEAM_MEMBER_ID_789
+                line_items:
+                  - uid: '1'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_001
+                    quantity_ordered: '5'
+                    quantity_pending: '5'
+                    quantity_received: '0'
+                    quantity_damaged: '0'
+                    quantity_canceled: '0'
+                  - uid: '2'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_002
+                    quantity_ordered: '3'
+                    quantity_pending: '3'
+                    quantity_received: '0'
+                    quantity_damaged: '0'
+                    quantity_canceled: '0'
+                version: 1753109537351
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    search:
+      path: /v2/transfer-orders/search
+      method: POST
+      auth:
+        - oauth2:
+            - INVENTORY_READ
+      docs: >-
+        Searches for transfer orders using filters. Returns a paginated list of
+        matching
+
+        [TransferOrder](entity:TransferOrder)s sorted by creation date.
+
+
+        Common search scenarios:
+
+        - Find orders for a source [Location](entity:Location)
+
+        - Find orders for a destination [Location](entity:Location)
+
+        - Find orders in a particular
+        [TransferOrderStatus](entity:TransferOrderStatus)
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.transfer_orders
+      source:
+        openapi: openapi/openapi.json
+      display-name: SearchTransferOrders
+      request:
+        name: SearchTransferOrdersRequest
+        body:
+          properties:
+            query:
+              type: optional<root.TransferOrderQuery>
+              docs: The search query
+            cursor:
+              type: optional<string>
+              docs: Pagination cursor from a previous search response
+            limit:
+              type: optional<integer>
+              docs: Maximum number of results to return (1-100)
+              validation:
+                min: 1
+                max: 100
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.SearchTransferOrdersResponse
+        status-code: 200
+      examples:
+        - headers:
+            Square-Version: '2025-10-16'
+          request:
+            query:
+              filter:
+                source_location_ids:
+                  - EXAMPLE_SOURCE_LOCATION_ID_123
+                destination_location_ids:
+                  - EXAMPLE_DEST_LOCATION_ID_456
+                statuses:
+                  - STARTED
+                  - PARTIALLY_RECEIVED
+              sort:
+                field: UPDATED_AT
+                order: DESC
+            cursor: eyJsYXN0X3VwZGF0ZWRfYXQiOjE3NTMxMTg2NjQ4NzN9
+            limit: 10
+          response:
+            body:
+              transfer_orders:
+                - id: EXAMPLE_TRANSFER_ORDER_ID_123
+                  source_location_id: EXAMPLE_SOURCE_LOCATION_ID_123
+                  destination_location_id: EXAMPLE_DEST_LOCATION_ID_456
+                  status: STARTED
+                  created_at: '2025-01-15T10:30:00Z'
+                  updated_at: '2025-01-15T10:32:00Z'
+                  expected_at: '2025-11-09T05:00:00Z'
+                  completed_at: completed_at
+                  notes: Inventory rebalance between stores
+                  tracking_number: TRACK123456789
+                  created_by_team_member_id: EXAMPLE_TEAM_MEMBER_ID_789
+                  line_items:
+                    - uid: '1'
+                      item_variation_id: EXAMPLE_ITEM_VARIATION_ID_001
+                      quantity_ordered: '5'
+                      quantity_pending: '5'
+                      quantity_received: '0'
+                      quantity_damaged: '0'
+                      quantity_canceled: '0'
+                  version: 1753118664873
+                - id: EXAMPLE_TRANSFER_ORDER_ID_456
+                  source_location_id: EXAMPLE_SOURCE_LOCATION_ID_123
+                  destination_location_id: EXAMPLE_DEST_LOCATION_ID_456
+                  status: PARTIALLY_RECEIVED
+                  created_at: '2025-01-14T14:20:00Z'
+                  updated_at: '2025-01-15T09:45:00Z'
+                  expected_at: '2025-11-08T12:00:00Z'
+                  completed_at: completed_at
+                  notes: Seasonal stock transfer
+                  tracking_number: tracking_number
+                  created_by_team_member_id: created_by_team_member_id
+                  line_items:
+                    - uid: '1'
+                      item_variation_id: EXAMPLE_ITEM_VARIATION_ID_002
+                      quantity_ordered: '10'
+                      quantity_pending: '3'
+                      quantity_received: '7'
+                      quantity_damaged: '0'
+                      quantity_canceled: '0'
+                  version: 1753115540123
+              cursor: eyJsYXN0X3VwZGF0ZWRfYXQiOjE3NTMxMTU1NDBfMTIzfQ==
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    get:
+      path: /v2/transfer-orders/{transfer_order_id}
+      method: GET
+      auth:
+        - oauth2:
+            - INVENTORY_READ
+      docs: >-
+        Retrieves a specific [TransferOrder](entity:TransferOrder) by ID.
+        Returns the complete
+
+        order details including:
+
+
+        - Basic information (status, dates, notes)
+
+        - Line items with ordered and received quantities
+
+        - Source and destination [Location](entity:Location)s
+
+        - Tracking information (if available)
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveTransferOrder
+      request:
+        name: GetTransferOrdersRequest
+        path-parameters:
+          transfer_order_id:
+            type: string
+            docs: The ID of the transfer order to retrieve
+      response:
+        docs: Success
+        type: root.RetrieveTransferOrderResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            transfer_order_id: transfer_order_id
+          headers:
+            Square-Version: '2025-10-16'
+          response:
+            body:
+              transfer_order:
+                id: EXAMPLE_TRANSFER_ORDER_ID_123
+                source_location_id: EXAMPLE_SOURCE_LOCATION_ID_123
+                destination_location_id: EXAMPLE_DEST_LOCATION_ID_456
+                status: STARTED
+                created_at: '2025-01-15T10:30:00Z'
+                updated_at: '2025-01-15T10:35:00Z'
+                expected_at: '2025-11-09T05:00:00Z'
+                completed_at: completed_at
+                notes: >-
+                  Example transfer order for inventory redistribution between
+                  locations
+                tracking_number: TRACK123456789
+                created_by_team_member_id: EXAMPLE_TEAM_MEMBER_ID_789
+                line_items:
+                  - uid: '1'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_001
+                    quantity_ordered: '5'
+                    quantity_pending: '5'
+                    quantity_received: '0'
+                    quantity_damaged: '0'
+                    quantity_canceled: '0'
+                  - uid: '2'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_002
+                    quantity_ordered: '3'
+                    quantity_pending: '3'
+                    quantity_received: '0'
+                    quantity_damaged: '0'
+                    quantity_canceled: '0'
+                version: 1753117449752
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    update:
+      path: /v2/transfer-orders/{transfer_order_id}
+      method: PUT
+      auth:
+        - oauth2:
+            - INVENTORY_READ
+            - INVENTORY_WRITE
+      docs: >-
+        Updates an existing transfer order. This endpoint supports sparse
+        updates,
+
+        allowing you to modify specific fields without affecting others.
+
+
+        Creates a [transfer_order.updated](webhook:transfer_order.updated)
+        webhook event.
+      source:
+        openapi: openapi/openapi.json
+      display-name: UpdateTransferOrder
+      request:
+        name: UpdateTransferOrderRequest
+        path-parameters:
+          transfer_order_id:
+            type: string
+            docs: The ID of the transfer order to update
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this UpdateTransferOrder
+                request. Keys must contain only alphanumeric characters, dashes
+                and underscores
+              validation:
+                minLength: 1
+            transfer_order:
+              type: root.UpdateTransferOrderData
+              docs: The transfer order updates to apply
+            version:
+              type: optional<long>
+              docs: Version for optimistic concurrency
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.UpdateTransferOrderResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            transfer_order_id: transfer_order_id
+          headers:
+            Square-Version: '2025-10-16'
+          request:
+            idempotency_key: f47ac10b-58cc-4372-a567-0e02b2c3d479
+            transfer_order:
+              source_location_id: EXAMPLE_SOURCE_LOCATION_ID_789
+              destination_location_id: EXAMPLE_DEST_LOCATION_ID_101
+              expected_at: '2025-11-10T08:00:00Z'
+              notes: 'Updated: Priority transfer due to low stock at destination'
+              tracking_number: TRACK987654321
+              line_items:
+                - uid: '1'
+                  quantity_ordered: '7'
+                - item_variation_id: EXAMPLE_NEW_ITEM_VARIATION_ID_003
+                  quantity_ordered: '2'
+                - uid: '2'
+                  remove: true
+            version: 1753109537351
+          response:
+            body:
+              transfer_order:
+                id: EXAMPLE_TRANSFER_ORDER_ID_123
+                source_location_id: EXAMPLE_SOURCE_LOCATION_ID_789
+                destination_location_id: EXAMPLE_DEST_LOCATION_ID_101
+                status: DRAFT
+                created_at: '2025-01-15T10:30:00Z'
+                updated_at: '2025-01-15T11:15:00Z'
+                expected_at: '2025-11-10T08:00:00Z'
+                completed_at: completed_at
+                notes: 'Updated: Priority transfer due to low stock at destination'
+                tracking_number: TRACK987654321
+                created_by_team_member_id: EXAMPLE_TEAM_MEMBER_ID_789
+                line_items:
+                  - uid: '1'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_001
+                    quantity_ordered: '7'
+                    quantity_pending: '7'
+                    quantity_received: '0'
+                    quantity_damaged: '0'
+                    quantity_canceled: '0'
+                  - uid: '3'
+                    item_variation_id: EXAMPLE_NEW_ITEM_VARIATION_ID_003
+                    quantity_ordered: '2'
+                    quantity_pending: '2'
+                    quantity_received: '0'
+                    quantity_damaged: '0'
+                    quantity_canceled: '0'
+                version: 1753122900456
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    delete:
+      path: /v2/transfer-orders/{transfer_order_id}
+      method: DELETE
+      auth:
+        - oauth2:
+            - INVENTORY_WRITE
+      docs: >-
+        Deletes a transfer order in [DRAFT](entity:TransferOrderStatus) status.
+
+        Only draft orders can be deleted. Once an order is started via 
+
+        [StartTransferOrder](api-endpoint:TransferOrders-StartTransferOrder), it
+        can no longer be deleted.
+
+
+        Creates a [transfer_order.deleted](webhook:transfer_order.deleted)
+        webhook event.
+      source:
+        openapi: openapi/openapi.json
+      display-name: DeleteTransferOrder
+      request:
+        name: DeleteTransferOrdersRequest
+        path-parameters:
+          transfer_order_id:
+            type: string
+            docs: The ID of the transfer order to delete
+        query-parameters:
+          version:
+            type: optional<nullable<long>>
+            docs: Version for optimistic concurrency
+      response:
+        docs: Success
+        type: root.DeleteTransferOrderResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            transfer_order_id: transfer_order_id
+          query-parameters:
+            version: 1000000
+          headers:
+            Square-Version: '2025-10-16'
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    cancel:
+      path: /v2/transfer-orders/{transfer_order_id}/cancel
+      method: POST
+      auth:
+        - oauth2:
+            - INVENTORY_READ
+            - INVENTORY_WRITE
+      docs: >-
+        Cancels a transfer order in [STARTED](entity:TransferOrderStatus) or 
+
+        [PARTIALLY_RECEIVED](entity:TransferOrderStatus) status. Any unreceived
+        quantities will no
+
+        longer be receivable and will be immediately returned to the source
+        [Location](entity:Location)'s inventory.
+
+
+        Common reasons for cancellation:
+
+        - Items no longer needed at destination
+
+        - Source location needs the inventory
+
+        - Order created in error
+
+
+        Creates a [transfer_order.updated](webhook:transfer_order.updated)
+        webhook event.
+      source:
+        openapi: openapi/openapi.json
+      display-name: CancelTransferOrder
+      request:
+        name: CancelTransferOrderRequest
+        path-parameters:
+          transfer_order_id:
+            type: string
+            docs: >-
+              The ID of the transfer order to cancel. Must be in STARTED or
+              PARTIALLY_RECEIVED status.
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this UpdateTransferOrder
+                request. Keys can be
+
+                any valid string but must be unique for every
+                UpdateTransferOrder request.
+              validation:
+                minLength: 1
+            version:
+              type: optional<long>
+              docs: Version for optimistic concurrency
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.CancelTransferOrderResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            transfer_order_id: transfer_order_id
+          headers:
+            Square-Version: '2025-10-16'
+          request:
+            idempotency_key: 65cc0586-3e82-4d08-b524-3885cffd52
+            version: 1753117449752
+          response:
+            body:
+              transfer_order:
+                id: EXAMPLE_TRANSFER_ORDER_ID_123
+                source_location_id: EXAMPLE_SOURCE_LOCATION_ID_123
+                destination_location_id: EXAMPLE_DEST_LOCATION_ID_456
+                status: CANCELED
+                created_at: '2025-01-15T10:30:00Z'
+                updated_at: '2025-01-15T10:45:00Z'
+                expected_at: '2025-11-09T05:00:00Z'
+                completed_at: '2025-01-15T10:45:00Z'
+                notes: >-
+                  Example transfer order for inventory redistribution between
+                  locations
+                tracking_number: TRACK123456789
+                created_by_team_member_id: EXAMPLE_TEAM_MEMBER_ID_789
+                line_items:
+                  - uid: '1'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_001
+                    quantity_ordered: '5'
+                    quantity_pending: '0'
+                    quantity_received: '0'
+                    quantity_damaged: '0'
+                    quantity_canceled: '5'
+                  - uid: '2'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_002
+                    quantity_ordered: '3'
+                    quantity_pending: '0'
+                    quantity_received: '0'
+                    quantity_damaged: '0'
+                    quantity_canceled: '3'
+                version: 1753117461842
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    receive:
+      path: /v2/transfer-orders/{transfer_order_id}/receive
+      method: POST
+      auth:
+        - oauth2:
+            - INVENTORY_READ
+            - INVENTORY_WRITE
+      docs: >-
+        Records receipt of [CatalogItemVariation](entity:CatalogItemVariation)s
+        for a transfer order.
+
+        This endpoint supports partial receiving - you can receive items in
+        multiple batches.
+
+
+        For each line item, you can specify:
+
+        - Quantity received in good condition (added to destination inventory
+        with [InventoryState](entity:InventoryState) of IN_STOCK)
+
+        - Quantity damaged during transit/handling (added to destination
+        inventory with [InventoryState](entity:InventoryState) of WASTE)
+
+        - Quantity canceled (returned to source location's inventory)
+
+
+        The order must be in [STARTED](entity:TransferOrderStatus) or
+        [PARTIALLY_RECEIVED](entity:TransferOrderStatus) status.
+
+        Received quantities are added to the destination
+        [Location](entity:Location)'s inventory according to their condition.
+
+        Canceled quantities are immediately returned to the source
+        [Location](entity:Location)'s inventory.
+
+
+        When all items are either received, damaged, or canceled, the order
+        moves to
+
+        [COMPLETED](entity:TransferOrderStatus) status.
+
+
+        Creates a [transfer_order.updated](webhook:transfer_order.updated)
+        webhook event.
+      source:
+        openapi: openapi/openapi.json
+      display-name: ReceiveTransferOrder
+      request:
+        name: ReceiveTransferOrderRequest
+        path-parameters:
+          transfer_order_id:
+            type: string
+            docs: The ID of the transfer order to receive items for
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: A unique key to make this request idempotent
+              validation:
+                minLength: 1
+            receipt:
+              type: root.TransferOrderGoodsReceipt
+              docs: The receipt details
+            version:
+              type: optional<long>
+              docs: Version for optimistic concurrency
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.ReceiveTransferOrderResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            transfer_order_id: transfer_order_id
+          headers:
+            Square-Version: '2025-10-16'
+          request:
+            idempotency_key: EXAMPLE_IDEMPOTENCY_KEY_101
+            receipt:
+              line_items:
+                - transfer_order_line_uid: transfer_order_line_uid
+                  quantity_received: '3'
+                  quantity_damaged: '1'
+                  quantity_canceled: '1'
+                - transfer_order_line_uid: transfer_order_line_uid
+                  quantity_received: '2'
+                  quantity_canceled: '1'
+            version: 1753118664873
+          response:
+            body:
+              transfer_order:
+                id: EXAMPLE_TRANSFER_ORDER_ID_123
+                source_location_id: EXAMPLE_SOURCE_LOCATION_ID_123
+                destination_location_id: EXAMPLE_DEST_LOCATION_ID_456
+                status: COMPLETED
+                created_at: '2025-01-15T10:30:00Z'
+                updated_at: '2025-01-15T10:55:00Z'
+                expected_at: '2025-11-09T05:00:00Z'
+                completed_at: '2025-01-15T10:55:00Z'
+                notes: >-
+                  Example transfer order for inventory redistribution between
+                  locations
+                tracking_number: TRACK123456789
+                created_by_team_member_id: EXAMPLE_TEAM_MEMBER_ID_789
+                line_items:
+                  - uid: '1'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_001
+                    quantity_ordered: '5'
+                    quantity_pending: '0'
+                    quantity_received: '3'
+                    quantity_damaged: '1'
+                    quantity_canceled: '1'
+                  - uid: '2'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_002
+                    quantity_ordered: '3'
+                    quantity_pending: '0'
+                    quantity_received: '2'
+                    quantity_damaged: '0'
+                    quantity_canceled: '1'
+                version: 1753118667248
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+    start:
+      path: /v2/transfer-orders/{transfer_order_id}/start
+      method: POST
+      auth:
+        - oauth2:
+            - INVENTORY_READ
+            - INVENTORY_WRITE
+      docs: >-
+        Changes a [DRAFT](entity:TransferOrderStatus) transfer order to
+        [STARTED](entity:TransferOrderStatus) status.
+
+        This decrements inventory at the source [Location](entity:Location) and
+        marks it as in-transit.
+
+
+        The order must be in [DRAFT](entity:TransferOrderStatus) status and have
+        all required fields populated.
+
+        Once started, the order can no longer be deleted, but it can be canceled
+        via 
+
+        [CancelTransferOrder](api-endpoint:TransferOrders-CancelTransferOrder).
+
+
+        Creates a [transfer_order.updated](webhook:transfer_order.updated)
+        webhook event.
+      source:
+        openapi: openapi/openapi.json
+      display-name: StartTransferOrder
+      request:
+        name: StartTransferOrderRequest
+        path-parameters:
+          transfer_order_id:
+            type: string
+            docs: The ID of the transfer order to start. Must be in DRAFT status.
+        body:
+          properties:
+            idempotency_key:
+              type: string
+              docs: >-
+                A unique string that identifies this UpdateTransferOrder
+                request. Keys can be
+
+                any valid string but must be unique for every
+                UpdateTransferOrder request.
+              validation:
+                minLength: 1
+            version:
+              type: optional<long>
+              docs: Version for optimistic concurrency
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.StartTransferOrderResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            transfer_order_id: transfer_order_id
+          headers:
+            Square-Version: '2025-10-16'
+          request:
+            idempotency_key: EXAMPLE_IDEMPOTENCY_KEY_789
+            version: 1753109537351
+          response:
+            body:
+              transfer_order:
+                id: EXAMPLE_TRANSFER_ORDER_ID_123
+                source_location_id: EXAMPLE_SOURCE_LOCATION_ID_123
+                destination_location_id: EXAMPLE_DEST_LOCATION_ID_456
+                status: STARTED
+                created_at: '2025-01-15T10:30:00Z'
+                updated_at: '2025-01-15T10:32:00Z'
+                expected_at: '2025-11-09T05:00:00Z'
+                completed_at: completed_at
+                notes: >-
+                  Example transfer order for inventory redistribution between
+                  locations
+                tracking_number: TRACK123456789
+                created_by_team_member_id: EXAMPLE_TEAM_MEMBER_ID_789
+                line_items:
+                  - uid: '1'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_001
+                    quantity_ordered: '5'
+                    quantity_pending: '5'
+                    quantity_received: '0'
+                    quantity_damaged: '0'
+                    quantity_canceled: '0'
+                  - uid: '2'
+                    item_variation_id: EXAMPLE_ITEM_VARIATION_ID_002
+                    quantity_ordered: '3'
+                    quantity_pending: '3'
+                    quantity_received: '0'
+                    quantity_damaged: '0'
+                    quantity_canceled: '0'
+                version: 1753118664873
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+  source:
+    openapi: openapi/openapi.json

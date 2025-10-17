@@ -1,7 +1,5 @@
 # Reference
-
 ## Mobile
-
 <details><summary><code>client.mobile.<a href="/src/api/resources/mobile/client/Client.ts">authorizationCode</a>({ ...params }) -> Square.CreateMobileAuthorizationCodeResponse</code></summary>
 <dl>
 <dd>
@@ -14,8 +12,8 @@
 <dl>
 <dd>
 
-**Note:** This endpoint is used by the deprecated Reader SDK.
-Developers should update their integration to use the [Mobile Payments SDK](https://developer.squareup.com/docs/mobile-payments-sdk), which includes its own authorization methods.
+__Note:__ This endpoint is used by the deprecated Reader SDK. 
+Developers should update their integration to use the [Mobile Payments SDK](https://developer.squareup.com/docs/mobile-payments-sdk), which includes its own authorization methods. 
 
 Generates code to authorize a mobile application to connect to a Square card reader.
 
@@ -29,7 +27,6 @@ Authorization: Bearer ACCESS_TOKEN
 
 Replace `ACCESS_TOKEN` with a
 [valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-tokens).
-
 </dd>
 </dl>
 </dd>
@@ -45,10 +42,10 @@ Replace `ACCESS_TOKEN` with a
 
 ```typescript
 await client.mobile.authorizationCode({
-    locationId: "YOUR_LOCATION_ID",
+    locationId: "YOUR_LOCATION_ID"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -62,27 +59,27 @@ await client.mobile.authorizationCode({
 <dl>
 <dd>
 
-**request:** `Square.CreateMobileAuthorizationCodeRequest`
-
+**request:** `Square.CreateMobileAuthorizationCodeRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Mobile.RequestOptions`
+**requestOptions:** `Mobile.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## OAuth
-
 <details><summary><code>client.oAuth.<a href="/src/api/resources/oAuth/client/Client.ts">revokeToken</a>({ ...params }) -> Square.RevokeTokenResponse</code></summary>
 <dl>
 <dd>
@@ -98,9 +95,9 @@ await client.mobile.authorizationCode({
 Revokes an access token generated with the OAuth flow.
 
 If an account has more than one OAuth access token for your application, this
-endpoint revokes all of them, regardless of which token you specify.
+endpoint revokes all of them, regardless of which token you specify. 
 
-**Important:** The `Authorization` header for this endpoint must have the
+__Important:__ The `Authorization` header for this endpoint must have the
 following format:
 
 ```
@@ -109,7 +106,6 @@ Authorization: Client APPLICATION_SECRET
 
 Replace `APPLICATION_SECRET` with the application secret on the **OAuth**
 page for your application in the Developer Dashboard.
-
 </dd>
 </dl>
 </dd>
@@ -126,10 +122,10 @@ page for your application in the Developer Dashboard.
 ```typescript
 await client.oAuth.revokeToken({
     clientId: "CLIENT_ID",
-    accessToken: "ACCESS_TOKEN",
+    accessToken: "ACCESS_TOKEN"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -143,20 +139,21 @@ await client.oAuth.revokeToken({
 <dl>
 <dd>
 
-**request:** `Square.RevokeTokenRequest`
-
+**request:** `Square.RevokeTokenRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `OAuth.RequestOptions`
+**requestOptions:** `OAuth.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -178,26 +175,23 @@ Returns an OAuth access token and refresh token using the `authorization_code`
 or `refresh_token` grant type.
 
 When `grant_type` is `authorization_code`:
-
 - With the [code flow](https://developer.squareup.com/docs/oauth-api/overview#code-flow),
-  provide `code`, `client_id`, and `client_secret`.
+provide `code`, `client_id`, and `client_secret`.
 - With the [PKCE flow](https://developer.squareup.com/docs/oauth-api/overview#pkce-flow),
-  provide `code`, `client_id`, and `code_verifier`.
+provide `code`, `client_id`, and `code_verifier`. 
 
 When `grant_type` is `refresh_token`:
-
 - With the code flow, provide `refresh_token`, `client_id`, and `client_secret`.
-  The response returns the same refresh token provided in the request.
+The response returns the same refresh token provided in the request.
 - With the PKCE flow, provide `refresh_token` and `client_id`. The response returns
-  a new refresh token.
+a new refresh token.
 
 You can use the `scopes` parameter to limit the set of permissions authorized by the
 access token. You can use the `short_lived` parameter to create an access token that
 expires in 24 hours.
 
-**Important:** OAuth tokens should be encrypted and stored on a secure server.
+__Important:__ OAuth tokens should be encrypted and stored on a secure server.
 Application clients should never interact directly with OAuth tokens.
-
 </dd>
 </dl>
 </dd>
@@ -216,10 +210,10 @@ await client.oAuth.obtainToken({
     clientId: "sq0idp-uaPHILoPzWZk3tlJqlML0g",
     clientSecret: "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
     code: "sq0cgb-l0SBqxs4uwxErTVyYOdemg",
-    grantType: "authorization_code",
+    grantType: "authorization_code"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -233,20 +227,21 @@ await client.oAuth.obtainToken({
 <dl>
 <dd>
 
-**request:** `Square.ObtainTokenRequest`
-
+**request:** `Square.ObtainTokenRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `OAuth.RequestOptions`
+**requestOptions:** `OAuth.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -268,7 +263,7 @@ Returns information about an [OAuth access token](https://developer.squareup.com
 
 Add the access token to the Authorization header of the request.
 
-**Important:** The `Authorization` header you provide to this endpoint must have the following format:
+__Important:__ The `Authorization` header you provide to this endpoint must have the following format:
 
 ```
 Authorization: Bearer ACCESS_TOKEN
@@ -278,7 +273,6 @@ where `ACCESS_TOKEN` is a
 [valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-tokens).
 
 If the access token is expired or not a valid access token, the endpoint returns an `UNAUTHORIZED` error.
-
 </dd>
 </dl>
 </dd>
@@ -294,8 +288,8 @@ If the access token is expired or not a valid access token, the endpoint returns
 
 ```typescript
 await client.oAuth.retrieveTokenStatus();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -309,12 +303,13 @@ await client.oAuth.retrieveTokenStatus();
 <dl>
 <dd>
 
-**requestOptions:** `OAuth.RequestOptions`
+**requestOptions:** `OAuth.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -334,8 +329,8 @@ await client.oAuth.retrieveTokenStatus();
 
 ```typescript
 await client.oAuth.authorize();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -349,19 +344,19 @@ await client.oAuth.authorize();
 <dl>
 <dd>
 
-**requestOptions:** `OAuth.RequestOptions`
+**requestOptions:** `OAuth.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## V1Transactions
-
 <details><summary><code>client.v1Transactions.<a href="/src/api/resources/v1Transactions/client/Client.ts">v1ListOrders</a>({ ...params }) -> Square.V1Order[]</code></summary>
 <dl>
 <dd>
@@ -375,7 +370,6 @@ await client.oAuth.authorize();
 <dd>
 
 Provides summary information for a merchant's online store orders.
-
 </dd>
 </dl>
 </dd>
@@ -394,10 +388,10 @@ await client.v1Transactions.v1ListOrders({
     locationId: "location_id",
     order: "DESC",
     limit: 1,
-    batchToken: "batch_token",
+    batchToken: "batch_token"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -411,20 +405,21 @@ await client.v1Transactions.v1ListOrders({
 <dl>
 <dd>
 
-**request:** `Square.V1ListOrdersRequest`
-
+**request:** `Square.V1ListOrdersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1Transactions.RequestOptions`
+**requestOptions:** `V1Transactions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -443,7 +438,6 @@ await client.v1Transactions.v1ListOrders({
 <dd>
 
 Provides comprehensive information for a single online store order, including the order's history.
-
 </dd>
 </dl>
 </dd>
@@ -460,10 +454,10 @@ Provides comprehensive information for a single online store order, including th
 ```typescript
 await client.v1Transactions.v1RetrieveOrder({
     locationId: "location_id",
-    orderId: "order_id",
+    orderId: "order_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -477,20 +471,21 @@ await client.v1Transactions.v1RetrieveOrder({
 <dl>
 <dd>
 
-**request:** `Square.V1RetrieveOrderRequest`
-
+**request:** `Square.V1RetrieveOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1Transactions.RequestOptions`
+**requestOptions:** `V1Transactions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -509,7 +504,6 @@ await client.v1Transactions.v1RetrieveOrder({
 <dd>
 
 Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
-
 </dd>
 </dl>
 </dd>
@@ -527,10 +521,10 @@ Updates the details of an online store order. Every update you perform on an ord
 await client.v1Transactions.v1UpdateOrder({
     locationId: "location_id",
     orderId: "order_id",
-    action: "COMPLETE",
+    action: "COMPLETE"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -544,27 +538,27 @@ await client.v1Transactions.v1UpdateOrder({
 <dl>
 <dd>
 
-**request:** `Square.V1UpdateOrderRequest`
-
+**request:** `Square.V1UpdateOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `V1Transactions.RequestOptions`
+**requestOptions:** `V1Transactions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## ApplePay
-
 <details><summary><code>client.applePay.<a href="/src/api/resources/applePay/client/Client.ts">registerDomain</a>({ ...params }) -> Square.RegisterDomainResponse</code></summary>
 <dl>
 <dd>
@@ -584,14 +578,13 @@ an Apple Pay enabled domain.
 This endpoint provides an easy way for platform developers to bulk activate
 Apple Pay on the Web with Square for merchants using their platform.
 
-Note: You will need to host a valid domain verification file on your domain to support Apple Pay. The
+Note: You will need to host a valid domain verification file on your domain to support Apple Pay.  The
 current version of this file is always available at https://app.squareup.com/digital-wallets/apple-pay/apple-developer-merchantid-domain-association,
 and should be hosted at `.well_known/apple-developer-merchantid-domain-association` on your
-domain. This file is subject to change; we strongly recommend checking for updates regularly and avoiding
+domain.  This file is subject to change; we strongly recommend checking for updates regularly and avoiding
 long-lived caches that might not keep in sync with the correct file version.
 
 To learn more about the Web Payments SDK and how to add Apple Pay, see [Take an Apple Pay Payment](https://developer.squareup.com/docs/web-payments/apple-pay).
-
 </dd>
 </dl>
 </dd>
@@ -607,10 +600,10 @@ To learn more about the Web Payments SDK and how to add Apple Pay, see [Take an 
 
 ```typescript
 await client.applePay.registerDomain({
-    domainName: "example.com",
+    domainName: "example.com"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -624,27 +617,27 @@ await client.applePay.registerDomain({
 <dl>
 <dd>
 
-**request:** `Square.RegisterDomainRequest`
-
+**request:** `Square.RegisterDomainRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `ApplePay.RequestOptions`
+**requestOptions:** `ApplePay.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## BankAccounts
-
 <details><summary><code>client.bankAccounts.<a href="/src/api/resources/bankAccounts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.BankAccount></code></summary>
 <dl>
 <dd>
@@ -658,7 +651,6 @@ await client.applePay.registerDomain({
 <dd>
 
 Returns a list of [BankAccount](entity:BankAccount) objects linked to a Square account.
-
 </dd>
 </dl>
 </dd>
@@ -676,7 +668,7 @@ Returns a list of [BankAccount](entity:BankAccount) objects linked to a Square a
 const response = await client.bankAccounts.list({
     cursor: "cursor",
     limit: 1,
-    locationId: "location_id",
+    locationId: "location_id"
 });
 for await (const item of response) {
     console.log(item);
@@ -686,13 +678,13 @@ for await (const item of response) {
 let page = await client.bankAccounts.list({
     cursor: "cursor",
     limit: 1,
-    locationId: "location_id",
+    locationId: "location_id"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -706,20 +698,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListBankAccountsRequest`
-
+**request:** `Square.ListBankAccountsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `BankAccounts.RequestOptions`
+**requestOptions:** `BankAccounts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -738,7 +731,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Returns details of a [BankAccount](entity:BankAccount) identified by V1 bank account ID.
-
 </dd>
 </dl>
 </dd>
@@ -754,10 +746,10 @@ Returns details of a [BankAccount](entity:BankAccount) identified by V1 bank acc
 
 ```typescript
 await client.bankAccounts.getByV1Id({
-    v1BankAccountId: "v1_bank_account_id",
+    v1BankAccountId: "v1_bank_account_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -771,20 +763,21 @@ await client.bankAccounts.getByV1Id({
 <dl>
 <dd>
 
-**request:** `Square.GetByV1IdBankAccountsRequest`
-
+**request:** `Square.GetByV1IdBankAccountsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `BankAccounts.RequestOptions`
+**requestOptions:** `BankAccounts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -804,7 +797,6 @@ await client.bankAccounts.getByV1Id({
 
 Returns details of a [BankAccount](entity:BankAccount)
 linked to a Square account.
-
 </dd>
 </dl>
 </dd>
@@ -820,10 +812,10 @@ linked to a Square account.
 
 ```typescript
 await client.bankAccounts.get({
-    bankAccountId: "bank_account_id",
+    bankAccountId: "bank_account_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -837,27 +829,27 @@ await client.bankAccounts.get({
 <dl>
 <dd>
 
-**request:** `Square.GetBankAccountsRequest`
-
+**request:** `Square.GetBankAccountsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `BankAccounts.RequestOptions`
+**requestOptions:** `BankAccounts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Bookings
-
 <details><summary><code>client.bookings.<a href="/src/api/resources/bookings/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Booking></code></summary>
 <dl>
 <dd>
@@ -874,7 +866,6 @@ Retrieve a collection of bookings.
 
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -896,7 +887,7 @@ const response = await client.bookings.list({
     teamMemberId: "team_member_id",
     locationId: "location_id",
     startAtMin: "start_at_min",
-    startAtMax: "start_at_max",
+    startAtMax: "start_at_max"
 });
 for await (const item of response) {
     console.log(item);
@@ -910,13 +901,13 @@ let page = await client.bookings.list({
     teamMemberId: "team_member_id",
     locationId: "location_id",
     startAtMin: "start_at_min",
-    startAtMax: "start_at_max",
+    startAtMax: "start_at_max"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -930,20 +921,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListBookingsRequest`
-
+**request:** `Square.ListBookingsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions`
+**requestOptions:** `Bookings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -964,7 +956,6 @@ while (page.hasNextPage()) {
 Creates a booking.
 
 The required input must include the following:
-
 - `Booking.location_id`
 - `Booking.start_at`
 - `Booking.AppointmentSegment.team_member_id`
@@ -974,9 +965,8 @@ The required input must include the following:
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
-For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
-or _Appointments Premium_.
-
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 </dd>
 </dl>
 </dd>
@@ -992,10 +982,10 @@ or _Appointments Premium_.
 
 ```typescript
 await client.bookings.create({
-    booking: {},
+    booking: {}
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1009,20 +999,21 @@ await client.bookings.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateBookingRequest`
-
+**request:** `Square.CreateBookingRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions`
+**requestOptions:** `Bookings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1044,7 +1035,6 @@ Searches for availabilities for booking.
 
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -1062,12 +1052,12 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 await client.bookings.searchAvailability({
     query: {
         filter: {
-            startAtRange: {},
-        },
-    },
+            startAtRange: {}
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1081,20 +1071,21 @@ await client.bookings.searchAvailability({
 <dl>
 <dd>
 
-**request:** `Square.SearchAvailabilityRequest`
-
+**request:** `Square.SearchAvailabilityRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions`
+**requestOptions:** `Bookings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1116,7 +1107,6 @@ Bulk-Retrieves a list of bookings by booking IDs.
 
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -1132,10 +1122,10 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```typescript
 await client.bookings.bulkRetrieveBookings({
-    bookingIds: ["booking_ids"],
+    bookingIds: ["booking_ids"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1149,20 +1139,21 @@ await client.bookings.bulkRetrieveBookings({
 <dl>
 <dd>
 
-**request:** `Square.BulkRetrieveBookingsRequest`
-
+**request:** `Square.BulkRetrieveBookingsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions`
+**requestOptions:** `Bookings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1181,7 +1172,6 @@ await client.bookings.bulkRetrieveBookings({
 <dd>
 
 Retrieves a seller's booking profile.
-
 </dd>
 </dl>
 </dd>
@@ -1197,8 +1187,8 @@ Retrieves a seller's booking profile.
 
 ```typescript
 await client.bookings.getBusinessProfile();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1212,12 +1202,13 @@ await client.bookings.getBusinessProfile();
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions`
+**requestOptions:** `Bookings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1236,7 +1227,6 @@ await client.bookings.getBusinessProfile();
 <dd>
 
 Retrieves a seller's location booking profile.
-
 </dd>
 </dl>
 </dd>
@@ -1252,10 +1242,10 @@ Retrieves a seller's location booking profile.
 
 ```typescript
 await client.bookings.retrieveLocationBookingProfile({
-    locationId: "location_id",
+    locationId: "location_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1269,20 +1259,21 @@ await client.bookings.retrieveLocationBookingProfile({
 <dl>
 <dd>
 
-**request:** `Square.RetrieveLocationBookingProfileRequest`
-
+**request:** `Square.RetrieveLocationBookingProfileRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions`
+**requestOptions:** `Bookings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1301,7 +1292,6 @@ await client.bookings.retrieveLocationBookingProfile({
 <dd>
 
 Retrieves one or more team members' booking profiles.
-
 </dd>
 </dl>
 </dd>
@@ -1317,10 +1307,10 @@ Retrieves one or more team members' booking profiles.
 
 ```typescript
 await client.bookings.bulkRetrieveTeamMemberBookingProfiles({
-    teamMemberIds: ["team_member_ids"],
+    teamMemberIds: ["team_member_ids"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1334,20 +1324,21 @@ await client.bookings.bulkRetrieveTeamMemberBookingProfiles({
 <dl>
 <dd>
 
-**request:** `Square.BulkRetrieveTeamMemberBookingProfilesRequest`
-
+**request:** `Square.BulkRetrieveTeamMemberBookingProfilesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions`
+**requestOptions:** `Bookings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1369,7 +1360,6 @@ Retrieves a booking.
 
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -1385,10 +1375,10 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 
 ```typescript
 await client.bookings.get({
-    bookingId: "booking_id",
+    bookingId: "booking_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1402,20 +1392,21 @@ await client.bookings.get({
 <dl>
 <dd>
 
-**request:** `Square.GetBookingsRequest`
-
+**request:** `Square.GetBookingsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions`
+**requestOptions:** `Bookings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1438,9 +1429,8 @@ Updates a booking.
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
-For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
-or _Appointments Premium_.
-
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 </dd>
 </dl>
 </dd>
@@ -1457,10 +1447,10 @@ or _Appointments Premium_.
 ```typescript
 await client.bookings.update({
     bookingId: "booking_id",
-    booking: {},
+    booking: {}
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1474,20 +1464,21 @@ await client.bookings.update({
 <dl>
 <dd>
 
-**request:** `Square.UpdateBookingRequest`
-
+**request:** `Square.UpdateBookingRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions`
+**requestOptions:** `Bookings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1510,9 +1501,8 @@ Cancels an existing booking.
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
-For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
-or _Appointments Premium_.
-
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 </dd>
 </dl>
 </dd>
@@ -1528,10 +1518,10 @@ or _Appointments Premium_.
 
 ```typescript
 await client.bookings.cancel({
-    bookingId: "booking_id",
+    bookingId: "booking_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1545,27 +1535,27 @@ await client.bookings.cancel({
 <dl>
 <dd>
 
-**request:** `Square.CancelBookingRequest`
-
+**request:** `Square.CancelBookingRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions`
+**requestOptions:** `Bookings.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Cards
-
 <details><summary><code>client.cards.<a href="/src/api/resources/cards/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Card></code></summary>
 <dl>
 <dd>
@@ -1580,7 +1570,6 @@ await client.bookings.cancel({
 
 Retrieves a list of cards owned by the account making the request.
 A max of 25 cards will be returned.
-
 </dd>
 </dl>
 </dd>
@@ -1600,7 +1589,7 @@ const response = await client.cards.list({
     customerId: "customer_id",
     includeDisabled: true,
     referenceId: "reference_id",
-    sortOrder: "DESC",
+    sortOrder: "DESC"
 });
 for await (const item of response) {
     console.log(item);
@@ -1612,13 +1601,13 @@ let page = await client.cards.list({
     customerId: "customer_id",
     includeDisabled: true,
     referenceId: "reference_id",
-    sortOrder: "DESC",
+    sortOrder: "DESC"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1632,20 +1621,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListCardsRequest`
-
+**request:** `Square.ListCardsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions`
+**requestOptions:** `Cards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1664,7 +1654,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Adds a card on file to an existing merchant.
-
 </dd>
 </dl>
 </dd>
@@ -1690,14 +1679,14 @@ await client.cards.create({
             locality: "New York",
             administrativeDistrictLevel1: "NY",
             postalCode: "10003",
-            country: "US",
+            country: "US"
         },
         customerId: "VDKXEEKPJN48QDG3BGGFAK05P8",
-        referenceId: "user-id-1",
-    },
+        referenceId: "user-id-1"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1711,20 +1700,21 @@ await client.cards.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateCardRequest`
-
+**request:** `Square.CreateCardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions`
+**requestOptions:** `Cards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1743,7 +1733,6 @@ await client.cards.create({
 <dd>
 
 Retrieves details for a specific Card.
-
 </dd>
 </dl>
 </dd>
@@ -1759,10 +1748,10 @@ Retrieves details for a specific Card.
 
 ```typescript
 await client.cards.get({
-    cardId: "card_id",
+    cardId: "card_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1776,20 +1765,21 @@ await client.cards.get({
 <dl>
 <dd>
 
-**request:** `Square.GetCardsRequest`
-
+**request:** `Square.GetCardsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions`
+**requestOptions:** `Cards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1809,7 +1799,6 @@ await client.cards.get({
 
 Disables the card, preventing any further updates or charges.
 Disabling an already disabled card is allowed but has no effect.
-
 </dd>
 </dl>
 </dd>
@@ -1825,10 +1814,10 @@ Disabling an already disabled card is allowed but has no effect.
 
 ```typescript
 await client.cards.disable({
-    cardId: "card_id",
+    cardId: "card_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1842,27 +1831,27 @@ await client.cards.disable({
 <dl>
 <dd>
 
-**request:** `Square.DisableCardsRequest`
-
+**request:** `Square.DisableCardsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions`
+**requestOptions:** `Cards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Catalog
-
 <details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client/Client.ts">batchDelete</a>({ ...params }) -> Square.BatchDeleteCatalogObjectsResponse</code></summary>
 <dl>
 <dd>
@@ -1889,7 +1878,6 @@ actually deleted.
 To ensure consistency, only one delete request is processed at a time per seller account.
 While one (batch or non-batch) delete request is being processed, other (batched and non-batched)
 delete requests are rejected with the `429` error code.
-
 </dd>
 </dl>
 </dd>
@@ -1905,10 +1893,10 @@ delete requests are rejected with the `429` error code.
 
 ```typescript
 await client.catalog.batchDelete({
-    objectIds: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"],
+    objectIds: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1922,20 +1910,21 @@ await client.catalog.batchDelete({
 <dl>
 <dd>
 
-**request:** `Square.BatchDeleteCatalogObjectsRequest`
-
+**request:** `Square.BatchDeleteCatalogObjectsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions`
+**requestOptions:** `Catalog.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -1959,7 +1948,6 @@ child information including: all of its
 [CatalogItemVariation](entity:CatalogItemVariation) objects, references to
 its [CatalogModifierList](entity:CatalogModifierList) objects, and the ids of
 any [CatalogTax](entity:CatalogTax) objects that apply to it.
-
 </dd>
 </dl>
 </dd>
@@ -1976,10 +1964,10 @@ any [CatalogTax](entity:CatalogTax) objects that apply to it.
 ```typescript
 await client.catalog.batchGet({
     objectIds: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"],
-    includeRelatedObjects: true,
+    includeRelatedObjects: true
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -1993,20 +1981,21 @@ await client.catalog.batchGet({
 <dl>
 <dd>
 
-**request:** `Square.BatchGetCatalogObjectsRequest`
-
+**request:** `Square.BatchGetCatalogObjectsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions`
+**requestOptions:** `Catalog.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2037,7 +2026,6 @@ than 10,000.
 To ensure consistency, only one update request is processed at a time per seller account.
 While one (batch or non-batch) update request is being processed, other (batched and non-batched)
 update requests are rejected with the `429` error code.
-
 </dd>
 </dl>
 </dd>
@@ -2054,31 +2042,24 @@ update requests are rejected with the `429` error code.
 ```typescript
 await client.catalog.batchUpsert({
     idempotencyKey: "789ff020-f723-43a9-b4b5-43b5dc1fa3dc",
-    batches: [
-        {
-            objects: [
-                {
+    batches: [{
+            objects: [{
                     type: "ITEM",
-                    id: "id",
-                },
-                {
+                    id: "id"
+                }, {
                     type: "ITEM",
-                    id: "id",
-                },
-                {
+                    id: "id"
+                }, {
                     type: "ITEM",
-                    id: "id",
-                },
-                {
+                    id: "id"
+                }, {
                     type: "TAX",
-                    id: "id",
-                },
-            ],
-        },
-    ],
+                    id: "id"
+                }]
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2092,20 +2073,21 @@ await client.catalog.batchUpsert({
 <dl>
 <dd>
 
-**request:** `Square.BatchUpsertCatalogObjectsRequest`
-
+**request:** `Square.BatchUpsertCatalogObjectsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions`
+**requestOptions:** `Catalog.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2125,7 +2107,6 @@ await client.catalog.batchUpsert({
 
 Retrieves information about the Square Catalog API, such as batch size
 limits that can be used by the `BatchUpsertCatalogObjects` endpoint.
-
 </dd>
 </dl>
 </dd>
@@ -2141,8 +2122,8 @@ limits that can be used by the `BatchUpsertCatalogObjects` endpoint.
 
 ```typescript
 await client.catalog.info();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2156,12 +2137,13 @@ await client.catalog.info();
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions`
+**requestOptions:** `Catalog.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2184,10 +2166,9 @@ Returns a list of all [CatalogObject](entity:CatalogObject)s of the specified ty
 The `types` parameter is specified as a comma-separated list of the [CatalogObjectType](entity:CatalogObjectType) values,
 for example, "`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`, `IMAGE`".
 
-**Important:** ListCatalog does not return deleted catalog items. To retrieve
+__Important:__ ListCatalog does not return deleted catalog items. To retrieve
 deleted catalog items, use [SearchCatalogObjects](api-endpoint:Catalog-SearchCatalogObjects)
 and set the `include_deleted_objects` attribute value to `true`.
-
 </dd>
 </dl>
 </dd>
@@ -2205,7 +2186,7 @@ and set the `include_deleted_objects` attribute value to `true`.
 const response = await client.catalog.list({
     cursor: "cursor",
     types: "types",
-    catalogVersion: BigInt("1000000"),
+    catalogVersion: BigInt("1000000")
 });
 for await (const item of response) {
     console.log(item);
@@ -2215,13 +2196,13 @@ for await (const item of response) {
 let page = await client.catalog.list({
     cursor: "cursor",
     types: "types",
-    catalogVersion: BigInt("1000000"),
+    catalogVersion: BigInt("1000000")
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2235,20 +2216,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListCatalogRequest`
-
+**request:** `Square.ListCatalogRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions`
+**requestOptions:** `Catalog.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2276,10 +2258,10 @@ endpoint in the following aspects:
 - `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.
 - `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.
 - The both endpoints have different call conventions, including the query filter formats.
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -2295,13 +2277,13 @@ await client.catalog.search({
     query: {
         prefixQuery: {
             attributeName: "name",
-            attributePrefix: "tea",
-        },
+            attributePrefix: "tea"
+        }
     },
-    limit: 100,
+    limit: 100
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2315,20 +2297,21 @@ await client.catalog.search({
 <dl>
 <dd>
 
-**request:** `Square.SearchCatalogObjectsRequest`
-
+**request:** `Square.SearchCatalogObjectsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions`
+**requestOptions:** `Catalog.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2356,10 +2339,10 @@ endpoint in the following aspects:
 - `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.
 - `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.
 - The both endpoints use different call conventions, including the query filter formats.
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -2378,29 +2361,24 @@ await client.catalog.searchItems({
     limit: 100,
     sortOrder: "ASC",
     productTypes: ["REGULAR"],
-    customAttributeFilters: [
-        {
+    customAttributeFilters: [{
             customAttributeDefinitionId: "VEGAN_DEFINITION_ID",
-            boolFilter: true,
-        },
-        {
+            boolFilter: true
+        }, {
             customAttributeDefinitionId: "BRAND_DEFINITION_ID",
-            stringFilter: "Dark Horse",
-        },
-        {
+            stringFilter: "Dark Horse"
+        }, {
             key: "VINTAGE",
             numberFilter: {
                 min: "min",
-                max: "max",
-            },
-        },
-        {
-            customAttributeDefinitionId: "VARIETAL_DEFINITION_ID",
-        },
-    ],
+                max: "max"
+            }
+        }, {
+            customAttributeDefinitionId: "VARIETAL_DEFINITION_ID"
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2414,20 +2392,21 @@ await client.catalog.searchItems({
 <dl>
 <dd>
 
-**request:** `Square.SearchCatalogItemsRequest`
-
+**request:** `Square.SearchCatalogItemsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions`
+**requestOptions:** `Catalog.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2448,7 +2427,6 @@ await client.catalog.searchItems({
 Updates the [CatalogModifierList](entity:CatalogModifierList) objects
 that apply to the targeted [CatalogItem](entity:CatalogItem) without having
 to perform an upsert on the entire item.
-
 </dd>
 </dl>
 </dd>
@@ -2466,10 +2444,10 @@ to perform an upsert on the entire item.
 await client.catalog.updateItemModifierLists({
     itemIds: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
     modifierListsToEnable: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
-    modifierListsToDisable: ["7WRC16CJZDVLSNDQ35PP6YAD"],
+    modifierListsToDisable: ["7WRC16CJZDVLSNDQ35PP6YAD"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2483,20 +2461,21 @@ await client.catalog.updateItemModifierLists({
 <dl>
 <dd>
 
-**request:** `Square.UpdateItemModifierListsRequest`
-
+**request:** `Square.UpdateItemModifierListsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions`
+**requestOptions:** `Catalog.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2517,7 +2496,6 @@ await client.catalog.updateItemModifierLists({
 Updates the [CatalogTax](entity:CatalogTax) objects that apply to the
 targeted [CatalogItem](entity:CatalogItem) without having to perform an
 upsert on the entire item.
-
 </dd>
 </dl>
 </dd>
@@ -2535,10 +2513,10 @@ upsert on the entire item.
 await client.catalog.updateItemTaxes({
     itemIds: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
     taxesToEnable: ["4WRCNHCJZDVLSNDQ35PP6YAD"],
-    taxesToDisable: ["AQCEGCEBBQONINDOHRGZISEX"],
+    taxesToDisable: ["AQCEGCEBBQONINDOHRGZISEX"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2552,27 +2530,27 @@ await client.catalog.updateItemTaxes({
 <dl>
 <dd>
 
-**request:** `Square.UpdateItemTaxesRequest`
-
+**request:** `Square.UpdateItemTaxesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions`
+**requestOptions:** `Catalog.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Channels
-
 <details><summary><code>client.channels.<a href="/src/api/resources/channels/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Channel></code></summary>
 <dl>
 <dd>
@@ -2584,6 +2562,7 @@ await client.catalog.updateItemTaxes({
 
 <dl>
 <dd>
+
 
 </dd>
 </dl>
@@ -2604,7 +2583,7 @@ const response = await client.channels.list({
     referenceId: "reference_id",
     status: "ACTIVE",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -2616,13 +2595,13 @@ let page = await client.channels.list({
     referenceId: "reference_id",
     status: "ACTIVE",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2636,20 +2615,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListChannelsRequest`
-
+**request:** `Square.ListChannelsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Channels.RequestOptions`
+**requestOptions:** `Channels.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2667,6 +2647,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
+
 </dd>
 </dl>
 </dd>
@@ -2682,10 +2663,10 @@ while (page.hasNextPage()) {
 
 ```typescript
 await client.channels.bulkRetrieve({
-    channelIds: ["CH_9C03D0B59", "CH_6X139B5MN", "NOT_EXISTING"],
+    channelIds: ["CH_9C03D0B59", "CH_6X139B5MN", "NOT_EXISTING"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2699,20 +2680,21 @@ await client.channels.bulkRetrieve({
 <dl>
 <dd>
 
-**request:** `Square.BulkRetrieveChannelsRequest`
-
+**request:** `Square.BulkRetrieveChannelsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Channels.RequestOptions`
+**requestOptions:** `Channels.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2730,6 +2712,7 @@ await client.channels.bulkRetrieve({
 <dl>
 <dd>
 
+
 </dd>
 </dl>
 </dd>
@@ -2745,10 +2728,10 @@ await client.channels.bulkRetrieve({
 
 ```typescript
 await client.channels.get({
-    channelId: "channel_id",
+    channelId: "channel_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2762,27 +2745,27 @@ await client.channels.get({
 <dl>
 <dd>
 
-**request:** `Square.GetChannelsRequest`
-
+**request:** `Square.GetChannelsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Channels.RequestOptions`
+**requestOptions:** `Channels.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Customers
-
 <details><summary><code>client.customers.<a href="/src/api/resources/customers/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Customer></code></summary>
 <dl>
 <dd>
@@ -2800,7 +2783,6 @@ Lists customer profiles associated with a Square account.
 Under normal operating conditions, newly created or updated customer profiles become available
 for the listing operation in well under 30 seconds. Occasionally, propagation of the new or updated
 profiles can take closer to one minute or longer, especially during network incidents and outages.
-
 </dd>
 </dl>
 </dd>
@@ -2820,7 +2802,7 @@ const response = await client.customers.list({
     limit: 1,
     sortField: "DEFAULT",
     sortOrder: "DESC",
-    count: true,
+    count: true
 });
 for await (const item of response) {
     console.log(item);
@@ -2832,13 +2814,13 @@ let page = await client.customers.list({
     limit: 1,
     sortField: "DEFAULT",
     sortOrder: "DESC",
-    count: true,
+    count: true
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2852,20 +2834,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListCustomersRequest`
-
+**request:** `Square.ListCustomersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions`
+**requestOptions:** `Customers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2893,10 +2876,10 @@ endpoint:
 - `company_name`
 - `email_address`
 - `phone_number`
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -2917,14 +2900,14 @@ await client.customers.create({
         locality: "New York",
         administrativeDistrictLevel1: "NY",
         postalCode: "10003",
-        country: "US",
+        country: "US"
     },
     phoneNumber: "+1-212-555-4240",
     referenceId: "YOUR_REFERENCE_ID",
-    note: "a customer",
+    note: "a customer"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -2938,20 +2921,21 @@ await client.customers.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateCustomerRequest`
-
+**request:** `Square.CreateCustomerRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions`
+**requestOptions:** `Customers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -2980,10 +2964,10 @@ You must provide at least one of the following values in each create request:
 - `company_name`
 - `email_address`
 - `phone_number`
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -3006,11 +2990,11 @@ await client.customers.batchCreate({
                 locality: "New York",
                 administrativeDistrictLevel1: "NY",
                 postalCode: "10003",
-                country: "US",
+                country: "US"
             },
             phoneNumber: "+1-212-555-4240",
             referenceId: "YOUR_REFERENCE_ID",
-            note: "a customer",
+            note: "a customer"
         },
         "d1689f23-b25d-4932-b2f0-aed00f5e2029": {
             givenName: "Marie",
@@ -3022,16 +3006,16 @@ await client.customers.batchCreate({
                 locality: "New York",
                 administrativeDistrictLevel1: "NY",
                 postalCode: "10003",
-                country: "US",
+                country: "US"
             },
             phoneNumber: "+1-212-444-4240",
             referenceId: "YOUR_REFERENCE_ID",
-            note: "another customer",
-        },
-    },
+            note: "another customer"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3045,20 +3029,21 @@ await client.customers.batchCreate({
 <dl>
 <dd>
 
-**request:** `Square.BulkCreateCustomersRequest`
-
+**request:** `Square.BulkCreateCustomersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions`
+**requestOptions:** `Customers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3079,7 +3064,6 @@ await client.customers.batchCreate({
 Deletes multiple customer profiles.
 
 The endpoint takes a list of customer IDs and returns a map of responses.
-
 </dd>
 </dl>
 </dd>
@@ -3095,10 +3079,10 @@ The endpoint takes a list of customer IDs and returns a map of responses.
 
 ```typescript
 await client.customers.bulkDeleteCustomers({
-    customerIds: ["8DDA5NZVBZFGAX0V3HPF81HHE0", "N18CPRVXR5214XPBBA6BZQWF3C", "2GYD7WNXF7BJZW1PMGNXZ3Y8M8"],
+    customerIds: ["8DDA5NZVBZFGAX0V3HPF81HHE0", "N18CPRVXR5214XPBBA6BZQWF3C", "2GYD7WNXF7BJZW1PMGNXZ3Y8M8"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3112,20 +3096,21 @@ await client.customers.bulkDeleteCustomers({
 <dl>
 <dd>
 
-**request:** `Square.BulkDeleteCustomersRequest`
-
+**request:** `Square.BulkDeleteCustomersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions`
+**requestOptions:** `Customers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3146,7 +3131,6 @@ await client.customers.bulkDeleteCustomers({
 Retrieves multiple customer profiles.
 
 This endpoint takes a list of customer IDs and returns a map of responses.
-
 </dd>
 </dl>
 </dd>
@@ -3162,10 +3146,10 @@ This endpoint takes a list of customer IDs and returns a map of responses.
 
 ```typescript
 await client.customers.bulkRetrieveCustomers({
-    customerIds: ["8DDA5NZVBZFGAX0V3HPF81HHE0", "N18CPRVXR5214XPBBA6BZQWF3C", "2GYD7WNXF7BJZW1PMGNXZ3Y8M8"],
+    customerIds: ["8DDA5NZVBZFGAX0V3HPF81HHE0", "N18CPRVXR5214XPBBA6BZQWF3C", "2GYD7WNXF7BJZW1PMGNXZ3Y8M8"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3179,20 +3163,21 @@ await client.customers.bulkRetrieveCustomers({
 <dl>
 <dd>
 
-**request:** `Square.BulkRetrieveCustomersRequest`
-
+**request:** `Square.BulkRetrieveCustomersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions`
+**requestOptions:** `Customers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3213,7 +3198,6 @@ await client.customers.bulkRetrieveCustomers({
 Updates multiple customer profiles.
 
 This endpoint takes a map of individual update requests and returns a map of responses.
-
 </dd>
 </dl>
 </dd>
@@ -3233,17 +3217,17 @@ await client.customers.bulkUpdateCustomers({
         "8DDA5NZVBZFGAX0V3HPF81HHE0": {
             emailAddress: "New.Amelia.Earhart@example.com",
             note: "updated customer note",
-            version: BigInt("2"),
+            version: BigInt("2")
         },
-        N18CPRVXR5214XPBBA6BZQWF3C: {
+        "N18CPRVXR5214XPBBA6BZQWF3C": {
             givenName: "Marie",
             familyName: "Curie",
-            version: BigInt("0"),
-        },
-    },
+            version: BigInt("0")
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3257,20 +3241,21 @@ await client.customers.bulkUpdateCustomers({
 <dl>
 <dd>
 
-**request:** `Square.BulkUpdateCustomersRequest`
-
+**request:** `Square.BulkUpdateCustomersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions`
+**requestOptions:** `Customers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3297,7 +3282,6 @@ customer profiles ordered alphabetically based on `given_name` and
 Under normal operating conditions, newly created or updated customer profiles become available
 for the search operation in well under 30 seconds. Occasionally, propagation of the new or updated
 profiles can take closer to one minute or longer, especially during network incidents and outages.
-
 </dd>
 </dl>
 </dd>
@@ -3318,27 +3302,27 @@ await client.customers.search({
         filter: {
             creationSource: {
                 values: ["THIRD_PARTY"],
-                rule: "INCLUDE",
+                rule: "INCLUDE"
             },
             createdAt: {
                 startAt: "2018-01-01T00:00:00-00:00",
-                endAt: "2018-02-01T00:00:00-00:00",
+                endAt: "2018-02-01T00:00:00-00:00"
             },
             emailAddress: {
-                fuzzy: "example.com",
+                fuzzy: "example.com"
             },
             groupIds: {
-                all: ["545AXB44B4XXWMVQ4W8SBT3HHF"],
-            },
+                all: ["545AXB44B4XXWMVQ4W8SBT3HHF"]
+            }
         },
         sort: {
             field: "CREATED_AT",
-            order: "ASC",
-        },
-    },
+            order: "ASC"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3352,20 +3336,21 @@ await client.customers.search({
 <dl>
 <dd>
 
-**request:** `Square.SearchCustomersRequest`
-
+**request:** `Square.SearchCustomersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions`
+**requestOptions:** `Customers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3384,7 +3369,6 @@ await client.customers.search({
 <dd>
 
 Returns details for a single customer.
-
 </dd>
 </dl>
 </dd>
@@ -3400,10 +3384,10 @@ Returns details for a single customer.
 
 ```typescript
 await client.customers.get({
-    customerId: "customer_id",
+    customerId: "customer_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3417,20 +3401,21 @@ await client.customers.get({
 <dl>
 <dd>
 
-**request:** `Square.GetCustomersRequest`
-
+**request:** `Square.GetCustomersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions`
+**requestOptions:** `Customers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3452,7 +3437,6 @@ Updates a customer profile. This endpoint supports sparse updates, so only new o
 To add or update a field, specify the new value. To remove a field, specify `null`.
 
 To update a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.
-
 </dd>
 </dl>
 </dd>
@@ -3471,10 +3455,10 @@ await client.customers.update({
     customerId: "customer_id",
     emailAddress: "New.Amelia.Earhart@example.com",
     note: "updated customer note",
-    version: BigInt("2"),
+    version: BigInt("2")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3488,20 +3472,21 @@ await client.customers.update({
 <dl>
 <dd>
 
-**request:** `Square.UpdateCustomerRequest`
-
+**request:** `Square.UpdateCustomerRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions`
+**requestOptions:** `Customers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3522,7 +3507,6 @@ await client.customers.update({
 Deletes a customer profile from a business.
 
 To delete a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.
-
 </dd>
 </dl>
 </dd>
@@ -3539,10 +3523,10 @@ To delete a customer profile that was created by merging existing profiles, you 
 ```typescript
 await client.customers.delete({
     customerId: "customer_id",
-    version: BigInt("1000000"),
+    version: BigInt("1000000")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3556,27 +3540,27 @@ await client.customers.delete({
 <dl>
 <dd>
 
-**request:** `Square.DeleteCustomersRequest`
-
+**request:** `Square.DeleteCustomersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions`
+**requestOptions:** `Customers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Devices
-
 <details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Device></code></summary>
 <dl>
 <dd>
@@ -3591,7 +3575,6 @@ await client.customers.delete({
 
 List devices associated with the merchant. Currently, only Terminal API
 devices are supported.
-
 </dd>
 </dl>
 </dd>
@@ -3610,7 +3593,7 @@ const response = await client.devices.list({
     cursor: "cursor",
     sortOrder: "DESC",
     limit: 1,
-    locationId: "location_id",
+    locationId: "location_id"
 });
 for await (const item of response) {
     console.log(item);
@@ -3621,13 +3604,13 @@ let page = await client.devices.list({
     cursor: "cursor",
     sortOrder: "DESC",
     limit: 1,
-    locationId: "location_id",
+    locationId: "location_id"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3641,20 +3624,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListDevicesRequest`
-
+**request:** `Square.ListDevicesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Devices.RequestOptions`
+**requestOptions:** `Devices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3673,7 +3657,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Retrieves Device with the associated `device_id`.
-
 </dd>
 </dl>
 </dd>
@@ -3689,10 +3672,10 @@ Retrieves Device with the associated `device_id`.
 
 ```typescript
 await client.devices.get({
-    deviceId: "device_id",
+    deviceId: "device_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3706,27 +3689,27 @@ await client.devices.get({
 <dl>
 <dd>
 
-**request:** `Square.GetDevicesRequest`
-
+**request:** `Square.GetDevicesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Devices.RequestOptions`
+**requestOptions:** `Devices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Disputes
-
 <details><summary><code>client.disputes.<a href="/src/api/resources/disputes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Dispute></code></summary>
 <dl>
 <dd>
@@ -3740,7 +3723,6 @@ await client.devices.get({
 <dd>
 
 Returns a list of disputes associated with a particular account.
-
 </dd>
 </dl>
 </dd>
@@ -3758,7 +3740,7 @@ Returns a list of disputes associated with a particular account.
 const response = await client.disputes.list({
     cursor: "cursor",
     states: "INQUIRY_EVIDENCE_REQUIRED",
-    locationId: "location_id",
+    locationId: "location_id"
 });
 for await (const item of response) {
     console.log(item);
@@ -3768,13 +3750,13 @@ for await (const item of response) {
 let page = await client.disputes.list({
     cursor: "cursor",
     states: "INQUIRY_EVIDENCE_REQUIRED",
-    locationId: "location_id",
+    locationId: "location_id"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3788,20 +3770,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListDisputesRequest`
-
+**request:** `Square.ListDisputesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions`
+**requestOptions:** `Disputes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3820,7 +3803,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Returns details about a specific dispute.
-
 </dd>
 </dl>
 </dd>
@@ -3836,10 +3818,10 @@ Returns details about a specific dispute.
 
 ```typescript
 await client.disputes.get({
-    disputeId: "dispute_id",
+    disputeId: "dispute_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3853,20 +3835,21 @@ await client.disputes.get({
 <dl>
 <dd>
 
-**request:** `Square.GetDisputesRequest`
-
+**request:** `Square.GetDisputesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions`
+**requestOptions:** `Disputes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3889,7 +3872,6 @@ updates the dispute state to ACCEPTED.
 
 Square debits the disputed amount from the seller’s Square account. If the Square account
 does not have sufficient funds, Square debits the associated bank account.
-
 </dd>
 </dl>
 </dd>
@@ -3905,10 +3887,10 @@ does not have sufficient funds, Square debits the associated bank account.
 
 ```typescript
 await client.disputes.accept({
-    disputeId: "dispute_id",
+    disputeId: "dispute_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3922,20 +3904,21 @@ await client.disputes.accept({
 <dl>
 <dd>
 
-**request:** `Square.AcceptDisputesRequest`
-
+**request:** `Square.AcceptDisputesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions`
+**requestOptions:** `Disputes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -3955,7 +3938,6 @@ await client.disputes.accept({
 
 Uploads a file to use as evidence in a dispute challenge. The endpoint accepts HTTP
 multipart/form-data file uploads in HEIC, HEIF, JPEG, PDF, PNG, and TIFF formats.
-
 </dd>
 </dl>
 </dd>
@@ -3971,10 +3953,10 @@ multipart/form-data file uploads in HEIC, HEIF, JPEG, PDF, PNG, and TIFF formats
 
 ```typescript
 await client.disputes.createEvidenceFile({
-    disputeId: "dispute_id",
+    disputeId: "dispute_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -3988,20 +3970,21 @@ await client.disputes.createEvidenceFile({
 <dl>
 <dd>
 
-**request:** `Square.CreateEvidenceFileDisputesRequest`
-
+**request:** `Square.CreateEvidenceFileDisputesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions`
+**requestOptions:** `Disputes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4020,7 +4003,6 @@ await client.disputes.createEvidenceFile({
 <dd>
 
 Uploads text to use as evidence for a dispute challenge.
-
 </dd>
 </dl>
 </dd>
@@ -4039,10 +4021,10 @@ await client.disputes.createEvidenceText({
     disputeId: "dispute_id",
     idempotencyKey: "ed3ee3933d946f1514d505d173c82648",
     evidenceType: "TRACKING_NUMBER",
-    evidenceText: "1Z8888888888888888",
+    evidenceText: "1Z8888888888888888"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4056,20 +4038,21 @@ await client.disputes.createEvidenceText({
 <dl>
 <dd>
 
-**request:** `Square.CreateDisputeEvidenceTextRequest`
-
+**request:** `Square.CreateDisputeEvidenceTextRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions`
+**requestOptions:** `Disputes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4094,7 +4077,6 @@ using the [CreateDisputeEvidenceFile](api-endpoint:Disputes-CreateDisputeEvidenc
 [CreateDisputeEvidenceText](api-endpoint:Disputes-CreateDisputeEvidenceText) endpoints and
 evidence automatically provided by Square, when available. Evidence cannot be removed from
 a dispute after submission.
-
 </dd>
 </dl>
 </dd>
@@ -4110,10 +4092,10 @@ a dispute after submission.
 
 ```typescript
 await client.disputes.submitEvidence({
-    disputeId: "dispute_id",
+    disputeId: "dispute_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4127,27 +4109,27 @@ await client.disputes.submitEvidence({
 <dl>
 <dd>
 
-**request:** `Square.SubmitEvidenceDisputesRequest`
-
+**request:** `Square.SubmitEvidenceDisputesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions`
+**requestOptions:** `Disputes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Employees
-
 <details><summary><code>client.employees.<a href="/src/api/resources/employees/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Employee></code></summary>
 <dl>
 <dd>
@@ -4159,6 +4141,7 @@ await client.disputes.submitEvidence({
 
 <dl>
 <dd>
+
 
 </dd>
 </dl>
@@ -4178,7 +4161,7 @@ const response = await client.employees.list({
     locationId: "location_id",
     status: "ACTIVE",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -4189,13 +4172,13 @@ let page = await client.employees.list({
     locationId: "location_id",
     status: "ACTIVE",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4209,20 +4192,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListEmployeesRequest`
-
+**request:** `Square.ListEmployeesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Employees.RequestOptions`
+**requestOptions:** `Employees.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4240,6 +4224,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
+
 </dd>
 </dl>
 </dd>
@@ -4255,10 +4240,10 @@ while (page.hasNextPage()) {
 
 ```typescript
 await client.employees.get({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4272,27 +4257,27 @@ await client.employees.get({
 <dl>
 <dd>
 
-**request:** `Square.GetEmployeesRequest`
-
+**request:** `Square.GetEmployeesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Employees.RequestOptions`
+**requestOptions:** `Employees.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Events
-
 <details><summary><code>client.events.<a href="/src/api/resources/events/client/Client.ts">searchEvents</a>({ ...params }) -> Square.SearchEventsResponse</code></summary>
 <dl>
 <dd>
@@ -4306,7 +4291,6 @@ await client.employees.get({
 <dd>
 
 Search for Square API events that occur within a 28-day timeframe.
-
 </dd>
 </dl>
 </dd>
@@ -4322,8 +4306,8 @@ Search for Square API events that occur within a 28-day timeframe.
 
 ```typescript
 await client.events.searchEvents();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4337,20 +4321,21 @@ await client.events.searchEvents();
 <dl>
 <dd>
 
-**request:** `Square.SearchEventsRequest`
-
+**request:** `Square.SearchEventsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Events.RequestOptions`
+**requestOptions:** `Events.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4371,7 +4356,6 @@ await client.events.searchEvents();
 Disables events to prevent them from being searchable.
 All events are disabled by default. You must enable events to make them searchable.
 Disabling events for a specific time period prevents them from being searchable, even if you re-enable them later.
-
 </dd>
 </dl>
 </dd>
@@ -4387,8 +4371,8 @@ Disabling events for a specific time period prevents them from being searchable,
 
 ```typescript
 await client.events.disableEvents();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4402,12 +4386,13 @@ await client.events.disableEvents();
 <dl>
 <dd>
 
-**requestOptions:** `Events.RequestOptions`
+**requestOptions:** `Events.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4426,7 +4411,6 @@ await client.events.disableEvents();
 <dd>
 
 Enables events to make them searchable. Only events that occur while in the enabled state are searchable.
-
 </dd>
 </dl>
 </dd>
@@ -4442,8 +4426,8 @@ Enables events to make them searchable. Only events that occur while in the enab
 
 ```typescript
 await client.events.enableEvents();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4457,12 +4441,13 @@ await client.events.enableEvents();
 <dl>
 <dd>
 
-**requestOptions:** `Events.RequestOptions`
+**requestOptions:** `Events.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4481,7 +4466,6 @@ await client.events.enableEvents();
 <dd>
 
 Lists all event types that you can subscribe to as webhooks or query using the Events API.
-
 </dd>
 </dl>
 </dd>
@@ -4497,10 +4481,10 @@ Lists all event types that you can subscribe to as webhooks or query using the E
 
 ```typescript
 await client.events.listEventTypes({
-    apiVersion: "api_version",
+    apiVersion: "api_version"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4514,27 +4498,27 @@ await client.events.listEventTypes({
 <dl>
 <dd>
 
-**request:** `Square.ListEventTypesRequest`
-
+**request:** `Square.ListEventTypesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Events.RequestOptions`
+**requestOptions:** `Events.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## GiftCards
-
 <details><summary><code>client.giftCards.<a href="/src/api/resources/giftCards/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.GiftCard></code></summary>
 <dl>
 <dd>
@@ -4547,9 +4531,8 @@ await client.events.listEventTypes({
 <dl>
 <dd>
 
-Lists all gift cards. You can specify optional filters to retrieve
+Lists all gift cards. You can specify optional filters to retrieve 
 a subset of the gift cards. Results are sorted by `created_at` in ascending order.
-
 </dd>
 </dl>
 </dd>
@@ -4569,7 +4552,7 @@ const response = await client.giftCards.list({
     state: "state",
     limit: 1,
     cursor: "cursor",
-    customerId: "customer_id",
+    customerId: "customer_id"
 });
 for await (const item of response) {
     console.log(item);
@@ -4581,13 +4564,13 @@ let page = await client.giftCards.list({
     state: "state",
     limit: 1,
     cursor: "cursor",
-    customerId: "customer_id",
+    customerId: "customer_id"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4601,20 +4584,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListGiftCardsRequest`
-
+**request:** `Square.ListGiftCardsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions`
+**requestOptions:** `GiftCards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4637,7 +4621,6 @@ has a `PENDING` state. To activate a gift card so that it can be redeemed for pu
 [CreateGiftCardActivity](api-endpoint:GiftCardActivities-CreateGiftCardActivity) and create an `ACTIVATE`
 activity with the initial balance. Alternatively, you can use [RefundPayment](api-endpoint:Refunds-RefundPayment)
 to refund a payment to the new gift card.
-
 </dd>
 </dl>
 </dd>
@@ -4656,11 +4639,11 @@ await client.giftCards.create({
     idempotencyKey: "NC9Tm69EjbjtConu",
     locationId: "81FN9BNFZTKS4",
     giftCard: {
-        type: "DIGITAL",
-    },
+        type: "DIGITAL"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4674,20 +4657,21 @@ await client.giftCards.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateGiftCardRequest`
-
+**request:** `Square.CreateGiftCardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions`
+**requestOptions:** `GiftCards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4706,7 +4690,6 @@ await client.giftCards.create({
 <dd>
 
 Retrieves a gift card using the gift card account number (GAN).
-
 </dd>
 </dl>
 </dd>
@@ -4722,10 +4705,10 @@ Retrieves a gift card using the gift card account number (GAN).
 
 ```typescript
 await client.giftCards.getFromGan({
-    gan: "7783320001001635",
+    gan: "7783320001001635"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4739,20 +4722,21 @@ await client.giftCards.getFromGan({
 <dl>
 <dd>
 
-**request:** `Square.GetGiftCardFromGanRequest`
-
+**request:** `Square.GetGiftCardFromGanRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions`
+**requestOptions:** `GiftCards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4771,7 +4755,6 @@ await client.giftCards.getFromGan({
 <dd>
 
 Retrieves a gift card using a secure payment token that represents the gift card.
-
 </dd>
 </dl>
 </dd>
@@ -4787,10 +4770,10 @@ Retrieves a gift card using a secure payment token that represents the gift card
 
 ```typescript
 await client.giftCards.getFromNonce({
-    nonce: "cnon:7783322135245171",
+    nonce: "cnon:7783322135245171"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4804,20 +4787,21 @@ await client.giftCards.getFromNonce({
 <dl>
 <dd>
 
-**request:** `Square.GetGiftCardFromNonceRequest`
-
+**request:** `Square.GetGiftCardFromNonceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions`
+**requestOptions:** `GiftCards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4836,7 +4820,6 @@ await client.giftCards.getFromNonce({
 <dd>
 
 Links a customer to a gift card, which is also referred to as adding a card on file.
-
 </dd>
 </dl>
 </dd>
@@ -4853,10 +4836,10 @@ Links a customer to a gift card, which is also referred to as adding a card on f
 ```typescript
 await client.giftCards.linkCustomer({
     giftCardId: "gift_card_id",
-    customerId: "GKY0FZ3V717AH8Q2D821PNT2ZW",
+    customerId: "GKY0FZ3V717AH8Q2D821PNT2ZW"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4870,20 +4853,21 @@ await client.giftCards.linkCustomer({
 <dl>
 <dd>
 
-**request:** `Square.LinkCustomerToGiftCardRequest`
-
+**request:** `Square.LinkCustomerToGiftCardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions`
+**requestOptions:** `GiftCards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4902,7 +4886,6 @@ await client.giftCards.linkCustomer({
 <dd>
 
 Unlinks a customer from a gift card, which is also referred to as removing a card on file.
-
 </dd>
 </dl>
 </dd>
@@ -4919,10 +4902,10 @@ Unlinks a customer from a gift card, which is also referred to as removing a car
 ```typescript
 await client.giftCards.unlinkCustomer({
     giftCardId: "gift_card_id",
-    customerId: "GKY0FZ3V717AH8Q2D821PNT2ZW",
+    customerId: "GKY0FZ3V717AH8Q2D821PNT2ZW"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -4936,20 +4919,21 @@ await client.giftCards.unlinkCustomer({
 <dl>
 <dd>
 
-**request:** `Square.UnlinkCustomerFromGiftCardRequest`
-
+**request:** `Square.UnlinkCustomerFromGiftCardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions`
+**requestOptions:** `GiftCards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -4968,7 +4952,6 @@ await client.giftCards.unlinkCustomer({
 <dd>
 
 Retrieves a gift card using the gift card ID.
-
 </dd>
 </dl>
 </dd>
@@ -4984,10 +4967,10 @@ Retrieves a gift card using the gift card ID.
 
 ```typescript
 await client.giftCards.get({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5001,27 +4984,27 @@ await client.giftCards.get({
 <dl>
 <dd>
 
-**request:** `Square.GetGiftCardsRequest`
-
+**request:** `Square.GetGiftCardsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions`
+**requestOptions:** `GiftCards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Inventory
-
 <details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">deprecatedGetAdjustment</a>({ ...params }) -> Square.GetInventoryAdjustmentResponse</code></summary>
 <dl>
 <dd>
@@ -5036,7 +5019,6 @@ await client.giftCards.get({
 
 Deprecated version of [RetrieveInventoryAdjustment](api-endpoint:Inventory-RetrieveInventoryAdjustment) after the endpoint URL
 is updated to conform to the standard convention.
-
 </dd>
 </dl>
 </dd>
@@ -5052,10 +5034,10 @@ is updated to conform to the standard convention.
 
 ```typescript
 await client.inventory.deprecatedGetAdjustment({
-    adjustmentId: "adjustment_id",
+    adjustmentId: "adjustment_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5069,20 +5051,21 @@ await client.inventory.deprecatedGetAdjustment({
 <dl>
 <dd>
 
-**request:** `Square.DeprecatedGetAdjustmentInventoryRequest`
-
+**request:** `Square.DeprecatedGetAdjustmentInventoryRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5102,7 +5085,6 @@ await client.inventory.deprecatedGetAdjustment({
 
 Returns the [InventoryAdjustment](entity:InventoryAdjustment) object
 with the provided `adjustment_id`.
-
 </dd>
 </dl>
 </dd>
@@ -5118,10 +5100,10 @@ with the provided `adjustment_id`.
 
 ```typescript
 await client.inventory.getAdjustment({
-    adjustmentId: "adjustment_id",
+    adjustmentId: "adjustment_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5135,20 +5117,21 @@ await client.inventory.getAdjustment({
 <dl>
 <dd>
 
-**request:** `Square.GetAdjustmentInventoryRequest`
-
+**request:** `Square.GetAdjustmentInventoryRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5168,7 +5151,6 @@ await client.inventory.getAdjustment({
 
 Deprecated version of [BatchChangeInventory](api-endpoint:Inventory-BatchChangeInventory) after the endpoint URL
 is updated to conform to the standard convention.
-
 </dd>
 </dl>
 </dd>
@@ -5185,8 +5167,7 @@ is updated to conform to the standard convention.
 ```typescript
 await client.inventory.deprecatedBatchChange({
     idempotencyKey: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
-    changes: [
-        {
+    changes: [{
             type: "PHYSICAL_COUNT",
             physicalCount: {
                 referenceId: "1536bfbf-efed-48bf-b17d-a197141b2a92",
@@ -5195,14 +5176,13 @@ await client.inventory.deprecatedBatchChange({
                 locationId: "C6W5YS5QM06F5",
                 quantity: "53",
                 teamMemberId: "LRK57NSQ5X7PUD05",
-                occurredAt: "2016-11-16T22:25:24.878Z",
-            },
-        },
-    ],
-    ignoreUnchangedCounts: true,
+                occurredAt: "2016-11-16T22:25:24.878Z"
+            }
+        }],
+    ignoreUnchangedCounts: true
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5216,20 +5196,21 @@ await client.inventory.deprecatedBatchChange({
 <dl>
 <dd>
 
-**request:** `Square.BatchChangeInventoryRequest`
-
+**request:** `Square.BatchChangeInventoryRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5249,7 +5230,6 @@ await client.inventory.deprecatedBatchChange({
 
 Deprecated version of [BatchRetrieveInventoryChanges](api-endpoint:Inventory-BatchRetrieveInventoryChanges) after the endpoint URL
 is updated to conform to the standard convention.
-
 </dd>
 </dl>
 </dd>
@@ -5270,10 +5250,10 @@ await client.inventory.deprecatedBatchGetChanges({
     types: ["PHYSICAL_COUNT"],
     states: ["IN_STOCK"],
     updatedAfter: "2016-11-01T00:00:00.000Z",
-    updatedBefore: "2016-12-01T00:00:00.000Z",
+    updatedBefore: "2016-12-01T00:00:00.000Z"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5287,20 +5267,21 @@ await client.inventory.deprecatedBatchGetChanges({
 <dl>
 <dd>
 
-**request:** `Square.BatchRetrieveInventoryChangesRequest`
-
+**request:** `Square.BatchRetrieveInventoryChangesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5320,7 +5301,6 @@ await client.inventory.deprecatedBatchGetChanges({
 
 Deprecated version of [BatchRetrieveInventoryCounts](api-endpoint:Inventory-BatchRetrieveInventoryCounts) after the endpoint URL
 is updated to conform to the standard convention.
-
 </dd>
 </dl>
 </dd>
@@ -5338,10 +5318,10 @@ is updated to conform to the standard convention.
 await client.inventory.deprecatedBatchGetCounts({
     catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
     locationIds: ["59TNP9SA8VGDA"],
-    updatedAfter: "2016-11-16T00:00:00.000Z",
+    updatedAfter: "2016-11-16T00:00:00.000Z"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5355,20 +5335,21 @@ await client.inventory.deprecatedBatchGetCounts({
 <dl>
 <dd>
 
-**request:** `Square.BatchGetInventoryCountsRequest`
-
+**request:** `Square.BatchGetInventoryCountsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5391,7 +5372,6 @@ Applies adjustments and counts to the provided item quantities.
 On success: returns the current calculated counts for all objects
 referenced in the request.
 On failure: returns a list of related errors.
-
 </dd>
 </dl>
 </dd>
@@ -5408,8 +5388,7 @@ On failure: returns a list of related errors.
 ```typescript
 await client.inventory.batchCreateChanges({
     idempotencyKey: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
-    changes: [
-        {
+    changes: [{
             type: "PHYSICAL_COUNT",
             physicalCount: {
                 referenceId: "1536bfbf-efed-48bf-b17d-a197141b2a92",
@@ -5418,14 +5397,13 @@ await client.inventory.batchCreateChanges({
                 locationId: "C6W5YS5QM06F5",
                 quantity: "53",
                 teamMemberId: "LRK57NSQ5X7PUD05",
-                occurredAt: "2016-11-16T22:25:24.878Z",
-            },
-        },
-    ],
-    ignoreUnchangedCounts: true,
+                occurredAt: "2016-11-16T22:25:24.878Z"
+            }
+        }],
+    ignoreUnchangedCounts: true
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5439,20 +5417,21 @@ await client.inventory.batchCreateChanges({
 <dl>
 <dd>
 
-**request:** `Square.BatchChangeInventoryRequest`
-
+**request:** `Square.BatchChangeInventoryRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5478,7 +5457,6 @@ Results are paginated and sorted in ascending order according their
 
 BatchRetrieveInventoryChanges is a catch-all query endpoint for queries
 that cannot be handled by other, simpler endpoints.
-
 </dd>
 </dl>
 </dd>
@@ -5499,7 +5477,7 @@ const response = await client.inventory.batchGetChanges({
     types: ["PHYSICAL_COUNT"],
     states: ["IN_STOCK"],
     updatedAfter: "2016-11-01T00:00:00.000Z",
-    updatedBefore: "2016-12-01T00:00:00.000Z",
+    updatedBefore: "2016-12-01T00:00:00.000Z"
 });
 for await (const item of response) {
     console.log(item);
@@ -5512,13 +5490,13 @@ let page = await client.inventory.batchGetChanges({
     types: ["PHYSICAL_COUNT"],
     states: ["IN_STOCK"],
     updatedAfter: "2016-11-01T00:00:00.000Z",
-    updatedBefore: "2016-12-01T00:00:00.000Z",
+    updatedBefore: "2016-12-01T00:00:00.000Z"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5532,20 +5510,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.BatchRetrieveInventoryChangesRequest`
-
+**request:** `Square.BatchRetrieveInventoryChangesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5574,7 +5553,6 @@ When `updated_after` is specified, only counts that have changed since that
 time (based on the server timestamp for the most recent change) are
 returned. This allows clients to perform a "sync" operation, for example
 in response to receiving a Webhook notification.
-
 </dd>
 </dl>
 </dd>
@@ -5592,7 +5570,7 @@ in response to receiving a Webhook notification.
 const response = await client.inventory.batchGetCounts({
     catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
     locationIds: ["59TNP9SA8VGDA"],
-    updatedAfter: "2016-11-16T00:00:00.000Z",
+    updatedAfter: "2016-11-16T00:00:00.000Z"
 });
 for await (const item of response) {
     console.log(item);
@@ -5602,13 +5580,13 @@ for await (const item of response) {
 let page = await client.inventory.batchGetCounts({
     catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
     locationIds: ["59TNP9SA8VGDA"],
-    updatedAfter: "2016-11-16T00:00:00.000Z",
+    updatedAfter: "2016-11-16T00:00:00.000Z"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5622,20 +5600,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.BatchGetInventoryCountsRequest`
-
+**request:** `Square.BatchGetInventoryCountsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5655,7 +5634,6 @@ while (page.hasNextPage()) {
 
 Deprecated version of [RetrieveInventoryPhysicalCount](api-endpoint:Inventory-RetrieveInventoryPhysicalCount) after the endpoint URL
 is updated to conform to the standard convention.
-
 </dd>
 </dl>
 </dd>
@@ -5671,10 +5649,10 @@ is updated to conform to the standard convention.
 
 ```typescript
 await client.inventory.deprecatedGetPhysicalCount({
-    physicalCountId: "physical_count_id",
+    physicalCountId: "physical_count_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5688,20 +5666,21 @@ await client.inventory.deprecatedGetPhysicalCount({
 <dl>
 <dd>
 
-**request:** `Square.DeprecatedGetPhysicalCountInventoryRequest`
-
+**request:** `Square.DeprecatedGetPhysicalCountInventoryRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5721,7 +5700,6 @@ await client.inventory.deprecatedGetPhysicalCount({
 
 Returns the [InventoryPhysicalCount](entity:InventoryPhysicalCount)
 object with the provided `physical_count_id`.
-
 </dd>
 </dl>
 </dd>
@@ -5737,10 +5715,10 @@ object with the provided `physical_count_id`.
 
 ```typescript
 await client.inventory.getPhysicalCount({
-    physicalCountId: "physical_count_id",
+    physicalCountId: "physical_count_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5754,20 +5732,21 @@ await client.inventory.getPhysicalCount({
 <dl>
 <dd>
 
-**request:** `Square.GetPhysicalCountInventoryRequest`
-
+**request:** `Square.GetPhysicalCountInventoryRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5787,7 +5766,6 @@ await client.inventory.getPhysicalCount({
 
 Returns the [InventoryTransfer](entity:InventoryTransfer) object
 with the provided `transfer_id`.
-
 </dd>
 </dl>
 </dd>
@@ -5803,10 +5781,10 @@ with the provided `transfer_id`.
 
 ```typescript
 await client.inventory.getTransfer({
-    transferId: "transfer_id",
+    transferId: "transfer_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5820,20 +5798,21 @@ await client.inventory.getTransfer({
 <dl>
 <dd>
 
-**request:** `Square.GetTransferInventoryRequest`
-
+**request:** `Square.GetTransferInventoryRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5855,7 +5834,6 @@ Retrieves the current calculated stock count for a given
 [CatalogObject](entity:CatalogObject) at a given set of
 [Location](entity:Location)s. Responses are paginated and unsorted.
 For more sophisticated queries, use a batch endpoint.
-
 </dd>
 </dl>
 </dd>
@@ -5873,7 +5851,7 @@ For more sophisticated queries, use a batch endpoint.
 const response = await client.inventory.get({
     catalogObjectId: "catalog_object_id",
     locationIds: "location_ids",
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -5883,13 +5861,13 @@ for await (const item of response) {
 let page = await client.inventory.get({
     catalogObjectId: "catalog_object_id",
     locationIds: "location_ids",
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5903,20 +5881,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.GetInventoryRequest`
-
+**request:** `Square.GetInventoryRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -5947,7 +5926,6 @@ Results are paginated and sorted in descending order according to their
 There are no limits on how far back the caller can page. This endpoint can be
 used to display recent changes for a specific item. For more
 sophisticated queries, use a batch endpoint.
-
 </dd>
 </dl>
 </dd>
@@ -5965,7 +5943,7 @@ sophisticated queries, use a batch endpoint.
 const response = await client.inventory.changes({
     catalogObjectId: "catalog_object_id",
     locationIds: "location_ids",
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -5975,13 +5953,13 @@ for await (const item of response) {
 let page = await client.inventory.changes({
     catalogObjectId: "catalog_object_id",
     locationIds: "location_ids",
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -5995,27 +5973,27 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ChangesInventoryRequest`
-
+**request:** `Square.ChangesInventoryRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions`
+**requestOptions:** `Inventory.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Invoices
-
 <details><summary><code>client.invoices.<a href="/src/api/resources/invoices/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Invoice></code></summary>
 <dl>
 <dd>
@@ -6028,10 +6006,9 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-Returns a list of invoices for a given location. The response
-is paginated. If truncated, the response includes a `cursor` that you  
+Returns a list of invoices for a given location. The response 
+is paginated. If truncated, the response includes a `cursor` that you    
 use in a subsequent request to retrieve the next set of invoices.
-
 </dd>
 </dl>
 </dd>
@@ -6049,7 +6026,7 @@ use in a subsequent request to retrieve the next set of invoices.
 const response = await client.invoices.list({
     locationId: "location_id",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -6059,13 +6036,13 @@ for await (const item of response) {
 let page = await client.invoices.list({
     locationId: "location_id",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6079,20 +6056,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListInvoicesRequest`
-
+**request:** `Square.ListInvoicesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions`
+**requestOptions:** `Invoices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6110,12 +6088,11 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-Creates a draft [invoice](entity:Invoice)
+Creates a draft [invoice](entity:Invoice) 
 for an order created using the Orders API.
 
-A draft invoice remains in your account and no action is taken.
+A draft invoice remains in your account and no action is taken. 
 You must publish the invoice before Square can process it (send it to the customer's email address or charge the customer’s card on file).
-
 </dd>
 </dl>
 </dd>
@@ -6135,22 +6112,18 @@ await client.invoices.create({
         locationId: "ES0RJRZYEC39A",
         orderId: "CAISENgvlJ6jLWAzERDzjyHVybY",
         primaryRecipient: {
-            customerId: "JDKYHBWT1D4F8MFH63DBMEN8Y4",
+            customerId: "JDKYHBWT1D4F8MFH63DBMEN8Y4"
         },
-        paymentRequests: [
-            {
+        paymentRequests: [{
                 requestType: "BALANCE",
                 dueDate: "2030-01-24",
                 tippingEnabled: true,
                 automaticPaymentSource: "NONE",
-                reminders: [
-                    {
+                reminders: [{
                         relativeScheduledDays: -1,
-                        message: "Your invoice is due tomorrow",
-                    },
-                ],
-            },
-        ],
+                        message: "Your invoice is due tomorrow"
+                    }]
+            }],
         deliveryMethod: "EMAIL",
         invoiceNumber: "inv-100",
         title: "Event Planning Services",
@@ -6161,27 +6134,24 @@ await client.invoices.create({
             squareGiftCard: false,
             bankAccount: false,
             buyNowPayLater: false,
-            cashAppPay: false,
+            cashAppPay: false
         },
-        customFields: [
-            {
+        customFields: [{
                 label: "Event Reference Number",
                 value: "Ref. #1234",
-                placement: "ABOVE_LINE_ITEMS",
-            },
-            {
+                placement: "ABOVE_LINE_ITEMS"
+            }, {
                 label: "Terms of Service",
                 value: "The terms of service are...",
-                placement: "BELOW_LINE_ITEMS",
-            },
-        ],
+                placement: "BELOW_LINE_ITEMS"
+            }],
         saleOrServiceDate: "2030-01-24",
-        storePaymentMethodEnabled: false,
+        storePaymentMethodEnabled: false
     },
-    idempotencyKey: "ce3748f9-5fc1-4762-aa12-aae5e843f1f4",
+    idempotencyKey: "ce3748f9-5fc1-4762-aa12-aae5e843f1f4"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6195,20 +6165,21 @@ await client.invoices.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateInvoiceRequest`
-
+**request:** `Square.CreateInvoiceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions`
+**requestOptions:** `Invoices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6226,14 +6197,13 @@ await client.invoices.create({
 <dl>
 <dd>
 
-Searches for invoices from a location specified in
-the filter. You can optionally specify customers in the filter for whom to
-retrieve invoices. In the current implementation, you can only specify one location and
+Searches for invoices from a location specified in 
+the filter. You can optionally specify customers in the filter for whom to 
+retrieve invoices. In the current implementation, you can only specify one location and 
 optionally one customer.
 
-The response is paginated. If truncated, the response includes a `cursor`
+The response is paginated. If truncated, the response includes a `cursor` 
 that you use in a subsequent request to retrieve the next set of invoices.
-
 </dd>
 </dl>
 </dd>
@@ -6252,17 +6222,17 @@ await client.invoices.search({
     query: {
         filter: {
             locationIds: ["ES0RJRZYEC39A"],
-            customerIds: ["JDKYHBWT1D4F8MFH63DBMEN8Y4"],
+            customerIds: ["JDKYHBWT1D4F8MFH63DBMEN8Y4"]
         },
         sort: {
             field: "INVOICE_SORT_DATE",
-            order: "DESC",
-        },
+            order: "DESC"
+        }
     },
-    limit: 100,
+    limit: 100
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6276,20 +6246,21 @@ await client.invoices.search({
 <dl>
 <dd>
 
-**request:** `Square.SearchInvoicesRequest`
-
+**request:** `Square.SearchInvoicesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions`
+**requestOptions:** `Invoices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6308,7 +6279,6 @@ await client.invoices.search({
 <dd>
 
 Retrieves an invoice by invoice ID.
-
 </dd>
 </dl>
 </dd>
@@ -6324,10 +6294,10 @@ Retrieves an invoice by invoice ID.
 
 ```typescript
 await client.invoices.get({
-    invoiceId: "invoice_id",
+    invoiceId: "invoice_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6341,20 +6311,21 @@ await client.invoices.get({
 <dl>
 <dd>
 
-**request:** `Square.GetInvoicesRequest`
-
+**request:** `Square.GetInvoicesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions`
+**requestOptions:** `Invoices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6376,7 +6347,6 @@ Updates an invoice. This endpoint supports sparse updates, so you only need
 to specify the fields you want to change along with the required `version` field.
 Some restrictions apply to updating invoices. For example, you cannot change the
 `order_id` or `location_id` field.
-
 </dd>
 </dl>
 </dd>
@@ -6395,17 +6365,15 @@ await client.invoices.update({
     invoiceId: "invoice_id",
     invoice: {
         version: 1,
-        paymentRequests: [
-            {
+        paymentRequests: [{
                 uid: "2da7964f-f3d2-4f43-81e8-5aa220bf3355",
-                tippingEnabled: false,
-            },
-        ],
+                tippingEnabled: false
+            }]
     },
-    idempotencyKey: "4ee82288-0910-499e-ab4c-5d0071dad1be",
+    idempotencyKey: "4ee82288-0910-499e-ab4c-5d0071dad1be"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6419,20 +6387,21 @@ await client.invoices.update({
 <dl>
 <dd>
 
-**request:** `Square.UpdateInvoiceRequest`
-
+**request:** `Square.UpdateInvoiceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions`
+**requestOptions:** `Invoices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6450,10 +6419,9 @@ await client.invoices.update({
 <dl>
 <dd>
 
-Deletes the specified invoice. When an invoice is deleted, the
-associated order status changes to CANCELED. You can only delete a draft
+Deletes the specified invoice. When an invoice is deleted, the 
+associated order status changes to CANCELED. You can only delete a draft 
 invoice (you cannot delete a published invoice, including one that is scheduled for processing).
-
 </dd>
 </dl>
 </dd>
@@ -6470,10 +6438,10 @@ invoice (you cannot delete a published invoice, including one that is scheduled 
 ```typescript
 await client.invoices.delete({
     invoiceId: "invoice_id",
-    version: 1,
+    version: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6487,20 +6455,21 @@ await client.invoices.delete({
 <dl>
 <dd>
 
-**request:** `Square.DeleteInvoicesRequest`
-
+**request:** `Square.DeleteInvoicesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions`
+**requestOptions:** `Invoices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6525,8 +6494,7 @@ in a supported format: GIF, JPEG, PNG, TIFF, BMP, or PDF.
 Invoices can have up to 10 attachments with a total file size of 25 MB. Attachments can be added only to invoices
 in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
 
-**NOTE:** When testing in the Sandbox environment, the total file size is limited to 1 KB.
-
+__NOTE:__ When testing in the Sandbox environment, the total file size is limited to 1 KB.
 </dd>
 </dl>
 </dd>
@@ -6542,10 +6510,10 @@ in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
 
 ```typescript
 await client.invoices.createInvoiceAttachment({
-    invoiceId: "invoice_id",
+    invoiceId: "invoice_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6559,20 +6527,21 @@ await client.invoices.createInvoiceAttachment({
 <dl>
 <dd>
 
-**request:** `Square.CreateInvoiceAttachmentRequest`
-
+**request:** `Square.CreateInvoiceAttachmentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions`
+**requestOptions:** `Invoices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6592,7 +6561,6 @@ await client.invoices.createInvoiceAttachment({
 
 Removes an attachment from an invoice and permanently deletes the file. Attachments can be removed only
 from invoices in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
-
 </dd>
 </dl>
 </dd>
@@ -6609,10 +6577,10 @@ from invoices in the `DRAFT`, `SCHEDULED`, `UNPAID`, or `PARTIALLY_PAID` state.
 ```typescript
 await client.invoices.deleteInvoiceAttachment({
     invoiceId: "invoice_id",
-    attachmentId: "attachment_id",
+    attachmentId: "attachment_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6626,20 +6594,21 @@ await client.invoices.deleteInvoiceAttachment({
 <dl>
 <dd>
 
-**request:** `Square.DeleteInvoiceAttachmentRequest`
-
+**request:** `Square.DeleteInvoiceAttachmentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions`
+**requestOptions:** `Invoices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6657,11 +6626,10 @@ await client.invoices.deleteInvoiceAttachment({
 <dl>
 <dd>
 
-Cancels an invoice. The seller cannot collect payments for
+Cancels an invoice. The seller cannot collect payments for 
 the canceled invoice.
 
 You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`, `REFUNDED`, `CANCELED`, or `FAILED`.
-
 </dd>
 </dl>
 </dd>
@@ -6678,10 +6646,10 @@ You cannot cancel an invoice in the `DRAFT` state or in a terminal state: `PAID`
 ```typescript
 await client.invoices.cancel({
     invoiceId: "invoice_id",
-    version: 0,
+    version: 0
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6695,20 +6663,21 @@ await client.invoices.cancel({
 <dl>
 <dd>
 
-**request:** `Square.CancelInvoiceRequest`
-
+**request:** `Square.CancelInvoiceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions`
+**requestOptions:** `Invoices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6726,21 +6695,20 @@ await client.invoices.cancel({
 <dl>
 <dd>
 
-Publishes the specified draft invoice.
+Publishes the specified draft invoice. 
 
-After an invoice is published, Square
-follows up based on the invoice configuration. For example, Square
-sends the invoice to the customer's email address, charges the customer's card on file, or does
-nothing. Square also makes the invoice available on a Square-hosted invoice page.
+After an invoice is published, Square 
+follows up based on the invoice configuration. For example, Square 
+sends the invoice to the customer's email address, charges the customer's card on file, or does 
+nothing. Square also makes the invoice available on a Square-hosted invoice page. 
 
-The invoice `status` also changes from `DRAFT` to a status
-based on the invoice configuration. For example, the status changes to `UNPAID` if
-Square emails the invoice or `PARTIALLY_PAID` if Square charges a card on file for a portion of the
+The invoice `status` also changes from `DRAFT` to a status 
+based on the invoice configuration. For example, the status changes to `UNPAID` if 
+Square emails the invoice or `PARTIALLY_PAID` if Square charges a card on file for a portion of the 
 invoice amount.
 
 In addition to the required `ORDERS_WRITE` and `INVOICES_WRITE` permissions, `CUSTOMERS_READ`
 and `PAYMENTS_WRITE` are required when publishing invoices configured for card-on-file payments.
-
 </dd>
 </dl>
 </dd>
@@ -6758,10 +6726,10 @@ and `PAYMENTS_WRITE` are required when publishing invoices configured for card-o
 await client.invoices.publish({
     invoiceId: "invoice_id",
     version: 1,
-    idempotencyKey: "32da42d0-1997-41b0-826b-f09464fc2c2e",
+    idempotencyKey: "32da42d0-1997-41b0-826b-f09464fc2c2e"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6775,27 +6743,27 @@ await client.invoices.publish({
 <dl>
 <dd>
 
-**request:** `Square.PublishInvoiceRequest`
-
+**request:** `Square.PublishInvoiceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions`
+**requestOptions:** `Invoices.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Labor
-
 <details><summary><code>client.labor.<a href="/src/api/resources/labor/client/Client.ts">createScheduledShift</a>({ ...params }) -> Square.CreateScheduledShiftResponse</code></summary>
 <dl>
 <dd>
@@ -6812,15 +6780,14 @@ Creates a scheduled shift by providing draft shift details such as job ID,
 team member assignment, and start and end times.
 
 The following `draft_shift_details` fields are required:
-
 - `location_id`
 - `job_id`
 - `start_at`
 - `end_at`
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -6841,12 +6808,12 @@ await client.labor.createScheduledShift({
             startAt: "2019-01-25T03:11:00-05:00",
             endAt: "2019-01-25T13:11:00-05:00",
             notes: "Dont forget to prep the vegetables",
-            isDeleted: false,
-        },
-    },
+            isDeleted: false
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6860,20 +6827,21 @@ await client.labor.createScheduledShift({
 <dl>
 <dd>
 
-**request:** `Square.CreateScheduledShiftRequest`
-
+**request:** `Square.CreateScheduledShiftRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6897,7 +6865,6 @@ the `draft_shift_details` field as is and copies it to the `published_shift_deta
 
 The minimum `start_at` and maximum `end_at` timestamps of all shifts in a
 `BulkPublishScheduledShifts` request must fall within a two-week period.
-
 </dd>
 </dl>
 </dd>
@@ -6914,12 +6881,12 @@ The minimum `start_at` and maximum `end_at` timestamps of all shifts in a
 ```typescript
 await client.labor.bulkPublishScheduledShifts({
     scheduledShifts: {
-        key: {},
+        "key": {}
     },
-    scheduledShiftNotificationAudience: "AFFECTED",
+    scheduledShiftNotificationAudience: "AFFECTED"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -6933,20 +6900,21 @@ await client.labor.bulkPublishScheduledShifts({
 <dl>
 <dd>
 
-**request:** `Square.BulkPublishScheduledShiftsRequest`
-
+**request:** `Square.BulkPublishScheduledShiftsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -6966,7 +6934,6 @@ await client.labor.bulkPublishScheduledShifts({
 
 Returns a paginated list of scheduled shifts, with optional filter and sort settings.
 By default, results are sorted by `start_at` in ascending order.
-
 </dd>
 </dl>
 </dd>
@@ -6984,18 +6951,18 @@ By default, results are sorted by `start_at` in ascending order.
 await client.labor.searchScheduledShifts({
     query: {
         filter: {
-            assignmentStatus: "ASSIGNED",
+            assignmentStatus: "ASSIGNED"
         },
         sort: {
             field: "CREATED_AT",
-            order: "ASC",
-        },
+            order: "ASC"
+        }
     },
     limit: 2,
-    cursor: "xoxp-1234-5678-90123",
+    cursor: "xoxp-1234-5678-90123"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7009,20 +6976,21 @@ await client.labor.searchScheduledShifts({
 <dl>
 <dd>
 
-**request:** `Square.SearchScheduledShiftsRequest`
-
+**request:** `Square.SearchScheduledShiftsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7041,7 +7009,6 @@ await client.labor.searchScheduledShifts({
 <dd>
 
 Retrieves a scheduled shift by ID.
-
 </dd>
 </dl>
 </dd>
@@ -7057,10 +7024,10 @@ Retrieves a scheduled shift by ID.
 
 ```typescript
 await client.labor.retrieveScheduledShift({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7074,20 +7041,21 @@ await client.labor.retrieveScheduledShift({
 <dl>
 <dd>
 
-**request:** `Square.RetrieveScheduledShiftRequest`
-
+**request:** `Square.RetrieveScheduledShiftRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7110,16 +7078,15 @@ sparse updates, so only new, changed, or removed fields are required in the requ
 You must publish the shift to make updates public.
 
 You can make the following updates to `draft_shift_details`:
-
 - Change the `location_id`, `job_id`, `start_at`, and `end_at` fields.
 - Add, change, or clear the `team_member_id` and `notes` fields. To clear these fields,
-  set the value to null.
+set the value to null.
 - Change the `is_deleted` field. To delete a scheduled shift, set `is_deleted` to true
 and then publish the shift.
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7140,13 +7107,13 @@ await client.labor.updateScheduledShift({
             startAt: "2019-03-25T03:11:00-05:00",
             endAt: "2019-03-25T13:18:00-05:00",
             notes: "Dont forget to prep the vegetables",
-            isDeleted: false,
+            isDeleted: false
         },
-        version: 1,
-    },
+        version: 1
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7160,20 +7127,21 @@ await client.labor.updateScheduledShift({
 <dl>
 <dd>
 
-**request:** `Square.UpdateScheduledShiftRequest`
-
+**request:** `Square.UpdateScheduledShiftRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7193,7 +7161,6 @@ await client.labor.updateScheduledShift({
 
 Publishes a scheduled shift. When a scheduled shift is published, Square keeps the
 `draft_shift_details` field as is and copies it to the `published_shift_details` field.
-
 </dd>
 </dl>
 </dd>
@@ -7212,10 +7179,10 @@ await client.labor.publishScheduledShift({
     id: "id",
     idempotencyKey: "HIDSNG5KS478L",
     version: 2,
-    scheduledShiftNotificationAudience: "ALL",
+    scheduledShiftNotificationAudience: "ALL"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7229,20 +7196,21 @@ await client.labor.publishScheduledShift({
 <dl>
 <dd>
 
-**request:** `Square.PublishScheduledShiftRequest`
-
+**request:** `Square.PublishScheduledShiftRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7271,18 +7239,17 @@ endpoint:
 - `start_at`
 
 An attempt to create a new `Timecard` can result in a `BAD_REQUEST` error when:
-
 - The `status` of the new `Timecard` is `OPEN` and the team member has another
-  timecard with an `OPEN` status.
+timecard with an `OPEN` status.
 - The `start_at` date is in the future.
 - The `start_at` or `end_at` date overlaps another timecard for the same team member.
 - The `Break` instances are set in the request and a break `start_at`
 is before the `Timecard.start_at`, a break `end_at` is after
 the `Timecard.end_at`, or both.
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7303,29 +7270,27 @@ await client.labor.createTimecard({
             title: "Barista",
             hourlyRate: {
                 amount: BigInt("1100"),
-                currency: "USD",
+                currency: "USD"
             },
-            tipEligible: true,
+            tipEligible: true
         },
-        breaks: [
-            {
+        breaks: [{
                 startAt: "2019-01-25T06:11:00-05:00",
                 endAt: "2019-01-25T06:16:00-05:00",
                 breakTypeId: "REGS1EQR1TPZ5",
                 name: "Tea Break",
                 expectedDuration: "PT5M",
-                isPaid: true,
-            },
-        ],
+                isPaid: true
+            }],
         teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
         declaredCashTipMoney: {
             amount: BigInt("500"),
-            currency: "USD",
-        },
-    },
+            currency: "USD"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7339,20 +7304,21 @@ await client.labor.createTimecard({
 <dl>
 <dd>
 
-**request:** `Square.CreateTimecardRequest`
-
+**request:** `Square.CreateTimecardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7372,7 +7338,6 @@ await client.labor.createTimecard({
 
 Returns a paginated list of `Timecard` records for a business.
 The list to be returned can be filtered by:
-
 - Location IDs
 - Team member IDs
 - Timecard status (`OPEN` or `CLOSED`)
@@ -7381,15 +7346,14 @@ The list to be returned can be filtered by:
 - Workday details
 
 The list can be sorted by:
-
 - `START_AT`
 - `END_AT`
 - `CREATED_AT`
 - `UPDATED_AT`
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7406,17 +7370,17 @@ await client.labor.searchTimecards({
             workday: {
                 dateRange: {
                     startDate: "2019-01-20",
-                    endDate: "2019-02-03",
+                    endDate: "2019-02-03"
                 },
                 matchTimecardsBy: "START_AT",
-                defaultTimezone: "America/Los_Angeles",
-            },
-        },
+                defaultTimezone: "America/Los_Angeles"
+            }
+        }
     },
-    limit: 100,
+    limit: 100
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7430,20 +7394,21 @@ await client.labor.searchTimecards({
 <dl>
 <dd>
 
-**request:** `Square.SearchTimecardsRequest`
-
+**request:** `Square.SearchTimecardsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7462,7 +7427,6 @@ await client.labor.searchTimecards({
 <dd>
 
 Returns a single `Timecard` specified by `id`.
-
 </dd>
 </dl>
 </dd>
@@ -7478,10 +7442,10 @@ Returns a single `Timecard` specified by `id`.
 
 ```typescript
 await client.labor.retrieveTimecard({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7495,20 +7459,21 @@ await client.labor.retrieveTimecard({
 <dl>
 <dd>
 
-**request:** `Square.RetrieveTimecardRequest`
-
+**request:** `Square.RetrieveTimecardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7533,7 +7498,6 @@ the `end_at` property set to a valid RFC-3339 datetime string.
 
 When closing a `Timecard`, all `Break` instances in the `Timecard` must be complete with `end_at`
 set on each `Break`.
-
 </dd>
 </dl>
 </dd>
@@ -7558,32 +7522,30 @@ await client.labor.updateTimecard({
             title: "Bartender",
             hourlyRate: {
                 amount: BigInt("1500"),
-                currency: "USD",
+                currency: "USD"
             },
-            tipEligible: true,
+            tipEligible: true
         },
-        breaks: [
-            {
+        breaks: [{
                 id: "X7GAQYVVRRG6P",
                 startAt: "2019-01-25T06:11:00-05:00",
                 endAt: "2019-01-25T06:16:00-05:00",
                 breakTypeId: "REGS1EQR1TPZ5",
                 name: "Tea Break",
                 expectedDuration: "PT5M",
-                isPaid: true,
-            },
-        ],
+                isPaid: true
+            }],
         status: "CLOSED",
         version: 1,
         teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
         declaredCashTipMoney: {
             amount: BigInt("500"),
-            currency: "USD",
-        },
-    },
+            currency: "USD"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7597,20 +7559,21 @@ await client.labor.updateTimecard({
 <dl>
 <dd>
 
-**request:** `Square.UpdateTimecardRequest`
-
+**request:** `Square.UpdateTimecardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7629,7 +7592,6 @@ await client.labor.updateTimecard({
 <dd>
 
 Deletes a `Timecard`.
-
 </dd>
 </dl>
 </dd>
@@ -7645,10 +7607,10 @@ Deletes a `Timecard`.
 
 ```typescript
 await client.labor.deleteTimecard({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7662,27 +7624,27 @@ await client.labor.deleteTimecard({
 <dl>
 <dd>
 
-**request:** `Square.DeleteTimecardRequest`
-
+**request:** `Square.DeleteTimecardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions`
+**requestOptions:** `Labor.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Locations
-
 <details><summary><code>client.locations.<a href="/src/api/resources/locations/client/Client.ts">list</a>() -> Square.ListLocationsResponse</code></summary>
 <dl>
 <dd>
@@ -7697,7 +7659,6 @@ await client.labor.deleteTimecard({
 
 Provides details about all of the seller's [locations](https://developer.squareup.com/docs/locations-api),
 including those with an inactive status. Locations are listed alphabetically by `name`.
-
 </dd>
 </dl>
 </dd>
@@ -7713,8 +7674,8 @@ including those with an inactive status. Locations are listed alphabetically by 
 
 ```typescript
 await client.locations.list();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7728,12 +7689,13 @@ await client.locations.list();
 <dl>
 <dd>
 
-**requestOptions:** `Locations.RequestOptions`
+**requestOptions:** `Locations.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7758,7 +7720,6 @@ that integrate with Square from sales activity elsewhere in a seller's account.
 Locations created programmatically with the Locations API last forever and
 are visible to the seller for their own management. Therefore, ensure that
 each location has a sensible and unique name.
-
 </dd>
 </dl>
 </dd>
@@ -7780,13 +7741,13 @@ await client.locations.create({
             addressLine1: "1234 Peachtree St. NE",
             locality: "Atlanta",
             administrativeDistrictLevel1: "GA",
-            postalCode: "30309",
+            postalCode: "30309"
         },
-        description: "Midtown Atlanta store",
-    },
+        description: "Midtown Atlanta store"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7800,20 +7761,21 @@ await client.locations.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateLocationRequest`
-
+**request:** `Square.CreateLocationRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Locations.RequestOptions`
+**requestOptions:** `Locations.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7833,7 +7795,6 @@ await client.locations.create({
 
 Retrieves details of a single location. Specify "main"
 as the location ID to retrieve details of the [main location](https://developer.squareup.com/docs/locations-api#about-the-main-location).
-
 </dd>
 </dl>
 </dd>
@@ -7849,10 +7810,10 @@ as the location ID to retrieve details of the [main location](https://developer.
 
 ```typescript
 await client.locations.get({
-    locationId: "location_id",
+    locationId: "location_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7866,20 +7827,21 @@ await client.locations.get({
 <dl>
 <dd>
 
-**request:** `Square.GetLocationsRequest`
-
+**request:** `Square.GetLocationsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Locations.RequestOptions`
+**requestOptions:** `Locations.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7898,7 +7860,6 @@ await client.locations.get({
 <dd>
 
 Updates a [location](https://developer.squareup.com/docs/locations-api).
-
 </dd>
 </dl>
 </dd>
@@ -7917,29 +7878,25 @@ await client.locations.update({
     locationId: "location_id",
     location: {
         businessHours: {
-            periods: [
-                {
+            periods: [{
                     dayOfWeek: "FRI",
                     startLocalTime: "07:00",
-                    endLocalTime: "18:00",
-                },
-                {
+                    endLocalTime: "18:00"
+                }, {
                     dayOfWeek: "SAT",
                     startLocalTime: "07:00",
-                    endLocalTime: "18:00",
-                },
-                {
+                    endLocalTime: "18:00"
+                }, {
                     dayOfWeek: "SUN",
                     startLocalTime: "09:00",
-                    endLocalTime: "15:00",
-                },
-            ],
+                    endLocalTime: "15:00"
+                }]
         },
-        description: "Midtown Atlanta store - Open weekends",
-    },
+        description: "Midtown Atlanta store - Open weekends"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -7953,20 +7910,21 @@ await client.locations.update({
 <dl>
 <dd>
 
-**request:** `Square.UpdateLocationRequest`
-
+**request:** `Square.UpdateLocationRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Locations.RequestOptions`
+**requestOptions:** `Locations.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -7986,11 +7944,11 @@ await client.locations.update({
 
 Links a `checkoutId` to a `checkout_page_url` that customers are
 directed to in order to provide their payment information using a
-payment processing workflow hosted on connect.squareup.com.
+payment processing workflow hosted on connect.squareup.com. 
 
-NOTE: The Checkout API has been updated with new features.
+
+NOTE: The Checkout API has been updated with new features. 
 For more information, see [Checkout API highlights](https://developer.squareup.com/docs/checkout-api#checkout-api-highlights).
-
 </dd>
 </dl>
 </dd>
@@ -8013,63 +7971,51 @@ await client.locations.checkouts({
             locationId: "location_id",
             referenceId: "reference_id",
             customerId: "customer_id",
-            lineItems: [
-                {
+            lineItems: [{
                     name: "Printed T Shirt",
                     quantity: "2",
-                    appliedTaxes: [
-                        {
-                            taxUid: "38ze1696-z1e3-5628-af6d-f1e04d947fg3",
-                        },
-                    ],
-                    appliedDiscounts: [
-                        {
-                            discountUid: "56ae1696-z1e3-9328-af6d-f1e04d947gd4",
-                        },
-                    ],
+                    appliedTaxes: [{
+                            taxUid: "38ze1696-z1e3-5628-af6d-f1e04d947fg3"
+                        }],
+                    appliedDiscounts: [{
+                            discountUid: "56ae1696-z1e3-9328-af6d-f1e04d947gd4"
+                        }],
                     basePriceMoney: {
                         amount: BigInt("1500"),
-                        currency: "USD",
-                    },
-                },
-                {
+                        currency: "USD"
+                    }
+                }, {
                     name: "Slim Jeans",
                     quantity: "1",
                     basePriceMoney: {
                         amount: BigInt("2500"),
-                        currency: "USD",
-                    },
-                },
-                {
+                        currency: "USD"
+                    }
+                }, {
                     name: "Woven Sweater",
                     quantity: "3",
                     basePriceMoney: {
                         amount: BigInt("3500"),
-                        currency: "USD",
-                    },
-                },
-            ],
-            taxes: [
-                {
+                        currency: "USD"
+                    }
+                }],
+            taxes: [{
                     uid: "38ze1696-z1e3-5628-af6d-f1e04d947fg3",
                     type: "INCLUSIVE",
                     percentage: "7.75",
-                    scope: "LINE_ITEM",
-                },
-            ],
-            discounts: [
-                {
+                    scope: "LINE_ITEM"
+                }],
+            discounts: [{
                     uid: "56ae1696-z1e3-9328-af6d-f1e04d947gd4",
                     type: "FIXED_AMOUNT",
                     amountMoney: {
                         amount: BigInt("100"),
-                        currency: "USD",
+                        currency: "USD"
                     },
-                    scope: "LINE_ITEM",
-                },
-            ],
+                    scope: "LINE_ITEM"
+                }]
         },
-        idempotencyKey: "12ae1696-z1e3-4328-af6d-f1e04d947gd4",
+        idempotencyKey: "12ae1696-z1e3-4328-af6d-f1e04d947gd4"
     },
     askForShippingAddress: true,
     merchantSupportEmail: "merchant+support@website.com",
@@ -8082,22 +8028,20 @@ await client.locations.checkouts({
         postalCode: "94103",
         country: "US",
         firstName: "Jane",
-        lastName: "Doe",
+        lastName: "Doe"
     },
     redirectUrl: "https://merchant.website.com/order-confirm",
-    additionalRecipients: [
-        {
+    additionalRecipients: [{
             locationId: "057P5VYJ4A5X1",
             description: "Application fees",
             amountMoney: {
                 amount: BigInt("60"),
-                currency: "USD",
-            },
-        },
-    ],
+                currency: "USD"
+            }
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8111,27 +8055,27 @@ await client.locations.checkouts({
 <dl>
 <dd>
 
-**request:** `Square.CreateCheckoutRequest`
-
+**request:** `Square.CreateCheckoutRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Locations.RequestOptions`
+**requestOptions:** `Locations.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Loyalty
-
 <details><summary><code>client.loyalty.<a href="/src/api/resources/loyalty/client/Client.ts">searchEvents</a>({ ...params }) -> Square.SearchLoyaltyEventsResponse</code></summary>
 <dl>
 <dd>
@@ -8152,7 +8096,6 @@ buyer's loyalty account. Each change in the point balance
 recorded in the ledger. Using this endpoint, you can search the ledger for events.
 
 Search results are sorted by `created_at` in descending order.
-
 </dd>
 </dl>
 </dd>
@@ -8171,14 +8114,14 @@ await client.loyalty.searchEvents({
     query: {
         filter: {
             orderFilter: {
-                orderId: "PyATxhYLfsMqpVkcKJITPydgEYfZY",
-            },
-        },
+                orderId: "PyATxhYLfsMqpVkcKJITPydgEYfZY"
+            }
+        }
     },
-    limit: 30,
+    limit: 30
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8192,27 +8135,27 @@ await client.loyalty.searchEvents({
 <dl>
 <dd>
 
-**request:** `Square.SearchLoyaltyEventsRequest`
-
+**request:** `Square.SearchLoyaltyEventsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Loyalty.RequestOptions`
+**requestOptions:** `Loyalty.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Merchants
-
 <details><summary><code>client.merchants.<a href="/src/api/resources/merchants/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Merchant></code></summary>
 <dl>
 <dd>
@@ -8235,7 +8178,6 @@ information for the merchant that granted your application access.
 
 If you know the merchant ID, you can also use the [RetrieveMerchant](api-endpoint:Merchants-RetrieveMerchant)
 endpoint to retrieve the merchant information.
-
 </dd>
 </dl>
 </dd>
@@ -8251,7 +8193,7 @@ endpoint to retrieve the merchant information.
 
 ```typescript
 const response = await client.merchants.list({
-    cursor: 1,
+    cursor: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -8259,13 +8201,13 @@ for await (const item of response) {
 
 // Or you can manually iterate page-by-page
 let page = await client.merchants.list({
-    cursor: 1,
+    cursor: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8279,20 +8221,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListMerchantsRequest`
-
+**request:** `Square.ListMerchantsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Merchants.RequestOptions`
+**requestOptions:** `Merchants.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8311,7 +8254,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Retrieves the `Merchant` object for the given `merchant_id`.
-
 </dd>
 </dl>
 </dd>
@@ -8327,10 +8269,10 @@ Retrieves the `Merchant` object for the given `merchant_id`.
 
 ```typescript
 await client.merchants.get({
-    merchantId: "merchant_id",
+    merchantId: "merchant_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8344,27 +8286,27 @@ await client.merchants.get({
 <dl>
 <dd>
 
-**request:** `Square.GetMerchantsRequest`
-
+**request:** `Square.GetMerchantsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Merchants.RequestOptions`
+**requestOptions:** `Merchants.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Checkout
-
 <details><summary><code>client.checkout.<a href="/src/api/resources/checkout/client/Client.ts">retrieveLocationSettings</a>({ ...params }) -> Square.RetrieveLocationSettingsResponse</code></summary>
 <dl>
 <dd>
@@ -8378,7 +8320,6 @@ await client.merchants.get({
 <dd>
 
 Retrieves the location-level settings for a Square-hosted checkout page.
-
 </dd>
 </dl>
 </dd>
@@ -8394,10 +8335,10 @@ Retrieves the location-level settings for a Square-hosted checkout page.
 
 ```typescript
 await client.checkout.retrieveLocationSettings({
-    locationId: "location_id",
+    locationId: "location_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8411,20 +8352,21 @@ await client.checkout.retrieveLocationSettings({
 <dl>
 <dd>
 
-**request:** `Square.RetrieveLocationSettingsRequest`
-
+**request:** `Square.RetrieveLocationSettingsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Checkout.RequestOptions`
+**requestOptions:** `Checkout.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8443,7 +8385,6 @@ await client.checkout.retrieveLocationSettings({
 <dd>
 
 Updates the location-level settings for a Square-hosted checkout page.
-
 </dd>
 </dl>
 </dd>
@@ -8460,10 +8401,10 @@ Updates the location-level settings for a Square-hosted checkout page.
 ```typescript
 await client.checkout.updateLocationSettings({
     locationId: "location_id",
-    locationSettings: {},
+    locationSettings: {}
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8477,20 +8418,21 @@ await client.checkout.updateLocationSettings({
 <dl>
 <dd>
 
-**request:** `Square.UpdateLocationSettingsRequest`
-
+**request:** `Square.UpdateLocationSettingsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Checkout.RequestOptions`
+**requestOptions:** `Checkout.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8509,7 +8451,6 @@ await client.checkout.updateLocationSettings({
 <dd>
 
 Retrieves the merchant-level settings for a Square-hosted checkout page.
-
 </dd>
 </dl>
 </dd>
@@ -8525,8 +8466,8 @@ Retrieves the merchant-level settings for a Square-hosted checkout page.
 
 ```typescript
 await client.checkout.retrieveMerchantSettings();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8540,12 +8481,13 @@ await client.checkout.retrieveMerchantSettings();
 <dl>
 <dd>
 
-**requestOptions:** `Checkout.RequestOptions`
+**requestOptions:** `Checkout.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8564,7 +8506,6 @@ await client.checkout.retrieveMerchantSettings();
 <dd>
 
 Updates the merchant-level settings for a Square-hosted checkout page.
-
 </dd>
 </dl>
 </dd>
@@ -8580,10 +8521,10 @@ Updates the merchant-level settings for a Square-hosted checkout page.
 
 ```typescript
 await client.checkout.updateMerchantSettings({
-    merchantSettings: {},
+    merchantSettings: {}
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8597,27 +8538,27 @@ await client.checkout.updateMerchantSettings({
 <dl>
 <dd>
 
-**request:** `Square.UpdateMerchantSettingsRequest`
-
+**request:** `Square.UpdateMerchantSettingsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Checkout.RequestOptions`
+**requestOptions:** `Checkout.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Orders
-
 <details><summary><code>client.orders.<a href="/src/api/resources/orders/client/Client.ts">create</a>({ ...params }) -> Square.CreateOrderResponse</code></summary>
 <dl>
 <dd>
@@ -8637,7 +8578,6 @@ To pay for a created order, see
 [Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
 
 You can modify open orders using the [UpdateOrder](api-endpoint:Orders-UpdateOrder) endpoint.
-
 </dd>
 </dl>
 </dd>
@@ -8656,65 +8596,52 @@ await client.orders.create({
     order: {
         locationId: "057P5VYJ4A5X1",
         referenceId: "my-order-001",
-        lineItems: [
-            {
+        lineItems: [{
                 name: "New York Strip Steak",
                 quantity: "1",
                 basePriceMoney: {
                     amount: BigInt("1599"),
-                    currency: "USD",
-                },
-            },
-            {
+                    currency: "USD"
+                }
+            }, {
                 quantity: "2",
                 catalogObjectId: "BEMYCSMIJL46OCDV4KYIKXIB",
-                modifiers: [
-                    {
-                        catalogObjectId: "CHQX7Y4KY6N5KINJKZCFURPZ",
-                    },
-                ],
-                appliedDiscounts: [
-                    {
-                        discountUid: "one-dollar-off",
-                    },
-                ],
-            },
-        ],
-        taxes: [
-            {
+                modifiers: [{
+                        catalogObjectId: "CHQX7Y4KY6N5KINJKZCFURPZ"
+                    }],
+                appliedDiscounts: [{
+                        discountUid: "one-dollar-off"
+                    }]
+            }],
+        taxes: [{
                 uid: "state-sales-tax",
                 name: "State Sales Tax",
                 percentage: "9",
-                scope: "ORDER",
-            },
-        ],
-        discounts: [
-            {
+                scope: "ORDER"
+            }],
+        discounts: [{
                 uid: "labor-day-sale",
                 name: "Labor Day Sale",
                 percentage: "5",
-                scope: "ORDER",
-            },
-            {
+                scope: "ORDER"
+            }, {
                 uid: "membership-discount",
                 catalogObjectId: "DB7L55ZH2BGWI4H23ULIWOQ7",
-                scope: "ORDER",
-            },
-            {
+                scope: "ORDER"
+            }, {
                 uid: "one-dollar-off",
                 name: "Sale - $1.00 off",
                 amountMoney: {
                     amount: BigInt("100"),
-                    currency: "USD",
+                    currency: "USD"
                 },
-                scope: "LINE_ITEM",
-            },
-        ],
+                scope: "LINE_ITEM"
+            }]
     },
-    idempotencyKey: "8193148c-9586-11e6-99f9-28cfe92138cf",
+    idempotencyKey: "8193148c-9586-11e6-99f9-28cfe92138cf"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8728,20 +8655,21 @@ await client.orders.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateOrderRequest`
-
+**request:** `Square.CreateOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions`
+**requestOptions:** `Orders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8762,7 +8690,6 @@ await client.orders.create({
 Retrieves a set of [orders](entity:Order) by their IDs.
 
 If a given order ID does not exist, the ID is ignored instead of generating an error.
-
 </dd>
 </dl>
 </dd>
@@ -8779,10 +8706,10 @@ If a given order ID does not exist, the ID is ignored instead of generating an e
 ```typescript
 await client.orders.batchGet({
     locationId: "057P5VYJ4A5X1",
-    orderIds: ["CAISEM82RcpmcFBM0TfOyiHV3es", "CAISENgvlJ6jLWAzERDzjyHVybY"],
+    orderIds: ["CAISEM82RcpmcFBM0TfOyiHV3es", "CAISENgvlJ6jLWAzERDzjyHVybY"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8796,20 +8723,21 @@ await client.orders.batchGet({
 <dl>
 <dd>
 
-**request:** `Square.BatchGetOrdersRequest`
-
+**request:** `Square.BatchGetOrdersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions`
+**requestOptions:** `Orders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8828,7 +8756,6 @@ await client.orders.batchGet({
 <dd>
 
 Enables applications to preview order pricing without creating an order.
-
 </dd>
 </dl>
 </dd>
@@ -8846,35 +8773,30 @@ Enables applications to preview order pricing without creating an order.
 await client.orders.calculate({
     order: {
         locationId: "D7AVYMEAPJ3A3",
-        lineItems: [
-            {
+        lineItems: [{
                 name: "Item 1",
                 quantity: "1",
                 basePriceMoney: {
                     amount: BigInt("500"),
-                    currency: "USD",
-                },
-            },
-            {
+                    currency: "USD"
+                }
+            }, {
                 name: "Item 2",
                 quantity: "2",
                 basePriceMoney: {
                     amount: BigInt("300"),
-                    currency: "USD",
-                },
-            },
-        ],
-        discounts: [
-            {
+                    currency: "USD"
+                }
+            }],
+        discounts: [{
                 name: "50% Off",
                 percentage: "50",
-                scope: "ORDER",
-            },
-        ],
-    },
+                scope: "ORDER"
+            }]
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8888,20 +8810,21 @@ await client.orders.calculate({
 <dl>
 <dd>
 
-**request:** `Square.CalculateOrderRequest`
-
+**request:** `Square.CalculateOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions`
+**requestOptions:** `Orders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8921,7 +8844,6 @@ await client.orders.calculate({
 
 Creates a new order, in the `DRAFT` state, by duplicating an existing order. The newly created order has
 only the core fields (such as line items, taxes, and discounts) copied from the original order.
-
 </dd>
 </dl>
 </dd>
@@ -8939,10 +8861,10 @@ only the core fields (such as line items, taxes, and discounts) copied from the 
 await client.orders.clone({
     orderId: "ZAISEM52YcpmcWAzERDOyiWS123",
     version: 3,
-    idempotencyKey: "UNIQUE_STRING",
+    idempotencyKey: "UNIQUE_STRING"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -8956,20 +8878,21 @@ await client.orders.clone({
 <dl>
 <dd>
 
-**request:** `Square.CloneOrderRequest`
-
+**request:** `Square.CloneOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions`
+**requestOptions:** `Orders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -8995,16 +8918,15 @@ ecosystem (such as Point of Sale, Invoices, and Connect APIs).
 [SearchOrdersQuery](entity:SearchOrdersQuery) object that controls
 how to sort or filter the results. Your `SearchOrdersQuery` can:
 
-Set filter criteria.
-Set the sort order.
-Determine whether to return results as complete `Order` objects or as
+  Set filter criteria.
+  Set the sort order.
+  Determine whether to return results as complete `Order` objects or as
 [OrderEntry](entity:OrderEntry) objects.
 
 Note that details for orders processed with Square Point of Sale while in
 offline mode might not be transmitted to Square for up to 72 hours. Offline
 orders have a `created_at` value that reflects the time the order was created,
 not the time it was subsequently transmitted to Square.
-
 </dd>
 </dl>
 </dd>
@@ -9024,25 +8946,25 @@ await client.orders.search({
     query: {
         filter: {
             stateFilter: {
-                states: ["COMPLETED"],
+                states: ["COMPLETED"]
             },
             dateTimeFilter: {
                 closedAt: {
                     startAt: "2018-03-03T20:00:00+00:00",
-                    endAt: "2019-03-04T21:54:45+00:00",
-                },
-            },
+                    endAt: "2019-03-04T21:54:45+00:00"
+                }
+            }
         },
         sort: {
             sortField: "CLOSED_AT",
-            sortOrder: "DESC",
-        },
+            sortOrder: "DESC"
+        }
     },
     limit: 3,
-    returnEntries: true,
+    returnEntries: true
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9056,20 +8978,21 @@ await client.orders.search({
 <dl>
 <dd>
 
-**request:** `Square.SearchOrdersRequest`
-
+**request:** `Square.SearchOrdersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions`
+**requestOptions:** `Orders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9088,7 +9011,6 @@ await client.orders.search({
 <dd>
 
 Retrieves an [Order](entity:Order) by ID.
-
 </dd>
 </dl>
 </dd>
@@ -9104,10 +9026,10 @@ Retrieves an [Order](entity:Order) by ID.
 
 ```typescript
 await client.orders.get({
-    orderId: "order_id",
+    orderId: "order_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9121,20 +9043,21 @@ await client.orders.get({
 <dl>
 <dd>
 
-**request:** `Square.GetOrdersRequest`
-
+**request:** `Square.GetOrdersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions`
+**requestOptions:** `Orders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9160,14 +9083,13 @@ An `UpdateOrder` request requires the following:
 - The `order_id` in the endpoint path, identifying the order to update.
 - The latest `version` of the order to update.
 - The [sparse order](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#sparse-order-objects)
-  containing only the fields to update and the version to which the update is
-  being applied.
+containing only the fields to update and the version to which the update is
+being applied.
 - If deleting fields, the [dot notation paths](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#identifying-fields-to-delete)
-  identifying the fields to clear.
+identifying the fields to clear.
 
 To pay for an order, see
 [Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
-
 </dd>
 </dl>
 </dd>
@@ -9186,24 +9108,22 @@ await client.orders.update({
     orderId: "order_id",
     order: {
         locationId: "location_id",
-        lineItems: [
-            {
+        lineItems: [{
                 uid: "cookie_uid",
                 name: "COOKIE",
                 quantity: "2",
                 basePriceMoney: {
                     amount: BigInt("200"),
-                    currency: "USD",
-                },
-            },
-        ],
-        version: 1,
+                    currency: "USD"
+                }
+            }],
+        version: 1
     },
     fieldsToClear: ["discounts"],
-    idempotencyKey: "UNIQUE_STRING",
+    idempotencyKey: "UNIQUE_STRING"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9217,20 +9137,21 @@ await client.orders.update({
 <dl>
 <dd>
 
-**request:** `Square.UpdateOrderRequest`
-
+**request:** `Square.UpdateOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions`
+**requestOptions:** `Orders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9258,14 +9179,14 @@ array of `payment_ids` in the request.
 To be used with `PayOrder`, a payment must:
 
 - Reference the order by specifying the `order_id` when [creating the payment](api-endpoint:Payments-CreatePayment).
-  Any approved payments that reference the same `order_id` not specified in the
-  `payment_ids` is canceled.
+Any approved payments that reference the same `order_id` not specified in the
+`payment_ids` is canceled.
 - Be approved with [delayed capture](https://developer.squareup.com/docs/payments-api/take-payments/card-payments/delayed-capture).
 Using a delayed capture payment with `PayOrder` completes the approved payment.
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -9279,10 +9200,10 @@ Using a delayed capture payment with `PayOrder` completes the approved payment.
 await client.orders.pay({
     orderId: "order_id",
     idempotencyKey: "c043a359-7ad9-4136-82a9-c3f1d66dcbff",
-    paymentIds: ["EnZdNAlWCmfh6Mt5FMNST1o7taB", "0LRiVlbXVwe8ozu4KbZxd12mvaB"],
+    paymentIds: ["EnZdNAlWCmfh6Mt5FMNST1o7taB", "0LRiVlbXVwe8ozu4KbZxd12mvaB"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9296,27 +9217,27 @@ await client.orders.pay({
 <dl>
 <dd>
 
-**request:** `Square.PayOrderRequest`
-
+**request:** `Square.PayOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions`
+**requestOptions:** `Orders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Payments
-
 <details><summary><code>client.payments.<a href="/src/api/resources/payments/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Payment></code></summary>
 <dl>
 <dd>
@@ -9335,7 +9256,6 @@ Results are eventually consistent, and new payments or changes to payments might
 seconds to appear.
 
 The maximum results per page is 100.
-
 </dd>
 </dl>
 </dd>
@@ -9365,7 +9285,7 @@ const response = await client.payments.list({
     offlineEndTime: "offline_end_time",
     updatedAtBeginTime: "updated_at_begin_time",
     updatedAtEndTime: "updated_at_end_time",
-    sortField: "CREATED_AT",
+    sortField: "CREATED_AT"
 });
 for await (const item of response) {
     console.log(item);
@@ -9387,13 +9307,13 @@ let page = await client.payments.list({
     offlineEndTime: "offline_end_time",
     updatedAtBeginTime: "updated_at_begin_time",
     updatedAtEndTime: "updated_at_end_time",
-    sortField: "CREATED_AT",
+    sortField: "CREATED_AT"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9407,20 +9327,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListPaymentsRequest`
-
+**request:** `Square.ListPaymentsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions`
+**requestOptions:** `Payments.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9438,15 +9359,14 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-Creates a payment using the provided source. You can use this endpoint
-to charge a card (credit/debit card or  
-Square gift card) or record a payment that the seller received outside of Square
-(cash payment from a buyer or a payment that an external entity
+Creates a payment using the provided source. You can use this endpoint 
+to charge a card (credit/debit card or    
+Square gift card) or record a payment that the seller received outside of Square 
+(cash payment from a buyer or a payment that an external entity 
 processed on behalf of the seller).
 
-The endpoint creates a
+The endpoint creates a 
 `Payment` object and returns it in the response.
-
 </dd>
 </dl>
 </dd>
@@ -9466,20 +9386,20 @@ await client.payments.create({
     idempotencyKey: "7b0f3ec5-086a-4871-8f13-3c81b3875218",
     amountMoney: {
         amount: BigInt("1000"),
-        currency: "USD",
+        currency: "USD"
     },
     appFeeMoney: {
         amount: BigInt("10"),
-        currency: "USD",
+        currency: "USD"
     },
     autocomplete: true,
     customerId: "W92WH6P11H4Z77CTET0RNTGFW8",
     locationId: "L88917AVBK2S5",
     referenceId: "123456",
-    note: "Brief description",
+    note: "Brief description"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9493,20 +9413,21 @@ await client.payments.create({
 <dl>
 <dd>
 
-**request:** `Square.CreatePaymentRequest`
-
+**request:** `Square.CreatePaymentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions`
+**requestOptions:** `Payments.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9535,7 +9456,6 @@ canceling the payment, you can submit your `CreatePayment` request again.
 
 Note that if no payment with the specified idempotency key is found, no action is taken and the endpoint
 returns successfully.
-
 </dd>
 </dl>
 </dd>
@@ -9551,10 +9471,10 @@ returns successfully.
 
 ```typescript
 await client.payments.cancelByIdempotencyKey({
-    idempotencyKey: "a7e36d40-d24b-11e8-b568-0800200c9a66",
+    idempotencyKey: "a7e36d40-d24b-11e8-b568-0800200c9a66"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9568,20 +9488,21 @@ await client.payments.cancelByIdempotencyKey({
 <dl>
 <dd>
 
-**request:** `Square.CancelPaymentByIdempotencyKeyRequest`
-
+**request:** `Square.CancelPaymentByIdempotencyKeyRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions`
+**requestOptions:** `Payments.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9600,7 +9521,6 @@ await client.payments.cancelByIdempotencyKey({
 <dd>
 
 Retrieves details for a specific payment.
-
 </dd>
 </dl>
 </dd>
@@ -9616,10 +9536,10 @@ Retrieves details for a specific payment.
 
 ```typescript
 await client.payments.get({
-    paymentId: "payment_id",
+    paymentId: "payment_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9633,20 +9553,21 @@ await client.payments.get({
 <dl>
 <dd>
 
-**request:** `Square.GetPaymentsRequest`
-
+**request:** `Square.GetPaymentsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions`
+**requestOptions:** `Payments.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9666,7 +9587,6 @@ await client.payments.get({
 
 Updates a payment with the APPROVED status.
 You can update the `amount_money` and `tip_money` using this endpoint.
-
 </dd>
 </dl>
 </dd>
@@ -9686,18 +9606,18 @@ await client.payments.update({
     payment: {
         amountMoney: {
             amount: BigInt("1000"),
-            currency: "USD",
+            currency: "USD"
         },
         tipMoney: {
             amount: BigInt("100"),
-            currency: "USD",
+            currency: "USD"
         },
-        versionToken: "ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o",
+        versionToken: "ODhwVQ35xwlzRuoZEwKXucfu7583sPTzK48c5zoGd0g6o"
     },
-    idempotencyKey: "956f8b13-e4ec-45d6-85e8-d1d95ef0c5de",
+    idempotencyKey: "956f8b13-e4ec-45d6-85e8-d1d95ef0c5de"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9711,20 +9631,21 @@ await client.payments.update({
 <dl>
 <dd>
 
-**request:** `Square.UpdatePaymentRequest`
-
+**request:** `Square.UpdatePaymentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions`
+**requestOptions:** `Payments.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9742,9 +9663,8 @@ await client.payments.update({
 <dl>
 <dd>
 
-Cancels (voids) a payment. You can use this endpoint to cancel a payment with
+Cancels (voids) a payment. You can use this endpoint to cancel a payment with 
 the APPROVED `status`.
-
 </dd>
 </dl>
 </dd>
@@ -9760,10 +9680,10 @@ the APPROVED `status`.
 
 ```typescript
 await client.payments.cancel({
-    paymentId: "payment_id",
+    paymentId: "payment_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9777,20 +9697,21 @@ await client.payments.cancel({
 <dl>
 <dd>
 
-**request:** `Square.CancelPaymentsRequest`
-
+**request:** `Square.CancelPaymentsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions`
+**requestOptions:** `Payments.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9812,7 +9733,6 @@ Completes (captures) a payment.
 By default, payments are set to complete immediately after they are created.
 
 You can use this endpoint to complete a payment with the APPROVED `status`.
-
 </dd>
 </dl>
 </dd>
@@ -9828,10 +9748,10 @@ You can use this endpoint to complete a payment with the APPROVED `status`.
 
 ```typescript
 await client.payments.complete({
-    paymentId: "payment_id",
+    paymentId: "payment_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9845,27 +9765,27 @@ await client.payments.complete({
 <dl>
 <dd>
 
-**request:** `Square.CompletePaymentRequest`
-
+**request:** `Square.CompletePaymentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions`
+**requestOptions:** `Payments.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Payouts
-
 <details><summary><code>client.payouts.<a href="/src/api/resources/payouts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Payout></code></summary>
 <dl>
 <dd>
@@ -9881,7 +9801,6 @@ await client.payments.complete({
 Retrieves a list of all payouts for the default location.
 You can filter payouts by location ID, status, time range, and order them in ascending or descending order.
 To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -9903,7 +9822,7 @@ const response = await client.payouts.list({
     endTime: "end_time",
     sortOrder: "DESC",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -9917,13 +9836,13 @@ let page = await client.payouts.list({
     endTime: "end_time",
     sortOrder: "DESC",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -9937,20 +9856,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListPayoutsRequest`
-
+**request:** `Square.ListPayoutsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payouts.RequestOptions`
+**requestOptions:** `Payouts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -9970,7 +9890,6 @@ while (page.hasNextPage()) {
 
 Retrieves details of a specific payout identified by a payout ID.
 To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -9986,10 +9905,10 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 
 ```typescript
 await client.payouts.get({
-    payoutId: "payout_id",
+    payoutId: "payout_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10003,20 +9922,21 @@ await client.payouts.get({
 <dl>
 <dd>
 
-**request:** `Square.GetPayoutsRequest`
-
+**request:** `Square.GetPayoutsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payouts.RequestOptions`
+**requestOptions:** `Payouts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10036,7 +9956,6 @@ await client.payouts.get({
 
 Retrieves a list of all payout entries for a specific payout.
 To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -10055,7 +9974,7 @@ const response = await client.payouts.listEntries({
     payoutId: "payout_id",
     sortOrder: "DESC",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -10066,13 +9985,13 @@ let page = await client.payouts.listEntries({
     payoutId: "payout_id",
     sortOrder: "DESC",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10086,27 +10005,27 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListEntriesPayoutsRequest`
-
+**request:** `Square.ListEntriesPayoutsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Payouts.RequestOptions`
+**requestOptions:** `Payouts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Refunds
-
 <details><summary><code>client.refunds.<a href="/src/api/resources/refunds/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.PaymentRefund></code></summary>
 <dl>
 <dd>
@@ -10125,7 +10044,6 @@ Results are eventually consistent, and new refunds or changes to refunds might t
 seconds to appear.
 
 The maximum results per page is 100.
-
 </dd>
 </dl>
 </dd>
@@ -10151,7 +10069,7 @@ const response = await client.refunds.list({
     limit: 1,
     updatedAtBeginTime: "updated_at_begin_time",
     updatedAtEndTime: "updated_at_end_time",
-    sortField: "CREATED_AT",
+    sortField: "CREATED_AT"
 });
 for await (const item of response) {
     console.log(item);
@@ -10169,13 +10087,13 @@ let page = await client.refunds.list({
     limit: 1,
     updatedAtBeginTime: "updated_at_begin_time",
     updatedAtEndTime: "updated_at_end_time",
-    sortField: "CREATED_AT",
+    sortField: "CREATED_AT"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10189,20 +10107,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListRefundsRequest`
-
+**request:** `Square.ListRefundsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions`
+**requestOptions:** `Refunds.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10221,10 +10140,9 @@ while (page.hasNextPage()) {
 <dd>
 
 Refunds a payment. You can refund the entire payment amount or a
-portion of it. You can use this endpoint to refund a card payment or record a
+portion of it. You can use this endpoint to refund a card payment or record a 
 refund of a cash or external payment. For more information, see
 [Refund Payment](https://developer.squareup.com/docs/payments-api/refund-payments).
-
 </dd>
 </dl>
 </dd>
@@ -10243,17 +10161,17 @@ await client.refunds.refundPayment({
     idempotencyKey: "9b7f2dcf-49da-4411-b23e-a2d6af21333a",
     amountMoney: {
         amount: BigInt("1000"),
-        currency: "USD",
+        currency: "USD"
     },
     appFeeMoney: {
         amount: BigInt("10"),
-        currency: "USD",
+        currency: "USD"
     },
     paymentId: "R2B3Z8WMVt3EAmzYWLZvz7Y69EbZY",
-    reason: "Example",
+    reason: "Example"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10267,20 +10185,21 @@ await client.refunds.refundPayment({
 <dl>
 <dd>
 
-**request:** `Square.RefundPaymentRequest`
-
+**request:** `Square.RefundPaymentRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions`
+**requestOptions:** `Refunds.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10299,7 +10218,6 @@ await client.refunds.refundPayment({
 <dd>
 
 Retrieves a specific refund using the `refund_id`.
-
 </dd>
 </dl>
 </dd>
@@ -10315,10 +10233,10 @@ Retrieves a specific refund using the `refund_id`.
 
 ```typescript
 await client.refunds.get({
-    refundId: "refund_id",
+    refundId: "refund_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10332,27 +10250,27 @@ await client.refunds.get({
 <dl>
 <dd>
 
-**request:** `Square.GetRefundsRequest`
-
+**request:** `Square.GetRefundsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions`
+**requestOptions:** `Refunds.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Sites
-
 <details><summary><code>client.sites.<a href="/src/api/resources/sites/client/Client.ts">list</a>() -> Square.ListSitesResponse</code></summary>
 <dl>
 <dd>
@@ -10367,8 +10285,8 @@ await client.refunds.get({
 
 Lists the Square Online sites that belong to a seller. Sites are listed in descending order by the `created_at` date.
 
-**Note:** Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 
+__Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 </dd>
 </dl>
 </dd>
@@ -10384,8 +10302,8 @@ Lists the Square Online sites that belong to a seller. Sites are listed in desce
 
 ```typescript
 await client.sites.list();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10399,19 +10317,19 @@ await client.sites.list();
 <dl>
 <dd>
 
-**requestOptions:** `Sites.RequestOptions`
+**requestOptions:** `Sites.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Snippets
-
 <details><summary><code>client.snippets.<a href="/src/api/resources/snippets/client/Client.ts">get</a>({ ...params }) -> Square.GetSnippetResponse</code></summary>
 <dl>
 <dd>
@@ -10428,8 +10346,8 @@ Retrieves your snippet from a Square Online site. A site can contain snippets fr
 
 You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of the sites that belong to a seller.
 
-**Note:** Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 
+__Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 </dd>
 </dl>
 </dd>
@@ -10445,10 +10363,10 @@ You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of the sit
 
 ```typescript
 await client.snippets.get({
-    siteId: "site_id",
+    siteId: "site_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10462,20 +10380,21 @@ await client.snippets.get({
 <dl>
 <dd>
 
-**request:** `Square.GetSnippetsRequest`
-
+**request:** `Square.GetSnippetsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Snippets.RequestOptions`
+**requestOptions:** `Snippets.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10493,13 +10412,13 @@ await client.snippets.get({
 <dl>
 <dd>
 
-Adds a snippet to a Square Online site or updates the existing snippet on the site.
-The snippet code is appended to the end of the `head` element on every page of the site, except checkout pages. A snippet application can add one snippet to a given site.
+Adds a snippet to a Square Online site or updates the existing snippet on the site. 
+The snippet code is appended to the end of the `head` element on every page of the site, except checkout pages. A snippet application can add one snippet to a given site. 
 
 You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of the sites that belong to a seller.
 
-**Note:** Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 
+__Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 </dd>
 </dl>
 </dd>
@@ -10517,11 +10436,11 @@ You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of the sit
 await client.snippets.upsert({
     siteId: "site_id",
     snippet: {
-        content: "<script>var js = 1;</script>",
-    },
+        content: "<script>var js = 1;</script>"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10535,20 +10454,21 @@ await client.snippets.upsert({
 <dl>
 <dd>
 
-**request:** `Square.UpsertSnippetRequest`
-
+**request:** `Square.UpsertSnippetRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Snippets.RequestOptions`
+**requestOptions:** `Snippets.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10570,8 +10490,8 @@ Removes your snippet from a Square Online site.
 
 You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of the sites that belong to a seller.
 
-**Note:** Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 
+__Note:__ Square Online APIs are publicly available as part of an early access program. For more information, see [Early access program for Square Online APIs](https://developer.squareup.com/docs/online-api#early-access-program-for-square-online-apis).
 </dd>
 </dl>
 </dd>
@@ -10587,10 +10507,10 @@ You can call [ListSites](api-endpoint:Sites-ListSites) to get the IDs of the sit
 
 ```typescript
 await client.snippets.delete({
-    siteId: "site_id",
+    siteId: "site_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10604,27 +10524,27 @@ await client.snippets.delete({
 <dl>
 <dd>
 
-**request:** `Square.DeleteSnippetsRequest`
-
+**request:** `Square.DeleteSnippetsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Snippets.RequestOptions`
+**requestOptions:** `Snippets.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Subscriptions
-
 <details><summary><code>client.subscriptions.<a href="/src/api/resources/subscriptions/client/Client.ts">create</a>({ ...params }) -> Square.CreateSubscriptionResponse</code></summary>
 <dl>
 <dd>
@@ -10645,7 +10565,6 @@ address. The subscription starts immediately, unless the request includes
 the optional `start_date`. Each individual subscription is associated with a particular location.
 
 For more information, see [Create a subscription](https://developer.squareup.com/docs/subscriptions-api/manage-subscriptions#create-a-subscription).
-
 </dd>
 </dl>
 </dd>
@@ -10669,17 +10588,15 @@ await client.subscriptions.create({
     cardId: "ccof:qy5x8hHGYsgLrp4Q4GB",
     timezone: "America/Los_Angeles",
     source: {
-        name: "My Application",
+        name: "My Application"
     },
-    phases: [
-        {
+    phases: [{
             ordinal: BigInt("0"),
-            orderTemplateId: "U2NaowWxzXwpsZU697x7ZHOAnCNZY",
-        },
-    ],
+            orderTemplateId: "U2NaowWxzXwpsZU697x7ZHOAnCNZY"
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10693,20 +10610,21 @@ await client.subscriptions.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateSubscriptionRequest`
-
+**request:** `Square.CreateSubscriptionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10726,7 +10644,6 @@ await client.subscriptions.create({
 
 Schedules a plan variation change for all active subscriptions under a given plan
 variation. For more information, see [Swap Subscription Plan Variations](https://developer.squareup.com/docs/subscriptions-api/swap-plan-variations).
-
 </dd>
 </dl>
 </dd>
@@ -10744,10 +10661,10 @@ variation. For more information, see [Swap Subscription Plan Variations](https:/
 await client.subscriptions.bulkSwapPlan({
     newPlanVariationId: "FQ7CDXXWSLUJRPM3GFJSJGZ7",
     oldPlanVariationId: "6JHXF3B2CW3YKHDV4XEM674H",
-    locationId: "S8GWD5R9QB376",
+    locationId: "S8GWD5R9QB376"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10761,20 +10678,21 @@ await client.subscriptions.bulkSwapPlan({
 <dl>
 <dd>
 
-**request:** `Square.BulkSwapPlanRequest`
-
+**request:** `Square.BulkSwapPlanRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10806,7 +10724,6 @@ associated with the specified locations are returned.
 If the request specifies customer IDs, the endpoint orders results
 first by location, within location by customer ID, and within
 customer by subscription creation date.
-
 </dd>
 </dl>
 </dd>
@@ -10826,12 +10743,12 @@ await client.subscriptions.search({
         filter: {
             customerIds: ["CHFGVKYY8RSV93M5KCYTG4PN0G"],
             locationIds: ["S8GWD5R9QB376"],
-            sourceNames: ["My App"],
-        },
-    },
+            sourceNames: ["My App"]
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10845,20 +10762,21 @@ await client.subscriptions.search({
 <dl>
 <dd>
 
-**request:** `Square.SearchSubscriptionsRequest`
-
+**request:** `Square.SearchSubscriptionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10877,7 +10795,6 @@ await client.subscriptions.search({
 <dd>
 
 Retrieves a specific subscription.
-
 </dd>
 </dl>
 </dd>
@@ -10894,10 +10811,10 @@ Retrieves a specific subscription.
 ```typescript
 await client.subscriptions.get({
     subscriptionId: "subscription_id",
-    include: "include",
+    include: "include"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10911,20 +10828,21 @@ await client.subscriptions.get({
 <dl>
 <dd>
 
-**request:** `Square.GetSubscriptionsRequest`
-
+**request:** `Square.GetSubscriptionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -10944,7 +10862,6 @@ await client.subscriptions.get({
 
 Updates a subscription by modifying or clearing `subscription` field values.
 To clear a field, set its value to `null`.
-
 </dd>
 </dl>
 </dd>
@@ -10962,11 +10879,11 @@ To clear a field, set its value to `null`.
 await client.subscriptions.update({
     subscriptionId: "subscription_id",
     subscription: {
-        cardId: "{NEW CARD ID}",
-    },
+        cardId: "{NEW CARD ID}"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -10980,20 +10897,21 @@ await client.subscriptions.update({
 <dl>
 <dd>
 
-**request:** `Square.UpdateSubscriptionRequest`
-
+**request:** `Square.UpdateSubscriptionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11012,7 +10930,6 @@ await client.subscriptions.update({
 <dd>
 
 Deletes a scheduled action for a subscription.
-
 </dd>
 </dl>
 </dd>
@@ -11029,10 +10946,10 @@ Deletes a scheduled action for a subscription.
 ```typescript
 await client.subscriptions.deleteAction({
     subscriptionId: "subscription_id",
-    actionId: "action_id",
+    actionId: "action_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11046,20 +10963,21 @@ await client.subscriptions.deleteAction({
 <dl>
 <dd>
 
-**request:** `Square.DeleteActionSubscriptionsRequest`
-
+**request:** `Square.DeleteActionSubscriptionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11079,7 +10997,6 @@ await client.subscriptions.deleteAction({
 
 Changes the [billing anchor date](https://developer.squareup.com/docs/subscriptions-api/subscription-billing#billing-dates)
 for a subscription.
-
 </dd>
 </dl>
 </dd>
@@ -11096,10 +11013,10 @@ for a subscription.
 ```typescript
 await client.subscriptions.changeBillingAnchorDate({
     subscriptionId: "subscription_id",
-    monthlyBillingAnchorDate: 1,
+    monthlyBillingAnchorDate: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11113,20 +11030,21 @@ await client.subscriptions.changeBillingAnchorDate({
 <dl>
 <dd>
 
-**request:** `Square.ChangeBillingAnchorDateRequest`
-
+**request:** `Square.ChangeBillingAnchorDateRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11144,10 +11062,9 @@ await client.subscriptions.changeBillingAnchorDate({
 <dl>
 <dd>
 
-Schedules a `CANCEL` action to cancel an active subscription. This
-sets the `canceled_date` field to the end of the active billing period. After this date,
+Schedules a `CANCEL` action to cancel an active subscription. This 
+sets the `canceled_date` field to the end of the active billing period. After this date, 
 the subscription status changes from ACTIVE to CANCELED.
-
 </dd>
 </dl>
 </dd>
@@ -11163,10 +11080,10 @@ the subscription status changes from ACTIVE to CANCELED.
 
 ```typescript
 await client.subscriptions.cancel({
-    subscriptionId: "subscription_id",
+    subscriptionId: "subscription_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11180,20 +11097,21 @@ await client.subscriptions.cancel({
 <dl>
 <dd>
 
-**request:** `Square.CancelSubscriptionsRequest`
-
+**request:** `Square.CancelSubscriptionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11212,7 +11130,6 @@ await client.subscriptions.cancel({
 <dd>
 
 Lists all [events](https://developer.squareup.com/docs/subscriptions-api/actions-events) for a specific subscription.
-
 </dd>
 </dl>
 </dd>
@@ -11230,7 +11147,7 @@ Lists all [events](https://developer.squareup.com/docs/subscriptions-api/actions
 const response = await client.subscriptions.listEvents({
     subscriptionId: "subscription_id",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -11240,13 +11157,13 @@ for await (const item of response) {
 let page = await client.subscriptions.listEvents({
     subscriptionId: "subscription_id",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11260,20 +11177,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.ListEventsSubscriptionsRequest`
-
+**request:** `Square.ListEventsSubscriptionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11292,7 +11210,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Schedules a `PAUSE` action to pause an active subscription.
-
 </dd>
 </dl>
 </dd>
@@ -11308,10 +11225,10 @@ Schedules a `PAUSE` action to pause an active subscription.
 
 ```typescript
 await client.subscriptions.pause({
-    subscriptionId: "subscription_id",
+    subscriptionId: "subscription_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11325,20 +11242,21 @@ await client.subscriptions.pause({
 <dl>
 <dd>
 
-**request:** `Square.PauseSubscriptionRequest`
-
+**request:** `Square.PauseSubscriptionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11357,7 +11275,6 @@ await client.subscriptions.pause({
 <dd>
 
 Schedules a `RESUME` action to resume a paused or a deactivated subscription.
-
 </dd>
 </dl>
 </dd>
@@ -11373,10 +11290,10 @@ Schedules a `RESUME` action to resume a paused or a deactivated subscription.
 
 ```typescript
 await client.subscriptions.resume({
-    subscriptionId: "subscription_id",
+    subscriptionId: "subscription_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11390,20 +11307,21 @@ await client.subscriptions.resume({
 <dl>
 <dd>
 
-**request:** `Square.ResumeSubscriptionRequest`
-
+**request:** `Square.ResumeSubscriptionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11421,9 +11339,8 @@ await client.subscriptions.resume({
 <dl>
 <dd>
 
-Schedules a `SWAP_PLAN` action to swap a subscription plan variation in an existing subscription.
+Schedules a `SWAP_PLAN` action to swap a subscription plan variation in an existing subscription. 
 For more information, see [Swap Subscription Plan Variations](https://developer.squareup.com/docs/subscriptions-api/swap-plan-variations).
-
 </dd>
 </dl>
 </dd>
@@ -11441,15 +11358,13 @@ For more information, see [Swap Subscription Plan Variations](https://developer.
 await client.subscriptions.swapPlan({
     subscriptionId: "subscription_id",
     newPlanVariationId: "FQ7CDXXWSLUJRPM3GFJSJGZ7",
-    phases: [
-        {
+    phases: [{
             ordinal: BigInt("0"),
-            orderTemplateId: "uhhnjH9osVv3shUADwaC0b3hNxQZY",
-        },
-    ],
+            orderTemplateId: "uhhnjH9osVv3shUADwaC0b3hNxQZY"
+        }]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11463,27 +11378,27 @@ await client.subscriptions.swapPlan({
 <dl>
 <dd>
 
-**request:** `Square.SwapPlanRequest`
-
+**request:** `Square.SwapPlanRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## TeamMembers
-
 <details><summary><code>client.teamMembers.<a href="/src/api/resources/teamMembers/client/Client.ts">create</a>({ ...params }) -> Square.CreateTeamMemberResponse</code></summary>
 <dl>
 <dd>
@@ -11498,12 +11413,10 @@ await client.subscriptions.swapPlan({
 
 Creates a single `TeamMember` object. The `TeamMember` object is returned on successful creates.
 You must provide the following values in your request to this endpoint:
-
 - `given_name`
 - `family_name`
 
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#createteammember).
-
 </dd>
 </dl>
 </dd>
@@ -11529,34 +11442,31 @@ await client.teamMembers.create({
         phoneNumber: "+14159283333",
         assignedLocations: {
             assignmentType: "EXPLICIT_LOCATIONS",
-            locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
+            locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"]
         },
         wageSetting: {
-            jobAssignments: [
-                {
+            jobAssignments: [{
                     payType: "SALARY",
                     annualRate: {
                         amount: BigInt("3000000"),
-                        currency: "USD",
+                        currency: "USD"
                     },
                     weeklyHours: 40,
-                    jobId: "FjS8x95cqHiMenw4f1NAUH4P",
-                },
-                {
+                    jobId: "FjS8x95cqHiMenw4f1NAUH4P"
+                }, {
                     payType: "HOURLY",
                     hourlyRate: {
                         amount: BigInt("2000"),
-                        currency: "USD",
+                        currency: "USD"
                     },
-                    jobId: "VDNpRv8da51NU8qZFC5zDWpF",
-                },
-            ],
-            isOvertimeExempt: true,
-        },
-    },
+                    jobId: "VDNpRv8da51NU8qZFC5zDWpF"
+                }],
+            isOvertimeExempt: true
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11570,20 +11480,21 @@ await client.teamMembers.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateTeamMemberRequest`
-
+**request:** `Square.CreateTeamMemberRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions`
+**requestOptions:** `TeamMembers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11607,7 +11518,6 @@ the request cannot be successfully processed, the request is not marked as faile
 contains explicit error information for the failed create.
 
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#bulk-create-team-members).
-
 </dd>
 </dl>
 </dd>
@@ -11633,9 +11543,9 @@ await client.teamMembers.batchCreate({
                 phoneNumber: "+14159283333",
                 assignedLocations: {
                     assignmentType: "EXPLICIT_LOCATIONS",
-                    locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
-                },
-            },
+                    locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"]
+                }
+            }
         },
         "idempotency-key-2": {
             teamMember: {
@@ -11645,14 +11555,14 @@ await client.teamMembers.batchCreate({
                 emailAddress: "jane_smith@gmail.com",
                 phoneNumber: "+14159223334",
                 assignedLocations: {
-                    assignmentType: "ALL_CURRENT_AND_FUTURE_LOCATIONS",
-                },
-            },
-        },
-    },
+                    assignmentType: "ALL_CURRENT_AND_FUTURE_LOCATIONS"
+                }
+            }
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11666,20 +11576,21 @@ await client.teamMembers.batchCreate({
 <dl>
 <dd>
 
-**request:** `Square.BatchCreateTeamMembersRequest`
-
+**request:** `Square.BatchCreateTeamMembersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions`
+**requestOptions:** `TeamMembers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11702,7 +11613,6 @@ This process is non-transactional and processes as much of the request as possib
 the request cannot be successfully processed, the request is not marked as failed, but the body of the response
 contains explicit error information for the failed update.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#bulk-update-team-members).
-
 </dd>
 </dl>
 </dd>
@@ -11729,9 +11639,9 @@ await client.teamMembers.batchUpdate({
                 emailAddress: "jane_smith@gmail.com",
                 phoneNumber: "+14159223334",
                 assignedLocations: {
-                    assignmentType: "ALL_CURRENT_AND_FUTURE_LOCATIONS",
-                },
-            },
+                    assignmentType: "ALL_CURRENT_AND_FUTURE_LOCATIONS"
+                }
+            }
         },
         "fpgteZNMaf0qOK-a4t6P": {
             teamMember: {
@@ -11744,14 +11654,14 @@ await client.teamMembers.batchUpdate({
                 phoneNumber: "+14159283333",
                 assignedLocations: {
                     assignmentType: "EXPLICIT_LOCATIONS",
-                    locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
-                },
-            },
-        },
-    },
+                    locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"]
+                }
+            }
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11765,20 +11675,21 @@ await client.teamMembers.batchUpdate({
 <dl>
 <dd>
 
-**request:** `Square.BatchUpdateTeamMembersRequest`
-
+**request:** `Square.BatchUpdateTeamMembersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions`
+**requestOptions:** `TeamMembers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11796,10 +11707,9 @@ await client.teamMembers.batchUpdate({
 <dl>
 <dd>
 
-Returns a paginated list of `TeamMember` objects for a business.
+Returns a paginated list of `TeamMember` objects for a business. 
 The list can be filtered by location IDs, `ACTIVE` or `INACTIVE` status, or whether
 the team member is the Square account owner.
-
 </dd>
 </dl>
 </dd>
@@ -11818,13 +11728,13 @@ await client.teamMembers.search({
     query: {
         filter: {
             locationIds: ["0G5P3VGACMMQZ"],
-            status: "ACTIVE",
-        },
+            status: "ACTIVE"
+        }
     },
-    limit: 10,
+    limit: 10
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11838,20 +11748,21 @@ await client.teamMembers.search({
 <dl>
 <dd>
 
-**request:** `Square.SearchTeamMembersRequest`
-
+**request:** `Square.SearchTeamMembersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions`
+**requestOptions:** `TeamMembers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11871,7 +11782,6 @@ await client.teamMembers.search({
 
 Retrieves a `TeamMember` object for the given `TeamMember.id`.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#retrieve-a-team-member).
-
 </dd>
 </dl>
 </dd>
@@ -11887,10 +11797,10 @@ Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/t
 
 ```typescript
 await client.teamMembers.get({
-    teamMemberId: "team_member_id",
+    teamMemberId: "team_member_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -11904,20 +11814,21 @@ await client.teamMembers.get({
 <dl>
 <dd>
 
-**request:** `Square.GetTeamMembersRequest`
-
+**request:** `Square.GetTeamMembersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions`
+**requestOptions:** `TeamMembers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -11937,7 +11848,6 @@ await client.teamMembers.get({
 
 Updates a single `TeamMember` object. The `TeamMember` object is returned on successful updates.
 Learn about [Troubleshooting the Team API](https://developer.squareup.com/docs/team/troubleshooting#update-a-team-member).
-
 </dd>
 </dl>
 </dd>
@@ -11964,35 +11874,32 @@ await client.teamMembers.update({
             phoneNumber: "+14159283333",
             assignedLocations: {
                 assignmentType: "EXPLICIT_LOCATIONS",
-                locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"],
+                locationIds: ["YSGH2WBKG94QZ", "GA2Y9HSJ8KRYT"]
             },
             wageSetting: {
-                jobAssignments: [
-                    {
+                jobAssignments: [{
                         payType: "SALARY",
                         annualRate: {
                             amount: BigInt("3000000"),
-                            currency: "USD",
+                            currency: "USD"
                         },
                         weeklyHours: 40,
-                        jobId: "FjS8x95cqHiMenw4f1NAUH4P",
-                    },
-                    {
+                        jobId: "FjS8x95cqHiMenw4f1NAUH4P"
+                    }, {
                         payType: "HOURLY",
                         hourlyRate: {
                             amount: BigInt("1200"),
-                            currency: "USD",
+                            currency: "USD"
                         },
-                        jobId: "VDNpRv8da51NU8qZFC5zDWpF",
-                    },
-                ],
-                isOvertimeExempt: true,
-            },
-        },
-    },
+                        jobId: "VDNpRv8da51NU8qZFC5zDWpF"
+                    }],
+                isOvertimeExempt: true
+            }
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12006,27 +11913,27 @@ await client.teamMembers.update({
 <dl>
 <dd>
 
-**request:** `Square.UpdateTeamMembersRequest`
-
+**request:** `Square.UpdateTeamMembersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions`
+**requestOptions:** `TeamMembers.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Team
-
 <details><summary><code>client.team.<a href="/src/api/resources/team/client/Client.ts">listJobs</a>({ ...params }) -> Square.ListJobsResponse</code></summary>
 <dl>
 <dd>
@@ -12040,7 +11947,6 @@ await client.teamMembers.update({
 <dd>
 
 Lists jobs in a seller account. Results are sorted by title in ascending order.
-
 </dd>
 </dl>
 </dd>
@@ -12056,10 +11962,10 @@ Lists jobs in a seller account. Results are sorted by title in ascending order.
 
 ```typescript
 await client.team.listJobs({
-    cursor: "cursor",
+    cursor: "cursor"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12073,20 +11979,21 @@ await client.team.listJobs({
 <dl>
 <dd>
 
-**request:** `Square.ListJobsRequest`
-
+**request:** `Square.ListJobsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions`
+**requestOptions:** `Team.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12106,7 +12013,6 @@ await client.team.listJobs({
 
 Creates a job in a seller account. A job defines a title and tip eligibility. Note that
 compensation is defined in a [job assignment](entity:JobAssignment) in a team member's wage setting.
-
 </dd>
 </dl>
 </dd>
@@ -12124,12 +12030,12 @@ compensation is defined in a [job assignment](entity:JobAssignment) in a team me
 await client.team.createJob({
     job: {
         title: "Cashier",
-        isTipEligible: true,
+        isTipEligible: true
     },
-    idempotencyKey: "idempotency-key-0",
+    idempotencyKey: "idempotency-key-0"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12143,20 +12049,21 @@ await client.team.createJob({
 <dl>
 <dd>
 
-**request:** `Square.CreateJobRequest`
-
+**request:** `Square.CreateJobRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions`
+**requestOptions:** `Team.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12175,7 +12082,6 @@ await client.team.createJob({
 <dd>
 
 Retrieves a specified job.
-
 </dd>
 </dl>
 </dd>
@@ -12191,10 +12097,10 @@ Retrieves a specified job.
 
 ```typescript
 await client.team.retrieveJob({
-    jobId: "job_id",
+    jobId: "job_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12208,20 +12114,21 @@ await client.team.retrieveJob({
 <dl>
 <dd>
 
-**request:** `Square.RetrieveJobRequest`
-
+**request:** `Square.RetrieveJobRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions`
+**requestOptions:** `Team.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12242,7 +12149,6 @@ await client.team.retrieveJob({
 Updates the title or tip eligibility of a job. Changes to the title propagate to all
 `JobAssignment`, `Shift`, and `TeamMemberWage` objects that reference the job ID. Changes to
 tip eligibility propagate to all `TeamMemberWage` objects that reference the job ID.
-
 </dd>
 </dl>
 </dd>
@@ -12261,11 +12167,11 @@ await client.team.updateJob({
     jobId: "job_id",
     job: {
         title: "Cashier 1",
-        isTipEligible: true,
-    },
+        isTipEligible: true
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12279,27 +12185,27 @@ await client.team.updateJob({
 <dl>
 <dd>
 
-**request:** `Square.UpdateJobRequest`
-
+**request:** `Square.UpdateJobRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions`
+**requestOptions:** `Team.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Terminal
-
 <details><summary><code>client.terminal.<a href="/src/api/resources/terminal/client/Client.ts">dismissTerminalAction</a>({ ...params }) -> Square.DismissTerminalActionResponse</code></summary>
 <dl>
 <dd>
@@ -12315,7 +12221,6 @@ await client.team.updateJob({
 Dismisses a Terminal action request if the status and type of the request permits it.
 
 See [Link and Dismiss Actions](https://developer.squareup.com/docs/terminal-api/advanced-features/custom-workflows/link-and-dismiss-actions) for more details.
-
 </dd>
 </dl>
 </dd>
@@ -12331,10 +12236,10 @@ See [Link and Dismiss Actions](https://developer.squareup.com/docs/terminal-api/
 
 ```typescript
 await client.terminal.dismissTerminalAction({
-    actionId: "action_id",
+    actionId: "action_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12348,20 +12253,21 @@ await client.terminal.dismissTerminalAction({
 <dl>
 <dd>
 
-**request:** `Square.DismissTerminalActionRequest`
-
+**request:** `Square.DismissTerminalActionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Terminal.RequestOptions`
+**requestOptions:** `Terminal.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12380,7 +12286,6 @@ await client.terminal.dismissTerminalAction({
 <dd>
 
 Dismisses a Terminal checkout request if the status and type of the request permits it.
-
 </dd>
 </dl>
 </dd>
@@ -12396,10 +12301,10 @@ Dismisses a Terminal checkout request if the status and type of the request perm
 
 ```typescript
 await client.terminal.dismissTerminalCheckout({
-    checkoutId: "checkout_id",
+    checkoutId: "checkout_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12413,20 +12318,21 @@ await client.terminal.dismissTerminalCheckout({
 <dl>
 <dd>
 
-**request:** `Square.DismissTerminalCheckoutRequest`
-
+**request:** `Square.DismissTerminalCheckoutRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Terminal.RequestOptions`
+**requestOptions:** `Terminal.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12445,7 +12351,6 @@ await client.terminal.dismissTerminalCheckout({
 <dd>
 
 Dismisses a Terminal refund request if the status and type of the request permits it.
-
 </dd>
 </dl>
 </dd>
@@ -12461,10 +12366,10 @@ Dismisses a Terminal refund request if the status and type of the request permit
 
 ```typescript
 await client.terminal.dismissTerminalRefund({
-    terminalRefundId: "terminal_refund_id",
+    terminalRefundId: "terminal_refund_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12478,27 +12383,27 @@ await client.terminal.dismissTerminalRefund({
 <dl>
 <dd>
 
-**request:** `Square.DismissTerminalRefundRequest`
-
+**request:** `Square.DismissTerminalRefundRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Terminal.RequestOptions`
+**requestOptions:** `Terminal.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## TransferOrders
-
 <details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">create</a>({ ...params }) -> Square.CreateTransferOrderResponse</code></summary>
 <dl>
 <dd>
@@ -12511,29 +12416,26 @@ await client.terminal.dismissTerminalRefund({
 <dl>
 <dd>
 
-Creates a new transfer order in [DRAFT](entity:TransferOrderStatus) status. A transfer order represents the intent
-to move [CatalogItemVariation](entity:CatalogItemVariation)s from one [Location](entity:Location) to another.
+Creates a new transfer order in [DRAFT](entity:TransferOrderStatus) status. A transfer order represents the intent 
+to move [CatalogItemVariation](entity:CatalogItemVariation)s from one [Location](entity:Location) to another. 
 The source and destination locations must be different and must belong to your Square account.
 
 In [DRAFT](entity:TransferOrderStatus) status, you can:
-
 - Add or remove items
 - Modify quantities
 - Update shipping information
 - Delete the entire order via [DeleteTransferOrder](api-endpoint:TransferOrders-DeleteTransferOrder)
 
 The request requires source_location_id and destination_location_id.
-Inventory levels are not affected until the order is started via
+Inventory levels are not affected until the order is started via 
 [StartTransferOrder](api-endpoint:TransferOrders-StartTransferOrder).
 
 Common integration points:
-
 - Sync with warehouse management systems
 - Automate regular stock transfers
 - Initialize transfers from inventory optimization systems
 
 Creates a [transfer_order.created](webhook:transfer_order.created) webhook event.
-
 </dd>
 </dl>
 </dd>
@@ -12557,20 +12459,17 @@ await client.transferOrders.create({
         notes: "Example transfer order for inventory redistribution between locations",
         trackingNumber: "TRACK123456789",
         createdByTeamMemberId: "EXAMPLE_TEAM_MEMBER_ID_789",
-        lineItems: [
-            {
+        lineItems: [{
                 itemVariationId: "EXAMPLE_ITEM_VARIATION_ID_001",
-                quantityOrdered: "5",
-            },
-            {
+                quantityOrdered: "5"
+            }, {
                 itemVariationId: "EXAMPLE_ITEM_VARIATION_ID_002",
-                quantityOrdered: "3",
-            },
-        ],
-    },
+                quantityOrdered: "3"
+            }]
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12584,20 +12483,21 @@ await client.transferOrders.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateTransferOrderRequest`
-
+**request:** `Square.CreateTransferOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions`
+**requestOptions:** `TransferOrders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12619,14 +12519,13 @@ Searches for transfer orders using filters. Returns a paginated list of matching
 [TransferOrder](entity:TransferOrder)s sorted by creation date.
 
 Common search scenarios:
-
 - Find orders for a source [Location](entity:Location)
 - Find orders for a destination [Location](entity:Location)
 - Find orders in a particular [TransferOrderStatus](entity:TransferOrderStatus)
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -12642,15 +12541,15 @@ const response = await client.transferOrders.search({
         filter: {
             sourceLocationIds: ["EXAMPLE_SOURCE_LOCATION_ID_123"],
             destinationLocationIds: ["EXAMPLE_DEST_LOCATION_ID_456"],
-            statuses: ["STARTED", "PARTIALLY_RECEIVED"],
+            statuses: ["STARTED", "PARTIALLY_RECEIVED"]
         },
         sort: {
             field: "UPDATED_AT",
-            order: "DESC",
-        },
+            order: "DESC"
+        }
     },
     cursor: "eyJsYXN0X3VwZGF0ZWRfYXQiOjE3NTMxMTg2NjQ4NzN9",
-    limit: 10,
+    limit: 10
 });
 for await (const item of response) {
     console.log(item);
@@ -12662,21 +12561,21 @@ let page = await client.transferOrders.search({
         filter: {
             sourceLocationIds: ["EXAMPLE_SOURCE_LOCATION_ID_123"],
             destinationLocationIds: ["EXAMPLE_DEST_LOCATION_ID_456"],
-            statuses: ["STARTED", "PARTIALLY_RECEIVED"],
+            statuses: ["STARTED", "PARTIALLY_RECEIVED"]
         },
         sort: {
             field: "UPDATED_AT",
-            order: "DESC",
-        },
+            order: "DESC"
+        }
     },
     cursor: "eyJsYXN0X3VwZGF0ZWRfYXQiOjE3NTMxMTg2NjQ4NzN9",
-    limit: 10,
+    limit: 10
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12690,20 +12589,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.SearchTransferOrdersRequest`
-
+**request:** `Square.SearchTransferOrdersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions`
+**requestOptions:** `TransferOrders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12728,10 +12628,10 @@ order details including:
 - Line items with ordered and received quantities
 - Source and destination [Location](entity:Location)s
 - Tracking information (if available)
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -12743,10 +12643,10 @@ order details including:
 
 ```typescript
 await client.transferOrders.get({
-    transferOrderId: "transfer_order_id",
+    transferOrderId: "transfer_order_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12760,20 +12660,21 @@ await client.transferOrders.get({
 <dl>
 <dd>
 
-**request:** `Square.GetTransferOrdersRequest`
-
+**request:** `Square.GetTransferOrdersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions`
+**requestOptions:** `TransferOrders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12795,7 +12696,6 @@ Updates an existing transfer order. This endpoint supports sparse updates,
 allowing you to modify specific fields without affecting others.
 
 Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.
-
 </dd>
 </dl>
 </dd>
@@ -12819,25 +12719,21 @@ await client.transferOrders.update({
         expectedAt: "2025-11-10T08:00:00Z",
         notes: "Updated: Priority transfer due to low stock at destination",
         trackingNumber: "TRACK987654321",
-        lineItems: [
-            {
+        lineItems: [{
                 uid: "1",
-                quantityOrdered: "7",
-            },
-            {
+                quantityOrdered: "7"
+            }, {
                 itemVariationId: "EXAMPLE_NEW_ITEM_VARIATION_ID_003",
-                quantityOrdered: "2",
-            },
-            {
+                quantityOrdered: "2"
+            }, {
                 uid: "2",
-                remove: true,
-            },
-        ],
+                remove: true
+            }]
     },
-    version: BigInt("1753109537351"),
+    version: BigInt("1753109537351")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12851,20 +12747,21 @@ await client.transferOrders.update({
 <dl>
 <dd>
 
-**request:** `Square.UpdateTransferOrderRequest`
-
+**request:** `Square.UpdateTransferOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions`
+**requestOptions:** `TransferOrders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12883,11 +12780,10 @@ await client.transferOrders.update({
 <dd>
 
 Deletes a transfer order in [DRAFT](entity:TransferOrderStatus) status.
-Only draft orders can be deleted. Once an order is started via
+Only draft orders can be deleted. Once an order is started via 
 [StartTransferOrder](api-endpoint:TransferOrders-StartTransferOrder), it can no longer be deleted.
 
 Creates a [transfer_order.deleted](webhook:transfer_order.deleted) webhook event.
-
 </dd>
 </dl>
 </dd>
@@ -12904,10 +12800,10 @@ Creates a [transfer_order.deleted](webhook:transfer_order.deleted) webhook event
 ```typescript
 await client.transferOrders.delete({
     transferOrderId: "transfer_order_id",
-    version: BigInt("1000000"),
+    version: BigInt("1000000")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12921,20 +12817,21 @@ await client.transferOrders.delete({
 <dl>
 <dd>
 
-**request:** `Square.DeleteTransferOrdersRequest`
-
+**request:** `Square.DeleteTransferOrdersRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions`
+**requestOptions:** `TransferOrders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -12952,18 +12849,16 @@ await client.transferOrders.delete({
 <dl>
 <dd>
 
-Cancels a transfer order in [STARTED](entity:TransferOrderStatus) or
+Cancels a transfer order in [STARTED](entity:TransferOrderStatus) or 
 [PARTIALLY_RECEIVED](entity:TransferOrderStatus) status. Any unreceived quantities will no
 longer be receivable and will be immediately returned to the source [Location](entity:Location)'s inventory.
 
 Common reasons for cancellation:
-
 - Items no longer needed at destination
 - Source location needs the inventory
 - Order created in error
 
 Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.
-
 </dd>
 </dl>
 </dd>
@@ -12981,10 +12876,10 @@ Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event
 await client.transferOrders.cancel({
     transferOrderId: "transfer_order_id",
     idempotencyKey: "65cc0586-3e82-4d08-b524-3885cffd52",
-    version: BigInt("1753117449752"),
+    version: BigInt("1753117449752")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -12998,20 +12893,21 @@ await client.transferOrders.cancel({
 <dl>
 <dd>
 
-**request:** `Square.CancelTransferOrderRequest`
-
+**request:** `Square.CancelTransferOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions`
+**requestOptions:** `TransferOrders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13033,7 +12929,6 @@ Records receipt of [CatalogItemVariation](entity:CatalogItemVariation)s for a tr
 This endpoint supports partial receiving - you can receive items in multiple batches.
 
 For each line item, you can specify:
-
 - Quantity received in good condition (added to destination inventory with [InventoryState](entity:InventoryState) of IN_STOCK)
 - Quantity damaged during transit/handling (added to destination inventory with [InventoryState](entity:InventoryState) of WASTE)
 - Quantity canceled (returned to source location's inventory)
@@ -13046,7 +12941,6 @@ When all items are either received, damaged, or canceled, the order moves to
 [COMPLETED](entity:TransferOrderStatus) status.
 
 Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.
-
 </dd>
 </dl>
 </dd>
@@ -13065,24 +12959,21 @@ await client.transferOrders.receive({
     transferOrderId: "transfer_order_id",
     idempotencyKey: "EXAMPLE_IDEMPOTENCY_KEY_101",
     receipt: {
-        lineItems: [
-            {
+        lineItems: [{
                 transferOrderLineUid: "transfer_order_line_uid",
                 quantityReceived: "3",
                 quantityDamaged: "1",
-                quantityCanceled: "1",
-            },
-            {
+                quantityCanceled: "1"
+            }, {
                 transferOrderLineUid: "transfer_order_line_uid",
                 quantityReceived: "2",
-                quantityCanceled: "1",
-            },
-        ],
+                quantityCanceled: "1"
+            }]
     },
-    version: BigInt("1753118664873"),
+    version: BigInt("1753118664873")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13096,20 +12987,21 @@ await client.transferOrders.receive({
 <dl>
 <dd>
 
-**request:** `Square.ReceiveTransferOrderRequest`
-
+**request:** `Square.ReceiveTransferOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions`
+**requestOptions:** `TransferOrders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13131,11 +13023,10 @@ Changes a [DRAFT](entity:TransferOrderStatus) transfer order to [STARTED](entity
 This decrements inventory at the source [Location](entity:Location) and marks it as in-transit.
 
 The order must be in [DRAFT](entity:TransferOrderStatus) status and have all required fields populated.
-Once started, the order can no longer be deleted, but it can be canceled via
+Once started, the order can no longer be deleted, but it can be canceled via 
 [CancelTransferOrder](api-endpoint:TransferOrders-CancelTransferOrder).
 
 Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event.
-
 </dd>
 </dl>
 </dd>
@@ -13153,10 +13044,10 @@ Creates a [transfer_order.updated](webhook:transfer_order.updated) webhook event
 await client.transferOrders.start({
     transferOrderId: "transfer_order_id",
     idempotencyKey: "EXAMPLE_IDEMPOTENCY_KEY_789",
-    version: BigInt("1753109537351"),
+    version: BigInt("1753109537351")
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13170,27 +13061,27 @@ await client.transferOrders.start({
 <dl>
 <dd>
 
-**request:** `Square.StartTransferOrderRequest`
-
+**request:** `Square.StartTransferOrderRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions`
+**requestOptions:** `TransferOrders.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Vendors
-
 <details><summary><code>client.vendors.<a href="/src/api/resources/vendors/client/Client.ts">batchCreate</a>({ ...params }) -> Square.BatchCreateVendorsResponse</code></summary>
 <dl>
 <dd>
@@ -13204,7 +13095,6 @@ await client.transferOrders.start({
 <dd>
 
 Creates one or more [Vendor](entity:Vendor) objects to represent suppliers to a seller.
-
 </dd>
 </dl>
 </dd>
@@ -13229,23 +13119,21 @@ await client.vendors.batchCreate({
                 locality: "New York",
                 administrativeDistrictLevel1: "NY",
                 postalCode: "10003",
-                country: "US",
+                country: "US"
             },
-            contacts: [
-                {
+            contacts: [{
                     name: "Joe Burrow",
                     emailAddress: "joe@joesfreshseafood.com",
                     phoneNumber: "1-212-555-4250",
-                    ordinal: 1,
-                },
-            ],
+                    ordinal: 1
+                }],
             accountNumber: "4025391",
-            note: "a vendor",
-        },
-    },
+            note: "a vendor"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13259,20 +13147,21 @@ await client.vendors.batchCreate({
 <dl>
 <dd>
 
-**request:** `Square.BatchCreateVendorsRequest`
-
+**request:** `Square.BatchCreateVendorsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions`
+**requestOptions:** `Vendors.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13291,7 +13180,6 @@ await client.vendors.batchCreate({
 <dd>
 
 Retrieves one or more vendors of specified [Vendor](entity:Vendor) IDs.
-
 </dd>
 </dl>
 </dd>
@@ -13307,10 +13195,10 @@ Retrieves one or more vendors of specified [Vendor](entity:Vendor) IDs.
 
 ```typescript
 await client.vendors.batchGet({
-    vendorIds: ["INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4"],
+    vendorIds: ["INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4"]
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13324,20 +13212,21 @@ await client.vendors.batchGet({
 <dl>
 <dd>
 
-**request:** `Square.BatchGetVendorsRequest`
-
+**request:** `Square.BatchGetVendorsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions`
+**requestOptions:** `Vendors.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13356,7 +13245,6 @@ await client.vendors.batchGet({
 <dd>
 
 Updates one or more of existing [Vendor](entity:Vendor) objects as suppliers to a seller.
-
 </dd>
 </dl>
 </dd>
@@ -13373,16 +13261,16 @@ Updates one or more of existing [Vendor](entity:Vendor) objects as suppliers to 
 ```typescript
 await client.vendors.batchUpdate({
     vendors: {
-        FMCYHBWT1TPL8MFH52PBMEN92A: {
-            vendor: {},
+        "FMCYHBWT1TPL8MFH52PBMEN92A": {
+            vendor: {}
         },
-        INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4: {
-            vendor: {},
-        },
-    },
+        "INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4": {
+            vendor: {}
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13396,20 +13284,21 @@ await client.vendors.batchUpdate({
 <dl>
 <dd>
 
-**request:** `Square.BatchUpdateVendorsRequest`
-
+**request:** `Square.BatchUpdateVendorsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions`
+**requestOptions:** `Vendors.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13428,7 +13317,6 @@ await client.vendors.batchUpdate({
 <dd>
 
 Creates a single [Vendor](entity:Vendor) object to represent a supplier to a seller.
-
 </dd>
 </dl>
 </dd>
@@ -13453,22 +13341,20 @@ await client.vendors.create({
             locality: "New York",
             administrativeDistrictLevel1: "NY",
             postalCode: "10003",
-            country: "US",
+            country: "US"
         },
-        contacts: [
-            {
+        contacts: [{
                 name: "Joe Burrow",
                 emailAddress: "joe@joesfreshseafood.com",
                 phoneNumber: "1-212-555-4250",
-                ordinal: 1,
-            },
-        ],
+                ordinal: 1
+            }],
         accountNumber: "4025391",
-        note: "a vendor",
-    },
+        note: "a vendor"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13482,20 +13368,21 @@ await client.vendors.create({
 <dl>
 <dd>
 
-**request:** `Square.CreateVendorRequest`
-
+**request:** `Square.CreateVendorRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions`
+**requestOptions:** `Vendors.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13514,7 +13401,6 @@ await client.vendors.create({
 <dd>
 
 Searches for vendors using a filter against supported [Vendor](entity:Vendor) properties and a supported sorter.
-
 </dd>
 </dl>
 </dd>
@@ -13530,8 +13416,8 @@ Searches for vendors using a filter against supported [Vendor](entity:Vendor) pr
 
 ```typescript
 await client.vendors.search();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13545,20 +13431,21 @@ await client.vendors.search();
 <dl>
 <dd>
 
-**request:** `Square.SearchVendorsRequest`
-
+**request:** `Square.SearchVendorsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions`
+**requestOptions:** `Vendors.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13577,7 +13464,6 @@ await client.vendors.search();
 <dd>
 
 Retrieves the vendor of a specified [Vendor](entity:Vendor) ID.
-
 </dd>
 </dl>
 </dd>
@@ -13593,10 +13479,10 @@ Retrieves the vendor of a specified [Vendor](entity:Vendor) ID.
 
 ```typescript
 await client.vendors.get({
-    vendorId: "vendor_id",
+    vendorId: "vendor_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13610,20 +13496,21 @@ await client.vendors.get({
 <dl>
 <dd>
 
-**request:** `Square.GetVendorsRequest`
-
+**request:** `Square.GetVendorsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions`
+**requestOptions:** `Vendors.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13642,7 +13529,6 @@ await client.vendors.get({
 <dd>
 
 Updates an existing [Vendor](entity:Vendor) object as a supplier to a seller.
-
 </dd>
 </dl>
 </dd>
@@ -13665,12 +13551,12 @@ await client.vendors.update({
             id: "INV_V_JDKYHBWT1D4F8MFH63DBMEN8Y4",
             name: "Jack's Chicken Shack",
             version: 1,
-            status: "ACTIVE",
-        },
-    },
+            status: "ACTIVE"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13684,27 +13570,27 @@ await client.vendors.update({
 <dl>
 <dd>
 
-**request:** `Square.UpdateVendorsRequest`
-
+**request:** `Square.UpdateVendorsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions`
+**requestOptions:** `Vendors.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Bookings CustomAttributeDefinitions
-
 <details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
 <dl>
 <dd>
@@ -13721,7 +13607,6 @@ Get all bookings custom attribute definitions.
 
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -13738,7 +13623,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 ```typescript
 const response = await client.bookings.customAttributeDefinitions.list({
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -13747,13 +13632,13 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.bookings.customAttributeDefinitions.list({
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13767,20 +13652,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.bookings.ListCustomAttributeDefinitionsRequest`
-
+**request:** `Square.bookings.ListCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13803,9 +13689,8 @@ Creates a bookings custom attribute definition.
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
-For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
-or _Appointments Premium_.
-
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 </dd>
 </dl>
 </dd>
@@ -13821,10 +13706,10 @@ or _Appointments Premium_.
 
 ```typescript
 await client.bookings.customAttributeDefinitions.create({
-    customAttributeDefinition: {},
+    customAttributeDefinition: {}
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13838,20 +13723,21 @@ await client.bookings.customAttributeDefinitions.create({
 <dl>
 <dd>
 
-**request:** `Square.bookings.CreateBookingCustomAttributeDefinitionRequest`
-
+**request:** `Square.bookings.CreateBookingCustomAttributeDefinitionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13873,7 +13759,6 @@ Retrieves a bookings custom attribute definition.
 
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -13890,10 +13775,10 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 ```typescript
 await client.bookings.customAttributeDefinitions.get({
     key: "key",
-    version: 1,
+    version: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13907,20 +13792,21 @@ await client.bookings.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**request:** `Square.bookings.GetCustomAttributeDefinitionsRequest`
-
+**request:** `Square.bookings.GetCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -13943,9 +13829,8 @@ Updates a bookings custom attribute definition.
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
-For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
-or _Appointments Premium_.
-
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 </dd>
 </dl>
 </dd>
@@ -13962,10 +13847,10 @@ or _Appointments Premium_.
 ```typescript
 await client.bookings.customAttributeDefinitions.update({
     key: "key",
-    customAttributeDefinition: {},
+    customAttributeDefinition: {}
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -13979,20 +13864,21 @@ await client.bookings.customAttributeDefinitions.update({
 <dl>
 <dd>
 
-**request:** `Square.bookings.UpdateBookingCustomAttributeDefinitionRequest`
-
+**request:** `Square.bookings.UpdateBookingCustomAttributeDefinitionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14015,9 +13901,8 @@ Deletes a bookings custom attribute definition.
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
-For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
-or _Appointments Premium_.
-
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 </dd>
 </dl>
 </dd>
@@ -14033,10 +13918,10 @@ or _Appointments Premium_.
 
 ```typescript
 await client.bookings.customAttributeDefinitions.delete({
-    key: "key",
+    key: "key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14050,27 +13935,27 @@ await client.bookings.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**request:** `Square.bookings.DeleteCustomAttributeDefinitionsRequest`
-
+**request:** `Square.bookings.DeleteCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Bookings CustomAttributes
-
 <details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">batchDelete</a>({ ...params }) -> Square.BulkDeleteBookingCustomAttributesResponse</code></summary>
 <dl>
 <dd>
@@ -14088,9 +13973,8 @@ Bulk deletes bookings custom attributes.
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
-For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
-or _Appointments Premium_.
-
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 </dd>
 </dl>
 </dd>
@@ -14107,14 +13991,14 @@ or _Appointments Premium_.
 ```typescript
 await client.bookings.customAttributes.batchDelete({
     values: {
-        key: {
+        "key": {
             bookingId: "booking_id",
-            key: "key",
-        },
-    },
+            key: "key"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14128,20 +14012,21 @@ await client.bookings.customAttributes.batchDelete({
 <dl>
 <dd>
 
-**request:** `Square.bookings.BulkDeleteBookingCustomAttributesRequest`
-
+**request:** `Square.bookings.BulkDeleteBookingCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14164,9 +14049,8 @@ Bulk upserts bookings custom attributes.
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
-For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
-or _Appointments Premium_.
-
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 </dd>
 </dl>
 </dd>
@@ -14183,14 +14067,14 @@ or _Appointments Premium_.
 ```typescript
 await client.bookings.customAttributes.batchUpsert({
     values: {
-        key: {
+        "key": {
             bookingId: "booking_id",
-            customAttribute: {},
-        },
-    },
+            customAttribute: {}
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14204,20 +14088,21 @@ await client.bookings.customAttributes.batchUpsert({
 <dl>
 <dd>
 
-**request:** `Square.bookings.BulkUpsertBookingCustomAttributesRequest`
-
+**request:** `Square.bookings.BulkUpsertBookingCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14239,7 +14124,6 @@ Lists a booking's custom attributes.
 
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -14258,7 +14142,7 @@ const response = await client.bookings.customAttributes.list({
     bookingId: "booking_id",
     limit: 1,
     cursor: "cursor",
-    withDefinitions: true,
+    withDefinitions: true
 });
 for await (const item of response) {
     console.log(item);
@@ -14269,13 +14153,13 @@ let page = await client.bookings.customAttributes.list({
     bookingId: "booking_id",
     limit: 1,
     cursor: "cursor",
-    withDefinitions: true,
+    withDefinitions: true
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14289,20 +14173,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.bookings.ListCustomAttributesRequest`
-
+**request:** `Square.bookings.ListCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14324,7 +14209,6 @@ Retrieves a bookings custom attribute.
 
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_READ` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ` and `APPOINTMENTS_READ` for the OAuth scope.
-
 </dd>
 </dl>
 </dd>
@@ -14343,10 +14227,10 @@ await client.bookings.customAttributes.get({
     bookingId: "booking_id",
     key: "key",
     withDefinition: true,
-    version: 1,
+    version: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14360,20 +14244,21 @@ await client.bookings.customAttributes.get({
 <dl>
 <dd>
 
-**request:** `Square.bookings.GetCustomAttributesRequest`
-
+**request:** `Square.bookings.GetCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14396,9 +14281,8 @@ Upserts a bookings custom attribute.
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
-For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
-or _Appointments Premium_.
-
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 </dd>
 </dl>
 </dd>
@@ -14416,10 +14300,10 @@ or _Appointments Premium_.
 await client.bookings.customAttributes.upsert({
     bookingId: "booking_id",
     key: "key",
-    customAttribute: {},
+    customAttribute: {}
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14433,20 +14317,21 @@ await client.bookings.customAttributes.upsert({
 <dl>
 <dd>
 
-**request:** `Square.bookings.UpsertBookingCustomAttributeRequest`
-
+**request:** `Square.bookings.UpsertBookingCustomAttributeRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14469,9 +14354,8 @@ Deletes a bookings custom attribute.
 To call this endpoint with buyer-level permissions, set `APPOINTMENTS_WRITE` for the OAuth scope.
 To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_WRITE` and `APPOINTMENTS_WRITE` for the OAuth scope.
 
-For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to _Appointments Plus_
-or _Appointments Premium_.
-
+For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus*
+or *Appointments Premium*.
 </dd>
 </dl>
 </dd>
@@ -14488,10 +14372,10 @@ or _Appointments Premium_.
 ```typescript
 await client.bookings.customAttributes.delete({
     bookingId: "booking_id",
-    key: "key",
+    key: "key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14505,27 +14389,27 @@ await client.bookings.customAttributes.delete({
 <dl>
 <dd>
 
-**request:** `Square.bookings.DeleteCustomAttributesRequest`
-
+**request:** `Square.bookings.DeleteCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Bookings LocationProfiles
-
 <details><summary><code>client.bookings.locationProfiles.<a href="/src/api/resources/bookings/resources/locationProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.LocationBookingProfile></code></summary>
 <dl>
 <dd>
@@ -14539,7 +14423,6 @@ await client.bookings.customAttributes.delete({
 <dd>
 
 Lists location booking profiles of a seller.
-
 </dd>
 </dl>
 </dd>
@@ -14556,7 +14439,7 @@ Lists location booking profiles of a seller.
 ```typescript
 const response = await client.bookings.locationProfiles.list({
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -14565,13 +14448,13 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.bookings.locationProfiles.list({
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14585,27 +14468,27 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.bookings.ListLocationProfilesRequest`
-
+**request:** `Square.bookings.ListLocationProfilesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `LocationProfiles.RequestOptions`
+**requestOptions:** `LocationProfiles.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Bookings TeamMemberProfiles
-
 <details><summary><code>client.bookings.teamMemberProfiles.<a href="/src/api/resources/bookings/resources/teamMemberProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.TeamMemberBookingProfile></code></summary>
 <dl>
 <dd>
@@ -14619,7 +14502,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Lists booking profiles for team members.
-
 </dd>
 </dl>
 </dd>
@@ -14638,7 +14520,7 @@ const response = await client.bookings.teamMemberProfiles.list({
     bookableOnly: true,
     limit: 1,
     cursor: "cursor",
-    locationId: "location_id",
+    locationId: "location_id"
 });
 for await (const item of response) {
     console.log(item);
@@ -14649,13 +14531,13 @@ let page = await client.bookings.teamMemberProfiles.list({
     bookableOnly: true,
     limit: 1,
     cursor: "cursor",
-    locationId: "location_id",
+    locationId: "location_id"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14669,20 +14551,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.bookings.ListTeamMemberProfilesRequest`
-
+**request:** `Square.bookings.ListTeamMemberProfilesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TeamMemberProfiles.RequestOptions`
+**requestOptions:** `TeamMemberProfiles.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14701,7 +14584,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Retrieves a team member's booking profile.
-
 </dd>
 </dl>
 </dd>
@@ -14717,10 +14599,10 @@ Retrieves a team member's booking profile.
 
 ```typescript
 await client.bookings.teamMemberProfiles.get({
-    teamMemberId: "team_member_id",
+    teamMemberId: "team_member_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14734,27 +14616,27 @@ await client.bookings.teamMemberProfiles.get({
 <dl>
 <dd>
 
-**request:** `Square.bookings.GetTeamMemberProfilesRequest`
-
+**request:** `Square.bookings.GetTeamMemberProfilesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TeamMemberProfiles.RequestOptions`
+**requestOptions:** `TeamMemberProfiles.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## CashDrawers Shifts
-
 <details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CashDrawerShiftSummary></code></summary>
 <dl>
 <dd>
@@ -14769,7 +14651,6 @@ await client.bookings.teamMemberProfiles.get({
 
 Provides the details for all of the cash drawer shifts for a location
 in a date range.
-
 </dd>
 </dl>
 </dd>
@@ -14790,7 +14671,7 @@ const response = await client.cashDrawers.shifts.list({
     beginTime: "begin_time",
     endTime: "end_time",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -14803,13 +14684,13 @@ let page = await client.cashDrawers.shifts.list({
     beginTime: "begin_time",
     endTime: "end_time",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14823,20 +14704,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.cashDrawers.ListShiftsRequest`
-
+**request:** `Square.cashDrawers.ListShiftsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions`
+**requestOptions:** `Shifts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14856,7 +14738,6 @@ while (page.hasNextPage()) {
 
 Provides the summary details for a single cash drawer shift. See
 [ListCashDrawerShiftEvents](api-endpoint:CashDrawers-ListCashDrawerShiftEvents) for a list of cash drawer shift events.
-
 </dd>
 </dl>
 </dd>
@@ -14873,10 +14754,10 @@ Provides the summary details for a single cash drawer shift. See
 ```typescript
 await client.cashDrawers.shifts.get({
     shiftId: "shift_id",
-    locationId: "location_id",
+    locationId: "location_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14890,20 +14771,21 @@ await client.cashDrawers.shifts.get({
 <dl>
 <dd>
 
-**request:** `Square.cashDrawers.GetShiftsRequest`
-
+**request:** `Square.cashDrawers.GetShiftsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions`
+**requestOptions:** `Shifts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -14922,7 +14804,6 @@ await client.cashDrawers.shifts.get({
 <dd>
 
 Provides a paginated list of events for a single cash drawer shift.
-
 </dd>
 </dl>
 </dd>
@@ -14941,7 +14822,7 @@ const response = await client.cashDrawers.shifts.listEvents({
     shiftId: "shift_id",
     locationId: "location_id",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -14952,13 +14833,13 @@ let page = await client.cashDrawers.shifts.listEvents({
     shiftId: "shift_id",
     locationId: "location_id",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -14972,27 +14853,27 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.cashDrawers.ListEventsShiftsRequest`
-
+**request:** `Square.cashDrawers.ListEventsShiftsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions`
+**requestOptions:** `Shifts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Catalog Images
-
 <details><summary><code>client.catalog.images.<a href="/src/api/resources/catalog/resources/images/client/Client.ts">create</a>({ ...params }) -> Square.CreateCatalogImageResponse</code></summary>
 <dl>
 <dd>
@@ -15011,7 +14892,6 @@ is not specified.
 
 This `CreateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in
 JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
-
 </dd>
 </dl>
 </dd>
@@ -15027,8 +14907,8 @@ JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
 
 ```typescript
 await client.catalog.images.create({});
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15042,20 +14922,21 @@ await client.catalog.images.create({});
 <dl>
 <dd>
 
-**request:** `Square.catalog.CreateImagesRequest`
-
+**request:** `Square.catalog.CreateImagesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Images.RequestOptions`
+**requestOptions:** `Images.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -15077,7 +14958,6 @@ Uploads a new image file to replace the existing one in the specified [CatalogIm
 
 This `UpdateCatalogImage` endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in
 JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
-
 </dd>
 </dl>
 </dd>
@@ -15093,10 +14973,10 @@ JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
 
 ```typescript
 await client.catalog.images.update({
-    imageId: "image_id",
+    imageId: "image_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15110,27 +14990,27 @@ await client.catalog.images.update({
 <dl>
 <dd>
 
-**request:** `Square.catalog.UpdateImagesRequest`
-
+**request:** `Square.catalog.UpdateImagesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Images.RequestOptions`
+**requestOptions:** `Images.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Catalog Object
-
 <details><summary><code>client.catalog.object.<a href="/src/api/resources/catalog/resources/object/client/Client.ts">upsert</a>({ ...params }) -> Square.UpsertCatalogObjectResponse</code></summary>
 <dl>
 <dd>
@@ -15148,7 +15028,6 @@ Creates a new or updates the specified [CatalogObject](entity:CatalogObject).
 To ensure consistency, only one update request is processed at a time per seller account.
 While one (batch or non-batch) update request is being processed, other (batched and non-batched)
 update requests are rejected with the `429` error code.
-
 </dd>
 </dl>
 </dd>
@@ -15167,11 +15046,11 @@ await client.catalog.object.upsert({
     idempotencyKey: "af3d1afc-7212-4300-b463-0bfc5314a5ae",
     object: {
         type: "ITEM",
-        id: "id",
-    },
+        id: "id"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15185,20 +15064,21 @@ await client.catalog.object.upsert({
 <dl>
 <dd>
 
-**request:** `Square.catalog.UpsertCatalogObjectRequest`
-
+**request:** `Square.catalog.UpsertCatalogObjectRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Object_.RequestOptions`
+**requestOptions:** `Object_.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -15223,7 +15103,6 @@ information including: [CatalogItemVariation](entity:CatalogItemVariation)
 children, references to its
 [CatalogModifierList](entity:CatalogModifierList) objects, and the ids of
 any [CatalogTax](entity:CatalogTax) objects that apply to it.
-
 </dd>
 </dl>
 </dd>
@@ -15242,10 +15121,10 @@ await client.catalog.object.get({
     objectId: "object_id",
     includeRelatedObjects: true,
     catalogVersion: BigInt("1000000"),
-    includeCategoryPathToRoot: true,
+    includeCategoryPathToRoot: true
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15259,20 +15138,21 @@ await client.catalog.object.get({
 <dl>
 <dd>
 
-**request:** `Square.catalog.GetObjectRequest`
-
+**request:** `Square.catalog.GetObjectRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Object_.RequestOptions`
+**requestOptions:** `Object_.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -15300,7 +15180,6 @@ will also delete all of its
 To ensure consistency, only one delete request is processed at a time per seller account.
 While one (batch or non-batch) delete request is being processed, other (batched and non-batched)
 delete requests are rejected with the `429` error code.
-
 </dd>
 </dl>
 </dd>
@@ -15316,10 +15195,10 @@ delete requests are rejected with the `429` error code.
 
 ```typescript
 await client.catalog.object.delete({
-    objectId: "object_id",
+    objectId: "object_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15333,27 +15212,27 @@ await client.catalog.object.delete({
 <dl>
 <dd>
 
-**request:** `Square.catalog.DeleteObjectRequest`
-
+**request:** `Square.catalog.DeleteObjectRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Object_.RequestOptions`
+**requestOptions:** `Object_.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Checkout PaymentLinks
-
 <details><summary><code>client.checkout.paymentLinks.<a href="/src/api/resources/checkout/resources/paymentLinks/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.PaymentLink></code></summary>
 <dl>
 <dd>
@@ -15367,7 +15246,6 @@ await client.catalog.object.delete({
 <dd>
 
 Lists all payment links.
-
 </dd>
 </dl>
 </dd>
@@ -15384,7 +15262,7 @@ Lists all payment links.
 ```typescript
 const response = await client.checkout.paymentLinks.list({
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -15393,13 +15271,13 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.checkout.paymentLinks.list({
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15413,20 +15291,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.checkout.ListPaymentLinksRequest`
-
+**request:** `Square.checkout.ListPaymentLinksRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `PaymentLinks.RequestOptions`
+**requestOptions:** `PaymentLinks.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -15445,7 +15324,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Creates a Square-hosted checkout page. Applications can share the resulting payment link with their buyer to pay for goods and services.
-
 </dd>
 </dl>
 </dd>
@@ -15466,13 +15344,13 @@ await client.checkout.paymentLinks.create({
         name: "Auto Detailing",
         priceMoney: {
             amount: BigInt("10000"),
-            currency: "USD",
+            currency: "USD"
         },
-        locationId: "A9Y43N9ABXZBP",
-    },
+        locationId: "A9Y43N9ABXZBP"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15486,20 +15364,21 @@ await client.checkout.paymentLinks.create({
 <dl>
 <dd>
 
-**request:** `Square.checkout.CreatePaymentLinkRequest`
-
+**request:** `Square.checkout.CreatePaymentLinkRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `PaymentLinks.RequestOptions`
+**requestOptions:** `PaymentLinks.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -15518,7 +15397,6 @@ await client.checkout.paymentLinks.create({
 <dd>
 
 Retrieves a payment link.
-
 </dd>
 </dl>
 </dd>
@@ -15534,10 +15412,10 @@ Retrieves a payment link.
 
 ```typescript
 await client.checkout.paymentLinks.get({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15551,20 +15429,21 @@ await client.checkout.paymentLinks.get({
 <dl>
 <dd>
 
-**request:** `Square.checkout.GetPaymentLinksRequest`
-
+**request:** `Square.checkout.GetPaymentLinksRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `PaymentLinks.RequestOptions`
+**requestOptions:** `PaymentLinks.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -15583,9 +15462,8 @@ await client.checkout.paymentLinks.get({
 <dd>
 
 Updates a payment link. You can update the `payment_link` fields such as
-`description`, `checkout_options`, and `pre_populated_data`.
+`description`, `checkout_options`, and  `pre_populated_data`.
 You cannot update other fields such as the `order_id`, `version`, `URL`, or `timestamp` field.
-
 </dd>
 </dl>
 </dd>
@@ -15605,12 +15483,12 @@ await client.checkout.paymentLinks.update({
     paymentLink: {
         version: 1,
         checkoutOptions: {
-            askForShippingAddress: true,
-        },
-    },
+            askForShippingAddress: true
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15624,20 +15502,21 @@ await client.checkout.paymentLinks.update({
 <dl>
 <dd>
 
-**request:** `Square.checkout.UpdatePaymentLinkRequest`
-
+**request:** `Square.checkout.UpdatePaymentLinkRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `PaymentLinks.RequestOptions`
+**requestOptions:** `PaymentLinks.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -15656,7 +15535,6 @@ await client.checkout.paymentLinks.update({
 <dd>
 
 Deletes a payment link.
-
 </dd>
 </dl>
 </dd>
@@ -15672,10 +15550,10 @@ Deletes a payment link.
 
 ```typescript
 await client.checkout.paymentLinks.delete({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15689,27 +15567,27 @@ await client.checkout.paymentLinks.delete({
 <dl>
 <dd>
 
-**request:** `Square.checkout.DeletePaymentLinksRequest`
-
+**request:** `Square.checkout.DeletePaymentLinksRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `PaymentLinks.RequestOptions`
+**requestOptions:** `PaymentLinks.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Customers CustomAttributeDefinitions
-
 <details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
 <dl>
 <dd>
@@ -15728,7 +15606,6 @@ When all response pages are retrieved, the results include all custom attribute 
 that are visible to the requesting application, including those that are created by other
 applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that
 seller-defined custom attributes (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -15745,7 +15622,7 @@ seller-defined custom attributes (also known as custom fields) are always set to
 ```typescript
 const response = await client.customers.customAttributeDefinitions.list({
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -15754,13 +15631,13 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.customers.customAttributeDefinitions.list({
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15774,20 +15651,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.customers.ListCustomAttributeDefinitionsRequest`
-
+**request:** `Square.customers.ListCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -15816,7 +15694,6 @@ to set the custom attribute for customer profiles in the seller's Customer Direc
 
 Sellers can view all custom attributes in exported customer data, including those set to
 `VISIBILITY_HIDDEN`.
-
 </dd>
 </dl>
 </dd>
@@ -15835,15 +15712,15 @@ await client.customers.customAttributeDefinitions.create({
     customAttributeDefinition: {
         key: "favoritemovie",
         schema: {
-            $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
         },
         name: "Favorite Movie",
         description: "The favorite movie of the customer.",
-        visibility: "VISIBILITY_HIDDEN",
-    },
+        visibility: "VISIBILITY_HIDDEN"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15857,20 +15734,21 @@ await client.customers.customAttributeDefinitions.create({
 <dl>
 <dd>
 
-**request:** `Square.customers.CreateCustomerCustomAttributeDefinitionRequest`
-
+**request:** `Square.customers.CreateCustomerCustomAttributeDefinitionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -15893,7 +15771,6 @@ Retrieves a customer-related [custom attribute definition](entity:CustomAttribut
 To retrieve a custom attribute definition created by another application, the `visibility`
 setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -15910,10 +15787,10 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note t
 ```typescript
 await client.customers.customAttributeDefinitions.get({
     key: "key",
-    version: 1,
+    version: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -15927,20 +15804,21 @@ await client.customers.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**request:** `Square.customers.GetCustomAttributeDefinitionsRequest`
-
+**request:** `Square.customers.GetCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -15965,7 +15843,6 @@ Use this endpoint to update the following fields: `name`, `description`, `visibi
 
 Only the definition owner can update a custom attribute definition. Note that sellers can view
 all custom attributes in exported customer data, including those set to `VISIBILITY_HIDDEN`.
-
 </dd>
 </dl>
 </dd>
@@ -15984,11 +15861,11 @@ await client.customers.customAttributeDefinitions.update({
     key: "key",
     customAttributeDefinition: {
         description: "Update the description as desired.",
-        visibility: "VISIBILITY_READ_ONLY",
-    },
+        visibility: "VISIBILITY_READ_ONLY"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16002,20 +15879,21 @@ await client.customers.customAttributeDefinitions.update({
 <dl>
 <dd>
 
-**request:** `Square.customers.UpdateCustomerCustomAttributeDefinitionRequest`
-
+**request:** `Square.customers.UpdateCustomerCustomAttributeDefinitionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -16039,7 +15917,6 @@ Deleting a custom attribute definition also deletes the corresponding custom att
 all customer profiles in the seller's Customer Directory.
 
 Only the definition owner can delete a custom attribute definition.
-
 </dd>
 </dl>
 </dd>
@@ -16055,10 +15932,10 @@ Only the definition owner can delete a custom attribute definition.
 
 ```typescript
 await client.customers.customAttributeDefinitions.delete({
-    key: "key",
+    key: "key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16072,20 +15949,21 @@ await client.customers.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**request:** `Square.customers.DeleteCustomAttributeDefinitionsRequest`
-
+**request:** `Square.customers.DeleteCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -16117,7 +15995,6 @@ of the corresponding request.
 To create or update a custom attribute owned by another application, the `visibility` setting
 must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -16134,45 +16011,45 @@ must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attribut
 ```typescript
 await client.customers.customAttributeDefinitions.batchUpsert({
     values: {
-        id1: {
+        "id1": {
             customerId: "N3NCVYY3WS27HF0HKANA3R9FP8",
             customAttribute: {
                 key: "favoritemovie",
-                value: "Dune",
-            },
+                value: "Dune"
+            }
         },
-        id2: {
+        "id2": {
             customerId: "SY8EMWRNDN3TQDP2H4KS1QWMMM",
             customAttribute: {
                 key: "ownsmovie",
-                value: false,
-            },
+                value: false
+            }
         },
-        id3: {
+        "id3": {
             customerId: "SY8EMWRNDN3TQDP2H4KS1QWMMM",
             customAttribute: {
                 key: "favoritemovie",
-                value: "Star Wars",
-            },
+                value: "Star Wars"
+            }
         },
-        id4: {
+        "id4": {
             customerId: "N3NCVYY3WS27HF0HKANA3R9FP8",
             customAttribute: {
                 key: "square:a0f1505a-2aa1-490d-91a8-8d31ff181808",
-                value: "10.5",
-            },
+                value: "10.5"
+            }
         },
-        id5: {
+        "id5": {
             customerId: "70548QG1HN43B05G0KCZ4MMC1G",
             customAttribute: {
                 key: "sq0ids-0evKIskIGaY45fCyNL66aw:backupemail",
-                value: "fake-email@squareup.com",
-            },
-        },
-    },
+                value: "fake-email@squareup.com"
+            }
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16186,27 +16063,27 @@ await client.customers.customAttributeDefinitions.batchUpsert({
 <dl>
 <dd>
 
-**request:** `Square.customers.BatchUpsertCustomerCustomAttributesRequest`
-
+**request:** `Square.customers.BatchUpsertCustomerCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Customers Groups
-
 <details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomerGroup></code></summary>
 <dl>
 <dd>
@@ -16220,7 +16097,6 @@ await client.customers.customAttributeDefinitions.batchUpsert({
 <dd>
 
 Retrieves the list of customer groups of a business.
-
 </dd>
 </dl>
 </dd>
@@ -16237,7 +16113,7 @@ Retrieves the list of customer groups of a business.
 ```typescript
 const response = await client.customers.groups.list({
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -16246,13 +16122,13 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.customers.groups.list({
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16266,20 +16142,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.customers.ListGroupsRequest`
-
+**request:** `Square.customers.ListGroupsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions`
+**requestOptions:** `Groups.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -16300,7 +16177,6 @@ while (page.hasNextPage()) {
 Creates a new customer group for a business.
 
 The request must include the `name` value of the group.
-
 </dd>
 </dl>
 </dd>
@@ -16317,11 +16193,11 @@ The request must include the `name` value of the group.
 ```typescript
 await client.customers.groups.create({
     group: {
-        name: "Loyal Customers",
-    },
+        name: "Loyal Customers"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16335,20 +16211,21 @@ await client.customers.groups.create({
 <dl>
 <dd>
 
-**request:** `Square.customers.CreateCustomerGroupRequest`
-
+**request:** `Square.customers.CreateCustomerGroupRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions`
+**requestOptions:** `Groups.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -16367,7 +16244,6 @@ await client.customers.groups.create({
 <dd>
 
 Retrieves a specific customer group as identified by the `group_id` value.
-
 </dd>
 </dl>
 </dd>
@@ -16383,10 +16259,10 @@ Retrieves a specific customer group as identified by the `group_id` value.
 
 ```typescript
 await client.customers.groups.get({
-    groupId: "group_id",
+    groupId: "group_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16400,20 +16276,21 @@ await client.customers.groups.get({
 <dl>
 <dd>
 
-**request:** `Square.customers.GetGroupsRequest`
-
+**request:** `Square.customers.GetGroupsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions`
+**requestOptions:** `Groups.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -16432,7 +16309,6 @@ await client.customers.groups.get({
 <dd>
 
 Updates a customer group as identified by the `group_id` value.
-
 </dd>
 </dl>
 </dd>
@@ -16450,11 +16326,11 @@ Updates a customer group as identified by the `group_id` value.
 await client.customers.groups.update({
     groupId: "group_id",
     group: {
-        name: "Loyal Customers",
-    },
+        name: "Loyal Customers"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16468,20 +16344,21 @@ await client.customers.groups.update({
 <dl>
 <dd>
 
-**request:** `Square.customers.UpdateCustomerGroupRequest`
-
+**request:** `Square.customers.UpdateCustomerGroupRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions`
+**requestOptions:** `Groups.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -16500,7 +16377,6 @@ await client.customers.groups.update({
 <dd>
 
 Deletes a customer group as identified by the `group_id` value.
-
 </dd>
 </dl>
 </dd>
@@ -16516,10 +16392,10 @@ Deletes a customer group as identified by the `group_id` value.
 
 ```typescript
 await client.customers.groups.delete({
-    groupId: "group_id",
+    groupId: "group_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16533,20 +16409,21 @@ await client.customers.groups.delete({
 <dl>
 <dd>
 
-**request:** `Square.customers.DeleteGroupsRequest`
-
+**request:** `Square.customers.DeleteGroupsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions`
+**requestOptions:** `Groups.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -16568,7 +16445,6 @@ Adds a group membership to a customer.
 
 The customer is identified by the `customer_id` value
 and the customer group is identified by the `group_id` value.
-
 </dd>
 </dl>
 </dd>
@@ -16585,10 +16461,10 @@ and the customer group is identified by the `group_id` value.
 ```typescript
 await client.customers.groups.add({
     customerId: "customer_id",
-    groupId: "group_id",
+    groupId: "group_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16602,20 +16478,21 @@ await client.customers.groups.add({
 <dl>
 <dd>
 
-**request:** `Square.customers.AddGroupsRequest`
-
+**request:** `Square.customers.AddGroupsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions`
+**requestOptions:** `Groups.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -16637,7 +16514,6 @@ Removes a group membership from a customer.
 
 The customer is identified by the `customer_id` value
 and the customer group is identified by the `group_id` value.
-
 </dd>
 </dl>
 </dd>
@@ -16654,10 +16530,10 @@ and the customer group is identified by the `group_id` value.
 ```typescript
 await client.customers.groups.remove({
     customerId: "customer_id",
-    groupId: "group_id",
+    groupId: "group_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16671,27 +16547,27 @@ await client.customers.groups.remove({
 <dl>
 <dd>
 
-**request:** `Square.customers.RemoveGroupsRequest`
-
+**request:** `Square.customers.RemoveGroupsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions`
+**requestOptions:** `Groups.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Customers Segments
-
 <details><summary><code>client.customers.segments.<a href="/src/api/resources/customers/resources/segments/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomerSegment></code></summary>
 <dl>
 <dd>
@@ -16705,7 +16581,6 @@ await client.customers.groups.remove({
 <dd>
 
 Retrieves the list of customer segments of a business.
-
 </dd>
 </dl>
 </dd>
@@ -16722,7 +16597,7 @@ Retrieves the list of customer segments of a business.
 ```typescript
 const response = await client.customers.segments.list({
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -16731,13 +16606,13 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.customers.segments.list({
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16751,20 +16626,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.customers.ListSegmentsRequest`
-
+**request:** `Square.customers.ListSegmentsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Segments.RequestOptions`
+**requestOptions:** `Segments.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -16783,7 +16659,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Retrieves a specific customer segment as identified by the `segment_id` value.
-
 </dd>
 </dl>
 </dd>
@@ -16799,10 +16674,10 @@ Retrieves a specific customer segment as identified by the `segment_id` value.
 
 ```typescript
 await client.customers.segments.get({
-    segmentId: "segment_id",
+    segmentId: "segment_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16816,27 +16691,27 @@ await client.customers.segments.get({
 <dl>
 <dd>
 
-**request:** `Square.customers.GetSegmentsRequest`
-
+**request:** `Square.customers.GetSegmentsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Segments.RequestOptions`
+**requestOptions:** `Segments.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Customers Cards
-
 <details><summary><code>client.customers.cards.<a href="/src/api/resources/customers/resources/cards/client/Client.ts">create</a>({ ...params }) -> Square.CreateCustomerCardResponse</code></summary>
 <dl>
 <dd>
@@ -16854,7 +16729,6 @@ Adds a card on file to an existing customer.
 As with charges, calls to `CreateCustomerCard` are idempotent. Multiple
 calls with the same card nonce return the same card record that was created
 with the provided nonce during the _first_ call.
-
 </dd>
 </dl>
 </dd>
@@ -16878,12 +16752,12 @@ await client.customers.cards.create({
         locality: "New York",
         administrativeDistrictLevel1: "NY",
         postalCode: "10003",
-        country: "US",
+        country: "US"
     },
-    cardholderName: "Amelia Earhart",
+    cardholderName: "Amelia Earhart"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16897,20 +16771,21 @@ await client.customers.cards.create({
 <dl>
 <dd>
 
-**request:** `Square.customers.CreateCustomerCardRequest`
-
+**request:** `Square.customers.CreateCustomerCardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions`
+**requestOptions:** `Cards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -16929,7 +16804,6 @@ await client.customers.cards.create({
 <dd>
 
 Removes a card on file from a customer.
-
 </dd>
 </dl>
 </dd>
@@ -16946,10 +16820,10 @@ Removes a card on file from a customer.
 ```typescript
 await client.customers.cards.delete({
     customerId: "customer_id",
-    cardId: "card_id",
+    cardId: "card_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -16963,27 +16837,27 @@ await client.customers.cards.delete({
 <dl>
 <dd>
 
-**request:** `Square.customers.DeleteCardsRequest`
-
+**request:** `Square.customers.DeleteCardsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions`
+**requestOptions:** `Cards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Customers CustomAttributes
-
 <details><summary><code>client.customers.customAttributes.<a href="/src/api/resources/customers/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
 <dl>
 <dd>
@@ -17004,7 +16878,6 @@ in the same call.
 When all response pages are retrieved, the results include all custom attributes that are
 visible to the requesting application, including those that are owned by other applications
 and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -17023,7 +16896,7 @@ const response = await client.customers.customAttributes.list({
     customerId: "customer_id",
     limit: 1,
     cursor: "cursor",
-    withDefinitions: true,
+    withDefinitions: true
 });
 for await (const item of response) {
     console.log(item);
@@ -17034,13 +16907,13 @@ let page = await client.customers.customAttributes.list({
     customerId: "customer_id",
     limit: 1,
     cursor: "cursor",
-    withDefinitions: true,
+    withDefinitions: true
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17054,20 +16927,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.customers.ListCustomAttributesRequest`
-
+**request:** `Square.customers.ListCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -17093,7 +16967,6 @@ in the same call.
 To retrieve a custom attribute owned by another application, the `visibility` setting must be
 `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -17112,10 +16985,10 @@ await client.customers.customAttributes.get({
     customerId: "customer_id",
     key: "key",
     withDefinition: true,
-    version: 1,
+    version: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17129,20 +17002,21 @@ await client.customers.customAttributes.get({
 <dl>
 <dd>
 
-**request:** `Square.customers.GetCustomAttributesRequest`
-
+**request:** `Square.customers.GetCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -17169,7 +17043,6 @@ is created using the [CreateCustomerCustomAttributeDefinition](api-endpoint:Cust
 To create or update a custom attribute owned by another application, the `visibility` setting
 must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -17188,11 +17061,11 @@ await client.customers.customAttributes.upsert({
     customerId: "customer_id",
     key: "key",
     customAttribute: {
-        value: "Dune",
-    },
+        value: "Dune"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17206,20 +17079,21 @@ await client.customers.customAttributes.upsert({
 <dl>
 <dd>
 
-**request:** `Square.customers.UpsertCustomerCustomAttributeRequest`
-
+**request:** `Square.customers.UpsertCustomerCustomAttributeRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -17242,7 +17116,6 @@ Deletes a [custom attribute](entity:CustomAttribute) associated with a customer 
 To delete a custom attribute owned by another application, the `visibility` setting must be
 `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -17259,10 +17132,10 @@ To delete a custom attribute owned by another application, the `visibility` sett
 ```typescript
 await client.customers.customAttributes.delete({
     customerId: "customer_id",
-    key: "key",
+    key: "key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17276,27 +17149,27 @@ await client.customers.customAttributes.delete({
 <dl>
 <dd>
 
-**request:** `Square.customers.DeleteCustomAttributesRequest`
-
+**request:** `Square.customers.DeleteCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Devices Codes
-
 <details><summary><code>client.devices.codes.<a href="/src/api/resources/devices/resources/codes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.DeviceCode></code></summary>
 <dl>
 <dd>
@@ -17310,7 +17183,6 @@ await client.customers.customAttributes.delete({
 <dd>
 
 Lists all DeviceCodes associated with the merchant.
-
 </dd>
 </dl>
 </dd>
@@ -17329,7 +17201,7 @@ const response = await client.devices.codes.list({
     cursor: "cursor",
     locationId: "location_id",
     productType: "TERMINAL_API",
-    status: "UNKNOWN",
+    status: "UNKNOWN"
 });
 for await (const item of response) {
     console.log(item);
@@ -17340,13 +17212,13 @@ let page = await client.devices.codes.list({
     cursor: "cursor",
     locationId: "location_id",
     productType: "TERMINAL_API",
-    status: "UNKNOWN",
+    status: "UNKNOWN"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17360,20 +17232,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.devices.ListCodesRequest`
-
+**request:** `Square.devices.ListCodesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Codes.RequestOptions`
+**requestOptions:** `Codes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -17393,7 +17266,6 @@ while (page.hasNextPage()) {
 
 Creates a DeviceCode that can be used to login to a Square Terminal device to enter the connected
 terminal mode.
-
 </dd>
 </dl>
 </dd>
@@ -17413,11 +17285,11 @@ await client.devices.codes.create({
     deviceCode: {
         name: "Counter 1",
         productType: "TERMINAL_API",
-        locationId: "B5E4484SHHNYH",
-    },
+        locationId: "B5E4484SHHNYH"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17431,20 +17303,21 @@ await client.devices.codes.create({
 <dl>
 <dd>
 
-**request:** `Square.devices.CreateDeviceCodeRequest`
-
+**request:** `Square.devices.CreateDeviceCodeRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Codes.RequestOptions`
+**requestOptions:** `Codes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -17463,7 +17336,6 @@ await client.devices.codes.create({
 <dd>
 
 Retrieves DeviceCode with the associated ID.
-
 </dd>
 </dl>
 </dd>
@@ -17479,10 +17351,10 @@ Retrieves DeviceCode with the associated ID.
 
 ```typescript
 await client.devices.codes.get({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17496,27 +17368,27 @@ await client.devices.codes.get({
 <dl>
 <dd>
 
-**request:** `Square.devices.GetCodesRequest`
-
+**request:** `Square.devices.GetCodesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Codes.RequestOptions`
+**requestOptions:** `Codes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Disputes Evidence
-
 <details><summary><code>client.disputes.evidence.<a href="/src/api/resources/disputes/resources/evidence/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.DisputeEvidence></code></summary>
 <dl>
 <dd>
@@ -17530,7 +17402,6 @@ await client.devices.codes.get({
 <dd>
 
 Returns a list of evidence associated with a dispute.
-
 </dd>
 </dl>
 </dd>
@@ -17547,7 +17418,7 @@ Returns a list of evidence associated with a dispute.
 ```typescript
 const response = await client.disputes.evidence.list({
     disputeId: "dispute_id",
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -17556,13 +17427,13 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.disputes.evidence.list({
     disputeId: "dispute_id",
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17576,20 +17447,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.disputes.ListEvidenceRequest`
-
+**request:** `Square.disputes.ListEvidenceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Evidence.RequestOptions`
+**requestOptions:** `Evidence.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -17610,7 +17482,6 @@ while (page.hasNextPage()) {
 Returns the metadata for the evidence specified in the request URL path.
 
 You must maintain a copy of any evidence uploaded if you want to reference it later. Evidence cannot be downloaded after you upload it.
-
 </dd>
 </dl>
 </dd>
@@ -17627,10 +17498,10 @@ You must maintain a copy of any evidence uploaded if you want to reference it la
 ```typescript
 await client.disputes.evidence.get({
     disputeId: "dispute_id",
-    evidenceId: "evidence_id",
+    evidenceId: "evidence_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17644,20 +17515,21 @@ await client.disputes.evidence.get({
 <dl>
 <dd>
 
-**request:** `Square.disputes.GetEvidenceRequest`
-
+**request:** `Square.disputes.GetEvidenceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Evidence.RequestOptions`
+**requestOptions:** `Evidence.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -17677,7 +17549,6 @@ await client.disputes.evidence.get({
 
 Removes specified evidence from a dispute.
 Square does not send the bank any evidence that is removed.
-
 </dd>
 </dl>
 </dd>
@@ -17694,10 +17565,10 @@ Square does not send the bank any evidence that is removed.
 ```typescript
 await client.disputes.evidence.delete({
     disputeId: "dispute_id",
-    evidenceId: "evidence_id",
+    evidenceId: "evidence_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17711,27 +17582,27 @@ await client.disputes.evidence.delete({
 <dl>
 <dd>
 
-**request:** `Square.disputes.DeleteEvidenceRequest`
-
+**request:** `Square.disputes.DeleteEvidenceRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Evidence.RequestOptions`
+**requestOptions:** `Evidence.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## GiftCards Activities
-
 <details><summary><code>client.giftCards.activities.<a href="/src/api/resources/giftCards/resources/activities/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.GiftCardActivity></code></summary>
 <dl>
 <dd>
@@ -17748,7 +17619,6 @@ Lists gift card activities. By default, you get gift card activities for all
 gift cards in the seller's account. You can optionally specify query parameters to
 filter the list. For example, you can get a list of gift card activities for a gift card,
 for all gift cards in a specific region, or for activities within a time window.
-
 </dd>
 </dl>
 </dd>
@@ -17771,7 +17641,7 @@ const response = await client.giftCards.activities.list({
     endTime: "end_time",
     limit: 1,
     cursor: "cursor",
-    sortOrder: "sort_order",
+    sortOrder: "sort_order"
 });
 for await (const item of response) {
     console.log(item);
@@ -17786,13 +17656,13 @@ let page = await client.giftCards.activities.list({
     endTime: "end_time",
     limit: 1,
     cursor: "cursor",
-    sortOrder: "sort_order",
+    sortOrder: "sort_order"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17806,20 +17676,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.giftCards.ListActivitiesRequest`
-
+**request:** `Square.giftCards.ListActivitiesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Activities.RequestOptions`
+**requestOptions:** `Activities.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -17839,7 +17710,6 @@ while (page.hasNextPage()) {
 
 Creates a gift card activity to manage the balance or state of a [gift card](entity:GiftCard).
 For example, create an `ACTIVATE` activity to activate a gift card with an initial balance before first use.
-
 </dd>
 </dl>
 </dd>
@@ -17862,12 +17732,12 @@ await client.giftCards.activities.create({
         giftCardId: "gftc:6d55a72470d940c6ba09c0ab8ad08d20",
         activateActivityDetails: {
             orderId: "jJNGHm4gLI6XkFbwtiSLqK72KkAZY",
-            lineItemUid: "eIWl7X0nMuO9Ewbh0ChIx",
-        },
-    },
+            lineItemUid: "eIWl7X0nMuO9Ewbh0ChIx"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17881,27 +17751,27 @@ await client.giftCards.activities.create({
 <dl>
 <dd>
 
-**request:** `Square.giftCards.CreateGiftCardActivityRequest`
-
+**request:** `Square.giftCards.CreateGiftCardActivityRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Activities.RequestOptions`
+**requestOptions:** `Activities.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Labor BreakTypes
-
 <details><summary><code>client.labor.breakTypes.<a href="/src/api/resources/labor/resources/breakTypes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.BreakType></code></summary>
 <dl>
 <dd>
@@ -17915,7 +17785,6 @@ await client.giftCards.activities.create({
 <dd>
 
 Returns a paginated list of `BreakType` instances for a business.
-
 </dd>
 </dl>
 </dd>
@@ -17933,7 +17802,7 @@ Returns a paginated list of `BreakType` instances for a business.
 const response = await client.labor.breakTypes.list({
     locationId: "location_id",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -17943,13 +17812,13 @@ for await (const item of response) {
 let page = await client.labor.breakTypes.list({
     locationId: "location_id",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -17963,20 +17832,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.labor.ListBreakTypesRequest`
-
+**request:** `Square.labor.ListBreakTypesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `BreakTypes.RequestOptions`
+**requestOptions:** `BreakTypes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -18008,7 +17878,6 @@ endpoint:
 You can only have three `BreakType` instances per location. If you attempt to add a fourth
 `BreakType` for a location, an `INVALID_REQUEST_ERROR` "Exceeded limit of 3 breaks per location."
 is returned.
-
 </dd>
 </dl>
 </dd>
@@ -18029,11 +17898,11 @@ await client.labor.breakTypes.create({
         locationId: "CGJN03P1D08GF",
         breakName: "Lunch Break",
         expectedDuration: "PT30M",
-        isPaid: true,
-    },
+        isPaid: true
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18047,20 +17916,21 @@ await client.labor.breakTypes.create({
 <dl>
 <dd>
 
-**request:** `Square.labor.CreateBreakTypeRequest`
-
+**request:** `Square.labor.CreateBreakTypeRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `BreakTypes.RequestOptions`
+**requestOptions:** `BreakTypes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -18079,7 +17949,6 @@ await client.labor.breakTypes.create({
 <dd>
 
 Returns a single `BreakType` specified by `id`.
-
 </dd>
 </dl>
 </dd>
@@ -18095,10 +17964,10 @@ Returns a single `BreakType` specified by `id`.
 
 ```typescript
 await client.labor.breakTypes.get({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18112,20 +17981,21 @@ await client.labor.breakTypes.get({
 <dl>
 <dd>
 
-**request:** `Square.labor.GetBreakTypesRequest`
-
+**request:** `Square.labor.GetBreakTypesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `BreakTypes.RequestOptions`
+**requestOptions:** `BreakTypes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -18144,7 +18014,6 @@ await client.labor.breakTypes.get({
 <dd>
 
 Updates an existing `BreakType`.
-
 </dd>
 </dl>
 </dd>
@@ -18166,11 +18035,11 @@ await client.labor.breakTypes.update({
         breakName: "Lunch",
         expectedDuration: "PT50M",
         isPaid: true,
-        version: 1,
-    },
+        version: 1
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18184,20 +18053,21 @@ await client.labor.breakTypes.update({
 <dl>
 <dd>
 
-**request:** `Square.labor.UpdateBreakTypeRequest`
-
+**request:** `Square.labor.UpdateBreakTypeRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `BreakTypes.RequestOptions`
+**requestOptions:** `BreakTypes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -18218,7 +18088,6 @@ await client.labor.breakTypes.update({
 Deletes an existing `BreakType`.
 
 A `BreakType` can be deleted even if it is referenced from a `Shift`.
-
 </dd>
 </dl>
 </dd>
@@ -18234,10 +18103,10 @@ A `BreakType` can be deleted even if it is referenced from a `Shift`.
 
 ```typescript
 await client.labor.breakTypes.delete({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18251,27 +18120,27 @@ await client.labor.breakTypes.delete({
 <dl>
 <dd>
 
-**request:** `Square.labor.DeleteBreakTypesRequest`
-
+**request:** `Square.labor.DeleteBreakTypesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `BreakTypes.RequestOptions`
+**requestOptions:** `BreakTypes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Labor EmployeeWages
-
 <details><summary><code>client.labor.employeeWages.<a href="/src/api/resources/labor/resources/employeeWages/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.EmployeeWage></code></summary>
 <dl>
 <dd>
@@ -18285,7 +18154,6 @@ await client.labor.breakTypes.delete({
 <dd>
 
 Returns a paginated list of `EmployeeWage` instances for a business.
-
 </dd>
 </dl>
 </dd>
@@ -18303,7 +18171,7 @@ Returns a paginated list of `EmployeeWage` instances for a business.
 const response = await client.labor.employeeWages.list({
     employeeId: "employee_id",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -18313,13 +18181,13 @@ for await (const item of response) {
 let page = await client.labor.employeeWages.list({
     employeeId: "employee_id",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18333,20 +18201,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.labor.ListEmployeeWagesRequest`
-
+**request:** `Square.labor.ListEmployeeWagesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `EmployeeWages.RequestOptions`
+**requestOptions:** `EmployeeWages.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -18365,7 +18234,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Returns a single `EmployeeWage` specified by `id`.
-
 </dd>
 </dl>
 </dd>
@@ -18381,10 +18249,10 @@ Returns a single `EmployeeWage` specified by `id`.
 
 ```typescript
 await client.labor.employeeWages.get({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18398,27 +18266,27 @@ await client.labor.employeeWages.get({
 <dl>
 <dd>
 
-**request:** `Square.labor.GetEmployeeWagesRequest`
-
+**request:** `Square.labor.GetEmployeeWagesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `EmployeeWages.RequestOptions`
+**requestOptions:** `EmployeeWages.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Labor Shifts
-
 <details><summary><code>client.labor.shifts.<a href="/src/api/resources/labor/resources/shifts/client/Client.ts">create</a>({ ...params }) -> Square.CreateShiftResponse</code></summary>
 <dl>
 <dd>
@@ -18442,18 +18310,17 @@ endpoint:
 - `start_at`
 
 An attempt to create a new `Shift` can result in a `BAD_REQUEST` error when:
-
 - The `status` of the new `Shift` is `OPEN` and the team member has another
-  shift with an `OPEN` status.
+shift with an `OPEN` status.
 - The `start_at` date is in the future.
 - The `start_at` or `end_at` date overlaps another shift for the same team member.
 - The `Break` instances are set in the request and a break `start_at`
 is before the `Shift.start_at`, a break `end_at` is after
 the `Shift.end_at`, or both.
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -18474,29 +18341,27 @@ await client.labor.shifts.create({
             title: "Barista",
             hourlyRate: {
                 amount: BigInt("1100"),
-                currency: "USD",
+                currency: "USD"
             },
-            tipEligible: true,
+            tipEligible: true
         },
-        breaks: [
-            {
+        breaks: [{
                 startAt: "2019-01-25T06:11:00-05:00",
                 endAt: "2019-01-25T06:16:00-05:00",
                 breakTypeId: "REGS1EQR1TPZ5",
                 name: "Tea Break",
                 expectedDuration: "PT5M",
-                isPaid: true,
-            },
-        ],
+                isPaid: true
+            }],
         teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
         declaredCashTipMoney: {
             amount: BigInt("500"),
-            currency: "USD",
-        },
-    },
+            currency: "USD"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18510,20 +18375,21 @@ await client.labor.shifts.create({
 <dl>
 <dd>
 
-**request:** `Square.labor.CreateShiftRequest`
-
+**request:** `Square.labor.CreateShiftRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions`
+**requestOptions:** `Shifts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -18543,7 +18409,6 @@ await client.labor.shifts.create({
 
 Returns a paginated list of `Shift` records for a business.
 The list to be returned can be filtered by:
-
 - Location IDs
 - Team member IDs
 - Shift status (`OPEN` or `CLOSED`)
@@ -18552,15 +18417,14 @@ The list to be returned can be filtered by:
 - Workday details
 
 The list can be sorted by:
-
 - `START_AT`
 - `END_AT`
 - `CREATED_AT`
 - `UPDATED_AT`
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -18577,17 +18441,17 @@ await client.labor.shifts.search({
             workday: {
                 dateRange: {
                     startDate: "2019-01-20",
-                    endDate: "2019-02-03",
+                    endDate: "2019-02-03"
                 },
                 matchShiftsBy: "START_AT",
-                defaultTimezone: "America/Los_Angeles",
-            },
-        },
+                defaultTimezone: "America/Los_Angeles"
+            }
+        }
     },
-    limit: 100,
+    limit: 100
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18601,20 +18465,21 @@ await client.labor.shifts.search({
 <dl>
 <dd>
 
-**request:** `Square.labor.SearchShiftsRequest`
-
+**request:** `Square.labor.SearchShiftsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions`
+**requestOptions:** `Shifts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -18633,7 +18498,6 @@ await client.labor.shifts.search({
 <dd>
 
 Returns a single `Shift` specified by `id`.
-
 </dd>
 </dl>
 </dd>
@@ -18649,10 +18513,10 @@ Returns a single `Shift` specified by `id`.
 
 ```typescript
 await client.labor.shifts.get({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18666,20 +18530,21 @@ await client.labor.shifts.get({
 <dl>
 <dd>
 
-**request:** `Square.labor.GetShiftsRequest`
-
+**request:** `Square.labor.GetShiftsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions`
+**requestOptions:** `Shifts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -18704,7 +18569,6 @@ the `end_at` property set to a valid RFC-3339 datetime string.
 
 When closing a `Shift`, all `Break` instances in the `Shift` must be complete with `end_at`
 set on each `Break`.
-
 </dd>
 </dl>
 </dd>
@@ -18729,31 +18593,29 @@ await client.labor.shifts.update({
             title: "Bartender",
             hourlyRate: {
                 amount: BigInt("1500"),
-                currency: "USD",
+                currency: "USD"
             },
-            tipEligible: true,
+            tipEligible: true
         },
-        breaks: [
-            {
+        breaks: [{
                 id: "X7GAQYVVRRG6P",
                 startAt: "2019-01-25T06:11:00-05:00",
                 endAt: "2019-01-25T06:16:00-05:00",
                 breakTypeId: "REGS1EQR1TPZ5",
                 name: "Tea Break",
                 expectedDuration: "PT5M",
-                isPaid: true,
-            },
-        ],
+                isPaid: true
+            }],
         version: 1,
         teamMemberId: "ormj0jJJZ5OZIzxrZYJI",
         declaredCashTipMoney: {
             amount: BigInt("500"),
-            currency: "USD",
-        },
-    },
+            currency: "USD"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18767,20 +18629,21 @@ await client.labor.shifts.update({
 <dl>
 <dd>
 
-**request:** `Square.labor.UpdateShiftRequest`
-
+**request:** `Square.labor.UpdateShiftRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions`
+**requestOptions:** `Shifts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -18799,7 +18662,6 @@ await client.labor.shifts.update({
 <dd>
 
 Deletes a `Shift`.
-
 </dd>
 </dl>
 </dd>
@@ -18815,10 +18677,10 @@ Deletes a `Shift`.
 
 ```typescript
 await client.labor.shifts.delete({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18832,27 +18694,27 @@ await client.labor.shifts.delete({
 <dl>
 <dd>
 
-**request:** `Square.labor.DeleteShiftsRequest`
-
+**request:** `Square.labor.DeleteShiftsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions`
+**requestOptions:** `Shifts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Labor TeamMemberWages
-
 <details><summary><code>client.labor.teamMemberWages.<a href="/src/api/resources/labor/resources/teamMemberWages/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.TeamMemberWage></code></summary>
 <dl>
 <dd>
@@ -18866,7 +18728,6 @@ await client.labor.shifts.delete({
 <dd>
 
 Returns a paginated list of `TeamMemberWage` instances for a business.
-
 </dd>
 </dl>
 </dd>
@@ -18884,7 +18745,7 @@ Returns a paginated list of `TeamMemberWage` instances for a business.
 const response = await client.labor.teamMemberWages.list({
     teamMemberId: "team_member_id",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -18894,13 +18755,13 @@ for await (const item of response) {
 let page = await client.labor.teamMemberWages.list({
     teamMemberId: "team_member_id",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18914,20 +18775,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.labor.ListTeamMemberWagesRequest`
-
+**request:** `Square.labor.ListTeamMemberWagesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TeamMemberWages.RequestOptions`
+**requestOptions:** `TeamMemberWages.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -18946,7 +18808,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Returns a single `TeamMemberWage` specified by `id`.
-
 </dd>
 </dl>
 </dd>
@@ -18962,10 +18823,10 @@ Returns a single `TeamMemberWage` specified by `id`.
 
 ```typescript
 await client.labor.teamMemberWages.get({
-    id: "id",
+    id: "id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -18979,27 +18840,27 @@ await client.labor.teamMemberWages.get({
 <dl>
 <dd>
 
-**request:** `Square.labor.GetTeamMemberWagesRequest`
-
+**request:** `Square.labor.GetTeamMemberWagesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `TeamMemberWages.RequestOptions`
+**requestOptions:** `TeamMemberWages.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Labor WorkweekConfigs
-
 <details><summary><code>client.labor.workweekConfigs.<a href="/src/api/resources/labor/resources/workweekConfigs/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WorkweekConfig></code></summary>
 <dl>
 <dd>
@@ -19013,7 +18874,6 @@ await client.labor.teamMemberWages.get({
 <dd>
 
 Returns a list of `WorkweekConfig` instances for a business.
-
 </dd>
 </dl>
 </dd>
@@ -19030,7 +18890,7 @@ Returns a list of `WorkweekConfig` instances for a business.
 ```typescript
 const response = await client.labor.workweekConfigs.list({
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -19039,13 +18899,13 @@ for await (const item of response) {
 // Or you can manually iterate page-by-page
 let page = await client.labor.workweekConfigs.list({
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19059,20 +18919,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.labor.ListWorkweekConfigsRequest`
-
+**request:** `Square.labor.ListWorkweekConfigsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `WorkweekConfigs.RequestOptions`
+**requestOptions:** `WorkweekConfigs.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -19091,7 +18952,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Updates a `WorkweekConfig`.
-
 </dd>
 </dl>
 </dd>
@@ -19111,11 +18971,11 @@ await client.labor.workweekConfigs.get({
     workweekConfig: {
         startOfWeek: "MON",
         startOfDayLocalTime: "10:00",
-        version: 10,
-    },
+        version: 10
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19129,27 +18989,27 @@ await client.labor.workweekConfigs.get({
 <dl>
 <dd>
 
-**request:** `Square.labor.UpdateWorkweekConfigRequest`
-
+**request:** `Square.labor.UpdateWorkweekConfigRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `WorkweekConfigs.RequestOptions`
+**requestOptions:** `WorkweekConfigs.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Locations CustomAttributeDefinitions
-
 <details><summary><code>client.locations.customAttributeDefinitions.<a href="/src/api/resources/locations/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
 <dl>
 <dd>
@@ -19166,7 +19026,6 @@ Lists the location-related [custom attribute definitions](entity:CustomAttribute
 When all response pages are retrieved, the results include all custom attribute definitions
 that are visible to the requesting application, including those that are created by other
 applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -19184,7 +19043,7 @@ applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`
 const response = await client.locations.customAttributeDefinitions.list({
     visibilityFilter: "ALL",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -19194,13 +19053,13 @@ for await (const item of response) {
 let page = await client.locations.customAttributeDefinitions.list({
     visibilityFilter: "ALL",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19214,20 +19073,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.locations.ListCustomAttributeDefinitionsRequest`
-
+**request:** `Square.locations.ListCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -19252,7 +19112,6 @@ for a custom attribute. After the definition is created, you can call
 [UpsertLocationCustomAttribute](api-endpoint:LocationCustomAttributes-UpsertLocationCustomAttribute) or
 [BulkUpsertLocationCustomAttributes](api-endpoint:LocationCustomAttributes-BulkUpsertLocationCustomAttributes)
 to set the custom attribute for locations.
-
 </dd>
 </dl>
 </dd>
@@ -19271,15 +19130,15 @@ await client.locations.customAttributeDefinitions.create({
     customAttributeDefinition: {
         key: "bestseller",
         schema: {
-            $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
         },
         name: "Bestseller",
         description: "Bestselling item at location",
-        visibility: "VISIBILITY_READ_WRITE_VALUES",
-    },
+        visibility: "VISIBILITY_READ_WRITE_VALUES"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19293,20 +19152,21 @@ await client.locations.customAttributeDefinitions.create({
 <dl>
 <dd>
 
-**request:** `Square.locations.CreateLocationCustomAttributeDefinitionRequest`
-
+**request:** `Square.locations.CreateLocationCustomAttributeDefinitionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -19327,7 +19187,6 @@ await client.locations.customAttributeDefinitions.create({
 Retrieves a location-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
 To retrieve a custom attribute definition created by another application, the `visibility`
 setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -19344,10 +19203,10 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 ```typescript
 await client.locations.customAttributeDefinitions.get({
     key: "key",
-    version: 1,
+    version: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19361,20 +19220,21 @@ await client.locations.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**request:** `Square.locations.GetCustomAttributeDefinitionsRequest`
-
+**request:** `Square.locations.GetCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -19396,7 +19256,6 @@ Updates a location-related [custom attribute definition](entity:CustomAttributeD
 Use this endpoint to update the following fields: `name`, `description`, `visibility`, or the
 `schema` for a `Selection` data type.
 Only the definition owner can update a custom attribute definition.
-
 </dd>
 </dl>
 </dd>
@@ -19415,11 +19274,11 @@ await client.locations.customAttributeDefinitions.update({
     key: "key",
     customAttributeDefinition: {
         description: "Update the description as desired.",
-        visibility: "VISIBILITY_READ_ONLY",
-    },
+        visibility: "VISIBILITY_READ_ONLY"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19433,20 +19292,21 @@ await client.locations.customAttributeDefinitions.update({
 <dl>
 <dd>
 
-**request:** `Square.locations.UpdateLocationCustomAttributeDefinitionRequest`
-
+**request:** `Square.locations.UpdateLocationCustomAttributeDefinitionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -19468,7 +19328,6 @@ Deletes a location-related [custom attribute definition](entity:CustomAttributeD
 Deleting a custom attribute definition also deletes the corresponding custom attribute from
 all locations.
 Only the definition owner can delete a custom attribute definition.
-
 </dd>
 </dl>
 </dd>
@@ -19484,10 +19343,10 @@ Only the definition owner can delete a custom attribute definition.
 
 ```typescript
 await client.locations.customAttributeDefinitions.delete({
-    key: "key",
+    key: "key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19501,27 +19360,27 @@ await client.locations.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**request:** `Square.locations.DeleteCustomAttributeDefinitionsRequest`
-
+**request:** `Square.locations.DeleteCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Locations CustomAttributes
-
 <details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">batchDelete</a>({ ...params }) -> Square.BulkDeleteLocationCustomAttributesResponse</code></summary>
 <dl>
 <dd>
@@ -19537,7 +19396,6 @@ await client.locations.customAttributeDefinitions.delete({
 Deletes [custom attributes](entity:CustomAttribute) for locations as a bulk operation.
 To delete a custom attribute owned by another application, the `visibility` setting must be
 `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -19554,19 +19412,19 @@ To delete a custom attribute owned by another application, the `visibility` sett
 ```typescript
 await client.locations.customAttributes.batchDelete({
     values: {
-        id1: {
-            key: "bestseller",
+        "id1": {
+            key: "bestseller"
         },
-        id2: {
-            key: "bestseller",
+        "id2": {
+            key: "bestseller"
         },
-        id3: {
-            key: "phone-number",
-        },
-    },
+        "id3": {
+            key: "phone-number"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19580,20 +19438,21 @@ await client.locations.customAttributes.batchDelete({
 <dl>
 <dd>
 
-**request:** `Square.locations.BulkDeleteLocationCustomAttributesRequest`
-
+**request:** `Square.locations.BulkDeleteLocationCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -19621,7 +19480,6 @@ and provides a location ID and custom attribute. Each upsert response is returne
 of the corresponding request.
 To create or update a custom attribute owned by another application, the `visibility` setting
 must be `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -19638,31 +19496,31 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 ```typescript
 await client.locations.customAttributes.batchUpsert({
     values: {
-        id1: {
+        "id1": {
             locationId: "L0TBCBTB7P8RQ",
             customAttribute: {
                 key: "bestseller",
-                value: "hot cocoa",
-            },
+                value: "hot cocoa"
+            }
         },
-        id2: {
+        "id2": {
             locationId: "L9XMD04V3STJX",
             customAttribute: {
                 key: "bestseller",
-                value: "berry smoothie",
-            },
+                value: "berry smoothie"
+            }
         },
-        id3: {
+        "id3": {
             locationId: "L0TBCBTB7P8RQ",
             customAttribute: {
                 key: "phone-number",
-                value: "+12223334444",
-            },
-        },
-    },
+                value: "+12223334444"
+            }
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19676,20 +19534,21 @@ await client.locations.customAttributes.batchUpsert({
 <dl>
 <dd>
 
-**request:** `Square.locations.BulkUpsertLocationCustomAttributesRequest`
-
+**request:** `Square.locations.BulkUpsertLocationCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -19713,7 +19572,6 @@ in the same call.
 When all response pages are retrieved, the results include all custom attributes that are
 visible to the requesting application, including those that are owned by other applications
 and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -19733,7 +19591,7 @@ const response = await client.locations.customAttributes.list({
     visibilityFilter: "ALL",
     limit: 1,
     cursor: "cursor",
-    withDefinitions: true,
+    withDefinitions: true
 });
 for await (const item of response) {
     console.log(item);
@@ -19745,13 +19603,13 @@ let page = await client.locations.customAttributes.list({
     visibilityFilter: "ALL",
     limit: 1,
     cursor: "cursor",
-    withDefinitions: true,
+    withDefinitions: true
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19765,20 +19623,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.locations.ListCustomAttributesRequest`
-
+**request:** `Square.locations.ListCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -19801,7 +19660,6 @@ You can use the `with_definition` query parameter to also retrieve the custom at
 in the same call.
 To retrieve a custom attribute owned by another application, the `visibility` setting must be
 `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -19820,10 +19678,10 @@ await client.locations.customAttributes.get({
     locationId: "location_id",
     key: "key",
     withDefinition: true,
-    version: 1,
+    version: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19837,20 +19695,21 @@ await client.locations.customAttributes.get({
 <dl>
 <dd>
 
-**request:** `Square.locations.GetCustomAttributesRequest`
-
+**request:** `Square.locations.GetCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -19874,7 +19733,6 @@ A custom attribute is based on a custom attribute definition in a Square seller 
 is created using the [CreateLocationCustomAttributeDefinition](api-endpoint:LocationCustomAttributes-CreateLocationCustomAttributeDefinition) endpoint.
 To create or update a custom attribute owned by another application, the `visibility` setting
 must be `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -19893,11 +19751,11 @@ await client.locations.customAttributes.upsert({
     locationId: "location_id",
     key: "key",
     customAttribute: {
-        value: "hot cocoa",
-    },
+        value: "hot cocoa"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19911,20 +19769,21 @@ await client.locations.customAttributes.upsert({
 <dl>
 <dd>
 
-**request:** `Square.locations.UpsertLocationCustomAttributeRequest`
-
+**request:** `Square.locations.UpsertLocationCustomAttributeRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -19945,7 +19804,6 @@ await client.locations.customAttributes.upsert({
 Deletes a [custom attribute](entity:CustomAttribute) associated with a location.
 To delete a custom attribute owned by another application, the `visibility` setting must be
 `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -19962,10 +19820,10 @@ To delete a custom attribute owned by another application, the `visibility` sett
 ```typescript
 await client.locations.customAttributes.delete({
     locationId: "location_id",
-    key: "key",
+    key: "key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -19979,27 +19837,27 @@ await client.locations.customAttributes.delete({
 <dl>
 <dd>
 
-**request:** `Square.locations.DeleteCustomAttributesRequest`
-
+**request:** `Square.locations.DeleteCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Locations Transactions
-
 <details><summary><code>client.locations.transactions.<a href="/src/api/resources/locations/resources/transactions/client/Client.ts">list</a>({ ...params }) -> Square.ListTransactionsResponse</code></summary>
 <dl>
 <dd>
@@ -20018,7 +19876,6 @@ Transactions include payment information from sales and exchanges and refund
 information from returns and exchanges.
 
 Max results per [page](https://developer.squareup.com/docs/working-with-apis/pagination): 50
-
 </dd>
 </dl>
 </dd>
@@ -20038,10 +19895,10 @@ await client.locations.transactions.list({
     beginTime: "begin_time",
     endTime: "end_time",
     sortOrder: "DESC",
-    cursor: "cursor",
+    cursor: "cursor"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20055,20 +19912,21 @@ await client.locations.transactions.list({
 <dl>
 <dd>
 
-**request:** `Square.locations.ListTransactionsRequest`
-
+**request:** `Square.locations.ListTransactionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Transactions.RequestOptions`
+**requestOptions:** `Transactions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -20087,7 +19945,6 @@ await client.locations.transactions.list({
 <dd>
 
 Retrieves details for a single transaction.
-
 </dd>
 </dl>
 </dd>
@@ -20104,10 +19961,10 @@ Retrieves details for a single transaction.
 ```typescript
 await client.locations.transactions.get({
     locationId: "location_id",
-    transactionId: "transaction_id",
+    transactionId: "transaction_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20121,20 +19978,21 @@ await client.locations.transactions.get({
 <dl>
 <dd>
 
-**request:** `Square.locations.GetTransactionsRequest`
-
+**request:** `Square.locations.GetTransactionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Transactions.RequestOptions`
+**requestOptions:** `Transactions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -20155,9 +20013,9 @@ await client.locations.transactions.get({
 Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
 endpoint with a `delay_capture` value of `true`.
 
+
 See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
 for more information.
-
 </dd>
 </dl>
 </dd>
@@ -20174,10 +20032,10 @@ for more information.
 ```typescript
 await client.locations.transactions.capture({
     locationId: "location_id",
-    transactionId: "transaction_id",
+    transactionId: "transaction_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20191,20 +20049,21 @@ await client.locations.transactions.capture({
 <dl>
 <dd>
 
-**request:** `Square.locations.CaptureTransactionsRequest`
-
+**request:** `Square.locations.CaptureTransactionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Transactions.RequestOptions`
+**requestOptions:** `Transactions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -20225,9 +20084,9 @@ await client.locations.transactions.capture({
 Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
 endpoint with a `delay_capture` value of `true`.
 
+
 See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
 for more information.
-
 </dd>
 </dl>
 </dd>
@@ -20244,10 +20103,10 @@ for more information.
 ```typescript
 await client.locations.transactions.void({
     locationId: "location_id",
-    transactionId: "transaction_id",
+    transactionId: "transaction_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20261,27 +20120,27 @@ await client.locations.transactions.void({
 <dl>
 <dd>
 
-**request:** `Square.locations.VoidTransactionsRequest`
-
+**request:** `Square.locations.VoidTransactionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Transactions.RequestOptions`
+**requestOptions:** `Transactions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Loyalty Accounts
-
 <details><summary><code>client.loyalty.accounts.<a href="/src/api/resources/loyalty/resources/accounts/client/Client.ts">create</a>({ ...params }) -> Square.CreateLoyaltyAccountResponse</code></summary>
 <dl>
 <dd>
@@ -20295,7 +20154,6 @@ await client.locations.transactions.void({
 <dd>
 
 Creates a loyalty account. To create a loyalty account, you must provide the `program_id` and a `mapping` with the `phone_number` of the buyer.
-
 </dd>
 </dl>
 </dd>
@@ -20314,13 +20172,13 @@ await client.loyalty.accounts.create({
     loyaltyAccount: {
         programId: "d619f755-2d17-41f3-990d-c04ecedd64dd",
         mapping: {
-            phoneNumber: "+14155551234",
-        },
+            phoneNumber: "+14155551234"
+        }
     },
-    idempotencyKey: "ec78c477-b1c3-4899-a209-a4e71337c996",
+    idempotencyKey: "ec78c477-b1c3-4899-a209-a4e71337c996"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20334,20 +20192,21 @@ await client.loyalty.accounts.create({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.CreateLoyaltyAccountRequest`
-
+**request:** `Square.loyalty.CreateLoyaltyAccountRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Accounts.RequestOptions`
+**requestOptions:** `Accounts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -20370,7 +20229,6 @@ Searches for loyalty accounts in a loyalty program.
 You can search for a loyalty account using the phone number or customer ID associated with the account. To return all loyalty accounts, specify an empty `query` object or omit it entirely.
 
 Search results are sorted by `created_at` in ascending order.
-
 </dd>
 </dl>
 </dd>
@@ -20387,16 +20245,14 @@ Search results are sorted by `created_at` in ascending order.
 ```typescript
 await client.loyalty.accounts.search({
     query: {
-        mappings: [
-            {
-                phoneNumber: "+14155551234",
-            },
-        ],
+        mappings: [{
+                phoneNumber: "+14155551234"
+            }]
     },
-    limit: 10,
+    limit: 10
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20410,20 +20266,21 @@ await client.loyalty.accounts.search({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.SearchLoyaltyAccountsRequest`
-
+**request:** `Square.loyalty.SearchLoyaltyAccountsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Accounts.RequestOptions`
+**requestOptions:** `Accounts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -20442,7 +20299,6 @@ await client.loyalty.accounts.search({
 <dd>
 
 Retrieves a loyalty account.
-
 </dd>
 </dl>
 </dd>
@@ -20458,10 +20314,10 @@ Retrieves a loyalty account.
 
 ```typescript
 await client.loyalty.accounts.get({
-    accountId: "account_id",
+    accountId: "account_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20475,20 +20331,21 @@ await client.loyalty.accounts.get({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.GetAccountsRequest`
-
+**request:** `Square.loyalty.GetAccountsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Accounts.RequestOptions`
+**requestOptions:** `Accounts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -20509,21 +20366,21 @@ await client.loyalty.accounts.get({
 Adds points earned from a purchase to a [loyalty account](entity:LoyaltyAccount).
 
 - If you are using the Orders API to manage orders, provide the `order_id`. Square reads the order
-  to compute the points earned from both the base loyalty program and an associated
-  [loyalty promotion](entity:LoyaltyPromotion). For purchases that qualify for multiple accrual
-  rules, Square computes points based on the accrual rule that grants the most points.
-  For purchases that qualify for multiple promotions, Square computes points based on the most
-  recently created promotion. A purchase must first qualify for program points to be eligible for promotion points.
+to compute the points earned from both the base loyalty program and an associated
+[loyalty promotion](entity:LoyaltyPromotion). For purchases that qualify for multiple accrual
+rules, Square computes points based on the accrual rule that grants the most points.
+For purchases that qualify for multiple promotions, Square computes points based on the most
+recently created promotion. A purchase must first qualify for program points to be eligible for promotion points.
 
 - If you are not using the Orders API to manage orders, provide `points` with the number of points to add.
 You must first perform a client-side computation of the points earned from the loyalty program and
 loyalty promotion. For spend-based and visit-based programs, you can call [CalculateLoyaltyPoints](api-endpoint:Loyalty-CalculateLoyaltyPoints)
 to compute the points earned from the base loyalty program. For information about computing points earned from a loyalty promotion, see
 [Calculating promotion points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -20537,13 +20394,13 @@ to compute the points earned from the base loyalty program. For information abou
 await client.loyalty.accounts.accumulatePoints({
     accountId: "account_id",
     accumulatePoints: {
-        orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
+        orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY"
     },
     idempotencyKey: "58b90739-c3e8-4b11-85f7-e636d48d72cb",
-    locationId: "P034NEENMD09F",
+    locationId: "P034NEENMD09F"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20557,20 +20414,21 @@ await client.loyalty.accounts.accumulatePoints({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.AccumulateLoyaltyPointsRequest`
-
+**request:** `Square.loyalty.AccumulateLoyaltyPointsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Accounts.RequestOptions`
+**requestOptions:** `Accounts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -20593,7 +20451,6 @@ Adds points to or subtracts points from a buyer's account.
 Use this endpoint only when you need to manually adjust points. Otherwise, in your application flow, you call
 [AccumulateLoyaltyPoints](api-endpoint:Loyalty-AccumulateLoyaltyPoints)
 to add points when a buyer pays for the purchase.
-
 </dd>
 </dl>
 </dd>
@@ -20613,11 +20470,11 @@ await client.loyalty.accounts.adjust({
     idempotencyKey: "bc29a517-3dc9-450e-aa76-fae39ee849d1",
     adjustPoints: {
         points: 10,
-        reason: "Complimentary points",
-    },
+        reason: "Complimentary points"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20631,27 +20488,27 @@ await client.loyalty.accounts.adjust({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.AdjustLoyaltyPointsRequest`
-
+**request:** `Square.loyalty.AdjustLoyaltyPointsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Accounts.RequestOptions`
+**requestOptions:** `Accounts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Loyalty Programs
-
 <details><summary><code>client.loyalty.programs.<a href="/src/api/resources/loyalty/resources/programs/client/Client.ts">list</a>() -> Square.ListLoyaltyProgramsResponse</code></summary>
 <dl>
 <dd>
@@ -20667,8 +20524,8 @@ await client.loyalty.accounts.adjust({
 Returns a list of loyalty programs in the seller's account.
 Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
 
-Replaced with [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) when used with the keyword `main`.
 
+Replaced with [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) when used with the keyword `main`.
 </dd>
 </dl>
 </dd>
@@ -20684,8 +20541,8 @@ Replaced with [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgr
 
 ```typescript
 await client.loyalty.programs.list();
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20699,12 +20556,13 @@ await client.loyalty.programs.list();
 <dl>
 <dd>
 
-**requestOptions:** `Programs.RequestOptions`
+**requestOptions:** `Programs.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -20725,7 +20583,6 @@ await client.loyalty.programs.list();
 Retrieves the loyalty program in a seller's account, specified by the program ID or the keyword `main`.
 
 Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
-
 </dd>
 </dl>
 </dd>
@@ -20741,10 +20598,10 @@ Loyalty programs define how buyers can earn points and redeem points for rewards
 
 ```typescript
 await client.loyalty.programs.get({
-    programId: "program_id",
+    programId: "program_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20758,20 +20615,21 @@ await client.loyalty.programs.get({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.GetProgramsRequest`
-
+**request:** `Square.loyalty.GetProgramsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Programs.RequestOptions`
+**requestOptions:** `Programs.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -20793,8 +20651,8 @@ Calculates the number of points a buyer can earn from a purchase. Applications m
 to display the points to the buyer.
 
 - If you are using the Orders API to manage orders, provide the `order_id` and (optional) `loyalty_account_id`.
-  Square reads the order to compute the points earned from the base loyalty program and an associated
-  [loyalty promotion](entity:LoyaltyPromotion).
+Square reads the order to compute the points earned from the base loyalty program and an associated
+[loyalty promotion](entity:LoyaltyPromotion).
 
 - If you are not using the Orders API to manage orders, provide `transaction_amount_money` with the
 purchase amount. Square uses this amount to calculate the points earned from the base loyalty program,
@@ -20804,10 +20662,10 @@ If the purchase qualifies for program points, call
 [ListLoyaltyPromotions](api-endpoint:Loyalty-ListLoyaltyPromotions) and perform a client-side computation
 to calculate whether the purchase also qualifies for promotion points. For more information, see
 [Calculating promotion points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
-  </dd>
-  </dl>
-  </dd>
-  </dl>
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -20821,10 +20679,10 @@ to calculate whether the purchase also qualifies for promotion points. For more 
 await client.loyalty.programs.calculate({
     programId: "program_id",
     orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
-    loyaltyAccountId: "79b807d2-d786-46a9-933b-918028d7a8c5",
+    loyaltyAccountId: "79b807d2-d786-46a9-933b-918028d7a8c5"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20838,27 +20696,27 @@ await client.loyalty.programs.calculate({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.CalculateLoyaltyPointsRequest`
-
+**request:** `Square.loyalty.CalculateLoyaltyPointsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Programs.RequestOptions`
+**requestOptions:** `Programs.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Loyalty Rewards
-
 <details><summary><code>client.loyalty.rewards.<a href="/src/api/resources/loyalty/resources/rewards/client/Client.ts">create</a>({ ...params }) -> Square.CreateLoyaltyRewardResponse</code></summary>
 <dl>
 <dd>
@@ -20874,12 +20732,11 @@ await client.loyalty.programs.calculate({
 Creates a loyalty reward. In the process, the endpoint does following:
 
 - Uses the `reward_tier_id` in the request to determine the number of points
-  to lock for this reward.
+to lock for this reward.
 - If the request includes `order_id`, it adds the reward and related discount to the order.
 
 After a reward is created, the points are locked and
 not available for the buyer to redeem another reward.
-
 </dd>
 </dl>
 </dd>
@@ -20898,12 +20755,12 @@ await client.loyalty.rewards.create({
     reward: {
         loyaltyAccountId: "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd",
         rewardTierId: "e1b39225-9da5-43d1-a5db-782cdd8ad94f",
-        orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY",
+        orderId: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY"
     },
-    idempotencyKey: "18c2e5ea-a620-4b1f-ad60-7b167285e451",
+    idempotencyKey: "18c2e5ea-a620-4b1f-ad60-7b167285e451"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20917,20 +20774,21 @@ await client.loyalty.rewards.create({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.CreateLoyaltyRewardRequest`
-
+**request:** `Square.loyalty.CreateLoyaltyRewardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Rewards.RequestOptions`
+**requestOptions:** `Rewards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -20949,13 +20807,12 @@ await client.loyalty.rewards.create({
 <dd>
 
 Searches for loyalty rewards. This endpoint accepts a request with no query filters and returns results for all loyalty accounts.
-If you include a `query` object, `loyalty_account_id` is required and `status` is optional.
+If you include a `query` object, `loyalty_account_id` is required and `status` is  optional.
 
 If you know a reward ID, use the
 [RetrieveLoyaltyReward](api-endpoint:Loyalty-RetrieveLoyaltyReward) endpoint.
 
 Search results are sorted by `updated_at` in descending order.
-
 </dd>
 </dl>
 </dd>
@@ -20972,12 +20829,12 @@ Search results are sorted by `updated_at` in descending order.
 ```typescript
 await client.loyalty.rewards.search({
     query: {
-        loyaltyAccountId: "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd",
+        loyaltyAccountId: "5adcb100-07f1-4ee7-b8c6-6bb9ebc474bd"
     },
-    limit: 10,
+    limit: 10
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -20991,20 +20848,21 @@ await client.loyalty.rewards.search({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.SearchLoyaltyRewardsRequest`
-
+**request:** `Square.loyalty.SearchLoyaltyRewardsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Rewards.RequestOptions`
+**requestOptions:** `Rewards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -21023,7 +20881,6 @@ await client.loyalty.rewards.search({
 <dd>
 
 Retrieves a loyalty reward.
-
 </dd>
 </dl>
 </dd>
@@ -21039,10 +20896,10 @@ Retrieves a loyalty reward.
 
 ```typescript
 await client.loyalty.rewards.get({
-    rewardId: "reward_id",
+    rewardId: "reward_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21056,20 +20913,21 @@ await client.loyalty.rewards.get({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.GetRewardsRequest`
-
+**request:** `Square.loyalty.GetRewardsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Rewards.RequestOptions`
+**requestOptions:** `Rewards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -21091,12 +20949,11 @@ Deletes a loyalty reward by doing the following:
 
 - Returns the loyalty points back to the loyalty account.
 - If an order ID was specified when the reward was created
-  (see [CreateLoyaltyReward](api-endpoint:Loyalty-CreateLoyaltyReward)),
-  it updates the order by removing the reward and related
-  discounts.
+(see [CreateLoyaltyReward](api-endpoint:Loyalty-CreateLoyaltyReward)),
+it updates the order by removing the reward and related
+discounts.
 
 You cannot delete a reward that has reached the terminal state (REDEEMED).
-
 </dd>
 </dl>
 </dd>
@@ -21112,10 +20969,10 @@ You cannot delete a reward that has reached the terminal state (REDEEMED).
 
 ```typescript
 await client.loyalty.rewards.delete({
-    rewardId: "reward_id",
+    rewardId: "reward_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21129,20 +20986,21 @@ await client.loyalty.rewards.delete({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.DeleteRewardsRequest`
-
+**request:** `Square.loyalty.DeleteRewardsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Rewards.RequestOptions`
+**requestOptions:** `Rewards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -21171,7 +21029,6 @@ purchase.
 After the reward reaches the terminal state, it cannot be deleted.
 In other words, points used for the reward cannot be returned
 to the account.
-
 </dd>
 </dl>
 </dd>
@@ -21189,10 +21046,10 @@ to the account.
 await client.loyalty.rewards.redeem({
     rewardId: "reward_id",
     idempotencyKey: "98adc7f7-6963-473b-b29c-f3c9cdd7d994",
-    locationId: "P034NEENMD09F",
+    locationId: "P034NEENMD09F"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21206,27 +21063,27 @@ await client.loyalty.rewards.redeem({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.RedeemLoyaltyRewardRequest`
-
+**request:** `Square.loyalty.RedeemLoyaltyRewardRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Rewards.RequestOptions`
+**requestOptions:** `Rewards.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Loyalty Programs Promotions
-
 <details><summary><code>client.loyalty.programs.promotions.<a href="/src/api/resources/loyalty/resources/programs/resources/promotions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.LoyaltyPromotion></code></summary>
 <dl>
 <dd>
@@ -21241,7 +21098,6 @@ await client.loyalty.rewards.redeem({
 
 Lists the loyalty promotions associated with a [loyalty program](entity:LoyaltyProgram).
 Results are sorted by the `created_at` date in descending order (newest to oldest).
-
 </dd>
 </dl>
 </dd>
@@ -21260,7 +21116,7 @@ const response = await client.loyalty.programs.promotions.list({
     programId: "program_id",
     status: "ACTIVE",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -21271,13 +21127,13 @@ let page = await client.loyalty.programs.promotions.list({
     programId: "program_id",
     status: "ACTIVE",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21291,20 +21147,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.loyalty.programs.ListPromotionsRequest`
-
+**request:** `Square.loyalty.programs.ListPromotionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Promotions.RequestOptions`
+**requestOptions:** `Promotions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -21328,7 +21185,6 @@ enables buyers to earn points in addition to those earned from the base loyalty 
 This endpoint sets the loyalty promotion to the `ACTIVE` or `SCHEDULED` status, depending on the
 `available_time` setting. A loyalty program can have a maximum of 10 loyalty promotions with an
 `ACTIVE` or `SCHEDULED` status.
-
 </dd>
 </dl>
 </dd>
@@ -21350,28 +21206,26 @@ await client.loyalty.programs.promotions.create({
         incentive: {
             type: "POINTS_MULTIPLIER",
             pointsMultiplierData: {
-                multiplier: "3.0",
-            },
+                multiplier: "3.0"
+            }
         },
         availableTime: {
-            timePeriods: [
-                "BEGIN:VEVENT\nDTSTART:20220816T160000\nDURATION:PT2H\nRRULE:FREQ=WEEKLY;BYDAY=TU\nEND:VEVENT",
-            ],
+            timePeriods: ["BEGIN:VEVENT\nDTSTART:20220816T160000\nDURATION:PT2H\nRRULE:FREQ=WEEKLY;BYDAY=TU\nEND:VEVENT"]
         },
         triggerLimit: {
             times: 1,
-            interval: "DAY",
+            interval: "DAY"
         },
         minimumSpendAmountMoney: {
             amount: BigInt("2000"),
-            currency: "USD",
+            currency: "USD"
         },
-        qualifyingCategoryIds: ["XTQPYLR3IIU9C44VRCB3XD12"],
+        qualifyingCategoryIds: ["XTQPYLR3IIU9C44VRCB3XD12"]
     },
-    idempotencyKey: "ec78c477-b1c3-4899-a209-a4e71337c996",
+    idempotencyKey: "ec78c477-b1c3-4899-a209-a4e71337c996"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21385,20 +21239,21 @@ await client.loyalty.programs.promotions.create({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.programs.CreateLoyaltyPromotionRequest`
-
+**request:** `Square.loyalty.programs.CreateLoyaltyPromotionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Promotions.RequestOptions`
+**requestOptions:** `Promotions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -21417,7 +21272,6 @@ await client.loyalty.programs.promotions.create({
 <dd>
 
 Retrieves a loyalty promotion.
-
 </dd>
 </dl>
 </dd>
@@ -21434,10 +21288,10 @@ Retrieves a loyalty promotion.
 ```typescript
 await client.loyalty.programs.promotions.get({
     programId: "program_id",
-    promotionId: "promotion_id",
+    promotionId: "promotion_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21451,20 +21305,21 @@ await client.loyalty.programs.promotions.get({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.programs.GetPromotionsRequest`
-
+**request:** `Square.loyalty.programs.GetPromotionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Promotions.RequestOptions`
+**requestOptions:** `Promotions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -21488,7 +21343,6 @@ Because updating a promotion is not supported, you can also use this endpoint to
 you create a new one.
 
 This endpoint sets the loyalty promotion to the `CANCELED` state
-
 </dd>
 </dl>
 </dd>
@@ -21505,10 +21359,10 @@ This endpoint sets the loyalty promotion to the `CANCELED` state
 ```typescript
 await client.loyalty.programs.promotions.cancel({
     programId: "program_id",
-    promotionId: "promotion_id",
+    promotionId: "promotion_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21522,27 +21376,27 @@ await client.loyalty.programs.promotions.cancel({
 <dl>
 <dd>
 
-**request:** `Square.loyalty.programs.CancelPromotionsRequest`
-
+**request:** `Square.loyalty.programs.CancelPromotionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Promotions.RequestOptions`
+**requestOptions:** `Promotions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Merchants CustomAttributeDefinitions
-
 <details><summary><code>client.merchants.customAttributeDefinitions.<a href="/src/api/resources/merchants/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
 <dl>
 <dd>
@@ -21559,7 +21413,6 @@ Lists the merchant-related [custom attribute definitions](entity:CustomAttribute
 When all response pages are retrieved, the results include all custom attribute definitions
 that are visible to the requesting application, including those that are created by other
 applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -21577,7 +21430,7 @@ applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`
 const response = await client.merchants.customAttributeDefinitions.list({
     visibilityFilter: "ALL",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 for await (const item of response) {
     console.log(item);
@@ -21587,13 +21440,13 @@ for await (const item of response) {
 let page = await client.merchants.customAttributeDefinitions.list({
     visibilityFilter: "ALL",
     limit: 1,
-    cursor: "cursor",
+    cursor: "cursor"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21607,20 +21460,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.merchants.ListCustomAttributeDefinitionsRequest`
-
+**request:** `Square.merchants.ListCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -21645,7 +21499,6 @@ for a custom attribute. After the definition is created, you can call
 [UpsertMerchantCustomAttribute](api-endpoint:MerchantCustomAttributes-UpsertMerchantCustomAttribute) or
 [BulkUpsertMerchantCustomAttributes](api-endpoint:MerchantCustomAttributes-BulkUpsertMerchantCustomAttributes)
 to set the custom attribute for a merchant.
-
 </dd>
 </dl>
 </dd>
@@ -21664,15 +21517,15 @@ await client.merchants.customAttributeDefinitions.create({
     customAttributeDefinition: {
         key: "alternative_seller_name",
         schema: {
-            $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String",
+            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.String"
         },
         name: "Alternative Merchant Name",
         description: "This is the other name this merchant goes by.",
-        visibility: "VISIBILITY_READ_ONLY",
-    },
+        visibility: "VISIBILITY_READ_ONLY"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21686,20 +21539,21 @@ await client.merchants.customAttributeDefinitions.create({
 <dl>
 <dd>
 
-**request:** `Square.merchants.CreateMerchantCustomAttributeDefinitionRequest`
-
+**request:** `Square.merchants.CreateMerchantCustomAttributeDefinitionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -21720,7 +21574,6 @@ await client.merchants.customAttributeDefinitions.create({
 Retrieves a merchant-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
 To retrieve a custom attribute definition created by another application, the `visibility`
 setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -21737,10 +21590,10 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 ```typescript
 await client.merchants.customAttributeDefinitions.get({
     key: "key",
-    version: 1,
+    version: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21754,20 +21607,21 @@ await client.merchants.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**request:** `Square.merchants.GetCustomAttributeDefinitionsRequest`
-
+**request:** `Square.merchants.GetCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -21789,7 +21643,6 @@ Updates a merchant-related [custom attribute definition](entity:CustomAttributeD
 Use this endpoint to update the following fields: `name`, `description`, `visibility`, or the
 `schema` for a `Selection` data type.
 Only the definition owner can update a custom attribute definition.
-
 </dd>
 </dl>
 </dd>
@@ -21808,11 +21661,11 @@ await client.merchants.customAttributeDefinitions.update({
     key: "key",
     customAttributeDefinition: {
         description: "Update the description as desired.",
-        visibility: "VISIBILITY_READ_ONLY",
-    },
+        visibility: "VISIBILITY_READ_ONLY"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21826,20 +21679,21 @@ await client.merchants.customAttributeDefinitions.update({
 <dl>
 <dd>
 
-**request:** `Square.merchants.UpdateMerchantCustomAttributeDefinitionRequest`
-
+**request:** `Square.merchants.UpdateMerchantCustomAttributeDefinitionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -21861,7 +21715,6 @@ Deletes a merchant-related [custom attribute definition](entity:CustomAttributeD
 Deleting a custom attribute definition also deletes the corresponding custom attribute from
 the merchant.
 Only the definition owner can delete a custom attribute definition.
-
 </dd>
 </dl>
 </dd>
@@ -21877,10 +21730,10 @@ Only the definition owner can delete a custom attribute definition.
 
 ```typescript
 await client.merchants.customAttributeDefinitions.delete({
-    key: "key",
+    key: "key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21894,27 +21747,27 @@ await client.merchants.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**request:** `Square.merchants.DeleteCustomAttributeDefinitionsRequest`
-
+**request:** `Square.merchants.DeleteCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Merchants CustomAttributes
-
 <details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">batchDelete</a>({ ...params }) -> Square.BulkDeleteMerchantCustomAttributesResponse</code></summary>
 <dl>
 <dd>
@@ -21930,7 +21783,6 @@ await client.merchants.customAttributeDefinitions.delete({
 Deletes [custom attributes](entity:CustomAttribute) for a merchant as a bulk operation.
 To delete a custom attribute owned by another application, the `visibility` setting must be
 `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -21947,16 +21799,16 @@ To delete a custom attribute owned by another application, the `visibility` sett
 ```typescript
 await client.merchants.customAttributes.batchDelete({
     values: {
-        id1: {
-            key: "alternative_seller_name",
+        "id1": {
+            key: "alternative_seller_name"
         },
-        id2: {
-            key: "has_seen_tutorial",
-        },
-    },
+        "id2": {
+            key: "has_seen_tutorial"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -21970,20 +21822,21 @@ await client.merchants.customAttributes.batchDelete({
 <dl>
 <dd>
 
-**request:** `Square.merchants.BulkDeleteMerchantCustomAttributesRequest`
-
+**request:** `Square.merchants.BulkDeleteMerchantCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22011,7 +21864,6 @@ and provides a merchant ID and custom attribute. Each upsert response is returne
 of the corresponding request.
 To create or update a custom attribute owned by another application, the `visibility` setting
 must be `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -22028,24 +21880,24 @@ must be `VISIBILITY_READ_WRITE_VALUES`.
 ```typescript
 await client.merchants.customAttributes.batchUpsert({
     values: {
-        id1: {
+        "id1": {
             merchantId: "DM7VKY8Q63GNP",
             customAttribute: {
                 key: "alternative_seller_name",
-                value: "Ultimate Sneaker Store",
-            },
+                value: "Ultimate Sneaker Store"
+            }
         },
-        id2: {
+        "id2": {
             merchantId: "DM7VKY8Q63GNP",
             customAttribute: {
                 key: "has_seen_tutorial",
-                value: true,
-            },
-        },
-    },
+                value: true
+            }
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22059,20 +21911,21 @@ await client.merchants.customAttributes.batchUpsert({
 <dl>
 <dd>
 
-**request:** `Square.merchants.BulkUpsertMerchantCustomAttributesRequest`
-
+**request:** `Square.merchants.BulkUpsertMerchantCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22096,7 +21949,6 @@ in the same call.
 When all response pages are retrieved, the results include all custom attributes that are
 visible to the requesting application, including those that are owned by other applications
 and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -22116,7 +21968,7 @@ const response = await client.merchants.customAttributes.list({
     visibilityFilter: "ALL",
     limit: 1,
     cursor: "cursor",
-    withDefinitions: true,
+    withDefinitions: true
 });
 for await (const item of response) {
     console.log(item);
@@ -22128,13 +21980,13 @@ let page = await client.merchants.customAttributes.list({
     visibilityFilter: "ALL",
     limit: 1,
     cursor: "cursor",
-    withDefinitions: true,
+    withDefinitions: true
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22148,20 +22000,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.merchants.ListCustomAttributesRequest`
-
+**request:** `Square.merchants.ListCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22184,7 +22037,6 @@ You can use the `with_definition` query parameter to also retrieve the custom at
 in the same call.
 To retrieve a custom attribute owned by another application, the `visibility` setting must be
 `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -22203,10 +22055,10 @@ await client.merchants.customAttributes.get({
     merchantId: "merchant_id",
     key: "key",
     withDefinition: true,
-    version: 1,
+    version: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22220,20 +22072,21 @@ await client.merchants.customAttributes.get({
 <dl>
 <dd>
 
-**request:** `Square.merchants.GetCustomAttributesRequest`
-
+**request:** `Square.merchants.GetCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22257,7 +22110,6 @@ A custom attribute is based on a custom attribute definition in a Square seller 
 is created using the [CreateMerchantCustomAttributeDefinition](api-endpoint:MerchantCustomAttributes-CreateMerchantCustomAttributeDefinition) endpoint.
 To create or update a custom attribute owned by another application, the `visibility` setting
 must be `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -22276,11 +22128,11 @@ await client.merchants.customAttributes.upsert({
     merchantId: "merchant_id",
     key: "key",
     customAttribute: {
-        value: "Ultimate Sneaker Store",
-    },
+        value: "Ultimate Sneaker Store"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22294,20 +22146,21 @@ await client.merchants.customAttributes.upsert({
 <dl>
 <dd>
 
-**request:** `Square.merchants.UpsertMerchantCustomAttributeRequest`
-
+**request:** `Square.merchants.UpsertMerchantCustomAttributeRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22328,7 +22181,6 @@ await client.merchants.customAttributes.upsert({
 Deletes a [custom attribute](entity:CustomAttribute) associated with a merchant.
 To delete a custom attribute owned by another application, the `visibility` setting must be
 `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -22345,10 +22197,10 @@ To delete a custom attribute owned by another application, the `visibility` sett
 ```typescript
 await client.merchants.customAttributes.delete({
     merchantId: "merchant_id",
-    key: "key",
+    key: "key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22362,27 +22214,27 @@ await client.merchants.customAttributes.delete({
 <dl>
 <dd>
 
-**request:** `Square.merchants.DeleteCustomAttributesRequest`
-
+**request:** `Square.merchants.DeleteCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Orders CustomAttributeDefinitions
-
 <details><summary><code>client.orders.customAttributeDefinitions.<a href="/src/api/resources/orders/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
 <dl>
 <dd>
@@ -22401,7 +22253,6 @@ When all response pages are retrieved, the results include all custom attribute 
 that are visible to the requesting application, including those that are created by other
 applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that
 seller-defined custom attributes (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -22419,7 +22270,7 @@ seller-defined custom attributes (also known as custom fields) are always set to
 const response = await client.orders.customAttributeDefinitions.list({
     visibilityFilter: "ALL",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -22429,13 +22280,13 @@ for await (const item of response) {
 let page = await client.orders.customAttributeDefinitions.list({
     visibilityFilter: "ALL",
     cursor: "cursor",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22449,20 +22300,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.orders.ListCustomAttributeDefinitionsRequest`
-
+**request:** `Square.orders.ListCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22480,12 +22332,11 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-Creates an order-related custom attribute definition. Use this endpoint to
+Creates an order-related custom attribute definition.  Use this endpoint to
 define a custom attribute that can be associated with orders.
 
 After creating a custom attribute definition, you can set the custom attribute for orders
 in the Square seller account.
-
 </dd>
 </dl>
 </dd>
@@ -22504,16 +22355,16 @@ await client.orders.customAttributeDefinitions.create({
     customAttributeDefinition: {
         key: "cover-count",
         schema: {
-            $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number",
+            "$ref": "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number"
         },
         name: "Cover count",
         description: "The number of people seated at a table",
-        visibility: "VISIBILITY_READ_WRITE_VALUES",
+        visibility: "VISIBILITY_READ_WRITE_VALUES"
     },
-    idempotencyKey: "IDEMPOTENCY_KEY",
+    idempotencyKey: "IDEMPOTENCY_KEY"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22527,20 +22378,21 @@ await client.orders.customAttributeDefinitions.create({
 <dl>
 <dd>
 
-**request:** `Square.orders.CreateOrderCustomAttributeDefinitionRequest`
-
+**request:** `Square.orders.CreateOrderCustomAttributeDefinitionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22563,7 +22415,6 @@ Retrieves an order-related [custom attribute definition](entity:CustomAttributeD
 To retrieve a custom attribute definition created by another application, the `visibility`
 setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -22580,10 +22431,10 @@ setting must be `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note t
 ```typescript
 await client.orders.customAttributeDefinitions.get({
     key: "key",
-    version: 1,
+    version: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22597,20 +22448,21 @@ await client.orders.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**request:** `Square.orders.GetCustomAttributeDefinitionsRequest`
-
+**request:** `Square.orders.GetCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22631,7 +22483,6 @@ await client.orders.customAttributeDefinitions.get({
 Updates an order-related custom attribute definition for a Square seller account.
 
 Only the definition owner can update a custom attribute definition. Note that sellers can view all custom attributes in exported customer data, including those set to `VISIBILITY_HIDDEN`.
-
 </dd>
 </dl>
 </dd>
@@ -22651,12 +22502,12 @@ await client.orders.customAttributeDefinitions.update({
     customAttributeDefinition: {
         key: "cover-count",
         visibility: "VISIBILITY_READ_ONLY",
-        version: 1,
+        version: 1
     },
-    idempotencyKey: "IDEMPOTENCY_KEY",
+    idempotencyKey: "IDEMPOTENCY_KEY"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22670,20 +22521,21 @@ await client.orders.customAttributeDefinitions.update({
 <dl>
 <dd>
 
-**request:** `Square.orders.UpdateOrderCustomAttributeDefinitionRequest`
-
+**request:** `Square.orders.UpdateOrderCustomAttributeDefinitionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22704,7 +22556,6 @@ await client.orders.customAttributeDefinitions.update({
 Deletes an order-related [custom attribute definition](entity:CustomAttributeDefinition) from a Square seller account.
 
 Only the definition owner can delete a custom attribute definition.
-
 </dd>
 </dl>
 </dd>
@@ -22720,10 +22571,10 @@ Only the definition owner can delete a custom attribute definition.
 
 ```typescript
 await client.orders.customAttributeDefinitions.delete({
-    key: "key",
+    key: "key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22737,27 +22588,27 @@ await client.orders.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**request:** `Square.orders.DeleteCustomAttributeDefinitionsRequest`
-
+**request:** `Square.orders.DeleteCustomAttributeDefinitionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions`
+**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Orders CustomAttributes
-
 <details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">batchDelete</a>({ ...params }) -> Square.BulkDeleteOrderCustomAttributesResponse</code></summary>
 <dl>
 <dd>
@@ -22773,7 +22624,7 @@ await client.orders.customAttributeDefinitions.delete({
 Deletes order [custom attributes](entity:CustomAttribute) as a bulk operation.
 
 Use this endpoint to delete one or more custom attributes from one or more orders.
-A custom attribute is based on a custom attribute definition in a Square seller account. (To create a
+A custom attribute is based on a custom attribute definition in a Square seller account.  (To create a
 custom attribute definition, use the [CreateOrderCustomAttributeDefinition](api-endpoint:OrderCustomAttributes-CreateOrderCustomAttributeDefinition) endpoint.)
 
 This `BulkDeleteOrderCustomAttributes` endpoint accepts a map of 1 to 25 individual delete
@@ -22784,7 +22635,6 @@ of the corresponding request.
 To delete a custom attribute owned by another application, the `visibility` setting
 must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -22803,16 +22653,16 @@ await client.orders.customAttributes.batchDelete({
     values: {
         "cover-count": {
             key: "cover-count",
-            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
+            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F"
         },
         "table-number": {
             key: "table-number",
-            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
-        },
-    },
+            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22826,20 +22676,21 @@ await client.orders.customAttributes.batchDelete({
 <dl>
 <dd>
 
-**request:** `Square.orders.BulkDeleteOrderCustomAttributesRequest`
-
+**request:** `Square.orders.BulkDeleteOrderCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22860,7 +22711,7 @@ await client.orders.customAttributes.batchDelete({
 Creates or updates order [custom attributes](entity:CustomAttribute) as a bulk operation.
 
 Use this endpoint to delete one or more custom attributes from one or more orders.
-A custom attribute is based on a custom attribute definition in a Square seller account. (To create a
+A custom attribute is based on a custom attribute definition in a Square seller account.  (To create a
 custom attribute definition, use the [CreateOrderCustomAttributeDefinition](api-endpoint:OrderCustomAttributes-CreateOrderCustomAttributeDefinition) endpoint.)
 
 This `BulkUpsertOrderCustomAttributes` endpoint accepts a map of 1 to 25 individual upsert
@@ -22871,7 +22722,6 @@ of the corresponding request.
 To create or update a custom attribute owned by another application, the `visibility` setting
 must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -22892,22 +22742,22 @@ await client.orders.customAttributes.batchUpsert({
             customAttribute: {
                 key: "cover-count",
                 value: "6",
-                version: 2,
+                version: 2
             },
-            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
+            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F"
         },
         "table-number": {
             customAttribute: {
                 key: "table-number",
                 value: "11",
-                version: 4,
+                version: 4
             },
-            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F",
-        },
-    },
+            orderId: "7BbXGEIWNldxAzrtGf9GPVZTwZ4F"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -22921,20 +22771,21 @@ await client.orders.customAttributes.batchUpsert({
 <dl>
 <dd>
 
-**request:** `Square.orders.BulkUpsertOrderCustomAttributesRequest`
-
+**request:** `Square.orders.BulkUpsertOrderCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -22960,7 +22811,6 @@ in the same call.
 When all response pages are retrieved, the results include all custom attributes that are
 visible to the requesting application, including those that are owned by other applications
 and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -22980,7 +22830,7 @@ const response = await client.orders.customAttributes.list({
     visibilityFilter: "ALL",
     cursor: "cursor",
     limit: 1,
-    withDefinitions: true,
+    withDefinitions: true
 });
 for await (const item of response) {
     console.log(item);
@@ -22992,13 +22842,13 @@ let page = await client.orders.customAttributes.list({
     visibilityFilter: "ALL",
     cursor: "cursor",
     limit: 1,
-    withDefinitions: true,
+    withDefinitions: true
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23012,20 +22862,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.orders.ListCustomAttributesRequest`
-
+**request:** `Square.orders.ListCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -23051,7 +22902,6 @@ in the same call.
 To retrieve a custom attribute owned by another application, the `visibility` setting must be
 `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -23070,10 +22920,10 @@ await client.orders.customAttributes.get({
     orderId: "order_id",
     customAttributeKey: "custom_attribute_key",
     version: 1,
-    withDefinition: true,
+    withDefinition: true
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23087,20 +22937,21 @@ await client.orders.customAttributes.get({
 <dl>
 <dd>
 
-**request:** `Square.orders.GetCustomAttributesRequest`
-
+**request:** `Square.orders.GetCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -23127,7 +22978,6 @@ custom attribute definition, use the [CreateOrderCustomAttributeDefinition](api-
 To create or update a custom attribute owned by another application, the `visibility` setting
 must be `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -23148,11 +22998,11 @@ await client.orders.customAttributes.upsert({
     customAttribute: {
         key: "table-number",
         value: "42",
-        version: 1,
-    },
+        version: 1
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23166,20 +23016,21 @@ await client.orders.customAttributes.upsert({
 <dl>
 <dd>
 
-**request:** `Square.orders.UpsertOrderCustomAttributeRequest`
-
+**request:** `Square.orders.UpsertOrderCustomAttributeRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -23202,7 +23053,6 @@ Deletes a [custom attribute](entity:CustomAttribute) associated with a customer 
 To delete a custom attribute owned by another application, the `visibility` setting must be
 `VISIBILITY_READ_WRITE_VALUES`. Note that seller-defined custom attributes
 (also known as custom fields) are always set to `VISIBILITY_READ_WRITE_VALUES`.
-
 </dd>
 </dl>
 </dd>
@@ -23219,10 +23069,10 @@ To delete a custom attribute owned by another application, the `visibility` sett
 ```typescript
 await client.orders.customAttributes.delete({
     orderId: "order_id",
-    customAttributeKey: "custom_attribute_key",
+    customAttributeKey: "custom_attribute_key"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23236,27 +23086,27 @@ await client.orders.customAttributes.delete({
 <dl>
 <dd>
 
-**request:** `Square.orders.DeleteCustomAttributesRequest`
-
+**request:** `Square.orders.DeleteCustomAttributesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions`
+**requestOptions:** `CustomAttributes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## TeamMembers WageSetting
-
 <details><summary><code>client.teamMembers.wageSetting.<a href="/src/api/resources/teamMembers/resources/wageSetting/client/Client.ts">get</a>({ ...params }) -> Square.GetWageSettingResponse</code></summary>
 <dl>
 <dd>
@@ -23275,7 +23125,6 @@ by `TeamMember.id`. For more information, see
 
 Square recommends using [RetrieveTeamMember](api-endpoint:Team-RetrieveTeamMember) or [SearchTeamMembers](api-endpoint:Team-SearchTeamMembers)
 to get this information directly from the `TeamMember.wage_setting` field.
-
 </dd>
 </dl>
 </dd>
@@ -23291,10 +23140,10 @@ to get this information directly from the `TeamMember.wage_setting` field.
 
 ```typescript
 await client.teamMembers.wageSetting.get({
-    teamMemberId: "team_member_id",
+    teamMemberId: "team_member_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23308,20 +23157,21 @@ await client.teamMembers.wageSetting.get({
 <dl>
 <dd>
 
-**request:** `Square.teamMembers.GetWageSettingRequest`
-
+**request:** `Square.teamMembers.GetWageSettingRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `WageSetting.RequestOptions`
+**requestOptions:** `WageSetting.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -23347,7 +23197,6 @@ The `WageSetting` is returned on a successful update. For more information, see
 
 Square recommends using [CreateTeamMember](api-endpoint:Team-CreateTeamMember) or [UpdateTeamMember](api-endpoint:Team-UpdateTeamMember)
 to manage the `TeamMember.wage_setting` field directly.
-
 </dd>
 </dl>
 </dd>
@@ -23365,30 +23214,27 @@ to manage the `TeamMember.wage_setting` field directly.
 await client.teamMembers.wageSetting.update({
     teamMemberId: "team_member_id",
     wageSetting: {
-        jobAssignments: [
-            {
+        jobAssignments: [{
                 jobTitle: "Manager",
                 payType: "SALARY",
                 annualRate: {
                     amount: BigInt("3000000"),
-                    currency: "USD",
+                    currency: "USD"
                 },
-                weeklyHours: 40,
-            },
-            {
+                weeklyHours: 40
+            }, {
                 jobTitle: "Cashier",
                 payType: "HOURLY",
                 hourlyRate: {
                     amount: BigInt("2000"),
-                    currency: "USD",
-                },
-            },
-        ],
-        isOvertimeExempt: true,
-    },
+                    currency: "USD"
+                }
+            }],
+        isOvertimeExempt: true
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23402,27 +23248,27 @@ await client.teamMembers.wageSetting.update({
 <dl>
 <dd>
 
-**request:** `Square.teamMembers.UpdateWageSettingRequest`
-
+**request:** `Square.teamMembers.UpdateWageSettingRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `WageSetting.RequestOptions`
+**requestOptions:** `WageSetting.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Terminal Actions
-
 <details><summary><code>client.terminal.actions.<a href="/src/api/resources/terminal/resources/actions/client/Client.ts">create</a>({ ...params }) -> Square.CreateTerminalActionResponse</code></summary>
 <dl>
 <dd>
@@ -23436,7 +23282,6 @@ await client.teamMembers.wageSetting.update({
 <dd>
 
 Creates a Terminal action request and sends it to the specified device.
-
 </dd>
 </dl>
 </dd>
@@ -23459,12 +23304,12 @@ await client.terminal.actions.create({
         type: "SAVE_CARD",
         saveCardOptions: {
             customerId: "{{CUSTOMER_ID}}",
-            referenceId: "user-id-1",
-        },
-    },
+            referenceId: "user-id-1"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23478,20 +23323,21 @@ await client.terminal.actions.create({
 <dl>
 <dd>
 
-**request:** `Square.terminal.CreateTerminalActionRequest`
-
+**request:** `Square.terminal.CreateTerminalActionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Actions.RequestOptions`
+**requestOptions:** `Actions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -23510,7 +23356,6 @@ await client.terminal.actions.create({
 <dd>
 
 Retrieves a filtered list of Terminal action requests created by the account making the request. Terminal action requests are available for 30 days.
-
 </dd>
 </dl>
 </dd>
@@ -23529,17 +23374,17 @@ await client.terminal.actions.search({
     query: {
         filter: {
             createdAt: {
-                startAt: "2022-04-01T00:00:00.000Z",
-            },
+                startAt: "2022-04-01T00:00:00.000Z"
+            }
         },
         sort: {
-            sortOrder: "DESC",
-        },
+            sortOrder: "DESC"
+        }
     },
-    limit: 2,
+    limit: 2
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23553,20 +23398,21 @@ await client.terminal.actions.search({
 <dl>
 <dd>
 
-**request:** `Square.terminal.SearchTerminalActionsRequest`
-
+**request:** `Square.terminal.SearchTerminalActionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Actions.RequestOptions`
+**requestOptions:** `Actions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -23585,7 +23431,6 @@ await client.terminal.actions.search({
 <dd>
 
 Retrieves a Terminal action request by `action_id`. Terminal action requests are available for 30 days.
-
 </dd>
 </dl>
 </dd>
@@ -23601,10 +23446,10 @@ Retrieves a Terminal action request by `action_id`. Terminal action requests are
 
 ```typescript
 await client.terminal.actions.get({
-    actionId: "action_id",
+    actionId: "action_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23618,20 +23463,21 @@ await client.terminal.actions.get({
 <dl>
 <dd>
 
-**request:** `Square.terminal.GetActionsRequest`
-
+**request:** `Square.terminal.GetActionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Actions.RequestOptions`
+**requestOptions:** `Actions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -23650,7 +23496,6 @@ await client.terminal.actions.get({
 <dd>
 
 Cancels a Terminal action request if the status of the request permits it.
-
 </dd>
 </dl>
 </dd>
@@ -23666,10 +23511,10 @@ Cancels a Terminal action request if the status of the request permits it.
 
 ```typescript
 await client.terminal.actions.cancel({
-    actionId: "action_id",
+    actionId: "action_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23683,27 +23528,27 @@ await client.terminal.actions.cancel({
 <dl>
 <dd>
 
-**request:** `Square.terminal.CancelActionsRequest`
-
+**request:** `Square.terminal.CancelActionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Actions.RequestOptions`
+**requestOptions:** `Actions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Terminal Checkouts
-
 <details><summary><code>client.terminal.checkouts.<a href="/src/api/resources/terminal/resources/checkouts/client/Client.ts">create</a>({ ...params }) -> Square.CreateTerminalCheckoutResponse</code></summary>
 <dl>
 <dd>
@@ -23718,7 +23563,6 @@ await client.terminal.actions.cancel({
 
 Creates a Terminal checkout request and sends it to the specified device to take a payment
 for the requested amount.
-
 </dd>
 </dl>
 </dd>
@@ -23738,17 +23582,17 @@ await client.terminal.checkouts.create({
     checkout: {
         amountMoney: {
             amount: BigInt("2610"),
-            currency: "USD",
+            currency: "USD"
         },
         referenceId: "id11572",
         note: "A brief note",
         deviceOptions: {
-            deviceId: "dbb5d83a-7838-11ea-bc55-0242ac130003",
-        },
-    },
+            deviceId: "dbb5d83a-7838-11ea-bc55-0242ac130003"
+        }
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23762,20 +23606,21 @@ await client.terminal.checkouts.create({
 <dl>
 <dd>
 
-**request:** `Square.terminal.CreateTerminalCheckoutRequest`
-
+**request:** `Square.terminal.CreateTerminalCheckoutRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Checkouts.RequestOptions`
+**requestOptions:** `Checkouts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -23794,7 +23639,6 @@ await client.terminal.checkouts.create({
 <dd>
 
 Returns a filtered list of Terminal checkout requests created by the application making the request. Only Terminal checkout requests created for the merchant scoped to the OAuth token are returned. Terminal checkout requests are available for 30 days.
-
 </dd>
 </dl>
 </dd>
@@ -23812,13 +23656,13 @@ Returns a filtered list of Terminal checkout requests created by the application
 await client.terminal.checkouts.search({
     query: {
         filter: {
-            status: "COMPLETED",
-        },
+            status: "COMPLETED"
+        }
     },
-    limit: 2,
+    limit: 2
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23832,20 +23676,21 @@ await client.terminal.checkouts.search({
 <dl>
 <dd>
 
-**request:** `Square.terminal.SearchTerminalCheckoutsRequest`
-
+**request:** `Square.terminal.SearchTerminalCheckoutsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Checkouts.RequestOptions`
+**requestOptions:** `Checkouts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -23864,7 +23709,6 @@ await client.terminal.checkouts.search({
 <dd>
 
 Retrieves a Terminal checkout request by `checkout_id`. Terminal checkout requests are available for 30 days.
-
 </dd>
 </dl>
 </dd>
@@ -23880,10 +23724,10 @@ Retrieves a Terminal checkout request by `checkout_id`. Terminal checkout reques
 
 ```typescript
 await client.terminal.checkouts.get({
-    checkoutId: "checkout_id",
+    checkoutId: "checkout_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23897,20 +23741,21 @@ await client.terminal.checkouts.get({
 <dl>
 <dd>
 
-**request:** `Square.terminal.GetCheckoutsRequest`
-
+**request:** `Square.terminal.GetCheckoutsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Checkouts.RequestOptions`
+**requestOptions:** `Checkouts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -23929,7 +23774,6 @@ await client.terminal.checkouts.get({
 <dd>
 
 Cancels a Terminal checkout request if the status of the request permits it.
-
 </dd>
 </dl>
 </dd>
@@ -23945,10 +23789,10 @@ Cancels a Terminal checkout request if the status of the request permits it.
 
 ```typescript
 await client.terminal.checkouts.cancel({
-    checkoutId: "checkout_id",
+    checkoutId: "checkout_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -23962,27 +23806,27 @@ await client.terminal.checkouts.cancel({
 <dl>
 <dd>
 
-**request:** `Square.terminal.CancelCheckoutsRequest`
-
+**request:** `Square.terminal.CancelCheckoutsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Checkouts.RequestOptions`
+**requestOptions:** `Checkouts.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Terminal Refunds
-
 <details><summary><code>client.terminal.refunds.<a href="/src/api/resources/terminal/resources/refunds/client/Client.ts">create</a>({ ...params }) -> Square.CreateTerminalRefundResponse</code></summary>
 <dl>
 <dd>
@@ -23996,7 +23840,6 @@ await client.terminal.checkouts.cancel({
 <dd>
 
 Creates a request to refund an Interac payment completed on a Square Terminal. Refunds for Interac payments on a Square Terminal are supported only for Interac debit cards in Canada. Other refunds for Terminal payments should use the Refunds API. For more information, see [Refunds API](api:Refunds).
-
 </dd>
 </dl>
 </dd>
@@ -24017,14 +23860,14 @@ await client.terminal.refunds.create({
         paymentId: "5O5OvgkcNUhl7JBuINflcjKqUzXZY",
         amountMoney: {
             amount: BigInt("111"),
-            currency: "CAD",
+            currency: "CAD"
         },
         reason: "Returning items",
-        deviceId: "f72dfb8e-4d65-4e56-aade-ec3fb8d33291",
-    },
+        deviceId: "f72dfb8e-4d65-4e56-aade-ec3fb8d33291"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24038,20 +23881,21 @@ await client.terminal.refunds.create({
 <dl>
 <dd>
 
-**request:** `Square.terminal.CreateTerminalRefundRequest`
-
+**request:** `Square.terminal.CreateTerminalRefundRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions`
+**requestOptions:** `Refunds.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -24070,7 +23914,6 @@ await client.terminal.refunds.create({
 <dd>
 
 Retrieves a filtered list of Interac Terminal refund requests created by the seller making the request. Terminal refund requests are available for 30 days.
-
 </dd>
 </dl>
 </dd>
@@ -24088,13 +23931,13 @@ Retrieves a filtered list of Interac Terminal refund requests created by the sel
 await client.terminal.refunds.search({
     query: {
         filter: {
-            status: "COMPLETED",
-        },
+            status: "COMPLETED"
+        }
     },
-    limit: 1,
+    limit: 1
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24108,20 +23951,21 @@ await client.terminal.refunds.search({
 <dl>
 <dd>
 
-**request:** `Square.terminal.SearchTerminalRefundsRequest`
-
+**request:** `Square.terminal.SearchTerminalRefundsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions`
+**requestOptions:** `Refunds.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -24140,7 +23984,6 @@ await client.terminal.refunds.search({
 <dd>
 
 Retrieves an Interac Terminal refund object by ID. Terminal refund objects are available for 30 days.
-
 </dd>
 </dl>
 </dd>
@@ -24156,10 +23999,10 @@ Retrieves an Interac Terminal refund object by ID. Terminal refund objects are a
 
 ```typescript
 await client.terminal.refunds.get({
-    terminalRefundId: "terminal_refund_id",
+    terminalRefundId: "terminal_refund_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24173,20 +24016,21 @@ await client.terminal.refunds.get({
 <dl>
 <dd>
 
-**request:** `Square.terminal.GetRefundsRequest`
-
+**request:** `Square.terminal.GetRefundsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions`
+**requestOptions:** `Refunds.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -24205,7 +24049,6 @@ await client.terminal.refunds.get({
 <dd>
 
 Cancels an Interac Terminal refund request by refund request ID if the status of the request permits it.
-
 </dd>
 </dl>
 </dd>
@@ -24221,10 +24064,10 @@ Cancels an Interac Terminal refund request by refund request ID if the status of
 
 ```typescript
 await client.terminal.refunds.cancel({
-    terminalRefundId: "terminal_refund_id",
+    terminalRefundId: "terminal_refund_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24238,27 +24081,27 @@ await client.terminal.refunds.cancel({
 <dl>
 <dd>
 
-**request:** `Square.terminal.CancelRefundsRequest`
-
+**request:** `Square.terminal.CancelRefundsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions`
+**requestOptions:** `Refunds.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Webhooks EventTypes
-
 <details><summary><code>client.webhooks.eventTypes.<a href="/src/api/resources/webhooks/resources/eventTypes/client/Client.ts">list</a>({ ...params }) -> Square.ListWebhookEventTypesResponse</code></summary>
 <dl>
 <dd>
@@ -24272,7 +24115,6 @@ await client.terminal.refunds.cancel({
 <dd>
 
 Lists all webhook event types that can be subscribed to.
-
 </dd>
 </dl>
 </dd>
@@ -24288,10 +24130,10 @@ Lists all webhook event types that can be subscribed to.
 
 ```typescript
 await client.webhooks.eventTypes.list({
-    apiVersion: "api_version",
+    apiVersion: "api_version"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24305,27 +24147,27 @@ await client.webhooks.eventTypes.list({
 <dl>
 <dd>
 
-**request:** `Square.webhooks.ListEventTypesRequest`
-
+**request:** `Square.webhooks.ListEventTypesRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `EventTypes.RequestOptions`
+**requestOptions:** `EventTypes.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
 </details>
 
 ## Webhooks Subscriptions
-
 <details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WebhookSubscription></code></summary>
 <dl>
 <dd>
@@ -24339,7 +24181,6 @@ await client.webhooks.eventTypes.list({
 <dd>
 
 Lists all webhook subscriptions owned by your application.
-
 </dd>
 </dl>
 </dd>
@@ -24358,7 +24199,7 @@ const response = await client.webhooks.subscriptions.list({
     cursor: "cursor",
     includeDisabled: true,
     sortOrder: "DESC",
-    limit: 1,
+    limit: 1
 });
 for await (const item of response) {
     console.log(item);
@@ -24369,13 +24210,13 @@ let page = await client.webhooks.subscriptions.list({
     cursor: "cursor",
     includeDisabled: true,
     sortOrder: "DESC",
-    limit: 1,
+    limit: 1
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24389,20 +24230,21 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `Square.webhooks.ListSubscriptionsRequest`
-
+**request:** `Square.webhooks.ListSubscriptionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -24421,7 +24263,6 @@ while (page.hasNextPage()) {
 <dd>
 
 Creates a webhook subscription.
-
 </dd>
 </dl>
 </dd>
@@ -24442,11 +24283,11 @@ await client.webhooks.subscriptions.create({
         name: "Example Webhook Subscription",
         eventTypes: ["payment.created", "payment.updated"],
         notificationUrl: "https://example-webhook-url.com",
-        apiVersion: "2021-12-15",
-    },
+        apiVersion: "2021-12-15"
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24460,20 +24301,21 @@ await client.webhooks.subscriptions.create({
 <dl>
 <dd>
 
-**request:** `Square.webhooks.CreateWebhookSubscriptionRequest`
-
+**request:** `Square.webhooks.CreateWebhookSubscriptionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -24492,7 +24334,6 @@ await client.webhooks.subscriptions.create({
 <dd>
 
 Retrieves a webhook subscription identified by its ID.
-
 </dd>
 </dl>
 </dd>
@@ -24508,10 +24349,10 @@ Retrieves a webhook subscription identified by its ID.
 
 ```typescript
 await client.webhooks.subscriptions.get({
-    subscriptionId: "subscription_id",
+    subscriptionId: "subscription_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24525,20 +24366,21 @@ await client.webhooks.subscriptions.get({
 <dl>
 <dd>
 
-**request:** `Square.webhooks.GetSubscriptionsRequest`
-
+**request:** `Square.webhooks.GetSubscriptionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -24557,7 +24399,6 @@ await client.webhooks.subscriptions.get({
 <dd>
 
 Updates a webhook subscription.
-
 </dd>
 </dl>
 </dd>
@@ -24576,11 +24417,11 @@ await client.webhooks.subscriptions.update({
     subscriptionId: "subscription_id",
     subscription: {
         name: "Updated Example Webhook Subscription",
-        enabled: false,
-    },
+        enabled: false
+    }
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24594,20 +24435,21 @@ await client.webhooks.subscriptions.update({
 <dl>
 <dd>
 
-**request:** `Square.webhooks.UpdateWebhookSubscriptionRequest`
-
+**request:** `Square.webhooks.UpdateWebhookSubscriptionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -24626,7 +24468,6 @@ await client.webhooks.subscriptions.update({
 <dd>
 
 Deletes a webhook subscription.
-
 </dd>
 </dl>
 </dd>
@@ -24642,10 +24483,10 @@ Deletes a webhook subscription.
 
 ```typescript
 await client.webhooks.subscriptions.delete({
-    subscriptionId: "subscription_id",
+    subscriptionId: "subscription_id"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24659,20 +24500,21 @@ await client.webhooks.subscriptions.delete({
 <dl>
 <dd>
 
-**request:** `Square.webhooks.DeleteSubscriptionsRequest`
-
+**request:** `Square.webhooks.DeleteSubscriptionsRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -24691,7 +24533,6 @@ await client.webhooks.subscriptions.delete({
 <dd>
 
 Updates a webhook subscription by replacing the existing signature key with a new one.
-
 </dd>
 </dl>
 </dd>
@@ -24708,10 +24549,10 @@ Updates a webhook subscription by replacing the existing signature key with a ne
 ```typescript
 await client.webhooks.subscriptions.updateSignatureKey({
     subscriptionId: "subscription_id",
-    idempotencyKey: "ed80ae6b-0654-473b-bbab-a39aee89a60d",
+    idempotencyKey: "ed80ae6b-0654-473b-bbab-a39aee89a60d"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24725,20 +24566,21 @@ await client.webhooks.subscriptions.updateSignatureKey({
 <dl>
 <dd>
 
-**request:** `Square.webhooks.UpdateWebhookSubscriptionSignatureKeyRequest`
-
+**request:** `Square.webhooks.UpdateWebhookSubscriptionSignatureKeyRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>
@@ -24757,7 +24599,6 @@ await client.webhooks.subscriptions.updateSignatureKey({
 <dd>
 
 Tests a webhook subscription by sending a test event to the notification URL.
-
 </dd>
 </dl>
 </dd>
@@ -24774,10 +24615,10 @@ Tests a webhook subscription by sending a test event to the notification URL.
 ```typescript
 await client.webhooks.subscriptions.test({
     subscriptionId: "subscription_id",
-    eventType: "payment.created",
+    eventType: "payment.created"
 });
-```
 
+```
 </dd>
 </dl>
 </dd>
@@ -24791,20 +24632,21 @@ await client.webhooks.subscriptions.test({
 <dl>
 <dd>
 
-**request:** `Square.webhooks.TestWebhookSubscriptionRequest`
-
+**request:** `Square.webhooks.TestWebhookSubscriptionRequest` 
+    
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions`
+**requestOptions:** `Subscriptions.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
 
-</dd>
-</dl>
-</dd>
-</dl>
 
 </dd>
 </dl>

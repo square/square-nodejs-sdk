@@ -1,5 +1,5 @@
+import type { Square, SquareClient } from "../../src";
 import { createClient, newTestUuid } from "./helpers";
-import { Square, SquareClient } from "../../src";
 
 describe("Teams API", () => {
     const client: SquareClient = createClient();
@@ -62,8 +62,8 @@ describe("Teams API", () => {
         expect(member1Errors).toBeUndefined();
         expect(member2Errors).toBeUndefined();
         expect(member3Errors).toBeDefined();
-        expect(member3Errors![0].code).toBe("INVALID_VALUE");
-        expect(member3Errors![0].detail).toBe("Expected the assigned_locations.location_ids to be valid");
+        expect(member3Errors?.[0].code).toBe("INVALID_VALUE");
+        expect(member3Errors?.[0].detail).toBe("Expected the assigned_locations.location_ids to be valid");
     });
 });
 

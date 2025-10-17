@@ -1,8 +1,8 @@
-import { SquareClient } from "../../src";
-import { createClient, newTestUuid, newTestSquareTempId, newTestMoney, getDefaultLocationId } from "./helpers";
+import type { SquareClient } from "../../src";
+import { createClient, getDefaultLocationId, newTestMoney, newTestSquareTempId, newTestUuid } from "./helpers";
 
 describe("Square Client Utils", () => {
-    let client: SquareClient = createClient();
+    const client: SquareClient = createClient();
 
     test("should generate a new UUID", () => {
         const uuid = newTestUuid();

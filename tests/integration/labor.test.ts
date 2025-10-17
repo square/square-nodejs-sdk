@@ -1,8 +1,8 @@
+import type { SquareClient } from "../../src";
 import { createClient } from "./helpers";
-import { SquareClient } from "../../src";
 
 function formatDateString(date: Date): string {
-    return date.toISOString().slice(0, 19) + "Z";
+    return `${date.toISOString().slice(0, 19)}Z`;
 }
 
 describe("Labor API", () => {
@@ -70,7 +70,7 @@ describe("Labor API", () => {
             await client.labor.shifts.delete({
                 id: shiftId,
             });
-        } catch (e) {
+        } catch (_e) {
             // Test may have already deleted the shift
         }
 
@@ -78,7 +78,7 @@ describe("Labor API", () => {
             await client.labor.breakTypes.delete({
                 id: breakId,
             });
-        } catch (e) {
+        } catch (_e) {
             // Test may have already deleted the break
         }
     });
@@ -198,7 +198,7 @@ describe("Labor API", () => {
         }
 
         // Add a small delay to ensure the shift is fully created
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
         const response = await client.labor.shifts.delete({
             id: shiftResponse.shift.id,

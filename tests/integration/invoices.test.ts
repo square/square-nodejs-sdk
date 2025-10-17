@@ -1,5 +1,5 @@
+import type { SquareClient } from "../../src";
 import { createClient, newTestUuid } from "./helpers";
-import { Square, SquareClient } from "../../src";
 
 describe("Invoices API", () => {
     const client: SquareClient = createClient();
@@ -12,7 +12,7 @@ describe("Invoices API", () => {
     beforeAll(async () => {
         // Get first location
         const locationResponse = await client.locations.list();
-        locationId = locationResponse.locations![0].id!;
+        locationId = locationResponse.locations?.[0].id!;
 
         // Create test order
         const orderResponse = await client.orders.create({
@@ -31,7 +31,7 @@ describe("Invoices API", () => {
                 ],
             },
         });
-        orderId = orderResponse.order!.id!;
+        orderId = orderResponse.order?.id!;
 
         // Create test customer
         const customerResponse = await client.customers.create({
@@ -49,7 +49,7 @@ describe("Invoices API", () => {
                 country: "US",
             },
         });
-        customerId = customerResponse.customer!.id!;
+        customerId = customerResponse.customer?.id!;
 
         // Create test invoice
         const invoiceResponse = await client.invoices.create({
@@ -77,8 +77,8 @@ describe("Invoices API", () => {
                 },
             },
         });
-        invoiceId = invoiceResponse.invoice!.id!;
-        paymentRequestUid = invoiceResponse.invoice!.paymentRequests![0].uid!;
+        invoiceId = invoiceResponse.invoice?.id!;
+        paymentRequestUid = invoiceResponse.invoice?.paymentRequests?.[0].uid!;
 
         expect(invoiceResponse.invoice).toEqual(
             expect.objectContaining({
@@ -219,7 +219,7 @@ describe("Invoices API", () => {
                 title: "Brand New Invoice",
                 description: "A Blank Invoice",
                 locationId: locationId,
-                orderId: orderResponse.order!.id!,
+                orderId: orderResponse.order?.id!,
                 paymentRequests: [
                     {
                         requestMethod: "SHARE_MANUALLY",
@@ -236,7 +236,7 @@ describe("Invoices API", () => {
         });
 
         const response = await client.invoices.delete({
-            invoiceId: invoiceResponse.invoice!.id!,
+            invoiceId: invoiceResponse.invoice?.id!,
             version: 0,
         });
 

@@ -1,5 +1,5 @@
+import type { SquareClient } from "../../src";
 import { createClient, getDefaultLocationId } from "./helpers";
-import { SquareClient } from "../../src";
 
 describe("MobileAuthorization API", () => {
     const client: SquareClient = createClient();

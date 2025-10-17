@@ -1,4 +1,4 @@
-import { Client } from "../../legacy/exports";
+import type { Client } from "../../legacy/exports";
 import { createLegacyClient } from "./helpers";
 
 describe("Legacy SDK", () => {

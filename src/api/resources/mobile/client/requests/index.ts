@@ -1,1 +1,1 @@
-export { type CreateMobileAuthorizationCodeRequest } from "./CreateMobileAuthorizationCodeRequest";
+export type { CreateMobileAuthorizationCodeRequest } from "./CreateMobileAuthorizationCodeRequest";
