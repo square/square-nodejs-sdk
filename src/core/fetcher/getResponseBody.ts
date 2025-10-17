@@ -1,6 +1,6 @@
+import { fromJson } from "../json";
 import { getBinaryResponse } from "./BinaryResponse";
 import { isResponseWithBody } from "./ResponseWithBody";
-import { fromJson } from "../json";
 
 import { chooseStreamWrapper } from "./stream-wrappers/chooseStreamWrapper";
 
@@ -28,9 +28,9 @@ export async function getResponseBody(response: Response, responseType?: string)
     const text = await response.text();
     if (text.length > 0) {
         try {
-            let responseBody = fromJson(text);
+            const responseBody = fromJson(text);
             return responseBody;
-        } catch (err) {
+        } catch (_err) {
             return {
                 ok: false,
                 error: {

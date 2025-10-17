@@ -1,2 +1,2 @@
-export { type SearchEventsRequest } from "./SearchEventsRequest";
-export { type ListEventTypesRequest } from "./ListEventTypesRequest";
+export type { ListEventTypesRequest } from "./ListEventTypesRequest";
+export type { SearchEventsRequest } from "./SearchEventsRequest";
