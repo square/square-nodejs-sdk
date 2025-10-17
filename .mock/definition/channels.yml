@@ -1,0 +1,189 @@
+imports:
+  root: __package__.yml
+service:
+  auth: false
+  base-path: ''
+  endpoints:
+    list:
+      path: /v2/channels
+      method: GET
+      auth:
+        - oauth2:
+            - CHANNELS_READ
+      docs: ''
+      pagination:
+        cursor: $request.cursor
+        next_cursor: $response.cursor
+        results: $response.channels
+      source:
+        openapi: openapi/openapi.json
+      display-name: ListChannels
+      request:
+        name: ListChannelsRequest
+        query-parameters:
+          reference_type:
+            type: optional<nullable<root.ReferenceType>>
+            docs: Type of reference associated to channel
+          reference_id:
+            type: optional<nullable<string>>
+            docs: id of reference associated to channel
+          status:
+            type: optional<nullable<root.ChannelStatus>>
+            docs: Status of channel
+          cursor:
+            type: optional<nullable<string>>
+            docs: Cursor to fetch the next result
+          limit:
+            type: optional<nullable<integer>>
+            docs: >-
+              Maximum number of results to return.
+
+              When not provided the returned results will be cap at 100
+              channels.
+      response:
+        docs: Success
+        type: root.ListChannelsResponse
+        status-code: 200
+      examples:
+        - query-parameters:
+            reference_type: UNKNOWN_TYPE
+            reference_id: reference_id
+            status: ACTIVE
+            cursor: cursor
+            limit: 1
+          headers:
+            Square-Version: '2025-10-16'
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              channels:
+                - id: CH_9C03D0B59
+                  merchant_id: ML64FACEA
+                  name: Contoso Fulfillment Application
+                  version: 1
+                  reference:
+                    type: OAUTH_APPLICATION
+                    id: OA_9C03D0444
+                  status: ACTIVE
+                  created_at: '2022-10-25T16:27:00Z'
+                  updated_at: '2022-10-25T16:48:00Z'
+              cursor: cursor
+    bulkRetrieve:
+      path: /v2/channels/bulk-retrieve
+      method: POST
+      auth:
+        - oauth2:
+            - CHANNELS_READ
+      docs: ''
+      source:
+        openapi: openapi/openapi.json
+      display-name: BulkRetrieveChannels
+      request:
+        name: BulkRetrieveChannelsRequest
+        body:
+          properties:
+            channel_ids: list<string>
+        content-type: application/json
+      response:
+        docs: Success
+        type: root.BulkRetrieveChannelsResponse
+        status-code: 200
+      examples:
+        - headers:
+            Square-Version: '2025-10-16'
+          request:
+            channel_ids:
+              - CH_9C03D0B59
+              - CH_6X139B5MN
+              - NOT_EXISTING
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              responses:
+                CH_6X139B5MN:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  channel:
+                    id: CH_6X139B5MN
+                    merchant_id: ML64FACEA
+                    name: Contoso Fulfillment Application
+                    version: 1
+                    reference:
+                      type: OAUTH_APPLICATION
+                      id: OA_9C03D0444
+                    status: ACTIVE
+                    created_at: '2022-10-25T16:27:00Z'
+                    updated_at: '2022-10-25T16:48:00Z'
+                CH_9C03D0B59:
+                  errors:
+                    - category: API_ERROR
+                      code: INTERNAL_SERVER_ERROR
+                  channel:
+                    id: CH_9C03D0B59
+                    merchant_id: ML64FACEA
+                    name: State Street Store
+                    version: 1
+                    reference:
+                      type: LOCATION
+                      id: OA_9C03D0B59
+                    status: ACTIVE
+                    created_at: '2022-10-25T16:27:00Z'
+                    updated_at: '2022-10-25T16:48:00Z'
+                NOT_EXISTING:
+                  errors:
+                    - category: API_ERROR
+                      code: NOT_FOUND
+    get:
+      path: /v2/channels/{channel_id}
+      method: GET
+      auth:
+        - oauth2:
+            - CHANNELS_READ
+      docs: ''
+      source:
+        openapi: openapi/openapi.json
+      display-name: RetrieveChannel
+      request:
+        name: GetChannelsRequest
+        path-parameters:
+          channel_id:
+            type: string
+            docs: A channel id
+      response:
+        docs: Success
+        type: root.RetrieveChannelResponse
+        status-code: 200
+      examples:
+        - path-parameters:
+            channel_id: channel_id
+          headers:
+            Square-Version: '2025-10-16'
+          response:
+            body:
+              errors:
+                - category: API_ERROR
+                  code: INTERNAL_SERVER_ERROR
+                  detail: detail
+                  field: field
+              channel:
+                id: CH_9C03D0B59
+                merchant_id: ML64FACEA
+                name: Contoso Fulfillment Application
+                version: 1
+                reference:
+                  type: OAUTH_APPLICATION
+                  id: OA_9C03D0444
+                status: ACTIVE
+                created_at: '2022-10-25T16:27:00Z'
+                updated_at: '2022-10-25T16:48:00Z'
+  source:
+    openapi: openapi/openapi.json
