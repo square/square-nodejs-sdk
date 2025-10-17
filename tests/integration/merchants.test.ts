@@ -1,5 +1,5 @@
+import type { SquareClient } from "../../src";
 import { createClient } from "./helpers";
-import { SquareClient } from "../../src";
 
 describe("Merchants API", () => {
     const client: SquareClient = createClient();
@@ -8,7 +8,7 @@ describe("Merchants API", () => {
     beforeAll(async () => {
         // Get first merchant ID
         const merchantResponse = await client.merchants.list();
-        merchantId = merchantResponse.data![0].id!;
+        merchantId = merchantResponse.data?.[0].id!;
     });
 
     it("should list merchants", async () => {

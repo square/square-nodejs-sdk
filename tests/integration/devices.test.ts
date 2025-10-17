@@ -1,5 +1,5 @@
+import type { SquareClient } from "../../src";
 import { createClient, newTestUuid } from "./helpers";
-import { Square, SquareClient } from "../../src";
 
 describe("Devices API", () => {
     const client: SquareClient = createClient();
@@ -12,7 +12,7 @@ describe("Devices API", () => {
                 productType: "TERMINAL_API",
             },
         });
-        deviceCodeId = createResponse.deviceCode!.id!;
+        deviceCodeId = createResponse.deviceCode?.id!;
     });
 
     it("should list device codes", async () => {

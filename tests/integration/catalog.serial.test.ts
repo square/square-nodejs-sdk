@@ -1,14 +1,15 @@
+import type { Square, SquareClient } from "../../src";
 import { createClient, createTestCatalogItem, getTestFile, newTestSquareTempId, newTestUuid } from "./helpers";
-import { Square, SquareClient } from "../../src";
 
 const MAX_CATALOG_PAGE_SIZE = 100;
 const MAX_RETRIES_CATALOG = 5;
 const MAX_TIMEOUT = 120;
 
-const sleep = (ms: number) => new Promise((resolve) => {
-    const timer = setTimeout(resolve, ms);
-    timer.unref();
-});
+const sleep = (ms: number) =>
+    new Promise((resolve) => {
+        const timer = setTimeout(resolve, ms);
+        timer.unref();
+    });
 
 async function deleteAllCatalogObjects(client: SquareClient): Promise<Square.BatchDeleteCatalogObjectsResponse> {
     const catalogObjectsResp = await client.catalog.list();
@@ -59,7 +60,7 @@ describe("Catalog API", () => {
                 timer.unref();
             });
         } catch (error) {
-            console.warn('Cleanup failed:', error);
+            console.warn("Cleanup failed:", error);
         }
     }, 240_000);
 
@@ -114,29 +115,29 @@ describe("Catalog API", () => {
         // Add retry logic for the image upload
         const maxRetries = 5; // Increased from 3 to 5
         let lastError = null;
-        
+
         for (let attempt = 0; attempt < maxRetries; attempt++) {
             try {
                 // If this isn't the first attempt, wait before retrying
                 if (attempt > 0) {
                     console.log(`Attempt ${attempt + 1} for image upload...`);
                     // Increase wait time between retries exponentially
-                    await sleep(Math.pow(2, attempt) * 5000);
+                    await sleep(2 ** attempt * 5000);
                 }
 
                 console.log(`Starting image upload attempt ${attempt + 1}`);
 
                 // Setup: Load a test image file
                 const imageFile = await getTestFile();
-                console.log('Test file loaded');
+                console.log("Test file loaded");
 
                 // Setup: Create a catalog object to associate the image with
                 const catalogObject = createTestCatalogItem();
-                
+
                 // Add delay before catalog creation
                 await sleep(3000);
-                console.log('Creating catalog object...');
-                
+                console.log("Creating catalog object...");
+
                 const createCatalogResp = await client.catalog.batchUpsert(
                     {
                         idempotencyKey: newTestUuid(),
@@ -152,14 +153,14 @@ describe("Catalog API", () => {
                     },
                 );
 
-                console.log('Catalog object created');
+                console.log("Catalog object created");
                 expect(createCatalogResp.objects).toHaveLength(1);
                 const createdCatalogObject = createCatalogResp.objects?.[0];
                 expect(createdCatalogObject).toBeDefined();
 
                 // Add delay before image upload
                 await sleep(5000);
-                console.log('Uploading image...');
+                console.log("Uploading image...");
 
                 // Create a new catalog image
                 const imageName = `Test Image ${newTestUuid()}`;
@@ -168,7 +169,7 @@ describe("Catalog API", () => {
                         imageFile,
                         request: {
                             idempotencyKey: newTestUuid(),
-                            objectId: createdCatalogObject!.id,
+                            objectId: createdCatalogObject?.id,
                             image: {
                                 type: "IMAGE",
                                 id: newTestSquareTempId(),
@@ -184,17 +185,17 @@ describe("Catalog API", () => {
                     },
                 );
 
-                console.log('Image uploaded successfully');
+                console.log("Image uploaded successfully");
                 expect(createCatalogImageResp.image).toBeDefined();
 
                 // Add delay before cleanup
                 await sleep(3000);
-                console.log('Starting cleanup...');
+                console.log("Starting cleanup...");
 
                 // Cleanup: Delete the created catalog object and image
                 await client.catalog.batchDelete(
                     {
-                        objectIds: [createdCatalogObject!.id!, createCatalogImageResp.image!.id!],
+                        objectIds: [createdCatalogObject?.id!, createCatalogImageResp.image?.id!],
                     },
                     {
                         maxRetries: MAX_RETRIES_CATALOG,
@@ -202,10 +203,9 @@ describe("Catalog API", () => {
                     },
                 );
 
-                console.log('Cleanup completed');
+                console.log("Cleanup completed");
                 // If we get here, the test succeeded, so break out of retry loop
                 return;
-
             } catch (error) {
                 lastError = error;
                 console.log(`Attempt ${attempt + 1} failed with error:`, error);
@@ -214,7 +214,7 @@ describe("Catalog API", () => {
         }
 
         // If we get here, all retries failed
-        console.log('All image upload attempts failed');
+        console.log("All image upload attempts failed");
         throw lastError;
     }, 240_000);
 
@@ -361,17 +361,17 @@ describe("Catalog API", () => {
 
         // Then retrieve it
         const response = await client.catalog.object.get({
-            objectId: createResp.catalogObject!.id!,
+            objectId: createResp.catalogObject?.id!,
         });
         expect(response.object).toBeDefined();
-        expect(response.object!.id).toBe(createResp.catalogObject!.id);
+        expect(response.object?.id).toBe(createResp.catalogObject?.id);
 
         await sleep(2000); // Wait before cleanup
 
         // Cleanup
         await client.catalog.object.delete(
             {
-                objectId: createResp.catalogObject!.id!,
+                objectId: createResp.catalogObject?.id!,
             },
             {
                 maxRetries: MAX_RETRIES_CATALOG,
@@ -390,7 +390,7 @@ describe("Catalog API", () => {
 
         expect(response.objects).toBeDefined();
         expect(response.objects).toHaveLength(3);
-        expect(response.objects!.map((obj) => obj.id)).toEqual(
+        expect(response.objects?.map((obj) => obj.id)).toEqual(
             expect.arrayContaining([catalogModifierId, catalogModifierListId, catalogTaxId]),
         );
     }, 240_000);
@@ -415,7 +415,7 @@ describe("Catalog API", () => {
 
         const response = await client.catalog.updateItemTaxes(
             {
-                itemIds: [createResp.catalogObject!.id!],
+                itemIds: [createResp.catalogObject?.id!],
                 taxesToEnable: [catalogTaxId],
             },
             {
@@ -431,7 +431,7 @@ describe("Catalog API", () => {
         // Cleanup
         await client.catalog.object.delete(
             {
-                objectId: createResp.catalogObject!.id!,
+                objectId: createResp.catalogObject?.id!,
             },
             {
                 maxRetries: MAX_RETRIES_CATALOG,
@@ -460,7 +460,7 @@ describe("Catalog API", () => {
 
         const response = await client.catalog.updateItemModifierLists(
             {
-                itemIds: [createResp.catalogObject!.id!],
+                itemIds: [createResp.catalogObject?.id!],
                 modifierListsToEnable: [catalogModifierListId],
             },
             {
@@ -476,7 +476,7 @@ describe("Catalog API", () => {
         // Cleanup
         await client.catalog.object.delete(
             {
-                objectId: createResp.catalogObject!.id!,
+                objectId: createResp.catalogObject?.id!,
             },
             {
                 maxRetries: MAX_RETRIES_CATALOG,

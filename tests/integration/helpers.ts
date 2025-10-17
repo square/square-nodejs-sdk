@@ -59,7 +59,7 @@ export async function createLocation(client: SquareClient): Promise<string> {
             name: `Test Location ${newTestUuid()}`,
         },
     });
-    return locationsResponse.location!.id!;
+    return locationsResponse.location?.id!;
 }
 
 export interface TestCatalogItemOptions {
@@ -74,7 +74,7 @@ export interface TestCatalogItemOptions {
 export function createTestCatalogItem(opts: TestCatalogItemOptions = {}): Square.CatalogObject {
     const variation: Square.CatalogObject = {
         type: "ITEM_VARIATION",
-        id: "#" + newTestUuid(),
+        id: `#${newTestUuid()}`,
         presentAtAllLocations: true,
         itemVariationData: {
             name: opts.variationName || `Variation ${newTestUuid()}`,
@@ -89,7 +89,7 @@ export function createTestCatalogItem(opts: TestCatalogItemOptions = {}): Square
 
     return {
         type: "ITEM",
-        id: "#" + newTestUuid(),
+        id: `#${newTestUuid()}`,
         presentAtAllLocations: true,
         itemData: {
             name: opts.name || `Item ${newTestUuid()}`,
@@ -125,5 +125,5 @@ export async function createTestCustomer(client: SquareClient): Promise<string> 
         maxRetries: 5,
         timeoutInSeconds: 60,
     });
-    return response.customer!.id!;
+    return response.customer?.id!;
 }

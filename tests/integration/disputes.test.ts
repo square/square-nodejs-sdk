@@ -1,5 +1,5 @@
+import type { SquareClient } from "../../src";
 import { createClient, getTestFile, newTestUuid } from "./helpers";
-import { SquareClient } from "../../src";
 
 describe("Disputes API", () => {
     const client: SquareClient = createClient();
@@ -8,7 +8,7 @@ describe("Disputes API", () => {
 
     beforeAll(async () => {
         // Create a payment that will generate a dispute
-        const paymentsResp = await client.payments.create({
+        const _paymentsResp = await client.payments.create({
             idempotencyKey: newTestUuid(),
             autocomplete: true,
             sourceId: "cnon:card-nonce-ok",
@@ -44,7 +44,7 @@ describe("Disputes API", () => {
             evidenceType: "GENERIC_EVIDENCE",
             evidenceText: "This is not a duplicate",
         });
-        textEvidenceId = evidenceResponse.evidence!.id!;
+        textEvidenceId = evidenceResponse.evidence?.id!;
     }, 200_000);
 
     afterAll(async () => {
@@ -54,7 +54,7 @@ describe("Disputes API", () => {
                 disputeId,
                 evidenceId: textEvidenceId,
             });
-        } catch (error) {
+        } catch (_error) {
             // Evidence might already be deleted by test
         }
     });
