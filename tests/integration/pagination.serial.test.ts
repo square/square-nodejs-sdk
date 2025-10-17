@@ -139,6 +139,6 @@ describe("Pagination", () => {
             if (perPage != null) {
                 expect(pagerCount).toEqual(iteratorCount);
             }
-        }, 60_000);
+        }, 120_000);
     });
 });

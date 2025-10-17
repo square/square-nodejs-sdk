@@ -216,7 +216,7 @@ describe("Catalog API", () => {
         // If we get here, all retries failed
         console.log("All image upload attempts failed");
         throw lastError;
-    }, 240_000);
+    }, 360_000);
 
     it("should test upsert catalog object", async () => {
         const coffee = createTestCatalogItem({
@@ -248,7 +248,7 @@ describe("Catalog API", () => {
 
         const variation = catalogObject.itemData?.variations?.[0] as Square.CatalogObject.ItemVariation;
         expect(variation.itemVariationData?.name).toBe("Colombian Fair Trade");
-    });
+    }, 240_000);
 
     it("should test catalog info", async () => {
         await sleep(2000); // Wait before info request
@@ -342,7 +342,7 @@ describe("Catalog API", () => {
     }, 240_000);
 
     it("should test retrieve catalog object", async () => {
-        await sleep(2000); // Wait before test start
+        await sleep(5000); // Wait before test start to avoid rate limiting
 
         // First create a catalog object
         const coffee = createTestCatalogItem();
@@ -357,7 +357,7 @@ describe("Catalog API", () => {
             },
         );
 
-        await sleep(2000); // Wait before retrieve
+        await sleep(3000); // Wait before retrieve
 
         // Then retrieve it
         const response = await client.catalog.object.get({
@@ -366,7 +366,7 @@ describe("Catalog API", () => {
         expect(response.object).toBeDefined();
         expect(response.object?.id).toBe(createResp.catalogObject?.id);
 
-        await sleep(2000); // Wait before cleanup
+        await sleep(3000); // Wait before cleanup
 
         // Cleanup
         await client.catalog.object.delete(
@@ -381,7 +381,7 @@ describe("Catalog API", () => {
     }, 240_000);
 
     it("should test batch retrieve catalog objects", async () => {
-        await sleep(2000); // Wait before batch retrieve
+        await sleep(5000); // Wait before batch retrieve
 
         // Use the IDs created in the batch upsert test
         const response = await client.catalog.batchGet({
@@ -396,7 +396,7 @@ describe("Catalog API", () => {
     }, 240_000);
 
     it("should test update item taxes", async () => {
-        await sleep(2000); // Wait before test start
+        await sleep(5000); // Wait before test start
 
         // First create a test item
         const item = createTestCatalogItem();
@@ -411,7 +411,7 @@ describe("Catalog API", () => {
             },
         );
 
-        await sleep(2000); // Wait before update
+        await sleep(3000); // Wait before update
 
         const response = await client.catalog.updateItemTaxes(
             {
@@ -426,7 +426,7 @@ describe("Catalog API", () => {
 
         expect(response.updatedAt).toBeDefined();
 
-        await sleep(2000); // Wait before cleanup
+        await sleep(3000); // Wait before cleanup
 
         // Cleanup
         await client.catalog.object.delete(
@@ -441,7 +441,7 @@ describe("Catalog API", () => {
     }, 240_000);
 
     it("should test update item modifier lists", async () => {
-        await sleep(2000); // Wait before test start
+        await sleep(5000); // Wait before test start
 
         // First create a test item
         const item = createTestCatalogItem();
@@ -456,7 +456,7 @@ describe("Catalog API", () => {
             },
         );
 
-        await sleep(2000); // Wait before update
+        await sleep(3000); // Wait before update
 
         const response = await client.catalog.updateItemModifierLists(
             {
@@ -471,7 +471,7 @@ describe("Catalog API", () => {
 
         expect(response.updatedAt).toBeDefined();
 
-        await sleep(2000); // Wait before cleanup
+        await sleep(3000); // Wait before cleanup
 
         // Cleanup
         await client.catalog.object.delete(
