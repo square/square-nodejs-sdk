@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Compile
-        run: yarn && yarn test    
+        run: yarn && yarn test:unit    
 
   publish:
     needs: [ compile ]

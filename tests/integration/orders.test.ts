@@ -1,4 +1,4 @@
-import { SquareClient } from "../../src";
+import type { SquareClient } from "../../src";
 import { createClient, getDefaultLocationId, newTestUuid } from "./helpers";
 
 describe("Orders API", () => {
@@ -28,8 +28,8 @@ describe("Orders API", () => {
             },
         });
 
-        orderId = orderResponse.order!.id!;
-        lineItemUid = orderResponse.order!.lineItems![0].uid!;
+        orderId = orderResponse.order?.id!;
+        lineItemUid = orderResponse.order?.lineItems?.[0].uid!;
     });
 
     it("should create order", async () => {

@@ -1,13 +1,13 @@
+import type { SquareClient } from "../../src";
 import { createClient, getDefaultLocationId, newTestUuid } from "./helpers";
-import { SquareClient } from "../../src";
 
 describe("Payments API", () => {
     const client: SquareClient = createClient();
     let paymentId: string;
-    let locationId: string;
+    let _locationId: string;
 
     beforeAll(async () => {
-        locationId = await getDefaultLocationId(client);
+        _locationId = await getDefaultLocationId(client);
 
         // Create initial payment for testing
         const paymentResponse = await client.payments.create({
@@ -23,7 +23,7 @@ describe("Payments API", () => {
             },
             autocomplete: false,
         });
-        paymentId = paymentResponse.payment!.id!;
+        paymentId = paymentResponse.payment?.id!;
     });
 
     it("should list payments", async () => {
@@ -116,7 +116,7 @@ describe("Payments API", () => {
         });
 
         const response = await client.payments.complete({
-            paymentId: createResponse.payment!.id!,
+            paymentId: createResponse.payment?.id!,
         });
 
         expect(response.payment).toBeDefined();
