@@ -1,4 +1,4 @@
-import { Square, SquareClient } from "../../src";
+import type { Square, SquareClient } from "../../src";
 import { createClient, newTestUuid } from "./helpers";
 
 describe("Inventory API", () => {
@@ -11,7 +11,7 @@ describe("Inventory API", () => {
     beforeAll(async () => {
         // Get the first location
         const locationResponse = await client.locations.list();
-        locationId = locationResponse.locations![0].id!;
+        locationId = locationResponse.locations?.[0].id!;
 
         // Create catalog item with variation
         const catalogResponse = await client.catalog.object.upsert({
@@ -43,11 +43,11 @@ describe("Inventory API", () => {
                 },
             },
         });
-        itemVariationId = (catalogResponse.catalogObject as Square.CatalogObject.Item).itemData!.variations![0].id!;
+        itemVariationId = (catalogResponse.catalogObject as Square.CatalogObject.Item).itemData?.variations?.[0].id!;
 
         // Create initial inventory adjustment
         const eightHours = 1000 * 60 * 60 * 8;
-        const inventoryResponse = await client.inventory.batchCreateChanges({
+        const _inventoryResponse = await client.inventory.batchCreateChanges({
             idempotencyKey: newTestUuid(),
             changes: [
                 {
@@ -70,10 +70,10 @@ describe("Inventory API", () => {
             catalogObjectIds: [itemVariationId],
             locationIds: [locationId],
         });
-        inventoryAdjustId = changesResponse.data![0].adjustment!.id!;
+        inventoryAdjustId = changesResponse.data?.[0].adjustment?.id!;
 
         // Create physical count
-        const physicalCountResponse = await client.inventory.batchCreateChanges({
+        const _physicalCountResponse = await client.inventory.batchCreateChanges({
             idempotencyKey: newTestUuid(),
             changes: [
                 {
@@ -94,7 +94,7 @@ describe("Inventory API", () => {
             catalogObjectIds: [itemVariationId],
             locationIds: [locationId],
         });
-        physicalCountId = physicalChangesResponse.data![0].physicalCount!.id!;
+        physicalCountId = physicalChangesResponse.data?.[0].physicalCount?.id!;
     }, 30000); // Set a hook timeout of 30 seconds
 
     it("should retrieve inventory changes", async () => {

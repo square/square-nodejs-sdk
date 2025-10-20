@@ -1,14 +1,9 @@
-import { Customers } from "../../src/api/resources/customers/client/Client";
-import { Catalog } from "../../src/api/resources/catalog/client/Client";
-import {
-    createClient,
-    createTestCatalogItem,
-    createTestCustomer,
-    newTestUuid,
-} from "./helpers";
+import type { Catalog } from "../../src/api/resources/catalog/client/Client";
+import type { Customers } from "../../src/api/resources/customers/client/Client";
+import { createClient, createTestCatalogItem, createTestCustomer, newTestUuid } from "./helpers";
 
 // Add a sleep helper function
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 type TestClient = Customers | Catalog;
 
@@ -127,27 +122,23 @@ describe("Pagination", () => {
     }
 
     testCases.forEach(({ name, client, limit, perPage, greaterThan, setup }) => {
-        it(
-            name,
-            async () => {
-                let params: Record<string, any> = { limit: perPage };
-                if (setup) {
-                    await setup();
-                }
+        it(name, async () => {
+            const params: Record<string, any> = { limit: perPage };
+            if (setup) {
+                await setup();
+            }
 
-                // Add delay between iterator and pager tests
-                const iteratorCount = await testIterator({ client, limit, params: { ...params } });
-                await sleep(2000); // Wait 2 seconds between major operations
-                const pagerCount = await testPager({ client, limit, params: { ...params } });
+            // Add delay between iterator and pager tests
+            const iteratorCount = await testIterator({ client, limit, params: { ...params } });
+            await sleep(2000); // Wait 2 seconds between major operations
+            const pagerCount = await testPager({ client, limit, params: { ...params } });
 
-                expect(iteratorCount).toBeGreaterThan(greaterThan);
-                expect(pagerCount).toBeGreaterThan(greaterThan);
+            expect(iteratorCount).toBeGreaterThan(greaterThan);
+            expect(pagerCount).toBeGreaterThan(greaterThan);
 
-                if (perPage != null) {
-                    expect(pagerCount).toEqual(iteratorCount);
-                }
-            },
-            60_000,
-        );
+            if (perPage != null) {
+                expect(pagerCount).toEqual(iteratorCount);
+            }
+        }, 120_000);
     });
 });

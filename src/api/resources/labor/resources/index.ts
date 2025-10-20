@@ -1,10 +1,10 @@
 export * as breakTypes from "./breakTypes";
-export * as employeeWages from "./employeeWages";
-export * as shifts from "./shifts";
-export * as teamMemberWages from "./teamMemberWages";
-export * as workweekConfigs from "./workweekConfigs";
 export * from "./breakTypes/client/requests";
+export * as employeeWages from "./employeeWages";
 export * from "./employeeWages/client/requests";
+export * as shifts from "./shifts";
 export * from "./shifts/client/requests";
+export * as teamMemberWages from "./teamMemberWages";
 export * from "./teamMemberWages/client/requests";
+export * as workweekConfigs from "./workweekConfigs";
 export * from "./workweekConfigs/client/requests";

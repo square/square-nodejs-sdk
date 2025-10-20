@@ -1,5 +1,5 @@
+import { type SquareClient, SquareError } from "../../src";
 import { createClient, newTestUuid } from "./helpers";
-import { SquareClient, SquareError } from "../../src";
 
 describe("Refunds API", () => {
     const client: SquareClient = createClient();
@@ -21,7 +21,7 @@ describe("Refunds API", () => {
             },
             autocomplete: true,
         });
-        paymentId = paymentResponse.payment!.id!;
+        paymentId = paymentResponse.payment?.id!;
 
         // Create initial refund for testing
         const refundResponse = await client.refunds.refundPayment({
@@ -32,7 +32,7 @@ describe("Refunds API", () => {
                 currency: "USD",
             },
         });
-        refundId = refundResponse.refund!.id!;
+        refundId = refundResponse.refund?.id!;
     });
 
     it("should list payment refunds", async () => {
@@ -60,7 +60,7 @@ describe("Refunds API", () => {
 
         const response = await client.refunds.refundPayment({
             idempotencyKey: newTestUuid(),
-            paymentId: paymentResponse.payment!.id!,
+            paymentId: paymentResponse.payment?.id!,
             amountMoney: {
                 amount: BigInt(200),
                 currency: "USD",
@@ -68,7 +68,7 @@ describe("Refunds API", () => {
         });
 
         expect(response.refund).toBeDefined();
-        expect(response.refund?.paymentId).toBe(paymentResponse.payment!.id);
+        expect(response.refund?.paymentId).toBe(paymentResponse.payment?.id);
     });
 
     it("should get payment refund", async () => {
