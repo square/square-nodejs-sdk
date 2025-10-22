@@ -1,5 +1,5 @@
-import { createHmacOverride } from '../core/crypto/createHmacOverride';
-import { SquareError } from '../errors';
+import { createHmacOverride } from "../core/crypto/createHmacOverride";
+import { SquareError } from "../errors";
 
 /**
  * Utility to help with {@link https://developer.squareup.com/docs/webhooks/overview Square Webhooks }
@@ -19,24 +19,24 @@ export class WebhooksHelper {
         requestBody,
         signatureHeader,
         signatureKey,
-        notificationUrl
+        notificationUrl,
     }: {
-        requestBody: string,
-        signatureHeader: string,
-        signatureKey: string,
-        notificationUrl: string
+        requestBody: string;
+        signatureHeader: string;
+        signatureKey: string;
+        notificationUrl: string;
     }): Promise<boolean> {
         if (requestBody == null) {
             return false;
         }
-        if (signatureKey == null || signatureKey.length == 0) {
+        if (signatureKey == null || signatureKey.length === 0) {
             throw new SquareError({
-                message: 'signatureKey is null or empty'
+                message: "signatureKey is null or empty",
             });
         }
-        if (notificationUrl == null || notificationUrl.length == 0) {
+        if (notificationUrl == null || notificationUrl.length === 0) {
             throw new SquareError({
-                message: 'notificationUrl is null or empty'
+                message: "notificationUrl is null or empty",
             });
         }
         try {
@@ -45,7 +45,7 @@ export class WebhooksHelper {
             return hashBase64 === signatureHeader;
         } catch (error) {
             throw new SquareError({
-                message: `Failed to validate webhook signature: ${error instanceof Error ? error.message : String(error)}`
+                message: `Failed to validate webhook signature: ${error instanceof Error ? error.message : String(error)}`,
             });
         }
     }

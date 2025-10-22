@@ -7,17 +7,18 @@
     "main": "./index.js",
     "types": "./index.d.ts",
     "scripts": {
-        "format": "prettier . --write --ignore-unknown",
+        "format": "biome format --write --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+        "check": "biome check --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+        "check:fix": "biome check --fix --unsafe --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
         "build": "tsc",
         "prepack": "cp -rv dist/. .",
-        "test": "jest --selectProjects unit browser wire",
+        "test": "jest --selectProjects unit wire",
         "test:unit": "jest --selectProjects unit",
-        "test:browser": "jest --selectProjects browser",
         "test:wire": "jest --selectProjects wire",
         "test:integration": "jest --selectProjects integration"
     },
     "dependencies": {
-        "form-data": "^4.0.0",
+        "form-data": "^4.0.4",
         "formdata-node": "^6.0.3",
         "node-fetch": "^2.7.0",
         "readable-stream": "^4.5.2",
@@ -34,9 +35,9 @@
         "@types/jest": "^29.5.14",
         "ts-jest": "^29.3.4",
         "jest-environment-jsdom": "^29.7.0",
-        "msw": "^2.8.4",
+        "msw": "2.11.2",
         "@types/node": "^18.19.70",
-        "prettier": "^3.4.2",
+        "@biomejs/biome": "2.2.5",
         "typescript": "~5.7.2"
     },
     "browser": {

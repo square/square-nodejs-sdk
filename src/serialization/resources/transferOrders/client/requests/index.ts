@@ -1,6 +1,6 @@
-export { CreateTransferOrderRequest } from "./CreateTransferOrderRequest";
-export { SearchTransferOrdersRequest } from "./SearchTransferOrdersRequest";
-export { UpdateTransferOrderRequest } from "./UpdateTransferOrderRequest";
 export { CancelTransferOrderRequest } from "./CancelTransferOrderRequest";
+export { CreateTransferOrderRequest } from "./CreateTransferOrderRequest";
 export { ReceiveTransferOrderRequest } from "./ReceiveTransferOrderRequest";
+export { SearchTransferOrdersRequest } from "./SearchTransferOrdersRequest";
 export { StartTransferOrderRequest } from "./StartTransferOrderRequest";
+export { UpdateTransferOrderRequest } from "./UpdateTransferOrderRequest";
