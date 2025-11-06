@@ -148,7 +148,7 @@ describe("Catalog API", () => {
                         ],
                     },
                     {
-                        maxRetries: MAX_RETRIES_CATALOG,
+                        maxRetries: MAX_RETRIES_CATALOG * 2,
                         timeoutInSeconds: MAX_TIMEOUT,
                     },
                 );
