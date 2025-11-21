@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("Bookings", () => {
+describe("BookingsClient", () => {
     test("list", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             bookings: [
@@ -35,9 +35,16 @@ describe("Bookings", () => {
                     source: "FIRST_PARTY_MERCHANT",
                 },
             ],
+            cursor: "cursor",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-        server.mockEndpoint().get("/v2/bookings").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+        server
+            .mockEndpoint({ once: false })
+            .get("/v2/bookings")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
 
         const expected = {
             bookings: [
@@ -66,6 +73,7 @@ describe("Bookings", () => {
                     source: "FIRST_PARTY_MERCHANT",
                 },
             ],
+            cursor: "cursor",
             errors: [
                 {
                     category: "API_ERROR",
@@ -93,7 +101,7 @@ describe("Bookings", () => {
 
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { booking: {} };
         const rawResponseBody = {
             booking: {
@@ -214,7 +222,7 @@ describe("Bookings", () => {
 
     test("SearchAvailability", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { query: { filter: { start_at_range: {} } } };
         const rawResponseBody = {
             availabilities: [
@@ -685,7 +693,7 @@ describe("Bookings", () => {
 
     test("BulkRetrieveBookings", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { booking_ids: ["booking_ids"] };
         const rawResponseBody = {
             bookings: {
@@ -842,7 +850,7 @@ describe("Bookings", () => {
 
     test("getBusinessProfile", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             business_booking_profile: {
@@ -920,7 +928,7 @@ describe("Bookings", () => {
 
     test("RetrieveLocationBookingProfile", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             location_booking_profile: {
@@ -960,7 +968,7 @@ describe("Bookings", () => {
 
     test("BulkRetrieveTeamMemberBookingProfiles", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { team_member_ids: ["team_member_ids"] };
         const rawResponseBody = {
             team_member_booking_profiles: {
@@ -1049,7 +1057,7 @@ describe("Bookings", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             booking: {
@@ -1169,7 +1177,7 @@ describe("Bookings", () => {
 
     test("update", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { booking: {} };
         const rawResponseBody = {
             booking: {
@@ -1291,7 +1299,7 @@ describe("Bookings", () => {
 
     test("cancel", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = {
             booking: {

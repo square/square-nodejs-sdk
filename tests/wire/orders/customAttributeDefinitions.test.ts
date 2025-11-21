@@ -3,10 +3,10 @@
 import { SquareClient } from "../../../src/Client";
 import { mockServerPool } from "../../mock-server/MockServerPool";
 
-describe("CustomAttributeDefinitions", () => {
+describe("CustomAttributeDefinitionsClient", () => {
     test("list", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             custom_attribute_definitions: [
@@ -51,7 +51,7 @@ describe("CustomAttributeDefinitions", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .get("/v2/orders/custom-attribute-definitions")
             .respondWith()
             .statusCode(200)
@@ -121,7 +121,7 @@ describe("CustomAttributeDefinitions", () => {
 
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             custom_attribute_definition: {
                 key: "cover-count",
@@ -196,7 +196,7 @@ describe("CustomAttributeDefinitions", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             custom_attribute_definition: {
@@ -251,7 +251,7 @@ describe("CustomAttributeDefinitions", () => {
 
     test("update", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             custom_attribute_definition: { key: "cover-count", visibility: "VISIBILITY_READ_ONLY", version: 1 },
             idempotency_key: "IDEMPOTENCY_KEY",
@@ -315,7 +315,7 @@ describe("CustomAttributeDefinitions", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],

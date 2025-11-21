@@ -3,10 +3,10 @@
 import { SquareClient } from "../../../src/Client";
 import { mockServerPool } from "../../mock-server/MockServerPool";
 
-describe("EmployeeWages", () => {
+describe("EmployeeWagesClient", () => {
     test("list", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             employee_wages: [
@@ -39,7 +39,7 @@ describe("EmployeeWages", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .get("/v2/labor/employee-wages")
             .respondWith()
             .statusCode(200)
@@ -109,7 +109,7 @@ describe("EmployeeWages", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             employee_wage: {

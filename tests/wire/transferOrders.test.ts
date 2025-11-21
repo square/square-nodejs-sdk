@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("TransferOrders", () => {
+describe("TransferOrdersClient", () => {
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "65cc0586-3e82-384s-b524-3885cffd52",
             transfer_order: {
@@ -137,7 +137,7 @@ describe("TransferOrders", () => {
 
     test("search", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             query: {
                 filter: {
@@ -207,7 +207,7 @@ describe("TransferOrders", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .post("/v2/transfer-orders/search")
             .jsonBody(rawRequestBody)
             .respondWith()
@@ -302,7 +302,7 @@ describe("TransferOrders", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             transfer_order: {
@@ -400,7 +400,7 @@ describe("TransferOrders", () => {
 
     test("update", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "f47ac10b-58cc-4372-a567-0e02b2c3d479",
             transfer_order: {
@@ -537,7 +537,7 @@ describe("TransferOrders", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -568,7 +568,7 @@ describe("TransferOrders", () => {
 
     test("cancel", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "65cc0586-3e82-4d08-b524-3885cffd52",
             version: BigInt(1753117449752),
@@ -672,7 +672,7 @@ describe("TransferOrders", () => {
 
     test("receive", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "EXAMPLE_IDEMPOTENCY_KEY_101",
             receipt: {
@@ -806,7 +806,7 @@ describe("TransferOrders", () => {
 
     test("start", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { idempotency_key: "EXAMPLE_IDEMPOTENCY_KEY_789", version: BigInt(1753109537351) };
         const rawResponseBody = {
             transfer_order: {

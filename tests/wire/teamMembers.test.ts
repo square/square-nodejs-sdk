@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("TeamMembers", () => {
+describe("TeamMembersClient", () => {
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "idempotency-key-0",
             team_member: {
@@ -188,7 +188,7 @@ describe("TeamMembers", () => {
 
     test("batchCreate", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             team_members: {
                 "idempotency-key-1": {
@@ -349,7 +349,7 @@ describe("TeamMembers", () => {
 
     test("batchUpdate", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             team_members: {
                 "AFMwA08kR-MIF-3Vs0OE": {
@@ -526,7 +526,7 @@ describe("TeamMembers", () => {
 
     test("search", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { query: { filter: { location_ids: ["0G5P3VGACMMQZ"], status: "ACTIVE" } }, limit: 10 };
         const rawResponseBody = {
             team_members: [
@@ -1036,7 +1036,7 @@ describe("TeamMembers", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             team_member: {
@@ -1153,7 +1153,7 @@ describe("TeamMembers", () => {
 
     test("update", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             team_member: {
                 reference_id: "reference_id_1",

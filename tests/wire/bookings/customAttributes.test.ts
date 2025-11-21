@@ -3,10 +3,10 @@
 import { SquareClient } from "../../../src/Client";
 import { mockServerPool } from "../../mock-server/MockServerPool";
 
-describe("CustomAttributes", () => {
+describe("CustomAttributesClient", () => {
     test("batchDelete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { values: { key: { booking_id: "booking_id", key: "key" } } };
         const rawResponseBody = {
             values: {
@@ -85,7 +85,7 @@ describe("CustomAttributes", () => {
 
     test("batchUpsert", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { values: { key: { booking_id: "booking_id", custom_attribute: {} } } };
         const rawResponseBody = {
             values: {
@@ -270,7 +270,7 @@ describe("CustomAttributes", () => {
 
     test("list", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             custom_attributes: [
@@ -295,7 +295,7 @@ describe("CustomAttributes", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .get("/v2/bookings/booking_id/custom-attributes")
             .respondWith()
             .statusCode(200)
@@ -346,7 +346,7 @@ describe("CustomAttributes", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             custom_attribute: {
@@ -417,7 +417,7 @@ describe("CustomAttributes", () => {
 
     test("upsert", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { custom_attribute: {} };
         const rawResponseBody = {
             custom_attribute: {
@@ -488,7 +488,7 @@ describe("CustomAttributes", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],

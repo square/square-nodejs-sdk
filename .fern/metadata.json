@@ -1,0 +1,57 @@
+{
+    "cliVersion": "2.2.5",
+    "generatorName": "fernapi/fern-typescript-sdk",
+    "generatorVersion": "3.33.0",
+    "generatorConfig": {
+        "namespaceExport": "Square",
+        "allowCustomFetcher": true,
+        "skipResponseValidation": true,
+        "inlineFileProperties": true,
+        "inlinePathParameters": true,
+        "enableInlineTypes": false,
+        "noSerdeLayer": false,
+        "useLegacyExports": true,
+        "streamType": "wrapper",
+        "fileResponseType": "stream",
+        "formDataSupport": "Node16",
+        "fetchSupport": "node-fetch",
+        "omitUndefined": true,
+        "useBigInt": true,
+        "packageManager": "yarn",
+        "testFramework": "jest",
+        "packageJson": {
+            "description": "Use Square APIs to manage and run business including payment, customer, product, inventory, and employee management.",
+            "author": {
+                "name": "Square Developer Platform",
+                "url": "https://developer.squareup.com",
+                "email": "developers@squareup.com"
+            },
+            "bugs": {
+                "url": "https://developer.squareup.com",
+                "email": "developers@squareup.com"
+            },
+            "dependencies": {
+                "square-legacy": "npm:square@^39.1.1"
+            },
+            "exports": {
+                ".": "./index.js",
+                "./legacy": {
+                    "types": "./legacy/exports/index.d.ts",
+                    "require": {
+                        "types": "./legacy/exports/index.d.ts",
+                        "default": "./legacy/exports/index.js"
+                    },
+                    "import": {
+                        "types": "./legacy/exports/index.d.mts",
+                        "default": "./legacy/exports/index.mjs"
+                    }
+                }
+            },
+            "scripts": {
+                "test": "jest --selectProjects unit wire",
+                "test:unit": "jest --selectProjects unit",
+                "test:integration": "jest --selectProjects integration"
+            }
+        }
+    }
+}

@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("OAuth", () => {
+describe("OAuthClient", () => {
     test("revokeToken", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { client_id: "CLIENT_ID", access_token: "ACCESS_TOKEN" };
         const rawResponseBody = {
             success: true,
@@ -40,7 +40,7 @@ describe("OAuth", () => {
 
     test("obtainToken", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             client_id: "sq0idp-uaPHILoPzWZk3tlJqlML0g",
             client_secret: "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
@@ -99,7 +99,7 @@ describe("OAuth", () => {
 
     test("RetrieveTokenStatus", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             scopes: ["PAYMENTS_READ", "PAYMENTS_WRITE"],
@@ -135,7 +135,7 @@ describe("OAuth", () => {
 
     test("authorize", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         server.mockEndpoint().get("/oauth2/authorize").respondWith().statusCode(200).build();
 

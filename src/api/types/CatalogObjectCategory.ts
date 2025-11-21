@@ -12,6 +12,7 @@ export interface CatalogObjectCategory {
     id?: string;
     /** The order of the object within the context of the category. */
     ordinal?: bigint | null;
+    type?: "CATEGORY";
     /** Structured data for a `CatalogCategory`, set for CatalogObjects of type `CATEGORY`. */
     categoryData?: Square.CatalogCategory;
     /**

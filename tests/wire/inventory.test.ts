@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("Inventory", () => {
+describe("InventoryClient", () => {
     test("DeprecatedGetAdjustment", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -99,7 +99,7 @@ describe("Inventory", () => {
 
     test("getAdjustment", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -192,7 +192,7 @@ describe("Inventory", () => {
 
     test("DeprecatedBatchChange", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
             changes: [
@@ -284,7 +284,7 @@ describe("Inventory", () => {
 
     test("DeprecatedBatchGetChanges", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             catalog_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
             location_ids: ["C6W5YS5QM06F5"],
@@ -375,7 +375,7 @@ describe("Inventory", () => {
 
     test("DeprecatedBatchGetCounts", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             catalog_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
             location_ids: ["59TNP9SA8VGDA"],
@@ -436,7 +436,7 @@ describe("Inventory", () => {
 
     test("BatchCreateChanges", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
             changes: [
@@ -528,7 +528,7 @@ describe("Inventory", () => {
 
     test("BatchGetChanges", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             catalog_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
             location_ids: ["C6W5YS5QM06F5"],
@@ -565,7 +565,7 @@ describe("Inventory", () => {
             cursor: "cursor",
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .post("/v2/inventory/changes/batch-retrieve")
             .jsonBody(rawRequestBody)
             .respondWith()
@@ -624,7 +624,7 @@ describe("Inventory", () => {
 
     test("BatchGetCounts", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             catalog_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI"],
             location_ids: ["59TNP9SA8VGDA"],
@@ -646,7 +646,7 @@ describe("Inventory", () => {
             cursor: "cursor",
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .post("/v2/inventory/counts/batch-retrieve")
             .jsonBody(rawRequestBody)
             .respondWith()
@@ -690,7 +690,7 @@ describe("Inventory", () => {
 
     test("deprecatedGetPhysicalCount", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -756,7 +756,7 @@ describe("Inventory", () => {
 
     test("getPhysicalCount", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -822,7 +822,7 @@ describe("Inventory", () => {
 
     test("getTransfer", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -890,7 +890,7 @@ describe("Inventory", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -908,7 +908,7 @@ describe("Inventory", () => {
             cursor: "cursor",
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .get("/v2/inventory/catalog_object_id")
             .respondWith()
             .statusCode(200)
@@ -951,7 +951,7 @@ describe("Inventory", () => {
 
     test("changes", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -984,7 +984,7 @@ describe("Inventory", () => {
             cursor: "cursor",
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .get("/v2/inventory/catalog_object_id/changes")
             .respondWith()
             .statusCode(200)

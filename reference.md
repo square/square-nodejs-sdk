@@ -67,7 +67,7 @@ await client.mobile.authorizationCode({
 <dl>
 <dd>
 
-**requestOptions:** `Mobile.RequestOptions` 
+**requestOptions:** `MobileClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -147,7 +147,7 @@ await client.oAuth.revokeToken({
 <dl>
 <dd>
 
-**requestOptions:** `OAuth.RequestOptions` 
+**requestOptions:** `OAuthClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -235,7 +235,7 @@ await client.oAuth.obtainToken({
 <dl>
 <dd>
 
-**requestOptions:** `OAuth.RequestOptions` 
+**requestOptions:** `OAuthClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -303,7 +303,7 @@ await client.oAuth.retrieveTokenStatus();
 <dl>
 <dd>
 
-**requestOptions:** `OAuth.RequestOptions` 
+**requestOptions:** `OAuthClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -344,7 +344,7 @@ await client.oAuth.authorize();
 <dl>
 <dd>
 
-**requestOptions:** `OAuth.RequestOptions` 
+**requestOptions:** `OAuthClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -413,7 +413,7 @@ await client.v1Transactions.v1ListOrders({
 <dl>
 <dd>
 
-**requestOptions:** `V1Transactions.RequestOptions` 
+**requestOptions:** `V1TransactionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -479,7 +479,7 @@ await client.v1Transactions.v1RetrieveOrder({
 <dl>
 <dd>
 
-**requestOptions:** `V1Transactions.RequestOptions` 
+**requestOptions:** `V1TransactionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -546,7 +546,7 @@ await client.v1Transactions.v1UpdateOrder({
 <dl>
 <dd>
 
-**requestOptions:** `V1Transactions.RequestOptions` 
+**requestOptions:** `V1TransactionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -625,7 +625,7 @@ await client.applePay.registerDomain({
 <dl>
 <dd>
 
-**requestOptions:** `ApplePay.RequestOptions` 
+**requestOptions:** `ApplePayClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -638,7 +638,7 @@ await client.applePay.registerDomain({
 </details>
 
 ## BankAccounts
-<details><summary><code>client.bankAccounts.<a href="/src/api/resources/bankAccounts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.BankAccount></code></summary>
+<details><summary><code>client.bankAccounts.<a href="/src/api/resources/bankAccounts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.BankAccount, Square.ListBankAccountsResponse></code></summary>
 <dl>
 <dd>
 
@@ -665,12 +665,12 @@ Returns a list of [BankAccount](entity:BankAccount) objects linked to a Square a
 <dd>
 
 ```typescript
-const response = await client.bankAccounts.list({
+const pageableResponse = await client.bankAccounts.list({
     cursor: "cursor",
     limit: 1,
     locationId: "location_id"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -683,6 +683,9 @@ let page = await client.bankAccounts.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -706,7 +709,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `BankAccounts.RequestOptions` 
+**requestOptions:** `BankAccountsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -771,7 +774,7 @@ await client.bankAccounts.getByV1Id({
 <dl>
 <dd>
 
-**requestOptions:** `BankAccounts.RequestOptions` 
+**requestOptions:** `BankAccountsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -837,7 +840,7 @@ await client.bankAccounts.get({
 <dl>
 <dd>
 
-**requestOptions:** `BankAccounts.RequestOptions` 
+**requestOptions:** `BankAccountsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -850,7 +853,7 @@ await client.bankAccounts.get({
 </details>
 
 ## Bookings
-<details><summary><code>client.bookings.<a href="/src/api/resources/bookings/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Booking></code></summary>
+<details><summary><code>client.bookings.<a href="/src/api/resources/bookings/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Booking, Square.ListBookingsResponse></code></summary>
 <dl>
 <dd>
 
@@ -880,7 +883,7 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 <dd>
 
 ```typescript
-const response = await client.bookings.list({
+const pageableResponse = await client.bookings.list({
     limit: 1,
     cursor: "cursor",
     customerId: "customer_id",
@@ -889,7 +892,7 @@ const response = await client.bookings.list({
     startAtMin: "start_at_min",
     startAtMax: "start_at_max"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -906,6 +909,9 @@ let page = await client.bookings.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -929,7 +935,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions` 
+**requestOptions:** `BookingsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1007,7 +1013,7 @@ await client.bookings.create({
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions` 
+**requestOptions:** `BookingsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1079,7 +1085,7 @@ await client.bookings.searchAvailability({
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions` 
+**requestOptions:** `BookingsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1147,7 +1153,7 @@ await client.bookings.bulkRetrieveBookings({
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions` 
+**requestOptions:** `BookingsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1202,7 +1208,7 @@ await client.bookings.getBusinessProfile();
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions` 
+**requestOptions:** `BookingsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1267,7 +1273,7 @@ await client.bookings.retrieveLocationBookingProfile({
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions` 
+**requestOptions:** `BookingsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1332,7 +1338,7 @@ await client.bookings.bulkRetrieveTeamMemberBookingProfiles({
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions` 
+**requestOptions:** `BookingsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1400,7 +1406,7 @@ await client.bookings.get({
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions` 
+**requestOptions:** `BookingsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1472,7 +1478,7 @@ await client.bookings.update({
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions` 
+**requestOptions:** `BookingsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1543,7 +1549,7 @@ await client.bookings.cancel({
 <dl>
 <dd>
 
-**requestOptions:** `Bookings.RequestOptions` 
+**requestOptions:** `BookingsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1556,7 +1562,7 @@ await client.bookings.cancel({
 </details>
 
 ## Cards
-<details><summary><code>client.cards.<a href="/src/api/resources/cards/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Card></code></summary>
+<details><summary><code>client.cards.<a href="/src/api/resources/cards/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Card, Square.ListCardsResponse></code></summary>
 <dl>
 <dd>
 
@@ -1584,14 +1590,14 @@ A max of 25 cards will be returned.
 <dd>
 
 ```typescript
-const response = await client.cards.list({
+const pageableResponse = await client.cards.list({
     cursor: "cursor",
     customerId: "customer_id",
     includeDisabled: true,
     referenceId: "reference_id",
     sortOrder: "DESC"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -1606,6 +1612,9 @@ let page = await client.cards.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -1629,7 +1638,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions` 
+**requestOptions:** `CardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1708,7 +1717,7 @@ await client.cards.create({
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions` 
+**requestOptions:** `CardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1773,7 +1782,7 @@ await client.cards.get({
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions` 
+**requestOptions:** `CardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1839,7 +1848,7 @@ await client.cards.disable({
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions` 
+**requestOptions:** `CardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1918,7 +1927,7 @@ await client.catalog.batchDelete({
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions` 
+**requestOptions:** `CatalogClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -1989,7 +1998,7 @@ await client.catalog.batchGet({
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions` 
+**requestOptions:** `CatalogClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2081,7 +2090,7 @@ await client.catalog.batchUpsert({
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions` 
+**requestOptions:** `CatalogClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2137,7 +2146,7 @@ await client.catalog.info();
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions` 
+**requestOptions:** `CatalogClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2149,7 +2158,7 @@ await client.catalog.info();
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CatalogObject></code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CatalogObject, Square.ListCatalogResponse></code></summary>
 <dl>
 <dd>
 
@@ -2183,12 +2192,12 @@ and set the `include_deleted_objects` attribute value to `true`.
 <dd>
 
 ```typescript
-const response = await client.catalog.list({
+const pageableResponse = await client.catalog.list({
     cursor: "cursor",
     types: "types",
     catalogVersion: BigInt("1000000")
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -2201,6 +2210,9 @@ let page = await client.catalog.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -2224,7 +2236,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions` 
+**requestOptions:** `CatalogClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2305,7 +2317,7 @@ await client.catalog.search({
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions` 
+**requestOptions:** `CatalogClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2400,7 +2412,7 @@ await client.catalog.searchItems({
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions` 
+**requestOptions:** `CatalogClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2469,7 +2481,7 @@ await client.catalog.updateItemModifierLists({
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions` 
+**requestOptions:** `CatalogClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2538,7 +2550,7 @@ await client.catalog.updateItemTaxes({
 <dl>
 <dd>
 
-**requestOptions:** `Catalog.RequestOptions` 
+**requestOptions:** `CatalogClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2551,7 +2563,7 @@ await client.catalog.updateItemTaxes({
 </details>
 
 ## Channels
-<details><summary><code>client.channels.<a href="/src/api/resources/channels/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Channel></code></summary>
+<details><summary><code>client.channels.<a href="/src/api/resources/channels/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Channel, Square.ListChannelsResponse></code></summary>
 <dl>
 <dd>
 
@@ -2578,14 +2590,14 @@ await client.catalog.updateItemTaxes({
 <dd>
 
 ```typescript
-const response = await client.channels.list({
+const pageableResponse = await client.channels.list({
     referenceType: "UNKNOWN_TYPE",
     referenceId: "reference_id",
     status: "ACTIVE",
     cursor: "cursor",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -2600,6 +2612,9 @@ let page = await client.channels.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -2623,7 +2638,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Channels.RequestOptions` 
+**requestOptions:** `ChannelsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2688,7 +2703,7 @@ await client.channels.bulkRetrieve({
 <dl>
 <dd>
 
-**requestOptions:** `Channels.RequestOptions` 
+**requestOptions:** `ChannelsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2753,7 +2768,7 @@ await client.channels.get({
 <dl>
 <dd>
 
-**requestOptions:** `Channels.RequestOptions` 
+**requestOptions:** `ChannelsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2766,7 +2781,7 @@ await client.channels.get({
 </details>
 
 ## Customers
-<details><summary><code>client.customers.<a href="/src/api/resources/customers/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Customer></code></summary>
+<details><summary><code>client.customers.<a href="/src/api/resources/customers/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Customer, Square.ListCustomersResponse></code></summary>
 <dl>
 <dd>
 
@@ -2797,14 +2812,14 @@ profiles can take closer to one minute or longer, especially during network inci
 <dd>
 
 ```typescript
-const response = await client.customers.list({
+const pageableResponse = await client.customers.list({
     cursor: "cursor",
     limit: 1,
     sortField: "DEFAULT",
     sortOrder: "DESC",
     count: true
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -2819,6 +2834,9 @@ let page = await client.customers.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -2842,7 +2860,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions` 
+**requestOptions:** `CustomersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -2929,7 +2947,7 @@ await client.customers.create({
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions` 
+**requestOptions:** `CustomersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3037,7 +3055,7 @@ await client.customers.batchCreate({
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions` 
+**requestOptions:** `CustomersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3104,7 +3122,7 @@ await client.customers.bulkDeleteCustomers({
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions` 
+**requestOptions:** `CustomersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3171,7 +3189,7 @@ await client.customers.bulkRetrieveCustomers({
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions` 
+**requestOptions:** `CustomersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3249,7 +3267,7 @@ await client.customers.bulkUpdateCustomers({
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions` 
+**requestOptions:** `CustomersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3344,7 +3362,7 @@ await client.customers.search({
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions` 
+**requestOptions:** `CustomersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3409,7 +3427,7 @@ await client.customers.get({
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions` 
+**requestOptions:** `CustomersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3480,7 +3498,7 @@ await client.customers.update({
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions` 
+**requestOptions:** `CustomersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3548,7 +3566,7 @@ await client.customers.delete({
 <dl>
 <dd>
 
-**requestOptions:** `Customers.RequestOptions` 
+**requestOptions:** `CustomersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3561,7 +3579,7 @@ await client.customers.delete({
 </details>
 
 ## Devices
-<details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Device></code></summary>
+<details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Device, Square.ListDevicesResponse></code></summary>
 <dl>
 <dd>
 
@@ -3589,13 +3607,13 @@ devices are supported.
 <dd>
 
 ```typescript
-const response = await client.devices.list({
+const pageableResponse = await client.devices.list({
     cursor: "cursor",
     sortOrder: "DESC",
     limit: 1,
     locationId: "location_id"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -3609,6 +3627,9 @@ let page = await client.devices.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -3632,7 +3653,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Devices.RequestOptions` 
+**requestOptions:** `DevicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3697,7 +3718,7 @@ await client.devices.get({
 <dl>
 <dd>
 
-**requestOptions:** `Devices.RequestOptions` 
+**requestOptions:** `DevicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3710,7 +3731,7 @@ await client.devices.get({
 </details>
 
 ## Disputes
-<details><summary><code>client.disputes.<a href="/src/api/resources/disputes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Dispute></code></summary>
+<details><summary><code>client.disputes.<a href="/src/api/resources/disputes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Dispute, Square.ListDisputesResponse></code></summary>
 <dl>
 <dd>
 
@@ -3737,12 +3758,12 @@ Returns a list of disputes associated with a particular account.
 <dd>
 
 ```typescript
-const response = await client.disputes.list({
+const pageableResponse = await client.disputes.list({
     cursor: "cursor",
     states: "INQUIRY_EVIDENCE_REQUIRED",
     locationId: "location_id"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -3755,6 +3776,9 @@ let page = await client.disputes.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -3778,7 +3802,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions` 
+**requestOptions:** `DisputesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3843,7 +3867,7 @@ await client.disputes.get({
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions` 
+**requestOptions:** `DisputesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3912,7 +3936,7 @@ await client.disputes.accept({
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions` 
+**requestOptions:** `DisputesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -3978,7 +4002,7 @@ await client.disputes.createEvidenceFile({
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions` 
+**requestOptions:** `DisputesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4046,7 +4070,7 @@ await client.disputes.createEvidenceText({
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions` 
+**requestOptions:** `DisputesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4117,7 +4141,7 @@ await client.disputes.submitEvidence({
 <dl>
 <dd>
 
-**requestOptions:** `Disputes.RequestOptions` 
+**requestOptions:** `DisputesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4130,7 +4154,7 @@ await client.disputes.submitEvidence({
 </details>
 
 ## Employees
-<details><summary><code>client.employees.<a href="/src/api/resources/employees/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Employee></code></summary>
+<details><summary><code>client.employees.<a href="/src/api/resources/employees/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Employee, Square.ListEmployeesResponse></code></summary>
 <dl>
 <dd>
 
@@ -4157,13 +4181,13 @@ await client.disputes.submitEvidence({
 <dd>
 
 ```typescript
-const response = await client.employees.list({
+const pageableResponse = await client.employees.list({
     locationId: "location_id",
     status: "ACTIVE",
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -4177,6 +4201,9 @@ let page = await client.employees.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -4200,7 +4227,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Employees.RequestOptions` 
+**requestOptions:** `EmployeesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4265,7 +4292,7 @@ await client.employees.get({
 <dl>
 <dd>
 
-**requestOptions:** `Employees.RequestOptions` 
+**requestOptions:** `EmployeesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4329,7 +4356,7 @@ await client.events.searchEvents();
 <dl>
 <dd>
 
-**requestOptions:** `Events.RequestOptions` 
+**requestOptions:** `EventsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4386,7 +4413,7 @@ await client.events.disableEvents();
 <dl>
 <dd>
 
-**requestOptions:** `Events.RequestOptions` 
+**requestOptions:** `EventsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4441,7 +4468,7 @@ await client.events.enableEvents();
 <dl>
 <dd>
 
-**requestOptions:** `Events.RequestOptions` 
+**requestOptions:** `EventsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4506,7 +4533,7 @@ await client.events.listEventTypes({
 <dl>
 <dd>
 
-**requestOptions:** `Events.RequestOptions` 
+**requestOptions:** `EventsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4519,7 +4546,7 @@ await client.events.listEventTypes({
 </details>
 
 ## GiftCards
-<details><summary><code>client.giftCards.<a href="/src/api/resources/giftCards/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.GiftCard></code></summary>
+<details><summary><code>client.giftCards.<a href="/src/api/resources/giftCards/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.GiftCard, Square.ListGiftCardsResponse></code></summary>
 <dl>
 <dd>
 
@@ -4547,14 +4574,14 @@ a subset of the gift cards. Results are sorted by `created_at` in ascending orde
 <dd>
 
 ```typescript
-const response = await client.giftCards.list({
+const pageableResponse = await client.giftCards.list({
     type: "type",
     state: "state",
     limit: 1,
     cursor: "cursor",
     customerId: "customer_id"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -4569,6 +4596,9 @@ let page = await client.giftCards.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -4592,7 +4622,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions` 
+**requestOptions:** `GiftCardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4665,7 +4695,7 @@ await client.giftCards.create({
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions` 
+**requestOptions:** `GiftCardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4730,7 +4760,7 @@ await client.giftCards.getFromGan({
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions` 
+**requestOptions:** `GiftCardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4795,7 +4825,7 @@ await client.giftCards.getFromNonce({
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions` 
+**requestOptions:** `GiftCardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4861,7 +4891,7 @@ await client.giftCards.linkCustomer({
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions` 
+**requestOptions:** `GiftCardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4927,7 +4957,7 @@ await client.giftCards.unlinkCustomer({
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions` 
+**requestOptions:** `GiftCardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -4992,7 +5022,7 @@ await client.giftCards.get({
 <dl>
 <dd>
 
-**requestOptions:** `GiftCards.RequestOptions` 
+**requestOptions:** `GiftCardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5059,7 +5089,7 @@ await client.inventory.deprecatedGetAdjustment({
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5125,7 +5155,7 @@ await client.inventory.getAdjustment({
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5204,7 +5234,7 @@ await client.inventory.deprecatedBatchChange({
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5275,7 +5305,7 @@ await client.inventory.deprecatedBatchGetChanges({
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5343,7 +5373,7 @@ await client.inventory.deprecatedBatchGetCounts({
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5425,7 +5455,7 @@ await client.inventory.batchCreateChanges({
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5437,7 +5467,7 @@ await client.inventory.batchCreateChanges({
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">batchGetChanges</a>({ ...params }) -> core.Page<Square.InventoryChange></code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">batchGetChanges</a>({ ...params }) -> core.Page<Square.InventoryChange, Square.BatchGetInventoryChangesResponse></code></summary>
 <dl>
 <dd>
 
@@ -5471,7 +5501,7 @@ that cannot be handled by other, simpler endpoints.
 <dd>
 
 ```typescript
-const response = await client.inventory.batchGetChanges({
+const pageableResponse = await client.inventory.batchGetChanges({
     catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
     locationIds: ["C6W5YS5QM06F5"],
     types: ["PHYSICAL_COUNT"],
@@ -5479,7 +5509,7 @@ const response = await client.inventory.batchGetChanges({
     updatedAfter: "2016-11-01T00:00:00.000Z",
     updatedBefore: "2016-12-01T00:00:00.000Z"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -5495,6 +5525,9 @@ let page = await client.inventory.batchGetChanges({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -5518,7 +5551,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5530,7 +5563,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">batchGetCounts</a>({ ...params }) -> core.Page<Square.InventoryCount></code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">batchGetCounts</a>({ ...params }) -> core.Page<Square.InventoryCount, Square.BatchGetInventoryCountsResponse></code></summary>
 <dl>
 <dd>
 
@@ -5567,12 +5600,12 @@ in response to receiving a Webhook notification.
 <dd>
 
 ```typescript
-const response = await client.inventory.batchGetCounts({
+const pageableResponse = await client.inventory.batchGetCounts({
     catalogObjectIds: ["W62UWFY35CWMYGVWK6TWJDNI"],
     locationIds: ["59TNP9SA8VGDA"],
     updatedAfter: "2016-11-16T00:00:00.000Z"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -5585,6 +5618,9 @@ let page = await client.inventory.batchGetCounts({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -5608,7 +5644,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5674,7 +5710,7 @@ await client.inventory.deprecatedGetPhysicalCount({
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5740,7 +5776,7 @@ await client.inventory.getPhysicalCount({
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5806,7 +5842,7 @@ await client.inventory.getTransfer({
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5818,7 +5854,7 @@ await client.inventory.getTransfer({
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">get</a>({ ...params }) -> core.Page<Square.InventoryCount></code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">get</a>({ ...params }) -> core.Page<Square.InventoryCount, Square.GetInventoryCountResponse></code></summary>
 <dl>
 <dd>
 
@@ -5848,12 +5884,12 @@ For more sophisticated queries, use a batch endpoint.
 <dd>
 
 ```typescript
-const response = await client.inventory.get({
+const pageableResponse = await client.inventory.get({
     catalogObjectId: "catalog_object_id",
     locationIds: "location_ids",
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -5866,6 +5902,9 @@ let page = await client.inventory.get({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -5889,7 +5928,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5901,7 +5940,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">changes</a>({ ...params }) -> core.Page<Square.InventoryChange></code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">changes</a>({ ...params }) -> core.Page<Square.InventoryChange, Square.GetInventoryChangesResponse></code></summary>
 <dl>
 <dd>
 
@@ -5940,12 +5979,12 @@ sophisticated queries, use a batch endpoint.
 <dd>
 
 ```typescript
-const response = await client.inventory.changes({
+const pageableResponse = await client.inventory.changes({
     catalogObjectId: "catalog_object_id",
     locationIds: "location_ids",
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -5958,6 +5997,9 @@ let page = await client.inventory.changes({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -5981,7 +6023,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Inventory.RequestOptions` 
+**requestOptions:** `InventoryClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -5994,7 +6036,7 @@ while (page.hasNextPage()) {
 </details>
 
 ## Invoices
-<details><summary><code>client.invoices.<a href="/src/api/resources/invoices/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Invoice></code></summary>
+<details><summary><code>client.invoices.<a href="/src/api/resources/invoices/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Invoice, Square.ListInvoicesResponse></code></summary>
 <dl>
 <dd>
 
@@ -6023,12 +6065,12 @@ use in a subsequent request to retrieve the next set of invoices.
 <dd>
 
 ```typescript
-const response = await client.invoices.list({
+const pageableResponse = await client.invoices.list({
     locationId: "location_id",
     cursor: "cursor",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -6041,6 +6083,9 @@ let page = await client.invoices.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -6064,7 +6109,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions` 
+**requestOptions:** `InvoicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6173,7 +6218,7 @@ await client.invoices.create({
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions` 
+**requestOptions:** `InvoicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6254,7 +6299,7 @@ await client.invoices.search({
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions` 
+**requestOptions:** `InvoicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6319,7 +6364,7 @@ await client.invoices.get({
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions` 
+**requestOptions:** `InvoicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6395,7 +6440,7 @@ await client.invoices.update({
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions` 
+**requestOptions:** `InvoicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6463,7 +6508,7 @@ await client.invoices.delete({
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions` 
+**requestOptions:** `InvoicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6535,7 +6580,7 @@ await client.invoices.createInvoiceAttachment({
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions` 
+**requestOptions:** `InvoicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6602,7 +6647,7 @@ await client.invoices.deleteInvoiceAttachment({
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions` 
+**requestOptions:** `InvoicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6671,7 +6716,7 @@ await client.invoices.cancel({
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions` 
+**requestOptions:** `InvoicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6751,7 +6796,7 @@ await client.invoices.publish({
 <dl>
 <dd>
 
-**requestOptions:** `Invoices.RequestOptions` 
+**requestOptions:** `InvoicesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6835,7 +6880,7 @@ await client.labor.createScheduledShift({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6908,7 +6953,7 @@ await client.labor.bulkPublishScheduledShifts({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -6984,7 +7029,7 @@ await client.labor.searchScheduledShifts({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7049,7 +7094,7 @@ await client.labor.retrieveScheduledShift({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7135,7 +7180,7 @@ await client.labor.updateScheduledShift({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7204,7 +7249,7 @@ await client.labor.publishScheduledShift({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7312,7 +7357,7 @@ await client.labor.createTimecard({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7402,7 +7447,7 @@ await client.labor.searchTimecards({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7467,7 +7512,7 @@ await client.labor.retrieveTimecard({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7567,7 +7612,7 @@ await client.labor.updateTimecard({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7632,7 +7677,7 @@ await client.labor.deleteTimecard({
 <dl>
 <dd>
 
-**requestOptions:** `Labor.RequestOptions` 
+**requestOptions:** `LaborClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7689,7 +7734,7 @@ await client.locations.list();
 <dl>
 <dd>
 
-**requestOptions:** `Locations.RequestOptions` 
+**requestOptions:** `LocationsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7769,7 +7814,7 @@ await client.locations.create({
 <dl>
 <dd>
 
-**requestOptions:** `Locations.RequestOptions` 
+**requestOptions:** `LocationsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7835,7 +7880,7 @@ await client.locations.get({
 <dl>
 <dd>
 
-**requestOptions:** `Locations.RequestOptions` 
+**requestOptions:** `LocationsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -7918,7 +7963,7 @@ await client.locations.update({
 <dl>
 <dd>
 
-**requestOptions:** `Locations.RequestOptions` 
+**requestOptions:** `LocationsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8063,7 +8108,7 @@ await client.locations.checkouts({
 <dl>
 <dd>
 
-**requestOptions:** `Locations.RequestOptions` 
+**requestOptions:** `LocationsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8143,7 +8188,7 @@ await client.loyalty.searchEvents({
 <dl>
 <dd>
 
-**requestOptions:** `Loyalty.RequestOptions` 
+**requestOptions:** `LoyaltyClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8156,7 +8201,7 @@ await client.loyalty.searchEvents({
 </details>
 
 ## Merchants
-<details><summary><code>client.merchants.<a href="/src/api/resources/merchants/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Merchant></code></summary>
+<details><summary><code>client.merchants.<a href="/src/api/resources/merchants/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Merchant, Square.ListMerchantsResponse></code></summary>
 <dl>
 <dd>
 
@@ -8192,10 +8237,10 @@ endpoint to retrieve the merchant information.
 <dd>
 
 ```typescript
-const response = await client.merchants.list({
+const pageableResponse = await client.merchants.list({
     cursor: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -8206,6 +8251,9 @@ let page = await client.merchants.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -8229,7 +8277,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Merchants.RequestOptions` 
+**requestOptions:** `MerchantsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8294,7 +8342,7 @@ await client.merchants.get({
 <dl>
 <dd>
 
-**requestOptions:** `Merchants.RequestOptions` 
+**requestOptions:** `MerchantsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8360,7 +8408,7 @@ await client.checkout.retrieveLocationSettings({
 <dl>
 <dd>
 
-**requestOptions:** `Checkout.RequestOptions` 
+**requestOptions:** `CheckoutClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8426,7 +8474,7 @@ await client.checkout.updateLocationSettings({
 <dl>
 <dd>
 
-**requestOptions:** `Checkout.RequestOptions` 
+**requestOptions:** `CheckoutClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8481,7 +8529,7 @@ await client.checkout.retrieveMerchantSettings();
 <dl>
 <dd>
 
-**requestOptions:** `Checkout.RequestOptions` 
+**requestOptions:** `CheckoutClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8546,7 +8594,7 @@ await client.checkout.updateMerchantSettings({
 <dl>
 <dd>
 
-**requestOptions:** `Checkout.RequestOptions` 
+**requestOptions:** `CheckoutClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8663,7 +8711,7 @@ await client.orders.create({
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions` 
+**requestOptions:** `OrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8731,7 +8779,7 @@ await client.orders.batchGet({
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions` 
+**requestOptions:** `OrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8818,7 +8866,7 @@ await client.orders.calculate({
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions` 
+**requestOptions:** `OrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8886,7 +8934,7 @@ await client.orders.clone({
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions` 
+**requestOptions:** `OrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -8986,7 +9034,7 @@ await client.orders.search({
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions` 
+**requestOptions:** `OrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9051,7 +9099,7 @@ await client.orders.get({
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions` 
+**requestOptions:** `OrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9145,7 +9193,7 @@ await client.orders.update({
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions` 
+**requestOptions:** `OrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9225,7 +9273,7 @@ await client.orders.pay({
 <dl>
 <dd>
 
-**requestOptions:** `Orders.RequestOptions` 
+**requestOptions:** `OrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9238,7 +9286,7 @@ await client.orders.pay({
 </details>
 
 ## Payments
-<details><summary><code>client.payments.<a href="/src/api/resources/payments/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Payment></code></summary>
+<details><summary><code>client.payments.<a href="/src/api/resources/payments/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Payment, Square.ListPaymentsResponse></code></summary>
 <dl>
 <dd>
 
@@ -9270,7 +9318,7 @@ The maximum results per page is 100.
 <dd>
 
 ```typescript
-const response = await client.payments.list({
+const pageableResponse = await client.payments.list({
     beginTime: "begin_time",
     endTime: "end_time",
     sortOrder: "sort_order",
@@ -9287,7 +9335,7 @@ const response = await client.payments.list({
     updatedAtEndTime: "updated_at_end_time",
     sortField: "CREATED_AT"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -9313,6 +9361,9 @@ while (page.hasNextPage()) {
     page = page.getNextPage();
 }
 
+// You can also access the underlying response
+const response = page.response;
+
 ```
 </dd>
 </dl>
@@ -9335,7 +9386,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions` 
+**requestOptions:** `PaymentsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9421,7 +9472,7 @@ await client.payments.create({
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions` 
+**requestOptions:** `PaymentsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9496,7 +9547,7 @@ await client.payments.cancelByIdempotencyKey({
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions` 
+**requestOptions:** `PaymentsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9561,7 +9612,7 @@ await client.payments.get({
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions` 
+**requestOptions:** `PaymentsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9639,7 +9690,7 @@ await client.payments.update({
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions` 
+**requestOptions:** `PaymentsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9705,7 +9756,7 @@ await client.payments.cancel({
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions` 
+**requestOptions:** `PaymentsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9773,7 +9824,7 @@ await client.payments.complete({
 <dl>
 <dd>
 
-**requestOptions:** `Payments.RequestOptions` 
+**requestOptions:** `PaymentsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9786,7 +9837,7 @@ await client.payments.complete({
 </details>
 
 ## Payouts
-<details><summary><code>client.payouts.<a href="/src/api/resources/payouts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Payout></code></summary>
+<details><summary><code>client.payouts.<a href="/src/api/resources/payouts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Payout, Square.ListPayoutsResponse></code></summary>
 <dl>
 <dd>
 
@@ -9815,7 +9866,7 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 <dd>
 
 ```typescript
-const response = await client.payouts.list({
+const pageableResponse = await client.payouts.list({
     locationId: "location_id",
     status: "SENT",
     beginTime: "begin_time",
@@ -9824,7 +9875,7 @@ const response = await client.payouts.list({
     cursor: "cursor",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -9841,6 +9892,9 @@ let page = await client.payouts.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -9864,7 +9918,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Payouts.RequestOptions` 
+**requestOptions:** `PayoutsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9930,7 +9984,7 @@ await client.payouts.get({
 <dl>
 <dd>
 
-**requestOptions:** `Payouts.RequestOptions` 
+**requestOptions:** `PayoutsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -9942,7 +9996,7 @@ await client.payouts.get({
 </dl>
 </details>
 
-<details><summary><code>client.payouts.<a href="/src/api/resources/payouts/client/Client.ts">listEntries</a>({ ...params }) -> core.Page<Square.PayoutEntry></code></summary>
+<details><summary><code>client.payouts.<a href="/src/api/resources/payouts/client/Client.ts">listEntries</a>({ ...params }) -> core.Page<Square.PayoutEntry, Square.ListPayoutEntriesResponse></code></summary>
 <dl>
 <dd>
 
@@ -9970,13 +10024,13 @@ To call this endpoint, set `PAYOUTS_READ` for the OAuth scope.
 <dd>
 
 ```typescript
-const response = await client.payouts.listEntries({
+const pageableResponse = await client.payouts.listEntries({
     payoutId: "payout_id",
     sortOrder: "DESC",
     cursor: "cursor",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -9990,6 +10044,9 @@ let page = await client.payouts.listEntries({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -10013,7 +10070,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Payouts.RequestOptions` 
+**requestOptions:** `PayoutsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10026,7 +10083,7 @@ while (page.hasNextPage()) {
 </details>
 
 ## Refunds
-<details><summary><code>client.refunds.<a href="/src/api/resources/refunds/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.PaymentRefund></code></summary>
+<details><summary><code>client.refunds.<a href="/src/api/resources/refunds/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.PaymentRefund, Square.ListPaymentRefundsResponse></code></summary>
 <dl>
 <dd>
 
@@ -10058,7 +10115,7 @@ The maximum results per page is 100.
 <dd>
 
 ```typescript
-const response = await client.refunds.list({
+const pageableResponse = await client.refunds.list({
     beginTime: "begin_time",
     endTime: "end_time",
     sortOrder: "sort_order",
@@ -10071,7 +10128,7 @@ const response = await client.refunds.list({
     updatedAtEndTime: "updated_at_end_time",
     sortField: "CREATED_AT"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -10092,6 +10149,9 @@ let page = await client.refunds.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -10115,7 +10175,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions` 
+**requestOptions:** `RefundsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10193,7 +10253,7 @@ await client.refunds.refundPayment({
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions` 
+**requestOptions:** `RefundsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10258,7 +10318,7 @@ await client.refunds.get({
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions` 
+**requestOptions:** `RefundsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10317,7 +10377,7 @@ await client.sites.list();
 <dl>
 <dd>
 
-**requestOptions:** `Sites.RequestOptions` 
+**requestOptions:** `SitesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10388,7 +10448,7 @@ await client.snippets.get({
 <dl>
 <dd>
 
-**requestOptions:** `Snippets.RequestOptions` 
+**requestOptions:** `SnippetsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10462,7 +10522,7 @@ await client.snippets.upsert({
 <dl>
 <dd>
 
-**requestOptions:** `Snippets.RequestOptions` 
+**requestOptions:** `SnippetsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10532,7 +10592,7 @@ await client.snippets.delete({
 <dl>
 <dd>
 
-**requestOptions:** `Snippets.RequestOptions` 
+**requestOptions:** `SnippetsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10618,7 +10678,7 @@ await client.subscriptions.create({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10686,7 +10746,7 @@ await client.subscriptions.bulkSwapPlan({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10770,7 +10830,7 @@ await client.subscriptions.search({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10836,7 +10896,7 @@ await client.subscriptions.get({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10905,7 +10965,7 @@ await client.subscriptions.update({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -10971,7 +11031,7 @@ await client.subscriptions.deleteAction({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11038,7 +11098,7 @@ await client.subscriptions.changeBillingAnchorDate({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11105,7 +11165,7 @@ await client.subscriptions.cancel({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11117,7 +11177,7 @@ await client.subscriptions.cancel({
 </dl>
 </details>
 
-<details><summary><code>client.subscriptions.<a href="/src/api/resources/subscriptions/client/Client.ts">listEvents</a>({ ...params }) -> core.Page<Square.SubscriptionEvent></code></summary>
+<details><summary><code>client.subscriptions.<a href="/src/api/resources/subscriptions/client/Client.ts">listEvents</a>({ ...params }) -> core.Page<Square.SubscriptionEvent, Square.ListSubscriptionEventsResponse></code></summary>
 <dl>
 <dd>
 
@@ -11144,12 +11204,12 @@ Lists all [events](https://developer.squareup.com/docs/subscriptions-api/actions
 <dd>
 
 ```typescript
-const response = await client.subscriptions.listEvents({
+const pageableResponse = await client.subscriptions.listEvents({
     subscriptionId: "subscription_id",
     cursor: "cursor",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -11162,6 +11222,9 @@ let page = await client.subscriptions.listEvents({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -11185,7 +11248,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11250,7 +11313,7 @@ await client.subscriptions.pause({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11315,7 +11378,7 @@ await client.subscriptions.resume({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11386,7 +11449,7 @@ await client.subscriptions.swapPlan({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11488,7 +11551,7 @@ await client.teamMembers.create({
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions` 
+**requestOptions:** `TeamMembersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11584,7 +11647,7 @@ await client.teamMembers.batchCreate({
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions` 
+**requestOptions:** `TeamMembersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11683,7 +11746,7 @@ await client.teamMembers.batchUpdate({
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions` 
+**requestOptions:** `TeamMembersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11756,7 +11819,7 @@ await client.teamMembers.search({
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions` 
+**requestOptions:** `TeamMembersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11822,7 +11885,7 @@ await client.teamMembers.get({
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions` 
+**requestOptions:** `TeamMembersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11921,7 +11984,7 @@ await client.teamMembers.update({
 <dl>
 <dd>
 
-**requestOptions:** `TeamMembers.RequestOptions` 
+**requestOptions:** `TeamMembersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -11987,7 +12050,7 @@ await client.team.listJobs({
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions` 
+**requestOptions:** `TeamClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12057,7 +12120,7 @@ await client.team.createJob({
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions` 
+**requestOptions:** `TeamClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12122,7 +12185,7 @@ await client.team.retrieveJob({
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions` 
+**requestOptions:** `TeamClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12193,7 +12256,7 @@ await client.team.updateJob({
 <dl>
 <dd>
 
-**requestOptions:** `Team.RequestOptions` 
+**requestOptions:** `TeamClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12261,7 +12324,7 @@ await client.terminal.dismissTerminalAction({
 <dl>
 <dd>
 
-**requestOptions:** `Terminal.RequestOptions` 
+**requestOptions:** `TerminalClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12326,7 +12389,7 @@ await client.terminal.dismissTerminalCheckout({
 <dl>
 <dd>
 
-**requestOptions:** `Terminal.RequestOptions` 
+**requestOptions:** `TerminalClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12391,7 +12454,7 @@ await client.terminal.dismissTerminalRefund({
 <dl>
 <dd>
 
-**requestOptions:** `Terminal.RequestOptions` 
+**requestOptions:** `TerminalClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12491,7 +12554,7 @@ await client.transferOrders.create({
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions` 
+**requestOptions:** `TransferOrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12503,7 +12566,7 @@ await client.transferOrders.create({
 </dl>
 </details>
 
-<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">search</a>({ ...params }) -> core.Page<Square.TransferOrder></code></summary>
+<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">search</a>({ ...params }) -> core.Page<Square.TransferOrder, Square.SearchTransferOrdersResponse></code></summary>
 <dl>
 <dd>
 
@@ -12536,7 +12599,7 @@ Common search scenarios:
 <dd>
 
 ```typescript
-const response = await client.transferOrders.search({
+const pageableResponse = await client.transferOrders.search({
     query: {
         filter: {
             sourceLocationIds: ["EXAMPLE_SOURCE_LOCATION_ID_123"],
@@ -12551,7 +12614,7 @@ const response = await client.transferOrders.search({
     cursor: "eyJsYXN0X3VwZGF0ZWRfYXQiOjE3NTMxMTg2NjQ4NzN9",
     limit: 10
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -12575,6 +12638,9 @@ while (page.hasNextPage()) {
     page = page.getNextPage();
 }
 
+// You can also access the underlying response
+const response = page.response;
+
 ```
 </dd>
 </dl>
@@ -12597,7 +12663,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions` 
+**requestOptions:** `TransferOrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12668,7 +12734,7 @@ await client.transferOrders.get({
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions` 
+**requestOptions:** `TransferOrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12755,7 +12821,7 @@ await client.transferOrders.update({
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions` 
+**requestOptions:** `TransferOrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12825,7 +12891,7 @@ await client.transferOrders.delete({
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions` 
+**requestOptions:** `TransferOrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12901,7 +12967,7 @@ await client.transferOrders.cancel({
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions` 
+**requestOptions:** `TransferOrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -12995,7 +13061,7 @@ await client.transferOrders.receive({
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions` 
+**requestOptions:** `TransferOrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13069,7 +13135,7 @@ await client.transferOrders.start({
 <dl>
 <dd>
 
-**requestOptions:** `TransferOrders.RequestOptions` 
+**requestOptions:** `TransferOrdersClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13155,7 +13221,7 @@ await client.vendors.batchCreate({
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions` 
+**requestOptions:** `VendorsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13220,7 +13286,7 @@ await client.vendors.batchGet({
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions` 
+**requestOptions:** `VendorsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13292,7 +13358,7 @@ await client.vendors.batchUpdate({
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions` 
+**requestOptions:** `VendorsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13376,7 +13442,7 @@ await client.vendors.create({
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions` 
+**requestOptions:** `VendorsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13439,7 +13505,7 @@ await client.vendors.search();
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions` 
+**requestOptions:** `VendorsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13504,7 +13570,7 @@ await client.vendors.get({
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions` 
+**requestOptions:** `VendorsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13578,7 +13644,7 @@ await client.vendors.update({
 <dl>
 <dd>
 
-**requestOptions:** `Vendors.RequestOptions` 
+**requestOptions:** `VendorsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13591,7 +13657,7 @@ await client.vendors.update({
 </details>
 
 ## Bookings CustomAttributeDefinitions
-<details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
+<details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListBookingCustomAttributeDefinitionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -13621,11 +13687,11 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 <dd>
 
 ```typescript
-const response = await client.bookings.customAttributeDefinitions.list({
+const pageableResponse = await client.bookings.customAttributeDefinitions.list({
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -13637,6 +13703,9 @@ let page = await client.bookings.customAttributeDefinitions.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -13660,7 +13729,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13731,7 +13800,7 @@ await client.bookings.customAttributeDefinitions.create({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13800,7 +13869,7 @@ await client.bookings.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13872,7 +13941,7 @@ await client.bookings.customAttributeDefinitions.update({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -13943,7 +14012,7 @@ await client.bookings.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14020,7 +14089,7 @@ await client.bookings.customAttributes.batchDelete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14096,7 +14165,7 @@ await client.bookings.customAttributes.batchUpsert({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14108,7 +14177,7 @@ await client.bookings.customAttributes.batchUpsert({
 </dl>
 </details>
 
-<details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
+<details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute, Square.ListBookingCustomAttributesResponse></code></summary>
 <dl>
 <dd>
 
@@ -14138,13 +14207,13 @@ To call this endpoint with seller-level permissions, set `APPOINTMENTS_ALL_READ`
 <dd>
 
 ```typescript
-const response = await client.bookings.customAttributes.list({
+const pageableResponse = await client.bookings.customAttributes.list({
     bookingId: "booking_id",
     limit: 1,
     cursor: "cursor",
     withDefinitions: true
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -14158,6 +14227,9 @@ let page = await client.bookings.customAttributes.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -14181,7 +14253,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14252,7 +14324,7 @@ await client.bookings.customAttributes.get({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14325,7 +14397,7 @@ await client.bookings.customAttributes.upsert({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14397,7 +14469,7 @@ await client.bookings.customAttributes.delete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14410,7 +14482,7 @@ await client.bookings.customAttributes.delete({
 </details>
 
 ## Bookings LocationProfiles
-<details><summary><code>client.bookings.locationProfiles.<a href="/src/api/resources/bookings/resources/locationProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.LocationBookingProfile></code></summary>
+<details><summary><code>client.bookings.locationProfiles.<a href="/src/api/resources/bookings/resources/locationProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.LocationBookingProfile, Square.ListLocationBookingProfilesResponse></code></summary>
 <dl>
 <dd>
 
@@ -14437,11 +14509,11 @@ Lists location booking profiles of a seller.
 <dd>
 
 ```typescript
-const response = await client.bookings.locationProfiles.list({
+const pageableResponse = await client.bookings.locationProfiles.list({
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -14453,6 +14525,9 @@ let page = await client.bookings.locationProfiles.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -14476,7 +14551,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `LocationProfiles.RequestOptions` 
+**requestOptions:** `LocationProfilesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14489,7 +14564,7 @@ while (page.hasNextPage()) {
 </details>
 
 ## Bookings TeamMemberProfiles
-<details><summary><code>client.bookings.teamMemberProfiles.<a href="/src/api/resources/bookings/resources/teamMemberProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.TeamMemberBookingProfile></code></summary>
+<details><summary><code>client.bookings.teamMemberProfiles.<a href="/src/api/resources/bookings/resources/teamMemberProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.TeamMemberBookingProfile, Square.ListTeamMemberBookingProfilesResponse></code></summary>
 <dl>
 <dd>
 
@@ -14516,13 +14591,13 @@ Lists booking profiles for team members.
 <dd>
 
 ```typescript
-const response = await client.bookings.teamMemberProfiles.list({
+const pageableResponse = await client.bookings.teamMemberProfiles.list({
     bookableOnly: true,
     limit: 1,
     cursor: "cursor",
     locationId: "location_id"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -14536,6 +14611,9 @@ let page = await client.bookings.teamMemberProfiles.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -14559,7 +14637,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `TeamMemberProfiles.RequestOptions` 
+**requestOptions:** `TeamMemberProfilesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14624,7 +14702,7 @@ await client.bookings.teamMemberProfiles.get({
 <dl>
 <dd>
 
-**requestOptions:** `TeamMemberProfiles.RequestOptions` 
+**requestOptions:** `TeamMemberProfilesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14637,7 +14715,7 @@ await client.bookings.teamMemberProfiles.get({
 </details>
 
 ## CashDrawers Shifts
-<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CashDrawerShiftSummary></code></summary>
+<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CashDrawerShiftSummary, Square.ListCashDrawerShiftsResponse></code></summary>
 <dl>
 <dd>
 
@@ -14665,7 +14743,7 @@ in a date range.
 <dd>
 
 ```typescript
-const response = await client.cashDrawers.shifts.list({
+const pageableResponse = await client.cashDrawers.shifts.list({
     locationId: "location_id",
     sortOrder: "DESC",
     beginTime: "begin_time",
@@ -14673,7 +14751,7 @@ const response = await client.cashDrawers.shifts.list({
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -14689,6 +14767,9 @@ let page = await client.cashDrawers.shifts.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -14712,7 +14793,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions` 
+**requestOptions:** `ShiftsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14779,7 +14860,7 @@ await client.cashDrawers.shifts.get({
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions` 
+**requestOptions:** `ShiftsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14791,7 +14872,7 @@ await client.cashDrawers.shifts.get({
 </dl>
 </details>
 
-<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">listEvents</a>({ ...params }) -> core.Page<Square.CashDrawerShiftEvent></code></summary>
+<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">listEvents</a>({ ...params }) -> core.Page<Square.CashDrawerShiftEvent, Square.ListCashDrawerShiftEventsResponse></code></summary>
 <dl>
 <dd>
 
@@ -14818,13 +14899,13 @@ Provides a paginated list of events for a single cash drawer shift.
 <dd>
 
 ```typescript
-const response = await client.cashDrawers.shifts.listEvents({
+const pageableResponse = await client.cashDrawers.shifts.listEvents({
     shiftId: "shift_id",
     locationId: "location_id",
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -14838,6 +14919,9 @@ let page = await client.cashDrawers.shifts.listEvents({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -14861,7 +14945,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions` 
+**requestOptions:** `ShiftsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14930,7 +15014,7 @@ await client.catalog.images.create({});
 <dl>
 <dd>
 
-**requestOptions:** `Images.RequestOptions` 
+**requestOptions:** `ImagesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -14998,7 +15082,7 @@ await client.catalog.images.update({
 <dl>
 <dd>
 
-**requestOptions:** `Images.RequestOptions` 
+**requestOptions:** `ImagesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15072,7 +15156,7 @@ await client.catalog.object.upsert({
 <dl>
 <dd>
 
-**requestOptions:** `Object_.RequestOptions` 
+**requestOptions:** `ObjectClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15146,7 +15230,7 @@ await client.catalog.object.get({
 <dl>
 <dd>
 
-**requestOptions:** `Object_.RequestOptions` 
+**requestOptions:** `ObjectClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15220,7 +15304,7 @@ await client.catalog.object.delete({
 <dl>
 <dd>
 
-**requestOptions:** `Object_.RequestOptions` 
+**requestOptions:** `ObjectClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15233,7 +15317,7 @@ await client.catalog.object.delete({
 </details>
 
 ## Checkout PaymentLinks
-<details><summary><code>client.checkout.paymentLinks.<a href="/src/api/resources/checkout/resources/paymentLinks/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.PaymentLink></code></summary>
+<details><summary><code>client.checkout.paymentLinks.<a href="/src/api/resources/checkout/resources/paymentLinks/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.PaymentLink, Square.ListPaymentLinksResponse></code></summary>
 <dl>
 <dd>
 
@@ -15260,11 +15344,11 @@ Lists all payment links.
 <dd>
 
 ```typescript
-const response = await client.checkout.paymentLinks.list({
+const pageableResponse = await client.checkout.paymentLinks.list({
     cursor: "cursor",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -15276,6 +15360,9 @@ let page = await client.checkout.paymentLinks.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -15299,7 +15386,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `PaymentLinks.RequestOptions` 
+**requestOptions:** `PaymentLinksClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15372,7 +15459,7 @@ await client.checkout.paymentLinks.create({
 <dl>
 <dd>
 
-**requestOptions:** `PaymentLinks.RequestOptions` 
+**requestOptions:** `PaymentLinksClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15437,7 +15524,7 @@ await client.checkout.paymentLinks.get({
 <dl>
 <dd>
 
-**requestOptions:** `PaymentLinks.RequestOptions` 
+**requestOptions:** `PaymentLinksClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15510,7 +15597,7 @@ await client.checkout.paymentLinks.update({
 <dl>
 <dd>
 
-**requestOptions:** `PaymentLinks.RequestOptions` 
+**requestOptions:** `PaymentLinksClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15575,7 +15662,7 @@ await client.checkout.paymentLinks.delete({
 <dl>
 <dd>
 
-**requestOptions:** `PaymentLinks.RequestOptions` 
+**requestOptions:** `PaymentLinksClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15588,7 +15675,7 @@ await client.checkout.paymentLinks.delete({
 </details>
 
 ## Customers CustomAttributeDefinitions
-<details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
+<details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListCustomerCustomAttributeDefinitionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -15620,11 +15707,11 @@ seller-defined custom attributes (also known as custom fields) are always set to
 <dd>
 
 ```typescript
-const response = await client.customers.customAttributeDefinitions.list({
+const pageableResponse = await client.customers.customAttributeDefinitions.list({
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -15636,6 +15723,9 @@ let page = await client.customers.customAttributeDefinitions.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -15659,7 +15749,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15742,7 +15832,7 @@ await client.customers.customAttributeDefinitions.create({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15812,7 +15902,7 @@ await client.customers.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15887,7 +15977,7 @@ await client.customers.customAttributeDefinitions.update({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -15957,7 +16047,7 @@ await client.customers.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16071,7 +16161,7 @@ await client.customers.customAttributeDefinitions.batchUpsert({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16084,7 +16174,7 @@ await client.customers.customAttributeDefinitions.batchUpsert({
 </details>
 
 ## Customers Groups
-<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomerGroup></code></summary>
+<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomerGroup, Square.ListCustomerGroupsResponse></code></summary>
 <dl>
 <dd>
 
@@ -16111,11 +16201,11 @@ Retrieves the list of customer groups of a business.
 <dd>
 
 ```typescript
-const response = await client.customers.groups.list({
+const pageableResponse = await client.customers.groups.list({
     cursor: "cursor",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -16127,6 +16217,9 @@ let page = await client.customers.groups.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -16150,7 +16243,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions` 
+**requestOptions:** `GroupsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16219,7 +16312,7 @@ await client.customers.groups.create({
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions` 
+**requestOptions:** `GroupsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16284,7 +16377,7 @@ await client.customers.groups.get({
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions` 
+**requestOptions:** `GroupsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16352,7 +16445,7 @@ await client.customers.groups.update({
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions` 
+**requestOptions:** `GroupsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16417,7 +16510,7 @@ await client.customers.groups.delete({
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions` 
+**requestOptions:** `GroupsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16486,7 +16579,7 @@ await client.customers.groups.add({
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions` 
+**requestOptions:** `GroupsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16555,7 +16648,7 @@ await client.customers.groups.remove({
 <dl>
 <dd>
 
-**requestOptions:** `Groups.RequestOptions` 
+**requestOptions:** `GroupsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16568,7 +16661,7 @@ await client.customers.groups.remove({
 </details>
 
 ## Customers Segments
-<details><summary><code>client.customers.segments.<a href="/src/api/resources/customers/resources/segments/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomerSegment></code></summary>
+<details><summary><code>client.customers.segments.<a href="/src/api/resources/customers/resources/segments/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomerSegment, Square.ListCustomerSegmentsResponse></code></summary>
 <dl>
 <dd>
 
@@ -16595,11 +16688,11 @@ Retrieves the list of customer segments of a business.
 <dd>
 
 ```typescript
-const response = await client.customers.segments.list({
+const pageableResponse = await client.customers.segments.list({
     cursor: "cursor",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -16611,6 +16704,9 @@ let page = await client.customers.segments.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -16634,7 +16730,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Segments.RequestOptions` 
+**requestOptions:** `SegmentsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16699,7 +16795,7 @@ await client.customers.segments.get({
 <dl>
 <dd>
 
-**requestOptions:** `Segments.RequestOptions` 
+**requestOptions:** `SegmentsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16779,7 +16875,7 @@ await client.customers.cards.create({
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions` 
+**requestOptions:** `CardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16845,7 +16941,7 @@ await client.customers.cards.delete({
 <dl>
 <dd>
 
-**requestOptions:** `Cards.RequestOptions` 
+**requestOptions:** `CardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -16858,7 +16954,7 @@ await client.customers.cards.delete({
 </details>
 
 ## Customers CustomAttributes
-<details><summary><code>client.customers.customAttributes.<a href="/src/api/resources/customers/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
+<details><summary><code>client.customers.customAttributes.<a href="/src/api/resources/customers/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute, Square.ListCustomerCustomAttributesResponse></code></summary>
 <dl>
 <dd>
 
@@ -16892,13 +16988,13 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 <dd>
 
 ```typescript
-const response = await client.customers.customAttributes.list({
+const pageableResponse = await client.customers.customAttributes.list({
     customerId: "customer_id",
     limit: 1,
     cursor: "cursor",
     withDefinitions: true
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -16912,6 +17008,9 @@ let page = await client.customers.customAttributes.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -16935,7 +17034,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17010,7 +17109,7 @@ await client.customers.customAttributes.get({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17087,7 +17186,7 @@ await client.customers.customAttributes.upsert({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17157,7 +17256,7 @@ await client.customers.customAttributes.delete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17170,7 +17269,7 @@ await client.customers.customAttributes.delete({
 </details>
 
 ## Devices Codes
-<details><summary><code>client.devices.codes.<a href="/src/api/resources/devices/resources/codes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.DeviceCode></code></summary>
+<details><summary><code>client.devices.codes.<a href="/src/api/resources/devices/resources/codes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.DeviceCode, Square.ListDeviceCodesResponse></code></summary>
 <dl>
 <dd>
 
@@ -17197,13 +17296,13 @@ Lists all DeviceCodes associated with the merchant.
 <dd>
 
 ```typescript
-const response = await client.devices.codes.list({
+const pageableResponse = await client.devices.codes.list({
     cursor: "cursor",
     locationId: "location_id",
     productType: "TERMINAL_API",
     status: "UNKNOWN"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -17217,6 +17316,9 @@ let page = await client.devices.codes.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -17240,7 +17342,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Codes.RequestOptions` 
+**requestOptions:** `CodesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17311,7 +17413,7 @@ await client.devices.codes.create({
 <dl>
 <dd>
 
-**requestOptions:** `Codes.RequestOptions` 
+**requestOptions:** `CodesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17376,7 +17478,7 @@ await client.devices.codes.get({
 <dl>
 <dd>
 
-**requestOptions:** `Codes.RequestOptions` 
+**requestOptions:** `CodesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17389,7 +17491,7 @@ await client.devices.codes.get({
 </details>
 
 ## Disputes Evidence
-<details><summary><code>client.disputes.evidence.<a href="/src/api/resources/disputes/resources/evidence/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.DisputeEvidence></code></summary>
+<details><summary><code>client.disputes.evidence.<a href="/src/api/resources/disputes/resources/evidence/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.DisputeEvidence, Square.ListDisputeEvidenceResponse></code></summary>
 <dl>
 <dd>
 
@@ -17416,11 +17518,11 @@ Returns a list of evidence associated with a dispute.
 <dd>
 
 ```typescript
-const response = await client.disputes.evidence.list({
+const pageableResponse = await client.disputes.evidence.list({
     disputeId: "dispute_id",
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -17432,6 +17534,9 @@ let page = await client.disputes.evidence.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -17455,7 +17560,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Evidence.RequestOptions` 
+**requestOptions:** `EvidenceClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17523,7 +17628,7 @@ await client.disputes.evidence.get({
 <dl>
 <dd>
 
-**requestOptions:** `Evidence.RequestOptions` 
+**requestOptions:** `EvidenceClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17590,7 +17695,7 @@ await client.disputes.evidence.delete({
 <dl>
 <dd>
 
-**requestOptions:** `Evidence.RequestOptions` 
+**requestOptions:** `EvidenceClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17603,7 +17708,7 @@ await client.disputes.evidence.delete({
 </details>
 
 ## GiftCards Activities
-<details><summary><code>client.giftCards.activities.<a href="/src/api/resources/giftCards/resources/activities/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.GiftCardActivity></code></summary>
+<details><summary><code>client.giftCards.activities.<a href="/src/api/resources/giftCards/resources/activities/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.GiftCardActivity, Square.ListGiftCardActivitiesResponse></code></summary>
 <dl>
 <dd>
 
@@ -17633,7 +17738,7 @@ for all gift cards in a specific region, or for activities within a time window.
 <dd>
 
 ```typescript
-const response = await client.giftCards.activities.list({
+const pageableResponse = await client.giftCards.activities.list({
     giftCardId: "gift_card_id",
     type: "type",
     locationId: "location_id",
@@ -17643,7 +17748,7 @@ const response = await client.giftCards.activities.list({
     cursor: "cursor",
     sortOrder: "sort_order"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -17661,6 +17766,9 @@ let page = await client.giftCards.activities.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -17684,7 +17792,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Activities.RequestOptions` 
+**requestOptions:** `ActivitiesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17759,7 +17867,7 @@ await client.giftCards.activities.create({
 <dl>
 <dd>
 
-**requestOptions:** `Activities.RequestOptions` 
+**requestOptions:** `ActivitiesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17772,7 +17880,7 @@ await client.giftCards.activities.create({
 </details>
 
 ## Labor BreakTypes
-<details><summary><code>client.labor.breakTypes.<a href="/src/api/resources/labor/resources/breakTypes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.BreakType></code></summary>
+<details><summary><code>client.labor.breakTypes.<a href="/src/api/resources/labor/resources/breakTypes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.BreakType, Square.ListBreakTypesResponse></code></summary>
 <dl>
 <dd>
 
@@ -17799,12 +17907,12 @@ Returns a paginated list of `BreakType` instances for a business.
 <dd>
 
 ```typescript
-const response = await client.labor.breakTypes.list({
+const pageableResponse = await client.labor.breakTypes.list({
     locationId: "location_id",
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -17817,6 +17925,9 @@ let page = await client.labor.breakTypes.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -17840,7 +17951,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `BreakTypes.RequestOptions` 
+**requestOptions:** `BreakTypesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17924,7 +18035,7 @@ await client.labor.breakTypes.create({
 <dl>
 <dd>
 
-**requestOptions:** `BreakTypes.RequestOptions` 
+**requestOptions:** `BreakTypesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -17989,7 +18100,7 @@ await client.labor.breakTypes.get({
 <dl>
 <dd>
 
-**requestOptions:** `BreakTypes.RequestOptions` 
+**requestOptions:** `BreakTypesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18061,7 +18172,7 @@ await client.labor.breakTypes.update({
 <dl>
 <dd>
 
-**requestOptions:** `BreakTypes.RequestOptions` 
+**requestOptions:** `BreakTypesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18128,7 +18239,7 @@ await client.labor.breakTypes.delete({
 <dl>
 <dd>
 
-**requestOptions:** `BreakTypes.RequestOptions` 
+**requestOptions:** `BreakTypesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18141,7 +18252,7 @@ await client.labor.breakTypes.delete({
 </details>
 
 ## Labor EmployeeWages
-<details><summary><code>client.labor.employeeWages.<a href="/src/api/resources/labor/resources/employeeWages/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.EmployeeWage></code></summary>
+<details><summary><code>client.labor.employeeWages.<a href="/src/api/resources/labor/resources/employeeWages/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.EmployeeWage, Square.ListEmployeeWagesResponse></code></summary>
 <dl>
 <dd>
 
@@ -18168,12 +18279,12 @@ Returns a paginated list of `EmployeeWage` instances for a business.
 <dd>
 
 ```typescript
-const response = await client.labor.employeeWages.list({
+const pageableResponse = await client.labor.employeeWages.list({
     employeeId: "employee_id",
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -18186,6 +18297,9 @@ let page = await client.labor.employeeWages.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -18209,7 +18323,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `EmployeeWages.RequestOptions` 
+**requestOptions:** `EmployeeWagesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18274,7 +18388,7 @@ await client.labor.employeeWages.get({
 <dl>
 <dd>
 
-**requestOptions:** `EmployeeWages.RequestOptions` 
+**requestOptions:** `EmployeeWagesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18383,7 +18497,7 @@ await client.labor.shifts.create({
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions` 
+**requestOptions:** `ShiftsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18473,7 +18587,7 @@ await client.labor.shifts.search({
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions` 
+**requestOptions:** `ShiftsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18538,7 +18652,7 @@ await client.labor.shifts.get({
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions` 
+**requestOptions:** `ShiftsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18637,7 +18751,7 @@ await client.labor.shifts.update({
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions` 
+**requestOptions:** `ShiftsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18702,7 +18816,7 @@ await client.labor.shifts.delete({
 <dl>
 <dd>
 
-**requestOptions:** `Shifts.RequestOptions` 
+**requestOptions:** `ShiftsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18715,7 +18829,7 @@ await client.labor.shifts.delete({
 </details>
 
 ## Labor TeamMemberWages
-<details><summary><code>client.labor.teamMemberWages.<a href="/src/api/resources/labor/resources/teamMemberWages/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.TeamMemberWage></code></summary>
+<details><summary><code>client.labor.teamMemberWages.<a href="/src/api/resources/labor/resources/teamMemberWages/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.TeamMemberWage, Square.ListTeamMemberWagesResponse></code></summary>
 <dl>
 <dd>
 
@@ -18742,12 +18856,12 @@ Returns a paginated list of `TeamMemberWage` instances for a business.
 <dd>
 
 ```typescript
-const response = await client.labor.teamMemberWages.list({
+const pageableResponse = await client.labor.teamMemberWages.list({
     teamMemberId: "team_member_id",
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -18760,6 +18874,9 @@ let page = await client.labor.teamMemberWages.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -18783,7 +18900,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `TeamMemberWages.RequestOptions` 
+**requestOptions:** `TeamMemberWagesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18848,7 +18965,7 @@ await client.labor.teamMemberWages.get({
 <dl>
 <dd>
 
-**requestOptions:** `TeamMemberWages.RequestOptions` 
+**requestOptions:** `TeamMemberWagesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18861,7 +18978,7 @@ await client.labor.teamMemberWages.get({
 </details>
 
 ## Labor WorkweekConfigs
-<details><summary><code>client.labor.workweekConfigs.<a href="/src/api/resources/labor/resources/workweekConfigs/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WorkweekConfig></code></summary>
+<details><summary><code>client.labor.workweekConfigs.<a href="/src/api/resources/labor/resources/workweekConfigs/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WorkweekConfig, Square.ListWorkweekConfigsResponse></code></summary>
 <dl>
 <dd>
 
@@ -18888,11 +19005,11 @@ Returns a list of `WorkweekConfig` instances for a business.
 <dd>
 
 ```typescript
-const response = await client.labor.workweekConfigs.list({
+const pageableResponse = await client.labor.workweekConfigs.list({
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -18904,6 +19021,9 @@ let page = await client.labor.workweekConfigs.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -18927,7 +19047,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `WorkweekConfigs.RequestOptions` 
+**requestOptions:** `WorkweekConfigsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -18997,7 +19117,7 @@ await client.labor.workweekConfigs.get({
 <dl>
 <dd>
 
-**requestOptions:** `WorkweekConfigs.RequestOptions` 
+**requestOptions:** `WorkweekConfigsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19010,7 +19130,7 @@ await client.labor.workweekConfigs.get({
 </details>
 
 ## Locations CustomAttributeDefinitions
-<details><summary><code>client.locations.customAttributeDefinitions.<a href="/src/api/resources/locations/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
+<details><summary><code>client.locations.customAttributeDefinitions.<a href="/src/api/resources/locations/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListLocationCustomAttributeDefinitionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -19040,12 +19160,12 @@ applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`
 <dd>
 
 ```typescript
-const response = await client.locations.customAttributeDefinitions.list({
+const pageableResponse = await client.locations.customAttributeDefinitions.list({
     visibilityFilter: "ALL",
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -19058,6 +19178,9 @@ let page = await client.locations.customAttributeDefinitions.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -19081,7 +19204,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19160,7 +19283,7 @@ await client.locations.customAttributeDefinitions.create({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19228,7 +19351,7 @@ await client.locations.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19300,7 +19423,7 @@ await client.locations.customAttributeDefinitions.update({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19368,7 +19491,7 @@ await client.locations.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19446,7 +19569,7 @@ await client.locations.customAttributes.batchDelete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19542,7 +19665,7 @@ await client.locations.customAttributes.batchUpsert({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19554,7 +19677,7 @@ await client.locations.customAttributes.batchUpsert({
 </dl>
 </details>
 
-<details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
+<details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute, Square.ListLocationCustomAttributesResponse></code></summary>
 <dl>
 <dd>
 
@@ -19586,14 +19709,14 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 <dd>
 
 ```typescript
-const response = await client.locations.customAttributes.list({
+const pageableResponse = await client.locations.customAttributes.list({
     locationId: "location_id",
     visibilityFilter: "ALL",
     limit: 1,
     cursor: "cursor",
     withDefinitions: true
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -19608,6 +19731,9 @@ let page = await client.locations.customAttributes.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -19631,7 +19757,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19703,7 +19829,7 @@ await client.locations.customAttributes.get({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19777,7 +19903,7 @@ await client.locations.customAttributes.upsert({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19845,7 +19971,7 @@ await client.locations.customAttributes.delete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19920,7 +20046,7 @@ await client.locations.transactions.list({
 <dl>
 <dd>
 
-**requestOptions:** `Transactions.RequestOptions` 
+**requestOptions:** `TransactionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -19986,7 +20112,7 @@ await client.locations.transactions.get({
 <dl>
 <dd>
 
-**requestOptions:** `Transactions.RequestOptions` 
+**requestOptions:** `TransactionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20057,7 +20183,7 @@ await client.locations.transactions.capture({
 <dl>
 <dd>
 
-**requestOptions:** `Transactions.RequestOptions` 
+**requestOptions:** `TransactionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20128,7 +20254,7 @@ await client.locations.transactions.void({
 <dl>
 <dd>
 
-**requestOptions:** `Transactions.RequestOptions` 
+**requestOptions:** `TransactionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20200,7 +20326,7 @@ await client.loyalty.accounts.create({
 <dl>
 <dd>
 
-**requestOptions:** `Accounts.RequestOptions` 
+**requestOptions:** `AccountsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20274,7 +20400,7 @@ await client.loyalty.accounts.search({
 <dl>
 <dd>
 
-**requestOptions:** `Accounts.RequestOptions` 
+**requestOptions:** `AccountsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20339,7 +20465,7 @@ await client.loyalty.accounts.get({
 <dl>
 <dd>
 
-**requestOptions:** `Accounts.RequestOptions` 
+**requestOptions:** `AccountsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20422,7 +20548,7 @@ await client.loyalty.accounts.accumulatePoints({
 <dl>
 <dd>
 
-**requestOptions:** `Accounts.RequestOptions` 
+**requestOptions:** `AccountsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20496,7 +20622,7 @@ await client.loyalty.accounts.adjust({
 <dl>
 <dd>
 
-**requestOptions:** `Accounts.RequestOptions` 
+**requestOptions:** `AccountsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20556,7 +20682,7 @@ await client.loyalty.programs.list();
 <dl>
 <dd>
 
-**requestOptions:** `Programs.RequestOptions` 
+**requestOptions:** `ProgramsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20623,7 +20749,7 @@ await client.loyalty.programs.get({
 <dl>
 <dd>
 
-**requestOptions:** `Programs.RequestOptions` 
+**requestOptions:** `ProgramsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20704,7 +20830,7 @@ await client.loyalty.programs.calculate({
 <dl>
 <dd>
 
-**requestOptions:** `Programs.RequestOptions` 
+**requestOptions:** `ProgramsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20782,7 +20908,7 @@ await client.loyalty.rewards.create({
 <dl>
 <dd>
 
-**requestOptions:** `Rewards.RequestOptions` 
+**requestOptions:** `RewardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20856,7 +20982,7 @@ await client.loyalty.rewards.search({
 <dl>
 <dd>
 
-**requestOptions:** `Rewards.RequestOptions` 
+**requestOptions:** `RewardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20921,7 +21047,7 @@ await client.loyalty.rewards.get({
 <dl>
 <dd>
 
-**requestOptions:** `Rewards.RequestOptions` 
+**requestOptions:** `RewardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -20994,7 +21120,7 @@ await client.loyalty.rewards.delete({
 <dl>
 <dd>
 
-**requestOptions:** `Rewards.RequestOptions` 
+**requestOptions:** `RewardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21071,7 +21197,7 @@ await client.loyalty.rewards.redeem({
 <dl>
 <dd>
 
-**requestOptions:** `Rewards.RequestOptions` 
+**requestOptions:** `RewardsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21084,7 +21210,7 @@ await client.loyalty.rewards.redeem({
 </details>
 
 ## Loyalty Programs Promotions
-<details><summary><code>client.loyalty.programs.promotions.<a href="/src/api/resources/loyalty/resources/programs/resources/promotions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.LoyaltyPromotion></code></summary>
+<details><summary><code>client.loyalty.programs.promotions.<a href="/src/api/resources/loyalty/resources/programs/resources/promotions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.LoyaltyPromotion, Square.ListLoyaltyPromotionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -21112,13 +21238,13 @@ Results are sorted by the `created_at` date in descending order (newest to oldes
 <dd>
 
 ```typescript
-const response = await client.loyalty.programs.promotions.list({
+const pageableResponse = await client.loyalty.programs.promotions.list({
     programId: "program_id",
     status: "ACTIVE",
     cursor: "cursor",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -21132,6 +21258,9 @@ let page = await client.loyalty.programs.promotions.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -21155,7 +21284,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Promotions.RequestOptions` 
+**requestOptions:** `PromotionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21247,7 +21376,7 @@ await client.loyalty.programs.promotions.create({
 <dl>
 <dd>
 
-**requestOptions:** `Promotions.RequestOptions` 
+**requestOptions:** `PromotionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21313,7 +21442,7 @@ await client.loyalty.programs.promotions.get({
 <dl>
 <dd>
 
-**requestOptions:** `Promotions.RequestOptions` 
+**requestOptions:** `PromotionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21384,7 +21513,7 @@ await client.loyalty.programs.promotions.cancel({
 <dl>
 <dd>
 
-**requestOptions:** `Promotions.RequestOptions` 
+**requestOptions:** `PromotionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21397,7 +21526,7 @@ await client.loyalty.programs.promotions.cancel({
 </details>
 
 ## Merchants CustomAttributeDefinitions
-<details><summary><code>client.merchants.customAttributeDefinitions.<a href="/src/api/resources/merchants/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
+<details><summary><code>client.merchants.customAttributeDefinitions.<a href="/src/api/resources/merchants/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListMerchantCustomAttributeDefinitionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -21427,12 +21556,12 @@ applications and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`
 <dd>
 
 ```typescript
-const response = await client.merchants.customAttributeDefinitions.list({
+const pageableResponse = await client.merchants.customAttributeDefinitions.list({
     visibilityFilter: "ALL",
     limit: 1,
     cursor: "cursor"
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -21445,6 +21574,9 @@ let page = await client.merchants.customAttributeDefinitions.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -21468,7 +21600,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21547,7 +21679,7 @@ await client.merchants.customAttributeDefinitions.create({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21615,7 +21747,7 @@ await client.merchants.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21687,7 +21819,7 @@ await client.merchants.customAttributeDefinitions.update({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21755,7 +21887,7 @@ await client.merchants.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21830,7 +21962,7 @@ await client.merchants.customAttributes.batchDelete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21919,7 +22051,7 @@ await client.merchants.customAttributes.batchUpsert({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -21931,7 +22063,7 @@ await client.merchants.customAttributes.batchUpsert({
 </dl>
 </details>
 
-<details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
+<details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute, Square.ListMerchantCustomAttributesResponse></code></summary>
 <dl>
 <dd>
 
@@ -21963,14 +22095,14 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 <dd>
 
 ```typescript
-const response = await client.merchants.customAttributes.list({
+const pageableResponse = await client.merchants.customAttributes.list({
     merchantId: "merchant_id",
     visibilityFilter: "ALL",
     limit: 1,
     cursor: "cursor",
     withDefinitions: true
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -21985,6 +22117,9 @@ let page = await client.merchants.customAttributes.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -22008,7 +22143,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22080,7 +22215,7 @@ await client.merchants.customAttributes.get({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22154,7 +22289,7 @@ await client.merchants.customAttributes.upsert({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22222,7 +22357,7 @@ await client.merchants.customAttributes.delete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22235,7 +22370,7 @@ await client.merchants.customAttributes.delete({
 </details>
 
 ## Orders CustomAttributeDefinitions
-<details><summary><code>client.orders.customAttributeDefinitions.<a href="/src/api/resources/orders/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition></code></summary>
+<details><summary><code>client.orders.customAttributeDefinitions.<a href="/src/api/resources/orders/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListOrderCustomAttributeDefinitionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -22267,12 +22402,12 @@ seller-defined custom attributes (also known as custom fields) are always set to
 <dd>
 
 ```typescript
-const response = await client.orders.customAttributeDefinitions.list({
+const pageableResponse = await client.orders.customAttributeDefinitions.list({
     visibilityFilter: "ALL",
     cursor: "cursor",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -22285,6 +22420,9 @@ let page = await client.orders.customAttributeDefinitions.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -22308,7 +22446,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22386,7 +22524,7 @@ await client.orders.customAttributeDefinitions.create({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22456,7 +22594,7 @@ await client.orders.customAttributeDefinitions.get({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22529,7 +22667,7 @@ await client.orders.customAttributeDefinitions.update({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22596,7 +22734,7 @@ await client.orders.customAttributeDefinitions.delete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributeDefinitions.RequestOptions` 
+**requestOptions:** `CustomAttributeDefinitionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22684,7 +22822,7 @@ await client.orders.customAttributes.batchDelete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22779,7 +22917,7 @@ await client.orders.customAttributes.batchUpsert({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22791,7 +22929,7 @@ await client.orders.customAttributes.batchUpsert({
 </dl>
 </details>
 
-<details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute></code></summary>
+<details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute, Square.ListOrderCustomAttributesResponse></code></summary>
 <dl>
 <dd>
 
@@ -22825,14 +22963,14 @@ and set to `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 <dd>
 
 ```typescript
-const response = await client.orders.customAttributes.list({
+const pageableResponse = await client.orders.customAttributes.list({
     orderId: "order_id",
     visibilityFilter: "ALL",
     cursor: "cursor",
     limit: 1,
     withDefinitions: true
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -22847,6 +22985,9 @@ let page = await client.orders.customAttributes.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -22870,7 +23011,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -22945,7 +23086,7 @@ await client.orders.customAttributes.get({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23024,7 +23165,7 @@ await client.orders.customAttributes.upsert({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23094,7 +23235,7 @@ await client.orders.customAttributes.delete({
 <dl>
 <dd>
 
-**requestOptions:** `CustomAttributes.RequestOptions` 
+**requestOptions:** `CustomAttributesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23165,7 +23306,7 @@ await client.teamMembers.wageSetting.get({
 <dl>
 <dd>
 
-**requestOptions:** `WageSetting.RequestOptions` 
+**requestOptions:** `WageSettingClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23256,7 +23397,7 @@ await client.teamMembers.wageSetting.update({
 <dl>
 <dd>
 
-**requestOptions:** `WageSetting.RequestOptions` 
+**requestOptions:** `WageSettingClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23331,7 +23472,7 @@ await client.terminal.actions.create({
 <dl>
 <dd>
 
-**requestOptions:** `Actions.RequestOptions` 
+**requestOptions:** `ActionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23406,7 +23547,7 @@ await client.terminal.actions.search({
 <dl>
 <dd>
 
-**requestOptions:** `Actions.RequestOptions` 
+**requestOptions:** `ActionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23471,7 +23612,7 @@ await client.terminal.actions.get({
 <dl>
 <dd>
 
-**requestOptions:** `Actions.RequestOptions` 
+**requestOptions:** `ActionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23536,7 +23677,7 @@ await client.terminal.actions.cancel({
 <dl>
 <dd>
 
-**requestOptions:** `Actions.RequestOptions` 
+**requestOptions:** `ActionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23614,7 +23755,7 @@ await client.terminal.checkouts.create({
 <dl>
 <dd>
 
-**requestOptions:** `Checkouts.RequestOptions` 
+**requestOptions:** `CheckoutsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23684,7 +23825,7 @@ await client.terminal.checkouts.search({
 <dl>
 <dd>
 
-**requestOptions:** `Checkouts.RequestOptions` 
+**requestOptions:** `CheckoutsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23749,7 +23890,7 @@ await client.terminal.checkouts.get({
 <dl>
 <dd>
 
-**requestOptions:** `Checkouts.RequestOptions` 
+**requestOptions:** `CheckoutsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23814,7 +23955,7 @@ await client.terminal.checkouts.cancel({
 <dl>
 <dd>
 
-**requestOptions:** `Checkouts.RequestOptions` 
+**requestOptions:** `CheckoutsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23889,7 +24030,7 @@ await client.terminal.refunds.create({
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions` 
+**requestOptions:** `RefundsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -23959,7 +24100,7 @@ await client.terminal.refunds.search({
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions` 
+**requestOptions:** `RefundsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -24024,7 +24165,7 @@ await client.terminal.refunds.get({
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions` 
+**requestOptions:** `RefundsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -24089,7 +24230,7 @@ await client.terminal.refunds.cancel({
 <dl>
 <dd>
 
-**requestOptions:** `Refunds.RequestOptions` 
+**requestOptions:** `RefundsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -24155,7 +24296,7 @@ await client.webhooks.eventTypes.list({
 <dl>
 <dd>
 
-**requestOptions:** `EventTypes.RequestOptions` 
+**requestOptions:** `EventTypesClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -24168,7 +24309,7 @@ await client.webhooks.eventTypes.list({
 </details>
 
 ## Webhooks Subscriptions
-<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WebhookSubscription></code></summary>
+<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WebhookSubscription, Square.ListWebhookSubscriptionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -24195,13 +24336,13 @@ Lists all webhook subscriptions owned by your application.
 <dd>
 
 ```typescript
-const response = await client.webhooks.subscriptions.list({
+const pageableResponse = await client.webhooks.subscriptions.list({
     cursor: "cursor",
     includeDisabled: true,
     sortOrder: "DESC",
     limit: 1
 });
-for await (const item of response) {
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
@@ -24215,6 +24356,9 @@ let page = await client.webhooks.subscriptions.list({
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 
 ```
 </dd>
@@ -24238,7 +24382,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -24309,7 +24453,7 @@ await client.webhooks.subscriptions.create({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -24374,7 +24518,7 @@ await client.webhooks.subscriptions.get({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -24443,7 +24587,7 @@ await client.webhooks.subscriptions.update({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -24508,7 +24652,7 @@ await client.webhooks.subscriptions.delete({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -24574,7 +24718,7 @@ await client.webhooks.subscriptions.updateSignatureKey({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>
@@ -24640,7 +24784,7 @@ await client.webhooks.subscriptions.test({
 <dl>
 <dd>
 
-**requestOptions:** `Subscriptions.RequestOptions` 
+**requestOptions:** `SubscriptionsClient.RequestOptions` 
     
 </dd>
 </dl>

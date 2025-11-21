@@ -12,6 +12,7 @@ export const CatalogObjectCategory: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     ordinal: core.serialization.bigint().optionalNullable(),
+    type: core.serialization.stringLiteral("CATEGORY").optional(),
     categoryData: core.serialization.property(
         "category_data",
         core.serialization.lazyObject(() => serializers.CatalogCategory).optional(),
@@ -43,6 +44,7 @@ export declare namespace CatalogObjectCategory {
     export interface Raw {
         id?: string | null;
         ordinal?: ((bigint | number) | null | undefined) | null;
+        type?: "CATEGORY" | null;
         category_data?: serializers.CatalogCategory.Raw | null;
         updated_at?: string | null;
         version?: (bigint | number) | null;
