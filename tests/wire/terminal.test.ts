@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("Terminal", () => {
+describe("TerminalClient", () => {
     test("DismissTerminalAction", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -158,7 +158,7 @@ describe("Terminal", () => {
 
     test("DismissTerminalCheckout", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -269,7 +269,7 @@ describe("Terminal", () => {
 
     test("DismissTerminalRefund", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],

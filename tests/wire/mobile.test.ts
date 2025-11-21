@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("Mobile", () => {
+describe("MobileClient", () => {
     test("authorizationCode", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { location_id: "YOUR_LOCATION_ID" };
         const rawResponseBody = {
             authorization_code: "YOUR_MOBILE_AUTHORIZATION_CODE",

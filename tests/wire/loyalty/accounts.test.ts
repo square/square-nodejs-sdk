@@ -3,10 +3,10 @@
 import { SquareClient } from "../../../src/Client";
 import { mockServerPool } from "../../mock-server/MockServerPool";
 
-describe("Accounts", () => {
+describe("AccountsClient", () => {
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             loyalty_account: {
                 program_id: "d619f755-2d17-41f3-990d-c04ecedd64dd",
@@ -86,7 +86,7 @@ describe("Accounts", () => {
 
     test("search", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { query: { mappings: [{ phone_number: "+14155551234" }] }, limit: 10 };
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -167,7 +167,7 @@ describe("Accounts", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -234,7 +234,7 @@ describe("Accounts", () => {
 
     test("accumulatePoints", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             accumulate_points: { order_id: "RFZfrdtm3mhO1oGzf5Cx7fEMsmGZY" },
             idempotency_key: "58b90739-c3e8-4b11-85f7-e636d48d72cb",
@@ -388,7 +388,7 @@ describe("Accounts", () => {
 
     test("adjust", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "bc29a517-3dc9-450e-aa76-fae39ee849d1",
             adjust_points: { points: 10, reason: "Complimentary points" },

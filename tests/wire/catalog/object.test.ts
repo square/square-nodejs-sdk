@@ -3,10 +3,10 @@
 import { SquareClient } from "../../../src/Client";
 import { mockServerPool } from "../../mock-server/MockServerPool";
 
-describe("Object_", () => {
+describe("ObjectClient", () => {
     test("upsert", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "af3d1afc-7212-4300-b463-0bfc5314a5ae",
             object: { type: "ITEM", id: "id" },
@@ -139,7 +139,7 @@ describe("Object_", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -274,7 +274,6 @@ describe("Object_", () => {
             },
             relatedObjects: [
                 {
-                    type: "CATEGORY",
                     id: "id",
                     updatedAt: "updated_at",
                     version: BigInt("1000000"),
@@ -288,6 +287,7 @@ describe("Object_", () => {
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
                     ordinal: BigInt("1000000"),
+                    type: "CATEGORY",
                 },
                 {
                     type: "TAX",
@@ -310,7 +310,7 @@ describe("Object_", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],

@@ -3,10 +3,10 @@
 import { SquareClient } from "../../../src/Client";
 import { mockServerPool } from "../../mock-server/MockServerPool";
 
-describe("BreakTypes", () => {
+describe("BreakTypesClient", () => {
     test("list", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             break_types: [
@@ -35,7 +35,7 @@ describe("BreakTypes", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .get("/v2/labor/break-types")
             .respondWith()
             .statusCode(200)
@@ -89,7 +89,7 @@ describe("BreakTypes", () => {
 
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "PAD3NG5KSN2GL",
             break_type: {
@@ -154,7 +154,7 @@ describe("BreakTypes", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             break_type: {
@@ -204,7 +204,7 @@ describe("BreakTypes", () => {
 
     test("update", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             break_type: {
                 location_id: "26M7H24AZ9N6R",
@@ -270,7 +270,7 @@ describe("BreakTypes", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],

@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("Team", () => {
+describe("TeamClient", () => {
     test("ListJobs", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             jobs: [
@@ -74,7 +74,7 @@ describe("Team", () => {
 
     test("CreateJob", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             job: { title: "Cashier", is_tip_eligible: true },
             idempotency_key: "idempotency-key-0",
@@ -128,7 +128,7 @@ describe("Team", () => {
 
     test("RetrieveJob", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             job: {
@@ -174,7 +174,7 @@ describe("Team", () => {
 
     test("UpdateJob", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { job: { title: "Cashier 1", is_tip_eligible: true } };
         const rawResponseBody = {
             job: {

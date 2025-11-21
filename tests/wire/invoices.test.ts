@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("Invoices", () => {
+describe("InvoicesClient", () => {
     test("list", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             invoices: [
@@ -148,7 +148,13 @@ describe("Invoices", () => {
             cursor: "ChoIDhIWVm54ZVRhLXhySFBOejBBM2xJb2daUQoFCI4IGAE",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-        server.mockEndpoint().get("/v2/invoices").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+        server
+            .mockEndpoint({ once: false })
+            .get("/v2/invoices")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
 
         const expected = {
             invoices: [
@@ -336,7 +342,7 @@ describe("Invoices", () => {
 
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             invoice: {
                 location_id: "ES0RJRZYEC39A",
@@ -587,7 +593,7 @@ describe("Invoices", () => {
 
     test("search", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             query: {
                 filter: { location_ids: ["ES0RJRZYEC39A"], customer_ids: ["JDKYHBWT1D4F8MFH63DBMEN8Y4"] },
@@ -913,7 +919,7 @@ describe("Invoices", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             invoice: {
@@ -1082,7 +1088,7 @@ describe("Invoices", () => {
 
     test("update", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             invoice: {
                 version: 1,
@@ -1252,7 +1258,7 @@ describe("Invoices", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -1283,7 +1289,7 @@ describe("Invoices", () => {
 
     test("DeleteInvoiceAttachment", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -1314,7 +1320,7 @@ describe("Invoices", () => {
 
     test("cancel", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { version: 0 };
         const rawResponseBody = {
             invoice: {
@@ -1485,7 +1491,7 @@ describe("Invoices", () => {
 
     test("publish", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { version: 1, idempotency_key: "32da42d0-1997-41b0-826b-f09464fc2c2e" };
         const rawResponseBody = {
             invoice: {

@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("Catalog", () => {
+describe("CatalogClient", () => {
     test("batchDelete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { object_ids: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"] };
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -41,7 +41,7 @@ describe("Catalog", () => {
 
     test("batchGet", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             object_ids: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"],
             include_related_objects: true,
@@ -162,7 +162,6 @@ describe("Catalog", () => {
             ],
             relatedObjects: [
                 {
-                    type: "CATEGORY",
                     id: "id",
                     updatedAt: "updated_at",
                     version: BigInt("1000000"),
@@ -176,6 +175,7 @@ describe("Catalog", () => {
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
                     ordinal: BigInt("1000000"),
+                    type: "CATEGORY",
                 },
                 {
                     type: "TAX",
@@ -198,7 +198,7 @@ describe("Catalog", () => {
 
     test("batchUpsert", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "789ff020-f723-43a9-b4b5-43b5dc1fa3dc",
             batches: [
@@ -355,7 +355,6 @@ describe("Catalog", () => {
                     imageId: "image_id",
                 },
                 {
-                    type: "CATEGORY",
                     id: "id",
                     updatedAt: "updated_at",
                     version: BigInt("1000000"),
@@ -369,6 +368,7 @@ describe("Catalog", () => {
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
                     ordinal: BigInt("1000000"),
+                    type: "CATEGORY",
                 },
                 {
                     type: "TAX",
@@ -422,7 +422,7 @@ describe("Catalog", () => {
 
     test("info", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -475,7 +475,7 @@ describe("Catalog", () => {
 
     test("list", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -510,7 +510,13 @@ describe("Catalog", () => {
                 },
             ],
         };
-        server.mockEndpoint().get("/v2/catalog/list").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+        server
+            .mockEndpoint({ once: false })
+            .get("/v2/catalog/list")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
 
         const expected = {
             errors: [
@@ -524,7 +530,6 @@ describe("Catalog", () => {
             cursor: "cursor",
             objects: [
                 {
-                    type: "CATEGORY",
                     id: "id",
                     updatedAt: "updated_at",
                     version: BigInt("1000000"),
@@ -538,6 +543,7 @@ describe("Catalog", () => {
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
                     ordinal: BigInt("1000000"),
+                    type: "CATEGORY",
                 },
                 {
                     type: "TAX",
@@ -570,7 +576,7 @@ describe("Catalog", () => {
 
     test("search", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             object_types: ["ITEM"],
             query: { prefix_query: { attribute_name: "name", attribute_prefix: "tea" } },
@@ -708,7 +714,7 @@ describe("Catalog", () => {
 
     test("SearchItems", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             text_filter: "red",
             category_ids: ["WINE_CATEGORY_ID"],
@@ -815,7 +821,7 @@ describe("Catalog", () => {
 
     test("UpdateItemModifierLists", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             item_ids: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
             modifier_lists_to_enable: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
@@ -854,7 +860,7 @@ describe("Catalog", () => {
 
     test("UpdateItemTaxes", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             item_ids: ["H42BRLUJ5KTZTTMPVSLFAACQ", "2JXOBJIHCWBQ4NZ3RIXQGJA6"],
             taxes_to_enable: ["4WRCNHCJZDVLSNDQ35PP6YAD"],

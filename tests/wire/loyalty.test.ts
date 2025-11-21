@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("Loyalty", () => {
+describe("LoyaltyClient", () => {
     test("searchEvents", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             query: { filter: { order_filter: { order_id: "PyATxhYLfsMqpVkcKJITPydgEYfZY" } } },
             limit: 30,

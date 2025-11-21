@@ -3,10 +3,10 @@
 import { SquareClient } from "../../../../src/Client";
 import { mockServerPool } from "../../../mock-server/MockServerPool";
 
-describe("Promotions", () => {
+describe("PromotionsClient", () => {
     test("list", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -65,7 +65,7 @@ describe("Promotions", () => {
             cursor: "cursor",
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .get("/v2/loyalty/programs/program_id/promotions")
             .respondWith()
             .statusCode(200)
@@ -165,7 +165,7 @@ describe("Promotions", () => {
 
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             loyalty_promotion: {
                 name: "Tuesday Happy Hour Promo",
@@ -295,7 +295,7 @@ describe("Promotions", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
@@ -387,7 +387,7 @@ describe("Promotions", () => {
 
     test("cancel", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],

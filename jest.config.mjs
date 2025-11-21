@@ -12,7 +12,7 @@ export default {
             },
             roots: ["<rootDir>/tests"],
             testPathIgnorePatterns: ["\.browser\.(spec|test)\.[jt]sx?$", "/tests/wire/", "/tests/integration/"],
-            setupFilesAfterEnv: [],
+            setupFilesAfterEnv: ["<rootDir>/tests/setup.ts", "<rootDir>/tests/bigint.setup.ts"],
             transformIgnorePatterns: ["node_modules/(?!(msw|@mswjs|@bundled-es-modules|until-async)/)"],
             transform: {
                 "^.+\\.tsx?$": "ts-jest",
@@ -27,7 +27,11 @@ export default {
                 "^(\.{1,2}/.*)\.js$": "$1",
             },
             roots: ["<rootDir>/tests/wire"],
-            setupFilesAfterEnv: ["<rootDir>/tests/mock-server/setup.ts"],
+            setupFilesAfterEnv: [
+                "<rootDir>/tests/setup.ts",
+                "<rootDir>/tests/bigint.setup.ts",
+                "<rootDir>/tests/mock-server/setup.ts"
+            ],
             transformIgnorePatterns: ["node_modules/(?!(msw|@mswjs|@bundled-es-modules|until-async)/)"],
             transform: {
                 "^.+\\.tsx?$": "ts-jest",

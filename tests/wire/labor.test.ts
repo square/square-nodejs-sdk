@@ -3,10 +3,10 @@
 import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("Labor", () => {
+describe("LaborClient", () => {
     test("CreateScheduledShift", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "HIDSNG5KS478L",
             scheduled_shift: {
@@ -113,7 +113,7 @@ describe("Labor", () => {
 
     test("BulkPublishScheduledShifts", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = { scheduled_shifts: { key: {} }, scheduled_shift_notification_audience: "AFFECTED" };
         const rawResponseBody = {
             responses: {
@@ -234,7 +234,7 @@ describe("Labor", () => {
 
     test("SearchScheduledShifts", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             query: { filter: { assignment_status: "ASSIGNED" }, sort: { field: "CREATED_AT", order: "ASC" } },
             limit: 2,
@@ -317,7 +317,7 @@ describe("Labor", () => {
 
     test("RetrieveScheduledShift", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             scheduled_shift: {
@@ -399,7 +399,7 @@ describe("Labor", () => {
 
     test("UpdateScheduledShift", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             scheduled_shift: {
                 draft_shift_details: {
@@ -507,7 +507,7 @@ describe("Labor", () => {
 
     test("PublishScheduledShift", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "HIDSNG5KS478L",
             version: 2,
@@ -597,7 +597,7 @@ describe("Labor", () => {
 
     test("CreateTimecard", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             idempotency_key: "HIDSNG5KS478L",
             timecard: {
@@ -742,7 +742,7 @@ describe("Labor", () => {
 
     test("SearchTimecards", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             query: {
                 filter: {
@@ -952,7 +952,7 @@ describe("Labor", () => {
 
     test("RetrieveTimecard", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             timecard: {
@@ -1048,7 +1048,7 @@ describe("Labor", () => {
 
     test("UpdateTimecard", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             timecard: {
                 location_id: "PAA1RJZZKXBFG",
@@ -1202,7 +1202,7 @@ describe("Labor", () => {
 
     test("DeleteTimecard", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],

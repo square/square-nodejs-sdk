@@ -3,10 +3,10 @@
 import { SquareClient } from "../../../src/Client";
 import { mockServerPool } from "../../mock-server/MockServerPool";
 
-describe("WorkweekConfigs", () => {
+describe("WorkweekConfigsClient", () => {
     test("list", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             workweek_configs: [
@@ -23,7 +23,7 @@ describe("WorkweekConfigs", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
         server
-            .mockEndpoint()
+            .mockEndpoint({ once: false })
             .get("/v2/labor/workweek-configs")
             .respondWith()
             .statusCode(200)
@@ -64,7 +64,7 @@ describe("WorkweekConfigs", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SquareClient({ token: "test", environment: server.baseUrl });
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
             workweek_config: { start_of_week: "MON", start_of_day_local_time: "10:00", version: 10 },
         };
