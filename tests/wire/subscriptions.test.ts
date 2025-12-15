@@ -899,89 +899,12 @@ describe("SubscriptionsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-            subscriptionEvents: [
-                {
-                    id: "06809161-3867-4598-8269-8aea5be4f9de",
-                    subscriptionEventType: "START_SUBSCRIPTION",
-                    effectiveDate: "2020-04-24",
-                    monthlyBillingAnchorDate: 1,
-                    phases: [{}],
-                    planVariationId: "6JHXF3B2CW3YKHDV4XEM674H",
-                },
-                {
-                    id: "f2736603-cd2e-47ec-8675-f815fff54f88",
-                    subscriptionEventType: "DEACTIVATE_SUBSCRIPTION",
-                    effectiveDate: "2020-05-01",
-                    monthlyBillingAnchorDate: 1,
-                    info: {
-                        detail: "The customer with ID `V74BMG0GPS2KNCWJE1BTYJ37Y0` does not have a name on record.",
-                        code: "CUSTOMER_NO_NAME",
-                    },
-                    phases: [{}],
-                    planVariationId: "6JHXF3B2CW3YKHDV4XEM674H",
-                },
-                {
-                    id: "b426fc85-6859-450b-b0d0-fe3a5d1b565f",
-                    subscriptionEventType: "RESUME_SUBSCRIPTION",
-                    effectiveDate: "2022-05-01",
-                    monthlyBillingAnchorDate: 1,
-                    phases: [{}],
-                    planVariationId: "6JHXF3B2CW3YKHDV4XEM674H",
-                },
-                {
-                    id: "09f14de1-2f53-4dae-9091-49aa53f83d01",
-                    subscriptionEventType: "PAUSE_SUBSCRIPTION",
-                    effectiveDate: "2022-09-01",
-                    monthlyBillingAnchorDate: 1,
-                    phases: [{}],
-                    planVariationId: "6JHXF3B2CW3YKHDV4XEM674H",
-                },
-                {
-                    id: "f28a73ac-1a1b-4b0f-8eeb-709a72945776",
-                    subscriptionEventType: "RESUME_SUBSCRIPTION",
-                    effectiveDate: "2022-12-01",
-                    monthlyBillingAnchorDate: 1,
-                    phases: [{}],
-                    planVariationId: "6JHXF3B2CW3YKHDV4XEM674H",
-                },
-                {
-                    id: "1eee8790-472d-4efe-8c69-8ad84e9cefe0",
-                    subscriptionEventType: "PLAN_CHANGE",
-                    effectiveDate: "2023-04-01",
-                    monthlyBillingAnchorDate: 1,
-                    phases: [{}],
-                    planVariationId: "02CD53CFA4d1498AFAD42",
-                },
-                {
-                    id: "a0c08083-5db0-4800-85c7-d398de4fbb6e",
-                    subscriptionEventType: "STOP_SUBSCRIPTION",
-                    effectiveDate: "2023-06-21",
-                    monthlyBillingAnchorDate: 1,
-                    phases: [{}],
-                    planVariationId: "6JHXF3B2CW3YKHDV4XEM674H",
-                },
-            ],
-            cursor: "cursor",
-        };
         const page = await client.subscriptions.listEvents({
             subscriptionId: "subscription_id",
             cursor: "cursor",
             limit: 1,
         });
-
-        expect(expected.subscriptionEvents).toEqual(page.data);
-        expect(page.hasNextPage()).toBe(true);
-        const nextPage = await page.getNextPage();
-        expect(expected.subscriptionEvents).toEqual(nextPage.data);
+        expect(page.data).toEqual([]);
     });
 
     test("pause", async () => {

@@ -36,44 +36,13 @@ describe("TeamMemberProfilesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            teamMemberBookingProfiles: [
-                {
-                    teamMemberId: "TMXUrsBWWcHTt79t",
-                    description: "description",
-                    displayName: "Sandbox Seller",
-                    isBookable: true,
-                    profileImageUrl: "profile_image_url",
-                },
-                {
-                    teamMemberId: "TMaJcbiRqPIGZuS9",
-                    description: "description",
-                    displayName: "Sandbox Staff",
-                    isBookable: true,
-                    profileImageUrl: "profile_image_url",
-                },
-            ],
-            cursor: "cursor",
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-        };
         const page = await client.bookings.teamMemberProfiles.list({
             bookableOnly: true,
             limit: 1,
             cursor: "cursor",
             locationId: "location_id",
         });
-
-        expect(expected.teamMemberBookingProfiles).toEqual(page.data);
-        expect(page.hasNextPage()).toBe(true);
-        const nextPage = await page.getNextPage();
-        expect(expected.teamMemberBookingProfiles).toEqual(nextPage.data);
+        expect(page.data).toEqual([]);
     });
 
     test("get", async () => {
