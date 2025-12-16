@@ -37,7 +37,7 @@ import { V1TransactionsClient } from "./api/resources/v1Transactions/client/Clie
 import { VendorsClient } from "./api/resources/vendors/client/Client";
 import { WebhooksClient } from "./api/resources/webhooks/client/Client";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient";
-import { normalizeClientOptions } from "./BaseClient";
+import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "./BaseClient";
 
 export declare namespace SquareClient {
     export interface Options extends BaseClientOptions {}
@@ -46,7 +46,7 @@ export declare namespace SquareClient {
 }
 
 export class SquareClient {
-    protected readonly _options: SquareClient.Options;
+    protected readonly _options: NormalizedClientOptionsWithAuth<SquareClient.Options>;
     protected _mobile: MobileClient | undefined;
     protected _oAuth: OAuthClient | undefined;
     protected _v1Transactions: V1TransactionsClient | undefined;
@@ -85,7 +85,7 @@ export class SquareClient {
     protected _webhooks: WebhooksClient | undefined;
 
     constructor(options: SquareClient.Options = {}) {
-        this._options = normalizeClientOptions(options);
+        this._options = normalizeClientOptionsWithAuth(options);
     }
 
     public get mobile(): MobileClient {
