@@ -14,10 +14,7 @@ describe("CrossPlatformFormData", () => {
             const value = (await import("stream")).Readable.from(["file content"]);
             const filename = "testfile.txt";
 
-            await formData.appendFile("file", {
-                data: value,
-                filename,
-            });
+            await formData.appendFile("file", value, filename);
 
             const request = await formData.getRequest();
             const decoder = new TextDecoder("utf-8");
@@ -32,10 +29,7 @@ describe("CrossPlatformFormData", () => {
             const value = new Blob(["file content"], { type: "text/plain" });
             const filename = "testfile.txt";
 
-            await formData.appendFile("file", {
-                data: value,
-                filename,
-            });
+            await formData.appendFile("file", value, filename);
 
             const request = await formData.getRequest();
             const decoder = new TextDecoder("utf-8");
@@ -50,10 +44,7 @@ describe("CrossPlatformFormData", () => {
             const filename = "testfile.txt";
             const value = new (await import("buffer")).File(["file content"], filename);
 
-            await formData.appendFile("file", {
-                data: value,
-                filename,
-            });
+            await formData.appendFile("file", value);
 
             const request = await formData.getRequest();
             const decoder = new TextDecoder("utf-8");
@@ -68,7 +59,7 @@ describe("CrossPlatformFormData", () => {
             const filename = "testfile.txt";
             const value = new (await import("buffer")).File(["file content"], filename);
 
-            await formData.appendFile("file", { data: value, filename: "test.txt" });
+            await formData.appendFile("file", value, "test.txt");
 
             const request = await formData.getRequest();
             const decoder = new TextDecoder("utf-8");
@@ -92,7 +83,7 @@ describe("CrossPlatformFormData", () => {
             for await (const chunk of request.body) {
                 data += decoder.decode(chunk);
             }
-            expect(data).toContain(`Content-Disposition: form-data; name=\"file\"; filename=\"${expectedFileName}\"`);
+            expect(data).toContain('Content-Disposition: form-data; name="file"; filename="' + expectedFileName + '"');
         });
     });
 
@@ -108,10 +99,7 @@ describe("CrossPlatformFormData", () => {
             const value = (await import("stream")).Readable.from(["file content"]);
             const filename = "testfile.txt";
 
-            await formData.appendFile("file", {
-                data: value,
-                filename,
-            });
+            await formData.appendFile("file", value, filename);
 
             const request = formData.getRequest();
             expect(request.body.get("file").name).toBe(filename);
@@ -121,10 +109,7 @@ describe("CrossPlatformFormData", () => {
             const value = new Blob(["file content"], { type: "text/plain" });
             const filename = "testfile.txt";
 
-            await formData.appendFile("file", {
-                data: value,
-                filename,
-            });
+            await formData.appendFile("file", value, filename);
 
             const request = formData.getRequest();
 
@@ -145,10 +130,7 @@ describe("CrossPlatformFormData", () => {
             const filename = "testfile.txt";
             const value = new (await import("buffer")).File(["file content"], filename);
 
-            await formData.appendFile("file", {
-                data: value,
-                filename: "test.txt",
-            });
+            await formData.appendFile("file", value, "test.txt");
 
             const request = formData.getRequest();
             expect(request.body.get("file").name).toBe("test.txt");

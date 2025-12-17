@@ -1,1 +1,1 @@
-export type { ListLocationProfilesRequest } from "./ListLocationProfilesRequest";
+export { type ListLocationProfilesRequest } from "./ListLocationProfilesRequest";
