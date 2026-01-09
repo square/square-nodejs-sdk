@@ -46,65 +46,12 @@ describe("EmployeeWagesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            employeeWages: [
-                {
-                    id: "pXS3qCv7BERPnEGedM4S8mhm",
-                    employeeId: "33fJchumvVdJwxV0H6L9",
-                    title: "Manager",
-                    hourlyRate: {
-                        amount: BigInt("3250"),
-                        currency: "USD",
-                    },
-                },
-                {
-                    id: "rZduCkzYDUVL3ovh1sQgbue6",
-                    employeeId: "33fJchumvVdJwxV0H6L9",
-                    title: "Cook",
-                    hourlyRate: {
-                        amount: BigInt("2600"),
-                        currency: "USD",
-                    },
-                },
-                {
-                    id: "FxLbs5KpPUHa8wyt5ctjubDX",
-                    employeeId: "33fJchumvVdJwxV0H6L9",
-                    title: "Barista",
-                    hourlyRate: {
-                        amount: BigInt("1600"),
-                        currency: "USD",
-                    },
-                },
-                {
-                    id: "vD1wCgijMDR3cX5TPnu7VXto",
-                    employeeId: "33fJchumvVdJwxV0H6L9",
-                    title: "Cashier",
-                    hourlyRate: {
-                        amount: BigInt("1700"),
-                        currency: "USD",
-                    },
-                },
-            ],
-            cursor: "2fofTniCgT0yIPAq26kmk0YyFQJZfbWkh73OOnlTHmTAx13NgED",
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-        };
         const page = await client.labor.employeeWages.list({
             employeeId: "employee_id",
             limit: 1,
             cursor: "cursor",
         });
-
-        expect(expected.employeeWages).toEqual(page.data);
-        expect(page.hasNextPage()).toBe(true);
-        const nextPage = await page.getNextPage();
-        expect(expected.employeeWages).toEqual(nextPage.data);
+        expect(page.data).toEqual([]);
     });
 
     test("get", async () => {

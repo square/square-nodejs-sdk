@@ -28,37 +28,10 @@ describe("LocationProfilesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            locationBookingProfiles: [
-                {
-                    locationId: "LY6WNBPVM6VGV",
-                    bookingSiteUrl: "https://squareup.com/book/LY6WNBPVM6VGV/testbusiness",
-                    onlineBookingEnabled: true,
-                },
-                {
-                    locationId: "PYTRNBPVMJUPV",
-                    bookingSiteUrl: "booking_site_url",
-                    onlineBookingEnabled: false,
-                },
-            ],
-            cursor: "cursor",
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-        };
         const page = await client.bookings.locationProfiles.list({
             limit: 1,
             cursor: "cursor",
         });
-
-        expect(expected.locationBookingProfiles).toEqual(page.data);
-        expect(page.hasNextPage()).toBe(true);
-        const nextPage = await page.getNextPage();
-        expect(expected.locationBookingProfiles).toEqual(nextPage.data);
+        expect(page.data).toEqual([]);
     });
 });

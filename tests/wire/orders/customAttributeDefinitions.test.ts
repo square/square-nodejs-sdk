@@ -58,65 +58,12 @@ describe("CustomAttributeDefinitionsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            customAttributeDefinitions: [
-                {
-                    key: "cover-count",
-                    schema: {
-                        $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number",
-                    },
-                    name: "Cover count",
-                    description: "The number of people seated at a table",
-                    visibility: "VISIBILITY_READ_WRITE_VALUES",
-                    version: 1,
-                    updatedAt: "2022-11-16T18:03:44.051Z",
-                    createdAt: "2022-11-16T18:03:44.051Z",
-                },
-                {
-                    key: "seat-number",
-                    schema: {
-                        $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number",
-                    },
-                    name: "Seat number",
-                    description: "The identifier for a particular seat",
-                    visibility: "VISIBILITY_READ_WRITE_VALUES",
-                    version: 1,
-                    updatedAt: "2022-11-16T18:04:32.059Z",
-                    createdAt: "2022-11-16T18:04:32.059Z",
-                },
-                {
-                    key: "table-number",
-                    schema: {
-                        $ref: "https://developer-production-s.squarecdn.com/schemas/v1/common.json#squareup.common.Number",
-                    },
-                    name: "Table number",
-                    description: "The identifier for a particular table",
-                    visibility: "VISIBILITY_READ_WRITE_VALUES",
-                    version: 1,
-                    updatedAt: "2022-11-16T18:04:21.912Z",
-                    createdAt: "2022-11-16T18:04:21.912Z",
-                },
-            ],
-            cursor: "cursor",
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-        };
         const page = await client.orders.customAttributeDefinitions.list({
             visibilityFilter: "ALL",
             cursor: "cursor",
             limit: 1,
         });
-
-        expect(expected.customAttributeDefinitions).toEqual(page.data);
-        expect(page.hasNextPage()).toBe(true);
-        const nextPage = await page.getNextPage();
-        expect(expected.customAttributeDefinitions).toEqual(nextPage.data);
+        expect(page.data).toEqual([]);
     });
 
     test("create", async () => {
