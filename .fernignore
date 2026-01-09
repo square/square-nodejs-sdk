@@ -1,7 +1,5 @@
 # Specify files that shouldn't be modified by Fern
 
-README.md
-
 .github/workflows/ci.yml
 .github/workflows/integration.yml
 src/wrapper
