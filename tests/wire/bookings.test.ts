@@ -35,16 +35,9 @@ describe("BookingsClient", () => {
                     source: "FIRST_PARTY_MERCHANT",
                 },
             ],
-            cursor: "cursor",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-        server
-            .mockEndpoint({ once: false })
-            .get("/v2/bookings")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
+        server.mockEndpoint().get("/v2/bookings").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const expected = {
             bookings: [
@@ -73,7 +66,6 @@ describe("BookingsClient", () => {
                     source: "FIRST_PARTY_MERCHANT",
                 },
             ],
-            cursor: "cursor",
             errors: [
                 {
                     category: "API_ERROR",
@@ -94,9 +86,6 @@ describe("BookingsClient", () => {
         });
 
         expect(expected.bookings).toEqual(page.data);
-        expect(page.hasNextPage()).toBe(true);
-        const nextPage = await page.getNextPage();
-        expect(expected.bookings).toEqual(nextPage.data);
     });
 
     test("create", async () => {

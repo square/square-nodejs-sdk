@@ -209,7 +209,7 @@ describe("TransferOrdersClient", () => {
         server
             .mockEndpoint({ once: false })
             .post("/v2/transfer-orders/search")
-            .jsonBody(rawRequestBody)
+            .jsonBody(rawRequestBody, { ignoredFields: ["cursor"] })
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)

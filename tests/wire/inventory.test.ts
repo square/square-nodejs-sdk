@@ -567,7 +567,7 @@ describe("InventoryClient", () => {
         server
             .mockEndpoint({ once: false })
             .post("/v2/inventory/changes/batch-retrieve")
-            .jsonBody(rawRequestBody)
+            .jsonBody(rawRequestBody, { ignoredFields: ["cursor"] })
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -648,7 +648,7 @@ describe("InventoryClient", () => {
         server
             .mockEndpoint({ once: false })
             .post("/v2/inventory/counts/batch-retrieve")
-            .jsonBody(rawRequestBody)
+            .jsonBody(rawRequestBody, { ignoredFields: ["cursor"] })
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)

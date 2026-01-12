@@ -12,7 +12,6 @@ import type * as Square from "../../../../index";
  *     }
  */
 export interface ListEmployeesRequest {
-    /** */
     locationId?: string | null;
     /** Specifies the EmployeeStatus to filter the employee by. */
     status?: Square.EmployeeStatus | null;
