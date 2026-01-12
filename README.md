@@ -3,7 +3,27 @@
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fsquare%2Fsquare-nodejs-sdk)
 [![npm shield](https://img.shields.io/npm/v/square)](https://www.npmjs.com/package/square)
 
-The Square TypeScript library provides convenient access to the Square API from TypeScript.
+The Square TypeScript library provides convenient access to the Square APIs from TypeScript.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Reference](#reference)
+- [Versioning](#versioning)
+- [Usage](#usage)
+- [Legacy Sdk](#legacy-sdk)
+- [Request and Response Types](#request-and-response-types)
+- [Exception Handling](#exception-handling)
+- [Pagination](#pagination)
+- [Webhook Signature Verification](#webhook-signature-verification)
+- [Advanced](#advanced)
+    - [Additional Headers](#additional-headers)
+    - [Retries](#retries)
+    - [Timeouts](#timeouts)
+    - [Aborting Requests](#aborting-requests)
+    - [Access Raw Response Data](#access-raw-response-data)
+    - [Runtime Compatibility](#runtime-compatibility)
+- [Contributing](#contributing)
 
 ## Installation
 
@@ -13,7 +33,7 @@ npm i -s square
 
 ## Reference
 
-A full reference for this library is available [here](./reference.md).
+A full reference for this library is available [here](https://github.com/square/square-nodejs-sdk/blob/HEAD/./reference.md).
 
 ## Versioning
 
@@ -38,11 +58,11 @@ await client.payments.create({
     sourceId: "ccof:GaJGNaZa8x4OgDJn4GB",
     idempotencyKey: "7b0f3ec5-086a-4871-8f13-3c81b3875218",
     amountMoney: {
-        amount: BigInt(1000),
+        amount: BigInt("1000"),
         currency: "USD",
     },
     appFeeMoney: {
-        amount: BigInt(10),
+        amount: BigInt("10"),
         currency: "USD",
     },
     autocomplete: true,
@@ -68,41 +88,41 @@ import { Square, SquareClient } from "square";
 import { Client } from "square/legacy";
 
 const client = new SquareClient({
-  token: process.env.SQUARE_ACCESS_TOKEN,
+    token: process.env.SQUARE_ACCESS_TOKEN,
 });
 
 const legacyClient = new Client({
-  bearerAuthCredentials: {
-    accessToken: process.env.SQUARE_ACCESS_TOKEN!,
-  },
+    bearerAuthCredentials: {
+        accessToken: process.env.SQUARE_ACCESS_TOKEN!,
+    },
 });
 
 async function getLocation(): Promise<Square.Location> {
-  return (
-    await client.locations.get({
-      locationId: "YOUR_LOCATION_ID",
-    })
-  ).location!;
+    return (
+        await client.locations.get({
+            locationId: "YOUR_LOCATION_ID",
+        })
+    ).location!;
 }
 
 async function createOrder() {
-  const location = await getLocation();
-  await legacyClient.ordersApi.createOrder({
-    idempotencyKey: randomUUID(),
-    order: {
-      locationId: location.id!,
-      lineItems: [
-        {
-          name: "New Item",
-          quantity: "1",
-          basePriceMoney: {
-            amount: BigInt(100),
-            currency: "USD",
-          },
+    const location = await getLocation();
+    await legacyClient.ordersApi.createOrder({
+        idempotencyKey: randomUUID(),
+        order: {
+            locationId: location.id!,
+            lineItems: [
+                {
+                    name: "New Item",
+                    quantity: "1",
+                    basePriceMoney: {
+                        amount: BigInt(100),
+                        currency: "USD",
+                    },
+                },
+            ],
         },
-      ],
-    },
-  });
+    });
 }
 
 createOrder();
@@ -119,7 +139,7 @@ We recommend migrating to the new SDK using the following steps:
 
 3. Gradually move over to use the new SDK by importing it from the `"square"` import.
 
-## Request And Response Types
+## Request and Response Types
 
 The SDK exports all request and response types as TypeScript interfaces. Simply import them with the
 following namespace:
@@ -147,6 +167,7 @@ try {
         console.log(err.statusCode);
         console.log(err.message);
         console.log(err.body);
+        console.log(err.rawResponse);
     }
 }
 ```
@@ -159,13 +180,21 @@ List endpoints are paginated. The SDK provides an iterator so that you can simpl
 import { SquareClient } from "square";
 
 const client = new SquareClient({ token: "YOUR_TOKEN" });
-const response = await client.bankAccounts.list();
+const response = await client.bankAccounts.list({
+    cursor: "cursor",
+    limit: 1,
+    locationId: "location_id",
+});
 for await (const item of response) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.bankAccounts.list();
+let page = await client.bankAccounts.list({
+    cursor: "cursor",
+    limit: 1,
+    locationId: "location_id",
+});
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
@@ -173,17 +202,17 @@ while (page.hasNextPage()) {
 
 ## Webhook Signature Verification
 
-The SDK provides utility methods that allow you to verify webhook signatures and ensure that all 
+The SDK provides utility methods that allow you to verify webhook signatures and ensure that all
 webhook events originate from Square. The `Webhooks.verifySignature` method will verify the signature.
 
 ```ts
 import { WebhooksHelper } from "square";
 
 const isValid = WebhooksHelper.verifySignature({
-  requestBody,
-  signatureHeader: request.headers['x-square-hmacsha256-signature'],
-  signatureKey: "YOUR_SIGNATURE_KEY",
-  notificationUrl: "https://example.com/webhook", // The URL where event notifications are sent.
+    requestBody,
+    signatureHeader: request.headers["x-square-hmacsha256-signature"],
+    signatureKey: "YOUR_SIGNATURE_KEY",
+    notificationUrl: "https://example.com/webhook", // The URL where event notifications are sent.
 });
 ```
 
@@ -201,30 +230,13 @@ const response = await client.payments.create(..., {
 });
 ```
 
-### Receive extra properties
-
-Every response includes any extra properties in the JSON response that were not specified in the type.
-This can be useful for API features not present in the SDK yet.
-
-You can receive and interact with the extra properties by accessing each one directly like so:
-
-```typescript
-const response = await client.locations.create(...);
-
-// Cast the response type into an `any`.
-const location = response.location as any;
-
-// Then access the extra property by its name.
-const undocumentedProperty = location.undocumentedProperty;
-```
-
 ### Retries
 
 The SDK is instrumented with automatic retries with exponential backoff. A request will be retried as long
-as the request is deemed retriable and the number of retry attempts has not grown larger than the configured
+as the request is deemed retryable and the number of retry attempts has not grown larger than the configured
 retry limit (default: 2).
 
-A request is deemed retriable when any of the following HTTP status codes is returned:
+A request is deemed retryable when any of the following HTTP status codes is returned:
 
 - [408](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408) (Timeout)
 - [429](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) (Too Many Requests)
@@ -260,6 +272,18 @@ const response = await client.payments.create(..., {
 controller.abort(); // aborts the request
 ```
 
+### Access Raw Response Data
+
+The SDK provides access to raw response data, including headers, through the `.withRawResponse()` method.
+The `.withRawResponse()` method returns a promise that results to an object with a `data` and a `rawResponse` property.
+
+```typescript
+const { data, rawResponse } = await client.payments.create(...).withRawResponse();
+
+console.log(data);
+console.log(rawResponse.headers['X-My-Header']);
+```
+
 ### Runtime Compatibility
 
 The SDK defaults to `node-fetch` but will use the global fetch client if present. The SDK works in the following
@@ -274,7 +298,7 @@ runtimes:
 
 ### Customizing Fetch Client
 
-The SDK provides a way for your to customize the underlying HTTP client / Fetch function. If you're running in an
+The SDK provides a way for you to customize the underlying HTTP client / Fetch function. If you're running in an
 unsupported environment, this provides a way for you to break glass and ensure the SDK works.
 
 ```typescript

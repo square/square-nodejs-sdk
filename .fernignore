@@ -12,3 +12,4 @@ tests/unit/fetcher/stream-wrappers/webpack.test.ts
 tests/integration
 legacy
 jest.config.mjs
+changelog.md
