@@ -3,15 +3,19 @@
 import type * as Square from "../index";
 
 /**
- * Defines the fields that are included in the response body of
- * a request to the [TestWebhookSubscription](api-endpoint:WebhookSubscriptions-TestWebhookSubscription) endpoint.
- *
- * Note: If there are errors processing the request, the [SubscriptionTestResult](entity:SubscriptionTestResult) field is not
- * present.
+ * Defines the fields that are included in the response body of a request to the TestWebhookSubscription endpoint.
  */
 export interface TestWebhookSubscriptionResponse {
     /** Information on errors encountered during the request. */
     errors?: Square.Error_[];
     /** The [SubscriptionTestResult](entity:SubscriptionTestResult). */
     subscriptionTestResult?: Square.SubscriptionTestResult;
+    /** The URL that was used for the webhook notification test. */
+    notificationUrl?: string;
+    /** The HTTP status code returned by the notification URL. */
+    statusCode?: number | null;
+    /** Whether the notification passed any configured filters. */
+    passesFilter?: boolean | null;
+    /** The payload that was sent in the test notification. */
+    payload?: Record<string, unknown> | null;
 }

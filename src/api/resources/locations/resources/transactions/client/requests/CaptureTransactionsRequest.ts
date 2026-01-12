@@ -8,8 +8,6 @@
  *     }
  */
 export interface CaptureTransactionsRequest {
-    /** */
     locationId: string;
-    /** */
     transactionId: string;
 }
