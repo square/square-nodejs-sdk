@@ -1,6 +1,9 @@
 import fs from "fs";
+import stream from "stream";
 import { join } from "path";
-import { type Fetcher, fetcherImpl } from "../../../src/core/fetcher/Fetcher";
+
+import { Fetcher, fetcherImpl } from "../../../src/core/fetcher/Fetcher";
+import { BinaryResponse } from "../../../src/core";
 
 describe("Test fetcherImpl", () => {
     it("should handle successful request", async () => {
@@ -11,7 +14,6 @@ describe("Test fetcherImpl", () => {
             body: { data: "test" },
             contentType: "application/json",
             requestType: "json",
-            maxRetries: 0,
             responseType: "json",
         };
 
@@ -32,7 +34,7 @@ describe("Test fetcherImpl", () => {
             "https://httpbin.org/post",
             expect.objectContaining({
                 method: "POST",
-                headers: expect.toContainHeaders({ "X-Test": "x-test-header" }),
+                headers: expect.objectContaining({ "X-Test": "x-test-header" }),
                 body: JSON.stringify({ data: "test" }),
             }),
         );
@@ -46,7 +48,6 @@ describe("Test fetcherImpl", () => {
             headers: { "X-Test": "x-test-header" },
             contentType: "application/octet-stream",
             requestType: "bytes",
-            maxRetries: 0,
             responseType: "json",
             body: fs.createReadStream(join(__dirname, "test-file.txt")),
         };
@@ -64,7 +65,7 @@ describe("Test fetcherImpl", () => {
             url,
             expect.objectContaining({
                 method: "POST",
-                headers: expect.toContainHeaders({ "X-Test": "x-test-header" }),
+                headers: expect.objectContaining({ "X-Test": "x-test-header" }),
                 body: expect.any(fs.ReadStream),
             }),
         );
