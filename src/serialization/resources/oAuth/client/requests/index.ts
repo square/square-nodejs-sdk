@@ -1,2 +1,2 @@
-export { ObtainTokenRequest } from "./ObtainTokenRequest";
 export { RevokeTokenRequest } from "./RevokeTokenRequest";
+export { ObtainTokenRequest } from "./ObtainTokenRequest";
