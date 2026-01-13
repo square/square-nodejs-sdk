@@ -27,7 +27,13 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Compile
-        run: yarn && yarn test:unit    
+        run: yarn && yarn build
+
+      - name: Unit Test
+        run: yarn test:unit
+
+      - name: Wire Test
+        run: yarn test:wire
 
   publish:
     needs: [ compile ]

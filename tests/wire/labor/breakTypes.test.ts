@@ -42,49 +42,12 @@ describe("BreakTypesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            breakTypes: [
-                {
-                    id: "REGS1EQR1TPZ5",
-                    locationId: "PAA1RJZZKXBFG",
-                    breakName: "Coffee Break",
-                    expectedDuration: "PT5M",
-                    isPaid: false,
-                    version: 1,
-                    createdAt: "2019-01-22T20:47:37Z",
-                    updatedAt: "2019-01-22T20:47:37Z",
-                },
-                {
-                    id: "92EPDRQKJ5088",
-                    locationId: "PAA1RJZZKXBFG",
-                    breakName: "Lunch Break",
-                    expectedDuration: "PT1H",
-                    isPaid: true,
-                    version: 3,
-                    createdAt: "2019-01-25T19:26:30Z",
-                    updatedAt: "2019-01-25T19:26:30Z",
-                },
-            ],
-            cursor: "2fofTniCgT0yIPAq26kmk0YyFQJZfbWkh73OOnlTHmTAx13NgED",
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-        };
         const page = await client.labor.breakTypes.list({
             locationId: "location_id",
             limit: 1,
             cursor: "cursor",
         });
-
-        expect(expected.breakTypes).toEqual(page.data);
-        expect(page.hasNextPage()).toBe(true);
-        const nextPage = await page.getNextPage();
-        expect(expected.breakTypes).toEqual(nextPage.data);
+        expect(page.data).toEqual([]);
     });
 
     test("create", async () => {

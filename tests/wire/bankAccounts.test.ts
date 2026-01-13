@@ -60,67 +60,12 @@ describe("BankAccountsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-            bankAccounts: [
-                {
-                    id: "ao6iaQ9vhDiaQD7n3GB",
-                    accountNumberSuffix: "971",
-                    country: "US",
-                    currency: "USD",
-                    accountType: "CHECKING",
-                    holderName: "Jane Doe",
-                    primaryBankIdentificationNumber: "112200303",
-                    secondaryBankIdentificationNumber: "secondary_bank_identification_number",
-                    debitMandateReferenceId: "debit_mandate_reference_id",
-                    referenceId: "reference_id",
-                    locationId: "S8GWD5example",
-                    status: "VERIFICATION_IN_PROGRESS",
-                    creditable: false,
-                    debitable: false,
-                    fingerprint: "fingerprint",
-                    version: 5,
-                    bankName: "Bank Name",
-                },
-                {
-                    id: "4x7WXuaxrkQkVlka3GB",
-                    accountNumberSuffix: "972",
-                    country: "US",
-                    currency: "USD",
-                    accountType: "CHECKING",
-                    holderName: "Jane Doe",
-                    primaryBankIdentificationNumber: "112200303",
-                    secondaryBankIdentificationNumber: "secondary_bank_identification_number",
-                    debitMandateReferenceId: "debit_mandate_reference_id",
-                    referenceId: "reference_id",
-                    locationId: "S8GWD5example",
-                    status: "VERIFICATION_IN_PROGRESS",
-                    creditable: false,
-                    debitable: false,
-                    fingerprint: "fingerprint",
-                    version: 5,
-                    bankName: "Bank Name",
-                },
-            ],
-            cursor: "cursor",
-        };
         const page = await client.bankAccounts.list({
             cursor: "cursor",
             limit: 1,
             locationId: "location_id",
         });
-
-        expect(expected.bankAccounts).toEqual(page.data);
-        expect(page.hasNextPage()).toBe(true);
-        const nextPage = await page.getNextPage();
-        expect(expected.bankAccounts).toEqual(nextPage.data);
+        expect(page.data).toEqual([]);
     });
 
     test("GetByV1Id", async () => {

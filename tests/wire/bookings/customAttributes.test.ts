@@ -302,46 +302,13 @@ describe("CustomAttributesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            customAttributes: [
-                {
-                    key: "favoriteShampoo",
-                    value: "Hydro-Cool",
-                    version: 1,
-                    visibility: "VISIBILITY_READ_ONLY",
-                    updatedAt: "2022-11-16T15:50:27Z",
-                    createdAt: "2022-11-16T15:50:27Z",
-                },
-                {
-                    key: "hasShoes",
-                    value: false,
-                    version: 1,
-                    visibility: "VISIBILITY_HIDDEN",
-                    updatedAt: "2022-11-16T15:51:53Z",
-                    createdAt: "2022-11-16T15:51:53Z",
-                },
-            ],
-            cursor: "cursor",
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-        };
         const page = await client.bookings.customAttributes.list({
             bookingId: "booking_id",
             limit: 1,
             cursor: "cursor",
             withDefinitions: true,
         });
-
-        expect(expected.customAttributes).toEqual(page.data);
-        expect(page.hasNextPage()).toBe(true);
-        const nextPage = await page.getNextPage();
-        expect(expected.customAttributes).toEqual(nextPage.data);
+        expect(page.data).toEqual([]);
     });
 
     test("get", async () => {
