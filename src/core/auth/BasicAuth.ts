@@ -18,8 +18,7 @@ export const BasicAuth = {
     fromAuthorizationHeader: (header: string): BasicAuth => {
         const credentials = header.replace(BASIC_AUTH_HEADER_PREFIX, "");
         const decoded = base64Decode(credentials);
-        const [username, ...passwordParts] = decoded.split(":");
-        const password = passwordParts.length > 0 ? passwordParts.join(":") : undefined;
+        const [username, password] = decoded.split(":", 2);
 
         if (username == null || password == null) {
             throw new Error("Invalid basic auth");
