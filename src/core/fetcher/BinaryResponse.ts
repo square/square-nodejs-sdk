@@ -1,4 +1,4 @@
-import type { ResponseWithBody } from "./ResponseWithBody";
+import { ResponseWithBody } from "./ResponseWithBody.js";
 
 export type BinaryResponse = {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bodyUsed) */
