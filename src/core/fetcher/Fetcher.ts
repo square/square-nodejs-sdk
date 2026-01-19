@@ -1,16 +1,13 @@
 import { toJson } from "../json";
-import { createLogger, type LogConfig, type Logger } from "../logging/logger";
-import type { APIResponse } from "./APIResponse";
+import { APIResponse } from "./APIResponse";
+import { abortRawResponse, toRawResponse, unknownRawResponse } from "./RawResponse";
+import { Supplier } from "./Supplier";
 import { createRequestUrl } from "./createRequestUrl";
-import type { EndpointMetadata } from "./EndpointMetadata";
-import { EndpointSupplier } from "./EndpointSupplier";
 import { getErrorResponseBody } from "./getErrorResponseBody";
 import { getFetchFn } from "./getFetchFn";
 import { getRequestBody } from "./getRequestBody";
 import { getResponseBody } from "./getResponseBody";
-import { Headers } from "./Headers";
 import { makeRequest } from "./makeRequest";
-import { abortRawResponse, toRawResponse, unknownRawResponse } from "./RawResponse";
 import { requestWithRetries } from "./requestWithRetries";
 
 export type FetchFunction = <R = unknown>(args: Fetcher.Args) => Promise<APIResponse<R, Fetcher.Error>>;
@@ -20,19 +17,16 @@ export declare namespace Fetcher {
         url: string;
         method: string;
         contentType?: string;
-        headers?: Record<string, string | EndpointSupplier<string | null | undefined> | null | undefined>;
-        queryParameters?: Record<string, unknown>;
+        headers?: Record<string, string | Supplier<string | undefined> | undefined>;
+        queryParameters?: Record<string, string | string[] | object | object[] | null>;
         body?: unknown;
         timeoutMs?: number;
         maxRetries?: number;
         withCredentials?: boolean;
         abortSignal?: AbortSignal;
-        requestType?: "json" | "file" | "bytes" | "form" | "other";
+        requestType?: "json" | "file" | "bytes";
         responseType?: "json" | "blob" | "sse" | "streaming" | "text" | "arrayBuffer" | "binary-response";
         duplex?: "half";
-        endpointMetadata?: EndpointMetadata;
-        fetchFn?: typeof fetch;
-        logging?: LogConfig | Logger;
     }
 
     export type Error = FailedStatusCodeError | NonJsonError | TimeoutError | UnknownError;
@@ -59,164 +53,10 @@ export declare namespace Fetcher {
     }
 }
 
-const SENSITIVE_HEADERS = new Set([
-    "authorization",
-    "www-authenticate",
-    "x-api-key",
-    "api-key",
-    "apikey",
-    "x-api-token",
-    "x-auth-token",
-    "auth-token",
-    "cookie",
-    "set-cookie",
-    "proxy-authorization",
-    "proxy-authenticate",
-    "x-csrf-token",
-    "x-xsrf-token",
-    "x-session-token",
-    "x-access-token",
-]);
-
-function redactHeaders(headers: Headers | Record<string, string>): Record<string, string> {
-    const filtered: Record<string, string> = {};
-    for (const [key, value] of headers instanceof Headers ? headers.entries() : Object.entries(headers)) {
-        if (SENSITIVE_HEADERS.has(key.toLowerCase())) {
-            filtered[key] = "[REDACTED]";
-        } else {
-            filtered[key] = value;
-        }
-    }
-    return filtered;
-}
-
-const SENSITIVE_QUERY_PARAMS = new Set([
-    "api_key",
-    "api-key",
-    "apikey",
-    "token",
-    "access_token",
-    "access-token",
-    "auth_token",
-    "auth-token",
-    "password",
-    "passwd",
-    "secret",
-    "api_secret",
-    "api-secret",
-    "apisecret",
-    "key",
-    "session",
-    "session_id",
-    "session-id",
-]);
-
-function redactQueryParameters(queryParameters?: Record<string, unknown>): Record<string, unknown> | undefined {
-    if (queryParameters == null) {
-        return queryParameters;
-    }
-    const redacted: Record<string, unknown> = {};
-    for (const [key, value] of Object.entries(queryParameters)) {
-        if (SENSITIVE_QUERY_PARAMS.has(key.toLowerCase())) {
-            redacted[key] = "[REDACTED]";
-        } else {
-            redacted[key] = value;
-        }
-    }
-    return redacted;
-}
-
-function redactUrl(url: string): string {
-    const protocolIndex = url.indexOf("://");
-    if (protocolIndex === -1) return url;
-
-    const afterProtocol = protocolIndex + 3;
-
-    // Find the first delimiter that marks the end of the authority section
-    const pathStart = url.indexOf("/", afterProtocol);
-    let queryStart = url.indexOf("?", afterProtocol);
-    let fragmentStart = url.indexOf("#", afterProtocol);
-
-    const firstDelimiter = Math.min(
-        pathStart === -1 ? url.length : pathStart,
-        queryStart === -1 ? url.length : queryStart,
-        fragmentStart === -1 ? url.length : fragmentStart,
-    );
-
-    // Find the LAST @ before the delimiter (handles multiple @ in credentials)
-    let atIndex = -1;
-    for (let i = afterProtocol; i < firstDelimiter; i++) {
-        if (url[i] === "@") {
-            atIndex = i;
-        }
-    }
-
-    if (atIndex !== -1) {
-        url = `${url.slice(0, afterProtocol)}[REDACTED]@${url.slice(atIndex + 1)}`;
-    }
-
-    // Recalculate queryStart since url might have changed
-    queryStart = url.indexOf("?");
-    if (queryStart === -1) return url;
-
-    fragmentStart = url.indexOf("#", queryStart);
-    const queryEnd = fragmentStart !== -1 ? fragmentStart : url.length;
-    const queryString = url.slice(queryStart + 1, queryEnd);
-
-    if (queryString.length === 0) return url;
-
-    // FAST PATH: Quick check if any sensitive keywords present
-    // Using indexOf is faster than regex for simple substring matching
-    const lower = queryString.toLowerCase();
-    const hasSensitive =
-        lower.includes("token") ||
-        lower.includes("key") ||
-        lower.includes("password") ||
-        lower.includes("passwd") ||
-        lower.includes("secret") ||
-        lower.includes("session") ||
-        lower.includes("auth");
-
-    if (!hasSensitive) {
-        return url;
-    }
-
-    // SLOW PATH: Parse and redact
-    const redactedParams: string[] = [];
-    const params = queryString.split("&");
-
-    for (const param of params) {
-        const equalIndex = param.indexOf("=");
-        if (equalIndex === -1) {
-            redactedParams.push(param);
-            continue;
-        }
-
-        const key = param.slice(0, equalIndex);
-        let shouldRedact = SENSITIVE_QUERY_PARAMS.has(key.toLowerCase());
-
-        if (!shouldRedact && key.includes("%")) {
-            try {
-                const decodedKey = decodeURIComponent(key);
-                shouldRedact = SENSITIVE_QUERY_PARAMS.has(decodedKey.toLowerCase());
-            } catch {}
-        }
-
-        redactedParams.push(shouldRedact ? `${key}=[REDACTED]` : param);
-    }
-
-    return url.slice(0, queryStart + 1) + redactedParams.join("&") + url.slice(queryEnd);
-}
-
-async function getHeaders(args: Fetcher.Args): Promise<Headers> {
-    const newHeaders: Headers = new Headers();
-
-    newHeaders.set(
-        "Accept",
-        args.responseType === "json" ? "application/json" : args.responseType === "text" ? "text/plain" : "*/*",
-    );
+async function getHeaders(args: Fetcher.Args): Promise<Record<string, string>> {
+    const newHeaders: Record<string, string> = {};
     if (args.body !== undefined && args.contentType != null) {
-        newHeaders.set("Content-Type", args.contentType);
+        newHeaders["Content-Type"] = args.contentType;
     }
 
     if (args.headers == null) {
@@ -224,15 +64,15 @@ async function getHeaders(args: Fetcher.Args): Promise<Headers> {
     }
 
     for (const [key, value] of Object.entries(args.headers)) {
-        const result = await EndpointSupplier.get(value, { endpointMetadata: args.endpointMetadata ?? {} });
+        const result = await Supplier.get(value);
         if (typeof result === "string") {
-            newHeaders.set(key, result);
+            newHeaders[key] = result;
             continue;
         }
         if (result == null) {
             continue;
         }
-        newHeaders.set(key, `${result}`);
+        newHeaders[key] = `${result}`;
     }
     return newHeaders;
 }
@@ -241,22 +81,9 @@ export async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIR
     const url = createRequestUrl(args.url, args.queryParameters);
     const requestBody: BodyInit | undefined = await getRequestBody({
         body: args.body,
-        type: args.requestType ?? "other",
+        type: args.requestType === "json" ? "json" : "other",
     });
-    const fetchFn = args.fetchFn ?? (await getFetchFn());
-    const headers = await getHeaders(args);
-    const logger = createLogger(args.logging);
-
-    if (logger.isDebug()) {
-        const metadata = {
-            method: args.method,
-            url: redactUrl(url),
-            headers: redactHeaders(headers),
-            queryParameters: redactQueryParameters(args.queryParameters),
-            hasBody: requestBody != null,
-        };
-        logger.debug("Making HTTP request", metadata);
-    }
+    const fetchFn = await getFetchFn();
 
     try {
         const response = await requestWithRetries(
@@ -265,7 +92,7 @@ export async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIR
                     fetchFn,
                     url,
                     args.method,
-                    headers,
+                    await getHeaders(args),
                     requestBody,
                     args.timeoutMs,
                     args.abortSignal,
@@ -276,15 +103,6 @@ export async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIR
         );
 
         if (response.status >= 200 && response.status < 400) {
-            if (logger.isDebug()) {
-                const metadata = {
-                    method: args.method,
-                    url: redactUrl(url),
-                    statusCode: response.status,
-                    responseHeaders: redactHeaders(response.headers),
-                };
-                logger.debug("HTTP request succeeded", metadata);
-            }
             return {
                 ok: true,
                 body: (await getResponseBody(response, args.responseType)) as R,
@@ -292,15 +110,6 @@ export async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIR
                 rawResponse: toRawResponse(response),
             };
         } else {
-            if (logger.isError()) {
-                const metadata = {
-                    method: args.method,
-                    url: redactUrl(url),
-                    statusCode: response.status,
-                    responseHeaders: redactHeaders(Object.fromEntries(response.headers.entries())),
-                };
-                logger.error("HTTP request failed with error status", metadata);
-            }
             return {
                 ok: false,
                 error: {
@@ -312,14 +121,7 @@ export async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIR
             };
         }
     } catch (error) {
-        if (args.abortSignal?.aborted) {
-            if (logger.isError()) {
-                const metadata = {
-                    method: args.method,
-                    url: redactUrl(url),
-                };
-                logger.error("HTTP request was aborted", metadata);
-            }
+        if (args.abortSignal != null && args.abortSignal.aborted) {
             return {
                 ok: false,
                 error: {
@@ -329,14 +131,6 @@ export async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIR
                 rawResponse: abortRawResponse,
             };
         } else if (error instanceof Error && error.name === "AbortError") {
-            if (logger.isError()) {
-                const metadata = {
-                    method: args.method,
-                    url: redactUrl(url),
-                    timeoutMs: args.timeoutMs,
-                };
-                logger.error("HTTP request timed out", metadata);
-            }
             return {
                 ok: false,
                 error: {
@@ -345,14 +139,6 @@ export async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIR
                 rawResponse: abortRawResponse,
             };
         } else if (error instanceof Error) {
-            if (logger.isError()) {
-                const metadata = {
-                    method: args.method,
-                    url: redactUrl(url),
-                    errorMessage: error.message,
-                };
-                logger.error("HTTP request failed with error", metadata);
-            }
             return {
                 ok: false,
                 error: {
@@ -363,14 +149,6 @@ export async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIR
             };
         }
 
-        if (logger.isError()) {
-            const metadata = {
-                method: args.method,
-                url: redactUrl(url),
-                error: toJson(error),
-            };
-            logger.error("HTTP request failed with unknown error", metadata);
-        }
         return {
             ok: false,
             error: {
