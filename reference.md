@@ -13709,48 +13709,6 @@ await client.vendors.update({
 </dl>
 </details>
 
-## Mobile
-<details><summary><code>client.mobile.<a href="/src/api/resources/mobile/client/Client.ts">authorizationCode</a>() -> void</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.mobile.authorizationCode();
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**requestOptions:** `MobileClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 ## Bookings CustomAttributeDefinitions
 <details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListBookingCustomAttributeDefinitionsResponse></code></summary>
 <dl>
