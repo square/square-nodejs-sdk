@@ -11,4 +11,18 @@ export interface SearchOrdersSourceFilter {
      * Max: 10 source names.
      */
     sourceNames?: string[] | null;
+    /**
+     * Filters by the [Source](entity:OrderSource) `applicationId`. The filter returns any orders
+     * with a `source.applicationId` that matches any of the listed source applicationIds.
+     *
+     * Max: 100 source applicationIds.
+     */
+    sourceApplicationIds?: string[] | null;
+    /**
+     * Filters by the [Source](entity:OrderSource) `clientOu`. The filter returns any orders
+     * with a `source.clientOu` that matches any of the listed source clientOus.
+     *
+     * Max: 100 source clientOus.
+     */
+    sourceClientOus?: string[] | null;
 }

@@ -17,6 +17,10 @@ export const CatalogItem: core.serialization.ObjectSchema<serializers.CatalogIte
         labelColor: core.serialization.property("label_color", core.serialization.string().optionalNullable()),
         isTaxable: core.serialization.property("is_taxable", core.serialization.boolean().optionalNullable()),
         categoryId: core.serialization.property("category_id", core.serialization.string().optionalNullable()),
+        buyerFacingName: core.serialization.property(
+            "buyer_facing_name",
+            core.serialization.string().optionalNullable(),
+        ),
         taxIds: core.serialization.property(
             "tax_ids",
             core.serialization.list(core.serialization.string()).optionalNullable(),
@@ -58,6 +62,7 @@ export const CatalogItem: core.serialization.ObjectSchema<serializers.CatalogIte
             "description_plaintext",
             core.serialization.string().optional(),
         ),
+        kitchenName: core.serialization.property("kitchen_name", core.serialization.string().optionalNullable()),
         channels: core.serialization.list(core.serialization.string()).optionalNullable(),
         isArchived: core.serialization.property("is_archived", core.serialization.boolean().optionalNullable()),
         ecomSeoData: core.serialization.property("ecom_seo_data", CatalogEcomSeoData.optional()),
@@ -80,6 +85,7 @@ export declare namespace CatalogItem {
         label_color?: (string | null | undefined) | null;
         is_taxable?: (boolean | null | undefined) | null;
         category_id?: (string | null | undefined) | null;
+        buyer_facing_name?: (string | null | undefined) | null;
         tax_ids?: (string[] | null | undefined) | null;
         modifier_list_info?: (CatalogItemModifierListInfo.Raw[] | null | undefined) | null;
         variations?: (serializers.CatalogObject.Raw[] | null | undefined) | null;
@@ -93,6 +99,7 @@ export declare namespace CatalogItem {
         categories?: (serializers.CatalogObjectCategory.Raw[] | null | undefined) | null;
         description_html?: (string | null | undefined) | null;
         description_plaintext?: string | null;
+        kitchen_name?: (string | null | undefined) | null;
         channels?: (string[] | null | undefined) | null;
         is_archived?: (boolean | null | undefined) | null;
         ecom_seo_data?: CatalogEcomSeoData.Raw | null;

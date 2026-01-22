@@ -23,4 +23,10 @@ export interface OrderLineItemAppliedTax {
     taxUid: string;
     /** The amount of money applied by the tax to the line item. */
     appliedMoney?: Square.Money;
+    /**
+     * Indicates whether the tax was automatically applied to the order based on
+     * the catalog configuration. For an example, see
+     * [Automatically Apply Taxes to an Order](https://developer.squareup.com/docs/orders-api/apply-taxes-and-discounts/auto-apply-taxes).
+     */
+    autoApplied?: boolean;
 }

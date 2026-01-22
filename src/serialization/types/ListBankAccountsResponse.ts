@@ -10,15 +10,15 @@ export const ListBankAccountsResponse: core.serialization.ObjectSchema<
     serializers.ListBankAccountsResponse.Raw,
     Square.ListBankAccountsResponse
 > = core.serialization.object({
-    errors: core.serialization.list(Error_).optional(),
     bankAccounts: core.serialization.property("bank_accounts", core.serialization.list(BankAccount).optional()),
+    errors: core.serialization.list(Error_).optional(),
     cursor: core.serialization.string().optional(),
 });
 
 export declare namespace ListBankAccountsResponse {
     export interface Raw {
-        errors?: Error_.Raw[] | null;
         bank_accounts?: BankAccount.Raw[] | null;
+        errors?: Error_.Raw[] | null;
         cursor?: string | null;
     }
 }

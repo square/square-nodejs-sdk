@@ -118,6 +118,7 @@ export const ErrorCode: core.serialization.Schema<serializers.ErrorCode.Raw, Squ
         "UNSUPPORTED_LOYALTY_REWARD_TIER",
         "LOCATION_MISMATCH",
         "ORDER_UNPAID_NOT_RETURNABLE",
+        "PARTIAL_PAYMENT_DELAY_CAPTURE_NOT_SUPPORTED",
         "IDEMPOTENCY_KEY_REUSED",
         "UNEXPECTED_VALUE",
         "SANDBOX_NOT_SUPPORTED",
@@ -133,6 +134,7 @@ export const ErrorCode: core.serialization.Schema<serializers.ErrorCode.Raw, Squ
         "PLAID_ERROR",
         "PLAID_ERROR_ITEM_LOGIN_REQUIRED",
         "PLAID_ERROR_RATE_LIMIT",
+        "PAYMENT_SOURCE_NOT_ENABLED_FOR_TARGET",
         "CARD_DECLINED",
         "VERIFY_CVV_FAILURE",
         "VERIFY_AVS_FAILURE",
@@ -275,6 +277,7 @@ export declare namespace ErrorCode {
         | "UNSUPPORTED_LOYALTY_REWARD_TIER"
         | "LOCATION_MISMATCH"
         | "ORDER_UNPAID_NOT_RETURNABLE"
+        | "PARTIAL_PAYMENT_DELAY_CAPTURE_NOT_SUPPORTED"
         | "IDEMPOTENCY_KEY_REUSED"
         | "UNEXPECTED_VALUE"
         | "SANDBOX_NOT_SUPPORTED"
@@ -290,6 +293,7 @@ export declare namespace ErrorCode {
         | "PLAID_ERROR"
         | "PLAID_ERROR_ITEM_LOGIN_REQUIRED"
         | "PLAID_ERROR_RATE_LIMIT"
+        | "PAYMENT_SOURCE_NOT_ENABLED_FOR_TARGET"
         | "CARD_DECLINED"
         | "VERIFY_CVV_FAILURE"
         | "VERIFY_AVS_FAILURE"

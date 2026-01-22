@@ -88,4 +88,10 @@ export interface ObtainTokenRequest {
      * Required for the PKCE flow if `grant_type` is `authorization_code`.
      */
     codeVerifier?: string | null;
+    /**
+     * Indicates whether to use a JWT (JSON Web Token) as the OAuth access token.
+     * When set to `true`, the OAuth flow returns a JWT to your application, used in the
+     * same way as a regular token. The default value is `false`.
+     */
+    useJwt?: boolean | null;
 }

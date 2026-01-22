@@ -6,10 +6,10 @@ import type * as Square from "../index";
  * Response object returned by ListBankAccounts.
  */
 export interface ListBankAccountsResponse {
-    /** Information on errors encountered during the request. */
-    errors?: Square.Error_[];
     /** List of BankAccounts associated with this account. */
     bankAccounts?: Square.BankAccount[];
+    /** Information on errors encountered during the request. */
+    errors?: Square.Error_[];
     /**
      * When a response is truncated, it includes a cursor that you can
      * use in a subsequent request to fetch next set of bank accounts.

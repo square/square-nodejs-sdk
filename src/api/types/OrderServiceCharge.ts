@@ -8,7 +8,7 @@ import type * as Square from "../index";
 export interface OrderServiceCharge {
     /** A unique ID that identifies the service charge only within this order. */
     uid?: string | null;
-    /** The name of the service charge. */
+    /** The name of the service charge. This is unused and null for AUTO_GRATUITY to match the behavior on Bills. */
     name?: string | null;
     /** The catalog object ID referencing the service charge [CatalogObject](entity:CatalogObject). */
     catalogObjectId?: string | null;
@@ -100,7 +100,7 @@ export interface OrderServiceCharge {
      */
     type?: Square.OrderServiceChargeType;
     /**
-     * The treatment type of the service charge.
+     * Indicates whether the service charge will be treated as a value-holding line item or apportioned toward a line item.
      * See [OrderServiceChargeTreatmentType](#type-orderservicechargetreatmenttype) for possible values
      */
     treatmentType?: Square.OrderServiceChargeTreatmentType;

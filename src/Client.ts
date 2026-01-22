@@ -37,17 +37,16 @@ import { V1TransactionsClient } from "./api/resources/v1Transactions/client/Clie
 import { VendorsClient } from "./api/resources/vendors/client/Client";
 import { WebhooksClient } from "./api/resources/webhooks/client/Client";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient";
-import { normalizeClientOptions } from "./BaseClient";
+import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "./BaseClient";
 
 export declare namespace SquareClient {
-    export interface Options extends BaseClientOptions {}
+    export type Options = BaseClientOptions;
 
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
 export class SquareClient {
-    protected readonly _options: SquareClient.Options;
-    protected _mobile: MobileClient | undefined;
+    protected readonly _options: NormalizedClientOptionsWithAuth<SquareClient.Options>;
     protected _oAuth: OAuthClient | undefined;
     protected _v1Transactions: V1TransactionsClient | undefined;
     protected _applePay: ApplePayClient | undefined;
@@ -81,15 +80,12 @@ export class SquareClient {
     protected _terminal: TerminalClient | undefined;
     protected _transferOrders: TransferOrdersClient | undefined;
     protected _vendors: VendorsClient | undefined;
+    protected _mobile: MobileClient | undefined;
     protected _cashDrawers: CashDrawersClient | undefined;
     protected _webhooks: WebhooksClient | undefined;
 
     constructor(options: SquareClient.Options = {}) {
-        this._options = normalizeClientOptions(options);
-    }
-
-    public get mobile(): MobileClient {
-        return (this._mobile ??= new MobileClient(this._options));
+        this._options = normalizeClientOptionsWithAuth(options);
     }
 
     public get oAuth(): OAuthClient {
@@ -222,6 +218,10 @@ export class SquareClient {
 
     public get vendors(): VendorsClient {
         return (this._vendors ??= new VendorsClient(this._options));
+    }
+
+    public get mobile(): MobileClient {
+        return (this._mobile ??= new MobileClient(this._options));
     }
 
     public get cashDrawers(): CashDrawersClient {

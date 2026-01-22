@@ -20,6 +20,10 @@ export const DeviceCheckoutOptions: core.serialization.ObjectSchema<
         "show_itemized_cart",
         core.serialization.boolean().optionalNullable(),
     ),
+    allowAutoCardSurcharge: core.serialization.property(
+        "allow_auto_card_surcharge",
+        core.serialization.boolean().optionalNullable(),
+    ),
 });
 
 export declare namespace DeviceCheckoutOptions {
@@ -29,5 +33,6 @@ export declare namespace DeviceCheckoutOptions {
         collect_signature?: (boolean | null | undefined) | null;
         tip_settings?: TipSettings.Raw | null;
         show_itemized_cart?: (boolean | null | undefined) | null;
+        allow_auto_card_surcharge?: (boolean | null | undefined) | null;
     }
 }

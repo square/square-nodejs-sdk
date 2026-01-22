@@ -122,4 +122,11 @@ export interface CatalogItemVariation {
      * another unit.
      */
     stockableConversion?: Square.CatalogStockConversion;
+    /**
+     * (Optional) Name that the restaurant wants to display to their kitchen workers
+     * instead of the customer-facing name.
+     * e.g., customer name might be "Mega-Jumbo Triplesized" and the
+     * kitchen name is "Large container"
+     */
+    kitchenName?: string | null;
 }

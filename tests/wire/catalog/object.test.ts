@@ -32,6 +32,7 @@ describe("ObjectClient", () => {
                     label_color: "label_color",
                     is_taxable: true,
                     category_id: "category_id",
+                    buyer_facing_name: "buyer_facing_name",
                     tax_ids: ["tax_ids"],
                     modifier_list_info: [{ modifier_list_id: "modifier_list_id" }],
                     product_type: "REGULAR",
@@ -43,6 +44,7 @@ describe("ObjectClient", () => {
                     sort_name: "sort_name",
                     description_html: "description_html",
                     description_plaintext: "description_plaintext",
+                    kitchen_name: "kitchen_name",
                     channels: ["channels"],
                     is_archived: true,
                     is_alcoholic: true,
@@ -100,6 +102,7 @@ describe("ObjectClient", () => {
                     labelColor: "label_color",
                     isTaxable: true,
                     categoryId: "category_id",
+                    buyerFacingName: "buyer_facing_name",
                     taxIds: ["tax_ids"],
                     modifierListInfo: [
                         {
@@ -115,6 +118,7 @@ describe("ObjectClient", () => {
                     sortName: "sort_name",
                     descriptionHtml: "description_html",
                     descriptionPlaintext: "description_plaintext",
+                    kitchenName: "kitchen_name",
                     channels: ["channels"],
                     isArchived: true,
                     isAlcoholic: true,
@@ -162,6 +166,7 @@ describe("ObjectClient", () => {
                     label_color: "label_color",
                     is_taxable: true,
                     category_id: "category_id",
+                    buyer_facing_name: "buyer_facing_name",
                     tax_ids: ["tax_ids"],
                     modifier_list_info: [{ modifier_list_id: "modifier_list_id" }],
                     product_type: "REGULAR",
@@ -173,6 +178,7 @@ describe("ObjectClient", () => {
                     sort_name: "sort_name",
                     description_html: "description_html",
                     description_plaintext: "description_plaintext",
+                    kitchen_name: "kitchen_name",
                     channels: ["channels"],
                     is_archived: true,
                     is_alcoholic: true,
@@ -252,6 +258,7 @@ describe("ObjectClient", () => {
                     labelColor: "label_color",
                     isTaxable: true,
                     categoryId: "category_id",
+                    buyerFacingName: "buyer_facing_name",
                     taxIds: ["tax_ids"],
                     modifierListInfo: [
                         {
@@ -267,6 +274,7 @@ describe("ObjectClient", () => {
                     sortName: "sort_name",
                     descriptionHtml: "description_html",
                     descriptionPlaintext: "description_plaintext",
+                    kitchenName: "kitchen_name",
                     channels: ["channels"],
                     isArchived: true,
                     isAlcoholic: true,

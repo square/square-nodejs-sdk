@@ -36,6 +36,7 @@ export const BankAccount: core.serialization.ObjectSchema<serializers.BankAccoun
         fingerprint: core.serialization.string().optionalNullable(),
         version: core.serialization.number().optional(),
         bankName: core.serialization.property("bank_name", core.serialization.string().optionalNullable()),
+        customerId: core.serialization.property("customer_id", core.serialization.string().optional()),
     });
 
 export declare namespace BankAccount {
@@ -57,5 +58,6 @@ export declare namespace BankAccount {
         fingerprint?: (string | null | undefined) | null;
         version?: number | null;
         bank_name?: (string | null | undefined) | null;
+        customer_id?: string | null;
     }
 }

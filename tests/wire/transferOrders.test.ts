@@ -209,7 +209,7 @@ describe("TransferOrdersClient", () => {
         server
             .mockEndpoint({ once: false })
             .post("/v2/transfer-orders/search")
-            .jsonBody(rawRequestBody)
+            .jsonBody(rawRequestBody, { ignoredFields: ["cursor"] })
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -678,16 +678,12 @@ describe("TransferOrdersClient", () => {
             receipt: {
                 line_items: [
                     {
-                        transfer_order_line_uid: "transfer_order_line_uid",
+                        transfer_order_line_uid: "1",
                         quantity_received: "3",
                         quantity_damaged: "1",
                         quantity_canceled: "1",
                     },
-                    {
-                        transfer_order_line_uid: "transfer_order_line_uid",
-                        quantity_received: "2",
-                        quantity_canceled: "1",
-                    },
+                    { transfer_order_line_uid: "2", quantity_received: "2", quantity_canceled: "1" },
                 ],
             },
             version: BigInt(1753118664873),
@@ -744,13 +740,13 @@ describe("TransferOrdersClient", () => {
             receipt: {
                 lineItems: [
                     {
-                        transferOrderLineUid: "transfer_order_line_uid",
+                        transferOrderLineUid: "1",
                         quantityReceived: "3",
                         quantityDamaged: "1",
                         quantityCanceled: "1",
                     },
                     {
-                        transferOrderLineUid: "transfer_order_line_uid",
+                        transferOrderLineUid: "2",
                         quantityReceived: "2",
                         quantityCanceled: "1",
                     },

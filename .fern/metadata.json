@@ -1,7 +1,7 @@
 {
-    "cliVersion": "2.2.5",
+    "cliVersion": "3.38.0",
     "generatorName": "fernapi/fern-typescript-sdk",
-    "generatorVersion": "3.33.0",
+    "generatorVersion": "3.43.8",
     "generatorConfig": {
         "namespaceExport": "Square",
         "allowCustomFetcher": true,
@@ -53,5 +53,6 @@
                 "test:integration": "jest --selectProjects integration"
             }
         }
-    }
+    },
+    "sdkVersion": "44.0.0"
 }

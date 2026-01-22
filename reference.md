@@ -1,84 +1,4 @@
 # Reference
-## Mobile
-<details><summary><code>client.mobile.<a href="/src/api/resources/mobile/client/Client.ts">authorizationCode</a>({ ...params }) -> Square.CreateMobileAuthorizationCodeResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-__Note:__ This endpoint is used by the deprecated Reader SDK. 
-Developers should update their integration to use the [Mobile Payments SDK](https://developer.squareup.com/docs/mobile-payments-sdk), which includes its own authorization methods. 
-
-Generates code to authorize a mobile application to connect to a Square card reader.
-
-Authorization codes are one-time-use codes and expire 60 minutes after being issued.
-
-The `Authorization` header you provide to this endpoint must have the following format:
-
-```
-Authorization: Bearer ACCESS_TOKEN
-```
-
-Replace `ACCESS_TOKEN` with a
-[valid production authorization credential](https://developer.squareup.com/docs/build-basics/access-tokens).
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.mobile.authorizationCode({
-    locationId: "YOUR_LOCATION_ID"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.CreateMobileAuthorizationCodeRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `MobileClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 ## OAuth
 <details><summary><code>client.oAuth.<a href="/src/api/resources/oAuth/client/Client.ts">revokeToken</a>({ ...params }) -> Square.RevokeTokenResponse</code></summary>
 <dl>
@@ -668,7 +588,8 @@ Returns a list of [BankAccount](entity:BankAccount) objects linked to a Square a
 const pageableResponse = await client.bankAccounts.list({
     cursor: "cursor",
     limit: 1,
-    locationId: "location_id"
+    locationId: "location_id",
+    customerId: "customer_id"
 });
 for await (const item of pageableResponse) {
     console.log(item);
@@ -678,7 +599,8 @@ for await (const item of pageableResponse) {
 let page = await client.bankAccounts.list({
     cursor: "cursor",
     limit: 1,
-    locationId: "location_id"
+    locationId: "location_id",
+    customerId: "customer_id"
 });
 while (page.hasNextPage()) {
     page = page.getNextPage();
@@ -702,6 +624,73 @@ const response = page.response;
 <dd>
 
 **request:** `Square.ListBankAccountsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BankAccountsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bankAccounts.<a href="/src/api/resources/bankAccounts/client/Client.ts">createBankAccount</a>({ ...params }) -> Square.CreateBankAccountResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Store a bank account on file for a square account
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bankAccounts.createBankAccount({
+    idempotencyKey: "4e43559a-f0fd-47d3-9da2-7ea1f97d94be",
+    sourceId: "bnon:CA4SEHsQwr0rx6DbWLD5BQaqMnoYAQ",
+    customerId: "HM3B2D5JKGZ69359BTEHXM2V8M"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.CreateBankAccountRequest` 
     
 </dd>
 </dl>
@@ -798,8 +787,7 @@ await client.bankAccounts.getByV1Id({
 <dl>
 <dd>
 
-Returns details of a [BankAccount](entity:BankAccount)
-linked to a Square account.
+Retrieve details of a [BankAccount](entity:BankAccount) bank account linked to a Square account.
 </dd>
 </dl>
 </dd>
@@ -833,6 +821,71 @@ await client.bankAccounts.get({
 <dd>
 
 **request:** `Square.GetBankAccountsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BankAccountsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.bankAccounts.<a href="/src/api/resources/bankAccounts/client/Client.ts">disableBankAccount</a>({ ...params }) -> Square.DisableBankAccountResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Disable a bank account.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.bankAccounts.disableBankAccount({
+    bankAccountId: "bank_account_id"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.DisableBankAccountRequest` 
     
 </dd>
 </dl>
@@ -13026,12 +13079,12 @@ await client.transferOrders.receive({
     idempotencyKey: "EXAMPLE_IDEMPOTENCY_KEY_101",
     receipt: {
         lineItems: [{
-                transferOrderLineUid: "transfer_order_line_uid",
+                transferOrderLineUid: "1",
                 quantityReceived: "3",
                 quantityDamaged: "1",
                 quantityCanceled: "1"
             }, {
-                transferOrderLineUid: "transfer_order_line_uid",
+                transferOrderLineUid: "2",
                 quantityReceived: "2",
                 quantityCanceled: "1"
             }]
@@ -13645,6 +13698,48 @@ await client.vendors.update({
 <dd>
 
 **requestOptions:** `VendorsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Mobile
+<details><summary><code>client.mobile.<a href="/src/api/resources/mobile/client/Client.ts">authorizationCode</a>() -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.mobile.authorizationCode();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `MobileClient.RequestOptions` 
     
 </dd>
 </dl>

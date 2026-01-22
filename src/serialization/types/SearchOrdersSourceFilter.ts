@@ -12,10 +12,20 @@ export const SearchOrdersSourceFilter: core.serialization.ObjectSchema<
         "source_names",
         core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
+    sourceApplicationIds: core.serialization.property(
+        "source_application_ids",
+        core.serialization.list(core.serialization.string()).optionalNullable(),
+    ),
+    sourceClientOus: core.serialization.property(
+        "source_client_ous",
+        core.serialization.list(core.serialization.string()).optionalNullable(),
+    ),
 });
 
 export declare namespace SearchOrdersSourceFilter {
     export interface Raw {
         source_names?: (string[] | null | undefined) | null;
+        source_application_ids?: (string[] | null | undefined) | null;
+        source_client_ous?: (string[] | null | undefined) | null;
     }
 }

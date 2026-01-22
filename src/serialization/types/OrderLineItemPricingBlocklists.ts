@@ -4,6 +4,7 @@ import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
 import { OrderLineItemPricingBlocklistsBlockedDiscount } from "./OrderLineItemPricingBlocklistsBlockedDiscount";
+import { OrderLineItemPricingBlocklistsBlockedServiceCharge } from "./OrderLineItemPricingBlocklistsBlockedServiceCharge";
 import { OrderLineItemPricingBlocklistsBlockedTax } from "./OrderLineItemPricingBlocklistsBlockedTax";
 
 export const OrderLineItemPricingBlocklists: core.serialization.ObjectSchema<
@@ -18,11 +19,16 @@ export const OrderLineItemPricingBlocklists: core.serialization.ObjectSchema<
         "blocked_taxes",
         core.serialization.list(OrderLineItemPricingBlocklistsBlockedTax).optionalNullable(),
     ),
+    blockedServiceCharges: core.serialization.property(
+        "blocked_service_charges",
+        core.serialization.list(OrderLineItemPricingBlocklistsBlockedServiceCharge).optionalNullable(),
+    ),
 });
 
 export declare namespace OrderLineItemPricingBlocklists {
     export interface Raw {
         blocked_discounts?: (OrderLineItemPricingBlocklistsBlockedDiscount.Raw[] | null | undefined) | null;
         blocked_taxes?: (OrderLineItemPricingBlocklistsBlockedTax.Raw[] | null | undefined) | null;
+        blocked_service_charges?: (OrderLineItemPricingBlocklistsBlockedServiceCharge.Raw[] | null | undefined) | null;
     }
 }

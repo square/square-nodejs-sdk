@@ -22,13 +22,13 @@ export interface OrderReturn {
      * applied tax amount to be returned. The taxes must reference a top-level tax ID from the source
      * order.
      */
-    returnTaxes?: Square.OrderReturnTax[];
+    returnTaxes?: Square.OrderReturnTax[] | null;
     /**
      * A collection of references to discounts being returned for an order, including the total
      * applied discount amount to be returned. The discounts must reference a top-level discount ID
      * from the source order.
      */
-    returnDiscounts?: Square.OrderReturnDiscount[];
+    returnDiscounts?: Square.OrderReturnDiscount[] | null;
     /** A collection of references to tips being returned for an order. */
     returnTips?: Square.OrderReturnTip[] | null;
     /**

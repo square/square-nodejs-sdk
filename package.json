@@ -1,8 +1,11 @@
 {
     "name": "square",
-    "version": "43.2.1",
+    "version": "44.0.0",
     "private": false,
-    "repository": "github:square/square-nodejs-sdk",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/square/square-nodejs-sdk.git"
+    },
     "license": "MIT",
     "main": "./index.js",
     "types": "./index.d.ts",

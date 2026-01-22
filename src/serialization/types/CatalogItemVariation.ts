@@ -56,6 +56,7 @@ export const CatalogItemVariation: core.serialization.ObjectSchema<
         core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
     stockableConversion: core.serialization.property("stockable_conversion", CatalogStockConversion.optional()),
+    kitchenName: core.serialization.property("kitchen_name", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace CatalogItemVariation {
@@ -81,5 +82,6 @@ export declare namespace CatalogItemVariation {
         image_ids?: (string[] | null | undefined) | null;
         team_member_ids?: (string[] | null | undefined) | null;
         stockable_conversion?: CatalogStockConversion.Raw | null;
+        kitchen_name?: (string | null | undefined) | null;
     }
 }

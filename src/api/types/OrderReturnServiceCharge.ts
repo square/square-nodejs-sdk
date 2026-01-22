@@ -71,7 +71,7 @@ export interface OrderReturnServiceCharge {
      */
     appliedTaxes?: Square.OrderLineItemAppliedTax[] | null;
     /**
-     * The treatment type of the service charge.
+     * Indicates whether the service charge will be treated as a value-holding line item or apportioned toward a line item.
      * See [OrderServiceChargeTreatmentType](#type-orderservicechargetreatmenttype) for possible values
      */
     treatmentType?: Square.OrderServiceChargeTreatmentType;
@@ -87,4 +87,9 @@ export interface OrderReturnServiceCharge {
      * See [OrderServiceChargeScope](#type-orderservicechargescope) for possible values
      */
     scope?: Square.OrderServiceChargeScope;
+    /**
+     * The type of the service charge.
+     * See [OrderServiceChargeType](#type-orderservicechargetype) for possible values
+     */
+    type?: Square.OrderServiceChargeType;
 }

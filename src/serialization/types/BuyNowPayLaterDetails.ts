@@ -5,6 +5,7 @@ import * as core from "../../core";
 import type * as serializers from "../index";
 import { AfterpayDetails } from "./AfterpayDetails";
 import { ClearpayDetails } from "./ClearpayDetails";
+import { Error_ } from "./Error_";
 
 export const BuyNowPayLaterDetails: core.serialization.ObjectSchema<
     serializers.BuyNowPayLaterDetails.Raw,
@@ -13,6 +14,7 @@ export const BuyNowPayLaterDetails: core.serialization.ObjectSchema<
     brand: core.serialization.string().optionalNullable(),
     afterpayDetails: core.serialization.property("afterpay_details", AfterpayDetails.optional()),
     clearpayDetails: core.serialization.property("clearpay_details", ClearpayDetails.optional()),
+    errors: core.serialization.list(Error_).optional(),
 });
 
 export declare namespace BuyNowPayLaterDetails {
@@ -20,5 +22,6 @@ export declare namespace BuyNowPayLaterDetails {
         brand?: (string | null | undefined) | null;
         afterpay_details?: AfterpayDetails.Raw | null;
         clearpay_details?: ClearpayDetails.Raw | null;
+        errors?: Error_.Raw[] | null;
     }
 }

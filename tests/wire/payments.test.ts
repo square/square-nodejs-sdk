@@ -276,8 +276,15 @@ describe("PaymentsClient", () => {
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
                 },
                 external_details: { type: "type", source: "source", source_id: "source_id" },
-                wallet_details: { status: "status", brand: "brand" },
-                buy_now_pay_later_details: { brand: "brand" },
+                wallet_details: {
+                    status: "status",
+                    brand: "brand",
+                    errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                },
+                buy_now_pay_later_details: {
+                    brand: "brand",
+                    errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                },
                 square_account_details: {
                     payment_source_token: "payment_source_token",
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
@@ -471,9 +478,21 @@ describe("PaymentsClient", () => {
                 walletDetails: {
                     status: "status",
                     brand: "brand",
+                    errors: [
+                        {
+                            category: "API_ERROR",
+                            code: "INTERNAL_SERVER_ERROR",
+                        },
+                    ],
                 },
                 buyNowPayLaterDetails: {
                     brand: "brand",
+                    errors: [
+                        {
+                            category: "API_ERROR",
+                            code: "INTERNAL_SERVER_ERROR",
+                        },
+                    ],
                 },
                 squareAccountDetails: {
                     paymentSourceToken: "payment_source_token",
@@ -651,8 +670,15 @@ describe("PaymentsClient", () => {
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
                 },
                 external_details: { type: "type", source: "source", source_id: "source_id" },
-                wallet_details: { status: "status", brand: "brand" },
-                buy_now_pay_later_details: { brand: "brand" },
+                wallet_details: {
+                    status: "status",
+                    brand: "brand",
+                    errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                },
+                buy_now_pay_later_details: {
+                    brand: "brand",
+                    errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                },
                 square_account_details: {
                     payment_source_token: "payment_source_token",
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
@@ -840,9 +866,21 @@ describe("PaymentsClient", () => {
                 walletDetails: {
                     status: "status",
                     brand: "brand",
+                    errors: [
+                        {
+                            category: "API_ERROR",
+                            code: "INTERNAL_SERVER_ERROR",
+                        },
+                    ],
                 },
                 buyNowPayLaterDetails: {
                     brand: "brand",
+                    errors: [
+                        {
+                            category: "API_ERROR",
+                            code: "INTERNAL_SERVER_ERROR",
+                        },
+                    ],
                 },
                 squareAccountDetails: {
                     paymentSourceToken: "payment_source_token",
@@ -987,8 +1025,15 @@ describe("PaymentsClient", () => {
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
                 },
                 external_details: { type: "type", source: "source", source_id: "source_id" },
-                wallet_details: { status: "status", brand: "brand" },
-                buy_now_pay_later_details: { brand: "brand" },
+                wallet_details: {
+                    status: "status",
+                    brand: "brand",
+                    errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                },
+                buy_now_pay_later_details: {
+                    brand: "brand",
+                    errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                },
                 square_account_details: {
                     payment_source_token: "payment_source_token",
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
@@ -1179,9 +1224,21 @@ describe("PaymentsClient", () => {
                 walletDetails: {
                     status: "status",
                     brand: "brand",
+                    errors: [
+                        {
+                            category: "API_ERROR",
+                            code: "INTERNAL_SERVER_ERROR",
+                        },
+                    ],
                 },
                 buyNowPayLaterDetails: {
                     brand: "brand",
+                    errors: [
+                        {
+                            category: "API_ERROR",
+                            code: "INTERNAL_SERVER_ERROR",
+                        },
+                    ],
                 },
                 squareAccountDetails: {
                     paymentSourceToken: "payment_source_token",
@@ -1322,8 +1379,15 @@ describe("PaymentsClient", () => {
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
                 },
                 external_details: { type: "type", source: "source", source_id: "source_id" },
-                wallet_details: { status: "status", brand: "brand" },
-                buy_now_pay_later_details: { brand: "brand" },
+                wallet_details: {
+                    status: "status",
+                    brand: "brand",
+                    errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                },
+                buy_now_pay_later_details: {
+                    brand: "brand",
+                    errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                },
                 square_account_details: {
                     payment_source_token: "payment_source_token",
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
@@ -1502,9 +1566,21 @@ describe("PaymentsClient", () => {
                 walletDetails: {
                     status: "status",
                     brand: "brand",
+                    errors: [
+                        {
+                            category: "API_ERROR",
+                            code: "INTERNAL_SERVER_ERROR",
+                        },
+                    ],
                 },
                 buyNowPayLaterDetails: {
                     brand: "brand",
+                    errors: [
+                        {
+                            category: "API_ERROR",
+                            code: "INTERNAL_SERVER_ERROR",
+                        },
+                    ],
                 },
                 squareAccountDetails: {
                     paymentSourceToken: "payment_source_token",
@@ -1651,8 +1727,15 @@ describe("PaymentsClient", () => {
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
                 },
                 external_details: { type: "type", source: "source", source_id: "source_id" },
-                wallet_details: { status: "status", brand: "brand" },
-                buy_now_pay_later_details: { brand: "brand" },
+                wallet_details: {
+                    status: "status",
+                    brand: "brand",
+                    errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                },
+                buy_now_pay_later_details: {
+                    brand: "brand",
+                    errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                },
                 square_account_details: {
                     payment_source_token: "payment_source_token",
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
@@ -1841,9 +1924,21 @@ describe("PaymentsClient", () => {
                 walletDetails: {
                     status: "status",
                     brand: "brand",
+                    errors: [
+                        {
+                            category: "API_ERROR",
+                            code: "INTERNAL_SERVER_ERROR",
+                        },
+                    ],
                 },
                 buyNowPayLaterDetails: {
                     brand: "brand",
+                    errors: [
+                        {
+                            category: "API_ERROR",
+                            code: "INTERNAL_SERVER_ERROR",
+                        },
+                    ],
                 },
                 squareAccountDetails: {
                     paymentSourceToken: "payment_source_token",

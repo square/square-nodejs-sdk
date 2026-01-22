@@ -29,6 +29,8 @@ export interface CatalogItem {
     isTaxable?: boolean | null;
     /** The ID of the item's category, if any. Deprecated since 2023-12-13. Use `CatalogItem.categories`, instead. */
     categoryId?: string | null;
+    /** The override to a product name to display to users */
+    buyerFacingName?: string | null;
     /**
      * A set of IDs indicating the taxes enabled for
      * this item. When updating an item, any taxes listed here will be added to the item.
@@ -121,6 +123,13 @@ export interface CatalogItem {
     descriptionHtml?: string | null;
     /** A server-generated plaintext version of the `description_html` field, without formatting tags. */
     descriptionPlaintext?: string;
+    /**
+     * (Optional) Name that the restaurant wants to display to their kitchen workers
+     * instead of the customer-facing name.
+     * e.g., customer name might be "Big John's Mega Burger" and the
+     * kitchen name is "12oz beef burger"
+     */
+    kitchenName?: string | null;
     /**
      * A list of IDs representing channels, such as a Square Online site, where the item can be made visible or available.
      * This field is read only and cannot be edited.

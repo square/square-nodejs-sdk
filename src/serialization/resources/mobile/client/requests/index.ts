@@ -1,1 +1,0 @@
-export { CreateMobileAuthorizationCodeRequest } from "./CreateMobileAuthorizationCodeRequest";

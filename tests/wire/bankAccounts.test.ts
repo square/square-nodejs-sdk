@@ -9,47 +9,49 @@ describe("BankAccountsClient", () => {
         const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             bank_accounts: [
                 {
-                    id: "ao6iaQ9vhDiaQD7n3GB",
-                    account_number_suffix: "971",
+                    id: "bact:OxfBTiXgByaXds1K4GB",
+                    account_number_suffix: "000",
                     country: "US",
                     currency: "USD",
                     account_type: "CHECKING",
-                    holder_name: "Jane Doe",
-                    primary_bank_identification_number: "112200303",
+                    holder_name: "Nicola Snow",
+                    primary_bank_identification_number: "011401533",
                     secondary_bank_identification_number: "secondary_bank_identification_number",
                     debit_mandate_reference_id: "debit_mandate_reference_id",
                     reference_id: "reference_id",
-                    location_id: "S8GWD5example",
-                    status: "VERIFICATION_IN_PROGRESS",
-                    creditable: false,
-                    debitable: false,
-                    fingerprint: "fingerprint",
-                    version: 5,
-                    bank_name: "Bank Name",
+                    location_id: "location_id",
+                    status: "VERIFIED",
+                    creditable: true,
+                    debitable: true,
+                    fingerprint: "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+                    version: 2,
+                    bank_name: "Citizens Bank",
+                    customer_id: "HM3B2D5JKGZ69359BTEHXM2V8M",
                 },
                 {
-                    id: "4x7WXuaxrkQkVlka3GB",
-                    account_number_suffix: "972",
+                    id: "bact:Msdfa2kgUDR9lMgk4GB",
+                    account_number_suffix: "118",
                     country: "US",
                     currency: "USD",
                     account_type: "CHECKING",
-                    holder_name: "Jane Doe",
-                    primary_bank_identification_number: "112200303",
+                    holder_name: "Nicola Snow",
+                    primary_bank_identification_number: "100210004",
                     secondary_bank_identification_number: "secondary_bank_identification_number",
                     debit_mandate_reference_id: "debit_mandate_reference_id",
                     reference_id: "reference_id",
-                    location_id: "S8GWD5example",
-                    status: "VERIFICATION_IN_PROGRESS",
-                    creditable: false,
-                    debitable: false,
-                    fingerprint: "fingerprint",
-                    version: 5,
-                    bank_name: "Bank Name",
+                    location_id: "location_id",
+                    status: "DISABLED",
+                    creditable: true,
+                    debitable: true,
+                    fingerprint: "sq-1-Poacr0bohmds1N--OseZUsG5kPwfCGxqYKlb-Q1Rxwsk0lxd1JLs4yaPDuMqIae7Qg",
+                    version: 3,
+                    bank_name: "Bank of America",
+                    customer_id: "HM3B2D5JKGZ69359BTEHXM2V8M",
                 },
             ],
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             cursor: "cursor",
         };
         server
@@ -61,6 +63,48 @@ describe("BankAccountsClient", () => {
             .build();
 
         const expected = {
+            bankAccounts: [
+                {
+                    id: "bact:OxfBTiXgByaXds1K4GB",
+                    accountNumberSuffix: "000",
+                    country: "US",
+                    currency: "USD",
+                    accountType: "CHECKING",
+                    holderName: "Nicola Snow",
+                    primaryBankIdentificationNumber: "011401533",
+                    secondaryBankIdentificationNumber: "secondary_bank_identification_number",
+                    debitMandateReferenceId: "debit_mandate_reference_id",
+                    referenceId: "reference_id",
+                    locationId: "location_id",
+                    status: "VERIFIED",
+                    creditable: true,
+                    debitable: true,
+                    fingerprint: "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+                    version: 2,
+                    bankName: "Citizens Bank",
+                    customerId: "HM3B2D5JKGZ69359BTEHXM2V8M",
+                },
+                {
+                    id: "bact:Msdfa2kgUDR9lMgk4GB",
+                    accountNumberSuffix: "118",
+                    country: "US",
+                    currency: "USD",
+                    accountType: "CHECKING",
+                    holderName: "Nicola Snow",
+                    primaryBankIdentificationNumber: "100210004",
+                    secondaryBankIdentificationNumber: "secondary_bank_identification_number",
+                    debitMandateReferenceId: "debit_mandate_reference_id",
+                    referenceId: "reference_id",
+                    locationId: "location_id",
+                    status: "DISABLED",
+                    creditable: true,
+                    debitable: true,
+                    fingerprint: "sq-1-Poacr0bohmds1N--OseZUsG5kPwfCGxqYKlb-Q1Rxwsk0lxd1JLs4yaPDuMqIae7Qg",
+                    version: 3,
+                    bankName: "Bank of America",
+                    customerId: "HM3B2D5JKGZ69359BTEHXM2V8M",
+                },
+            ],
             errors: [
                 {
                     category: "API_ERROR",
@@ -69,58 +113,96 @@ describe("BankAccountsClient", () => {
                     field: "field",
                 },
             ],
-            bankAccounts: [
-                {
-                    id: "ao6iaQ9vhDiaQD7n3GB",
-                    accountNumberSuffix: "971",
-                    country: "US",
-                    currency: "USD",
-                    accountType: "CHECKING",
-                    holderName: "Jane Doe",
-                    primaryBankIdentificationNumber: "112200303",
-                    secondaryBankIdentificationNumber: "secondary_bank_identification_number",
-                    debitMandateReferenceId: "debit_mandate_reference_id",
-                    referenceId: "reference_id",
-                    locationId: "S8GWD5example",
-                    status: "VERIFICATION_IN_PROGRESS",
-                    creditable: false,
-                    debitable: false,
-                    fingerprint: "fingerprint",
-                    version: 5,
-                    bankName: "Bank Name",
-                },
-                {
-                    id: "4x7WXuaxrkQkVlka3GB",
-                    accountNumberSuffix: "972",
-                    country: "US",
-                    currency: "USD",
-                    accountType: "CHECKING",
-                    holderName: "Jane Doe",
-                    primaryBankIdentificationNumber: "112200303",
-                    secondaryBankIdentificationNumber: "secondary_bank_identification_number",
-                    debitMandateReferenceId: "debit_mandate_reference_id",
-                    referenceId: "reference_id",
-                    locationId: "S8GWD5example",
-                    status: "VERIFICATION_IN_PROGRESS",
-                    creditable: false,
-                    debitable: false,
-                    fingerprint: "fingerprint",
-                    version: 5,
-                    bankName: "Bank Name",
-                },
-            ],
             cursor: "cursor",
         };
         const page = await client.bankAccounts.list({
             cursor: "cursor",
             limit: 1,
             locationId: "location_id",
+            customerId: "customer_id",
         });
 
         expect(expected.bankAccounts).toEqual(page.data);
         expect(page.hasNextPage()).toBe(true);
         const nextPage = await page.getNextPage();
         expect(expected.bankAccounts).toEqual(nextPage.data);
+    });
+
+    test("CreateBankAccount", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            idempotency_key: "4e43559a-f0fd-47d3-9da2-7ea1f97d94be",
+            source_id: "bnon:CA4SEHsQwr0rx6DbWLD5BQaqMnoYAQ",
+            customer_id: "HM3B2D5JKGZ69359BTEHXM2V8M",
+        };
+        const rawResponseBody = {
+            bank_account: {
+                id: "bact:OxfBTiXgByaXds1K4GB",
+                account_number_suffix: "000",
+                country: "US",
+                currency: "USD",
+                account_type: "CHECKING",
+                holder_name: "Nicola Snow",
+                primary_bank_identification_number: "011401533",
+                secondary_bank_identification_number: "secondary_bank_identification_number",
+                debit_mandate_reference_id: "debit_mandate_reference_id",
+                reference_id: "reference_id",
+                location_id: "location_id",
+                status: "VERIFIED",
+                creditable: true,
+                debitable: true,
+                fingerprint: "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+                version: 2,
+                bank_name: "Citizens Bank",
+                customer_id: "HM3B2D5JKGZ69359BTEHXM2V8M",
+            },
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
+        };
+        server
+            .mockEndpoint()
+            .post("/v2/bank-accounts")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.bankAccounts.createBankAccount({
+            idempotencyKey: "4e43559a-f0fd-47d3-9da2-7ea1f97d94be",
+            sourceId: "bnon:CA4SEHsQwr0rx6DbWLD5BQaqMnoYAQ",
+            customerId: "HM3B2D5JKGZ69359BTEHXM2V8M",
+        });
+        expect(response).toEqual({
+            bankAccount: {
+                id: "bact:OxfBTiXgByaXds1K4GB",
+                accountNumberSuffix: "000",
+                country: "US",
+                currency: "USD",
+                accountType: "CHECKING",
+                holderName: "Nicola Snow",
+                primaryBankIdentificationNumber: "011401533",
+                secondaryBankIdentificationNumber: "secondary_bank_identification_number",
+                debitMandateReferenceId: "debit_mandate_reference_id",
+                referenceId: "reference_id",
+                locationId: "location_id",
+                status: "VERIFIED",
+                creditable: true,
+                debitable: true,
+                fingerprint: "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+                version: 2,
+                bankName: "Citizens Bank",
+                customerId: "HM3B2D5JKGZ69359BTEHXM2V8M",
+            },
+            errors: [
+                {
+                    category: "API_ERROR",
+                    code: "INTERNAL_SERVER_ERROR",
+                    detail: "detail",
+                    field: "field",
+                },
+            ],
+        });
     });
 
     test("GetByV1Id", async () => {
@@ -147,6 +229,7 @@ describe("BankAccountsClient", () => {
                 fingerprint: "fingerprint",
                 version: 5,
                 bank_name: "Bank Name",
+                customer_id: "customer_id",
             },
         };
         server
@@ -187,6 +270,7 @@ describe("BankAccountsClient", () => {
                 fingerprint: "fingerprint",
                 version: 5,
                 bankName: "Bank Name",
+                customerId: "customer_id",
             },
         });
     });
@@ -196,26 +280,27 @@ describe("BankAccountsClient", () => {
         const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             bank_account: {
-                id: "w3yRgCGYQnwmdl0R3GB",
-                account_number_suffix: "971",
+                id: "bact:OxfBTiXgByaXds1K4GB",
+                account_number_suffix: "000",
                 country: "US",
                 currency: "USD",
                 account_type: "CHECKING",
-                holder_name: "Jane Doe",
-                primary_bank_identification_number: "112200303",
+                holder_name: "Nicola Snow",
+                primary_bank_identification_number: "011401533",
                 secondary_bank_identification_number: "secondary_bank_identification_number",
                 debit_mandate_reference_id: "debit_mandate_reference_id",
                 reference_id: "reference_id",
-                location_id: "S8GWD5example",
-                status: "VERIFICATION_IN_PROGRESS",
-                creditable: false,
-                debitable: false,
-                fingerprint: "fingerprint",
-                version: 5,
-                bank_name: "Bank Name",
+                location_id: "location_id",
+                status: "VERIFIED",
+                creditable: true,
+                debitable: true,
+                fingerprint: "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+                version: 2,
+                bank_name: "Citizens Bank",
+                customer_id: "HM3B2D5JKGZ69359BTEHXM2V8M",
             },
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
         server
             .mockEndpoint()
@@ -229,6 +314,26 @@ describe("BankAccountsClient", () => {
             bankAccountId: "bank_account_id",
         });
         expect(response).toEqual({
+            bankAccount: {
+                id: "bact:OxfBTiXgByaXds1K4GB",
+                accountNumberSuffix: "000",
+                country: "US",
+                currency: "USD",
+                accountType: "CHECKING",
+                holderName: "Nicola Snow",
+                primaryBankIdentificationNumber: "011401533",
+                secondaryBankIdentificationNumber: "secondary_bank_identification_number",
+                debitMandateReferenceId: "debit_mandate_reference_id",
+                referenceId: "reference_id",
+                locationId: "location_id",
+                status: "VERIFIED",
+                creditable: true,
+                debitable: true,
+                fingerprint: "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+                version: 2,
+                bankName: "Citizens Bank",
+                customerId: "HM3B2D5JKGZ69359BTEHXM2V8M",
+            },
             errors: [
                 {
                     category: "API_ERROR",
@@ -237,25 +342,76 @@ describe("BankAccountsClient", () => {
                     field: "field",
                 },
             ],
+        });
+    });
+
+    test("DisableBankAccount", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {
+            bank_account: {
+                id: "bact:OxfBTiXgByaXds1K4GB",
+                account_number_suffix: "000",
+                country: "US",
+                currency: "USD",
+                account_type: "CHECKING",
+                holder_name: "Nicola Snow",
+                primary_bank_identification_number: "011401533",
+                secondary_bank_identification_number: "secondary_bank_identification_number",
+                debit_mandate_reference_id: "debit_mandate_reference_id",
+                reference_id: "reference_id",
+                location_id: "location_id",
+                status: "DISABLED",
+                creditable: true,
+                debitable: true,
+                fingerprint: "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+                version: 3,
+                bank_name: "Citizens Bank",
+                customer_id: "HM3B2D5JKGZ69359BTEHXM2V8M",
+            },
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
+        };
+        server
+            .mockEndpoint()
+            .post("/v2/bank-accounts/bank_account_id/disable")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.bankAccounts.disableBankAccount({
+            bankAccountId: "bank_account_id",
+        });
+        expect(response).toEqual({
             bankAccount: {
-                id: "w3yRgCGYQnwmdl0R3GB",
-                accountNumberSuffix: "971",
+                id: "bact:OxfBTiXgByaXds1K4GB",
+                accountNumberSuffix: "000",
                 country: "US",
                 currency: "USD",
                 accountType: "CHECKING",
-                holderName: "Jane Doe",
-                primaryBankIdentificationNumber: "112200303",
+                holderName: "Nicola Snow",
+                primaryBankIdentificationNumber: "011401533",
                 secondaryBankIdentificationNumber: "secondary_bank_identification_number",
                 debitMandateReferenceId: "debit_mandate_reference_id",
                 referenceId: "reference_id",
-                locationId: "S8GWD5example",
-                status: "VERIFICATION_IN_PROGRESS",
-                creditable: false,
-                debitable: false,
-                fingerprint: "fingerprint",
-                version: 5,
-                bankName: "Bank Name",
+                locationId: "location_id",
+                status: "DISABLED",
+                creditable: true,
+                debitable: true,
+                fingerprint: "sq-1-mO3XNctJpTLL8uYowOWpioS8nQyTc838gcBo90254XonoEJ_c7Uw6yqL6qihFNY8fA",
+                version: 3,
+                bankName: "Citizens Bank",
+                customerId: "HM3B2D5JKGZ69359BTEHXM2V8M",
             },
+            errors: [
+                {
+                    category: "API_ERROR",
+                    code: "INTERNAL_SERVER_ERROR",
+                    detail: "detail",
+                    field: "field",
+                },
+            ],
         });
     });
 });

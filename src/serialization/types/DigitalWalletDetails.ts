@@ -4,6 +4,7 @@ import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
 import { CashAppDetails } from "./CashAppDetails";
+import { Error_ } from "./Error_";
 
 export const DigitalWalletDetails: core.serialization.ObjectSchema<
     serializers.DigitalWalletDetails.Raw,
@@ -12,6 +13,7 @@ export const DigitalWalletDetails: core.serialization.ObjectSchema<
     status: core.serialization.string().optionalNullable(),
     brand: core.serialization.string().optionalNullable(),
     cashAppDetails: core.serialization.property("cash_app_details", CashAppDetails.optional()),
+    errors: core.serialization.list(Error_).optional(),
 });
 
 export declare namespace DigitalWalletDetails {
@@ -19,5 +21,6 @@ export declare namespace DigitalWalletDetails {
         status?: (string | null | undefined) | null;
         brand?: (string | null | undefined) | null;
         cash_app_details?: CashAppDetails.Raw | null;
+        errors?: Error_.Raw[] | null;
     }
 }

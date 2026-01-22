@@ -5,7 +5,8 @@
  *     {
  *         cursor: "cursor",
  *         limit: 1,
- *         locationId: "location_id"
+ *         locationId: "location_id",
+ *         customerId: "customer_id"
  *     }
  */
 export interface ListBankAccountsRequest {
@@ -28,4 +29,9 @@ export interface ListBankAccountsRequest {
      * to retrieve only the linked bank accounts belonging to a specific location.
      */
     locationId?: string | null;
+    /**
+     * Customer ID. You can specify this optional filter
+     * to retrieve only the linked bank accounts belonging to a specific customer.
+     */
+    customerId?: string | null;
 }

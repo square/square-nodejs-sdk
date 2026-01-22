@@ -1,5 +1,7 @@
 export * as applePay from "./applePay";
 export * from "./applePay/client/requests";
+export * as bankAccounts from "./bankAccounts";
+export * from "./bankAccounts/client/requests";
 export * as bookings from "./bookings";
 export * from "./bookings/client/requests";
 export * as cards from "./cards";
@@ -28,8 +30,6 @@ export * from "./locations/client/requests";
 export * as loyalty from "./loyalty";
 export * from "./loyalty/client/requests";
 export * as merchants from "./merchants";
-export * as mobile from "./mobile";
-export * from "./mobile/client/requests";
 export * as oAuth from "./oAuth";
 export * from "./oAuth/client/requests";
 export * as orders from "./orders";

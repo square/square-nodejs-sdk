@@ -26,6 +26,8 @@ export const Card: core.serialization.ObjectSchema<serializers.Card.Raw, Square.
     cardType: core.serialization.property("card_type", CardType.optional()),
     prepaidType: core.serialization.property("prepaid_type", CardPrepaidType.optional()),
     bin: core.serialization.string().optional(),
+    createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
+    disabledAt: core.serialization.property("disabled_at", core.serialization.string().optional()),
     version: core.serialization.bigint().optional(),
     cardCoBrand: core.serialization.property("card_co_brand", CardCoBrand.optional()),
     issuerAlert: core.serialization.property("issuer_alert", CardIssuerAlert.optional()),
@@ -50,6 +52,8 @@ export declare namespace Card {
         card_type?: CardType.Raw | null;
         prepaid_type?: CardPrepaidType.Raw | null;
         bin?: string | null;
+        created_at?: string | null;
+        disabled_at?: string | null;
         version?: (bigint | number) | null;
         card_co_brand?: CardCoBrand.Raw | null;
         issuer_alert?: CardIssuerAlert.Raw | null;
