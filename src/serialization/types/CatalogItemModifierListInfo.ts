@@ -4,6 +4,7 @@ import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
 import { CatalogModifierOverride } from "./CatalogModifierOverride";
+import { CatalogModifierToggleOverrideType } from "./CatalogModifierToggleOverrideType";
 
 export const CatalogItemModifierListInfo: core.serialization.ObjectSchema<
     serializers.CatalogItemModifierListInfo.Raw,
@@ -24,11 +25,11 @@ export const CatalogItemModifierListInfo: core.serialization.ObjectSchema<
     ),
     enabled: core.serialization.boolean().optionalNullable(),
     ordinal: core.serialization.number().optionalNullable(),
-    allowQuantities: core.serialization.property("allow_quantities", core.serialization.unknown().optional()),
-    isConversational: core.serialization.property("is_conversational", core.serialization.unknown().optional()),
+    allowQuantities: core.serialization.property("allow_quantities", CatalogModifierToggleOverrideType.optional()),
+    isConversational: core.serialization.property("is_conversational", CatalogModifierToggleOverrideType.optional()),
     hiddenFromCustomerOverride: core.serialization.property(
         "hidden_from_customer_override",
-        core.serialization.unknown().optional(),
+        CatalogModifierToggleOverrideType.optional(),
     ),
 });
 
@@ -40,8 +41,8 @@ export declare namespace CatalogItemModifierListInfo {
         max_selected_modifiers?: (number | null | undefined) | null;
         enabled?: (boolean | null | undefined) | null;
         ordinal?: (number | null | undefined) | null;
-        allow_quantities?: unknown | null;
-        is_conversational?: unknown | null;
-        hidden_from_customer_override?: unknown | null;
+        allow_quantities?: CatalogModifierToggleOverrideType.Raw | null;
+        is_conversational?: CatalogModifierToggleOverrideType.Raw | null;
+        hidden_from_customer_override?: CatalogModifierToggleOverrideType.Raw | null;
     }
 }

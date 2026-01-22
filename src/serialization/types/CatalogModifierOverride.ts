@@ -3,6 +3,7 @@
 import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
+import { CatalogModifierToggleOverrideType } from "./CatalogModifierToggleOverrideType";
 
 export const CatalogModifierOverride: core.serialization.ObjectSchema<
     serializers.CatalogModifierOverride.Raw,
@@ -12,16 +13,19 @@ export const CatalogModifierOverride: core.serialization.ObjectSchema<
     onByDefault: core.serialization.property("on_by_default", core.serialization.boolean().optionalNullable()),
     hiddenOnlineOverride: core.serialization.property(
         "hidden_online_override",
-        core.serialization.unknown().optional(),
+        CatalogModifierToggleOverrideType.optional(),
     ),
-    onByDefaultOverride: core.serialization.property("on_by_default_override", core.serialization.unknown().optional()),
+    onByDefaultOverride: core.serialization.property(
+        "on_by_default_override",
+        CatalogModifierToggleOverrideType.optional(),
+    ),
 });
 
 export declare namespace CatalogModifierOverride {
     export interface Raw {
         modifier_id: string;
         on_by_default?: (boolean | null | undefined) | null;
-        hidden_online_override?: unknown | null;
-        on_by_default_override?: unknown | null;
+        hidden_online_override?: CatalogModifierToggleOverrideType.Raw | null;
+        on_by_default_override?: CatalogModifierToggleOverrideType.Raw | null;
     }
 }

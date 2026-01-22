@@ -17,6 +17,7 @@ export const CatalogModifier: core.serialization.ObjectSchema<serializers.Catalo
             "location_overrides",
             core.serialization.list(ModifierLocationOverrides).optionalNullable(),
         ),
+        kitchenName: core.serialization.property("kitchen_name", core.serialization.string().optionalNullable()),
         imageId: core.serialization.property("image_id", core.serialization.string().optionalNullable()),
         hiddenOnline: core.serialization.property("hidden_online", core.serialization.boolean().optionalNullable()),
     });
@@ -29,6 +30,7 @@ export declare namespace CatalogModifier {
         ordinal?: (number | null | undefined) | null;
         modifier_list_id?: (string | null | undefined) | null;
         location_overrides?: (ModifierLocationOverrides.Raw[] | null | undefined) | null;
+        kitchen_name?: (string | null | undefined) | null;
         image_id?: (string | null | undefined) | null;
         hidden_online?: (boolean | null | undefined) | null;
     }

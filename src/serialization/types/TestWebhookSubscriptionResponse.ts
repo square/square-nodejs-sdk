@@ -12,11 +12,19 @@ export const TestWebhookSubscriptionResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     errors: core.serialization.list(Error_).optional(),
     subscriptionTestResult: core.serialization.property("subscription_test_result", SubscriptionTestResult.optional()),
+    notificationUrl: core.serialization.property("notification_url", core.serialization.string().optional()),
+    statusCode: core.serialization.property("status_code", core.serialization.number().optionalNullable()),
+    passesFilter: core.serialization.property("passes_filter", core.serialization.boolean().optionalNullable()),
+    payload: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
 export declare namespace TestWebhookSubscriptionResponse {
     export interface Raw {
         errors?: Error_.Raw[] | null;
         subscription_test_result?: SubscriptionTestResult.Raw | null;
+        notification_url?: string | null;
+        status_code?: (number | null | undefined) | null;
+        passes_filter?: (boolean | null | undefined) | null;
+        payload?: (Record<string, unknown> | null | undefined) | null;
     }
 }

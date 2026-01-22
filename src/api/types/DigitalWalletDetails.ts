@@ -13,9 +13,11 @@ export interface DigitalWalletDetails {
     status?: string | null;
     /**
      * The brand used for the `WALLET` payment. The brand can be `CASH_APP`, `PAYPAY`, `ALIPAY`,
-     * `RAKUTEN_PAY`, `AU_PAY`, `D_BARAI`, `MERPAY`, `WECHAT_PAY` or `UNKNOWN`.
+     * `RAKUTEN_PAY`, `AU_PAY`, `D_BARAI`, `MERPAY`, `WECHAT_PAY`, `LIGHTNING` or `UNKNOWN`.
      */
     brand?: string | null;
     /** Brand-specific details for payments with the `brand` of `CASH_APP`. */
     cashAppDetails?: Square.CashAppDetails;
+    /** Information about errors encountered during the payment. */
+    errors?: Square.Error_[];
 }

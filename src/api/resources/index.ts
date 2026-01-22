@@ -38,7 +38,6 @@ export * from "./loyalty/client/requests";
 export * as merchants from "./merchants";
 export * from "./merchants/client/requests";
 export * as mobile from "./mobile";
-export * from "./mobile/client/requests";
 export * as oAuth from "./oAuth";
 export * from "./oAuth/client/requests";
 export * as orders from "./orders";

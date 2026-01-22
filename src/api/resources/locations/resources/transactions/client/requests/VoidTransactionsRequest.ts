@@ -8,8 +8,6 @@
  *     }
  */
 export interface VoidTransactionsRequest {
-    /** */
     locationId: string;
-    /** */
     transactionId: string;
 }

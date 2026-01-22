@@ -18,6 +18,7 @@ export const ObtainTokenRequest: core.serialization.Schema<
     scopes: core.serialization.list(core.serialization.string()).optionalNullable(),
     shortLived: core.serialization.property("short_lived", core.serialization.boolean().optionalNullable()),
     codeVerifier: core.serialization.property("code_verifier", core.serialization.string().optionalNullable()),
+    useJwt: core.serialization.property("use_jwt", core.serialization.boolean().optionalNullable()),
 });
 
 export declare namespace ObtainTokenRequest {
@@ -32,5 +33,6 @@ export declare namespace ObtainTokenRequest {
         scopes?: (string[] | null | undefined) | null;
         short_lived?: (boolean | null | undefined) | null;
         code_verifier?: (string | null | undefined) | null;
+        use_jwt?: (boolean | null | undefined) | null;
     }
 }

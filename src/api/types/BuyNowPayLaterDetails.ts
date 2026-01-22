@@ -21,4 +21,6 @@ export interface BuyNowPayLaterDetails {
      * `CLEARPAY`.
      */
     clearpayDetails?: Square.ClearpayDetails;
+    /** Information about errors encountered during the payment. */
+    errors?: Square.Error_[];
 }

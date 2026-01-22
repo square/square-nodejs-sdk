@@ -62,6 +62,10 @@ export interface Card {
      * returns this field.
      */
     bin?: string;
+    /** Timestamp for when the card object was created on Square’s servers. In RFC 3339 format, e.g., "2016-09-04T23:59:33.123Z". */
+    createdAt?: string;
+    /** Timestamp for when the card object was disabled on Square’s servers. In RFC 3339 format, e.g., "2016-09-04T23:59:33.123Z". */
+    disabledAt?: string;
     /**
      * Current version number of the card. Increments with each card update. Requests to update an
      * existing Card object will be rejected unless the version in the request matches the current

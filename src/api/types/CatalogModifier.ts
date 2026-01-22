@@ -22,6 +22,13 @@ export interface CatalogModifier {
     /** Location-specific price overrides. */
     locationOverrides?: Square.ModifierLocationOverrides[] | null;
     /**
+     * (Optional) Name that the restaurant wants to display to their kitchen workers
+     * instead of the customer-facing name.
+     * e.g., customer name might be "Double Baconize" and the
+     * kitchen name is "Add 2x bacon"
+     */
+    kitchenName?: string | null;
+    /**
      * The ID of the image associated with this `CatalogModifier` instance.
      * Currently this image is not displayed by Square, but is free to be displayed in 3rd party applications.
      */

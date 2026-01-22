@@ -20,8 +20,9 @@ export interface FulfillmentPickupDetails {
      */
     expiresAt?: string | null;
     /**
-     * The duration of time after which an in progress pickup fulfillment is automatically moved
-     * to the `COMPLETED` state. The duration must be in RFC 3339 format (for example, "P1W3D").
+     * The [duration](https://developer.squareup.com/docs/build-basics/working-with-dates)
+     * after which an in-progress pickup fulfillment is automatically moved
+     * to the `COMPLETED` state. The duration must be in RFC 3339 format (for example, "PT4H" for 4 hours).
      *
      * If not set, this pickup fulfillment remains in progress until it is canceled or completed.
      */
@@ -37,18 +38,23 @@ export interface FulfillmentPickupDetails {
      * "2016-09-04T23:59:33.123Z".
      *
      * For fulfillments with the schedule type `ASAP`, this is automatically set
-     * to the current time plus the expected duration to prepare the fulfillment.
+     * to the current time plus `prep_time_duration`, if available.
      */
     pickupAt?: string | null;
     /**
-     * The window of time in which the order should be picked up after the `pickup_at` timestamp.
-     * Must be in RFC 3339 duration format, e.g., "P1W3D". Can be used as an
-     * informational guideline for merchants.
+     * The [duration](https://developer.squareup.com/docs/build-basics/working-with-dates)
+     * in which the order should be picked up after the `pickup_at` timestamp.
+     * The duration must be in RFC 3339 format (for example, "PT30M" for 30 minutes). Don't confuse
+     * "M" for months with "M" for minutes. "P5M" means 5 months, while "PT5M" means 5 minutes.
+     *
+     * Can be used as an informational guideline for merchants.
      */
     pickupWindowDuration?: string | null;
     /**
-     * The duration of time it takes to prepare this fulfillment.
-     * The duration must be in RFC 3339 format (for example, "P1W3D").
+     * The [duration](https://developer.squareup.com/docs/build-basics/working-with-dates)
+     * needed to prepare this fulfillment.
+     * The duration must be in RFC 3339 format (for example, "PT30M" for 30 minutes). Don't confuse
+     * "M" for months with "M" for minutes. "P5M" means 5 months, while "PT5M" means 5 minutes.
      */
     prepTimeDuration?: string | null;
     /**

@@ -8,6 +8,7 @@ import { OrderLineItemAppliedTax } from "./OrderLineItemAppliedTax";
 import { OrderServiceChargeCalculationPhase } from "./OrderServiceChargeCalculationPhase";
 import { OrderServiceChargeScope } from "./OrderServiceChargeScope";
 import { OrderServiceChargeTreatmentType } from "./OrderServiceChargeTreatmentType";
+import { OrderServiceChargeType } from "./OrderServiceChargeType";
 
 export const OrderReturnServiceCharge: core.serialization.ObjectSchema<
     serializers.OrderReturnServiceCharge.Raw,
@@ -34,6 +35,7 @@ export const OrderReturnServiceCharge: core.serialization.ObjectSchema<
     ),
     treatmentType: core.serialization.property("treatment_type", OrderServiceChargeTreatmentType.optional()),
     scope: OrderServiceChargeScope.optional(),
+    type: OrderServiceChargeType.optional(),
 });
 
 export declare namespace OrderReturnServiceCharge {
@@ -53,5 +55,6 @@ export declare namespace OrderReturnServiceCharge {
         applied_taxes?: (OrderLineItemAppliedTax.Raw[] | null | undefined) | null;
         treatment_type?: OrderServiceChargeTreatmentType.Raw | null;
         scope?: OrderServiceChargeScope.Raw | null;
+        type?: OrderServiceChargeType.Raw | null;
     }
 }

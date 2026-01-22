@@ -12,6 +12,7 @@ export const OrderLineItemAppliedTax: core.serialization.ObjectSchema<
     uid: core.serialization.string().optionalNullable(),
     taxUid: core.serialization.property("tax_uid", core.serialization.string()),
     appliedMoney: core.serialization.property("applied_money", Money.optional()),
+    autoApplied: core.serialization.property("auto_applied", core.serialization.boolean().optional()),
 });
 
 export declare namespace OrderLineItemAppliedTax {
@@ -19,5 +20,6 @@ export declare namespace OrderLineItemAppliedTax {
         uid?: (string | null | undefined) | null;
         tax_uid: string;
         applied_money?: Money.Raw | null;
+        auto_applied?: boolean | null;
     }
 }

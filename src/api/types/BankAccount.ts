@@ -81,4 +81,6 @@ export interface BankAccount {
      * For example "Bank of America".
      */
     bankName?: string | null;
+    /** The ID of the customer who owns the bank account */
+    customerId?: string;
 }

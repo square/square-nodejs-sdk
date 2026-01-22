@@ -20,4 +20,11 @@ export interface OrderLineItemPricingBlocklists {
      * the `tax_catalog_object_id` (for catalog taxes).
      */
     blockedTaxes?: Square.OrderLineItemPricingBlocklistsBlockedTax[] | null;
+    /**
+     * A list of service charges blocked from applying to the line item.
+     * Service charges can be blocked by the `service_charge_uid` (for ad hoc
+     * service charges) or the `service_charge_catalog_object_id` (for catalog
+     * service charges).
+     */
+    blockedServiceCharges?: Square.OrderLineItemPricingBlocklistsBlockedServiceCharge[] | null;
 }

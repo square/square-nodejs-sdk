@@ -9,12 +9,12 @@ import type * as Square from "../../../../index";
  *         idempotencyKey: "EXAMPLE_IDEMPOTENCY_KEY_101",
  *         receipt: {
  *             lineItems: [{
- *                     transferOrderLineUid: "transfer_order_line_uid",
+ *                     transferOrderLineUid: "1",
  *                     quantityReceived: "3",
  *                     quantityDamaged: "1",
  *                     quantityCanceled: "1"
  *                 }, {
- *                     transferOrderLineUid: "transfer_order_line_uid",
+ *                     transferOrderLineUid: "2",
  *                     quantityReceived: "2",
  *                     quantityCanceled: "1"
  *                 }]

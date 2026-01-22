@@ -23,10 +23,13 @@ export const OrderReturn: core.serialization.ObjectSchema<serializers.OrderRetur
             "return_service_charges",
             core.serialization.list(OrderReturnServiceCharge).optionalNullable(),
         ),
-        returnTaxes: core.serialization.property("return_taxes", core.serialization.list(OrderReturnTax).optional()),
+        returnTaxes: core.serialization.property(
+            "return_taxes",
+            core.serialization.list(OrderReturnTax).optionalNullable(),
+        ),
         returnDiscounts: core.serialization.property(
             "return_discounts",
-            core.serialization.list(OrderReturnDiscount).optional(),
+            core.serialization.list(OrderReturnDiscount).optionalNullable(),
         ),
         returnTips: core.serialization.property(
             "return_tips",
@@ -42,8 +45,8 @@ export declare namespace OrderReturn {
         source_order_id?: (string | null | undefined) | null;
         return_line_items?: (OrderReturnLineItem.Raw[] | null | undefined) | null;
         return_service_charges?: (OrderReturnServiceCharge.Raw[] | null | undefined) | null;
-        return_taxes?: OrderReturnTax.Raw[] | null;
-        return_discounts?: OrderReturnDiscount.Raw[] | null;
+        return_taxes?: (OrderReturnTax.Raw[] | null | undefined) | null;
+        return_discounts?: (OrderReturnDiscount.Raw[] | null | undefined) | null;
         return_tips?: (OrderReturnTip.Raw[] | null | undefined) | null;
         rounding_adjustment?: OrderRoundingAdjustment.Raw | null;
         return_amounts?: OrderMoneyAmounts.Raw | null;

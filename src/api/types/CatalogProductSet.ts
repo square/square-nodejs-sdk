@@ -23,7 +23,7 @@ export interface CatalogProductSet {
      *
      * Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.
      *
-     * Max: 500 catalog object IDs.
+     * Max: 5000 catalog object IDs.
      */
     productIdsAny?: string[] | null;
     /**
@@ -32,7 +32,7 @@ export interface CatalogProductSet {
      *
      * Only one of `product_ids_all`, `product_ids_any`, or `all_products` can be set.
      *
-     * Max: 500 catalog object IDs.
+     * Max: 5000 catalog object IDs.
      */
     productIdsAll?: string[] | null;
     /**

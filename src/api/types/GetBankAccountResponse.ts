@@ -6,8 +6,8 @@ import type * as Square from "../index";
  * Response object returned by `GetBankAccount`.
  */
 export interface GetBankAccountResponse {
-    /** Information on errors encountered during the request. */
-    errors?: Square.Error_[];
     /** The requested `BankAccount` object. */
     bankAccount?: Square.BankAccount;
+    /** Information on errors encountered during the request. */
+    errors?: Square.Error_[];
 }

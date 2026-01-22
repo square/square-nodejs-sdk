@@ -10,17 +10,21 @@ export const SubscriptionTestResult: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     statusCode: core.serialization.property("status_code", core.serialization.number().optionalNullable()),
-    payload: core.serialization.string().optionalNullable(),
+    payload: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
     updatedAt: core.serialization.property("updated_at", core.serialization.string().optional()),
+    notificationUrl: core.serialization.property("notification_url", core.serialization.string().optional()),
+    passesFilter: core.serialization.property("passes_filter", core.serialization.boolean().optionalNullable()),
 });
 
 export declare namespace SubscriptionTestResult {
     export interface Raw {
         id?: string | null;
         status_code?: (number | null | undefined) | null;
-        payload?: (string | null | undefined) | null;
+        payload?: (Record<string, unknown> | null | undefined) | null;
         created_at?: string | null;
         updated_at?: string | null;
+        notification_url?: string | null;
+        passes_filter?: (boolean | null | undefined) | null;
     }
 }
