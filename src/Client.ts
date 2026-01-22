@@ -20,7 +20,6 @@ import { LaborClient } from "./api/resources/labor/client/Client";
 import { LocationsClient } from "./api/resources/locations/client/Client";
 import { LoyaltyClient } from "./api/resources/loyalty/client/Client";
 import { MerchantsClient } from "./api/resources/merchants/client/Client";
-import { MobileClient } from "./api/resources/mobile/client/Client";
 import { OAuthClient } from "./api/resources/oAuth/client/Client";
 import { OrdersClient } from "./api/resources/orders/client/Client";
 import { PaymentsClient } from "./api/resources/payments/client/Client";
@@ -80,7 +79,6 @@ export class SquareClient {
     protected _terminal: TerminalClient | undefined;
     protected _transferOrders: TransferOrdersClient | undefined;
     protected _vendors: VendorsClient | undefined;
-    protected _mobile: MobileClient | undefined;
     protected _cashDrawers: CashDrawersClient | undefined;
     protected _webhooks: WebhooksClient | undefined;
 
@@ -218,10 +216,6 @@ export class SquareClient {
 
     public get vendors(): VendorsClient {
         return (this._vendors ??= new VendorsClient(this._options));
-    }
-
-    public get mobile(): MobileClient {
-        return (this._mobile ??= new MobileClient(this._options));
     }
 
     public get cashDrawers(): CashDrawersClient {
