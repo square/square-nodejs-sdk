@@ -78,17 +78,30 @@ await client.payments.create({
 
 ## Legacy SDK
 
-> If you're using TypeScript, make sure that the `moduleResolution` setting in your `tsconfig.json` is equal to `node16`, `nodenext`, > or `bundler` to consume the legacy SDK.
-While the new SDK has a lot of improvements, we at Square understand that it takes time to upgrade when there are breaking changes. To make the migration easier, the new SDK also exports the legacy SDK as `square/legacy`. Here's an example of how you can use the legacy SDK alongside the new SDK inside a single file:
-```typescript import { randomUUID } from "crypto"; import { Square, SquareClient } from "square"; import { Client } from "square/legacy";
+## Legacy SDK
+
+> If you're using TypeScript, make sure that the `moduleResolution` setting in your `tsconfig.json` is equal to `node16`, `nodenext`,
+> or `bundler` to consume the legacy SDK.
+
+While the new SDK has a lot of improvements, we at Square understand that it takes time to upgrade when there are breaking changes.
+To make the migration easier, the new SDK also exports the legacy SDK as `square/legacy`. Here's an example of how you can use the
+legacy SDK alongside the new SDK inside a single file:
+
+```typescript
+import { randomUUID } from "crypto";
+import { Square, SquareClient } from "square";
+import { Client } from "square/legacy";
+
 const client = new SquareClient({
   token: process.env.SQUARE_ACCESS_TOKEN,
 });
+
 const legacyClient = new Client({
   bearerAuthCredentials: {
     accessToken: process.env.SQUARE_ACCESS_TOKEN!,
   },
 });
+
 async function getLocation(): Promise<Square.Location> {
   return (
     await client.locations.get({
@@ -96,6 +109,7 @@ async function getLocation(): Promise<Square.Location> {
     })
   ).location!;
 }
+
 async function createOrder() {
   const location = await getLocation();
   await legacyClient.ordersApi.createOrder({
@@ -115,10 +129,19 @@ async function createOrder() {
     },
   });
 }
-createOrder(); ```
+
+createOrder();
+```
+
 We recommend migrating to the new SDK using the following steps:
-1. Upgrade the NPM module to `^40.0.0` 2. Search and replace all requires and imports from `"square"` to `"square/legacy"`
-- For required, replace `require("square")` with `require("square/legacy")` - For imports, replace `from "square"` with `from "square/legacy"` - For dynamic imports, replace `import("square")` with `import("square/legacy")`
+
+1. Upgrade the NPM module to `^40.0.0` or later.
+2. Search and replace all requires and imports from `"square"` to `"square/legacy"`
+
+- For required, replace `require("square")` with `require("square/legacy")`
+- For imports, replace `from "square"` with `from "square/legacy"`
+- For dynamic imports, replace `import("square")` with `import("square/legacy")`
+
 3. Gradually move over to use the new SDK by importing it from the `"square"` import.
 
 
