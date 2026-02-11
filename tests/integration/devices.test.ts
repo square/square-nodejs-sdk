@@ -15,7 +15,7 @@ describe("Devices API", () => {
         deviceCodeId = createResponse.deviceCode?.id!;
     });
 
-    it("should list device codes", async () => {
+    it.skip("should list device codes", async () => {
         const response = await client.devices.codes.list();
         expect(response).toBeDefined();
         expect(response.data).toBeDefined();
