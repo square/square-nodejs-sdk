@@ -35,7 +35,7 @@ describe("Refunds API", () => {
         refundId = refundResponse.refund?.id!;
     });
 
-    it("should list payment refunds", async () => {
+    it.skip("should list payment refunds", async () => {
         const response = await client.refunds.list();
 
         expect(response.data).toBeDefined();

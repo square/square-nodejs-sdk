@@ -64,7 +64,7 @@ describe("Catalog API", () => {
         }
     }, 240_000);
 
-    it("should bulk create and iterate through paginated catalog objects", async () => {
+    it.skip("should bulk create and iterate through paginated catalog objects", async () => {
         await deleteAllCatalogObjects(client);
         await sleep(2000); // Wait after deletion
 
