@@ -59,7 +59,7 @@ export class DevicesClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     limit,
                     location_id: locationId,
                 };

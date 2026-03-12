@@ -24,6 +24,8 @@ export class CardsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Adds a card on file to an existing customer.
      *
      * As with charges, calls to `CreateCustomerCard` are idempotent. Multiple
@@ -119,6 +121,8 @@ export class CardsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Removes a card on file from a customer.
      *
      * @param {Square.customers.DeleteCardsRequest} request

@@ -17,6 +17,7 @@ describe("CustomAttributesClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/merchants/custom-attributes/bulk-delete")
@@ -107,6 +108,7 @@ describe("CustomAttributesClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/merchants/custom-attributes/bulk-upsert")
@@ -208,6 +210,7 @@ describe("CustomAttributesClient", () => {
             cursor: "cursor",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/merchants/merchant_id/custom-attributes")
@@ -284,6 +287,7 @@ describe("CustomAttributesClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .get("/v2/merchants/merchant_id/custom-attributes/key")
@@ -355,6 +359,7 @@ describe("CustomAttributesClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/merchants/merchant_id/custom-attributes/key")
@@ -410,6 +415,7 @@ describe("CustomAttributesClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .delete("/v2/merchants/merchant_id/custom-attributes/key")

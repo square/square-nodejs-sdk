@@ -50,6 +50,7 @@ describe("SubscriptionsClient", () => {
                 completed_date: "completed_date",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/subscriptions")
@@ -135,6 +136,7 @@ describe("SubscriptionsClient", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             affected_subscriptions: 12,
         };
+
         server
             .mockEndpoint()
             .post("/v2/subscriptions/bulk-swap-plan")
@@ -251,6 +253,7 @@ describe("SubscriptionsClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint()
             .post("/v2/subscriptions/search")
@@ -393,6 +396,7 @@ describe("SubscriptionsClient", () => {
                 completed_date: "completed_date",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/subscriptions/subscription_id")
@@ -473,6 +477,7 @@ describe("SubscriptionsClient", () => {
                 completed_date: "completed_date",
             },
         };
+
         server
             .mockEndpoint()
             .put("/v2/subscriptions/subscription_id")
@@ -556,6 +561,7 @@ describe("SubscriptionsClient", () => {
                 completed_date: "completed_date",
             },
         };
+
         server
             .mockEndpoint()
             .delete("/v2/subscriptions/subscription_id/actions/action_id")
@@ -653,6 +659,7 @@ describe("SubscriptionsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/v2/subscriptions/subscription_id/billing-anchor")
@@ -761,6 +768,7 @@ describe("SubscriptionsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/v2/subscriptions/subscription_id/cancel")
@@ -891,6 +899,7 @@ describe("SubscriptionsClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/subscriptions/subscription_id/events")
@@ -1030,6 +1039,7 @@ describe("SubscriptionsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/v2/subscriptions/subscription_id/pause")
@@ -1144,6 +1154,7 @@ describe("SubscriptionsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/v2/subscriptions/subscription_id/resume")
@@ -1261,6 +1272,7 @@ describe("SubscriptionsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/v2/subscriptions/subscription_id/swap-plan")

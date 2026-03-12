@@ -64,6 +64,7 @@ describe("PromotionsClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/loyalty/programs/program_id/promotions")
@@ -209,6 +210,7 @@ describe("PromotionsClient", () => {
                 qualifying_category_ids: ["XTQPYLR3IIU9C44VRCB3XD12"],
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/loyalty/programs/program_id/promotions")
@@ -325,6 +327,7 @@ describe("PromotionsClient", () => {
                 qualifying_category_ids: ["qualifying_category_ids"],
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/loyalty/programs/program_id/promotions/promotion_id")
@@ -417,6 +420,7 @@ describe("PromotionsClient", () => {
                 qualifying_category_ids: ["XTQPYLR3IIU9C44VRCB3XD12"],
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/loyalty/programs/program_id/promotions/promotion_id/cancel")

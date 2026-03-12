@@ -24,6 +24,8 @@ export class EmployeesClient {
     }
 
     /**
+     * @deprecated
+     *
      * @param {Square.ListEmployeesRequest} request
      * @param {EmployeesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -52,7 +54,7 @@ export class EmployeesClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     limit,
                     cursor,
                 };
@@ -115,6 +117,8 @@ export class EmployeesClient {
     }
 
     /**
+     * @deprecated
+     *
      * @param {Square.GetEmployeesRequest} request
      * @param {EmployeesClient.RequestOptions} requestOptions - Request-specific configuration.
      *

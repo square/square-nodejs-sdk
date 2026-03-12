@@ -57,7 +57,7 @@ export class PayoutsClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     begin_time: beginTime,
                     end_time: endTime,
                     sort_order:
@@ -66,7 +66,7 @@ export class PayoutsClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     cursor,
                     limit,
                 };
@@ -230,7 +230,7 @@ export class PayoutsClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     cursor,
                     limit,
                 };

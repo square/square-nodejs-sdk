@@ -90,14 +90,14 @@ export class CustomersClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     sort_order:
                         sortOrder !== undefined
                             ? serializers.SortOrder.jsonOrThrow(sortOrder, {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     count,
                 };
                 const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();

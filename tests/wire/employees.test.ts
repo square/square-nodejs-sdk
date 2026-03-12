@@ -26,6 +26,7 @@ describe("EmployeesClient", () => {
             cursor: "cursor",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/employees")
@@ -91,6 +92,7 @@ describe("EmployeesClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server.mockEndpoint().get("/v2/employees/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.employees.get({

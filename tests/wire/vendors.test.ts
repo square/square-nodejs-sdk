@@ -67,6 +67,7 @@ describe("VendorsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/vendors/bulk-create")
@@ -189,6 +190,7 @@ describe("VendorsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/vendors/bulk-retrieve")
@@ -318,6 +320,7 @@ describe("VendorsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .put("/v2/vendors/bulk-update")
@@ -483,6 +486,7 @@ describe("VendorsClient", () => {
                 status: "ACTIVE",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/vendors/create")
@@ -600,6 +604,7 @@ describe("VendorsClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint()
             .post("/v2/vendors/search")
@@ -694,6 +699,7 @@ describe("VendorsClient", () => {
                 status: "ACTIVE",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/vendors/vendor_id")
@@ -802,6 +808,7 @@ describe("VendorsClient", () => {
                 status: "ACTIVE",
             },
         };
+
         server
             .mockEndpoint()
             .put("/v2/vendors/vendor_id")

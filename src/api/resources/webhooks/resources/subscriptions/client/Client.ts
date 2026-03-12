@@ -55,7 +55,7 @@ export class SubscriptionsClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     limit,
                 };
                 const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();

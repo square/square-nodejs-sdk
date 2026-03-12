@@ -32,6 +32,7 @@ describe("EvidenceClient", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/disputes/dispute_id/evidence")
@@ -104,6 +105,7 @@ describe("EvidenceClient", () => {
                 evidence_type: "CARDHOLDER_COMMUNICATION",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/disputes/dispute_id/evidence/evidence_id")
@@ -147,6 +149,7 @@ describe("EvidenceClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .delete("/v2/disputes/dispute_id/evidence/evidence_id")

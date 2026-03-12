@@ -57,7 +57,7 @@ export class PromotionsClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     cursor,
                     limit,
                 };

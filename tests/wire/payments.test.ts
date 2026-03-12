@@ -78,6 +78,7 @@ describe("PaymentsClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/payments")
@@ -350,6 +351,7 @@ describe("PaymentsClient", () => {
                 version_token: "TPtNEOBOa6Qq6E3C3IjckSVOM6b3hMbfhjvTxHBQUsB6o",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/payments")
@@ -578,6 +580,7 @@ describe("PaymentsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/payments/cancel")
@@ -744,6 +747,7 @@ describe("PaymentsClient", () => {
                 version_token: "56pRkL3slrzet2iQrTp9n0bdJVYTB9YEWdTNjQfZOPV6o",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/payments/payment_id")
@@ -1099,6 +1103,7 @@ describe("PaymentsClient", () => {
                 version_token: "rDrXnqiS7fJgexccgdpzmwqTiXui1aIKCp9EchZ7trE6o",
             },
         };
+
         server
             .mockEndpoint()
             .put("/v2/payments/payment_id")
@@ -1453,6 +1458,7 @@ describe("PaymentsClient", () => {
                 version_token: "N8AGYgEjCiY9Q57Jw7aVHEpBq8bzGCDCQMRX8Vs56N06o",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/payments/payment_id/cancel")
@@ -1801,6 +1807,7 @@ describe("PaymentsClient", () => {
                 version_token: "56pRkL3slrzet2iQrTp9n0bdJVYTB9YEWdTNjQfZOPV6o",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/payments/payment_id/complete")

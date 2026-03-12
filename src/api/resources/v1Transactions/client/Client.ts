@@ -24,6 +24,8 @@ export class V1TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Provides summary information for a merchant's online store orders.
      *
      * @param {Square.V1ListOrdersRequest} request
@@ -53,7 +55,7 @@ export class V1TransactionsClient {
             order:
                 order !== undefined
                     ? serializers.SortOrder.jsonOrThrow(order, { unrecognizedObjectKeys: "strip", omitUndefined: true })
-                    : null,
+                    : undefined,
             limit,
             batch_token: batchToken,
         };
@@ -105,6 +107,8 @@ export class V1TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Provides comprehensive information for a single online store order, including the order's history.
      *
      * @param {Square.V1RetrieveOrderRequest} request
@@ -181,6 +185,8 @@ export class V1TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
      *
      * @param {Square.V1UpdateOrderRequest} request
