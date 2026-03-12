@@ -54,6 +54,7 @@ describe("BankAccountsClient", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/bank-accounts")
@@ -159,6 +160,7 @@ describe("BankAccountsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/bank-accounts")
@@ -232,6 +234,7 @@ describe("BankAccountsClient", () => {
                 customer_id: "customer_id",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/bank-accounts/by-v1-id/v1_bank_account_id")
@@ -302,6 +305,7 @@ describe("BankAccountsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .get("/v2/bank-accounts/bank_account_id")
@@ -372,6 +376,7 @@ describe("BankAccountsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/bank-accounts/bank_account_id/disable")

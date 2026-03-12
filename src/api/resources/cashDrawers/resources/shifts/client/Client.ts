@@ -57,7 +57,7 @@ export class ShiftsClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     begin_time: beginTime,
                     end_time: endTime,
                     limit,

@@ -24,6 +24,8 @@ export class TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Lists transactions for a particular location.
      *
      * Transactions include payment information from sales and exchanges and refund
@@ -64,7 +66,7 @@ export class TransactionsClient {
                           unrecognizedObjectKeys: "strip",
                           omitUndefined: true,
                       })
-                    : null,
+                    : undefined,
             cursor,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -120,6 +122,8 @@ export class TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Retrieves details for a single transaction.
      *
      * @param {Square.locations.GetTransactionsRequest} request
@@ -196,6 +200,8 @@ export class TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
      * endpoint with a `delay_capture` value of `true`.
      *
@@ -277,6 +283,8 @@ export class TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
      * endpoint with a `delay_capture` value of `true`.
      *

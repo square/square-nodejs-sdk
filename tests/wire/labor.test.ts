@@ -50,6 +50,7 @@ describe("LaborClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/labor/scheduled-shifts")
@@ -159,6 +160,7 @@ describe("LaborClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/labor/scheduled-shifts/bulk-publish")
@@ -262,6 +264,7 @@ describe("LaborClient", () => {
             cursor: "xoxp-123-2123-123232",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/labor/scheduled-shifts/search")
@@ -348,6 +351,7 @@ describe("LaborClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .get("/v2/labor/scheduled-shifts/id")
@@ -443,6 +447,7 @@ describe("LaborClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .put("/v2/labor/scheduled-shifts/id")
@@ -542,6 +547,7 @@ describe("LaborClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/labor/scheduled-shifts/id/publish")
@@ -652,6 +658,7 @@ describe("LaborClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/labor/timecards")
@@ -830,6 +837,7 @@ describe("LaborClient", () => {
             cursor: "cursor",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/labor/timecards/search")
@@ -987,6 +995,7 @@ describe("LaborClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .get("/v2/labor/timecards/id")
@@ -1109,6 +1118,7 @@ describe("LaborClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .put("/v2/labor/timecards/id")
@@ -1207,6 +1217,7 @@ describe("LaborClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .delete("/v2/labor/timecards/id")

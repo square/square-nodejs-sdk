@@ -24,6 +24,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deprecated version of [RetrieveInventoryAdjustment](api-endpoint:Inventory-RetrieveInventoryAdjustment) after the endpoint URL
      * is updated to conform to the standard convention.
      *
@@ -176,6 +178,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deprecated version of [BatchChangeInventory](api-endpoint:Inventory-BatchChangeInventory) after the endpoint URL
      * is updated to conform to the standard convention.
      *
@@ -265,6 +269,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deprecated version of [BatchRetrieveInventoryChanges](api-endpoint:Inventory-BatchRetrieveInventoryChanges) after the endpoint URL
      * is updated to conform to the standard convention.
      *
@@ -351,6 +357,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deprecated version of [BatchRetrieveInventoryCounts](api-endpoint:Inventory-BatchRetrieveInventoryCounts) after the endpoint URL
      * is updated to conform to the standard convention.
      *
@@ -731,6 +739,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deprecated version of [RetrieveInventoryPhysicalCount](api-endpoint:Inventory-RetrieveInventoryPhysicalCount) after the endpoint URL
      * is updated to conform to the standard convention.
      *
@@ -1051,6 +1061,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Returns a set of physical counts and inventory adjustments for the
      * provided [CatalogObject](entity:CatalogObject) at the requested
      * [Location](entity:Location)s.

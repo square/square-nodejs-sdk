@@ -55,7 +55,7 @@ export class CustomAttributeDefinitionsClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     limit,
                     cursor,
                 };

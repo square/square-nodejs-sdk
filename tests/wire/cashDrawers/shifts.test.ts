@@ -28,6 +28,7 @@ describe("ShiftsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/cash-drawers/shifts")
@@ -117,6 +118,7 @@ describe("ShiftsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .get("/v2/cash-drawers/shifts/shift_id")
@@ -246,6 +248,7 @@ describe("ShiftsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/cash-drawers/shifts/shift_id/events")

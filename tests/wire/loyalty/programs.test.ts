@@ -46,6 +46,7 @@ describe("ProgramsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/v2/loyalty/programs")
@@ -150,6 +151,7 @@ describe("ProgramsClient", () => {
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/loyalty/programs/program_id")
@@ -226,6 +228,7 @@ describe("ProgramsClient", () => {
             points: 6,
             promotion_points: 12,
         };
+
         server
             .mockEndpoint()
             .post("/v2/loyalty/programs/program_id/calculate")

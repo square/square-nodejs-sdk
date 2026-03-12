@@ -58,7 +58,7 @@ export class DisputesClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     location_id: locationId,
                 };
                 const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();

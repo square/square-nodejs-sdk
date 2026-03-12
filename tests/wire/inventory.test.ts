@@ -41,6 +41,7 @@ describe("InventoryClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/inventory/adjustment/adjustment_id")
@@ -134,6 +135,7 @@ describe("InventoryClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/inventory/adjustments/adjustment_id")
@@ -226,6 +228,7 @@ describe("InventoryClient", () => {
             ],
             changes: [{ type: "PHYSICAL_COUNT", measurement_unit_id: "measurement_unit_id" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/inventory/batch-change")
@@ -320,6 +323,7 @@ describe("InventoryClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint()
             .post("/v2/inventory/batch-retrieve-changes")
@@ -396,6 +400,7 @@ describe("InventoryClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint()
             .post("/v2/inventory/batch-retrieve-counts")
@@ -470,6 +475,7 @@ describe("InventoryClient", () => {
             ],
             changes: [{ type: "PHYSICAL_COUNT", measurement_unit_id: "measurement_unit_id" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/inventory/changes/batch-create")
@@ -564,6 +570,7 @@ describe("InventoryClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .post("/v2/inventory/changes/batch-retrieve")
@@ -645,6 +652,7 @@ describe("InventoryClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .post("/v2/inventory/counts/batch-retrieve")
@@ -713,6 +721,7 @@ describe("InventoryClient", () => {
                 created_at: "2016-11-16T22:25:24.878Z",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/inventory/physical-count/physical_count_id")
@@ -779,6 +788,7 @@ describe("InventoryClient", () => {
                 created_at: "2016-11-16T22:25:24.878Z",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/inventory/physical-counts/physical_count_id")
@@ -846,6 +856,7 @@ describe("InventoryClient", () => {
                 team_member_id: "LRK57NSQ5X7PUD05",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/inventory/transfers/transfer_id")
@@ -907,6 +918,7 @@ describe("InventoryClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/inventory/catalog_object_id")
@@ -983,6 +995,7 @@ describe("InventoryClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/inventory/catalog_object_id/changes")

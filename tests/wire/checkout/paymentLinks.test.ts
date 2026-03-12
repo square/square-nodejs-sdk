@@ -37,6 +37,7 @@ describe("PaymentLinksClient", () => {
             ],
             cursor: "MTY1NQ==",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/online-checkout/payment-links")
@@ -172,6 +173,7 @@ describe("PaymentLinksClient", () => {
                 subscription_plans: [{ type: "ITEM", id: "id" }],
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/online-checkout/payment-links")
@@ -368,6 +370,7 @@ describe("PaymentLinksClient", () => {
                 payment_note: "payment_note",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/online-checkout/payment-links/id")
@@ -453,6 +456,7 @@ describe("PaymentLinksClient", () => {
                 payment_note: "test",
             },
         };
+
         server
             .mockEndpoint()
             .put("/v2/online-checkout/payment-links/id")
@@ -524,6 +528,7 @@ describe("PaymentLinksClient", () => {
             id: "MQASNYL6QB6DFCJ3",
             cancelled_order_id: "asx8LgZ6MRzD0fObfkJ6obBmSh4F",
         };
+
         server
             .mockEndpoint()
             .delete("/v2/online-checkout/payment-links/id")

@@ -20,6 +20,7 @@ describe("LocationProfilesClient", () => {
             cursor: "cursor",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/bookings/location-booking-profiles")

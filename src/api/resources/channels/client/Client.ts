@@ -50,7 +50,7 @@ export class ChannelsClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     reference_id: referenceId,
                     status:
                         status !== undefined
@@ -58,7 +58,7 @@ export class ChannelsClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     cursor,
                     limit,
                 };

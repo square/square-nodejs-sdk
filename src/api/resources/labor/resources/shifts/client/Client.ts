@@ -24,6 +24,8 @@ export class ShiftsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Creates a new `Shift`.
      *
      * A `Shift` represents a complete workday for a single team member.
@@ -142,6 +144,8 @@ export class ShiftsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Returns a paginated list of `Shift` records for a business.
      * The list to be returned can be filtered by:
      * - Location IDs
@@ -242,6 +246,8 @@ export class ShiftsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Returns a single `Shift` specified by `id`.
      *
      * @param {Square.labor.GetShiftsRequest} request
@@ -312,6 +318,8 @@ export class ShiftsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Updates an existing `Shift`.
      *
      * When adding a `Break` to a `Shift`, any earlier `Break` instances in the `Shift` have
@@ -422,6 +430,8 @@ export class ShiftsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deletes a `Shift`.
      *
      * @param {Square.labor.DeleteShiftsRequest} request

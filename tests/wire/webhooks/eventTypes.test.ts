@@ -19,6 +19,7 @@ describe("EventTypesClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/v2/webhooks/event-types")

@@ -262,7 +262,7 @@ export class CustomAttributesClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : null,
+                            : undefined,
                     limit,
                     cursor,
                     with_definitions: withDefinitions,

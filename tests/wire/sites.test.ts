@@ -29,6 +29,7 @@ describe("SitesClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/v2/sites").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.sites.list();

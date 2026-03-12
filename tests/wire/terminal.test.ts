@@ -57,6 +57,7 @@ describe("TerminalClient", () => {
                 await_next_action_duration: "PT5M",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/terminals/actions/action_id/dismiss")
@@ -198,6 +199,7 @@ describe("TerminalClient", () => {
                 tip_money: { amount: BigInt(1000000), currency: "UNKNOWN_CURRENCY" },
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/terminals/checkouts/checkout_id/dismiss")
@@ -292,6 +294,7 @@ describe("TerminalClient", () => {
                 location_id: "location_id",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/terminals/refunds/terminal_refund_id/dismiss")
