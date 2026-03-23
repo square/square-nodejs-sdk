@@ -3,9 +3,9 @@
 /**
  * @example
  *     {
- *         clientId: "sq0idp-uaPHILoPzWZk3tlJqlML0g",
- *         clientSecret: "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
- *         code: "sq0cgb-l0SBqxs4uwxErTVyYOdemg",
+ *         clientId: "YOUR_CLIENT_ID",
+ *         clientSecret: "YOUR_CLIENT_SECRET",
+ *         code: "YOUR_AUTHORIZATION_CODE",
  *         grantType: "authorization_code"
  *     }
  */

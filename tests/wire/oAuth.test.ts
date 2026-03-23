@@ -43,9 +43,9 @@ describe("OAuthClient", () => {
         const server = mockServerPool.createServer();
         const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {
-            client_id: "sq0idp-uaPHILoPzWZk3tlJqlML0g",
-            client_secret: "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
-            code: "sq0cgb-l0SBqxs4uwxErTVyYOdemg",
+            client_id: "YOUR_CLIENT_ID",
+            client_secret: "YOUR_CLIENT_SECRET",
+            code: "YOUR_AUTHORIZATION_CODE",
             grant_type: "authorization_code",
         };
         const rawResponseBody = {
@@ -72,9 +72,9 @@ describe("OAuthClient", () => {
             .build();
 
         const response = await client.oAuth.obtainToken({
-            clientId: "sq0idp-uaPHILoPzWZk3tlJqlML0g",
-            clientSecret: "sq0csp-30a-4C_tVOnTh14Piza2BfTPBXyLafLPWSzY1qAjeBfM",
-            code: "sq0cgb-l0SBqxs4uwxErTVyYOdemg",
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET",
+            code: "YOUR_AUTHORIZATION_CODE",
             grantType: "authorization_code",
         });
         expect(response).toEqual({
