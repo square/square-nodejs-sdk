@@ -13,7 +13,6 @@ describe("CatalogClient", () => {
             deleted_object_ids: ["W62UWFY35CWMYGVWK6TWJDNI", "AA27W3M2GGTF3H6AVPNB77CK"],
             deleted_at: "2016-11-16T22:25:24.878Z",
         };
-
         server
             .mockEndpoint()
             .post("/v2/catalog/batch-delete")
@@ -107,7 +106,6 @@ describe("CatalogClient", () => {
                 },
             ],
         };
-
         server
             .mockEndpoint()
             .post("/v2/catalog/batch-retrieve")
@@ -282,7 +280,6 @@ describe("CatalogClient", () => {
                 { client_object_id: "#Coffee_Large", object_id: "JE6VHPSRQL6IWSN26C36CJ7W" },
             ],
         };
-
         server
             .mockEndpoint()
             .post("/v2/catalog/batch-upsert")
@@ -444,7 +441,6 @@ describe("CatalogClient", () => {
             },
             standard_unit_description_group: { standard_unit_descriptions: [{}], language_code: "language_code" },
         };
-
         server.mockEndpoint().get("/v2/catalog/info").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.catalog.info();
@@ -514,7 +510,6 @@ describe("CatalogClient", () => {
                 },
             ],
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/catalog/list")
@@ -635,7 +630,6 @@ describe("CatalogClient", () => {
             ],
             latest_time: "latest_time",
         };
-
         server
             .mockEndpoint()
             .post("/v2/catalog/search")
@@ -756,7 +750,6 @@ describe("CatalogClient", () => {
             cursor: "cursor",
             matched_variation_ids: ["VBJNPHCOKDFECR6VU25WRJUD"],
         };
-
         server
             .mockEndpoint()
             .post("/v2/catalog/search-catalog-items")
@@ -838,7 +831,6 @@ describe("CatalogClient", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             updated_at: "2016-11-16T22:25:24.878Z",
         };
-
         server
             .mockEndpoint()
             .post("/v2/catalog/update-item-modifier-lists")
@@ -878,7 +870,6 @@ describe("CatalogClient", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             updated_at: "2016-11-16T22:25:24.878Z",
         };
-
         server
             .mockEndpoint()
             .post("/v2/catalog/update-item-taxes")

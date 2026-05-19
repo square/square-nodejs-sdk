@@ -24,8 +24,6 @@ export class EmployeesClient {
     }
 
     /**
-     * @deprecated
-     *
      * @param {Square.ListEmployeesRequest} request
      * @param {EmployeesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -54,7 +52,7 @@ export class EmployeesClient {
                                   unrecognizedObjectKeys: "strip",
                                   omitUndefined: true,
                               })
-                            : undefined,
+                            : null,
                     limit,
                     cursor,
                 };
@@ -62,7 +60,7 @@ export class EmployeesClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -117,8 +115,6 @@ export class EmployeesClient {
     }
 
     /**
-     * @deprecated
-     *
      * @param {Square.GetEmployeesRequest} request
      * @param {EmployeesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -143,7 +139,7 @@ export class EmployeesClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({

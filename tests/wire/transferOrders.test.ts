@@ -59,7 +59,6 @@ describe("TransferOrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/transfer-orders")
@@ -207,7 +206,6 @@ describe("TransferOrdersClient", () => {
             cursor: "eyJsYXN0X3VwZGF0ZWRfYXQiOjE3NTMxMTU1NDBfMTIzfQ==",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint({ once: false })
             .post("/v2/transfer-orders/search")
@@ -343,7 +341,6 @@ describe("TransferOrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .get("/v2/transfer-orders/transfer_order_id")
@@ -457,7 +454,6 @@ describe("TransferOrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .put("/v2/transfer-orders/transfer_order_id")
@@ -546,7 +542,6 @@ describe("TransferOrdersClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .delete("/v2/transfer-orders/transfer_order_id")
@@ -615,7 +610,6 @@ describe("TransferOrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/transfer-orders/transfer_order_id/cancel")
@@ -731,7 +725,6 @@ describe("TransferOrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/transfer-orders/transfer_order_id/receive")
@@ -848,7 +841,6 @@ describe("TransferOrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/transfer-orders/transfer_order_id/start")

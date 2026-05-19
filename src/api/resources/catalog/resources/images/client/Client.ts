@@ -73,7 +73,7 @@ export class ImagesClient {
             _authRequest.headers,
             this._options?.headers,
             mergeOnlyDefinedHeaders({
-                "Square-Version": requestOptions?.version ?? "2026-01-22",
+                "Square-Version": requestOptions?.version ?? "2026-05-20",
                 ..._maybeEncodedRequest.headers,
             }),
             requestOptions?.headers,
@@ -170,7 +170,7 @@ export class ImagesClient {
             _authRequest.headers,
             this._options?.headers,
             mergeOnlyDefinedHeaders({
-                "Square-Version": requestOptions?.version ?? "2026-01-22",
+                "Square-Version": requestOptions?.version ?? "2026-05-20",
                 ..._maybeEncodedRequest.headers,
             }),
             requestOptions?.headers,

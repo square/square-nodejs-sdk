@@ -49,6 +49,8 @@ export interface Payment {
      * For more information, see [Permissions](https://developer.squareup.com/docs/payments-api/take-payments-and-collect-fees#permissions).
      */
     appFeeMoney?: Square.Money;
+    /** Details pertaining to recipients of the application fee. */
+    appFeeAllocations?: unknown[] | null;
     /**
      * The amount of money approved for this payment. This value may change if Square chooses to
      * obtain reauthorization as part of a call to [UpdatePayment](api-endpoint:Payments-UpdatePayment).
@@ -111,6 +113,8 @@ export interface Payment {
     cashDetails?: Square.CashPaymentDetails;
     /** Details about a bank account payment. These details are only populated if the source_type is `BANK_ACCOUNT`. */
     bankAccountDetails?: Square.BankAccountPaymentDetails;
+    /** Details specific to electronic money payments. */
+    electronicMoneyDetails?: Square.ElectronicMoneyDetails;
     /**
      * Details about an external payment. The details are only populated
      * if the `source_type` is `EXTERNAL`.
@@ -215,6 +219,7 @@ export interface Payment {
     deviceDetails?: Square.DeviceDetails;
     /** Details about the application that took the payment. */
     applicationDetails?: Square.ApplicationDetails;
+    buyerCurrencyExchange?: unknown;
     /** Whether or not this payment was taken offline. */
     isOfflinePayment?: boolean;
     /** Additional information about the payment if it was taken offline. */

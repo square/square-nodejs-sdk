@@ -24,8 +24,6 @@ export class CardsClient {
     }
 
     /**
-     * @deprecated
-     *
      * Adds a card on file to an existing customer.
      *
      * As with charges, calls to `CreateCustomerCard` are idempotent. Multiple
@@ -66,7 +64,7 @@ export class CardsClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -121,8 +119,6 @@ export class CardsClient {
     }
 
     /**
-     * @deprecated
-     *
      * Removes a card on file from a customer.
      *
      * @param {Square.customers.DeleteCardsRequest} request
@@ -150,7 +146,7 @@ export class CardsClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({

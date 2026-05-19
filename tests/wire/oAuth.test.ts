@@ -12,7 +12,6 @@ describe("OAuthClient", () => {
             success: true,
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/oauth2/revoke")
@@ -61,7 +60,6 @@ describe("OAuthClient", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             refresh_token_expires_at: "refresh_token_expires_at",
         };
-
         server
             .mockEndpoint()
             .post("/oauth2/token")
@@ -110,7 +108,6 @@ describe("OAuthClient", () => {
             merchant_id: "MERCHANT_ID",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/oauth2/token/status")

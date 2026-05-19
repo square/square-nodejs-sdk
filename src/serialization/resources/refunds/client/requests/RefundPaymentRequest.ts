@@ -14,6 +14,10 @@ export const RefundPaymentRequest: core.serialization.Schema<
     idempotencyKey: core.serialization.property("idempotency_key", core.serialization.string()),
     amountMoney: core.serialization.property("amount_money", Money),
     appFeeMoney: core.serialization.property("app_fee_money", Money.optional()),
+    appFeeAllocations: core.serialization.property(
+        "app_fee_allocations",
+        core.serialization.list(core.serialization.unknown()).optionalNullable(),
+    ),
     paymentId: core.serialization.property("payment_id", core.serialization.string().optionalNullable()),
     destinationId: core.serialization.property("destination_id", core.serialization.string().optionalNullable()),
     unlinked: core.serialization.boolean().optionalNullable(),
@@ -37,6 +41,7 @@ export declare namespace RefundPaymentRequest {
         idempotency_key: string;
         amount_money: Money.Raw;
         app_fee_money?: Money.Raw | null;
+        app_fee_allocations?: (unknown[] | null | undefined) | null;
         payment_id?: (string | null | undefined) | null;
         destination_id?: (string | null | undefined) | null;
         unlinked?: (boolean | null | undefined) | null;

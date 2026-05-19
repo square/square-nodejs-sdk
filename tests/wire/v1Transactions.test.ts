@@ -65,7 +65,6 @@ describe("V1TransactionsClient", () => {
                 btc_price_satoshi: 1.1,
             },
         ];
-
         server
             .mockEndpoint()
             .get("/v1/location_id/orders")
@@ -222,7 +221,6 @@ describe("V1TransactionsClient", () => {
             btc_receive_address: "btc_receive_address",
             btc_price_satoshi: 1.1,
         };
-
         server
             .mockEndpoint()
             .get("/v1/location_id/orders/order_id")
@@ -398,7 +396,6 @@ describe("V1TransactionsClient", () => {
             btc_receive_address: "btc_receive_address",
             btc_price_satoshi: 1.1,
         };
-
         server
             .mockEndpoint()
             .put("/v1/location_id/orders/order_id")

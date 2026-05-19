@@ -38,7 +38,6 @@ describe("CustomAttributeDefinitionsClient", () => {
             cursor: "ImfNzWVSiAYyiAR4gEcxDJ75KZAOSjX8H2BVHUTR0ofCtp4SdYvrUKbwYY2aCH2WqZ2FsfAuylEVUlTfaINg3ecIlFpP9Y5Ie66w9NSg9nqdI5fCJ6qdH2s0za5m2plFonsjIuFaoN89j78ROUwuSOzD6mFZPcJHhJ0CxEKc0SBH",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/merchants/custom-attribute-definitions")
@@ -125,7 +124,6 @@ describe("CustomAttributeDefinitionsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/merchants/custom-attribute-definitions")
@@ -189,7 +187,6 @@ describe("CustomAttributeDefinitionsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .get("/v2/merchants/custom-attribute-definitions/key")
@@ -250,7 +247,6 @@ describe("CustomAttributeDefinitionsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .put("/v2/merchants/custom-attribute-definitions/key")
@@ -298,7 +294,6 @@ describe("CustomAttributeDefinitionsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .delete("/v2/merchants/custom-attribute-definitions/key")

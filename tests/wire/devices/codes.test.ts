@@ -40,7 +40,6 @@ describe("CodesClient", () => {
             ],
             cursor: "cursor",
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/devices/codes")
@@ -124,7 +123,6 @@ describe("CodesClient", () => {
                 paired_at: "paired_at",
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/devices/codes")
@@ -187,7 +185,6 @@ describe("CodesClient", () => {
                 paired_at: "paired_at",
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/devices/codes/id")

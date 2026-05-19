@@ -38,7 +38,6 @@ describe("SegmentsClient", () => {
             ],
             cursor: "cursor",
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/customers/segments")
@@ -108,7 +107,6 @@ describe("SegmentsClient", () => {
                 updated_at: "2020-04-13T23:01:13Z",
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/customers/segments/segment_id")

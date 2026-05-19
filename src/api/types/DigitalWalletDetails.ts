@@ -18,6 +18,8 @@ export interface DigitalWalletDetails {
     brand?: string | null;
     /** Brand-specific details for payments with the `brand` of `CASH_APP`. */
     cashAppDetails?: Square.CashAppDetails;
+    /** Brand-specific details for payments with the `brand` of `LIGHTNING`. */
+    lightningDetails?: Square.LightningDetails;
     /** Information about errors encountered during the payment. */
     errors?: Square.Error_[];
 }

@@ -59,6 +59,13 @@ export interface RefundPaymentRequest {
      */
     appFeeMoney?: Square.Money;
     /**
+     * Details pertaining to contributors to the refund of the application fee.
+     * The sum of the amounts in the app_fee_allocations must equal the app_fee_money amount, if
+     * present. If populated, an allocation must be present for every party that expects to contribute
+     * a portion of the refunded application fee, including the application developer.
+     */
+    appFeeAllocations?: unknown[] | null;
+    /**
      * The unique ID of the payment being refunded.
      * Required when unlinked=false, otherwise must not be set.
      */

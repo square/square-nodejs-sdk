@@ -24,7 +24,6 @@ describe("MerchantsClient", () => {
             ],
             cursor: 1,
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/merchants")
@@ -83,7 +82,6 @@ describe("MerchantsClient", () => {
                 created_at: "2021-12-10T19:25:52.484Z",
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/merchants/merchant_id")

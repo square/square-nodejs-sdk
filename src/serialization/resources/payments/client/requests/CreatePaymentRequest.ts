@@ -19,6 +19,10 @@ export const CreatePaymentRequest: core.serialization.Schema<
     amountMoney: core.serialization.property("amount_money", Money.optional()),
     tipMoney: core.serialization.property("tip_money", Money.optional()),
     appFeeMoney: core.serialization.property("app_fee_money", Money.optional()),
+    appFeeAllocations: core.serialization.property(
+        "app_fee_allocations",
+        core.serialization.list(core.serialization.unknown()).optional(),
+    ),
     delayDuration: core.serialization.property("delay_duration", core.serialization.string().optional()),
     delayAction: core.serialization.property("delay_action", core.serialization.string().optional()),
     autocomplete: core.serialization.boolean().optional(),
@@ -54,6 +58,7 @@ export declare namespace CreatePaymentRequest {
         amount_money?: Money.Raw | null;
         tip_money?: Money.Raw | null;
         app_fee_money?: Money.Raw | null;
+        app_fee_allocations?: unknown[] | null;
         delay_duration?: string | null;
         delay_action?: string | null;
         autocomplete?: boolean | null;

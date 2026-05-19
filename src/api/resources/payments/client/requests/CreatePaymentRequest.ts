@@ -89,6 +89,13 @@ export interface CreatePaymentRequest {
      */
     appFeeMoney?: Square.Money;
     /**
+     * Details pertaining to recipients of the application fee. The sum of the amounts in the
+     * app_fee_allocations must equal the app_fee_money amount, if present. If populated, an
+     * allocation must be present for every party that expects to receive a portion of the application
+     * fee, including the application developer.
+     */
+    appFeeAllocations?: unknown[];
+    /**
      * The duration of time after the payment's creation when Square automatically
      * either completes or cancels the payment depending on the `delay_action` field value.
      * For more information, see

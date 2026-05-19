@@ -35,7 +35,6 @@ describe("RefundsClient", () => {
                 location_id: "76C9W6K8CNNQ5",
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/terminals/refunds")
@@ -114,7 +113,6 @@ describe("RefundsClient", () => {
             ],
             cursor: "cursor",
         };
-
         server
             .mockEndpoint()
             .post("/v2/terminals/refunds/search")
@@ -189,7 +187,6 @@ describe("RefundsClient", () => {
                 location_id: "76C9W6K8CNNQ5",
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/terminals/refunds/terminal_refund_id")
@@ -255,7 +252,6 @@ describe("RefundsClient", () => {
                 location_id: "76C9W6K8CNNQ5",
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/terminals/refunds/terminal_refund_id/cancel")

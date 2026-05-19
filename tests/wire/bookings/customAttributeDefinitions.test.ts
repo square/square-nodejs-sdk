@@ -38,7 +38,6 @@ describe("CustomAttributeDefinitionsClient", () => {
             cursor: "YEk4UPbUEsu8MUV0xouO5hCiFcD9T5ztB6UWEJq5vZnqBFmoBEi0j1j6HWYTFGMRre4p7T5wAQBj3Th1NX3XgBFcQVEVsIxUQ2NsbwjRitfoEZDml9uxxQXepowyRvCuSThHPbJSn7M7wInl3x8XypQF9ahVVQXegJ0CxEKc0SBH",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/bookings/custom-attribute-definitions")
@@ -114,7 +113,6 @@ describe("CustomAttributeDefinitionsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/bookings/custom-attribute-definitions")
@@ -170,7 +168,6 @@ describe("CustomAttributeDefinitionsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .get("/v2/bookings/custom-attribute-definitions/key")
@@ -226,7 +223,6 @@ describe("CustomAttributeDefinitionsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .put("/v2/bookings/custom-attribute-definitions/key")
@@ -271,7 +267,6 @@ describe("CustomAttributeDefinitionsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .delete("/v2/bookings/custom-attribute-definitions/key")

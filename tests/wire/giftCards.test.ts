@@ -34,7 +34,6 @@ describe("GiftCardsClient", () => {
             ],
             cursor: "JbFmyvUpaNKsfC1hoLSA4WlqkgkZXTWeKuStajR5BkP7OE0ETAbeWSi6U6u7sH",
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/gift-cards")
@@ -117,7 +116,6 @@ describe("GiftCardsClient", () => {
                 customer_ids: ["customer_ids"],
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/gift-cards")
@@ -176,7 +174,6 @@ describe("GiftCardsClient", () => {
                 customer_ids: ["customer_ids"],
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/gift-cards/from-gan")
@@ -231,7 +228,6 @@ describe("GiftCardsClient", () => {
                 customer_ids: ["customer_ids"],
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/gift-cards/from-nonce")
@@ -286,7 +282,6 @@ describe("GiftCardsClient", () => {
                 customer_ids: ["GKY0FZ3V717AH8Q2D821PNT2ZW"],
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/gift-cards/gift_card_id/link-customer")
@@ -342,7 +337,6 @@ describe("GiftCardsClient", () => {
                 customer_ids: ["customer_ids"],
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/gift-cards/gift_card_id/unlink-customer")
@@ -398,7 +392,6 @@ describe("GiftCardsClient", () => {
                 customer_ids: ["customer_ids"],
             },
         };
-
         server.mockEndpoint().get("/v2/gift-cards/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.giftCards.get({

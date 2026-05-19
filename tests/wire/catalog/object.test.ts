@@ -56,7 +56,6 @@ describe("ObjectClient", () => {
                 { client_object_id: "#Large", object_id: "NS77DKEIQ3AEQTCP727DSA7U" },
             ],
         };
-
         server
             .mockEndpoint()
             .post("/v2/catalog/object")
@@ -215,7 +214,6 @@ describe("ObjectClient", () => {
                 },
             ],
         };
-
         server
             .mockEndpoint()
             .get("/v2/catalog/object/object_id")
@@ -327,7 +325,6 @@ describe("ObjectClient", () => {
             deleted_object_ids: ["7SB3ZQYJ5GDMVFL7JK46JCHT", "KQLFFHA6K6J3YQAQAWDQAL57"],
             deleted_at: "2016-11-16T22:25:24.878Z",
         };
-
         server
             .mockEndpoint()
             .delete("/v2/catalog/object/object_id")

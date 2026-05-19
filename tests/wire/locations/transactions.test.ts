@@ -67,7 +67,6 @@ describe("TransactionsClient", () => {
             ],
             cursor: "cursor",
         };
-
         server
             .mockEndpoint()
             .get("/v2/locations/location_id/transactions")
@@ -231,7 +230,6 @@ describe("TransactionsClient", () => {
                 order_id: "order_id",
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/locations/location_id/transactions/transaction_id")
@@ -333,7 +331,6 @@ describe("TransactionsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/locations/location_id/transactions/transaction_id/capture")
@@ -365,7 +362,6 @@ describe("TransactionsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/locations/location_id/transactions/transaction_id/void")

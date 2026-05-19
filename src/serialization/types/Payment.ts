@@ -11,6 +11,7 @@ import { CardPaymentDetails } from "./CardPaymentDetails";
 import { CashPaymentDetails } from "./CashPaymentDetails";
 import { DeviceDetails } from "./DeviceDetails";
 import { DigitalWalletDetails } from "./DigitalWalletDetails";
+import { ElectronicMoneyDetails } from "./ElectronicMoneyDetails";
 import { ExternalPaymentDetails } from "./ExternalPaymentDetails";
 import { Money } from "./Money";
 import { OfflinePaymentDetails } from "./OfflinePaymentDetails";
@@ -27,6 +28,10 @@ export const Payment: core.serialization.ObjectSchema<serializers.Payment.Raw, S
         tipMoney: core.serialization.property("tip_money", Money.optional()),
         totalMoney: core.serialization.property("total_money", Money.optional()),
         appFeeMoney: core.serialization.property("app_fee_money", Money.optional()),
+        appFeeAllocations: core.serialization.property(
+            "app_fee_allocations",
+            core.serialization.list(core.serialization.unknown()).optionalNullable(),
+        ),
         approvedMoney: core.serialization.property("approved_money", Money.optional()),
         processingFee: core.serialization.property("processing_fee", core.serialization.list(ProcessingFee).optional()),
         refundedMoney: core.serialization.property("refunded_money", Money.optional()),
@@ -38,6 +43,10 @@ export const Payment: core.serialization.ObjectSchema<serializers.Payment.Raw, S
         cardDetails: core.serialization.property("card_details", CardPaymentDetails.optional()),
         cashDetails: core.serialization.property("cash_details", CashPaymentDetails.optional()),
         bankAccountDetails: core.serialization.property("bank_account_details", BankAccountPaymentDetails.optional()),
+        electronicMoneyDetails: core.serialization.property(
+            "electronic_money_details",
+            ElectronicMoneyDetails.optional(),
+        ),
         externalDetails: core.serialization.property("external_details", ExternalPaymentDetails.optional()),
         walletDetails: core.serialization.property("wallet_details", DigitalWalletDetails.optional()),
         buyNowPayLaterDetails: core.serialization.property(
@@ -70,6 +79,10 @@ export const Payment: core.serialization.ObjectSchema<serializers.Payment.Raw, S
         receiptUrl: core.serialization.property("receipt_url", core.serialization.string().optional()),
         deviceDetails: core.serialization.property("device_details", DeviceDetails.optional()),
         applicationDetails: core.serialization.property("application_details", ApplicationDetails.optional()),
+        buyerCurrencyExchange: core.serialization.property(
+            "buyer_currency_exchange",
+            core.serialization.unknown().optional(),
+        ),
         isOfflinePayment: core.serialization.property("is_offline_payment", core.serialization.boolean().optional()),
         offlinePaymentDetails: core.serialization.property("offline_payment_details", OfflinePaymentDetails.optional()),
         versionToken: core.serialization.property("version_token", core.serialization.string().optionalNullable()),
@@ -84,6 +97,7 @@ export declare namespace Payment {
         tip_money?: Money.Raw | null;
         total_money?: Money.Raw | null;
         app_fee_money?: Money.Raw | null;
+        app_fee_allocations?: (unknown[] | null | undefined) | null;
         approved_money?: Money.Raw | null;
         processing_fee?: ProcessingFee.Raw[] | null;
         refunded_money?: Money.Raw | null;
@@ -95,6 +109,7 @@ export declare namespace Payment {
         card_details?: CardPaymentDetails.Raw | null;
         cash_details?: CashPaymentDetails.Raw | null;
         bank_account_details?: BankAccountPaymentDetails.Raw | null;
+        electronic_money_details?: ElectronicMoneyDetails.Raw | null;
         external_details?: ExternalPaymentDetails.Raw | null;
         wallet_details?: DigitalWalletDetails.Raw | null;
         buy_now_pay_later_details?: BuyNowPayLaterDetails.Raw | null;
@@ -118,6 +133,7 @@ export declare namespace Payment {
         receipt_url?: string | null;
         device_details?: DeviceDetails.Raw | null;
         application_details?: ApplicationDetails.Raw | null;
+        buyer_currency_exchange?: unknown | null;
         is_offline_payment?: boolean | null;
         offline_payment_details?: OfflinePaymentDetails.Raw | null;
         version_token?: (string | null | undefined) | null;

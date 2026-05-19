@@ -78,7 +78,6 @@ describe("PaymentsClient", () => {
             ],
             cursor: "cursor",
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/payments")
@@ -265,6 +264,7 @@ describe("PaymentsClient", () => {
                     },
                     refund_requires_card_presence: true,
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                    wallet_type: "wallet_type",
                 },
                 cash_details: { buyer_supplied_money: {} },
                 bank_account_details: {
@@ -351,7 +351,6 @@ describe("PaymentsClient", () => {
                 version_token: "TPtNEOBOa6Qq6E3C3IjckSVOM6b3hMbfhjvTxHBQUsB6o",
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/payments")
@@ -454,6 +453,7 @@ describe("PaymentsClient", () => {
                             code: "INTERNAL_SERVER_ERROR",
                         },
                     ],
+                    walletType: "wallet_type",
                 },
                 cashDetails: {
                     buyerSuppliedMoney: {},
@@ -580,7 +580,6 @@ describe("PaymentsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/payments/cancel")
@@ -661,6 +660,7 @@ describe("PaymentsClient", () => {
                     },
                     refund_requires_card_presence: true,
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                    wallet_type: "wallet_type",
                 },
                 cash_details: { buyer_supplied_money: {} },
                 bank_account_details: {
@@ -747,7 +747,6 @@ describe("PaymentsClient", () => {
                 version_token: "56pRkL3slrzet2iQrTp9n0bdJVYTB9YEWdTNjQfZOPV6o",
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/payments/payment_id")
@@ -844,6 +843,7 @@ describe("PaymentsClient", () => {
                             code: "INTERNAL_SERVER_ERROR",
                         },
                     ],
+                    walletType: "wallet_type",
                 },
                 cashDetails: {
                     buyerSuppliedMoney: {},
@@ -1017,6 +1017,7 @@ describe("PaymentsClient", () => {
                     card_payment_timeline: { authorized_at: "2021-10-13T20:26:44.364Z" },
                     refund_requires_card_presence: true,
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                    wallet_type: "wallet_type",
                 },
                 cash_details: { buyer_supplied_money: {} },
                 bank_account_details: {
@@ -1103,7 +1104,6 @@ describe("PaymentsClient", () => {
                 version_token: "rDrXnqiS7fJgexccgdpzmwqTiXui1aIKCp9EchZ7trE6o",
             },
         };
-
         server
             .mockEndpoint()
             .put("/v2/payments/payment_id")
@@ -1203,6 +1203,7 @@ describe("PaymentsClient", () => {
                             code: "INTERNAL_SERVER_ERROR",
                         },
                     ],
+                    walletType: "wallet_type",
                 },
                 cashDetails: {
                     buyerSuppliedMoney: {},
@@ -1372,6 +1373,7 @@ describe("PaymentsClient", () => {
                     },
                     refund_requires_card_presence: true,
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                    wallet_type: "wallet_type",
                 },
                 cash_details: { buyer_supplied_money: {} },
                 bank_account_details: {
@@ -1458,7 +1460,6 @@ describe("PaymentsClient", () => {
                 version_token: "N8AGYgEjCiY9Q57Jw7aVHEpBq8bzGCDCQMRX8Vs56N06o",
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/payments/payment_id/cancel")
@@ -1546,6 +1547,7 @@ describe("PaymentsClient", () => {
                             code: "INTERNAL_SERVER_ERROR",
                         },
                     ],
+                    walletType: "wallet_type",
                 },
                 cashDetails: {
                     buyerSuppliedMoney: {},
@@ -1721,6 +1723,7 @@ describe("PaymentsClient", () => {
                     },
                     refund_requires_card_presence: true,
                     errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR" }],
+                    wallet_type: "wallet_type",
                 },
                 cash_details: { buyer_supplied_money: {} },
                 bank_account_details: {
@@ -1807,7 +1810,6 @@ describe("PaymentsClient", () => {
                 version_token: "56pRkL3slrzet2iQrTp9n0bdJVYTB9YEWdTNjQfZOPV6o",
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/payments/payment_id/complete")
@@ -1905,6 +1907,7 @@ describe("PaymentsClient", () => {
                             code: "INTERNAL_SERVER_ERROR",
                         },
                     ],
+                    walletType: "wallet_type",
                 },
                 cashDetails: {
                     buyerSuppliedMoney: {},

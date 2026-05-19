@@ -5,6 +5,7 @@ import * as core from "../../core";
 import type * as serializers from "../index";
 import { Card } from "./Card";
 import { CardPaymentTimeline } from "./CardPaymentTimeline";
+import { CardSurchargeDetails } from "./CardSurchargeDetails";
 import { DeviceDetails } from "./DeviceDetails";
 import { Error_ } from "./Error_";
 
@@ -37,6 +38,11 @@ export const CardPaymentDetails: core.serialization.ObjectSchema<
         core.serialization.boolean().optional(),
     ),
     errors: core.serialization.list(Error_).optional(),
+    appliedCardSurchargeDetails: core.serialization.property(
+        "applied_card_surcharge_details",
+        CardSurchargeDetails.optional(),
+    ),
+    walletType: core.serialization.property("wallet_type", core.serialization.string().optional()),
 });
 
 export declare namespace CardPaymentDetails {
@@ -57,5 +63,7 @@ export declare namespace CardPaymentDetails {
         card_payment_timeline?: CardPaymentTimeline.Raw | null;
         refund_requires_card_presence?: boolean | null;
         errors?: Error_.Raw[] | null;
+        applied_card_surcharge_details?: CardSurchargeDetails.Raw | null;
+        wallet_type?: string | null;
     }
 }

@@ -94,7 +94,6 @@ describe("DevicesClient", () => {
             ],
             cursor: "GcXjlV2iaizH7R0fMT6wUDbw6l4otigjzx8XOOspUKHo9EPLRByM",
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/devices")
@@ -287,7 +286,6 @@ describe("DevicesClient", () => {
                 status: { category: "AVAILABLE" },
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/devices/device_id")

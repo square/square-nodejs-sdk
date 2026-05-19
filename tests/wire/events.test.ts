@@ -43,7 +43,6 @@ describe("EventsClient", () => {
             metadata: [{ event_id: "73ecd468-0aba-424f-b862-583d44efe7c8", api_version: "2022-12-13" }],
             cursor: "6b571fc9773647f=",
         };
-
         server
             .mockEndpoint()
             .post("/v2/events")
@@ -115,7 +114,6 @@ describe("EventsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server.mockEndpoint().put("/v2/events/disable").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.events.disableEvents();
@@ -138,7 +136,6 @@ describe("EventsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server.mockEndpoint().put("/v2/events/enable").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.events.enableEvents();
@@ -169,7 +166,6 @@ describe("EventsClient", () => {
                 },
             ],
         };
-
         server.mockEndpoint().get("/v2/events/types").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.events.listEventTypes({

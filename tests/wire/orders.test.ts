@@ -195,7 +195,6 @@ describe("OrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/orders")
@@ -625,7 +624,6 @@ describe("OrdersClient", () => {
             ],
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/orders/batch-retrieve")
@@ -826,7 +824,6 @@ describe("OrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/orders/calculate")
@@ -1240,7 +1237,6 @@ describe("OrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/orders/clone")
@@ -1614,7 +1610,6 @@ describe("OrdersClient", () => {
             cursor: "123",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/orders/search")
@@ -1815,7 +1810,6 @@ describe("OrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .get("/v2/orders/order_id")
@@ -2122,7 +2116,6 @@ describe("OrdersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .put("/v2/orders/order_id")
@@ -2439,7 +2432,6 @@ describe("OrdersClient", () => {
                 net_amount_due_money: { amount: BigInt(1000000), currency: "UNKNOWN_CURRENCY" },
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/orders/order_id/pay")

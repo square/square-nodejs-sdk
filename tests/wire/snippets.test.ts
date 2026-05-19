@@ -18,7 +18,6 @@ describe("SnippetsClient", () => {
                 updated_at: "2021-03-11T25:40:09.000000Z",
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/sites/site_id/snippet")
@@ -63,7 +62,6 @@ describe("SnippetsClient", () => {
                 updated_at: "2021-03-11T25:40:09.000000Z",
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/sites/site_id/snippet")
@@ -105,7 +103,6 @@ describe("SnippetsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .delete("/v2/sites/site_id/snippet")

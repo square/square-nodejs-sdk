@@ -24,7 +24,6 @@ describe("ChannelsClient", () => {
             ],
             cursor: "cursor",
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/channels")
@@ -109,7 +108,6 @@ describe("ChannelsClient", () => {
                 NOT_EXISTING: { errors: [{ category: "API_ERROR", code: "NOT_FOUND" }] },
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/channels/bulk-retrieve")
@@ -203,7 +201,6 @@ describe("ChannelsClient", () => {
                 updated_at: "2022-10-25T16:48:00Z",
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/channels/channel_id")

@@ -73,7 +73,6 @@ describe("ActivitiesClient", () => {
             ],
             cursor: "cursor",
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/gift-cards/activities")
@@ -299,7 +298,6 @@ describe("ActivitiesClient", () => {
                 },
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/gift-cards/activities")

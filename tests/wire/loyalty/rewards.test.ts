@@ -29,7 +29,6 @@ describe("RewardsClient", () => {
                 redeemed_at: "redeemed_at",
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/loyalty/rewards")
@@ -124,7 +123,6 @@ describe("RewardsClient", () => {
             ],
             cursor: "cursor",
         };
-
         server
             .mockEndpoint()
             .post("/v2/loyalty/rewards/search")
@@ -217,7 +215,6 @@ describe("RewardsClient", () => {
                 redeemed_at: "2020-05-08T21:56:00Z",
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/loyalty/rewards/reward_id")
@@ -259,7 +256,6 @@ describe("RewardsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .delete("/v2/loyalty/rewards/reward_id")
@@ -318,7 +314,6 @@ describe("RewardsClient", () => {
                 },
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/loyalty/rewards/reward_id/redeem")
