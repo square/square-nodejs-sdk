@@ -24,8 +24,6 @@ export class V1TransactionsClient {
     }
 
     /**
-     * @deprecated
-     *
      * Provides summary information for a merchant's online store orders.
      *
      * @param {Square.V1ListOrdersRequest} request
@@ -55,7 +53,7 @@ export class V1TransactionsClient {
             order:
                 order !== undefined
                     ? serializers.SortOrder.jsonOrThrow(order, { unrecognizedObjectKeys: "strip", omitUndefined: true })
-                    : undefined,
+                    : null,
             limit,
             batch_token: batchToken,
         };
@@ -63,7 +61,7 @@ export class V1TransactionsClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -107,8 +105,6 @@ export class V1TransactionsClient {
     }
 
     /**
-     * @deprecated
-     *
      * Provides comprehensive information for a single online store order, including the order's history.
      *
      * @param {Square.V1RetrieveOrderRequest} request
@@ -136,7 +132,7 @@ export class V1TransactionsClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -185,8 +181,6 @@ export class V1TransactionsClient {
     }
 
     /**
-     * @deprecated
-     *
      * Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
      *
      * @param {Square.V1UpdateOrderRequest} request
@@ -215,7 +209,7 @@ export class V1TransactionsClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({

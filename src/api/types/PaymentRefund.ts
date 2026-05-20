@@ -45,6 +45,8 @@ export interface PaymentRefund {
      * [Working with Monetary Amounts](https://developer.squareup.com/docs/build-basics/working-with-monetary-amounts).
      */
     appFeeMoney?: Square.Money;
+    /** Details pertaining to contributors to the refund of the application fee. */
+    appFeeAllocations?: unknown[];
     /** Processing fees and fee adjustments assessed by Square for this refund. */
     processingFee?: Square.ProcessingFee[] | null;
     /** The ID of the payment associated with this refund. */

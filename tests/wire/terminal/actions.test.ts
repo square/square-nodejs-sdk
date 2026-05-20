@@ -64,7 +64,6 @@ describe("ActionsClient", () => {
                 await_next_action_duration: "await_next_action_duration",
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/terminals/actions")
@@ -238,7 +237,6 @@ describe("ActionsClient", () => {
             ],
             cursor: "CURSOR",
         };
-
         server
             .mockEndpoint()
             .post("/v2/terminals/actions/search")
@@ -429,7 +427,6 @@ describe("ActionsClient", () => {
                 await_next_action_duration: "await_next_action_duration",
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/terminals/actions/action_id")
@@ -578,7 +575,6 @@ describe("ActionsClient", () => {
                 await_next_action_duration: "await_next_action_duration",
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/terminals/actions/action_id/cancel")

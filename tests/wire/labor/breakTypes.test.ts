@@ -34,7 +34,6 @@ describe("BreakTypesClient", () => {
             cursor: "2fofTniCgT0yIPAq26kmk0YyFQJZfbWkh73OOnlTHmTAx13NgED",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/labor/break-types")
@@ -113,7 +112,6 @@ describe("BreakTypesClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/labor/break-types")
@@ -171,7 +169,6 @@ describe("BreakTypesClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .get("/v2/labor/break-types/id")
@@ -230,7 +227,6 @@ describe("BreakTypesClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .put("/v2/labor/break-types/id")
@@ -279,7 +275,6 @@ describe("BreakTypesClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .delete("/v2/labor/break-types/id")

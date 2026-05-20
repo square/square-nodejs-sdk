@@ -45,7 +45,6 @@ describe("CardsClient", () => {
             ],
             cursor: "cursor",
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/cards")
@@ -174,7 +173,6 @@ describe("CardsClient", () => {
                 hsa_fsa: false,
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/cards")
@@ -298,7 +296,6 @@ describe("CardsClient", () => {
                 hsa_fsa: false,
             },
         };
-
         server.mockEndpoint().get("/v2/cards/card_id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.cards.get({
@@ -401,7 +398,6 @@ describe("CardsClient", () => {
                 hsa_fsa: false,
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/cards/card_id/disable")

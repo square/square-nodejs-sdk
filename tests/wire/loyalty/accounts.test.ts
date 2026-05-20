@@ -33,7 +33,6 @@ describe("AccountsClient", () => {
                 expiring_point_deadlines: [{ points: 1, expires_at: "expires_at" }],
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/loyalty/accounts")
@@ -111,7 +110,6 @@ describe("AccountsClient", () => {
             ],
             cursor: "cursor",
         };
-
         server
             .mockEndpoint()
             .post("/v2/loyalty/accounts/search")
@@ -190,7 +188,6 @@ describe("AccountsClient", () => {
                 expiring_point_deadlines: [{ points: 1, expires_at: "expires_at" }],
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/loyalty/accounts/account_id")
@@ -289,7 +286,6 @@ describe("AccountsClient", () => {
                 },
             ],
         };
-
         server
             .mockEndpoint()
             .post("/v2/loyalty/accounts/account_id/accumulate")
@@ -429,7 +425,6 @@ describe("AccountsClient", () => {
                 },
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/loyalty/accounts/account_id/adjust")

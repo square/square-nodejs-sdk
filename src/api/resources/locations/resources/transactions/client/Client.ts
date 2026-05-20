@@ -24,8 +24,6 @@ export class TransactionsClient {
     }
 
     /**
-     * @deprecated
-     *
      * Lists transactions for a particular location.
      *
      * Transactions include payment information from sales and exchanges and refund
@@ -66,14 +64,14 @@ export class TransactionsClient {
                           unrecognizedObjectKeys: "strip",
                           omitUndefined: true,
                       })
-                    : undefined,
+                    : null,
             cursor,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -122,8 +120,6 @@ export class TransactionsClient {
     }
 
     /**
-     * @deprecated
-     *
      * Retrieves details for a single transaction.
      *
      * @param {Square.locations.GetTransactionsRequest} request
@@ -151,7 +147,7 @@ export class TransactionsClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -200,8 +196,6 @@ export class TransactionsClient {
     }
 
     /**
-     * @deprecated
-     *
      * Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
      * endpoint with a `delay_capture` value of `true`.
      *
@@ -234,7 +228,7 @@ export class TransactionsClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -283,8 +277,6 @@ export class TransactionsClient {
     }
 
     /**
-     * @deprecated
-     *
      * Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
      * endpoint with a `delay_capture` value of `true`.
      *
@@ -317,7 +309,7 @@ export class TransactionsClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({

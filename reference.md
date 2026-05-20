@@ -558,7 +558,7 @@ await client.applePay.registerDomain({
 </details>
 
 ## BankAccounts
-<details><summary><code>client.bankAccounts.<a href="/src/api/resources/bankAccounts/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.BankAccount, Square.ListBankAccountsResponse&gt;</code></summary>
+<details><summary><code>client.bankAccounts.<a href="/src/api/resources/bankAccounts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.BankAccount, Square.ListBankAccountsResponse></code></summary>
 <dl>
 <dd>
 
@@ -906,7 +906,7 @@ await client.bankAccounts.disableBankAccount({
 </details>
 
 ## Bookings
-<details><summary><code>client.bookings.<a href="/src/api/resources/bookings/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Booking, Square.ListBookingsResponse&gt;</code></summary>
+<details><summary><code>client.bookings.<a href="/src/api/resources/bookings/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Booking, Square.ListBookingsResponse></code></summary>
 <dl>
 <dd>
 
@@ -1615,7 +1615,7 @@ await client.bookings.cancel({
 </details>
 
 ## Cards
-<details><summary><code>client.cards.<a href="/src/api/resources/cards/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Card, Square.ListCardsResponse&gt;</code></summary>
+<details><summary><code>client.cards.<a href="/src/api/resources/cards/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Card, Square.ListCardsResponse></code></summary>
 <dl>
 <dd>
 
@@ -2211,7 +2211,7 @@ await client.catalog.info();
 </dl>
 </details>
 
-<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CatalogObject, Square.ListCatalogResponse&gt;</code></summary>
+<details><summary><code>client.catalog.<a href="/src/api/resources/catalog/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CatalogObject, Square.ListCatalogResponse></code></summary>
 <dl>
 <dd>
 
@@ -2616,7 +2616,7 @@ await client.catalog.updateItemTaxes({
 </details>
 
 ## Channels
-<details><summary><code>client.channels.<a href="/src/api/resources/channels/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Channel, Square.ListChannelsResponse&gt;</code></summary>
+<details><summary><code>client.channels.<a href="/src/api/resources/channels/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Channel, Square.ListChannelsResponse></code></summary>
 <dl>
 <dd>
 
@@ -2834,7 +2834,7 @@ await client.channels.get({
 </details>
 
 ## Customers
-<details><summary><code>client.customers.<a href="/src/api/resources/customers/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Customer, Square.ListCustomersResponse&gt;</code></summary>
+<details><summary><code>client.customers.<a href="/src/api/resources/customers/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Customer, Square.ListCustomersResponse></code></summary>
 <dl>
 <dd>
 
@@ -3632,7 +3632,7 @@ await client.customers.delete({
 </details>
 
 ## Devices
-<details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Device, Square.ListDevicesResponse&gt;</code></summary>
+<details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Device, Square.ListDevicesResponse></code></summary>
 <dl>
 <dd>
 
@@ -3784,7 +3784,7 @@ await client.devices.get({
 </details>
 
 ## Disputes
-<details><summary><code>client.disputes.<a href="/src/api/resources/disputes/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Dispute, Square.ListDisputesResponse&gt;</code></summary>
+<details><summary><code>client.disputes.<a href="/src/api/resources/disputes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Dispute, Square.ListDisputesResponse></code></summary>
 <dl>
 <dd>
 
@@ -4207,7 +4207,7 @@ await client.disputes.submitEvidence({
 </details>
 
 ## Employees
-<details><summary><code>client.employees.<a href="/src/api/resources/employees/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Employee, Square.ListEmployeesResponse&gt;</code></summary>
+<details><summary><code>client.employees.<a href="/src/api/resources/employees/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Employee, Square.ListEmployeesResponse></code></summary>
 <dl>
 <dd>
 
@@ -4599,7 +4599,7 @@ await client.events.listEventTypes({
 </details>
 
 ## GiftCards
-<details><summary><code>client.giftCards.<a href="/src/api/resources/giftCards/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.GiftCard, Square.ListGiftCardsResponse&gt;</code></summary>
+<details><summary><code>client.giftCards.<a href="/src/api/resources/giftCards/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.GiftCard, Square.ListGiftCardsResponse></code></summary>
 <dl>
 <dd>
 
@@ -5520,7 +5520,7 @@ await client.inventory.batchCreateChanges({
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">batchGetChanges</a>({ ...params }) -> core.Page&lt;Square.InventoryChange, Square.BatchGetInventoryChangesResponse&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">batchGetChanges</a>({ ...params }) -> core.Page<Square.InventoryChange, Square.BatchGetInventoryChangesResponse></code></summary>
 <dl>
 <dd>
 
@@ -5616,7 +5616,7 @@ const response = page.response;
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">batchGetCounts</a>({ ...params }) -> core.Page&lt;Square.InventoryCount, Square.BatchGetInventoryCountsResponse&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">batchGetCounts</a>({ ...params }) -> core.Page<Square.InventoryCount, Square.BatchGetInventoryCountsResponse></code></summary>
 <dl>
 <dd>
 
@@ -5907,7 +5907,7 @@ await client.inventory.getTransfer({
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">get</a>({ ...params }) -> core.Page&lt;Square.InventoryCount, Square.GetInventoryCountResponse&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">get</a>({ ...params }) -> core.Page<Square.InventoryCount, Square.GetInventoryCountResponse></code></summary>
 <dl>
 <dd>
 
@@ -5993,7 +5993,7 @@ const response = page.response;
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">changes</a>({ ...params }) -> core.Page&lt;Square.InventoryChange, Square.GetInventoryChangesResponse&gt;</code></summary>
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">changes</a>({ ...params }) -> core.Page<Square.InventoryChange, Square.GetInventoryChangesResponse></code></summary>
 <dl>
 <dd>
 
@@ -6089,7 +6089,7 @@ const response = page.response;
 </details>
 
 ## Invoices
-<details><summary><code>client.invoices.<a href="/src/api/resources/invoices/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Invoice, Square.ListInvoicesResponse&gt;</code></summary>
+<details><summary><code>client.invoices.<a href="/src/api/resources/invoices/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Invoice, Square.ListInvoicesResponse></code></summary>
 <dl>
 <dd>
 
@@ -8254,7 +8254,7 @@ await client.loyalty.searchEvents({
 </details>
 
 ## Merchants
-<details><summary><code>client.merchants.<a href="/src/api/resources/merchants/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Merchant, Square.ListMerchantsResponse&gt;</code></summary>
+<details><summary><code>client.merchants.<a href="/src/api/resources/merchants/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Merchant, Square.ListMerchantsResponse></code></summary>
 <dl>
 <dd>
 
@@ -9339,7 +9339,7 @@ await client.orders.pay({
 </details>
 
 ## Payments
-<details><summary><code>client.payments.<a href="/src/api/resources/payments/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Payment, Square.ListPaymentsResponse&gt;</code></summary>
+<details><summary><code>client.payments.<a href="/src/api/resources/payments/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Payment, Square.ListPaymentsResponse></code></summary>
 <dl>
 <dd>
 
@@ -9890,7 +9890,7 @@ await client.payments.complete({
 </details>
 
 ## Payouts
-<details><summary><code>client.payouts.<a href="/src/api/resources/payouts/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.Payout, Square.ListPayoutsResponse&gt;</code></summary>
+<details><summary><code>client.payouts.<a href="/src/api/resources/payouts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.Payout, Square.ListPayoutsResponse></code></summary>
 <dl>
 <dd>
 
@@ -10049,7 +10049,7 @@ await client.payouts.get({
 </dl>
 </details>
 
-<details><summary><code>client.payouts.<a href="/src/api/resources/payouts/client/Client.ts">listEntries</a>({ ...params }) -> core.Page&lt;Square.PayoutEntry, Square.ListPayoutEntriesResponse&gt;</code></summary>
+<details><summary><code>client.payouts.<a href="/src/api/resources/payouts/client/Client.ts">listEntries</a>({ ...params }) -> core.Page<Square.PayoutEntry, Square.ListPayoutEntriesResponse></code></summary>
 <dl>
 <dd>
 
@@ -10136,7 +10136,7 @@ const response = page.response;
 </details>
 
 ## Refunds
-<details><summary><code>client.refunds.<a href="/src/api/resources/refunds/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.PaymentRefund, Square.ListPaymentRefundsResponse&gt;</code></summary>
+<details><summary><code>client.refunds.<a href="/src/api/resources/refunds/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.PaymentRefund, Square.ListPaymentRefundsResponse></code></summary>
 <dl>
 <dd>
 
@@ -11230,7 +11230,7 @@ await client.subscriptions.cancel({
 </dl>
 </details>
 
-<details><summary><code>client.subscriptions.<a href="/src/api/resources/subscriptions/client/Client.ts">listEvents</a>({ ...params }) -> core.Page&lt;Square.SubscriptionEvent, Square.ListSubscriptionEventsResponse&gt;</code></summary>
+<details><summary><code>client.subscriptions.<a href="/src/api/resources/subscriptions/client/Client.ts">listEvents</a>({ ...params }) -> core.Page<Square.SubscriptionEvent, Square.ListSubscriptionEventsResponse></code></summary>
 <dl>
 <dd>
 
@@ -12619,7 +12619,7 @@ await client.transferOrders.create({
 </dl>
 </details>
 
-<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">search</a>({ ...params }) -> core.Page&lt;Square.TransferOrder, Square.SearchTransferOrdersResponse&gt;</code></summary>
+<details><summary><code>client.transferOrders.<a href="/src/api/resources/transferOrders/client/Client.ts">search</a>({ ...params }) -> core.Page<Square.TransferOrder, Square.SearchTransferOrdersResponse></code></summary>
 <dl>
 <dd>
 
@@ -13710,7 +13710,7 @@ await client.vendors.update({
 </details>
 
 ## Bookings CustomAttributeDefinitions
-<details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomAttributeDefinition, Square.ListBookingCustomAttributeDefinitionsResponse&gt;</code></summary>
+<details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListBookingCustomAttributeDefinitionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -14230,7 +14230,7 @@ await client.bookings.customAttributes.batchUpsert({
 </dl>
 </details>
 
-<details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomAttribute, Square.ListBookingCustomAttributesResponse&gt;</code></summary>
+<details><summary><code>client.bookings.customAttributes.<a href="/src/api/resources/bookings/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute, Square.ListBookingCustomAttributesResponse></code></summary>
 <dl>
 <dd>
 
@@ -14535,7 +14535,7 @@ await client.bookings.customAttributes.delete({
 </details>
 
 ## Bookings LocationProfiles
-<details><summary><code>client.bookings.locationProfiles.<a href="/src/api/resources/bookings/resources/locationProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.LocationBookingProfile, Square.ListLocationBookingProfilesResponse&gt;</code></summary>
+<details><summary><code>client.bookings.locationProfiles.<a href="/src/api/resources/bookings/resources/locationProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.LocationBookingProfile, Square.ListLocationBookingProfilesResponse></code></summary>
 <dl>
 <dd>
 
@@ -14617,7 +14617,7 @@ const response = page.response;
 </details>
 
 ## Bookings TeamMemberProfiles
-<details><summary><code>client.bookings.teamMemberProfiles.<a href="/src/api/resources/bookings/resources/teamMemberProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.TeamMemberBookingProfile, Square.ListTeamMemberBookingProfilesResponse&gt;</code></summary>
+<details><summary><code>client.bookings.teamMemberProfiles.<a href="/src/api/resources/bookings/resources/teamMemberProfiles/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.TeamMemberBookingProfile, Square.ListTeamMemberBookingProfilesResponse></code></summary>
 <dl>
 <dd>
 
@@ -14768,7 +14768,7 @@ await client.bookings.teamMemberProfiles.get({
 </details>
 
 ## CashDrawers Shifts
-<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CashDrawerShiftSummary, Square.ListCashDrawerShiftsResponse&gt;</code></summary>
+<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CashDrawerShiftSummary, Square.ListCashDrawerShiftsResponse></code></summary>
 <dl>
 <dd>
 
@@ -14925,7 +14925,7 @@ await client.cashDrawers.shifts.get({
 </dl>
 </details>
 
-<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">listEvents</a>({ ...params }) -> core.Page&lt;Square.CashDrawerShiftEvent, Square.ListCashDrawerShiftEventsResponse&gt;</code></summary>
+<details><summary><code>client.cashDrawers.shifts.<a href="/src/api/resources/cashDrawers/resources/shifts/client/Client.ts">listEvents</a>({ ...params }) -> core.Page<Square.CashDrawerShiftEvent, Square.ListCashDrawerShiftEventsResponse></code></summary>
 <dl>
 <dd>
 
@@ -15370,7 +15370,7 @@ await client.catalog.object.delete({
 </details>
 
 ## Checkout PaymentLinks
-<details><summary><code>client.checkout.paymentLinks.<a href="/src/api/resources/checkout/resources/paymentLinks/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.PaymentLink, Square.ListPaymentLinksResponse&gt;</code></summary>
+<details><summary><code>client.checkout.paymentLinks.<a href="/src/api/resources/checkout/resources/paymentLinks/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.PaymentLink, Square.ListPaymentLinksResponse></code></summary>
 <dl>
 <dd>
 
@@ -15728,7 +15728,7 @@ await client.checkout.paymentLinks.delete({
 </details>
 
 ## Customers CustomAttributeDefinitions
-<details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomAttributeDefinition, Square.ListCustomerCustomAttributeDefinitionsResponse&gt;</code></summary>
+<details><summary><code>client.customers.customAttributeDefinitions.<a href="/src/api/resources/customers/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListCustomerCustomAttributeDefinitionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -16227,7 +16227,7 @@ await client.customers.customAttributeDefinitions.batchUpsert({
 </details>
 
 ## Customers Groups
-<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomerGroup, Square.ListCustomerGroupsResponse&gt;</code></summary>
+<details><summary><code>client.customers.groups.<a href="/src/api/resources/customers/resources/groups/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomerGroup, Square.ListCustomerGroupsResponse></code></summary>
 <dl>
 <dd>
 
@@ -16714,7 +16714,7 @@ await client.customers.groups.remove({
 </details>
 
 ## Customers Segments
-<details><summary><code>client.customers.segments.<a href="/src/api/resources/customers/resources/segments/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomerSegment, Square.ListCustomerSegmentsResponse&gt;</code></summary>
+<details><summary><code>client.customers.segments.<a href="/src/api/resources/customers/resources/segments/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomerSegment, Square.ListCustomerSegmentsResponse></code></summary>
 <dl>
 <dd>
 
@@ -17007,7 +17007,7 @@ await client.customers.cards.delete({
 </details>
 
 ## Customers CustomAttributes
-<details><summary><code>client.customers.customAttributes.<a href="/src/api/resources/customers/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomAttribute, Square.ListCustomerCustomAttributesResponse&gt;</code></summary>
+<details><summary><code>client.customers.customAttributes.<a href="/src/api/resources/customers/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute, Square.ListCustomerCustomAttributesResponse></code></summary>
 <dl>
 <dd>
 
@@ -17322,7 +17322,7 @@ await client.customers.customAttributes.delete({
 </details>
 
 ## Devices Codes
-<details><summary><code>client.devices.codes.<a href="/src/api/resources/devices/resources/codes/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.DeviceCode, Square.ListDeviceCodesResponse&gt;</code></summary>
+<details><summary><code>client.devices.codes.<a href="/src/api/resources/devices/resources/codes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.DeviceCode, Square.ListDeviceCodesResponse></code></summary>
 <dl>
 <dd>
 
@@ -17544,7 +17544,7 @@ await client.devices.codes.get({
 </details>
 
 ## Disputes Evidence
-<details><summary><code>client.disputes.evidence.<a href="/src/api/resources/disputes/resources/evidence/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.DisputeEvidence, Square.ListDisputeEvidenceResponse&gt;</code></summary>
+<details><summary><code>client.disputes.evidence.<a href="/src/api/resources/disputes/resources/evidence/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.DisputeEvidence, Square.ListDisputeEvidenceResponse></code></summary>
 <dl>
 <dd>
 
@@ -17761,7 +17761,7 @@ await client.disputes.evidence.delete({
 </details>
 
 ## GiftCards Activities
-<details><summary><code>client.giftCards.activities.<a href="/src/api/resources/giftCards/resources/activities/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.GiftCardActivity, Square.ListGiftCardActivitiesResponse&gt;</code></summary>
+<details><summary><code>client.giftCards.activities.<a href="/src/api/resources/giftCards/resources/activities/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.GiftCardActivity, Square.ListGiftCardActivitiesResponse></code></summary>
 <dl>
 <dd>
 
@@ -17933,7 +17933,7 @@ await client.giftCards.activities.create({
 </details>
 
 ## Labor BreakTypes
-<details><summary><code>client.labor.breakTypes.<a href="/src/api/resources/labor/resources/breakTypes/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.BreakType, Square.ListBreakTypesResponse&gt;</code></summary>
+<details><summary><code>client.labor.breakTypes.<a href="/src/api/resources/labor/resources/breakTypes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.BreakType, Square.ListBreakTypesResponse></code></summary>
 <dl>
 <dd>
 
@@ -18305,7 +18305,7 @@ await client.labor.breakTypes.delete({
 </details>
 
 ## Labor EmployeeWages
-<details><summary><code>client.labor.employeeWages.<a href="/src/api/resources/labor/resources/employeeWages/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.EmployeeWage, Square.ListEmployeeWagesResponse&gt;</code></summary>
+<details><summary><code>client.labor.employeeWages.<a href="/src/api/resources/labor/resources/employeeWages/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.EmployeeWage, Square.ListEmployeeWagesResponse></code></summary>
 <dl>
 <dd>
 
@@ -18882,7 +18882,7 @@ await client.labor.shifts.delete({
 </details>
 
 ## Labor TeamMemberWages
-<details><summary><code>client.labor.teamMemberWages.<a href="/src/api/resources/labor/resources/teamMemberWages/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.TeamMemberWage, Square.ListTeamMemberWagesResponse&gt;</code></summary>
+<details><summary><code>client.labor.teamMemberWages.<a href="/src/api/resources/labor/resources/teamMemberWages/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.TeamMemberWage, Square.ListTeamMemberWagesResponse></code></summary>
 <dl>
 <dd>
 
@@ -19031,7 +19031,7 @@ await client.labor.teamMemberWages.get({
 </details>
 
 ## Labor WorkweekConfigs
-<details><summary><code>client.labor.workweekConfigs.<a href="/src/api/resources/labor/resources/workweekConfigs/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.WorkweekConfig, Square.ListWorkweekConfigsResponse&gt;</code></summary>
+<details><summary><code>client.labor.workweekConfigs.<a href="/src/api/resources/labor/resources/workweekConfigs/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WorkweekConfig, Square.ListWorkweekConfigsResponse></code></summary>
 <dl>
 <dd>
 
@@ -19183,7 +19183,7 @@ await client.labor.workweekConfigs.get({
 </details>
 
 ## Locations CustomAttributeDefinitions
-<details><summary><code>client.locations.customAttributeDefinitions.<a href="/src/api/resources/locations/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomAttributeDefinition, Square.ListLocationCustomAttributeDefinitionsResponse&gt;</code></summary>
+<details><summary><code>client.locations.customAttributeDefinitions.<a href="/src/api/resources/locations/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListLocationCustomAttributeDefinitionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -19730,7 +19730,7 @@ await client.locations.customAttributes.batchUpsert({
 </dl>
 </details>
 
-<details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomAttribute, Square.ListLocationCustomAttributesResponse&gt;</code></summary>
+<details><summary><code>client.locations.customAttributes.<a href="/src/api/resources/locations/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute, Square.ListLocationCustomAttributesResponse></code></summary>
 <dl>
 <dd>
 
@@ -21263,7 +21263,7 @@ await client.loyalty.rewards.redeem({
 </details>
 
 ## Loyalty Programs Promotions
-<details><summary><code>client.loyalty.programs.promotions.<a href="/src/api/resources/loyalty/resources/programs/resources/promotions/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.LoyaltyPromotion, Square.ListLoyaltyPromotionsResponse&gt;</code></summary>
+<details><summary><code>client.loyalty.programs.promotions.<a href="/src/api/resources/loyalty/resources/programs/resources/promotions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.LoyaltyPromotion, Square.ListLoyaltyPromotionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -21579,7 +21579,7 @@ await client.loyalty.programs.promotions.cancel({
 </details>
 
 ## Merchants CustomAttributeDefinitions
-<details><summary><code>client.merchants.customAttributeDefinitions.<a href="/src/api/resources/merchants/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomAttributeDefinition, Square.ListMerchantCustomAttributeDefinitionsResponse&gt;</code></summary>
+<details><summary><code>client.merchants.customAttributeDefinitions.<a href="/src/api/resources/merchants/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListMerchantCustomAttributeDefinitionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -22116,7 +22116,7 @@ await client.merchants.customAttributes.batchUpsert({
 </dl>
 </details>
 
-<details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomAttribute, Square.ListMerchantCustomAttributesResponse&gt;</code></summary>
+<details><summary><code>client.merchants.customAttributes.<a href="/src/api/resources/merchants/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute, Square.ListMerchantCustomAttributesResponse></code></summary>
 <dl>
 <dd>
 
@@ -22423,7 +22423,7 @@ await client.merchants.customAttributes.delete({
 </details>
 
 ## Orders CustomAttributeDefinitions
-<details><summary><code>client.orders.customAttributeDefinitions.<a href="/src/api/resources/orders/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomAttributeDefinition, Square.ListOrderCustomAttributeDefinitionsResponse&gt;</code></summary>
+<details><summary><code>client.orders.customAttributeDefinitions.<a href="/src/api/resources/orders/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListOrderCustomAttributeDefinitionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -22982,7 +22982,7 @@ await client.orders.customAttributes.batchUpsert({
 </dl>
 </details>
 
-<details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.CustomAttribute, Square.ListOrderCustomAttributesResponse&gt;</code></summary>
+<details><summary><code>client.orders.customAttributes.<a href="/src/api/resources/orders/resources/customAttributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttribute, Square.ListOrderCustomAttributesResponse></code></summary>
 <dl>
 <dd>
 
@@ -24362,7 +24362,7 @@ await client.webhooks.eventTypes.list({
 </details>
 
 ## Webhooks Subscriptions
-<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">list</a>({ ...params }) -> core.Page&lt;Square.WebhookSubscription, Square.ListWebhookSubscriptionsResponse&gt;</code></summary>
+<details><summary><code>client.webhooks.subscriptions.<a href="/src/api/resources/webhooks/resources/subscriptions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.WebhookSubscription, Square.ListWebhookSubscriptionsResponse></code></summary>
 <dl>
 <dd>
 
@@ -24848,4 +24848,3 @@ await client.webhooks.subscriptions.test({
 </dd>
 </dl>
 </details>
-

@@ -5,7 +5,6 @@ import { toBinaryUploadRequest, type Uploadable } from "../../../src/core/file/i
 
 describe("toBinaryUploadRequest", () => {
     const TEST_FILE_PATH = join(__dirname, "..", "test-file.txt");
-    const TEST_FILE_SIZE = fs.statSync(TEST_FILE_PATH).size.toString();
 
     beforeEach(() => {
         jest.clearAllMocks();
@@ -378,7 +377,7 @@ describe("toBinaryUploadRequest", () => {
             expect(result.headers).toEqual({
                 "Content-Disposition": 'attachment; filename="test-file.txt"', // Should extract from path
                 "Content-Type": "text/plain",
-                "Content-Length": TEST_FILE_SIZE, // Should determine from file system (OS-agnostic)
+                "Content-Length": "21", // Should determine from file system (test file is 21 bytes)
             });
         });
 
@@ -392,7 +391,7 @@ describe("toBinaryUploadRequest", () => {
             expect(result.body).toBeInstanceOf(fs.ReadStream);
             expect(result.headers).toEqual({
                 "Content-Disposition": 'attachment; filename="test-file.txt"', // Should extract from path
-                "Content-Length": TEST_FILE_SIZE, // Should determine from file system (OS-agnostic)
+                "Content-Length": "21", // Should determine from file system (test file is 21 bytes)
             });
         });
     });

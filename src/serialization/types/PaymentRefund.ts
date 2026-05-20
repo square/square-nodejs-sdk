@@ -20,6 +20,10 @@ export const PaymentRefund: core.serialization.ObjectSchema<serializers.PaymentR
         destinationDetails: core.serialization.property("destination_details", DestinationDetails.optional()),
         amountMoney: core.serialization.property("amount_money", Money),
         appFeeMoney: core.serialization.property("app_fee_money", Money.optional()),
+        appFeeAllocations: core.serialization.property(
+            "app_fee_allocations",
+            core.serialization.list(core.serialization.unknown()).optional(),
+        ),
         processingFee: core.serialization.property(
             "processing_fee",
             core.serialization.list(ProcessingFee).optionalNullable(),
@@ -43,6 +47,7 @@ export declare namespace PaymentRefund {
         destination_details?: DestinationDetails.Raw | null;
         amount_money: Money.Raw;
         app_fee_money?: Money.Raw | null;
+        app_fee_allocations?: unknown[] | null;
         processing_fee?: (ProcessingFee.Raw[] | null | undefined) | null;
         payment_id?: (string | null | undefined) | null;
         order_id?: (string | null | undefined) | null;

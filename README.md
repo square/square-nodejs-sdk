@@ -18,7 +18,6 @@ The Square TypeScript library provides convenient access to the Square APIs from
 - [Pagination](#pagination)
 - [Webhook Signature Verification](#webhook-signature-verification)
 - [Advanced](#advanced)
-  - [Subpackage Exports](#subpackage-exports)
   - [Additional Headers](#additional-headers)
   - [Additional Query String Parameters](#additional-query-string-parameters)
   - [Retries](#retries)
@@ -272,16 +271,6 @@ const isValid = WebhooksHelper.verifySignature({
 ```
 
 ## Advanced
-
-### Subpackage Exports
-
-This SDK supports direct imports of subpackage clients, which allows JavaScript bundlers to tree-shake and include only the imported subpackage code. This results in much smaller bundle sizes.
-
-```typescript
-import { OAuthClient } from 'square/oAuth';
-
-const client = new OAuthClient({...});
-```
 
 ### Additional Headers
 

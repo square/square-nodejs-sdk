@@ -80,7 +80,6 @@ describe("TeamMembersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/team-members")
@@ -253,7 +252,6 @@ describe("TeamMembersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/team-members/bulk-create")
@@ -423,7 +421,6 @@ describe("TeamMembersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/team-members/bulk-update")
@@ -750,7 +747,6 @@ describe("TeamMembersClient", () => {
             cursor: "N:9UglUjOXQ13-hMFypCft",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/team-members/search")
@@ -1084,7 +1080,6 @@ describe("TeamMembersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .get("/v2/team-members/team_member_id")
@@ -1231,7 +1226,6 @@ describe("TeamMembersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .put("/v2/team-members/team_member_id")

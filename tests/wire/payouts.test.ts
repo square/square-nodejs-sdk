@@ -48,7 +48,6 @@ describe("PayoutsClient", () => {
             cursor: "EMPCyStibo64hS8wLayZPp3oedR3AeEUNd3z7u6zphi72LQZFIEMbkKVvot9eefpU",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/payouts")
@@ -153,7 +152,6 @@ describe("PayoutsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .get("/v2/payouts/payout_id")
@@ -230,7 +228,6 @@ describe("PayoutsClient", () => {
             cursor: "TbfI80z98Xc2LdApCyZ2NvCYLpkPurYLR16GRIttpMJ55mrSIMzHgtkcRQdT0mOnTtfHO",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/payouts/payout_id/payout-entries")

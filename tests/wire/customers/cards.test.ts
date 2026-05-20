@@ -61,7 +61,6 @@ describe("CardsClient", () => {
                 hsa_fsa: true,
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/customers/customer_id/cards")
@@ -142,7 +141,6 @@ describe("CardsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .delete("/v2/customers/customer_id/cards/card_id")

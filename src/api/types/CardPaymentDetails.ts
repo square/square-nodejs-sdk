@@ -71,4 +71,16 @@ export interface CardPaymentDetails {
     refundRequiresCardPresence?: boolean;
     /** Information about errors encountered during the request. */
     errors?: Square.Error_[];
+    /** Additional information about a card_surcharge on the payment. */
+    appliedCardSurchargeDetails?: Square.CardSurchargeDetails;
+    /**
+     * The type of digital wallet used for this card payment, if applicable.
+     * Currently only populated for in-person Apple Pay payments. Detection has no false
+     * positives but may have false negatives (some Apple Pay payments may not be detected).
+     *
+     * For payments with `source_type` of `WALLET`, see `DigitalWalletDetails` instead.
+     *
+     * Values: `APPLE_PAY`
+     */
+    walletType?: string;
 }

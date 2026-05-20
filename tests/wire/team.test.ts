@@ -30,7 +30,6 @@ describe("TeamClient", () => {
             cursor: "cursor",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .get("/v2/team-members/jobs")
@@ -91,7 +90,6 @@ describe("TeamClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/team-members/jobs")
@@ -143,7 +141,6 @@ describe("TeamClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .get("/v2/team-members/jobs/job_id")
@@ -190,7 +187,6 @@ describe("TeamClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .put("/v2/team-members/jobs/job_id")

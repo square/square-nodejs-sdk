@@ -42,7 +42,6 @@ describe("CustomersClient", () => {
             cursor: "cursor",
             count: BigInt(1000000),
         };
-
         server
             .mockEndpoint({ once: false })
             .get("/v2/customers")
@@ -166,7 +165,6 @@ describe("CustomersClient", () => {
                 tax_ids: { eu_vat: "eu_vat" },
             },
         };
-
         server
             .mockEndpoint()
             .post("/v2/customers")
@@ -338,7 +336,6 @@ describe("CustomersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/customers/bulk-create")
@@ -484,7 +481,6 @@ describe("CustomersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/customers/bulk-delete")
@@ -585,7 +581,6 @@ describe("CustomersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/customers/bulk-retrieve")
@@ -711,7 +706,6 @@ describe("CustomersClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .post("/v2/customers/bulk-update")
@@ -868,7 +862,6 @@ describe("CustomersClient", () => {
             cursor: "9dpS093Uy12AzeE",
             count: BigInt(1000000),
         };
-
         server
             .mockEndpoint()
             .post("/v2/customers/search")
@@ -1020,7 +1013,6 @@ describe("CustomersClient", () => {
                 tax_ids: { eu_vat: "eu_vat" },
             },
         };
-
         server
             .mockEndpoint()
             .get("/v2/customers/customer_id")
@@ -1131,7 +1123,6 @@ describe("CustomersClient", () => {
                 tax_ids: { eu_vat: "eu_vat" },
             },
         };
-
         server
             .mockEndpoint()
             .put("/v2/customers/customer_id")
@@ -1206,7 +1197,6 @@ describe("CustomersClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .delete("/v2/customers/customer_id")

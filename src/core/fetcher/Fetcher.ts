@@ -218,13 +218,7 @@ async function getHeaders(args: Fetcher.Args): Promise<Headers> {
 
     newHeaders.set(
         "Accept",
-        args.responseType === "json"
-            ? "application/json"
-            : args.responseType === "text"
-              ? "text/plain"
-              : args.responseType === "sse"
-                ? "text/event-stream"
-                : "*/*",
+        args.responseType === "json" ? "application/json" : args.responseType === "text" ? "text/plain" : "*/*",
     );
     if (args.body !== undefined && args.contentType != null) {
         newHeaders.set("Content-Type", args.contentType);
@@ -282,7 +276,6 @@ export async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIR
                     args.abortSignal,
                     args.withCredentials,
                     args.duplex,
-                    args.responseType === "streaming" || args.responseType === "sse",
                 ),
             args.maxRetries,
         );

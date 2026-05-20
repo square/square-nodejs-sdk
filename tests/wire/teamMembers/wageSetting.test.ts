@@ -27,7 +27,6 @@ describe("WageSettingClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .get("/v2/team-members/team_member_id/wage-setting")
@@ -118,7 +117,6 @@ describe("WageSettingClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
-
         server
             .mockEndpoint()
             .put("/v2/team-members/team_member_id/wage-setting")

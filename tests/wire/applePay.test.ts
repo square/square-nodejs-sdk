@@ -12,7 +12,6 @@ describe("ApplePayClient", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             status: "VERIFIED",
         };
-
         server
             .mockEndpoint()
             .post("/v2/apple-pay/domains")

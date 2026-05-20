@@ -24,8 +24,6 @@ export class EmployeeWagesClient {
     }
 
     /**
-     * @deprecated
-     *
      * Returns a paginated list of `EmployeeWage` instances for a business.
      *
      * @param {Square.labor.ListEmployeeWagesRequest} request
@@ -56,7 +54,7 @@ export class EmployeeWagesClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -116,8 +114,6 @@ export class EmployeeWagesClient {
     }
 
     /**
-     * @deprecated
-     *
      * Returns a single `EmployeeWage` specified by `id`.
      *
      * @param {Square.labor.GetEmployeeWagesRequest} request
@@ -144,7 +140,7 @@ export class EmployeeWagesClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-01-22" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
