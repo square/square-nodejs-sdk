@@ -69,6 +69,51 @@
     },
     "exports": {
         ".": "./index.js",
+        "./api": {
+            "types": "./api/index.d.ts",
+            "default": "./api/index.js"
+        },
+        "./api/resources/*": {
+            "types": "./api/resources/*/index.d.ts",
+            "default": "./api/resources/*/index.js"
+        },
+        "./api/types/*": {
+            "types": "./api/types/*.d.ts",
+            "default": "./api/types/*.js"
+        },
+        "./serialization": {
+            "types": "./serialization/index.d.ts",
+            "default": "./serialization/index.js"
+        },
+        "./serialization/resources/*": {
+            "types": "./serialization/resources/*/index.d.ts",
+            "default": "./serialization/resources/*/index.js"
+        },
+        "./serialization/types/*": {
+            "types": "./serialization/types/*.d.ts",
+            "default": "./serialization/types/*.js"
+        },
+        "./Client": {
+            "types": "./Client.d.ts",
+            "default": "./Client.js"
+        },
+        "./BaseClient": {
+            "types": "./BaseClient.d.ts",
+            "default": "./BaseClient.js"
+        },
+        "./environments": {
+            "types": "./environments.d.ts",
+            "default": "./environments.js"
+        },
+        "./errors": {
+            "types": "./errors/index.d.ts",
+            "default": "./errors/index.js"
+        },
+        "./version": {
+            "types": "./version.d.ts",
+            "default": "./version.js"
+        },
+        "./package.json": "./package.json",
         "./legacy": {
             "types": "./legacy/exports/index.d.ts",
             "require": {

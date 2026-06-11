@@ -76,6 +76,32 @@ await client.payments.create({
 });
 ```
 
+### Subpath imports
+
+For applications where startup latency matters (serverless cold starts, autoscaling
+boots, etc.), the SDK exposes its internal modules as package subpaths so consumers
+can avoid loading the full surface — including the ~1,300 runtime serialization
+schemas — when they only need a slice of it.
+
+```typescript
+// Just the type definitions for a single resource — no runtime schemas loaded.
+import type { Payment, Money } from "square/api/types/Payment";
+
+// Just one resource client.
+import { PaymentsClient } from "square/api/resources/payments";
+
+// Just the runtime serialization for a single model, e.g. for a custom worker
+// that needs to (de)serialize Square payloads without booting the client.
+import { Payment as PaymentSchema } from "square/serialization/types/Payment";
+
+// Just the SDK entry-point class and constants.
+import { SquareClient } from "square/Client";
+import { SquareEnvironment } from "square/environments";
+```
+
+The default `import { SquareClient } from "square"` entry continues to re-export the
+full surface and remains the recommended import for typical usage.
+
 ## Legacy SDK
 
 ## Legacy SDK
