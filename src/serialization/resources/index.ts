@@ -38,6 +38,8 @@ export * as payments from "./payments";
 export * from "./payments/client/requests";
 export * as refunds from "./refunds";
 export * from "./refunds/client/requests";
+export * as reporting from "./reporting";
+export * from "./reporting/client/requests";
 export * as snippets from "./snippets";
 export * from "./snippets/client/requests";
 export * as subscriptions from "./subscriptions";

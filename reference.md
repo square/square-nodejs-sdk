@@ -13709,6 +13709,125 @@ await client.vendors.update({
 </dl>
 </details>
 
+## Reporting
+<details><summary><code>client.reporting.<a href="/src/api/resources/reporting/client/Client.ts">getMetadata</a>() -> Square.MetadataResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Describes the data available to query: the cubes, views, measures, dimensions, and segments you can reference in a reporting query. Call this first to discover the schema, then pass the members you need to `load`.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.reporting.getMetadata();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `ReportingClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.reporting.<a href="/src/api/resources/reporting/client/Client.ts">load</a>({ ...params }) -> Square.LoadResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Runs a reporting query against the discovered schema and returns the aggregated results. Long-running queries may return a "Continue wait" response while processing — retry the same request until results are ready.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.reporting.load();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.LoadRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ReportingClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Bookings CustomAttributeDefinitions
 <details><summary><code>client.bookings.customAttributeDefinitions.<a href="/src/api/resources/bookings/resources/customAttributeDefinitions/client/Client.ts">list</a>({ ...params }) -> core.Page<Square.CustomAttributeDefinition, Square.ListBookingCustomAttributeDefinitionsResponse></code></summary>
 <dl>
