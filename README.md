@@ -17,6 +17,7 @@ The Square TypeScript library provides convenient access to the Square APIs from
 - [File Uploads](#file-uploads)
 - [Pagination](#pagination)
 - [Webhook Signature Verification](#webhook-signature-verification)
+- [Reporting API](#reporting-api)
 - [Advanced](#advanced)
   - [Additional Headers](#additional-headers)
   - [Additional Query String Parameters](#additional-query-string-parameters)
@@ -268,6 +269,63 @@ const isValid = WebhooksHelper.verifySignature({
   signatureKey: "YOUR_SIGNATURE_KEY",
   notificationUrl: "https://example.com/webhook", // The URL where event notifications are sent.
 });
+```
+
+## Reporting API
+
+The [Reporting API](https://developer.squareup.com/docs/reporting-api/overview) lets you query
+aggregated reporting data. Call `reporting.getMetadata` first to discover the available cubes,
+measures, and dimensions, then run a query with `reporting.load`.
+
+```ts
+import { SquareClient } from "square";
+
+const client = new SquareClient({ token: "YOUR_TOKEN" });
+
+// Discover what you can query.
+const metadata = await client.reporting.getMetadata();
+
+// Run a query against the discovered schema.
+const response = await client.reporting.load({
+  query: { measures: ["Orders.count"] },
+});
+```
+
+`load` is asynchronous: while a query is still being computed, the API returns an HTTP `200` whose
+body is `{ "error": "Continue wait" }` instead of results, and the client is expected to re-send the
+identical request — with backoff — until the results are ready. The `ReportingHelper.loadAndWait`
+utility owns that polling loop for you and returns the resolved results (never the `"Continue wait"`
+sentinel):
+
+```ts
+import { ReportingHelper, SquareClient } from "square";
+
+const client = new SquareClient({ token: "YOUR_TOKEN" });
+
+const response = await ReportingHelper.loadAndWait(client, {
+  query: { measures: ["Orders.count"] },
+});
+
+console.log(response.results);
+```
+
+By default it polls up to 20 times with exponential backoff (2s → 20s). Tune the behavior — and
+pass an `AbortSignal` to cancel — via the options argument:
+
+```ts
+const controller = new AbortController();
+
+const response = await ReportingHelper.loadAndWait(
+  client,
+  { query: { measures: ["Orders.count"] } },
+  {
+    maxAttempts: 10, // default 20
+    initialDelayMs: 1000, // default 2000
+    maxDelayMs: 20000, // default 20000
+    backoffFactor: 2, // default 2
+    signal: controller.signal,
+  },
+);
 ```
 
 ## Advanced
