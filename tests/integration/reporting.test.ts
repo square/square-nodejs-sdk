@@ -3,14 +3,17 @@ import type * as Square from "../../src/api";
 
 // The Reporting API is a beta, bespoke offering served ONLY from production
 // (connect.squareup.com/reporting) — it is not routed on sandbox (returns 404 there).
-// So, unlike the other integration suites (which target sandbox), this one targets
-// production by default and needs a production-capable TEST_SQUARE_TOKEN. The endpoints
-// are read-only (schema discovery + queries), so running them against prod is safe.
-// The polling *logic* is covered without a live account in tests/unit/reporting.test.ts.
+// Validating it live therefore needs a production, reporting-provisioned TEST_SQUARE_TOKEN.
+// CI's token is sandbox-only (it 401s against prod), so this suite is gated behind
+// TEST_SQUARE_REPORTING and skips by default — keeping CI green. The endpoints are
+// read-only (schema discovery + queries). The polling *logic* is covered without a live
+// account in tests/unit/reporting.test.ts.
 //
-// Run it:
-//   TEST_SQUARE_TOKEN=<prod-access-token> yarn test:integration --testPathPattern reporting
+// Run it against a real prod account:
+//   TEST_SQUARE_REPORTING=1 TEST_SQUARE_TOKEN=<prod-access-token> \
+//     yarn test:integration --testPathPattern reporting
 //   # override the host with TEST_SQUARE_BASE_URL=<url> if reporting moves.
+const describeReporting = process.env.TEST_SQUARE_REPORTING ? describe : describe.skip;
 
 function createReportingClient(): SquareClient {
     const token = process.env.TEST_SQUARE_TOKEN;
@@ -24,7 +27,7 @@ function createReportingClient(): SquareClient {
     return new SquareClient({ token, baseUrl });
 }
 
-describe("Reporting API (live)", () => {
+describeReporting("Reporting API (live)", () => {
     let client: SquareClient;
     beforeAll(() => {
         client = createReportingClient();
