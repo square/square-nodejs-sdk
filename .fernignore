@@ -9,6 +9,7 @@ src/core/index.ts
 src/core/crypto
 tests/unit/error.test.ts
 tests/unit/fetcher/stream-wrappers/webpack.test.ts
+tests/unit/reporting.test.ts
 tests/integration
 legacy
 jest.config.mjs

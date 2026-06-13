@@ -7,3 +7,4 @@ export { SquareError, SquareTimeoutError } from "./errors/index.js";
 export * from "./exports.js";
 export * as serialization from "./serialization/index.js";
 export { WebhooksHelper } from "./wrapper/WebhooksHelper";
+export { ReportingHelper, type LoadAndWaitOptions } from "./wrapper/ReportingHelper";
