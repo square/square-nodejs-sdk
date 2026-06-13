@@ -42,6 +42,9 @@ export default {
             displayName: "integration",
             preset: "ts-jest",
             testEnvironment: "node",
+            // Integration tests hit the live sandbox; multi-step flows (e.g. customers
+            // "add to group") can exceed jest's 5s default under CI load. Give them headroom.
+            testTimeout: 30000,
             moduleNameMapper: {
                 "^(\.{1,2}/.*)\.js$": "$1",
             },
