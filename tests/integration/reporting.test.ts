@@ -3,22 +3,22 @@ import type * as Square from "../../src/api";
 
 // The Reporting API is a beta, bespoke offering served ONLY from production
 // (connect.squareup.com/reporting) — it is not routed on sandbox (returns 404 there).
-// Validating it live therefore needs a production, reporting-provisioned TEST_SQUARE_TOKEN.
-// CI's token is sandbox-only (it 401s against prod), so this suite is gated behind
+// Validating it live therefore needs a production, reporting-provisioned access token.
+// CI's sandbox token is unrelated (it 401s against prod), so this suite is gated behind
 // TEST_SQUARE_REPORTING and skips by default — keeping CI green. The endpoints are
 // read-only (schema discovery + queries). The polling *logic* is covered without a live
 // account in tests/unit/reporting.test.ts.
 //
 // Run it against a real prod account:
-//   TEST_SQUARE_REPORTING=1 TEST_SQUARE_TOKEN=<prod-access-token> \
+//   TEST_SQUARE_REPORTING=<prod-reporting-token> \
 //     yarn test:integration --testPathPattern reporting
 //   # override the host with TEST_SQUARE_BASE_URL=<url> if reporting moves.
 const describeReporting = process.env.TEST_SQUARE_REPORTING ? describe : describe.skip;
 
 function createReportingClient(): SquareClient {
-    const token = process.env.TEST_SQUARE_TOKEN;
+    const token = process.env.TEST_SQUARE_REPORTING;
     if (!token) {
-        throw new Error("TEST_SQUARE_TOKEN must be set to run the reporting integration suite.");
+        throw new Error("TEST_SQUARE_REPORTING must be set to run the reporting integration suite.");
     }
     // Reporting only exists on production; allow overriding the host via TEST_SQUARE_BASE_URL.
     const baseUrl = process.env.TEST_SQUARE_BASE_URL ?? SquareEnvironment.Production;

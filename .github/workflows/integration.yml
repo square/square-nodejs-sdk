@@ -6,6 +6,7 @@ jobs:
   integration:
     env:
       TEST_SQUARE_TOKEN: ${{ secrets.TEST_SQUARE_TOKEN }}
+      TEST_SQUARE_REPORTING: ${{ secrets.TEST_SQUARE_REPORTING }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
