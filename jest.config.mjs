@@ -2,6 +2,8 @@
 export default {
     preset: "ts-jest",
     testEnvironment: "node",
+    // Integration tests hit live services and can exceed Jest's 5s default under load.
+    testTimeout: 30000,
     projects: [
         {
             displayName: "unit",
@@ -30,7 +32,7 @@ export default {
             setupFilesAfterEnv: [
                 "<rootDir>/tests/setup.ts",
                 "<rootDir>/tests/bigint.setup.ts",
-                "<rootDir>/tests/mock-server/setup.ts"
+                "<rootDir>/tests/mock-server/setup.ts",
             ],
             transformIgnorePatterns: ["node_modules/(?!(msw|@mswjs|@bundled-es-modules|until-async)/)"],
             transform: {
@@ -42,9 +44,6 @@ export default {
             displayName: "integration",
             preset: "ts-jest",
             testEnvironment: "node",
-            // Integration tests hit the live sandbox; multi-step flows (e.g. customers
-            // "add to group") can exceed jest's 5s default under CI load. Give them headroom.
-            testTimeout: 30000,
             moduleNameMapper: {
                 "^(\.{1,2}/.*)\.js$": "$1",
             },

@@ -29,7 +29,7 @@ function fakeClient(sequence: Square.LoadResponse[]): { client: SquareClient; ca
 }
 
 const continueWait = { error: CONTINUE_WAIT } as unknown as Square.LoadResponse;
-const resolved = { results: [{ data: { "Orders.count": "128" } }] } as unknown as Square.LoadResponse;
+const resolved = { data: [{ "Orders.count": "128" }] } as unknown as Square.LoadResponse;
 
 describe("ReportingHelper.loadAndWait", () => {
     it("polls past 'Continue wait' responses and returns the resolved result", async () => {
@@ -43,16 +43,16 @@ describe("ReportingHelper.loadAndWait", () => {
 
         // The helper must never hand back the raw sentinel.
         expect((response as unknown as { error?: string }).error).toBeUndefined();
-        expect(response.results).toBeDefined();
+        expect(response.data).toBeDefined();
         expect(callCount()).toBe(3);
     });
 
-    it("returns immediately when the first response already has results", async () => {
+    it("returns immediately when the first response already has data", async () => {
         const { client, callCount } = fakeClient([resolved]);
 
         const response = await ReportingHelper.loadAndWait(client, {}, { initialDelayMs: 1 });
 
-        expect(response.results).toBeDefined();
+        expect(response.data).toBeDefined();
         expect(callCount()).toBe(1);
     });
 
@@ -86,7 +86,7 @@ describe("ReportingHelper.loadAndWait", () => {
     it("treats a real-serializer 'Continue wait' body as a retry signal, not a result", async () => {
         // The crux of the design: the generated `reporting.load` parses the body with
         // skipValidation + passthrough, so the `error` sentinel survives onto a
-        // LoadResponse-shaped object (and `results` stays absent). If this ever stops
+        // LoadResponse-shaped object (and `data` stays absent). If this ever stops
         // being true, loadAndWait would mistake "Continue wait" for a real result.
         const parsed = serializers.LoadResponse.parseOrThrow(
             { error: CONTINUE_WAIT },
@@ -96,9 +96,69 @@ describe("ReportingHelper.loadAndWait", () => {
                 allowUnrecognizedEnumValues: true,
                 skipValidation: true,
             },
-        ) as unknown as { error?: string; results?: unknown };
+        ) as unknown as { error?: string; data?: unknown };
 
         expect(parsed.error).toBe(CONTINUE_WAIT);
-        expect(parsed.results).toBeUndefined();
+        expect(parsed.data).toBeUndefined();
+    });
+
+    it("serializes documented date ranges and compound filters without stripping them", async () => {
+        const request: Square.LoadRequest = {
+            query: {
+                measures: ["Sales.net_sales"],
+                dimensions: ["Sales.channel_name"],
+                timeDimensions: [
+                    {
+                        dimension: "Sales.local_reporting_timestamp",
+                        dateRange: "last 30 days",
+                        granularity: "day",
+                    },
+                    {
+                        dimension: "Sales.local_reporting_timestamp",
+                        dateRange: ["2026-05-01", "2026-05-31"],
+                    },
+                ],
+                filters: [
+                    {
+                        or: [
+                            { member: "Sales.channel_name", operator: "equals", values: ["Online"] },
+                            { member: "Sales.channel_name", operator: "equals", values: ["In-Store"] },
+                        ],
+                    },
+                    {
+                        and: [{ member: "Sales.location_name", operator: "set" }],
+                    },
+                ],
+                limit: 10,
+                offset: 5,
+            },
+        };
+
+        const serialized = serializers.LoadRequest.jsonOrThrow(request, {
+            unrecognizedObjectKeys: "strip",
+            omitUndefined: true,
+        });
+
+        expect(serialized).toEqual(request);
+    });
+
+    it("serializes multi-key tuple order", async () => {
+        const request: Square.LoadRequest = {
+            query: {
+                measures: ["Sales.net_sales"],
+                dimensions: ["Sales.location_name", "Sales.channel_name"],
+                order: [
+                    ["Sales.location_name", "asc"],
+                    ["Sales.net_sales", "desc"],
+                ],
+            },
+        };
+
+        const serialized = serializers.LoadRequest.jsonOrThrow(request, {
+            unrecognizedObjectKeys: "strip",
+            omitUndefined: true,
+        });
+
+        expect(serialized).toEqual(request);
     });
 });

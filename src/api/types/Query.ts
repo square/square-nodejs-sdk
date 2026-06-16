@@ -15,5 +15,4 @@ export interface Query {
     subqueryJoins?: Square.JoinSubquery[];
     joinHints?: Square.JoinHint[];
     timezone?: string;
-    responseFormat?: Square.ResponseFormat;
 }

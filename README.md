@@ -306,7 +306,7 @@ const response = await ReportingHelper.loadAndWait(client, {
   query: { measures: ["Orders.count"] },
 });
 
-console.log(response.results);
+console.log(response.data);
 ```
 
 By default it polls up to 20 times with exponential backoff (2s → 20s). Tune the behavior — and

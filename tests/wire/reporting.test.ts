@@ -94,23 +94,20 @@ describe("ReportingClient", () => {
         const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = {
-            pivotQuery: { key: "value" },
             slowQuery: true,
-            queryType: "queryType",
-            results: [
-                {
-                    dataSource: "dataSource",
-                    annotation: {
-                        measures: { key: "value" },
-                        dimensions: { key: "value" },
-                        segments: { key: "value" },
-                        timeDimensions: { key: "value" },
-                    },
-                    data: [{ key: "value" }],
-                    refreshKeyValues: [{ key: "value" }],
-                    lastRefreshTime: "lastRefreshTime",
-                },
-            ],
+            dataSource: "dataSource",
+            annotation: {
+                measures: { key: "value" },
+                dimensions: { key: "value" },
+                segments: { key: "value" },
+                timeDimensions: { key: "value" },
+            },
+            data: [{ key: "value" }],
+            refreshKeyValues: [{ key: "value" }],
+            lastRefreshTime: "lastRefreshTime",
+            query: { key: "value" },
+            external: false,
+            dbType: "dbType",
         };
         server
             .mockEndpoint()
@@ -123,41 +120,88 @@ describe("ReportingClient", () => {
 
         const response = await client.reporting.load();
         expect(response).toEqual({
-            pivotQuery: {
-                key: "value",
-            },
             slowQuery: true,
-            queryType: "queryType",
-            results: [
+            dataSource: "dataSource",
+            annotation: {
+                measures: {
+                    key: "value",
+                },
+                dimensions: {
+                    key: "value",
+                },
+                segments: {
+                    key: "value",
+                },
+                timeDimensions: {
+                    key: "value",
+                },
+            },
+            data: [
                 {
-                    dataSource: "dataSource",
-                    annotation: {
-                        measures: {
-                            key: "value",
-                        },
-                        dimensions: {
-                            key: "value",
-                        },
-                        segments: {
-                            key: "value",
-                        },
-                        timeDimensions: {
-                            key: "value",
-                        },
-                    },
-                    data: [
-                        {
-                            key: "value",
-                        },
-                    ],
-                    refreshKeyValues: [
-                        {
-                            key: "value",
-                        },
-                    ],
-                    lastRefreshTime: "lastRefreshTime",
+                    key: "value",
                 },
             ],
+            refreshKeyValues: [
+                {
+                    key: "value",
+                },
+            ],
+            lastRefreshTime: "lastRefreshTime",
+            query: {
+                key: "value",
+            },
+            external: false,
+            dbType: "dbType",
         });
+    });
+
+    test("load serializes documented query shapes", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            query: {
+                measures: ["Sales.net_sales"],
+                dimensions: ["Sales.channel_name"],
+                timeDimensions: [
+                    {
+                        dimension: "Sales.local_reporting_timestamp",
+                        dateRange: "last 30 days",
+                        granularity: "day",
+                    },
+                    {
+                        dimension: "Sales.local_reporting_timestamp",
+                        dateRange: ["2026-05-01", "2026-05-31"],
+                    },
+                ],
+                order: [["Sales.net_sales", "desc"]],
+                filters: [
+                    {
+                        or: [
+                            { member: "Sales.channel_name", operator: "equals", values: ["Online"] },
+                            { member: "Sales.channel_name", operator: "equals", values: ["In-Store"] },
+                        ],
+                    },
+                    {
+                        and: [{ member: "Sales.location_name", operator: "set" }],
+                    },
+                ],
+                limit: 10,
+                offset: 5,
+            },
+        };
+        const rawResponseBody = {
+            data: [],
+        };
+        server
+            .mockEndpoint()
+            .post("/reporting/v1/load")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.reporting.load(rawRequestBody);
+        expect(response).toEqual(rawResponseBody);
     });
 });

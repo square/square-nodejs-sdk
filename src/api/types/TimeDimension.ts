@@ -3,5 +3,5 @@
 export interface TimeDimension {
     dimension: string;
     granularity?: string;
-    dateRange?: Record<string, unknown>;
+    dateRange?: string | string[] | Record<string, unknown>;
 }

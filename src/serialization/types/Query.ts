@@ -6,7 +6,6 @@ import type * as serializers from "../index";
 import { JoinHint } from "./JoinHint";
 import { JoinSubquery } from "./JoinSubquery";
 import { QueryFilter } from "./QueryFilter";
-import { ResponseFormat } from "./ResponseFormat";
 import { TimeDimension } from "./TimeDimension";
 
 export const Query: core.serialization.ObjectSchema<serializers.Query.Raw, Square.Query> = core.serialization.object({
@@ -22,7 +21,6 @@ export const Query: core.serialization.ObjectSchema<serializers.Query.Raw, Squar
     subqueryJoins: core.serialization.list(JoinSubquery).optional(),
     joinHints: core.serialization.list(JoinHint).optional(),
     timezone: core.serialization.string().optional(),
-    responseFormat: ResponseFormat.optional(),
 });
 
 export declare namespace Query {
@@ -39,6 +37,5 @@ export declare namespace Query {
         subqueryJoins?: JoinSubquery.Raw[] | null;
         joinHints?: JoinHint.Raw[] | null;
         timezone?: string | null;
-        responseFormat?: ResponseFormat.Raw | null;
     }
 }

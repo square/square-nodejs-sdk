@@ -8,15 +8,15 @@ export const QueryFilterCondition: core.serialization.ObjectSchema<
     serializers.QueryFilterCondition.Raw,
     Square.QueryFilterCondition
 > = core.serialization.object({
-    member: core.serialization.string().optional(),
-    operator: core.serialization.string().optional(),
+    member: core.serialization.string(),
+    operator: core.serialization.string(),
     values: core.serialization.list(core.serialization.string()).optional(),
 });
 
 export declare namespace QueryFilterCondition {
     export interface Raw {
-        member?: string | null;
-        operator?: string | null;
+        member: string;
+        operator: string;
         values?: string[] | null;
     }
 }

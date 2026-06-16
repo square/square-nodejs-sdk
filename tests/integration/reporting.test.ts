@@ -57,7 +57,7 @@ describeReporting("Reporting API (live)", () => {
         console.log("Reporting schema (first 5 cubes):", JSON.stringify(summary, null, 2));
     });
 
-    it("load() returns either results or the 'Continue wait' sentinel for an in-flight query", async () => {
+    it("load() returns either data or the 'Continue wait' sentinel for an in-flight query", async () => {
         const measure = await firstMeasureName();
         const response = await client.reporting.load({ query: { measures: [measure] } });
 
@@ -67,7 +67,7 @@ describeReporting("Reporting API (live)", () => {
             // with { "error": "Continue wait" } instead of results.
             expect(sentinel).toBe("Continue wait");
         } else {
-            expect(response.results).toBeDefined();
+            expect(response.data).toBeDefined();
         }
     });
 
@@ -84,7 +84,7 @@ describeReporting("Reporting API (live)", () => {
 
             // The polling helper must never hand back the raw "Continue wait" sentinel.
             expect((response as unknown as { error?: string }).error).toBeUndefined();
-            expect(response.results).toBeDefined();
+            expect(response.data).toBeDefined();
         },
         5 * 60_000, // polling can take minutes; override jest's default 5s timeout
     );

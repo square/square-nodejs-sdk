@@ -6,13 +6,13 @@ import type * as serializers from "../index";
 
 export const QueryFilterAnd: core.serialization.ObjectSchema<serializers.QueryFilterAnd.Raw, Square.QueryFilterAnd> =
     core.serialization.object({
-        and: core.serialization
-            .list(core.serialization.record(core.serialization.string(), core.serialization.unknown()))
-            .optional(),
+        and: core.serialization.list(
+            core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+        ),
     });
 
 export declare namespace QueryFilterAnd {
     export interface Raw {
-        and?: Record<string, unknown>[] | null;
+        and: Record<string, unknown>[];
     }
 }

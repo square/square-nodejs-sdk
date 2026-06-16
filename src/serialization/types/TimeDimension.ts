@@ -8,13 +8,19 @@ export const TimeDimension: core.serialization.ObjectSchema<serializers.TimeDime
     core.serialization.object({
         dimension: core.serialization.string(),
         granularity: core.serialization.string().optional(),
-        dateRange: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+        dateRange: core.serialization
+            .undiscriminatedUnion([
+                core.serialization.string(),
+                core.serialization.list(core.serialization.string()),
+                core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+            ])
+            .optional(),
     });
 
 export declare namespace TimeDimension {
     export interface Raw {
         dimension: string;
         granularity?: string | null;
-        dateRange?: Record<string, unknown> | null;
+        dateRange?: string | string[] | Record<string, unknown> | null;
     }
 }
