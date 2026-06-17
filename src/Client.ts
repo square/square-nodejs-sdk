@@ -25,6 +25,7 @@ import { OrdersClient } from "./api/resources/orders/client/Client";
 import { PaymentsClient } from "./api/resources/payments/client/Client";
 import { PayoutsClient } from "./api/resources/payouts/client/Client";
 import { RefundsClient } from "./api/resources/refunds/client/Client";
+import { ReportingClient } from "./api/resources/reporting/client/Client";
 import { SitesClient } from "./api/resources/sites/client/Client";
 import { SnippetsClient } from "./api/resources/snippets/client/Client";
 import { SubscriptionsClient } from "./api/resources/subscriptions/client/Client";
@@ -79,6 +80,7 @@ export class SquareClient {
     protected _terminal: TerminalClient | undefined;
     protected _transferOrders: TransferOrdersClient | undefined;
     protected _vendors: VendorsClient | undefined;
+    protected _reporting: ReportingClient | undefined;
     protected _cashDrawers: CashDrawersClient | undefined;
     protected _webhooks: WebhooksClient | undefined;
 
@@ -216,6 +218,10 @@ export class SquareClient {
 
     public get vendors(): VendorsClient {
         return (this._vendors ??= new VendorsClient(this._options));
+    }
+
+    public get reporting(): ReportingClient {
+        return (this._reporting ??= new ReportingClient(this._options));
     }
 
     public get cashDrawers(): CashDrawersClient {

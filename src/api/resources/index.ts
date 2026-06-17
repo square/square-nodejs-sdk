@@ -47,6 +47,8 @@ export * as payouts from "./payouts";
 export * from "./payouts/client/requests";
 export * as refunds from "./refunds";
 export * from "./refunds/client/requests";
+export * as reporting from "./reporting";
+export * from "./reporting/client/requests";
 export * as sites from "./sites";
 export * as snippets from "./snippets";
 export * from "./snippets/client/requests";
