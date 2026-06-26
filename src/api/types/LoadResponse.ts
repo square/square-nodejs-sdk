@@ -5,14 +5,13 @@ import type * as Square from "../index";
 export interface LoadResponse {
     dataSource?: string;
     annotation?: Square.LoadResultAnnotation;
-    data?: Square.LoadResultDataRow;
-    refreshKeyValues?: Record<string, unknown>[];
+    data?: Square.LoadResultData;
     lastRefreshTime?: string;
-    pivotQuery?: Record<string, unknown>;
-    slowQuery?: boolean;
-    queryType?: string;
     query?: Record<string, unknown>;
+    slowQuery?: boolean;
     external?: boolean;
     dbType?: string;
-    error?: string;
+    refreshKeyValues?: Record<string, unknown>[];
+    pivotQuery?: Record<string, unknown>;
+    queryType?: string;
 }

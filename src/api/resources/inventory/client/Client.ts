@@ -24,6 +24,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deprecated version of [RetrieveInventoryAdjustment](api-endpoint:Inventory-RetrieveInventoryAdjustment) after the endpoint URL
      * is updated to conform to the standard convention.
      *
@@ -63,7 +65,7 @@ export class InventoryClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -139,7 +141,7 @@ export class InventoryClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -176,6 +178,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deprecated version of [BatchChangeInventory](api-endpoint:Inventory-BatchChangeInventory) after the endpoint URL
      * is updated to conform to the standard convention.
      *
@@ -228,7 +232,7 @@ export class InventoryClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.BatchChangeInventoryRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -265,6 +269,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deprecated version of [BatchRetrieveInventoryChanges](api-endpoint:Inventory-BatchRetrieveInventoryChanges) after the endpoint URL
      * is updated to conform to the standard convention.
      *
@@ -309,7 +315,7 @@ export class InventoryClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.BatchRetrieveInventoryChangesRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -351,6 +357,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deprecated version of [BatchRetrieveInventoryCounts](api-endpoint:Inventory-BatchRetrieveInventoryCounts) after the endpoint URL
      * is updated to conform to the standard convention.
      *
@@ -392,7 +400,7 @@ export class InventoryClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.BatchGetInventoryCountsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -489,7 +497,7 @@ export class InventoryClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.BatchChangeInventoryRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -578,7 +586,7 @@ export class InventoryClient {
                     method: "POST",
                     headers: _headers,
                     contentType: "application/json",
-                    queryParameters: requestOptions?.queryParams,
+                    queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
                     requestType: "json",
                     body: serializers.BatchRetrieveInventoryChangesRequest.jsonOrThrow(request, {
                         unrecognizedObjectKeys: "strip",
@@ -678,7 +686,7 @@ export class InventoryClient {
                     method: "POST",
                     headers: _headers,
                     contentType: "application/json",
-                    queryParameters: requestOptions?.queryParams,
+                    queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
                     requestType: "json",
                     body: serializers.BatchGetInventoryCountsRequest.jsonOrThrow(request, {
                         unrecognizedObjectKeys: "strip",
@@ -731,6 +739,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deprecated version of [RetrieveInventoryPhysicalCount](api-endpoint:Inventory-RetrieveInventoryPhysicalCount) after the endpoint URL
      * is updated to conform to the standard convention.
      *
@@ -770,7 +780,7 @@ export class InventoryClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -846,7 +856,7 @@ export class InventoryClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -922,7 +932,7 @@ export class InventoryClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1003,7 +1013,11 @@ export class InventoryClient {
                     ),
                     method: "GET",
                     headers: _headers,
-                    queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+                    queryString: core.url
+                        .queryBuilder()
+                        .addMany(_queryParams)
+                        .mergeAdditional(requestOptions?.queryParams)
+                        .build(),
                     timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
                     maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
                     abortSignal: requestOptions?.abortSignal,
@@ -1051,6 +1065,8 @@ export class InventoryClient {
     }
 
     /**
+     * @deprecated
+     *
      * Returns a set of physical counts and inventory adjustments for the
      * provided [CatalogObject](entity:CatalogObject) at the requested
      * [Location](entity:Location)s.
@@ -1104,7 +1120,11 @@ export class InventoryClient {
                     ),
                     method: "GET",
                     headers: _headers,
-                    queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+                    queryString: core.url
+                        .queryBuilder()
+                        .addMany(_queryParams)
+                        .mergeAdditional(requestOptions?.queryParams)
+                        .build(),
                     timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
                     maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
                     abortSignal: requestOptions?.abortSignal,

@@ -25,6 +25,7 @@ describe("CheckoutClient", () => {
                 updated_at: "2022-06-16T22:25:35Z",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/online-checkout/location-settings/location_id")
@@ -102,6 +103,7 @@ describe("CheckoutClient", () => {
                 updated_at: "2022-06-16T22:25:35Z",
             },
         };
+
         server
             .mockEndpoint()
             .put("/v2/online-checkout/location-settings/location_id")
@@ -183,6 +185,7 @@ describe("CheckoutClient", () => {
                 updated_at: "2022-06-16T22:25:35Z",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/online-checkout/merchant-settings")
@@ -263,6 +266,7 @@ describe("CheckoutClient", () => {
                 updated_at: "2022-06-16T22:25:35Z",
             },
         };
+
         server
             .mockEndpoint()
             .put("/v2/online-checkout/merchant-settings")

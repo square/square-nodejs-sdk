@@ -60,7 +60,7 @@ export class EventsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.SearchEventsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -131,7 +131,7 @@ export class EventsClient {
             ),
             method: "PUT",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -195,7 +195,7 @@ export class EventsClient {
             ),
             method: "PUT",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -229,7 +229,7 @@ export class EventsClient {
     /**
      * Lists all event types that you can subscribe to as webhooks or query using the Events API.
      *
-     * @param {Square.ListEventTypesRequest} request
+     * @param {Square.ListEventTypesBody} request
      * @param {EventsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -238,14 +238,14 @@ export class EventsClient {
      *     })
      */
     public listEventTypes(
-        request: Square.ListEventTypesRequest = {},
+        request: Square.ListEventTypesBody = {},
         requestOptions?: EventsClient.RequestOptions,
     ): core.HttpResponsePromise<Square.ListEventTypesResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listEventTypes(request, requestOptions));
     }
 
     private async __listEventTypes(
-        request: Square.ListEventTypesRequest = {},
+        request: Square.ListEventTypesBody = {},
         requestOptions?: EventsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Square.ListEventTypesResponse>> {
         const { apiVersion } = request;
@@ -268,7 +268,11 @@ export class EventsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

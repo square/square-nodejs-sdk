@@ -6,7 +6,7 @@
  *         apiVersion: "api_version"
  *     }
  */
-export interface ListEventTypesRequest {
+export interface ListEventTypesBody {
     /** The API version for which to list event types. Setting this field overrides the default version used by the application. */
     apiVersion?: string | null;
 }

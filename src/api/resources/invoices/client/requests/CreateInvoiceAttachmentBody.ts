@@ -9,7 +9,7 @@ import type * as Square from "../../../../index";
  *         invoiceId: "invoice_id"
  *     }
  */
-export interface CreateInvoiceAttachmentRequest {
+export interface CreateInvoiceAttachmentBody {
     /** The ID of the [invoice](entity:Invoice) to attach the file to. */
     invoiceId: string;
     request?: Square.CreateInvoiceAttachmentRequestData;

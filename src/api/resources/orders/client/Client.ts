@@ -125,7 +125,7 @@ export class OrdersClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.CreateOrderRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -203,7 +203,7 @@ export class OrdersClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.BatchGetOrdersRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -300,7 +300,7 @@ export class OrdersClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.CalculateOrderRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -378,7 +378,7 @@ export class OrdersClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.CloneOrderRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -488,7 +488,7 @@ export class OrdersClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.SearchOrdersRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -563,7 +563,7 @@ export class OrdersClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -663,7 +663,7 @@ export class OrdersClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.UpdateOrderRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",
@@ -754,7 +754,7 @@ export class OrdersClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.PayOrderRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",

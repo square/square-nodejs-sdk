@@ -68,7 +68,7 @@ export class AccountsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.loyalty.CreateLoyaltyAccountRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -152,7 +152,7 @@ export class AccountsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.loyalty.SearchLoyaltyAccountsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -227,7 +227,7 @@ export class AccountsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -321,7 +321,7 @@ export class AccountsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.loyalty.AccumulateLoyaltyPointsRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",
@@ -411,7 +411,7 @@ export class AccountsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.loyalty.AdjustLoyaltyPointsRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",

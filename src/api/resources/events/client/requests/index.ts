@@ -1,2 +1,2 @@
-export type { ListEventTypesRequest } from "./ListEventTypesRequest";
+export type { ListEventTypesBody } from "./ListEventTypesBody";
 export type { SearchEventsRequest } from "./SearchEventsRequest";

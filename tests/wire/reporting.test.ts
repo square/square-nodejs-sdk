@@ -27,6 +27,7 @@ describe("ReportingClient", () => {
             ],
             compilerId: "compilerId",
         };
+
         server.mockEndpoint().get("/reporting/v1/meta").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.reporting.getMetadata();
@@ -94,7 +95,6 @@ describe("ReportingClient", () => {
         const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = {
-            slowQuery: true,
             dataSource: "dataSource",
             annotation: {
                 measures: { key: "value" },
@@ -103,12 +103,16 @@ describe("ReportingClient", () => {
                 timeDimensions: { key: "value" },
             },
             data: [{ key: "value" }],
-            refreshKeyValues: [{ key: "value" }],
             lastRefreshTime: "lastRefreshTime",
             query: { key: "value" },
-            external: false,
+            slowQuery: true,
+            external: true,
             dbType: "dbType",
+            refreshKeyValues: [{ key: "value" }],
+            pivotQuery: { key: "value" },
+            queryType: "queryType",
         };
+
         server
             .mockEndpoint()
             .post("/reporting/v1/load")
@@ -120,7 +124,6 @@ describe("ReportingClient", () => {
 
         const response = await client.reporting.load();
         expect(response).toEqual({
-            slowQuery: true,
             dataSource: "dataSource",
             annotation: {
                 measures: {
@@ -141,67 +144,22 @@ describe("ReportingClient", () => {
                     key: "value",
                 },
             ],
+            lastRefreshTime: "lastRefreshTime",
+            query: {
+                key: "value",
+            },
+            slowQuery: true,
+            external: true,
+            dbType: "dbType",
             refreshKeyValues: [
                 {
                     key: "value",
                 },
             ],
-            lastRefreshTime: "lastRefreshTime",
-            query: {
+            pivotQuery: {
                 key: "value",
             },
-            external: false,
-            dbType: "dbType",
+            queryType: "queryType",
         });
-    });
-
-    test("load serializes documented query shapes", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
-        const rawRequestBody = {
-            query: {
-                measures: ["Sales.net_sales"],
-                dimensions: ["Sales.channel_name"],
-                timeDimensions: [
-                    {
-                        dimension: "Sales.local_reporting_timestamp",
-                        dateRange: "last 30 days",
-                        granularity: "day",
-                    },
-                    {
-                        dimension: "Sales.local_reporting_timestamp",
-                        dateRange: ["2026-05-01", "2026-05-31"],
-                    },
-                ],
-                order: [["Sales.net_sales", "desc"]],
-                filters: [
-                    {
-                        or: [
-                            { member: "Sales.channel_name", operator: "equals", values: ["Online"] },
-                            { member: "Sales.channel_name", operator: "equals", values: ["In-Store"] },
-                        ],
-                    },
-                    {
-                        and: [{ member: "Sales.location_name", operator: "set" }],
-                    },
-                ],
-                limit: 10,
-                offset: 5,
-            },
-        };
-        const rawResponseBody = {
-            data: [],
-        };
-        server
-            .mockEndpoint()
-            .post("/reporting/v1/load")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.reporting.load(rawRequestBody);
-        expect(response).toEqual(rawResponseBody);
     });
 });

@@ -27,7 +27,7 @@ export const OrderLineItem: core.serialization.ObjectSchema<serializers.OrderLin
         variationName: core.serialization.property("variation_name", core.serialization.string().optionalNullable()),
         itemType: core.serialization.property("item_type", OrderLineItemItemType.optional()),
         metadata: core.serialization
-            .record(core.serialization.string(), core.serialization.string().optionalNullable())
+            .record(core.serialization.string(), core.serialization.string().nullable())
             .optionalNullable(),
         modifiers: core.serialization.list(OrderLineItemModifier).optionalNullable(),
         appliedTaxes: core.serialization.property(
@@ -63,7 +63,7 @@ export declare namespace OrderLineItem {
         catalog_version?: ((bigint | number) | null | undefined) | null;
         variation_name?: (string | null | undefined) | null;
         item_type?: OrderLineItemItemType.Raw | null;
-        metadata?: (Record<string, (string | null | undefined) | null | undefined> | null | undefined) | null;
+        metadata?: (Record<string, (string | null | undefined) | null> | null | undefined) | null;
         modifiers?: (OrderLineItemModifier.Raw[] | null | undefined) | null;
         applied_taxes?: (OrderLineItemAppliedTax.Raw[] | null | undefined) | null;
         applied_discounts?: (OrderLineItemAppliedDiscount.Raw[] | null | undefined) | null;

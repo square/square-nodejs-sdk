@@ -1,5 +1,5 @@
 export type { CancelInvoiceRequest } from "./CancelInvoiceRequest";
-export type { CreateInvoiceAttachmentRequest } from "./CreateInvoiceAttachmentRequest";
+export type { CreateInvoiceAttachmentBody } from "./CreateInvoiceAttachmentBody";
 export type { CreateInvoiceRequest } from "./CreateInvoiceRequest";
 export type { DeleteInvoiceAttachmentRequest } from "./DeleteInvoiceAttachmentRequest";
 export type { DeleteInvoicesRequest } from "./DeleteInvoicesRequest";

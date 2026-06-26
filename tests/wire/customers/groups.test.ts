@@ -26,6 +26,7 @@ describe("GroupsClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/customers/groups")
@@ -83,6 +84,7 @@ describe("GroupsClient", () => {
                 updated_at: "2020-04-13T21:54:58Z",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/customers/groups")
@@ -128,6 +130,7 @@ describe("GroupsClient", () => {
                 updated_at: "2020-04-13T21:54:58Z",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/customers/groups/group_id")
@@ -170,6 +173,7 @@ describe("GroupsClient", () => {
                 updated_at: "2020-04-13T21:54:58Z",
             },
         };
+
         server
             .mockEndpoint()
             .put("/v2/customers/groups/group_id")
@@ -210,6 +214,7 @@ describe("GroupsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .delete("/v2/customers/groups/group_id")
@@ -240,6 +245,7 @@ describe("GroupsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .put("/v2/customers/customer_id/groups/group_id")
@@ -271,6 +277,7 @@ describe("GroupsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .delete("/v2/customers/customer_id/groups/group_id")

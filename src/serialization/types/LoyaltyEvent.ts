@@ -17,7 +17,7 @@ import { LoyaltyEventType } from "./LoyaltyEventType";
 export const LoyaltyEvent: core.serialization.ObjectSchema<serializers.LoyaltyEvent.Raw, Square.LoyaltyEvent> =
     core.serialization.object({
         id: core.serialization.string().optional(),
-        type: LoyaltyEventType,
+        type: LoyaltyEventType.optional(),
         createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
         accumulatePoints: core.serialization.property("accumulate_points", LoyaltyEventAccumulatePoints.optional()),
         createReward: core.serialization.property("create_reward", LoyaltyEventCreateReward.optional()),
@@ -26,7 +26,7 @@ export const LoyaltyEvent: core.serialization.ObjectSchema<serializers.LoyaltyEv
         adjustPoints: core.serialization.property("adjust_points", LoyaltyEventAdjustPoints.optional()),
         loyaltyAccountId: core.serialization.property("loyalty_account_id", core.serialization.string().optional()),
         locationId: core.serialization.property("location_id", core.serialization.string().optional()),
-        source: LoyaltyEventSource,
+        source: LoyaltyEventSource.optional(),
         expirePoints: core.serialization.property("expire_points", LoyaltyEventExpirePoints.optional()),
         otherEvent: core.serialization.property("other_event", LoyaltyEventOther.optional()),
         accumulatePromotionPoints: core.serialization.property(
@@ -38,7 +38,7 @@ export const LoyaltyEvent: core.serialization.ObjectSchema<serializers.LoyaltyEv
 export declare namespace LoyaltyEvent {
     export interface Raw {
         id?: string | null;
-        type: LoyaltyEventType.Raw;
+        type?: LoyaltyEventType.Raw | null;
         created_at?: string | null;
         accumulate_points?: LoyaltyEventAccumulatePoints.Raw | null;
         create_reward?: LoyaltyEventCreateReward.Raw | null;
@@ -47,7 +47,7 @@ export declare namespace LoyaltyEvent {
         adjust_points?: LoyaltyEventAdjustPoints.Raw | null;
         loyalty_account_id?: string | null;
         location_id?: string | null;
-        source: LoyaltyEventSource.Raw;
+        source?: LoyaltyEventSource.Raw | null;
         expire_points?: LoyaltyEventExpirePoints.Raw | null;
         other_event?: LoyaltyEventOther.Raw | null;
         accumulate_promotion_points?: LoyaltyEventAccumulatePromotionPoints.Raw | null;

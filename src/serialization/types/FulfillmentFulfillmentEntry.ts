@@ -12,7 +12,7 @@ export const FulfillmentFulfillmentEntry: core.serialization.ObjectSchema<
     lineItemUid: core.serialization.property("line_item_uid", core.serialization.string()),
     quantity: core.serialization.string(),
     metadata: core.serialization
-        .record(core.serialization.string(), core.serialization.string().optionalNullable())
+        .record(core.serialization.string(), core.serialization.string().nullable())
         .optionalNullable(),
 });
 
@@ -21,6 +21,6 @@ export declare namespace FulfillmentFulfillmentEntry {
         uid?: (string | null | undefined) | null;
         line_item_uid: string;
         quantity: string;
-        metadata?: (Record<string, (string | null | undefined) | null | undefined> | null | undefined) | null;
+        metadata?: (Record<string, (string | null | undefined) | null> | null | undefined) | null;
     }
 }

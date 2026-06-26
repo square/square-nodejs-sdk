@@ -54,6 +54,7 @@ describe("CheckoutsClient", () => {
                 tip_money: { amount: BigInt(1000000), currency: "UNKNOWN_CURRENCY" },
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/terminals/checkouts")
@@ -193,6 +194,7 @@ describe("CheckoutsClient", () => {
             ],
             cursor: "RiTJqBoTuXlbLmmrPvEkX9iG7XnQ4W4RjGnH",
         };
+
         server
             .mockEndpoint()
             .post("/v2/terminals/checkouts/search")
@@ -325,6 +327,7 @@ describe("CheckoutsClient", () => {
                 tip_money: { amount: BigInt(1000000), currency: "UNKNOWN_CURRENCY" },
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/terminals/checkouts/checkout_id")
@@ -436,6 +439,7 @@ describe("CheckoutsClient", () => {
                 tip_money: { amount: BigInt(1000000), currency: "UNKNOWN_CURRENCY" },
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/terminals/checkouts/checkout_id/cancel")

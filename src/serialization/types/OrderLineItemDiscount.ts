@@ -20,7 +20,7 @@ export const OrderLineItemDiscount: core.serialization.ObjectSchema<
     amountMoney: core.serialization.property("amount_money", Money.optional()),
     appliedMoney: core.serialization.property("applied_money", Money.optional()),
     metadata: core.serialization
-        .record(core.serialization.string(), core.serialization.string().optionalNullable())
+        .record(core.serialization.string(), core.serialization.string().nullable())
         .optionalNullable(),
     scope: OrderLineItemDiscountScope.optional(),
     rewardIds: core.serialization.property(
@@ -40,7 +40,7 @@ export declare namespace OrderLineItemDiscount {
         percentage?: (string | null | undefined) | null;
         amount_money?: Money.Raw | null;
         applied_money?: Money.Raw | null;
-        metadata?: (Record<string, (string | null | undefined) | null | undefined> | null | undefined) | null;
+        metadata?: (Record<string, (string | null | undefined) | null> | null | undefined) | null;
         scope?: OrderLineItemDiscountScope.Raw | null;
         reward_ids?: string[] | null;
         pricing_rule_id?: string | null;

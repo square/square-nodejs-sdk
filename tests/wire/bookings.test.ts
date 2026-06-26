@@ -37,6 +37,7 @@ describe("BookingsClient", () => {
             ],
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server.mockEndpoint().get("/v2/bookings").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const expected = {
@@ -140,6 +141,7 @@ describe("BookingsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/bookings")
@@ -434,6 +436,7 @@ describe("BookingsClient", () => {
             ],
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/bookings/availability/search")
@@ -745,6 +748,7 @@ describe("BookingsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/bookings/bulk-retrieve")
@@ -868,6 +872,7 @@ describe("BookingsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .get("/v2/bookings/business-booking-profile")
@@ -927,6 +932,7 @@ describe("BookingsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .get("/v2/bookings/location-booking-profiles/location_id")
@@ -983,6 +989,7 @@ describe("BookingsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/bookings/team-member-booking-profiles/bulk-retrieve")
@@ -1096,6 +1103,7 @@ describe("BookingsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .get("/v2/bookings/booking_id")
@@ -1216,6 +1224,7 @@ describe("BookingsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .put("/v2/bookings/booking_id")
@@ -1338,6 +1347,7 @@ describe("BookingsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/bookings/booking_id/cancel")

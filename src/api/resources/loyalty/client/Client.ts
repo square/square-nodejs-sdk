@@ -94,7 +94,7 @@ export class LoyaltyClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.SearchLoyaltyEventsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",

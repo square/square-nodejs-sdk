@@ -26,7 +26,7 @@ export class EventTypesClient {
     /**
      * Lists all webhook event types that can be subscribed to.
      *
-     * @param {Square.webhooks.ListEventTypesRequest} request
+     * @param {Square.webhooks.ListEventTypesBody} request
      * @param {EventTypesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -35,14 +35,14 @@ export class EventTypesClient {
      *     })
      */
     public list(
-        request: Square.webhooks.ListEventTypesRequest = {},
+        request: Square.webhooks.ListEventTypesBody = {},
         requestOptions?: EventTypesClient.RequestOptions,
     ): core.HttpResponsePromise<Square.ListWebhookEventTypesResponse> {
         return core.HttpResponsePromise.fromPromise(this.__list(request, requestOptions));
     }
 
     private async __list(
-        request: Square.webhooks.ListEventTypesRequest = {},
+        request: Square.webhooks.ListEventTypesBody = {},
         requestOptions?: EventTypesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Square.ListWebhookEventTypesResponse>> {
         const { apiVersion } = request;
@@ -65,7 +65,11 @@ export class EventTypesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

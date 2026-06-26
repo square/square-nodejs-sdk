@@ -67,7 +67,11 @@ export class InvoicesClient {
                     ),
                     method: "GET",
                     headers: _headers,
-                    queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+                    queryString: core.url
+                        .queryBuilder()
+                        .addMany(_queryParams)
+                        .mergeAdditional(requestOptions?.queryParams)
+                        .build(),
                     timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
                     maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
                     abortSignal: requestOptions?.abortSignal,
@@ -192,7 +196,7 @@ export class InvoicesClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.CreateInvoiceRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -283,7 +287,7 @@ export class InvoicesClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.SearchInvoicesRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -358,7 +362,7 @@ export class InvoicesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -440,7 +444,7 @@ export class InvoicesClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.UpdateInvoiceRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",
@@ -521,7 +525,11 @@ export class InvoicesClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -562,7 +570,7 @@ export class InvoicesClient {
      *
      * __NOTE:__ When testing in the Sandbox environment, the total file size is limited to 1 KB.
      *
-     * @param {Square.CreateInvoiceAttachmentRequest} request
+     * @param {Square.CreateInvoiceAttachmentBody} request
      * @param {InvoicesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -572,14 +580,14 @@ export class InvoicesClient {
      *     })
      */
     public createInvoiceAttachment(
-        request: Square.CreateInvoiceAttachmentRequest,
+        request: Square.CreateInvoiceAttachmentBody,
         requestOptions?: InvoicesClient.RequestOptions,
     ): core.HttpResponsePromise<Square.CreateInvoiceAttachmentResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createInvoiceAttachment(request, requestOptions));
     }
 
     private async __createInvoiceAttachment(
-        request: Square.CreateInvoiceAttachmentRequest,
+        request: Square.CreateInvoiceAttachmentBody,
         requestOptions?: InvoicesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Square.CreateInvoiceAttachmentResponse>> {
         const _body = await core.newFormData();
@@ -619,7 +627,7 @@ export class InvoicesClient {
             ),
             method: "POST",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "file",
             duplex: _maybeEncodedRequest.duplex,
             body: _maybeEncodedRequest.body,
@@ -699,7 +707,7 @@ export class InvoicesClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -779,7 +787,7 @@ export class InvoicesClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.CancelInvoiceRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",
@@ -875,7 +883,7 @@ export class InvoicesClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.PublishInvoiceRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",

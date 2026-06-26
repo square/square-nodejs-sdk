@@ -77,6 +77,7 @@ describe("LocationsClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/v2/locations").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.locations.list();
@@ -229,6 +230,7 @@ describe("LocationsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/locations")
@@ -374,6 +376,7 @@ describe("LocationsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/locations/location_id")
@@ -526,6 +529,7 @@ describe("LocationsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .put("/v2/locations/location_id")
@@ -823,6 +827,7 @@ describe("LocationsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/locations/location_id/checkouts")

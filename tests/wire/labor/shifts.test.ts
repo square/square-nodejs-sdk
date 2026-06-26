@@ -62,6 +62,7 @@ describe("ShiftsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/labor/shifts")
@@ -243,6 +244,7 @@ describe("ShiftsClient", () => {
             cursor: "cursor",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .post("/v2/labor/shifts/search")
@@ -403,6 +405,7 @@ describe("ShiftsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .get("/v2/labor/shifts/id")
@@ -526,6 +529,7 @@ describe("ShiftsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .put("/v2/labor/shifts/id")
@@ -624,6 +628,7 @@ describe("ShiftsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .delete("/v2/labor/shifts/id")

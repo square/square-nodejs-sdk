@@ -24,6 +24,8 @@ export class ShiftsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Creates a new `Shift`.
      *
      * A `Shift` represents a complete workday for a single team member.
@@ -105,7 +107,7 @@ export class ShiftsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.labor.CreateShiftRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -142,6 +144,8 @@ export class ShiftsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Returns a paginated list of `Shift` records for a business.
      * The list to be returned can be filtered by:
      * - Location IDs
@@ -205,7 +209,7 @@ export class ShiftsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.labor.SearchShiftsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -242,6 +246,8 @@ export class ShiftsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Returns a single `Shift` specified by `id`.
      *
      * @param {Square.labor.GetShiftsRequest} request
@@ -280,7 +286,7 @@ export class ShiftsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -312,6 +318,8 @@ export class ShiftsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Updates an existing `Shift`.
      *
      * When adding a `Break` to a `Shift`, any earlier `Break` instances in the `Shift` have
@@ -385,7 +393,7 @@ export class ShiftsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.labor.UpdateShiftRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",
@@ -422,6 +430,8 @@ export class ShiftsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Deletes a `Shift`.
      *
      * @param {Square.labor.DeleteShiftsRequest} request
@@ -460,7 +470,7 @@ export class ShiftsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

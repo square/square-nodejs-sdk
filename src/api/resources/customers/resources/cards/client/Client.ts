@@ -24,6 +24,8 @@ export class CardsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Adds a card on file to an existing customer.
      *
      * As with charges, calls to `CreateCustomerCard` are idempotent. Multiple
@@ -77,7 +79,7 @@ export class CardsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.customers.CreateCustomerCardRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",
@@ -119,6 +121,8 @@ export class CardsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Removes a card on file from a customer.
      *
      * @param {Square.customers.DeleteCardsRequest} request
@@ -158,7 +162,7 @@ export class CardsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
