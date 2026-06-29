@@ -16,19 +16,24 @@ export class SquareError extends Error {
     readonly body?: unknown;
     readonly errors: SquareError.BodyError[];
     public readonly rawResponse?: core.RawResponse;
+    public readonly cause?: unknown;
 
     constructor({
         message,
         statusCode,
         body,
         rawResponse,
-    }: { message?: string; statusCode?: number; body?: unknown; rawResponse?: core.RawResponse }) {
+        cause,
+    }: { message?: string; statusCode?: number; body?: unknown; rawResponse?: core.RawResponse; cause?: unknown }) {
         super(buildMessage({ message, statusCode, body }));
         Object.setPrototypeOf(this, SquareError.prototype);
         if (statusCode != null) {
             this.statusCode = statusCode;
         }
         this.rawResponse = rawResponse;
+        if (cause != null) {
+            this.cause = cause;
+        }
 
         this.body = body;
         if (body != null && typeof body === "object") {
