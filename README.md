@@ -12,13 +12,15 @@ The Square TypeScript library provides convenient access to the Square APIs from
 - [Versioning](#versioning)
 - [Usage](#usage)
 - [Legacy Sdk](#legacy-sdk)
+- [Environments](#environments)
 - [Request and Response Types](#request-and-response-types)
 - [Exception Handling](#exception-handling)
 - [File Uploads](#file-uploads)
 - [Pagination](#pagination)
 - [Webhook Signature Verification](#webhook-signature-verification)
-- [Reporting API](#reporting-api)
+- [Reporting Api](#reporting-api)
 - [Advanced](#advanced)
+  - [Subpackage Exports](#subpackage-exports)
   - [Additional Headers](#additional-headers)
   - [Additional Query String Parameters](#additional-query-string-parameters)
   - [Retries](#retries)
@@ -26,6 +28,8 @@ The Square TypeScript library provides convenient access to the Square APIs from
   - [Aborting Requests](#aborting-requests)
   - [Access Raw Response Data](#access-raw-response-data)
   - [Logging](#logging)
+  - [Custom Fetch](#custom-fetch)
+  - [Custom Fetcher](#custom-fetcher)
   - [Runtime Compatibility](#runtime-compatibility)
 - [Contributing](#contributing)
 
@@ -145,6 +149,18 @@ We recommend migrating to the new SDK using the following steps:
 
 3. Gradually move over to use the new SDK by importing it from the `"square"` import.
 
+
+## Environments
+
+This SDK allows you to configure different environments for API requests.
+
+```typescript
+import { SquareClient, SquareEnvironment } from "square";
+
+const client = new SquareClient({
+    environment: SquareEnvironment.Production,
+});
+```
 
 ## Request and Response Types
 
@@ -330,6 +346,16 @@ const response = await ReportingHelper.loadAndWait(
 
 ## Advanced
 
+### Subpackage Exports
+
+This SDK supports direct imports of subpackage clients, which allows JavaScript bundlers to tree-shake and include only the imported subpackage code. This results in much smaller bundle sizes.
+
+```typescript
+import { OAuthClient } from 'square/oAuth';
+
+const client = new OAuthClient({...});
+```
+
 ### Additional Headers
 
 If you would like to send additional headers as part of the request, use the `headers` request option.
@@ -369,11 +395,19 @@ The SDK is instrumented with automatic retries with exponential backoff. A reque
 as the request is deemed retryable and the number of retry attempts has not grown larger than the configured
 retry limit (default: 2).
 
-A request is deemed retryable when any of the following HTTP status codes is returned:
+Which status codes are retried depends on the `retryStatusCodes` generator configuration:
 
+**`legacy`** (current default): retries on
 - [408](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408) (Timeout)
 - [429](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) (Too Many Requests)
-- [5XX](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500) (Internal Server Errors)
+- [5XX](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses) (All server errors, including 500)
+
+**`recommended`**: retries on
+- [408](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/408) (Timeout)
+- [429](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) (Too Many Requests)
+- [502](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502) (Bad Gateway)
+- [503](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503) (Service Unavailable)
+- [504](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504) (Gateway Timeout)
 
 Use the `maxRetries` request option to configure this behavior.
 
@@ -480,6 +514,40 @@ const logger: logging.ILogger = {
 </details>
 
 
+### Custom Fetch
+
+The SDK provides a low-level `fetch` method for making custom HTTP requests while still
+benefiting from SDK-level configuration like authentication, retries, timeouts, and logging.
+This is useful for calling API endpoints not yet supported in the SDK.
+
+```typescript
+const response = await client.fetch("/v1/custom/endpoint", {
+    method: "GET",
+}, {
+    timeoutInSeconds: 30,
+    maxRetries: 3,
+    headers: {
+        "X-Custom-Header": "custom-value",
+    },
+});
+
+const data = await response.json();
+```
+
+### Custom Fetcher
+
+The SDK provides a way for you to customize the underlying HTTP client / Fetch function. If you're running in an
+unsupported environment, this provides a way for you to break glass and ensure the SDK works.
+
+```typescript
+import { SquareClient } from "square";
+
+const client = new SquareClient({
+    ...
+    fetcher: // provide your implementation here
+});
+```
+
 ### Runtime Compatibility
 
 
@@ -495,19 +563,6 @@ runtimes:
 - Bun 1.0+
 - React Native
 
-### Customizing Fetch Client
-
-The SDK provides a way for you to customize the underlying HTTP client / Fetch function. If you're running in an
-unsupported environment, this provides a way for you to break glass and ensure the SDK works.
-
-```typescript
-import { SquareClient } from "square";
-
-const client = new SquareClient({
-    ...
-    fetcher: // provide your implementation here
-});
-```
 
 ## Contributing
 

@@ -24,6 +24,8 @@ export class TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Lists transactions for a particular location.
      *
      * Transactions include payment information from sales and exchanges and refund
@@ -64,7 +66,7 @@ export class TransactionsClient {
                           unrecognizedObjectKeys: "strip",
                           omitUndefined: true,
                       })
-                    : null,
+                    : undefined,
             cursor,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -83,7 +85,11 @@ export class TransactionsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -120,6 +126,8 @@ export class TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Retrieves details for a single transaction.
      *
      * @param {Square.locations.GetTransactionsRequest} request
@@ -159,7 +167,7 @@ export class TransactionsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -196,6 +204,8 @@ export class TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
      * endpoint with a `delay_capture` value of `true`.
      *
@@ -240,7 +250,7 @@ export class TransactionsClient {
             ),
             method: "POST",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -277,6 +287,8 @@ export class TransactionsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
      * endpoint with a `delay_capture` value of `true`.
      *
@@ -321,7 +333,7 @@ export class TransactionsClient {
             ),
             method: "POST",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

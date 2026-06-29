@@ -18,7 +18,7 @@ export const OrderLineItemTax: core.serialization.ObjectSchema<
     type: OrderLineItemTaxType.optional(),
     percentage: core.serialization.string().optionalNullable(),
     metadata: core.serialization
-        .record(core.serialization.string(), core.serialization.string().optionalNullable())
+        .record(core.serialization.string(), core.serialization.string().nullable())
         .optionalNullable(),
     appliedMoney: core.serialization.property("applied_money", Money.optional()),
     scope: OrderLineItemTaxScope.optional(),
@@ -33,7 +33,7 @@ export declare namespace OrderLineItemTax {
         name?: (string | null | undefined) | null;
         type?: OrderLineItemTaxType.Raw | null;
         percentage?: (string | null | undefined) | null;
-        metadata?: (Record<string, (string | null | undefined) | null | undefined> | null | undefined) | null;
+        metadata?: (Record<string, (string | null | undefined) | null> | null | undefined) | null;
         applied_money?: Money.Raw | null;
         scope?: OrderLineItemTaxScope.Raw | null;
         auto_applied?: boolean | null;

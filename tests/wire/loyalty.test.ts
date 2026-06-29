@@ -65,6 +65,7 @@ describe("LoyaltyClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint()
             .post("/v2/loyalty/events/search")

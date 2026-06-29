@@ -36,6 +36,7 @@ describe("RefundsClient", () => {
             ],
             cursor: "5evquW1YswHoT4EoyUhzMmTsCnsSXBU9U0WJ4FU4623nrMQcocH0RGU6Up1YkwfiMcF59ood58EBTEGgzMTGHQJpocic7ExOL0NtrTXCeWcv0UJIJNk8eXb",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/refunds")
@@ -139,6 +140,7 @@ describe("RefundsClient", () => {
                 terminal_refund_id: "terminal_refund_id",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/refunds")
@@ -239,6 +241,7 @@ describe("RefundsClient", () => {
                 terminal_refund_id: "terminal_refund_id",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/refunds/refund_id")

@@ -50,6 +50,7 @@ describe("DisputesClient", () => {
             ],
             cursor: "G1aSTRm48CLjJsg6Sg3hQN1b1OMaoVuG",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/disputes")
@@ -154,6 +155,7 @@ describe("DisputesClient", () => {
                 location_id: "L1HN3ZMQK64X9",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/disputes/dispute_id")
@@ -225,6 +227,7 @@ describe("DisputesClient", () => {
                 location_id: "L1HN3ZMQK64X9",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/disputes/dispute_id/accept")
@@ -291,6 +294,7 @@ describe("DisputesClient", () => {
                 evidence_type: "REBUTTAL_EXPLANATION",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/disputes/dispute_id/evidence-text")
@@ -355,6 +359,7 @@ describe("DisputesClient", () => {
                 location_id: "LSY8XKGSMMX94",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/disputes/dispute_id/submit-evidence")

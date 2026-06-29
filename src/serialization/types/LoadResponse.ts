@@ -4,39 +4,37 @@ import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
 import { LoadResultAnnotation } from "./LoadResultAnnotation";
-import { LoadResultDataRow } from "./LoadResultDataRow";
+import { LoadResultData } from "./LoadResultData";
 
 export const LoadResponse: core.serialization.ObjectSchema<serializers.LoadResponse.Raw, Square.LoadResponse> =
     core.serialization.object({
         dataSource: core.serialization.string().optional(),
         annotation: LoadResultAnnotation.optional(),
-        data: LoadResultDataRow.optional(),
+        data: LoadResultData.optional(),
+        lastRefreshTime: core.serialization.string().optional(),
+        query: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+        slowQuery: core.serialization.boolean().optional(),
+        external: core.serialization.boolean().optional(),
+        dbType: core.serialization.string().optional(),
         refreshKeyValues: core.serialization
             .list(core.serialization.record(core.serialization.string(), core.serialization.unknown()))
             .optional(),
-        lastRefreshTime: core.serialization.string().optional(),
         pivotQuery: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
-        slowQuery: core.serialization.boolean().optional(),
         queryType: core.serialization.string().optional(),
-        query: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
-        external: core.serialization.boolean().optional(),
-        dbType: core.serialization.string().optional(),
-        error: core.serialization.string().optional(),
     });
 
 export declare namespace LoadResponse {
     export interface Raw {
         dataSource?: string | null;
         annotation?: LoadResultAnnotation.Raw | null;
-        data?: LoadResultDataRow.Raw | null;
-        refreshKeyValues?: Record<string, unknown>[] | null;
+        data?: LoadResultData.Raw | null;
         lastRefreshTime?: string | null;
-        pivotQuery?: Record<string, unknown> | null;
-        slowQuery?: boolean | null;
-        queryType?: string | null;
         query?: Record<string, unknown> | null;
+        slowQuery?: boolean | null;
         external?: boolean | null;
         dbType?: string | null;
-        error?: string | null;
+        refreshKeyValues?: Record<string, unknown>[] | null;
+        pivotQuery?: Record<string, unknown> | null;
+        queryType?: string | null;
     }
 }

@@ -60,7 +60,7 @@ export interface OrderLineItem {
      *
      * For more information, see [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
      */
-    metadata?: Record<string, (string | null) | undefined> | null;
+    metadata?: Record<string, string | null> | null;
     /** The [CatalogModifier](entity:CatalogModifier)s applied to this line item. */
     modifiers?: Square.OrderLineItemModifier[] | null;
     /**

@@ -40,7 +40,7 @@ export const Order: core.serialization.ObjectSchema<serializers.Order.Raw, Squar
     tenders: core.serialization.list(Tender).optional(),
     refunds: core.serialization.list(Refund).optional(),
     metadata: core.serialization
-        .record(core.serialization.string(), core.serialization.string().optionalNullable())
+        .record(core.serialization.string(), core.serialization.string().nullable())
         .optionalNullable(),
     createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
     updatedAt: core.serialization.property("updated_at", core.serialization.string().optional()),
@@ -76,7 +76,7 @@ export declare namespace Order {
         rounding_adjustment?: OrderRoundingAdjustment.Raw | null;
         tenders?: Tender.Raw[] | null;
         refunds?: Refund.Raw[] | null;
-        metadata?: (Record<string, (string | null | undefined) | null | undefined> | null | undefined) | null;
+        metadata?: (Record<string, (string | null | undefined) | null> | null | undefined) | null;
         created_at?: string | null;
         updated_at?: string | null;
         closed_at?: string | null;

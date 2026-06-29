@@ -22,6 +22,7 @@ describe("WorkweekConfigsClient", () => {
             cursor: "2fofTniCgT0yIPAq26kmk0YyFQJZfbWkh73OOnlTHmTAx13NgED",
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/labor/workweek-configs")
@@ -79,6 +80,7 @@ describe("WorkweekConfigsClient", () => {
             },
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .put("/v2/labor/workweek-configs/id")

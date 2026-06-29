@@ -60,7 +60,7 @@ export interface Fulfillment {
      *
      * For more information, see [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
      */
-    metadata?: Record<string, (string | null) | undefined> | null;
+    metadata?: Record<string, string | null> | null;
     /**
      * Contains details for a pickup fulfillment. These details are required when the fulfillment
      * type is `PICKUP`.
