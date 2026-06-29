@@ -17,7 +17,7 @@ export const OrderLineItemModifier: core.serialization.ObjectSchema<
     basePriceMoney: core.serialization.property("base_price_money", Money.optional()),
     totalPriceMoney: core.serialization.property("total_price_money", Money.optional()),
     metadata: core.serialization
-        .record(core.serialization.string(), core.serialization.string().optionalNullable())
+        .record(core.serialization.string(), core.serialization.string().nullable())
         .optionalNullable(),
 });
 
@@ -30,6 +30,6 @@ export declare namespace OrderLineItemModifier {
         quantity?: (string | null | undefined) | null;
         base_price_money?: Money.Raw | null;
         total_price_money?: Money.Raw | null;
-        metadata?: (Record<string, (string | null | undefined) | null | undefined> | null | undefined) | null;
+        metadata?: (Record<string, (string | null | undefined) | null> | null | undefined) | null;
     }
 }

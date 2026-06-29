@@ -22,7 +22,7 @@ export const Fulfillment: core.serialization.ObjectSchema<serializers.Fulfillmen
         ),
         entries: core.serialization.list(FulfillmentFulfillmentEntry).optional(),
         metadata: core.serialization
-            .record(core.serialization.string(), core.serialization.string().optionalNullable())
+            .record(core.serialization.string(), core.serialization.string().nullable())
             .optionalNullable(),
         pickupDetails: core.serialization.property("pickup_details", FulfillmentPickupDetails.optional()),
         shipmentDetails: core.serialization.property("shipment_details", FulfillmentShipmentDetails.optional()),
@@ -36,7 +36,7 @@ export declare namespace Fulfillment {
         state?: FulfillmentState.Raw | null;
         line_item_application?: FulfillmentFulfillmentLineItemApplication.Raw | null;
         entries?: FulfillmentFulfillmentEntry.Raw[] | null;
-        metadata?: (Record<string, (string | null | undefined) | null | undefined> | null | undefined) | null;
+        metadata?: (Record<string, (string | null | undefined) | null> | null | undefined) | null;
         pickup_details?: FulfillmentPickupDetails.Raw | null;
         shipment_details?: FulfillmentShipmentDetails.Raw | null;
         delivery_details?: FulfillmentDeliveryDetails.Raw | null;

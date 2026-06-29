@@ -25,6 +25,7 @@ describe("SubscriptionsClient", () => {
             ],
             cursor: "cursor",
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/v2/webhooks/subscriptions")
@@ -96,6 +97,7 @@ describe("SubscriptionsClient", () => {
                 updated_at: "2022-01-10 23:29:48 +0000 UTC",
             },
         };
+
         server
             .mockEndpoint()
             .post("/v2/webhooks/subscriptions")
@@ -155,6 +157,7 @@ describe("SubscriptionsClient", () => {
                 updated_at: "2022-01-10 23:29:48 +0000 UTC",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v2/webhooks/subscriptions/subscription_id")
@@ -207,6 +210,7 @@ describe("SubscriptionsClient", () => {
                 updated_at: "2022-01-10 23:45:51 +0000 UTC",
             },
         };
+
         server
             .mockEndpoint()
             .put("/v2/webhooks/subscriptions/subscription_id")
@@ -253,6 +257,7 @@ describe("SubscriptionsClient", () => {
         const rawResponseBody = {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
         };
+
         server
             .mockEndpoint()
             .delete("/v2/webhooks/subscriptions/subscription_id")
@@ -284,6 +289,7 @@ describe("SubscriptionsClient", () => {
             errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
             signature_key: "1k9bIJKCeTmSQwyagtNRLg",
         };
+
         server
             .mockEndpoint()
             .post("/v2/webhooks/subscriptions/subscription_id/signature-key")
@@ -330,6 +336,7 @@ describe("SubscriptionsClient", () => {
             passes_filter: true,
             payload: { key: "value" },
         };
+
         server
             .mockEndpoint()
             .post("/v2/webhooks/subscriptions/subscription_id/test")

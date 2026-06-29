@@ -75,7 +75,7 @@ export class LocationsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -160,7 +160,7 @@ export class LocationsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.CreateLocationRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -236,7 +236,7 @@ export class LocationsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -325,7 +325,7 @@ export class LocationsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.UpdateLocationRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",
@@ -362,6 +362,8 @@ export class LocationsClient {
     }
 
     /**
+     * @deprecated
+     *
      * Links a `checkoutId` to a `checkout_page_url` that customers are
      * directed to in order to provide their payment information using a
      * payment processing workflow hosted on connect.squareup.com.
@@ -481,7 +483,7 @@ export class LocationsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.CreateCheckoutRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",

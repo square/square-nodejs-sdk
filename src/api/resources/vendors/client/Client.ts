@@ -82,7 +82,7 @@ export class VendorsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.BatchCreateVendorsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -157,7 +157,7 @@ export class VendorsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.BatchGetVendorsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -239,7 +239,7 @@ export class VendorsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.BatchUpdateVendorsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -333,7 +333,7 @@ export class VendorsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.CreateVendorRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -406,7 +406,7 @@ export class VendorsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.SearchVendorsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
@@ -481,7 +481,7 @@ export class VendorsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -561,7 +561,7 @@ export class VendorsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: serializers.UpdateVendorRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",

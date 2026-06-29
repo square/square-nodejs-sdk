@@ -69,7 +69,7 @@ export interface OrderLineItemDiscount {
      *
      * For more information, see [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
      */
-    metadata?: Record<string, (string | null) | undefined> | null;
+    metadata?: Record<string, string | null> | null;
     /**
      * Indicates the level at which the discount applies. For `ORDER` scoped discounts,
      * Square generates references in `applied_discounts` on all order line items that do

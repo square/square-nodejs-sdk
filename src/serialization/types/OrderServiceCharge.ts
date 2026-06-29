@@ -30,7 +30,7 @@ export const OrderServiceCharge: core.serialization.ObjectSchema<
         core.serialization.list(OrderLineItemAppliedTax).optionalNullable(),
     ),
     metadata: core.serialization
-        .record(core.serialization.string(), core.serialization.string().optionalNullable())
+        .record(core.serialization.string(), core.serialization.string().nullable())
         .optionalNullable(),
     type: OrderServiceChargeType.optional(),
     treatmentType: core.serialization.property("treatment_type", OrderServiceChargeTreatmentType.optional()),
@@ -51,7 +51,7 @@ export declare namespace OrderServiceCharge {
         calculation_phase?: OrderServiceChargeCalculationPhase.Raw | null;
         taxable?: (boolean | null | undefined) | null;
         applied_taxes?: (OrderLineItemAppliedTax.Raw[] | null | undefined) | null;
-        metadata?: (Record<string, (string | null | undefined) | null | undefined> | null | undefined) | null;
+        metadata?: (Record<string, (string | null | undefined) | null> | null | undefined) | null;
         type?: OrderServiceChargeType.Raw | null;
         treatment_type?: OrderServiceChargeTreatmentType.Raw | null;
         scope?: OrderServiceChargeScope.Raw | null;
