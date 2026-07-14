@@ -15,7 +15,11 @@ export interface ItemVariationLocationOverrides {
      * See [CatalogPricingType](#type-catalogpricingtype) for possible values
      */
     pricingType?: Square.CatalogPricingType;
-    /** If `true`, inventory tracking is active for the `CatalogItemVariation` at this `Location`. */
+    /**
+     * Indicates whether inventory tracking is active for the `CatalogItemVariation` at this `Location`.
+     * When set, this value explicitly overrides the global `track_inventory` setting. When unset, the location
+     * should use the global value. If both global and location-level values are unset, inventory tracking is disabled.
+     */
     trackInventory?: boolean | null;
     /**
      * Indicates whether the `CatalogItemVariation` displays an alert when its inventory

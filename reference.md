@@ -2085,9 +2085,15 @@ batches will be processed in order as long as the total object count for the
 request (items, variations, modifier lists, discounts, and taxes) is no more
 than 10,000.
 
+This endpoint uses full-replacement semantics. The client must send the complete object, and any
+field absent from the request is interpreted as an intentional clear. This logic applies to
+nested objects as well. For example, omitting inlined children like variations will delete them.
+
 To ensure consistency, only one update request is processed at a time per seller account.
 While one (batch or non-batch) update request is being processed, other (batched and non-batched)
-update requests are rejected with the `429` error code.
+update requests are rejected with the `429` error code. Prefer batching related changes into a
+single call rather than issuing many small writes, since each write acquires the lock separately
+and parallel writes to the same seller will contend with each other, producing `429` errors.
 </dd>
 </dl>
 </dd>
@@ -2227,6 +2233,8 @@ Returns a list of all [CatalogObject](entity:CatalogObject)s of the specified ty
 
 The `types` parameter is specified as a comma-separated list of the [CatalogObjectType](entity:CatalogObjectType) values,
 for example, "`ITEM`, `ITEM_VARIATION`, `MODIFIER`, `MODIFIER_LIST`, `CATEGORY`, `DISCOUNT`, `TAX`, `IMAGE`".
+Always specify `types` explicitly. When upgrading to a newer API version, omitting `types` may
+cause new object types to appear in results that were not returned under the previous version.
 
 __Important:__ ListCatalog does not return deleted catalog items. To retrieve
 deleted catalog items, use [SearchCatalogObjects](api-endpoint:Catalog-SearchCatalogObjects)
@@ -2323,6 +2331,11 @@ endpoint in the following aspects:
 - `SearchCatalogItems` supports the custom attribute query filters to return items or item variations that contain custom attribute values, where `SearchCatalogObjects` does not.
 - `SearchCatalogItems` does not support the `include_deleted_objects` filter to search for deleted items or item variations, whereas `SearchCatalogObjects` does.
 - The both endpoints have different call conventions, including the query filter formats.
+
+The `object_types` parameter is specified as a list of [CatalogObjectType](entity:CatalogObjectType) values.
+Always specify `object_types` explicitly. When upgrading to a newer API version, omitting
+`object_types` may cause new object types to appear in results that were not returned under
+the previous version.
 </dd>
 </dl>
 </dd>
@@ -5088,6 +5101,425 @@ await client.giftCards.get({
 </details>
 
 ## Inventory
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">listInventoryAdjustmentReasons</a>({ ...params }) -> Square.ListInventoryAdjustmentReasonsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the standard and custom inventory adjustment reasons available
+to the seller.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.inventory.listInventoryAdjustmentReasons({
+    includeDeleted: true,
+    includeSystemCodes: true
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.ListInventoryAdjustmentReasonsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InventoryClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">createInventoryAdjustmentReason</a>({ ...params }) -> Square.CreateInventoryAdjustmentReasonResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a custom inventory adjustment reason.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.inventory.createInventoryAdjustmentReason({
+    idempotencyKey: "27b2f2b1-1c2a-4b9e-8f3a-0d9c3a1e5b47",
+    adjustmentReason: {
+        id: {
+            type: "CUSTOM"
+        },
+        name: "Donated to charity",
+        direction: "DECREASE"
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.CreateInventoryAdjustmentReasonRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InventoryClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">deleteInventoryAdjustmentReason</a>({ ...params }) -> Square.DeleteInventoryAdjustmentReasonResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Soft deletes a custom inventory adjustment reason.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.inventory.deleteInventoryAdjustmentReason({
+    reasonId: {
+        type: "CUSTOM",
+        customReasonId: "R5BX3PDCZ6EXAMPLE"
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.DeleteInventoryAdjustmentReasonRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InventoryClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">restoreInventoryAdjustmentReason</a>({ ...params }) -> Square.RestoreInventoryAdjustmentReasonResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Restores a soft-deleted custom inventory adjustment reason.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.inventory.restoreInventoryAdjustmentReason({
+    reasonId: {
+        type: "CUSTOM",
+        customReasonId: "R5BX3PDCZ6EXAMPLE"
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.RestoreInventoryAdjustmentReasonRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InventoryClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">retrieveInventoryAdjustmentReason</a>({ ...params }) -> Square.RetrieveInventoryAdjustmentReasonResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the inventory adjustment reason identified by the provided
+`reason_id`. Deleted custom reasons can be retrieved by ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.inventory.retrieveInventoryAdjustmentReason({
+    reasonId: {
+        type: "CUSTOM",
+        customReasonId: "R5BX3PDCZ6EXAMPLE"
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.RetrieveInventoryAdjustmentReasonRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InventoryClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">updateInventoryAdjustmentReason</a>({ ...params }) -> Square.UpdateInventoryAdjustmentReasonResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a custom inventory adjustment reason.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.inventory.updateInventoryAdjustmentReason({
+    reasonId: {
+        type: "CUSTOM",
+        customReasonId: "R5BX3PDCZ6EXAMPLE"
+    },
+    adjustmentReason: {
+        id: {
+            type: "CUSTOM",
+            customReasonId: "R5BX3PDCZ6EXAMPLE"
+        },
+        name: "Charitable donation"
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.UpdateInventoryAdjustmentReasonRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InventoryClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">deprecatedGetAdjustment</a>({ ...params }) -> Square.GetInventoryAdjustmentResponse</code></summary>
 <dl>
 <dd>
@@ -5135,6 +5567,75 @@ await client.inventory.deprecatedGetAdjustment({
 <dd>
 
 **request:** `Square.DeprecatedGetAdjustmentInventoryRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InventoryClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">updateInventoryAdjustment</a>({ ...params }) -> Square.UpdateInventoryAdjustmentResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Applies an update to the provided adjustment.
+
+On success: returns the newly updated adjustment.
+On failure: returns a list of related errors.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.inventory.updateInventoryAdjustment({
+    idempotencyKey: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+    adjustment: {}
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.UpdateInventoryAdjustmentRequest` 
     
 </dd>
 </dl>
@@ -5841,72 +6342,6 @@ await client.inventory.getPhysicalCount({
 </dl>
 </details>
 
-<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">getTransfer</a>({ ...params }) -> Square.GetInventoryTransferResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns the [InventoryTransfer](entity:InventoryTransfer) object
-with the provided `transfer_id`.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.inventory.getTransfer({
-    transferId: "transfer_id"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Square.GetTransferInventoryRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `InventoryClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">get</a>({ ...params }) -> core.Page&lt;Square.InventoryCount, Square.GetInventoryCountResponse&gt;</code></summary>
 <dl>
 <dd>
@@ -6069,6 +6504,57 @@ const response = page.response;
 <dd>
 
 **request:** `Square.ChangesInventoryRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `InventoryClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.inventory.<a href="/src/api/resources/inventory/client/Client.ts">getTransfer</a>({ ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.inventory.getTransfer({
+    transferId: "transfer_id"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Square.GetTransferInventoryRequest` 
     
 </dd>
 </dl>
@@ -15280,6 +15766,10 @@ await client.catalog.images.update({
 <dd>
 
 Creates a new or updates the specified [CatalogObject](entity:CatalogObject).
+
+This endpoint uses full-replacement semantics. The client must send the complete object, and any
+field absent from the request is interpreted as an intentional clear. This logic applies to
+nested objects as well. For example, omitting inlined children like variations will delete them.
 
 To ensure consistency, only one update request is processed at a time per seller account.
 While one (batch or non-batch) update request is being processed, other (batched and non-batched)

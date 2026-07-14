@@ -92,7 +92,10 @@ export interface CatalogItem {
      * It is currently supported for sellers of the Japanese locale only.
      */
     sortName?: string | null;
-    /** The list of categories. */
+    /**
+     * The list of categories to which this item belongs. Each entry includes the category ID and an ordinal
+     * value that determines the item's relative position within that category.
+     */
     categories?: Square.CatalogObjectCategory[] | null;
     /**
      * The item's description as expressed in valid HTML elements. The length of this field value, including those of HTML tags,

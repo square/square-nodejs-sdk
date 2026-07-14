@@ -4,6 +4,7 @@ import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
 import { InventoryAdjustmentGroup } from "./InventoryAdjustmentGroup";
+import { InventoryAdjustmentReasonId } from "./InventoryAdjustmentReasonId";
 import { InventoryState } from "./InventoryState";
 import { Money } from "./Money";
 import { SourceApplication } from "./SourceApplication";
@@ -16,7 +17,8 @@ export const InventoryAdjustment: core.serialization.ObjectSchema<
     referenceId: core.serialization.property("reference_id", core.serialization.string().optionalNullable()),
     fromState: core.serialization.property("from_state", InventoryState.optional()),
     toState: core.serialization.property("to_state", InventoryState.optional()),
-    locationId: core.serialization.property("location_id", core.serialization.string().optionalNullable()),
+    fromLocationId: core.serialization.property("from_location_id", core.serialization.string().optionalNullable()),
+    toLocationId: core.serialization.property("to_location_id", core.serialization.string().optionalNullable()),
     catalogObjectId: core.serialization.property("catalog_object_id", core.serialization.string().optionalNullable()),
     catalogObjectType: core.serialization.property(
         "catalog_object_type",
@@ -34,6 +36,10 @@ export const InventoryAdjustment: core.serialization.ObjectSchema<
     purchaseOrderId: core.serialization.property("purchase_order_id", core.serialization.string().optional()),
     goodsReceiptId: core.serialization.property("goods_receipt_id", core.serialization.string().optional()),
     adjustmentGroup: core.serialization.property("adjustment_group", InventoryAdjustmentGroup.optional()),
+    costMoney: core.serialization.property("cost_money", Money.optional()),
+    vendorId: core.serialization.property("vendor_id", core.serialization.string().optionalNullable()),
+    physicalCountId: core.serialization.property("physical_count_id", core.serialization.string().optional()),
+    reasonId: core.serialization.property("reason_id", InventoryAdjustmentReasonId.optional()),
 });
 
 export declare namespace InventoryAdjustment {
@@ -42,7 +48,8 @@ export declare namespace InventoryAdjustment {
         reference_id?: (string | null | undefined) | null;
         from_state?: InventoryState.Raw | null;
         to_state?: InventoryState.Raw | null;
-        location_id?: (string | null | undefined) | null;
+        from_location_id?: (string | null | undefined) | null;
+        to_location_id?: (string | null | undefined) | null;
         catalog_object_id?: (string | null | undefined) | null;
         catalog_object_type?: (string | null | undefined) | null;
         quantity?: (string | null | undefined) | null;
@@ -57,5 +64,9 @@ export declare namespace InventoryAdjustment {
         purchase_order_id?: string | null;
         goods_receipt_id?: string | null;
         adjustment_group?: InventoryAdjustmentGroup.Raw | null;
+        cost_money?: Money.Raw | null;
+        vendor_id?: (string | null | undefined) | null;
+        physical_count_id?: string | null;
+        reason_id?: InventoryAdjustmentReasonId.Raw | null;
     }
 }

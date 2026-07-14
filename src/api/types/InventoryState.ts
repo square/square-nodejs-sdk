@@ -18,5 +18,6 @@ export const InventoryState = {
     Decomposed: "DECOMPOSED",
     SupportedByNewerVersion: "SUPPORTED_BY_NEWER_VERSION",
     InTransit: "IN_TRANSIT",
+    Untracked: "UNTRACKED",
 } as const;
 export type InventoryState = (typeof InventoryState)[keyof typeof InventoryState];

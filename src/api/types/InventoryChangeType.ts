@@ -4,6 +4,5 @@
 export const InventoryChangeType = {
     PhysicalCount: "PHYSICAL_COUNT",
     Adjustment: "ADJUSTMENT",
-    Transfer: "TRANSFER",
 } as const;
 export type InventoryChangeType = (typeof InventoryChangeType)[keyof typeof InventoryChangeType];

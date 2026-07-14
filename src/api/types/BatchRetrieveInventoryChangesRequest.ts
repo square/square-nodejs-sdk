@@ -45,4 +45,17 @@ export interface BatchRetrieveInventoryChangesRequest {
     cursor?: string | null;
     /** The number of [records](entity:InventoryChange) to return. */
     limit?: number | null;
+    /**
+     * Specification of how returned inventory changes should be ordered.
+     *
+     * Currently, inventory changes can only be ordered by the occurred_at field.
+     * The default sort order for occurred_at is ASC (changes are returned oldest-first by default).
+     */
+    sort?: Square.BatchRetrieveInventoryChangesSort;
+    /**
+     * The filter to return `ADJUSTMENT` query results by inventory
+     * adjustment reason. This filter is only applied when set. The request cannot
+     * include both `reason_ids` and `states`.
+     */
+    reasonIds?: Square.InventoryAdjustmentReasonId[] | null;
 }

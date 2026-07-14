@@ -5,8 +5,8 @@ import * as core from "../../core";
 import type * as serializers from "../index";
 
 export const ExcludeStrategy: core.serialization.Schema<serializers.ExcludeStrategy.Raw, Square.ExcludeStrategy> =
-    core.serialization.enum_(["LEAST_EXPENSIVE", "MOST_EXPENSIVE"]);
+    core.serialization.enum_(["LEAST_EXPENSIVE", "MOST_EXPENSIVE", "MOST_EXPENSIVE_LOWEST_VALUE"]);
 
 export declare namespace ExcludeStrategy {
-    export type Raw = "LEAST_EXPENSIVE" | "MOST_EXPENSIVE";
+    export type Raw = "LEAST_EXPENSIVE" | "MOST_EXPENSIVE" | "MOST_EXPENSIVE_LOWEST_VALUE";
 }

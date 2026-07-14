@@ -7,6 +7,5 @@
  *     }
  */
 export interface GetTransferInventoryRequest {
-    /** ID of the [InventoryTransfer](entity:InventoryTransfer) to retrieve. */
     transferId: string;
 }

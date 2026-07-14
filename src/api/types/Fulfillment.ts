@@ -81,4 +81,9 @@ export interface Fulfillment {
     shipmentDetails?: Square.FulfillmentShipmentDetails;
     /** Describes delivery details of an order fulfillment. */
     deliveryDetails?: Square.FulfillmentDeliveryDetails;
+    /**
+     * Contains details for an in-store fulfillment. These details are required when the fulfillment
+     * type is `IN_STORE`.
+     */
+    inStoreDetails?: Square.FulfillmentInStoreDetails;
 }

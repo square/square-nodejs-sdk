@@ -16,7 +16,7 @@ export type BaseClientOptions = {
     /** Specify a custom URL to connect the client to. */
     baseUrl?: core.Supplier<string>;
     /** Override the Square-Version header */
-    version?: "2026-05-20";
+    version?: "2026-07-15";
     /** Additional headers to include in requests. */
     headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     /** The default maximum time to wait for a response in seconds. */
@@ -40,7 +40,7 @@ export interface BaseRequestOptions {
     /** A hook to abort the request. */
     abortSignal?: AbortSignal;
     /** Override the Square-Version header */
-    version?: "2026-05-20";
+    version?: "2026-07-15";
     /** Additional query string parameters to include in the request. */
     queryParams?: Record<string, unknown>;
     /** Additional headers to include in the request. */
@@ -64,11 +64,11 @@ export function normalizeClientOptions<T extends BaseClientOptions = BaseClientO
         {
             "X-Fern-Language": "JavaScript",
             "X-Fern-SDK-Name": "square",
-            "X-Fern-SDK-Version": "44.2.1",
-            "User-Agent": "square/44.2.1",
+            "X-Fern-SDK-Version": "45.0.1",
+            "User-Agent": "square/45.0.1",
             "X-Fern-Runtime": core.RUNTIME.type,
             "X-Fern-Runtime-Version": core.RUNTIME.version,
-            "Square-Version": options?.version ?? "2026-05-20",
+            "Square-Version": options?.version ?? "2026-07-15",
         },
         options?.headers,
     );

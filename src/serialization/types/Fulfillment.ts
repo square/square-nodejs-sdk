@@ -6,6 +6,7 @@ import type * as serializers from "../index";
 import { FulfillmentDeliveryDetails } from "./FulfillmentDeliveryDetails";
 import { FulfillmentFulfillmentEntry } from "./FulfillmentFulfillmentEntry";
 import { FulfillmentFulfillmentLineItemApplication } from "./FulfillmentFulfillmentLineItemApplication";
+import { FulfillmentInStoreDetails } from "./FulfillmentInStoreDetails";
 import { FulfillmentPickupDetails } from "./FulfillmentPickupDetails";
 import { FulfillmentShipmentDetails } from "./FulfillmentShipmentDetails";
 import { FulfillmentState } from "./FulfillmentState";
@@ -27,6 +28,7 @@ export const Fulfillment: core.serialization.ObjectSchema<serializers.Fulfillmen
         pickupDetails: core.serialization.property("pickup_details", FulfillmentPickupDetails.optional()),
         shipmentDetails: core.serialization.property("shipment_details", FulfillmentShipmentDetails.optional()),
         deliveryDetails: core.serialization.property("delivery_details", FulfillmentDeliveryDetails.optional()),
+        inStoreDetails: core.serialization.property("in_store_details", FulfillmentInStoreDetails.optional()),
     });
 
 export declare namespace Fulfillment {
@@ -40,5 +42,6 @@ export declare namespace Fulfillment {
         pickup_details?: FulfillmentPickupDetails.Raw | null;
         shipment_details?: FulfillmentShipmentDetails.Raw | null;
         delivery_details?: FulfillmentDeliveryDetails.Raw | null;
+        in_store_details?: FulfillmentInStoreDetails.Raw | null;
     }
 }

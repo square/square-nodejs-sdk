@@ -20,7 +20,19 @@ export interface Order {
      * with this order.
      */
     referenceId?: string | null;
-    /** The origination details of the order. */
+    /**
+     * The latest source details of the order.
+     *
+     * This field reflects the most recent source that interacted with or modified the order,
+     * and may change during the order lifecycle. For example:
+     * - An order created via API (source.name = "MyPOS") paid with Square Terminal may have
+     * source updated to reflect the Terminal application (which uses REGISTER, like POS)
+     * - An order updated or completed by a different application may have source updated
+     * to reflect that application.
+     *
+     * To preserve the original source from order creation regardless of subsequent updates,
+     * use the `creation_source` field instead.
+     */
     source?: Square.OrderSource;
     /**
      * The ID of the [customer](entity:Customer) associated with the order.

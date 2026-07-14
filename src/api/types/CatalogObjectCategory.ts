@@ -10,7 +10,11 @@ import type * as Square from "../index";
 export interface CatalogObjectCategory {
     /** The ID of the object's category. */
     id?: string;
-    /** The order of the object within the context of the category. */
+    /**
+     * The position of this object within the specified category. When an item is assigned to a category,
+     * the ordinal determines the item's position relative to other items in the same category. When used for a
+     * parent category reference, the ordinal determines the category's position among its sibling categories.
+     */
     ordinal?: bigint | null;
     type?: "CATEGORY";
     /** Structured data for a `CatalogCategory`, set for CatalogObjects of type `CATEGORY`. */

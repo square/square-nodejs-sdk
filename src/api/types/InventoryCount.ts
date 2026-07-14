@@ -5,7 +5,8 @@ import type * as Square from "../index";
 /**
  * Represents Square-estimated quantity of items in a particular state at a
  * particular seller location based on the known history of physical counts and
- * inventory adjustments.
+ * inventory adjustments. The absence of an inventory count indicates that the
+ * catalog object hasn't interacted with the given inventory state at the given location.
  */
 export interface InventoryCount {
     /**

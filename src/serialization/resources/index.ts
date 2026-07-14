@@ -21,6 +21,8 @@ export * as events from "./events";
 export * from "./events/client/requests";
 export * as giftCards from "./giftCards";
 export * from "./giftCards/client/requests";
+export * as inventory from "./inventory";
+export * from "./inventory/client/requests";
 export * as invoices from "./invoices";
 export * from "./invoices/client/requests";
 export * as labor from "./labor";
