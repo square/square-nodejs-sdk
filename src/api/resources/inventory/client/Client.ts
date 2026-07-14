@@ -24,6 +24,518 @@ export class InventoryClient {
     }
 
     /**
+     * Returns the standard and custom inventory adjustment reasons available
+     * to the seller.
+     *
+     * @param {Square.ListInventoryAdjustmentReasonsRequest} request
+     * @param {InventoryClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.inventory.listInventoryAdjustmentReasons({
+     *         includeDeleted: true,
+     *         includeSystemCodes: true
+     *     })
+     */
+    public listInventoryAdjustmentReasons(
+        request: Square.ListInventoryAdjustmentReasonsRequest = {},
+        requestOptions?: InventoryClient.RequestOptions,
+    ): core.HttpResponsePromise<Square.ListInventoryAdjustmentReasonsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__listInventoryAdjustmentReasons(request, requestOptions));
+    }
+
+    private async __listInventoryAdjustmentReasons(
+        request: Square.ListInventoryAdjustmentReasonsRequest = {},
+        requestOptions?: InventoryClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.ListInventoryAdjustmentReasonsResponse>> {
+        const { includeDeleted, includeSystemCodes } = request;
+        const _queryParams: Record<string, unknown> = {
+            include_deleted: includeDeleted,
+            include_system_codes: includeSystemCodes,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
+            requestOptions?.headers,
+        );
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/inventory/adjustment-reasons",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.ListInventoryAdjustmentReasonsResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "GET",
+            "/v2/inventory/adjustment-reasons",
+        );
+    }
+
+    /**
+     * Creates a custom inventory adjustment reason.
+     *
+     * @param {Square.CreateInventoryAdjustmentReasonRequest} request
+     * @param {InventoryClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.inventory.createInventoryAdjustmentReason({
+     *         idempotencyKey: "27b2f2b1-1c2a-4b9e-8f3a-0d9c3a1e5b47",
+     *         adjustmentReason: {
+     *             id: {
+     *                 type: "CUSTOM"
+     *             },
+     *             name: "Donated to charity",
+     *             direction: "DECREASE"
+     *         }
+     *     })
+     */
+    public createInventoryAdjustmentReason(
+        request: Square.CreateInventoryAdjustmentReasonRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): core.HttpResponsePromise<Square.CreateInventoryAdjustmentReasonResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__createInventoryAdjustmentReason(request, requestOptions));
+    }
+
+    private async __createInventoryAdjustmentReason(
+        request: Square.CreateInventoryAdjustmentReasonRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.CreateInventoryAdjustmentReasonResponse>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
+            requestOptions?.headers,
+        );
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/inventory/adjustment-reasons/create",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: serializers.CreateInventoryAdjustmentReasonRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.CreateInventoryAdjustmentReasonResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/v2/inventory/adjustment-reasons/create",
+        );
+    }
+
+    /**
+     * Soft deletes a custom inventory adjustment reason.
+     *
+     * @param {Square.DeleteInventoryAdjustmentReasonRequest} request
+     * @param {InventoryClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.inventory.deleteInventoryAdjustmentReason({
+     *         reasonId: {
+     *             type: "CUSTOM",
+     *             customReasonId: "R5BX3PDCZ6EXAMPLE"
+     *         }
+     *     })
+     */
+    public deleteInventoryAdjustmentReason(
+        request: Square.DeleteInventoryAdjustmentReasonRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): core.HttpResponsePromise<Square.DeleteInventoryAdjustmentReasonResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteInventoryAdjustmentReason(request, requestOptions));
+    }
+
+    private async __deleteInventoryAdjustmentReason(
+        request: Square.DeleteInventoryAdjustmentReasonRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.DeleteInventoryAdjustmentReasonResponse>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
+            requestOptions?.headers,
+        );
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/inventory/adjustment-reasons/delete",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: serializers.DeleteInventoryAdjustmentReasonRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.DeleteInventoryAdjustmentReasonResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/v2/inventory/adjustment-reasons/delete",
+        );
+    }
+
+    /**
+     * Restores a soft-deleted custom inventory adjustment reason.
+     *
+     * @param {Square.RestoreInventoryAdjustmentReasonRequest} request
+     * @param {InventoryClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.inventory.restoreInventoryAdjustmentReason({
+     *         reasonId: {
+     *             type: "CUSTOM",
+     *             customReasonId: "R5BX3PDCZ6EXAMPLE"
+     *         }
+     *     })
+     */
+    public restoreInventoryAdjustmentReason(
+        request: Square.RestoreInventoryAdjustmentReasonRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): core.HttpResponsePromise<Square.RestoreInventoryAdjustmentReasonResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__restoreInventoryAdjustmentReason(request, requestOptions));
+    }
+
+    private async __restoreInventoryAdjustmentReason(
+        request: Square.RestoreInventoryAdjustmentReasonRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.RestoreInventoryAdjustmentReasonResponse>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
+            requestOptions?.headers,
+        );
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/inventory/adjustment-reasons/restore",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: serializers.RestoreInventoryAdjustmentReasonRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.RestoreInventoryAdjustmentReasonResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/v2/inventory/adjustment-reasons/restore",
+        );
+    }
+
+    /**
+     * Returns the inventory adjustment reason identified by the provided
+     * `reason_id`. Deleted custom reasons can be retrieved by ID.
+     *
+     * @param {Square.RetrieveInventoryAdjustmentReasonRequest} request
+     * @param {InventoryClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.inventory.retrieveInventoryAdjustmentReason({
+     *         reasonId: {
+     *             type: "CUSTOM",
+     *             customReasonId: "R5BX3PDCZ6EXAMPLE"
+     *         }
+     *     })
+     */
+    public retrieveInventoryAdjustmentReason(
+        request: Square.RetrieveInventoryAdjustmentReasonRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): core.HttpResponsePromise<Square.RetrieveInventoryAdjustmentReasonResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieveInventoryAdjustmentReason(request, requestOptions));
+    }
+
+    private async __retrieveInventoryAdjustmentReason(
+        request: Square.RetrieveInventoryAdjustmentReasonRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.RetrieveInventoryAdjustmentReasonResponse>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
+            requestOptions?.headers,
+        );
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/inventory/adjustment-reasons/retrieve",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: serializers.RetrieveInventoryAdjustmentReasonRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.RetrieveInventoryAdjustmentReasonResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/v2/inventory/adjustment-reasons/retrieve",
+        );
+    }
+
+    /**
+     * Updates a custom inventory adjustment reason.
+     *
+     * @param {Square.UpdateInventoryAdjustmentReasonRequest} request
+     * @param {InventoryClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.inventory.updateInventoryAdjustmentReason({
+     *         reasonId: {
+     *             type: "CUSTOM",
+     *             customReasonId: "R5BX3PDCZ6EXAMPLE"
+     *         },
+     *         adjustmentReason: {
+     *             id: {
+     *                 type: "CUSTOM",
+     *                 customReasonId: "R5BX3PDCZ6EXAMPLE"
+     *             },
+     *             name: "Charitable donation"
+     *         }
+     *     })
+     */
+    public updateInventoryAdjustmentReason(
+        request: Square.UpdateInventoryAdjustmentReasonRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): core.HttpResponsePromise<Square.UpdateInventoryAdjustmentReasonResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__updateInventoryAdjustmentReason(request, requestOptions));
+    }
+
+    private async __updateInventoryAdjustmentReason(
+        request: Square.UpdateInventoryAdjustmentReasonRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.UpdateInventoryAdjustmentReasonResponse>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
+            requestOptions?.headers,
+        );
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/inventory/adjustment-reasons/update",
+            ),
+            method: "PUT",
+            headers: _headers,
+            contentType: "application/json",
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: serializers.UpdateInventoryAdjustmentReasonRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.UpdateInventoryAdjustmentReasonResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "PUT",
+            "/v2/inventory/adjustment-reasons/update",
+        );
+    }
+
+    /**
      * @deprecated
      *
      * Deprecated version of [RetrieveInventoryAdjustment](api-endpoint:Inventory-RetrieveInventoryAdjustment) after the endpoint URL
@@ -53,7 +565,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -102,6 +614,90 @@ export class InventoryClient {
     }
 
     /**
+     * Applies an update to the provided adjustment.
+     *
+     * On success: returns the newly updated adjustment.
+     * On failure: returns a list of related errors.
+     *
+     * @param {Square.UpdateInventoryAdjustmentRequest} request
+     * @param {InventoryClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.inventory.updateInventoryAdjustment({
+     *         idempotencyKey: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+     *         adjustment: {}
+     *     })
+     */
+    public updateInventoryAdjustment(
+        request: Square.UpdateInventoryAdjustmentRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): core.HttpResponsePromise<Square.UpdateInventoryAdjustmentResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__updateInventoryAdjustment(request, requestOptions));
+    }
+
+    private async __updateInventoryAdjustment(
+        request: Square.UpdateInventoryAdjustmentRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Square.UpdateInventoryAdjustmentResponse>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
+            requestOptions?.headers,
+        );
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                "v2/inventory/adjustments/update",
+            ),
+            method: "PUT",
+            headers: _headers,
+            contentType: "application/json",
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: serializers.UpdateInventoryAdjustmentRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+                omitUndefined: true,
+            }),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.UpdateInventoryAdjustmentResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    skipValidation: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "PUT",
+            "/v2/inventory/adjustments/update",
+        );
+    }
+
+    /**
      * Returns the [InventoryAdjustment](entity:InventoryAdjustment) object
      * with the provided `adjustment_id`.
      *
@@ -129,7 +725,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -219,7 +815,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -302,7 +898,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -387,7 +983,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -484,7 +1080,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -573,7 +1169,7 @@ export class InventoryClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -673,7 +1269,7 @@ export class InventoryClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -768,7 +1364,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -844,7 +1440,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -893,82 +1489,6 @@ export class InventoryClient {
     }
 
     /**
-     * Returns the [InventoryTransfer](entity:InventoryTransfer) object
-     * with the provided `transfer_id`.
-     *
-     * @param {Square.GetTransferInventoryRequest} request
-     * @param {InventoryClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.inventory.getTransfer({
-     *         transferId: "transfer_id"
-     *     })
-     */
-    public getTransfer(
-        request: Square.GetTransferInventoryRequest,
-        requestOptions?: InventoryClient.RequestOptions,
-    ): core.HttpResponsePromise<Square.GetInventoryTransferResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getTransfer(request, requestOptions));
-    }
-
-    private async __getTransfer(
-        request: Square.GetTransferInventoryRequest,
-        requestOptions?: InventoryClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Square.GetInventoryTransferResponse>> {
-        const { transferId } = request;
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
-            requestOptions?.headers,
-        );
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SquareEnvironment.Production,
-                `v2/inventory/transfers/${core.url.encodePathParam(transferId)}`,
-            ),
-            method: "GET",
-            headers: _headers,
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: serializers.GetInventoryTransferResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.SquareError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        return handleNonStatusCodeError(
-            _response.error,
-            _response.rawResponse,
-            "GET",
-            "/v2/inventory/transfers/{transfer_id}",
-        );
-    }
-
-    /**
      * Retrieves the current calculated stock count for a given
      * [CatalogObject](entity:CatalogObject) at a given set of
      * [Location](entity:Location)s. Responses are paginated and unsorted.
@@ -1001,7 +1521,7 @@ export class InventoryClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -1108,7 +1628,7 @@ export class InventoryClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-05-20" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -1169,5 +1689,69 @@ export class InventoryClient {
                 return list(core.setObjectProperty(request, "cursor", response?.cursor));
             },
         });
+    }
+
+    /**
+     * @param {Square.GetTransferInventoryRequest} request
+     * @param {InventoryClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.inventory.getTransfer({
+     *         transferId: "transfer_id"
+     *     })
+     */
+    public getTransfer(
+        request: Square.GetTransferInventoryRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__getTransfer(request, requestOptions));
+    }
+
+    private async __getTransfer(
+        request: Square.GetTransferInventoryRequest,
+        requestOptions?: InventoryClient.RequestOptions,
+    ): Promise<core.WithRawResponse<void>> {
+        const { transferId } = request;
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-07-15" }),
+            requestOptions?.headers,
+        );
+        const _response = await (this._options.fetcher ?? core.fetcher)({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SquareEnvironment.Production,
+                `v2/inventory/transfers/${core.url.encodePathParam(transferId)}`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return { data: undefined, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SquareError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "GET",
+            "/v2/inventory/transfers/{transfer_id}",
+        );
     }
 }

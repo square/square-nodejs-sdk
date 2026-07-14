@@ -19,6 +19,10 @@ export const OrderLineItemModifier: core.serialization.ObjectSchema<
     metadata: core.serialization
         .record(core.serialization.string(), core.serialization.string().nullable())
         .optionalNullable(),
+    parentModifierUid: core.serialization.property(
+        "parent_modifier_uid",
+        core.serialization.string().optionalNullable(),
+    ),
 });
 
 export declare namespace OrderLineItemModifier {
@@ -31,5 +35,6 @@ export declare namespace OrderLineItemModifier {
         base_price_money?: Money.Raw | null;
         total_price_money?: Money.Raw | null;
         metadata?: (Record<string, (string | null | undefined) | null> | null | undefined) | null;
+        parent_modifier_uid?: (string | null | undefined) | null;
     }
 }

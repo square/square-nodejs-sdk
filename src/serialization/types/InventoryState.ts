@@ -22,6 +22,7 @@ export const InventoryState: core.serialization.Schema<serializers.InventoryStat
         "DECOMPOSED",
         "SUPPORTED_BY_NEWER_VERSION",
         "IN_TRANSIT",
+        "UNTRACKED",
     ]);
 
 export declare namespace InventoryState {
@@ -41,5 +42,6 @@ export declare namespace InventoryState {
         | "COMPOSED"
         | "DECOMPOSED"
         | "SUPPORTED_BY_NEWER_VERSION"
-        | "IN_TRANSIT";
+        | "IN_TRANSIT"
+        | "UNTRACKED";
 }

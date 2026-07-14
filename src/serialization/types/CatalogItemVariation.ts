@@ -4,6 +4,7 @@ import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
 import { CatalogItemOptionValueForItemVariation } from "./CatalogItemOptionValueForItemVariation";
+import { CatalogItemVariationVendorInformation } from "./CatalogItemVariationVendorInformation";
 import { CatalogPricingType } from "./CatalogPricingType";
 import { CatalogStockConversion } from "./CatalogStockConversion";
 import { InventoryAlertType } from "./InventoryAlertType";
@@ -57,6 +58,10 @@ export const CatalogItemVariation: core.serialization.ObjectSchema<
     ),
     stockableConversion: core.serialization.property("stockable_conversion", CatalogStockConversion.optional()),
     kitchenName: core.serialization.property("kitchen_name", core.serialization.string().optionalNullable()),
+    vendorInformation: core.serialization.property(
+        "vendor_information",
+        core.serialization.list(CatalogItemVariationVendorInformation).optionalNullable(),
+    ),
 });
 
 export declare namespace CatalogItemVariation {
@@ -83,5 +88,6 @@ export declare namespace CatalogItemVariation {
         team_member_ids?: (string[] | null | undefined) | null;
         stockable_conversion?: CatalogStockConversion.Raw | null;
         kitchen_name?: (string | null | undefined) | null;
+        vendor_information?: (CatalogItemVariationVendorInformation.Raw[] | null | undefined) | null;
     }
 }

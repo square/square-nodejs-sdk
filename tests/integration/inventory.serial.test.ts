@@ -54,7 +54,8 @@ describe("Inventory API", () => {
                     type: "ADJUSTMENT",
                     adjustment: {
                         catalogObjectId: itemVariationId,
-                        locationId: locationId,
+                        fromLocationId: locationId,
+                        toLocationId: locationId,
                         quantity: "100",
                         fromState: "NONE",
                         toState: "IN_STOCK",
@@ -152,7 +153,8 @@ describe("Inventory API", () => {
                     type: "ADJUSTMENT",
                     adjustment: {
                         catalogObjectId: itemVariationId,
-                        locationId: locationId,
+                        fromLocationId: locationId,
+                        toLocationId: locationId,
                         quantity: "50", // Different quantity than setup
                         fromState: "NONE",
                         toState: "IN_STOCK",
@@ -168,7 +170,7 @@ describe("Inventory API", () => {
             type: "ADJUSTMENT",
             adjustment: {
                 catalogObjectId: itemVariationId,
-                locationId: locationId,
+                toLocationId: locationId,
                 quantity: "50",
             },
         });

@@ -52,19 +52,25 @@ export interface CatalogItemVariation {
     priceMoney?: Square.Money;
     /** Per-location price and inventory overrides. */
     locationOverrides?: Square.ItemVariationLocationOverrides[] | null;
-    /** If `true`, inventory tracking is active for the variation. */
+    /**
+     * If `true`, inventory tracking is active for the variation at all locations by default.
+     * This value can be overridden for specific locations using `ItemVariationLocationOverrides.track_inventory`.
+     * If unset at both levels, inventory tracking is disabled.
+     */
     trackInventory?: boolean | null;
     /**
      * Indicates whether the item variation displays an alert when its inventory quantity is less than or equal
      * to its `inventory_alert_threshold`.
+     *
+     * Deprecated because this field has never been global.
      * See [InventoryAlertType](#type-inventoryalerttype) for possible values
      */
     inventoryAlertType?: Square.InventoryAlertType;
     /**
      * If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type`
-     * is `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.
+     * is `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard. This value is always an integer.
      *
-     * This value is always an integer.
+     * Deprecated because this field has never been global.
      */
     inventoryAlertThreshold?: bigint | null;
     /** Arbitrary user metadata to associate with the item variation. This attribute value length is of Unicode code points. */
@@ -129,4 +135,10 @@ export interface CatalogItemVariation {
      * kitchen name is "Large container"
      */
     kitchenName?: string | null;
+    /**
+     * Details of the vendor this product is purchased from.
+     * This field can be set only if the seller has an active subscription
+     * to either Square for Retail Premium or Square for Restaurants Premium.
+     */
+    vendorInformation?: Square.CatalogItemVariationVendorInformation[] | null;
 }

@@ -7,8 +7,8 @@ import type * as serializers from "../index";
 export const InventoryChangeType: core.serialization.Schema<
     serializers.InventoryChangeType.Raw,
     Square.InventoryChangeType
-> = core.serialization.enum_(["PHYSICAL_COUNT", "ADJUSTMENT", "TRANSFER"]);
+> = core.serialization.enum_(["PHYSICAL_COUNT", "ADJUSTMENT"]);
 
 export declare namespace InventoryChangeType {
-    export type Raw = "PHYSICAL_COUNT" | "ADJUSTMENT" | "TRANSFER";
+    export type Raw = "PHYSICAL_COUNT" | "ADJUSTMENT";
 }

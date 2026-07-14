@@ -1,7 +1,14 @@
 export type { ChangesInventoryRequest } from "./ChangesInventoryRequest";
+export type { CreateInventoryAdjustmentReasonRequest } from "./CreateInventoryAdjustmentReasonRequest";
+export type { DeleteInventoryAdjustmentReasonRequest } from "./DeleteInventoryAdjustmentReasonRequest";
 export type { DeprecatedGetAdjustmentInventoryRequest } from "./DeprecatedGetAdjustmentInventoryRequest";
 export type { DeprecatedGetPhysicalCountInventoryRequest } from "./DeprecatedGetPhysicalCountInventoryRequest";
 export type { GetAdjustmentInventoryRequest } from "./GetAdjustmentInventoryRequest";
 export type { GetInventoryRequest } from "./GetInventoryRequest";
 export type { GetPhysicalCountInventoryRequest } from "./GetPhysicalCountInventoryRequest";
 export type { GetTransferInventoryRequest } from "./GetTransferInventoryRequest";
+export type { ListInventoryAdjustmentReasonsRequest } from "./ListInventoryAdjustmentReasonsRequest";
+export type { RestoreInventoryAdjustmentReasonRequest } from "./RestoreInventoryAdjustmentReasonRequest";
+export type { RetrieveInventoryAdjustmentReasonRequest } from "./RetrieveInventoryAdjustmentReasonRequest";
+export type { UpdateInventoryAdjustmentReasonRequest } from "./UpdateInventoryAdjustmentReasonRequest";
+export type { UpdateInventoryAdjustmentRequest } from "./UpdateInventoryAdjustmentRequest";

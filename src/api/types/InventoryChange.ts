@@ -24,14 +24,6 @@ export interface InventoryChange {
      * `ADJUSTMENT`, and is unset for all other change types.
      */
     adjustment?: Square.InventoryAdjustment;
-    /**
-     * Contains details about the inventory transfer when `type` is
-     * `TRANSFER`, and is unset for all other change types.
-     *
-     * _Note:_ An [InventoryTransfer](entity:InventoryTransfer) object can only be set in the input to the
-     * [BatchChangeInventory](api-endpoint:Inventory-BatchChangeInventory) endpoint when the seller has an active Retail Plus subscription.
-     */
-    transfer?: Square.InventoryTransfer;
     /** The [CatalogMeasurementUnit](entity:CatalogMeasurementUnit) object representing the catalog measurement unit associated with the inventory change. */
     measurementUnit?: Square.CatalogMeasurementUnit;
     /** The ID of the [CatalogMeasurementUnit](entity:CatalogMeasurementUnit) object representing the catalog measurement unit associated with the inventory change. */

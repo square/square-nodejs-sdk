@@ -4,6 +4,387 @@ import { SquareClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
 describe("InventoryClient", () => {
+    test("ListInventoryAdjustmentReasons", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
+            adjustment_reasons: [
+                {
+                    id: { type: "RECEIVED" },
+                    name: "name",
+                    direction: "INCREASE",
+                    created_at: "created_at",
+                    updated_at: "updated_at",
+                    is_deleted: true,
+                },
+                {
+                    id: { type: "DAMAGED" },
+                    name: "name",
+                    direction: "DECREASE",
+                    created_at: "created_at",
+                    updated_at: "updated_at",
+                    is_deleted: true,
+                },
+                {
+                    id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" },
+                    name: "Donated to charity",
+                    direction: "DECREASE",
+                    created_at: "2026-07-15T18:24:31.000Z",
+                    updated_at: "2026-07-15T18:24:31.000Z",
+                    is_deleted: false,
+                },
+            ],
+        };
+
+        server
+            .mockEndpoint()
+            .get("/v2/inventory/adjustment-reasons")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.inventory.listInventoryAdjustmentReasons({
+            includeDeleted: true,
+            includeSystemCodes: true,
+        });
+        expect(response).toEqual({
+            errors: [
+                {
+                    category: "API_ERROR",
+                    code: "INTERNAL_SERVER_ERROR",
+                    detail: "detail",
+                    field: "field",
+                },
+            ],
+            adjustmentReasons: [
+                {
+                    id: {
+                        type: "RECEIVED",
+                    },
+                    name: "name",
+                    direction: "INCREASE",
+                    createdAt: "created_at",
+                    updatedAt: "updated_at",
+                    isDeleted: true,
+                },
+                {
+                    id: {
+                        type: "DAMAGED",
+                    },
+                    name: "name",
+                    direction: "DECREASE",
+                    createdAt: "created_at",
+                    updatedAt: "updated_at",
+                    isDeleted: true,
+                },
+                {
+                    id: {
+                        type: "CUSTOM",
+                        customReasonId: "R5BX3PDCZ6EXAMPLE",
+                    },
+                    name: "Donated to charity",
+                    direction: "DECREASE",
+                    createdAt: "2026-07-15T18:24:31.000Z",
+                    updatedAt: "2026-07-15T18:24:31.000Z",
+                    isDeleted: false,
+                },
+            ],
+        });
+    });
+
+    test("CreateInventoryAdjustmentReason", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            idempotency_key: "27b2f2b1-1c2a-4b9e-8f3a-0d9c3a1e5b47",
+            adjustment_reason: { id: { type: "CUSTOM" }, name: "Donated to charity", direction: "DECREASE" },
+        };
+        const rawResponseBody = {
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
+            adjustment_reason: {
+                id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" },
+                name: "Donated to charity",
+                direction: "DECREASE",
+                created_at: "2026-07-15T18:24:31.000Z",
+                updated_at: "2026-07-15T18:24:31.000Z",
+                is_deleted: false,
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .post("/v2/inventory/adjustment-reasons/create")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.inventory.createInventoryAdjustmentReason({
+            idempotencyKey: "27b2f2b1-1c2a-4b9e-8f3a-0d9c3a1e5b47",
+            adjustmentReason: {
+                id: {
+                    type: "CUSTOM",
+                },
+                name: "Donated to charity",
+                direction: "DECREASE",
+            },
+        });
+        expect(response).toEqual({
+            errors: [
+                {
+                    category: "API_ERROR",
+                    code: "INTERNAL_SERVER_ERROR",
+                    detail: "detail",
+                    field: "field",
+                },
+            ],
+            adjustmentReason: {
+                id: {
+                    type: "CUSTOM",
+                    customReasonId: "R5BX3PDCZ6EXAMPLE",
+                },
+                name: "Donated to charity",
+                direction: "DECREASE",
+                createdAt: "2026-07-15T18:24:31.000Z",
+                updatedAt: "2026-07-15T18:24:31.000Z",
+                isDeleted: false,
+            },
+        });
+    });
+
+    test("DeleteInventoryAdjustmentReason", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { reason_id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" } };
+        const rawResponseBody = {
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
+            adjustment_reason: {
+                id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" },
+                name: "Charitable donation",
+                direction: "DECREASE",
+                created_at: "2026-07-15T18:24:31.000Z",
+                updated_at: "2026-07-15T19:05:44.000Z",
+                is_deleted: true,
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .post("/v2/inventory/adjustment-reasons/delete")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.inventory.deleteInventoryAdjustmentReason({
+            reasonId: {
+                type: "CUSTOM",
+                customReasonId: "R5BX3PDCZ6EXAMPLE",
+            },
+        });
+        expect(response).toEqual({
+            errors: [
+                {
+                    category: "API_ERROR",
+                    code: "INTERNAL_SERVER_ERROR",
+                    detail: "detail",
+                    field: "field",
+                },
+            ],
+            adjustmentReason: {
+                id: {
+                    type: "CUSTOM",
+                    customReasonId: "R5BX3PDCZ6EXAMPLE",
+                },
+                name: "Charitable donation",
+                direction: "DECREASE",
+                createdAt: "2026-07-15T18:24:31.000Z",
+                updatedAt: "2026-07-15T19:05:44.000Z",
+                isDeleted: true,
+            },
+        });
+    });
+
+    test("RestoreInventoryAdjustmentReason", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { reason_id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" } };
+        const rawResponseBody = {
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
+            adjustment_reason: {
+                id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" },
+                name: "Charitable donation",
+                direction: "DECREASE",
+                created_at: "2026-07-15T18:24:31.000Z",
+                updated_at: "2026-07-15T19:07:12.000Z",
+                is_deleted: false,
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .post("/v2/inventory/adjustment-reasons/restore")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.inventory.restoreInventoryAdjustmentReason({
+            reasonId: {
+                type: "CUSTOM",
+                customReasonId: "R5BX3PDCZ6EXAMPLE",
+            },
+        });
+        expect(response).toEqual({
+            errors: [
+                {
+                    category: "API_ERROR",
+                    code: "INTERNAL_SERVER_ERROR",
+                    detail: "detail",
+                    field: "field",
+                },
+            ],
+            adjustmentReason: {
+                id: {
+                    type: "CUSTOM",
+                    customReasonId: "R5BX3PDCZ6EXAMPLE",
+                },
+                name: "Charitable donation",
+                direction: "DECREASE",
+                createdAt: "2026-07-15T18:24:31.000Z",
+                updatedAt: "2026-07-15T19:07:12.000Z",
+                isDeleted: false,
+            },
+        });
+    });
+
+    test("RetrieveInventoryAdjustmentReason", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { reason_id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" } };
+        const rawResponseBody = {
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
+            adjustment_reason: {
+                id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" },
+                name: "Donated to charity",
+                direction: "DECREASE",
+                created_at: "2026-07-15T18:24:31.000Z",
+                updated_at: "2026-07-15T18:24:31.000Z",
+                is_deleted: false,
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .post("/v2/inventory/adjustment-reasons/retrieve")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.inventory.retrieveInventoryAdjustmentReason({
+            reasonId: {
+                type: "CUSTOM",
+                customReasonId: "R5BX3PDCZ6EXAMPLE",
+            },
+        });
+        expect(response).toEqual({
+            errors: [
+                {
+                    category: "API_ERROR",
+                    code: "INTERNAL_SERVER_ERROR",
+                    detail: "detail",
+                    field: "field",
+                },
+            ],
+            adjustmentReason: {
+                id: {
+                    type: "CUSTOM",
+                    customReasonId: "R5BX3PDCZ6EXAMPLE",
+                },
+                name: "Donated to charity",
+                direction: "DECREASE",
+                createdAt: "2026-07-15T18:24:31.000Z",
+                updatedAt: "2026-07-15T18:24:31.000Z",
+                isDeleted: false,
+            },
+        });
+    });
+
+    test("UpdateInventoryAdjustmentReason", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            reason_id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" },
+            adjustment_reason: {
+                id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" },
+                name: "Charitable donation",
+            },
+        };
+        const rawResponseBody = {
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
+            adjustment_reason: {
+                id: { type: "CUSTOM", custom_reason_id: "R5BX3PDCZ6EXAMPLE" },
+                name: "Charitable donation",
+                direction: "DECREASE",
+                created_at: "2026-07-15T18:24:31.000Z",
+                updated_at: "2026-07-15T19:02:07.000Z",
+                is_deleted: false,
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .put("/v2/inventory/adjustment-reasons/update")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.inventory.updateInventoryAdjustmentReason({
+            reasonId: {
+                type: "CUSTOM",
+                customReasonId: "R5BX3PDCZ6EXAMPLE",
+            },
+            adjustmentReason: {
+                id: {
+                    type: "CUSTOM",
+                    customReasonId: "R5BX3PDCZ6EXAMPLE",
+                },
+                name: "Charitable donation",
+            },
+        });
+        expect(response).toEqual({
+            errors: [
+                {
+                    category: "API_ERROR",
+                    code: "INTERNAL_SERVER_ERROR",
+                    detail: "detail",
+                    field: "field",
+                },
+            ],
+            adjustmentReason: {
+                id: {
+                    type: "CUSTOM",
+                    customReasonId: "R5BX3PDCZ6EXAMPLE",
+                },
+                name: "Charitable donation",
+                direction: "DECREASE",
+                createdAt: "2026-07-15T18:24:31.000Z",
+                updatedAt: "2026-07-15T19:02:07.000Z",
+                isDeleted: false,
+            },
+        });
+    });
+
     test("DeprecatedGetAdjustment", async () => {
         const server = mockServerPool.createServer();
         const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
@@ -15,7 +396,8 @@ describe("InventoryClient", () => {
                 reference_id: "4a366069-4096-47a2-99a5-0084ac879509",
                 from_state: "IN_STOCK",
                 to_state: "SOLD",
-                location_id: "C6W5YS5QM06F5",
+                from_location_id: "from_location_id",
+                to_location_id: "to_location_id",
                 catalog_object_id: "W62UWFY35CWMYGVWK6TWJDNI",
                 catalog_object_type: "ITEM_VARIATION",
                 quantity: "7",
@@ -39,6 +421,10 @@ describe("InventoryClient", () => {
                     from_state: "CUSTOM",
                     to_state: "CUSTOM",
                 },
+                cost_money: { amount: BigInt(1000000), currency: "UNKNOWN_CURRENCY" },
+                vendor_id: "vendor_id",
+                physical_count_id: "physical_count_id",
+                reason_id: { type: "RECEIVED", custom_reason_id: "custom_reason_id" },
             },
         };
 
@@ -67,7 +453,8 @@ describe("InventoryClient", () => {
                 referenceId: "4a366069-4096-47a2-99a5-0084ac879509",
                 fromState: "IN_STOCK",
                 toState: "SOLD",
-                locationId: "C6W5YS5QM06F5",
+                fromLocationId: "from_location_id",
+                toLocationId: "to_location_id",
                 catalogObjectId: "W62UWFY35CWMYGVWK6TWJDNI",
                 catalogObjectType: "ITEM_VARIATION",
                 quantity: "7",
@@ -94,6 +481,128 @@ describe("InventoryClient", () => {
                     fromState: "CUSTOM",
                     toState: "CUSTOM",
                 },
+                costMoney: {
+                    amount: BigInt("1000000"),
+                    currency: "UNKNOWN_CURRENCY",
+                },
+                vendorId: "vendor_id",
+                physicalCountId: "physical_count_id",
+                reasonId: {
+                    type: "RECEIVED",
+                    customReasonId: "custom_reason_id",
+                },
+            },
+        });
+    });
+
+    test("UpdateInventoryAdjustment", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = { idempotency_key: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe", adjustment: {} };
+        const rawResponseBody = {
+            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
+            adjustment: {
+                id: "UDMOEO78BG6GYWA2XDRYX3KB",
+                reference_id: "4a366069-4096-47a2-99a5-0084ac879509",
+                from_state: "IN_STOCK",
+                to_state: "SOLD",
+                from_location_id: "from_location_id",
+                to_location_id: "to_location_id",
+                catalog_object_id: "W62UWFY35CWMYGVWK6TWJDNI",
+                catalog_object_type: "ITEM_VARIATION",
+                quantity: "7.5",
+                total_price_money: { amount: BigInt(4550), currency: "USD" },
+                occurred_at: "2016-11-16T25:44:22.837Z",
+                created_at: "2016-11-17T13:02:15.142Z",
+                source: {
+                    product: "SQUARE_POS",
+                    application_id: "416ff29c-86c4-4feb-b58c-9705f21f3ea0",
+                    name: "Square Point of Sale 4.37",
+                },
+                employee_id: "employee_id",
+                team_member_id: "LRK57NSQ5X7PUD05",
+                transaction_id: "transaction_id",
+                refund_id: "refund_id",
+                purchase_order_id: "purchase_order_id",
+                goods_receipt_id: "goods_receipt_id",
+                adjustment_group: {
+                    id: "id",
+                    root_adjustment_id: "root_adjustment_id",
+                    from_state: "CUSTOM",
+                    to_state: "CUSTOM",
+                },
+                cost_money: { amount: BigInt(1000000), currency: "UNKNOWN_CURRENCY" },
+                vendor_id: "vendor_id",
+                physical_count_id: "physical_count_id",
+                reason_id: { type: "RECEIVED", custom_reason_id: "custom_reason_id" },
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .put("/v2/inventory/adjustments/update")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.inventory.updateInventoryAdjustment({
+            idempotencyKey: "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+            adjustment: {},
+        });
+        expect(response).toEqual({
+            errors: [
+                {
+                    category: "API_ERROR",
+                    code: "INTERNAL_SERVER_ERROR",
+                    detail: "detail",
+                    field: "field",
+                },
+            ],
+            adjustment: {
+                id: "UDMOEO78BG6GYWA2XDRYX3KB",
+                referenceId: "4a366069-4096-47a2-99a5-0084ac879509",
+                fromState: "IN_STOCK",
+                toState: "SOLD",
+                fromLocationId: "from_location_id",
+                toLocationId: "to_location_id",
+                catalogObjectId: "W62UWFY35CWMYGVWK6TWJDNI",
+                catalogObjectType: "ITEM_VARIATION",
+                quantity: "7.5",
+                totalPriceMoney: {
+                    amount: BigInt("4550"),
+                    currency: "USD",
+                },
+                occurredAt: "2016-11-16T25:44:22.837Z",
+                createdAt: "2016-11-17T13:02:15.142Z",
+                source: {
+                    product: "SQUARE_POS",
+                    applicationId: "416ff29c-86c4-4feb-b58c-9705f21f3ea0",
+                    name: "Square Point of Sale 4.37",
+                },
+                employeeId: "employee_id",
+                teamMemberId: "LRK57NSQ5X7PUD05",
+                transactionId: "transaction_id",
+                refundId: "refund_id",
+                purchaseOrderId: "purchase_order_id",
+                goodsReceiptId: "goods_receipt_id",
+                adjustmentGroup: {
+                    id: "id",
+                    rootAdjustmentId: "root_adjustment_id",
+                    fromState: "CUSTOM",
+                    toState: "CUSTOM",
+                },
+                costMoney: {
+                    amount: BigInt("1000000"),
+                    currency: "UNKNOWN_CURRENCY",
+                },
+                vendorId: "vendor_id",
+                physicalCountId: "physical_count_id",
+                reasonId: {
+                    type: "RECEIVED",
+                    customReasonId: "custom_reason_id",
+                },
             },
         });
     });
@@ -109,7 +618,8 @@ describe("InventoryClient", () => {
                 reference_id: "4a366069-4096-47a2-99a5-0084ac879509",
                 from_state: "IN_STOCK",
                 to_state: "SOLD",
-                location_id: "C6W5YS5QM06F5",
+                from_location_id: "from_location_id",
+                to_location_id: "to_location_id",
                 catalog_object_id: "W62UWFY35CWMYGVWK6TWJDNI",
                 catalog_object_type: "ITEM_VARIATION",
                 quantity: "7",
@@ -133,6 +643,10 @@ describe("InventoryClient", () => {
                     from_state: "CUSTOM",
                     to_state: "CUSTOM",
                 },
+                cost_money: { amount: BigInt(1000000), currency: "UNKNOWN_CURRENCY" },
+                vendor_id: "vendor_id",
+                physical_count_id: "physical_count_id",
+                reason_id: { type: "RECEIVED", custom_reason_id: "custom_reason_id" },
             },
         };
 
@@ -161,7 +675,8 @@ describe("InventoryClient", () => {
                 referenceId: "4a366069-4096-47a2-99a5-0084ac879509",
                 fromState: "IN_STOCK",
                 toState: "SOLD",
-                locationId: "C6W5YS5QM06F5",
+                fromLocationId: "from_location_id",
+                toLocationId: "to_location_id",
                 catalogObjectId: "W62UWFY35CWMYGVWK6TWJDNI",
                 catalogObjectType: "ITEM_VARIATION",
                 quantity: "7",
@@ -187,6 +702,16 @@ describe("InventoryClient", () => {
                     rootAdjustmentId: "root_adjustment_id",
                     fromState: "CUSTOM",
                     toState: "CUSTOM",
+                },
+                costMoney: {
+                    amount: BigInt("1000000"),
+                    currency: "UNKNOWN_CURRENCY",
+                },
+                vendorId: "vendor_id",
+                physicalCountId: "physical_count_id",
+                reasonId: {
+                    type: "RECEIVED",
+                    customReasonId: "custom_reason_id",
                 },
             },
         });
@@ -719,6 +1244,7 @@ describe("InventoryClient", () => {
                 team_member_id: "LRK57NSQ5X7PUD05",
                 occurred_at: "2016-11-16T22:25:24.878Z",
                 created_at: "2016-11-16T22:25:24.878Z",
+                adjustment_id: "adjustment_id",
             },
         };
 
@@ -759,6 +1285,7 @@ describe("InventoryClient", () => {
                 teamMemberId: "LRK57NSQ5X7PUD05",
                 occurredAt: "2016-11-16T22:25:24.878Z",
                 createdAt: "2016-11-16T22:25:24.878Z",
+                adjustmentId: "adjustment_id",
             },
         });
     });
@@ -786,6 +1313,7 @@ describe("InventoryClient", () => {
                 team_member_id: "LRK57NSQ5X7PUD05",
                 occurred_at: "2016-11-16T22:25:24.878Z",
                 created_at: "2016-11-16T22:25:24.878Z",
+                adjustment_id: "adjustment_id",
             },
         };
 
@@ -826,75 +1354,7 @@ describe("InventoryClient", () => {
                 teamMemberId: "LRK57NSQ5X7PUD05",
                 occurredAt: "2016-11-16T22:25:24.878Z",
                 createdAt: "2016-11-16T22:25:24.878Z",
-            },
-        });
-    });
-
-    test("getTransfer", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
-
-        const rawResponseBody = {
-            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
-            transfer: {
-                id: "UDMOEO78BG6GYWA2XDRYX3KB",
-                reference_id: "4a366069-4096-47a2-99a5-0084ac879509",
-                state: "IN_STOCK",
-                from_location_id: "C6W5YS5QM06F5",
-                to_location_id: "59TNP9SA8VGDA",
-                catalog_object_id: "W62UWFY35CWMYGVWK6TWJDNI",
-                catalog_object_type: "ITEM_VARIATION",
-                quantity: "7",
-                occurred_at: "2016-11-16T25:44:22.837Z",
-                created_at: "2016-11-17T13:02:15.142Z",
-                source: {
-                    product: "SQUARE_POS",
-                    application_id: "416ff29c-86c4-4feb-b58c-9705f21f3ea0",
-                    name: "Square Point of Sale 4.37",
-                },
-                employee_id: "employee_id",
-                team_member_id: "LRK57NSQ5X7PUD05",
-            },
-        };
-
-        server
-            .mockEndpoint()
-            .get("/v2/inventory/transfers/transfer_id")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.inventory.getTransfer({
-            transferId: "transfer_id",
-        });
-        expect(response).toEqual({
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-            transfer: {
-                id: "UDMOEO78BG6GYWA2XDRYX3KB",
-                referenceId: "4a366069-4096-47a2-99a5-0084ac879509",
-                state: "IN_STOCK",
-                fromLocationId: "C6W5YS5QM06F5",
-                toLocationId: "59TNP9SA8VGDA",
-                catalogObjectId: "W62UWFY35CWMYGVWK6TWJDNI",
-                catalogObjectType: "ITEM_VARIATION",
-                quantity: "7",
-                occurredAt: "2016-11-16T25:44:22.837Z",
-                createdAt: "2016-11-17T13:02:15.142Z",
-                source: {
-                    product: "SQUARE_POS",
-                    applicationId: "416ff29c-86c4-4feb-b58c-9705f21f3ea0",
-                    name: "Square Point of Sale 4.37",
-                },
-                employeeId: "employee_id",
-                teamMemberId: "LRK57NSQ5X7PUD05",
+                adjustmentId: "adjustment_id",
             },
         });
     });
@@ -975,7 +1435,6 @@ describe("InventoryClient", () => {
                         reference_id: "d8207693-168f-4b44-a2fd-a7ff533ddd26",
                         from_state: "IN_STOCK",
                         to_state: "SOLD",
-                        location_id: "C6W5YS5QM06F5",
                         catalog_object_id: "W62UWFY35CWMYGVWK6TWJDNI",
                         catalog_object_type: "ITEM_VARIATION",
                         quantity: "3",
@@ -1021,7 +1480,6 @@ describe("InventoryClient", () => {
                         referenceId: "d8207693-168f-4b44-a2fd-a7ff533ddd26",
                         fromState: "IN_STOCK",
                         toState: "SOLD",
-                        locationId: "C6W5YS5QM06F5",
                         catalogObjectId: "W62UWFY35CWMYGVWK6TWJDNI",
                         catalogObjectType: "ITEM_VARIATION",
                         quantity: "3",
@@ -1054,5 +1512,17 @@ describe("InventoryClient", () => {
         expect(page.hasNextPage()).toBe(true);
         const nextPage = await page.getNextPage();
         expect(expected.changes).toEqual(nextPage.data);
+    });
+
+    test("getTransfer", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        server.mockEndpoint().get("/v2/inventory/transfers/transfer_id").respondWith().statusCode(200).build();
+
+        const response = await client.inventory.getTransfer({
+            transferId: "transfer_id",
+        });
+        expect(response).toEqual(undefined);
     });
 });

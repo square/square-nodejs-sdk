@@ -3,6 +3,8 @@
 import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
+import { BatchRetrieveInventoryChangesSort } from "./BatchRetrieveInventoryChangesSort";
+import { InventoryAdjustmentReasonId } from "./InventoryAdjustmentReasonId";
 import { InventoryChangeType } from "./InventoryChangeType";
 import { InventoryState } from "./InventoryState";
 
@@ -24,6 +26,11 @@ export const BatchRetrieveInventoryChangesRequest: core.serialization.ObjectSche
     updatedBefore: core.serialization.property("updated_before", core.serialization.string().optionalNullable()),
     cursor: core.serialization.string().optionalNullable(),
     limit: core.serialization.number().optionalNullable(),
+    sort: BatchRetrieveInventoryChangesSort.optional(),
+    reasonIds: core.serialization.property(
+        "reason_ids",
+        core.serialization.list(InventoryAdjustmentReasonId).optionalNullable(),
+    ),
 });
 
 export declare namespace BatchRetrieveInventoryChangesRequest {
@@ -36,5 +43,7 @@ export declare namespace BatchRetrieveInventoryChangesRequest {
         updated_before?: (string | null | undefined) | null;
         cursor?: (string | null | undefined) | null;
         limit?: (number | null | undefined) | null;
+        sort?: BatchRetrieveInventoryChangesSort.Raw | null;
+        reason_ids?: (InventoryAdjustmentReasonId.Raw[] | null | undefined) | null;
     }
 }

@@ -25,6 +25,7 @@ export const InventoryPhysicalCount: core.serialization.ObjectSchema<
     teamMemberId: core.serialization.property("team_member_id", core.serialization.string().optionalNullable()),
     occurredAt: core.serialization.property("occurred_at", core.serialization.string().optionalNullable()),
     createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
+    adjustmentId: core.serialization.property("adjustment_id", core.serialization.string().optional()),
 });
 
 export declare namespace InventoryPhysicalCount {
@@ -41,5 +42,6 @@ export declare namespace InventoryPhysicalCount {
         team_member_id?: (string | null | undefined) | null;
         occurred_at?: (string | null | undefined) | null;
         created_at?: string | null;
+        adjustment_id?: string | null;
     }
 }

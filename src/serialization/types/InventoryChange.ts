@@ -7,14 +7,12 @@ import { CatalogMeasurementUnit } from "./CatalogMeasurementUnit";
 import { InventoryAdjustment } from "./InventoryAdjustment";
 import { InventoryChangeType } from "./InventoryChangeType";
 import { InventoryPhysicalCount } from "./InventoryPhysicalCount";
-import { InventoryTransfer } from "./InventoryTransfer";
 
 export const InventoryChange: core.serialization.ObjectSchema<serializers.InventoryChange.Raw, Square.InventoryChange> =
     core.serialization.object({
         type: InventoryChangeType.optional(),
         physicalCount: core.serialization.property("physical_count", InventoryPhysicalCount.optional()),
         adjustment: InventoryAdjustment.optional(),
-        transfer: InventoryTransfer.optional(),
         measurementUnit: core.serialization.property("measurement_unit", CatalogMeasurementUnit.optional()),
         measurementUnitId: core.serialization.property("measurement_unit_id", core.serialization.string().optional()),
     });
@@ -24,7 +22,6 @@ export declare namespace InventoryChange {
         type?: InventoryChangeType.Raw | null;
         physical_count?: InventoryPhysicalCount.Raw | null;
         adjustment?: InventoryAdjustment.Raw | null;
-        transfer?: InventoryTransfer.Raw | null;
         measurement_unit?: CatalogMeasurementUnit.Raw | null;
         measurement_unit_id?: string | null;
     }

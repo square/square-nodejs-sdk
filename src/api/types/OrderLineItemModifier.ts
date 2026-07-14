@@ -58,4 +58,6 @@ export interface OrderLineItemModifier {
      * For more information, see  [Metadata](https://developer.squareup.com/docs/build-basics/metadata).
      */
     metadata?: Record<string, string | null> | null;
+    /** The `uid` of the parent modifier, if this modifier is nested under another modifier. */
+    parentModifierUid?: string | null;
 }

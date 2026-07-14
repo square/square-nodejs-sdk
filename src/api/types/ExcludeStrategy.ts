@@ -7,5 +7,6 @@
 export const ExcludeStrategy = {
     LeastExpensive: "LEAST_EXPENSIVE",
     MostExpensive: "MOST_EXPENSIVE",
+    MostExpensiveLowestValue: "MOST_EXPENSIVE_LOWEST_VALUE",
 } as const;
 export type ExcludeStrategy = (typeof ExcludeStrategy)[keyof typeof ExcludeStrategy];

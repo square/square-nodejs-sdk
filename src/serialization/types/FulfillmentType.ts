@@ -5,8 +5,8 @@ import * as core from "../../core";
 import type * as serializers from "../index";
 
 export const FulfillmentType: core.serialization.Schema<serializers.FulfillmentType.Raw, Square.FulfillmentType> =
-    core.serialization.enum_(["PICKUP", "SHIPMENT", "DELIVERY"]);
+    core.serialization.enum_(["PICKUP", "SHIPMENT", "DELIVERY", "IN_STORE"]);
 
 export declare namespace FulfillmentType {
-    export type Raw = "PICKUP" | "SHIPMENT" | "DELIVERY";
+    export type Raw = "PICKUP" | "SHIPMENT" | "DELIVERY" | "IN_STORE";
 }

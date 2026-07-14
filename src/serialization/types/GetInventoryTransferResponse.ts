@@ -3,20 +3,12 @@
 import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
-import { Error_ } from "./Error_";
-import { InventoryTransfer } from "./InventoryTransfer";
 
-export const GetInventoryTransferResponse: core.serialization.ObjectSchema<
+export const GetInventoryTransferResponse: core.serialization.Schema<
     serializers.GetInventoryTransferResponse.Raw,
     Square.GetInventoryTransferResponse
-> = core.serialization.object({
-    errors: core.serialization.list(Error_).optional(),
-    transfer: InventoryTransfer.optional(),
-});
+> = core.serialization.unknown();
 
 export declare namespace GetInventoryTransferResponse {
-    export interface Raw {
-        errors?: Error_.Raw[] | null;
-        transfer?: InventoryTransfer.Raw | null;
-    }
+    export type Raw = unknown;
 }

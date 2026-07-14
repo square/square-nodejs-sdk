@@ -5,5 +5,6 @@ export const FulfillmentType = {
     Pickup: "PICKUP",
     Shipment: "SHIPMENT",
     Delivery: "DELIVERY",
+    InStore: "IN_STORE",
 } as const;
 export type FulfillmentType = (typeof FulfillmentType)[keyof typeof FulfillmentType];
