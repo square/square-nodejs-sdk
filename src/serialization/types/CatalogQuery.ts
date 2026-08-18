@@ -8,6 +8,7 @@ import { CatalogQueryItemsForItemOptions } from "./CatalogQueryItemsForItemOptio
 import { CatalogQueryItemsForModifierList } from "./CatalogQueryItemsForModifierList";
 import { CatalogQueryItemsForTax } from "./CatalogQueryItemsForTax";
 import { CatalogQueryItemVariationsForItemOptionValues } from "./CatalogQueryItemVariationsForItemOptionValues";
+import { CatalogQueryModifiersForChildList } from "./CatalogQueryModifiersForChildList";
 import { CatalogQueryPrefix } from "./CatalogQueryPrefix";
 import { CatalogQueryRange } from "./CatalogQueryRange";
 import { CatalogQuerySet } from "./CatalogQuerySet";
@@ -38,6 +39,10 @@ export const CatalogQuery: core.serialization.ObjectSchema<serializers.CatalogQu
             "item_variations_for_item_option_values_query",
             CatalogQueryItemVariationsForItemOptionValues.optional(),
         ),
+        modifiersForChildListQuery: core.serialization.property(
+            "modifiers_for_child_list_query",
+            CatalogQueryModifiersForChildList.optional(),
+        ),
     });
 
 export declare namespace CatalogQuery {
@@ -52,5 +57,6 @@ export declare namespace CatalogQuery {
         items_for_modifier_list_query?: CatalogQueryItemsForModifierList.Raw | null;
         items_for_item_options_query?: CatalogQueryItemsForItemOptions.Raw | null;
         item_variations_for_item_option_values_query?: CatalogQueryItemVariationsForItemOptionValues.Raw | null;
+        modifiers_for_child_list_query?: CatalogQueryModifiersForChildList.Raw | null;
     }
 }

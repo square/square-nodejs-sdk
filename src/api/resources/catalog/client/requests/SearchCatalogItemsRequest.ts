@@ -64,4 +64,6 @@ export interface SearchCatalogItemsRequest {
     customAttributeFilters?: Square.CustomAttributeFilter[];
     /** The query filter to return not archived (`ARCHIVED_STATE_NOT_ARCHIVED`), archived (`ARCHIVED_STATE_ARCHIVED`), or either type (`ARCHIVED_STATE_ALL`) of items. */
     archivedState?: Square.ArchivedState;
+    /** Options to include related resources in the response. */
+    includeOptions?: Square.IncludeOptions;
 }

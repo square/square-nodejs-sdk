@@ -3,6 +3,7 @@
 import type * as Square from "../../../../../api/index";
 import * as core from "../../../../../core";
 import type * as serializers from "../../../../index";
+import { IncludeOptions } from "../../../../types/IncludeOptions";
 
 export const BatchGetCatalogObjectsRequest: core.serialization.Schema<
     serializers.BatchGetCatalogObjectsRequest.Raw,
@@ -22,6 +23,7 @@ export const BatchGetCatalogObjectsRequest: core.serialization.Schema<
         "include_category_path_to_root",
         core.serialization.boolean().optionalNullable(),
     ),
+    includeOptions: core.serialization.property("include_options", IncludeOptions.optional()),
 });
 
 export declare namespace BatchGetCatalogObjectsRequest {
@@ -31,5 +33,6 @@ export declare namespace BatchGetCatalogObjectsRequest {
         catalog_version?: ((bigint | number) | null | undefined) | null;
         include_deleted_objects?: (boolean | null | undefined) | null;
         include_category_path_to_root?: (boolean | null | undefined) | null;
+        include_options?: IncludeOptions.Raw | null;
     }
 }

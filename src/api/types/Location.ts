@@ -106,4 +106,14 @@ export interface Location {
     fullFormatLogoUrl?: string;
     /** The tax IDs for this location. */
     taxIds?: Square.TaxIds;
+    /**
+     * The custom text that appears on receipts issued for this location.
+     * This text can also be configured in the Seller Dashboard (Receipts section).
+     */
+    customReceiptText?: string | null;
+    /**
+     * The return policy that appears on receipts issued for this location.
+     * This text can also be configured in the Seller Dashboard (Receipts section).
+     */
+    returnPolicy?: string | null;
 }

@@ -9,4 +9,6 @@ export interface BatchGetCatalogObjectsResponse {
     objects?: Square.CatalogObject[];
     /** A list of [CatalogObject](entity:CatalogObject)s referenced by the object in the `objects` field. */
     relatedObjects?: Square.CatalogObject[];
+    /** A list of [CatalogObject](entity:CatalogObject)s referenced by the object in the `objects` field and specifically requested. */
+    includedResources?: Square.IncludedResources;
 }

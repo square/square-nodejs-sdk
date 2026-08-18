@@ -5,6 +5,7 @@ import * as core from "../../../../../core";
 import type * as serializers from "../../../../index";
 import { CatalogObjectType } from "../../../../types/CatalogObjectType";
 import { CatalogQuery } from "../../../../types/CatalogQuery";
+import { IncludeOptions } from "../../../../types/IncludeOptions";
 
 export const SearchCatalogObjectsRequest: core.serialization.Schema<
     serializers.SearchCatalogObjectsRequest.Raw,
@@ -27,6 +28,7 @@ export const SearchCatalogObjectsRequest: core.serialization.Schema<
         "include_category_path_to_root",
         core.serialization.boolean().optional(),
     ),
+    includeOptions: core.serialization.property("include_options", IncludeOptions.optional()),
 });
 
 export declare namespace SearchCatalogObjectsRequest {
@@ -39,5 +41,6 @@ export declare namespace SearchCatalogObjectsRequest {
         query?: CatalogQuery.Raw | null;
         limit?: number | null;
         include_category_path_to_root?: boolean | null;
+        include_options?: IncludeOptions.Raw | null;
     }
 }

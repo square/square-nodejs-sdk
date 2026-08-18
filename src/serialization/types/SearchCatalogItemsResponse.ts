@@ -4,6 +4,7 @@ import type * as Square from "../../api/index";
 import * as core from "../../core";
 import * as serializers from "../index";
 import { Error_ } from "./Error_";
+import { IncludedResources } from "./IncludedResources";
 
 export const SearchCatalogItemsResponse: core.serialization.ObjectSchema<
     serializers.SearchCatalogItemsResponse.Raw,
@@ -16,6 +17,7 @@ export const SearchCatalogItemsResponse: core.serialization.ObjectSchema<
         "matched_variation_ids",
         core.serialization.list(core.serialization.string()).optional(),
     ),
+    includedResources: core.serialization.property("included_resources", IncludedResources.optional()),
 });
 
 export declare namespace SearchCatalogItemsResponse {
@@ -24,5 +26,6 @@ export declare namespace SearchCatalogItemsResponse {
         items?: serializers.CatalogObject.Raw[] | null;
         cursor?: string | null;
         matched_variation_ids?: string[] | null;
+        included_resources?: IncludedResources.Raw | null;
     }
 }

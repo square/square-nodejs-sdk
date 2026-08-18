@@ -4,6 +4,7 @@ import type * as Square from "../../api/index";
 import * as core from "../../core";
 import * as serializers from "../index";
 import { Error_ } from "./Error_";
+import { IncludedResources } from "./IncludedResources";
 
 export const BatchGetCatalogObjectsResponse: core.serialization.ObjectSchema<
     serializers.BatchGetCatalogObjectsResponse.Raw,
@@ -15,6 +16,7 @@ export const BatchGetCatalogObjectsResponse: core.serialization.ObjectSchema<
         "related_objects",
         core.serialization.list(core.serialization.lazy(() => serializers.CatalogObject)).optional(),
     ),
+    includedResources: core.serialization.property("included_resources", IncludedResources.optional()),
 });
 
 export declare namespace BatchGetCatalogObjectsResponse {
@@ -22,5 +24,6 @@ export declare namespace BatchGetCatalogObjectsResponse {
         errors?: Error_.Raw[] | null;
         objects?: serializers.CatalogObject.Raw[] | null;
         related_objects?: serializers.CatalogObject.Raw[] | null;
+        included_resources?: IncludedResources.Raw | null;
     }
 }

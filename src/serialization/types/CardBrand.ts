@@ -20,6 +20,10 @@ export const CardBrand: core.serialization.Schema<serializers.CardBrand.Raw, Squ
         "EFTPOS",
         "FELICA",
         "EBT",
+        "QUICPAY",
+        "ID",
+        "TRANSPORTATION_IC",
+        "CARNET",
     ]);
 
 export declare namespace CardBrand {
@@ -37,5 +41,9 @@ export declare namespace CardBrand {
         | "INTERAC"
         | "EFTPOS"
         | "FELICA"
-        | "EBT";
+        | "EBT"
+        | "QUICPAY"
+        | "ID"
+        | "TRANSPORTATION_IC"
+        | "CARNET";
 }

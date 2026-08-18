@@ -4,6 +4,7 @@ import type * as Square from "../../api/index";
 import * as core from "../../core";
 import * as serializers from "../index";
 import { Error_ } from "./Error_";
+import { IncludedResources } from "./IncludedResources";
 
 export const SearchCatalogObjectsResponse: core.serialization.ObjectSchema<
     serializers.SearchCatalogObjectsResponse.Raw,
@@ -17,6 +18,7 @@ export const SearchCatalogObjectsResponse: core.serialization.ObjectSchema<
         core.serialization.list(core.serialization.lazy(() => serializers.CatalogObject)).optional(),
     ),
     latestTime: core.serialization.property("latest_time", core.serialization.string().optional()),
+    includedResources: core.serialization.property("included_resources", IncludedResources.optional()),
 });
 
 export declare namespace SearchCatalogObjectsResponse {
@@ -26,5 +28,6 @@ export declare namespace SearchCatalogObjectsResponse {
         objects?: serializers.CatalogObject.Raw[] | null;
         related_objects?: serializers.CatalogObject.Raw[] | null;
         latest_time?: string | null;
+        included_resources?: IncludedResources.Raw | null;
     }
 }

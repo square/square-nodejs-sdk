@@ -14,4 +14,6 @@ export interface SearchCatalogItemsResponse {
     cursor?: string;
     /** Ids of returned item variations matching the specified query expression. */
     matchedVariationIds?: string[];
+    /** Related resources included in the response as requested via include_options */
+    includedResources?: Square.IncludedResources;
 }

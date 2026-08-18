@@ -19,4 +19,6 @@ export interface SearchCatalogObjectsResponse {
      * match the value for `end_time` or `cursor` if either field is included in the `SearchCatalog` request.
      */
     latestTime?: string;
+    /** A list of [CatalogObject](entity:CatalogObject)s referenced by the object in the `objects` field and specifically requested. */
+    includedResources?: Square.IncludedResources;
 }
