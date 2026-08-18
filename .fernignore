@@ -4,6 +4,7 @@
 .github/workflows/integration.yml
 src/wrapper
 src/index.ts
+src/errors/SquareError.ts
 src/core/index.ts
 src/core/crypto
 tests/unit/error.test.ts
