@@ -54,10 +54,10 @@
             }
         }
     },
-    "originGitCommit": "b2dac8b2c1b9fe87c0e1fe3eb6257b259caa0715",
+    "originGitCommit": "074e2540401528521d322c512800c4ebd67cd153",
     "originGitCommitIsDirty": false,
     "invokedBy": "ci",
-    "requestedVersion": "45.0.1",
+    "requestedVersion": "45.1.0",
     "ciProvider": "buildkite",
-    "sdkVersion": "45.0.1"
+    "sdkVersion": "45.1.0"
 }
