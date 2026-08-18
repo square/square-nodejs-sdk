@@ -42,6 +42,8 @@ describe("LocationsClient", () => {
                     pos_background_url: "pos_background_url",
                     mcc: "mcc",
                     full_format_logo_url: "full_format_logo_url",
+                    custom_receipt_text: "custom_receipt_text",
+                    return_policy: "return_policy",
                 },
                 {
                     id: "3Z4V4WHQK64X9",
@@ -74,6 +76,8 @@ describe("LocationsClient", () => {
                     pos_background_url: "pos_background_url",
                     mcc: "7299",
                     full_format_logo_url: "full_format_logo_url",
+                    custom_receipt_text: "custom_receipt_text",
+                    return_policy: "return_policy",
                 },
             ],
         };
@@ -122,6 +126,8 @@ describe("LocationsClient", () => {
                     posBackgroundUrl: "pos_background_url",
                     mcc: "mcc",
                     fullFormatLogoUrl: "full_format_logo_url",
+                    customReceiptText: "custom_receipt_text",
+                    returnPolicy: "return_policy",
                 },
                 {
                     id: "3Z4V4WHQK64X9",
@@ -157,6 +163,8 @@ describe("LocationsClient", () => {
                     posBackgroundUrl: "pos_background_url",
                     mcc: "7299",
                     fullFormatLogoUrl: "full_format_logo_url",
+                    customReceiptText: "custom_receipt_text",
+                    returnPolicy: "return_policy",
                 },
             ],
         });
@@ -228,6 +236,8 @@ describe("LocationsClient", () => {
                     es_nif: "es_nif",
                     jp_qii: "jp_qii",
                 },
+                custom_receipt_text: "custom_receipt_text",
+                return_policy: "return_policy",
             },
         };
 
@@ -315,6 +325,8 @@ describe("LocationsClient", () => {
                     esNif: "es_nif",
                     jpQii: "jp_qii",
                 },
+                customReceiptText: "custom_receipt_text",
+                returnPolicy: "return_policy",
             },
         });
     });
@@ -374,6 +386,8 @@ describe("LocationsClient", () => {
                     es_nif: "es_nif",
                     jp_qii: "jp_qii",
                 },
+                custom_receipt_text: "custom_receipt_text",
+                return_policy: "return_policy",
             },
         };
 
@@ -451,6 +465,8 @@ describe("LocationsClient", () => {
                     esNif: "es_nif",
                     jpQii: "jp_qii",
                 },
+                customReceiptText: "custom_receipt_text",
+                returnPolicy: "return_policy",
             },
         });
     });
@@ -527,6 +543,8 @@ describe("LocationsClient", () => {
                     es_nif: "es_nif",
                     jp_qii: "jp_qii",
                 },
+                custom_receipt_text: "custom_receipt_text",
+                return_policy: "return_policy",
             },
         };
 
@@ -643,6 +661,8 @@ describe("LocationsClient", () => {
                     esNif: "es_nif",
                     jpQii: "jp_qii",
                 },
+                customReceiptText: "custom_receipt_text",
+                returnPolicy: "return_policy",
             },
         });
     });

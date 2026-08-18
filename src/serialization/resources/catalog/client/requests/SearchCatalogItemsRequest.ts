@@ -6,6 +6,7 @@ import type * as serializers from "../../../../index";
 import { ArchivedState } from "../../../../types/ArchivedState";
 import { CatalogItemProductType } from "../../../../types/CatalogItemProductType";
 import { CustomAttributeFilter } from "../../../../types/CustomAttributeFilter";
+import { IncludeOptions } from "../../../../types/IncludeOptions";
 import { SearchCatalogItemsRequestStockLevel } from "../../../../types/SearchCatalogItemsRequestStockLevel";
 import { SortOrder } from "../../../../types/SortOrder";
 
@@ -38,6 +39,7 @@ export const SearchCatalogItemsRequest: core.serialization.Schema<
         core.serialization.list(CustomAttributeFilter).optional(),
     ),
     archivedState: core.serialization.property("archived_state", ArchivedState.optional()),
+    includeOptions: core.serialization.property("include_options", IncludeOptions.optional()),
 });
 
 export declare namespace SearchCatalogItemsRequest {
@@ -52,5 +54,6 @@ export declare namespace SearchCatalogItemsRequest {
         product_types?: CatalogItemProductType.Raw[] | null;
         custom_attribute_filters?: CustomAttributeFilter.Raw[] | null;
         archived_state?: ArchivedState.Raw | null;
+        include_options?: IncludeOptions.Raw | null;
     }
 }

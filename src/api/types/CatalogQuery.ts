@@ -72,4 +72,6 @@ export interface CatalogQuery {
      * contain all of the specified `CatalogItemOption` IDs.
      */
     itemVariationsForItemOptionValuesQuery?: Square.CatalogQueryItemVariationsForItemOptionValues;
+    /** A query expression to return `CatalogModifier` objects that nest the specified modifier lists (via `child_modifier_list_ids`) */
+    modifiersForChildListQuery?: Square.CatalogQueryModifiersForChildList;
 }

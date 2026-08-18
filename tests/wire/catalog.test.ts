@@ -106,6 +106,10 @@ describe("CatalogClient", () => {
                     image_id: "image_id",
                 },
             ],
+            included_resources: {
+                nested_modifiers: [{ type: "ITEM", id: "id" }],
+                ancestor_modifiers: [{ type: "ITEM", id: "id" }],
+            },
         };
 
         server
@@ -195,6 +199,20 @@ describe("CatalogClient", () => {
                     imageId: "image_id",
                 },
             ],
+            includedResources: {
+                nestedModifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                    },
+                ],
+                ancestorModifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                    },
+                ],
+            },
         });
     });
 
@@ -634,6 +652,10 @@ describe("CatalogClient", () => {
                 },
             ],
             latest_time: "latest_time",
+            included_resources: {
+                nested_modifiers: [{ type: "ITEM", id: "id" }],
+                ancestor_modifiers: [{ type: "ITEM", id: "id" }],
+            },
         };
 
         server
@@ -715,6 +737,20 @@ describe("CatalogClient", () => {
                 },
             ],
             latestTime: "latest_time",
+            includedResources: {
+                nestedModifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                    },
+                ],
+                ancestorModifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                    },
+                ],
+            },
         });
     });
 
@@ -755,6 +791,10 @@ describe("CatalogClient", () => {
             ],
             cursor: "cursor",
             matched_variation_ids: ["VBJNPHCOKDFECR6VU25WRJUD"],
+            included_resources: {
+                nested_modifiers: [{ type: "ITEM", id: "id" }],
+                ancestor_modifiers: [{ type: "ITEM", id: "id" }],
+            },
         };
 
         server
@@ -823,6 +863,20 @@ describe("CatalogClient", () => {
             ],
             cursor: "cursor",
             matchedVariationIds: ["VBJNPHCOKDFECR6VU25WRJUD"],
+            includedResources: {
+                nestedModifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                    },
+                ],
+                ancestorModifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                    },
+                ],
+            },
         });
     });
 

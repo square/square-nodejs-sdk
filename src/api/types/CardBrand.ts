@@ -16,5 +16,9 @@ export const CardBrand = {
     Eftpos: "EFTPOS",
     Felica: "FELICA",
     Ebt: "EBT",
+    Quicpay: "QUICPAY",
+    Id: "ID",
+    TransportationIc: "TRANSPORTATION_IC",
+    Carnet: "CARNET",
 } as const;
 export type CardBrand = (typeof CardBrand)[keyof typeof CardBrand];

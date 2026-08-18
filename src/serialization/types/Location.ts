@@ -48,6 +48,11 @@ export const Location: core.serialization.ObjectSchema<serializers.Location.Raw,
         mcc: core.serialization.string().optionalNullable(),
         fullFormatLogoUrl: core.serialization.property("full_format_logo_url", core.serialization.string().optional()),
         taxIds: core.serialization.property("tax_ids", TaxIds.optional()),
+        customReceiptText: core.serialization.property(
+            "custom_receipt_text",
+            core.serialization.string().optionalNullable(),
+        ),
+        returnPolicy: core.serialization.property("return_policy", core.serialization.string().optionalNullable()),
     });
 
 export declare namespace Location {
@@ -79,5 +84,7 @@ export declare namespace Location {
         mcc?: (string | null | undefined) | null;
         full_format_logo_url?: string | null;
         tax_ids?: TaxIds.Raw | null;
+        custom_receipt_text?: (string | null | undefined) | null;
+        return_policy?: (string | null | undefined) | null;
     }
 }

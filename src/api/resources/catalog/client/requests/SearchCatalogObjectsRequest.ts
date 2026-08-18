@@ -73,4 +73,6 @@ export interface SearchCatalogObjectsRequest {
     limit?: number;
     /** Specifies whether or not to include the `path_to_root` list for each returned category instance. The `path_to_root` list consists of `CategoryPathToRootNode` objects and specifies the path that starts with the immediate parent category of the returned category and ends with its root category. If the returned category is a top-level category, the `path_to_root` list is empty and is not returned in the response payload. If `include_category_path_to_root` is `true`, then the `include_deleted_objects` request parameter must be `false`. Both properties cannot be `true` at the same time. */
     includeCategoryPathToRoot?: boolean;
+    /** Options to include related resources in the response. */
+    includeOptions?: Square.IncludeOptions;
 }

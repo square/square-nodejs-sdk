@@ -104,6 +104,7 @@ export const ErrorCode: core.serialization.Schema<serializers.ErrorCode.Raw, Squ
         "CARD_TOKEN_EXPIRED",
         "CARD_TOKEN_USED",
         "AMOUNT_TOO_HIGH",
+        "AMOUNT_TOO_LOW",
         "UNSUPPORTED_INSTRUMENT_TYPE",
         "REFUND_AMOUNT_INVALID",
         "REFUND_ALREADY_PENDING",
@@ -134,6 +135,13 @@ export const ErrorCode: core.serialization.Schema<serializers.ErrorCode.Raw, Squ
         "PLAID_ERROR",
         "PLAID_ERROR_ITEM_LOGIN_REQUIRED",
         "PLAID_ERROR_RATE_LIMIT",
+        "PLAID_ERROR_INVALID_ACCESS_TOKEN",
+        "PLAID_ERROR_INVALID_ACCOUNT_ID",
+        "PLAID_ERROR_NO_ACCOUNTS",
+        "PLAID_ERROR_ITEM_NOT_FOUND",
+        "PLAID_ERROR_INSUFFICIENT_CREDENTIALS",
+        "PLAID_ERROR_ITEM_NOT_SUPPORTED",
+        "PLAID_ERROR_PRODUCT_NOT_READY",
         "PAYMENT_SOURCE_NOT_ENABLED_FOR_TARGET",
         "CARD_DECLINED",
         "VERIFY_CVV_FAILURE",
@@ -145,6 +153,7 @@ export const ErrorCode: core.serialization.Schema<serializers.ErrorCode.Raw, Squ
         "ALLOWABLE_PIN_TRIES_EXCEEDED",
         "RESERVATION_DECLINED",
         "UNKNOWN_BODY_PARAMETER",
+        "CART_INELIGIBLE_FOR_EBT",
         "NOT_FOUND",
         "APPLE_PAYMENT_PROCESSING_CERTIFICATE_HASH_NOT_FOUND",
         "METHOD_NOT_ALLOWED",
@@ -263,6 +272,7 @@ export declare namespace ErrorCode {
         | "CARD_TOKEN_EXPIRED"
         | "CARD_TOKEN_USED"
         | "AMOUNT_TOO_HIGH"
+        | "AMOUNT_TOO_LOW"
         | "UNSUPPORTED_INSTRUMENT_TYPE"
         | "REFUND_AMOUNT_INVALID"
         | "REFUND_ALREADY_PENDING"
@@ -293,6 +303,13 @@ export declare namespace ErrorCode {
         | "PLAID_ERROR"
         | "PLAID_ERROR_ITEM_LOGIN_REQUIRED"
         | "PLAID_ERROR_RATE_LIMIT"
+        | "PLAID_ERROR_INVALID_ACCESS_TOKEN"
+        | "PLAID_ERROR_INVALID_ACCOUNT_ID"
+        | "PLAID_ERROR_NO_ACCOUNTS"
+        | "PLAID_ERROR_ITEM_NOT_FOUND"
+        | "PLAID_ERROR_INSUFFICIENT_CREDENTIALS"
+        | "PLAID_ERROR_ITEM_NOT_SUPPORTED"
+        | "PLAID_ERROR_PRODUCT_NOT_READY"
         | "PAYMENT_SOURCE_NOT_ENABLED_FOR_TARGET"
         | "CARD_DECLINED"
         | "VERIFY_CVV_FAILURE"
@@ -304,6 +321,7 @@ export declare namespace ErrorCode {
         | "ALLOWABLE_PIN_TRIES_EXCEEDED"
         | "RESERVATION_DECLINED"
         | "UNKNOWN_BODY_PARAMETER"
+        | "CART_INELIGIBLE_FOR_EBT"
         | "NOT_FOUND"
         | "APPLE_PAYMENT_PROCESSING_CERTIFICATE_HASH_NOT_FOUND"
         | "METHOD_NOT_ALLOWED"
