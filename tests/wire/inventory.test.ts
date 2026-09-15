@@ -1513,16 +1513,4 @@ describe("InventoryClient", () => {
         const nextPage = await page.getNextPage();
         expect(expected.changes).toEqual(nextPage.data);
     });
-
-    test("getTransfer", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
-
-        server.mockEndpoint().get("/v2/inventory/transfers/transfer_id").respondWith().statusCode(200).build();
-
-        const response = await client.inventory.getTransfer({
-            transferId: "transfer_id",
-        });
-        expect(response).toEqual(undefined);
-    });
 });

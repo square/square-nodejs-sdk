@@ -6,7 +6,6 @@ export type { DeprecatedGetPhysicalCountInventoryRequest } from "./DeprecatedGet
 export type { GetAdjustmentInventoryRequest } from "./GetAdjustmentInventoryRequest";
 export type { GetInventoryRequest } from "./GetInventoryRequest";
 export type { GetPhysicalCountInventoryRequest } from "./GetPhysicalCountInventoryRequest";
-export type { GetTransferInventoryRequest } from "./GetTransferInventoryRequest";
 export type { ListInventoryAdjustmentReasonsRequest } from "./ListInventoryAdjustmentReasonsRequest";
 export type { RestoreInventoryAdjustmentReasonRequest } from "./RestoreInventoryAdjustmentReasonRequest";
 export type { RetrieveInventoryAdjustmentReasonRequest } from "./RetrieveInventoryAdjustmentReasonRequest";

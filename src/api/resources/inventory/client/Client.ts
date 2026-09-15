@@ -56,7 +56,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -141,7 +141,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -224,7 +224,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -307,7 +307,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -391,7 +391,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -481,7 +481,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -565,7 +565,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -643,7 +643,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -725,7 +725,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -815,7 +815,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -898,7 +898,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -983,7 +983,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -1080,7 +1080,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -1169,7 +1169,7 @@ export class InventoryClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -1269,7 +1269,7 @@ export class InventoryClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -1364,7 +1364,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -1440,7 +1440,7 @@ export class InventoryClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -1521,7 +1521,7 @@ export class InventoryClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -1628,7 +1628,7 @@ export class InventoryClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -1689,69 +1689,5 @@ export class InventoryClient {
                 return list(core.setObjectProperty(request, "cursor", response?.cursor));
             },
         });
-    }
-
-    /**
-     * @param {Square.GetTransferInventoryRequest} request
-     * @param {InventoryClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.inventory.getTransfer({
-     *         transferId: "transfer_id"
-     *     })
-     */
-    public getTransfer(
-        request: Square.GetTransferInventoryRequest,
-        requestOptions?: InventoryClient.RequestOptions,
-    ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__getTransfer(request, requestOptions));
-    }
-
-    private async __getTransfer(
-        request: Square.GetTransferInventoryRequest,
-        requestOptions?: InventoryClient.RequestOptions,
-    ): Promise<core.WithRawResponse<void>> {
-        const { transferId } = request;
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
-            requestOptions?.headers,
-        );
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SquareEnvironment.Production,
-                `v2/inventory/transfers/${core.url.encodePathParam(transferId)}`,
-            ),
-            method: "GET",
-            headers: _headers,
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return { data: undefined, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.SquareError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        return handleNonStatusCodeError(
-            _response.error,
-            _response.rawResponse,
-            "GET",
-            "/v2/inventory/transfers/{transfer_id}",
-        );
     }
 }
