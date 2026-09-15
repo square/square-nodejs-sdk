@@ -73,7 +73,7 @@ export class TransactionsClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -155,7 +155,7 @@ export class TransactionsClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -200,172 +200,6 @@ export class TransactionsClient {
             _response.rawResponse,
             "GET",
             "/v2/locations/{location_id}/transactions/{transaction_id}",
-        );
-    }
-
-    /**
-     * @deprecated
-     *
-     * Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
-     * endpoint with a `delay_capture` value of `true`.
-     *
-     *
-     * See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
-     * for more information.
-     *
-     * @param {Square.locations.CaptureTransactionsRequest} request
-     * @param {TransactionsClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.locations.transactions.capture({
-     *         locationId: "location_id",
-     *         transactionId: "transaction_id"
-     *     })
-     */
-    public capture(
-        request: Square.locations.CaptureTransactionsRequest,
-        requestOptions?: TransactionsClient.RequestOptions,
-    ): core.HttpResponsePromise<Square.CaptureTransactionResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__capture(request, requestOptions));
-    }
-
-    private async __capture(
-        request: Square.locations.CaptureTransactionsRequest,
-        requestOptions?: TransactionsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Square.CaptureTransactionResponse>> {
-        const { locationId, transactionId } = request;
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
-            requestOptions?.headers,
-        );
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SquareEnvironment.Production,
-                `v2/locations/${core.url.encodePathParam(locationId)}/transactions/${core.url.encodePathParam(transactionId)}/capture`,
-            ),
-            method: "POST",
-            headers: _headers,
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: serializers.CaptureTransactionResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.SquareError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        return handleNonStatusCodeError(
-            _response.error,
-            _response.rawResponse,
-            "POST",
-            "/v2/locations/{location_id}/transactions/{transaction_id}/capture",
-        );
-    }
-
-    /**
-     * @deprecated
-     *
-     * Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
-     * endpoint with a `delay_capture` value of `true`.
-     *
-     *
-     * See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
-     * for more information.
-     *
-     * @param {Square.locations.VoidTransactionsRequest} request
-     * @param {TransactionsClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.locations.transactions.void({
-     *         locationId: "location_id",
-     *         transactionId: "transaction_id"
-     *     })
-     */
-    public void(
-        request: Square.locations.VoidTransactionsRequest,
-        requestOptions?: TransactionsClient.RequestOptions,
-    ): core.HttpResponsePromise<Square.VoidTransactionResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__void(request, requestOptions));
-    }
-
-    private async __void(
-        request: Square.locations.VoidTransactionsRequest,
-        requestOptions?: TransactionsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Square.VoidTransactionResponse>> {
-        const { locationId, transactionId } = request;
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-08-19" }),
-            requestOptions?.headers,
-        );
-        const _response = await (this._options.fetcher ?? core.fetcher)({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SquareEnvironment.Production,
-                `v2/locations/${core.url.encodePathParam(locationId)}/transactions/${core.url.encodePathParam(transactionId)}/void`,
-            ),
-            method: "POST",
-            headers: _headers,
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: serializers.VoidTransactionResponse.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.SquareError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        return handleNonStatusCodeError(
-            _response.error,
-            _response.rawResponse,
-            "POST",
-            "/v2/locations/{location_id}/transactions/{transaction_id}/void",
         );
     }
 }
