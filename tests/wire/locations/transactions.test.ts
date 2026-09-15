@@ -330,63 +330,35 @@ describe("TransactionsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
-        const rawResponseBody = {
-            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
-        };
-
         server
             .mockEndpoint()
             .post("/v2/locations/location_id/transactions/transaction_id/capture")
             .respondWith()
             .statusCode(200)
-            .jsonBody(rawResponseBody)
             .build();
 
         const response = await client.locations.transactions.capture({
             locationId: "location_id",
             transactionId: "transaction_id",
         });
-        expect(response).toEqual({
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-        });
+        expect(response).toEqual(undefined);
     });
 
     test("void", async () => {
         const server = mockServerPool.createServer();
         const client = new SquareClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
 
-        const rawResponseBody = {
-            errors: [{ category: "API_ERROR", code: "INTERNAL_SERVER_ERROR", detail: "detail", field: "field" }],
-        };
-
         server
             .mockEndpoint()
             .post("/v2/locations/location_id/transactions/transaction_id/void")
             .respondWith()
             .statusCode(200)
-            .jsonBody(rawResponseBody)
             .build();
 
         const response = await client.locations.transactions.void({
             locationId: "location_id",
             transactionId: "transaction_id",
         });
-        expect(response).toEqual({
-            errors: [
-                {
-                    category: "API_ERROR",
-                    code: "INTERNAL_SERVER_ERROR",
-                    detail: "detail",
-                    field: "field",
-                },
-            ],
-        });
+        expect(response).toEqual(undefined);
     });
 });

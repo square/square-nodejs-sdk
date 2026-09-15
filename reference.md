@@ -20787,28 +20787,9 @@ await client.locations.transactions.get({
 </dl>
 </details>
 
-<details><summary><code>client.locations.transactions.<a href="/src/api/resources/locations/resources/transactions/client/Client.ts">capture</a>({ ...params }) -> Square.CaptureTransactionResponse</code></summary>
+<details><summary><code>client.locations.transactions.<a href="/src/api/resources/locations/resources/transactions/client/Client.ts">capture</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
-endpoint with a `delay_capture` value of `true`.
-
-
-See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
-for more information.
-</dd>
-</dl>
-</dd>
-</dl>
 
 #### 🔌 Usage
 
@@ -20858,28 +20839,9 @@ await client.locations.transactions.capture({
 </dl>
 </details>
 
-<details><summary><code>client.locations.transactions.<a href="/src/api/resources/locations/resources/transactions/client/Client.ts">void</a>({ ...params }) -> Square.VoidTransactionResponse</code></summary>
+<details><summary><code>client.locations.transactions.<a href="/src/api/resources/locations/resources/transactions/client/Client.ts">void</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge)
-endpoint with a `delay_capture` value of `true`.
-
-
-See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture)
-for more information.
-</dd>
-</dl>
-</dd>
-</dl>
 
 #### 🔌 Usage
 
