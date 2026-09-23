@@ -2,13 +2,12 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 import { CatalogIdMapping } from "./CatalogIdMapping";
 import { Error_ } from "./Error_";
 
 export const UpsertCatalogObjectResponse: core.serialization.ObjectSchema<
-    serializerTypes.UpsertCatalogObjectResponse.Raw,
+    serializers.UpsertCatalogObjectResponse.Raw,
     Square.UpsertCatalogObjectResponse
 > = core.serialization.object({
     errors: core.serialization.list(Error_).optional(),
@@ -22,7 +21,7 @@ export const UpsertCatalogObjectResponse: core.serialization.ObjectSchema<
 export declare namespace UpsertCatalogObjectResponse {
     export interface Raw {
         errors?: Error_.Raw[] | null;
-        catalog_object?: serializerTypes.CatalogObject.Raw | null;
+        catalog_object?: serializers.CatalogObject.Raw | null;
         id_mappings?: CatalogIdMapping.Raw[] | null;
     }
 }

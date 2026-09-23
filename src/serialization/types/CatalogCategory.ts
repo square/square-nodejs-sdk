@@ -2,47 +2,47 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 import { CatalogCategoryType } from "./CatalogCategoryType";
 import { CatalogEcomSeoData } from "./CatalogEcomSeoData";
 import { CategoryPathToRootNode } from "./CategoryPathToRootNode";
 
-export const CatalogCategory: core.serialization.ObjectSchema<
-    serializerTypes.CatalogCategory.Raw,
-    Square.CatalogCategory
-> = core.serialization.object({
-    name: core.serialization.string().optionalNullable(),
-    imageIds: core.serialization.property(
-        "image_ids",
-        core.serialization.list(core.serialization.string()).optionalNullable(),
-    ),
-    categoryType: core.serialization.property("category_type", CatalogCategoryType.optional()),
-    parentCategory: core.serialization.property(
-        "parent_category",
-        core.serialization.lazyObject(() => serializers.CatalogObjectCategory).optional(),
-    ),
-    isTopLevel: core.serialization.property("is_top_level", core.serialization.boolean().optionalNullable()),
-    channels: core.serialization.list(core.serialization.string()).optionalNullable(),
-    availabilityPeriodIds: core.serialization.property(
-        "availability_period_ids",
-        core.serialization.list(core.serialization.string()).optionalNullable(),
-    ),
-    onlineVisibility: core.serialization.property("online_visibility", core.serialization.boolean().optionalNullable()),
-    rootCategory: core.serialization.property("root_category", core.serialization.string().optional()),
-    ecomSeoData: core.serialization.property("ecom_seo_data", CatalogEcomSeoData.optional()),
-    pathToRoot: core.serialization.property(
-        "path_to_root",
-        core.serialization.list(CategoryPathToRootNode).optionalNullable(),
-    ),
-});
+export const CatalogCategory: core.serialization.ObjectSchema<serializers.CatalogCategory.Raw, Square.CatalogCategory> =
+    core.serialization.object({
+        name: core.serialization.string().optionalNullable(),
+        imageIds: core.serialization.property(
+            "image_ids",
+            core.serialization.list(core.serialization.string()).optionalNullable(),
+        ),
+        categoryType: core.serialization.property("category_type", CatalogCategoryType.optional()),
+        parentCategory: core.serialization.property(
+            "parent_category",
+            core.serialization.lazyObject(() => serializers.CatalogObjectCategory).optional(),
+        ),
+        isTopLevel: core.serialization.property("is_top_level", core.serialization.boolean().optionalNullable()),
+        channels: core.serialization.list(core.serialization.string()).optionalNullable(),
+        availabilityPeriodIds: core.serialization.property(
+            "availability_period_ids",
+            core.serialization.list(core.serialization.string()).optionalNullable(),
+        ),
+        onlineVisibility: core.serialization.property(
+            "online_visibility",
+            core.serialization.boolean().optionalNullable(),
+        ),
+        rootCategory: core.serialization.property("root_category", core.serialization.string().optional()),
+        ecomSeoData: core.serialization.property("ecom_seo_data", CatalogEcomSeoData.optional()),
+        pathToRoot: core.serialization.property(
+            "path_to_root",
+            core.serialization.list(CategoryPathToRootNode).optionalNullable(),
+        ),
+    });
 
 export declare namespace CatalogCategory {
     export interface Raw {
         name?: (string | null | undefined) | null;
         image_ids?: (string[] | null | undefined) | null;
         category_type?: CatalogCategoryType.Raw | null;
-        parent_category?: serializerTypes.CatalogObjectCategory.Raw | null;
+        parent_category?: serializers.CatalogObjectCategory.Raw | null;
         is_top_level?: (boolean | null | undefined) | null;
         channels?: (string[] | null | undefined) | null;
         availability_period_ids?: (string[] | null | undefined) | null;

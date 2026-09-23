@@ -2,15 +2,14 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 import { CatalogEcomSeoData } from "./CatalogEcomSeoData";
 import { CatalogItemFoodAndBeverageDetails } from "./CatalogItemFoodAndBeverageDetails";
 import { CatalogItemModifierListInfo } from "./CatalogItemModifierListInfo";
 import { CatalogItemOptionForItem } from "./CatalogItemOptionForItem";
 import { CatalogItemProductType } from "./CatalogItemProductType";
 
-export const CatalogItem: core.serialization.ObjectSchema<serializerTypes.CatalogItem.Raw, Square.CatalogItem> =
+export const CatalogItem: core.serialization.ObjectSchema<serializers.CatalogItem.Raw, Square.CatalogItem> =
     core.serialization.object({
         name: core.serialization.string().optionalNullable(),
         description: core.serialization.string().optionalNullable(),
@@ -89,7 +88,7 @@ export declare namespace CatalogItem {
         buyer_facing_name?: (string | null | undefined) | null;
         tax_ids?: (string[] | null | undefined) | null;
         modifier_list_info?: (CatalogItemModifierListInfo.Raw[] | null | undefined) | null;
-        variations?: (serializerTypes.CatalogObject.Raw[] | null | undefined) | null;
+        variations?: (serializers.CatalogObject.Raw[] | null | undefined) | null;
         product_type?: CatalogItemProductType.Raw | null;
         skip_modifier_screen?: (boolean | null | undefined) | null;
         item_options?: (CatalogItemOptionForItem.Raw[] | null | undefined) | null;
@@ -97,7 +96,7 @@ export declare namespace CatalogItem {
         ecom_image_uris?: (string[] | null | undefined) | null;
         image_ids?: (string[] | null | undefined) | null;
         sort_name?: (string | null | undefined) | null;
-        categories?: (serializerTypes.CatalogObjectCategory.Raw[] | null | undefined) | null;
+        categories?: (serializers.CatalogObjectCategory.Raw[] | null | undefined) | null;
         description_html?: (string | null | undefined) | null;
         description_plaintext?: string | null;
         kitchen_name?: (string | null | undefined) | null;
@@ -105,7 +104,7 @@ export declare namespace CatalogItem {
         is_archived?: (boolean | null | undefined) | null;
         ecom_seo_data?: CatalogEcomSeoData.Raw | null;
         food_and_beverage_details?: CatalogItemFoodAndBeverageDetails.Raw | null;
-        reporting_category?: serializerTypes.CatalogObjectCategory.Raw | null;
+        reporting_category?: serializers.CatalogObjectCategory.Raw | null;
         is_alcoholic?: (boolean | null | undefined) | null;
     }
 }

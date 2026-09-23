@@ -2,13 +2,12 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 import { Error_ } from "./Error_";
 import { IncludedResources } from "./IncludedResources";
 
 export const SearchCatalogItemsResponse: core.serialization.ObjectSchema<
-    serializerTypes.SearchCatalogItemsResponse.Raw,
+    serializers.SearchCatalogItemsResponse.Raw,
     Square.SearchCatalogItemsResponse
 > = core.serialization.object({
     errors: core.serialization.list(Error_).optional(),
@@ -24,7 +23,7 @@ export const SearchCatalogItemsResponse: core.serialization.ObjectSchema<
 export declare namespace SearchCatalogItemsResponse {
     export interface Raw {
         errors?: Error_.Raw[] | null;
-        items?: serializerTypes.CatalogObject.Raw[] | null;
+        items?: serializers.CatalogObject.Raw[] | null;
         cursor?: string | null;
         matched_variation_ids?: string[] | null;
         included_resources?: IncludedResources.Raw | null;

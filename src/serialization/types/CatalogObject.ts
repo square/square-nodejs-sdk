@@ -2,8 +2,7 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 import { CatalogObjectAvailabilityPeriod } from "./CatalogObjectAvailabilityPeriod";
 import { CatalogObjectCustomAttributeDefinition } from "./CatalogObjectCustomAttributeDefinition";
 import { CatalogObjectDiscount } from "./CatalogObjectDiscount";
@@ -19,7 +18,7 @@ import { CatalogObjectSubscriptionPlanVariation } from "./CatalogObjectSubscript
 import { CatalogObjectTax } from "./CatalogObjectTax";
 import { CatalogObjectTimePeriod } from "./CatalogObjectTimePeriod";
 
-export const CatalogObject: core.serialization.Schema<serializerTypes.CatalogObject.Raw, Square.CatalogObject> =
+export const CatalogObject: core.serialization.Schema<serializers.CatalogObject.Raw, Square.CatalogObject> =
     core.serialization
         .union("type", {
             ITEM: core.serialization.lazyObject(() => serializers.CatalogObjectItem),
@@ -69,7 +68,7 @@ export declare namespace CatalogObject {
         | CatalogObject.SubscriptionPlan
         | CatalogObject.AvailabilityPeriod;
 
-    export interface Item extends serializerTypes.CatalogObjectItem.Raw {
+    export interface Item extends serializers.CatalogObjectItem.Raw {
         type: "ITEM";
     }
 
@@ -77,7 +76,7 @@ export declare namespace CatalogObject {
         type: "IMAGE";
     }
 
-    export interface Category extends serializerTypes.CatalogObjectCategory.Raw {
+    export interface Category extends serializers.CatalogObjectCategory.Raw {
         type: "CATEGORY";
     }
 
@@ -93,7 +92,7 @@ export declare namespace CatalogObject {
         type: "DISCOUNT";
     }
 
-    export interface ModifierList extends serializerTypes.CatalogObjectModifierList.Raw {
+    export interface ModifierList extends serializers.CatalogObjectModifierList.Raw {
         type: "MODIFIER_LIST";
     }
 
@@ -121,7 +120,7 @@ export declare namespace CatalogObject {
         type: "SUBSCRIPTION_PLAN_VARIATION";
     }
 
-    export interface ItemOption extends serializerTypes.CatalogObjectItemOption.Raw {
+    export interface ItemOption extends serializers.CatalogObjectItemOption.Raw {
         type: "ITEM_OPTION";
     }
 
@@ -137,7 +136,7 @@ export declare namespace CatalogObject {
         type: "QUICK_AMOUNTS_SETTINGS";
     }
 
-    export interface SubscriptionPlan extends serializerTypes.CatalogObjectSubscriptionPlan.Raw {
+    export interface SubscriptionPlan extends serializers.CatalogObjectSubscriptionPlan.Raw {
         type: "SUBSCRIPTION_PLAN";
     }
 

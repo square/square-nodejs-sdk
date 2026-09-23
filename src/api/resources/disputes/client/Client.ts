@@ -8,7 +8,7 @@ import { toJson } from "../../../../core/json";
 import * as environments from "../../../../environments";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError";
 import * as errors from "../../../../errors/index";
-import { serialization as serializers } from "../../../../serialization/lazy";
+import * as serializers from "../../../../serialization/index";
 import type * as Square from "../../../index";
 import { EvidenceClient } from "../resources/evidence/client/Client";
 

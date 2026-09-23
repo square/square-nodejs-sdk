@@ -2,11 +2,10 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 
 export const IncludedResources: core.serialization.ObjectSchema<
-    serializerTypes.IncludedResources.Raw,
+    serializers.IncludedResources.Raw,
     Square.IncludedResources
 > = core.serialization.object({
     nestedModifiers: core.serialization.property(
@@ -21,7 +20,7 @@ export const IncludedResources: core.serialization.ObjectSchema<
 
 export declare namespace IncludedResources {
     export interface Raw {
-        nested_modifiers?: (serializerTypes.CatalogObject.Raw[] | null | undefined) | null;
-        ancestor_modifiers?: (serializerTypes.CatalogObject.Raw[] | null | undefined) | null;
+        nested_modifiers?: (serializers.CatalogObject.Raw[] | null | undefined) | null;
+        ancestor_modifiers?: (serializers.CatalogObject.Raw[] | null | undefined) | null;
     }
 }

@@ -5,6 +5,6 @@ export { SquareClient } from "./Client.js";
 export { SquareEnvironment } from "./environments.js";
 export { SquareError, SquareTimeoutError } from "./errors/index.js";
 export * from "./exports.js";
-export { serialization } from "./serialization/lazy.js";
-export { type LoadAndWaitOptions, ReportingHelper } from "./wrapper/ReportingHelper";
+export * as serialization from "./serialization/index.js";
 export { WebhooksHelper } from "./wrapper/WebhooksHelper";
+export { ReportingHelper, type LoadAndWaitOptions } from "./wrapper/ReportingHelper";

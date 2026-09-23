@@ -2,11 +2,10 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 
 export const CreateCatalogImageRequest: core.serialization.ObjectSchema<
-    serializerTypes.CreateCatalogImageRequest.Raw,
+    serializers.CreateCatalogImageRequest.Raw,
     Square.CreateCatalogImageRequest
 > = core.serialization.object({
     idempotencyKey: core.serialization.property("idempotency_key", core.serialization.string()),
@@ -19,7 +18,7 @@ export declare namespace CreateCatalogImageRequest {
     export interface Raw {
         idempotency_key: string;
         object_id?: string | null;
-        image: serializerTypes.CatalogObject.Raw;
+        image: serializers.CatalogObject.Raw;
         is_primary?: boolean | null;
     }
 }

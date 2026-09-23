@@ -2,13 +2,12 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 import { CatalogCustomAttributeValue } from "./CatalogCustomAttributeValue";
 import { CatalogV1Id } from "./CatalogV1Id";
 
 export const CatalogObjectCategory: core.serialization.ObjectSchema<
-    serializerTypes.CatalogObjectCategory.Raw,
+    serializers.CatalogObjectCategory.Raw,
     Square.CatalogObjectCategory
 > = core.serialization.object({
     id: core.serialization.string().optional(),
@@ -46,7 +45,7 @@ export declare namespace CatalogObjectCategory {
         id?: string | null;
         ordinal?: ((bigint | number) | null | undefined) | null;
         type?: "CATEGORY" | null;
-        category_data?: serializerTypes.CatalogCategory.Raw | null;
+        category_data?: serializers.CatalogCategory.Raw | null;
         updated_at?: string | null;
         version?: (bigint | number) | null;
         is_deleted?: boolean | null;

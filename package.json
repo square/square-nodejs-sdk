@@ -10,8 +10,6 @@
     "main": "./index.js",
     "types": "./index.d.ts",
     "scripts": {
-        "prebuild": "node scripts/optimize-imports.mjs",
-        "postbuild": "node scripts/verify-lazy-imports.cjs",
         "format": "biome format --write --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
         "format:check": "biome format --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
         "lint": "biome lint --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
@@ -72,8 +70,7 @@
     },
     "exports": {
         ".": "./index.js",
-        "./client": "./lightweight.js",
-        "./*": "./api/resources/*/client/Client.js",
+        "./*": "./api/resources/*/exports.js",
         "./legacy": {
             "types": "./legacy/exports/index.d.ts",
             "require": {

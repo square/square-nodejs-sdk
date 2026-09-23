@@ -2,11 +2,10 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 
 export const CatalogObjectBatch: core.serialization.ObjectSchema<
-    serializerTypes.CatalogObjectBatch.Raw,
+    serializers.CatalogObjectBatch.Raw,
     Square.CatalogObjectBatch
 > = core.serialization.object({
     objects: core.serialization.list(core.serialization.lazy(() => serializers.CatalogObject)),
@@ -14,6 +13,6 @@ export const CatalogObjectBatch: core.serialization.ObjectSchema<
 
 export declare namespace CatalogObjectBatch {
     export interface Raw {
-        objects: serializerTypes.CatalogObject.Raw[];
+        objects: serializers.CatalogObject.Raw[];
     }
 }

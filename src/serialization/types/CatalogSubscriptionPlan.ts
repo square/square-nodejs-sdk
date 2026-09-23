@@ -2,12 +2,11 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 import { SubscriptionPhase } from "./SubscriptionPhase";
 
 export const CatalogSubscriptionPlan: core.serialization.ObjectSchema<
-    serializerTypes.CatalogSubscriptionPlan.Raw,
+    serializers.CatalogSubscriptionPlan.Raw,
     Square.CatalogSubscriptionPlan
 > = core.serialization.object({
     name: core.serialization.string(),
@@ -31,7 +30,7 @@ export declare namespace CatalogSubscriptionPlan {
     export interface Raw {
         name: string;
         phases?: (SubscriptionPhase.Raw[] | null | undefined) | null;
-        subscription_plan_variations?: (serializerTypes.CatalogObject.Raw[] | null | undefined) | null;
+        subscription_plan_variations?: (serializers.CatalogObject.Raw[] | null | undefined) | null;
         eligible_item_ids?: (string[] | null | undefined) | null;
         eligible_category_ids?: (string[] | null | undefined) | null;
         all_items?: (boolean | null | undefined) | null;

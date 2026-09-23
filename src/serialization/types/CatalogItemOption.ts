@@ -2,11 +2,10 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 
 export const CatalogItemOption: core.serialization.ObjectSchema<
-    serializerTypes.CatalogItemOption.Raw,
+    serializers.CatalogItemOption.Raw,
     Square.CatalogItemOption
 > = core.serialization.object({
     name: core.serialization.string().optionalNullable(),
@@ -22,6 +21,6 @@ export declare namespace CatalogItemOption {
         display_name?: (string | null | undefined) | null;
         description?: (string | null | undefined) | null;
         show_colors?: (boolean | null | undefined) | null;
-        values?: (serializerTypes.CatalogObject.Raw[] | null | undefined) | null;
+        values?: (serializers.CatalogObject.Raw[] | null | undefined) | null;
     }
 }

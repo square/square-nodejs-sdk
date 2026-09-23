@@ -2,12 +2,11 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import type * as serializerTypes from "../index";
-import { serialization as serializers } from "../lazy";
+import * as serializers from "../index";
 import { CatalogObjectBase } from "./CatalogObjectBase";
 
 export const CatalogObjectSubscriptionPlan: core.serialization.ObjectSchema<
-    serializerTypes.CatalogObjectSubscriptionPlan.Raw,
+    serializers.CatalogObjectSubscriptionPlan.Raw,
     Square.CatalogObjectSubscriptionPlan
 > = core.serialization
     .object({
@@ -20,6 +19,6 @@ export const CatalogObjectSubscriptionPlan: core.serialization.ObjectSchema<
 
 export declare namespace CatalogObjectSubscriptionPlan {
     export interface Raw extends CatalogObjectBase.Raw {
-        subscription_plan_data?: serializerTypes.CatalogSubscriptionPlan.Raw | null;
+        subscription_plan_data?: serializers.CatalogSubscriptionPlan.Raw | null;
     }
 }
