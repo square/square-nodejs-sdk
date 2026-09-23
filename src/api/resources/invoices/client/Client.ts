@@ -8,7 +8,7 @@ import { toJson } from "../../../../core/json";
 import * as environments from "../../../../environments";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError";
 import * as errors from "../../../../errors/index";
-import * as serializers from "../../../../serialization/index";
+import { serialization as serializers } from "../../../../serialization/lazy";
 import type * as Square from "../../../index";
 
 export declare namespace InvoicesClient {

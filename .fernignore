@@ -4,6 +4,11 @@
 .github/workflows/integration.yml
 src/wrapper
 src/index.ts
+src/lightweight.ts
+src/serialization/lazy.ts
+src/serialization/schema-map.ts
+scripts/optimize-imports.mjs
+scripts/verify-lazy-imports.cjs
 src/errors/SquareError.ts
 src/core/index.ts
 src/core/crypto

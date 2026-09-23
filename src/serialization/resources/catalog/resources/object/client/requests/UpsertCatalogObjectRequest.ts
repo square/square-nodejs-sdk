@@ -2,10 +2,11 @@
 
 import type * as Square from "../../../../../../../api/index";
 import * as core from "../../../../../../../core";
-import * as serializers from "../../../../../../index";
+import type * as serializerTypes from "../../../../../../index";
+import { serialization as serializers } from "../../../../../../lazy";
 
 export const UpsertCatalogObjectRequest: core.serialization.Schema<
-    serializers.catalog.UpsertCatalogObjectRequest.Raw,
+    serializerTypes.catalog.UpsertCatalogObjectRequest.Raw,
     Square.catalog.UpsertCatalogObjectRequest
 > = core.serialization.object({
     idempotencyKey: core.serialization.property("idempotency_key", core.serialization.string()),
@@ -15,6 +16,6 @@ export const UpsertCatalogObjectRequest: core.serialization.Schema<
 export declare namespace UpsertCatalogObjectRequest {
     export interface Raw {
         idempotency_key: string;
-        object: serializers.CatalogObject.Raw;
+        object: serializerTypes.CatalogObject.Raw;
     }
 }

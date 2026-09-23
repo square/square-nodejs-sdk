@@ -348,7 +348,15 @@ const response = await ReportingHelper.loadAndWait(
 
 ### Subpackage Exports
 
-This SDK supports direct imports of subpackage clients, which allows JavaScript bundlers to tree-shake and include only the imported subpackage code. This results in much smaller bundle sizes.
+For faster startup in Node.js, import the client without loading the root API barrel. The SDK loads serialization schemas when a request first needs them.
+
+```typescript
+import { SquareClient, SquareEnvironment } from "square/client";
+
+const client = new SquareClient({ environment: SquareEnvironment.Sandbox });
+```
+
+You can also import one API client directly:
 
 ```typescript
 import { OAuthClient } from 'square/oAuth';

@@ -2,12 +2,13 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import * as serializers from "../index";
+import type * as serializerTypes from "../index";
+import { serialization as serializers } from "../lazy";
 import { CatalogModifierListModifierType } from "./CatalogModifierListModifierType";
 import { CatalogModifierListSelectionType } from "./CatalogModifierListSelectionType";
 
 export const CatalogModifierList: core.serialization.ObjectSchema<
-    serializers.CatalogModifierList.Raw,
+    serializerTypes.CatalogModifierList.Raw,
     Square.CatalogModifierList
 > = core.serialization.object({
     name: core.serialization.string().optionalNullable(),
@@ -43,7 +44,7 @@ export declare namespace CatalogModifierList {
         name?: (string | null | undefined) | null;
         ordinal?: (number | null | undefined) | null;
         selection_type?: CatalogModifierListSelectionType.Raw | null;
-        modifiers?: (serializers.CatalogObject.Raw[] | null | undefined) | null;
+        modifiers?: (serializerTypes.CatalogObject.Raw[] | null | undefined) | null;
         image_ids?: (string[] | null | undefined) | null;
         allow_quantities?: (boolean | null | undefined) | null;
         is_conversational?: (boolean | null | undefined) | null;

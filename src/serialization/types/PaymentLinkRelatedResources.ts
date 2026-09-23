@@ -2,11 +2,12 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import * as serializers from "../index";
+import type * as serializerTypes from "../index";
+import { serialization as serializers } from "../lazy";
 import { Order } from "./Order";
 
 export const PaymentLinkRelatedResources: core.serialization.ObjectSchema<
-    serializers.PaymentLinkRelatedResources.Raw,
+    serializerTypes.PaymentLinkRelatedResources.Raw,
     Square.PaymentLinkRelatedResources
 > = core.serialization.object({
     orders: core.serialization.list(Order).optionalNullable(),
@@ -19,6 +20,6 @@ export const PaymentLinkRelatedResources: core.serialization.ObjectSchema<
 export declare namespace PaymentLinkRelatedResources {
     export interface Raw {
         orders?: (Order.Raw[] | null | undefined) | null;
-        subscription_plans?: (serializers.CatalogObject.Raw[] | null | undefined) | null;
+        subscription_plans?: (serializerTypes.CatalogObject.Raw[] | null | undefined) | null;
     }
 }

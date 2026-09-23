@@ -2,11 +2,12 @@
 
 import type * as Square from "../../api/index";
 import * as core from "../../core";
-import * as serializers from "../index";
+import type * as serializerTypes from "../index";
+import { serialization as serializers } from "../lazy";
 import { Error_ } from "./Error_";
 
 export const UpdateCatalogImageResponse: core.serialization.ObjectSchema<
-    serializers.UpdateCatalogImageResponse.Raw,
+    serializerTypes.UpdateCatalogImageResponse.Raw,
     Square.UpdateCatalogImageResponse
 > = core.serialization.object({
     errors: core.serialization.list(Error_).optional(),
@@ -16,6 +17,6 @@ export const UpdateCatalogImageResponse: core.serialization.ObjectSchema<
 export declare namespace UpdateCatalogImageResponse {
     export interface Raw {
         errors?: Error_.Raw[] | null;
-        image?: serializers.CatalogObject.Raw | null;
+        image?: serializerTypes.CatalogObject.Raw | null;
     }
 }
