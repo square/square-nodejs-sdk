@@ -38,4 +38,12 @@ export interface CheckoutOptions {
     enableCoupon?: boolean | null;
     /** Indicates whether to include the `REWARDS` section for the buyer to opt in to loyalty, redeem rewards in the payment form, or both. */
     enableLoyalty?: boolean | null;
+    /**
+     * Indicates how the buyer's phone number is collected on the checkout page.
+     * When `REQUIRED` (default), the buyer must provide a phone number to complete checkout.
+     * When `OPTIONAL`, the phone field is shown but not required. When `HIDDEN`, the field
+     * is not shown. Leaving this field unset preserves the historical behavior (`REQUIRED`).
+     * See [PhoneCollection](#type-phonecollection) for possible values
+     */
+    phoneCollection?: Square.CheckoutOptionsPhoneCollection;
 }

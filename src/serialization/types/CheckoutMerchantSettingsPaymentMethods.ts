@@ -16,6 +16,10 @@ export const CheckoutMerchantSettingsPaymentMethods: core.serialization.ObjectSc
         CheckoutMerchantSettingsPaymentMethodsPaymentMethod.optional(),
     ),
     cashApp: core.serialization.property("cash_app", CheckoutMerchantSettingsPaymentMethodsPaymentMethod.optional()),
+    bankAccount: core.serialization.property(
+        "bank_account",
+        CheckoutMerchantSettingsPaymentMethodsPaymentMethod.optional(),
+    ),
     afterpayClearpay: core.serialization.property(
         "afterpay_clearpay",
         CheckoutMerchantSettingsPaymentMethodsAfterpayClearpay.optional(),
@@ -27,6 +31,7 @@ export declare namespace CheckoutMerchantSettingsPaymentMethods {
         apple_pay?: CheckoutMerchantSettingsPaymentMethodsPaymentMethod.Raw | null;
         google_pay?: CheckoutMerchantSettingsPaymentMethodsPaymentMethod.Raw | null;
         cash_app?: CheckoutMerchantSettingsPaymentMethodsPaymentMethod.Raw | null;
+        bank_account?: CheckoutMerchantSettingsPaymentMethodsPaymentMethod.Raw | null;
         afterpay_clearpay?: CheckoutMerchantSettingsPaymentMethodsAfterpayClearpay.Raw | null;
     }
 }

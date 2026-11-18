@@ -8,7 +8,7 @@ import * as environments from "../../../../environments";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError";
 import * as errors from "../../../../errors/index";
 import * as serializers from "../../../../serialization/index";
-import type * as Square from "../../../index";
+import * as Square from "../../../index";
 
 export declare namespace ReportingClient {
     export type Options = BaseClientOptions;
@@ -28,6 +28,9 @@ export class ReportingClient {
      *
      * @param {ReportingClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link Square.ClientRequestError}
+     * @throws {@link Square.ServerError}
+     *
      * @example
      *     await client.reporting.getMetadata()
      */
@@ -44,7 +47,7 @@ export class ReportingClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -77,11 +80,36 @@ export class ReportingClient {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SquareError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Square.ClientRequestError(
+                        serializers.ReportingError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
+                case 500:
+                    throw new Square.ServerError(
+                        serializers.ReportingError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
+                default:
+                    throw new errors.SquareError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/reporting/v1/meta");
@@ -92,6 +120,9 @@ export class ReportingClient {
      *
      * @param {Square.LoadRequest} request
      * @param {ReportingClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Square.ClientRequestError}
+     * @throws {@link Square.ServerError}
      *
      * @example
      *     await client.reporting.load()
@@ -111,7 +142,7 @@ export class ReportingClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -150,11 +181,36 @@ export class ReportingClient {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SquareError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Square.ClientRequestError(
+                        serializers.ReportingError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
+                case 500:
+                    throw new Square.ServerError(
+                        serializers.ReportingError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
+                default:
+                    throw new errors.SquareError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/reporting/v1/load");

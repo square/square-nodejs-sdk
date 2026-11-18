@@ -3,8 +3,17 @@
 import type * as Square from "../index";
 
 export interface CheckoutMerchantSettingsPaymentMethods {
+    /** Apple Pay. */
     applePay?: Square.CheckoutMerchantSettingsPaymentMethodsPaymentMethod;
+    /** Google Pay. */
     googlePay?: Square.CheckoutMerchantSettingsPaymentMethodsPaymentMethod;
+    /** Cash App Pay. */
     cashApp?: Square.CheckoutMerchantSettingsPaymentMethodsPaymentMethod;
+    /**
+     * Bank account (ACH). Enabled by default for eligible sellers who have
+     * not saved an ACH preference. A saved enabled or disabled choice takes precedence.
+     */
+    bankAccount?: Square.CheckoutMerchantSettingsPaymentMethodsPaymentMethod;
+    /** Afterpay/Clearpay. */
     afterpayClearpay?: Square.CheckoutMerchantSettingsPaymentMethodsAfterpayClearpay;
 }

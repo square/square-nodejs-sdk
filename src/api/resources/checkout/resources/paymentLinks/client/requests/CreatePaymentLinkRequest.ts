@@ -53,6 +53,6 @@ export interface CreatePaymentLinkRequest {
      * For more information, see [Prepopulate the shipping address](https://developer.squareup.com/docs/checkout-api/optional-checkout-configurations#prepopulate-the-shipping-address).
      */
     prePopulatedData?: Square.PrePopulatedData;
-    /** A note for the payment. After processing the payment, Square adds this note to the resulting `Payment`. */
+    /** A note for the payment. After processing the payment, Square adds this note to the resulting `Payment` as well as the post payment confirmation email. */
     paymentNote?: string;
 }
