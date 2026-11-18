@@ -2118,8 +2118,8 @@ await client.catalog.batchUpsert({
                     type: "ITEM",
                     id: "id"
                 }, {
-                    type: "ITEM",
-                    id: "id"
+                    type: "CATEGORY",
+                    type: "CATEGORY"
                 }, {
                     type: "TAX",
                     id: "id"

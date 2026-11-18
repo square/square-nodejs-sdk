@@ -62,6 +62,7 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: { categories: [{}] },
                 },
                 {
                     type: "ITEM",
@@ -75,12 +76,14 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: { categories: [{}] },
                 },
             ],
             related_objects: [
                 {
                     type: "CATEGORY",
                     id: "id",
+                    ordinal: BigInt(1000000),
                     updated_at: "updated_at",
                     version: BigInt(1000000),
                     is_deleted: true,
@@ -90,7 +93,6 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
-                    ordinal: BigInt(1000000),
                 },
                 {
                     type: "TAX",
@@ -107,8 +109,8 @@ describe("CatalogClient", () => {
                 },
             ],
             included_resources: {
-                nested_modifiers: [{ type: "ITEM", id: "id" }],
-                ancestor_modifiers: [{ type: "ITEM", id: "id" }],
+                nested_modifiers: [{ type: "ITEM", id: "id", item_data: { categories: [{}] } }],
+                ancestor_modifiers: [{ type: "ITEM", id: "id", item_data: { categories: [{}] } }],
             },
         };
 
@@ -149,6 +151,9 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [{}],
+                    },
                 },
                 {
                     type: "ITEM",
@@ -164,11 +169,16 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [{}],
+                    },
                 },
             ],
             relatedObjects: [
                 {
                     id: "id",
+                    ordinal: BigInt("1000000"),
+                    type: "CATEGORY",
                     updatedAt: "updated_at",
                     version: BigInt("1000000"),
                     isDeleted: true,
@@ -180,8 +190,6 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
-                    ordinal: BigInt("1000000"),
-                    type: "CATEGORY",
                 },
                 {
                     type: "TAX",
@@ -204,12 +212,18 @@ describe("CatalogClient", () => {
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [{}],
+                        },
                     },
                 ],
                 ancestorModifiers: [
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [{}],
+                        },
                     },
                 ],
             },
@@ -226,7 +240,7 @@ describe("CatalogClient", () => {
                     objects: [
                         { type: "ITEM", id: "id" },
                         { type: "ITEM", id: "id" },
-                        { type: "ITEM", id: "id" },
+                        { type: "CATEGORY" },
                         { type: "TAX", id: "id" },
                     ],
                 },
@@ -247,6 +261,7 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: { categories: [{}] },
                 },
                 {
                     type: "ITEM",
@@ -260,10 +275,12 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: { categories: [{}] },
                 },
                 {
                     type: "CATEGORY",
                     id: "id",
+                    ordinal: BigInt(1000000),
                     updated_at: "updated_at",
                     version: BigInt(1000000),
                     is_deleted: true,
@@ -273,7 +290,6 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
-                    ordinal: BigInt(1000000),
                 },
                 {
                     type: "TAX",
@@ -324,8 +340,7 @@ describe("CatalogClient", () => {
                             id: "id",
                         },
                         {
-                            type: "ITEM",
-                            id: "id",
+                            type: "CATEGORY",
                         },
                         {
                             type: "TAX",
@@ -359,6 +374,9 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [{}],
+                    },
                 },
                 {
                     type: "ITEM",
@@ -374,9 +392,14 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [{}],
+                    },
                 },
                 {
                     id: "id",
+                    ordinal: BigInt("1000000"),
+                    type: "CATEGORY",
                     updatedAt: "updated_at",
                     version: BigInt("1000000"),
                     isDeleted: true,
@@ -388,8 +411,6 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
-                    ordinal: BigInt("1000000"),
-                    type: "CATEGORY",
                 },
                 {
                     type: "TAX",
@@ -506,6 +527,7 @@ describe("CatalogClient", () => {
                 {
                     type: "CATEGORY",
                     id: "id",
+                    ordinal: BigInt(1000000),
                     updated_at: "updated_at",
                     version: BigInt(1000000),
                     is_deleted: true,
@@ -515,7 +537,6 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
-                    ordinal: BigInt(1000000),
                 },
                 {
                     type: "TAX",
@@ -554,6 +575,8 @@ describe("CatalogClient", () => {
             objects: [
                 {
                     id: "id",
+                    ordinal: BigInt("1000000"),
+                    type: "CATEGORY",
                     updatedAt: "updated_at",
                     version: BigInt("1000000"),
                     isDeleted: true,
@@ -565,8 +588,6 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
-                    ordinal: BigInt("1000000"),
-                    type: "CATEGORY",
                 },
                 {
                     type: "TAX",
@@ -621,6 +642,7 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: { categories: [{}] },
                 },
                 {
                     type: "ITEM",
@@ -634,6 +656,7 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: { categories: [{}] },
                 },
             ],
             related_objects: [
@@ -649,12 +672,13 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: { categories: [{}] },
                 },
             ],
             latest_time: "latest_time",
             included_resources: {
-                nested_modifiers: [{ type: "ITEM", id: "id" }],
-                ancestor_modifiers: [{ type: "ITEM", id: "id" }],
+                nested_modifiers: [{ type: "ITEM", id: "id", item_data: { categories: [{}] } }],
+                ancestor_modifiers: [{ type: "ITEM", id: "id", item_data: { categories: [{}] } }],
             },
         };
 
@@ -702,6 +726,9 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [{}],
+                    },
                 },
                 {
                     type: "ITEM",
@@ -717,6 +744,9 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [{}],
+                    },
                 },
             ],
             relatedObjects: [
@@ -734,6 +764,9 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [{}],
+                    },
                 },
             ],
             latestTime: "latest_time",
@@ -742,12 +775,18 @@ describe("CatalogClient", () => {
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [{}],
+                        },
                     },
                 ],
                 ancestorModifiers: [
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [{}],
+                        },
                     },
                 ],
             },
@@ -787,13 +826,14 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: { categories: [{}] },
                 },
             ],
             cursor: "cursor",
             matched_variation_ids: ["VBJNPHCOKDFECR6VU25WRJUD"],
             included_resources: {
-                nested_modifiers: [{ type: "ITEM", id: "id" }],
-                ancestor_modifiers: [{ type: "ITEM", id: "id" }],
+                nested_modifiers: [{ type: "ITEM", id: "id", item_data: { categories: [{}] } }],
+                ancestor_modifiers: [{ type: "ITEM", id: "id", item_data: { categories: [{}] } }],
             },
         };
 
@@ -859,6 +899,9 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [{}],
+                    },
                 },
             ],
             cursor: "cursor",
@@ -868,12 +911,18 @@ describe("CatalogClient", () => {
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [{}],
+                        },
                     },
                 ],
                 ancestorModifiers: [
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [{}],
+                        },
                     },
                 ],
             },

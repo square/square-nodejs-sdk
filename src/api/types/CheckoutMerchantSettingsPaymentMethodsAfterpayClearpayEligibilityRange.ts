@@ -6,6 +6,8 @@ import type * as Square from "../index";
  * A range of purchase price that qualifies.
  */
 export interface CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibilityRange {
+    /** The lower bound of the range. */
     min: Square.Money;
+    /** The upper bound of the range. */
     max: Square.Money;
 }

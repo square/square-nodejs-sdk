@@ -200,6 +200,7 @@ export * from "./CatalogItemVariation";
 export * from "./CatalogItemVariationVendorInformation";
 export * from "./CatalogMeasurementUnit";
 export * from "./CatalogModifier";
+export * from "./CatalogModifierColor";
 export * from "./CatalogModifierList";
 export * from "./CatalogModifierListModifierType";
 export * from "./CatalogModifierListSelectionType";
@@ -279,6 +280,7 @@ export * from "./CheckoutMerchantSettingsPaymentMethodsAfterpayClearpayEligibili
 export * from "./CheckoutMerchantSettingsPaymentMethodsPaymentMethod";
 export * from "./CheckoutOptions";
 export * from "./CheckoutOptionsPaymentType";
+export * from "./CheckoutOptionsPhoneCollection";
 export * from "./ClearpayDetails";
 export * from "./CloneOrderResponse";
 export * from "./CollectedData";

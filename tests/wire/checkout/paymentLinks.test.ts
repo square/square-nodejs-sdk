@@ -123,6 +123,7 @@ describe("PaymentLinksClient", () => {
                     shipping_fee: { charge: {} },
                     enable_coupon: true,
                     enable_loyalty: true,
+                    phone_collection: "REQUIRED",
                 },
                 pre_populated_data: { buyer_email: "buyer_email", buyer_phone_number: "buyer_phone_number" },
                 url: "https://square.link/u/EXAMPLE",
@@ -170,7 +171,7 @@ describe("PaymentLinksClient", () => {
                         total_service_charge_money: { amount: BigInt(0), currency: "USD" },
                     },
                 ],
-                subscription_plans: [{ type: "ITEM", id: "id" }],
+                subscription_plans: [{ type: "ITEM", id: "id", item_data: { categories: [{}] } }],
             },
         };
 
@@ -224,6 +225,7 @@ describe("PaymentLinksClient", () => {
                     },
                     enableCoupon: true,
                     enableLoyalty: true,
+                    phoneCollection: "REQUIRED",
                 },
                 prePopulatedData: {
                     buyerEmail: "buyer_email",
@@ -334,6 +336,9 @@ describe("PaymentLinksClient", () => {
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [{}],
+                        },
                     },
                 ],
             },
@@ -361,6 +366,7 @@ describe("PaymentLinksClient", () => {
                     shipping_fee: { charge: {} },
                     enable_coupon: true,
                     enable_loyalty: true,
+                    phone_collection: "REQUIRED",
                 },
                 pre_populated_data: { buyer_email: "buyer_email", buyer_phone_number: "buyer_phone_number" },
                 url: "https://square.link/u/EXAMPLE",
@@ -412,6 +418,7 @@ describe("PaymentLinksClient", () => {
                     },
                     enableCoupon: true,
                     enableLoyalty: true,
+                    phoneCollection: "REQUIRED",
                 },
                 prePopulatedData: {
                     buyerEmail: "buyer_email",
@@ -447,6 +454,7 @@ describe("PaymentLinksClient", () => {
                     shipping_fee: { charge: {} },
                     enable_coupon: true,
                     enable_loyalty: true,
+                    phone_collection: "REQUIRED",
                 },
                 pre_populated_data: { buyer_email: "buyer_email", buyer_phone_number: "buyer_phone_number" },
                 url: "https://square.link/u/EXAMPLE",
@@ -505,6 +513,7 @@ describe("PaymentLinksClient", () => {
                     },
                     enableCoupon: true,
                     enableLoyalty: true,
+                    phoneCollection: "REQUIRED",
                 },
                 prePopulatedData: {
                     buyerEmail: "buyer_email",

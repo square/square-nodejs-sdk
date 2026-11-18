@@ -42,6 +42,7 @@ describe("ObjectClient", () => {
                     ecom_image_uris: ["ecom_image_uris"],
                     image_ids: ["image_ids"],
                     sort_name: "sort_name",
+                    categories: [{}],
                     description_html: "description_html",
                     description_plaintext: "description_plaintext",
                     kitchen_name: "kitchen_name",
@@ -117,6 +118,7 @@ describe("ObjectClient", () => {
                     ecomImageUris: ["ecom_image_uris"],
                     imageIds: ["image_ids"],
                     sortName: "sort_name",
+                    categories: [{}],
                     descriptionHtml: "description_html",
                     descriptionPlaintext: "description_plaintext",
                     kitchenName: "kitchen_name",
@@ -177,6 +179,7 @@ describe("ObjectClient", () => {
                     ecom_image_uris: ["ecom_image_uris"],
                     image_ids: ["image_ids"],
                     sort_name: "sort_name",
+                    categories: [{}],
                     description_html: "description_html",
                     description_plaintext: "description_plaintext",
                     kitchen_name: "kitchen_name",
@@ -189,6 +192,7 @@ describe("ObjectClient", () => {
                 {
                     type: "CATEGORY",
                     id: "id",
+                    ordinal: BigInt(1000000),
                     updated_at: "updated_at",
                     version: BigInt(1000000),
                     is_deleted: true,
@@ -198,7 +202,6 @@ describe("ObjectClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
-                    ordinal: BigInt(1000000),
                 },
                 {
                     type: "TAX",
@@ -274,6 +277,7 @@ describe("ObjectClient", () => {
                     ecomImageUris: ["ecom_image_uris"],
                     imageIds: ["image_ids"],
                     sortName: "sort_name",
+                    categories: [{}],
                     descriptionHtml: "description_html",
                     descriptionPlaintext: "description_plaintext",
                     kitchenName: "kitchen_name",
@@ -285,6 +289,8 @@ describe("ObjectClient", () => {
             relatedObjects: [
                 {
                     id: "id",
+                    ordinal: BigInt("1000000"),
+                    type: "CATEGORY",
                     updatedAt: "updated_at",
                     version: BigInt("1000000"),
                     isDeleted: true,
@@ -296,8 +302,6 @@ describe("ObjectClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
-                    ordinal: BigInt("1000000"),
-                    type: "CATEGORY",
                 },
                 {
                     type: "TAX",

@@ -4,6 +4,7 @@ import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
 import { AcceptedPaymentMethods } from "./AcceptedPaymentMethods";
+import { CheckoutOptionsPhoneCollection } from "./CheckoutOptionsPhoneCollection";
 import { CustomField } from "./CustomField";
 import { Money } from "./Money";
 import { ShippingFee } from "./ShippingFee";
@@ -36,6 +37,7 @@ export const CheckoutOptions: core.serialization.ObjectSchema<serializers.Checko
         shippingFee: core.serialization.property("shipping_fee", ShippingFee.optional()),
         enableCoupon: core.serialization.property("enable_coupon", core.serialization.boolean().optionalNullable()),
         enableLoyalty: core.serialization.property("enable_loyalty", core.serialization.boolean().optionalNullable()),
+        phoneCollection: core.serialization.property("phone_collection", CheckoutOptionsPhoneCollection.optional()),
     });
 
 export declare namespace CheckoutOptions {
@@ -51,5 +53,6 @@ export declare namespace CheckoutOptions {
         shipping_fee?: ShippingFee.Raw | null;
         enable_coupon?: (boolean | null | undefined) | null;
         enable_loyalty?: (boolean | null | undefined) | null;
+        phone_collection?: CheckoutOptionsPhoneCollection.Raw | null;
     }
 }
