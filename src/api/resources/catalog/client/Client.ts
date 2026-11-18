@@ -74,7 +74,7 @@ export class CatalogClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -155,7 +155,7 @@ export class CatalogClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -239,8 +239,9 @@ export class CatalogClient {
      *                         type: "ITEM",
      *                         id: "id"
      *                     }, {
-     *                         type: "ITEM",
-     *                         id: "id"
+     *                         type: "CATEGORY",
+     *                         id: "id",
+     *                         type: "CATEGORY"
      *                     }, {
      *                         type: "TAX",
      *                         id: "id"
@@ -263,7 +264,7 @@ export class CatalogClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -332,7 +333,7 @@ export class CatalogClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -413,7 +414,7 @@ export class CatalogClient {
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
                     _authRequest.headers,
                     this._options?.headers,
-                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+                    mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
                     requestOptions?.headers,
                 );
                 const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -518,7 +519,7 @@ export class CatalogClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -623,7 +624,7 @@ export class CatalogClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -707,7 +708,7 @@ export class CatalogClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({
@@ -791,7 +792,7 @@ export class CatalogClient {
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
             this._options?.headers,
-            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-09-16" }),
+            mergeOnlyDefinedHeaders({ "Square-Version": requestOptions?.version ?? "2026-11-18" }),
             requestOptions?.headers,
         );
         const _response = await (this._options.fetcher ?? core.fetcher)({

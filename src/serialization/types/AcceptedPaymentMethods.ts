@@ -12,6 +12,7 @@ export const AcceptedPaymentMethods: core.serialization.ObjectSchema<
     googlePay: core.serialization.property("google_pay", core.serialization.boolean().optionalNullable()),
     cashAppPay: core.serialization.property("cash_app_pay", core.serialization.boolean().optionalNullable()),
     afterpayClearpay: core.serialization.property("afterpay_clearpay", core.serialization.boolean().optionalNullable()),
+    bankAccount: core.serialization.property("bank_account", core.serialization.boolean().optionalNullable()),
 });
 
 export declare namespace AcceptedPaymentMethods {
@@ -20,5 +21,6 @@ export declare namespace AcceptedPaymentMethods {
         google_pay?: (boolean | null | undefined) | null;
         cash_app_pay?: (boolean | null | undefined) | null;
         afterpay_clearpay?: (boolean | null | undefined) | null;
+        bank_account?: (boolean | null | undefined) | null;
     }
 }

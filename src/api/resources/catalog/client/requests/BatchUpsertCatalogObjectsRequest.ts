@@ -14,8 +14,9 @@ import type * as Square from "../../../../index";
  *                         type: "ITEM",
  *                         id: "id"
  *                     }, {
- *                         type: "ITEM",
- *                         id: "id"
+ *                         type: "CATEGORY",
+ *                         id: "id",
+ *                         type: "CATEGORY"
  *                     }, {
  *                         type: "TAX",
  *                         id: "id"

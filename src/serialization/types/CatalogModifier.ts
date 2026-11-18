@@ -3,6 +3,7 @@
 import type * as Square from "../../api/index";
 import * as core from "../../core";
 import type * as serializers from "../index";
+import { CatalogModifierColor } from "./CatalogModifierColor";
 import { ModifierLocationOverrides } from "./ModifierLocationOverrides";
 import { Money } from "./Money";
 
@@ -24,6 +25,7 @@ export const CatalogModifier: core.serialization.ObjectSchema<serializers.Catalo
             "child_modifier_list_ids",
             core.serialization.list(core.serialization.string()).optionalNullable(),
         ),
+        kitchenColor: core.serialization.property("kitchen_color", CatalogModifierColor.optional()),
     });
 
 export declare namespace CatalogModifier {
@@ -38,5 +40,6 @@ export declare namespace CatalogModifier {
         image_id?: (string | null | undefined) | null;
         hidden_online?: (boolean | null | undefined) | null;
         child_modifier_list_ids?: (string[] | null | undefined) | null;
+        kitchen_color?: CatalogModifierColor.Raw | null;
     }
 }

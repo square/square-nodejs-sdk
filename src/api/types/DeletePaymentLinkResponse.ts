@@ -3,6 +3,7 @@
 import type * as Square from "../index";
 
 export interface DeletePaymentLinkResponse {
+    /** Any errors that occurred during the request. */
     errors?: Square.Error_[];
     /** The ID of the link that is deleted. */
     id?: string;

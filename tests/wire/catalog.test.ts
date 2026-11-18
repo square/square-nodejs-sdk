@@ -62,6 +62,10 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: {
+                        categories: [{ id: "id", type: "CATEGORY" }],
+                        reporting_category: { id: "id", type: "CATEGORY" },
+                    },
                 },
                 {
                     type: "ITEM",
@@ -75,6 +79,10 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: {
+                        categories: [{ id: "id", type: "CATEGORY" }],
+                        reporting_category: { id: "id", type: "CATEGORY" },
+                    },
                 },
             ],
             related_objects: [
@@ -107,8 +115,26 @@ describe("CatalogClient", () => {
                 },
             ],
             included_resources: {
-                nested_modifiers: [{ type: "ITEM", id: "id" }],
-                ancestor_modifiers: [{ type: "ITEM", id: "id" }],
+                nested_modifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                        item_data: {
+                            categories: [{ id: "id", type: "CATEGORY" }],
+                            reporting_category: { id: "id", type: "CATEGORY" },
+                        },
+                    },
+                ],
+                ancestor_modifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                        item_data: {
+                            categories: [{ id: "id", type: "CATEGORY" }],
+                            reporting_category: { id: "id", type: "CATEGORY" },
+                        },
+                    },
+                ],
             },
         };
 
@@ -149,6 +175,18 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [
+                            {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        ],
+                        reportingCategory: {
+                            id: "id",
+                            type: "CATEGORY",
+                        },
+                    },
                 },
                 {
                     type: "ITEM",
@@ -164,6 +202,18 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [
+                            {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        ],
+                        reportingCategory: {
+                            id: "id",
+                            type: "CATEGORY",
+                        },
+                    },
                 },
             ],
             relatedObjects: [
@@ -204,12 +254,36 @@ describe("CatalogClient", () => {
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [
+                                {
+                                    id: "id",
+                                    type: "CATEGORY",
+                                },
+                            ],
+                            reportingCategory: {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        },
                     },
                 ],
                 ancestorModifiers: [
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [
+                                {
+                                    id: "id",
+                                    type: "CATEGORY",
+                                },
+                            ],
+                            reportingCategory: {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        },
                     },
                 ],
             },
@@ -226,7 +300,7 @@ describe("CatalogClient", () => {
                     objects: [
                         { type: "ITEM", id: "id" },
                         { type: "ITEM", id: "id" },
-                        { type: "ITEM", id: "id" },
+                        { type: "CATEGORY", id: "id" },
                         { type: "TAX", id: "id" },
                     ],
                 },
@@ -247,6 +321,10 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: {
+                        categories: [{ id: "id", type: "CATEGORY" }],
+                        reporting_category: { id: "id", type: "CATEGORY" },
+                    },
                 },
                 {
                     type: "ITEM",
@@ -260,6 +338,10 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: {
+                        categories: [{ id: "id", type: "CATEGORY" }],
+                        reporting_category: { id: "id", type: "CATEGORY" },
+                    },
                 },
                 {
                     type: "CATEGORY",
@@ -324,8 +406,8 @@ describe("CatalogClient", () => {
                             id: "id",
                         },
                         {
-                            type: "ITEM",
                             id: "id",
+                            type: "CATEGORY",
                         },
                         {
                             type: "TAX",
@@ -359,6 +441,18 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [
+                            {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        ],
+                        reportingCategory: {
+                            id: "id",
+                            type: "CATEGORY",
+                        },
+                    },
                 },
                 {
                     type: "ITEM",
@@ -374,6 +468,18 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [
+                            {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        ],
+                        reportingCategory: {
+                            id: "id",
+                            type: "CATEGORY",
+                        },
+                    },
                 },
                 {
                     id: "id",
@@ -621,6 +727,10 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: {
+                        categories: [{ id: "id", type: "CATEGORY" }],
+                        reporting_category: { id: "id", type: "CATEGORY" },
+                    },
                 },
                 {
                     type: "ITEM",
@@ -634,6 +744,10 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: {
+                        categories: [{ id: "id", type: "CATEGORY" }],
+                        reporting_category: { id: "id", type: "CATEGORY" },
+                    },
                 },
             ],
             related_objects: [
@@ -649,12 +763,34 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: {
+                        categories: [{ id: "id", type: "CATEGORY" }],
+                        reporting_category: { id: "id", type: "CATEGORY" },
+                    },
                 },
             ],
             latest_time: "latest_time",
             included_resources: {
-                nested_modifiers: [{ type: "ITEM", id: "id" }],
-                ancestor_modifiers: [{ type: "ITEM", id: "id" }],
+                nested_modifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                        item_data: {
+                            categories: [{ id: "id", type: "CATEGORY" }],
+                            reporting_category: { id: "id", type: "CATEGORY" },
+                        },
+                    },
+                ],
+                ancestor_modifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                        item_data: {
+                            categories: [{ id: "id", type: "CATEGORY" }],
+                            reporting_category: { id: "id", type: "CATEGORY" },
+                        },
+                    },
+                ],
             },
         };
 
@@ -702,6 +838,18 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [
+                            {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        ],
+                        reportingCategory: {
+                            id: "id",
+                            type: "CATEGORY",
+                        },
+                    },
                 },
                 {
                     type: "ITEM",
@@ -717,6 +865,18 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [
+                            {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        ],
+                        reportingCategory: {
+                            id: "id",
+                            type: "CATEGORY",
+                        },
+                    },
                 },
             ],
             relatedObjects: [
@@ -734,6 +894,18 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [
+                            {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        ],
+                        reportingCategory: {
+                            id: "id",
+                            type: "CATEGORY",
+                        },
+                    },
                 },
             ],
             latestTime: "latest_time",
@@ -742,12 +914,36 @@ describe("CatalogClient", () => {
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [
+                                {
+                                    id: "id",
+                                    type: "CATEGORY",
+                                },
+                            ],
+                            reportingCategory: {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        },
                     },
                 ],
                 ancestorModifiers: [
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [
+                                {
+                                    id: "id",
+                                    type: "CATEGORY",
+                                },
+                            ],
+                            reportingCategory: {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        },
                     },
                 ],
             },
@@ -787,13 +983,35 @@ describe("CatalogClient", () => {
                     present_at_location_ids: ["present_at_location_ids"],
                     absent_at_location_ids: ["absent_at_location_ids"],
                     image_id: "image_id",
+                    item_data: {
+                        categories: [{ id: "id", type: "CATEGORY" }],
+                        reporting_category: { id: "id", type: "CATEGORY" },
+                    },
                 },
             ],
             cursor: "cursor",
             matched_variation_ids: ["VBJNPHCOKDFECR6VU25WRJUD"],
             included_resources: {
-                nested_modifiers: [{ type: "ITEM", id: "id" }],
-                ancestor_modifiers: [{ type: "ITEM", id: "id" }],
+                nested_modifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                        item_data: {
+                            categories: [{ id: "id", type: "CATEGORY" }],
+                            reporting_category: { id: "id", type: "CATEGORY" },
+                        },
+                    },
+                ],
+                ancestor_modifiers: [
+                    {
+                        type: "ITEM",
+                        id: "id",
+                        item_data: {
+                            categories: [{ id: "id", type: "CATEGORY" }],
+                            reporting_category: { id: "id", type: "CATEGORY" },
+                        },
+                    },
+                ],
             },
         };
 
@@ -859,6 +1077,18 @@ describe("CatalogClient", () => {
                     presentAtLocationIds: ["present_at_location_ids"],
                     absentAtLocationIds: ["absent_at_location_ids"],
                     imageId: "image_id",
+                    itemData: {
+                        categories: [
+                            {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        ],
+                        reportingCategory: {
+                            id: "id",
+                            type: "CATEGORY",
+                        },
+                    },
                 },
             ],
             cursor: "cursor",
@@ -868,12 +1098,36 @@ describe("CatalogClient", () => {
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [
+                                {
+                                    id: "id",
+                                    type: "CATEGORY",
+                                },
+                            ],
+                            reportingCategory: {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        },
                     },
                 ],
                 ancestorModifiers: [
                     {
                         type: "ITEM",
                         id: "id",
+                        itemData: {
+                            categories: [
+                                {
+                                    id: "id",
+                                    type: "CATEGORY",
+                                },
+                            ],
+                            reportingCategory: {
+                                id: "id",
+                                type: "CATEGORY",
+                            },
+                        },
                     },
                 ],
             },
